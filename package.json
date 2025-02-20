@@ -1,0 +1,39 @@
+{
+  "name": "@baragaun/bg-channels-web-client",
+  "version": "0.0.1",
+  "description": "Channels web client",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "shadowbrush <github@shadowbrush.com>",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baragaun/bg-channels-web-client.git"
+  },
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "build": "rm -rf lib/* && tsc && cp src/index.html lib/",
+    "format": "prettier --write \"src/**/*.(js|ts)\"",
+    "lint": "eslint src --ext .js,.ts",
+    "lint:fix": "eslint src --fix --ext .js,.ts",
+    "test": "jest --config jest.config.js",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
+    "esrun": "BG_E2E_TEST_SUITE_PATH=config/config.json npx esrun ./src/run.ts"
+  },
+  "devDependencies": {
+    "eslint": "^9.20.1",
+    "prettier": "^3.5.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "uuid": "^11.1.0"
+  }
+}
