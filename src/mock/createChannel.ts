@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker';
 import { Channel } from '../types/models/Channel.js';
 import { MutateChannelResult } from '../types/MutateChannelResult.js';
 import { MutationType } from '../types/enums.js';
-import data from './data.js';
+import store from './store.js';
 
 const createChannel = async (
   attributes: Partial<Channel>,
@@ -34,7 +34,7 @@ const createChannel = async (
     channel.updatedAt = new Date();
   }
 
-  data.addChannel(channel);
+  store.addObject(channel);
 
   return {
     operation: MutationType.create,

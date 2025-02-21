@@ -94,3 +94,10 @@ export declare enum UiLanguage {
     ru = "ru",// Russian
     so = "so"
 }
+export declare enum ModelType {
+    Channel = "Channel",
+    ChannelInvitation = "ChannelInvitation",
+    ChannelMessage = "ChannelMessage",
+    ChannelParticipant = "ChannelParticipant",
+    User = "User"
+}

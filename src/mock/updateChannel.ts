@@ -1,13 +1,16 @@
 import { Channel } from '../types/models/Channel.js';
 import { MutateChannelResult } from '../types/MutateChannelResult.js';
-import { MutationType } from '../types/enums.js';
-import data from './data.js';
+import { ModelType, MutationType } from '../types/enums.js';
+import store from './store.js';
 
 const updateChannel = async (
   changes: Partial<Channel>,
 ): Promise<MutateChannelResult<Channel>> => {
   try {
-    const updatedChannel = data.updateChannel(changes);
+    const updatedChannel = store.updateObject<Channel>(
+      changes,
+      ModelType.Channel,
+    );
 
     if (!updatedChannel) {
       return {

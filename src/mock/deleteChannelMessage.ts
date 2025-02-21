@@ -1,13 +1,13 @@
-import { MutationType } from '../types/enums.js';
+import { ModelType, MutationType } from '../types/enums.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { MutateChannelResult } from '../types/MutateChannelResult.js';
-import data from './data.js';
+import store from './store.js';
 
 const deleteChannelMessage = async (
   id: string,
 ): Promise<MutateChannelResult<ChannelMessage>> => {
   try {
-    data.deleteChannelMessage(id);
+    store.deleteObject(id, ModelType.ChannelMessage);
 
     return {
       operation: MutationType.delete,

@@ -1,24 +1,18 @@
-import { ChannelMessage } from '../types/models/ChannelMessage.js'
+import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { MutateChannelResult } from '../types/MutateChannelResult.js';
-import { MutationType } from '../types/enums.js';
-import data from './data.js';
+import { ModelType, MutationType } from '../types/enums.js';
+import store from './store.js';
 
 const updateChannelMessage = async (
   changes: Partial<ChannelMessage>,
 ): Promise<MutateChannelResult<ChannelMessage>> => {
-  const existingMessage = data.findMessage(changes.id as string);
-
-  if (!existingMessage) {
-    return {
-      operation: MutationType.update,
-      error: 'not-found',
-    }
-  }
-
   try {
-    const updatedMessage = data.updateChannelMessage(changes);
+    const updatedChannelMessage = store.updateObject<ChannelMessage>(
+      changes,
+      ModelType.ChannelMessage,
+    );
 
-    if (!updatedMessage) {
+    if (!updatedChannelMessage) {
       return {
         operation: MutationType.update,
         error: 'not-found',
@@ -27,7 +21,7 @@ const updateChannelMessage = async (
 
     return {
       operation: MutationType.update,
-      object: updatedMessage,
+      object: updatedChannelMessage,
     };
   } catch (error) {
     return {

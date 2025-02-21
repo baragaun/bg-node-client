@@ -1,14 +1,15 @@
 import { faker } from '@faker-js/faker';
 
+import { Channel } from '../types/models/Channel.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
+import { ModelType, MutationType } from '../types/enums.js';
 import { MutateChannelResult } from '../types/MutateChannelResult.js';
-import { MutationType } from '../types/enums.js';
-import data from './data.js';
+import store from './store.js';
 
 const createChannelMessage = async (
   attributes: Partial<ChannelMessage>,
 ): Promise<MutateChannelResult<ChannelMessage>> => {
-  const channel = data.findChannel(attributes.channelId as string)
+  const channel = store.findObjectById<Channel>(attributes.channelId as string, ModelType.Channel)
 
   if (!channel) {
     return {
@@ -36,7 +37,7 @@ const createChannelMessage = async (
   }
 
   try {
-    data.addChannelMessage(message);
+    store.addObject(message);
 
     return {
       operation: MutationType.create,

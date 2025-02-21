@@ -54,8 +54,10 @@ const createChannel = (
 
   channel.messages = messages;
   channel.users = users;
+  channel.userIds = users.map(user => user.id);
   channel.participants = users.map(user => new ChannelParticipant({
     id: faker.string.uuid(),
+    channelId: channel.id,
     userId: user.id
   }));
 

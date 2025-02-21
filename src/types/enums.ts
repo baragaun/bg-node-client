@@ -112,3 +112,11 @@ export enum UiLanguage {
   ru = 'ru', // Russian
   so = 'so', // Somali
 }
+
+export enum ModelType {
+  Channel = 'Channel',
+  ChannelInvitation = 'ChannelInvitation',
+  ChannelMessage = 'ChannelMessage',
+  ChannelParticipant = 'ChannelParticipant',
+  User = 'User',
+}
