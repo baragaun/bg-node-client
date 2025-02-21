@@ -35,16 +35,19 @@ const createChannelMessage = async (
     channel.updatedAt = new Date();
   }
 
-  if (!Array.isArray(channel.messages)) {
-    channel.messages = [message];
-  } else {
-    channel.messages.push(message);
-  }
+  try {
+    data.addChannelMessage(message);
 
-  return {
-    operation: MutationType.create,
-    object: message,
-  };
+    return {
+      operation: MutationType.create,
+      object: message,
+    };
+  } catch (error) {
+    return {
+      operation: MutationType.create,
+      error: (error as Error).message,
+    }
+  }
 }
 
 export default createChannelMessage

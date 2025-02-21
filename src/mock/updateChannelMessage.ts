@@ -15,12 +15,26 @@ const updateChannelMessage = async (
     }
   }
 
-  Object.assign(existingMessage, changes);
+  try {
+    const updatedMessage = data.updateChannelMessage(changes);
 
-  return {
-    operation: MutationType.update,
-    object: existingMessage,
-  };
+    if (!updatedMessage) {
+      return {
+        operation: MutationType.update,
+        error: 'not-found',
+      }
+    }
+
+    return {
+      operation: MutationType.update,
+      object: updatedMessage,
+    };
+  } catch (error) {
+    return {
+      operation: MutationType.update,
+      error: (error as Error).message,
+    }
+  }
 }
 
 export default updateChannelMessage

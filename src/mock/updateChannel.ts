@@ -6,21 +6,26 @@ import data from './data.js';
 const updateChannel = async (
   changes: Partial<Channel>,
 ): Promise<MutateChannelResult<Channel>> => {
-  const existingChannel = data.findChannel(changes.id as string);
+  try {
+    const updatedChannel = data.updateChannel(changes);
 
-  if (!existingChannel) {
+    if (!updatedChannel) {
+      return {
+        operation: MutationType.update,
+        error: 'not-found',
+      }
+    }
+
     return {
       operation: MutationType.update,
-      error: 'not-found',
+      object: updatedChannel,
+    };
+  } catch (error) {
+    return {
+      operation: MutationType.update,
+      error: (error as Error).message,
     }
   }
-
-  Object.assign(existingChannel, changes);
-
-  return {
-    operation: MutationType.update,
-    object: existingChannel,
-  };
 }
 
 export default updateChannel

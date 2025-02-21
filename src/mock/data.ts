@@ -2,25 +2,26 @@ import { Channel } from '../types/models/Channel.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 
 const channels: Channel[] = [];
+const messages = new Map<string, ChannelMessage[]>();
 
 const data = {
   // channelInvitations: [] as ChannelInvitation[],
   addChannel: (channel: Channel): void => {
+    messages.set(channel.id, channel.messages || []);
+    delete channel.messages;
     channels.push(channel);
   },
 
   addChannelMessage: (message: ChannelMessage): void => {
-    const channel = channels.find(c => c.id === message.channelId);
-
-    if (!channel) {
-      throw new Error('Channel not found');
+    if (messages.has(message.channelId)) {
+      const channelMessages = messages.get(message.channelId);
+      if (channelMessages) {
+        channelMessages.push(message);
+        return;
+      }
     }
 
-    if (Array.isArray(channel.messages)) {
-      channel.messages.push(message);
-    } else {
-      channel.messages = [message];
-    }
+    messages.set(message.channelId, [message]);
   },
 
   deleteChannel: (id: string): void => {
@@ -31,18 +32,15 @@ const data = {
     }
 
     channels.splice(index, 1);
+    messages.delete(id);
   },
 
   deleteChannelMessage: (id: string): void => {
-    for (let i = 0; i < channels.length; i++) {
-      const channel = channels[i];
-      if (Array.isArray(channel.messages)) {
-        const messageIndex = channel.messages.findIndex(m => m.id === id);
-
-        if (messageIndex > -1) {
-          channel.messages.splice(messageIndex, 1);
-          return;
-        }
+    for (const channelMessages of messages.values()) {
+      const messageIndex = channelMessages.findIndex(m => m.id === id);
+      if (messageIndex > -1) {
+        channelMessages.splice(messageIndex, 1);
+        return;
       }
     }
 
@@ -54,17 +52,50 @@ const data = {
   },
 
   findMessage: (id: string): ChannelMessage | null => {
-    for (let i = 0; i < channels.length; i++) {
-      const channel = channels[i];
-      if (Array.isArray(channel.messages)) {
-        const message = channel.messages.find(m => m.id === id);
-        if (message) {
-          return message;
-        }
+    for (const channelMessages of messages.values()) {
+      const message = channelMessages.find(m => m.id === id);
+      if (message) {
+        return message;
       }
     }
+
+    return null
+  },
+
+  replaceChannelMessage: (message: ChannelMessage): void => {
+    for (const channelMessages of messages.values()) {
+      const messageIndex = channelMessages.findIndex(m => m.id === message.id);
+      if (messageIndex > -1) {
+        channelMessages[messageIndex] = message;
+        return;
+      }
+    }
+  },
+
+  updateChannel: (changes: Partial<Channel>): Channel => {
+    const index = channels.findIndex(c => c.id === changes.id);
+    if (index < 0) {
+      throw new Error('channel-not-found');
+    }
+
+    const updatedChannel = Object.assign(channels[index], changes);
+    channels[index] = updatedChannel;
+    return updatedChannel;
+  },
+
+  updateChannelMessage: (changes: Partial<ChannelMessage>): ChannelMessage | null => {
+    for (const channelMessages of messages.values()) {
+      const messageIndex = channelMessages.findIndex(m => m.id === changes.id);
+      if (messageIndex > -1) {
+        const updatedMessage = Object.assign(channelMessages[messageIndex], changes)
+        channelMessages[messageIndex] = updatedMessage;
+
+        return updatedMessage;
+      }
+    }
+
     return null;
-  }
+  },
 }
 
 export default data
