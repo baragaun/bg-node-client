@@ -1,8 +1,16 @@
-/** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
-import { BgChannelMessage } from './BgChannelMessage.js';
-export declare class ChannelMessage extends BgChannelMessage {
-    mm2ConversationId?: string | null;
-    mm2Id?: string | null;
-    syncedWithMm2At?: Date | null;
+import { BaseModel } from './BaseModel.js';
+import { ChannelMessageMetadata } from './ChannelMessageMetadata.js';
+import { ChannelMessageStatus } from './ChannelMessageStatus.js';
+import { ChannelMessageType } from '../enums.js';
+export declare class ChannelMessage extends BaseModel {
+    channelId: string;
+    replyToMessageId?: string | null;
+    channelMessageType?: ChannelMessageType | null;
+    messageText?: string | null;
+    statuses?: ChannelMessageStatus[] | null;
+    metadata?: ChannelMessageMetadata | null;
+    editedAt?: Date | null;
+    suspendedAt?: Date | null;
+    suspendedBy?: string | null;
     constructor(attributes?: Partial<ChannelMessage>);
 }

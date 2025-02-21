@@ -68,3 +68,29 @@ export declare enum MutationType {
     update = "update",
     delete = "delete"
 }
+export declare enum UserRole {
+    admin = "admin",
+    support = "support",
+    staff = "staff",
+    qa = "qa",// person is a staff member working in QA
+    test = "test"
+}
+export declare enum AppFeature {
+    testFeatures1 = "testFeatures1",
+    testFeatures2 = "testFeatures2"
+}
+export declare enum AuthType {
+    none = "none",
+    oauth = "oauth",
+    token = "token",
+    hmac = "hmac",
+    saml = "saml"
+}
+export declare enum UiLanguage {
+    ar = "ar",// Arabic
+    en = "en",// English
+    es = "es",// Spanish
+    id = "id",// Indonesian
+    ru = "ru",// Russian
+    so = "so"
+}

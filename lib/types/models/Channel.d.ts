@@ -1,7 +1,7 @@
 import { BaseModel } from './BaseModel.js';
 import { User } from './User.js';
 import { BgChannelStatus } from './BgChannelStatus.js';
-import { ChannelMessage } from '../../../lib/types/models/ChannelMessage.js';
+import { ChannelMessage } from './ChannelMessage.js';
 import { ChannelMetadata } from './ChannelMetadata.js';
 import { ChannelParticipant } from './ChannelParticipant.js';
 import { ChannelType } from '../enums.js';

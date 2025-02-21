@@ -5,6 +5,7 @@ import { ChannelMessage } from './types/models/ChannelMessage.js';
 import { ChannelMessageFilter } from './types/ChannelMessageFilter.js';
 import { ChannelsListener } from './types/ChannelsListener.js';
 import { MutateChannelResult } from './types/MutateChannelResult.js';
+import { User } from './types/models/User.js';
 export declare class BgChannelsWebClient {
     private config;
     private listeners;
@@ -24,6 +25,8 @@ export declare class BgChannelsWebClient {
      * @returns A promise that resolves to the result object.
      */
     createChannel(channel: Partial<Channel>): Promise<MutateChannelResult<Channel>>;
+    generateMockChannel(attributes: Partial<Channel>, userCount: number, messageCount: number, users?: User[], messages?: ChannelMessage[]): Channel;
+    generateMockUser(attributes: Partial<User>): User;
     /**
      * Creates a new channel message.
      * @returns A promise that resolves to the result object.
