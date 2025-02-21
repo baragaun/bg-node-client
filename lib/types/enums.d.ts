@@ -101,3 +101,20 @@ export declare enum ModelType {
     ChannelParticipant = "ChannelParticipant",
     User = "User"
 }
+export declare enum NotificationType {
+    accountDeletedConfirmation = "accountDeletedConfirmation",
+    channelInvitationAccepted = "channelInvitationAccepted",
+    channelInvitationDeclined = "channelInvitationDeclined",
+    channelInvitationReceived = "channelInvitationReceived",
+    channelMessageReceived = "channelMessageReceived",
+    completeProfile = "completeProfile",
+    completeSignUp = "completeSignUp",
+    matchesRecommendations = "matchesRecommendations",
+    newPrivacyRules = "newPrivacyRules",
+    newsletter = "newsletter",
+    resetPasswordConfirmation = "resetPasswordConfirmation",
+    resetPasswordConfirmToken = "resetPasswordConfirmToken",
+    sendFirstInvitation = "sendFirstInvitation",
+    unset = "unset",
+    welcome = "welcome"
+}

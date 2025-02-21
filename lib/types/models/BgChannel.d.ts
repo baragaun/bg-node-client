@@ -1,10 +1,10 @@
-/** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 import { BaseModel } from './BaseModel.js';
 import { BgChannelStatus } from './BgChannelStatus.js';
 import { ChannelMessage } from './ChannelMessage.js';
 import { ChannelMetadata } from './ChannelMetadata.js';
 import { ChannelParticipant } from './ChannelParticipant.js';
 import { ChannelType } from '../enums.js';
+import { User } from './User.js';
 export declare class BgChannel extends BaseModel {
     name?: string | null;
     topic?: string | null;
@@ -24,5 +24,6 @@ export declare class BgChannel extends BaseModel {
     archivedBy?: string | null;
     messages?: ChannelMessage[];
     participants?: ChannelParticipant[];
+    users?: User[];
     constructor(attributes?: Partial<BgChannel>);
 }

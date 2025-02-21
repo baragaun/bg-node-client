@@ -2,6 +2,7 @@ import { AppFeature, AuthType, UiLanguage, UserRole } from '../enums.js';
 import { BaseModel } from "./BaseModel.js"
 import { LabeledStringValue } from "./LabeledStringValue.js"
 import { UserBlock } from './UserBlock';
+import { UserPreferences } from './UserPreferences.js';
 
 export class User extends BaseModel {
   public firstName?: string | null
@@ -34,7 +35,7 @@ export class User extends BaseModel {
   public appFeatures?: AppFeature[] | null
   public source?: string | null
   public timezone?: string | null
-  // public preferences?: UserPreferences | null
+  public preferences?: UserPreferences | null
   public trustLevel = 1
   public signedInAt?: Date | null
   public signedOutAt?: Date | null
