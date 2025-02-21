@@ -1,11 +1,13 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 
 import { BgChannel } from './BgChannel.js'
+import { ChannelMessage } from './ChannelMessage.js';
 
 export class Channel extends BgChannel {
   public assumedMentorId?: string | null
   public mm2Id?: string | null
   public syncedWithMm2At?: Date | null
+  public messages: ChannelMessage[] = []
 
   constructor(attributes?: Partial<Channel>) {
     super(attributes)

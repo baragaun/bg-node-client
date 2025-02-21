@@ -63,3 +63,8 @@ export declare enum ChannelEventType {
      */
     reactionToMessageDeleted = "reactionToMessageDeleted"
 }
+export declare enum MutationType {
+    create = "create",
+    update = "update",
+    delete = "delete"
+}

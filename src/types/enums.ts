@@ -76,3 +76,9 @@ export enum ChannelEventType {
    */
   reactionToMessageDeleted = 'reactionToMessageDeleted',
 }
+
+export enum MutationType {
+  create = 'create',
+  update = 'update',
+  delete = 'delete',
+}

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Channels web client",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "types": "lib/definitions.d.ts",
   "author": "shadowbrush <github@shadowbrush.com>",
   "license": "MIT",
   "private": true,
@@ -24,8 +24,7 @@
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags",
-    "esrun": "BG_E2E_TEST_SUITE_PATH=config/config.json npx esrun ./src/run.ts"
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "eslint": "^9.20.1",
