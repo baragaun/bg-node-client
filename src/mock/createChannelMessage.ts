@@ -1,12 +1,14 @@
+import { faker } from '@faker-js/faker';
+
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { MutateChannelResult } from '../types/MutateChannelResult.js';
 import { MutationType } from '../types/enums.js';
 import data from './data.js';
 
 const createChannelMessage = async (
-  channelMessage: Partial<ChannelMessage>,
+  attributes: Partial<ChannelMessage>,
 ): Promise<MutateChannelResult<ChannelMessage>> => {
-  const channel = data.findChannel(channelMessage.channelId as string)
+  const channel = data.findChannel(attributes.channelId as string)
 
   if (!channel) {
     return {
@@ -15,8 +17,29 @@ const createChannelMessage = async (
     }
   }
 
-  const message = new ChannelMessage(channelMessage);
-  channel.messages.push(message);
+  const message = new ChannelMessage(attributes);
+
+  if (!message.id) {
+    message.id = faker.string.uuid();
+  }
+
+  if (!message.messageText) {
+    message.messageText = faker.lorem.paragraph();
+  }
+
+  if (!message.createdAt) {
+    message.createdAt = new Date();
+  }
+
+  if (!channel.updatedAt) {
+    channel.updatedAt = new Date();
+  }
+
+  if (!Array.isArray(channel.messages)) {
+    channel.messages = [message];
+  } else {
+    channel.messages.push(message);
+  }
 
   return {
     operation: MutationType.create,

@@ -16,7 +16,11 @@ const data = {
       throw new Error('Channel not found');
     }
 
-    channel.messages.push(message);
+    if (Array.isArray(channel.messages)) {
+      channel.messages.push(message);
+    } else {
+      channel.messages = [message];
+    }
   },
 
   deleteChannel: (id: string): void => {
@@ -32,11 +36,13 @@ const data = {
   deleteChannelMessage: (id: string): void => {
     for (let i = 0; i < channels.length; i++) {
       const channel = channels[i];
-      const messageIndex = channel.messages.findIndex(m => m.id === id);
+      if (Array.isArray(channel.messages)) {
+        const messageIndex = channel.messages.findIndex(m => m.id === id);
 
-      if (messageIndex > -1) {
-        channel.messages.splice(messageIndex, 1);
-        return;
+        if (messageIndex > -1) {
+          channel.messages.splice(messageIndex, 1);
+          return;
+        }
       }
     }
 
@@ -50,9 +56,11 @@ const data = {
   findMessage: (id: string): ChannelMessage | null => {
     for (let i = 0; i < channels.length; i++) {
       const channel = channels[i];
-      const message = channel.messages.find(m => m.id === id);
-      if (message) {
-        return message;
+      if (Array.isArray(channel.messages)) {
+        const message = channel.messages.find(m => m.id === id);
+        if (message) {
+          return message;
+        }
       }
     }
     return null;

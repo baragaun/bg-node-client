@@ -25,4 +25,7 @@ export * from './types/models/ChannelMetadata.js';
 export * from './types/models/ChannelParticipant.js';
 export * from './types/models/ChannelsUserMetadata.js';
 export * from './types/models/IBaseModel.js';
+export * from './types/models/LabeledStringValue.js';
 export * from './types/models/ModelEvent.js';
+export * from './types/models/User.js';
+export * from './types/models/UserBlock.js';

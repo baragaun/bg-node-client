@@ -1,17 +1,44 @@
+import { faker } from '@faker-js/faker';
+
 import { Channel } from '../types/models/Channel.js';
 import { MutateChannelResult } from '../types/MutateChannelResult.js';
 import { MutationType } from '../types/enums.js';
 import data from './data.js';
 
 const createChannel = async (
-  channel: Partial<Channel>,
+  attributes: Partial<Channel>,
 ): Promise<MutateChannelResult<Channel>> => {
-  const newChannel = new Channel(channel);
-  data.addChannel(newChannel);
+  const channel = new Channel(attributes);
+
+  if (!channel.id) {
+    channel.id = faker.string.uuid();
+  }
+
+  if (!channel.name) {
+    channel.name = faker.lorem.word();
+  }
+
+  if (!channel.description) {
+    channel.description = faker.lorem.paragraph();
+  }
+
+  if (!channel.topic) {
+    channel.topic = faker.lorem.sentence();
+  }
+
+  if (!channel.createdAt) {
+    channel.createdAt = new Date();
+  }
+
+  if (!channel.updatedAt) {
+    channel.updatedAt = new Date();
+  }
+
+  data.addChannel(channel);
 
   return {
     operation: MutationType.create,
-    object: newChannel
+    object: channel
   };
 }
 

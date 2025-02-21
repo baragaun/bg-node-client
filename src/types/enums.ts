@@ -82,3 +82,33 @@ export enum MutationType {
   update = 'update',
   delete = 'delete',
 }
+
+export enum UserRole {
+  admin = 'admin',
+  support = 'support',
+  staff = 'staff',
+  qa = 'qa', // person is a staff member working in QA
+  test = 'test', // a test account
+}
+
+export enum AppFeature {
+  testFeatures1 = 'testFeatures1',
+  testFeatures2 = 'testFeatures2',
+}
+
+export enum AuthType {
+  none = 'none',
+  oauth = 'oauth',
+  token = 'token',
+  hmac = 'hmac',
+  saml = 'saml',
+}
+
+export enum UiLanguage {
+  ar = 'ar', // Arabic
+  en = 'en', // English
+  es = 'es', // Spanish
+  id = 'id', // Indonesian
+  ru = 'ru', // Russian
+  so = 'so', // Somali
+}
