@@ -5,6 +5,7 @@ import { ChannelMessage } from './types/models/ChannelMessage.js';
 import { ChannelMessageFilter } from './types/ChannelMessageFilter.js';
 import { ChannelsListener } from './types/ChannelsListener.js';
 import { MutateChannelResult } from './types/MutateChannelResult.js';
+import { User } from './types/models/User.js';
 import mockOperations from './mock/index.js';
 import operations from './operations/index.js';
 
@@ -61,6 +62,30 @@ export class BgChannelsWebClient {
     }
 
     return result;
+  }
+
+  public generateMockChannel(
+    attributes: Partial<Channel>,
+    userCount: number,
+    messageCount: number,
+    users?: User[],
+    messages?: ChannelMessage[],
+  ): Channel {
+    return mockOperations.factories.channel(
+      attributes,
+      userCount,
+      messageCount,
+      users,
+      messages,
+    );
+  }
+
+  public generateMockUser(
+    attributes: Partial<User>,
+  ): User {
+    return mockOperations.factories.user(
+      attributes,
+    );
   }
 
   /**
