@@ -5,7 +5,7 @@ export * from './types/ChannelFilter.js';
 export * from './types/ChannelMessageFilter.js';
 export * from './types/ChannelsListener.js';
 export * from './types/enums.js';
-export * from './types/MutateResult.js';
+export * from './types/MutationResult.js';
 
 // Models:
 export * from './types/models/BaseModel.js'

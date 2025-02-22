@@ -11,15 +11,13 @@ const findChannels = async (
 ): Promise<QueryResult<Channel>> => {
   try {
     if (filter.id) {
-      const channel = await db.findById<Channel>(
+      return db.findById<Channel>(
         filter.id,
         ModelType.Channel,
       );
-
-      return { object: channel };
     }
 
-    const channels = await db.findAll<Channel>(ModelType.Channel);
+    const { objects: channels } = await db.findAll<Channel>(ModelType.Channel);
     let list: Channel[] = channels;
 
     if (filter.userId) {

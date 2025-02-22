@@ -86,6 +86,7 @@ export enum MutationType {
   create = 'create',
   update = 'update',
   delete = 'delete',
+  replace = 'replace',
 }
 
 export enum UserRole {

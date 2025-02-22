@@ -2,6 +2,7 @@ import { RxDatabase } from 'rxdb';
 
 import { ModelType } from '../../types/enums.js';
 import { ObjectType } from '../../types/Db.js';
+import { QueryResult } from '../../types/QueryResult.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 
@@ -9,19 +10,23 @@ let _db: RxDatabase | undefined = undefined;
 
 const findAll = async <T extends ObjectType = ObjectType>(
   modelType: ModelType,
-): Promise<T[]> => {
+): Promise<QueryResult<T>> => {
+  const result: QueryResult<T> = {};
+
   if (!_db) {
     _db = db.getDb();
 
     if (!_db) {
-      return [];
+      result.error = 'db-unavailable';
+      return result;
     }
   }
 
   const collection = getCollectionFromModelType(modelType);
 
   if (!collection) {
-    throw new Error('collection-not-found');
+    result.error = 'collection-not-found';
+    return result;
   }
 
   const foundDocuments = await collection.find({
@@ -32,7 +37,7 @@ const findAll = async <T extends ObjectType = ObjectType>(
     }
   }).exec();
 
-  return foundDocuments;
+  return { objects: foundDocuments };
 };
 
 export default findAll;

@@ -1,8 +1,10 @@
+import { BgChannelsWebClientConfig } from '../../types/BgChannelsWebClientConfig.js';
 import { Channel } from '../../types/models/Channel.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
-import { ModelType } from '../../types/enums.js';
-import { ObjectType, Db } from '../../types/Db.js';
-import { BgChannelsWebClientConfig } from '../../types/BgChannelsWebClientConfig.js';
+import { Db, ObjectType } from '../../types/Db.js';
+import { ModelType, MutationType } from '../../types/enums.js';
+import { MutationResult } from '../../types/MutationResult.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const channels: Channel[] = [];
 let messages: ChannelMessage[] = [];
@@ -26,12 +28,20 @@ const memStore: Db = {
     console.log('memStore.init called.', config)
   },
 
-  findAll: async <T extends ObjectType = ObjectType>(type: ModelType): Promise<T[]> => {
-    return getArrayForModelType(type);
+  findAll: async <T extends ObjectType = ObjectType>(type: ModelType): Promise<QueryResult<T>> => {
+    const arr = getArrayForModelType<T>(type);
+
+    if (!arr) {
+      return {
+        error: 'not-found',
+      }
+    }
+
+    return { objects: arr };
   },
 
-  insert: async <T extends ObjectType = ObjectType>(obj: T): Promise<T | null> => {
-    const arr = getArrayForObject(obj);
+  insert: async <T extends ObjectType = ObjectType>(obj: T): Promise<MutationResult<T>> => {
+    const arr = getArrayForObject<T>(obj);
 
     if (!obj.id) {
       obj.id = crypto.randomUUID();
@@ -46,61 +56,69 @@ const memStore: Db = {
 
     arr.push(obj);
 
-    return obj;
+    return { operation: MutationType.create, object: obj };
   },
 
-  delete: async (id: string, modelType: ModelType): Promise<void> => {
+  delete: async (id: string, modelType: ModelType): Promise<MutationResult> => {
     const arr = getArrayForModelType(modelType);
     const index = arr.findIndex(obj => obj.id === id);
 
     if (index < 0) {
-      throw new Error('not-found');
+      return { operation: MutationType.delete, error: 'not-found' };
     }
 
     arr.splice(index, 1);
     if (modelType === ModelType.Channel) {
       messages = messages.filter(m => m.channelId !== id);
     }
+
+    return { operation: MutationType.delete };
   },
 
   findById: async <T extends ObjectType = ObjectType>(
     id: string,
     modelType: ModelType,
-  ): Promise<T | null> => {
+  ): Promise<QueryResult<T>> => {
     const arr = getArrayForModelType(modelType);
 
-    return arr.find(c => c.id === id) as T || null;
+    return {
+      object: arr.find(c => c.id === id) as T || null,
+    };
   },
 
-  replace: async <T extends ObjectType>(obj: T): Promise<T | null> => {
+  replace: async <T extends ObjectType>(obj: T): Promise<MutationResult<T>> => {
+    const result = { operation: MutationType.replace, object: obj };
     const arr = getArrayForObject(obj);
     const index = arr.findIndex(o => o.id === obj.id);
 
     if (index > -1) {
       arr[index] = obj;
-      return obj;
+      return result;
     }
     arr.push(obj);
 
-    return obj;
+    return result;
   },
 
   update: async <T extends ObjectType = ObjectType>(
     changes: Partial<T>,
     modelType: ModelType,
-  ): Promise<T | null> => {
+  ): Promise<MutationResult<T>> => {
+    const result: MutationResult<T> = { operation: MutationType.update };
     const arr = getArrayForModelType(modelType);
     const index = arr.findIndex(o => o.id === changes.id);
 
     if (index < 0) {
-      throw new Error('not-found');
+      result.error = 'not-found';
+      return result;
     }
 
     const existingObj = arr[index];
-    const updatedObject = Object.assign(existingObj, changes);
+    const updatedObject = Object.assign(existingObj, changes) as T;
     arr[index] = updatedObject;
+    result.object = updatedObject;
 
-    return updatedObject as T;
+    return result;
   },
 }
 

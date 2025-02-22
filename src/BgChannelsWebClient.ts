@@ -5,7 +5,7 @@ import { ChannelMessage } from './types/models/ChannelMessage.js';
 import { ChannelMessageFilter } from './types/ChannelMessageFilter.js';
 import { ChannelsListener } from './types/ChannelsListener.js';
 import { DbType } from './types/enums.js';
-import { MutateResult } from './types/MutateResult.js';
+import { MutationResult } from './types/MutationResult.js';
 import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
 import createChannelFunc from './operations/createChannel.js';
@@ -65,7 +65,7 @@ export class BgChannelsWebClient {
    */
   public async createChannel(
     channel: Partial<Channel>,
-  ): Promise<MutateResult<Channel>> {
+  ): Promise<MutationResult<Channel>> {
     const result = await createChannelFunc(channel);
 
     if (!result.error) {
@@ -87,7 +87,7 @@ export class BgChannelsWebClient {
    */
   public async createChannelMessage(
     channelMessage: Partial<ChannelMessage>,
-  ): Promise<MutateResult<ChannelMessage>> {
+  ): Promise<MutationResult<ChannelMessage>> {
     const result = await createChannelMessageFunc(channelMessage);
 
     if (!result.error) {
@@ -133,7 +133,7 @@ export class BgChannelsWebClient {
    */
   public async deleteChannel(
     id: string,
-  ): Promise<MutateResult<Channel>> {
+  ): Promise<MutationResult<Channel>> {
     const result = await deleteChannelFunc(id);
 
     if (!result.error) {
@@ -155,7 +155,7 @@ export class BgChannelsWebClient {
    */
   public async deleteChannelMessage(
     id: string,
-  ): Promise<MutateResult<ChannelMessage>> {
+  ): Promise<MutationResult<ChannelMessage>> {
     const result = await deleteChannelMessageFunc(id);
 
     if (!result.error) {
@@ -211,7 +211,7 @@ export class BgChannelsWebClient {
    */
   public async updateChannel(
     channel: Partial<Channel>,
-  ): Promise<MutateResult<Channel>> {
+  ): Promise<MutationResult<Channel>> {
     const result = await updateChannelFunc(channel);
 
     if (!result.error) {
@@ -233,7 +233,7 @@ export class BgChannelsWebClient {
    */
   public async updateChannelMessage(
     channelMessage: Partial<ChannelMessage>,
-  ): Promise<MutateResult<ChannelMessage>> {
+  ): Promise<MutationResult<ChannelMessage>> {
     const result = await updateChannelMessageFunc(channelMessage);
 
     if (!result.error) {
