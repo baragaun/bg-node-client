@@ -5,8 +5,5 @@ import { BgChannelMessageMetadata } from './BgChannelMessageMetadata.js'
 export class ChannelMessageMetadata extends BgChannelMessageMetadata {
   constructor(attributes?: Partial<ChannelMessageMetadata>) {
     super(attributes)
-
-    if (attributes) {
-    }
   }
 }

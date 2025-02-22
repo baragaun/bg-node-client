@@ -1,14 +1,23 @@
-import { MutationType } from '../types/enums.js';
+import { ModelType, MutationType } from '../types/enums.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
-import { MutateChannelResult } from '../types/MutateChannelResult.js';
+import { MutateResult } from '../types/MutateResult.js';
+import db from '../db/db.js';
 
 const deleteChannelMessage = async (
   id: string,
-): Promise<MutateChannelResult<ChannelMessage>> => {
-  // todo: implement
-  return {
-    operation: MutationType.delete,
-  };
+): Promise<MutateResult<ChannelMessage>> => {
+  try {
+    await db.delete(id, ModelType.ChannelMessage);
+
+    return {
+      operation: MutationType.delete,
+    };
+  } catch (error) {
+    return {
+      operation: MutationType.delete,
+      error: (error as Error).message,
+    };
+  }
 }
 
 export default deleteChannelMessage

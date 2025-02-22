@@ -1,6 +1,6 @@
-import { Channel } from './models/Channel';
-import { ChannelMessage } from './models/ChannelMessage';
-import { MutateChannelResult } from './MutateChannelResult';
+import { Channel } from './models/Channel.js';
+import { ChannelMessage } from './models/ChannelMessage.js';
+import { MutateResult } from './MutateResult.js';
 
 /**
  * Interface representing a listener for channel events.
@@ -11,15 +11,15 @@ export interface ChannelsListener {
   channelId?: string;
   channelMessageId?: string;
 
-  onChannelCreated?: (result: MutateChannelResult<Channel>) => void;
-  onChannelUpdated?: (result: MutateChannelResult<Channel>) => void;
-  onChannelDeleted?: (result: MutateChannelResult<Channel>) => void;
+  onChannelCreated?: (result: MutateResult<Channel>) => void;
+  onChannelUpdated?: (result: MutateResult<Channel>) => void;
+  onChannelDeleted?: (result: MutateResult<Channel>) => void;
 
   // onChannelInvitationCreated?: (result: MutateChannelResult<ChannelInvitation>) => void;
   // onChannelInvitationUpdated?: (result: MutateChannelResult<ChannelInvitation>) => void;
   // onChannelInvitationDeleted?: (result: MutateChannelResult<ChannelInvitation>) => void;
 
-  onChannelMessageCreated?: (result: MutateChannelResult<ChannelMessage>) => void;
-  onChannelMessageUpdated?: (result: MutateChannelResult<ChannelMessage>) => void;
-  onChannelMessageDeleted?: (result: MutateChannelResult<ChannelMessage>) => void;
+  onChannelMessageCreated?: (result: MutateResult<ChannelMessage>) => void;
+  onChannelMessageUpdated?: (result: MutateResult<ChannelMessage>) => void;
+  onChannelMessageDeleted?: (result: MutateResult<ChannelMessage>) => void;
 }

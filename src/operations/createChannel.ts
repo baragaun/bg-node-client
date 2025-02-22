@@ -1,18 +1,25 @@
 import { Channel } from '../types/models/Channel.js';
-import { MutateChannelResult } from '../types/MutateChannelResult.js';
+import { MutateResult } from '../types/MutateResult.js';
 import { MutationType } from '../types/enums.js';
+import db from '../db/db.js';
 
 const createChannel = async (
-  channel: Partial<Channel>,
-): Promise<MutateChannelResult<Channel>> => {
-  const newChannel = new Channel(channel);
+  attributes: Partial<Channel>,
+): Promise<MutateResult<Channel>> => {
+  try {
+    const channel = new Channel(attributes);
+    const newChannel = await db.insert(channel);
 
-  // todo: implement
-
-  return {
-    operation: MutationType.create,
-    object: newChannel
-  };
+    return {
+      operation: MutationType.create,
+      object: newChannel,
+    };
+  } catch (error) {
+    return {
+      operation: MutationType.create,
+      error: (error as Error).message,
+    };
+  }
 }
 
 export default createChannel

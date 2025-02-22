@@ -1,18 +1,38 @@
+import { Channel } from '../types/models/Channel.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
-import { MutateChannelResult } from '../types/MutateChannelResult.js';
-import { MutationType } from '../types/enums.js';
-import { User } from '../types/models/User.js';
+import { ModelType, MutationType } from '../types/enums.js';
+import { MutateResult } from '../types/MutateResult.js';
+import db from '../db/db.js';
 
 const createChannelMessage = async (
-  channelMessage: Partial<ChannelMessage>,
-  sender?: User,
-): Promise<MutateChannelResult<ChannelMessage>> => {
-  // todo: implement
+  attributes: Partial<ChannelMessage>,
+): Promise<MutateResult<ChannelMessage>> => {
+  try {
+    const channel = db.findById<Channel>(
+      attributes.channelId as string,
+      ModelType.Channel
+    );
 
-  return {
-    operation: MutationType.create,
-    object: channelMessage as ChannelMessage
-  };
+    if (!channel) {
+      return {
+        operation: MutationType.create,
+        error: 'channel-not-found',
+      };
+    }
+
+    const input = new ChannelMessage(attributes);
+    const message = await db.insert(input);
+
+    return {
+      operation: MutationType.create,
+      object: message,
+    };
+  } catch (error) {
+    return {
+      operation: MutationType.create,
+      error: (error as Error).message,
+    };
+  }
 }
 
 export default createChannelMessage

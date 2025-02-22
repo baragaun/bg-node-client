@@ -2,10 +2,14 @@
   "name": "@baragaun/bg-channels-web-client",
   "version": "0.0.1",
   "description": "Channels web client",
+  "type": "module",
+  "engines": {
+    "node": ">= 22.11 < 23.9"
+  },
   "main": "lib/index.js",
   "types": "lib/definitions.d.ts",
-  "author": "shadowbrush <github@shadowbrush.com>",
   "license": "MIT",
+  "author": "shadowbrush <github@shadowbrush.com>",
   "private": true,
   "repository": {
     "type": "git",
@@ -15,25 +19,44 @@
     "lib/**/*"
   ],
   "scripts": {
-    "build": "rm -rf lib/* && tsc && cp src/index.html lib/",
+    "clean": "rimraf coverage lib tmp",
+    "prebuild": "npm run lint",
+    "build": "npm run clean && mkdir lib && cp src/index.html lib/ && tsc -p tsconfig.json",
+    "build:release": "npm run clean && mkdir lib && cp src/index.html lib/ && tsc -p tsconfig.release.json",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
-    "lint": "eslint src --ext .js,.ts",
+    "lint": "eslint .",
     "lint:fix": "eslint src --fix --ext .js,.ts",
-    "test": "jest --config jest.config.js",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
-  },
-  "devDependencies": {
-    "eslint": "^9.20.1",
-    "prettier": "^3.5.1",
-    "tsx": "^4.19.3",
-    "typescript": "^5.7.3"
+    "test": "vitest run unit --config __tests__/vitest.config.ts",
+    "test:coverage": "vitest run unit --config __tests__/vitest.config.ts --coverage.enabled --coverage.all",
+    "prettier": "prettier \"{src,__{tests}__}/**/*.{ts,mts}\" --config .prettierrc --write",
+    "prettier:check": "prettier \"{src,__{tests}__}/**/*.{ts,mts}\" --config .prettierrc --check",
+    "test:watch": "vitest unit"
   },
   "dependencies": {
     "@faker-js/faker": "^9.5.0",
+    "rxdb": "^16.6.1",
+    "rxjs": "^7.8.2",
+    "tslib": "~2.8",
     "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "~9.17",
+    "@types/eslint__js": "~8.42",
+    "@types/node": "~20",
+    "@typescript-eslint/parser": "~8.19",
+    "@vitest/coverage-v8": "~2.1",
+    "@vitest/eslint-plugin": "~1.1",
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "~9.1",
+    "globals": "~15.14",
+    "prettier": "^3.5.1",
+    "rimraf": "~6.0",
+    "ts-api-utils": "~2.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "~8.19",
+    "vitest": "~2.1"
+  },
+  "volta": {
+    "node": "22.12.0"
   }
 }

@@ -1,15 +1,34 @@
-import { ChannelMessage } from '../types/models/ChannelMessage.js'
-import { MutateChannelResult } from '../types/MutateChannelResult.js';
-import { MutationType } from '../types/enums.js';
+import { ChannelMessage } from '../types/models/ChannelMessage.js';
+import { MutateResult } from '../types/MutateResult.js';
+import { ModelType, MutationType } from '../types/enums.js';
+import db from '../db/db.js';
 
 const updateChannelMessage = async (
   changes: Partial<ChannelMessage>,
-): Promise<MutateChannelResult<ChannelMessage>> => {
-  // todo: implement
-  return {
-    operation: MutationType.update,
-    object: changes as ChannelMessage
-  };
+): Promise<MutateResult<ChannelMessage>> => {
+  try {
+    const updatedChannelMessage = await db.update<ChannelMessage>(
+      changes,
+      ModelType.ChannelMessage,
+    );
+
+    if (!updatedChannelMessage) {
+      return {
+        operation: MutationType.update,
+        error: 'not-found',
+      };
+    }
+
+    return {
+      operation: MutationType.update,
+      object: updatedChannelMessage,
+    };
+  } catch (error) {
+    return {
+      operation: MutationType.update,
+      error: (error as Error).message,
+    };
+  }
 }
 
 export default updateChannelMessage

@@ -4,10 +4,20 @@ import { ChannelFilter } from './types/ChannelFilter.js';
 import { ChannelMessage } from './types/models/ChannelMessage.js';
 import { ChannelMessageFilter } from './types/ChannelMessageFilter.js';
 import { ChannelsListener } from './types/ChannelsListener.js';
-import { MutateChannelResult } from './types/MutateChannelResult.js';
+import { DbType } from './types/enums.js';
+import { MutateResult } from './types/MutateResult.js';
+import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
-import mockOperations from './mock/index.js';
-import operations from './operations/index.js';
+import createChannelFunc from './operations/createChannel.js';
+import createChannelMessageFunc from './operations/createChannelMessage.js';
+import db from './db/db.js';
+import deleteChannelFunc from './operations/deleteChannel.js';
+import deleteChannelMessageFunc from './operations/deleteChannelMessage.js';
+import factories from './factories/factories.js';
+import findChannelMessagesFunc from './operations/findChannelMessages.js';
+import findChannelsFunc from './operations/findChannels.js';
+import updateChannelFunc from './operations/updateChannel.js';
+import updateChannelMessageFunc from './operations/updateChannelMessage.js';
 
 export class BgChannelsWebClient {
   private config: BgChannelsWebClientConfig;
@@ -15,6 +25,15 @@ export class BgChannelsWebClient {
 
   public constructor(config: BgChannelsWebClientConfig) {
     this.config = config;
+
+    if (!this.config.dbType) {
+      this.config.dbType = DbType.mem;
+    }
+
+    db.init(this.config)
+      .catch((error) => {
+        console.error('Error initializing database:', error);
+      });
   }
 
   /**
@@ -46,10 +65,8 @@ export class BgChannelsWebClient {
    */
   public async createChannel(
     channel: Partial<Channel>,
-  ): Promise<MutateChannelResult<Channel>> {
-    const result = this.config.useMockData
-      ? await mockOperations.createChannel(channel)
-      : await operations.createChannel(channel);
+  ): Promise<MutateResult<Channel>> {
+    const result = await createChannelFunc(channel);
 
     if (!result.error) {
       this.listeners.forEach(
@@ -64,40 +81,14 @@ export class BgChannelsWebClient {
     return result;
   }
 
-  public generateMockChannel(
-    attributes: Partial<Channel>,
-    userCount: number,
-    messageCount: number,
-    users?: User[],
-    messages?: ChannelMessage[],
-  ): Channel {
-    return mockOperations.factories.channel(
-      attributes,
-      userCount,
-      messageCount,
-      users,
-      messages,
-    );
-  }
-
-  public generateMockUser(
-    attributes: Partial<User>,
-  ): User {
-    return mockOperations.factories.user(
-      attributes,
-    );
-  }
-
   /**
    * Creates a new channel message.
    * @returns A promise that resolves to the result object.
    */
   public async createChannelMessage(
     channelMessage: Partial<ChannelMessage>,
-  ): Promise<MutateChannelResult<ChannelMessage>> {
-    const result = this.config.useMockData
-      ? await mockOperations.createChannelMessage(channelMessage)
-      : await operations.createChannelMessage(channelMessage);
+  ): Promise<MutateResult<ChannelMessage>> {
+    const result = await createChannelMessageFunc(channelMessage);
 
     if (!result.error) {
       this.listeners.forEach(
@@ -112,16 +103,38 @@ export class BgChannelsWebClient {
     return result;
   }
 
+  public createMockChannel(
+    attributes: Partial<Channel>,
+    userCount: number,
+    messageCount: number,
+    users?: User[],
+    messages?: ChannelMessage[],
+  ): Channel {
+    return factories.channel(
+      attributes,
+      userCount,
+      messageCount,
+      users,
+      messages,
+    );
+  }
+
+  public createMockUser(
+    attributes: Partial<User>,
+  ): User {
+    return factories.user(
+      attributes,
+    );
+  }
+
   /**
    * Deletes an existing channel.
    * @returns A promise that resolves to the result object.
    */
   public async deleteChannel(
     id: string,
-  ): Promise<MutateChannelResult<Channel>> {
-    const result = this.config.useMockData
-      ? await mockOperations.deleteChannel(id)
-      : await operations.deleteChannel(id);
+  ): Promise<MutateResult<Channel>> {
+    const result = await deleteChannelFunc(id);
 
     if (!result.error) {
       this.listeners.forEach(
@@ -142,10 +155,8 @@ export class BgChannelsWebClient {
    */
   public async deleteChannelMessage(
     id: string,
-  ): Promise<MutateChannelResult<ChannelMessage>> {
-    const result = this.config.useMockData
-      ? await mockOperations.deleteChannelMessage(id)
-      : await operations.deleteChannelMessage(id);
+  ): Promise<MutateResult<ChannelMessage>> {
+    const result = await deleteChannelMessageFunc(id);
 
     if (!result.error) {
       this.listeners.forEach(
@@ -171,10 +182,8 @@ export class BgChannelsWebClient {
     filter: ChannelFilter,
     skip: number,
     limit: number,
-  ): Promise<Channel[]> {
-    const result = this.config.useMockData
-      ? await mockOperations.findChannels(filter, skip, limit)
-      : await operations.findChannels(filter, skip, limit);
+  ): Promise<QueryResult<Channel>> {
+    const result = await findChannelsFunc(filter, skip, limit);
 
     return result;
   }
@@ -190,10 +199,8 @@ export class BgChannelsWebClient {
     filter: ChannelMessageFilter,
     skip: number,
     limit: number,
-  ): Promise<ChannelMessage[]> {
-    const result = this.config.useMockData
-      ? await mockOperations.findChannelMessages(filter, skip, limit)
-      : await operations.findChannelMessages(filter, skip, limit);
+  ): Promise<QueryResult<ChannelMessage>> {
+    const result = await findChannelMessagesFunc(filter, skip, limit);
 
     return result;
   }
@@ -204,10 +211,8 @@ export class BgChannelsWebClient {
    */
   public async updateChannel(
     channel: Partial<Channel>,
-  ): Promise<MutateChannelResult<Channel>> {
-    const result = this.config.useMockData
-      ? await mockOperations.updateChannel(channel)
-      : await operations.updateChannel(channel);
+  ): Promise<MutateResult<Channel>> {
+    const result = await updateChannelFunc(channel);
 
     if (!result.error) {
       this.listeners.forEach(
@@ -228,10 +233,8 @@ export class BgChannelsWebClient {
    */
   public async updateChannelMessage(
     channelMessage: Partial<ChannelMessage>,
-  ): Promise<MutateChannelResult<ChannelMessage>> {
-    const result = this.config.useMockData
-      ? await mockOperations.updateChannelMessage(channelMessage)
-      : await operations.updateChannelMessage(channelMessage);
+  ): Promise<MutateResult<ChannelMessage>> {
+    const result = await updateChannelMessageFunc(channelMessage);
 
     if (!result.error) {
       this.listeners.forEach(

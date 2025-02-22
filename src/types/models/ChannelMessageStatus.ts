@@ -6,8 +6,5 @@ export class ChannelMessageStatus extends BgChannelMessageStatus {
 
   constructor(attributes?: Partial<ChannelMessageStatus>) {
     super(attributes)
-
-    if (attributes) {
-    }
   }
 }

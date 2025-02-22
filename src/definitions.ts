@@ -3,9 +3,9 @@ export * from './types/BgChannelsWebClientConfig.js'
 export * from './types/ChannelEventPayload.js';
 export * from './types/ChannelFilter.js';
 export * from './types/ChannelMessageFilter.js';
-export * from './types/ChannelsListener';
+export * from './types/ChannelsListener.js';
 export * from './types/enums.js';
-export * from './types/MutateChannelResult';
+export * from './types/MutateResult.js';
 
 // Models:
 export * from './types/models/BaseModel.js'

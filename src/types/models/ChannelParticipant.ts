@@ -6,8 +6,5 @@ export class ChannelParticipant extends BgChannelParticipant {
 
   constructor(attributes?: Partial<ChannelParticipant>) {
     super(attributes)
-
-    if (attributes) {
-    }
   }
 }
