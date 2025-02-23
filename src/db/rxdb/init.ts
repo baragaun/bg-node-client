@@ -28,8 +28,17 @@ const initFnc = async (
     channels: {
       schema: schema.channel,
     },
+    channelInvitations: {
+      schema: schema.channelInvitation,
+    },
     channelMessages: {
       schema: schema.channelMessage,
+    },
+    channelParticipants: {
+      schema: schema.channelParticipant,
+    },
+    users: {
+      schema: schema.user,
     },
   });
 
