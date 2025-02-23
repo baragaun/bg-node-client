@@ -1,0 +1,1 @@
+{"version":3,"file":"ChannelMessageListFilter.js","sourceRoot":"","sources":["../../../src/types/models/ChannelMessageListFilter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,0BAA0B,EAAE,MAAM,iCAAiC,CAAC;AAE7E,MAAM,OAAO,wBAAyB,SAAQ,0BAA0B;IACtE,YAAY,UAA8C;QACxD,KAAK,CAAC,UAAU,CAAC,CAAA;IACnB,CAAC;CACF"}

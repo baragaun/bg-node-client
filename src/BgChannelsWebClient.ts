@@ -1,8 +1,12 @@
 import { BgChannelsWebClientConfig } from './types/BgChannelsWebClientConfig.js';
 import { Channel } from './types/models/Channel.js';
-import { ChannelFilter } from './types/ChannelFilter.js';
+import { ChannelInvitation } from './types/models/ChannelInvitation.js';
+import { ChannelInvitationListFilter } from './types/models/ChannelInvitationListFilter.js';
+import { ChannelListFilter } from './types/models/ChannelListFilter.js';
 import { ChannelMessage } from './types/models/ChannelMessage.js';
-import { ChannelMessageFilter } from './types/ChannelMessageFilter.js';
+import { ChannelMessageListFilter } from './types/models/ChannelMessageListFilter.js';
+import { ChannelParticipant } from './types/models/ChannelParticipant.js';
+import { ChannelParticipantListFilter } from './types/models/ChannelParticipantListFilter.js';
 import { ChannelsListener } from './types/ChannelsListener.js';
 import { DbType } from './types/enums.js';
 import { MutationResult } from './types/MutationResult.js';
@@ -12,12 +16,17 @@ import createChannelFunc from './operations/createChannel.js';
 import createChannelMessageFunc from './operations/createChannelMessage.js';
 import db from './db/db.js';
 import deleteChannelFunc from './operations/deleteChannel.js';
+import deleteChannelInvitationFunc from './operations/deleteChannelInvitation.js';
 import deleteChannelMessageFunc from './operations/deleteChannelMessage.js';
 import factories from './factories/factories.js';
+import findChannelInvitationsFunc from './operations/findChannelInvitations.js';
 import findChannelMessagesFunc from './operations/findChannelMessages.js';
+import findChannelParticipantsFunc from './operations/findChannelParticipants.js';
 import findChannelsFunc from './operations/findChannels.js';
 import updateChannelFunc from './operations/updateChannel.js';
+import updateChannelInvitationFunc from './operations/updateChannelInvitation.js';
 import updateChannelMessageFunc from './operations/updateChannelMessage.js';
+import updateChannelParticipantFunc from './operations/updateChannelParticipant.js';
 
 export class BgChannelsWebClient {
   private config: BgChannelsWebClientConfig;
@@ -150,6 +159,28 @@ export class BgChannelsWebClient {
   }
 
   /**
+   * Deletes an existing channel invitation.
+   * @returns A promise that resolves to the result object.
+   */
+  public async deleteChannelInvitation(
+    id: string,
+  ): Promise<MutationResult<ChannelInvitation>> {
+    const result = await deleteChannelInvitationFunc(id);
+
+    if (!result.error) {
+      this.listeners.forEach(
+        (listener) => {
+          if (listener.onChannelInvitationDeleted) {
+            listener.onChannelInvitationDeleted(result)
+          }
+        },
+      );
+    }
+
+    return result;
+  }
+
+  /**
    * Deletes an existing channel message.
    * @returns A promise that resolves to the result object.
    */
@@ -174,16 +205,47 @@ export class BgChannelsWebClient {
   /**
    * Load a paginated list of channels.
    * @param filter - the filter.
+   * @param match
    * @param skip - number of channels to skip for pagination.
    * @param limit - number of channels to return for pagination.
    * @returns A promise that resolves to a list of channels.
    */
   public async findChannels(
-    filter: ChannelFilter,
+    filter: ChannelListFilter,
+    match: Partial<Channel>,
     skip: number,
     limit: number,
   ): Promise<QueryResult<Channel>> {
-    const result = await findChannelsFunc(filter, skip, limit);
+    const result = await findChannelsFunc(
+      filter,
+      match,
+      skip,
+      limit,
+    );
+
+    return result;
+  }
+
+  /**
+   * Load a paginated list of invitations for a channel.
+   * @param filter - the filter.
+   * @param match
+   * @param skip - number of invitations to skip for pagination.
+   * @param limit - number of invitations to return for pagination.
+   * @returns A promise that resolves to a list of channel invitations.
+   */
+  public async findChannelInvitations(
+    filter: ChannelInvitationListFilter,
+    match: Partial<ChannelInvitation>,
+    skip: number,
+    limit: number,
+  ): Promise<QueryResult<ChannelInvitation>> {
+    const result = await findChannelInvitationsFunc(
+      filter,
+      match,
+      skip,
+      limit,
+    );
 
     return result;
   }
@@ -191,16 +253,47 @@ export class BgChannelsWebClient {
   /**
    * Load a paginated list of messages for a channel.
    * @param filter - the filter.
+   * @param match
    * @param skip - number of messages to skip for pagination.
    * @param limit - number of messages to return for pagination.
    * @returns A promise that resolves to a list of channel messages.
    */
   public async findChannelMessages(
-    filter: ChannelMessageFilter,
+    filter: ChannelMessageListFilter,
+    match: Partial<ChannelMessage>,
     skip: number,
     limit: number,
   ): Promise<QueryResult<ChannelMessage>> {
-    const result = await findChannelMessagesFunc(filter, skip, limit);
+    const result = await findChannelMessagesFunc(
+      filter,
+      match,
+      skip,
+      limit,
+    );
+
+    return result;
+  }
+
+  /**
+   * Load a paginated list of participants for a channel.
+   * @param filter - the filter.
+   * @param match
+   * @param skip - number of participants to skip for pagination.
+   * @param limit - number of participants to return for pagination.
+   * @returns A promise that resolves to a list of channel participants.
+   */
+  public async findChannelParticipants(
+    filter: ChannelParticipantListFilter,
+    match: Partial<ChannelParticipant>,
+    skip: number,
+    limit: number,
+  ): Promise<QueryResult<ChannelParticipant>> {
+    const result = await findChannelParticipantsFunc(
+      filter,
+      match,
+      skip,
+      limit,
+    );
 
     return result;
   }
@@ -231,6 +324,28 @@ export class BgChannelsWebClient {
    * Updates an existing channel message.
    * @returns A promise that resolves to the result object.
    */
+  public async updateChannelInvitation(
+    channelInvitation: Partial<ChannelInvitation>,
+  ): Promise<MutationResult<ChannelInvitation>> {
+    const result = await updateChannelInvitationFunc(channelInvitation);
+
+    if (!result.error) {
+      this.listeners.forEach(
+        (listener) => {
+          if (listener.onChannelInvitationUpdated) {
+            listener.onChannelInvitationUpdated(result)
+          }
+        },
+      );
+    }
+
+    return result;
+  }
+
+  /**
+   * Updates an existing channel message.
+   * @returns A promise that resolves to the result object.
+   */
   public async updateChannelMessage(
     channelMessage: Partial<ChannelMessage>,
   ): Promise<MutationResult<ChannelMessage>> {
@@ -241,6 +356,28 @@ export class BgChannelsWebClient {
         (listener) => {
           if (listener.onChannelMessageUpdated) {
             listener.onChannelMessageUpdated(result)
+          }
+        },
+      );
+    }
+
+    return result;
+  }
+
+  /**
+   * Updates an existing channel participant.
+   * @returns A promise that resolves to the result object.
+   */
+  public async updateChannelParticipant(
+    channelParticipant: Partial<ChannelParticipant>,
+  ): Promise<MutationResult<ChannelParticipant>> {
+    const result = await updateChannelParticipantFunc(channelParticipant);
+
+    if (!result.error) {
+      this.listeners.forEach(
+        (listener) => {
+          if (listener.onChannelParticipantUpdated) {
+            listener.onChannelParticipantUpdated(result)
           }
         },
       );

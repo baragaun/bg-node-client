@@ -1,11 +1,18 @@
 import { BgChannelsWebClientConfig } from './BgChannelsWebClientConfig.js';
 import { Channel } from './models/Channel.js';
+import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelMessage } from './models/ChannelMessage.js';
+import { ChannelParticipant } from './models/ChannelParticipant.js';
 import { ModelType } from './enums.js';
 import { MutationResult } from './MutationResult.js';
 import { QueryResult } from './QueryResult.js';
+import { User } from './models/User.js';
 
-export type ObjectType = Channel | ChannelMessage;
+export type ObjectType = Channel |
+  ChannelInvitation |
+  ChannelMessage |
+  ChannelParticipant |
+  User;
 
 export interface Db {
   findAll: <T extends ObjectType = ObjectType>(type: ModelType) => Promise<QueryResult<T>>;

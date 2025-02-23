@@ -1,18 +1,19 @@
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
-import { ChannelMessageFilter } from '../types/ChannelMessageFilter.js';
+import { ChannelMessageListFilter } from '../types/models/ChannelMessageListFilter.js';
 import { ModelType } from '../types/enums.js';
 import { QueryResult } from '../types/QueryResult.js';
 import db from '../db/db.js';
 
 const findChannelMessages = async (
-  filter: ChannelMessageFilter,
+  filter: ChannelMessageListFilter,
+  match: Partial<ChannelMessage>,
   skip: number,
   limit: number,
 ): Promise<QueryResult<ChannelMessage>> => {
   try {
-    if (filter.id) {
+    if (Array.isArray(filter.ids) && filter.ids.length === 1) {
       return db.findById<ChannelMessage>(
-        filter.id,
+        filter.ids[0],
         ModelType.ChannelMessage,
       );
     }
@@ -20,8 +21,8 @@ const findChannelMessages = async (
     const { objects: messages } = await db.findAll<ChannelMessage>(ModelType.ChannelMessage);
     let list: ChannelMessage[] = messages;
 
-    if (!filter.channelId) {
-      list = messages.filter(m => m.channelId === filter.channelId);
+    if (filter.channelId || match.channelId) {
+      list = messages.filter(m => m.channelId === filter.channelId || match.channelId);
     }
 
     if (skip > 0 && limit > 0) {

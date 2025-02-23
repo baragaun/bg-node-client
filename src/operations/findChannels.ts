@@ -1,18 +1,19 @@
 import { Channel } from '../types/models/Channel.js'
-import { ChannelFilter } from '../types/ChannelFilter.js';
+import { ChannelListFilter } from '../types/models/ChannelListFilter.js';
 import { ModelType } from '../types/enums.js';
 import { QueryResult } from '../types/QueryResult.js';
 import db from '../db/db.js';
 
 const findChannels = async (
-  filter: ChannelFilter,
+  filter: ChannelListFilter,
+  match: Partial<Channel>,
   skip: number,
   limit: number,
 ): Promise<QueryResult<Channel>> => {
   try {
-    if (filter.id) {
+    if (Array.isArray(filter.ids) && filter.ids.length === 1) {
       return db.findById<Channel>(
-        filter.id,
+        filter.ids[0],
         ModelType.Channel,
       );
     }
@@ -30,8 +31,8 @@ const findChannels = async (
       });
     }
 
-    if (filter.name) {
-      list = channels.filter(c => c.name && c.name.localeCompare(filter.name as string) === 0);
+    if (match.name) {
+      list = channels.filter(c => c.name && c.name.localeCompare(match.name as string) === 0);
     }
 
     if (skip > 0 && limit > 0) {

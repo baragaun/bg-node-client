@@ -89,6 +89,13 @@ export enum MutationType {
   replace = 'replace',
 }
 
+export enum ChannelInvitationStatus {
+  created = 'created',
+  accepted = 'accepted',
+  declined = 'declined',
+  unset = 'unset',
+}
+
 export enum UserRole {
   admin = 'admin',
   support = 'support',

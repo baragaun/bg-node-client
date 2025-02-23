@@ -1,7 +1,7 @@
 import { BaseModel } from '../types/models/BaseModel.js';
 import { ModelType } from '../types/enums.js';
 import { Channel } from '../types/models/Channel.js';
-// import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
+import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
 import { User } from '../types/models/User.js';
@@ -13,9 +13,9 @@ export const getModelTypeFromObject = <T extends BaseModel = BaseModel>(
     return ModelType.Channel;
   }
 
-  // if (obj instanceof ChannelInvitation) {
-  //   return ModelType.ChannelInvitation;
-  // }
+  if (obj instanceof ChannelInvitation) {
+    return ModelType.ChannelInvitation;
+  }
 
   if (obj instanceof ChannelMessage) {
     return ModelType.ChannelMessage;
