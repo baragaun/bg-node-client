@@ -19,6 +19,11 @@ export interface Db {
   insert: <T extends ObjectType = ObjectType>(obj: T) => Promise<MutationResult<T>>;
   delete: (id: string, modelType: ModelType) => Promise<MutationResult>;
 
+  find: <T extends ObjectType = ObjectType>(
+    match: Partial<T>,
+    type: ModelType,
+  ) => Promise<QueryResult<T>>
+
   findAll: <T extends ObjectType = ObjectType>(
     type: ModelType,
   ) => Promise<QueryResult<T>>;

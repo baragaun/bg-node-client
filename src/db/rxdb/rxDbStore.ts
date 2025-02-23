@@ -1,5 +1,6 @@
 import { Db } from '../../types/Db.js';
 import deleteFunc from './delete.js';
+import find from './find.js';
 import findAll from './findAll.js';
 import findById from './findById.js';
 import findOne from './findOne.js';
@@ -10,6 +11,7 @@ import update from './update.js';
 
 const rxDbStore: Db = {
   delete: deleteFunc,
+  find,
   findAll,
   findById,
   findOne,

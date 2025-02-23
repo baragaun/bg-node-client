@@ -44,6 +44,28 @@ const memStore: Db = {
     return { operation: MutationType.delete };
   },
 
+  find: async <T extends ObjectType = ObjectType>(
+    match: Partial<T>,
+    type: ModelType,
+  ): Promise<QueryResult<T>> => {
+    const arr = getArrayForModelType<T>(type);
+
+    if (!arr) {
+      return {
+        error: 'not-found',
+      }
+    }
+
+    // todo: implement based on model
+    if (!match) {
+      return {
+        objects: arr,
+      };
+    }
+
+    return { objects: arr };
+  },
+
   findAll: async <T extends ObjectType = ObjectType>(type: ModelType): Promise<QueryResult<T>> => {
     const arr = getArrayForModelType<T>(type);
 

@@ -9,6 +9,7 @@ import getCollectionFromModelType from './helpers/getCollectionFromModelType.js'
 let _db: RxDatabase | undefined = undefined;
 
 const find = async <T extends ObjectType = ObjectType>(
+  match: Partial<T>,
   modelType: ModelType,
 ): Promise<QueryResult<T>> => {
   const result: QueryResult<T> = {};
@@ -29,12 +30,13 @@ const find = async <T extends ObjectType = ObjectType>(
     return result;
   }
 
+  // todo: implement based on model
   const foundDocuments = await collection.find({
     selector: {
-      done: {
-        $eq: false
-      }
-    }
+      id: {
+        $eq: match.id,
+      },
+    },
   }).exec();
 
   return { objects: foundDocuments };

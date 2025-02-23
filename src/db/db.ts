@@ -21,6 +21,21 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
+  find: async <T extends ObjectType = ObjectType>(
+    match: Partial<T>,
+    type: ModelType,
+  ): Promise<QueryResult<T>> => {
+    if (_config?.dbType === DbType.mem) {
+      return memStore.find<T>(match, type);
+    }
+
+    if (_config?.dbType === DbType.rxdb) {
+      return rxDbStore.find<T>(match, type);
+    }
+
+    throw new Error('invalid-store-type');
+  },
+
   findAll: async <T extends ObjectType = ObjectType>(type: ModelType): Promise<QueryResult<T>> => {
     if (_config?.dbType === DbType.mem) {
       return memStore.findAll<T>(type);
