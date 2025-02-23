@@ -28,37 +28,6 @@ const memStore: Db = {
     console.log('memStore.init called.', config)
   },
 
-  findAll: async <T extends ObjectType = ObjectType>(type: ModelType): Promise<QueryResult<T>> => {
-    const arr = getArrayForModelType<T>(type);
-
-    if (!arr) {
-      return {
-        error: 'not-found',
-      }
-    }
-
-    return { objects: arr };
-  },
-
-  insert: async <T extends ObjectType = ObjectType>(obj: T): Promise<MutationResult<T>> => {
-    const arr = getArrayForObject<T>(obj);
-
-    if (!obj.id) {
-      obj.id = crypto.randomUUID();
-    }
-
-    if (obj instanceof Channel) {
-      if (Array.isArray(obj.messages) && obj.messages.length > 0) {
-        messages = messages.concat(obj.messages);
-      }
-      delete obj.messages;
-    }
-
-    arr.push(obj);
-
-    return { operation: MutationType.create, object: obj };
-  },
-
   delete: async (id: string, modelType: ModelType): Promise<MutationResult> => {
     const arr = getArrayForModelType(modelType);
     const index = arr.findIndex(obj => obj.id === id);
@@ -75,6 +44,30 @@ const memStore: Db = {
     return { operation: MutationType.delete };
   },
 
+  findAll: async <T extends ObjectType = ObjectType>(type: ModelType): Promise<QueryResult<T>> => {
+    const arr = getArrayForModelType<T>(type);
+
+    if (!arr) {
+      return {
+        error: 'not-found',
+      }
+    }
+
+    return { objects: arr };
+  },
+
+  findOne: async <T extends ObjectType = ObjectType>(
+    match: Partial<T>,
+    modelType: ModelType,
+  ): Promise<QueryResult<T>> => {
+    const arr = getArrayForModelType(modelType);
+
+    // todo: implement
+    return {
+      object: arr.find(c => c.id === match.id) as T || null,
+    };
+  },
+
   findById: async <T extends ObjectType = ObjectType>(
     id: string,
     modelType: ModelType,
@@ -84,6 +77,18 @@ const memStore: Db = {
     return {
       object: arr.find(c => c.id === id) as T || null,
     };
+  },
+
+  insert: async <T extends ObjectType = ObjectType>(obj: T): Promise<MutationResult<T>> => {
+    const arr = getArrayForObject<T>(obj);
+
+    if (!obj.id) {
+      obj.id = crypto.randomUUID();
+    }
+
+    arr.push(obj);
+
+    return { operation: MutationType.create, object: obj };
   },
 
   replace: async <T extends ObjectType>(obj: T): Promise<MutationResult<T>> => {

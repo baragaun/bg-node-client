@@ -33,7 +33,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  findById: <T extends ObjectType = ObjectType>(
+  findById: <T extends ObjectType>(
     id: string,
     modelType: ModelType,
   ): Promise<QueryResult<T>> => {
@@ -43,6 +43,21 @@ const db: Db = {
 
     if (_config?.dbType === DbType.rxdb) {
       return rxDbStore.findById<T>(id, modelType);
+    }
+
+    throw new Error('invalid-store-type');
+  },
+
+  findOne: <T extends ObjectType>(
+    match: Partial<T>,
+    modelType: ModelType,
+  ): Promise<QueryResult<T>> => {
+    if (_config?.dbType === DbType.mem) {
+      return memStore.findOne<T>(match, modelType);
+    }
+
+    if (_config?.dbType === DbType.rxdb) {
+      return rxDbStore.findOne<T>(match, modelType);
     }
 
     throw new Error('invalid-store-type');

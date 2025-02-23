@@ -15,15 +15,23 @@ export type ObjectType = Channel |
   User;
 
 export interface Db {
-  findAll: <T extends ObjectType = ObjectType>(type: ModelType) => Promise<QueryResult<T>>;
   init: (config: BgChannelsWebClientConfig) => Promise<void>;
   insert: <T extends ObjectType = ObjectType>(obj: T) => Promise<MutationResult<T>>;
   delete: (id: string, modelType: ModelType) => Promise<MutationResult>;
+
+  findAll: <T extends ObjectType = ObjectType>(
+    type: ModelType,
+  ) => Promise<QueryResult<T>>;
 
   findById: <T extends ObjectType = ObjectType>(
     id: string,
     modelType: ModelType,
   ) => Promise<QueryResult<T>>;
+
+  findOne: <T extends ObjectType = ObjectType>(
+    match: Partial<T>,
+    modelType: ModelType,
+  ) => Promise<QueryResult<T>>
 
   replace: <T extends ObjectType>(obj: T) => Promise<MutationResult<T>>;
 

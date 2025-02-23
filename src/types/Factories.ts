@@ -9,7 +9,7 @@ export interface Factories {
     messageCount: number,
     users?: User[],
     messages?: ChannelMessage[],
-  ) => Channel;
+  ) => { channel: Channel, messages: ChannelMessage[], users: User[] };
 
   channelMessage: (
     attributes: Partial<ChannelMessage>,

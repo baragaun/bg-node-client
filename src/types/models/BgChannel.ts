@@ -1,10 +1,8 @@
 import { BaseModel } from './BaseModel.js'
 import { BgChannelStatus } from './BgChannelStatus.js'
-import { ChannelMessage } from './ChannelMessage.js'
 import { ChannelMetadata } from './ChannelMetadata.js'
 import { ChannelParticipant } from './ChannelParticipant.js'
 import { ChannelType } from '../enums.js'
-import { User } from './User.js';
 
 export class BgChannel extends BaseModel {
   public name?: string | null
@@ -23,9 +21,7 @@ export class BgChannel extends BaseModel {
   public lockedBy?: string | null
   public archivedAt?: Date | null
   public archivedBy?: string | null
-  public messages?: ChannelMessage[]
   public participants?: ChannelParticipant[]
-  public users?: User[]
 
   constructor(attributes?: Partial<BgChannel>) {
     super(attributes)

@@ -13,7 +13,7 @@ const createChannel = (
   messageCount: number,
   users?: User[],
   messages?: ChannelMessage[],
-): Channel => {
+): { channel: Channel, messages: ChannelMessage[], users: User[] } => {
   if (!attributes.id) {
     attributes.id = faker.string.uuid();
   }
@@ -52,8 +52,6 @@ const createChannel = (
     });
   }
 
-  channel.messages = messages;
-  channel.users = users;
   channel.userIds = users.map(user => user.id);
   channel.participants = users.map(user => new ChannelParticipant({
     id: faker.string.uuid(),
@@ -61,7 +59,11 @@ const createChannel = (
     userId: user.id
   }));
 
-  return channel;
+  return {
+    channel,
+    messages,
+    users,
+  };
 }
 
 export default createChannel

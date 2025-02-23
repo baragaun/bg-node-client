@@ -8,8 +8,9 @@ import { ChannelMessageListFilter } from './types/models/ChannelMessageListFilte
 import { ChannelParticipant } from './types/models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from './types/models/ChannelParticipantListFilter.js';
 import { ChannelsListener } from './types/ChannelsListener.js';
-import { DbType } from './types/enums.js';
+import { DbType, ModelType } from './types/enums.js';
 import { MutationResult } from './types/MutationResult.js';
+import { ObjectType } from './types/Db.js';
 import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
 import createChannelFunc from './operations/createChannel.js';
@@ -19,10 +20,12 @@ import deleteChannelFunc from './operations/deleteChannel.js';
 import deleteChannelInvitationFunc from './operations/deleteChannelInvitation.js';
 import deleteChannelMessageFunc from './operations/deleteChannelMessage.js';
 import factories from './factories/factories.js';
+import findByIdFunc from './operations/findById.js';
 import findChannelInvitationsFunc from './operations/findChannelInvitations.js';
 import findChannelMessagesFunc from './operations/findChannelMessages.js';
 import findChannelParticipantsFunc from './operations/findChannelParticipants.js';
 import findChannelsFunc from './operations/findChannels.js';
+import findOneFunc from './operations/findOne.js';
 import updateChannelFunc from './operations/updateChannel.js';
 import updateChannelInvitationFunc from './operations/updateChannelInvitation.js';
 import updateChannelMessageFunc from './operations/updateChannelMessage.js';
@@ -118,7 +121,7 @@ export class BgChannelsWebClient {
     messageCount: number,
     users?: User[],
     messages?: ChannelMessage[],
-  ): Channel {
+  ): { channel: Channel, messages: ChannelMessage[], users: User[] } {
     return factories.channel(
       attributes,
       userCount,
@@ -203,6 +206,22 @@ export class BgChannelsWebClient {
   }
 
   /**
+   * Finds a channel by its ID.
+   * @param id - The ID of the channel.
+   * @param modelType - The model type.
+   * @returns A promise that resolves to the channel object, or null if not found.
+   */
+  public async findById<T extends ObjectType>(id: string, modelType: ModelType): Promise<T | null> {
+    const result = await findByIdFunc<T>(id, modelType);
+
+    if (result.error) {
+      return null;
+    }
+
+    return result.object;
+  }
+
+  /**
    * Load a paginated list of channels.
    * @param filter - the filter.
    * @param match
@@ -216,14 +235,12 @@ export class BgChannelsWebClient {
     skip: number,
     limit: number,
   ): Promise<QueryResult<Channel>> {
-    const result = await findChannelsFunc(
+    return findChannelsFunc(
       filter,
       match,
       skip,
       limit,
     );
-
-    return result;
   }
 
   /**
@@ -296,6 +313,25 @@ export class BgChannelsWebClient {
     );
 
     return result;
+  }
+
+  /**
+   * Finds a channel by its ID.
+   * @param match
+   * @param modelType - The model type.
+   * @returns A promise that resolves to the channel object, or null if not found.
+   */
+  public async findOne<T extends ObjectType>(
+    match: Partial<T>,
+    modelType: ModelType,
+  ): Promise<T | null> {
+    const result = await findOneFunc<T>(match, modelType);
+
+    if (result.error) {
+      return null;
+    }
+
+    return result.object;
   }
 
   /**
