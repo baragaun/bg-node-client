@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-cp "../../first-spark-server/tools/bg-code-gen/models/baseModel.ts" "./tools/bg-code-gen/models/first-spark-server/"
-rsync -avP --delete "../../channels-service/tools/bg-code-gen/classes/*" "./tools/bg-code-gen/models/channels-service/"
+cp "../first-spark-server/tools/bg-code-gen/models/baseModel.ts" "./tools/bg-code-gen/models/first-spark-server/"
+rsync -avP --delete "../channels-service/tools/bg-code-gen/classes/" "./tools/bg-code-gen/models/channels-service/"
 
 BEFORE_STR="from '..\/"
 AFTER_STR="from '..\/..\/"
