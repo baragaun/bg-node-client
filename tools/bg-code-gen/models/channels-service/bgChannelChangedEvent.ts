@@ -1,5 +1,5 @@
-import { TypeGraphqlClass } from '../../../../types.js'
-import { GraphqlType } from '../../../../enums.js'
+import { TypeGraphqlClass } from '../../../../../types.js'
+import { GraphqlType } from '../../../../../enums.js'
 
 const bgChannelChangedEvent: TypeGraphqlClass = {
   name: 'BgChannelChangedEvent',

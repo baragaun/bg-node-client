@@ -26,19 +26,19 @@ const initFnc = async (
 
   await myDb.addCollections({
     channels: {
-      schema: schema.channel,
+      schema: schema.Channel,
     },
     channelInvitations: {
-      schema: schema.channelInvitation,
+      schema: schema.ChannelInvitation,
     },
     channelMessages: {
-      schema: schema.channelMessage,
+      schema: schema.ChannelMessage,
     },
     channelParticipants: {
-      schema: schema.channelParticipant,
+      schema: schema.ChannelParticipant,
     },
     users: {
-      schema: schema.user,
+      schema: schema.User,
     },
   });
 

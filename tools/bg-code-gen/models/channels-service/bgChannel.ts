@@ -1,12 +1,12 @@
-import { TypeGraphqlClass } from '../../../../types.js'
-import { GraphqlType } from '../../../../enums.js'
+import { TypeGraphqlClass } from '../../../../../types.js'
+import { GraphqlType } from '../../../../../enums.js'
 
 const bgChannel: TypeGraphqlClass = {
   name: 'BgChannel',
   graphqlType: GraphqlType.ObjectType,
   extends: 'BaseModel',
   path: 'src/services/bgChannels/types/classes/BgChannel.ts',
-  schemaPath: 'src/schema/ChannelSchema.ts',
+  schemaPath: 'src/schema/BgChannelSchema.ts',
   dbCollectionName: 'channels',
   active: true,
   attributes: [

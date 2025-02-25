@@ -1,12 +1,12 @@
-import { TypeGraphqlClass } from '../../../../types.js'
-import { GraphqlType } from '../../../../enums.js'
+import { TypeGraphqlClass } from '../../../../../types.js'
+import { GraphqlType } from '../../../../../enums.js'
 
 const bgChannelInbox: TypeGraphqlClass = {
   name: 'BgChannelInbox',
   graphqlType: GraphqlType.ObjectType,
   extends: 'BaseModel',
   path: 'src/services/bgChannels/types/classes/BgChannelInbox.ts',
-  schemaPath: 'src/schema/ChannelInbox.ts',
+  schemaPath: 'src/schema/BgChannelInboxSchema.ts',
   dbCollectionName: 'channel-inboxes',
   active: true,
   attributes: [
