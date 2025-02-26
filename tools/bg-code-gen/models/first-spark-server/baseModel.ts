@@ -5,7 +5,6 @@ const baseModel: TypeGraphqlClass = {
   name: 'BaseModel',
   graphqlType: GraphqlType.ObjectType,
   path: 'src/services/models/types/classes/BaseModel.ts',
-  schemaPath: 'src/schema/baseModelSchema.ts',
   active: true,
   attributes: [
     { name: 'id', dataType: 'id' },

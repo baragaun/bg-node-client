@@ -18,7 +18,7 @@ import bgChannelMessageMetadata from './models/channels-service/bgChannelMessage
 import bgChannelMessageStatus from './models/channels-service/bgChannelMessageStatus.js'
 import bgChannelMetadata from './models/channels-service/bgChannelMetadata.js'
 import bgChannelParticipant from './models/channels-service/bgChannelParticipant.js'
-import bgChannelParticipantMetadata from './models/channels-service/BgChannelParticipantMetadata.js'
+import bgChannelParticipantMetadata from './models/channels-service/bgChannelParticipantMetadata.js'
 import bgChannelStatus from './models/channels-service/bgChannelStatus.js'
 import bgChannelStatusInput from './models/channels-service/bgChannelStatusInput.js'
 import bgChannelsUserMetadata from './models/channels-service/bgChannelsUserMetadata.js'
