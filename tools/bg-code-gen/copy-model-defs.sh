@@ -1,12 +1,19 @@
 #!/usr/bin/env bash
 
-cp "../../first-spark-server/tools/bg-code-gen/models/baseModel.ts" "./tools/bg-code-gen/models/first-spark-server/"
-rsync -avP --delete "../../channels-service/tools/bg-code-gen/classes/*" "./tools/bg-code-gen/models/channels-service/"
-rsync -avP --delete "../../secureid-service/tools/bg-code-gen/classes/labeledStringValue.ts" "./tools/bg-code-gen/models/secureid-service/"
-rsync -avP --delete "../../secureid-service/tools/bg-code-gen/classes/sidContact.ts" "./tools/bg-code-gen/models/secureid-service/"
-rsync -avP --delete "../../secureid-service/tools/bg-code-gen/classes/sidUser.ts" "./tools/bg-code-gen/models/secureid-service/"
-rsync -avP --delete "../../secureid-service/tools/bg-code-gen/classes/sidUserBlock.ts" "./tools/bg-code-gen/models/secureid-service/"
-rsync -avP --delete "../../secureid-service/tools/bg-code-gen/classes/sidUserPreference.ts" "./tools/bg-code-gen/models/secureid-service/"
+# see: https://stackoverflow.com/questions/27988160/why-does-rm-f-ask-me-for-confirmation-on-zsh
+setopt localoptions rmstarsilent
+
+rm -f ./tools/bg-code-gen/models/channels-service/*
+rm -f ./tools/bg-code-gen/models/secureid-service/*
+rm -f ./tools/bg-code-gen/models/first-spark-server/*
+
+cp ../first-spark-server/tools/bg-code-gen/models/baseModel.ts "./tools/bg-code-gen/models/first-spark-server/"
+rsync -avP --delete ../channels-service/tools/bg-code-gen/models/* "./tools/bg-code-gen/models/channels-service/"
+rsync -avP --delete ../secureid-service/tools/bg-code-gen/models/labeledStringValue.ts "./tools/bg-code-gen/models/secureid-service/"
+rsync -avP --delete ../secureid-service/tools/bg-code-gen/models/sidContact.ts "./tools/bg-code-gen/models/secureid-service/"
+rsync -avP --delete ../secureid-service/tools/bg-code-gen/models/sidUser.ts "./tools/bg-code-gen/models/secureid-service/"
+rsync -avP --delete ../secureid-service/tools/bg-code-gen/models/sidUserBlock.ts "./tools/bg-code-gen/models/secureid-service/"
+rsync -avP --delete ../secureid-service/tools/bg-code-gen/models/sidUserPreferences.ts "./tools/bg-code-gen/models/secureid-service/"
 
 BEFORE_STR="from '..\/"
 AFTER_STR="from '..\/..\/"

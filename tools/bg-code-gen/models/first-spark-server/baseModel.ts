@@ -1,10 +1,11 @@
-import { TypeGraphqlClass } from '../../../../../types.js'
-import { GraphqlType } from '../../../../../enums.js'
+import { TypeGraphqlClass } from '../../../../types.js'
+import { GraphqlType } from '../../../../enums.js'
 
 const baseModel: TypeGraphqlClass = {
   name: 'BaseModel',
   graphqlType: GraphqlType.ObjectType,
   path: 'src/services/models/types/classes/BaseModel.ts',
+  schemaPath: 'src/schema/baseModelSchema.ts',
   active: true,
   attributes: [
     { name: 'id', dataType: 'id' },
