@@ -8,6 +8,7 @@ const bgChannelMessageStatus: TypeGraphqlClass = {
   active: true,
   attributes: [
     { name: 'userId', dataType: 'id' },
+    { name: 'isInArchivedChannel', dataType: 'boolean', optional: true },
     { name: 'receivedAt', dataType: 'date', optional: true },
     { name: 'seenAt', dataType: 'date', optional: true },
   ]

@@ -8,7 +8,16 @@ const bgChannelMetadata: TypeGraphqlClass = {
   path: 'src/services/bgChannels/types/classes/BgChannelMetadata.ts',
   active: true,
   attributes: [
-    { name: 'unseenMessageInfo', dataType: 'BgLatestUnseenChannelMessageInfo[]', optional: true },
+    {
+      name: 'unseenMessageInfo',
+      dataType: 'BgLatestUnseenChannelMessageInfo[]',
+      optional: true,
+      schema: {
+        type: 'array',
+        arrayItemType: 'object',
+        arrayItemObject: 'BgLatestUnseenChannelMessageInfo',
+      }
+    },
   ]
 }
 

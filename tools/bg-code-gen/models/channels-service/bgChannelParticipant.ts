@@ -14,6 +14,15 @@ const bgChannelParticipant: TypeGraphqlClass = {
     { name: 'userId', dataType: 'id' },
     { name: 'invitedBy', dataType: 'id', optional: true },
     { name: 'channelName', dataType: 'string', optional: true },
+    {
+      name: 'metadata',
+      dataType: 'BgChannelParticipantMetadata',
+      optional: true,
+      schema: {
+        type: 'object',
+        modelType: 'BgChannelParticipantMetadata',
+      },
+    },
     { name: 'role', dataType: 'ChannelParticipantRole', optional: true },
     { name: 'suspendedAt', dataType: 'date', optional: true },
     { name: 'suspendedBy', dataType: 'id', optional: true },
