@@ -13,7 +13,9 @@ export default tseslint.config(
       '**/lib/**',
       '**/tmp/**',
       '**/coverage/**',
-      '**/node_modules/**',
+      '/node_modules/**',
+      '/tools/**',
+      '/src/schema/**',
     ],
   },
   eslint.configs.recommended,
@@ -21,7 +23,7 @@ export default tseslint.config(
   {
     extends: [...tseslint.configs.recommended],
 
-    files: ['**/*.ts', '**/*.mts'],
+    files: ['src/**/*.ts', 'src/**/*.mts'],
 
     plugins: {
       '@typescript-eslint': tseslint.plugin,

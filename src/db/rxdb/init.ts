@@ -5,6 +5,7 @@ import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { wrappedValidateAjvStorage } from 'rxdb/plugins/validate-ajv';
 
 import { BgChannelsWebClientConfig } from '../../types/BgChannelsWebClientConfig.js';
+import { DbCollection } from './enums.js';
 import schema from '../../schema/schema.js';
 import db from './helpers/db.js';
 
@@ -25,19 +26,19 @@ const initFnc = async (
   });
 
   await myDb.addCollections({
-    channels: {
+    [DbCollection.channels]: {
       schema: schema.Channel,
     },
-    channelInvitations: {
+    [DbCollection.channelInvitations]: {
       schema: schema.ChannelInvitation,
     },
-    channelMessages: {
+    [DbCollection.channelMessages]: {
       schema: schema.ChannelMessage,
     },
-    channelParticipants: {
+    [DbCollection.channelInboxes]: {
       schema: schema.ChannelParticipant,
     },
-    users: {
+    [DbCollection.users]: {
       schema: schema.User,
     },
   });

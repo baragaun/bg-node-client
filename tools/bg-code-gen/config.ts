@@ -1,7 +1,4 @@
-import {
-  BgCodeGenProject,
-  JsonSchemaTask,
-} from '../../types.js'
+import { BgCodeGenProject, JsonSchemaTask } from '../../types.js'
 import { TaskType } from '../../enums.js'
 import baseModel from './models/first-spark-server/baseModel.js'
 import bgChannel from './models/channels-service/bgChannel.js'
@@ -23,6 +20,7 @@ import bgChannelStatus from './models/channels-service/bgChannelStatus.js'
 import bgChannelStatusInput from './models/channels-service/bgChannelStatusInput.js'
 import bgChannelsUserMetadata from './models/channels-service/bgChannelsUserMetadata.js'
 import bgLatestUnseenChannelMessageInfo from './models/channels-service/bgLatestUnseenChannelMessageInfo.js'
+import sidUser from './models/secureid-service/sidUser.js';
 
 const jsonSchemaTask: JsonSchemaTask = {
   taskType: TaskType.jsonSchema,
@@ -49,6 +47,7 @@ const jsonSchemaTask: JsonSchemaTask = {
     bgChannelStatusInput,
     bgChannelsUserMetadata,
     bgLatestUnseenChannelMessageInfo,
+    sidUser,
   ],
 }
 
