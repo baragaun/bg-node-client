@@ -1,4 +1,5 @@
-import { BgChannelsWebClientConfig } from './types/BgChannelsWebClientConfig.js';
+import { BgDataListener } from './types/BgDataListener.js';
+import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { Channel } from './types/models/Channel.js';
 import { ChannelInvitation } from './types/models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './types/models/ChannelInvitationListFilter.js';
@@ -7,10 +8,9 @@ import { ChannelMessage } from './types/models/ChannelMessage.js';
 import { ChannelMessageListFilter } from './types/models/ChannelMessageListFilter.js';
 import { ChannelParticipant } from './types/models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from './types/models/ChannelParticipantListFilter.js';
-import { ChannelsListener } from './types/ChannelsListener.js';
 import { DbType, ModelType } from './types/enums.js';
-import { MutationResult } from './types/MutationResult.js';
 import { Model } from './types/Model.js';
+import { MutationResult } from './types/MutationResult.js';
 import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
 import createChannelFunc from './operations/createChannel.js';
@@ -32,11 +32,11 @@ import updateChannelInvitationFunc from './operations/updateChannelInvitation.js
 import updateChannelMessageFunc from './operations/updateChannelMessage.js';
 import updateChannelParticipantFunc from './operations/updateChannelParticipant.js';
 
-export class BgChannelsWebClient {
-  private config: BgChannelsWebClientConfig;
-  private listeners: ChannelsListener[] = [];
+export class BgNodeClient {
+  private config: BgNodeClientConfig;
+  private listeners: BgDataListener[] = [];
 
-  public constructor(config: BgChannelsWebClientConfig) {
+  public constructor(config: BgNodeClientConfig) {
     this.config = config;
 
     if (!this.config.dbType) {
@@ -54,7 +54,7 @@ export class BgChannelsWebClient {
    * Subscribe to channel events.
    * @param listener - The listener to be added.
    */
-  public addListener(listener: ChannelsListener): void {
+  public addListener(listener: BgDataListener): void {
     if (this.listeners.some((l) => l.id === listener.id)) {
       throw new Error(`Listener with id ${listener.id} already exists.`);
     }

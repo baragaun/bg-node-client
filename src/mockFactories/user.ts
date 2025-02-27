@@ -1,6 +1,5 @@
-import { faker } from '@faker-js/faker';
-
 import { User } from '../types/models/User.js';
+import chance from '../helpers/chance.js';
 
 const createUser = (
   attributes: Partial<User>,
@@ -8,27 +7,27 @@ const createUser = (
   const user = new User(attributes);
 
   if (!user.id) {
-    user.id = faker.string.uuid();
+    user.id = crypto.randomUUID().replace('-', '');
   }
 
   if (!user.userHandle) {
-    user.userHandle = faker.internet.username();
+    user.userHandle = chance.word();
   }
 
   if (!user.firstName) {
-    user.firstName = faker.person.firstName();
+    user.firstName = chance.first();
   }
 
   if (!user.lastName) {
-    user.lastName = faker.person.lastName();
+    user.lastName = chance.last();
   }
 
   if (!user.email) {
-    user.email = faker.internet.email();
+    user.email = chance.email();
   }
 
   if (!user.avatarUrl) {
-    user.avatarUrl = faker.image.avatar();
+    user.avatarUrl = chance.avatar();
   }
 
   if (!user.createdAt) {

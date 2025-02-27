@@ -1,11 +1,10 @@
-import { faker } from '@faker-js/faker';
-
 import { Channel } from '../types/models/Channel.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
 import { User } from '../types/models/User.js';
-import createUser from './user.js';
+import chance from '../helpers/chance.js';
 import createChannelMessage from './channelMessage.js';
+import createUser from './user.js';
 
 const createChannel = (
   attributes: Partial<Channel>,
@@ -15,19 +14,19 @@ const createChannel = (
   messages?: ChannelMessage[],
 ): { channel: Channel, messages: ChannelMessage[], users: User[] } => {
   if (!attributes.id) {
-    attributes.id = faker.string.uuid();
+    attributes.id = crypto.randomUUID().replace('-', '');
   }
 
   if (!attributes.name) {
-    attributes.name = faker.lorem.word();
+    attributes.name = chance.word();
   }
 
   if (!attributes.description) {
-    attributes.description = faker.lorem.paragraph();
+    attributes.description = chance.paragraph();
   }
 
   if (!attributes.topic) {
-    attributes.topic = faker.lorem.sentence();
+    attributes.topic = chance.sentence();
   }
 
   if (!attributes.createdAt) {
@@ -54,7 +53,7 @@ const createChannel = (
 
   channel.userIds = users.map(user => user.id);
   channel.participants = users.map(user => new ChannelParticipant({
-    id: faker.string.uuid(),
+    id: crypto.randomUUID().replace('-', ''),
     channelId: channel.id,
     userId: user.id
   }));

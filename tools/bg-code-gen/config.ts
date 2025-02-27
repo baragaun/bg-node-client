@@ -24,7 +24,7 @@ import sidUser from './models/secureid-service/sidUser.js';
 
 const jsonSchemaTask: JsonSchemaTask = {
   taskType: TaskType.jsonSchema,
-  projectRoot: process.env.APP_ROOT || '../bg-channels-web-client',
+  projectRoot: process.env.APP_ROOT || '../bg-node-client',
   active: true,
   models: [
     baseModel,

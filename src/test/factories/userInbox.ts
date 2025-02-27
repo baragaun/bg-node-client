@@ -3,7 +3,7 @@ import { Factory } from 'rosie';
 import { ModelType } from '../../types/enums.js';
 import { UserInbox } from '../../types/models/UserInbox.js'
 import { UserInboxFactory } from './definitions.js';
-import chance from '../helpers/chance.js';
+import chance from '../../helpers/chance.js';
 import create from './helpers/create.js';
 import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';

@@ -6,7 +6,7 @@ import { MutationResult } from './MutationResult.js';
 /**
  * Interface representing a listener for channel events.
  */
-export interface ChannelsListener {
+export interface BgDataListener {
   id: string;
 
   channelId?: string;

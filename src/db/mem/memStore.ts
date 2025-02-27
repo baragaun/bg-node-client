@@ -1,4 +1,4 @@
-import { BgChannelsWebClientConfig } from '../../types/BgChannelsWebClientConfig.js';
+import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { Channel } from '../../types/models/Channel.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { Db } from '../../types/Db.js';
@@ -25,7 +25,7 @@ const getArrayForModelType = <T extends Model = Model>(type: ModelType): T[] => 
 };
 
 const memStore: Db = {
-  init: async (config: BgChannelsWebClientConfig): Promise<void> => {
+  init: async (config: BgNodeClientConfig): Promise<void> => {
     console.log('memStore.init called.', config)
   },
 

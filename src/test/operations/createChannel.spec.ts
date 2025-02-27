@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 
-import { BgChannelsWebClientConfig } from '../../types/BgChannelsWebClientConfig.js';
+import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { Channel } from '../../types/models/Channel.js';
 import { DbType, ModelType } from '../../types/enums.js';
 import { init } from '../../index.js';
@@ -8,7 +8,7 @@ import { init } from '../../index.js';
 import findById from '../../operations/findById.js';
 import factories from '../factories/factories.js';
 
-const config: BgChannelsWebClientConfig = {
+const config: BgNodeClientConfig = {
   dbType: DbType.rxdb,
   inBrowser: false,
   debugMode: true,

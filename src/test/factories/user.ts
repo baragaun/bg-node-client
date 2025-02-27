@@ -5,7 +5,7 @@ import { LabeledStringValue } from '../../types/models/LabeledStringValue.js';
 import { ModelType, UiLanguage } from '../../types/enums.js';
 import { User } from '../../types/models/User.js';
 import { UserFactory } from './definitions.js';
-import chance from '../helpers/chance.js';
+import chance from '../../helpers/chance.js';
 import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';
 import create from './helpers/create.js';

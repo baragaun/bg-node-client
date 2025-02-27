@@ -1,11 +1,11 @@
-# bg-channels-web-client
+# bg-node-client
 
 This is a Node.js client for [channels-service](https://github.com/baragaun/channels-service). 
 
 ## Installation
 
 ```bash
-npm install --save https://github.com/baragaun/bg-channels-web-client.git 
+npm install --save https://github.com/baragaun/bg-node-client.git 
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ npm install --save https://github.com/baragaun/bg-channels-web-client.git
 The following will create a mock channel with 2 participants and 10 messages:
 
 ```typescript
-import BgChannelsWebClient, { init } from 'bg-channels-web-client';
+import BgChannelsWebClient, { init } from 'bg-node-client';
 
 const chatClient = init({
   useMockData: true,

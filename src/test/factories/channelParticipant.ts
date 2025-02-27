@@ -3,7 +3,7 @@ import { Factory } from 'rosie';
 import { ChannelParticipant } from '../../types/models/ChannelParticipant.js'
 import { ChannelParticipantFactory } from './definitions.js';
 import { ModelType } from '../../types/enums.js';
-import chance from '../helpers/chance.js';
+import chance from '../../helpers/chance.js';
 import create from './helpers/create.js';
 import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';

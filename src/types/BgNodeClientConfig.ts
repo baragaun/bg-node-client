@@ -1,9 +1,9 @@
 import { DbType } from './enums.js';
 
 /**
- * Configuration for BgChannelsWebClient.
+ * Configuration for BgNodeClient.
  */
-export interface BgChannelsWebClientConfig {
+export interface BgNodeClientConfig {
   /**
    * If true, the client will use mock data instead of real data.
    */

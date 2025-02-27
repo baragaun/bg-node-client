@@ -7,13 +7,13 @@ import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
 import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { wrappedValidateAjvStorage } from 'rxdb/plugins/validate-ajv';
 
-import { BgChannelsWebClientConfig } from '../../types/BgChannelsWebClientConfig.js';
+import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { DbCollection } from './enums.js';
 import schema from '../../models/schema/schema.js';
 import db from './helpers/db.js';
 
 const initFnc = async (
-  config: BgChannelsWebClientConfig,
+  config: BgNodeClientConfig,
 ): Promise<void> => {
   // @ts-ignore
   // const ajv = new Ajv();

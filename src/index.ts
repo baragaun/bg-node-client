@@ -1,8 +1,8 @@
-import { BgChannelsWebClient } from './BgChannelsWebClient.js';
-import { BgChannelsWebClientConfig } from './types/BgChannelsWebClientConfig.js';
+import { BgNodeClient } from './BgNodeClient.js';
+import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 
-export async function init(config: BgChannelsWebClientConfig): Promise<BgChannelsWebClient> {
-  const client = new BgChannelsWebClient(config);
+export async function init(config: BgNodeClientConfig): Promise<BgNodeClient> {
+  const client = new BgNodeClient(config);
 
   await client.init();
 

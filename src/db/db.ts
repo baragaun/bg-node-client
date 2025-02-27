@@ -1,4 +1,4 @@
-import { BgChannelsWebClientConfig } from '../types/BgChannelsWebClientConfig.js';
+import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { ModelType, DbType } from '../types/enums.js';
 import { MutationResult } from '../types/MutationResult.js';
 import { Db } from '../types/Db.js';
@@ -7,7 +7,7 @@ import { QueryResult } from '../types/QueryResult.js';
 import memStore from './mem/memStore.js';
 import rxDbStore from './rxdb/rxDbStore.js';
 
-let _config: BgChannelsWebClientConfig | undefined;
+let _config: BgNodeClientConfig | undefined;
 
 const db: Db = {
   delete: (id: string, modelType: ModelType): Promise<MutationResult> => {
@@ -79,7 +79,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  init: async (config: BgChannelsWebClientConfig): Promise<void> => {
+  init: async (config: BgNodeClientConfig): Promise<void> => {
     _config = config;
 
     if (_config?.dbType === DbType.mem) {

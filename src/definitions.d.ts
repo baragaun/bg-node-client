@@ -1,7 +1,7 @@
-export * from './BgChannelsWebClient.js';
-export * from './types/BgChannelsWebClientConfig.js'
+export * from './BgNodeClient.js';
+export * from './types/BgNodeClientConfig.js'
 export * from './types/ChannelEventPayload.js';
-export * from './types/ChannelsListener.js';
+export * from './types/BgDataListener.js';
 export * from './types/enums.js';
 export * from './types/MutationResult.js';
 

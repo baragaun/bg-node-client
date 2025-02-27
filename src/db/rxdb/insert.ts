@@ -48,7 +48,7 @@ const insert = async <T extends Model = Model>(
   obj = modelHelpers.formatObjectForDb<T>(obj, modelType) as T;
 
   if (!obj.id) {
-    obj.id = crypto.randomUUID().replace(/-/g, '');
+    obj.id = crypto.randomUUID().replace('-', '');
   }
 
   try {

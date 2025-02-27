@@ -1,7 +1,6 @@
-import { faker } from '@faker-js/faker';
-
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { User } from '../types/models/User.js';
+import chance from '../helpers/chance.js';
 
 const createMessage = (
   attributes: Partial<ChannelMessage>,
@@ -10,11 +9,11 @@ const createMessage = (
   const message = new ChannelMessage(attributes);
 
   if (!message.id) {
-    message.id = faker.string.uuid();
+    message.id = crypto.randomUUID().replace('-', '');
   }
 
   if (!message.messageText) {
-    message.messageText = faker.lorem.paragraph();
+    message.messageText = chance.paragraph();
   }
 
   if (!message.createdAt) {

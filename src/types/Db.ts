@@ -1,11 +1,11 @@
-import { BgChannelsWebClientConfig } from './BgChannelsWebClientConfig.js';
+import { BgNodeClientConfig } from './BgNodeClientConfig.js';
 import { ModelType } from './enums.js';
 import { MutationResult } from './MutationResult.js';
 import { QueryResult } from './QueryResult.js';
 import { Model } from './Model.js';
 
 export interface Db {
-  init: (config: BgChannelsWebClientConfig) => Promise<void>;
+  init: (config: BgNodeClientConfig) => Promise<void>;
   insert: <T extends Model = Model>(obj: T) => Promise<MutationResult<T>>;
   isConnected: () => boolean;
   delete: (id: string, modelType: ModelType) => Promise<MutationResult>;
