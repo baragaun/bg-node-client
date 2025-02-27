@@ -29,7 +29,7 @@ const findAll = async <T extends Model = Model>(
     return result;
   }
 
-  const foundDocuments = await collection.find({
+  const records = await collection.find({
     selector: {
       done: {
         $eq: false
@@ -37,7 +37,9 @@ const findAll = async <T extends Model = Model>(
     }
   }).exec();
 
-  return { objects: foundDocuments };
+  return {
+    objects: records.map(r => r.toMutableJSON()),
+  };
 };
 
 export default findAll;

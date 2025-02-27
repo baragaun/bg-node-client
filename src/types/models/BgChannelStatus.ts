@@ -3,7 +3,7 @@
 export class BgChannelStatus {
   public userId = ''
 
-  public archivedAt?: Date | null
+  public archivedAt?: string | null
 
   constructor(attributes?: Partial<BgChannelStatus> | null) {
     if (attributes) {
@@ -11,11 +11,7 @@ export class BgChannelStatus {
         this.userId = attributes.userId
       }
       if (attributes.archivedAt) {
-        if (attributes.archivedAt instanceof Date) {
-          this.archivedAt = attributes.archivedAt
-        } else {
-          this.archivedAt = new Date(attributes.archivedAt)
-        }
+        this.archivedAt = attributes.archivedAt
       }
     }
   }

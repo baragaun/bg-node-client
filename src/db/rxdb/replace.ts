@@ -37,7 +37,7 @@ const replace = async <T extends Model>(
     return result;
   }
 
-  const documents = await collection
+  const records = await collection
     .find({
       selector: {
         channelId: {
@@ -46,13 +46,14 @@ const replace = async <T extends Model>(
       },
     }).exec();
 
-  if (!Array.isArray(documents) || documents.length !== 1) {
+  if (!Array.isArray(records) || records.length !== 1) {
     // todo: error
     return null;
   }
 
-  await documents[0].remove()
-  result.object = await collection.insert(obj);
+  await records[0].remove()
+  const record = await collection.insert(obj);
+  result.object = record.toMutableJSON();
 
   return result;
 };

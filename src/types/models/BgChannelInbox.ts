@@ -9,7 +9,7 @@ export class BgChannelInbox {
   public latestArchivedMessages?: BgChannelInboxItemMessage[] | null
   public pendingInvitations?: BgChannelInboxItemInvitation[] | null
   public invitations?: BgChannelInboxItemInvitation[] | null
-  public updatedAt?: Date | null
+  public updatedAt?: string | null
   public updatedBy?: string | null
 
   constructor(attributes?: Partial<BgChannelInbox>) {
@@ -36,11 +36,7 @@ export class BgChannelInbox {
         this.invitations = attributes.invitations
       }
       if (attributes.updatedAt) {
-        if (attributes.updatedAt instanceof Date) {
-          this.updatedAt = attributes.updatedAt
-        } else {
-          this.updatedAt = new Date(attributes.updatedAt)
-        }
+        this.updatedAt = attributes.updatedAt
       }
       if (attributes.updatedBy) {
         this.updatedBy = attributes.updatedBy

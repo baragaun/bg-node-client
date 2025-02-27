@@ -20,11 +20,7 @@ export class UserBlock {
         this.adminNotes = attributes.adminNotes
       }
       if (attributes.createdAt) {
-        if (attributes.createdAt instanceof Date) {
-          this.createdAt = attributes.createdAt
-        } else {
-          this.createdAt = new Date(attributes.createdAt)
-        }
+        this.createdAt = attributes.createdAt
       }
     }
   }

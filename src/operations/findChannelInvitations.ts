@@ -30,7 +30,7 @@ const findChannelInvitations = async (
     }
 
     return {
-      objects: list.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+      objects: list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     }
   } catch (error) {
     return { error: (error as Error).message };

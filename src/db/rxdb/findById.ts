@@ -30,7 +30,7 @@ const findById = async <T extends Model = Model>(
     return result;
   }
 
-  const foundDocument = await collection
+  const record = await collection
     .findOne({
       selector: {
         id: {
@@ -39,7 +39,7 @@ const findById = async <T extends Model = Model>(
       },
     }).exec();
 
-  return { object: foundDocument ?? null };
+  return { object: record.toMutableJSON() ?? null };
 };
 
 export default findById;

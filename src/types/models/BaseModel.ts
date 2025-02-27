@@ -4,15 +4,15 @@ import { BaseModelMetadata } from './BaseModelMetadata.js'
 import { IBaseModel } from './IBaseModel.js'
 
 export abstract class BaseModel implements IBaseModel {
-  public id = ''
-  public adminNotes?: string | null
-  public metadata?: BaseModelMetadata | null
-  public createdAt: Date = new Date()
-  public createdBy?: string | null
-  public updatedAt?: Date | null
-  public updatedBy?: string | null
-  public deletedAt?: Date | null
-  public deletedBy?: string | null
+  public id = '';
+  public adminNotes?: string | null;
+  public metadata?: BaseModelMetadata | null;
+  public createdAt: string = new Date().toISOString();
+  public createdBy?: string | null;
+  public updatedAt?: string | null;
+  public updatedBy?: string | null;
+  public deletedAt?: string | null;
+  public deletedBy?: string | null;
 
   protected constructor(attributes?: Partial<BaseModel> | null) {
     if (attributes) {
@@ -26,31 +26,19 @@ export abstract class BaseModel implements IBaseModel {
         this.metadata = attributes.metadata
       }
       if (attributes.createdAt) {
-        if (attributes.createdAt instanceof Date) {
-          this.createdAt = attributes.createdAt
-        } else {
-          this.createdAt = new Date(attributes.createdAt)
-        }
+        this.createdAt = attributes.createdAt
       }
       if (attributes.createdBy) {
         this.createdBy = attributes.createdBy
       }
       if (attributes.updatedAt) {
-        if (attributes.updatedAt instanceof Date) {
-          this.updatedAt = attributes.updatedAt
-        } else {
-          this.updatedAt = new Date(attributes.updatedAt)
-        }
+        this.updatedAt = attributes.updatedAt
       }
       if (attributes.updatedBy) {
         this.updatedBy = attributes.updatedBy
       }
       if (attributes.deletedAt) {
-        if (attributes.deletedAt instanceof Date) {
-          this.deletedAt = attributes.deletedAt
-        } else {
-          this.deletedAt = new Date(attributes.deletedAt)
-        }
+        this.deletedAt = attributes.deletedAt
       }
       if (attributes.deletedBy) {
         this.deletedBy = attributes.deletedBy

@@ -27,32 +27,16 @@ export abstract class BaseListFilter {
         this.textSearchFields = attributes.textSearchFields
       }
       if (attributes.createdAtFrom) {
-        if (attributes.createdAtFrom instanceof Date) {
-          this.createdAtFrom = attributes.createdAtFrom
-        } else {
-          this.createdAtFrom = new Date(attributes.createdAtFrom)
-        }
+        this.createdAtFrom = attributes.createdAtFrom
       }
       if (attributes.createdAtUntil) {
-        if (attributes.createdAtUntil instanceof Date) {
-          this.createdAtUntil = attributes.createdAtUntil
-        } else {
-          this.createdAtUntil = new Date(attributes.createdAtUntil)
-        }
+        this.createdAtUntil = attributes.createdAtUntil
       }
       if (attributes.updatedAtFrom) {
-        if (attributes.updatedAtFrom instanceof Date) {
-          this.updatedAtFrom = attributes.updatedAtFrom
-        } else {
-          this.updatedAtFrom = new Date(attributes.updatedAtFrom)
-        }
+        this.updatedAtFrom = attributes.updatedAtFrom
       }
       if (attributes.updatedAtUntil) {
-        if (attributes.updatedAtUntil instanceof Date) {
-          this.updatedAtUntil = attributes.updatedAtUntil
-        } else {
-          this.updatedAtUntil = new Date(attributes.updatedAtUntil)
-        }
+        this.updatedAtUntil = attributes.updatedAtUntil
       }
     }
   }

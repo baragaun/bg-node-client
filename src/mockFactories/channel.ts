@@ -30,11 +30,11 @@ const createChannel = (
   }
 
   if (!attributes.createdAt) {
-    attributes.createdAt = new Date();
+    attributes.createdAt = new Date().toISOString();
   }
 
   if (!attributes.updatedAt) {
-    attributes.updatedAt = new Date();
+    attributes.updatedAt = new Date().toISOString();
   }
 
   const channel = new Channel(attributes);

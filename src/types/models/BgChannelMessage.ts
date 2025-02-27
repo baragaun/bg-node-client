@@ -12,8 +12,8 @@ export class BgChannelMessage extends BaseModel {
   public messageText?: string | null
   public statuses?: ChannelMessageStatus[] | null
   declare public metadata?: ChannelMessageMetadata | null
-  public editedAt?: Date | null
-  public suspendedAt?: Date | null
+  public editedAt?: string | null
+  public suspendedAt?: string | null
   public suspendedBy?: string | null
 
   constructor(attributes?: Partial<BgChannelMessage>) {
@@ -39,18 +39,10 @@ export class BgChannelMessage extends BaseModel {
         this.metadata = attributes.metadata
       }
       if (attributes.editedAt) {
-        if (attributes.editedAt instanceof Date) {
-          this.editedAt = attributes.editedAt
-        } else {
-          this.editedAt = new Date(attributes.editedAt)
-        }
+        this.editedAt = attributes.editedAt
       }
       if (attributes.suspendedAt) {
-        if (attributes.suspendedAt instanceof Date) {
-          this.suspendedAt = attributes.suspendedAt
-        } else {
-          this.suspendedAt = new Date(attributes.suspendedAt)
-        }
+        this.suspendedAt = attributes.suspendedAt
       }
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy

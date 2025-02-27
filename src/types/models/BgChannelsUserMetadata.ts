@@ -10,7 +10,7 @@ export class BgChannelsUserMetadata {
   public rejectedInvitationCount = 0
   public acceptedInvitationCount = 0
   public pendingInvitationCount = 0
-  public updatedAt?: Date | null
+  public updatedAt?: string | null
 
   constructor(attributes?: Partial<BgChannelsUserMetadata>) {
     if (attributes) {
@@ -96,11 +96,7 @@ export class BgChannelsUserMetadata {
         this.pendingInvitationCount = attributes.pendingInvitationCount
       }
       if (attributes.updatedAt) {
-        if (attributes.updatedAt instanceof Date) {
-          this.updatedAt = attributes.updatedAt
-        } else {
-          this.updatedAt = new Date(attributes.updatedAt)
-        }
+        this.updatedAt = attributes.updatedAt
       }
     }
   }

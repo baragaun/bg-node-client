@@ -31,7 +31,7 @@ const findOne = async <T extends Model = Model>(
   }
 
   // todo: implement
-  const foundDocument = await collection.findOne({
+  const record = await collection.findOne({
     selector: {
       id: {
         $eq: match.id,
@@ -39,7 +39,7 @@ const findOne = async <T extends Model = Model>(
     },
   }).exec();
 
-  return { object: foundDocument ?? null };
+  return { object: record.toMutableJSON() ?? null };
 };
 
 export default findOne;

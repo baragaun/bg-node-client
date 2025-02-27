@@ -12,11 +12,7 @@ export class ModelEvent {
   public constructor(attributes?: Partial<ModelEvent>) {
     if (attributes) {
       if (attributes.time) {
-        if (attributes.time instanceof Date) {
-          this.time = attributes.time
-        } else {
-          this.time = new Date(attributes.time)
-        }
+        this.time = attributes.time
       }
       if (attributes.modelEventType) {
         this.modelEventType = attributes.modelEventType

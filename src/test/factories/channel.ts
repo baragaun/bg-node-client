@@ -7,13 +7,14 @@ import chance from '../../helpers/chance.js';
 import create from './helpers/create.js';
 import save from './helpers/save.js';
 import deleteFunc from './helpers/delete.js';
+import randomDate from '../../helpers/randomDate.js';
 
 const channelFactory = Factory.define<Channel>('Channel', Channel)
   .attr('channelType', () => chance.pickone(Object.values(ChannelType)))
-  .attr('createdAt', () => new Date(Date.now() - chance.integer({
-    min: 24 * 3600 * 1000, // youngest is 1 day old
-    max: 500 * 24 * 3600 * 1000, // oldest is 500 days old
-  }))) as ChannelFactory
+  .attr('name', () => chance.word())
+  .attr('topic', () => chance.sentence())
+  .attr('description', () => chance.paragraph())
+  .attr('createdAt', () => randomDate()) as ChannelFactory
 
 channelFactory.create = (
   props: Partial<Channel> | Partial<Channel>[],

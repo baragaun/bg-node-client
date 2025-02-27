@@ -6,7 +6,6 @@ import { MutationType } from '../../types/enums.js';
 import { Model } from '../../types/Model.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
-import modelHelpers from '../../models/helpers/modelHelpers.js';
 
 let _db: RxDatabase | undefined = undefined;
 
@@ -38,22 +37,13 @@ const insert = async <T extends Model = Model>(
     return result;
   }
 
-  // @ts-ignore
-  // obj = {
-  //   // id: 'ab33',
-  //   adminNotes: 'abcd',
-  //   createdAt: new Date(),
-  // }
-
-  obj = modelHelpers.formatObjectForDb<T>(obj, modelType) as T;
-
   if (!obj.id) {
     obj.id = crypto.randomUUID().replace('-', '');
   }
 
   try {
-    const dbResult = await collection.insert(obj);
-    result.object = dbResult.toMutableJSON();
+    const record = await collection.insert(obj);
+    result.object = record.toMutableJSON();
 
     return result;
   } catch (error) {

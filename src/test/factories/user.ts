@@ -9,6 +9,7 @@ import chance from '../../helpers/chance.js';
 import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';
 import create from './helpers/create.js';
+import randomDate from '../../helpers/randomDate.js';
 
 const emailDomain = 'baragaun.com';
 
@@ -22,10 +23,7 @@ const userFactory = Factory.define<User>('User', User)
   .attr('countryOfResidenceTextId', () => chance.bool({ likelihood: 90 })
     ? chance.country()
     : undefined)
-  .attr('createdAt', () => new Date(Date.now() - chance.integer({
-    min: 24 * 3600 * 1000, // youngest is 1 day old
-    max: 500 * 24 * 3600 * 1000, // oldest is 500 days old
-  })))
+  .attr('createdAt', () => randomDate())
   .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
   .sequence('email', (i) => `holger+test-${i}@${emailDomain}`)
   .attr('fallbackUiLanguageTextId', () => chance.bool({ likelihood: 80 })
@@ -37,10 +35,7 @@ const userFactory = Factory.define<User>('User', User)
     ? chance.pickone([undefined, '', '-', 'f', 'm', 'x'])
     : undefined)
   .attr('inactivatedAt', () => chance.bool({ likelihood: 1 })
-    ? new Date(Date.now() - chance.integer({
-      min: 24 * 3600 * 1000, // youngest is 1 day old
-      max: 500 * 24 * 3600 * 1000, // oldest is 500 days old
-    }))
+    ? randomDate()
     : undefined)
   .attr('phoneNumber', () => chance.bool({ likelihood: 30 })
     ? chance.phone()

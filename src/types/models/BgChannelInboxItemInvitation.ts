@@ -4,7 +4,7 @@ export class BgChannelInboxItemInvitation {
   public id = ''
   public channelId?: string | null
   public messageText?: string | null
-  public readByRecipientAt?: Date | null
+  public readByRecipientAt?: string | null
   public status: ChannelInvitationStatus = ChannelInvitationStatus.unset
   public createdAt: Date = new Date()
   public createdBy?: string | null
@@ -22,21 +22,13 @@ export class BgChannelInboxItemInvitation {
         this.messageText = attributes.messageText
       }
       if (attributes.readByRecipientAt) {
-        if (attributes.readByRecipientAt instanceof Date) {
-          this.readByRecipientAt = attributes.readByRecipientAt
-        } else {
-          this.readByRecipientAt = new Date(attributes.readByRecipientAt)
-        }
+        this.readByRecipientAt = attributes.readByRecipientAt
       }
       if (attributes.status) {
         this.status = attributes.status
       }
       if (attributes.createdAt) {
-        if (attributes.createdAt instanceof Date) {
-          this.createdAt = attributes.createdAt
-        } else {
-          this.createdAt = new Date(attributes.createdAt)
-        }
+        this.createdAt = attributes.createdAt
       }
       if (attributes.createdBy) {
         this.createdBy = attributes.createdBy

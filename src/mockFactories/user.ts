@@ -31,11 +31,11 @@ const createUser = (
   }
 
   if (!user.createdAt) {
-    user.createdAt = new Date();
+    user.createdAt = new Date().toISOString();
   }
 
   if (!user.updatedAt) {
-    user.updatedAt = new Date();
+    user.updatedAt = new Date().toISOString();
   }
 
   return user;

@@ -9,7 +9,7 @@ export class BgChannelParticipant extends BaseModel {
   public invitedBy?: string | null
   public channelName?: string | null
   public role?: ChannelParticipantRole | null
-  public suspendedAt?: Date | null
+  public suspendedAt?: string | null
   public suspendedBy?: string | null
 
   constructor(attributes?: Partial<BgChannelParticipant>) {
@@ -32,11 +32,7 @@ export class BgChannelParticipant extends BaseModel {
         this.role = attributes.role
       }
       if (attributes.suspendedAt) {
-        if (attributes.suspendedAt instanceof Date) {
-          this.suspendedAt = attributes.suspendedAt
-        } else {
-          this.suspendedAt = new Date(attributes.suspendedAt)
-        }
+        this.suspendedAt = attributes.suspendedAt
       }
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy

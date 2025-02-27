@@ -7,14 +7,12 @@ import { ChannelMessageFactory } from './definitions.js';
 import create from './helpers/create.js';
 import save from './helpers/save.js';
 import deleteFunc from './helpers/delete.js';
+import randomDate from '../../helpers/randomDate.js';
 
 const channelMessageFactory = Factory.define<ChannelMessage>('ChannelMessage', ChannelMessage)
   .attr('channelMessageType', () => chance.pickone(Object.values(ChannelMessageType)))
   .attr('messageText', () => chance.sentence())
-  .attr('createdAt', () => new Date(Date.now() - chance.integer({
-    min: 24 * 3600 * 1000, // youngest is 1 day old
-    max: 500 * 24 * 3600 * 1000, // oldest is 500 days old
-  }))) as ChannelMessageFactory;
+  .attr('createdAt', () => randomDate()) as ChannelMessageFactory;
 
 channelMessageFactory.create = (
   props: Partial<ChannelMessage> | Partial<ChannelMessage>[],

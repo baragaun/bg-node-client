@@ -13,13 +13,13 @@ export class BgChannel extends BaseModel {
   public statuses?: BgChannelStatus[] | null
   public userIds?: string[] | null
   declare public metadata?: ChannelMetadata | null
-  public pausedAt?: Date | null
+  public pausedAt?: string | null
   public pausedBy?: string | null
-  public suspendedAt?: Date | null
+  public suspendedAt?: string | null
   public suspendedBy?: string | null
-  public lockedAt?: Date | null
+  public lockedAt?: string | null
   public lockedBy?: string | null
-  public archivedAt?: Date | null
+  public archivedAt?: string | null
   public archivedBy?: string | null
   public participants?: ChannelParticipant[]
 
@@ -52,41 +52,25 @@ export class BgChannel extends BaseModel {
         this.metadata = attributes.metadata
       }
       if (attributes.pausedAt) {
-        if (attributes.pausedAt instanceof Date) {
-          this.pausedAt = attributes.pausedAt
-        } else {
-          this.pausedAt = new Date(attributes.pausedAt)
-        }
+        this.pausedAt = attributes.pausedAt
       }
       if (attributes.pausedBy) {
         this.pausedBy = attributes.pausedBy
       }
       if (attributes.suspendedAt) {
-        if (attributes.suspendedAt instanceof Date) {
-          this.suspendedAt = attributes.suspendedAt
-        } else {
-          this.suspendedAt = new Date(attributes.suspendedAt)
-        }
+        this.suspendedAt = attributes.suspendedAt
       }
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy
       }
       if (attributes.lockedAt) {
-        if (attributes.lockedAt instanceof Date) {
-          this.lockedAt = attributes.lockedAt
-        } else {
-          this.lockedAt = new Date(attributes.lockedAt)
-        }
+        this.lockedAt = attributes.lockedAt
       }
       if (attributes.lockedBy) {
         this.lockedBy = attributes.lockedBy
       }
       if (attributes.archivedAt) {
-        if (attributes.archivedAt instanceof Date) {
-          this.archivedAt = attributes.archivedAt
-        } else {
-          this.archivedAt = new Date(attributes.archivedAt)
-        }
+        this.archivedAt = attributes.archivedAt
       }
       if (attributes.archivedBy) {
         this.archivedBy = attributes.archivedBy

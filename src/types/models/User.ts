@@ -9,10 +9,10 @@ export class User extends BaseModel {
   public lastName?: string | null
   public userHandle?: string | null
   public phoneNumber?: string | null
-  public phoneNumberUpdatedAt?: Date | null
+  public phoneNumberUpdatedAt?: string | null
   public isPhoneNumberVerified = false
   public email?: string | null
-  public emailUpdatedAt?: Date | null
+  public emailUpdatedAt?: string | null
   public isEmailVerified = false
   public emailSource?: string | null
   public genderTextId?: string | null
@@ -25,7 +25,7 @@ export class User extends BaseModel {
   public authType?: AuthType | null
   public passwordHash?: string | null
   public tfaBackupCodes?: string | null
-  public passwordUpdatedAt?: Date | null
+  public passwordUpdatedAt?: string | null
   public preferredLanguageTextId?: string | null
   public spokenLanguagesTextIds: string[] = []
   public selectedUiLanguageTextId?: UiLanguage | null
@@ -37,21 +37,21 @@ export class User extends BaseModel {
   public timezone?: string | null
   public preferences?: UserPreferences | null
   public trustLevel = 1
-  public signedInAt?: Date | null
-  public signedOutAt?: Date | null
-  public latestActivityAt?: Date | null
+  public signedInAt?: string | null
+  public signedOutAt?: string | null
+  public latestActivityAt?: string | null
   // public userDevices: UserDeviceWithoutAuth[] = []
   public userBlocks?: UserBlock[] | null
   // public relationships?: UserRelationship[] | null
   // public metadata?: UserMetadata | null
-  public inactivatedAt?: Date | null
+  public inactivatedAt?: string | null
   public inactivatedBy?: string | null
-  public termsAndConditionsAcceptedAt?: Date | null
+  public termsAndConditionsAcceptedAt?: string | null
   public optIntoNewsletter?: boolean | null
   public onboardingStage?: string | null
-  public suspendedAt?: Date | null
+  public suspendedAt?: string | null
   public suspendedBy?: string | null
-  public addedToBgVaultAt?: Date | null
+  public addedToBgVaultAt?: string | null
   public isAdmin?: boolean
   public isTestUser?: boolean
   public emailLowerCase?: string | null
@@ -73,11 +73,7 @@ export class User extends BaseModel {
         this.phoneNumber = attributes.phoneNumber
       }
       if (attributes.phoneNumberUpdatedAt) {
-        if (attributes.phoneNumberUpdatedAt instanceof Date) {
-          this.phoneNumberUpdatedAt = attributes.phoneNumberUpdatedAt
-        } else {
-          this.phoneNumberUpdatedAt = new Date(attributes.phoneNumberUpdatedAt)
-        }
+        this.phoneNumberUpdatedAt = attributes.phoneNumberUpdatedAt
       }
       if (attributes.isPhoneNumberVerified === true || attributes.isPhoneNumberVerified === false) {
         this.isPhoneNumberVerified = attributes.isPhoneNumberVerified
@@ -89,11 +85,7 @@ export class User extends BaseModel {
         this.emailLowerCase = attributes.emailLowerCase
       }
       if (attributes.emailUpdatedAt) {
-        if (attributes.emailUpdatedAt instanceof Date) {
-          this.emailUpdatedAt = attributes.emailUpdatedAt
-        } else {
-          this.emailUpdatedAt = new Date(attributes.emailUpdatedAt)
-        }
+        this.emailUpdatedAt = attributes.emailUpdatedAt
       }
       if (attributes.isEmailVerified === true || attributes.isEmailVerified === false) {
         this.isEmailVerified = attributes.isEmailVerified
@@ -132,11 +124,7 @@ export class User extends BaseModel {
         this.tfaBackupCodes = attributes.tfaBackupCodes
       }
       if (attributes.passwordUpdatedAt) {
-        if (attributes.passwordUpdatedAt instanceof Date) {
-          this.passwordUpdatedAt = attributes.passwordUpdatedAt
-        } else {
-          this.passwordUpdatedAt = new Date(attributes.passwordUpdatedAt)
-        }
+        this.passwordUpdatedAt = attributes.passwordUpdatedAt
       }
       if (attributes.preferredLanguageTextId) {
         this.preferredLanguageTextId = attributes.preferredLanguageTextId
@@ -178,25 +166,13 @@ export class User extends BaseModel {
         this.trustLevel = attributes.trustLevel
       }
       if (attributes.signedInAt) {
-        if (attributes.signedInAt instanceof Date) {
-          this.signedInAt = attributes.signedInAt
-        } else {
-          this.signedInAt = new Date(attributes.signedInAt)
-        }
+        this.signedInAt = attributes.signedInAt
       }
       if (attributes.signedOutAt) {
-        if (attributes.signedOutAt instanceof Date) {
-          this.signedOutAt = attributes.signedOutAt
-        } else {
-          this.signedOutAt = new Date(attributes.signedOutAt)
-        }
+        this.signedOutAt = attributes.signedOutAt
       }
       if (attributes.latestActivityAt) {
-        if (attributes.latestActivityAt instanceof Date) {
-          this.latestActivityAt = attributes.latestActivityAt
-        } else {
-          this.latestActivityAt = new Date(attributes.latestActivityAt)
-        }
+        this.latestActivityAt = attributes.latestActivityAt
       }
       // if (attributes.userDevices) {
       //   this.userDevices = attributes.userDevices
@@ -211,21 +187,13 @@ export class User extends BaseModel {
         this.metadata = attributes.metadata
       }
       if (attributes.inactivatedAt) {
-        if (attributes.inactivatedAt instanceof Date) {
-          this.inactivatedAt = attributes.inactivatedAt
-        } else {
-          this.inactivatedAt = new Date(attributes.inactivatedAt)
-        }
+        this.inactivatedAt = attributes.inactivatedAt
       }
       if (attributes.inactivatedBy) {
         this.inactivatedBy = attributes.inactivatedBy
       }
       if (attributes.termsAndConditionsAcceptedAt) {
-        if (attributes.termsAndConditionsAcceptedAt instanceof Date) {
-          this.termsAndConditionsAcceptedAt = attributes.termsAndConditionsAcceptedAt
-        } else {
-          this.termsAndConditionsAcceptedAt = new Date(attributes.termsAndConditionsAcceptedAt)
-        }
+        this.termsAndConditionsAcceptedAt = attributes.termsAndConditionsAcceptedAt
       }
       if (attributes.optIntoNewsletter === true || attributes.optIntoNewsletter === false) {
         this.optIntoNewsletter = attributes.optIntoNewsletter
@@ -234,21 +202,13 @@ export class User extends BaseModel {
         this.onboardingStage = attributes.onboardingStage
       }
       if (attributes.suspendedAt) {
-        if (attributes.suspendedAt instanceof Date) {
-          this.suspendedAt = attributes.suspendedAt
-        } else {
-          this.suspendedAt = new Date(attributes.suspendedAt)
-        }
+        this.suspendedAt = attributes.suspendedAt
       }
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy
       }
       if (attributes.addedToBgVaultAt) {
-        if (attributes.addedToBgVaultAt instanceof Date) {
-          this.addedToBgVaultAt = attributes.addedToBgVaultAt
-        } else {
-          this.addedToBgVaultAt = new Date(attributes.addedToBgVaultAt)
-        }
+        this.addedToBgVaultAt = attributes.addedToBgVaultAt
       }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
 

@@ -31,7 +31,7 @@ const find = async <T extends Model = Model>(
   }
 
   // todo: implement based on model
-  const foundDocuments = await collection.find({
+  const records = await collection.find({
     selector: {
       id: {
         $eq: match.id,
@@ -39,7 +39,9 @@ const find = async <T extends Model = Model>(
     },
   }).exec();
 
-  return { objects: foundDocuments };
+  return {
+    objects: records.map(r => r.toMutableJSON()),
+  };
 };
 
 export default find;

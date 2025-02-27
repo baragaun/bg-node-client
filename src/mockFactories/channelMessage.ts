@@ -17,15 +17,15 @@ const createMessage = (
   }
 
   if (!message.createdAt) {
-    message.createdAt = new Date();
+    message.createdAt = new Date().toISOString();
   }
 
   if (!message.updatedAt) {
-    message.updatedAt = new Date();
+    message.updatedAt = new Date().toISOString();
   }
 
   if (!message.createdAt) {
-    message.createdAt = new Date();
+    message.createdAt = new Date().toISOString();
   }
 
   if (!message.createdBy && sender) {
@@ -33,7 +33,7 @@ const createMessage = (
   }
 
   if (!message.updatedAt) {
-    message.updatedAt = new Date();
+    message.updatedAt = new Date().toISOString();
   }
 
   if (!message.metadata && sender) {

@@ -10,11 +10,11 @@ export class BgChannelInboxItemMessage {
   public senderFirstName?: string | null
   public senderLastName?: string | null
   public senderAvatarUrl?: string | null
-  public seenAt?: Date | null
+  public seenAt?: string | null
   public isArchived?: boolean | null
   public createdAt: Date = new Date()
   public createdBy?: string | null
-  public updatedAt?: Date | null
+  public updatedAt?: string | null
   public updatedBy?: string | null
   public userIds?: string[] | null
 
@@ -48,31 +48,19 @@ export class BgChannelInboxItemMessage {
         this.senderAvatarUrl = attributes.senderAvatarUrl
       }
       if (attributes.seenAt) {
-        if (attributes.seenAt instanceof Date) {
-          this.seenAt = attributes.seenAt
-        } else {
-          this.seenAt = new Date(attributes.seenAt)
-        }
+        this.seenAt = attributes.seenAt
       }
       if (attributes.isArchived === true || attributes.isArchived === false) {
         this.isArchived = attributes.isArchived
       }
       if (attributes.createdAt) {
-        if (attributes.createdAt instanceof Date) {
-          this.createdAt = attributes.createdAt
-        } else {
-          this.createdAt = new Date(attributes.createdAt)
-        }
+        this.createdAt = attributes.createdAt
       }
       if (attributes.createdBy) {
         this.createdBy = attributes.createdBy
       }
       if (attributes.updatedAt) {
-        if (attributes.updatedAt instanceof Date) {
-          this.updatedAt = attributes.updatedAt
-        } else {
-          this.updatedAt = new Date(attributes.updatedAt)
-        }
+        this.updatedAt = attributes.updatedAt
       }
       if (attributes.updatedBy) {
         this.updatedBy = attributes.updatedBy

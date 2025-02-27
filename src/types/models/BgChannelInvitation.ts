@@ -8,11 +8,11 @@ export class BgChannelInvitation extends BaseModel {
   public channelTopic?: string | null
   public messageText?: string | null
   public declineReasonTextId?: string | null
-  public dismissedFromInboxBySenderAt?: Date | null
-  public dismissedFromInboxByRecipientAt?: Date | null
-  public readByRecipientAt?: Date | null
+  public dismissedFromInboxBySenderAt?: string | null
+  public dismissedFromInboxByRecipientAt?: string | null
+  public readByRecipientAt?: string | null
   public status: ChannelInvitationStatus = ChannelInvitationStatus.unset
-  public suspendedAt?: Date | null
+  public suspendedAt?: string | null
   public suspendedBy?: string | null
   public userSearchId?: string | null
   public searchRank?: number | null
@@ -41,35 +41,19 @@ export class BgChannelInvitation extends BaseModel {
         this.declineReasonTextId = attributes.declineReasonTextId
       }
       if (attributes.dismissedFromInboxBySenderAt) {
-        if (attributes.dismissedFromInboxBySenderAt instanceof Date) {
-          this.dismissedFromInboxBySenderAt = attributes.dismissedFromInboxBySenderAt
-        } else {
-          this.dismissedFromInboxBySenderAt = new Date(attributes.dismissedFromInboxBySenderAt)
-        }
+        this.dismissedFromInboxBySenderAt = attributes.dismissedFromInboxBySenderAt
       }
       if (attributes.dismissedFromInboxByRecipientAt) {
-        if (attributes.dismissedFromInboxByRecipientAt instanceof Date) {
-          this.dismissedFromInboxByRecipientAt = attributes.dismissedFromInboxByRecipientAt
-        } else {
-          this.dismissedFromInboxByRecipientAt = new Date(attributes.dismissedFromInboxByRecipientAt)
-        }
+        this.dismissedFromInboxByRecipientAt = attributes.dismissedFromInboxByRecipientAt
       }
       if (attributes.readByRecipientAt) {
-        if (attributes.readByRecipientAt instanceof Date) {
-          this.readByRecipientAt = attributes.readByRecipientAt
-        } else {
-          this.readByRecipientAt = new Date(attributes.readByRecipientAt)
-        }
+        this.readByRecipientAt = attributes.readByRecipientAt
       }
       if (attributes.status) {
         this.status = attributes.status
       }
       if (attributes.suspendedAt) {
-        if (attributes.suspendedAt instanceof Date) {
-          this.suspendedAt = attributes.suspendedAt
-        } else {
-          this.suspendedAt = new Date(attributes.suspendedAt)
-        }
+        this.suspendedAt = attributes.suspendedAt
       }
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy

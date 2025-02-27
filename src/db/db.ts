@@ -95,11 +95,11 @@ const db: Db = {
 
   insert: <T extends Model = Model>(obj: T): Promise<MutationResult<T>> => {
     if (!obj.createdAt) {
-      obj.createdAt = new Date();
+      obj.createdAt = new Date().toISOString();
     }
 
     if (!obj.updatedAt) {
-      obj.updatedAt = new Date();
+      obj.updatedAt = new Date().toISOString();
     }
 
     if (_config?.dbType === DbType.mem) {
@@ -142,7 +142,7 @@ const db: Db = {
     modelType: ModelType,
   ): Promise<MutationResult<T>> => {
     if (!changes.updatedAt) {
-      changes.updatedAt = new Date();
+      changes.updatedAt = new Date().toISOString();
     }
 
     if (_config?.dbType === DbType.mem) {
