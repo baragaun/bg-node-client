@@ -1,14 +1,14 @@
 import { RxDatabase } from 'rxdb';
 
 import { ModelType } from '../../types/enums.js';
-import { ObjectType } from '../../types/Db.js';
+import { Model } from '../../types/Model.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 
 let _db: RxDatabase | undefined = undefined;
 
-const findOne = async <T extends ObjectType = ObjectType>(
+const findOne = async <T extends Model = Model>(
   match: Partial<T>,
   modelType: ModelType,
 ): Promise<QueryResult<T>> => {

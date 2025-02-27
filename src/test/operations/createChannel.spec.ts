@@ -1,28 +1,34 @@
-import FactoryGirl from 'factory-girl';
+import { describe, expect, test } from 'vitest'
 
+import { BgChannelsWebClientConfig } from '../../types/BgChannelsWebClientConfig.js';
 import { Channel } from '../../types/models/Channel.js';
-import { ModelType } from '../../types/enums.js';
-import { User } from '../../types/models/User.js';
-import createChannel from '../../operations/createChannel.js';
+import { DbType, ModelType } from '../../types/enums.js';
+import { init } from '../../index.js';
+// import { User } from '../../types/models/User.js';
 import findById from '../../operations/findById.js';
+import factories from '../factories/factories.js';
 
-const factory = FactoryGirl.factory
+const config: BgChannelsWebClientConfig = {
+  dbType: DbType.rxdb,
+  inBrowser: false,
+  debugMode: true,
+}
 
 describe('createChannel', () => {
-  beforeAll(() => {
+  test('should create a channel with the given properties', async () => {
+    const client = await init(config);
+    // const users = await factories.user.create({}, {}, 2) as User[]
+    // const userIds = users.map(u => u.id)
+    // const channelProps = await factories.channel.build({ userIds })
+    const channelProps = await factories.channel.build({})
 
-  })
+    const { object: channel } = await client.createChannel(channelProps);
+    const {
+      object: reloadedChannel,
+      error,
+    } = await findById<Channel>(channel.id, ModelType.Channel)
 
-  it('should create a channel with the given properties', async () => {
-    const users = await factory.buildMany<User>('User', 2)
-    const userIds = users.map(u => u.id)
-    const channelProps = await factory.build<Channel>('Channel', {
-      userIds,
-    })
-
-    const { object: channel } = await createChannel(channelProps);
-    const { object: reloadedChannel } = await findById<Channel>(channel.id, ModelType.Channel)
-
+    expect(error).toBeUndefined()
     expect(reloadedChannel.id).toBe(channel.id);
     expect(reloadedChannel.name).toBe(channel.name);
   });

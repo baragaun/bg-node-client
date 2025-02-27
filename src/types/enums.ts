@@ -132,6 +132,7 @@ export enum ModelType {
   ChannelMessage = 'ChannelMessage',
   ChannelParticipant = 'ChannelParticipant',
   User = 'User',
+  UserInbox = 'UserInbox',
 }
 
 export enum NotificationType {

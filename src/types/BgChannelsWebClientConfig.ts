@@ -18,4 +18,6 @@ export interface BgChannelsWebClientConfig {
    * If true, it enables dev mode features.
    */
   debugMode?: boolean;
+
+  inBrowser: boolean;
 }

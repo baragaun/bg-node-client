@@ -6,7 +6,7 @@ const bgChannelInbox: TypeGraphqlClass = {
   graphqlType: GraphqlType.ObjectType,
   extends: 'BaseModel',
   path: 'src/services/bgChannels/types/classes/BgChannelInbox.ts',
-  schemaPath: 'src/schema/bgChannelInboxSchema.ts',
+  schemaPath: 'src/models/schema/bgChannelInboxSchema.ts',
   dbCollectionName: 'channel-inboxes',
   active: true,
   attributes: [

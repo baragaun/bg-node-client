@@ -1,28 +1,45 @@
+import { getAjv } from 'rxdb/plugins/validate-ajv';
+// import Ajv from 'ajv';
+import addFormats from 'ajv-formats';
 import { addRxPlugin, createRxDatabase } from 'rxdb/plugins/core';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
-import { RxDatabase } from 'rxdb';
+import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
 import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { wrappedValidateAjvStorage } from 'rxdb/plugins/validate-ajv';
 
 import { BgChannelsWebClientConfig } from '../../types/BgChannelsWebClientConfig.js';
 import { DbCollection } from './enums.js';
-import schema from '../../schema/schema.js';
+import schema from '../../models/schema/schema.js';
 import db from './helpers/db.js';
 
 const initFnc = async (
   config: BgChannelsWebClientConfig,
 ): Promise<void> => {
+  // @ts-ignore
+  // const ajv = new Ajv();
+  // addFormats.default(ajv, ['date-time']);
+
+  const ajv = getAjv();
+  addFormats.default(ajv, ['date-time']);
+  // ajv.addFormat('email', {
+  //   type: 'string',
+  //   validate: v => v.includes('@') // ensure email fields contain the @ symbol
+  // });
+
+  let storage = config.inBrowser
+    ? getRxStorageDexie()
+    : getRxStorageMemory();
+
   if (config.debugMode) {
     addRxPlugin(RxDBDevModePlugin);
+    storage = wrappedValidateAjvStorage({
+      storage: storage as any,
+    }) as any;
   }
 
-  const myDb: RxDatabase | undefined = await createRxDatabase({
+  const myDb = await createRxDatabase({
     name: 'firstspark',
-    storage: wrappedValidateAjvStorage({
-      // Dexie is using IndexedDB
-      // see https://rxdb.info/rx-storage-dexie.html
-      storage: getRxStorageDexie(),
-    })
+    storage: storage as any,
   });
 
   await myDb.addCollections({

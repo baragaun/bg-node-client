@@ -6,6 +6,7 @@ export * from './types/enums.js';
 export * from './types/MutationResult.js';
 
 // Models:
+export * from './types/Model.js'
 export * from './types/models/BaseModel.js'
 export * from './types/models/BaseModelMetadata.js'
 export * from './types/models/BgChannelStatus.js'

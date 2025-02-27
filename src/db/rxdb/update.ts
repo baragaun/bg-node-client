@@ -2,13 +2,13 @@ import { RxDatabase } from 'rxdb';
 
 import { ModelType, MutationType } from '../../types/enums.js';
 import { MutationResult } from '../../types/MutationResult.js';
-import { ObjectType } from '../../types/Db.js';
+import { Model } from '../../types/Model.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 
 let _db: RxDatabase | undefined = undefined;
 
-const update = async <T extends ObjectType = ObjectType>(
+const update = async <T extends Model = Model>(
   changes: Partial<T>,
   modelType: ModelType,
 ): Promise<MutationResult<T>> => {

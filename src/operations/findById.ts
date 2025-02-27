@@ -1,9 +1,9 @@
 import { ModelType } from '../types/enums.js';
-import { ObjectType } from '../types/Db.js';
+import { Model } from '../types/Model.js';
 import { QueryResult } from '../types/QueryResult.js';
 import db from '../db/db.js';
 
-const findById = async <T extends ObjectType = ObjectType>(
+const findById = async <T extends Model = Model>(
   id: string,
   modelType: ModelType,
 ): Promise<QueryResult<T>> => {

@@ -1,0 +1,75 @@
+import rosie from 'rosie';
+
+import { Channel } from '../../types/models/Channel.ts';
+import { UserInbox } from '../../types/models/UserInbox.ts';
+import { ChannelInvitation } from '../../types/models/ChannelInvitation.ts';
+import { ChannelMessage } from '../../types/models/ChannelMessage.ts';
+import { ChannelParticipant } from '../../types/models/ChannelParticipant.ts';
+import { User } from '../../types/models/User.js';
+
+export interface ChannelFactory extends rosie.IFactory<Channel> {
+  create: (
+    props: Partial<Channel | Channel[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<Channel | Channel[]>;
+  save: (channel: Channel) => Promise<Channel>;
+  delete: (channel: Channel) => Promise<Channel>;
+}
+
+export interface ChannelInvitationFactory extends rosie.IFactory<ChannelInvitation> {
+  create: (
+    props: Partial<ChannelInvitation | ChannelInvitation[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<ChannelInvitation | ChannelInvitation[]>;
+  save: (channelInvitation: ChannelInvitation) => Promise<ChannelInvitation>;
+  delete: (channelInvitation: ChannelInvitation) => Promise<ChannelInvitation>;
+}
+
+export interface ChannelMessageFactory extends rosie.IFactory<ChannelMessage> {
+  create: (
+    props: Partial<ChannelMessage | ChannelMessage[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<ChannelMessage | ChannelMessage[]>;
+  save: (channelMessage: ChannelMessage) => Promise<ChannelMessage>;
+  delete: (channelMessage: ChannelMessage) => Promise<ChannelMessage>;
+}
+
+export interface ChannelParticipantFactory extends rosie.IFactory<ChannelParticipant> {
+  create: (
+    props: Partial<ChannelParticipant | ChannelParticipant[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<ChannelParticipant | ChannelParticipant[]>;
+  save: (channelParticipant: ChannelParticipant) => Promise<ChannelParticipant>;
+  delete: (channelParticipant: ChannelParticipant) => Promise<ChannelParticipant>;
+}
+
+export interface UserFactory extends rosie.IFactory<User> {
+  create: (
+    props: Partial<User | User[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<User | User[]>;
+  save: (user: User) => Promise<User>;
+  delete: (user: User) => Promise<User>;
+}
+
+export interface UserInboxFactory extends rosie.IFactory<UserInbox> {
+  create: (
+    props: Partial<UserInbox | UserInbox[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<UserInbox | UserInbox[]>;
+  save: (userInbox: UserInbox) => Promise<UserInbox>;
+  delete: (userInbox: UserInbox) => Promise<UserInbox>;
+}
+
+export type ModelFactory = ChannelFactory |
+  ChannelInvitationFactory |
+  ChannelMessageFactory |
+  ChannelParticipantFactory |
+  UserFactory |
+  UserInboxFactory;

@@ -13,10 +13,11 @@ npm install --save https://github.com/baragaun/bg-channels-web-client.git
 The following will create a mock channel with 2 participants and 10 messages:
 
 ```typescript
-import { init } from 'bg-channels-web-client';
+import BgChannelsWebClient, { init } from 'bg-channels-web-client';
 
 const chatClient = init({
   useMockData: true,
+  dbType: BgChannelsWebClient.DbType.rxdb,
 });
 
 // This will create a mock channel with 10 messages:

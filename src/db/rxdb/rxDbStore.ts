@@ -6,6 +6,7 @@ import findById from './findById.js';
 import findOne from './findOne.js';
 import init from './init.js';
 import insert from './insert.js';
+import isConnected from './isConnected.js';
 import replace from './replace.js';
 import update from './update.js';
 
@@ -17,6 +18,7 @@ const rxDbStore: Db = {
   findOne,
   init,
   insert,
+  isConnected,
   replace,
   update,
 };

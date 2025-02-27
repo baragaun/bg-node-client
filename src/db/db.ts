@@ -1,7 +1,8 @@
 import { BgChannelsWebClientConfig } from '../types/BgChannelsWebClientConfig.js';
 import { ModelType, DbType } from '../types/enums.js';
 import { MutationResult } from '../types/MutationResult.js';
-import { ObjectType, Db } from '../types/Db.js';
+import { Db } from '../types/Db.js';
+import { Model } from '../types/Model.js';
 import { QueryResult } from '../types/QueryResult.js';
 import memStore from './mem/memStore.js';
 import rxDbStore from './rxdb/rxDbStore.js';
@@ -21,7 +22,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  find: async <T extends ObjectType = ObjectType>(
+  find: async <T extends Model = Model>(
     match: Partial<T>,
     type: ModelType,
   ): Promise<QueryResult<T>> => {
@@ -36,7 +37,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  findAll: async <T extends ObjectType = ObjectType>(type: ModelType): Promise<QueryResult<T>> => {
+  findAll: async <T extends Model = Model>(type: ModelType): Promise<QueryResult<T>> => {
     if (_config?.dbType === DbType.mem) {
       return memStore.findAll<T>(type);
     }
@@ -48,7 +49,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  findById: <T extends ObjectType>(
+  findById: <T extends Model>(
     id: string,
     modelType: ModelType,
   ): Promise<QueryResult<T>> => {
@@ -63,7 +64,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  findOne: <T extends ObjectType>(
+  findOne: <T extends Model>(
     match: Partial<T>,
     modelType: ModelType,
   ): Promise<QueryResult<T>> => {
@@ -80,9 +81,19 @@ const db: Db = {
 
   init: async (config: BgChannelsWebClientConfig): Promise<void> => {
     _config = config;
+
+    if (_config?.dbType === DbType.mem) {
+      return memStore.init(config);
+    }
+
+    if (_config?.dbType === DbType.rxdb) {
+      return rxDbStore.init(config);
+    }
+
+    throw new Error('invalid-store-type');
   },
 
-  insert: <T extends ObjectType = ObjectType>(obj: T): Promise<MutationResult<T>> => {
+  insert: <T extends Model = Model>(obj: T): Promise<MutationResult<T>> => {
     if (!obj.createdAt) {
       obj.createdAt = new Date();
     }
@@ -102,7 +113,19 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  replace: <T extends ObjectType>(obj: T): Promise<MutationResult<T>> => {
+  isConnected: (): boolean => {
+    if (_config?.dbType === DbType.mem) {
+      return true;
+    }
+
+    if (_config?.dbType === DbType.rxdb) {
+      return rxDbStore.isConnected();
+    }
+
+    return false;
+  },
+
+  replace: <T extends Model>(obj: T): Promise<MutationResult<T>> => {
     if (_config?.dbType === DbType.mem) {
       return memStore.replace<T>(obj);
     }
@@ -114,7 +137,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  update: <T extends ObjectType = ObjectType>(
+  update: <T extends Model = Model>(
     changes: Partial<T>,
     modelType: ModelType,
   ): Promise<MutationResult<T>> => {

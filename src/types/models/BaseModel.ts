@@ -2,12 +2,10 @@
 
 import { BaseModelMetadata } from './BaseModelMetadata.js'
 import { IBaseModel } from './IBaseModel.js'
-import { ModelEvent } from './ModelEvent.js'
 
 export abstract class BaseModel implements IBaseModel {
   public id = ''
   public adminNotes?: string | null
-  public events?: ModelEvent[] | null
   public metadata?: BaseModelMetadata | null
   public createdAt: Date = new Date()
   public createdBy?: string | null
@@ -23,9 +21,6 @@ export abstract class BaseModel implements IBaseModel {
       }
       if (attributes.adminNotes) {
         this.adminNotes = attributes.adminNotes
-      }
-      if (attributes.events) {
-        this.events = attributes.events
       }
       if (attributes.metadata) {
         this.metadata = attributes.metadata

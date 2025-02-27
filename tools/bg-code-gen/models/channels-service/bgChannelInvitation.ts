@@ -6,7 +6,7 @@ const bgChannelInvitation: TypeGraphqlClass = {
   graphqlType: GraphqlType.ObjectType,
   extends: 'BaseModel',
   path: 'src/services/bgChannels/types/classes/BgChannelInvitation.ts',
-  schemaPath: 'src/schema/bgChannelInvitationSchema.ts',
+  schemaPath: 'src/models/schema/bgChannelInvitationSchema.ts',
   dbCollectionName: 'channel-invitations',
   active: true,
   attributes: [

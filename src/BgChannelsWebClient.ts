@@ -10,7 +10,7 @@ import { ChannelParticipantListFilter } from './types/models/ChannelParticipantL
 import { ChannelsListener } from './types/ChannelsListener.js';
 import { DbType, ModelType } from './types/enums.js';
 import { MutationResult } from './types/MutationResult.js';
-import { ObjectType } from './types/Db.js';
+import { Model } from './types/Model.js';
 import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
 import createChannelFunc from './operations/createChannel.js';
@@ -19,13 +19,14 @@ import db from './db/db.js';
 import deleteChannelFunc from './operations/deleteChannel.js';
 import deleteChannelInvitationFunc from './operations/deleteChannelInvitation.js';
 import deleteChannelMessageFunc from './operations/deleteChannelMessage.js';
-import factories from './factories/factories.js';
+import factories from './test/factories/factories.js';
 import findByIdFunc from './operations/findById.js';
 import findChannelInvitationsFunc from './operations/findChannelInvitations.js';
 import findChannelMessagesFunc from './operations/findChannelMessages.js';
 import findChannelParticipantsFunc from './operations/findChannelParticipants.js';
 import findChannelsFunc from './operations/findChannels.js';
 import findOneFunc from './operations/findOne.js';
+import mockFactories from './mockFactories/mockFactories.js';
 import updateChannelFunc from './operations/updateChannel.js';
 import updateChannelInvitationFunc from './operations/updateChannelInvitation.js';
 import updateChannelMessageFunc from './operations/updateChannelMessage.js';
@@ -41,12 +42,13 @@ export class BgChannelsWebClient {
     if (!this.config.dbType) {
       this.config.dbType = DbType.mem;
     }
-
-    db.init(this.config)
-      .catch((error) => {
-        console.error('Error initializing database:', error);
-      });
   }
+
+  public async init(): Promise<void> {
+    await db.init(this.config);
+  }
+
+  public factories = factories;
 
   /**
    * Subscribe to channel events.
@@ -122,7 +124,7 @@ export class BgChannelsWebClient {
     users?: User[],
     messages?: ChannelMessage[],
   ): { channel: Channel, messages: ChannelMessage[], users: User[] } {
-    return factories.channel(
+    return mockFactories.channel(
       attributes,
       userCount,
       messageCount,
@@ -134,7 +136,7 @@ export class BgChannelsWebClient {
   public createMockUser(
     attributes: Partial<User>,
   ): User {
-    return factories.user(
+    return mockFactories.user(
       attributes,
     );
   }
@@ -211,7 +213,7 @@ export class BgChannelsWebClient {
    * @param modelType - The model type.
    * @returns A promise that resolves to the channel object, or null if not found.
    */
-  public async findById<T extends ObjectType>(id: string, modelType: ModelType): Promise<T | null> {
+  public async findById<T extends Model>(id: string, modelType: ModelType): Promise<T | null> {
     const result = await findByIdFunc<T>(id, modelType);
 
     if (result.error) {
@@ -321,7 +323,7 @@ export class BgChannelsWebClient {
    * @param modelType - The model type.
    * @returns A promise that resolves to the channel object, or null if not found.
    */
-  public async findOne<T extends ObjectType>(
+  public async findOne<T extends Model>(
     match: Partial<T>,
     modelType: ModelType,
   ): Promise<T | null> {

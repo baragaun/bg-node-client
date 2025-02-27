@@ -6,7 +6,7 @@ const bgChannelParticipant: TypeGraphqlClass = {
   graphqlType: GraphqlType.ObjectType,
   extends: 'BaseModel',
   path: 'src/services/bgChannels/types/classes/BgChannelParticipant.ts',
-  schemaPath: 'src/schema/bgChannelParticipantSchema.ts',
+  schemaPath: 'src/models/schema/bgChannelParticipantSchema.ts',
   dbCollectionName: 'channelParticipants',
   active: true,
   attributes: [

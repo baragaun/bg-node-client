@@ -1,17 +1,32 @@
-import FactoryGirl from 'factory-girl';
+import { Factory } from 'rosie';
 
 import { Channel } from '../../types/models/Channel.js';
-import { ChannelType } from '../../types/enums.js';
+import { ChannelFactory } from './definitions.js';
+import { ChannelType, ModelType } from '../../types/enums.js';
 import chance from '../helpers/chance.js';
+import create from './helpers/create.js';
+import save from './helpers/save.js';
+import deleteFunc from './helpers/delete.js';
 
+const channelFactory = Factory.define<Channel>('Channel', Channel)
+  .attr('channelType', () => chance.pickone(Object.values(ChannelType)))
+  .attr('createdAt', () => new Date(Date.now() - chance.integer({
+    min: 24 * 3600 * 1000, // youngest is 1 day old
+    max: 500 * 24 * 3600 * 1000, // oldest is 500 days old
+  }))) as ChannelFactory
 
-const attrs: FactoryGirl.Attributes<Partial<Channel>> = {
-  channelType: () => chance.pickone(Object.values(ChannelType)),
-  updatedAt: () => new Date(),
-}
+channelFactory.create = (
+  props: Partial<Channel> | Partial<Channel>[],
+  options?: any,
+  count?: number,
+): Promise<Channel | Channel[]> => create<Channel>(props, options, count);
 
-const initChannelFactory = (): void => {
-  FactoryGirl.factory.define<Channel>('Channel', Channel, attrs)
-}
+channelFactory.save = async (channel: Channel): Promise<Channel> => save(channel);
 
-export default initChannelFactory
+channelFactory.delete = async (channel: Channel): Promise<Channel> => {
+  await deleteFunc(channel.id, ModelType.Channel);
+
+  return channel;
+};
+
+export default channelFactory

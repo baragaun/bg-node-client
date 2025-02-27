@@ -3,16 +3,17 @@ import { RxDatabase } from 'rxdb';
 import { getModelTypeFromObject } from '../../helpers/helpers.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { MutationType } from '../../types/enums.js';
-import { ObjectType } from '../../types/Db.js';
+import { Model } from '../../types/Model.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
+import modelHelpers from '../../models/helpers/modelHelpers.js';
 
 let _db: RxDatabase | undefined = undefined;
 
-const insert = async <T extends ObjectType = ObjectType>(
+const insert = async <T extends Model = Model>(
   obj: T,
 ): Promise<MutationResult<T>> => {
-  const result: MutationResult<T> = { operation: MutationType.create};
+  const result: MutationResult<T> = { operation: MutationType.create };
 
   if (!_db) {
     _db = db.getDb();
@@ -37,13 +38,29 @@ const insert = async <T extends ObjectType = ObjectType>(
     return result;
   }
 
+  // @ts-ignore
+  // obj = {
+  //   // id: 'ab33',
+  //   adminNotes: 'abcd',
+  //   createdAt: new Date(),
+  // }
+
+  obj = modelHelpers.formatObjectForDb<T>(obj, modelType) as T;
+
   if (!obj.id) {
-    obj.id = crypto.randomUUID();
+    obj.id = crypto.randomUUID().replace(/-/g, '');
   }
 
-  result.object = await collection.insert(obj);
+  try {
+    const dbResult = await collection.insert(obj);
+    result.object = dbResult.toMutableJSON();
 
-  return result;
+    return result;
+  } catch (error) {
+    console.error(error);
+    result.error = error.message;
+    return result;
+  }
 };
 
 export default insert;

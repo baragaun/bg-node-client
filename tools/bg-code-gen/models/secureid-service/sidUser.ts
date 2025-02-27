@@ -7,7 +7,7 @@ const sidUser: TypeGraphqlClass = {
   graphqlType: GraphqlType.ObjectType,
   extends: 'BaseModel',
   path: 'src/services/secureId/types/classes/SidUser.ts',
-  schemaPath: 'src/schema/sidUserSchema.ts',
+  schemaPath: 'src/models/schema/sidUserSchema.ts',
   dbCollectionName: 'users',
   active: true,
   attributes: [
