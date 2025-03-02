@@ -33,3 +33,25 @@ const foundChannels = await chatClient.findChannels({ id: mockChannel.id });
 // Load the messages of this channel:
 const foundMessages = await chatClient.findChannelMessages({ channelId: channels[0].id });
 ```
+
+## Models
+
+The database (RxDB) needs a [JSON schema representation](https://json-schema.org/) of 
+each model.
+
+We use [rosie](https://github.com/rosiejs/rosie) to create model objects for unit tests.
+
+## Tests
+
+We use [Vitest](https://vitest.dev/). The tests are in `src/test`.
+
+## To Do
+
+* Set up NATS
+  * See https://github.com/nats-io/nats.node
+  * See https://docs.nats.io/running-a-nats-service/introduction/installation
+
+## Credits
+
+* This project is based on [node-typescript-boilerplate](https://github.com/jsynowiec/node-typescript-boilerplate)
+

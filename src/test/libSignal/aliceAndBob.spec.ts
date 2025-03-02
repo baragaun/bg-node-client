@@ -21,6 +21,7 @@ const config: BgNodeClientConfig = {
 const useX3DH = true;
 
 describe('libSignal', () => {
+  // see: https://signal.org/docs/specifications/x3dh/
   test('should exchange end-to-end encrypted messages', async () => {
     const clientAlice = await init(null, { ...config, dbName: 'alice' });
     expect(clientAlice).toBeDefined();

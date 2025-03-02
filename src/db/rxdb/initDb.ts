@@ -27,6 +27,7 @@ const initDb = async (
 
   // addRxPlugin(RxDBUpdatePlugin);
 
+  // see: https://github.com/ajv-validator/ajv/issues/1295
   const ajv = getAjv();
   addFormats.default(ajv, ['date-time']);
   // ajv.addFormat('email', {
