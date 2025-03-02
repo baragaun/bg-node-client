@@ -9,7 +9,7 @@ const createMessage = (
   const message = new ChannelMessage(attributes);
 
   if (!message.id) {
-    message.id = crypto.randomUUID().replace('-', '');
+    message.id = crypto.randomUUID().replaceAll('-', '');
   }
 
   if (!message.messageText) {

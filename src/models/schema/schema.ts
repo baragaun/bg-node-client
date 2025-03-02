@@ -12,6 +12,7 @@ const schema = {
   ChannelMessage: BgChannelMessageSchema,
   ChannelParticipant: BgChannelParticipantSchema,
   User: SidUserSchema,
+  MyUser: SidUserSchema,
 };
 
 export default schema;

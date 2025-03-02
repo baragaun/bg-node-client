@@ -1,4 +1,4 @@
-import { RxDatabase } from 'rxdb';
+import { RxDatabase, RxDocument } from 'rxdb';
 
 import { ModelType, MutationType } from '../../types/enums.js';
 import { MutationResult } from '../../types/MutationResult.js';
@@ -29,7 +29,7 @@ const update = async <T extends Model = Model>(
     return result;
   }
 
-  const foundDocuments = await collection.find({
+  const foundDocuments: RxDocument[] = await collection.find({
     selector: {
       id: {
         $eq: changes.id
@@ -42,9 +42,8 @@ const update = async <T extends Model = Model>(
   }
 
   const firstDocument = foundDocuments[0];
-  result.object = await firstDocument.patch({
-    done: true,
-  });
+  const doc = await firstDocument.patch(changes);
+  result.object = doc.toMutableJSON() as T;
 
   return result;
 };

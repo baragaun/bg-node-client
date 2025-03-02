@@ -7,7 +7,7 @@ const createUser = (
   const user = new User(attributes);
 
   if (!user.id) {
-    user.id = crypto.randomUUID().replace('-', '');
+    user.id = crypto.randomUUID().replaceAll('-', '');
   }
 
   if (!user.userHandle) {

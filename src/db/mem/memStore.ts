@@ -6,6 +6,8 @@ import { Model } from '../../types/Model.js';
 import { ModelType, MutationType } from '../../types/enums.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { QueryResult } from '../../types/QueryResult.js';
+import db from '../rxdb/helpers/db.js';
+import { MyUser } from '../../types/models/MyUser.js';
 
 const channels: Channel[] = [];
 let messages: ChannelMessage[] = [];
@@ -25,8 +27,14 @@ const getArrayForModelType = <T extends Model = Model>(type: ModelType): T[] => 
 };
 
 const memStore: Db = {
-  init: async (config: BgNodeClientConfig): Promise<void> => {
+  init: async (
+    // @ts-ignore
+    userId: string | null | undefined,
+    config: BgNodeClientConfig,
+  ): Promise<MyUser | null> => {
     console.log('memStore.init called.', config)
+
+    return null;
   },
 
   isConnected(): boolean {
@@ -117,6 +125,8 @@ const memStore: Db = {
 
     return { operation: MutationType.create, object: obj };
   },
+
+  libSignalStores: db.getLibSignalStores,
 
   replace: async <T extends Model>(obj: T): Promise<MutationResult<T>> => {
     const result = { operation: MutationType.replace, object: obj };

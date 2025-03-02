@@ -14,7 +14,7 @@ const createChannel = (
   messages?: ChannelMessage[],
 ): { channel: Channel, messages: ChannelMessage[], users: User[] } => {
   if (!attributes.id) {
-    attributes.id = crypto.randomUUID().replace('-', '');
+    attributes.id = crypto.randomUUID().replaceAll('-', '');
   }
 
   if (!attributes.name) {
@@ -53,7 +53,7 @@ const createChannel = (
 
   channel.userIds = users.map(user => user.id);
   channel.participants = users.map(user => new ChannelParticipant({
-    id: crypto.randomUUID().replace('-', ''),
+    id: crypto.randomUUID().replaceAll('-', ''),
     channelId: channel.id,
     userId: user.id
   }));

@@ -3,9 +3,15 @@ import { ModelType } from './enums.js';
 import { MutationResult } from './MutationResult.js';
 import { QueryResult } from './QueryResult.js';
 import { Model } from './Model.js';
+import { LibSignalStores } from '../db/rxdb/libSignalStores/LibSignalStores.js';
+import { MyUser } from './models/MyUser.js';
 
 export interface Db {
-  init: (config: BgNodeClientConfig) => Promise<void>;
+  init: (
+    userId: string | null | undefined,
+    config: BgNodeClientConfig,
+  ) => Promise<MyUser | null>;
+
   insert: <T extends Model = Model>(obj: T) => Promise<MutationResult<T>>;
   isConnected: () => boolean;
   delete: (id: string, modelType: ModelType) => Promise<MutationResult>;
@@ -28,6 +34,8 @@ export interface Db {
     match: Partial<T>,
     modelType: ModelType,
   ) => Promise<QueryResult<T>>
+
+  libSignalStores: () => LibSignalStores;
 
   replace: <T extends Model>(obj: T) => Promise<MutationResult<T>>;
 

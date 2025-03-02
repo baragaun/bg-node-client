@@ -13,11 +13,17 @@ export interface BgNodeClientConfig {
    * The type of store to be used: Either mem or rxdb.
    */
   dbType?: DbType;
+  dbName?: string;
 
   /**
    * If true, it enables dev mode features.
    */
   debugMode?: boolean;
+
+  libSignal?: {
+    enable: boolean;
+    registrationId: number;
+  }
 
   inBrowser: boolean;
 }

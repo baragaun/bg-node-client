@@ -44,11 +44,12 @@ export class BgNodeClient {
     }
   }
 
-  public async init(): Promise<void> {
-    await db.init(this.config);
+  public async init(userId: string | null | undefined): Promise<void> {
+    await db.init(userId, this.config);
   }
 
   public factories = factories;
+  public libSignalStores = db.libSignalStores;
 
   /**
    * Subscribe to channel events.

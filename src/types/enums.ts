@@ -131,6 +131,7 @@ export enum ModelType {
   ChannelInvitation = 'ChannelInvitation',
   ChannelMessage = 'ChannelMessage',
   ChannelParticipant = 'ChannelParticipant',
+  MyUser = 'MyUser',
   User = 'User',
   UserInbox = 'UserInbox',
 }

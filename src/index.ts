@@ -1,10 +1,13 @@
 import { BgNodeClient } from './BgNodeClient.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 
-export async function init(config: BgNodeClientConfig): Promise<BgNodeClient> {
+export const init = async (
+  userId: string | null | undefined,
+  config: BgNodeClientConfig,
+): Promise<BgNodeClient> => {
   const client = new BgNodeClient(config);
 
-  await client.init();
+  await client.init(userId);
 
   return client
 }

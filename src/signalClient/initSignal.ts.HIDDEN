@@ -1,0 +1,83 @@
+// import libsignal from 'libsignal-protocol';
+import { RxdbIdentityKeyStore } from '../db/rxdb/libSignalStores/RxdbIdentityKeyStore.js';
+import { LibSignalStores } from '../db/rxdb/libSignalStores/LibSignalStores.js';
+import SignalClient, { IdentityKeyPair, PreKeyBundle } from '@signalapp/libsignal-client';
+// import { createIdentityKeyStore } from './rxdb-identity-key-store';
+
+// private static IdentityKeyPair generateIdentityKeyPair() {
+//   ECKeyPair identityKeyPairKeys = Curve.generateKeyPair();
+//
+//   return new IdentityKeyPair(
+//     new IdentityKey(identityKeyPairKeys.getPublicKey()), identityKeyPairKeys.getPrivateKey());
+// }
+//
+// private static int generateRegistrationId() {
+//   return KeyHelper.generateRegistrationId(false);
+// }
+
+// A helper to save a new registration in your identity key store.
+// You’ll need to implement this based on how your store manages registration documents.
+// async function saveRegistration(
+//   identityStore: RxdbIdentityKeyStore, // your RxdbIdentityKeyStore instance
+//   protocolAddress: SignalClient.ProtocolAddress,
+//   identityKeyPair: IdentityKeyPair,
+//   registrationId: number
+// ): Promise<void> {
+//   // For example, if your identity store has a method to insert the registration record:
+//   // (This is pseudo-code; adapt it to your RxDB registration collection structure.)
+//   await identityStore.saveIdentity(
+//     protocolAddress,
+//     {
+//       id: 'registration',
+//       registrationId,
+//       privateKey: Buffer.from(JSON.stringify(identityKeyPair.privateKey)).toString('base64'),
+//       publicKey: Buffer.from(JSON.stringify(identityKeyPair.publicKey)).toString('base64')
+//     },
+//   );
+// }
+
+export async function initSignal(stores: LibSignalStores): Promise<void> {
+  // Initialize your identity key store.
+  SignalClient.PrivateKey.generate()
+
+  // Check if a registration already exists.
+  // let registrationId: number;
+  // try {
+  //   registrationId = await stores.identity.getLocalRegistrationId();
+  //   console.log("Existing registration found with id:", registrationId);
+  //   return; // Registration exists; nothing more to do.
+  // } catch (err) {
+  //   console.log("No registration found. Generating new registration and keys...");
+  // }
+  //
+  // // Generate a new identity key pair.
+  // const identityKeyPair = await libsignal.KeyHelper.generateIdentityKeyPair();
+  // // Generate a new registration ID.
+  // registrationId = await libsignal.KeyHelper.generateRegistrationId();
+  //
+  // // Save the registration to your identity store.
+  // await saveRegistration(stores.identity, identityKeyPair, registrationId);
+
+  // Generate prekeys.
+  // const preKeyId = 1;
+  // const preKey = await libsignal.KeyHelper.generatePreKey(preKeyId);
+  // const signedPreKeyId = 1;
+  // const signedPreKey = await libsignal.KeyHelper.generateSignedPreKey(identityKeyPair, signedPreKeyId);
+  //
+  // // Optionally, you may also want to save these prekeys to your store if required.
+  //
+  // // Create your public prekey bundle.
+  // const myPrekeyBundle = PreKeyBundle.new(
+  //   registrationId,
+  //   1, // assuming a single device with deviceId = 1
+  //   preKeyId,
+  //   preKey.keyPair.pubKey,
+  //   signedPreKeyId,
+  //   signedPreKey.keyPair.pubKey,
+  //   signedPreKey.signature,
+  //   identityKeyPair.pubKey
+  //   // For Kyber parameters, pass null or actual values if used.
+  // );
+
+  console.log("New registration and prekey bundle generated:", myPrekeyBundle);
+}

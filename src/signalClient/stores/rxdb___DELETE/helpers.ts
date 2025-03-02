@@ -1,0 +1,16 @@
+import SignalClient from '@signalapp/libsignal-client';
+
+export function fromBase64ToPrivateKey(base64Str: string): SignalClient.PrivateKey {
+  // Implementation depends on your libsignal type definitions.
+  // For example, you might parse a JSON representation or use a library function.
+  return JSON.parse(atob(base64Str));
+}
+
+export function fromPublicKeyToBase64(key: SignalClient.PublicKey): string {
+  // Convert the public key to a base64 string. Implementation depends on key structure.
+  return btoa(JSON.stringify(key));
+}
+
+export function fromBase64ToPublicKey(base64Str: string): SignalClient.PublicKey {
+  return JSON.parse(atob(base64Str));
+}

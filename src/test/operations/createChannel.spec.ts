@@ -16,7 +16,7 @@ const config: BgNodeClientConfig = {
 
 describe('createChannel', () => {
   test('should create a channel with the given properties', async () => {
-    const client = await init(config);
+    const client = await init(null, config);
     // const users = await factories.user.create({}, {}, 2) as User[]
     // const userIds = users.map(u => u.id)
     // const channelProps = await factories.channel.build({ userIds })
@@ -31,5 +31,8 @@ describe('createChannel', () => {
     expect(error).toBeUndefined()
     expect(reloadedChannel.id).toBe(channel.id);
     expect(reloadedChannel.name).toBe(channel.name);
+    expect(reloadedChannel.topic).toBe(channel.topic);
+    expect(reloadedChannel.description).toBe(channel.description);
+    expect(reloadedChannel.channelType).toBe(channel.channelType);
   });
 });

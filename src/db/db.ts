@@ -6,6 +6,8 @@ import { Model } from '../types/Model.js';
 import { QueryResult } from '../types/QueryResult.js';
 import memStore from './mem/memStore.js';
 import rxDbStore from './rxdb/rxDbStore.js';
+import rxdbHelpers from './rxdb/helpers/db.js';
+import { MyUser } from '../types/models/MyUser.js';
 
 let _config: BgNodeClientConfig | undefined;
 
@@ -79,15 +81,18 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  init: async (config: BgNodeClientConfig): Promise<void> => {
+  init: async (
+    userId: string | null | undefined,
+    config: BgNodeClientConfig,
+  ): Promise<MyUser | null | undefined> => {
     _config = config;
 
     if (_config?.dbType === DbType.mem) {
-      return memStore.init(config);
+      return memStore.init(userId, config);
     }
 
     if (_config?.dbType === DbType.rxdb) {
-      return rxDbStore.init(config);
+      return rxDbStore.init(userId, config);
     }
 
     throw new Error('invalid-store-type');
@@ -124,6 +129,8 @@ const db: Db = {
 
     return false;
   },
+
+  libSignalStores: rxdbHelpers  .getLibSignalStores,
 
   replace: <T extends Model>(obj: T): Promise<MutationResult<T>> => {
     if (_config?.dbType === DbType.mem) {
