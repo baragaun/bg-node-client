@@ -10,7 +10,7 @@ npm install --save https://github.com/baragaun/bg-node-client.git
 
 To update it:
 ```bash
-pnpm install --force https://github.com/baragaun/bg-node-client.git 
+pnpm install https://github.com/baragaun/bg-node-client.git 
 ```
 
 ## Usage
