@@ -1,14 +1,12 @@
 import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql'
 
-import { SignUpUserInput, UserAuthResponse } from '../gql/graphql.js';
+import { MyUser } from '../../types/models/MyUser.js';
 
-type Document = TypedQueryDocumentNode<UserAuthResponse, SignUpUserInput>
+type Document = TypedQueryDocumentNode<MyUser>
 
 // see: https://graffle.js.org/guides/topics/requests
-const signUpUser = async (
-  input: SignUpUserInput,
-): Promise<UserAuthResponse> => {
+const findMyUser = async (): Promise<MyUser> => {
   const graffle = Graffle
     .create()
     .transport({
@@ -18,15 +16,19 @@ const signUpUser = async (
   //   // .use(Opentelemetry())
 
   const document = parse(`
-    mutation signUpUser ($input: SignUpUserInput!) {
-      signUpUser (input: $input) {
+    query getMyUser {
+      getMyUser {
         id
-        authToken
+        userHandle
+        firstName
+        lastName
+        email
+        updatedAt
       }
     }
   `) as Document
 
-  const data = await graffle.gql(document).send(input) as UserAuthResponse;
+  const data = await graffle.gql(document).send() as MyUser;
 
   // const endpoint = 'http://localhost:8092/fsdata/api/graphql';
   // const client = new GraphQLClient(endpoint);
@@ -37,5 +39,5 @@ const signUpUser = async (
   return data;
 };
 
-export default signUpUser;
+export default findMyUser;
 

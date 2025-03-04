@@ -6,6 +6,7 @@ export * from './ChannelEventPayload.js';
 export * from './BgDataListener.js';
 export * from './enums.js';
 export * from './MutationResult.js';
+import { UserIdentType } from '../graphql/gql/graphql.js';
 
 // Models:
 export * from './Model.js'
@@ -33,6 +34,9 @@ export * from './models/NotificationOptions.js'
 export * from './models/User.js'
 export * from './models/UserBlock.js'
 export * from './models/UserPreferences.js'
+
+// GraphQL Types:
+export { UserIdentType };
 
 // declare module '@baragaun/bg-node-client' {
 //   export * from '../BgNodeClient.js';

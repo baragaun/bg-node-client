@@ -34,6 +34,9 @@ import updateChannelFunc from './operations/updateChannel.js';
 import updateChannelInvitationFunc from './operations/updateChannelInvitation.js';
 import updateChannelMessageFunc from './operations/updateChannelMessage.js';
 import updateChannelParticipantFunc from './operations/updateChannelParticipant.js';
+import findMyUserQuery from './graphql/queries/findMyUser.js'
+import signInUserFunc from './operations/signInUser.js'
+import { UserIdentType } from './graphql/gql/graphql.js';
 
 export class BgNodeClient {
   private _config: BgNodeClientConfig;
@@ -52,13 +55,15 @@ export class BgNodeClient {
       this._config.dbType = DbType.mem;
     }
 
-    if (!myUserId) {
-      myUserId = localStorage.getItem("myUserId");
+    if (typeof window !== 'undefined' && window.localStorage && !myUserId) {
+      myUserId = window.localStorage.getItem("myUserId");
     }
 
     if (myUserId) {
       this._myUserId = myUserId;
-      this._authToken = localStorage.getItem("authToken");
+      if (typeof window !== 'undefined' && window.localStorage) {
+        this._authToken = window.localStorage.getItem("authToken");
+      }
 
       this.init(myUserId).then(() => {
         console.log('BgNodeClient: initialized.')
@@ -350,13 +355,24 @@ export class BgNodeClient {
    * @returns A promise that resolves to my user object, or null if not found.
    */
   public async findMyUser(): Promise<MyUser | null> {
-    const result = await findByIdFunc<MyUser>(this._myUserId, ModelType.MyUser);
+    const useCached = false;
 
-    if (result.error) {
-      return null;
+    if (useCached) {
+      const result = await findByIdFunc<MyUser>(this._myUserId, ModelType.MyUser);
+
+      if (result.error) {
+        return null;
+      }
+
+      return result.object;
+    } else {
+      const myUser = await findMyUserQuery();
+      if (myUser) {
+        await insertOneFunc(myUser);
+      }
+
+      return myUser;
     }
-
-    return result.object;
   }
 
   /**
@@ -393,6 +409,35 @@ export class BgNodeClient {
     }
 
     return result.object;
+  }
+
+  public async SignInUser(
+    ident: string,
+    identType: UserIdentType,
+    password: string,
+  ): Promise<MutationResult<MyUser>> {
+    const result = await signInUserFunc(
+      ident,
+      identType,
+      password,
+    );
+
+    if (!result.error) {
+      // Success:
+      this._myUserId = result.object.userId;
+      this._authToken = result.object.authToken;
+
+      if (result.object.userId) {
+        const myUser = new MyUser({
+          id: result.object.userId,
+          email: result.object.email,
+        });
+
+        return insertOneFunc<MyUser>(myUser);
+      }
+    }
+
+    return result as unknown as MutationResult<MyUser>;
   }
 
   public async signUpUser(

@@ -5,8 +5,8 @@ export const init = async (
   myUserId: string | null | undefined,
   config: BgNodeClientConfig,
 ): Promise<BgNodeClient> => {
-  if (!myUserId) {
-    myUserId = localStorage.getItem("myUserId") || null;
+  if (typeof window !== 'undefined' && window.localStorage && !myUserId) {
+    myUserId = window.localStorage.getItem("myUserId") || null;
   }
 
   const client = new BgNodeClient(myUserId, config);

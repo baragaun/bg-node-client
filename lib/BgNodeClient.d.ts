@@ -14,6 +14,7 @@ import { MyUser } from './types/models/MyUser.js';
 import { MutationResult } from './types/MutationResult.js';
 import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
+import { UserIdentType } from './graphql/gql/graphql.js';
 export declare class BgNodeClient {
     private _config;
     private _listeners;
@@ -132,6 +133,7 @@ export declare class BgNodeClient {
      * @returns A promise that resolves to the channel object, or null if not found.
      */
     insertOne<T extends Model>(object: T): Promise<T | null>;
+    SignInUser(ident: string, identType: UserIdentType, password: string): Promise<MutationResult<MyUser>>;
     signUpUser(userHandle: string, email?: string, password?: string): Promise<MutationResult<MyUser>>;
     /**
      * Updates an existing channel.
