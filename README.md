@@ -50,8 +50,20 @@ We use [rosie](https://github.com/rosiejs/rosie) to create model objects for uni
 
 We use [Vitest](https://vitest.dev/). The tests are in `src/test`.
 
+## Making Changes
+
+When you are working on this package and you want your changes to show up in the project
+that is consuming this package follow these steps:
+
+1. After editing the sources, build the package: `yarn build`
+2. Push this to the `main` branch, with all the changes in the `lib` directory.
+3. In the consuming project, issue: `pnpm install https://github.com/baragaun/bg-node-client.git`
+
+That should get your changes from here to the other project.
+
 ## To Do
 
+* Hook this up to our GraphQL API
 * Set up NATS
   * See https://github.com/nats-io/nats.node
   * See https://docs.nats.io/running-a-nats-service/introduction/installation
