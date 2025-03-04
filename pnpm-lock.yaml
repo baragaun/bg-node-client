@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@graphql-typed-document-node/core':
+        specifier: ^3.2.0
+        version: 3.2.0(graphql@16.10.0)
       '@signalapp/libsignal-client':
         specifier: ^0.67.1
         version: 0.67.1
@@ -20,18 +23,27 @@ importers:
       chance:
         specifier: ^1.1.12
         version: 1.1.12
+      graffle:
+        specifier: ^0.0.0
+        version: 0.0.0
       graphql:
         specifier: ^16.10.0
         version: 16.10.0
       nats:
         specifier: ^2.29.2
         version: 2.29.2
+      opentelemetry:
+        specifier: link:graffle/extensions/opentelemetry
+        version: link:graffle/extensions/opentelemetry
       rxdb:
         specifier: ^16.6.1
         version: 16.8.0(rxjs@7.8.2)
       rxjs:
         specifier: ^7.8.2
         version: 7.8.2
+      throws:
+        specifier: link:graffle/extensions/throws
+        version: link:graffle/extensions/throws
       tslib:
         specifier: ~2.8
         version: 2.8.1
@@ -1847,6 +1859,9 @@ packages:
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
+
+  graffle@0.0.0:
+    resolution: {integrity: sha512-sIChCCzbsLVnDtdr9D5mUF0bvPgEkwDgdR61Q+601FcUefk/2fUV13m8qPKfWKOux78YAxd3GU25fk52k1y/Bg==}
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
@@ -5241,6 +5256,8 @@ snapshots:
       slash: 3.0.0
 
   gopd@1.2.0: {}
+
+  graffle@0.0.0: {}
 
   graphemer@1.4.0: {}
 

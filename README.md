@@ -51,7 +51,7 @@ We use [rosie](https://github.com/rosiejs/rosie) to create model objects for uni
 We use [codegen](https://the-guild.dev/graphql/codegen) to generate the GraphQL types.
 
 To regenerate the types, make sure the `first-spark-server` is running at the location
-that is defined in [./src/graphql/codegen.ts](./src/graphql/codegen.ts).
+that is defined in [./src/graphql/tools/codegen.ts](./src/graphql/tools/codegen.ts).
 
 Then run:
 

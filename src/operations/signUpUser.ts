@@ -1,16 +1,28 @@
-import { MyUser } from '../types/models/MyUser.js';
 import { MutationResult } from '../types/MutationResult.js';
 import { MutationType } from '../types/enums.js';
-import db from '../db/db.js';
+import signUpUserMutation from '../graphql/mutations/signUpUser.js';
+import { SignUpUserInput, UserAuthResponse } from '../graphql/gql/graphql.js';
 
 const signUpUser = async (
-  attributes: Partial<MyUser>,
-): Promise<MutationResult<MyUser>> => {
+  userHandle: string,
+  email?: string,
+  password?: string,
+): Promise<MutationResult<UserAuthResponse>> => {
   try {
-    const myUser = new MyUser(attributes);
+    const input: SignUpUserInput = {
+      userHandle,
+      email,
+      password,
+    }
 
-    return db.insert<MyUser>(myUser);
+    const authResponse = await signUpUserMutation(input);
+
+    return {
+      operation: MutationType.create,
+      object: authResponse,
+    }
   } catch (error) {
+    console.error(error);
     return {
       operation: MutationType.create,
       error: (error as Error).message,

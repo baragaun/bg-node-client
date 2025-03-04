@@ -27,6 +27,7 @@ import findChannelMessagesFunc from './operations/findChannelMessages.js';
 import findChannelParticipantsFunc from './operations/findChannelParticipants.js';
 import findChannelsFunc from './operations/findChannels.js';
 import findOneFunc from './operations/findOne.js';
+import insertOneFunc from './operations/insertOne.js';
 import mockFactories from './mockFactories/mockFactories.js';
 import signUpUserFunc from './operations/signUpUser.js';
 import updateChannelFunc from './operations/updateChannel.js';
@@ -38,6 +39,8 @@ export class BgNodeClient {
   private _config: BgNodeClientConfig;
   private _listeners: BgDataListener[] = [];
   private _myUserId: string | null | undefined;
+  // @ts-ignore
+  private _authToken: string | undefined;
 
   public constructor(
     myUserId: string | null | undefined,
@@ -55,6 +58,7 @@ export class BgNodeClient {
 
     if (myUserId) {
       this._myUserId = myUserId;
+      this._authToken = localStorage.getItem("authToken");
 
       this.init(myUserId).then(() => {
         console.log('BgNodeClient: initialized.')
@@ -374,7 +378,52 @@ export class BgNodeClient {
     return result.object;
   }
 
-  public signUpUser = signUpUserFunc
+  /**
+   * Finds a channel by its ID.
+   * @param object
+   * @returns A promise that resolves to the channel object, or null if not found.
+   */
+  public async insertOne<T extends Model>(
+    object: T,
+  ): Promise<T | null> {
+    const result = await insertOneFunc<T>(object);
+
+    if (result.error) {
+      return null;
+    }
+
+    return result.object;
+  }
+
+  public async signUpUser(
+    userHandle: string,
+    email?: string,
+    password?: string,
+  ): Promise<MutationResult<MyUser>> {
+    const result = await signUpUserFunc(
+      userHandle,
+      email,
+      password,
+    );
+
+    if (!result.error) {
+      // Success:
+      this._myUserId = result.object.userId;
+      this._authToken = result.object.authToken;
+
+      if (result.object.userId) {
+        const myUser = new MyUser({
+          userHandle,
+          email,
+          passwordHash: password, // todo;
+        });
+
+        return insertOneFunc<MyUser>(myUser);
+      }
+    }
+
+    return result as unknown as MutationResult<MyUser>;
+  }
 
   /**
    * Updates an existing channel.

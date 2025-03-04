@@ -1,4 +1,4 @@
-import { MyUser } from '../types/models/MyUser.js';
 import { MutationResult } from '../types/MutationResult.js';
-declare const signUpUser: (attributes: Partial<MyUser>) => Promise<MutationResult<MyUser>>;
+import { UserAuthResponse } from '../graphql/gql/graphql.js';
+declare const signUpUser: (userHandle: string, email?: string, password?: string) => Promise<MutationResult<UserAuthResponse>>;
 export default signUpUser;

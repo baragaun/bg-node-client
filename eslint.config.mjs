@@ -16,6 +16,7 @@ export default tseslint.config(
       '/node_modules/**',
       '/tools/**',
       '/src/schema/**',
+      '/src/graphql/gql/**',
     ],
   },
   eslint.configs.recommended,

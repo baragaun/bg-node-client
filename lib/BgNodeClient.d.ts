@@ -18,6 +18,7 @@ export declare class BgNodeClient {
     private _config;
     private _listeners;
     private _myUserId;
+    private _authToken;
     constructor(myUserId: string | null | undefined, config: BgNodeClientConfig);
     init(myUserId: string | null | undefined): Promise<void>;
     factories: {
@@ -125,7 +126,13 @@ export declare class BgNodeClient {
      * @returns A promise that resolves to the channel object, or null if not found.
      */
     findOne<T extends Model>(match: Partial<T>, modelType: ModelType): Promise<T | null>;
-    signUpUser: (attributes: Partial<MyUser>) => Promise<MutationResult<MyUser>>;
+    /**
+     * Finds a channel by its ID.
+     * @param object
+     * @returns A promise that resolves to the channel object, or null if not found.
+     */
+    insertOne<T extends Model>(object: T): Promise<T | null>;
+    signUpUser(userHandle: string, email?: string, password?: string): Promise<MutationResult<MyUser>>;
     /**
      * Updates an existing channel.
      * @returns A promise that resolves to the result object.
