@@ -1,10 +1,7 @@
 import { ModelType } from '../../../types/enums.js';
 import db from '../../../db/db.js';
 
-const deleteFunc = async (
-  id: string,
-  modelType: ModelType,
-): Promise<void> => {
+const deleteFunc = async (id: string, modelType: ModelType): Promise<void> => {
   if (!db.isConnected()) {
     throw new Error('db-not-available');
   }

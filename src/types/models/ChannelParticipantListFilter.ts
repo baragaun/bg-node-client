@@ -2,6 +2,6 @@ import { BgChannelParticipantListFilter } from './BgChannelParticipantListFilter
 
 export class ChannelParticipantListFilter extends BgChannelParticipantListFilter {
   constructor(attributes?: Partial<ChannelParticipantListFilter>) {
-    super(attributes)
+    super(attributes);
   }
 }

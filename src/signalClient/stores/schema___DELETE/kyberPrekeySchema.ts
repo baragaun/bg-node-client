@@ -11,12 +11,12 @@ export const kyberPrekeySchema: RxJsonSchema<KyberPreKeyDocument> = {
       maxLength: 100,
     },
     record: {
-      type: 'string' // The KyberPreKeyRecord serialized as a JSON string.
+      type: 'string', // The KyberPreKeyRecord serialized as a JSON string.
     },
     used: {
-      type: 'boolean' // Flag to indicate whether this prekey has been used.
-    }
+      type: 'boolean', // Flag to indicate whether this prekey has been used.
+    },
   },
   primaryKey: 'id',
-  required: ['id', 'record', 'used']
+  required: ['id', 'record', 'used'],
 };

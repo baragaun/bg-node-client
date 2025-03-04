@@ -1,4 +1,4 @@
-import { KEMPublicKey, PreKeyBundle, PublicKey } from '@signalapp/libsignal-client'
+import { KEMPublicKey, PreKeyBundle, PublicKey } from '@signalapp/libsignal-client';
 
 // Helper: convert a base64 string to a Buffer.
 function base64ToBuffer(base64Str: string): Buffer {
@@ -36,7 +36,9 @@ export function jsonToPreKeyBundle(json: string): PreKeyBundle {
   const identityKey: PublicKey = publicKeyFromBase64(obj.identityKey);
   const kyberPreKeyId: number | null = obj.kyberPreKeyId;
   const kyberPreKey: KEMPublicKey | null = obj.kyberPreKeyPublic ? kemPublicKeyFromBase64(obj.kyberPreKeyPublic) : null;
-  const kyberPreKeySignature: Buffer | null = obj.kyberPreKeySignature ? base64ToBuffer(obj.kyberPreKeySignature) : null;
+  const kyberPreKeySignature: Buffer | null = obj.kyberPreKeySignature
+    ? base64ToBuffer(obj.kyberPreKeySignature)
+    : null;
 
   return PreKeyBundle.new(
     registrationId,
@@ -49,6 +51,6 @@ export function jsonToPreKeyBundle(json: string): PreKeyBundle {
     identityKey,
     kyberPreKeyId,
     kyberPreKey,
-    kyberPreKeySignature
+    kyberPreKeySignature,
   );
 }

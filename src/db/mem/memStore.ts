@@ -32,7 +32,7 @@ const memStore: Db = {
     myUserId: string | null | undefined,
     config: BgNodeClientConfig,
   ): Promise<MyUser | null> => {
-    console.log('memStore.init called.', config)
+    console.log('memStore.init called.', config);
 
     return null;
   },
@@ -43,7 +43,7 @@ const memStore: Db = {
 
   delete: async (id: string, modelType: ModelType): Promise<MutationResult> => {
     const arr = getArrayForModelType(modelType);
-    const index = arr.findIndex(obj => obj.id === id);
+    const index = arr.findIndex((obj) => obj.id === id);
 
     if (index < 0) {
       return { operation: MutationType.delete, error: 'not-found' };
@@ -51,22 +51,19 @@ const memStore: Db = {
 
     arr.splice(index, 1);
     if (modelType === ModelType.Channel) {
-      messages = messages.filter(m => m.channelId !== id);
+      messages = messages.filter((m) => m.channelId !== id);
     }
 
     return { operation: MutationType.delete };
   },
 
-  find: async <T extends Model = Model>(
-    match: Partial<T>,
-    type: ModelType,
-  ): Promise<QueryResult<T>> => {
+  find: async <T extends Model = Model>(match: Partial<T>, type: ModelType): Promise<QueryResult<T>> => {
     const arr = getArrayForModelType<T>(type);
 
     if (!arr) {
       return {
         error: 'not-found',
-      }
+      };
     }
 
     // todo: implement based on model
@@ -85,32 +82,26 @@ const memStore: Db = {
     if (!arr) {
       return {
         error: 'not-found',
-      }
+      };
     }
 
     return { objects: arr };
   },
 
-  findOne: async <T extends Model = Model>(
-    match: Partial<T>,
-    modelType: ModelType,
-  ): Promise<QueryResult<T>> => {
+  findOne: async <T extends Model = Model>(match: Partial<T>, modelType: ModelType): Promise<QueryResult<T>> => {
     const arr = getArrayForModelType(modelType);
 
     // todo: implement
     return {
-      object: arr.find(c => c.id === match.id) as T || null,
+      object: (arr.find((c) => c.id === match.id) as T) || null,
     };
   },
 
-  findById: async <T extends Model = Model>(
-    id: string,
-    modelType: ModelType,
-  ): Promise<QueryResult<T>> => {
+  findById: async <T extends Model = Model>(id: string, modelType: ModelType): Promise<QueryResult<T>> => {
     const arr = getArrayForModelType(modelType);
 
     return {
-      object: arr.find(c => c.id === id) as T || null,
+      object: (arr.find((c) => c.id === id) as T) || null,
     };
   },
 
@@ -131,7 +122,7 @@ const memStore: Db = {
   replace: async <T extends Model>(obj: T): Promise<MutationResult<T>> => {
     const result = { operation: MutationType.replace, object: obj };
     const arr = getArrayForObject(obj);
-    const index = arr.findIndex(o => o.id === obj.id);
+    const index = arr.findIndex((o) => o.id === obj.id);
 
     if (index > -1) {
       arr[index] = obj;
@@ -142,13 +133,10 @@ const memStore: Db = {
     return result;
   },
 
-  update: async <T extends Model = Model>(
-    changes: Partial<T>,
-    modelType: ModelType,
-  ): Promise<MutationResult<T>> => {
+  update: async <T extends Model = Model>(changes: Partial<T>, modelType: ModelType): Promise<MutationResult<T>> => {
     const result: MutationResult<T> = { operation: MutationType.update };
     const arr = getArrayForModelType(modelType);
-    const index = arr.findIndex(o => o.id === changes.id);
+    const index = arr.findIndex((o) => o.id === changes.id);
 
     if (index < 0) {
       result.error = 'not-found';
@@ -161,7 +149,7 @@ const memStore: Db = {
     result.object = updatedObject;
 
     return result;
-  }
-}
+  },
+};
 
-export default memStore
+export default memStore;

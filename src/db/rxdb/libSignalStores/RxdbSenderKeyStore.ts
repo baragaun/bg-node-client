@@ -20,7 +20,7 @@ export class RxdbSenderKeyStore extends SignalClient.SenderKeyStore {
   async saveSenderKey(
     sender: SignalClient.ProtocolAddress,
     distributionId: SignalClient.Uuid,
-    record: SignalClient.SenderKeyRecord
+    record: SignalClient.SenderKeyRecord,
   ): Promise<void> {
     const key = this.composeKey(sender, distributionId);
     const recordStr = JSON.stringify(record);
@@ -36,7 +36,7 @@ export class RxdbSenderKeyStore extends SignalClient.SenderKeyStore {
   // Retrieve a sender key record by sender and distributionId.
   async getSenderKey(
     sender: SignalClient.ProtocolAddress,
-    distributionId: SignalClient.Uuid
+    distributionId: SignalClient.Uuid,
   ): Promise<SignalClient.SenderKeyRecord | null> {
     const key = this.composeKey(sender, distributionId);
     const doc = await this.senderKeys.findOne(key).exec();

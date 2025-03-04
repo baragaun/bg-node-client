@@ -8,9 +8,7 @@ import getCollectionFromModelType from './helpers/getCollectionFromModelType.js'
 
 let _db: RxDatabase | undefined = undefined;
 
-const findAll = async <T extends Model = Model>(
-  modelType: ModelType,
-): Promise<QueryResult<T>> => {
+const findAll = async <T extends Model = Model>(modelType: ModelType): Promise<QueryResult<T>> => {
   const result: QueryResult<T> = {};
 
   if (!_db) {
@@ -29,16 +27,18 @@ const findAll = async <T extends Model = Model>(
     return result;
   }
 
-  const records = await collection.find({
-    selector: {
-      done: {
-        $eq: false
-      }
-    }
-  }).exec();
+  const records = await collection
+    .find({
+      selector: {
+        done: {
+          $eq: false,
+        },
+      },
+    })
+    .exec();
 
   return {
-    objects: records.map(r => r.toMutableJSON()),
+    objects: records.map((r) => r.toMutableJSON()),
   };
 };
 

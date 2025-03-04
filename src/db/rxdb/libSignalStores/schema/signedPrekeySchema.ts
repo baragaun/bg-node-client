@@ -12,9 +12,9 @@ export const signedPrekeySchema: RxJsonSchema<SignedPreKeyDocument> = {
       maxLength: 100,
     },
     record: {
-      type: 'string' // We'll store the signed prekey record as a JSON string.
-    }
+      type: 'string', // We'll store the signed prekey record as a JSON string.
+    },
   },
   primaryKey: 'id',
-  required: ['id', 'record']
+  required: ['id', 'record'],
 };

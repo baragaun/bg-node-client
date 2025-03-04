@@ -12,6 +12,6 @@ const factories = {
   channelParticipant,
   user,
   userInbox,
-}
+};
 
 export default factories;

@@ -9,4 +9,4 @@ const mockFactories: MockFactories = {
   user,
 };
 
-export default mockFactories
+export default mockFactories;

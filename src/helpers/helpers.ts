@@ -6,9 +6,7 @@ import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
 import { User } from '../types/models/User.js';
 
-export const getModelTypeFromObject = <T extends BaseModel = BaseModel>(
-  obj: T,
-): ModelType | null => {
+export const getModelTypeFromObject = <T extends BaseModel = BaseModel>(obj: T): ModelType | null => {
   if (obj instanceof Channel) {
     return ModelType.Channel;
   }
@@ -30,4 +28,4 @@ export const getModelTypeFromObject = <T extends BaseModel = BaseModel>(
   }
 
   return null;
-}
+};

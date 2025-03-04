@@ -3,10 +3,8 @@ import { RxDatabase } from 'rxdb';
 import { DbCollection } from '../../../db/rxdb/enums.js';
 import libSignalSchema from '../schema___DELETE/libSignalSchema.js';
 
-const initRxdbStores = async (
-  db: RxDatabase,
-): Promise<void> => {
-// const init = async (db: RxDatabase): Promise<void> => {
+const initRxdbStores = async (db: RxDatabase): Promise<void> => {
+  // const init = async (db: RxDatabase): Promise<void> => {
   // const db = await createRxDatabase({
   //   name: 'signaldb',
   //   adapter: 'idb',
@@ -45,6 +43,6 @@ const initRxdbStores = async (
       schema: libSignalSchema.signedPrekeySchema,
     },
   });
-}
+};
 
 export default initRxdbStores;

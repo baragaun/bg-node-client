@@ -17,10 +17,7 @@ import { ModelType } from '../../types/enums.js';
 import initLibSignal from './initLibSignal.js';
 import { MyUser } from '../../types/models/MyUser.js';
 
-const initDb = async (
-  myUserId: string | null | undefined,
-  config: BgNodeClientConfig,
-): Promise<MyUser | null> => {
+const initDb = async (myUserId: string | null | undefined, config: BgNodeClientConfig): Promise<MyUser | null> => {
   // @ts-ignore
   // const ajv = new Ajv();
   // addFormats.default(ajv, ['date-time']);
@@ -35,9 +32,7 @@ const initDb = async (
   //   validate: v => v.includes('@') // ensure email fields contain the @ symbol
   // });
 
-  let storage = config.inBrowser
-    ? getRxStorageDexie() :
-    getRxStorageMemory();
+  let storage = config.inBrowser ? getRxStorageDexie() : getRxStorageMemory();
 
   if (config.debugMode) {
     addRxPlugin(RxDBDevModePlugin);

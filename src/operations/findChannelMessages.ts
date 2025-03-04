@@ -12,17 +12,14 @@ const findChannelMessages = async (
 ): Promise<QueryResult<ChannelMessage>> => {
   try {
     if (Array.isArray(filter.ids) && filter.ids.length === 1) {
-      return db.findById<ChannelMessage>(
-        filter.ids[0],
-        ModelType.ChannelMessage,
-      );
+      return db.findById<ChannelMessage>(filter.ids[0], ModelType.ChannelMessage);
     }
 
     const { objects: messages } = await db.findAll<ChannelMessage>(ModelType.ChannelMessage);
     let list: ChannelMessage[] = messages;
 
     if (filter.channelId || match.channelId) {
-      list = messages.filter(m => m.channelId === filter.channelId || match.channelId);
+      list = messages.filter((m) => m.channelId === filter.channelId || match.channelId);
     }
 
     if (skip > 0 && limit > 0) {
@@ -30,11 +27,11 @@ const findChannelMessages = async (
     }
 
     return {
-      objects: list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    }
+      objects: list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
+    };
   } catch (error) {
     return { error: (error as Error).message };
   }
-}
+};
 
-export default findChannelMessages
+export default findChannelMessages;

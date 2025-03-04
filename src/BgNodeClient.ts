@@ -34,8 +34,8 @@ import updateChannelFunc from './operations/updateChannel.js';
 import updateChannelInvitationFunc from './operations/updateChannelInvitation.js';
 import updateChannelMessageFunc from './operations/updateChannelMessage.js';
 import updateChannelParticipantFunc from './operations/updateChannelParticipant.js';
-import findMyUserQuery from './graphql/queries/findMyUser.js'
-import signInUserFunc from './operations/signInUser.js'
+import findMyUserQuery from './graphql/queries/findMyUser.js';
+import signInUserFunc from './operations/signInUser.js';
 import { UserIdentType } from './graphql/gql/graphql.js';
 
 export class BgNodeClient {
@@ -45,10 +45,7 @@ export class BgNodeClient {
   // @ts-ignore
   private _authToken: string | undefined;
 
-  public constructor(
-    myUserId: string | null | undefined,
-    config: BgNodeClientConfig,
-  ) {
+  public constructor(myUserId: string | null | undefined, config: BgNodeClientConfig) {
     this._config = config;
 
     if (!this._config.dbType) {
@@ -56,20 +53,23 @@ export class BgNodeClient {
     }
 
     if (typeof window !== 'undefined' && window.localStorage && !myUserId) {
-      myUserId = window.localStorage.getItem("myUserId");
+      myUserId = window.localStorage.getItem('myUserId');
     }
 
     if (myUserId) {
       this._myUserId = myUserId;
       if (typeof window !== 'undefined' && window.localStorage) {
-        this._authToken = window.localStorage.getItem("authToken");
+        this._authToken = window.localStorage.getItem('authToken');
       }
 
-      this.init(myUserId).then(() => {
-        console.log('BgNodeClient: initialized.')
-      }, (error) => {
-        console.error('BgNodeClient.init: error.', error)
-      })
+      this.init(myUserId).then(
+        () => {
+          console.log('BgNodeClient: initialized.');
+        },
+        (error) => {
+          console.error('BgNodeClient.init: error.', error);
+        },
+      );
     }
   }
 
@@ -110,19 +110,15 @@ export class BgNodeClient {
    * Creates a new channel.
    * @returns A promise that resolves to the result object.
    */
-  public async createChannel(
-    channel: Partial<Channel>,
-  ): Promise<MutationResult<Channel>> {
+  public async createChannel(channel: Partial<Channel>): Promise<MutationResult<Channel>> {
     const result = await createChannelFunc(channel);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelCreated) {
-            listener.onChannelCreated(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelCreated) {
+          listener.onChannelCreated(result);
+        }
+      });
     }
 
     return result;
@@ -132,19 +128,15 @@ export class BgNodeClient {
    * Creates a new channel message.
    * @returns A promise that resolves to the result object.
    */
-  public async createChannelMessage(
-    channelMessage: Partial<ChannelMessage>,
-  ): Promise<MutationResult<ChannelMessage>> {
+  public async createChannelMessage(channelMessage: Partial<ChannelMessage>): Promise<MutationResult<ChannelMessage>> {
     const result = await createChannelMessageFunc(channelMessage);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelMessageCreated) {
-            listener.onChannelMessageCreated(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelMessageCreated) {
+          listener.onChannelMessageCreated(result);
+        }
+      });
     }
 
     return result;
@@ -156,41 +148,27 @@ export class BgNodeClient {
     messageCount: number,
     users?: User[],
     messages?: ChannelMessage[],
-  ): { channel: Channel, messages: ChannelMessage[], users: User[] } {
-    return mockFactories.channel(
-      attributes,
-      userCount,
-      messageCount,
-      users,
-      messages,
-    );
+  ): { channel: Channel; messages: ChannelMessage[]; users: User[] } {
+    return mockFactories.channel(attributes, userCount, messageCount, users, messages);
   }
 
-  public createMockUser(
-    attributes: Partial<User>,
-  ): User {
-    return mockFactories.user(
-      attributes,
-    );
+  public createMockUser(attributes: Partial<User>): User {
+    return mockFactories.user(attributes);
   }
 
   /**
    * Deletes an existing channel.
    * @returns A promise that resolves to the result object.
    */
-  public async deleteChannel(
-    id: string,
-  ): Promise<MutationResult<Channel>> {
+  public async deleteChannel(id: string): Promise<MutationResult<Channel>> {
     const result = await deleteChannelFunc(id);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelDeleted) {
-            listener.onChannelDeleted(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelDeleted) {
+          listener.onChannelDeleted(result);
+        }
+      });
     }
 
     return result;
@@ -200,19 +178,15 @@ export class BgNodeClient {
    * Deletes an existing channel invitation.
    * @returns A promise that resolves to the result object.
    */
-  public async deleteChannelInvitation(
-    id: string,
-  ): Promise<MutationResult<ChannelInvitation>> {
+  public async deleteChannelInvitation(id: string): Promise<MutationResult<ChannelInvitation>> {
     const result = await deleteChannelInvitationFunc(id);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelInvitationDeleted) {
-            listener.onChannelInvitationDeleted(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelInvitationDeleted) {
+          listener.onChannelInvitationDeleted(result);
+        }
+      });
     }
 
     return result;
@@ -222,19 +196,15 @@ export class BgNodeClient {
    * Deletes an existing channel message.
    * @returns A promise that resolves to the result object.
    */
-  public async deleteChannelMessage(
-    id: string,
-  ): Promise<MutationResult<ChannelMessage>> {
+  public async deleteChannelMessage(id: string): Promise<MutationResult<ChannelMessage>> {
     const result = await deleteChannelMessageFunc(id);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelMessageDeleted) {
-            listener.onChannelMessageDeleted(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelMessageDeleted) {
+          listener.onChannelMessageDeleted(result);
+        }
+      });
     }
 
     return result;
@@ -270,12 +240,7 @@ export class BgNodeClient {
     skip: number,
     limit: number,
   ): Promise<QueryResult<Channel>> {
-    return findChannelsFunc(
-      filter,
-      match,
-      skip,
-      limit,
-    );
+    return findChannelsFunc(filter, match, skip, limit);
   }
 
   /**
@@ -292,12 +257,7 @@ export class BgNodeClient {
     skip: number,
     limit: number,
   ): Promise<QueryResult<ChannelInvitation>> {
-    const result = await findChannelInvitationsFunc(
-      filter,
-      match,
-      skip,
-      limit,
-    );
+    const result = await findChannelInvitationsFunc(filter, match, skip, limit);
 
     return result;
   }
@@ -316,12 +276,7 @@ export class BgNodeClient {
     skip: number,
     limit: number,
   ): Promise<QueryResult<ChannelMessage>> {
-    const result = await findChannelMessagesFunc(
-      filter,
-      match,
-      skip,
-      limit,
-    );
+    const result = await findChannelMessagesFunc(filter, match, skip, limit);
 
     return result;
   }
@@ -340,12 +295,7 @@ export class BgNodeClient {
     skip: number,
     limit: number,
   ): Promise<QueryResult<ChannelParticipant>> {
-    const result = await findChannelParticipantsFunc(
-      filter,
-      match,
-      skip,
-      limit,
-    );
+    const result = await findChannelParticipantsFunc(filter, match, skip, limit);
 
     return result;
   }
@@ -381,10 +331,7 @@ export class BgNodeClient {
    * @param modelType - The model type.
    * @returns A promise that resolves to the channel object, or null if not found.
    */
-  public async findOne<T extends Model>(
-    match: Partial<T>,
-    modelType: ModelType,
-  ): Promise<T | null> {
+  public async findOne<T extends Model>(match: Partial<T>, modelType: ModelType): Promise<T | null> {
     const result = await findOneFunc<T>(match, modelType);
 
     if (result.error) {
@@ -399,9 +346,7 @@ export class BgNodeClient {
    * @param object
    * @returns A promise that resolves to the channel object, or null if not found.
    */
-  public async insertOne<T extends Model>(
-    object: T,
-  ): Promise<T | null> {
+  public async insertOne<T extends Model>(object: T): Promise<T | null> {
     const result = await insertOneFunc<T>(object);
 
     if (result.error) {
@@ -411,16 +356,8 @@ export class BgNodeClient {
     return result.object;
   }
 
-  public async signInUser(
-    ident: string,
-    identType: UserIdentType,
-    password: string,
-  ): Promise<MutationResult<MyUser>> {
-    const result = await signInUserFunc(
-      ident,
-      identType,
-      password,
-    );
+  public async signInUser(ident: string, identType: UserIdentType, password: string): Promise<MutationResult<MyUser>> {
+    const result = await signInUserFunc(ident, identType, password);
 
     if (!result.error) {
       // Success:
@@ -440,16 +377,8 @@ export class BgNodeClient {
     return result as unknown as MutationResult<MyUser>;
   }
 
-  public async signUpUser(
-    userHandle: string,
-    email?: string,
-    password?: string,
-  ): Promise<MutationResult<MyUser>> {
-    const result = await signUpUserFunc(
-      userHandle,
-      email,
-      password,
-    );
+  public async signUpUser(userHandle: string, email?: string, password?: string): Promise<MutationResult<MyUser>> {
+    const result = await signUpUserFunc(userHandle, email, password);
 
     if (!result.error) {
       // Success:
@@ -474,19 +403,15 @@ export class BgNodeClient {
    * Updates an existing channel.
    * @returns A promise that resolves to the result object.
    */
-  public async updateChannel(
-    channel: Partial<Channel>,
-  ): Promise<MutationResult<Channel>> {
+  public async updateChannel(channel: Partial<Channel>): Promise<MutationResult<Channel>> {
     const result = await updateChannelFunc(channel);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelUpdated) {
-            listener.onChannelUpdated(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelUpdated) {
+          listener.onChannelUpdated(result);
+        }
+      });
     }
 
     return result;
@@ -502,13 +427,11 @@ export class BgNodeClient {
     const result = await updateChannelInvitationFunc(channelInvitation);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelInvitationUpdated) {
-            listener.onChannelInvitationUpdated(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelInvitationUpdated) {
+          listener.onChannelInvitationUpdated(result);
+        }
+      });
     }
 
     return result;
@@ -518,19 +441,15 @@ export class BgNodeClient {
    * Updates an existing channel message.
    * @returns A promise that resolves to the result object.
    */
-  public async updateChannelMessage(
-    channelMessage: Partial<ChannelMessage>,
-  ): Promise<MutationResult<ChannelMessage>> {
+  public async updateChannelMessage(channelMessage: Partial<ChannelMessage>): Promise<MutationResult<ChannelMessage>> {
     const result = await updateChannelMessageFunc(channelMessage);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelMessageUpdated) {
-            listener.onChannelMessageUpdated(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelMessageUpdated) {
+          listener.onChannelMessageUpdated(result);
+        }
+      });
     }
 
     return result;
@@ -546,13 +465,11 @@ export class BgNodeClient {
     const result = await updateChannelParticipantFunc(channelParticipant);
 
     if (!result.error) {
-      this._listeners.forEach(
-        (listener) => {
-          if (listener.onChannelParticipantUpdated) {
-            listener.onChannelParticipantUpdated(result)
-          }
-        },
-      );
+      this._listeners.forEach((listener) => {
+        if (listener.onChannelParticipantUpdated) {
+          listener.onChannelParticipantUpdated(result);
+        }
+      });
     }
 
     return result;

@@ -8,11 +8,7 @@ import { ChannelParticipant } from '../../types/models/ChannelParticipant.ts';
 import { User } from '../../types/models/User.js';
 
 export interface ChannelFactory extends rosie.IFactory<Channel> {
-  create: (
-    props: Partial<Channel | Channel[]>,
-    options?: any,
-    count?: number,
-  ) => Promise<Channel | Channel[]>;
+  create: (props: Partial<Channel | Channel[]>, options?: any, count?: number) => Promise<Channel | Channel[]>;
   save: (channel: Channel) => Promise<Channel>;
   delete: (channel: Channel) => Promise<Channel>;
 }
@@ -48,28 +44,21 @@ export interface ChannelParticipantFactory extends rosie.IFactory<ChannelPartici
 }
 
 export interface UserFactory extends rosie.IFactory<User> {
-  create: (
-    props: Partial<User | User[]>,
-    options?: any,
-    count?: number,
-  ) => Promise<User | User[]>;
+  create: (props: Partial<User | User[]>, options?: any, count?: number) => Promise<User | User[]>;
   save: (user: User) => Promise<User>;
   delete: (user: User) => Promise<User>;
 }
 
 export interface UserInboxFactory extends rosie.IFactory<UserInbox> {
-  create: (
-    props: Partial<UserInbox | UserInbox[]>,
-    options?: any,
-    count?: number,
-  ) => Promise<UserInbox | UserInbox[]>;
+  create: (props: Partial<UserInbox | UserInbox[]>, options?: any, count?: number) => Promise<UserInbox | UserInbox[]>;
   save: (userInbox: UserInbox) => Promise<UserInbox>;
   delete: (userInbox: UserInbox) => Promise<UserInbox>;
 }
 
-export type ModelFactory = ChannelFactory |
-  ChannelInvitationFactory |
-  ChannelMessageFactory |
-  ChannelParticipantFactory |
-  UserFactory |
-  UserInboxFactory;
+export type ModelFactory =
+  | ChannelFactory
+  | ChannelInvitationFactory
+  | ChannelMessageFactory
+  | ChannelParticipantFactory
+  | UserFactory
+  | UserInboxFactory;

@@ -24,10 +24,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  find: async <T extends Model = Model>(
-    match: Partial<T>,
-    type: ModelType,
-  ): Promise<QueryResult<T>> => {
+  find: async <T extends Model = Model>(match: Partial<T>, type: ModelType): Promise<QueryResult<T>> => {
     if (_config?.dbType === DbType.mem) {
       return memStore.find<T>(match, type);
     }
@@ -51,10 +48,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  findById: <T extends Model>(
-    id: string,
-    modelType: ModelType,
-  ): Promise<QueryResult<T>> => {
+  findById: <T extends Model>(id: string, modelType: ModelType): Promise<QueryResult<T>> => {
     if (_config?.dbType === DbType.mem) {
       return memStore.findById<T>(id, modelType);
     }
@@ -66,10 +60,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  findOne: <T extends Model>(
-    match: Partial<T>,
-    modelType: ModelType,
-  ): Promise<QueryResult<T>> => {
+  findOne: <T extends Model>(match: Partial<T>, modelType: ModelType): Promise<QueryResult<T>> => {
     if (_config?.dbType === DbType.mem) {
       return memStore.findOne<T>(match, modelType);
     }
@@ -81,10 +72,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  init: async (
-    myUserId: string | null | undefined,
-    config: BgNodeClientConfig,
-  ): Promise<MyUser | null | undefined> => {
+  init: async (myUserId: string | null | undefined, config: BgNodeClientConfig): Promise<MyUser | null | undefined> => {
     _config = config;
 
     if (_config?.dbType === DbType.mem) {
@@ -130,7 +118,7 @@ const db: Db = {
     return false;
   },
 
-  libSignalStores: rxdbHelpers  .getLibSignalStores,
+  libSignalStores: rxdbHelpers.getLibSignalStores,
 
   replace: <T extends Model>(obj: T): Promise<MutationResult<T>> => {
     if (_config?.dbType === DbType.mem) {
@@ -144,10 +132,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  update: <T extends Model = Model>(
-    changes: Partial<T>,
-    modelType: ModelType,
-  ): Promise<MutationResult<T>> => {
+  update: <T extends Model = Model>(changes: Partial<T>, modelType: ModelType): Promise<MutationResult<T>> => {
     if (!changes.updatedAt) {
       changes.updatedAt = new Date().toISOString();
     }
@@ -162,6 +147,6 @@ const db: Db = {
 
     throw new Error('invalid-store-type');
   },
-}
+};
 
-export default db
+export default db;

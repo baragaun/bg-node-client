@@ -16,6 +16,6 @@ const createChannelParticipant = async (
       error: (error as Error).message,
     };
   }
-}
+};
 
-export default createChannelParticipant
+export default createChannelParticipant;

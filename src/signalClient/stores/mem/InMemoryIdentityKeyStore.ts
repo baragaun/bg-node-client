@@ -22,7 +22,7 @@ export class InMemoryIdentityKeyStore extends SignalClient.IdentityKeyStore {
   async isTrustedIdentity(
     name: SignalClient.ProtocolAddress,
     key: SignalClient.PublicKey,
-    _direction: SignalClient.Direction
+    _direction: SignalClient.Direction,
   ): Promise<boolean> {
     const idx = `${name.name()}::${name.deviceId()}`;
     const currentKey = this.idKeys.get(idx);
@@ -33,10 +33,7 @@ export class InMemoryIdentityKeyStore extends SignalClient.IdentityKeyStore {
     }
   }
 
-  async saveIdentity(
-    address: SignalClient.ProtocolAddress,
-    key: SignalClient.PublicKey
-  ): Promise<boolean> {
+  async saveIdentity(address: SignalClient.ProtocolAddress, key: SignalClient.PublicKey): Promise<boolean> {
     const idx = `${address.name()}::${address.deviceId()}`;
     const currentKey = this.idKeys.get(idx);
     if (currentKey) {
@@ -49,9 +46,7 @@ export class InMemoryIdentityKeyStore extends SignalClient.IdentityKeyStore {
     return false;
   }
 
-  async getIdentity(
-    name: SignalClient.ProtocolAddress
-  ): Promise<SignalClient.PublicKey | null> {
+  async getIdentity(name: SignalClient.ProtocolAddress): Promise<SignalClient.PublicKey | null> {
     const idx = `${name.name()}::${name.deviceId()}`;
     return this.idKeys.get(idx) ?? null;
   }

@@ -16,10 +16,7 @@ export class LibSignalStores {
   session: RxdbSessionStore;
 
   constructor(db: RxDatabase) {
-    this.identity = new RxdbIdentityKeyStore(
-      db.identityKeysCollection,
-      db.registrationCollection,
-    );
+    this.identity = new RxdbIdentityKeyStore(db.identityKeysCollection, db.registrationCollection);
     this.kyber = new RxdbKyberPreKeyStore(db.kyberPreKeysCollection);
     this.prekey = new RxdbPreKeyStore(db.preKeysCollection);
     this.sender = new RxdbSenderKeyStore(db.senderKeysCollection);

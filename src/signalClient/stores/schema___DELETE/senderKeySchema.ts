@@ -13,9 +13,9 @@ export const senderKeySchema: RxJsonSchema<SenderKeyDocument> = {
       maxLength: 100,
     },
     record: {
-      type: 'string' // JSON-serialized sender key record.
-    }
+      type: 'string', // JSON-serialized sender key record.
+    },
   },
   primaryKey: 'id',
-  required: ['id', 'record']
+  required: ['id', 'record'],
 };

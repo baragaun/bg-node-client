@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test } from 'vitest';
 
 import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { DbType, ModelType } from '../../types/enums.js';
@@ -11,7 +11,7 @@ const config: BgNodeClientConfig = {
   dbType: DbType.rxdb,
   inBrowser: false,
   debugMode: true,
-}
+};
 
 describe('signUpUser', () => {
   test('should sign up a user with valid input', async () => {
@@ -20,16 +20,9 @@ describe('signUpUser', () => {
     const password = chance.word();
     const email = chance.email();
 
-    const { object: user } = await client.signUpUser(
-      userHandle,
-      email,
-      password,
-    );
+    const { object: user } = await client.signUpUser(userHandle, email, password);
 
-    const {
-      object: reloadedUser,
-      error,
-    } = await findById<MyUser>(user.id, ModelType.MyUser)
+    const { object: reloadedUser, error } = await findById<MyUser>(user.id, ModelType.MyUser);
 
     expect(error).toBeUndefined();
     expect(reloadedUser.id).toBe(user.id);
