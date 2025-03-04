@@ -8,10 +8,7 @@ import getCollectionFromModelType from './helpers/getCollectionFromModelType.js'
 
 let _db: RxDatabase | undefined = undefined;
 
-const findOne = async <T extends Model = Model>(
-  match: Partial<T>,
-  modelType: ModelType,
-): Promise<QueryResult<T>> => {
+const findOne = async <T extends Model = Model>(match: Partial<T>, modelType: ModelType): Promise<QueryResult<T>> => {
   const result: QueryResult<T> = {};
 
   if (!_db) {
@@ -31,13 +28,15 @@ const findOne = async <T extends Model = Model>(
   }
 
   // todo: implement
-  const record = await collection.findOne({
-    selector: {
-      id: {
-        $eq: match.id,
+  const record = await collection
+    .findOne({
+      selector: {
+        id: {
+          $eq: match.id,
+        },
       },
-    },
-  }).exec();
+    })
+    .exec();
 
   return { object: record.toMutableJSON() ?? null };
 };

@@ -16,6 +16,6 @@ const createChannelInvitation = async (
       error: (error as Error).message,
     };
   }
-}
+};
 
-export default createChannelInvitation
+export default createChannelInvitation;

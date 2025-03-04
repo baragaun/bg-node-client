@@ -10,8 +10,8 @@ export const testConfig: BgNodeClientConfig = {
     headers: {
       'Content-Type': 'application/json',
       'x-authorization-auth-type': 'none',
-      'Authorization': 'Bearer none',
-      'x-device': 'f976d5673ba64a078107f01bc7cc9903'
-    }
-  }
+      Authorization: 'Bearer none',
+      'x-device': 'f976d5673ba64a078107f01bc7cc9903',
+    },
+  },
 };

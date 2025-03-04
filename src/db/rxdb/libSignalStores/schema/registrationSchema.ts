@@ -11,12 +11,12 @@ export const registrationSchema: RxJsonSchema<RegistrationDocument> = {
       maxLength: 100,
     },
     registrationId: {
-      type: 'number'
+      type: 'number',
     },
     privateKey: {
-      type: 'string' // base64 encoded private identity key
-    }
+      type: 'string', // base64 encoded private identity key
+    },
   },
   primaryKey: 'id',
-  required: ['id', 'registrationId', 'privateKey']
+  required: ['id', 'registrationId', 'privateKey'],
 };

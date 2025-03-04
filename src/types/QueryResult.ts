@@ -8,4 +8,3 @@ export interface QueryResult<T extends BaseModel = BaseModel> {
   objects?: T[];
   error?: string;
 }
-

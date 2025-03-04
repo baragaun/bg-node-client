@@ -1,9 +1,7 @@
 import { User } from '../types/models/User.js';
 import chance from '../helpers/chance.js';
 
-const createUser = (
-  attributes: Partial<User>,
-): User => {
+const createUser = (attributes: Partial<User>): User => {
   const user = new User(attributes);
 
   if (!user.id) {
@@ -39,6 +37,6 @@ const createUser = (
   }
 
   return user;
-}
+};
 
-export default createUser
+export default createUser;

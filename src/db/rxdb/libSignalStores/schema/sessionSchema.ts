@@ -12,9 +12,9 @@ export const sessionSchema: RxJsonSchema<SessionDocument> = {
       maxLength: 100,
     },
     record: {
-      type: 'string' // We'll store the session record as a JSON string.
-    }
+      type: 'string', // We'll store the session record as a JSON string.
+    },
   },
   primaryKey: 'address',
-  required: ['address', 'record']
+  required: ['address', 'record'],
 };

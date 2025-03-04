@@ -43,13 +43,9 @@ export class RxdbSessionStore extends SignalClient.SessionStore {
 
   // Retrieve existing sessions for an array of ProtocolAddress objects.
   async getExistingSessions(addresses: SignalClient.ProtocolAddress[]): Promise<SignalClient.SessionRecord[]> {
-    const addressStrings = addresses.map(addr => addr.toString());
-    const docs = await this.sessions
-      .find()
-      .where('address')
-      .in(addressStrings
-    ).exec();
+    const addressStrings = addresses.map((addr) => addr.toString());
+    const docs = await this.sessions.find().where('address').in(addressStrings).exec();
 
-    return docs.map(doc => JSON.parse(doc.record));
+    return docs.map((doc) => JSON.parse(doc.record));
   }
 }

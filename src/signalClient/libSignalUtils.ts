@@ -51,21 +51,16 @@ const chance = Chance();
  */
 export async function makeX3DHBundle(
   address: SignalClient.ProtocolAddress,
-  stores: LibSignalStores | LibSignalMemStores
+  stores: LibSignalStores | LibSignalMemStores,
 ): Promise<SignalClient.PreKeyBundle> {
   const identityKey = await stores.identity.getIdentityKey();
   const prekeyId = chance.natural({ max: 10000 });
   const prekey = SignalClient.PrivateKey.generate();
   const signedPrekeyId = chance.natural({ max: 10000 });
   const signedPrekey = SignalClient.PrivateKey.generate();
-  const signedPrekeySignature = identityKey.sign(
-    signedPrekey.getPublicKey().serialize()
-  );
+  const signedPrekeySignature = identityKey.sign(signedPrekey.getPublicKey().serialize());
 
-  await stores.prekey.savePreKey(
-    prekeyId,
-    SignalClient.PreKeyRecord.new(prekeyId, prekey.getPublicKey(), prekey)
-  );
+  await stores.prekey.savePreKey(prekeyId, SignalClient.PreKeyRecord.new(prekeyId, prekey.getPublicKey(), prekey));
 
   await stores.signed.saveSignedPreKey(
     signedPrekeyId,
@@ -74,8 +69,8 @@ export async function makeX3DHBundle(
       chance.timestamp(),
       signedPrekey.getPublicKey(),
       signedPrekey,
-      signedPrekeySignature
-    )
+      signedPrekeySignature,
+    ),
   );
 
   return SignalClient.PreKeyBundle.new(
@@ -86,7 +81,7 @@ export async function makeX3DHBundle(
     signedPrekeyId,
     signedPrekey.getPublicKey(),
     signedPrekeySignature,
-    identityKey.getPublicKey()
+    identityKey.getPublicKey(),
   );
 }
 
@@ -109,26 +104,19 @@ export async function makeX3DHBundle(
  */
 export async function makePQXDHBundle(
   address: SignalClient.ProtocolAddress,
-  stores: LibSignalStores | LibSignalMemStores
+  stores: LibSignalStores | LibSignalMemStores,
 ): Promise<SignalClient.PreKeyBundle> {
   const identityKey = await stores.identity.getIdentityKey();
   const prekeyId = chance.natural({ max: 10000 });
   const prekey = SignalClient.PrivateKey.generate();
   const signedPrekeyId = chance.natural({ max: 10000 });
   const signedPrekey = SignalClient.PrivateKey.generate();
-  const signedPrekeySignature = identityKey.sign(
-    signedPrekey.getPublicKey().serialize()
-  );
+  const signedPrekeySignature = identityKey.sign(signedPrekey.getPublicKey().serialize());
   const kyberPrekeyId = chance.natural({ max: 10000 });
   const kyberKeyPair = SignalClient.KEMKeyPair.generate();
-  const kyberPrekeySignature = identityKey.sign(
-    kyberKeyPair.getPublicKey().serialize()
-  );
+  const kyberPrekeySignature = identityKey.sign(kyberKeyPair.getPublicKey().serialize());
 
-  await stores.prekey.savePreKey(
-    prekeyId,
-    SignalClient.PreKeyRecord.new(prekeyId, prekey.getPublicKey(), prekey)
-  );
+  await stores.prekey.savePreKey(prekeyId, SignalClient.PreKeyRecord.new(prekeyId, prekey.getPublicKey(), prekey));
 
   await stores.signed.saveSignedPreKey(
     signedPrekeyId,
@@ -137,18 +125,13 @@ export async function makePQXDHBundle(
       chance.timestamp(),
       signedPrekey.getPublicKey(),
       signedPrekey,
-      signedPrekeySignature
-    )
+      signedPrekeySignature,
+    ),
   );
 
   await stores.kyber.saveKyberPreKey(
     kyberPrekeyId,
-    SignalClient.KyberPreKeyRecord.new(
-      kyberPrekeyId,
-      chance.timestamp(),
-      kyberKeyPair,
-      kyberPrekeySignature
-    )
+    SignalClient.KyberPreKeyRecord.new(kyberPrekeyId, chance.timestamp(), kyberKeyPair, kyberPrekeySignature),
   );
 
   return SignalClient.PreKeyBundle.new(
@@ -162,7 +145,7 @@ export async function makePQXDHBundle(
     identityKey.getPublicKey(),
     kyberPrekeyId,
     kyberKeyPair.getPublicKey(),
-    kyberPrekeySignature
+    kyberPrekeySignature,
   );
 }
 

@@ -8,10 +8,7 @@ import getCollectionFromModelType from './helpers/getCollectionFromModelType.js'
 
 let _db: RxDatabase | undefined = undefined;
 
-const findById = async <T extends Model = Model>(
-  id: string,
-  modelType: ModelType,
-): Promise<QueryResult<T>> => {
+const findById = async <T extends Model = Model>(id: string, modelType: ModelType): Promise<QueryResult<T>> => {
   const result: QueryResult<T> = {};
 
   if (!_db) {
@@ -37,7 +34,8 @@ const findById = async <T extends Model = Model>(
           $eq: id,
         },
       },
-    }).exec();
+    })
+    .exec();
 
   return { object: record.toMutableJSON() ?? null };
 };

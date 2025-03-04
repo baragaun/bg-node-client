@@ -29,13 +29,15 @@ const update = async <T extends Model = Model>(
     return result;
   }
 
-  const foundDocuments: RxDocument[] = await collection.find({
-    selector: {
-      id: {
-        $eq: changes.id
-      }
-    }
-  }).exec();
+  const foundDocuments: RxDocument[] = await collection
+    .find({
+      selector: {
+        id: {
+          $eq: changes.id,
+        },
+      },
+    })
+    .exec();
 
   if (foundDocuments.length === 0) {
     result.error = 'not-found';

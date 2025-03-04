@@ -1,4 +1,4 @@
-import { Channel } from '../types/models/Channel.js'
+import { Channel } from '../types/models/Channel.js';
 import { ChannelListFilter } from '../types/models/ChannelListFilter.js';
 import { ModelType } from '../types/enums.js';
 import { QueryResult } from '../types/QueryResult.js';
@@ -12,10 +12,7 @@ const findChannels = async (
 ): Promise<QueryResult<Channel>> => {
   try {
     if (Array.isArray(filter.ids) && filter.ids.length === 1) {
-      return db.findById<Channel>(
-        filter.ids[0],
-        ModelType.Channel,
-      );
+      return db.findById<Channel>(filter.ids[0], ModelType.Channel);
     }
 
     const { objects: channels } = await db.findAll<Channel>(ModelType.Channel);
@@ -32,7 +29,7 @@ const findChannels = async (
     }
 
     if (match.name) {
-      list = channels.filter(c => c.name && c.name.localeCompare(match.name as string) === 0);
+      list = channels.filter((c) => c.name && c.name.localeCompare(match.name as string) === 0);
     }
 
     if (skip > 0 && limit > 0) {
@@ -41,10 +38,10 @@ const findChannels = async (
 
     return {
       objects: list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
-    }
+    };
   } catch (error) {
     return { error: (error as Error).message };
   }
-}
+};
 
-export default findChannels
+export default findChannels;

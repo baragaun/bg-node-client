@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test } from 'vitest';
 
 import { Channel } from '../../types/models/Channel.js';
 import { ModelType } from '../../types/enums.js';
@@ -14,15 +14,12 @@ describe('createChannel', () => {
     // const users = await factories.user.create({}, {}, 2) as User[]
     // const userIds = users.map(u => u.id)
     // const channelProps = await factories.channel.build({ userIds })
-    const channelProps = await factories.channel.build({})
+    const channelProps = await factories.channel.build({});
 
     const { object: channel } = await client.createChannel(channelProps);
-    const {
-      object: reloadedChannel,
-      error,
-    } = await findById<Channel>(channel.id, ModelType.Channel)
+    const { object: reloadedChannel, error } = await findById<Channel>(channel.id, ModelType.Channel);
 
-    expect(error).toBeUndefined()
+    expect(error).toBeUndefined();
     expect(reloadedChannel.id).toBe(channel.id);
     expect(reloadedChannel.name).toBe(channel.name);
     expect(reloadedChannel.topic).toBe(channel.topic);

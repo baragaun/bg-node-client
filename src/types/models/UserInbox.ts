@@ -6,14 +6,14 @@ export class UserInbox extends BaseModel {
   public channels?: BgChannelInbox | null;
 
   constructor(attributes?: Partial<UserInbox>) {
-    super(attributes)
+    super(attributes);
 
     if (attributes) {
       if (attributes.userId) {
-        this.userId = attributes.userId
+        this.userId = attributes.userId;
       }
       if (attributes.channels) {
-        this.channels = attributes.channels
+        this.channels = attributes.channels;
       }
     }
   }

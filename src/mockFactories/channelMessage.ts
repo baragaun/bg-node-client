@@ -2,10 +2,7 @@ import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { User } from '../types/models/User.js';
 import chance from '../helpers/chance.js';
 
-const createMessage = (
-  attributes: Partial<ChannelMessage>,
-  sender?: User,
-): ChannelMessage => {
+const createMessage = (attributes: Partial<ChannelMessage>, sender?: User): ChannelMessage => {
   const message = new ChannelMessage(attributes);
 
   if (!message.id) {
@@ -42,10 +39,10 @@ const createMessage = (
       senderFirstName: sender.firstName,
       senderLastName: sender.lastName,
       senderAvatarUrl: sender.avatarUrl,
-    }
+    };
   }
 
   return message;
-}
+};
 
-export default createMessage
+export default createMessage;

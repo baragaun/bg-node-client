@@ -42,7 +42,7 @@ export interface BgNodeClientConfig {
   libSignal?: {
     enable: boolean;
     registrationId: number;
-  }
+  };
 
   inBrowser: boolean;
 }

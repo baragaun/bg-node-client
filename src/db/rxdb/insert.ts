@@ -9,9 +9,7 @@ import getCollectionFromModelType from './helpers/getCollectionFromModelType.js'
 
 let _db: RxDatabase | undefined = undefined;
 
-const insert = async <T extends Model = Model>(
-  obj: T,
-): Promise<MutationResult<T>> => {
+const insert = async <T extends Model = Model>(obj: T): Promise<MutationResult<T>> => {
   const result: MutationResult<T> = { operation: MutationType.create };
 
   if (!_db) {
