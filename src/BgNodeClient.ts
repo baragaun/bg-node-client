@@ -33,19 +33,27 @@ import updateChannelMessageFunc from './operations/updateChannelMessage.js';
 import updateChannelParticipantFunc from './operations/updateChannelParticipant.js';
 
 export class BgNodeClient {
-  private config: BgNodeClientConfig;
-  private listeners: BgDataListener[] = [];
+  private _config: BgNodeClientConfig;
+  private _listeners: BgDataListener[] = [];
+  private _userId: string | null | undefined;
 
-  public constructor(config: BgNodeClientConfig) {
-    this.config = config;
+  public constructor(
+    userId: string | null | undefined,
+    config: BgNodeClientConfig,
+  ) {
+    this._config = config;
+    this._userId = userId;
 
-    if (!this.config.dbType) {
-      this.config.dbType = DbType.mem;
+    if (!this._config.dbType) {
+      this._config.dbType = DbType.mem;
     }
   }
 
   public async init(userId: string | null | undefined): Promise<void> {
-    await db.init(userId, this.config);
+    if (userId) {
+      this._userId = userId;
+    }
+    await db.init(this._userId, this._config);
   }
 
   public factories = factories;
@@ -56,11 +64,11 @@ export class BgNodeClient {
    * @param listener - The listener to be added.
    */
   public addListener(listener: BgDataListener): void {
-    if (this.listeners.some((l) => l.id === listener.id)) {
+    if (this._listeners.some((l) => l.id === listener.id)) {
       throw new Error(`Listener with id ${listener.id} already exists.`);
     }
 
-    this.listeners.push(listener);
+    this._listeners.push(listener);
   }
 
   /**
@@ -68,9 +76,9 @@ export class BgNodeClient {
    * @param listener - The listener to be removed.
    */
   public removeListener(id: string): void {
-    const index = this.listeners.findIndex((l) => l.id === id);
+    const index = this._listeners.findIndex((l) => l.id === id);
     if (index > -1) {
-      this.listeners.splice(index, 1);
+      this._listeners.splice(index, 1);
     }
   }
 
@@ -84,7 +92,7 @@ export class BgNodeClient {
     const result = await createChannelFunc(channel);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelCreated) {
             listener.onChannelCreated(result)
@@ -106,7 +114,7 @@ export class BgNodeClient {
     const result = await createChannelMessageFunc(channelMessage);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelMessageCreated) {
             listener.onChannelMessageCreated(result)
@@ -152,7 +160,7 @@ export class BgNodeClient {
     const result = await deleteChannelFunc(id);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelDeleted) {
             listener.onChannelDeleted(result)
@@ -174,7 +182,7 @@ export class BgNodeClient {
     const result = await deleteChannelInvitationFunc(id);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelInvitationDeleted) {
             listener.onChannelInvitationDeleted(result)
@@ -196,7 +204,7 @@ export class BgNodeClient {
     const result = await deleteChannelMessageFunc(id);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelMessageDeleted) {
             listener.onChannelMessageDeleted(result)
@@ -347,7 +355,7 @@ export class BgNodeClient {
     const result = await updateChannelFunc(channel);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelUpdated) {
             listener.onChannelUpdated(result)
@@ -369,7 +377,7 @@ export class BgNodeClient {
     const result = await updateChannelInvitationFunc(channelInvitation);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelInvitationUpdated) {
             listener.onChannelInvitationUpdated(result)
@@ -391,7 +399,7 @@ export class BgNodeClient {
     const result = await updateChannelMessageFunc(channelMessage);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelMessageUpdated) {
             listener.onChannelMessageUpdated(result)
@@ -413,7 +421,7 @@ export class BgNodeClient {
     const result = await updateChannelParticipantFunc(channelParticipant);
 
     if (!result.error) {
-      this.listeners.forEach(
+      this._listeners.forEach(
         (listener) => {
           if (listener.onChannelParticipantUpdated) {
             listener.onChannelParticipantUpdated(result)

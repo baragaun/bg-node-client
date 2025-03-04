@@ -14,9 +14,10 @@ import { MutationResult } from './types/MutationResult.js';
 import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
 export declare class BgNodeClient {
-    private config;
-    private listeners;
-    constructor(config: BgNodeClientConfig);
+    private _config;
+    private _listeners;
+    private _userId;
+    constructor(userId: string | null | undefined, config: BgNodeClientConfig);
     init(userId: string | null | undefined): Promise<void>;
     factories: {
         channel: import("./test/factories/definitions.js").ChannelFactory;

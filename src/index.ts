@@ -5,7 +5,7 @@ export const init = async (
   userId: string | null | undefined,
   config: BgNodeClientConfig,
 ): Promise<BgNodeClient> => {
-  const client = new BgNodeClient(config);
+  const client = new BgNodeClient(userId, config);
 
   await client.init(userId);
 
