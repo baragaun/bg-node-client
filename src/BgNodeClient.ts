@@ -37,6 +37,7 @@ import updateChannelParticipantFunc from './operations/updateChannelParticipant.
 import findMyUserQuery from './graphql/queries/findMyUser.js'
 import signInUserFunc from './operations/signInUser.js'
 import { UserIdentType } from './graphql/gql/graphql.js';
+import { v4 as uuidv4 } from 'uuid';
 
 export class BgNodeClient {
   private _config: BgNodeClientConfig;
@@ -49,6 +50,17 @@ export class BgNodeClient {
     myUserId: string | null | undefined,
     config: BgNodeClientConfig,
   ) {
+    // Set default headers if not provided
+    if (!config.api.headers) {
+      const deviceId = uuidv4();
+      config.api.headers = {
+        'Content-Type': 'application/json',
+        'x-authorization-auth-type': 'token',
+        'x-device': deviceId,
+        ...(myUserId ? { 'x-user-id': myUserId } : {})
+      };
+    }
+
     this._config = config;
 
     if (!this._config.dbType) {
@@ -450,6 +462,8 @@ export class BgNodeClient {
       email,
       password,
     );
+
+    console.log('signUpUser: result', result);
 
     if (!result.error) {
       // Success:

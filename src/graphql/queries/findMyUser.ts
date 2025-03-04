@@ -1,19 +1,12 @@
-import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql'
-
+import { createGraffleClient } from '../utils/createGraffleClient.js';
 import { MyUser } from '../../types/models/MyUser.js';
 
 type Document = TypedQueryDocumentNode<MyUser>
 
 // see: https://graffle.js.org/guides/topics/requests
 const findMyUser = async (): Promise<MyUser> => {
-  const graffle = Graffle
-    .create()
-    .transport({
-      url: `http://localhost:8092/fsdata/api/graphql`,
-    })
-  //   // .use(Throws())
-  //   // .use(Opentelemetry())
+  const graffle = createGraffleClient();
 
   const document = parse(`
     query getMyUser {

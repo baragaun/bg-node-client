@@ -1,22 +1,17 @@
 import { describe, expect, test } from 'vitest'
 
-import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { Channel } from '../../types/models/Channel.js';
-import { DbType, ModelType } from '../../types/enums.js';
+import { ModelType } from '../../types/enums.js';
 import { init } from '../../index.js';
 // import { User } from '../../types/models/User.js';
 import findById from '../../operations/findById.js';
 import factories from '../factories/factories.js';
+import { testConfig } from '../testConfig.js';
 
-const config: BgNodeClientConfig = {
-  dbType: DbType.rxdb,
-  inBrowser: false,
-  debugMode: true,
-}
 
 describe('updateChannel', () => {
   test('should update channel properties', async () => {
-    const client = await init(null, config);
+    const client = await init(null, testConfig);
     const channelProps = await factories.channel.build({})
 
     const { object: channel } = await client.createChannel(channelProps);

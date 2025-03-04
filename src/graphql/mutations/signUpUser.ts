@@ -1,7 +1,7 @@
-import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql'
 
 import { SignUpUserInput, UserAuthResponse } from '../gql/graphql.js';
+import { createGraffleClient } from '../utils/createGraffleClient.js';
 
 type Document = TypedQueryDocumentNode<UserAuthResponse, SignUpUserInput>
 
@@ -9,11 +9,7 @@ type Document = TypedQueryDocumentNode<UserAuthResponse, SignUpUserInput>
 const signUpUser = async (
   input: SignUpUserInput,
 ): Promise<UserAuthResponse> => {
-  const graffle = Graffle
-    .create()
-    .transport({
-      url: `http://localhost:8092/fsdata/api/graphql`,
-    })
+ const graffle = createGraffleClient();
   //   // .use(Throws())
   //   // .use(Opentelemetry())
 
@@ -24,17 +20,17 @@ const signUpUser = async (
         authToken
       }
     }
-  `) as Document
+  `) as Document;
 
-  const data = await graffle.gql(document).send(input) as UserAuthResponse;
-
-  // const endpoint = 'http://localhost:8092/fsdata/api/graphql';
-  // const client = new GraphQLClient(endpoint);
-  // const data = await client.request(document, { input });
-
-  console.log(data)
-
-  return data;
+  try {
+    console.log('Sending signUpUser mutation with input:', input);
+    const data = await graffle.gql(document).send({ input }) as UserAuthResponse;
+    console.log('SignUpUser response:', data);
+    return data;
+  } catch (error) {
+    console.error('SignUpUser mutation error:', error);
+    throw error;
+  }
 };
 
 export default signUpUser;

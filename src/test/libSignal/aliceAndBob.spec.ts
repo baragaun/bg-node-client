@@ -4,29 +4,23 @@ import { makePQXDHBundle, makeX3DHBundle } from '../../signalClient/libSignalUti
 import SignalClient from '@signalapp/libsignal-client';
 
 import type { ChannelMessage, User } from '../../signalClient/types.js';
-import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
-import { DbType } from '../../types/enums.js';
 import { init } from '../../index.js';
 import { jsonToPreKeyBundle } from '../../signalClient/jsonToPreKeyBundle.js';
 // import { LibSignalMemStores } from '../../libSignal/stores/mem/LibSignalMemStores.js';
 // import { LibSignalStores } from '../../libSignal/stores/rxdb/LibSignalStores.js';
 import { preKeyBundleToJSON } from '../../signalClient/preKeyBundleToJSON.js';
+import { testConfig } from '../testConfig.js';
 
-const config: BgNodeClientConfig = {
-  dbType: DbType.rxdb,
-  inBrowser: false,
-  debugMode: true,
-}
 
 const useX3DH = true;
 
 describe('libSignal', () => {
   // see: https://signal.org/docs/specifications/x3dh/
   test('should exchange end-to-end encrypted messages', async () => {
-    const clientAlice = await init(null, { ...config, dbName: 'alice' });
+    const clientAlice = await init(null, { ...testConfig, dbName: 'alice' });
     expect(clientAlice).toBeDefined();
 
-    const clientBob = await init(null, { ...config, dbName: 'bob' });
+    const clientBob = await init(null, { ...testConfig, dbName: 'bob' });
     expect(clientBob).toBeDefined();
 
     const alice: User = { id: crypto.randomUUID().replaceAll('-', ''), firstName: 'Alice' };

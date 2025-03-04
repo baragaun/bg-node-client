@@ -1,7 +1,7 @@
-import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql'
 
 import { SignInUserInput, UserAuthResponse } from '../gql/graphql.js';
+import { createGraffleClient } from '../utils/createGraffleClient.js';
 
 type Document = TypedQueryDocumentNode<UserAuthResponse, SignInUserInput>
 
@@ -9,17 +9,13 @@ type Document = TypedQueryDocumentNode<UserAuthResponse, SignInUserInput>
 const SignInUser = async (
   input: SignInUserInput,
 ): Promise<UserAuthResponse> => {
-  const graffle = Graffle
-    .create()
-    .transport({
-      url: `http://localhost:8092/fsdata/api/graphql`,
-    })
+ const graffle = createGraffleClient();
   //   // .use(Throws())
   //   // .use(Opentelemetry())
 
   const document = parse(`
     mutation SignInUser ($input: SignInUserInput!) {
-      SignInUser (input: $input) {
+      signInUser (input: $input) {
         id
         authToken
       }
