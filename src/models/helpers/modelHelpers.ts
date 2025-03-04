@@ -13,10 +13,7 @@ import formatChannelParticipantForDb from './formatChannelParticipantForDb.js';
 import formatUserForDb from './formatUserForDb.js';
 import formatUserInboxForDb from './formatUserInboxForDb.js';
 
-const formatObjectForDb = <T extends Model>(
-  obj: Partial<T>,
-  modelType: ModelType,
-): Partial<T> => {
+const formatObjectForDb = <T extends Model>(obj: Partial<T>, modelType: ModelType): Partial<T> => {
   switch (modelType) {
     case ModelType.Channel:
       return formatChannelForDb(obj as Partial<Channel>) as Partial<T>;
@@ -33,10 +30,10 @@ const formatObjectForDb = <T extends Model>(
     default:
       throw new Error(`Unknown model type: ${modelType}`);
   }
-}
+};
 
 const modelHelpers = {
   formatObjectForDb,
-}
+};
 
 export default modelHelpers;

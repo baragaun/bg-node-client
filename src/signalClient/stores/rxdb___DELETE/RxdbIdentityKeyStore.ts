@@ -1,10 +1,6 @@
 import { RxCollection } from 'rxdb';
 
-import {
-  fromBase64ToPrivateKey,
-  fromBase64ToPublicKey,
-  fromPublicKeyToBase64,
-} from './helpers.js';
+import { fromBase64ToPrivateKey, fromBase64ToPublicKey, fromPublicKeyToBase64 } from './helpers.js';
 import { IdentityKeyDocument, RegistrationDocument } from '../../types.js';
 import SignalClient from '@signalapp/libsignal-client';
 
@@ -13,10 +9,7 @@ export class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
   private identityKeys: RxCollection<IdentityKeyDocument>;
   private registration: RxCollection<RegistrationDocument>;
 
-  constructor(
-    identityKeys: RxCollection<IdentityKeyDocument>,
-    registration: RxCollection<RegistrationDocument>,
-  ) {
+  constructor(identityKeys: RxCollection<IdentityKeyDocument>, registration: RxCollection<RegistrationDocument>) {
     super();
     this.identityKeys = identityKeys;
     this.registration = registration;

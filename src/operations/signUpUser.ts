@@ -13,14 +13,14 @@ const signUpUser = async (
       userHandle,
       email,
       password,
-    }
+    };
 
     const authResponse = await signUpUserMutation(input);
 
     return {
       operation: MutationType.create,
       object: authResponse,
-    }
+    };
   } catch (error) {
     console.error(error);
     return {
@@ -28,6 +28,6 @@ const signUpUser = async (
       error: (error as Error).message,
     };
   }
-}
+};
 
-export default signUpUser
+export default signUpUser;

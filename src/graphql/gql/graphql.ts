@@ -7,13 +7,13 @@ export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> =
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.This scalar is serialized to a string in ISO 8601 format and parsed from a string in ISO 8601 format. */
-  DateTimeISO: { input: any; output: any; }
+  DateTimeISO: { input: any; output: any };
 };
 
 export type AcademicExperience = {
@@ -152,7 +152,7 @@ export type AdminTaskInput = {
 
 export enum AdminTaskResult {
   Error = 'error',
-  Ok = 'ok'
+  Ok = 'ok',
 }
 
 export enum AdminTaskType {
@@ -195,18 +195,18 @@ export enum AdminTaskType {
   Unset = 'unset',
   UpdateChannelMetadata = 'updateChannelMetadata',
   UpdateGroupIdentsInAllGroupMemberships = 'updateGroupIdentsInAllGroupMemberships',
-  VerifyUserPassword = 'verifyUserPassword'
+  VerifyUserPassword = 'verifyUserPassword',
 }
 
 export enum AppAction {
   EditProfile = 'editProfile',
   Unset = 'unset',
-  UpdateApp = 'updateApp'
+  UpdateApp = 'updateApp',
 }
 
 export enum AppFeature {
   TestFeatures1 = 'testFeatures1',
-  TestFeatures2 = 'testFeatures2'
+  TestFeatures2 = 'testFeatures2',
 }
 
 export type AppliedGroupRule = {
@@ -246,7 +246,7 @@ export type AppliedGroupRuleInput = {
 
 export enum AssetHostingService {
   S3 = 's3',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export enum AuthType {
@@ -254,7 +254,7 @@ export enum AuthType {
   None = 'none',
   Oauth = 'oauth',
   Saml = 'saml',
-  Token = 'token'
+  Token = 'token',
 }
 
 export type BaseModel = {
@@ -430,7 +430,7 @@ export enum ChannelChangedEventType {
   MessageUpdated = 'messageUpdated',
   ParticipantCreated = 'participantCreated',
   ParticipantDeleted = 'participantDeleted',
-  ParticipantUpdated = 'participantUpdated'
+  ParticipantUpdated = 'participantUpdated',
 }
 
 export type ChannelInbox = {
@@ -558,7 +558,7 @@ export type ChannelInvitation = {
 
 export enum ChannelInvitationDirection {
   Received = 'received',
-  Sent = 'sent'
+  Sent = 'sent',
 }
 
 export type ChannelInvitationInput = {
@@ -598,7 +598,7 @@ export enum ChannelInvitationStatus {
   Accepted = 'accepted',
   Created = 'created',
   Declined = 'declined',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export type ChannelListFilter = {
@@ -647,7 +647,7 @@ export type ChannelMessage = {
 export enum ChannelMessageEvent {
   Received = 'received',
   Seen = 'seen',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export type ChannelMessageInput = {
@@ -721,7 +721,7 @@ export type ChannelMessageStatusInput = {
 export enum ChannelMessageType {
   Invitation = 'invitation',
   System = 'system',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export type ChannelMetadata = {
@@ -782,13 +782,13 @@ export enum ChannelParticipantRole {
   Moderator = 'moderator',
   Owner = 'owner',
   System = 'system',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export enum ChannelType {
   Mentoring = 'mentoring',
   System = 'system',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export type ChannelsUserMetadata = {
@@ -1143,7 +1143,7 @@ export type ContentTagType = {
 export enum CookieChoiceTextId {
   AcceptAll = 'acceptAll',
   AcceptEssentials = 'acceptEssentials',
-  RejectAll = 'rejectAll'
+  RejectAll = 'rejectAll',
 }
 
 export type Country = {
@@ -1228,7 +1228,7 @@ export enum DeclineChannelInvitationReasonTextId {
   Inappropriate = 'inappropriate',
   NoReason = 'noReason',
   NotGoodFit = 'notGoodFit',
-  TooBusy = 'tooBusy'
+  TooBusy = 'tooBusy',
 }
 
 export type EducationLevel = {
@@ -1375,7 +1375,7 @@ export enum ErrorCode {
   UserAlreadyExists = 'userAlreadyExists',
   UserDeviceNotFound = 'userDeviceNotFound',
   UserNotActive = 'userNotActive',
-  UserNotFound = 'userNotFound'
+  UserNotFound = 'userNotFound',
 }
 
 export type ErrorCodeOption = {
@@ -1456,7 +1456,7 @@ export type Expertise = {
 
 export enum FederatedIdentityProvider {
   Firebase = 'firebase',
-  None = 'none'
+  None = 'none',
 }
 
 export type FindObjectsOptions = {
@@ -1655,7 +1655,7 @@ export enum GroupMembershipRole {
   Admin = 'admin',
   Coordinator = 'coordinator',
   Moderator = 'moderator',
-  Owner = 'owner'
+  Owner = 'owner',
 }
 
 export type GroupRuleBaseConfig = {
@@ -1684,7 +1684,7 @@ export enum GroupRuleEventType {
   SignUp = 'signUp',
   Unknown = 'unknown',
   UpdateUser = 'updateUser',
-  UserSearch = 'userSearch'
+  UserSearch = 'userSearch',
 }
 
 export type GroupsUserMetadata = {
@@ -1712,13 +1712,13 @@ export enum IdentityProvider {
   Sso = 'sso',
   Telegram = 'telegram',
   Twitter = 'twitter',
-  WhatsApp = 'whatsApp'
+  WhatsApp = 'whatsApp',
 }
 
 export enum IncludeFilterOption {
   Exclude = 'exclude',
   Include = 'include',
-  Only = 'only'
+  Only = 'only',
 }
 
 export type IndonesianCity = {
@@ -2203,7 +2203,7 @@ export type ModelEventInput = {
 export enum ModelEventType {
   Error = 'error',
   Info = 'info',
-  Warning = 'warning'
+  Warning = 'warning',
 }
 
 export enum ModelType {
@@ -2251,7 +2251,7 @@ export enum ModelType {
   UserPreferences = 'UserPreferences',
   UserSearch = 'UserSearch',
   UserTracking = 'UserTracking',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export type ModerationConcern = {
@@ -2335,7 +2335,7 @@ export type ModerationConcernInput = {
 
 export enum ModerationConcernType {
   Phrase = 'phrase',
-  Unknown = 'unknown'
+  Unknown = 'unknown',
 }
 
 export type MultiStepActionError = {
@@ -2394,19 +2394,19 @@ export enum MultiStepActionResult {
   Unset = 'unset',
   UserFailedValidation = 'userFailedValidation',
   UserNotFound = 'userNotFound',
-  UserNotSignedIn = 'userNotSignedIn'
+  UserNotSignedIn = 'userNotSignedIn',
 }
 
 export enum MultiStepActionSendNotificationResult {
   Failed = 'failed',
   Ok = 'ok',
-  PhoneNumberInvalid = 'phoneNumberInvalid'
+  PhoneNumberInvalid = 'phoneNumberInvalid',
 }
 
 export enum MultiStepActionStatus {
   Created = 'created',
   Finished = 'finished',
-  Started = 'started'
+  Started = 'started',
 }
 
 export enum MultiStepActionType {
@@ -2418,7 +2418,7 @@ export enum MultiStepActionType {
   UpdatePhoneNumber = 'updatePhoneNumber',
   VerifyEmail = 'verifyEmail',
   VerifyPhoneNumber = 'verifyPhoneNumber',
-  VerifyPhoneSignupOnSignup = 'verifyPhoneSignupOnSignup'
+  VerifyPhoneSignupOnSignup = 'verifyPhoneSignupOnSignup',
 }
 
 export type Mutation = {
@@ -2521,16 +2521,13 @@ export type Mutation = {
   verifyOneTimeAuthToken: Scalars['Boolean']['output'];
 };
 
-
 export type MutationAcceptChannelInvitationArgs = {
   channelInvitationId: Scalars['String']['input'];
 };
 
-
 export type MutationAddChannelMessageEventArgs = {
   input: BgAddChannelMessageEventInput;
 };
-
 
 export type MutationAddUserToGroupArgs = {
   groupId?: InputMaybe<Scalars['String']['input']>;
@@ -2539,16 +2536,13 @@ export type MutationAddUserToGroupArgs = {
   userId: Scalars['String']['input'];
 };
 
-
 export type MutationArchiveChannelForMeArgs = {
   channelId: Scalars['String']['input'];
 };
 
-
 export type MutationBlockUserArgs = {
   input: UserBlockInput;
 };
-
 
 export type MutationBlockUserForMeArgs = {
   notes?: InputMaybe<Scalars['String']['input']>;
@@ -2556,251 +2550,205 @@ export type MutationBlockUserForMeArgs = {
   userId: Scalars['String']['input'];
 };
 
-
 export type MutationBlockUserForMeV2Args = {
   notes?: InputMaybe<Scalars['String']['input']>;
   reasonTextId?: InputMaybe<Scalars['String']['input']>;
   userId: Scalars['String']['input'];
 };
 
-
 export type MutationBlockUserV2Args = {
   input: UserBlockInput;
 };
-
 
 export type MutationCreateAcademicExperienceArgs = {
   input: AcademicExperienceInput;
 };
 
-
 export type MutationCreateAdminTaskArgs = {
   adminTaskInput: AdminTaskInput;
 };
-
 
 export type MutationCreateBusinessExperienceArgs = {
   input: BusinessExperienceInput;
 };
 
-
 export type MutationCreateChannelArgs = {
   input: ChannelInput;
 };
-
 
 export type MutationCreateChannelInvitationArgs = {
   input: ChannelInvitationInput;
 };
 
-
 export type MutationCreateChannelMessageArgs = {
   input: ChannelMessageInput;
 };
-
 
 export type MutationCreateChannelParticipantArgs = {
   input: ChannelParticipantInput;
 };
 
-
 export type MutationCreateCompanyArgs = {
   input: CompanyInput;
 };
-
 
 export type MutationCreateContactArgs = {
   input: ContactInput;
 };
 
-
 export type MutationCreateContentTagArgs = {
   input: ContentTagInput;
 };
-
 
 export type MutationCreateGroupArgs = {
   input: GroupInput;
 };
 
-
 export type MutationCreateGroupMembershipArgs = {
   input: GroupMembershipInput;
 };
-
 
 export type MutationCreateMenteesGroupMembershipArgs = {
   input: MenteesGroupMembershipInput;
 };
 
-
 export type MutationCreateMentorsGroupMembershipArgs = {
   input: MentorsGroupMembershipInput;
 };
-
 
 export type MutationCreateMultiStepActionArgs = {
   input: SidMultiStepActionInput;
 };
 
-
 export type MutationCreateNotificationArgs = {
   notificationInput: NotificationInput;
 };
-
 
 export type MutationCreateNotificationTemplateArgs = {
   notificationTemplateInput: NotificationTemplateInput;
 };
 
-
 export type MutationCreateUploadedAssetArgs = {
   input: UploadedAssetInput;
 };
-
 
 export type MutationCreateUserDeviceArgs = {
   input: UserDeviceInput;
 };
 
-
 export type MutationCreateUserSearchArgs = {
   input: UserSearchInput;
 };
 
-
 export type MutationCreateUserTrackingArgs = {
   input: UserTrackingInput;
 };
-
 
 export type MutationDeclineChannelInvitationArgs = {
   channelInvitationId: Scalars['String']['input'];
   reasonTextId: DeclineChannelInvitationReasonTextId;
 };
 
-
 export type MutationDeleteAcademicExperienceArgs = {
   academicExperienceId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
-
 
 export type MutationDeleteAdminTaskArgs = {
   adminTaskId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
 
-
 export type MutationDeleteBusinessExperienceArgs = {
   businessExperienceId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
-
 
 export type MutationDeleteChannelArgs = {
   channelId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
 
-
 export type MutationDeleteChannelInvitationArgs = {
   channelInvitationId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
-
 
 export type MutationDeleteChannelMessageArgs = {
   channelMessageId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
 
-
 export type MutationDeleteChannelParticipantArgs = {
   channelParticipantId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
-
 
 export type MutationDeleteCompanyArgs = {
   companyId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
 
-
 export type MutationDeleteContentTagArgs = {
   contentTagId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
-
 
 export type MutationDeleteGroupArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   groupId: Scalars['String']['input'];
 };
 
-
 export type MutationDeleteGroupMembershipArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   groupMembershipId: Scalars['String']['input'];
 };
-
 
 export type MutationDeleteNotificationArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   notificationId: Scalars['String']['input'];
 };
 
-
 export type MutationDeleteNotificationTemplateArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   notificationTemplateId: Scalars['String']['input'];
 };
-
 
 export type MutationDeleteUploadedAssetArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   id: Scalars['String']['input'];
 };
 
-
 export type MutationDeleteUserArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   userId: Scalars['String']['input'];
 };
-
 
 export type MutationDeleteUserSearchArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   userSearchId: Scalars['String']['input'];
 };
 
-
 export type MutationDismissChannelInvitationFromInboxArgs = {
   channelInvitationId: Scalars['String']['input'];
 };
-
 
 export type MutationEndMySessionArgs = {
   deviceUuid: Scalars['String']['input'];
 };
 
-
 export type MutationInitAssetUploadArgs = {
   input: UploadedAssetInput;
 };
-
 
 export type MutationMarkChannelMessagesAsSeenByMeArgs = {
   channelId: Scalars['String']['input'];
 };
 
-
 export type MutationMarkInAppMessageReceivedArgs = {
   actionTaken: AppAction;
   notificationId: Scalars['String']['input'];
 };
-
 
 export type MutationRemoveUserFromGroupArgs = {
   force: Scalars['Boolean']['input'];
@@ -2809,194 +2757,156 @@ export type MutationRemoveUserFromGroupArgs = {
   userId: Scalars['String']['input'];
 };
 
-
 export type MutationReportUserArgs = {
   input: ReportUserInput;
 };
-
 
 export type MutationRunAdminTaskArgs = {
   adminTaskId: Scalars['String']['input'];
 };
 
-
 export type MutationSendMultiStepActionNotificationArgs = {
   input: SendMultiStepActionNotificationInput;
 };
-
 
 export type MutationSignInOauthUserArgs = {
   input: SignInOauthUserInput;
 };
 
-
 export type MutationSignInUserArgs = {
   input: SignInUserInput;
 };
 
-
 export type MutationSignUpUserArgs = {
   input: SignUpUserInput;
 };
-
 
 export type MutationStartMySessionArgs = {
   deviceUuid: Scalars['String']['input'];
   pushNotificationToken?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type MutationStartResetPasswordArgs = {
   input: UserIdentInput;
 };
-
 
 export type MutationStartVerifyEmailArgs = {
   email: Scalars['String']['input'];
 };
 
-
 export type MutationStartVerifyPhoneNumberArgs = {
   phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type MutationUnarchiveChannelForMeArgs = {
   channelId: Scalars['String']['input'];
 };
-
 
 export type MutationUnblockUserArgs = {
   blockedByUserId: Scalars['String']['input'];
   userId: Scalars['String']['input'];
 };
 
-
 export type MutationUnblockUserForMeArgs = {
   userId: Scalars['String']['input'];
 };
 
-
 export type MutationUnblockUserForMeV2Args = {
   userId: Scalars['String']['input'];
 };
-
 
 export type MutationUnblockUserV2Args = {
   blockedByUserId: Scalars['String']['input'];
   userId: Scalars['String']['input'];
 };
 
-
 export type MutationUpdateAcademicExperienceArgs = {
   input: AcademicExperienceInput;
 };
-
 
 export type MutationUpdateAdminTaskArgs = {
   adminTaskInput: AdminTaskInput;
 };
 
-
 export type MutationUpdateBusinessExperienceArgs = {
   input: BusinessExperienceInput;
 };
-
 
 export type MutationUpdateChannelArgs = {
   input: ChannelInput;
 };
 
-
 export type MutationUpdateChannelInvitationArgs = {
   input: ChannelInvitationInput;
 };
-
 
 export type MutationUpdateChannelMessageArgs = {
   input: ChannelMessageInput;
 };
 
-
 export type MutationUpdateChannelParticipantArgs = {
   input: ChannelParticipantInput;
 };
-
 
 export type MutationUpdateCompanyArgs = {
   input: CompanyInput;
 };
 
-
 export type MutationUpdateContactArgs = {
   input: ContactInput;
 };
-
 
 export type MutationUpdateContentTagArgs = {
   input: ContentTagInput;
 };
 
-
 export type MutationUpdateGroupArgs = {
   input: GroupInput;
 };
-
 
 export type MutationUpdateGroupMembershipArgs = {
   input: GroupMembershipInput;
 };
 
-
 export type MutationUpdateIqlaaGroupMembershipArgs = {
   input: IqlaaGroupMembershipInput;
 };
-
 
 export type MutationUpdateMenteesGroupMembershipArgs = {
   input: MenteesGroupMembershipInput;
 };
 
-
 export type MutationUpdateMentorsGroupMembershipArgs = {
   input: MentorsGroupMembershipInput;
 };
-
 
 export type MutationUpdateNotificationArgs = {
   notificationInput: NotificationInput;
 };
 
-
 export type MutationUpdateNotificationTemplateArgs = {
   notificationTemplateInput: NotificationTemplateInput;
 };
-
 
 export type MutationUpdateUploadedAssetArgs = {
   input: UploadedAssetInput;
 };
 
-
 export type MutationUpdateUserArgs = {
   input: UserInput;
 };
-
 
 export type MutationUpdateUserDeviceArgs = {
   input: UserDeviceInput;
 };
 
-
 export type MutationUpdateUserSearchArgs = {
   input: UserSearchInput;
 };
 
-
 export type MutationVerifyMultiStepActionTokenArgs = {
   input: VerifyMultiStepActionTokenInput;
 };
-
 
 export type MutationVerifyOneTimeAuthTokenArgs = {
   input: VerifyOneTimeAuthTokenInput;
@@ -3130,7 +3040,7 @@ export enum NotificationMethod {
   InAppNotification = 'inAppNotification',
   Off = 'off',
   PushNotification = 'pushNotification',
-  Sms = 'sms'
+  Sms = 'sms',
 }
 
 export type NotificationOptions = {
@@ -3278,7 +3188,7 @@ export enum NotificationTemplateName {
   SendFirstInvitationForMentor = 'sendFirstInvitationForMentor',
   Unset = 'unset',
   WelcomeForMentee = 'welcomeForMentee',
-  WelcomeForMentor = 'welcomeForMentor'
+  WelcomeForMentor = 'welcomeForMentor',
 }
 
 export enum NotificationType {
@@ -3296,7 +3206,7 @@ export enum NotificationType {
   ResetPasswordConfirmation = 'resetPasswordConfirmation',
   SendFirstInvitation = 'sendFirstInvitation',
   Unset = 'unset',
-  Welcome = 'welcome'
+  Welcome = 'welcome',
 }
 
 export type ObjectChangedEvent = {
@@ -3313,7 +3223,7 @@ export type ObjectChangedEvent = {
 export enum ObjectChangedEventType {
   Created = 'created',
   Deleted = 'deleted',
-  Updated = 'updated'
+  Updated = 'updated',
 }
 
 export type Option = {
@@ -3377,7 +3287,7 @@ export enum OptionType {
   NotificationTypeOption = 'notificationTypeOption',
   Pronoun = 'pronoun',
   ReportUserReason = 'reportUserReason',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export type Pronoun = {
@@ -3493,27 +3403,22 @@ export type Query = {
   myUserSearches: Array<UserSearch>;
 };
 
-
 export type QueryDoesUserExistArgs = {
   ident: Scalars['String']['input'];
   identType: UserIdentType;
 };
 
-
 export type QueryFindAdminTaskByIdArgs = {
   adminTaskId: Scalars['String']['input'];
 };
-
 
 export type QueryFindChannelByIdArgs = {
   id: Scalars['String']['input'];
 };
 
-
 export type QueryFindChannelInvitationByIdArgs = {
   id: Scalars['String']['input'];
 };
-
 
 export type QueryFindChannelInvitationsBetweenUsersArgs = {
   onlyPending?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3521,7 +3426,6 @@ export type QueryFindChannelInvitationsBetweenUsersArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userIds: Array<Scalars['String']['input']>;
 };
-
 
 export type QueryFindChannelInvitationsForUserArgs = {
   direction?: InputMaybe<ChannelInvitationDirection>;
@@ -3531,11 +3435,9 @@ export type QueryFindChannelInvitationsForUserArgs = {
   userId: Scalars['String']['input'];
 };
 
-
 export type QueryFindChannelMessageByIdArgs = {
   id: Scalars['String']['input'];
 };
-
 
 export type QueryFindChannelMessagesArgs = {
   filter?: InputMaybe<ChannelMessageListFilter>;
@@ -3543,18 +3445,15 @@ export type QueryFindChannelMessagesArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
-
 export type QueryFindChannelParticipantByIdArgs = {
   id: Scalars['String']['input'];
 };
-
 
 export type QueryFindChannelsArgs = {
   filter?: InputMaybe<ChannelListFilter>;
   match?: InputMaybe<ChannelInput>;
   options?: InputMaybe<FindObjectsOptions>;
 };
-
 
 export type QueryFindChannelsForUserArgs = {
   mustBeAccepted?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3563,27 +3462,22 @@ export type QueryFindChannelsForUserArgs = {
   userId: Scalars['String']['input'];
 };
 
-
 export type QueryFindCompanyStagesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
-
 export type QueryFindCompanyTypesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
-
 
 export type QueryFindContactArgs = {
   createIfNotExist?: InputMaybe<Scalars['Boolean']['input']>;
   match: ContactInput;
 };
 
-
 export type QueryFindContactByIdArgs = {
   id: Scalars['String']['input'];
 };
-
 
 export type QueryFindContactsArgs = {
   filter?: InputMaybe<SidContactListFilter>;
@@ -3591,26 +3485,21 @@ export type QueryFindContactsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
-
 export type QueryFindCountriesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
-
 
 export type QueryFindDeclineChannelInvitationReasonsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
-
 export type QueryFindEducationLevelsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
-
 export type QueryFindErrorCodesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
-
 
 export type QueryFindExpertisesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
@@ -3618,21 +3507,17 @@ export type QueryFindExpertisesArgs = {
   parentTextId?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryFindGendersArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
-
 
 export type QueryFindGroupByIdArgs = {
   id: Scalars['String']['input'];
 };
 
-
 export type QueryFindGroupMembershipByIdArgs = {
   id: Scalars['String']['input'];
 };
-
 
 export type QueryFindGroupMembershipsArgs = {
   filter?: InputMaybe<GroupMembershipListFilter>;
@@ -3640,59 +3525,48 @@ export type QueryFindGroupMembershipsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
-
 export type QueryFindGroupsArgs = {
   filter?: InputMaybe<GroupListFilter>;
   match?: InputMaybe<GroupInput>;
   options?: InputMaybe<FindObjectsOptions>;
 };
 
-
 export type QueryFindIndonesianCitiesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
-
 
 export type QueryFindIndonesianProvincesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
-
 export type QueryFindIndustriesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
-
 
 export type QueryFindIqlaaJordanianDistrictsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
-
 export type QueryFindIqlaaJordanianGovernoratesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
-
 export type QueryFindLanguagesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
-
 
 export type QueryFindLatestTrainingSessionForMeArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   trainingId: Scalars['String']['input'];
 };
 
-
 export type QueryFindMyChannelsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
-
 export type QueryFindMyUserDevicesArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
-
 
 export type QueryFindOptionsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
@@ -3701,38 +3575,31 @@ export type QueryFindOptionsArgs = {
   parentTextId?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryFindPendingChannelInvitationsForUserArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userId: Scalars['String']['input'];
 };
 
-
 export type QueryFindPronounsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
-
 
 export type QueryFindReportUserReasonsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
-
 export type QueryFindServiceRequestByIdArgs = {
   serviceRequestId: Scalars['String']['input'];
 };
-
 
 export type QueryFindTrainingByIdArgs = {
   id: Scalars['String']['input'];
   selectedLanguage?: InputMaybe<UiLanguage>;
 };
 
-
 export type QueryFindTrainingSessionByIdArgs = {
   id: Scalars['String']['input'];
 };
-
 
 export type QueryFindTrainingSessionsByTrainingIdArgs = {
   options?: InputMaybe<FindObjectsOptions>;
@@ -3740,18 +3607,15 @@ export type QueryFindTrainingSessionsByTrainingIdArgs = {
   userId?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryFindTrainingSessionsForMeArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   trainingId: Scalars['String']['input'];
 };
 
-
 export type QueryFindTrainingsForMeArgs = {
   displayInTrainingsList?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<FindObjectsOptions>;
 };
-
 
 export type QueryFindTrainingsForUserArgs = {
   displayInTrainingsList?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3759,12 +3623,10 @@ export type QueryFindTrainingsForUserArgs = {
   userId: Scalars['String']['input'];
 };
 
-
 export type QueryFindUploadedAssetByIdArgs = {
   id: Scalars['String']['input'];
   options?: InputMaybe<FindObjectsOptions>;
 };
-
 
 export type QueryFindUploadedAssetsArgs = {
   filter?: InputMaybe<UploadedAssetListFilter>;
@@ -3772,18 +3634,15 @@ export type QueryFindUploadedAssetsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
-
 export type QueryFindUploadedAssetsForUserArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userId: Scalars['String']['input'];
 };
 
-
 export type QueryFindUserByIdArgs = {
   id: Scalars['String']['input'];
   options?: InputMaybe<FindObjectsOptions>;
 };
-
 
 export type QueryFindUserByIdentArgs = {
   ident: Scalars['String']['input'];
@@ -3791,12 +3650,10 @@ export type QueryFindUserByIdentArgs = {
   options?: InputMaybe<FindUserByIdentOptions>;
 };
 
-
 export type QueryFindUserDeviceByIdArgs = {
   id: Scalars['String']['input'];
   options?: InputMaybe<FindObjectsOptions>;
 };
-
 
 export type QueryFindUserDevicesArgs = {
   filter?: InputMaybe<UserDeviceListFilter>;
@@ -3804,12 +3661,10 @@ export type QueryFindUserDevicesArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
-
 export type QueryFindUserSearchByIdArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userSearchId: Scalars['String']['input'];
 };
-
 
 export type QueryFindUserSearchResultsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
@@ -3817,13 +3672,11 @@ export type QueryFindUserSearchResultsArgs = {
   userSearchId: Scalars['String']['input'];
 };
 
-
 export type QueryFindUserSearchesArgs = {
   filter?: InputMaybe<UserSearchListFilter>;
   match?: InputMaybe<UserSearchInput>;
   options?: InputMaybe<FindObjectsOptions>;
 };
-
 
 export type QueryFindUsersArgs = {
   filter?: InputMaybe<UserListFilter>;
@@ -3831,23 +3684,19 @@ export type QueryFindUsersArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
-
 export type QueryGetAvailableUserHandleFieldArgs = {
   startValue: Scalars['String']['input'];
 };
-
 
 export type QueryGetMultiStepActionProgressArgs = {
   actionId: Scalars['String']['input'];
   confirmToken?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryIsUserIdentAvailableArgs = {
   ident: Scalars['String']['input'];
   identType?: InputMaybe<UserIdentType>;
 };
-
 
 export type QueryMyChannelInvitationsArgs = {
   direction?: InputMaybe<ChannelInvitationDirection>;
@@ -3855,7 +3704,6 @@ export type QueryMyChannelInvitationsArgs = {
   onlyUnseen?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<FindObjectsOptions>;
 };
-
 
 export type QueryMyInboxArgs = {
   refresh?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3917,7 +3765,7 @@ export enum ReportUserReasonTextId {
   SharesObjectionableContent = 'sharesObjectionableContent',
   Spammer = 'spammer',
   UsesObjectionableLanguage = 'usesObjectionableLanguage',
-  ViolatesRules = 'violatesRules'
+  ViolatesRules = 'violatesRules',
 }
 
 export type SendMultiStepActionNotificationInput = {
@@ -3954,13 +3802,13 @@ export enum ServiceRequestMessageId {
   GroupRuleFailed = 'groupRuleFailed',
   InvalidInput = 'invalidInput',
   SystemError = 'systemError',
-  Unknown = 'unknown'
+  Unknown = 'unknown',
 }
 
 export enum ServiceRequestResult {
   Error = 'error',
   Ok = 'ok',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export enum ServiceRequestSource {
@@ -3970,7 +3818,7 @@ export enum ServiceRequestSource {
   Mm2 = 'mm2',
   RestApi = 'restApi',
   System = 'system',
-  Vts = 'vts'
+  Vts = 'vts',
 }
 
 export enum ServiceRequestType {
@@ -4130,7 +3978,7 @@ export enum ServiceRequestType {
   GraphQlQueryUserInboxUser = 'graphQlQueryUserInboxUser',
   GraphQlQueryUserSearchFoundUsers = 'graphQlQueryUserSearchFoundUsers',
   GraphQlQueryUserUserDevices = 'graphQlQueryUserUserDevices',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export type SidContactListFilter = {
@@ -4353,7 +4201,7 @@ export type SignUpUserInput = {
 
 export enum SortDirection {
   Asc = 'asc',
-  Desc = 'desc'
+  Desc = 'desc',
 }
 
 export type SortItem = {
@@ -4397,11 +4245,9 @@ export type Subscription = {
   objectChanged: ObjectChangedEvent;
 };
 
-
 export type SubscriptionChannelChangedArgs = {
   channelId?: Scalars['ID']['input'];
 };
-
 
 export type SubscriptionObjectChangedArgs = {
   modelType?: InputMaybe<ModelType>;
@@ -4622,7 +4468,7 @@ export enum UiLanguage {
   Es = 'es',
   Id = 'id',
   Ru = 'ru',
-  So = 'so'
+  So = 'so',
 }
 
 export type UploadedAsset = {
@@ -4693,7 +4539,7 @@ export type UploadedAssetListFilter = {
 export enum UploadedAssetType {
   Avatar = 'avatar',
   ProfileHeroImage = 'profileHeroImage',
-  Unset = 'unset'
+  Unset = 'unset',
 }
 
 export type User = {
@@ -4827,7 +4673,6 @@ export type User = {
   yearsManagementExperience?: Maybe<Scalars['Int']['output']>;
   yearsOwnershipExperience?: Maybe<Scalars['Int']['output']>;
 };
-
 
 export type UserChannelsArgs = {
   mustBeAccepted?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5002,7 +4847,7 @@ export enum UserIdentType {
   OauthProfileUrl = 'oauthProfileUrl',
   OauthUserId = 'oauthUserId',
   PhoneNumber = 'phoneNumber',
-  UserHandle = 'userHandle'
+  UserHandle = 'userHandle',
 }
 
 export type UserInbox = {
@@ -5227,7 +5072,7 @@ export enum UserProfileRole {
   Both = 'both',
   Mentee = 'mentee',
   Mentor = 'mentor',
-  None = 'none'
+  None = 'none',
 }
 
 export type UserProfileRoleHistoryItem = {
@@ -5246,7 +5091,7 @@ export enum UserRole {
   Qa = 'qa',
   Staff = 'staff',
   Support = 'support',
-  Test = 'test'
+  Test = 'test',
 }
 
 export type UserSearch = {
@@ -5281,7 +5126,7 @@ export enum UserSearchFieldOption {
   Any = 'any',
   IsFalse = 'isFalse',
   IsTrue = 'isTrue',
-  Match = 'match'
+  Match = 'match',
 }
 
 export type UserSearchFilter = {
@@ -5368,13 +5213,13 @@ export enum UserSearchSubscriptionType {
   Daily = 'daily',
   Monthly = 'monthly',
   None = 'none',
-  Weekly = 'weekly'
+  Weekly = 'weekly',
 }
 
 export enum UserSearchType {
   MenteeRecommendation = 'menteeRecommendation',
   MentorRecommendation = 'mentorRecommendation',
-  Search = 'search'
+  Search = 'search',
 }
 
 export type UserTrackingInput = {

@@ -12,7 +12,7 @@ const createChannel = (
   messageCount: number,
   users?: User[],
   messages?: ChannelMessage[],
-): { channel: Channel, messages: ChannelMessage[], users: User[] } => {
+): { channel: Channel; messages: ChannelMessage[]; users: User[] } => {
   if (!attributes.id) {
     attributes.id = crypto.randomUUID().replaceAll('-', '');
   }
@@ -47,22 +47,25 @@ const createChannel = (
 
   if (!Array.isArray(messages) || users.length < 1) {
     messages = Array.from({ length: messageCount }, () => {
-      return createChannelMessage({ channelId: attributes.id});
+      return createChannelMessage({ channelId: attributes.id });
     });
   }
 
-  channel.userIds = users.map(user => user.id);
-  channel.participants = users.map(user => new ChannelParticipant({
-    id: crypto.randomUUID().replaceAll('-', ''),
-    channelId: channel.id,
-    userId: user.id
-  }));
+  channel.userIds = users.map((user) => user.id);
+  channel.participants = users.map(
+    (user) =>
+      new ChannelParticipant({
+        id: crypto.randomUUID().replaceAll('-', ''),
+        channelId: channel.id,
+        userId: user.id,
+      }),
+  );
 
   return {
     channel,
     messages,
     users,
   };
-}
+};
 
-export default createChannel
+export default createChannel;

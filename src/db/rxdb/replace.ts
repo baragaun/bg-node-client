@@ -9,9 +9,7 @@ import getCollectionFromModelType from './helpers/getCollectionFromModelType.js'
 
 let _db: RxDatabase | undefined = undefined;
 
-const replace = async <T extends Model>(
-  obj: T,
-): Promise<MutationResult<T>> => {
+const replace = async <T extends Model>(obj: T): Promise<MutationResult<T>> => {
   const result: MutationResult<T> = { operation: MutationType.replace };
 
   if (!_db) {
@@ -44,14 +42,15 @@ const replace = async <T extends Model>(
           $eq: obj.id,
         },
       },
-    }).exec();
+    })
+    .exec();
 
   if (!Array.isArray(records) || records.length !== 1) {
     // todo: error
     return null;
   }
 
-  await records[0].remove()
+  await records[0].remove();
   const record = await collection.insert(obj);
   result.object = record.toMutableJSON();
 

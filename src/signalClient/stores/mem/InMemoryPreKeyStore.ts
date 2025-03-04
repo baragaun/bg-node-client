@@ -2,10 +2,7 @@ import SignalClient from '@signalapp/libsignal-client';
 
 export class InMemoryPreKeyStore extends SignalClient.PreKeyStore {
   private state = new Map<number, Buffer>();
-  async savePreKey(
-    id: number,
-    record: SignalClient.PreKeyRecord
-  ): Promise<void> {
+  async savePreKey(id: number, record: SignalClient.PreKeyRecord): Promise<void> {
     this.state.set(id, record.serialize());
   }
   async getPreKey(id: number): Promise<SignalClient.PreKeyRecord> {

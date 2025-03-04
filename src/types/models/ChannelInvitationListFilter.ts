@@ -2,6 +2,6 @@ import { BgChannelInvitationListFilter } from './BgChannelInvitationListFilter.j
 
 export class ChannelInvitationListFilter extends BgChannelInvitationListFilter {
   constructor(attributes?: Partial<ChannelInvitationListFilter>) {
-    super(attributes)
+    super(attributes);
   }
 }

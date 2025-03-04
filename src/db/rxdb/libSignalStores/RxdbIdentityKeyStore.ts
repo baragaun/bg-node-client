@@ -8,7 +8,7 @@ import { MyUser } from '../../../types/models/MyUser.js';
 type Registration = {
   registrationId: number;
   privateKey: SignalClient.PrivateKey;
-}
+};
 
 export class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
   private identityKeyCollection: RxCollection<IdentityKeyDocument>;
@@ -56,7 +56,7 @@ export class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
       throw new Error('No registration document found.');
     }
 
-    return  this._registration?.privateKey;
+    return this._registration?.privateKey;
   }
 
   // This returns the locally generated registration ID.
@@ -65,13 +65,10 @@ export class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
       throw new Error('No registration document found.');
     }
 
-    return  this._registration?.registrationId;
+    return this._registration?.registrationId;
   }
 
-  async saveIdentity(
-    address: SignalClient.ProtocolAddress,
-    publicKey: SignalClient.PublicKey,
-  ): Promise<boolean> {
+  async saveIdentity(address: SignalClient.ProtocolAddress, publicKey: SignalClient.PublicKey): Promise<boolean> {
     const existingPublicKey = await this.getIdentity(address);
 
     if (existingPublicKey) {
@@ -106,14 +103,10 @@ export class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
     return existingPublicKey.compare(publicKey) === 0;
   }
 
-  async getIdentity(
-    address: SignalClient.ProtocolAddress,
-  ): Promise<SignalClient.PublicKey | null> {
+  async getIdentity(address: SignalClient.ProtocolAddress): Promise<SignalClient.PublicKey | null> {
     const id = address.toString();
 
-    const dbDoc = await this.identityKeyCollection
-      .findOne(id)
-      .exec();
+    const dbDoc = await this.identityKeyCollection.findOne(id).exec();
 
     if (!dbDoc) {
       // No record yet; by Signal spec, you can decide to trust on first use.
@@ -136,7 +129,7 @@ export class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
 
     if (this._registration) {
       // A registration record already exists.
-      console.error("Registration found; not creating new one.");
+      console.error('Registration found; not creating new one.');
       return;
     }
 
@@ -160,9 +153,7 @@ export class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
 
   private async _loadRegistration(): Promise<void> {
     if (!this._registration) {
-      const doc = await this.registrationCollection
-        .findOne('registration')
-        .exec();
+      const doc = await this.registrationCollection.findOne('registration').exec();
 
       if (!doc) {
         return null;
@@ -175,7 +166,7 @@ export class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
       this._registration = {
         registrationId: registrationDocument.registrationId,
         privateKey,
-      }
+      };
     }
   }
 }

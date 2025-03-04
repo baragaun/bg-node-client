@@ -1,6 +1,6 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 
-import { BaseModelMetadata } from './BaseModelMetadata.js'
+import { BaseModelMetadata } from './BaseModelMetadata.js';
 
 export interface IBaseModel {
   id: string;

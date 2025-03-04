@@ -12,17 +12,14 @@ const findChannelInvitations = async (
 ): Promise<QueryResult<ChannelInvitation>> => {
   try {
     if (Array.isArray(filter.ids) && filter.ids.length === 1) {
-      return db.findById<ChannelInvitation>(
-        filter.ids[0],
-        ModelType.ChannelInvitation,
-      );
+      return db.findById<ChannelInvitation>(filter.ids[0], ModelType.ChannelInvitation);
     }
 
     const { objects: messages } = await db.findAll<ChannelInvitation>(ModelType.ChannelInvitation);
     let list: ChannelInvitation[] = messages;
 
     if (!match.channelId) {
-      list = messages.filter(m => m.channelId === match.channelId);
+      list = messages.filter((m) => m.channelId === match.channelId);
     }
 
     if (skip > 0 && limit > 0) {
@@ -30,11 +27,11 @@ const findChannelInvitations = async (
     }
 
     return {
-      objects: list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    }
+      objects: list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
+    };
   } catch (error) {
     return { error: (error as Error).message };
   }
-}
+};
 
-export default findChannelInvitations
+export default findChannelInvitations;

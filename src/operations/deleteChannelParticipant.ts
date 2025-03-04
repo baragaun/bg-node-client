@@ -3,9 +3,7 @@ import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
 import { MutationResult } from '../types/MutationResult.js';
 import db from '../db/db.js';
 
-const deleteChannelParticipant = async (
-  id: string,
-): Promise<MutationResult<ChannelParticipant>> => {
+const deleteChannelParticipant = async (id: string): Promise<MutationResult<ChannelParticipant>> => {
   try {
     await db.delete(id, ModelType.ChannelParticipant);
 
@@ -18,6 +16,6 @@ const deleteChannelParticipant = async (
       error: (error as Error).message,
     };
   }
-}
+};
 
-export default deleteChannelParticipant
+export default deleteChannelParticipant;

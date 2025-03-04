@@ -13,7 +13,7 @@ const channelInvitationFactory = Factory.define<ChannelInvitation>('ChannelInvit
   .attr('channelName', () => chance.word())
   .attr('channelTopic', () => chance.sentence())
   .attr('messageText', () => chance.sentence())
-  .attr('createdAt', () => randomDate()) as ChannelInvitationFactory
+  .attr('createdAt', () => randomDate()) as ChannelInvitationFactory;
 
 channelInvitationFactory.create = (
   props: Partial<ChannelInvitation> | Partial<ChannelInvitation>[],
@@ -21,7 +21,8 @@ channelInvitationFactory.create = (
   count?: number,
 ): Promise<ChannelInvitation | ChannelInvitation[]> => create<ChannelInvitation>(props, options, count);
 
-channelInvitationFactory.save = async (channelInvitation: ChannelInvitation): Promise<ChannelInvitation> => save(channelInvitation);
+channelInvitationFactory.save = async (channelInvitation: ChannelInvitation): Promise<ChannelInvitation> =>
+  save(channelInvitation);
 
 channelInvitationFactory.delete = async (channelInvitation: ChannelInvitation): Promise<ChannelInvitation> => {
   await deleteFunc(channelInvitation.id, ModelType.ChannelInvitation);
@@ -29,4 +30,4 @@ channelInvitationFactory.delete = async (channelInvitation: ChannelInvitation): 
   return channelInvitation;
 };
 
-export default channelInvitationFactory
+export default channelInvitationFactory;

@@ -1,7 +1,7 @@
 import { Factory } from 'rosie';
 
 import chance from '../../helpers/chance.js';
-import { ChannelMessage } from '../../types/models/ChannelMessage.js'
+import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { ChannelMessageType, ModelType } from '../../types/enums.js';
 import { ChannelMessageFactory } from './definitions.js';
 import create from './helpers/create.js';
@@ -28,4 +28,4 @@ channelMessageFactory.delete = async (channelMessage: ChannelMessage): Promise<C
   return channelMessage;
 };
 
-export default channelMessageFactory
+export default channelMessageFactory;

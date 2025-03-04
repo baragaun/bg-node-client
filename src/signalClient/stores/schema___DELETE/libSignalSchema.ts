@@ -14,6 +14,6 @@ const libSignalSchema = {
   senderKeySchema,
   sessionSchema,
   signedPrekeySchema,
-}
+};
 
 export default libSignalSchema;

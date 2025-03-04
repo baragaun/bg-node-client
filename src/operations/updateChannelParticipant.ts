@@ -14,6 +14,6 @@ const updateChannelParticipant = async (
       error: (error as Error).message,
     };
   }
-}
+};
 
-export default updateChannelParticipant
+export default updateChannelParticipant;

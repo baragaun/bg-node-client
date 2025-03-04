@@ -4,14 +4,9 @@ import { ModelType, MutationType } from '../types/enums.js';
 import { MutationResult } from '../types/MutationResult.js';
 import db from '../db/db.js';
 
-const createChannelMessage = async (
-  attributes: Partial<ChannelMessage>,
-): Promise<MutationResult<ChannelMessage>> => {
+const createChannelMessage = async (attributes: Partial<ChannelMessage>): Promise<MutationResult<ChannelMessage>> => {
   try {
-    const channel = db.findById<Channel>(
-      attributes.channelId as string,
-      ModelType.Channel
-    );
+    const channel = db.findById<Channel>(attributes.channelId as string, ModelType.Channel);
 
     if (!channel) {
       return {
@@ -28,6 +23,6 @@ const createChannelMessage = async (
       error: (error as Error).message,
     };
   }
-}
+};
 
-export default createChannelMessage
+export default createChannelMessage;

@@ -9,14 +9,9 @@ export interface MockFactories {
     messageCount: number,
     users?: User[],
     messages?: ChannelMessage[],
-  ) => { channel: Channel, messages: ChannelMessage[], users: User[] };
+  ) => { channel: Channel; messages: ChannelMessage[]; users: User[] };
 
-  channelMessage: (
-    attributes: Partial<ChannelMessage>,
-    sender?: User,
-  ) => ChannelMessage;
+  channelMessage: (attributes: Partial<ChannelMessage>, sender?: User) => ChannelMessage;
 
-  user: (
-    attributes: Partial<User>,
-  ) => User;
+  user: (attributes: Partial<User>) => User;
 }

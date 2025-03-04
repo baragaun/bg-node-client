@@ -14,7 +14,7 @@ const channelFactory = Factory.define<Channel>('Channel', Channel)
   .attr('name', () => chance.word())
   .attr('topic', () => chance.sentence())
   .attr('description', () => chance.paragraph())
-  .attr('createdAt', () => randomDate()) as ChannelFactory
+  .attr('createdAt', () => randomDate()) as ChannelFactory;
 
 channelFactory.create = (
   props: Partial<Channel> | Partial<Channel>[],
@@ -30,4 +30,4 @@ channelFactory.delete = async (channel: Channel): Promise<Channel> => {
   return channel;
 };
 
-export default channelFactory
+export default channelFactory;

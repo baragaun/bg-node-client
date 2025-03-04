@@ -18,10 +18,7 @@ export class LibSignalStores {
   identity: RxdbIdentityKeyStore;
   session: RxdbSessionStore;
 
-  constructor(
-    db: RxDatabase,
-    config: BgNodeClientConfig,
-  ) {
+  constructor(db: RxDatabase, config: BgNodeClientConfig) {
     this.identity = new RxdbIdentityKeyStore(
       db.collections[DbCollection.libSignalIdentityKeys],
       db.collections[DbCollection.libSignalRegistration],

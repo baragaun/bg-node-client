@@ -16,7 +16,7 @@ const config: BgNodeClientConfig = {
   dbType: DbType.rxdb,
   inBrowser: false,
   debugMode: true,
-}
+};
 
 const useX3DH = true;
 
@@ -70,7 +70,7 @@ describe('libSignal', () => {
       bobsPreKeyBundleAsReceived,
       bobAddress,
       aliceStores.session,
-      aliceStores.identity
+      aliceStores.identity,
     );
 
     // Alice encrypts a chat message text:
@@ -80,7 +80,7 @@ describe('libSignal', () => {
         channelMessage1.buffer,
         bobAddress,
         aliceStores.session,
-        aliceStores.identity
+        aliceStores.identity,
       );
     } catch (error) {
       console.error('Error encrypting message:', error);
@@ -89,7 +89,7 @@ describe('libSignal', () => {
     expect(encryptedMessage1.type()).toBe(SignalClient.CiphertextMessageType.PreKey);
 
     const cipherTextR1: SignalClient.PreKeySignalMessage = SignalClient.PreKeySignalMessage.deserialize(
-      encryptedMessage1.serialize()
+      encryptedMessage1.serialize(),
     );
 
     // The encrypted message is converted into a base64 encoded string:
@@ -112,7 +112,7 @@ describe('libSignal', () => {
       bobStores.identity,
       bobStores.prekey,
       bobStores.signed,
-      bobStores.kyber
+      bobStores.kyber,
     );
 
     expect(bDPlaintext).toBe(channelMessage1.buffer);
@@ -126,21 +126,19 @@ describe('libSignal', () => {
       channelMessage2.buffer,
       aliceAddress,
       bobStores.session,
-      bobStores.identity
+      bobStores.identity,
     );
 
     expect(encryptedMessage2.type()).toBe(SignalClient.CiphertextMessageType.Whisper);
 
-    const bCiphertextR = SignalClient.SignalMessage.deserialize(
-      encryptedMessage2.serialize()
-    );
+    const bCiphertextR = SignalClient.SignalMessage.deserialize(encryptedMessage2.serialize());
 
     // Alice receives the message and decrypts it:
     const aDPlaintext = await SignalClient.signalDecrypt(
       bCiphertextR,
       bobAddress,
       aliceStores.session,
-      aliceStores.identity
+      aliceStores.identity,
     );
 
     expect(aDPlaintext).toBe(channelMessage2.buffer);

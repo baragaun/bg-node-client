@@ -12,16 +12,11 @@ export class RxdbKyberPreKeyStore extends SignalClient.KyberPreKeyStore {
   }
 
   // Save (or update) a Kyber prekey record for a given prekey id.
-  async saveKyberPreKey(
-    kyberPreKeyId: number,
-    record: SignalClient.KyberPreKeyRecord,
-  ): Promise<void> {
+  async saveKyberPreKey(kyberPreKeyId: number, record: SignalClient.KyberPreKeyRecord): Promise<void> {
     const key = kyberPreKeyId.toString();
     const recordStr = record.serialize().toString('base64');
 
-    const dbDoc = await this.kyberPreKeys
-      .findOne(key)
-      .exec();
+    const dbDoc = await this.kyberPreKeys.findOne(key).exec();
 
     if (dbDoc) {
       // Update record and mark as not used.

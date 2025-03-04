@@ -9,4 +9,3 @@ export interface MutationResult<T = BaseModel> {
   object?: T;
   error?: string;
 }
-

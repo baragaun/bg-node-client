@@ -1,180 +1,179 @@
 export const SidUserSchema = {
-  "version": 0,
-  "primaryKey": "id",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "maxLength": 32
+  version: 0,
+  primaryKey: 'id',
+  type: 'object',
+  properties: {
+    id: {
+      type: 'string',
+      maxLength: 32,
     },
-    "adminNotes": {
-      "type": "string"
+    adminNotes: {
+      type: 'string',
     },
-    "metadata": {},
-    "createdAt": {
-      "type": "string",
-      "format": "date-time"
+    metadata: {},
+    createdAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "createdBy": {
-      "type": "string",
-      "maxLength": 32
+    createdBy: {
+      type: 'string',
+      maxLength: 32,
     },
-    "updatedAt": {
-      "type": "string",
-      "format": "date-time"
+    updatedAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "updatedBy": {
-      "type": "string",
-      "maxLength": 32
+    updatedBy: {
+      type: 'string',
+      maxLength: 32,
     },
-    "deletedAt": {
-      "type": "string",
-      "format": "date-time"
+    deletedAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "deletedBy": {
-      "type": "string",
-      "maxLength": 32
+    deletedBy: {
+      type: 'string',
+      maxLength: 32,
     },
-    "firstName": {
-      "type": "string"
+    firstName: {
+      type: 'string',
     },
-    "lastName": {
-      "type": "string"
+    lastName: {
+      type: 'string',
     },
-    "userHandle": {
-      "type": "string"
+    userHandle: {
+      type: 'string',
     },
-    "phoneNumber": {
-      "type": "string"
+    phoneNumber: {
+      type: 'string',
     },
-    "phoneNumberUpdatedAt": {
-      "type": "string",
-      "format": "date-time"
+    phoneNumberUpdatedAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "isPhoneNumberVerified": {
-      "type": "boolean"
+    isPhoneNumberVerified: {
+      type: 'boolean',
     },
-    "email": {
-      "type": "string"
+    email: {
+      type: 'string',
     },
-    "emailSource": {
-      "description": "The source of the email address, e.g. \"google\", \"facebook\", etc.",
-      "type": "string"
+    emailSource: {
+      description: 'The source of the email address, e.g. "google", "facebook", etc.',
+      type: 'string',
     },
-    "emailUpdatedAt": {
-      "type": "string",
-      "format": "date-time"
+    emailUpdatedAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "isEmailVerified": {
-      "type": "boolean"
+    isEmailVerified: {
+      type: 'boolean',
     },
-    "genderTextId": {
-      "type": "string"
+    genderTextId: {
+      type: 'string',
     },
-    "cityOfResidence": {
-      "type": "string"
+    cityOfResidence: {
+      type: 'string',
     },
-    "regionOfResidence": {
-      "type": "string"
+    regionOfResidence: {
+      type: 'string',
     },
-    "countryOfResidenceTextId": {
-      "type": "string"
+    countryOfResidenceTextId: {
+      type: 'string',
     },
-    "postalCode": {
-      "type": "string"
+    postalCode: {
+      type: 'string',
     },
-    "avatarUrl": {
-      "type": "string"
+    avatarUrl: {
+      type: 'string',
     },
-    "websites": {},
-    "authType": {},
-    "inviteCode": {
-      "type": "string"
+    websites: {},
+    authType: {},
+    inviteCode: {
+      type: 'string',
     },
-    "passwordHash": {
-      "type": "string"
+    passwordHash: {
+      type: 'string',
     },
-    "tfaBackupCodes": {
-      "type": "string"
+    tfaBackupCodes: {
+      type: 'string',
     },
-    "passwordUpdatedAt": {
-      "type": "string",
-      "format": "date-time"
+    passwordUpdatedAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "preferredLanguageTextId": {
-      "type": "string"
+    preferredLanguageTextId: {
+      type: 'string',
     },
-    "spokenLanguagesTextIds": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+    spokenLanguagesTextIds: {
+      type: 'array',
+      items: {
+        type: 'string',
+      },
     },
-    "selectedUiLanguageTextId": {},
-    "fallbackUiLanguageTextId": {},
-    "discoverable": {
-      "description": "If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.",
-      "type": "boolean"
+    selectedUiLanguageTextId: {},
+    fallbackUiLanguageTextId: {},
+    discoverable: {
+      description:
+        'If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.',
+      type: 'boolean',
     },
-    "roles": {},
-    "appFeatures": {},
-    "source": {
-      "type": "string"
+    roles: {},
+    appFeatures: {},
+    source: {
+      type: 'string',
     },
-    "timezone": {
-      "type": "string"
+    timezone: {
+      type: 'string',
     },
-    "preferences": {},
-    "trustLevel": {
-      "type": "integer"
+    preferences: {},
+    trustLevel: {
+      type: 'integer',
     },
-    "signedInAt": {
-      "type": "string",
-      "format": "date-time"
+    signedInAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "signedOutAt": {
-      "type": "string",
-      "format": "date-time"
+    signedOutAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "latestActivityAt": {
-      "type": "string",
-      "format": "date-time"
+    latestActivityAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "userDevices": {},
-    "userBlocks": {},
-    "contacts": {},
-    "inactivatedAt": {
-      "type": "string",
-      "format": "date-time"
+    userDevices: {},
+    userBlocks: {},
+    contacts: {},
+    inactivatedAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "inactivatedBy": {
-      "type": "string",
-      "maxLength": 32
+    inactivatedBy: {
+      type: 'string',
+      maxLength: 32,
     },
-    "termsAndConditionsAcceptedAt": {
-      "type": "string",
-      "format": "date-time"
+    termsAndConditionsAcceptedAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "optIntoNewsletter": {
-      "type": "boolean"
+    optIntoNewsletter: {
+      type: 'boolean',
     },
-    "onboardingStage": {
-      "type": "string"
+    onboardingStage: {
+      type: 'string',
     },
-    "suspendedAt": {
-      "type": "string",
-      "format": "date-time"
+    suspendedAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    "suspendedBy": {
-      "type": "string",
-      "maxLength": 32
+    suspendedBy: {
+      type: 'string',
+      maxLength: 32,
     },
-    "addedToBgVaultAt": {
-      "type": "string",
-      "format": "date-time"
-    }
+    addedToBgVaultAt: {
+      type: 'string',
+      format: 'date-time',
+    },
   },
-  "required": [
-    "id"
-  ]
+  required: ['id'],
 };

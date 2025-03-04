@@ -12,9 +12,9 @@ export const identityKeySchema: RxJsonSchema<IdentityKeyDocument> = {
       maxLength: 100,
     },
     publicKey: {
-      type: 'string' // base64 encoded public key
-    }
+      type: 'string', // base64 encoded public key
+    },
   },
   primaryKey: 'id',
-  required: ['id', 'publicKey']
+  required: ['id', 'publicKey'],
 };

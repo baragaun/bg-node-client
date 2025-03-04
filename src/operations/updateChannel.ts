@@ -3,20 +3,15 @@ import { MutationResult } from '../types/MutationResult.js';
 import { ModelType, MutationType } from '../types/enums.js';
 import db from '../db/db.js';
 
-const updateChannel = async (
-  changes: Partial<Channel>,
-): Promise<MutationResult<Channel>> => {
+const updateChannel = async (changes: Partial<Channel>): Promise<MutationResult<Channel>> => {
   try {
-    return db.update<Channel>(
-      changes,
-      ModelType.Channel,
-    );
+    return db.update<Channel>(changes, ModelType.Channel);
   } catch (error) {
     return {
       operation: MutationType.update,
       error: (error as Error).message,
     };
   }
-}
+};
 
-export default updateChannel
+export default updateChannel;

@@ -7,11 +7,8 @@ import getCollectionFromModelType from './helpers/getCollectionFromModelType.js'
 
 let _db: RxDatabase | undefined = undefined;
 
-const deleteFunc = async (
-  id: string,
-  modelType: ModelType,
-): Promise<MutationResult> => {
-  const result: MutationResult = { operation: MutationType.delete};
+const deleteFunc = async (id: string, modelType: ModelType): Promise<MutationResult> => {
+  const result: MutationResult = { operation: MutationType.delete };
 
   if (!_db) {
     _db = db.getDb();
@@ -29,13 +26,15 @@ const deleteFunc = async (
     return result;
   }
 
-  const obj = await collection.find({
-    selector: {
-      id: {
-        $eq: id,
+  const obj = await collection
+    .find({
+      selector: {
+        id: {
+          $eq: id,
+        },
       },
-    },
-  }).exec();
+    })
+    .exec();
 
   if (obj.length !== 1) {
     result.error = 'not-found';
@@ -60,7 +59,8 @@ const deleteFunc = async (
             $eq: id,
           },
         },
-      }).exec();
+      })
+      .exec();
 
     if (!Array.isArray(messages) || messages.length < 1) {
       return result;
