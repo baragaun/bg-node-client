@@ -411,7 +411,7 @@ export class BgNodeClient {
     return result.object;
   }
 
-  public async SignInUser(
+  public async signInUser(
     ident: string,
     identType: UserIdentType,
     password: string,

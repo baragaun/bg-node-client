@@ -133,7 +133,7 @@ export declare class BgNodeClient {
      * @returns A promise that resolves to the channel object, or null if not found.
      */
     insertOne<T extends Model>(object: T): Promise<T | null>;
-    SignInUser(ident: string, identType: UserIdentType, password: string): Promise<MutationResult<MyUser>>;
+    signInUser(ident: string, identType: UserIdentType, password: string): Promise<MutationResult<MyUser>>;
     signUpUser(userHandle: string, email?: string, password?: string): Promise<MutationResult<MyUser>>;
     /**
      * Updates an existing channel.
