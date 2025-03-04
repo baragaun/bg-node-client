@@ -30,13 +30,15 @@
     "test:coverage": "vitest run unit --config __tests__/vitest.config.ts --coverage.enabled --coverage.all",
     "prettier": "prettier \"{src,__{tests}__}/**/*.{ts,mts}\" --config .prettierrc --write",
     "prettier:check": "prettier \"{src,__{tests}__}/**/*.{ts,mts}\" --config .prettierrc --check",
-    "test:watch": "vitest unit"
+    "test:watch": "vitest unit",
+    "codegen": "graphql-code-generator --config ./src/graphql/codegen.ts"
   },
   "dependencies": {
     "@signalapp/libsignal-client": "^0.67.1",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "chance": "^1.1.12",
+    "graphql": "^16.10.0",
     "nats": "^2.29.2",
     "rxdb": "^16.6.1",
     "rxjs": "^7.8.2",
@@ -45,6 +47,7 @@
   },
   "devDependencies": {
     "@eslint/js": "~9.17",
+    "@graphql-codegen/cli": "^5.0.5",
     "@types/chance": "^1.1.6",
     "@types/eslint__js": "~8.42",
     "@types/factory-girl": "^5.0.12",
@@ -62,7 +65,7 @@
     "rimraf": "~6.0",
     "rosie": "^2.1.1",
     "ts-api-utils": "~2.0",
-    "typescript": "^5.7.3",
+    "typescript": "^5.8.2",
     "typescript-eslint": "~8.19",
     "vitest": "~2.1"
   },

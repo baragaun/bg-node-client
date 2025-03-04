@@ -5,7 +5,7 @@ This is a Node.js client for [channels-service](https://github.com/baragaun/chan
 ## Installation
 
 ```bash
-npm install --save https://github.com/baragaun/bg-node-client.git 
+pnpm add https://github.com/baragaun/bg-node-client.git 
 ```
 
 To update it:
@@ -46,6 +46,19 @@ each model.
 
 We use [rosie](https://github.com/rosiejs/rosie) to create model objects for unit tests.
 
+## GraphQL API
+
+We use [codegen](https://the-guild.dev/graphql/codegen) to generate the GraphQL types.
+
+To regenerate the types, make sure the `first-spark-server` is running at the location
+that is defined in [./src/graphql/codegen.ts](./src/graphql/codegen.ts).
+
+Then run:
+
+```shell
+ npm run codegen
+```
+
 ## Tests
 
 We use [Vitest](https://vitest.dev/). The tests are in `src/test`.
@@ -55,7 +68,7 @@ We use [Vitest](https://vitest.dev/). The tests are in `src/test`.
 When you are working on this package and you want your changes to show up in the project
 that is consuming this package follow these steps:
 
-1. After editing the sources, build the package: `yarn build`
+1. After editing the sources, build the package: `pnpm run build`
 2. Push this to the `main` branch, with all the changes in the `lib` directory.
 3. In the consuming project, issue: `pnpm install https://github.com/baragaun/bg-node-client.git`
 
