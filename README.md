@@ -8,16 +8,21 @@ This is a Node.js client for [channels-service](https://github.com/baragaun/chan
 npm install --save https://github.com/baragaun/bg-node-client.git 
 ```
 
+To update it:
+```bash
+pnpm install --force https://github.com/baragaun/bg-node-client.git 
+```
+
 ## Usage
 
 The following will create a mock channel with 2 participants and 10 messages:
 
 ```typescript
-import BgChannelsWebClient, { init } from 'bg-node-client';
+import BgNodeClient, { init } from 'bg-node-client';
 
 const chatClient = init({
   useMockData: true,
-  dbType: BgChannelsWebClient.DbType.rxdb,
+  dbType: BgNodeClient.DbType.rxdb,
 });
 
 // This will create a mock channel with 10 messages:

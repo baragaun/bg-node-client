@@ -1,0 +1,15 @@
+export declare enum DbCollection {
+    channelInboxes = "channel_inboxes",
+    channelInvitations = "channel_invitations",
+    channelMessages = "channel_messages",
+    channels = "channels",
+    myUser = "my_user",
+    users = "users",
+    libSignalIdentityKeys = "libsignal_identity_keys",
+    libSignalRegistration = "libsignal_registration",
+    libSignalKyberPreKeys = "libsignal_kyber_pre_keys",
+    libSignalPrekeys = "libsignal_prekeys",
+    libSignalSenderKeys = "libsignal_sender_keys",
+    libSignalSessions = "libsignal_sessions",
+    libSignalSignedPreKeys = "libsignal_signed_pre_keys"
+}

@@ -6,8 +6,8 @@
   "engines": {
     "node": ">= 22.11 < 23.9"
   },
-  "main": "lib/index.js",
-  "types": "lib/definitions.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/types/index.d.ts",
   "license": "MIT",
   "author": "shadowbrush <github@shadowbrush.com>",
   "private": true,
