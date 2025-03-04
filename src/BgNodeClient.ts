@@ -10,6 +10,7 @@ import { ChannelParticipant } from './types/models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from './types/models/ChannelParticipantListFilter.js';
 import { DbType, ModelType } from './types/enums.js';
 import { Model } from './types/Model.js';
+import { MyUser } from './types/models/MyUser.js';
 import { MutationResult } from './types/MutationResult.js';
 import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
@@ -27,6 +28,7 @@ import findChannelParticipantsFunc from './operations/findChannelParticipants.js
 import findChannelsFunc from './operations/findChannels.js';
 import findOneFunc from './operations/findOne.js';
 import mockFactories from './mockFactories/mockFactories.js';
+import signUpUserFunc from './operations/signUpUser.js';
 import updateChannelFunc from './operations/updateChannel.js';
 import updateChannelInvitationFunc from './operations/updateChannelInvitation.js';
 import updateChannelMessageFunc from './operations/updateChannelMessage.js';
@@ -35,25 +37,38 @@ import updateChannelParticipantFunc from './operations/updateChannelParticipant.
 export class BgNodeClient {
   private _config: BgNodeClientConfig;
   private _listeners: BgDataListener[] = [];
-  private _userId: string | null | undefined;
+  private _myUserId: string | null | undefined;
 
   public constructor(
-    userId: string | null | undefined,
+    myUserId: string | null | undefined,
     config: BgNodeClientConfig,
   ) {
     this._config = config;
-    this._userId = userId;
 
     if (!this._config.dbType) {
       this._config.dbType = DbType.mem;
     }
+
+    if (!myUserId) {
+      myUserId = localStorage.getItem("myUserId");
+    }
+
+    if (myUserId) {
+      this._myUserId = myUserId;
+
+      this.init(myUserId).then(() => {
+        console.log('BgNodeClient: initialized.')
+      }, (error) => {
+        console.error('BgNodeClient.init: error.', error)
+      })
+    }
   }
 
-  public async init(userId: string | null | undefined): Promise<void> {
-    if (userId) {
-      this._userId = userId;
+  public async init(myUserId: string | null | undefined): Promise<void> {
+    if (myUserId) {
+      this._myUserId = myUserId;
     }
-    await db.init(this._userId, this._config);
+    await db.init(this._myUserId, this._config);
   }
 
   public factories = factories;
@@ -327,6 +342,20 @@ export class BgNodeClient {
   }
 
   /**
+   * Finds my User.
+   * @returns A promise that resolves to my user object, or null if not found.
+   */
+  public async findMyUser(): Promise<MyUser | null> {
+    const result = await findByIdFunc<MyUser>(this._myUserId, ModelType.MyUser);
+
+    if (result.error) {
+      return null;
+    }
+
+    return result.object;
+  }
+
+  /**
    * Finds a channel by its ID.
    * @param match
    * @param modelType - The model type.
@@ -344,6 +373,8 @@ export class BgNodeClient {
 
     return result.object;
   }
+
+  public signUpUser = signUpUserFunc
 
   /**
    * Updates an existing channel.

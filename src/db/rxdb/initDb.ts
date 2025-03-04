@@ -18,7 +18,7 @@ import initLibSignal from './initLibSignal.js';
 import { MyUser } from '../../types/models/MyUser.js';
 
 const initDb = async (
-  userId: string | null | undefined,
+  myUserId: string | null | undefined,
   config: BgNodeClientConfig,
 ): Promise<MyUser | null> => {
   // @ts-ignore
@@ -101,8 +101,8 @@ const initDb = async (
 
   let myUser: MyUser | null = null;
 
-  if (userId) {
-    const { object } = await findById<User>(userId, ModelType.MyUser);
+  if (myUserId) {
+    const { object } = await findById<User>(myUserId, ModelType.MyUser);
 
     if (object) {
       myUser = object;

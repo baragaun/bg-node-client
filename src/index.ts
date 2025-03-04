@@ -2,12 +2,15 @@ import { BgNodeClient } from './BgNodeClient.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 
 export const init = async (
-  userId: string | null | undefined,
+  myUserId: string | null | undefined,
   config: BgNodeClientConfig,
 ): Promise<BgNodeClient> => {
-  const client = new BgNodeClient(userId, config);
+  if (!myUserId) {
+    myUserId = localStorage.getItem("myUserId") || null;
+  }
 
-  await client.init(userId);
+  const client = new BgNodeClient(myUserId, config);
+  await client.init(myUserId);
 
   return client
 }

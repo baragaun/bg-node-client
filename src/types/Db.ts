@@ -8,7 +8,7 @@ import { MyUser } from './models/MyUser.js';
 
 export interface Db {
   init: (
-    userId: string | null | undefined,
+    myUserId: string | null | undefined,
     config: BgNodeClientConfig,
   ) => Promise<MyUser | null>;
 

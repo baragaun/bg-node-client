@@ -82,17 +82,17 @@ const db: Db = {
   },
 
   init: async (
-    userId: string | null | undefined,
+    myUserId: string | null | undefined,
     config: BgNodeClientConfig,
   ): Promise<MyUser | null | undefined> => {
     _config = config;
 
     if (_config?.dbType === DbType.mem) {
-      return memStore.init(userId, config);
+      return memStore.init(myUserId, config);
     }
 
     if (_config?.dbType === DbType.rxdb) {
-      return rxDbStore.init(userId, config);
+      return rxDbStore.init(myUserId, config);
     }
 
     throw new Error('invalid-store-type');

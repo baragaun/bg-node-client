@@ -10,15 +10,16 @@ import { ChannelParticipant } from './types/models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from './types/models/ChannelParticipantListFilter.js';
 import { ModelType } from './types/enums.js';
 import { Model } from './types/Model.js';
+import { MyUser } from './types/models/MyUser.js';
 import { MutationResult } from './types/MutationResult.js';
 import { QueryResult } from './types/QueryResult.js';
 import { User } from './types/models/User.js';
 export declare class BgNodeClient {
     private _config;
     private _listeners;
-    private _userId;
-    constructor(userId: string | null | undefined, config: BgNodeClientConfig);
-    init(userId: string | null | undefined): Promise<void>;
+    private _myUserId;
+    constructor(myUserId: string | null | undefined, config: BgNodeClientConfig);
+    init(myUserId: string | null | undefined): Promise<void>;
     factories: {
         channel: import("./test/factories/definitions.js").ChannelFactory;
         channelInvitation: import("./test/factories/definitions.js").ChannelInvitationFactory;
@@ -113,12 +114,18 @@ export declare class BgNodeClient {
      */
     findChannelParticipants(filter: ChannelParticipantListFilter, match: Partial<ChannelParticipant>, skip: number, limit: number): Promise<QueryResult<ChannelParticipant>>;
     /**
+     * Finds my User.
+     * @returns A promise that resolves to my user object, or null if not found.
+     */
+    findMyUser(): Promise<MyUser | null>;
+    /**
      * Finds a channel by its ID.
      * @param match
      * @param modelType - The model type.
      * @returns A promise that resolves to the channel object, or null if not found.
      */
     findOne<T extends Model>(match: Partial<T>, modelType: ModelType): Promise<T | null>;
+    signUpUser: (attributes: Partial<MyUser>) => Promise<MutationResult<MyUser>>;
     /**
      * Updates an existing channel.
      * @returns A promise that resolves to the result object.
