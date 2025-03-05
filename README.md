@@ -70,7 +70,7 @@ that is consuming this package follow these steps:
 
 1. After editing the sources, build the package: `pnpm run build`
 2. Push this to the `main` branch, with all the changes in the `lib` directory.
-3. In the consuming project, issue: `pnpm install https://github.com/baragaun/bg-node-client.git`
+3. In the consuming project, issue: `pnpm i "git+https://github.com/baragaun/bg-node-client"`
 
 That should get your changes from here to the other project.
 
