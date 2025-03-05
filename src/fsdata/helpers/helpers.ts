@@ -1,24 +1,11 @@
-import type { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { HttpHeaderName } from '../../types/enums.js';
 import { AuthType } from '../gql/graphql.js';
 import type { HttpHeaders } from '../../types/HttpHeaders.js';
 import data from '../../helpers/data.js';
 
-let _config: BgNodeClientConfig | undefined;
-
-const getConfig = (): BgNodeClientConfig | undefined => {
-  if (!_config) {
-    _config = data.config();
-  }
-
-  return _config;
-};
-
 const helpers = {
-  config: (): BgNodeClientConfig => _config,
-
   headers: (): HttpHeaders => {
-    const config = getConfig();
+    const config = data.config();
     const headers: HttpHeaders =
       config && config.fsdata && config.fsdata.headers
         ? { ...config.fsdata.headers, [HttpHeaderName.contentType]: 'application/json' }
@@ -49,10 +36,6 @@ const helpers = {
     //   timezone = 'x-timezone',
 
     return headers;
-  },
-
-  init: (config: BgNodeClientConfig): void => {
-    _config = config;
   },
 };
 

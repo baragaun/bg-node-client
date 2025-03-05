@@ -3,21 +3,20 @@ import { ModelType, DbType } from '../types/enums.js';
 import { MutationResult } from '../types/MutationResult.js';
 import { Db } from '../types/Db.js';
 import { Model } from '../types/Model.js';
+import { MyUser } from '../types/models/MyUser.js';
 import { QueryResult } from '../types/QueryResult.js';
+import data from '../helpers/data.js';
 import memStore from './mem/memStore.js';
 import rxDbStore from './rxdb/rxDbStore.js';
 import rxdbHelpers from './rxdb/helpers/db.js';
-import { MyUser } from '../types/models/MyUser.js';
-
-let _config: BgNodeClientConfig | undefined;
 
 const db: Db = {
   delete: (id: string, modelType: ModelType): Promise<MutationResult> => {
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.delete(id, modelType);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.delete(id, modelType);
     }
 
@@ -25,11 +24,11 @@ const db: Db = {
   },
 
   find: async <T extends Model = Model>(match: Partial<T>, type: ModelType): Promise<QueryResult<T>> => {
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.find<T>(match, type);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.find<T>(match, type);
     }
 
@@ -37,11 +36,11 @@ const db: Db = {
   },
 
   findAll: async <T extends Model = Model>(type: ModelType): Promise<QueryResult<T>> => {
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.findAll<T>(type);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.findAll<T>(type);
     }
 
@@ -49,11 +48,11 @@ const db: Db = {
   },
 
   findById: <T extends Model>(id: string, modelType: ModelType): Promise<QueryResult<T>> => {
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.findById<T>(id, modelType);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.findById<T>(id, modelType);
     }
 
@@ -61,11 +60,11 @@ const db: Db = {
   },
 
   findOne: <T extends Model>(match: Partial<T>, modelType: ModelType): Promise<QueryResult<T>> => {
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.findOne<T>(match, modelType);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.findOne<T>(match, modelType);
     }
 
@@ -73,13 +72,11 @@ const db: Db = {
   },
 
   init: async (config: BgNodeClientConfig): Promise<MyUser | null | undefined> => {
-    _config = config;
-
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.init(config);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.init(config);
     }
 
@@ -95,11 +92,11 @@ const db: Db = {
       obj.updatedAt = new Date().toISOString();
     }
 
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.insert<T>(obj);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.insert<T>(obj);
     }
 
@@ -107,11 +104,11 @@ const db: Db = {
   },
 
   isConnected: (): boolean => {
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return true;
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.isConnected();
     }
 
@@ -121,11 +118,11 @@ const db: Db = {
   libSignalStores: rxdbHelpers.getLibSignalStores,
 
   replace: <T extends Model>(obj: T): Promise<MutationResult<T>> => {
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.replace<T>(obj);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.replace<T>(obj);
     }
 
@@ -137,11 +134,11 @@ const db: Db = {
       changes.updatedAt = new Date().toISOString();
     }
 
-    if (_config?.dbType === DbType.mem) {
+    if (data.config()?.dbType === DbType.mem) {
       return memStore.update<T>(changes, modelType);
     }
 
-    if (_config?.dbType === DbType.rxdb) {
+    if (data.config()?.dbType === DbType.rxdb) {
       return rxDbStore.update<T>(changes, modelType);
     }
 

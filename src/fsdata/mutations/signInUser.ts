@@ -2,11 +2,12 @@ import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import { SignInUserInput, UserAuthResponse } from '../gql/graphql.js';
+import data from '../../helpers/data.js';
 import helpers from '../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
 const SignInUser = async (input: SignInUserInput): Promise<UserAuthResponse> => {
-  const config = helpers.config();
+  const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     console.error('GraphQL not configured.');
@@ -14,7 +15,7 @@ const SignInUser = async (input: SignInUserInput): Promise<UserAuthResponse> => 
   }
 
   const client = Graffle.create().transport({
-    url: helpers.config().fsdata.url,
+    url: data.config().fsdata.url,
     headers: helpers.headers(),
   });
   // .use(Throws())
@@ -29,11 +30,11 @@ const SignInUser = async (input: SignInUserInput): Promise<UserAuthResponse> => 
     }
   `) as TypedQueryDocumentNode<UserAuthResponse, SignInUserInput>;
 
-  const data = (await client.gql(document).send(input)) as UserAuthResponse;
+  const userAuthResponse = (await client.gql(document).send(input)) as UserAuthResponse;
 
-  console.log(data);
+  console.log(userAuthResponse);
 
-  return data;
+  return userAuthResponse;
 };
 
 export default SignInUser;
