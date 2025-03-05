@@ -24,13 +24,18 @@ const SignInUser = async (input: SignInUserInput): Promise<UserAuthResponse> => 
   const document = parse(`
     mutation SignInUser ($input: SignInUserInput!) {
       signInUser (input: $input) {
-        id
+        userId
+        email
+        firstName
+        lastName
+        userHandle
         authToken
       }
     }
   `) as TypedQueryDocumentNode<UserAuthResponse, SignInUserInput>;
 
-  const userAuthResponse = (await client.gql(document).send(input)) as UserAuthResponse;
+  // @ts-ignore
+  const userAuthResponse = (await client.gql(document).send({ input })) as UserAuthResponse;
 
   console.log(userAuthResponse);
 

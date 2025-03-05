@@ -17,6 +17,8 @@ const signInUser = async (
       password,
     };
 
+    console.log('SignInUser Input:', input);
+
     const authResponse = await signInUserMutation(input);
 
     // Making the user info available to the rest of the client:
