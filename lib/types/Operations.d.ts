@@ -11,11 +11,17 @@ import { QueryResult } from './QueryResult.js';
 import { UserAuthResponse, UserIdentType } from '../fsdata/gql/graphql.js';
 import { Model } from './Model.js';
 import { ModelType } from './enums.js';
+import { User } from './models/User.js';
 export interface Operations {
     findById: <T extends Model = Model>(id: string, modelType: ModelType) => Promise<QueryResult<T>>;
     findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType) => Promise<QueryResult<T>>;
     channel: {
         createChannel: (attributes: Partial<Channel>) => Promise<MutationResult<Channel>>;
+        createMockChannel: (attributes: Partial<Channel>, userCount: number, messageCount: number, users?: User[], messages?: ChannelMessage[]) => {
+            channel: Channel;
+            messages: ChannelMessage[];
+            users: User[];
+        };
         deleteChannel: (id: string) => Promise<MutationResult<Channel>>;
         findChannels: (filter: ChannelListFilter, match: Partial<Channel>, skip: number, limit: number) => Promise<QueryResult<Channel>>;
         updateChannel: (changes: Partial<Channel>) => Promise<MutationResult<Channel>>;

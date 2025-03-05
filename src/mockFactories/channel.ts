@@ -6,7 +6,7 @@ import chance from '../helpers/chance.js';
 import createChannelMessage from './channelMessage.js';
 import createUser from './user.js';
 
-const createChannel = (
+const createMockChannel = (
   attributes: Partial<Channel>,
   userCount: number,
   messageCount: number,
@@ -68,4 +68,4 @@ const createChannel = (
   };
 };
 
-export default createChannel;
+export default createMockChannel;

@@ -5,8 +5,8 @@ let _config: BgNodeClientConfig | undefined;
 let _listeners: BgDataListener[] = [];
 
 const data = {
-  config: () => _config,
-  listeners: () => _listeners,
+  config: (): BgNodeClientConfig => _config,
+  listeners: (): BgDataListener[] => _listeners,
 
   setConfig: (config: BgNodeClientConfig): void => {
     _config = config;
