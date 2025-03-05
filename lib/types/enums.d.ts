@@ -131,3 +131,21 @@ export declare enum NotificationType {
     unset = "unset",
     welcome = "welcome"
 }
+export declare enum HttpHeaderName {
+    authorization = "Authorization",
+    contentType = "Content-Type",
+    acceptLanguage = "accept-language",
+    adminUserId = "x-admin-user-id",
+    authType = "x-authorization-auth-type",
+    consumer = "x-consumer",
+    consumerOs = "x-consumer-os",
+    consumerVersion = "x-consumer-version",
+    deviceUuid = "x-device",
+    forwardedFor = "x-forwarded-for",
+    hmacSignature = "x-authorization-content-sha256",
+    hmacTimestamp = "x-authorization-timestamp",
+    locale = "x-locale",
+    pushNotificationToken = "x-pn-token",
+    timezone = "x-timezone",
+    userId = "x-user-id"
+}

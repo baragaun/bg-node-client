@@ -1,13 +1,14 @@
-import { BgNodeClient } from './BgNodeClient.js';
-import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
+import { BgNodeClient } from './types/BgNodeClient.js';
+import data from './helpers/data.js';
+import init from './init.js';
+import operations from './operations/operations.js';
+// import db from './db/db.js';
 
-export const init = async (myUserId: string | null | undefined, config: BgNodeClientConfig): Promise<BgNodeClient> => {
-  if (typeof window !== 'undefined' && window.localStorage && !myUserId) {
-    myUserId = window.localStorage.getItem('myUserId') || null;
-  }
+const bgNodeClient: BgNodeClient = {
+  addListener: data.addListener,
+  init,
+  operations,
+  removeListener: data.removeListener,
+}
 
-  const client = new BgNodeClient(myUserId, config);
-  await client.init(myUserId);
-
-  return client;
-};
+export default bgNodeClient;

@@ -7,7 +7,7 @@ import { LibSignalStores } from '../db/rxdb/libSignalStores/LibSignalStores.js';
 import { MyUser } from './models/MyUser.js';
 
 export interface Db {
-  init: (myUserId: string | null | undefined, config: BgNodeClientConfig) => Promise<MyUser | null>;
+  init: (config: BgNodeClientConfig) => Promise<MyUser | null>;
 
   insert: <T extends Model = Model>(obj: T) => Promise<MutationResult<T>>;
   isConnected: () => boolean;

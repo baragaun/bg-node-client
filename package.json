@@ -31,7 +31,7 @@
     "prettier": "prettier \"{src,__{tests}__}/**/*.{ts,mts}\" --config .prettierrc --write",
     "prettier:check": "prettier \"{src,__{tests}__}/**/*.{ts,mts}\" --config .prettierrc --check",
     "test:watch": "vitest unit",
-    "codegen": "graphql-code-generator --config ./src/graphql/tools/codegen.ts"
+    "codegen": "graphql-code-generator --config src/fsdata/tools/codegen.ts"
   },
   "dependencies": {
     "@graphql-typed-document-node/core": "^3.2.0",

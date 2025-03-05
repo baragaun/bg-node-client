@@ -1,1 +1,1 @@
-{"version":3,"file":"ChannelMessage.js","sourceRoot":"","sources":["../../../src/types/models/ChannelMessage.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,uBAAuB,CAAC;AAGzD,MAAM,OAAO,cAAe,SAAQ,gBAAgB;IAGlD,YAAY,UAAoC;QAC9C,KAAK,CAAC,UAAU,CAAC,CAAA;IACnB,CAAC;CACF"}
+{"version":3,"file":"ChannelMessage.js","sourceRoot":"","sources":["../../../src/types/models/ChannelMessage.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,uBAAuB,CAAC;AAGzD,MAAM,OAAO,cAAe,SAAQ,gBAAgB;IAGlD,YAAY,UAAoC;QAC9C,KAAK,CAAC,UAAU,CAAC,CAAC;IACpB,CAAC;CACF"}

@@ -51,7 +51,7 @@ We use [rosie](https://github.com/rosiejs/rosie) to create model objects for uni
 We use [codegen](https://the-guild.dev/graphql/codegen) to generate the GraphQL types.
 
 To regenerate the types, make sure the `first-spark-server` is running at the location
-that is defined in [./src/graphql/tools/codegen.ts](./src/graphql/tools/codegen.ts).
+that is defined in [./src/graphql/tools/codegen.ts](src/fsdata/tools/codegen.ts).
 
 Then run:
 
@@ -65,7 +65,7 @@ We use [Vitest](https://vitest.dev/). The tests are in `src/test`.
 
 ## Making Changes
 
-When you are working on this package and you want your changes to show up in the project
+When you are working on this package, and you want your changes to show up in the project
 that is consuming this package follow these steps:
 
 1. After editing the sources, build the package: `pnpm run build`
@@ -73,6 +73,20 @@ that is consuming this package follow these steps:
 3. In the consuming project, issue: `pnpm install https://github.com/baragaun/bg-node-client.git`
 
 That should get your changes from here to the other project.
+
+Alternatively, for a quicker turnaround, link to the local `bg-node-client` in the other 
+project's `package.json` like this:
+
+```json
+{
+  "dependencies": {
+     "@baragaun/bg-node-client": "link:/path/to/bg-node-client"
+  }
+}
+```
+
+Then you don't have to push the changes in `bg-node-client` to GitHub. You still need to run
+`pnpm install` for the changes to show up in the other project.
 
 ## To Do
 

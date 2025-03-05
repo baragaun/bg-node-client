@@ -17,7 +17,9 @@ import { ModelType } from '../../types/enums.js';
 import initLibSignal from './initLibSignal.js';
 import { MyUser } from '../../types/models/MyUser.js';
 
-const initDb = async (myUserId: string | null | undefined, config: BgNodeClientConfig): Promise<MyUser | null> => {
+const initDb = async (
+  config: BgNodeClientConfig,
+): Promise<MyUser | null> => {
   // @ts-ignore
   // const ajv = new Ajv();
   // addFormats.default(ajv, ['date-time']);
@@ -96,8 +98,8 @@ const initDb = async (myUserId: string | null | undefined, config: BgNodeClientC
 
   let myUser: MyUser | null = null;
 
-  if (myUserId) {
-    const { object } = await findById<User>(myUserId, ModelType.MyUser);
+  if (config.myUserId) {
+    const { object } = await findById<User>(config.myUserId, ModelType.MyUser);
 
     if (object) {
       myUser = object;

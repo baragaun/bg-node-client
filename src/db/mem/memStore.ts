@@ -28,8 +28,6 @@ const getArrayForModelType = <T extends Model = Model>(type: ModelType): T[] => 
 
 const memStore: Db = {
   init: async (
-    // @ts-ignore
-    myUserId: string | null | undefined,
     config: BgNodeClientConfig,
   ): Promise<MyUser | null> => {
     console.log('memStore.init called.', config);
