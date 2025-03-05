@@ -16,7 +16,7 @@ userInboxFactory.create = (
   props: Partial<UserInbox> | Partial<UserInbox>[],
   options?: any,
   count?: number,
-): Promise<UserInbox | UserInbox[]> => create<UserInbox>(props, options, count);
+): Promise<UserInbox | UserInbox[]> => create<UserInbox>(props, ModelType.UserInbox, options, count);
 
 userInboxFactory.save = async (userInbox: UserInbox): Promise<UserInbox> => save(userInbox);
 

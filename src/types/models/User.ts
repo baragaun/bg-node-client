@@ -51,10 +51,10 @@ export class User extends BaseModel {
   public onboardingStage?: string | null;
   public suspendedAt?: string | null;
   public suspendedBy?: string | null;
-  public addedToBgVaultAt?: string | null;
-  public isAdmin?: boolean;
-  public isTestUser?: boolean;
-  public emailLowerCase?: string | null;
+  // public addedToBgVaultAt?: string | null;
+  // // public isAdmin?: boolean;
+  // public isTestUser?: boolean;
+  // public emailLowerCase?: string | null;
 
   public constructor(attributes?: Partial<User>) {
     super(attributes);
@@ -80,9 +80,6 @@ export class User extends BaseModel {
       }
       if (attributes.email) {
         this.email = attributes.email;
-      }
-      if (attributes.emailLowerCase) {
-        this.emailLowerCase = attributes.emailLowerCase;
       }
       if (attributes.emailUpdatedAt) {
         this.emailUpdatedAt = attributes.emailUpdatedAt;
@@ -201,21 +198,8 @@ export class User extends BaseModel {
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy;
       }
-      if (attributes.addedToBgVaultAt) {
-        this.addedToBgVaultAt = attributes.addedToBgVaultAt;
-      }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
 
-      // Non-GraphQL fields:
-      if (attributes.isAdmin === true || attributes.isAdmin === false) {
-        this.isAdmin = attributes.isAdmin;
-      }
-      if (attributes.isTestUser === true || attributes.isTestUser === false) {
-        this.isTestUser = attributes.isTestUser;
-      }
-      if (attributes.emailLowerCase) {
-        this.emailLowerCase = attributes.emailLowerCase;
-      }
     }
   }
 }

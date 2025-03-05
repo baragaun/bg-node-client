@@ -47,9 +47,5 @@ export declare class User extends BaseModel {
     onboardingStage?: string | null;
     suspendedAt?: string | null;
     suspendedBy?: string | null;
-    addedToBgVaultAt?: string | null;
-    isAdmin?: boolean;
-    isTestUser?: boolean;
-    emailLowerCase?: string | null;
     constructor(attributes?: Partial<User>);
 }

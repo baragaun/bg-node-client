@@ -1,7 +1,8 @@
 export declare enum DbCollection {
-    channelInboxes = "channel_inboxes",
+    userInbox = "channel_inbox",
     channelInvitations = "channel_invitations",
     channelMessages = "channel_messages",
+    channelParticipants = "channel_participants",
     channels = "channels",
     myUser = "my_user",
     users = "users",

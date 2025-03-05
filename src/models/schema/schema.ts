@@ -7,7 +7,7 @@ import { SidUserSchema } from './sidUserSchema.js';
 
 const schema = {
   Channel: BgChannelSchema,
-  ChannelInbox: BgChannelInboxSchema,
+  UserInbox: BgChannelInboxSchema,
   ChannelInvitation: BgChannelInvitationSchema,
   ChannelMessage: BgChannelMessageSchema,
   ChannelParticipant: BgChannelParticipantSchema,

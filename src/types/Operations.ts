@@ -20,6 +20,8 @@ export interface Operations {
 
   findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType) => Promise<QueryResult<T>>;
 
+  insertOne: <T extends Model>(object: T) => Promise<MutationResult<T>>;
+
   channel: {
     createChannel: (attributes: Partial<Channel>) => Promise<MutationResult<Channel>>;
 

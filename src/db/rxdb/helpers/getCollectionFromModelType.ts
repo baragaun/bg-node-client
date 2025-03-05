@@ -21,12 +21,27 @@ const getCollectionFromModelType = (type: ModelType): RxCollection | null => {
 
   if (type === ModelType.ChannelInvitation) {
     // @ts-ignore
-    return _db.channelInvitations;
+    return _db.channel_invitations;
   }
 
   if (type === ModelType.ChannelMessage) {
     // @ts-ignore
-    return _db.channelMessages;
+    return _db.channel_messages;
+  }
+
+  if (type === ModelType.ChannelParticipant) {
+    // @ts-ignore
+    return _db.channel_participants;
+  }
+
+  if (type === ModelType.MyUser) {
+    // @ts-ignore
+    return _db.my_user;
+  }
+
+  if (type === ModelType.User) {
+    // @ts-ignore
+    return _db.users;
   }
 
   return null;

@@ -5,6 +5,7 @@ import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
 import { User } from '../types/models/User.js';
+import { MyUser } from '../types/models/MyUser.js';
 
 export const getModelTypeFromObject = <T extends BaseModel = BaseModel>(obj: T): ModelType | null => {
   if (obj instanceof Channel) {
@@ -21,6 +22,10 @@ export const getModelTypeFromObject = <T extends BaseModel = BaseModel>(obj: T):
 
   if (obj instanceof ChannelParticipant) {
     return ModelType.ChannelParticipant;
+  }
+
+  if (obj instanceof MyUser) {
+    return ModelType.MyUser;
   }
 
   if (obj instanceof User) {

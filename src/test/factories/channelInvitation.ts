@@ -19,7 +19,8 @@ channelInvitationFactory.create = (
   props: Partial<ChannelInvitation> | Partial<ChannelInvitation>[],
   options?: any,
   count?: number,
-): Promise<ChannelInvitation | ChannelInvitation[]> => create<ChannelInvitation>(props, options, count);
+): Promise<ChannelInvitation | ChannelInvitation[]> =>
+  create<ChannelInvitation>(props, ModelType.ChannelInvitation, options, count);
 
 channelInvitationFactory.save = async (channelInvitation: ChannelInvitation): Promise<ChannelInvitation> =>
   save(channelInvitation);

@@ -14,7 +14,7 @@ const findMyUser = async (queryOptions: QueryOptions): Promise<MyUser | null> =>
   }
 
   try {
-    if (queryOptions.useCached) {
+    if (queryOptions.useCache) {
       const queryResult = await db.findById<MyUser>(config.myUserId, ModelType.MyUser);
 
       return queryResult.object;

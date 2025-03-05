@@ -59,7 +59,7 @@ const userFactory = Factory.define<User>('User', User)
   .attr('userHandle', () => chance.word()) as UserFactory;
 
 userFactory.create = (props: Partial<User> | Partial<User>[], options?: any, count?: number): Promise<User | User[]> =>
-  create<User>(props, options, count);
+  create<User>(props, ModelType.User, options, count);
 
 // userFactory.create2 = async (
 //   props: Partial<User> | Partial<User>[],

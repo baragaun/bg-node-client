@@ -18,7 +18,8 @@ channelMessageFactory.create = (
   props: Partial<ChannelMessage> | Partial<ChannelMessage>[],
   options?: any,
   count?: number,
-): Promise<ChannelMessage | ChannelMessage[]> => create<ChannelMessage>(props, options, count);
+): Promise<ChannelMessage | ChannelMessage[]> =>
+  create<ChannelMessage>(props, ModelType.ChannelMessage, options, count);
 
 channelMessageFactory.save = async (channelMessage: ChannelMessage): Promise<ChannelMessage> => save(channelMessage);
 

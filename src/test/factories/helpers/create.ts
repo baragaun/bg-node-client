@@ -40,9 +40,9 @@ const create = async <T extends Model>(
 
   // @ts-ignore
   const obj = factory.build(props, options) as T;
-  const { object } = await db.insert<T>(obj);
+  const result = await db.insert<T>(obj);
 
-  return object;
+  return result.object;
 };
 
 export default create;

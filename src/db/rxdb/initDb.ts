@@ -56,7 +56,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     [DbCollection.channelMessages]: {
       schema: modelsSchema.ChannelMessage,
     },
-    [DbCollection.channelInboxes]: {
+    [DbCollection.channelParticipants]: {
       schema: modelsSchema.ChannelParticipant,
     },
     [DbCollection.users]: {
@@ -64,6 +64,9 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     },
     [DbCollection.myUser]: {
       schema: modelsSchema.MyUser,
+    },
+    [DbCollection.userInbox]: {
+      schema: modelsSchema.UserInbox,
     },
   };
 

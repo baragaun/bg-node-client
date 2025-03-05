@@ -17,6 +17,7 @@ import { MyUser } from './models/MyUser.js';
 export interface Operations {
     findById: <T extends Model = Model>(id: string, modelType: ModelType) => Promise<QueryResult<T>>;
     findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType) => Promise<QueryResult<T>>;
+    insertOne: <T extends Model>(object: T) => Promise<MutationResult<T>>;
     channel: {
         createChannel: (attributes: Partial<Channel>) => Promise<MutationResult<Channel>>;
         createMockChannel: (attributes: Partial<Channel>, userCount: number, messageCount: number, users?: User[], messages?: ChannelMessage[]) => {

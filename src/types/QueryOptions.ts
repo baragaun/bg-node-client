@@ -1,3 +1,3 @@
 export interface QueryOptions {
-  useCached?: boolean;
+  useCache?: boolean;
 }

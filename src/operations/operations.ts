@@ -21,10 +21,12 @@ import updateChannelInvitation from './channelInvitation/updateChannelInvitation
 import updateChannelMessage from './channelMessage/updateChannelMessage.js';
 import updateChannelParticipant from './channelParticipant/updateChannelParticipant.js';
 import findMyUser from './myUser/findMyUser.js';
+import insertOne from './insertOne.js';
 
 const operations: Operations = {
   findById,
   findOne,
+  insertOne,
 
   channel: {
     createChannel,

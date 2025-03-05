@@ -210,7 +210,7 @@ declare const schema: {
         };
         required: string[];
     };
-    ChannelInbox: {
+    UserInbox: {
         version: number;
         primaryKey: string;
         type: string;
