@@ -5,12 +5,12 @@ This is a Node.js client for [channels-service](https://github.com/baragaun/chan
 ## Installation
 
 ```bash
-pnpm add https://github.com/baragaun/bg-node-client.git 
+pnpm add "git+https://github.com/baragaun/bg-node-client" 
 ```
 
 To update it:
 ```bash
-pnpm install https://github.com/baragaun/bg-node-client.git 
+pnpm install "git+https://github.com/baragaun/bg-node-client" 
 ```
 
 ## Usage
@@ -18,25 +18,25 @@ pnpm install https://github.com/baragaun/bg-node-client.git
 The following will create a mock channel with 2 participants and 10 messages:
 
 ```typescript
-import BgNodeClient, { init } from 'bg-node-client';
+import { createClient, BgNodeClient } from 'bg-node-client';
 
-const chatClient = init({
+const client = createClient({
   useMockData: true,
   dbType: BgNodeClient.DbType.rxdb,
 });
 
 // This will create a mock channel with 10 messages:
-const { channel, messages, users } = chatClient.createMockChannel(
+const { channel, messages, users } = client.createMockChannel(
   { name: 'Test Channel' }, // channel data
   2,   // 2 participants
   10,  // 10 messages
 );
 
 // Find this channel again:
-const foundChannels = await chatClient.findChannels({ id: mockChannel.id });
+const foundChannels = await client.operations.channel.findChannels({ id: mockChannel.id });
 
 // Load the messages of this channel:
-const foundMessages = await chatClient.findChannelMessages({ channelId: channels[0].id });
+const foundMessages = await client.operations.channelMessage.findChannelMessages({ channelId: channels[0].id });
 ```
 
 ## Models
