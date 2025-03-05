@@ -22,10 +22,12 @@ const signUpUser = async (input: SignUpUserInput): Promise<UserAuthResponse> => 
   // .use(Opentelemetry())
 
   const document = parse(`
-    mutation signUpUser ($input: SignUpUserInput!) {
+    mutation SignUpUser ($input: SignUpUserInput!) {
       signUpUser (input: $input) {
-        id
         authToken
+        email
+        userHandle
+        userId
       }
     }
   `) as TypedQueryDocumentNode<UserAuthResponse, SignUpUserInput>;
@@ -33,9 +35,9 @@ const signUpUser = async (input: SignUpUserInput): Promise<UserAuthResponse> => 
   try {
     console.log('Sending signUpUser mutation with input:', input);
     // @ts-ignore
-    const data = (await client.gql(document).send({ input })) as UserAuthResponse;
-    console.log('SignUpUser response:', data);
-    return data;
+    const userAuthResponse = (await client.gql(document).send({ input })) as UserAuthResponse;
+    console.log('SignUpUser response:', userAuthResponse);
+    return userAuthResponse;
   } catch (error) {
     console.error('SignUpUser mutation error:', error);
     throw error;

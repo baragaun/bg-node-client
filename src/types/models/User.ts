@@ -199,7 +199,6 @@ export class User extends BaseModel {
         this.suspendedBy = attributes.suspendedBy;
       }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
-
     }
   }
 }

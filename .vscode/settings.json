@@ -1,0 +1,9 @@
+{
+  "vitest.enable": true,
+  "vitest.commandLine": "pnpm test",
+  "vitest.include": [
+    "src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "testing.automaticallyOpenPeekView": "never"
+}
