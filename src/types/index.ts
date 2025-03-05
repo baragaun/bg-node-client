@@ -1,5 +1,7 @@
 import { UserIdentType } from '../fsdata/gql/graphql.js';
+import createClient from '../createClient.js';
 
+export { createClient };
 export * from './BgDataListener.js';
 export * from './BgNodeClient.js';
 export * from './BgNodeClientConfig.js';
