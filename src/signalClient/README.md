@@ -37,6 +37,11 @@ The one-time prekey private keys will be deleted as received messages using them
   * [The Signal Protocol](https://signal.org/docs/specifications/signal-protocol/)
   * [The Sesame Algorithm: Session Management for Asynchronous Message Encryption](https://signal.org/docs/specifications/sesame/)
 * [End-to-end encrypted messages need more than libsignal](https://mjg59.dreamwidth.org/62598.html)
+* [The signal-protocol for node and browsers](https://people.ischool.berkeley.edu/~nick/signal-protocol-js/)
+  * Uses [Emscripten](https://github.com/kripken/emscripten) - compiles LLVM bytecode to performant Javascript
+  * Uses WebWorker and [webworkify](https://github.com/substack/webworkify) and [tiny-worker](https://www.npmjs.com/package/tiny-worker)
+  * Uses [node-webcrypto-ossl](https://github.com/PeculiarVentures/node-webcrypto-ossl)
+  * [libsignal-service-javascript](https://github.com/throneless-tech/libsignal-service-javascript)
 
 ### Glossary
 
