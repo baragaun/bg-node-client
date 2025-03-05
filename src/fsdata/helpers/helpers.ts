@@ -12,16 +12,17 @@ const getConfig = (): BgNodeClientConfig | undefined => {
   }
 
   return _config;
-}
+};
 
 const helpers = {
   config: (): BgNodeClientConfig => _config,
 
   headers: (): HttpHeaders => {
     const config = getConfig();
-    const headers: HttpHeaders = config && config.fsdata && config.fsdata.headers
-      ? { ...config.fsdata.headers, [HttpHeaderName.contentType]: 'application/json' }
-      : { [HttpHeaderName.contentType]: 'application/json' };
+    const headers: HttpHeaders =
+      config && config.fsdata && config.fsdata.headers
+        ? { ...config.fsdata.headers, [HttpHeaderName.contentType]: 'application/json' }
+        : { [HttpHeaderName.contentType]: 'application/json' };
 
     if (config && config.myUserId) {
       headers[HttpHeaderName.userId] = config.myUserId;
@@ -52,8 +53,7 @@ const helpers = {
 
   init: (config: BgNodeClientConfig): void => {
     _config = config;
-  }
+  },
 };
 
 export default helpers;
-

@@ -1,10 +1,12 @@
+import { BgNodeClient } from './types/BgNodeClient.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { DbType } from './types/enums.js';
+import bgNodeClient from './bgNodeClient.js';
 import data from './helpers/data.js';
 import db from './db/db.js';
 import loadUserInfo from './helpers/loadUserInfo.js';
 
-const init = async (config: BgNodeClientConfig): Promise<void> => {
+const createClient = async (config: BgNodeClientConfig): Promise<BgNodeClient> => {
   const userInfo = loadUserInfo();
 
   if (!config.myUserId && userInfo.myUserId) {
@@ -26,6 +28,8 @@ const init = async (config: BgNodeClientConfig): Promise<void> => {
   data.setConfig(config);
 
   await db.init(config);
-}
 
-export default init;
+  return bgNodeClient;
+};
+
+export default createClient;

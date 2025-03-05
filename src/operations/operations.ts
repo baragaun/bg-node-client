@@ -55,7 +55,7 @@ const operations: Operations = {
   myUser: {
     signInUser,
     signUpUser,
-  }
-}
+  },
+};
 
 export default operations;

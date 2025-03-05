@@ -32,7 +32,7 @@ export interface BgNodeClientConfig {
      * Optional headers to be included with every request
      */
     headers?: HttpHeaders;
-  }
+  };
 
   libSignal?: {
     enable: boolean;

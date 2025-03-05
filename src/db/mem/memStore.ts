@@ -27,9 +27,7 @@ const getArrayForModelType = <T extends Model = Model>(type: ModelType): T[] => 
 };
 
 const memStore: Db = {
-  init: async (
-    config: BgNodeClientConfig,
-  ): Promise<MyUser | null> => {
+  init: async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     console.log('memStore.init called.', config);
 
     return null;

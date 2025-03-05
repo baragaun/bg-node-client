@@ -9,17 +9,17 @@ import { jsonToPreKeyBundle } from '../../signalClient/jsonToPreKeyBundle.js';
 // import { LibSignalStores } from '../../libSignal/stores/rxdb/LibSignalStores.js';
 import { preKeyBundleToJSON } from '../../signalClient/preKeyBundleToJSON.js';
 import { testConfig } from '../testConfig.js';
-import client from '../../index.js';
+import createClient from '../../createClient.js';
 
 const useX3DH = true;
 
 describe('libSignal', () => {
   // see: https://signal.org/docs/specifications/x3dh/
   test('should exchange end-to-end encrypted messages', async () => {
-    const clientAlice = await client.init({ ...testConfig, dbName: 'alice' });
+    const clientAlice = await createClient({ ...testConfig, dbName: 'alice' });
     expect(clientAlice).toBeDefined();
 
-    const clientBob = await client.init({ ...testConfig, dbName: 'bob' });
+    const clientBob = await createClient({ ...testConfig, dbName: 'bob' });
     expect(clientBob).toBeDefined();
 
     const alice: User = { id: crypto.randomUUID().replaceAll('-', ''), firstName: 'Alice' };

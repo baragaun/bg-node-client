@@ -4,7 +4,7 @@ import { ModelType } from '../../../types/enums.js';
 import { MyUser } from '../../../types/index.js';
 import { testConfig } from '../../testConfig.js';
 import chance from '../../../helpers/chance.js';
-import client from '../../../index.js';
+import createClient from '../../../createClient.js';
 import findById from '../../../operations/findById.js';
 
 describe('signUpUser', () => {
@@ -13,7 +13,7 @@ describe('signUpUser', () => {
     const password = chance.word();
     const email = chance.email();
 
-    await client.init(testConfig);
+    const client = await createClient(testConfig);
 
     console.log('Test input:', { userHandle, email, password });
 

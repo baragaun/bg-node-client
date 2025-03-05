@@ -2,14 +2,14 @@ import { describe, expect, test } from 'vitest';
 
 import { Channel } from '../../../types/models/Channel.js';
 import { ModelType } from '../../../types/enums.js';
-import findById from '../../../operations/findById.js';
 import factories from '../../factories/factories.js';
 import { testConfig } from '../../testConfig.js';
-import client from '../../../index.js';
+import findById from '../../../operations/findById.js';
+import createClient from '../../../createClient.js';
 
 describe('updateChannel', () => {
   test('should update channel properties', async () => {
-    await client.init(testConfig);
+    const client = await createClient(testConfig);
     const channelProps = await factories.channel.build({});
 
     const { object: channel } = await client.operations.channel.createChannel(channelProps);

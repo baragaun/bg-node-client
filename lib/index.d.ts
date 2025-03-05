@@ -1,3 +1,2 @@
-import { BgNodeClient } from './types/BgNodeClient.js';
-declare const bgNodeClient: BgNodeClient;
-export default bgNodeClient;
+import createClient from './createClient.js';
+export { createClient };

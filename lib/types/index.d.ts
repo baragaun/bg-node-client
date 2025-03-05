@@ -1,6 +1,4 @@
 import { UserIdentType } from '../fsdata/gql/graphql.js';
-import bgNodeClient from '../index.js';
-export default bgNodeClient;
 export * from './BgDataListener.js';
 export * from './BgNodeClient.js';
 export * from './BgNodeClientConfig.js';
