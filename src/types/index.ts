@@ -1,12 +1,16 @@
-import { BgNodeClient } from '../BgNodeClient.js';
-export default BgNodeClient;
+import { UserIdentType } from '../fsdata/gql/graphql.js';
+import bgNodeClient from '../index.js';
 
+export default bgNodeClient;
+
+export * from './BgDataListener.js';
+export * from './BgNodeClient.js';
 export * from './BgNodeClientConfig.js';
 export * from './ChannelEventPayload.js';
-export * from './BgDataListener.js';
 export * from './enums.js';
+export * from './HttpHeaders.js';
 export * from './MutationResult.js';
-import { UserIdentType } from '../graphql/gql/graphql.js';
+export * from './Operations.js';
 
 // Models:
 export * from './Model.js';
@@ -37,39 +41,3 @@ export * from './models/UserPreferences.js';
 
 // GraphQL Types:
 export { UserIdentType };
-
-// declare module '@baragaun/bg-node-client' {
-//   export * from '../BgNodeClient.js';
-//   export * from './BgNodeClientConfig.js'
-//   export * from './ChannelEventPayload.js';
-//   export * from './BgDataListener.js';
-//   export * from './enums.js';
-//   export * from './MutationResult.js';
-//
-// // Models:
-//   export * from './Model.js'
-//   export * from './models/BaseModel.js'
-//   export * from './models/BaseModelMetadata.js'
-//   export * from './models/BgChannelStatus.js'
-//   export * from './models/BgLatestUnseenChannelMessageInfo.js'
-//   export * from './models/Channel.js'
-//   export * from './models/ChannelInvitation.js'
-//   export * from './models/ChannelInvitationListFilter.js';
-//   export * from './models/ChannelListFilter.js';
-//   export * from './models/ChannelMessage.js'
-//   export * from './models/ChannelMessageListFilter.js';
-//   export * from './models/ChannelMessageMetadata.js'
-//   export * from './models/ChannelMessageStatus.js'
-//   export * from './models/ChannelMetadata.js'
-//   export * from './models/ChannelParticipant.js'
-//   export * from './models/ChannelParticipantListFilter.js';
-//   export * from './models/ChannelsUserMetadata.js'
-//   export * from './models/IBaseModel.js'
-//   export * from './models/LabeledStringValue.js'
-//   export * from './models/ModelEvent.js'
-//   export * from './models/NotificationOptions.js'
-//   export * from './models/User.js'
-//   export * from './models/UserBlock.js'
-//   export * from './models/UserPreferences.js'
-// }
-//

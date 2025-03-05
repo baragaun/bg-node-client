@@ -1,11 +1,14 @@
-import { BgNodeClient } from '../BgNodeClient.js';
-export default BgNodeClient;
+import { UserIdentType } from '../fsdata/gql/graphql.js';
+import bgNodeClient from '../index.js';
+export default bgNodeClient;
+export * from './BgDataListener.js';
+export * from './BgNodeClient.js';
 export * from './BgNodeClientConfig.js';
 export * from './ChannelEventPayload.js';
-export * from './BgDataListener.js';
 export * from './enums.js';
+export * from './HttpHeaders.js';
 export * from './MutationResult.js';
-import { UserIdentType } from '../graphql/gql/graphql.js';
+export * from './Operations.js';
 export * from './Model.js';
 export * from './models/BaseModel.js';
 export * from './models/BaseModelMetadata.js';

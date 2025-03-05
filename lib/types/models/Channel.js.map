@@ -1,1 +1,1 @@
-{"version":3,"file":"Channel.js","sourceRoot":"","sources":["../../../src/types/models/Channel.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,gBAAgB,CAAA;AAE1C,MAAM,OAAO,OAAQ,SAAQ,SAAS;IACpC,YAAY,UAA6B;QACvC,KAAK,CAAC,UAAU,CAAC,CAAA;IACnB,CAAC;CACF"}
+{"version":3,"file":"Channel.js","sourceRoot":"","sources":["../../../src/types/models/Channel.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,gBAAgB,CAAC;AAE3C,MAAM,OAAO,OAAQ,SAAQ,SAAS;IACpC,YAAY,UAA6B;QACvC,KAAK,CAAC,UAAU,CAAC,CAAC;IACpB,CAAC;CACF"}

@@ -1,9 +1,14 @@
 import { DbType } from './enums.js';
+import { HttpHeaders } from './HttpHeaders.js';
 
 /**
  * Configuration for BgNodeClient.
  */
 export interface BgNodeClientConfig {
+  myUserId?: string;
+  myUserDeviceUuid?: string;
+  authToken?: string;
+
   /**
    * If true, the client will use mock data instead of real data.
    */
@@ -20,24 +25,14 @@ export interface BgNodeClientConfig {
    */
   debugMode?: boolean;
 
-  /**
-   * API configuration
-   */
-  api: {
-    /**
-     * The base URL for the API
-     */
+  fsdata?: {
     url: string;
+
     /**
      * Optional headers to be included with every request
      */
-    headers?: {
-      'Content-Type'?: string;
-      'x-authorization-auth-type'?: string;
-      'x-device'?: string;
-      [key: string]: string | undefined;
-    };
-  };
+    headers?: HttpHeaders;
+  }
 
   libSignal?: {
     enable: boolean;
