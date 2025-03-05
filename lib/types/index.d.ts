@@ -9,6 +9,7 @@ export * from './enums.js';
 export * from './HttpHeaders.js';
 export * from './MutationResult.js';
 export * from './Operations.js';
+export * from './QueryOptions.js';
 export * from './Model.js';
 export * from './models/BaseModel.js';
 export * from './models/BaseModelMetadata.js';

@@ -20,6 +20,7 @@ import updateChannel from './channel/updateChannel.js';
 import updateChannelInvitation from './channelInvitation/updateChannelInvitation.js';
 import updateChannelMessage from './channelMessage/updateChannelMessage.js';
 import updateChannelParticipant from './channelParticipant/updateChannelParticipant.js';
+import findMyUser from './myUser/findMyUser.js';
 
 const operations: Operations = {
   findById,
@@ -55,6 +56,7 @@ const operations: Operations = {
   },
 
   myUser: {
+    findMyUser,
     signInUser,
     signUpUser,
   },

@@ -12,6 +12,8 @@ import { UserAuthResponse, UserIdentType } from '../fsdata/gql/graphql.js';
 import { Model } from './Model.js';
 import { ModelType } from './enums.js';
 import { User } from './models/User.js';
+import { QueryOptions } from './QueryOptions.js';
+import { MyUser } from './models/MyUser.js';
 export interface Operations {
     findById: <T extends Model = Model>(id: string, modelType: ModelType) => Promise<QueryResult<T>>;
     findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType) => Promise<QueryResult<T>>;
@@ -45,6 +47,7 @@ export interface Operations {
         updateChannelParticipant: (changes: Partial<ChannelParticipant>) => Promise<MutationResult<ChannelParticipant>>;
     };
     myUser: {
+        findMyUser: (queryOptions: QueryOptions) => Promise<MyUser | null>;
         signInUser: (ident: string, identType: UserIdentType, password?: string) => Promise<MutationResult<UserAuthResponse>>;
         signUpUser: (userHandle: string, email?: string, password?: string) => Promise<MutationResult<UserAuthResponse>>;
     };

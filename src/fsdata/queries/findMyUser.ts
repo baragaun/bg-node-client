@@ -6,7 +6,7 @@ import data from '../../helpers/data.js';
 import helpers from '../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const findMyUser = async (): Promise<MyUser> => {
+const findMyUser = async (): Promise<MyUser | null> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
@@ -34,7 +34,7 @@ const findMyUser = async (): Promise<MyUser> => {
     }
   `) as TypedQueryDocumentNode<MyUser>;
 
-  const myUser = (await client.gql(document).send()) as MyUser;
+  const myUser = (await client.gql(document).send()) as MyUser | null;
 
   console.log(myUser);
 

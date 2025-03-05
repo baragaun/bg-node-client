@@ -3,7 +3,7 @@ import { MutationType } from '../../types/enums.js';
 import signInUserMutation from '../../fsdata/mutations/signInUser.js';
 import { SignInUserInput, UserAuthResponse, UserIdentType } from '../../fsdata/gql/graphql.js';
 import saveUserInfo from '../../helpers/saveUserInfo.js';
-import data from '../../helpers/data.js'
+import data from '../../helpers/data.js';
 
 const signInUser = async (
   ident: string,

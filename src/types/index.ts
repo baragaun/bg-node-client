@@ -10,6 +10,7 @@ export * from './enums.js';
 export * from './HttpHeaders.js';
 export * from './MutationResult.js';
 export * from './Operations.js';
+export * from './QueryOptions.js';
 
 // Models:
 export * from './Model.js';
