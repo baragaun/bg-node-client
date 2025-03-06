@@ -1,13 +1,13 @@
 import { Factory } from 'rosie';
 
 import chance from '../../helpers/chance.js';
-import { ChannelMessage } from '../../types/models/ChannelMessage.js';
+import randomDate from '../../helpers/randomDate.js';
 import { ChannelMessageType, ModelType } from '../../types/enums.js';
+import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { ChannelMessageFactory } from './definitions.js';
 import create from './helpers/create.js';
-import save from './helpers/save.js';
 import deleteFunc from './helpers/delete.js';
-import randomDate from '../../helpers/randomDate.js';
+import save from './helpers/save.js';
 
 const channelMessageFactory = Factory.define<ChannelMessage>('ChannelMessage', ChannelMessage)
   .attr('channelMessageType', () => chance.pickone(Object.values(ChannelMessageType)))

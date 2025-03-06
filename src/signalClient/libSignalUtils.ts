@@ -3,8 +3,8 @@ import SignalClient from '@signalapp/libsignal-client';
 
 import Chance from 'chance';
 // import { LibSignalStores } from './stores/rxdb/LibSignalStores.js';
-import { LibSignalMemStores } from './stores/mem/LibSignalMemStores.js';
 import { LibSignalStores } from '../db/rxdb/libSignalStores/LibSignalStores.js';
+import { LibSignalMemStores } from './stores/mem/LibSignalMemStores.js';
 // import * as uuid from 'uuid';
 // import type { Stores } from '$lib/stores/mem/Stores'
 

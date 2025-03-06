@@ -1,13 +1,13 @@
 import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
+import { Db } from '../../types/Db.js';
+import { ModelType, MutationType } from '../../types/enums.js';
+import { Model } from '../../types/Model.js';
 import { Channel } from '../../types/models/Channel.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
-import { Db } from '../../types/Db.js';
-import { Model } from '../../types/Model.js';
-import { ModelType, MutationType } from '../../types/enums.js';
+import { MyUser } from '../../types/models/MyUser.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import db from '../rxdb/helpers/db.js';
-import { MyUser } from '../../types/models/MyUser.js';
 
 const channels: Channel[] = [];
 let messages: ChannelMessage[] = [];
@@ -105,7 +105,7 @@ const memStore: Db = {
     const arr = getArrayForObject<T>(obj);
 
     if (!obj.id) {
-      obj.id = crypto.randomUUID();
+      obj.id = crypto.randomUUID().replaceAll('-', '');
     }
 
     arr.push(obj);

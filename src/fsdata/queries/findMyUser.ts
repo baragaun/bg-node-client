@@ -1,8 +1,10 @@
 import { Graffle } from 'graffle';
+import { Opentelemetry } from 'graffle/extensions/opentelemetry';
+import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-import { MyUser } from '../../types/models/MyUser.js';
 import data from '../../helpers/data.js';
+import { MyUser } from '../../types/models/MyUser.js';
 import helpers from '../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
@@ -14,15 +16,16 @@ const findMyUser = async (): Promise<MyUser | null> => {
     throw new Error('unavailable');
   }
 
-  const client = Graffle.create().transport({
-    url: data.config().fsdata.url,
-    headers: helpers.headers(),
-  });
-  // .use(Throws())
-  // .use(Opentelemetry())
+  const client = Graffle.create()
+    .transport({
+      url: data.config().fsdata.url,
+      headers: helpers.headers(),
+    })
+    .use(Throws())
+    .use(Opentelemetry());
 
   const document = parse(`
-    query getMyUser {
+    query Q {
       getMyUser {
         id
         userHandle
@@ -32,13 +35,21 @@ const findMyUser = async (): Promise<MyUser | null> => {
         updatedAt
       }
     }
-  `) as TypedQueryDocumentNode<MyUser>;
+  `) as TypedQueryDocumentNode<{ getMyUser: MyUser | null }>;
 
-  const myUser = (await client.gql(document).send()) as MyUser | null;
+  try {
+    const response = (await client
+      // @ts-ignore
+      .gql(document)
+      .send()) as { getMyUser: MyUser | null };
 
-  console.log(myUser);
+    console.log(response);
 
-  return myUser;
+    return response.getMyUser;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };
 
 export default findMyUser;

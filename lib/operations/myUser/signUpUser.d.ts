@@ -1,4 +1,5 @@
 import { MutationResult } from '../../types/MutationResult.js';
-import { UserAuthResponse } from '../../fsdata/gql/graphql.js';
-declare const signUpUser: (userHandle: string, email?: string, password?: string) => Promise<MutationResult<UserAuthResponse>>;
+import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
+import { SignUpInput } from '../../types/SignUpInput.js';
+declare const signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
 export default signUpUser;

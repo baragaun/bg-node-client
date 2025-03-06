@@ -1,10 +1,10 @@
+import bgNodeClient from './bgNodeClient.js';
+import db from './db/db.js';
+import data from './helpers/data.js';
+import loadUserInfo from './helpers/loadUserInfo.js';
 import { BgNodeClient } from './types/BgNodeClient.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { DbType } from './types/enums.js';
-import bgNodeClient from './bgNodeClient.js';
-import data from './helpers/data.js';
-import db from './db/db.js';
-import loadUserInfo from './helpers/loadUserInfo.js';
 
 const createClient = async (config: BgNodeClientConfig): Promise<BgNodeClient> => {
   const userInfo = loadUserInfo();
@@ -15,6 +15,10 @@ const createClient = async (config: BgNodeClientConfig): Promise<BgNodeClient> =
 
   if (!config.myUserDeviceUuid && userInfo.myUserDeviceUuid) {
     config.myUserDeviceUuid = userInfo.myUserDeviceUuid;
+  }
+
+  if (!config.myUserDeviceUuid) {
+    config.myUserDeviceUuid = crypto.randomUUID().replaceAll('-', '');
   }
 
   if (!config.authToken && userInfo.authToken) {

@@ -1,7 +1,7 @@
-import { MutationResult } from '../types/MutationResult.js';
+import db from '../db/db.js';
 import { MutationType } from '../types/enums.js';
 import { Model } from '../types/Model.js';
-import db from '../db/db.js';
+import { MutationResult } from '../types/MutationResult.js';
 
 const insertOne = async <T extends Model>(object: T): Promise<MutationResult<T>> => {
   try {

@@ -1,8 +1,10 @@
 import { Graffle } from 'graffle';
+import { Opentelemetry } from 'graffle/extensions/opentelemetry';
+import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-import { SignUpUserInput, UserAuthResponse } from '../gql/graphql.js';
 import data from '../../helpers/data.js';
+import { MutationSignUpUserArgs, SignUpUserInput, UserAuthResponse } from '../gql/graphql.js';
 import helpers from '../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
@@ -14,28 +16,36 @@ const signUpUser = async (input: SignUpUserInput): Promise<UserAuthResponse> => 
     throw new Error('unavailable');
   }
 
-  const client = Graffle.create().transport({
-    url: data.config().fsdata.url,
-    headers: helpers.headers(),
-  });
-  // .use(Throws())
-  // .use(Opentelemetry())
+  const client = Graffle.create()
+    .transport({
+      url: data.config().fsdata.url,
+      headers: helpers.headers(),
+    })
+    .use(Throws())
+    .use(Opentelemetry());
+
+  input.checkAvailable = true;
 
   const document = parse(`
-    mutation signUpUser ($input: SignUpUserInput!) {
+    mutation M ($input: SignUpUserInput!) {
       signUpUser (input: $input) {
-        id
+        userId
         authToken
       }
     }
-  `) as TypedQueryDocumentNode<UserAuthResponse, SignUpUserInput>;
+  `) as TypedQueryDocumentNode<{ signUpUser: UserAuthResponse }, MutationSignUpUserArgs>;
 
   try {
     console.log('Sending signUpUser mutation with input:', input);
-    // @ts-ignore
-    const data = (await client.gql(document).send({ input })) as UserAuthResponse;
-    console.log('SignUpUser response:', data);
-    return data;
+
+    const response = (await client
+      // @ts-ignore
+      .gql(document)
+      .send({ input })) as { signUpUser: UserAuthResponse };
+
+    console.log('SignUpUser response:', response);
+
+    return response.signUpUser;
   } catch (error) {
     console.error('SignUpUser mutation error:', error);
     throw error;

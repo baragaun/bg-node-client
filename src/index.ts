@@ -1,3 +1,4 @@
 import createClient from './createClient.js';
-
-export { createClient };
+import { UserIdentType } from './fsdata/gql/graphql.js';
+import { DbType } from './types/enums.js';
+export { createClient, DbType, UserIdentType };

@@ -1,8 +1,8 @@
 import { RxDatabase, RxDocument } from 'rxdb';
 
 import { ModelType, MutationType } from '../../types/enums.js';
-import { MutationResult } from '../../types/MutationResult.js';
 import { Model } from '../../types/Model.js';
+import { MutationResult } from '../../types/MutationResult.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 

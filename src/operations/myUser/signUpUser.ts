@@ -1,36 +1,43 @@
-import { MutationResult } from '../../types/MutationResult.js';
-import { MutationType } from '../../types/enums.js';
+import db from '../../db/db.js';
+import { SignUpUserInput } from '../../fsdata/gql/graphql.js';
 import signUpUserMutation from '../../fsdata/mutations/signUpUser.js';
-import { SignUpUserInput, UserAuthResponse } from '../../fsdata/gql/graphql.js';
 import data from '../../helpers/data.js';
 import saveUserInfo from '../../helpers/saveUserInfo.js';
+import { MutationResult } from '../../types/MutationResult.js';
+import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
+import { SignUpInput } from '../../types/SignUpInput.js';
+import { MutationType } from '../../types/enums.js';
+import { MyUser } from '../../types/models/MyUser.js';
+import findMyUser from './findMyUser.js';
 
-const signUpUser = async (
-  userHandle: string,
-  email?: string,
-  password?: string,
-): Promise<MutationResult<UserAuthResponse>> => {
+const signUpUser = async (input: SignUpInput): Promise<MutationResult<SignInSignUpResponse>> => {
   try {
-    const input: SignUpUserInput = {
-      userHandle,
-      email,
-      password,
-    };
+    const argInput: SignUpUserInput = input;
 
-    const authResponse = await signUpUserMutation(input);
+    const userAuthResponse = await signUpUserMutation(argInput);
+    let myUser: MyUser | null = null;
 
-    // Making the user info available to the rest of the client:
-    const config = data.config();
-    config.myUserId = authResponse.userId;
-    config.authToken = authResponse.authToken;
-    data.setConfig(config);
+    if (userAuthResponse.userId) {
+      // Making the user info available to the rest of the client:
+      const config = data.config();
+      config.myUserId = userAuthResponse.userId;
+      config.authToken = userAuthResponse.authToken;
+      data.setConfig(config);
 
-    // Save the data to LocalStorage:
-    saveUserInfo(authResponse.userId, undefined, authResponse.authToken);
+      // Save the data to LocalStorage:
+      saveUserInfo(userAuthResponse.userId, undefined, userAuthResponse.authToken);
+
+      // Getting my user to save it into the cache:
+      myUser = await findMyUser({ useCache: false });
+
+      // Save into the local database:
+      const saveResult = await db.insert<MyUser>(myUser);
+      myUser = saveResult.object;
+    }
 
     return {
       operation: MutationType.create,
-      object: authResponse,
+      object: { userAuthResponse, myUser },
     };
   } catch (error) {
     console.error(error);

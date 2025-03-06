@@ -1,7 +1,7 @@
+import db from '../../db/db.js';
+import { ModelType, MutationType } from '../../types/enums.js';
 import { Channel } from '../../types/models/Channel.js';
 import { MutationResult } from '../../types/MutationResult.js';
-import { ModelType, MutationType } from '../../types/enums.js';
-import db from '../../db/db.js';
 
 const updateChannel = async (changes: Partial<Channel>): Promise<MutationResult<Channel>> => {
   try {

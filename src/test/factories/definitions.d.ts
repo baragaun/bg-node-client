@@ -1,11 +1,11 @@
 import rosie from 'rosie';
 
 import { Channel } from '../../types/models/Channel.ts';
-import { UserInbox } from '../../types/models/UserInbox.ts';
 import { ChannelInvitation } from '../../types/models/ChannelInvitation.ts';
 import { ChannelMessage } from '../../types/models/ChannelMessage.ts';
 import { ChannelParticipant } from '../../types/models/ChannelParticipant.ts';
 import { User } from '../../types/models/User.js';
+import { UserInbox } from '../../types/models/UserInbox.ts';
 
 export interface ChannelFactory extends rosie.IFactory<Channel> {
   create: (props: Partial<Channel | Channel[]>, options?: any, count?: number) => Promise<Channel | Channel[]>;

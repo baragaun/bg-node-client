@@ -1,5 +1,5 @@
-import { User } from '../types/models/User.js';
 import chance from '../helpers/chance.js';
+import { User } from '../types/models/User.js';
 
 const createUser = (attributes: Partial<User>): User => {
   const user = new User(attributes);

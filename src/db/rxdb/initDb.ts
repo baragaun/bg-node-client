@@ -1,21 +1,21 @@
 import { addRxPlugin, createRxDatabase } from 'rxdb/plugins/core';
-import { getAjv, wrappedValidateAjvStorage } from 'rxdb/plugins/validate-ajv';
+import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
 import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
-import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
+import { getAjv, wrappedValidateAjvStorage } from 'rxdb/plugins/validate-ajv';
 // import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 // import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
-import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
-import { DbCollection } from './enums.js';
-import db from './helpers/db.js';
-import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
 import modelsSchema from '../../models/schema/schema.js';
-import { User } from '../../types/models/User.js';
-import findById from './findById.js';
+import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { ModelType } from '../../types/enums.js';
-import initLibSignal from './initLibSignal.js';
 import { MyUser } from '../../types/models/MyUser.js';
+import { User } from '../../types/models/User.js';
+import { DbCollection } from './enums.js';
+import findById from './findById.js';
+import db from './helpers/db.js';
+import initLibSignal from './initLibSignal.js';
+import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
 
 const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   // @ts-ignore

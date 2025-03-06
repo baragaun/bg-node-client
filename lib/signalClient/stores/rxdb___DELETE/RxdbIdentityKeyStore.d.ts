@@ -1,6 +1,6 @@
 import { RxCollection } from 'rxdb';
-import { IdentityKeyDocument, RegistrationDocument } from '../../types.js';
 import SignalClient from '@signalapp/libsignal-client';
+import { IdentityKeyDocument, RegistrationDocument } from '../../types.js';
 export declare class RxdbIdentityKeyStore extends SignalClient.IdentityKeyStore {
     private identityKeys;
     private registration;

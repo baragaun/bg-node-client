@@ -1,6 +1,6 @@
 import SignalClient from '@signalapp/libsignal-client';
-import { LibSignalMemStores } from './stores/mem/LibSignalMemStores.js';
 import { LibSignalStores } from '../db/rxdb/libSignalStores/LibSignalStores.js';
+import { LibSignalMemStores } from './stores/mem/LibSignalMemStores.js';
 /**
  * makeX3DHBundle is typically used to assemble the set of public keys and associated
  * metadata required to initiate an X3DH key exchange. In protocols like Signal,

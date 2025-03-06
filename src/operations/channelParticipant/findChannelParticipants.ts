@@ -1,8 +1,8 @@
+import db from '../../db/db.js';
+import { ModelType } from '../../types/enums.js';
 import { ChannelParticipant } from '../../types/models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from '../../types/models/ChannelParticipantListFilter.js';
-import { ModelType } from '../../types/enums.js';
 import { QueryResult } from '../../types/QueryResult.js';
-import db from '../../db/db.js';
 
 const findChannelParticipants = async (
   filter: ChannelParticipantListFilter,
