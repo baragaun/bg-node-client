@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import createClient from '../../../createClient.js';
+import client from '../../../bgNodeClient.js';
 import { UserIdentType } from '../../../fsdata/gql/graphql.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
@@ -11,7 +11,7 @@ import { testConfig } from '../../testConfig.js';
 
 describe('signInUser', () => {
   test('should sign in a user with valid input', async () => {
-    const client = await createClient(testConfig);
+    await client.init(testConfig);
 
     const firstName = chance.first();
     const lastName = chance.last();

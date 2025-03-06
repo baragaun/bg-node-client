@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import createClient from '../../../createClient.js';
+import bgNodeClient from '../../../bgNodeClient.js';
 import findById from '../../../operations/findById.js';
 import { CachePolicy, ModelType } from '../../../types/enums.js';
 import { Channel } from '../../../types/models/Channel.js';
@@ -9,10 +9,10 @@ import { testConfig } from '../../testConfig.js';
 
 describe('createChannel', () => {
   test('should create a channel with the given properties', async () => {
-    const client = await createClient(testConfig);
+    await bgNodeClient.init(testConfig);
     const channelProps = await factories.channel.build({});
 
-    const { object: channel } = await client.operations.channel.createChannel(channelProps);
+    const { object: channel } = await bgNodeClient.operations.channel.createChannel(channelProps);
     const { object: reloadedChannel, error } = await findById<Channel>(channel.id, ModelType.Channel, {
       cachePolicy: CachePolicy.cache,
     });
