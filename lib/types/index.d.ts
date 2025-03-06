@@ -39,4 +39,4 @@ export * from './models/UserBlock.js';
 export * from './models/UserPreferences.js';
 export * from './enums.js';
 export { AuthType, CookieChoiceTextId, UserIdentType };
-export declare const createClient: (config: BgNodeClientConfig) => Promise<BgNodeClient>;
+export type createClient = (config: BgNodeClientConfig) => Promise<BgNodeClient>;

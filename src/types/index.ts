@@ -1,4 +1,3 @@
-import client from '../bgNodeClient.js';
 import { AuthType, CookieChoiceTextId, UserIdentType } from '../fsdata/gql/graphql.js';
 import { BgNodeClient } from './BgNodeClient.js';
 import { BgNodeClientConfig } from './BgNodeClientConfig.js';
@@ -45,8 +44,10 @@ export * from './models/UserPreferences.js';
 export * from './enums.js';
 export { AuthType, CookieChoiceTextId, UserIdentType };
 
-export const createClient = async (config: BgNodeClientConfig): Promise<BgNodeClient> => {
-  await client.init(config);
-
-  return client;
-};
+export type createClient = (config: BgNodeClientConfig) => Promise<BgNodeClient>;
+//
+// export const createClient = async (config: BgNodeClientConfig): Promise<BgNodeClient> => {
+//   await client.init(config);
+//
+//   return client;
+// };
