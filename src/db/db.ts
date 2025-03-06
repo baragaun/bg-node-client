@@ -7,7 +7,7 @@ import { MyUser } from '../types/models/MyUser.js';
 import { MutationResult } from '../types/MutationResult.js';
 import { QueryResult } from '../types/QueryResult.js';
 import memStore from './mem/memStore.js';
-import rxdbHelpers from './rxdb/helpers/db.js';
+// import rxdbHelpers from './rxdb/helpers/db.js';
 import rxDbStore from './rxdb/rxDbStore.js';
 
 const db: Db = {
@@ -115,7 +115,7 @@ const db: Db = {
     return false;
   },
 
-  libSignalStores: rxdbHelpers.getLibSignalStores,
+  // libSignalStores: rxdbHelpers.getLibSignalStores,
 
   replace: <T extends Model>(obj: T): Promise<MutationResult<T>> => {
     if (data.config()?.dbType === DbType.mem) {

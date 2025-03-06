@@ -1,4 +1,3 @@
-import { LibSignalStores } from '../db/rxdb/libSignalStores/LibSignalStores.js';
 import { BgNodeClientConfig } from './BgNodeClientConfig.js';
 import { ModelType } from './enums.js';
 import { Model } from './Model.js';
@@ -14,7 +13,6 @@ export interface Db {
     findAll: <T extends Model = Model>(type: ModelType) => Promise<QueryResult<T>>;
     findById: <T extends Model = Model>(id: string, modelType: ModelType) => Promise<QueryResult<T>>;
     findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType) => Promise<QueryResult<T>>;
-    libSignalStores: () => LibSignalStores;
     replace: <T extends Model>(obj: T) => Promise<MutationResult<T>>;
     update: <T extends Model = Model>(changes: Partial<T>, modelType: ModelType) => Promise<MutationResult<T>>;
 }

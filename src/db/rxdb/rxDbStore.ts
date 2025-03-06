@@ -4,7 +4,7 @@ import find from './find.js';
 import findAll from './findAll.js';
 import findById from './findById.js';
 import findOne from './findOne.js';
-import db from './helpers/db.js';
+// import db from './helpers/db.js';
 import init from './initDb.js';
 import insert from './insert.js';
 import isConnected from './isConnected.js';
@@ -20,7 +20,7 @@ const rxDbStore: Db = {
   init,
   insert,
   isConnected,
-  libSignalStores: db.getLibSignalStores,
+  // libSignalStores: db.getLibSignalStores,
   replace,
   update,
 };

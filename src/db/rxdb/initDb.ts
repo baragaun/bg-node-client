@@ -14,8 +14,8 @@ import { User } from '../../types/models/User.js';
 import { DbCollection } from './enums.js';
 import findById from './findById.js';
 import db from './helpers/db.js';
-import initLibSignal from './initLibSignal.js';
-import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
+// import initLibSignal from './initLibSignal.js';
+// import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
 
 const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   // @ts-ignore
@@ -70,29 +70,29 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     },
   };
 
-  if (config.libSignal?.enable) {
-    collections[DbCollection.libSignalIdentityKeys] = {
-      schema: libSignalSchema.identityKeySchema,
-    };
-    collections[DbCollection.libSignalKyberPreKeys] = {
-      schema: libSignalSchema.kyberPrekeySchema,
-    };
-    collections[DbCollection.libSignalPrekeys] = {
-      schema: libSignalSchema.preKeySchema,
-    };
-    collections[DbCollection.libSignalRegistration] = {
-      schema: libSignalSchema.registrationSchema,
-    };
-    collections[DbCollection.libSignalSenderKeys] = {
-      schema: libSignalSchema.senderKeySchema,
-    };
-    collections[DbCollection.libSignalSessions] = {
-      schema: libSignalSchema.sessionSchema,
-    };
-    collections[DbCollection.libSignalSignedPreKeys] = {
-      schema: libSignalSchema.signedPrekeySchema,
-    };
-  }
+  // if (config.libSignal?.enable) {
+  //   collections[DbCollection.libSignalIdentityKeys] = {
+  //     schema: libSignalSchema.identityKeySchema,
+  //   };
+  //   collections[DbCollection.libSignalKyberPreKeys] = {
+  //     schema: libSignalSchema.kyberPrekeySchema,
+  //   };
+  //   collections[DbCollection.libSignalPrekeys] = {
+  //     schema: libSignalSchema.preKeySchema,
+  //   };
+  //   collections[DbCollection.libSignalRegistration] = {
+  //     schema: libSignalSchema.registrationSchema,
+  //   };
+  //   collections[DbCollection.libSignalSenderKeys] = {
+  //     schema: libSignalSchema.senderKeySchema,
+  //   };
+  //   collections[DbCollection.libSignalSessions] = {
+  //     schema: libSignalSchema.sessionSchema,
+  //   };
+  //   collections[DbCollection.libSignalSignedPreKeys] = {
+  //     schema: libSignalSchema.signedPrekeySchema,
+  //   };
+  // }
 
   await myDb.addCollections(collections);
   db.setDb(myDb);
@@ -104,9 +104,9 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
 
     if (object) {
       myUser = object;
-      if (config.libSignal?.enable) {
-        await initLibSignal(myUser, config);
-      }
+      // if (config.libSignal?.enable) {
+      //   await initLibSignal(myUser, config);
+      // }
     }
   }
 

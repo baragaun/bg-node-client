@@ -7,7 +7,7 @@ import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { QueryResult } from '../../types/QueryResult.js';
-import db from '../rxdb/helpers/db.js';
+// import db from '../rxdb/helpers/db.js';
 
 const channels: Channel[] = [];
 let messages: ChannelMessage[] = [];
@@ -113,7 +113,7 @@ const memStore: Db = {
     return { operation: MutationType.create, object: obj };
   },
 
-  libSignalStores: db.getLibSignalStores,
+  // libSignalStores: db.getLibSignalStores,
 
   replace: async <T extends Model>(obj: T): Promise<MutationResult<T>> => {
     const result = { operation: MutationType.replace, object: obj };
