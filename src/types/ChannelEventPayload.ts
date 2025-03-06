@@ -1,5 +1,5 @@
-import { ChannelMessage } from './models/ChannelMessage.js';
 import { ChannelEventType } from './enums.js';
+import { ChannelMessage } from './models/ChannelMessage.js';
 
 /**
  * Interface representing the payload of a channel event.

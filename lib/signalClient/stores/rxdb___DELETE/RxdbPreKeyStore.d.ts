@@ -1,6 +1,6 @@
 import { RxCollection } from 'rxdb';
-import { PreKeyDocument } from '../../types.js';
 import SignalClient from '@signalapp/libsignal-client';
+import { PreKeyDocument } from '../../types.js';
 export declare class RxdbPreKeyStore extends SignalClient.PreKeyStore {
     private prekeys;
     constructor(prekeys: RxCollection<PreKeyDocument>);

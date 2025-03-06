@@ -1,6 +1,6 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
-import { BaseModel } from './BaseModel.js';
 import { ChannelParticipantRole } from '../enums.js';
+import { BaseModel } from './BaseModel.js';
 export declare class BgChannelParticipant extends BaseModel {
     channelId: string;
     userId: string;

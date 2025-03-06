@@ -1,5 +1,5 @@
-import { ModelType } from '../../../types/enums.js';
 import db from '../../../db/db.js';
+import { ModelType } from '../../../types/enums.js';
 
 const deleteFunc = async (id: string, modelType: ModelType): Promise<void> => {
   if (!db.isConnected()) {

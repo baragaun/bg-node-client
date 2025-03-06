@@ -1,31 +1,51 @@
 import { describe, expect, test } from 'vitest';
 
+import createClient from '../../../createClient.js';
+import chance from '../../../helpers/chance.js';
+import findById from '../../../operations/findById.js';
 import { ModelType } from '../../../types/enums.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { testConfig } from '../../testConfig.js';
-import chance from '../../../helpers/chance.js';
-import createClient from '../../../createClient.js';
-import findById from '../../../operations/findById.js';
 
 describe('signUpUser', () => {
   test('should sign up a user with valid input', async () => {
     const client = await createClient(testConfig);
 
+    const firstName = chance.first();
+    const lastName = chance.last();
     const userHandle = chance.word();
     const password = chance.word();
     const email = chance.email();
 
     console.log('Test input:', { userHandle, email, password });
 
-    const { object: userAuthResponse } = await client.operations.myUser.signUpUser(userHandle, email, password);
+    const signUpResponse = await client.operations.myUser.signUpUser({
+      userHandle,
+      firstName,
+      lastName,
+      email,
+      password,
+    });
 
-    console.log('Sign Up User', userAuthResponse);
+    console.log('Sign Up User', signUpResponse);
 
-    const { object: reloadedUser, error } = await findById<MyUser>(userAuthResponse.userId, ModelType.MyUser);
+    expect(signUpResponse.error).toBeUndefined();
+    expect(signUpResponse.object).toBeDefined();
+    expect(signUpResponse.object.userAuthResponse).toBeDefined();
+    expect(signUpResponse.object.userAuthResponse.userId).toBeDefined();
+    expect(signUpResponse.object.myUser).toBeDefined();
+    expect(signUpResponse.object.myUser.userHandle).toBe(userHandle);
+    expect(signUpResponse.object.myUser.firstName).toBe(firstName);
+    expect(signUpResponse.object.myUser.lastName).toBe(lastName);
+    expect(signUpResponse.object.myUser.email).toBe(email);
 
-    expect(error).toBeUndefined();
-    expect(reloadedUser.id).toBe(userAuthResponse.userId);
-    expect(reloadedUser.userHandle).toBe(userHandle);
-    expect(reloadedUser.email).toBe(email);
+    const findMyUserResponse = await findById<MyUser>(signUpResponse.object.userAuthResponse.userId, ModelType.MyUser);
+
+    expect(findMyUserResponse.error).toBeUndefined();
+    expect(findMyUserResponse.object).toBeDefined();
+    expect(findMyUserResponse.object.userHandle).toBe(userHandle);
+    expect(findMyUserResponse.object.firstName).toBe(firstName);
+    expect(findMyUserResponse.object.lastName).toBe(lastName);
+    expect(findMyUserResponse.object.email).toBe(email);
   });
 });

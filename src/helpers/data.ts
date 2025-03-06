@@ -1,5 +1,5 @@
-import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { BgDataListener } from '../types/BgDataListener.js';
+import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 
 let _config: BgNodeClientConfig | undefined;
 let _listeners: BgDataListener[] = [];

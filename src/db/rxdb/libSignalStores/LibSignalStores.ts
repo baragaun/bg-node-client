@@ -1,14 +1,14 @@
 import { RxDatabase } from 'rxdb';
 
+import { BgNodeClientConfig } from '../../../types/BgNodeClientConfig.js';
+import { MyUser } from '../../../types/models/MyUser.js';
+import { DbCollection } from '../enums.js';
 import { RxdbIdentityKeyStore } from './RxdbIdentityKeyStore.js';
 import { RxdbKyberPreKeyStore } from './RxdbKyberPreKeyStore.js';
 import { RxdbPreKeyStore } from './RxdbPreKeyStore.js';
 import { RxdbSenderKeyStore } from './RxdbSenderKeyStore.js';
 import { RxdbSessionStore } from './RxdbSessionStore.js';
 import { RxdbSignedPreKeyStore } from './RxdbSignedPreKeyStore.js';
-import { DbCollection } from '../enums.js';
-import { BgNodeClientConfig } from '../../../types/BgNodeClientConfig.js';
-import { MyUser } from '../../../types/models/MyUser.js';
 
 export class LibSignalStores {
   sender: RxdbSenderKeyStore;

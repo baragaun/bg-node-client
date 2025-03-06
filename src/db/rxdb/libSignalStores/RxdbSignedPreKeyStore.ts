@@ -1,5 +1,5 @@
-import { RxCollection } from 'rxdb';
 import SignalClient from '@signalapp/libsignal-client';
+import { RxCollection } from 'rxdb';
 
 import { SignedPreKeyDocument } from './types.js';
 

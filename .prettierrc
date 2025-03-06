@@ -1,7 +1,12 @@
 {
   "parser": "typescript",
   "semi": true,
+  "useTabs": false,
   "singleQuote": true,
   "trailingComma": "all",
-  "printWidth": 120
+  "printWidth": 120,
+  "tabWidth": 2,
+  "plugins": [
+    "prettier-plugin-organize-imports"
+  ]
 }

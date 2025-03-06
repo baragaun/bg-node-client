@@ -1,7 +1,8 @@
-import { UserIdentType } from '../fsdata/gql/graphql.js';
 import createClient from '../createClient.js';
+import { AuthType, CookieChoiceTextId, UserIdentType } from '../fsdata/gql/graphql.js';
 
-export { createClient };
+export { AuthType, CookieChoiceTextId, createClient, UserIdentType };
+
 export * from './BgDataListener.js';
 export * from './BgNodeClient.js';
 export * from './BgNodeClientConfig.js';
@@ -11,6 +12,9 @@ export * from './HttpHeaders.js';
 export * from './MutationResult.js';
 export * from './Operations.js';
 export * from './QueryOptions.js';
+export * from './SignInInput.js';
+export * from './SignInSignUpResponse.js';
+export * from './SignUpInput.js';
 
 // Models:
 export * from './Model.js';
@@ -38,6 +42,3 @@ export * from './models/NotificationOptions.js';
 export * from './models/User.js';
 export * from './models/UserBlock.js';
 export * from './models/UserPreferences.js';
-
-// GraphQL Types:
-export { UserIdentType };

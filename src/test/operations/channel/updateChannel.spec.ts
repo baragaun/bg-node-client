@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
 
-import { Channel } from '../../../types/models/Channel.js';
+import createClient from '../../../createClient.js';
+import findById from '../../../operations/findById.js';
 import { ModelType } from '../../../types/enums.js';
+import { Channel } from '../../../types/models/Channel.js';
 import factories from '../../factories/factories.js';
 import { testConfig } from '../../testConfig.js';
-import findById from '../../../operations/findById.js';
-import createClient from '../../../createClient.js';
 
 describe('updateChannel', () => {
   test('should update channel properties', async () => {

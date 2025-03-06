@@ -1,5 +1,5 @@
-import { BaseListFilter } from './BaseListFilter.js';
 import { ChannelMessageType } from '../enums.js';
+import { BaseListFilter } from './BaseListFilter.js';
 
 export class BgChannelMessageListFilter extends BaseListFilter {
   public channelId?: string | null;

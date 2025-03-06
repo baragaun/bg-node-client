@@ -1,7 +1,7 @@
+import db from '../db/db.js';
 import { ModelType } from '../types/enums.js';
 import { Model } from '../types/Model.js';
 import { QueryResult } from '../types/QueryResult.js';
-import db from '../db/db.js';
 
 const findOne = async <T extends Model = Model>(match: Partial<T>, modelType: ModelType): Promise<QueryResult<T>> => {
   try {

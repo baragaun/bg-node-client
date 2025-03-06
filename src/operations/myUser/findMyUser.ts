@@ -1,9 +1,9 @@
-import { MyUser } from '../../types/models/MyUser.js';
-import findMyUserQuery from '../../fsdata/queries/findMyUser.js';
-import { QueryOptions } from '../../types/QueryOptions.js';
 import db from '../../db/db.js';
+import findMyUserQuery from '../../fsdata/queries/findMyUser.js';
 import data from '../../helpers/data.js';
 import { ModelType } from '../../types/index.js';
+import { MyUser } from '../../types/models/MyUser.js';
+import { QueryOptions } from '../../types/QueryOptions.js';
 
 const findMyUser = async (queryOptions: QueryOptions): Promise<MyUser | null> => {
   const config = data.config();
@@ -20,7 +20,14 @@ const findMyUser = async (queryOptions: QueryOptions): Promise<MyUser | null> =>
       return queryResult.object;
     }
 
-    return findMyUserQuery();
+    const myUser = await findMyUserQuery();
+
+    if (myUser) {
+      // Update local cache:
+      await db.replace<MyUser>(myUser);
+    }
+
+    return new MyUser(myUser);
   } catch (error) {
     console.error(error);
     return null;

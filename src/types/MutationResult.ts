@@ -1,5 +1,5 @@
-import { BaseModel } from './models/BaseModel.js';
 import { MutationType } from './enums.js';
+import { BaseModel } from './models/BaseModel.js';
 
 /**
  * The return type for channel object mutations.

@@ -1,7 +1,7 @@
+import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../types/enums.js';
 import { Channel } from '../../types/models/Channel.js';
 import { MutationResult } from '../../types/MutationResult.js';
-import db from '../../db/db.js';
 
 const deleteChannel = async (id: string): Promise<MutationResult<Channel>> => {
   try {

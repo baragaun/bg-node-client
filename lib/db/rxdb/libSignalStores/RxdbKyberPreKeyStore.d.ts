@@ -1,5 +1,5 @@
-import { RxCollection } from 'rxdb';
 import SignalClient from '@signalapp/libsignal-client';
+import { RxCollection } from 'rxdb';
 import { KyberPreKeyDocument } from './types.js';
 export declare class RxdbKyberPreKeyStore extends SignalClient.KyberPreKeyStore {
     private kyberPreKeys;
