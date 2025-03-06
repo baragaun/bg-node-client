@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import createClient from '../../../createClient.js';
 import chance from '../../../helpers/chance.js';
 import findById from '../../../operations/findById.js';
-import { ModelType } from '../../../types/enums.js';
+import { CachePolicy, ModelType } from '../../../types/enums.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { testConfig } from '../../testConfig.js';
 
@@ -39,7 +39,9 @@ describe('signUpUser', () => {
     expect(signUpResponse.object.myUser.lastName).toBe(lastName);
     expect(signUpResponse.object.myUser.email).toBe(email);
 
-    const findMyUserResponse = await findById<MyUser>(signUpResponse.object.userAuthResponse.userId, ModelType.MyUser);
+    const findMyUserResponse = await findById<MyUser>(signUpResponse.object.userAuthResponse.userId, ModelType.MyUser, {
+      cachePolicy: CachePolicy.cache,
+    });
 
     expect(findMyUserResponse.error).toBeUndefined();
     expect(findMyUserResponse.object).toBeDefined();

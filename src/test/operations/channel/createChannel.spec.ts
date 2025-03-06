@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import createClient from '../../../createClient.js';
 import findById from '../../../operations/findById.js';
-import { ModelType } from '../../../types/enums.js';
+import { CachePolicy, ModelType } from '../../../types/enums.js';
 import { Channel } from '../../../types/models/Channel.js';
 import factories from '../../factories/factories.js';
 import { testConfig } from '../../testConfig.js';
@@ -13,7 +13,9 @@ describe('createChannel', () => {
     const channelProps = await factories.channel.build({});
 
     const { object: channel } = await client.operations.channel.createChannel(channelProps);
-    const { object: reloadedChannel, error } = await findById<Channel>(channel.id, ModelType.Channel);
+    const { object: reloadedChannel, error } = await findById<Channel>(channel.id, ModelType.Channel, {
+      cachePolicy: CachePolicy.cache,
+    });
 
     expect(error).toBeUndefined();
     expect(reloadedChannel.id).toBe(channel.id);

@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import createClient from '../../../createClient.js';
 import findById from '../../../operations/findById.js';
-import { ModelType } from '../../../types/enums.js';
+import { CachePolicy, ModelType } from '../../../types/enums.js';
 import { Channel } from '../../../types/models/Channel.js';
 import factories from '../../factories/factories.js';
 import { testConfig } from '../../testConfig.js';
@@ -16,7 +16,9 @@ describe('updateChannel', () => {
 
     await client.operations.channel.updateChannel({ id: channel.id, name: 'newname' });
 
-    const { object: updatedChannel, error: updateError } = await findById<Channel>(channel.id, ModelType.Channel);
+    const { object: updatedChannel, error: updateError } = await findById<Channel>(channel.id, ModelType.Channel, {
+      cachePolicy: CachePolicy.cache,
+    });
 
     expect(updateError).toBeUndefined();
     expect(updatedChannel.id).toBe(channel.id);

@@ -1,10 +1,10 @@
 import db from '../../db/db.js';
+import { defaultQueryOptions } from '../../helpers/defaults.js';
 import { CachePolicy, ModelType } from '../../types/enums.js';
 import { ChannelInvitation } from '../../types/models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../../types/models/ChannelInvitationListFilter.js';
-import { QueryResult } from '../../types/QueryResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
-import { defaultQueryOptions } from '../../helpers/defaults.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const findChannelInvitations = async (
   filter: ChannelInvitationListFilter,
@@ -13,10 +13,7 @@ const findChannelInvitations = async (
   limit: number,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelInvitation>> => {
-  if (
-    queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst
-  ) {
+  if (queryOptions.cachePolicy === CachePolicy.cache || queryOptions.cachePolicy === CachePolicy.cacheFirst) {
     try {
       if (Array.isArray(filter.ids) && filter.ids.length === 1) {
         return db.findById<ChannelInvitation>(filter.ids[0], ModelType.ChannelInvitation);

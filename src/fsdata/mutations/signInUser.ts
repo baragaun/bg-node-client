@@ -6,9 +6,7 @@ import { MutationSignInUserArgs, SignInUserInput, UserAuthResponse } from '../gq
 import helpers from '../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const SignInUser = async (
-  input: SignInUserInput,
-): Promise<UserAuthResponse> => {
+const SignInUser = async (input: SignInUserInput): Promise<UserAuthResponse> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
@@ -32,9 +30,7 @@ const SignInUser = async (
     }
   `) as TypedQueryDocumentNode<{ signInUser: UserAuthResponse }, MutationSignInUserArgs>;
 
-  const userAuthResponse = await client
-    .gql(document)
-    .send({ input }) as { signInUser: UserAuthResponse };
+  const userAuthResponse = (await client.gql(document).send({ input })) as { signInUser: UserAuthResponse };
 
   console.log(userAuthResponse);
 

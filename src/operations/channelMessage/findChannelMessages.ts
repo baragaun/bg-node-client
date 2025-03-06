@@ -1,10 +1,10 @@
 import db from '../../db/db.js';
+import { defaultQueryOptions } from '../../helpers/defaults.js';
 import { CachePolicy, ModelType } from '../../types/enums.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { ChannelMessageListFilter } from '../../types/models/ChannelMessageListFilter.js';
-import { QueryResult } from '../../types/QueryResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
-import { defaultQueryOptions } from '../../helpers/defaults.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const findChannelMessages = async (
   filter: ChannelMessageListFilter,
@@ -13,10 +13,7 @@ const findChannelMessages = async (
   limit: number,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelMessage>> => {
-  if (
-    queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst
-  ) {
+  if (queryOptions.cachePolicy === CachePolicy.cache || queryOptions.cachePolicy === CachePolicy.cacheFirst) {
     try {
       if (Array.isArray(filter.ids) && filter.ids.length === 1) {
         return db.findById<ChannelMessage>(filter.ids[0], ModelType.ChannelMessage);
