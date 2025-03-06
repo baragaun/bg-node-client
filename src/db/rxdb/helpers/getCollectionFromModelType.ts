@@ -1,4 +1,4 @@
-import { RxDatabase, RxCollection } from 'rxdb';
+import { RxCollection, RxDatabase } from 'rxdb';
 
 import { ModelType } from '../../../types/enums.js';
 import db from './db.js';

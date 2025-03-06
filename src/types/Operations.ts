@@ -1,3 +1,5 @@
+import { ModelType } from './enums.js';
+import { Model } from './Model.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './models/ChannelInvitationListFilter.js';
@@ -6,14 +8,14 @@ import { ChannelMessage } from './models/ChannelMessage.js';
 import { ChannelMessageListFilter } from './models/ChannelMessageListFilter.js';
 import { ChannelParticipant } from './models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from './models/ChannelParticipantListFilter.js';
-import { MutationResult } from './MutationResult.js';
-import { QueryResult } from './QueryResult.js';
-import { UserAuthResponse, UserIdentType } from '../fsdata/gql/graphql.js';
-import { Model } from './Model.js';
-import { ModelType } from './enums.js';
-import { User } from './models/User.js';
-import { QueryOptions } from './QueryOptions.js';
 import { MyUser } from './models/MyUser.js';
+import { User } from './models/User.js';
+import { MutationResult } from './MutationResult.js';
+import { QueryOptions } from './QueryOptions.js';
+import { QueryResult } from './QueryResult.js';
+import { SignInInput } from './SignInInput.js';
+import { SignInSignUpResponse } from './SignInSignUpResponse.js';
+import { SignUpInput } from './SignUpInput.js';
 
 export interface Operations {
   findById: <T extends Model = Model>(id: string, modelType: ModelType) => Promise<QueryResult<T>>;
@@ -91,13 +93,8 @@ export interface Operations {
 
   myUser: {
     findMyUser: (queryOptions: QueryOptions) => Promise<MyUser | null>;
-
-    signInUser: (
-      ident: string,
-      identType: UserIdentType,
-      password?: string,
-    ) => Promise<MutationResult<UserAuthResponse>>;
-
-    signUpUser: (userHandle: string, email?: string, password?: string) => Promise<MutationResult<UserAuthResponse>>;
+    signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
+    signMeOut: () => Promise<MutationResult>;
+    signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
   };
 }

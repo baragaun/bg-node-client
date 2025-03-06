@@ -1,9 +1,9 @@
-import { RxCollection } from 'rxdb';
 import SignalClient from '@signalapp/libsignal-client';
+import { RxCollection } from 'rxdb';
 
 import { BgNodeClientConfig } from '../../../types/BgNodeClientConfig.js';
-import { IdentityKeyDocument, RegistrationDocument } from './types.js';
 import { MyUser } from '../../../types/models/MyUser.js';
+import { IdentityKeyDocument, RegistrationDocument } from './types.js';
 
 type Registration = {
   registrationId: number;

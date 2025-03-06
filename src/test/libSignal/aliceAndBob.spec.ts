@@ -3,13 +3,13 @@ import { makePQXDHBundle, makeX3DHBundle } from '../../signalClient/libSignalUti
 // import rxdb from '../../libSignal/../db/rxdb/helpers/db.js';
 import SignalClient from '@signalapp/libsignal-client';
 
-import type { ChannelMessage, User } from '../../signalClient/types.js';
 import { jsonToPreKeyBundle } from '../../signalClient/jsonToPreKeyBundle.js';
+import type { ChannelMessage, User } from '../../signalClient/types.js';
 // import { LibSignalMemStores } from '../../libSignal/stores/mem/LibSignalMemStores.js';
 // import { LibSignalStores } from '../../libSignal/stores/rxdb/LibSignalStores.js';
+import createClient from '../../createClient.js';
 import { preKeyBundleToJSON } from '../../signalClient/preKeyBundleToJSON.js';
 import { testConfig } from '../testConfig.js';
-import createClient from '../../createClient.js';
 
 const useX3DH = true;
 

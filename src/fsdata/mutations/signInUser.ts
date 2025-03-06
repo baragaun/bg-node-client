@@ -1,8 +1,8 @@
 import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-import { SignInUserInput, UserAuthResponse } from '../gql/graphql.js';
 import data from '../../helpers/data.js';
+import { MutationSignInUserArgs, SignInUserInput, UserAuthResponse } from '../gql/graphql.js';
 import helpers from '../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
@@ -22,19 +22,14 @@ const SignInUser = async (input: SignInUserInput): Promise<UserAuthResponse> => 
   // .use(Opentelemetry())
 
   const document = parse(`
-    mutation SignInUser ($input: SignInUserInput!) {
+    mutation M ($input: SignInUserInput!) {
       signInUser (input: $input) {
         userId
-        email
-        firstName
-        lastName
-        userHandle
         authToken
       }
     }
-  `) as TypedQueryDocumentNode<UserAuthResponse, SignInUserInput>;
+  `) as TypedQueryDocumentNode<UserAuthResponse, MutationSignInUserArgs>;
 
-  // @ts-ignore
   const userAuthResponse = (await client.gql(document).send({ input })) as UserAuthResponse;
 
   console.log(userAuthResponse);

@@ -37,7 +37,9 @@ const findById = async <T extends Model = Model>(id: string, modelType: ModelTyp
     })
     .exec();
 
-  return { object: record.toMutableJSON() ?? null };
+  return {
+    object: record ? record.toMutableJSON() : null,
+  };
 };
 
 export default findById;

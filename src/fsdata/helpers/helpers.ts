@@ -1,7 +1,7 @@
-import { HttpHeaderName } from '../../types/enums.js';
-import { AuthType } from '../gql/graphql.js';
-import type { HttpHeaders } from '../../types/HttpHeaders.js';
 import data from '../../helpers/data.js';
+import { HttpHeaderName } from '../../types/enums.js';
+import type { HttpHeaders } from '../../types/HttpHeaders.js';
+import { AuthType } from '../gql/graphql.js';
 
 const helpers = {
   headers: (): HttpHeaders => {

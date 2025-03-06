@@ -1,8 +1,8 @@
+import chance from '../helpers/chance.js';
 import { Channel } from '../types/models/Channel.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
 import { User } from '../types/models/User.js';
-import chance from '../helpers/chance.js';
 import createChannelMessage from './channelMessage.js';
 import createUser from './user.js';
 

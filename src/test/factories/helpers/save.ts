@@ -1,5 +1,5 @@
-import { Model } from '../../../types/Model.js';
 import db from '../../../db/db.js';
+import { Model } from '../../../types/Model.js';
 
 const save = async <T extends Model>(object: T): Promise<T> => {
   if (!db.isConnected()) {
