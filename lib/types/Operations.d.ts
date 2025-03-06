@@ -50,6 +50,7 @@ export interface Operations {
         updateChannelParticipant: (changes: Partial<ChannelParticipant>) => Promise<MutationResult<ChannelParticipant>>;
     };
     myUser: {
+        getSignedOutUserId: () => Promise<string | null>;
         findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
         signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
         signMeOut: () => Promise<MutationResult>;

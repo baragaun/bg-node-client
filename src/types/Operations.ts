@@ -104,6 +104,7 @@ export interface Operations {
   };
 
   myUser: {
+    getSignedOutUserId: () => Promise<string | null>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
     signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
     signMeOut: () => Promise<MutationResult>;

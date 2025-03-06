@@ -23,6 +23,7 @@ import findMyUser from './myUser/findMyUser.js';
 import signInUser from './myUser/signInUser.js';
 import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
+import getSignedOutUserId from './myUser/getSignedOutUserId.js';
 
 const operations: Operations = {
   findById,
@@ -59,6 +60,7 @@ const operations: Operations = {
   },
 
   myUser: {
+    getSignedOutUserId,
     findMyUser,
     signInUser,
     signMeOut,
