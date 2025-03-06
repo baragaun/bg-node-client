@@ -1,3 +1,4 @@
+import { SidMultiStepActionProgress, VerifyMultiStepActionTokenInput } from '../fsdata/gql/graphql.js';
 import { ModelType } from './enums.js';
 import { Model } from './Model.js';
 import { Channel } from './models/Channel.js';
@@ -109,5 +110,12 @@ export interface Operations {
     signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
     signMeOut: () => Promise<MutationResult>;
     signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
+  };
+
+  verification: {
+    startVerifyEmail: (input: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+    verifyMultiStepActionToken: (
+      input: VerifyMultiStepActionTokenInput,
+    ) => Promise<MutationResult<SidMultiStepActionProgress>>;
   };
 }

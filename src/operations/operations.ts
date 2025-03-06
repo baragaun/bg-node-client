@@ -20,10 +20,12 @@ import findById from './findById.js';
 import findOne from './findOne.js';
 import insertOne from './insertOne.js';
 import findMyUser from './myUser/findMyUser.js';
+import getSignedOutUserId from './myUser/getSignedOutUserId.js';
 import signInUser from './myUser/signInUser.js';
 import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
-import getSignedOutUserId from './myUser/getSignedOutUserId.js';
+import startVerifyEmail from './verification/startVerifyEmail.js';
+import verifyMultiStepActionToken from './verification/verifyMultiStepActionToken.js';
 
 const operations: Operations = {
   findById,
@@ -65,6 +67,11 @@ const operations: Operations = {
     signInUser,
     signMeOut,
     signUpUser,
+  },
+
+  verification: {
+    startVerifyEmail: startVerifyEmail,
+    verifyMultiStepActionToken: verifyMultiStepActionToken,
   },
 };
 
