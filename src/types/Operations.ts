@@ -18,9 +18,17 @@ import { SignInSignUpResponse } from './SignInSignUpResponse.js';
 import { SignUpInput } from './SignUpInput.js';
 
 export interface Operations {
-  findById: <T extends Model = Model>(id: string, modelType: ModelType) => Promise<QueryResult<T>>;
+  findById: <T extends Model = Model>(
+    id: string,
+    modelType: ModelType,
+    queryOptions?: QueryOptions,
+  ) => Promise<QueryResult<T>>;
 
-  findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType) => Promise<QueryResult<T>>;
+  findOne: <T extends Model = Model>(
+    match: Partial<T>,
+    modelType: ModelType,
+    queryOptions?: QueryOptions,
+  ) => Promise<QueryResult<T>>;
 
   insertOne: <T extends Model>(object: T) => Promise<MutationResult<T>>;
 
@@ -41,6 +49,7 @@ export interface Operations {
       match: Partial<Channel>,
       skip: number,
       limit: number,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
 
     updateChannel: (changes: Partial<Channel>) => Promise<MutationResult<Channel>>;
@@ -56,6 +65,7 @@ export interface Operations {
       match: Partial<ChannelInvitation>,
       skip: number,
       limit: number,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelInvitation>>;
 
     updateChannelInvitation: (changes: Partial<ChannelInvitation>) => Promise<MutationResult<ChannelInvitation>>;
@@ -71,6 +81,7 @@ export interface Operations {
       match: Partial<ChannelMessage>,
       skip: number,
       limit: number,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelMessage>>;
 
     updateChannelMessage: (changes: Partial<ChannelMessage>) => Promise<MutationResult<ChannelMessage>>;
@@ -86,13 +97,14 @@ export interface Operations {
       match: Partial<ChannelParticipant>,
       skip: number,
       limit: number,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelParticipant>>;
 
     updateChannelParticipant: (changes: Partial<ChannelParticipant>) => Promise<MutationResult<ChannelParticipant>>;
   };
 
   myUser: {
-    findMyUser: (queryOptions: QueryOptions) => Promise<MyUser | null>;
+    findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
     signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
     signMeOut: () => Promise<MutationResult>;
     signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;

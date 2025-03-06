@@ -7,6 +7,7 @@ import data from '../../../helpers/data.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import userFactory from '../../factories/user.js';
 import { testConfig } from '../../testConfig.js';
+import { CachePolicy } from '../../../types/index.js';
 
 describe('findMyUser', () => {
   test('should return the cached user from the local db', async () => {
@@ -23,7 +24,7 @@ describe('findMyUser', () => {
     user = saveResult.object;
     data.config().myUserId = user.id;
 
-    const myUser = await client.operations.myUser.findMyUser({ useCache: true });
+    const myUser = await client.operations.myUser.findMyUser({ cachePolicy: CachePolicy.cache });
 
     expect(myUser.id).toBe(user.id);
     expect(myUser.userHandle).toBe(userHandle);

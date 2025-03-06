@@ -1,3 +1,5 @@
+import { CachePolicy } from './enums.js';
+
 export interface QueryOptions {
-  useCache?: boolean;
+  cachePolicy?: CachePolicy;
 }

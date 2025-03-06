@@ -172,3 +172,25 @@ export enum HttpHeaderName {
   timezone = 'x-timezone',
   userId = 'x-user-id',
 }
+
+export enum CachePolicy {
+  /**
+   * Ignore cache, retrieve data from network.
+   */
+  network = 'network',
+
+  /**
+   * Retrieve data from network, if the network is available.
+   */
+  networkFirst = 'network-first',
+
+  /**
+   * Retrieve data from cache only.
+   */
+  cache = 'cache',
+
+  /**
+   * Retrieve data from cache, if it is available there and not stale.
+   */
+  cacheFirst = 'cache-first',
+}

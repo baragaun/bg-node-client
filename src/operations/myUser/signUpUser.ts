@@ -6,7 +6,7 @@ import saveUserInfo from '../../helpers/saveUserInfo.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
 import { SignUpInput } from '../../types/SignUpInput.js';
-import { MutationType } from '../../types/enums.js';
+import { CachePolicy, MutationType } from '../../types/enums.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import findMyUser from './findMyUser.js';
 
@@ -32,7 +32,7 @@ const signUpUser = async (input: SignUpInput): Promise<MutationResult<SignInSign
       });
 
       // Getting my user to save it into the cache:
-      myUser = await findMyUser({ useCache: false });
+      myUser = await findMyUser({ cachePolicy: CachePolicy.network });
 
       // Save into the local database:
       const saveResult = await db.insert<MyUser>(myUser);
