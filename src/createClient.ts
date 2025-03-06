@@ -2,6 +2,7 @@ import bgNodeClient from './bgNodeClient.js';
 import db from './db/db.js';
 import data from './helpers/data.js';
 import loadUserInfo from './helpers/loadUserInfo.js';
+import saveUserInfo, { SaveUserInfoArgs } from './helpers/saveUserInfo.js';
 import { BgNodeClient } from './types/BgNodeClient.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { DbType } from './types/enums.js';
@@ -30,6 +31,16 @@ const createClient = async (config: BgNodeClientConfig): Promise<BgNodeClient> =
   }
 
   data.setConfig(config);
+  const newUserInfo: SaveUserInfoArgs = {
+    myUserDeviceUuid: config.myUserDeviceUuid,
+  };
+  if (!userInfo.myUserId && config.myUserId) {
+    newUserInfo.myUserId = config.myUserId;
+  }
+  if (!userInfo.authToken && config.authToken) {
+    newUserInfo.authToken = config.authToken;
+  }
+  saveUserInfo(newUserInfo);
 
   await db.init(config);
 

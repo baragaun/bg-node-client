@@ -1,26 +1,24 @@
-const saveUserInfo = (
-  myUserId: string | null | undefined,
-  myUserDeviceUuid: string | null | undefined,
-  authToken: string | null | undefined,
-): void => {
+export type SaveUserInfoArgs = {
+  myUserId?: string | null;
+  myUserIdSignedOut?: string | null;
+  myUserDeviceUuid?: string | null;
+  authToken?: string | null;
+};
+
+const saveUserInfo = ({ myUserId, myUserIdSignedOut, myUserDeviceUuid, authToken }: SaveUserInfoArgs): void => {
   if (typeof window !== 'undefined' && window.localStorage) {
-    if (myUserId) {
-      window.localStorage.setItem('myUserId', myUserId);
-    } else if (myUserId === null) {
-      window.localStorage.removeItem('myUserId');
-    }
-
-    if (myUserDeviceUuid) {
-      window.localStorage.setItem('myUserDeviceUuid', myUserDeviceUuid);
-    } else if (myUserDeviceUuid === null) {
-      window.localStorage.removeItem('myUserDeviceUuid');
-    }
-
-    if (authToken) {
-      window.localStorage.setItem('authToken', authToken);
-    } else if (authToken === null) {
-      window.localStorage.removeItem('authToken');
-    }
+    [
+      { name: 'myUserId', value: myUserId },
+      { name: 'myUserIdSignedOut', value: myUserIdSignedOut },
+      { name: 'myUserDeviceUuid', value: myUserDeviceUuid },
+      { name: 'authToken', value: authToken },
+    ].forEach((field) => {
+      if (field.value) {
+        window.localStorage.setItem(field.name, field.value);
+      } else if (field.value === null) {
+        window.localStorage.removeItem(field.name);
+      }
+    });
   }
 };
 

@@ -3,6 +3,7 @@ import { describe, expect, test } from 'vitest';
 import createClient from '../../../createClient.js';
 import { UserIdentType } from '../../../fsdata/gql/graphql.js';
 import chance from '../../../helpers/chance.js';
+import data from '../../../helpers/data.js';
 import findById from '../../../operations/findById.js';
 import { ModelType } from '../../../types/enums.js';
 import { MyUser } from '../../../types/models/MyUser.js';
@@ -27,10 +28,14 @@ describe('signInUser', () => {
       email,
       password,
     });
+    const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
 
     console.log('Sign Up User', signUpUserAuthResponse);
 
     await client.operations.myUser.signMeOut();
+
+    const config = data.config();
+    expect(config.myUserId).toBe(myUserId);
 
     const signInUserResponse = await client.operations.myUser.signInUser({
       ident: email,
@@ -41,7 +46,7 @@ describe('signInUser', () => {
 
     expect(signInUserResponse.error).toBeUndefined();
     expect(signInUserResponse.object.userAuthResponse).toBeDefined();
-    expect(signInUserResponse.object.userAuthResponse.userId).toBeDefined();
+    expect(signInUserResponse.object.userAuthResponse.userId).toBe(myUserId);
     expect(signInUserResponse.object.myUser).toBeDefined();
     expect(signInUserResponse.object.myUser.id).toBeDefined();
 
@@ -53,7 +58,7 @@ describe('signInUser', () => {
 
     expect(findMyUserResult.error).toBeUndefined();
     expect(findMyUserResult.object).toBeDefined();
-    expect(findMyUserResult.object.id).toBe(signInUserResponse.object.userAuthResponse.userId);
+    expect(findMyUserResult.object.id).toBe(myUserId);
     expect(findMyUserResult.object.userHandle).toBe(userHandle);
     expect(findMyUserResult.object.firstName).toBe(firstName);
     expect(findMyUserResult.object.lastName).toBe(lastName);

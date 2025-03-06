@@ -25,7 +25,11 @@ const signUpUser = async (input: SignUpInput): Promise<MutationResult<SignInSign
       data.setConfig(config);
 
       // Save the data to LocalStorage:
-      saveUserInfo(userAuthResponse.userId, undefined, userAuthResponse.authToken);
+      saveUserInfo({
+        myUserId: userAuthResponse.userId,
+        myUserIdSignedOut: null,
+        authToken: userAuthResponse.authToken,
+      });
 
       // Getting my user to save it into the cache:
       myUser = await findMyUser({ useCache: false });

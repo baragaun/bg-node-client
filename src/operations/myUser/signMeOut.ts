@@ -9,16 +9,18 @@ const signMeOut = async (): Promise<MutationResult> => {
     await signMeOutMutation();
 
     const config = data.config();
+    const myUserIdSignedOut = config.myUserId;
     config.myUserId = null;
     config.authToken = null;
     data.setConfig(config);
 
-    // Save the data to LocalStorage:
-    saveUserInfo(
-      undefined,
-      undefined,
-      null, // erasing the authToken
-    );
+    // Removing the signed-in user info from local storage; leaving
+    // the deviceUuid untouched.
+    saveUserInfo({
+      myUserId: null,
+      myUserIdSignedOut,
+      authToken: null, // erasing the authToken
+    });
 
     return {
       operation: MutationType.update,

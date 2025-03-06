@@ -36,6 +36,7 @@ The one-time prekey private keys will be deleted as received messages using them
   * [The Double Ratchet Algorithm](https://signal.org/docs/specifications/doubleratchet)
   * [The Signal Protocol](https://signal.org/docs/specifications/signal-protocol/)
   * [The Sesame Algorithm: Session Management for Asynchronous Message Encryption](https://signal.org/docs/specifications/sesame/)
+* [Signal Community Forum](https://community.signalusers.org/)
 * [End-to-end encrypted messages need more than libsignal](https://mjg59.dreamwidth.org/62598.html)
 * [The signal-protocol for node and browsers](https://people.ischool.berkeley.edu/~nick/signal-protocol-js/)
   * Uses [Emscripten](https://github.com/kripken/emscripten) - compiles LLVM bytecode to performant Javascript
