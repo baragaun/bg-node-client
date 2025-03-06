@@ -6,7 +6,7 @@ export const testConfig: BgNodeClientConfig = {
   inBrowser: false,
   debugMode: true,
   fsdata: {
-    url: 'http://localhost:8090/fsdata/api/graphql',
+    url: 'http://localhost:8092/fsdata/api/graphql',
     headers: {
       [HttpHeaderName.consumer]: 'app',
     },

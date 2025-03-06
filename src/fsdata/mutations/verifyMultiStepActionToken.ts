@@ -43,7 +43,7 @@ const verifyMultiStepActionToken = async (
         createdAt
         createdBy
       }
-  }
+    }
   `) as TypedQueryDocumentNode<
     { verifyMultiStepActionToken: SidMultiStepActionProgress },
     MutationVerifyMultiStepActionTokenArgs

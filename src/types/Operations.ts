@@ -110,10 +110,8 @@ export interface Operations {
     signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
     signMeOut: () => Promise<MutationResult>;
     signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
-  };
-
-  verification: {
     startVerifyEmail: (input: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+
     verifyMultiStepActionToken: (
       input: VerifyMultiStepActionTokenInput,
     ) => Promise<MutationResult<SidMultiStepActionProgress>>;

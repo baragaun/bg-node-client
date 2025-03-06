@@ -26,18 +26,18 @@ const startVerifyEmail = async (input: string): Promise<SidMultiStepActionProgre
 
   const document = parse(`
     mutation StartVerifyEmail($email: String!) {
-        startVerifyEmail(email: $email) {
-            actionId
-            actionStatus
-            actionType
-            attemptCount
-            authTokenExpiresAt
-            authToken
-            expiresAt
-            result
-            createdAt
-        }
-}
+      startVerifyEmail(email: $email) {
+        actionId
+        actionStatus
+        actionType
+        attemptCount
+        authTokenExpiresAt
+        authToken
+        expiresAt
+        result
+        createdAt
+      }
+    }
   `) as TypedQueryDocumentNode<{ startVerifyEmail: SidMultiStepActionProgress }, string>;
 
   try {

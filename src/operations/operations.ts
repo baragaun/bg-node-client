@@ -24,8 +24,8 @@ import getSignedOutUserId from './myUser/getSignedOutUserId.js';
 import signInUser from './myUser/signInUser.js';
 import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
-import startVerifyEmail from './verification/startVerifyEmail.js';
-import verifyMultiStepActionToken from './verification/verifyMultiStepActionToken.js';
+import startVerifyEmail from './myUser/startVerifyEmail.js';
+import verifyMultiStepActionToken from './myUser/verifyMultiStepActionToken.js';
 
 const operations: Operations = {
   findById,
@@ -67,9 +67,6 @@ const operations: Operations = {
     signInUser,
     signMeOut,
     signUpUser,
-  },
-
-  verification: {
     startVerifyEmail: startVerifyEmail,
     verifyMultiStepActionToken: verifyMultiStepActionToken,
   },
