@@ -1,4 +1,4 @@
-import { addRxPlugin, createRxDatabase } from 'rxdb/plugins/core';
+import { addRxPlugin, createRxDatabase, isRxDatabase, RxStorage } from 'rxdb/plugins/core';
 import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
 import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
@@ -8,16 +8,35 @@ import addFormats from 'ajv-formats';
 // import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
 import modelsSchema from '../../models/schema/schema.js';
 import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
-import { ModelType } from '../../types/enums.js';
+import { AppEnvironment, ModelType } from '../../types/enums.js';
 import { MyUser } from '../../types/models/MyUser.js';
-import { User } from '../../types/models/User.js';
 import { DbCollection } from './enums.js';
 import findById from './findById.js';
 import db from './helpers/db.js';
 // import initLibSignal from './initLibSignal.js';
 // import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
 
+const loadMyUser = async (myUserId: string | null | undefined): Promise<MyUser | null> => {
+  if (!myUserId) {
+    return null;
+  }
+
+  const result = await findById<MyUser>(myUserId, ModelType.MyUser);
+
+  // if (result.object && config.libSignal?.enable) {
+  //   await initLibSignal(myUser, config);
+  // }
+
+  return result.object;
+};
+
 const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
+  if (isRxDatabase(db.getDb())) {
+    console.error('RxDB.initDb called multiple times.');
+
+    return loadMyUser(config.myUserId);
+  }
+
   // @ts-ignore
   // const ajv = new Ajv();
   // addFormats.default(ajv, ['date-time']);
@@ -34,16 +53,35 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
 
   let storage = config.inBrowser ? getRxStorageDexie() : getRxStorageMemory();
 
-  if (config.debugMode) {
+  if (config.appEnvironment === AppEnvironment.test || config.appEnvironment === AppEnvironment.development) {
     addRxPlugin(RxDBDevModePlugin);
     storage = wrappedValidateAjvStorage({
       storage: storage as any,
     }) as any;
   }
 
+  // The default database name for production is 'firstspark'.
+  let name = config.dbName ?? 'firstspark';
+
+  if (
+    !config.dbName &&
+    (!config.appEnvironment || // default = 'production'
+      config.appEnvironment === AppEnvironment.production)
+  ) {
+    if (config.appEnvironment === AppEnvironment.test) {
+      name = 'firstspark_test';
+    } else if (config.appEnvironment === AppEnvironment.development) {
+      name = 'firstspark_dev';
+    } else if (config.appEnvironment === AppEnvironment.staging) {
+      name = 'firstspark_stag';
+    }
+  }
+
   const myDb = await createRxDatabase({
-    name: config.dbName ?? 'firstspark',
-    storage: storage as any,
+    name,
+    storage: storage as RxStorage<any, any>,
+    // see: https://rxdb.info/rx-database.html#eventreduce:
+    eventReduce: true,
   });
 
   const collections = {
@@ -97,20 +135,13 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   await myDb.addCollections(collections);
   db.setDb(myDb);
 
-  let myUser: MyUser | null = null;
-
-  if (config.myUserId) {
-    const { object } = await findById<User>(config.myUserId, ModelType.MyUser);
-
-    if (object) {
-      myUser = object;
-      // if (config.libSignal?.enable) {
-      //   await initLibSignal(myUser, config);
-      // }
-    }
+  if (typeof window !== 'undefined') {
+    window.addEventListener('unload', async () => {
+      await myDb.close();
+    });
   }
 
-  return myUser;
+  return loadMyUser(config.myUserId);
 };
 
 export default initDb;

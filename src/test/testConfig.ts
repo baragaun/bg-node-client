@@ -1,12 +1,12 @@
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
-import { DbType, HttpHeaderName } from '../types/enums.js';
+import { AppEnvironment, DbType, HttpHeaderName } from '../types/enums.js';
 
 export const testConfig: BgNodeClientConfig = {
+  appEnvironment: AppEnvironment.test,
   dbType: DbType.rxdb,
   inBrowser: false,
-  debugMode: true,
   fsdata: {
-    url: 'http://localhost:8092/fsdata/api/graphql',
+    url: process.env.FSDATA_URL || 'http://localhost:8092/fsdata/api/graphql',
     headers: {
       [HttpHeaderName.consumer]: 'app',
     },

@@ -89,6 +89,13 @@ export enum MutationType {
   replace = 'replace',
 }
 
+export enum AppEnvironment {
+  test = 'test',
+  development = 'development',
+  staging = 'staging',
+  production = 'production',
+}
+
 export enum ChannelInvitationStatus {
   created = 'created',
   accepted = 'accepted',

@@ -73,6 +73,12 @@ export declare enum MutationType {
     delete = "delete",
     replace = "replace"
 }
+export declare enum AppEnvironment {
+    test = "test",
+    development = "development",
+    staging = "staging",
+    production = "production"
+}
 export declare enum ChannelInvitationStatus {
     created = "created",
     accepted = "accepted",

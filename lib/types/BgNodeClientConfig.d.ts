@@ -1,9 +1,13 @@
-import { DbType } from './enums.js';
+import { AppEnvironment, DbType } from './enums.js';
 import { HttpHeaders } from './HttpHeaders.js';
 /**
  * Configuration for BgNodeClient.
  */
 export interface BgNodeClientConfig {
+    /**
+     * Defaults to `production`
+     */
+    appEnvironment?: AppEnvironment;
     myUserId?: string;
     myUserDeviceUuid?: string;
     authToken?: string;
@@ -16,10 +20,6 @@ export interface BgNodeClientConfig {
      */
     dbType?: DbType;
     dbName?: string;
-    /**
-     * If true, it enables dev mode features.
-     */
-    debugMode?: boolean;
     fsdata?: {
         url: string;
         /**
