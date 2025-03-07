@@ -1,8 +1,8 @@
 import db from '../../db/db.js';
+import { CachePolicy, ModelType } from '../../enums.js';
 import findMyUserQuery from '../../fsdata/queries/findMyUser.js';
 import data from '../../helpers/data.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
-import { CachePolicy, ModelType } from '../../types/enums.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 

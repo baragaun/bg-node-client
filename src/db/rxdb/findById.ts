@@ -1,6 +1,6 @@
 import { RxDatabase } from 'rxdb';
 
-import { ModelType } from '../../types/enums.js';
+import { ModelType } from '../../enums.js';
 import { Model } from '../../types/Model.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import db from './helpers/db.js';

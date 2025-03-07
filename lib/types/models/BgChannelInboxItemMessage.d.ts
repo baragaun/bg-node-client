@@ -1,4 +1,4 @@
-import { ChannelMessageType } from '../enums.js';
+import { ChannelMessageType } from '../../enums.js';
 export declare class BgChannelInboxItemMessage {
     id: string;
     channelId: string;

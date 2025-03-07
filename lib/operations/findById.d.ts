@@ -1,4 +1,4 @@
-import { ModelType } from '../types/enums.js';
+import { ModelType } from '../enums.js';
 import { Model } from '../types/Model.js';
 import { QueryOptions } from '../types/QueryOptions.js';
 import { QueryResult } from '../types/QueryResult.js';

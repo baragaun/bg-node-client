@@ -1,6 +1,6 @@
+import { MutationType } from '../../enums.js';
 import { SidMultiStepActionProgress, VerifyMultiStepActionTokenInput } from '../../fsdata/gql/graphql.js';
 import verifyMultiStepActionTokenMutation from '../../fsdata/mutations/verifyMultiStepActionToken.js';
-import { MutationType } from '../../types/enums.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const verifyMultiStepActionToken = async (

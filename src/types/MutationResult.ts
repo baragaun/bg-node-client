@@ -1,4 +1,4 @@
-import { MutationType } from './enums.js';
+import { MutationType } from '../enums.js';
 import { BaseModel } from './models/BaseModel.js';
 
 /**

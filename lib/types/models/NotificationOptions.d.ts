@@ -1,4 +1,4 @@
-import { NotificationType } from '../enums.js';
+import { NotificationType } from '../../enums.js';
 export declare abstract class NotificationOptions {
     notificationType: NotificationType;
     enableEmail?: boolean | null;

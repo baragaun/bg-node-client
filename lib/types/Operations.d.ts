@@ -1,5 +1,5 @@
+import { ModelType } from '../enums.js';
 import { SidMultiStepActionProgress, VerifyMultiStepActionTokenInput } from '../fsdata/gql/graphql.js';
-import { ModelType } from './enums.js';
 import { Model } from './Model.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';

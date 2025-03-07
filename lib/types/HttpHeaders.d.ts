@@ -1,2 +1,2 @@
-import { HttpHeaderName } from './enums.js';
+import { HttpHeaderName } from '../enums.js';
 export type HttpHeaders = Partial<Record<HttpHeaderName, string>>;

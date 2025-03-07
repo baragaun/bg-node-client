@@ -1,4 +1,4 @@
-import { ModelType } from '../../../types/enums.js';
+import { ModelType } from '../../../enums.js';
 import { ModelFactory } from '../definitions.js';
 
 import channelFactory from '../channel.js';

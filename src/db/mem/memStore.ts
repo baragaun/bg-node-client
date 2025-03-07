@@ -1,6 +1,6 @@
+import { ModelType, MutationType } from '../../enums.js';
 import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { Db } from '../../types/Db.js';
-import { ModelType, MutationType } from '../../types/enums.js';
 import { Model } from '../../types/Model.js';
 import { Channel } from '../../types/models/Channel.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';

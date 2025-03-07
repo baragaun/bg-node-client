@@ -1,8 +1,8 @@
+import { MutationType } from '../../enums.js';
 import signMeOutMutation from '../../fsdata/mutations/signMeOut.js';
 import data from '../../helpers/data.js';
 import saveUserInfo from '../../helpers/saveUserInfo.js';
 import { MutationResult } from '../../types/MutationResult.js';
-import { MutationType } from '../../types/enums.js';
 
 const signMeOut = async (): Promise<MutationResult> => {
   try {

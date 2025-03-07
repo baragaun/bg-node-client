@@ -1,4 +1,4 @@
-import { ChannelEventType } from './enums.js';
+import { ChannelEventType } from '../enums.js';
 import { ChannelMessage } from './models/ChannelMessage.js';
 
 /**

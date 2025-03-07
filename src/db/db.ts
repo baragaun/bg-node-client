@@ -1,7 +1,7 @@
+import { DbType, ModelType } from '../enums.js';
 import data from '../helpers/data.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { Db } from '../types/Db.js';
-import { DbType, ModelType } from '../types/enums.js';
 import { Model } from '../types/Model.js';
 import { MyUser } from '../types/models/MyUser.js';
 import { MutationResult } from '../types/MutationResult.js';

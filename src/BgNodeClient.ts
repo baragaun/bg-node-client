@@ -1,12 +1,12 @@
 // import { BgDataListener } from './BgDataListener.js';
-import { BgNodeClientConfig } from './BgNodeClientConfig.js';
+import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 // import { Operations } from './Operations.js';
-import db from '../db/db.js';
-import data from '../helpers/data.js';
-import loadUserInfo from '../helpers/loadUserInfo.js';
-import saveUserInfo, { SaveUserInfoArgs } from '../helpers/saveUserInfo.js';
-import operations from '../operations/operations.js';
+import db from './db/db.js';
 import { DbType } from './enums.js';
+import data from './helpers/data.js';
+import loadUserInfo from './helpers/loadUserInfo.js';
+import saveUserInfo, { SaveUserInfoArgs } from './helpers/saveUserInfo.js';
+import operations from './operations/operations.js';
 
 export class BgNodeClient {
   // init: (config: BgNodeClientConfig) => Promise<void>;

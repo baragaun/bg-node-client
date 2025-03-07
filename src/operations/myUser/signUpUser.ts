@@ -1,13 +1,13 @@
 import db from '../../db/db.js';
+import { CachePolicy, MutationType } from '../../enums.js';
 import { SignUpUserInput } from '../../fsdata/gql/graphql.js';
 import signUpUserMutation from '../../fsdata/mutations/signUpUser.js';
 import data from '../../helpers/data.js';
 import saveUserInfo from '../../helpers/saveUserInfo.js';
+import { MyUser } from '../../types/models/MyUser.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
 import { SignUpInput } from '../../types/SignUpInput.js';
-import { CachePolicy, MutationType } from '../../types/enums.js';
-import { MyUser } from '../../types/models/MyUser.js';
 import findMyUser from './findMyUser.js';
 
 const signUpUser = async (input: SignUpInput): Promise<MutationResult<SignInSignUpResponse>> => {

@@ -1,5 +1,5 @@
+import { ModelType } from '../../enums.js';
 import { Model } from '../../types/Model.js';
-import { ModelType } from '../../types/enums.js';
 import { Channel } from '../../types/models/Channel.js';
 import { ChannelInvitation } from '../../types/models/ChannelInvitation.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';

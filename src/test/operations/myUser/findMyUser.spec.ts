@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import db from '../../../db/db.js';
+import { CachePolicy } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
-import { BgNodeClient } from '../../../types/BgNodeClient.js';
-import { CachePolicy } from '../../../types/enums.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import userFactory from '../../factories/user.js';
 import { testConfig } from '../../testConfig.js';

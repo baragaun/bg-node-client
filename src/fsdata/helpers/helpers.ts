@@ -1,5 +1,5 @@
+import { HttpHeaderName } from '../../enums.js';
 import data from '../../helpers/data.js';
-import { HttpHeaderName } from '../../types/enums.js';
 import type { HttpHeaders } from '../../types/HttpHeaders.js';
 import { AuthType } from '../gql/graphql.js';
 

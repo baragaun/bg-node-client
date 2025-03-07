@@ -1,4 +1,4 @@
-import { AppFeature, AuthType, UiLanguage, UserRole } from '../enums.js';
+import { AppFeature, AuthType, UiLanguage, UserRole } from '../../enums.js';
 import { BaseModel } from './BaseModel.js';
 import { LabeledStringValue } from './LabeledStringValue.js';
 import { UserBlock } from './UserBlock.js';

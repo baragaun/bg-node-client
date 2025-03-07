@@ -1,5 +1,5 @@
+import { AppEnvironment, DbType, HttpHeaderName } from '../enums.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
-import { AppEnvironment, DbType, HttpHeaderName } from '../types/enums.js';
 
 export const testConfig: BgNodeClientConfig = {
   appEnvironment: AppEnvironment.test,

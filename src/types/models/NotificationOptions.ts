@@ -1,4 +1,4 @@
-import { NotificationType } from '../enums.js';
+import { NotificationType } from '../../enums.js';
 
 export abstract class NotificationOptions {
   public notificationType: NotificationType = NotificationType.unset;

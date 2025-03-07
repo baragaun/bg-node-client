@@ -1,6 +1,6 @@
 import db from '../../db/db.js';
+import { CachePolicy, ModelType } from '../../enums.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
-import { CachePolicy, ModelType } from '../../types/enums.js';
 import { ChannelInvitation } from '../../types/models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../../types/models/ChannelInvitationListFilter.js';
 import { QueryOptions } from '../../types/QueryOptions.js';

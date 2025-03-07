@@ -1,6 +1,6 @@
 import { AuthType, CookieChoiceTextId, UserIdentType } from '../fsdata/gql/graphql.js';
+export * from '../BgNodeClient.js';
 export * from './BgDataListener.js';
-export * from './BgNodeClient.js';
 export * from './BgNodeClientConfig.js';
 export * from './ChannelEventPayload.js';
 export * from './HttpHeaders.js';
@@ -35,5 +35,5 @@ export * from './models/NotificationOptions.js';
 export * from './models/User.js';
 export * from './models/UserBlock.js';
 export * from './models/UserPreferences.js';
-export * from './enums.js';
+export * from '../enums.js';
 export { AuthType, CookieChoiceTextId, UserIdentType };

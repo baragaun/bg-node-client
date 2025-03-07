@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
+import { CachePolicy, ModelType } from '../../../enums.js';
 import { UserIdentType } from '../../../fsdata/gql/graphql.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
 import findById from '../../../operations/findById.js';
-import { BgNodeClient } from '../../../types/BgNodeClient.js';
-import { CachePolicy, ModelType } from '../../../types/enums.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { testConfig } from '../../testConfig.js';
 

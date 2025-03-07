@@ -1,8 +1,8 @@
 import { Factory } from 'rosie';
 
+import { ChannelMessageType, ModelType } from '../../enums.js';
 import chance from '../../helpers/chance.js';
 import randomDate from '../../helpers/randomDate.js';
-import { ChannelMessageType, ModelType } from '../../types/enums.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { ChannelMessageFactory } from './definitions.js';
 import create from './helpers/create.js';

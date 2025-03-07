@@ -1,9 +1,9 @@
 // import * as Factory from 'factory.ts';
 import { Factory } from 'rosie';
 
+import { ModelType, UiLanguage } from '../../enums.js';
 import chance from '../../helpers/chance.js';
 import randomDate from '../../helpers/randomDate.js';
-import { ModelType, UiLanguage } from '../../types/enums.js';
 import { LabeledStringValue } from '../../types/models/LabeledStringValue.js';
 import { User } from '../../types/models/User.js';
 import { UserFactory } from './definitions.js';

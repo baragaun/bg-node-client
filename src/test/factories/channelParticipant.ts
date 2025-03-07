@@ -1,7 +1,7 @@
 import { Factory } from 'rosie';
 
+import { ModelType } from '../../enums.js';
 import randomDate from '../../helpers/randomDate.js';
-import { ModelType } from '../../types/enums.js';
 import { ChannelParticipant } from '../../types/models/ChannelParticipant.js';
 import { ChannelParticipantFactory } from './definitions.js';
 import create from './helpers/create.js';

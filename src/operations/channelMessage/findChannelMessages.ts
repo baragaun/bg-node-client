@@ -1,6 +1,6 @@
 import db from '../../db/db.js';
+import { CachePolicy, ModelType } from '../../enums.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
-import { CachePolicy, ModelType } from '../../types/enums.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { ChannelMessageListFilter } from '../../types/models/ChannelMessageListFilter.js';
 import { QueryOptions } from '../../types/QueryOptions.js';

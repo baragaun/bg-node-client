@@ -1,6 +1,6 @@
 // import { LibSignalStores } from '../db/rxdb/libSignalStores/LibSignalStores.js';
+import { ModelType } from '../enums.js';
 import { BgNodeClientConfig } from './BgNodeClientConfig.js';
-import { ModelType } from './enums.js';
 import { Model } from './Model.js';
 import { MyUser } from './models/MyUser.js';
 import { MutationResult } from './MutationResult.js';

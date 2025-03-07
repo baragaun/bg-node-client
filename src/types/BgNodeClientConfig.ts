@@ -1,4 +1,4 @@
-import { AppEnvironment, DbType } from './enums.js';
+import { AppEnvironment, DbType } from '../enums.js';
 import { HttpHeaders } from './HttpHeaders.js';
 
 /**

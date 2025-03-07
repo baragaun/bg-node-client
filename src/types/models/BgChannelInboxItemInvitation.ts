@@ -1,4 +1,4 @@
-import { ChannelInvitationStatus } from '../enums.js';
+import { ChannelInvitationStatus } from '../../enums.js';
 
 export class BgChannelInboxItemInvitation {
   public id = '';

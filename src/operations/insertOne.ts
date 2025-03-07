@@ -1,5 +1,5 @@
 import db from '../db/db.js';
-import { MutationType } from '../types/enums.js';
+import { MutationType } from '../enums.js';
 import { Model } from '../types/Model.js';
 import { MutationResult } from '../types/MutationResult.js';
 

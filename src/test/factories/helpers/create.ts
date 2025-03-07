@@ -1,6 +1,6 @@
 import db from '../../../db/db.js';
+import { ModelType } from '../../../enums.js';
 import { Model } from '../../../types/Model.js';
-import { ModelType } from '../../../types/enums.js';
 import getFactoryByType from './getFactoryByType.js';
 
 const create = async <T extends Model>(

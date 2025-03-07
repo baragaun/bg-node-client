@@ -1,4 +1,4 @@
-import { ChannelType } from '../enums.js';
+import { ChannelType } from '../../enums.js';
 import { BaseModel } from './BaseModel.js';
 import { BgChannelStatus } from './BgChannelStatus.js';
 import { ChannelMetadata } from './ChannelMetadata.js';

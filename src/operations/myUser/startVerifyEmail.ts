@@ -1,6 +1,6 @@
+import { MutationType } from '../../enums.js';
 import { SidMultiStepActionProgress } from '../../fsdata/gql/graphql.js';
 import startVerifyEmailMutation from '../../fsdata/mutations/startVerifyEmail.js';
-import { MutationType } from '../../types/enums.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const startVerifyEmail = async (input: string): Promise<MutationResult<SidMultiStepActionProgress>> => {
