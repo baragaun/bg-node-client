@@ -86,7 +86,7 @@ project's `package.json` like this:
 ```
 
 Then you don't have to push the changes in `bg-node-client` to GitHub. You still need to run
-`pnpm install` for the changes to show up in the other project.
+`pnpm build` for this project.
 
 ## To Do
 
