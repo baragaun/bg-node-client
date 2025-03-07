@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
-import bgNodeClient from '../../../bgNodeClient.js';
 import findById from '../../../operations/findById.js';
+import { BgNodeClient } from '../../../types/BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../../types/enums.js';
 import { Channel } from '../../../types/models/Channel.js';
 import factories from '../../factories/factories.js';
@@ -9,12 +9,12 @@ import { testConfig } from '../../testConfig.js';
 
 describe('updateChannel', () => {
   test('should update channel properties', async () => {
-    await bgNodeClient.init(testConfig);
+    const client = await new BgNodeClient().init(testConfig);
     const channelProps = await factories.channel.build({});
 
-    const { object: channel } = await bgNodeClient.operations.channel.createChannel(channelProps);
+    const { object: channel } = await client.operations.channel.createChannel(channelProps);
 
-    await bgNodeClient.operations.channel.updateChannel({ id: channel.id, name: 'newname' });
+    await client.operations.channel.updateChannel({ id: channel.id, name: 'newname' });
 
     const { object: updatedChannel, error: updateError } = await findById<Channel>(channel.id, ModelType.Channel, {
       cachePolicy: CachePolicy.cache,

@@ -1,16 +1,15 @@
 import { describe, expect, test } from 'vitest';
 
-import client from '../../../bgNodeClient.js';
 import chance from '../../../helpers/chance.js';
 import findById from '../../../operations/findById.js';
+import { BgNodeClient } from '../../../types/BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../../types/enums.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { testConfig } from '../../testConfig.js';
 
 describe('signUpUser', () => {
   test('should sign up a user with valid input', async () => {
-    await client.init(testConfig);
-
+    const client = await new BgNodeClient().init(testConfig);
     const firstName = chance.first();
     const lastName = chance.last();
     const userHandle = chance.word();

@@ -1,5 +1,5 @@
+import { BgNodeClient } from './types/BgNodeClient.js';
 import { AuthType, CookieChoiceTextId, UserIdentType } from './fsdata/gql/graphql.js';
-import { BgNodeClient, BgNodeClientConfig } from './types/index.js';
 export * from './types/enums.js';
+export { BgNodeClient };
 export { AuthType, CookieChoiceTextId, UserIdentType };
-export declare const createClient: (config: BgNodeClientConfig) => Promise<BgNodeClient>;

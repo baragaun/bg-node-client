@@ -3,7 +3,7 @@ import data from './helpers/data.js';
 import loadUserInfo from './helpers/loadUserInfo.js';
 import saveUserInfo, { SaveUserInfoArgs } from './helpers/saveUserInfo.js';
 import operations from './operations/operations.js';
-import { BgNodeClient } from './types/BgNodeClient.js';
+import { BgNodeClient } from './types/BgNodeClient.js.HIDDEN';
 import { DbType } from './types/enums.js';
 import { BgNodeClientConfig } from './types/index.js';
 // import db from './db/db.js';

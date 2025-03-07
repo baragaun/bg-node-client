@@ -1,6 +1,4 @@
 import { AuthType, CookieChoiceTextId, UserIdentType } from '../fsdata/gql/graphql.js';
-import { BgNodeClient } from './BgNodeClient.js';
-import { BgNodeClientConfig } from './BgNodeClientConfig.js';
 export * from './BgDataListener.js';
 export * from './BgNodeClient.js';
 export * from './BgNodeClientConfig.js';
@@ -39,4 +37,3 @@ export * from './models/UserBlock.js';
 export * from './models/UserPreferences.js';
 export * from './enums.js';
 export { AuthType, CookieChoiceTextId, UserIdentType };
-export type createClient = (config: BgNodeClientConfig) => Promise<BgNodeClient>;
