@@ -23,7 +23,10 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  find: async <T extends Model = Model>(match: Partial<T>, type: ModelType): Promise<QueryResult<T>> => {
+  find: async <T extends Model = Model>(
+    match: Partial<T>,
+    type: ModelType,
+  ): Promise<QueryResult<T>> => {
     if (data.config()?.dbType === DbType.mem) {
       return memStore.find<T>(match, type);
     }
@@ -129,7 +132,10 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  update: <T extends Model = Model>(changes: Partial<T>, modelType: ModelType): Promise<MutationResult<T>> => {
+  update: <T extends Model = Model>(
+    changes: Partial<T>,
+    modelType: ModelType,
+  ): Promise<MutationResult<T>> => {
     if (!changes.updatedAt) {
       changes.updatedAt = new Date().toISOString();
     }

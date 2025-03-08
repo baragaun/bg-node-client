@@ -53,7 +53,10 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
 
   let storage = config.inBrowser ? getRxStorageDexie() : getRxStorageMemory();
 
-  if (config.appEnvironment === AppEnvironment.test || config.appEnvironment === AppEnvironment.development) {
+  if (
+    config.appEnvironment === AppEnvironment.test ||
+    config.appEnvironment === AppEnvironment.development
+  ) {
     addRxPlugin(RxDBDevModePlugin);
     storage = wrappedValidateAjvStorage({
       storage: storage as any,

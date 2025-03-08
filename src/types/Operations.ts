@@ -1,6 +1,10 @@
 import { ModelType } from '../enums.js';
-import { SidMultiStepActionProgress, VerifyMultiStepActionTokenInput } from '../fsdata/gql/graphql.js';
+import {
+  SidMultiStepActionProgress,
+  VerifyMultiStepActionTokenInput,
+} from '../fsdata/gql/graphql.js';
 import { Model } from './Model.js';
+import { BaseModel } from './models/BaseModel.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './models/ChannelInvitationListFilter.js';
@@ -33,6 +37,13 @@ export interface Operations {
 
   insertOne: <T extends Model>(object: T) => Promise<MutationResult<T>>;
 
+  updateLocalObject: <T extends BaseModel = BaseModel>(
+    id: string,
+    object: T | null | undefined,
+    modelType: ModelType,
+    options: QueryOptions,
+  ) => Promise<T | null>;
+
   channel: {
     createChannel: (attributes: Partial<Channel>) => Promise<MutationResult<Channel>>;
 
@@ -57,7 +68,9 @@ export interface Operations {
   };
 
   channelInvitation: {
-    createChannelInvitation: (attributes: Partial<ChannelInvitation>) => Promise<MutationResult<ChannelInvitation>>;
+    createChannelInvitation: (
+      attributes: Partial<ChannelInvitation>,
+    ) => Promise<MutationResult<ChannelInvitation>>;
 
     deleteChannelInvitation: (id: string) => Promise<MutationResult<ChannelInvitation>>;
 
@@ -69,11 +82,15 @@ export interface Operations {
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelInvitation>>;
 
-    updateChannelInvitation: (changes: Partial<ChannelInvitation>) => Promise<MutationResult<ChannelInvitation>>;
+    updateChannelInvitation: (
+      changes: Partial<ChannelInvitation>,
+    ) => Promise<MutationResult<ChannelInvitation>>;
   };
 
   channelMessage: {
-    createChannelMessage: (attributes: Partial<ChannelMessage>) => Promise<MutationResult<ChannelMessage>>;
+    createChannelMessage: (
+      attributes: Partial<ChannelMessage>,
+    ) => Promise<MutationResult<ChannelMessage>>;
 
     deleteChannelMessage: (id: string) => Promise<MutationResult<ChannelMessage>>;
 
@@ -85,11 +102,15 @@ export interface Operations {
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelMessage>>;
 
-    updateChannelMessage: (changes: Partial<ChannelMessage>) => Promise<MutationResult<ChannelMessage>>;
+    updateChannelMessage: (
+      changes: Partial<ChannelMessage>,
+    ) => Promise<MutationResult<ChannelMessage>>;
   };
 
   channelParticipant: {
-    createChannelParticipant: (attributes: Partial<ChannelParticipant>) => Promise<MutationResult<ChannelParticipant>>;
+    createChannelParticipant: (
+      attributes: Partial<ChannelParticipant>,
+    ) => Promise<MutationResult<ChannelParticipant>>;
 
     deleteChannelParticipant: (id: string) => Promise<MutationResult<ChannelParticipant>>;
 
@@ -101,7 +122,9 @@ export interface Operations {
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelParticipant>>;
 
-    updateChannelParticipant: (changes: Partial<ChannelParticipant>) => Promise<MutationResult<ChannelParticipant>>;
+    updateChannelParticipant: (
+      changes: Partial<ChannelParticipant>,
+    ) => Promise<MutationResult<ChannelParticipant>>;
   };
 
   myUser: {

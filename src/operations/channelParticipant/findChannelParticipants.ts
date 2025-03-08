@@ -13,13 +13,18 @@ const findChannelParticipants = async (
   limit: number,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelParticipant>> => {
-  if (queryOptions.cachePolicy === CachePolicy.cache || queryOptions.cachePolicy === CachePolicy.cacheFirst) {
+  if (
+    queryOptions.cachePolicy === CachePolicy.cache ||
+    queryOptions.cachePolicy === CachePolicy.cacheFirst
+  ) {
     try {
       if (Array.isArray(filter.ids) && filter.ids.length === 1) {
         return db.findById<ChannelParticipant>(filter.ids[0], ModelType.ChannelParticipant);
       }
 
-      const { objects: participants } = await db.findAll<ChannelParticipant>(ModelType.ChannelParticipant);
+      const { objects: participants } = await db.findAll<ChannelParticipant>(
+        ModelType.ChannelParticipant,
+      );
       let list: ChannelParticipant[] = participants;
 
       if (filter.channelId || match.channelId) {
@@ -31,7 +36,9 @@ const findChannelParticipants = async (
       }
 
       return {
-        objects: list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
+        objects: list.sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        ),
       };
     } catch (error) {
       return { error: (error as Error).message };

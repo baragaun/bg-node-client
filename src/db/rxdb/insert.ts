@@ -1,6 +1,6 @@
 import { RxDatabase } from 'rxdb';
 
-import { MutationType } from '../../enums.js';
+import { ModelType, MutationType } from '../../enums.js';
 import { getModelTypeFromObject } from '../../helpers/helpers.js';
 import { Model } from '../../types/Model.js';
 import { MutationResult } from '../../types/MutationResult.js';
@@ -9,7 +9,10 @@ import getCollectionFromModelType from './helpers/getCollectionFromModelType.js'
 
 let _db: RxDatabase | undefined = undefined;
 
-const insert = async <T extends Model = Model>(obj: T): Promise<MutationResult<T>> => {
+const insert = async <T extends Model = Model>(
+  obj: T,
+  modelType?: ModelType,
+): Promise<MutationResult<T>> => {
   const result: MutationResult<T> = { operation: MutationType.create };
 
   if (!_db) {
@@ -21,7 +24,9 @@ const insert = async <T extends Model = Model>(obj: T): Promise<MutationResult<T
     }
   }
 
-  const modelType = getModelTypeFromObject(obj);
+  if (!modelType) {
+    modelType = modelType || getModelTypeFromObject(obj);
+  }
 
   if (!modelType) {
     result.error = 'model-type-not-identified';

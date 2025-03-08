@@ -21,7 +21,8 @@ channelMessageFactory.create = (
 ): Promise<ChannelMessage | ChannelMessage[]> =>
   create<ChannelMessage>(props, ModelType.ChannelMessage, options, count);
 
-channelMessageFactory.save = async (channelMessage: ChannelMessage): Promise<ChannelMessage> => save(channelMessage);
+channelMessageFactory.save = async (channelMessage: ChannelMessage): Promise<ChannelMessage> =>
+  save(channelMessage);
 
 channelMessageFactory.delete = async (channelMessage: ChannelMessage): Promise<ChannelMessage> => {
   await deleteFunc(channelMessage.id, ModelType.ChannelMessage);

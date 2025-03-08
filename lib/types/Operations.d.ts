@@ -1,6 +1,7 @@
 import { ModelType } from '../enums.js';
 import { SidMultiStepActionProgress, VerifyMultiStepActionTokenInput } from '../fsdata/gql/graphql.js';
 import { Model } from './Model.js';
+import { BaseModel } from './models/BaseModel.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './models/ChannelInvitationListFilter.js';
@@ -21,6 +22,7 @@ export interface Operations {
     findById: <T extends Model = Model>(id: string, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     insertOne: <T extends Model>(object: T) => Promise<MutationResult<T>>;
+    updateLocalObject: <T extends BaseModel = BaseModel>(id: string, object: T | null | undefined, modelType: ModelType, options: QueryOptions) => Promise<T | null>;
     channel: {
         createChannel: (attributes: Partial<Channel>) => Promise<MutationResult<Channel>>;
         createMockChannel: (attributes: Partial<Channel>, userCount: number, messageCount: number, users?: User[], messages?: ChannelMessage[]) => {

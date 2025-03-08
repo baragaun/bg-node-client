@@ -1,6 +1,7 @@
 import { RxDatabase, RxDocument } from 'rxdb';
 
 import { ModelType, MutationType } from '../../enums.js';
+import { getModelTypeFromObject } from '../../helpers/helpers.js';
 import { Model } from '../../types/Model.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import db from './helpers/db.js';
@@ -10,7 +11,7 @@ let _db: RxDatabase | undefined = undefined;
 
 const update = async <T extends Model = Model>(
   changes: Partial<T>,
-  modelType: ModelType,
+  modelType?: ModelType,
 ): Promise<MutationResult<T>> => {
   const result: MutationResult<T> = { operation: MutationType.update };
   if (!_db) {
@@ -20,6 +21,10 @@ const update = async <T extends Model = Model>(
       result.error = 'db-unavailable';
       return result;
     }
+  }
+
+  if (!modelType) {
+    modelType = modelType || getModelTypeFromObject(changes as T);
   }
 
   const collection = getCollectionFromModelType(modelType);

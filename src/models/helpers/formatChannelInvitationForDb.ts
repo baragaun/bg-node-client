@@ -1,7 +1,9 @@
 import { ChannelInvitation } from '../../types/models/ChannelInvitation.js';
 import formatDateFieldsToDb from './formatDateFieldsToDb.js';
 
-const formatChannelInvitationForDb = (obj: Partial<ChannelInvitation>): Partial<ChannelInvitation> => {
+const formatChannelInvitationForDb = (
+  obj: Partial<ChannelInvitation>,
+): Partial<ChannelInvitation> => {
   obj = formatDateFieldsToDb<ChannelInvitation>(obj, [
     'createdAt',
     'updatedAt',

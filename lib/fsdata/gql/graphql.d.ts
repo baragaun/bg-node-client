@@ -315,9 +315,6 @@ export type BgChannelParticipantMetadata = {
     firstName?: Maybe<Scalars['String']['output']>;
     lastName?: Maybe<Scalars['String']['output']>;
     nickname?: Maybe<Scalars['String']['output']>;
-    sentMessageCount?: Maybe<Scalars['Int']['output']>;
-    unseenMessageCount?: Maybe<Scalars['Int']['output']>;
-    unseenSystemMessageCount?: Maybe<Scalars['Int']['output']>;
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     userHandle?: Maybe<Scalars['String']['output']>;
 };
@@ -708,8 +705,10 @@ export type ChannelMessageStatusInput = {
 };
 export declare enum ChannelMessageType {
     Invitation = "invitation",
+    Support = "support",
     System = "system",
-    Unset = "unset"
+    Unset = "unset",
+    Welcome = "welcome"
 }
 export type ChannelMetadata = {
     __typename?: 'ChannelMetadata';
@@ -765,13 +764,13 @@ export declare enum ChannelParticipantRole {
     Admin = "admin",
     Moderator = "moderator",
     Owner = "owner",
-    System = "system",
     Unset = "unset"
 }
 export declare enum ChannelType {
     Mentoring = "mentoring",
-    System = "system",
-    Unset = "unset"
+    Support = "support",
+    Unset = "unset",
+    Welcome = "welcome"
 }
 export type ChannelsUserMetadata = {
     __typename?: 'ChannelsUserMetadata';
@@ -2145,6 +2144,7 @@ export declare enum ModelType {
     Company = "Company",
     Contact = "Contact",
     ContentTag = "ContentTag",
+    DataDeletion = "DataDeletion",
     Group = "Group",
     GroupMembership = "GroupMembership",
     GroupRule = "GroupRule",
@@ -2164,6 +2164,7 @@ export declare enum ModelType {
     NotificationTemplate = "NotificationTemplate",
     Option = "Option",
     ServiceRequest = "ServiceRequest",
+    SupportChannelConfig = "SupportChannelConfig",
     TrackingEvent = "TrackingEvent",
     Training = "Training",
     TrainingContentPage = "TrainingContentPage",
@@ -2342,11 +2343,7 @@ export type Mutation = {
     addChannelMessageEvent: Scalars['String']['output'];
     addUserToGroup: ServiceRequest;
     archiveChannelForMe: Scalars['String']['output'];
-    /** Block a user from the current user; deprecated, use blockUserV2 */
-    blockUser: Scalars['String']['output'];
-    blockUserForMe: Scalars['String']['output'];
-    blockUserForMeV2: ServiceRequest;
-    blockUserV2: ServiceRequest;
+    blockUserForMe: ServiceRequest;
     createAcademicExperience: AcademicExperience;
     createAdminTask: AdminTask;
     createBusinessExperience: BusinessExperience;
@@ -2365,6 +2362,7 @@ export type Mutation = {
     createNotification: Notification;
     createNotificationTemplate: NotificationTemplate;
     createOneTimeAuthTokenForMe: Scalars['String']['output'];
+    createSupportChannelConfig: SupportChannelConfig;
     createUploadedAsset: UploadedAsset;
     createUserDevice: UserDeviceWithoutAuth;
     createUserSearch: UserSearch;
@@ -2383,6 +2381,7 @@ export type Mutation = {
     deleteGroupMembership: Scalars['String']['output'];
     deleteNotification: Scalars['String']['output'];
     deleteNotificationTemplate: Scalars['String']['output'];
+    deleteSupportChannelConfig: ServiceRequest;
     deleteUploadedAsset: UploadedAsset;
     deleteUser: Scalars['String']['output'];
     deleteUserSearch: ServiceRequest;
@@ -2393,7 +2392,7 @@ export type Mutation = {
     markChannelMessagesAsSeenByMe: Scalars['String']['output'];
     markInAppMessageReceived: Scalars['String']['output'];
     removeUserFromGroup: Scalars['String']['output'];
-    reportUser: ContentTag;
+    reportUser: Scalars['String']['output'];
     runAdminTask: ServiceRequest;
     sendMultiStepActionNotification: Scalars['String']['output'];
     signInOauthUser: UserAuthResponse;
@@ -2405,12 +2404,7 @@ export type Mutation = {
     startVerifyEmail: SidMultiStepActionProgress;
     startVerifyPhoneNumber: SidMultiStepActionProgress;
     unarchiveChannelForMe: Scalars['String']['output'];
-    /** Unblock a user from the current user; deprecated, use unblockUserV2 */
-    unblockUser: Scalars['String']['output'];
-    /** Unblock a user from the current user; deprecated, use unblockUserForMeV2 */
-    unblockUserForMe: Scalars['String']['output'];
-    unblockUserForMeV2: ServiceRequest;
-    unblockUserV2: ServiceRequest;
+    unblockUserForMe: ServiceRequest;
     updateAcademicExperience: ServiceRequest;
     updateAdminTask: AdminTask;
     updateBusinessExperience: ServiceRequest;
@@ -2426,8 +2420,10 @@ export type Mutation = {
     updateIqlaaGroupMembership: ServiceRequest;
     updateMenteesGroupMembership: ServiceRequest;
     updateMentorsGroupMembership: ServiceRequest;
+    updateMyUser: Scalars['String']['output'];
     updateNotification: Scalars['String']['output'];
     updateNotificationTemplate: Scalars['String']['output'];
+    updateSupportChannelConfig: ServiceRequest;
     updateUploadedAsset: Scalars['String']['output'];
     updateUser: Scalars['String']['output'];
     updateUserDevice: Scalars['String']['output'];
@@ -2450,21 +2446,10 @@ export type MutationAddUserToGroupArgs = {
 export type MutationArchiveChannelForMeArgs = {
     channelId: Scalars['String']['input'];
 };
-export type MutationBlockUserArgs = {
-    input: UserBlockInput;
-};
 export type MutationBlockUserForMeArgs = {
     notes?: InputMaybe<Scalars['String']['input']>;
     reasonTextId?: InputMaybe<Scalars['String']['input']>;
     userId: Scalars['String']['input'];
-};
-export type MutationBlockUserForMeV2Args = {
-    notes?: InputMaybe<Scalars['String']['input']>;
-    reasonTextId?: InputMaybe<Scalars['String']['input']>;
-    userId: Scalars['String']['input'];
-};
-export type MutationBlockUserV2Args = {
-    input: UserBlockInput;
 };
 export type MutationCreateAcademicExperienceArgs = {
     input: AcademicExperienceInput;
@@ -2516,6 +2501,9 @@ export type MutationCreateNotificationArgs = {
 };
 export type MutationCreateNotificationTemplateArgs = {
     notificationTemplateInput: NotificationTemplateInput;
+};
+export type MutationCreateSupportChannelConfigArgs = {
+    input: SupportChannelConfigInput;
 };
 export type MutationCreateUploadedAssetArgs = {
     input: UploadedAssetInput;
@@ -2585,12 +2573,18 @@ export type MutationDeleteNotificationTemplateArgs = {
     deletePhysically: Scalars['Boolean']['input'];
     notificationTemplateId: Scalars['String']['input'];
 };
+export type MutationDeleteSupportChannelConfigArgs = {
+    deletePhysically: Scalars['Boolean']['input'];
+    supportChannelConfigId: Scalars['String']['input'];
+};
 export type MutationDeleteUploadedAssetArgs = {
     deletePhysically: Scalars['Boolean']['input'];
     id: Scalars['String']['input'];
 };
 export type MutationDeleteUserArgs = {
+    cause?: InputMaybe<Scalars['String']['input']>;
     deletePhysically: Scalars['Boolean']['input'];
+    description?: InputMaybe<Scalars['String']['input']>;
     userId: Scalars['String']['input'];
 };
 export type MutationDeleteUserSearchArgs = {
@@ -2653,18 +2647,7 @@ export type MutationStartVerifyPhoneNumberArgs = {
 export type MutationUnarchiveChannelForMeArgs = {
     channelId: Scalars['String']['input'];
 };
-export type MutationUnblockUserArgs = {
-    blockedByUserId: Scalars['String']['input'];
-    userId: Scalars['String']['input'];
-};
 export type MutationUnblockUserForMeArgs = {
-    userId: Scalars['String']['input'];
-};
-export type MutationUnblockUserForMeV2Args = {
-    userId: Scalars['String']['input'];
-};
-export type MutationUnblockUserV2Args = {
-    blockedByUserId: Scalars['String']['input'];
     userId: Scalars['String']['input'];
 };
 export type MutationUpdateAcademicExperienceArgs = {
@@ -2712,11 +2695,17 @@ export type MutationUpdateMenteesGroupMembershipArgs = {
 export type MutationUpdateMentorsGroupMembershipArgs = {
     input: MentorsGroupMembershipInput;
 };
+export type MutationUpdateMyUserArgs = {
+    input: UserInput;
+};
 export type MutationUpdateNotificationArgs = {
     notificationInput: NotificationInput;
 };
 export type MutationUpdateNotificationTemplateArgs = {
     notificationTemplateInput: NotificationTemplateInput;
+};
+export type MutationUpdateSupportChannelConfigArgs = {
+    input: SupportChannelConfigInput;
 };
 export type MutationUpdateUploadedAssetArgs = {
     input: UploadedAssetInput;
@@ -2735,6 +2724,143 @@ export type MutationVerifyMultiStepActionTokenArgs = {
 };
 export type MutationVerifyOneTimeAuthTokenArgs = {
     input: VerifyOneTimeAuthTokenInput;
+};
+export type MyUser = {
+    __typename?: 'MyUser';
+    academicExperienceIds?: Maybe<Array<Scalars['ID']['output']>>;
+    academicExperiences?: Maybe<Array<AcademicExperience>>;
+    addedToBgVaultAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    adminNotes?: Maybe<Scalars['String']['output']>;
+    appFeatures?: Maybe<Array<AppFeature>>;
+    authType?: Maybe<AuthType>;
+    avatarAsset?: Maybe<UploadedAsset>;
+    avatarUrl?: Maybe<Scalars['String']['output']>;
+    birthYear?: Maybe<Scalars['Int']['output']>;
+    businessExperienceIds?: Maybe<Array<Scalars['ID']['output']>>;
+    businessExperiences?: Maybe<Array<BusinessExperience>>;
+    channelInvitations: Array<ChannelInvitation>;
+    channelParticipants: Array<ChannelParticipant>;
+    channels: Array<Channel>;
+    cityOfOrigin?: Maybe<Scalars['String']['output']>;
+    cityOfResidence?: Maybe<Scalars['String']['output']>;
+    companies?: Maybe<Array<Company>>;
+    companyIds?: Maybe<Array<Scalars['ID']['output']>>;
+    contacts?: Maybe<Array<Contact>>;
+    countryOfOrigin?: Maybe<Country>;
+    countryOfOriginTextId?: Maybe<Scalars['String']['output']>;
+    countryOfResidence?: Maybe<Country>;
+    countryOfResidenceTextId?: Maybe<Scalars['String']['output']>;
+    createdAt: Scalars['DateTimeISO']['output'];
+    createdBy?: Maybe<Scalars['ID']['output']>;
+    deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    deletedBy?: Maybe<Scalars['ID']['output']>;
+    /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
+    discoverable?: Maybe<Scalars['Boolean']['output']>;
+    educationLevel?: Maybe<EducationLevel>;
+    educationLevelTextId?: Maybe<Scalars['String']['output']>;
+    email?: Maybe<Scalars['String']['output']>;
+    emailSource?: Maybe<Scalars['String']['output']>;
+    emailUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    endorsements?: Maybe<Array<EndorsementWithTypes>>;
+    ethnicity?: Maybe<Scalars['String']['output']>;
+    events?: Maybe<Array<ModelEvent>>;
+    externalGroupIds: Array<Scalars['ID']['output']>;
+    fallbackUiLanguage: Language;
+    fallbackUiLanguageTextId?: Maybe<UiLanguage>;
+    firstName?: Maybe<Scalars['String']['output']>;
+    gender?: Maybe<Gender>;
+    /** This attribute is only used by the MM2 synchronizer. */
+    genderSelfDescribed?: Maybe<Scalars['String']['output']>;
+    genderTextId?: Maybe<Scalars['String']['output']>;
+    groupIds: Array<Scalars['ID']['output']>;
+    groupMembers: Array<IGroupMembership>;
+    groupMemberships: Array<IGroupMembership>;
+    groups: Array<Group>;
+    /** Records whether a user has logged into MM2. */
+    hasSignedInToMm2?: Maybe<Scalars['Boolean']['output']>;
+    /** Records whether a user has logged into MM3. */
+    hasSignedInToMm3?: Maybe<Scalars['Boolean']['output']>;
+    hasTrainings: Scalars['Boolean']['output'];
+    id: Scalars['ID']['output'];
+    inactivatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    inactivatedBy?: Maybe<Scalars['ID']['output']>;
+    /** @deprecated Use findMyInbox */
+    inbox: UserInbox;
+    inviteCode?: Maybe<Scalars['String']['output']>;
+    isEmailVerified: Scalars['Boolean']['output'];
+    isOnVacation?: Maybe<Scalars['Boolean']['output']>;
+    isPhoneNumberVerified: Scalars['Boolean']['output'];
+    lastName?: Maybe<Scalars['String']['output']>;
+    latestActivityAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    latestUserDevice: UserDeviceWithoutAuth;
+    /** This attribute is a copy of the mentee group membership. */
+    mentee?: Maybe<MenteesGroupMembership>;
+    /** This attribute is a copy of the mentor group membership. */
+    mentor?: Maybe<MentorsGroupMembership>;
+    metadata?: Maybe<UserMetadata>;
+    /** For MM2 users, this means a profile is completed. */
+    mm2BasicAccountCompleted?: Maybe<Scalars['Boolean']['output']>;
+    /** This attribute is only used by the MM2 synchronizer. */
+    mm2Id?: Maybe<Scalars['String']['output']>;
+    /** This is the MM2 password hash. */
+    mm2PasswordHash?: Maybe<Scalars['String']['output']>;
+    /** This attribute is only used by the MM2 synchronizer. */
+    mm2PhotoOriginal?: Maybe<Scalars['String']['output']>;
+    offersHelp?: Maybe<Scalars['Boolean']['output']>;
+    onboardingStage?: Maybe<Scalars['String']['output']>;
+    optIntoNewsletter?: Maybe<Scalars['Boolean']['output']>;
+    /** Records whether a user was originally created in MM2. */
+    originatedInMm2?: Maybe<Scalars['Boolean']['output']>;
+    parentGroupIds: Array<Scalars['ID']['output']>;
+    passwordUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    personalBio?: Maybe<Scalars['String']['output']>;
+    phoneNumber?: Maybe<Scalars['String']['output']>;
+    phoneNumberUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    postalCode?: Maybe<Scalars['String']['output']>;
+    preferences?: Maybe<UserPreferences>;
+    preferredLanguage?: Maybe<Language>;
+    preferredLanguageTextId?: Maybe<Scalars['String']['output']>;
+    preferredUiLanguage?: Maybe<Language>;
+    profileCompletionPercentage: Scalars['Int']['output'];
+    profileRole: UserProfileRole;
+    profileRoleHistory?: Maybe<Array<UserProfileRoleHistoryItem>>;
+    pronouns: Array<Pronoun>;
+    pronounsDisplay: Scalars['String']['output'];
+    pronounsTextIds?: Maybe<Array<Scalars['String']['output']>>;
+    regionOfOrigin?: Maybe<Scalars['String']['output']>;
+    regionOfResidence?: Maybe<Scalars['String']['output']>;
+    roles: Array<UserRole>;
+    seeksHelp?: Maybe<Scalars['Boolean']['output']>;
+    selectedUiLanguageTextId?: Maybe<UiLanguage>;
+    signedInAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    signedOutAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    source?: Maybe<Scalars['String']['output']>;
+    spokenLanguages: Array<Language>;
+    spokenLanguagesTextIds: Array<Scalars['String']['output']>;
+    ssoIdp?: Maybe<Scalars['String']['output']>;
+    suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    suspendedBy?: Maybe<Scalars['ID']['output']>;
+    /** This attribute is only used by the MM2 synchronizer. */
+    syncedWithMm2At?: Maybe<Scalars['DateTimeISO']['output']>;
+    termsAndConditionsAcceptedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    tfaBackupCodes?: Maybe<Scalars['String']['output']>;
+    timezone?: Maybe<Scalars['String']['output']>;
+    trustLevel: Scalars['Int']['output'];
+    unreadInAppMessages: Array<Notification>;
+    updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    updatedBy?: Maybe<Scalars['ID']['output']>;
+    uploadedAssets: Array<UploadedAsset>;
+    userBlocks?: Maybe<Array<UserBlock>>;
+    userDevices: Array<UserDeviceWithoutAuth>;
+    userHandle?: Maybe<Scalars['String']['output']>;
+    websites?: Maybe<Array<LabeledStringValue>>;
+    yearsManagementExperience?: Maybe<Scalars['Int']['output']>;
+    yearsOwnershipExperience?: Maybe<Scalars['Int']['output']>;
+};
+export type MyUserChannelsArgs = {
+    mustBeAccepted?: InputMaybe<Scalars['Boolean']['input']>;
+    mustHaveMessages?: InputMaybe<Scalars['Boolean']['input']>;
+    options?: InputMaybe<FindObjectsOptions>;
 };
 export type Notification = {
     __typename?: 'Notification';
@@ -3176,7 +3302,9 @@ export type Query = {
     /** @deprecated Use findMyActiveMultiStepActions instead */
     findMyActiveMultiStepAction: Array<SidMultiStepAction>;
     findMyActiveMultiStepActions: Array<SidMultiStepAction>;
+    findMyBlockedUsers: Array<User>;
     findMyChannels: Array<Channel>;
+    findMyUser: MyUser;
     findMyUserDevices: Array<UserDeviceWithoutAuth>;
     findOptions: Array<Option>;
     findPendingChannelInvitationsForUser: Array<ChannelInvitation>;
@@ -3203,13 +3331,16 @@ export type Query = {
     findUsers: Array<UserListItem>;
     getAvailableUserHandleField: User;
     getMultiStepActionProgress: SidMultiStepActionProgress;
+    /** @deprecated Use findMyBlockedUsers */
     getMyBlockedUsers: Array<User>;
+    /** @deprecated Use findMyUser */
     getMyUser: User;
     isUserIdentAvailable: Scalars['Boolean']['output'];
     myChannelInvitations: Array<ChannelInvitation>;
     myGroupMemberships: Array<IGroupMembership>;
     myInbox: UserInbox;
     myUserSearches: Array<UserSearch>;
+    userWillReceiveWelcomeMessage: Scalars['Boolean']['output'];
 };
 export type QueryDoesUserExistArgs = {
     ident: Scalars['String']['input'];
@@ -3455,6 +3586,9 @@ export type QueryMyChannelInvitationsArgs = {
 export type QueryMyInboxArgs = {
     refresh?: InputMaybe<Scalars['Boolean']['input']>;
 };
+export type QueryUserWillReceiveWelcomeMessageArgs = {
+    userId: Scalars['String']['input'];
+};
 export type ReportUserInput = {
     createdBy?: InputMaybe<Scalars['ID']['input']>;
     messageText?: InputMaybe<Scalars['String']['input']>;
@@ -3582,6 +3716,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationCreateNatsMessage = "graphQlMutationCreateNatsMessage",
     GraphQlMutationCreateNotification = "graphQlMutationCreateNotification",
     GraphQlMutationCreateNotificationTemplate = "graphQlMutationCreateNotificationTemplate",
+    GraphQlMutationCreateSupportChannelConfig = "graphQlMutationCreateSupportChannelConfig",
     GraphQlMutationCreateUploadedAsset = "graphQlMutationCreateUploadedAsset",
     GraphQlMutationCreateUserDevice = "graphQlMutationCreateUserDevice",
     GraphQlMutationCreateUserSearch = "graphQlMutationCreateUserSearch",
@@ -3601,6 +3736,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationDeleteMm2Synchronization = "graphQlMutationDeleteMm2Synchronization",
     GraphQlMutationDeleteNotification = "graphQlMutationDeleteNotification",
     GraphQlMutationDeleteNotificationTemplate = "graphQlMutationDeleteNotificationTemplate",
+    GraphQlMutationDeleteSupportChannelConfig = "graphQlMutationDeleteSupportChannelConfig",
     GraphQlMutationDeleteUploadedAsset = "graphQlMutationDeleteUploadedAsset",
     GraphQlMutationDeleteUser = "graphQlMutationDeleteUser",
     GraphQlMutationDeleteUserSearch = "graphQlMutationDeleteUserSearch",
@@ -3640,6 +3776,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationUpdateNlpMessage = "graphQlMutationUpdateNlpMessage",
     GraphQlMutationUpdateNotification = "graphQlMutationUpdateNotification",
     GraphQlMutationUpdateNotificationTemplate = "graphQlMutationUpdateNotificationTemplate",
+    GraphQlMutationUpdateSupportChannelConfig = "graphQlMutationUpdateSupportChannelConfig",
     GraphQlMutationUpdateUploadedAsset = "graphQlMutationUpdateUploadedAsset",
     GraphQlMutationUpdateUser = "graphQlMutationUpdateUser",
     GraphQlMutationUpdateUserDevice = "graphQlMutationUpdateUserDevice",
@@ -3678,7 +3815,10 @@ export declare enum ServiceRequestType {
     GraphQlQueryFindGroupsField = "graphQlQueryFindGroupsField",
     GraphQlQueryFindIndustries = "graphQlQueryFindIndustries",
     GraphQlQueryFindMm2SynchronizationById = "graphQlQueryFindMm2SynchronizationById",
+    GraphQlQueryFindMyBlockedUsers = "graphQlQueryFindMyBlockedUsers",
     GraphQlQueryFindMyChannels = "graphQlQueryFindMyChannels",
+    GraphQlQueryFindMyUser = "graphQlQueryFindMyUser",
+    GraphQlQueryFindMyUserDevices = "graphQlQueryFindMyUserDevices",
     GraphQlQueryFindNlpConversation = "graphQlQueryFindNlpConversation",
     GraphQlQueryFindOptions = "graphQlQueryFindOptions",
     GraphQlQueryFindPendingChannelInvitationsForUser = "graphQlQueryFindPendingChannelInvitationsForUser",
@@ -3700,8 +3840,6 @@ export declare enum ServiceRequestType {
     GraphQlQueryFindUsers = "graphQlQueryFindUsers",
     GraphQlQueryGetMm2Integration = "graphQlQueryGetMm2Integration",
     GraphQlQueryGetMultiStepActionProgress = "graphQlQueryGetMultiStepActionProgress",
-    GraphQlQueryGetMyBlockedUsers = "graphQlQueryGetMyBlockedUsers",
-    GraphQlQueryGetMyUser = "graphQlQueryGetMyUser",
     GraphQlQueryLatestUserDevice = "graphQlQueryLatestUserDevice",
     GraphQlQueryMyContacts = "graphQlQueryMyContacts",
     GraphQlQueryMyGroupMemberships = "graphQlQueryMyGroupMemberships",
@@ -3715,7 +3853,6 @@ export declare enum ServiceRequestType {
     GraphQlQueryUserGroups = "graphQlQueryUserGroups",
     GraphQlQueryUserInboxUser = "graphQlQueryUserInboxUser",
     GraphQlQueryUserSearchFoundUsers = "graphQlQueryUserSearchFoundUsers",
-    GraphQlQueryUserUserDevices = "graphQlQueryUserUserDevices",
     Unset = "unset"
 }
 export type SidContactListFilter = {
@@ -3978,6 +4115,58 @@ export type SubscriptionObjectChangedArgs = {
     modelType?: InputMaybe<ModelType>;
     objectId?: Scalars['ID']['input'];
     ownerUserId?: InputMaybe<Scalars['ID']['input']>;
+};
+export type SupportChannelConfig = {
+    __typename?: 'SupportChannelConfig';
+    adminNotes?: Maybe<Scalars['String']['output']>;
+    /** Any language option can be selected, not just a UiLanguage */
+    channelLanguageTextId?: Maybe<Scalars['String']['output']>;
+    createSupportChannelForMentees: Scalars['Boolean']['output'];
+    createSupportChannelForMentors: Scalars['Boolean']['output'];
+    createdAt: Scalars['DateTimeISO']['output'];
+    createdBy?: Maybe<Scalars['ID']['output']>;
+    deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    deletedBy?: Maybe<Scalars['ID']['output']>;
+    events?: Maybe<Array<ModelEvent>>;
+    filterByGenderTextIds?: Maybe<Array<Scalars['String']['output']>>;
+    /** The welcome message is a plain text field */
+    firstMessageText?: Maybe<Scalars['String']['output']>;
+    groupId: Scalars['ID']['output'];
+    id: Scalars['ID']['output'];
+    /** Is this welcome message active / should we send it to users? */
+    isActive: Scalars['Boolean']['output'];
+    metadata?: Maybe<BaseModelMetadata>;
+    /** Setting to false will ensure no notifications are sent. Setting to true will still check notification template settings. */
+    sendNotifications: Scalars['Boolean']['output'];
+    senderUserId: Scalars['ID']['output'];
+    updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    updatedBy?: Maybe<Scalars['ID']['output']>;
+};
+export type SupportChannelConfigInput = {
+    adminNotes?: InputMaybe<Scalars['String']['input']>;
+    /** Any language option can be selected, not just a UiLanguage */
+    channelLanguageTextId?: InputMaybe<Scalars['String']['input']>;
+    createSupportChannelForMentees?: InputMaybe<Scalars['Boolean']['input']>;
+    createSupportChannelForMentors?: InputMaybe<Scalars['Boolean']['input']>;
+    createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    createdBy?: InputMaybe<Scalars['ID']['input']>;
+    deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    deletedBy?: InputMaybe<Scalars['ID']['input']>;
+    events?: InputMaybe<Array<ModelEventInput>>;
+    filterByGenderTextIds?: InputMaybe<Array<Scalars['String']['input']>>;
+    /** The welcome message is a plain text */
+    firstMessageText?: InputMaybe<Scalars['String']['input']>;
+    groupId?: InputMaybe<Scalars['ID']['input']>;
+    groupIdent?: InputMaybe<Scalars['String']['input']>;
+    id?: InputMaybe<Scalars['ID']['input']>;
+    /** Is this welcome message active / should we send it to users? */
+    isActive?: InputMaybe<Scalars['Boolean']['input']>;
+    metadata?: InputMaybe<BaseModelMetadataInput>;
+    /** Setting to false will ensure no notifications are sent. Setting to true will still check notification template settings. */
+    sendNotifications?: InputMaybe<Scalars['Boolean']['input']>;
+    senderUserId?: InputMaybe<Scalars['ID']['input']>;
+    updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    updatedBy?: InputMaybe<Scalars['ID']['input']>;
 };
 export type Training = {
     __typename?: 'Training';
@@ -4316,7 +4505,6 @@ export type User = {
     id: Scalars['ID']['output'];
     inactivatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     inactivatedBy?: Maybe<Scalars['ID']['output']>;
-    inbox: UserInbox;
     inviteCode?: Maybe<Scalars['String']['output']>;
     isEmailVerified: Scalars['Boolean']['output'];
     isOnVacation?: Maybe<Scalars['Boolean']['output']>;
@@ -4420,17 +4608,6 @@ export type UserBlock = {
     /** This attribute is only used by the MM2 synchronizer. */
     syncedWithMm2At?: Maybe<Scalars['DateTimeISO']['output']>;
     userId: Scalars['ID']['output'];
-};
-export type UserBlockInput = {
-    adminNotes?: Scalars['String']['input'];
-    blockedByUserId?: Scalars['ID']['input'];
-    /** This attribute is only used by the MM2 synchronizer. */
-    mm2Id?: InputMaybe<Scalars['String']['input']>;
-    notes?: Scalars['String']['input'];
-    reasonTextId?: Scalars['String']['input'];
-    /** This attribute is only used by the MM2 synchronizer. */
-    syncedWithMm2At?: InputMaybe<Scalars['DateTimeISO']['input']>;
-    userId?: Scalars['ID']['input'];
 };
 export type UserDeviceInput = {
     acceptedLanguage?: InputMaybe<Scalars['String']['input']>;

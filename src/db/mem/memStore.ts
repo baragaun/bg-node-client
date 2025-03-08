@@ -12,7 +12,11 @@ import { QueryResult } from '../../types/QueryResult.js';
 const channels: Channel[] = [];
 let messages: ChannelMessage[] = [];
 
-const getArrayForObject = <T extends Model = Model>(obj: Model): T[] => {
+const getArrayForObject = <T extends Model = Model>(obj: Model, modelType?: ModelType): T[] => {
+  if (modelType) {
+    return getArrayForModelType<T>(modelType);
+  }
+
   if (obj instanceof Channel) {
     return channels as T[];
   }
@@ -53,7 +57,10 @@ const memStore: Db = {
     return { operation: MutationType.delete };
   },
 
-  find: async <T extends Model = Model>(match: Partial<T>, type: ModelType): Promise<QueryResult<T>> => {
+  find: async <T extends Model = Model>(
+    match: Partial<T>,
+    type: ModelType,
+  ): Promise<QueryResult<T>> => {
     const arr = getArrayForModelType<T>(type);
 
     if (!arr) {
@@ -84,7 +91,10 @@ const memStore: Db = {
     return { objects: arr };
   },
 
-  findOne: async <T extends Model = Model>(match: Partial<T>, modelType: ModelType): Promise<QueryResult<T>> => {
+  findOne: async <T extends Model = Model>(
+    match: Partial<T>,
+    modelType: ModelType,
+  ): Promise<QueryResult<T>> => {
     const arr = getArrayForModelType(modelType);
 
     // todo: implement
@@ -93,7 +103,10 @@ const memStore: Db = {
     };
   },
 
-  findById: async <T extends Model = Model>(id: string, modelType: ModelType): Promise<QueryResult<T>> => {
+  findById: async <T extends Model = Model>(
+    id: string,
+    modelType: ModelType,
+  ): Promise<QueryResult<T>> => {
     const arr = getArrayForModelType(modelType);
 
     return {
@@ -101,8 +114,11 @@ const memStore: Db = {
     };
   },
 
-  insert: async <T extends Model = Model>(obj: T): Promise<MutationResult<T>> => {
-    const arr = getArrayForObject<T>(obj);
+  insert: async <T extends Model = Model>(
+    obj: T,
+    modelType?: ModelType,
+  ): Promise<MutationResult<T>> => {
+    const arr = getArrayForObject<T>(obj, modelType);
 
     if (!obj.id) {
       obj.id = crypto.randomUUID().replaceAll('-', '');
@@ -115,9 +131,9 @@ const memStore: Db = {
 
   // libSignalStores: db.getLibSignalStores,
 
-  replace: async <T extends Model>(obj: T): Promise<MutationResult<T>> => {
+  replace: async <T extends Model>(obj: T, modelType?: ModelType): Promise<MutationResult<T>> => {
     const result = { operation: MutationType.replace, object: obj };
-    const arr = getArrayForObject(obj);
+    const arr = getArrayForObject(obj, modelType);
     const index = arr.findIndex((o) => o.id === obj.id);
 
     if (index > -1) {
@@ -129,9 +145,12 @@ const memStore: Db = {
     return result;
   },
 
-  update: async <T extends Model = Model>(changes: Partial<T>, modelType: ModelType): Promise<MutationResult<T>> => {
+  update: async <T extends Model = Model>(
+    changes: Partial<T>,
+    modelType?: ModelType,
+  ): Promise<MutationResult<T>> => {
     const result: MutationResult<T> = { operation: MutationType.update };
-    const arr = getArrayForModelType(modelType);
+    const arr = getArrayForObject(changes as T, modelType);
     const index = arr.findIndex((o) => o.id === changes.id);
 
     if (index < 0) {

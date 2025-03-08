@@ -13,13 +13,18 @@ const findChannelInvitations = async (
   limit: number,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelInvitation>> => {
-  if (queryOptions.cachePolicy === CachePolicy.cache || queryOptions.cachePolicy === CachePolicy.cacheFirst) {
+  if (
+    queryOptions.cachePolicy === CachePolicy.cache ||
+    queryOptions.cachePolicy === CachePolicy.cacheFirst
+  ) {
     try {
       if (Array.isArray(filter.ids) && filter.ids.length === 1) {
         return db.findById<ChannelInvitation>(filter.ids[0], ModelType.ChannelInvitation);
       }
 
-      const { objects: messages } = await db.findAll<ChannelInvitation>(ModelType.ChannelInvitation);
+      const { objects: messages } = await db.findAll<ChannelInvitation>(
+        ModelType.ChannelInvitation,
+      );
       let list: ChannelInvitation[] = messages;
 
       if (!match.channelId) {
@@ -31,7 +36,9 @@ const findChannelInvitations = async (
       }
 
       return {
-        objects: list.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
+        objects: list.sort(
+          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        ),
       };
     } catch (error) {
       return { error: (error as Error).message };

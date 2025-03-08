@@ -13,9 +13,13 @@ describe('createChannel', () => {
     const channelProps = await factories.channel.build({});
 
     const { object: channel } = await client.operations.channel.createChannel(channelProps);
-    const { object: reloadedChannel, error } = await findById<Channel>(channel.id, ModelType.Channel, {
-      cachePolicy: CachePolicy.cache,
-    });
+    const { object: reloadedChannel, error } = await findById<Channel>(
+      channel.id,
+      ModelType.Channel,
+      {
+        cachePolicy: CachePolicy.cache,
+      },
+    );
 
     expect(error).toBeUndefined();
     expect(reloadedChannel.id).toBe(channel.id);

@@ -8,7 +8,11 @@ import { User } from '../../types/models/User.js';
 import { UserInbox } from '../../types/models/UserInbox.ts';
 
 export interface ChannelFactory extends rosie.IFactory<Channel> {
-  create: (props: Partial<Channel | Channel[]>, options?: any, count?: number) => Promise<Channel | Channel[]>;
+  create: (
+    props: Partial<Channel | Channel[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<Channel | Channel[]>;
   save: (channel: Channel) => Promise<Channel>;
   delete: (channel: Channel) => Promise<Channel>;
 }
@@ -50,7 +54,11 @@ export interface UserFactory extends rosie.IFactory<User> {
 }
 
 export interface UserInboxFactory extends rosie.IFactory<UserInbox> {
-  create: (props: Partial<UserInbox | UserInbox[]>, options?: any, count?: number) => Promise<UserInbox | UserInbox[]>;
+  create: (
+    props: Partial<UserInbox | UserInbox[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<UserInbox | UserInbox[]>;
   save: (userInbox: UserInbox) => Promise<UserInbox>;
   delete: (userInbox: UserInbox) => Promise<UserInbox>;
 }

@@ -11,7 +11,10 @@ export class ChannelMetadata extends BgChannelMetadata {
     super(attributes);
 
     if (attributes) {
-      if (attributes.channelInvitationAccepted === true || attributes.channelInvitationAccepted === false) {
+      if (
+        attributes.channelInvitationAccepted === true ||
+        attributes.channelInvitationAccepted === false
+      ) {
         this.channelInvitationAccepted = attributes.channelInvitationAccepted;
       }
       if (
@@ -22,7 +25,8 @@ export class ChannelMetadata extends BgChannelMetadata {
       }
       if (
         attributes.messagesSentByFirstParticipantCount === 0 ||
-        (attributes.messagesSentByFirstParticipantCount && !isNaN(attributes.messagesSentByFirstParticipantCount))
+        (attributes.messagesSentByFirstParticipantCount &&
+          !isNaN(attributes.messagesSentByFirstParticipantCount))
       ) {
         this.messagesSentByFirstParticipantCount = attributes.messagesSentByFirstParticipantCount;
       }

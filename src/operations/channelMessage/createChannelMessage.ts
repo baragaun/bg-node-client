@@ -4,7 +4,9 @@ import { Channel } from '../../types/models/Channel.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
-const createChannelMessage = async (attributes: Partial<ChannelMessage>): Promise<MutationResult<ChannelMessage>> => {
+const createChannelMessage = async (
+  attributes: Partial<ChannelMessage>,
+): Promise<MutationResult<ChannelMessage>> => {
   try {
     const channel = db.findById<Channel>(attributes.channelId as string, ModelType.Channel);
 

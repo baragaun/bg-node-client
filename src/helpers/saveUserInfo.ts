@@ -5,7 +5,12 @@ export type SaveUserInfoArgs = {
   authToken?: string | null;
 };
 
-const saveUserInfo = ({ myUserId, myUserIdSignedOut, myUserDeviceUuid, authToken }: SaveUserInfoArgs): void => {
+const saveUserInfo = ({
+  myUserId,
+  myUserIdSignedOut,
+  myUserDeviceUuid,
+  authToken,
+}: SaveUserInfoArgs): void => {
   if (typeof window !== 'undefined' && window.localStorage) {
     [
       { name: 'myUserId', value: myUserId },

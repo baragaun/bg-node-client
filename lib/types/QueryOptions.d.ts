@@ -1,4 +1,13 @@
 import { CachePolicy } from '../enums.js';
+import { Model } from './Model.js';
+export type IsInTargetStateFunc = <T = Model>(obj: T) => boolean;
+export interface QueryPollingOptions {
+    isInTargetStateFunc?: IsInTargetStateFunc | 'watch-updated-at';
+    oldUpdatedAt?: string;
+    initialDelay?: number;
+    interval?: number;
+}
 export interface QueryOptions {
     cachePolicy?: CachePolicy;
+    polling?: QueryPollingOptions;
 }

@@ -10,7 +10,10 @@ const findOne = async <T extends Model = Model>(
   modelType: ModelType,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<T>> => {
-  if (queryOptions.cachePolicy === CachePolicy.cache || queryOptions.cachePolicy === CachePolicy.cacheFirst) {
+  if (
+    queryOptions.cachePolicy === CachePolicy.cache ||
+    queryOptions.cachePolicy === CachePolicy.cacheFirst
+  ) {
     try {
       const result = await db.findOne<T>(match, modelType);
 

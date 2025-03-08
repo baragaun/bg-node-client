@@ -1,7 +1,7 @@
 import db from '../../db/db.js';
 import { CachePolicy, MutationType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
 import { SignUpUserInput } from '../../fsdata/gql/graphql.js';
-import signUpUserMutation from '../../fsdata/mutations/signUpUser.js';
 import data from '../../helpers/data.js';
 import saveUserInfo from '../../helpers/saveUserInfo.js';
 import { MyUser } from '../../types/models/MyUser.js';
@@ -14,7 +14,7 @@ const signUpUser = async (input: SignUpInput): Promise<MutationResult<SignInSign
   try {
     const argInput: SignUpUserInput = input;
 
-    const userAuthResponse = await signUpUserMutation(argInput);
+    const userAuthResponse = await fsdata.myUser.signUpUser(argInput);
     let myUser: MyUser | null = null;
 
     if (userAuthResponse.userId) {

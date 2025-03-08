@@ -14,7 +14,10 @@ export class BgChannelsUserMetadata {
 
   constructor(attributes?: Partial<BgChannelsUserMetadata>) {
     if (attributes) {
-      if (attributes.channelCount === 0 || (attributes.channelCount && !isNaN(attributes.channelCount))) {
+      if (
+        attributes.channelCount === 0 ||
+        (attributes.channelCount && !isNaN(attributes.channelCount))
+      ) {
         this.channelCount = attributes.channelCount;
       }
       if (

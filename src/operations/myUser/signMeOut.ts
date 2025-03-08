@@ -1,12 +1,12 @@
 import { MutationType } from '../../enums.js';
-import signMeOutMutation from '../../fsdata/mutations/signMeOut.js';
+import fsdata from '../../fsdata/fsdata.js';
 import data from '../../helpers/data.js';
 import saveUserInfo from '../../helpers/saveUserInfo.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const signMeOut = async (): Promise<MutationResult> => {
   try {
-    await signMeOutMutation();
+    await fsdata.myUser.signMeOut();
 
     const config = data.config();
     const myUserIdSignedOut = config.myUserId;

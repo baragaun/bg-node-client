@@ -38,9 +38,13 @@ describe('signUpUser', () => {
     expect(signUpResponse.object.myUser.lastName).toBe(lastName);
     expect(signUpResponse.object.myUser.email).toBe(email);
 
-    const findMyUserResponse = await findById<MyUser>(signUpResponse.object.userAuthResponse.userId, ModelType.MyUser, {
-      cachePolicy: CachePolicy.cache,
-    });
+    const findMyUserResponse = await findById<MyUser>(
+      signUpResponse.object.userAuthResponse.userId,
+      ModelType.MyUser,
+      {
+        cachePolicy: CachePolicy.cache,
+      },
+    );
 
     expect(findMyUserResponse.error).toBeUndefined();
     expect(findMyUserResponse.object).toBeDefined();

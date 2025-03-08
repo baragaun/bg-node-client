@@ -19,7 +19,10 @@ export abstract class NotificationOptions {
       if (attributes.enableInAppMessage === true || attributes.enableInAppMessage === false) {
         this.enableInAppMessage = attributes.enableInAppMessage;
       }
-      if (attributes.enablePushNotification === true || attributes.enablePushNotification === false) {
+      if (
+        attributes.enablePushNotification === true ||
+        attributes.enablePushNotification === false
+      ) {
         this.enablePushNotification = attributes.enablePushNotification;
       }
       if (attributes.enableSms === true || attributes.enableSms === false) {

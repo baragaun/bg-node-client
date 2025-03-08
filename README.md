@@ -56,7 +56,7 @@ that is defined in [./src/graphql/tools/codegen.ts](src/fsdata/tools/codegen.ts)
 Then run:
 
 ```shell
- npm run codegen
+pnpm run codegen
 ```
 
 ## Tests

@@ -16,7 +16,9 @@ const emailDomain = 'baragaun.com';
 const userFactory = Factory.define<User>('User', User)
   .attr('avatarUrl', () => (chance.bool({ likelihood: 10 }) ? chance.url() : undefined))
   .attr('cityOfResidence', () => (chance.bool({ likelihood: 10 }) ? chance.city() : undefined))
-  .attr('countryOfResidenceTextId', () => (chance.bool({ likelihood: 90 }) ? chance.country() : undefined))
+  .attr('countryOfResidenceTextId', () =>
+    chance.bool({ likelihood: 90 }) ? chance.country() : undefined,
+  )
   .attr('createdAt', () => randomDate())
   .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
   .sequence('email', (i) => `holger+test-${i}@${emailDomain}`)
@@ -26,7 +28,9 @@ const userFactory = Factory.define<User>('User', User)
   .attr('firstName', () => chance.first())
   .attr('lastName', () => chance.last())
   .attr('genderTextId', () =>
-    chance.bool({ likelihood: 30 }) ? chance.pickone([undefined, '', '-', 'f', 'm', 'x']) : undefined,
+    chance.bool({ likelihood: 30 })
+      ? chance.pickone([undefined, '', '-', 'f', 'm', 'x'])
+      : undefined,
   )
   .attr('inactivatedAt', () => (chance.bool({ likelihood: 1 }) ? randomDate() : undefined))
   .attr('phoneNumber', () => (chance.bool({ likelihood: 30 }) ? chance.phone() : undefined))
@@ -58,8 +62,11 @@ const userFactory = Factory.define<User>('User', User)
   )
   .attr('userHandle', () => chance.word()) as UserFactory;
 
-userFactory.create = (props: Partial<User> | Partial<User>[], options?: any, count?: number): Promise<User | User[]> =>
-  create<User>(props, ModelType.User, options, count);
+userFactory.create = (
+  props: Partial<User> | Partial<User>[],
+  options?: any,
+  count?: number,
+): Promise<User | User[]> => create<User>(props, ModelType.User, options, count);
 
 // userFactory.create2 = async (
 //   props: Partial<User> | Partial<User>[],

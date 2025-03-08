@@ -9,7 +9,10 @@ import create from './helpers/create.js';
 import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';
 
-const channelInvitationFactory = Factory.define<ChannelInvitation>('ChannelInvitation', ChannelInvitation)
+const channelInvitationFactory = Factory.define<ChannelInvitation>(
+  'ChannelInvitation',
+  ChannelInvitation,
+)
   .attr('channelName', () => chance.word())
   .attr('channelTopic', () => chance.sentence())
   .attr('messageText', () => chance.sentence())
@@ -22,10 +25,13 @@ channelInvitationFactory.create = (
 ): Promise<ChannelInvitation | ChannelInvitation[]> =>
   create<ChannelInvitation>(props, ModelType.ChannelInvitation, options, count);
 
-channelInvitationFactory.save = async (channelInvitation: ChannelInvitation): Promise<ChannelInvitation> =>
-  save(channelInvitation);
+channelInvitationFactory.save = async (
+  channelInvitation: ChannelInvitation,
+): Promise<ChannelInvitation> => save(channelInvitation);
 
-channelInvitationFactory.delete = async (channelInvitation: ChannelInvitation): Promise<ChannelInvitation> => {
+channelInvitationFactory.delete = async (
+  channelInvitation: ChannelInvitation,
+): Promise<ChannelInvitation> => {
   await deleteFunc(channelInvitation.id, ModelType.ChannelInvitation);
 
   return channelInvitation;

@@ -26,11 +26,13 @@ import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
 import startVerifyEmail from './myUser/startVerifyEmail.js';
 import verifyMultiStepActionToken from './myUser/verifyMultiStepActionToken.js';
+import updateLocalObject from './updateLocalObject.js';
 
 const operations: Operations = {
   findById,
   findOne,
   insertOne,
+  updateLocalObject,
 
   channel: {
     createChannel,

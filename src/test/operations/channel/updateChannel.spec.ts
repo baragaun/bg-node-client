@@ -16,9 +16,13 @@ describe('updateChannel', () => {
 
     await client.operations.channel.updateChannel({ id: channel.id, name: 'newname' });
 
-    const { object: updatedChannel, error: updateError } = await findById<Channel>(channel.id, ModelType.Channel, {
-      cachePolicy: CachePolicy.cache,
-    });
+    const { object: updatedChannel, error: updateError } = await findById<Channel>(
+      channel.id,
+      ModelType.Channel,
+      {
+        cachePolicy: CachePolicy.cache,
+      },
+    );
 
     expect(updateError).toBeUndefined();
     expect(updatedChannel.id).toBe(channel.id);
