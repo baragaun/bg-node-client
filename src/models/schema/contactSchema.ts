@@ -1,4 +1,4 @@
-export const BgChannelInboxSchema = {
+export const ContactSchema = {
   version: 0,
   primaryKey: 'id',
   type: 'object',

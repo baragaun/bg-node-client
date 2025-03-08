@@ -43,7 +43,7 @@ const replace = async <T extends Model>(
   const records = await collection
     .find({
       selector: {
-        channelId: {
+        id: {
           $eq: obj.id,
         },
       },

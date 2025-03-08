@@ -1,4 +1,3 @@
-import db from '../../db/db.js';
 import { CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { SignUpUserInput } from '../../fsdata/gql/graphql.js';
@@ -17,27 +16,29 @@ const signUpUser = async (input: SignUpInput): Promise<MutationResult<SignInSign
     const userAuthResponse = await fsdata.myUser.signUpUser(argInput);
     let myUser: MyUser | null = null;
 
-    if (userAuthResponse.userId) {
-      // Making the user info available to the rest of the client:
-      const config = data.config();
-      config.myUserId = userAuthResponse.userId;
-      config.authToken = userAuthResponse.authToken;
-      data.setConfig(config);
-
-      // Save the data to LocalStorage:
-      saveUserInfo({
-        myUserId: userAuthResponse.userId,
-        myUserIdSignedOut: null,
-        authToken: userAuthResponse.authToken,
-      });
-
-      // Getting my user to save it into the cache:
-      myUser = await findMyUser({ cachePolicy: CachePolicy.network });
-
-      // Save into the local database:
-      const saveResult = await db.insert<MyUser>(myUser);
-      myUser = saveResult.object;
+    if (!userAuthResponse.userId) {
+      console.error('signUpUser: userId is missing');
+      return {
+        operation: MutationType.create,
+        error: 'UserId is missing',
+      };
     }
+
+    // Making the user info available to the rest of the client:
+    const config = data.config();
+    config.myUserId = userAuthResponse.userId;
+    config.authToken = userAuthResponse.authToken;
+    data.setConfig(config);
+
+    // Save the data to LocalStorage:
+    saveUserInfo({
+      myUserId: userAuthResponse.userId,
+      myUserIdSignedOut: null,
+      authToken: userAuthResponse.authToken,
+    });
+
+    // Getting my user to save it into the cache:
+    myUser = await findMyUser({ cachePolicy: CachePolicy.network });
 
     return {
       operation: MutationType.create,

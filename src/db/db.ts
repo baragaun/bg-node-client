@@ -86,7 +86,7 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  insert: <T extends Model = Model>(obj: T): Promise<MutationResult<T>> => {
+  insert: <T extends Model = Model>(obj: T, modelType?: ModelType): Promise<MutationResult<T>> => {
     if (!obj.createdAt) {
       obj.createdAt = new Date().toISOString();
     }
@@ -96,11 +96,11 @@ const db: Db = {
     }
 
     if (data.config()?.dbType === DbType.mem) {
-      return memStore.insert<T>(obj);
+      return memStore.insert<T>(obj, modelType);
     }
 
     if (data.config()?.dbType === DbType.rxdb) {
-      return rxDbStore.insert<T>(obj);
+      return rxDbStore.insert<T>(obj, modelType);
     }
 
     throw new Error('invalid-store-type');
@@ -120,13 +120,13 @@ const db: Db = {
 
   // libSignalStores: rxdbHelpers.getLibSignalStores,
 
-  replace: <T extends Model>(obj: T): Promise<MutationResult<T>> => {
+  replace: <T extends Model>(obj: T, modelType?: ModelType): Promise<MutationResult<T>> => {
     if (data.config()?.dbType === DbType.mem) {
-      return memStore.replace<T>(obj);
+      return memStore.replace<T>(obj, modelType);
     }
 
     if (data.config()?.dbType === DbType.rxdb) {
-      return rxDbStore.replace<T>(obj);
+      return rxDbStore.replace<T>(obj, modelType);
     }
 
     throw new Error('invalid-store-type');
@@ -134,7 +134,7 @@ const db: Db = {
 
   update: <T extends Model = Model>(
     changes: Partial<T>,
-    modelType: ModelType,
+    modelType?: ModelType,
   ): Promise<MutationResult<T>> => {
     if (!changes.updatedAt) {
       changes.updatedAt = new Date().toISOString();

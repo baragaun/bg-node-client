@@ -7,6 +7,7 @@ import { MyUser } from '../../types/models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 
 const updateMyUser = async (
+  myUser: MyUser,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<MyUser | null> => {
   const config = data.config();
@@ -28,14 +29,17 @@ const updateMyUser = async (
       }
     }
 
-    const myUser = await fsdata.myUser.updateMyUser();
+    const updatedMyUser = await fsdata.myUser.updateMyUser(
+      myUser,
+      queryOptions,
+    );
 
-    if (myUser) {
+    if (updatedMyUser) {
       // Update local cache:
-      await db.replace<MyUser>(myUser);
+      await db.replace<MyUser>(updatedMyUser, ModelType.MyUser);
     }
 
-    return myUser;
+    return updatedMyUser;
   } catch (error) {
     console.error(error);
     return null;

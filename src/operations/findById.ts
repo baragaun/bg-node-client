@@ -31,7 +31,7 @@ const findById = async <T extends Model = Model>(
   if (object) {
     // todo: What if the object does not exist anymore. How do we delete it from the local store?
     // Update local cache:
-    await db.replace<T>(object);
+    await db.replace<T>(object, modelType);
   }
 
   return { object };

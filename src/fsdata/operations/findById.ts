@@ -13,6 +13,7 @@ import findChannelParticipantById from '../gql/queries/findChannelParticipantByI
 import findMyUser from '../gql/queries/findMyUser.graphql.js';
 import findUserById from '../gql/queries/findUserById.graphql.js';
 import helpers from '../helpers/helpers.js';
+import modelFactory from '../../models/modelFactory.js';
 
 const _fieldDef = {
   [ModelType.Channel]: { field: 'findChannelById', gql: findChannelById },
@@ -62,7 +63,11 @@ const findById = async <T extends BaseModel = BaseModel>(
 
     console.log(response);
 
-    return response[fieldDef.field];
+    if (!response[fieldDef.field]) {
+      return null;
+    }
+
+    return modelFactory<T>(response[fieldDef.field], modelType);
   } catch (error) {
     console.error(error);
     return null;

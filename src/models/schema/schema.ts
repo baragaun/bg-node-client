@@ -1,18 +1,20 @@
-import { BgChannelInboxSchema } from './bgChannelInboxSchema.js';
-import { BgChannelInvitationSchema } from './bgChannelInvitationSchema.js';
-import { BgChannelMessageSchema } from './bgChannelMessageSchema.js';
-import { BgChannelParticipantSchema } from './bgChannelParticipantSchema.js';
-import { BgChannelSchema } from './bgChannelSchema.js';
-import { SidUserSchema } from './sidUserSchema.js';
+import { ChannelInboxSchema } from './channelInboxSchema.js';
+import { ContactSchema } from './contactSchema.js';
+import { ChannelInvitationSchema } from './channelInvitationSchema.js';
+import { ChannelMessageSchema } from './channelMessageSchema.js';
+import { ChannelParticipantSchema } from './channelParticipantSchema.js';
+import { ChannelSchema } from './channelSchema.js';
+import { MyUserSchema } from './myUserSchema.js';
 
 const schema = {
-  Channel: BgChannelSchema,
-  UserInbox: BgChannelInboxSchema,
-  ChannelInvitation: BgChannelInvitationSchema,
-  ChannelMessage: BgChannelMessageSchema,
-  ChannelParticipant: BgChannelParticipantSchema,
-  User: SidUserSchema,
-  MyUser: SidUserSchema,
+  Channel: ChannelSchema,
+  ChannelInvitation: ChannelInvitationSchema,
+  ChannelMessage: ChannelMessageSchema,
+  ChannelParticipant: ChannelParticipantSchema,
+  Contact: ContactSchema,
+  MyUser: MyUserSchema,
+  User: MyUserSchema,
+  UserInbox: ChannelInboxSchema,
 };
 
 export default schema;

@@ -4,8 +4,8 @@ import { BaseModel } from '../../types/models/BaseModel.js';
 import findById from './findById.js';
 
 const pollForUpdatedObject = <T extends BaseModel = BaseModel>(
-  modelType: ModelType,
   id: string,
+  modelType: ModelType,
   options: QueryOptions,
 ): Promise<T | null> => {
   return new Promise((resolve, reject) => {

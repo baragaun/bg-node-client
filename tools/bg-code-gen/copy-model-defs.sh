@@ -8,9 +8,24 @@
 # rm -f ./tools/bg-code-gen/models/first-spark-server/*
 
 cp ../first-spark-server/tools/bg-code-gen/models/baseModel.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/channel.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/channelInbox.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/channelInvitation.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/channelMessage.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/channelParticipant.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/company.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/contact.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/multiStepAction.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/multiStepActionInput.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/myUser.ts "./tools/bg-code-gen/models/first-spark-server/"
+
 cp ../channels-service/tools/bg-code-gen/models/* "./tools/bg-code-gen/models/channels-service/"
+
 cp ../secureid-service/tools/bg-code-gen/models/labeledStringValue.ts "./tools/bg-code-gen/models/secureid-service/"
+cp ../secureid-service/tools/bg-code-gen/models/sidCompany.ts "./tools/bg-code-gen/models/secureid-service/"
 cp ../secureid-service/tools/bg-code-gen/models/sidContact.ts "./tools/bg-code-gen/models/secureid-service/"
+cp ../secureid-service/tools/bg-code-gen/models/sidMultiStepAction.ts "./tools/bg-code-gen/models/secureid-service/"
+cp ../secureid-service/tools/bg-code-gen/models/sidMultiStepActionInput.ts "./tools/bg-code-gen/models/secureid-service/"
 cp ../secureid-service/tools/bg-code-gen/models/sidUser.ts "./tools/bg-code-gen/models/secureid-service/"
 cp ../secureid-service/tools/bg-code-gen/models/sidUserBlock.ts "./tools/bg-code-gen/models/secureid-service/"
 cp ../secureid-service/tools/bg-code-gen/models/sidUserPreferences.ts "./tools/bg-code-gen/models/secureid-service/"

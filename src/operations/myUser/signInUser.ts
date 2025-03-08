@@ -32,7 +32,6 @@ const signInUser = async (input: SignInInput): Promise<MutationResult<SignInSign
         authToken: userAuthResponse.authToken,
       });
 
-      // Getting my user to save it into the cache:
       myUser = await findMyUser({ cachePolicy: CachePolicy.network });
     }
 

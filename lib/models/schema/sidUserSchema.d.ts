@@ -44,16 +44,6 @@ export declare const SidUserSchema: {
         userHandle: {
             type: string;
         };
-        phoneNumber: {
-            type: string;
-        };
-        phoneNumberUpdatedAt: {
-            type: string;
-            format: string;
-        };
-        isPhoneNumberVerified: {
-            type: string;
-        };
         email: {
             type: string;
         };
@@ -68,9 +58,6 @@ export declare const SidUserSchema: {
         isEmailVerified: {
             type: string;
         };
-        genderTextId: {
-            type: string;
-        };
         cityOfResidence: {
             type: string;
         };
@@ -78,9 +65,6 @@ export declare const SidUserSchema: {
             type: string;
         };
         countryOfResidenceTextId: {
-            type: string;
-        };
-        postalCode: {
             type: string;
         };
         avatarUrl: {
@@ -92,9 +76,6 @@ export declare const SidUserSchema: {
             type: string;
         };
         passwordHash: {
-            type: string;
-        };
-        tfaBackupCodes: {
             type: string;
         };
         passwordUpdatedAt: {
@@ -112,10 +93,6 @@ export declare const SidUserSchema: {
         };
         selectedUiLanguageTextId: {};
         fallbackUiLanguageTextId: {};
-        discoverable: {
-            description: string;
-            type: string;
-        };
         roles: {};
         appFeatures: {};
         source: {
@@ -140,9 +117,7 @@ export declare const SidUserSchema: {
             type: string;
             format: string;
         };
-        userDevices: {};
         userBlocks: {};
-        contacts: {};
         inactivatedAt: {
             type: string;
             format: string;
@@ -168,10 +143,6 @@ export declare const SidUserSchema: {
         suspendedBy: {
             type: string;
             maxLength: number;
-        };
-        addedToBgVaultAt: {
-            type: string;
-            format: string;
         };
     };
     required: string[];

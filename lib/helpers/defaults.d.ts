@@ -1,2 +1,2 @@
-import { QueryOptions } from '../types/index.js';
+import { QueryOptions } from '../types/QueryOptions.js';
 export declare const defaultQueryOptions: QueryOptions;

@@ -1,4 +1,4 @@
-export const BgChannelMessageSchema = {
+export const ChannelInvitationSchema = {
   version: 0,
   primaryKey: 'id',
   type: 'object',
@@ -39,19 +39,35 @@ export const BgChannelMessageSchema = {
       type: 'string',
       maxLength: 32,
     },
-    replyToMessageId: {
+    recipientId: {
       type: 'string',
       maxLength: 32,
     },
-    channelMessageType: {},
+    channelName: {
+      type: 'string',
+    },
+    channelTopic: {
+      type: 'string',
+    },
     messageText: {
       type: 'string',
     },
-    statuses: {},
-    editedAt: {
+    declineReasonTextId: {
+      type: 'string',
+    },
+    dismissedFromInboxBySenderAt: {
       type: 'string',
       format: 'date-time',
     },
+    dismissedFromInboxByRecipientAt: {
+      type: 'string',
+      format: 'date-time',
+    },
+    readByRecipientAt: {
+      type: 'string',
+      format: 'date-time',
+    },
+    status: {},
     suspendedAt: {
       type: 'string',
       format: 'date-time',
@@ -59,6 +75,13 @@ export const BgChannelMessageSchema = {
     suspendedBy: {
       type: 'string',
       maxLength: 32,
+    },
+    userSearchId: {
+      type: 'string',
+      maxLength: 32,
+    },
+    searchRank: {
+      type: 'integer',
     },
   },
   required: ['id'],

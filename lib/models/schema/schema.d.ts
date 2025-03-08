@@ -543,16 +543,6 @@ declare const schema: {
             userHandle: {
                 type: string;
             };
-            phoneNumber: {
-                type: string;
-            };
-            phoneNumberUpdatedAt: {
-                type: string;
-                format: string;
-            };
-            isPhoneNumberVerified: {
-                type: string;
-            };
             email: {
                 type: string;
             };
@@ -567,9 +557,6 @@ declare const schema: {
             isEmailVerified: {
                 type: string;
             };
-            genderTextId: {
-                type: string;
-            };
             cityOfResidence: {
                 type: string;
             };
@@ -577,9 +564,6 @@ declare const schema: {
                 type: string;
             };
             countryOfResidenceTextId: {
-                type: string;
-            };
-            postalCode: {
                 type: string;
             };
             avatarUrl: {
@@ -591,9 +575,6 @@ declare const schema: {
                 type: string;
             };
             passwordHash: {
-                type: string;
-            };
-            tfaBackupCodes: {
                 type: string;
             };
             passwordUpdatedAt: {
@@ -611,10 +592,6 @@ declare const schema: {
             };
             selectedUiLanguageTextId: {};
             fallbackUiLanguageTextId: {};
-            discoverable: {
-                description: string;
-                type: string;
-            };
             roles: {};
             appFeatures: {};
             source: {
@@ -639,9 +616,7 @@ declare const schema: {
                 type: string;
                 format: string;
             };
-            userDevices: {};
             userBlocks: {};
-            contacts: {};
             inactivatedAt: {
                 type: string;
                 format: string;
@@ -667,10 +642,6 @@ declare const schema: {
             suspendedBy: {
                 type: string;
                 maxLength: number;
-            };
-            addedToBgVaultAt: {
-                type: string;
-                format: string;
             };
         };
         required: string[];
@@ -721,16 +692,6 @@ declare const schema: {
             userHandle: {
                 type: string;
             };
-            phoneNumber: {
-                type: string;
-            };
-            phoneNumberUpdatedAt: {
-                type: string;
-                format: string;
-            };
-            isPhoneNumberVerified: {
-                type: string;
-            };
             email: {
                 type: string;
             };
@@ -745,9 +706,6 @@ declare const schema: {
             isEmailVerified: {
                 type: string;
             };
-            genderTextId: {
-                type: string;
-            };
             cityOfResidence: {
                 type: string;
             };
@@ -755,9 +713,6 @@ declare const schema: {
                 type: string;
             };
             countryOfResidenceTextId: {
-                type: string;
-            };
-            postalCode: {
                 type: string;
             };
             avatarUrl: {
@@ -769,9 +724,6 @@ declare const schema: {
                 type: string;
             };
             passwordHash: {
-                type: string;
-            };
-            tfaBackupCodes: {
                 type: string;
             };
             passwordUpdatedAt: {
@@ -789,10 +741,6 @@ declare const schema: {
             };
             selectedUiLanguageTextId: {};
             fallbackUiLanguageTextId: {};
-            discoverable: {
-                description: string;
-                type: string;
-            };
             roles: {};
             appFeatures: {};
             source: {
@@ -817,9 +765,7 @@ declare const schema: {
                 type: string;
                 format: string;
             };
-            userDevices: {};
             userBlocks: {};
-            contacts: {};
             inactivatedAt: {
                 type: string;
                 format: string;
@@ -845,10 +791,6 @@ declare const schema: {
             suspendedBy: {
                 type: string;
                 maxLength: number;
-            };
-            addedToBgVaultAt: {
-                type: string;
-                format: string;
             };
         };
         required: string[];

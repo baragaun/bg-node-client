@@ -1,4 +1,4 @@
-export const BgChannelParticipantSchema = {
+export const ChannelParticipantSchema = {
   version: 0,
   primaryKey: 'id',
   type: 'object',

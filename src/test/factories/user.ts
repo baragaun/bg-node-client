@@ -20,21 +20,21 @@ const userFactory = Factory.define<User>('User', User)
     chance.bool({ likelihood: 90 }) ? chance.country() : undefined,
   )
   .attr('createdAt', () => randomDate())
-  .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
+  // .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
   .sequence('email', (i) => `holger+test-${i}@${emailDomain}`)
   .attr('fallbackUiLanguageTextId', () =>
     chance.bool({ likelihood: 80 }) ? UiLanguage.en : chance.pickone(Object.values(UiLanguage)),
   )
   .attr('firstName', () => chance.first())
   .attr('lastName', () => chance.last())
-  .attr('genderTextId', () =>
-    chance.bool({ likelihood: 30 })
-      ? chance.pickone([undefined, '', '-', 'f', 'm', 'x'])
-      : undefined,
-  )
+  // .attr('genderTextId', () =>
+  //   chance.bool({ likelihood: 30 })
+  //     ? chance.pickone([undefined, '', '-', 'f', 'm', 'x'])
+  //     : undefined,
+  // )
   .attr('inactivatedAt', () => (chance.bool({ likelihood: 1 }) ? randomDate() : undefined))
-  .attr('phoneNumber', () => (chance.bool({ likelihood: 30 }) ? chance.phone() : undefined))
-  .attr('postalCode', () => (chance.bool({ likelihood: 90 }) ? chance.postcode() : undefined))
+  // .attr('phoneNumber', () => (chance.bool({ likelihood: 30 }) ? chance.phone() : undefined))
+  // .attr('postalCode', () => (chance.bool({ likelihood: 90 }) ? chance.postcode() : undefined))
   .attr('preferredLanguageTextId', () =>
     chance.bool({ likelihood: 9 }) ? chance.pickone(Object.values(UiLanguage)) : undefined,
   )

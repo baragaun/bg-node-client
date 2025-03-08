@@ -32,7 +32,7 @@ const findMyUser = async (
 
     if (myUser) {
       // Update local cache:
-      await db.replace<MyUser>(myUser);
+      await db.replace<MyUser>(myUser, ModelType.MyUser);
     }
 
     return myUser;

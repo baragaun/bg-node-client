@@ -1,5 +1,5 @@
 import { CachePolicy } from '../enums.js';
-import { QueryOptions } from '../types/index.js';
+import { QueryOptions } from '../types/QueryOptions.js';
 
 export const defaultQueryOptions: QueryOptions = {
   cachePolicy: CachePolicy.cacheFirst,

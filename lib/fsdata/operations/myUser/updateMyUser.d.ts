@@ -1,3 +1,4 @@
 import { MyUser } from '../../../types/models/MyUser.js';
-declare const updateMyUser: () => Promise<MyUser | null>;
+import { QueryOptions } from '../../../types/QueryOptions.js';
+declare const updateMyUser: (myUser: MyUser, queryOptions?: QueryOptions) => Promise<MyUser | null>;
 export default updateMyUser;

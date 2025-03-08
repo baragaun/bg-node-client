@@ -8,29 +8,29 @@ export class User extends BaseModel {
   public firstName?: string | null;
   public lastName?: string | null;
   public userHandle?: string | null;
-  public phoneNumber?: string | null;
-  public phoneNumberUpdatedAt?: string | null;
-  public isPhoneNumberVerified = false;
+  // public phoneNumber?: string | null;
+  // public phoneNumberUpdatedAt?: string | null;
+  // public isPhoneNumberVerified = false;
   public email?: string | null;
   public emailUpdatedAt?: string | null;
   public isEmailVerified = false;
-  public emailSource?: string | null;
-  public genderTextId?: string | null;
+  // public emailSource?: string | null;
+  // public genderTextId?: string | null;
   public cityOfResidence?: string | null;
   public regionOfResidence?: string | null;
   public countryOfResidenceTextId?: string | null;
-  public postalCode?: string | null;
+  // public postalCode?: string | null;
   public avatarUrl?: string | null;
   public websites?: LabeledStringValue[] | null;
   public authType?: AuthType | null;
   public passwordHash?: string | null;
-  public tfaBackupCodes?: string | null;
+  // public tfaBackupCodes?: string | null;
   public passwordUpdatedAt?: string | null;
   public preferredLanguageTextId?: string | null;
   public spokenLanguagesTextIds: string[] = [];
   public selectedUiLanguageTextId?: UiLanguage | null;
   public fallbackUiLanguageTextId?: UiLanguage | null;
-  public discoverable?: boolean | null;
+  // public discoverable?: boolean | null;
   public roles: UserRole[] = [];
   public appFeatures?: AppFeature[] | null;
   public source?: string | null;
@@ -69,15 +69,15 @@ export class User extends BaseModel {
       if (attributes.userHandle) {
         this.userHandle = attributes.userHandle;
       }
-      if (attributes.phoneNumber) {
-        this.phoneNumber = attributes.phoneNumber;
-      }
-      if (attributes.phoneNumberUpdatedAt) {
-        this.phoneNumberUpdatedAt = attributes.phoneNumberUpdatedAt;
-      }
-      if (attributes.isPhoneNumberVerified === true || attributes.isPhoneNumberVerified === false) {
-        this.isPhoneNumberVerified = attributes.isPhoneNumberVerified;
-      }
+      // if (attributes.phoneNumber) {
+      //   this.phoneNumber = attributes.phoneNumber;
+      // }
+      // if (attributes.phoneNumberUpdatedAt) {
+      //   this.phoneNumberUpdatedAt = attributes.phoneNumberUpdatedAt;
+      // }
+      // if (attributes.isPhoneNumberVerified === true || attributes.isPhoneNumberVerified === false) {
+      //   this.isPhoneNumberVerified = attributes.isPhoneNumberVerified;
+      // }
       if (attributes.email) {
         this.email = attributes.email;
       }
@@ -87,12 +87,12 @@ export class User extends BaseModel {
       if (attributes.isEmailVerified === true || attributes.isEmailVerified === false) {
         this.isEmailVerified = attributes.isEmailVerified;
       }
-      if (attributes.emailSource) {
-        this.emailSource = attributes.emailSource;
-      }
-      if (attributes.genderTextId) {
-        this.genderTextId = attributes.genderTextId;
-      }
+      // if (attributes.emailSource) {
+      //   this.emailSource = attributes.emailSource;
+      // }
+      // if (attributes.genderTextId) {
+      //   this.genderTextId = attributes.genderTextId;
+      // }
       if (attributes.cityOfResidence) {
         this.cityOfResidence = attributes.cityOfResidence;
       }
@@ -102,9 +102,9 @@ export class User extends BaseModel {
       if (attributes.countryOfResidenceTextId) {
         this.countryOfResidenceTextId = attributes.countryOfResidenceTextId;
       }
-      if (attributes.postalCode) {
-        this.postalCode = attributes.postalCode;
-      }
+      // if (attributes.postalCode) {
+      //   this.postalCode = attributes.postalCode;
+      // }
       if (attributes.avatarUrl) {
         this.avatarUrl = attributes.avatarUrl;
       }
@@ -117,9 +117,9 @@ export class User extends BaseModel {
       if (attributes.passwordHash) {
         this.passwordHash = attributes.passwordHash;
       }
-      if (attributes.tfaBackupCodes) {
-        this.tfaBackupCodes = attributes.tfaBackupCodes;
-      }
+      // if (attributes.tfaBackupCodes) {
+      //   this.tfaBackupCodes = attributes.tfaBackupCodes;
+      // }
       if (attributes.passwordUpdatedAt) {
         this.passwordUpdatedAt = attributes.passwordUpdatedAt;
       }
@@ -135,9 +135,9 @@ export class User extends BaseModel {
       if (attributes.fallbackUiLanguageTextId) {
         this.fallbackUiLanguageTextId = attributes.fallbackUiLanguageTextId;
       }
-      if (attributes.discoverable === true || attributes.discoverable === false) {
-        this.discoverable = attributes.discoverable;
-      }
+      // if (attributes.discoverable === true || attributes.discoverable === false) {
+      //   this.discoverable = attributes.discoverable;
+      // }
       if (attributes.roles) {
         this.roles = attributes.roles;
       }

@@ -3,10 +3,10 @@ import { GraphqlType } from '../../../../enums.js'
 import { TypeGraphqlClass } from '../../../../types.js'
 
 const sidUserBlock: TypeGraphqlClass = {
-  name: 'SidUserBlock',
+  name: 'UserBlock',
   graphqlType: GraphqlType.ObjectType,
   extends: 'BaseModel',
-  path: 'src/services/secureId/types/classes/SidUserBlock.ts',
+  path: 'src/services/secureId/types/classes/UserBlock.ts',
   dbCollectionName: null,
   active: true,
   attributes: [

@@ -12,7 +12,7 @@ const updateLocalObject = async <T extends BaseModel = BaseModel>(
   options: QueryOptions,
 ): Promise<T | null> => {
   if (!object) {
-    object = await fsdata.pollForUpdatedObject<T>(modelType, id, options);
+    object = await fsdata.pollForUpdatedObject<T>(id, modelType, options);
 
     if (!object) {
       return null;
