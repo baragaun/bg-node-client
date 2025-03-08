@@ -1,0 +1,1 @@
+{"version":3,"file":"codegenConfig.js","sourceRoot":"","sources":["../../../src/fsdata/tools/codegenConfig.ts"],"names":[],"mappings":"AAEA,MAAM,aAAa,GAAkB;IACnC,MAAM,EAAE,0CAA0C;IAClD,+BAA+B;IAC/B,SAAS,EAAE;QACT,mBAAmB,EAAE;YACnB,MAAM,EAAE,QAAQ;SACjB;KACF;CACF,CAAC;AACF,eAAe,aAAa,CAAC"}
