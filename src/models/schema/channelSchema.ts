@@ -5,7 +5,7 @@ export const ChannelSchema = {
   properties: {
     id: {
       type: 'string',
-      maxLength: 50,
+      maxLength: 32,
     },
     adminNotes: {
       type: 'string',
@@ -93,6 +93,9 @@ export const ChannelSchema = {
                 type: 'string',
               },
               lastName: {
+                type: 'string',
+              },
+              nickname: {
                 type: 'string',
               },
               avatarUrl: {
@@ -205,6 +208,19 @@ export const ChannelSchema = {
     archivedBy: {
       type: 'string',
       maxLength: 32,
+    },
+    assumedMentorId: {
+      type: 'string',
+      maxLength: 32,
+    },
+    mm2Id: {
+      description: 'This attribute is only used by the MM2 synchronizer.',
+      type: 'string',
+    },
+    syncedWithMm2At: {
+      description: 'This attribute is only used by the MM2 synchronizer.',
+      type: 'string',
+      format: 'date-time',
     },
   },
   required: ['id'],

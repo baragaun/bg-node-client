@@ -22,6 +22,9 @@ export const ChannelParticipantSchema = {
         lastName: {
           type: 'string',
         },
+        nickname: {
+          type: 'string',
+        },
         avatarUrl: {
           type: 'string',
         },

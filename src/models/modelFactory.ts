@@ -1,11 +1,11 @@
-import { BaseModel } from '../types/models/BaseModel.js';
 import { ModelType } from '../enums.js';
+import { BaseModel } from '../types/models/BaseModel.js';
 import { Channel } from '../types/models/Channel.js';
 import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
-import { User } from '../types/models/User.js';
 import { MyUser } from '../types/models/MyUser.js';
+import { User } from '../types/models/User.js';
 import { UserInbox } from '../types/models/UserInbox.js';
 
 const modelFactory = <T extends BaseModel = BaseModel>(
@@ -16,13 +16,17 @@ const modelFactory = <T extends BaseModel = BaseModel>(
     return new Channel(attributes as unknown as Partial<Channel>) as unknown as T;
   }
   if (modelType === ModelType.ChannelInvitation) {
-    return new ChannelInvitation(attributes as unknown as Partial<ChannelInvitation>) as unknown as T;
+    return new ChannelInvitation(
+      attributes as unknown as Partial<ChannelInvitation>,
+    ) as unknown as T;
   }
   if (modelType === ModelType.ChannelMessage) {
     return new ChannelMessage(attributes as unknown as Partial<ChannelMessage>) as unknown as T;
   }
   if (modelType === ModelType.ChannelParticipant) {
-    return new ChannelParticipant(attributes as unknown as Partial<ChannelParticipant>) as unknown as T;
+    return new ChannelParticipant(
+      attributes as unknown as Partial<ChannelParticipant>,
+    ) as unknown as T;
   }
   if (modelType === ModelType.MyUser) {
     return new MyUser(attributes as unknown as Partial<MyUser>) as unknown as T;
@@ -38,7 +42,6 @@ const modelFactory = <T extends BaseModel = BaseModel>(
   }
 
   throw new Error(`Model type ${modelType} is not supported.`);
-}
+};
 
 export default modelFactory;
-

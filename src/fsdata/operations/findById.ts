@@ -5,6 +5,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import { ModelType } from '../../enums.js';
 import data from '../../helpers/data.js';
+import modelFactory from '../../models/modelFactory.js';
 import { BaseModel } from '../../types/models/BaseModel.js';
 import findChannelById from '../gql/queries/findChannelById.graphql.js';
 import findChannelInvitationById from '../gql/queries/findChannelInvitationById.graphql.js';
@@ -13,7 +14,6 @@ import findChannelParticipantById from '../gql/queries/findChannelParticipantByI
 import findMyUser from '../gql/queries/findMyUser.graphql.js';
 import findUserById from '../gql/queries/findUserById.graphql.js';
 import helpers from '../helpers/helpers.js';
-import modelFactory from '../../models/modelFactory.js';
 
 const _fieldDef = {
   [ModelType.Channel]: { field: 'findChannelById', gql: findChannelById },

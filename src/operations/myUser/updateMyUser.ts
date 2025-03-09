@@ -29,10 +29,7 @@ const updateMyUser = async (
       }
     }
 
-    const updatedMyUser = await fsdata.myUser.updateMyUser(
-      myUser,
-      queryOptions,
-    );
+    const updatedMyUser = await fsdata.myUser.updateMyUser(myUser, queryOptions);
 
     if (updatedMyUser) {
       // Update local cache:

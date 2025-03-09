@@ -10,6 +10,7 @@ const bgChannelParticipantMetadata: TypeGraphqlClass = {
     { name: 'userHandle', dataType: 'string', optional: true },
     { name: 'firstName', dataType: 'string', optional: true },
     { name: 'lastName', dataType: 'string', optional: true },
+    { name: 'nickname', dataType: 'string', optional: true },
     { name: 'avatarUrl', dataType: 'string', optional: true },
   ]
 }

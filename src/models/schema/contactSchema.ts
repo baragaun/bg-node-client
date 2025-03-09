@@ -39,15 +39,28 @@ export const ContactSchema = {
       type: 'string',
       maxLength: 32,
     },
-    unseenMessages: {},
-    unseenArchivedMessages: {},
-    latestMessages: {},
-    latestArchivedMessages: {},
-    pendingInvitations: {},
-    invitations: {},
-    itemIdHash: {
-      description: 'MD5 hash of all item IDs to check whether there are any new or removed items.',
+    channelId: {
       type: 'string',
+      maxLength: 32,
+    },
+    nickname: {
+      type: 'string',
+    },
+    typeTextIds: {
+      type: 'array',
+      items: {
+        type: 'string',
+      },
+    },
+    favorite: {
+      type: 'boolean',
+    },
+    notes: {
+      type: 'string',
+    },
+    archivedAt: {
+      type: 'string',
+      format: 'date-time',
     },
   },
   required: ['id'],

@@ -20,7 +20,25 @@ import bgChannelStatus from './models/channels-service/bgChannelStatus.js'
 import bgChannelStatusInput from './models/channels-service/bgChannelStatusInput.js'
 import bgChannelsUserMetadata from './models/channels-service/bgChannelsUserMetadata.js'
 import bgLatestUnseenChannelMessageInfo from './models/channels-service/bgLatestUnseenChannelMessageInfo.js'
+import channel from './models/first-spark-server/channel.js'
+import channelInvitation from './models/first-spark-server/channelInvitation.js'
+import channelMessage from './models/first-spark-server/channelMessage.js'
+import channelParticipant from './models/first-spark-server/channelParticipant.js';
+import contact from './models/first-spark-server/contact.js'
+import myUser from './models/first-spark-server/myUser.js';
+import sendMultiStepActionNotificationInput from './models/secureid-service/sendMultiStepActionNotificationInput.js';
+import sidContact from './models/secureid-service/sidContact.js';
+import sidMultiStepAction from './models/secureid-service/sidMultiStepAction.js';
+import sidMultiStepActionProgress from './models/secureid-service/sidMultiStepActionProgress.js';
 import sidUser from './models/secureid-service/sidUser.js';
+import sidUserBlock from './models/secureid-service/sidUserBlock.js';
+import sidUserDevice from './models/secureid-service/sidUserDevice.js';
+import sidUserPreferences from './models/secureid-service/sidUserPreferences.js';
+import user from './models/first-spark-server/user.js';
+import userBlock from './models/first-spark-server/userBlock.js';
+import userDevice from './models/first-spark-server/userDevice.js';
+import userInbox from './models/first-spark-server/userInbox.js';
+import userPreferences from './models/first-spark-server/userPreferences.js';
 
 const jsonSchemaTask: JsonSchemaTask = {
   taskType: TaskType.jsonSchema,
@@ -47,7 +65,25 @@ const jsonSchemaTask: JsonSchemaTask = {
     bgChannelStatusInput,
     bgChannelsUserMetadata,
     bgLatestUnseenChannelMessageInfo,
+    channel,
+    channelInvitation,
+    channelMessage,
+    channelParticipant,
+    contact,
+    myUser,
+    sendMultiStepActionNotificationInput,
+    sidContact,
+    sidMultiStepAction,
+    sidMultiStepActionProgress,
     sidUser,
+    sidUserBlock,
+    sidUserDevice,
+    sidUserPreferences,
+    user,
+    userBlock,
+    userDevice,
+    userInbox,
+    userPreferences,
   ],
 }
 

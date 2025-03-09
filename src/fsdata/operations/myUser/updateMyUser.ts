@@ -3,15 +3,15 @@ import { Opentelemetry } from 'graffle/extensions/opentelemetry';
 import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
+import db from '../../../db/db.js';
+import { ModelType } from '../../../enums.js';
 import data from '../../../helpers/data.js';
+import { defaultQueryOptions } from '../../../helpers/defaults.js';
 import { MyUser } from '../../../types/models/MyUser.js';
+import { QueryOptions } from '../../../types/QueryOptions.js';
 import gql from '../../gql/mutations/updateMyUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
-import { ModelType } from '../../../enums.js';
-import db from '../../../db/db.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
-import { QueryOptions } from '../../../types/QueryOptions.js';
-import { defaultQueryOptions } from '../../../helpers/defaults.js';
 
 // see: https://graffle.js.org/guides/topics/requests
 const updateMyUser = async (

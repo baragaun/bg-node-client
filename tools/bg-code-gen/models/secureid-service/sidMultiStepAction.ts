@@ -1,12 +1,13 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
-import { GraphqlType } from '../../../enums.js'
-import { TypeGraphqlClass } from '../../../types.js'
+import { GraphqlType } from '../../../../enums.js'
+import { TypeGraphqlClass } from '../../../../types.js'
 
 const sidMultiStepAction: TypeGraphqlClass = {
   name: 'SidMultiStepAction',
   graphqlType: GraphqlType.ObjectType,
   extends: 'BaseModel',
   path: 'src/services/secureId/types/classes/SidMultiStepAction.ts',
+  schemaPath: 'src/models/schema/sidMultiStepActionSchema.ts',
   dbCollectionName: 'async-tasks',
   active: true,
   attributes: [

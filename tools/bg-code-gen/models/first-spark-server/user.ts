@@ -1,0 +1,61 @@
+import { TypeGraphqlClass } from '../../../../types.js'
+import { GraphqlType } from '../../../../enums.js'
+
+const user: TypeGraphqlClass = {
+  name: 'User',
+  graphqlType: GraphqlType.ObjectType,
+  extends: 'SidUser',
+  path: 'src/services/accounts/types/classes/User.ts',
+  schemaPath: 'src/models/schema/userSchema.ts',
+  dbCollectionName: 'users',
+  active: true,
+  attributes: [
+    { name: 'companyIds', dataType: 'id[]', optional: true },
+    { name: 'companies', dataType: 'Company[]', default: '[]', optional: true },
+    { name: 'groupIds', dataType: 'id[]', default: '[]' },
+    { name: 'parentGroupIds', dataType: 'id[]', default: '[]' },
+    { name: 'externalGroupIds', dataType: 'id[]', default: '[]' },
+    { name: 'pronounsTextIds', dataType: 'string[]', default: '[]', optional: true },
+    { name: 'groupMemberships', dataType: 'IGroupMembership[]', default: '[]' },
+    { name: 'seeksHelp', dataType: 'boolean', optional: true },
+    { name: 'offersHelp', dataType: 'boolean', optional: true },
+    { name: 'birthYear', dataType: 'integer', optional: true },
+    { name: 'ethnicity', dataType: 'string', optional: true },
+    { name: 'educationLevelTextId', dataType: 'string', optional: true },
+    { name: 'personalBio', dataType: 'string', optional: true },
+    { name: 'yearsManagementExperience', dataType: 'integer', optional: true },
+    { name: 'yearsOwnershipExperience', dataType: 'integer', optional: true },
+    { name: 'academicExperienceIds', dataType: 'id[]', default: '[]', optional: true },
+    { name: 'academicExperiences', dataType: 'AcademicExperience[]', default: '[]', optional: true },
+    { name: 'genderSelfDescribed', dataType: 'string', optional: true, description: 'This attribute is only used by the MM2 synchronizer.' },
+    { name: 'businessExperienceIds', dataType: 'id[]', default: '[]', optional: true },
+    { name: 'businessExperiences', dataType: 'BusinessExperience[]', default: '[]', optional: true },
+    { name: 'cityOfOrigin', dataType: 'string', optional: true },
+    { name: 'regionOfOrigin', dataType: 'string', optional: true },
+    { name: 'countryOfOriginTextId', dataType: 'string', optional: true },
+    { name: 'isOnVacation', dataType: 'boolean', optional: true },
+    { name: 'avatarAsset', dataType: 'UploadedAsset', optional: true },
+    { name: 'profileRoleHistory', dataType: 'UserProfileRoleHistoryItem[]', optional: true },
+    { name: 'ssoIdp', dataType: 'string', optional: true },
+    { name: 'originatedInMm2', dataType: 'boolean', optional: true, description: 'Records whether a user was originally created in MM2.' },
+    { name: 'syncedWithMm2At', dataType: 'date', optional: true, description: 'This attribute is only used by the MM2 synchronizer.' },
+    { name: 'mm2PasswordHash', dataType: 'string', optional: true, description: 'This is the MM2 password hash.' },
+    { name: 'mm2Id', dataType: 'string', optional: true, description: 'This attribute is only used by the MM2 synchronizer.' },
+    { name: 'mm2PhotoOriginal', dataType: 'string', optional: true, description: 'This attribute is only used by the MM2 synchronizer.' },
+    { name: 'mm2BasicAccountCompleted', dataType: 'boolean', optional: true, description: 'For MM2 users, this means a profile is completed.' },
+    { name: 'hasSignedInToMm3', dataType: 'boolean', optional: true, description: 'Records whether a user has logged into MM3.' },
+    { name: 'hasSignedInToMm2', dataType: 'boolean', optional: true, description: 'Records whether a user has logged into MM2.' },
+    { name: 'userBlocks', dataType: 'UserBlock[]', default: '[]', optional: true },
+    { name: 'mentor', dataType: 'MentorsGroupMembership', optional: true, description: 'This attribute is a copy of the mentor group membership.' },
+    { name: 'mentee', dataType: 'MenteesGroupMembership', optional: true, description: 'This attribute is a copy of the mentee group membership.' },
+    // TODO: flesh out rest of geographic fields
+    // { name: 'stateID', dataType: 'string', optional: true, description: 'state/province/department' },
+    // { name: 'cityID', dataType: 'string', optional: true, description: 'city ID' },
+    // { name: 'longitude', dataType: 'float', optional: true },
+    // { name: 'latitude', dataType: 'float', optional: true },
+    // only 2.5k users have zip code data in mm2
+    // { name: 'zip_code', dataType: 'integer', optional: true },
+  ]
+}
+
+export default user
