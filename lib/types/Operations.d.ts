@@ -11,6 +11,7 @@ import { ChannelMessageListFilter } from './models/ChannelMessageListFilter.js';
 import { ChannelParticipant } from './models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from './models/ChannelParticipantListFilter.js';
 import { MyUser } from './models/MyUser.js';
+import { SidMultiStepAction } from './models/SidMultiStepAction.js';
 import { User } from './models/User.js';
 import { MutationResult } from './MutationResult.js';
 import { QueryOptions } from './QueryOptions.js';
@@ -58,7 +59,12 @@ export interface Operations {
         signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
         signMeOut: () => Promise<MutationResult>;
         signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
-        startVerifyEmail: (input: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+        startVerifyEmail: (userId: string, email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+        startTokenSignIn: (email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+    };
+    multiStepAction: {
+        findMyActiveMultiStepActions: () => Promise<SidMultiStepAction[]>;
+        getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined) => Promise<SidMultiStepActionProgress | null>;
         verifyMultiStepActionToken: (input: VerifyMultiStepActionTokenInput) => Promise<MutationResult<SidMultiStepActionProgress>>;
     };
 }

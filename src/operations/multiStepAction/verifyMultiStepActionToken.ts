@@ -1,22 +1,20 @@
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import {
-  SidMultiStepActionProgress,
-  VerifyMultiStepActionTokenInput,
-} from '../../fsdata/gql/graphql.js';
 import { MutationResult } from '../../types/MutationResult.js';
+import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
+import { VerifyMultiStepActionTokenInput } from '../../types/models/VerifyMultiStepActionTokenInput.js';
 
 const verifyMultiStepActionToken = async (
   input: VerifyMultiStepActionTokenInput,
 ): Promise<MutationResult<SidMultiStepActionProgress>> => {
   try {
     console.log('verifyMultiStepActionToken Input:', input);
-    const verifyMultiStepActionTokenResponse =
-      await fsdata.myUser.verifyMultiStepActionToken(input);
+
+    const response = await fsdata.multiStepAction.verifyMultiStepActionToken(input);
 
     return {
       operation: MutationType.create,
-      object: verifyMultiStepActionTokenResponse,
+      object: response,
     };
   } catch (error) {
     console.error(error);

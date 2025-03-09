@@ -4,12 +4,15 @@ import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
-import { SidMultiStepActionProgress } from '../../gql/graphql.js';
-import startVerifyEmailGql from '../../gql/mutations/startVerifyEmail.graphql.js';
+import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
+import gql from '../../gql/queries/getMultiStepActionProgress.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const startVerifyEmail = async (input: string): Promise<SidMultiStepActionProgress> => {
+const getMultiStepActionProgress = async (
+  actionId: string,
+  confirmToken: string | undefined,
+): Promise<SidMultiStepActionProgress | null> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
@@ -25,26 +28,25 @@ const startVerifyEmail = async (input: string): Promise<SidMultiStepActionProgre
     .use(Throws())
     .use(Opentelemetry());
 
-  const document = parse(startVerifyEmailGql) as TypedQueryDocumentNode<
-    { startVerifyEmail: SidMultiStepActionProgress },
-    string
-  >;
+  const document = parse(gql) as TypedQueryDocumentNode<{
+    getMultiStepActionProgress: SidMultiStepActionProgress | null;
+  }>;
 
   try {
-    console.log('Sending startVerifyEmail mutation with input:', input);
-
     const response = (await client
       // @ts-ignore
       .gql(document)
-      .send({ input })) as { startVerifyEmail: SidMultiStepActionProgress };
+      .send({ actionId, confirmToken })) as {
+      getMultiStepActionProgress: SidMultiStepActionProgress | null;
+    };
 
-    console.log('startVerifyEmail response:', response);
+    console.log(response);
 
-    return response.startVerifyEmail;
+    return response.getMultiStepActionProgress;
   } catch (error) {
-    console.error('startVerifyEmail mutation error:', error);
-    throw error;
+    console.error(error);
+    return null;
   }
 };
 
-export default startVerifyEmail;
+export default getMultiStepActionProgress;
