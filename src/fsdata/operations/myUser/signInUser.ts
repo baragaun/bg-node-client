@@ -3,7 +3,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
 import { MutationSignInUserArgs, SignInUserInput, UserAuthResponse } from '../../gql/graphql.js';
-import signInUserGql from '../../gql/mutations/signInUser.graphql.js';
+import gql from '../../gql/mutations/signInUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
@@ -22,18 +22,21 @@ const SignInUser = async (input: SignInUserInput): Promise<UserAuthResponse> => 
   // .use(Throws())
   // .use(Opentelemetry())
 
-  const document = parse(signInUserGql) as TypedQueryDocumentNode<
+  const document = parse(gql) as TypedQueryDocumentNode<
     { signInUser: UserAuthResponse },
     MutationSignInUserArgs
   >;
 
-  const userAuthResponse = (await client.gql(document).send({ input })) as {
-    signInUser: UserAuthResponse;
-  };
+  try {
+    const response = (await client.gql(document).send({ input })) as {
+      signInUser: UserAuthResponse;
+    };
 
-  console.log(userAuthResponse);
-
-  return userAuthResponse.signInUser;
+    return response.signInUser;
+  } catch (error) {
+    console.error('fsdata.SignInUser: failed', error);
+    throw error;
+  }
 };
 
 export default SignInUser;

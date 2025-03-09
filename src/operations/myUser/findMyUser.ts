@@ -16,18 +16,23 @@ const findMyUser = async (
     return null;
   }
 
-  try {
-    if (
-      queryOptions.cachePolicy === CachePolicy.cache ||
-      queryOptions.cachePolicy === CachePolicy.cacheFirst
-    ) {
+  if (
+    queryOptions.cachePolicy === CachePolicy.cache ||
+    queryOptions.cachePolicy === CachePolicy.cacheFirst
+  ) {
+    try {
       const queryResult = await db.findById<MyUser>(config.myUserId, ModelType.MyUser);
 
       if (queryResult.object || queryOptions.cachePolicy === CachePolicy.cache) {
         return queryResult.object;
       }
+    } catch (error) {
+      console.error('findMyUser: db.findById failed', error);
+      return null;
     }
+  }
 
+  try {
     const myUser = await fsdata.myUser.findMyUser();
 
     if (myUser) {
@@ -37,7 +42,7 @@ const findMyUser = async (
 
     return myUser;
   } catch (error) {
-    console.error(error);
+    console.error('findMyUser: fsdata.myUser.findMyUser failed', error);
     return null;
   }
 };

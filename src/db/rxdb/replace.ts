@@ -50,12 +50,10 @@ const replace = async <T extends Model>(
     })
     .exec();
 
-  if (!Array.isArray(records) || records.length !== 1) {
-    // todo: error
-    return null;
+  if (Array.isArray(records) && records.length === 1) {
+    await records[0].remove();
   }
 
-  await records[0].remove();
   const record = await collection.insert(obj);
   result.object = record.toMutableJSON();
 
