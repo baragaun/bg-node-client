@@ -29,7 +29,8 @@ const getMultiStepActionProgress = async (
     }
 
     if (
-      action.actionType === MultiStepActionType.TokenSignIn &&
+      (action.actionType === MultiStepActionType.ResetPassword ||
+        action.actionType === MultiStepActionType.TokenSignIn) &&
       action.result === MultiStepActionResult.Ok &&
       action.authToken &&
       action.userId

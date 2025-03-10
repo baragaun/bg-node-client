@@ -56,6 +56,7 @@ export interface Operations {
     myUser: {
         getSignedOutUserId: () => Promise<string | null>;
         findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
+        resetPassword: (userIdent: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
         signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
         signMeOut: () => Promise<MutationResult<null>>;
         signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;

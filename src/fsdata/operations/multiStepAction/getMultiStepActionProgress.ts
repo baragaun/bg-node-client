@@ -5,8 +5,11 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
+import { MultiStepActionResult, MultiStepActionSendNotificationResult } from '../../gql/graphql.js';
 import gql from '../../gql/queries/getMultiStepActionProgress.graphql.js';
 import helpers from '../../helpers/helpers.js';
+
+const observingActions: SidMultiStepActionProgress[] = [];
 
 // see: https://graffle.js.org/guides/topics/requests
 const getMultiStepActionProgress = async (
@@ -40,7 +43,37 @@ const getMultiStepActionProgress = async (
       getMultiStepActionProgress: SidMultiStepActionProgress | null;
     };
 
-    console.log(response);
+    const previousAction = observingActions.find((a) => a.actionId === actionId);
+
+    if (
+      response.getMultiStepActionProgress.notificationResult !== previousAction.notificationResult
+    ) {
+      if (
+        response.getMultiStepActionProgress.notificationResult ===
+        MultiStepActionSendNotificationResult.Ok
+      ) {
+        const listeners = data.listeners();
+        if (Array.isArray(listeners) && listeners.length > 0) {
+          for (const listener of listeners) {
+            listener.onMultiStepActionNotificationSent(response.getMultiStepActionProgress);
+          }
+        }
+      }
+    }
+
+    if (
+      previousAction.result === MultiStepActionResult.Unset &&
+      response.getMultiStepActionProgress.result !== MultiStepActionResult.Unset
+    ) {
+      if (response.getMultiStepActionProgress.result) {
+        const listeners = data.listeners();
+        if (Array.isArray(listeners) && listeners.length > 0) {
+          for (const listener of listeners) {
+            listener.onMultiStepActionFinished(response.getMultiStepActionProgress);
+          }
+        }
+      }
+    }
 
     return response.getMultiStepActionProgress;
   } catch (error) {

@@ -1,6 +1,7 @@
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelMessage } from './models/ChannelMessage.js';
+import { SidMultiStepActionProgress } from './models/SidMultiStepActionProgress.js';
 import { MutationResult } from './MutationResult.js';
 /**
  * Interface representing a listener for channel events.
@@ -21,4 +22,6 @@ export interface BgDataListener {
     onChannelParticipantCreated?: (result: MutationResult<ChannelMessage>) => void;
     onChannelParticipantUpdated?: (result: MutationResult<ChannelMessage>) => void;
     onChannelParticipantDeleted?: (result: MutationResult<ChannelMessage>) => void;
+    onMultiStepActionNotificationSent?: (progress: SidMultiStepActionProgress) => void;
+    onMultiStepActionFinished?: (progress: SidMultiStepActionProgress) => void;
 }
