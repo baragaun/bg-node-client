@@ -1,7 +1,7 @@
 import { RxCollection, RxDatabase } from 'rxdb';
 
-import { ModelType } from '../../../enums.js';
 import db from './db.js';
+import { ModelType } from '../../../enums.js';
 
 let _db: RxDatabase | undefined = undefined;
 

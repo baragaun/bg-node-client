@@ -1,3 +1,4 @@
+import { BaseModel } from './BaseModel.js';
 import {
   MultiStepActionError,
   MultiStepActionResult,
@@ -6,7 +7,6 @@ import {
   MultiStepActionType,
   NotificationMethod,
 } from '../../fsdata/gql/graphql.js';
-import { BaseModel } from './BaseModel.js';
 
 export class SidMultiStepAction extends BaseModel {
   public userId = '';

@@ -1,4 +1,5 @@
 import type * as $$Utilities from 'graffle/utilities-for-generated';
+
 import * as $$Schema from './schema.js';
 import * as $$SelectionSets from './selection-sets.js';
 

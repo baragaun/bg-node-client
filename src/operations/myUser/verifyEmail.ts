@@ -1,8 +1,8 @@
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { MultiStepActionType, SidMultiStepActionInput } from '../../fsdata/gql/graphql.js';
-import { MutationResult } from '../../types/MutationResult.js';
 import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
+import { MutationResult } from '../../types/MutationResult.js';
 
 const verifyEmail = async (
   userId: string,

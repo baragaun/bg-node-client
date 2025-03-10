@@ -1,10 +1,9 @@
 import { ModelType } from '../../../enums.js';
-import { ModelFactory } from '../definitions.js';
-
 import channelFactory from '../channel.js';
 import channelInvitationFactory from '../channelInvitation.js';
 import channelMessageFactory from '../channelMessage.js';
 import channelParticipantFactory from '../channelParticipant.js';
+import { ModelFactory } from '../definitions.js';
 import userFactory from '../user.js';
 import userInboxFactory from '../userInbox.js';
 

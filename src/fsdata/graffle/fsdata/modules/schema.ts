@@ -1,5 +1,6 @@
 import type * as $$Utilities from 'graffle/utilities-for-generated';
 import type { Schema as $ } from 'graffle/utilities-for-generated';
+
 import * as $$Data from './data.js';
 import * as $$Scalar from './scalar.js';
 

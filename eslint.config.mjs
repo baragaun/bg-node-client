@@ -24,6 +24,16 @@ export default tseslint.config(
         },
       },
     },
+    rules: {
+      'import/order': [
+        'error',
+        {
+          groups: [['external', 'builtin'], 'internal'],
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+        },
+      ],
+    },
     // other configs...
   },
   {

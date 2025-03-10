@@ -1,7 +1,7 @@
+import getFactoryByType from './getFactoryByType.js';
 import db from '../../../db/db.js';
 import { ModelType } from '../../../enums.js';
 import { Model } from '../../../types/models/Model.js';
-import getFactoryByType from './getFactoryByType.js';
 
 const create = async <T extends Model = Model>(
   props: Partial<T> | Partial<T>[],

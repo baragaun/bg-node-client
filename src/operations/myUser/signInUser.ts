@@ -1,3 +1,4 @@
+import findMyUser from './findMyUser.js';
 import { CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import data from '../../helpers/data.js';
@@ -5,7 +6,6 @@ import saveUserInfo from '../../helpers/saveUserInfo.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInInput } from '../../types/SignInInput.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
-import findMyUser from './findMyUser.js';
 
 const signInUser = async (input: SignInInput): Promise<MutationResult<SignInSignUpResponse>> => {
   try {

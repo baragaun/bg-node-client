@@ -1,8 +1,8 @@
-import { AppFeature, AuthType, UiLanguage, UserRole } from '../../enums.js';
 import { BaseModel } from './BaseModel.js';
 import { LabeledStringValue } from './LabeledStringValue.js';
 import { UserBlock } from './UserBlock.js';
 import { UserPreferences } from './UserPreferences.js';
+import { AppFeature, AuthType, UiLanguage, UserRole } from '../../enums.js';
 
 export class User extends BaseModel {
   public firstName?: string | null;

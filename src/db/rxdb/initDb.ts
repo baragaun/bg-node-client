@@ -1,18 +1,19 @@
+import addFormats from 'ajv-formats';
 import { addRxPlugin, createRxDatabase, isRxDatabase, RxStorage } from 'rxdb/plugins/core';
 import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
 import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
 import { getAjv, wrappedValidateAjvStorage } from 'rxdb/plugins/validate-ajv';
+
 // import Ajv from 'ajv';
-import addFormats from 'ajv-formats';
 // import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
+import { DbCollection } from './enums.js';
+import findById from './findById.js';
 import { AppEnvironment, ModelType } from '../../enums.js';
+import db from './helpers/db.js';
 import modelsSchema from '../../models/schema/schema.js';
 import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { MyUser } from '../../types/models/MyUser.js';
-import { DbCollection } from './enums.js';
-import findById from './findById.js';
-import db from './helpers/db.js';
 // import initLibSignal from './initLibSignal.js';
 // import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
 

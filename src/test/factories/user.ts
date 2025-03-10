@@ -1,15 +1,15 @@
 // import * as Factory from 'factory.ts';
 import { Factory } from 'rosie';
 
+import { UserFactory } from './definitions.js';
 import { ModelType, UiLanguage } from '../../enums.js';
+import create from './helpers/create.js';
+import deleteFunc from './helpers/delete.js';
+import save from './helpers/save.js';
 import chance from '../../helpers/chance.js';
 import randomDate from '../../helpers/randomDate.js';
 import { LabeledStringValue } from '../../types/models/LabeledStringValue.js';
 import { User } from '../../types/models/User.js';
-import { UserFactory } from './definitions.js';
-import create from './helpers/create.js';
-import deleteFunc from './helpers/delete.js';
-import save from './helpers/save.js';
 
 const emailDomain = 'baragaun.com';
 
