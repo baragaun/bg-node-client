@@ -2,11 +2,8 @@ import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
-import {
-  MutationCreateMultiStepActionArgs,
-  SidMultiStepActionInput,
-  SidMultiStepActionProgress,
-} from '../../gql/graphql.js';
+import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
+import { MutationCreateMultiStepActionArgs, SidMultiStepActionInput } from '../../gql/graphql.js';
 import gql from '../../gql/mutations/createMultiStepAction.graphql.js';
 import helpers from '../../helpers/helpers.js';
 

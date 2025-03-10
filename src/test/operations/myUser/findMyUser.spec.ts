@@ -7,7 +7,7 @@ import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import userFactory from '../../factories/user.js';
-import { testConfig } from '../../testConfig.js';
+import { testConfig } from '../../helpers/testConfig.js';
 
 describe('operations.myUser.findMyUser', () => {
   test('should return the cached user from the local db', async () => {

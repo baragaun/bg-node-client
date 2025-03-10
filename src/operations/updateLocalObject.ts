@@ -1,11 +1,10 @@
 import db from '../db/db.js';
 import { ModelType } from '../enums.js';
 import fsdata from '../fsdata/fsdata.js';
-import { Model } from '../types/Model.js';
-import { BaseModel } from '../types/models/BaseModel.js';
+import { Model } from '../types/models/Model.js';
 import { QueryOptions } from '../types/QueryOptions.js';
 
-const updateLocalObject = async <T extends BaseModel = BaseModel>(
+const updateLocalObject = async <T extends Model = Model>(
   id: string,
   object: T | null | undefined,
   modelType: ModelType,
@@ -23,7 +22,7 @@ const updateLocalObject = async <T extends BaseModel = BaseModel>(
     return null;
   }
 
-  await db.replace(object as unknown as Model, modelType);
+  await db.replace(object, modelType);
 
   return object;
 };

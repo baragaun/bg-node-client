@@ -1,5 +1,5 @@
 import { ModelType } from '../../enums.js';
-import { Model } from '../../types/Model.js';
 import { QueryResult } from '../../types/QueryResult.js';
+import { Model } from '../../types/models/Model.js';
 declare const find: <T extends Model = Model>(match: Partial<T>, modelType: ModelType) => Promise<QueryResult<T>>;
 export default find;

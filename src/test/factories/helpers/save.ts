@@ -1,7 +1,7 @@
 import db from '../../../db/db.js';
-import { Model } from '../../../types/Model.js';
+import { Model } from '../../../types/models/Model.js';
 
-const save = async <T extends Model>(object: T): Promise<T> => {
+const save = async <T extends Model = Model>(object: T): Promise<T> => {
   if (!db.isConnected()) {
     throw new Error('db-not-available');
   }

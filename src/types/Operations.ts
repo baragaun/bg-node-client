@@ -1,10 +1,4 @@
 import { ModelType } from '../enums.js';
-import {
-  SidMultiStepActionProgress,
-  VerifyMultiStepActionTokenInput,
-} from '../fsdata/gql/graphql.js';
-import { Model } from './Model.js';
-import { BaseModel } from './models/BaseModel.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './models/ChannelInvitationListFilter.js';
@@ -13,9 +7,12 @@ import { ChannelMessage } from './models/ChannelMessage.js';
 import { ChannelMessageListFilter } from './models/ChannelMessageListFilter.js';
 import { ChannelParticipant } from './models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from './models/ChannelParticipantListFilter.js';
+import { Model } from './models/Model.js';
 import { MyUser } from './models/MyUser.js';
 import { SidMultiStepAction } from './models/SidMultiStepAction.js';
+import { SidMultiStepActionProgress } from './models/SidMultiStepActionProgress.js';
 import { User } from './models/User.js';
+import { VerifyMultiStepActionTokenInput } from './models/VerifyMultiStepActionTokenInput.js';
 import { MutationResult } from './MutationResult.js';
 import { QueryOptions } from './QueryOptions.js';
 import { QueryResult } from './QueryResult.js';
@@ -36,9 +33,9 @@ export interface Operations {
     queryOptions?: QueryOptions,
   ) => Promise<QueryResult<T>>;
 
-  insertOne: <T extends Model>(object: T) => Promise<MutationResult<T>>;
+  insertOne: <T extends Model = Model>(object: T) => Promise<MutationResult<T>>;
 
-  updateLocalObject: <T extends BaseModel = BaseModel>(
+  updateLocalObject: <T extends Model = Model>(
     id: string,
     object: T | null | undefined,
     modelType: ModelType,
@@ -132,7 +129,7 @@ export interface Operations {
     getSignedOutUserId: () => Promise<string | null>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
     signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
-    signMeOut: () => Promise<MutationResult>;
+    signMeOut: () => Promise<MutationResult<null>>;
     signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
 
     verifyEmail: (
@@ -154,10 +151,10 @@ export interface Operations {
     getMultiStepActionProgress: (
       actionId: string,
       confirmToken: string | undefined,
-    ) => Promise<SidMultiStepActionProgress | null>;
+    ) => Promise<QueryResult<SidMultiStepActionProgress>>;
 
     verifyMultiStepActionToken: (
       input: VerifyMultiStepActionTokenInput,
-    ) => Promise<MutationResult<SidMultiStepActionProgress>>;
+    ) => Promise<QueryResult<SidMultiStepActionProgress>>;
   };
 }

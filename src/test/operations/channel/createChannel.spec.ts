@@ -5,7 +5,7 @@ import { CachePolicy, ModelType } from '../../../enums.js';
 import findById from '../../../operations/findById.js';
 import { Channel } from '../../../types/models/Channel.js';
 import factories from '../../factories/factories.js';
-import { testConfig } from '../../testConfig.js';
+import { testConfig } from '../../helpers/testConfig.js';
 
 describe('operations.channel.createChannel', () => {
   test('should create a channel with the given properties', async () => {

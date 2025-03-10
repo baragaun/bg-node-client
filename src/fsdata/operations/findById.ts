@@ -6,7 +6,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 import { ModelType } from '../../enums.js';
 import data from '../../helpers/data.js';
 import modelFactory from '../../models/modelFactory.js';
-import { BaseModel } from '../../types/models/BaseModel.js';
+import { Model } from '../../types/models/Model.js';
 import findChannelById from '../gql/queries/findChannelById.graphql.js';
 import findChannelInvitationById from '../gql/queries/findChannelInvitationById.graphql.js';
 import findChannelMessageById from '../gql/queries/findChannelMessageById.graphql.js';
@@ -31,7 +31,7 @@ const _fieldDef = {
 };
 
 // see: https://graffle.js.org/guides/topics/requests
-const findById = async <T extends BaseModel = BaseModel>(
+const findById = async <T extends Model = Model>(
   id: string,
   modelType: ModelType,
 ): Promise<T | null> => {

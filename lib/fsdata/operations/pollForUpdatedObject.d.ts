@@ -1,5 +1,5 @@
 import { ModelType } from '../../enums.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
-import { BaseModel } from '../../types/models/BaseModel.js';
-declare const pollForUpdatedObject: <T extends BaseModel = BaseModel>(id: string, modelType: ModelType, options: QueryOptions) => Promise<T | null>;
+import { Model } from '../../types/models/Model.js';
+declare const pollForUpdatedObject: <T extends Model = Model>(id: string, modelType: ModelType, options: QueryOptions) => Promise<T | null>;
 export default pollForUpdatedObject;

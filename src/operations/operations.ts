@@ -74,7 +74,7 @@ const operations: Operations = {
     signMeOut,
     signUpUser,
     signInWithToken,
-    verifyEmail: verifyEmail,
+    verifyEmail,
     updateMyUser,
   },
 

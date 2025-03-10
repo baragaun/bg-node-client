@@ -1,14 +1,18 @@
 import { RxDatabase } from 'rxdb';
 
 import { ModelType, MutationType } from '../../enums.js';
+import { Model } from '../../types/models/Model.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 
 let _db: RxDatabase | undefined = undefined;
 
-const deleteFunc = async (id: string, modelType: ModelType): Promise<MutationResult> => {
-  const result: MutationResult = { operation: MutationType.delete };
+const deleteFunc = async <T extends Model = Model>(
+  id: string,
+  modelType: ModelType,
+): Promise<MutationResult<T>> => {
+  const result: MutationResult<T> = { operation: MutationType.delete };
 
   if (!_db) {
     _db = db.getDb();

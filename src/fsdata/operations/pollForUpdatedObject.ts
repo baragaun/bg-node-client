@@ -1,9 +1,9 @@
 import { ModelType } from '../../enums.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
-import { BaseModel } from '../../types/models/BaseModel.js';
+import { Model } from '../../types/models/Model.js';
 import findById from './findById.js';
 
-const pollForUpdatedObject = <T extends BaseModel = BaseModel>(
+const pollForUpdatedObject = <T extends Model = Model>(
   id: string,
   modelType: ModelType,
   options: QueryOptions,

@@ -5,7 +5,7 @@ import { MultiStepActionType } from '../../../fsdata/gql/graphql.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
 import { VerifyMultiStepActionTokenInput } from '../../../types/models/VerifyMultiStepActionTokenInput.js';
-import { testConfig } from '../../testConfig.js';
+import { testConfig } from '../../helpers/testConfig.js';
 
 describe('operations.myUser.signInWithToken', () => {
   test('should verify a correct token', async () => {
@@ -66,10 +66,12 @@ describe('operations.myUser.signInWithToken', () => {
       token,
     );
 
-    expect(progressResponse.actionId).toBe(actionId);
-    expect(progressResponse.result).toBe('ok');
-    expect(progressResponse.userId).toBe(myUserId);
-    expect(progressResponse.authToken).toBeDefined();
-    expect(progressResponse.authToken.length).toBeGreaterThan(10);
+    expect(progressResponse.object).toBeDefined();
+    expect(progressResponse.object.actionId).toBe(actionId);
+    expect(progressResponse.object.actionId).toBe(actionId);
+    expect(progressResponse.object.result).toBe('ok');
+    expect(progressResponse.object.userId).toBe(myUserId);
+    expect(progressResponse.object.authToken).toBeDefined();
+    expect(progressResponse.object.authToken.length).toBeGreaterThan(10);
   });
 }, 60000);

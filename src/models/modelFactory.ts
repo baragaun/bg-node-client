@@ -1,17 +1,14 @@
 import { ModelType } from '../enums.js';
-import { BaseModel } from '../types/models/BaseModel.js';
 import { Channel } from '../types/models/Channel.js';
 import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
+import { Model } from '../types/models/Model.js';
 import { MyUser } from '../types/models/MyUser.js';
 import { User } from '../types/models/User.js';
 import { UserInbox } from '../types/models/UserInbox.js';
 
-const modelFactory = <T extends BaseModel = BaseModel>(
-  attributes: Partial<T>,
-  modelType: ModelType,
-): T => {
+const modelFactory = <T extends Model = Model>(attributes: Partial<T>, modelType: ModelType): T => {
   if (modelType === ModelType.Channel) {
     return new Channel(attributes as unknown as Partial<Channel>) as unknown as T;
   }

@@ -1,6 +1,6 @@
 import { MultiStepActionError, MultiStepActionResult, MultiStepActionSendNotificationResult, MultiStepActionStatus, MultiStepActionType, NotificationMethod } from '../../fsdata/gql/graphql.js';
-import { BaseModelMetadata } from './BaseModelMetadata.js';
-export declare class SidMultiStepActionProgress {
+import { BaseModel } from './BaseModel.js';
+export declare class SidMultiStepActionProgress extends BaseModel {
     actionId: string;
     userId: string;
     actionType: MultiStepActionType;
@@ -8,31 +8,24 @@ export declare class SidMultiStepActionProgress {
     notificationMethod?: NotificationMethod | null;
     result: MultiStepActionResult;
     attemptCount: number;
-    notificationSentAt?: Date | null;
+    notificationSentAt?: string | null;
     notificationResult?: MultiStepActionSendNotificationResult | null;
     notificationId?: string | null;
     textData?: string | null;
     report?: string | null;
     emailPassed?: boolean | null;
-    emailUpdatedAt?: Date | null;
-    emailVerifiedAt?: Date | null;
+    emailUpdatedAt?: string | null;
+    emailVerifiedAt?: string | null;
     errors?: MultiStepActionError[] | null;
     authToken?: string | null;
-    authTokenExpiresAt?: Date | null;
+    authTokenExpiresAt?: string | null;
     passwordPassed?: boolean | null;
-    passwordResettedAt?: Date | null;
-    passwordUpdatedAt?: Date | null;
+    passwordResettedAt?: string | null;
+    passwordUpdatedAt?: string | null;
     phoneNumberPassed?: boolean | null;
-    phoneNumberUpdatedAt?: Date | null;
-    phoneNumberVerifiedAt?: Date | null;
-    signedInAt?: Date | null;
-    expiresAt?: Date | null;
-    metadata?: BaseModelMetadata | null;
-    createdAt?: Date | null;
-    createdBy?: string | null;
-    updatedAt?: Date | null;
-    updatedBy?: string | null;
-    deletedAt?: Date | null;
-    deletedBy?: string | null;
+    phoneNumberUpdatedAt?: string | null;
+    phoneNumberVerifiedAt?: string | null;
+    signedInAt?: string | null;
+    expiresAt?: string | null;
     constructor(attributes?: Partial<SidMultiStepActionProgress>);
 }

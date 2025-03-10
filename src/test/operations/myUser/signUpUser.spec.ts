@@ -5,7 +5,7 @@ import { CachePolicy, ModelType } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import findById from '../../../operations/findById.js';
 import { MyUser } from '../../../types/models/MyUser.js';
-import { testConfig } from '../../testConfig.js';
+import { testConfig } from '../../helpers/testConfig.js';
 
 describe('signUpUser', () => {
   test('should sign up a user with valid input', async () => {

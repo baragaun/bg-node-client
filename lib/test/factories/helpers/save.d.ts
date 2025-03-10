@@ -1,3 +1,3 @@
-import { Model } from '../../../types/Model.js';
-declare const save: <T extends Model>(object: T) => Promise<T>;
+import { Model } from '../../../types/models/Model.js';
+declare const save: <T extends Model = Model>(object: T) => Promise<T>;
 export default save;

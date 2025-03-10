@@ -68,7 +68,7 @@ export default tseslint.config(
     },
   },
   {
-    files: ['__tests__/**'],
+    files: ['/src/test/**'],
 
     plugins: {
       vitest,

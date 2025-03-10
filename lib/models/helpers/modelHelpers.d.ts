@@ -1,6 +1,0 @@
-import { ModelType } from '../../enums.js';
-import { Model } from '../../types/Model.js';
-declare const modelHelpers: {
-    formatObjectForDb: <T extends Model>(obj: Partial<T>, modelType: ModelType) => Partial<T>;
-};
-export default modelHelpers;

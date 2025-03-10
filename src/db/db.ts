@@ -2,7 +2,7 @@ import { DbType, ModelType } from '../enums.js';
 import data from '../helpers/data.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { Db } from '../types/Db.js';
-import { Model } from '../types/Model.js';
+import { Model } from '../types/models/Model.js';
 import { MyUser } from '../types/models/MyUser.js';
 import { MutationResult } from '../types/MutationResult.js';
 import { QueryResult } from '../types/QueryResult.js';
@@ -11,13 +11,16 @@ import memStore from './mem/memStore.js';
 import rxDbStore from './rxdb/rxDbStore.js';
 
 const db: Db = {
-  delete: (id: string, modelType: ModelType): Promise<MutationResult> => {
+  delete: <T extends Model = Model>(
+    id: string,
+    modelType: ModelType,
+  ): Promise<MutationResult<T>> => {
     if (data.config()?.dbType === DbType.mem) {
-      return memStore.delete(id, modelType);
+      return memStore.delete<T>(id, modelType);
     }
 
     if (data.config()?.dbType === DbType.rxdb) {
-      return rxDbStore.delete(id, modelType);
+      return rxDbStore.delete<T>(id, modelType);
     }
 
     throw new Error('invalid-store-type');
@@ -50,7 +53,10 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  findById: <T extends Model>(id: string, modelType: ModelType): Promise<QueryResult<T>> => {
+  findById: <T extends Model = Model>(
+    id: string,
+    modelType: ModelType,
+  ): Promise<QueryResult<T>> => {
     if (data.config()?.dbType === DbType.mem) {
       return memStore.findById<T>(id, modelType);
     }
@@ -62,7 +68,10 @@ const db: Db = {
     throw new Error('invalid-store-type');
   },
 
-  findOne: <T extends Model>(match: Partial<T>, modelType: ModelType): Promise<QueryResult<T>> => {
+  findOne: <T extends Model = Model>(
+    match: Partial<T>,
+    modelType: ModelType,
+  ): Promise<QueryResult<T>> => {
     if (data.config()?.dbType === DbType.mem) {
       return memStore.findOne<T>(match, modelType);
     }
@@ -120,7 +129,7 @@ const db: Db = {
 
   // libSignalStores: rxdbHelpers.getLibSignalStores,
 
-  replace: <T extends Model>(obj: T, modelType?: ModelType): Promise<MutationResult<T>> => {
+  replace: <T extends Model = Model>(obj: T, modelType?: ModelType): Promise<MutationResult<T>> => {
     if (data.config()?.dbType === DbType.mem) {
       return memStore.replace<T>(obj, modelType);
     }

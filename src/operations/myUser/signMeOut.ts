@@ -4,7 +4,7 @@ import data from '../../helpers/data.js';
 import saveUserInfo from '../../helpers/saveUserInfo.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
-const signMeOut = async (): Promise<MutationResult> => {
+const signMeOut = async (): Promise<MutationResult<null>> => {
   try {
     await fsdata.myUser.signMeOut();
 

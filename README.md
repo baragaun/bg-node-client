@@ -61,7 +61,11 @@ pnpm run codegen
 
 ## Tests
 
-We use [Vitest](https://vitest.dev/). The tests are in `src/test`.
+We use [Vitest](https://vitest.dev/). The tests are in `src/test`. To run the test suite:
+
+```shell
+pnpm test
+```
 
 ## Making Changes
 

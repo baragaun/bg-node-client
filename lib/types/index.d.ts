@@ -10,7 +10,6 @@ export * from './QueryOptions.js';
 export * from './SignInInput.js';
 export * from './SignInSignUpResponse.js';
 export * from './SignUpInput.js';
-export * from './Model.js';
 export * from './models/BaseModel.js';
 export * from './models/BaseModelMetadata.js';
 export * from './models/BgChannelStatus.js';

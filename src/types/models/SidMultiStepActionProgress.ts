@@ -6,9 +6,9 @@ import {
   MultiStepActionType,
   NotificationMethod,
 } from '../../fsdata/gql/graphql.js';
-import { BaseModelMetadata } from './BaseModelMetadata.js';
+import { BaseModel } from './BaseModel.js';
 
-export class SidMultiStepActionProgress {
+export class SidMultiStepActionProgress extends BaseModel {
   public actionId = '';
   public userId = '';
   public actionType: MultiStepActionType = MultiStepActionType.Unset;
@@ -16,35 +16,30 @@ export class SidMultiStepActionProgress {
   public notificationMethod?: NotificationMethod | null;
   public result: MultiStepActionResult = MultiStepActionResult.Unset;
   public attemptCount = 0;
-  public notificationSentAt?: Date | null;
+  public notificationSentAt?: string | null;
   public notificationResult?: MultiStepActionSendNotificationResult | null;
   public notificationId?: string | null;
   public textData?: string | null;
   public report?: string | null;
   public emailPassed?: boolean | null;
-  public emailUpdatedAt?: Date | null;
-  public emailVerifiedAt?: Date | null;
+  public emailUpdatedAt?: string | null;
+  public emailVerifiedAt?: string | null;
   public errors?: MultiStepActionError[] | null;
   public authToken?: string | null;
-  public authTokenExpiresAt?: Date | null;
+  public authTokenExpiresAt?: string | null;
   public passwordPassed?: boolean | null;
-  public passwordResettedAt?: Date | null;
-  public passwordUpdatedAt?: Date | null;
+  public passwordResettedAt?: string | null;
+  public passwordUpdatedAt?: string | null;
   public phoneNumberPassed?: boolean | null;
-  public phoneNumberUpdatedAt?: Date | null;
-  public phoneNumberVerifiedAt?: Date | null;
-  public signedInAt?: Date | null;
-  public expiresAt?: Date | null;
+  public phoneNumberUpdatedAt?: string | null;
+  public phoneNumberVerifiedAt?: string | null;
+  public signedInAt?: string | null;
+  public expiresAt?: string | null;
   // public events?: ModelEvent[] | null
-  public metadata?: BaseModelMetadata | null;
-  public createdAt?: Date | null;
-  public createdBy?: string | null;
-  public updatedAt?: Date | null;
-  public updatedBy?: string | null;
-  public deletedAt?: Date | null;
-  public deletedBy?: string | null;
 
   constructor(attributes?: Partial<SidMultiStepActionProgress>) {
+    super(attributes);
+
     if (attributes) {
       // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.actionId) {
@@ -72,11 +67,7 @@ export class SidMultiStepActionProgress {
         this.attemptCount = attributes.attemptCount;
       }
       if (attributes.notificationSentAt) {
-        if (attributes.notificationSentAt instanceof Date) {
-          this.notificationSentAt = attributes.notificationSentAt;
-        } else {
-          this.notificationSentAt = new Date(attributes.notificationSentAt);
-        }
+        this.notificationSentAt = attributes.notificationSentAt;
       }
       if (attributes.notificationResult) {
         this.notificationResult = attributes.notificationResult;
@@ -94,18 +85,10 @@ export class SidMultiStepActionProgress {
         this.emailPassed = attributes.emailPassed;
       }
       if (attributes.emailUpdatedAt) {
-        if (attributes.emailUpdatedAt instanceof Date) {
-          this.emailUpdatedAt = attributes.emailUpdatedAt;
-        } else {
-          this.emailUpdatedAt = new Date(attributes.emailUpdatedAt);
-        }
+        this.emailUpdatedAt = attributes.emailUpdatedAt;
       }
       if (attributes.emailVerifiedAt) {
-        if (attributes.emailVerifiedAt instanceof Date) {
-          this.emailVerifiedAt = attributes.emailVerifiedAt;
-        } else {
-          this.emailVerifiedAt = new Date(attributes.emailVerifiedAt);
-        }
+        this.emailVerifiedAt = attributes.emailVerifiedAt;
       }
       if (attributes.errors) {
         this.errors = attributes.errors;
@@ -114,95 +97,31 @@ export class SidMultiStepActionProgress {
         this.authToken = attributes.authToken;
       }
       if (attributes.authTokenExpiresAt) {
-        if (attributes.authTokenExpiresAt instanceof Date) {
-          this.authTokenExpiresAt = attributes.authTokenExpiresAt;
-        } else {
-          this.authTokenExpiresAt = new Date(attributes.authTokenExpiresAt);
-        }
+        this.authTokenExpiresAt = attributes.authTokenExpiresAt;
       }
       if (attributes.passwordPassed === true || attributes.passwordPassed === false) {
         this.passwordPassed = attributes.passwordPassed;
       }
       if (attributes.passwordResettedAt) {
-        if (attributes.passwordResettedAt instanceof Date) {
-          this.passwordResettedAt = attributes.passwordResettedAt;
-        } else {
-          this.passwordResettedAt = new Date(attributes.passwordResettedAt);
-        }
+        this.passwordResettedAt = attributes.passwordResettedAt;
       }
       if (attributes.passwordUpdatedAt) {
-        if (attributes.passwordUpdatedAt instanceof Date) {
-          this.passwordUpdatedAt = attributes.passwordUpdatedAt;
-        } else {
-          this.passwordUpdatedAt = new Date(attributes.passwordUpdatedAt);
-        }
+        this.passwordUpdatedAt = attributes.passwordUpdatedAt;
       }
       if (attributes.phoneNumberPassed === true || attributes.phoneNumberPassed === false) {
         this.phoneNumberPassed = attributes.phoneNumberPassed;
       }
       if (attributes.phoneNumberUpdatedAt) {
-        if (attributes.phoneNumberUpdatedAt instanceof Date) {
-          this.phoneNumberUpdatedAt = attributes.phoneNumberUpdatedAt;
-        } else {
-          this.phoneNumberUpdatedAt = new Date(attributes.phoneNumberUpdatedAt);
-        }
+        this.phoneNumberUpdatedAt = attributes.phoneNumberUpdatedAt;
       }
       if (attributes.phoneNumberVerifiedAt) {
-        if (attributes.phoneNumberVerifiedAt instanceof Date) {
-          this.phoneNumberVerifiedAt = attributes.phoneNumberVerifiedAt;
-        } else {
-          this.phoneNumberVerifiedAt = new Date(attributes.phoneNumberVerifiedAt);
-        }
+        this.phoneNumberVerifiedAt = attributes.phoneNumberVerifiedAt;
       }
       if (attributes.signedInAt) {
-        if (attributes.signedInAt instanceof Date) {
-          this.signedInAt = attributes.signedInAt;
-        } else {
-          this.signedInAt = new Date(attributes.signedInAt);
-        }
+        this.signedInAt = attributes.signedInAt;
       }
       if (attributes.expiresAt) {
-        if (attributes.expiresAt instanceof Date) {
-          this.expiresAt = attributes.expiresAt;
-        } else {
-          this.expiresAt = new Date(attributes.expiresAt);
-        }
-      }
-      // if (attributes.events) {
-      //   this.events = attributes.events
-      // }
-      if (attributes.metadata) {
-        this.metadata = attributes.metadata;
-      }
-      if (attributes.createdAt) {
-        if (attributes.createdAt instanceof Date) {
-          this.createdAt = attributes.createdAt;
-        } else {
-          this.createdAt = new Date(attributes.createdAt);
-        }
-      }
-      if (attributes.createdBy) {
-        this.createdBy = attributes.createdBy;
-      }
-      if (attributes.updatedAt) {
-        if (attributes.updatedAt instanceof Date) {
-          this.updatedAt = attributes.updatedAt;
-        } else {
-          this.updatedAt = new Date(attributes.updatedAt);
-        }
-      }
-      if (attributes.updatedBy) {
-        this.updatedBy = attributes.updatedBy;
-      }
-      if (attributes.deletedAt) {
-        if (attributes.deletedAt instanceof Date) {
-          this.deletedAt = attributes.deletedAt;
-        } else {
-          this.deletedAt = new Date(attributes.deletedAt);
-        }
-      }
-      if (attributes.deletedBy) {
-        this.deletedBy = attributes.deletedBy;
+        this.expiresAt = attributes.expiresAt;
       }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }

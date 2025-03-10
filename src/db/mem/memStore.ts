@@ -1,33 +1,32 @@
 import { ModelType, MutationType } from '../../enums.js';
 import { BgNodeClientConfig } from '../../types/BgNodeClientConfig.js';
 import { Db } from '../../types/Db.js';
-import { Model } from '../../types/Model.js';
 import { Channel } from '../../types/models/Channel.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
+import { Model } from '../../types/models/Model.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { QueryResult } from '../../types/QueryResult.js';
-// import db from '../rxdb/helpers/db.js';
 
 const channels: Channel[] = [];
 let messages: ChannelMessage[] = [];
 
-const getArrayForObject = <T extends Model = Model>(obj: Model, modelType?: ModelType): T[] => {
+const getArrayForObject = <T extends Model = Model>(obj: T, modelType?: ModelType): T[] => {
   if (modelType) {
     return getArrayForModelType<T>(modelType);
   }
 
   if (obj instanceof Channel) {
-    return channels as T[];
+    return channels as unknown as T[];
   }
-  return messages as T[];
+  return messages as unknown as T[];
 };
 
 const getArrayForModelType = <T extends Model = Model>(type: ModelType): T[] => {
   if (type === ModelType.Channel) {
-    return channels as T[];
+    return channels as unknown as T[];
   }
-  return messages as T[];
+  return messages as unknown as T[];
 };
 
 const memStore: Db = {
@@ -41,7 +40,10 @@ const memStore: Db = {
     return true;
   },
 
-  delete: async (id: string, modelType: ModelType): Promise<MutationResult> => {
+  delete: async <T extends Model = Model>(
+    id: string,
+    modelType: ModelType,
+  ): Promise<MutationResult<T>> => {
     const arr = getArrayForModelType(modelType);
     const index = arr.findIndex((obj) => obj.id === id);
 
@@ -131,7 +133,10 @@ const memStore: Db = {
 
   // libSignalStores: db.getLibSignalStores,
 
-  replace: async <T extends Model>(obj: T, modelType?: ModelType): Promise<MutationResult<T>> => {
+  replace: async <T extends Model = Model>(
+    obj: T,
+    modelType?: ModelType,
+  ): Promise<MutationResult<T>> => {
     const result = { operation: MutationType.replace, object: obj };
     const arr = getArrayForObject(obj, modelType);
     const index = arr.findIndex((o) => o.id === obj.id);

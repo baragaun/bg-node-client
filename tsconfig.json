@@ -22,5 +22,5 @@
     "strictNullChecks": false,
     "skipLibCheck": true,
   },
-  "include": ["src", "src/test", "__tests__"]
+  "include": ["src"]
 }

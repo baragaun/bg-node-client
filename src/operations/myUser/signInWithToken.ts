@@ -1,11 +1,8 @@
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import {
-  MultiStepActionType,
-  SidMultiStepActionInput,
-  SidMultiStepActionProgress,
-} from '../../fsdata/gql/graphql.js';
+import { MultiStepActionType, SidMultiStepActionInput } from '../../fsdata/gql/graphql.js';
 import { MutationResult } from '../../types/MutationResult.js';
+import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
 
 const signInWithToken = async (
   email: string,

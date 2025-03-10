@@ -1,15 +1,13 @@
 import { ModelType } from '../enums.js';
-import { BaseModel } from '../types/models/BaseModel.js';
 import { Channel } from '../types/models/Channel.js';
 import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
+import { Model } from '../types/models/Model.js';
 import { MyUser } from '../types/models/MyUser.js';
 import { User } from '../types/models/User.js';
 
-export const getModelTypeFromObject = <T extends BaseModel = BaseModel>(
-  obj: T,
-): ModelType | null => {
+export const getModelTypeFromObject = <T extends Model = Model>(obj: T): ModelType | null => {
   if (obj instanceof Channel) {
     return ModelType.Channel;
   }
