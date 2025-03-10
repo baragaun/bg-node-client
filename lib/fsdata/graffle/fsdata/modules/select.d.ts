@@ -2,7 +2,6 @@ import type * as $$Utilities from 'graffle/utilities-for-generated';
 import type { OperationTypeNode } from 'graphql';
 import * as $$Schema from './schema.js';
 import * as $$SelectionSets from './selection-sets.js';
-export declare const Select: import("./methods-select.js").$MethodsSelect;
 export declare namespace Select {
     type Query<$SelectionSet extends $$SelectionSets.Query> = $$Utilities.DocumentBuilder.InferResult.Operation<$SelectionSet, $$Schema.Schema, OperationTypeNode.QUERY>;
     type Mutation<$SelectionSet extends $$SelectionSets.Mutation> = $$Utilities.DocumentBuilder.InferResult.Operation<$SelectionSet, $$Schema.Schema, OperationTypeNode.MUTATION>;

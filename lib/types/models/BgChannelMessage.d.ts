@@ -1,8 +1,8 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
-import { ChannelMessageType } from '../../enums.js';
 import { BaseModel } from './BaseModel.js';
 import { ChannelMessageMetadata } from './ChannelMessageMetadata.js';
 import { ChannelMessageStatus } from './ChannelMessageStatus.js';
+import { ChannelMessageType } from '../../enums.js';
 export declare class BgChannelMessage extends BaseModel {
     channelId: string;
     replyToMessageId?: string | null;

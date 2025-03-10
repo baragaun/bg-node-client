@@ -1,5 +1,5 @@
-import { MultiStepActionError, MultiStepActionResult, MultiStepActionSendNotificationResult, MultiStepActionStatus, MultiStepActionType, NotificationMethod } from '../../fsdata/gql/graphql.js';
 import { BaseModel } from './BaseModel.js';
+import { MultiStepActionError, MultiStepActionResult, MultiStepActionSendNotificationResult, MultiStepActionStatus, MultiStepActionType, NotificationMethod } from '../../fsdata/gql/graphql.js';
 export declare class SidMultiStepActionProgress extends BaseModel {
     actionId: string;
     userId: string;

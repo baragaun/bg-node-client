@@ -1,8 +1,8 @@
-import { ChannelType } from '../../enums.js';
 import { BaseModel } from './BaseModel.js';
 import { BgChannelStatus } from './BgChannelStatus.js';
 import { ChannelMetadata } from './ChannelMetadata.js';
 import { ChannelParticipant } from './ChannelParticipant.js';
+import { ChannelType } from '../../enums.js';
 export declare class BgChannel extends BaseModel {
     name?: string | null;
     topic?: string | null;

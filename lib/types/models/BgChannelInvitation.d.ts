@@ -1,5 +1,5 @@
-import { ChannelInvitationStatus } from '../../enums.js';
 import { BaseModel } from './BaseModel.js';
+import { ChannelInvitationStatus } from '../../enums.js';
 export declare class BgChannelInvitation extends BaseModel {
     channelId?: string | null;
     recipientId: string;

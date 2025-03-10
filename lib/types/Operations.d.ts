@@ -1,5 +1,4 @@
 import { ModelType } from '../enums.js';
-import { Model } from './models/Model.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './models/ChannelInvitationListFilter.js';
@@ -8,17 +7,18 @@ import { ChannelMessage } from './models/ChannelMessage.js';
 import { ChannelMessageListFilter } from './models/ChannelMessageListFilter.js';
 import { ChannelParticipant } from './models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from './models/ChannelParticipantListFilter.js';
+import { Model } from './models/Model.js';
 import { MyUser } from './models/MyUser.js';
 import { SidMultiStepAction } from './models/SidMultiStepAction.js';
+import { SidMultiStepActionProgress } from './models/SidMultiStepActionProgress.js';
 import { User } from './models/User.js';
+import { VerifyMultiStepActionTokenInput } from './models/VerifyMultiStepActionTokenInput.js';
 import { MutationResult } from './MutationResult.js';
 import { QueryOptions } from './QueryOptions.js';
 import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
 import { SignUpInput } from './SignUpInput.js';
-import { SidMultiStepActionProgress } from './models/SidMultiStepActionProgress.js';
-import { VerifyMultiStepActionTokenInput } from './models/VerifyMultiStepActionTokenInput.js';
 export interface Operations {
     findById: <T extends Model = Model>(id: string, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;

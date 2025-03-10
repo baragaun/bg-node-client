@@ -1,9 +1,9 @@
 import { ModelType } from '../enums.js';
 import { BgNodeClientConfig } from './BgNodeClientConfig.js';
-import { Model } from '../types/models/Model.js';
 import { MyUser } from './models/MyUser.js';
 import { MutationResult } from './MutationResult.js';
 import { QueryResult } from './QueryResult.js';
+import { Model } from '../types/models/Model.js';
 export interface Db {
     init: (config: BgNodeClientConfig) => Promise<MyUser | null>;
     insert: <T extends Model = Model>(obj: T, modelType?: ModelType) => Promise<MutationResult<T>>;
