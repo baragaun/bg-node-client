@@ -4,4 +4,5 @@ mutation M ($input: SignUpUserInput!) {
     userId
     authToken
   }
-}`;
+}
+`;

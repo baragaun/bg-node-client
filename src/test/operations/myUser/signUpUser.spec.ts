@@ -16,17 +16,14 @@ describe('signUpUser', () => {
     const password = chance.word();
     const email = chance.email();
 
-    console.log('Test input:', { userHandle, email, password });
-
     const signUpResponse = await client.operations.myUser.signUpUser({
       userHandle,
       firstName,
       lastName,
       email,
       password,
+      isTestUser: true,
     });
-
-    console.log('Sign Up User', signUpResponse);
 
     expect(signUpResponse.error).toBeUndefined();
     expect(signUpResponse.object).toBeDefined();

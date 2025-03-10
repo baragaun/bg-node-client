@@ -3,6 +3,8 @@ import { Opentelemetry } from 'graffle/extensions/opentelemetry';
 import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
+// import { create } from '../../graffle/fsdata/_.js'
+
 import data from '../../../helpers/data.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import findMyUserGql from '../../gql/queries/findMyUser.graphql.js';
@@ -39,7 +41,8 @@ const findMyUser = async (): Promise<MyUser | null> => {
 
     return new MyUser(response.findMyUser);
   } catch (error) {
-    console.error(error);
+    const headers = helpers.headers();
+    console.error('findMyUser failed.', { error, headers });
     return null;
   }
 };

@@ -7,7 +7,7 @@ import { Channel } from '../../../types/models/Channel.js';
 import factories from '../../factories/factories.js';
 import { testConfig } from '../../testConfig.js';
 
-describe('updateChannel', () => {
+describe('operations.channel.updateChannel', () => {
   test('should update channel properties', async () => {
     const client = await new BgNodeClient().init(testConfig);
     const channelProps = await factories.channel.build({});

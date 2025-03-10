@@ -9,7 +9,7 @@ import findById from '../../../operations/findById.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { testConfig } from '../../testConfig.js';
 
-describe('signInUser', () => {
+describe('operations.myUser.signInUser', () => {
   test('should sign in a user with valid input', async () => {
     const client = await new BgNodeClient().init(testConfig);
 
@@ -27,6 +27,7 @@ describe('signInUser', () => {
       lastName,
       email,
       password,
+      isTestUser: true,
     });
     const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
 

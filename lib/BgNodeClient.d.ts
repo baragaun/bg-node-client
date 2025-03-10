@@ -4,4 +4,6 @@ export declare class BgNodeClient {
     addListener: (listener: import("./types/BgDataListener.js").BgDataListener) => void;
     operations: import("./types/Operations.js").Operations;
     removeListener: (id: string) => void;
+    setConfig: (config: BgNodeClientConfig) => void;
+    config: () => BgNodeClientConfig;
 }

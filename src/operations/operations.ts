@@ -25,10 +25,11 @@ import verifyMultiStepActionToken from './multiStepAction/verifyMultiStepActionT
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
 import signInUser from './myUser/signInUser.js';
+import signInWithToken from './myUser/signInWithToken.js';
 import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
-import startTokenSignIn from './myUser/startTokenSignIn.js';
-import startVerifyEmail from './myUser/startVerifyEmail.js';
+import updateMyUser from './myUser/updateMyUser.js';
+import verifyEmail from './myUser/verifyEmail.js';
 import updateLocalObject from './updateLocalObject.js';
 
 const operations: Operations = {
@@ -72,8 +73,9 @@ const operations: Operations = {
     signInUser,
     signMeOut,
     signUpUser,
-    startTokenSignIn,
-    startVerifyEmail,
+    signInWithToken,
+    verifyEmail: verifyEmail,
+    updateMyUser,
   },
 
   multiStepAction: {

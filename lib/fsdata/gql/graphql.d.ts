@@ -2159,6 +2159,7 @@ export declare enum ModelType {
     Mm2SynchronizationResultItem = "Mm2SynchronizationResultItem",
     ModerationConcern = "ModerationConcern",
     MultiStepAction = "MultiStepAction",
+    MyUser = "MyUser",
     NatsMessage = "NatsMessage",
     Notification = "Notification",
     NotificationTemplate = "NotificationTemplate",
@@ -2696,7 +2697,7 @@ export type MutationUpdateMentorsGroupMembershipArgs = {
     input: MentorsGroupMembershipInput;
 };
 export type MutationUpdateMyUserArgs = {
-    input: UserInput;
+    input: MyUserInput;
 };
 export type MutationUpdateNotificationArgs = {
     notificationInput: NotificationInput;
@@ -2861,6 +2862,95 @@ export type MyUserChannelsArgs = {
     mustBeAccepted?: InputMaybe<Scalars['Boolean']['input']>;
     mustHaveMessages?: InputMaybe<Scalars['Boolean']['input']>;
     options?: InputMaybe<FindObjectsOptions>;
+};
+export type MyUserInput = {
+    academicExperienceIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+    /** Specify a list of academic experiences you want to create for the user. */
+    academicExperiences?: InputMaybe<Array<AcademicExperienceInput>>;
+    addToGroupIds?: InputMaybe<Array<Scalars['String']['input']>>;
+    adminNotes?: InputMaybe<Scalars['String']['input']>;
+    appFeatures?: InputMaybe<Array<AppFeature>>;
+    authType?: InputMaybe<AuthType>;
+    avatarUrl?: InputMaybe<Scalars['String']['input']>;
+    birthYear?: InputMaybe<Scalars['Int']['input']>;
+    businessExperienceIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+    /** Specify a list of business experiences you want to create for the user. */
+    businessExperiences?: InputMaybe<Array<BusinessExperienceInput>>;
+    cityOfOrigin?: InputMaybe<Scalars['String']['input']>;
+    cityOfResidence?: InputMaybe<Scalars['String']['input']>;
+    /** Used internally, will not work in GraphQL queries. */
+    companies?: InputMaybe<Array<CompanyInput>>;
+    /** Specify a company you want to create and add the user to. */
+    company?: InputMaybe<CompanyInput>;
+    companyIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+    /** Users Country of origin. Use a Country Options textId. */
+    countryOfOriginTextId?: InputMaybe<Scalars['String']['input']>;
+    countryOfResidenceTextId?: InputMaybe<Scalars['String']['input']>;
+    createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    createdBy?: InputMaybe<Scalars['ID']['input']>;
+    currentPassword?: InputMaybe<Scalars['String']['input']>;
+    deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    deletedBy?: InputMaybe<Scalars['ID']['input']>;
+    /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
+    discoverable?: InputMaybe<Scalars['Boolean']['input']>;
+    educationLevelTextId?: InputMaybe<Scalars['String']['input']>;
+    email?: InputMaybe<Scalars['String']['input']>;
+    emailSource?: InputMaybe<Scalars['String']['input']>;
+    emailUpdatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    ethnicity?: InputMaybe<Scalars['String']['input']>;
+    events?: InputMaybe<Array<ModelEventInput>>;
+    externalGroupIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+    fallbackUiLanguageTextId?: InputMaybe<UiLanguage>;
+    firstName?: InputMaybe<Scalars['String']['input']>;
+    fullName?: InputMaybe<Scalars['String']['input']>;
+    genderTextId?: InputMaybe<Scalars['String']['input']>;
+    groupIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+    groupMemberships?: InputMaybe<Array<GroupMembershipInput>>;
+    id?: InputMaybe<Scalars['ID']['input']>;
+    inactivatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    inactivatedBy?: InputMaybe<Scalars['ID']['input']>;
+    inviteCode?: InputMaybe<Scalars['String']['input']>;
+    isEmailVerified?: InputMaybe<Scalars['Boolean']['input']>;
+    isOnVacation?: InputMaybe<Scalars['Boolean']['input']>;
+    isPhoneNumberVerified?: InputMaybe<Scalars['Boolean']['input']>;
+    lastName?: InputMaybe<Scalars['String']['input']>;
+    latestActivityAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    metadata?: InputMaybe<BaseModelMetadataInput>;
+    newPassword?: InputMaybe<Scalars['String']['input']>;
+    offersHelp?: InputMaybe<Scalars['Boolean']['input']>;
+    onboardingStage?: InputMaybe<Scalars['String']['input']>;
+    optIntoNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
+    parentGroupIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+    personalBio?: InputMaybe<Scalars['String']['input']>;
+    phoneNumber?: InputMaybe<Scalars['String']['input']>;
+    phoneNumberUpdatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    postalCode?: InputMaybe<Scalars['String']['input']>;
+    preferences?: InputMaybe<UserPreferencesInput>;
+    preferredLanguageTextId?: InputMaybe<Scalars['String']['input']>;
+    profileRoleHistory?: InputMaybe<Array<UserProfileRoleHistoryItemInput>>;
+    pronounsTextIds?: InputMaybe<Array<Scalars['String']['input']>>;
+    regionOfOrigin?: InputMaybe<Scalars['String']['input']>;
+    regionOfResidence?: InputMaybe<Scalars['String']['input']>;
+    removeFromGroupIds?: InputMaybe<Array<Scalars['String']['input']>>;
+    roles?: InputMaybe<Array<UserRole>>;
+    seeksHelp?: InputMaybe<Scalars['Boolean']['input']>;
+    selectedUiLanguageTextId?: InputMaybe<UiLanguage>;
+    signedInAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    signedOutAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    source?: InputMaybe<Scalars['String']['input']>;
+    spokenLanguagesTextIds?: InputMaybe<Array<Scalars['String']['input']>>;
+    ssoIdp?: InputMaybe<Scalars['String']['input']>;
+    suspendedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    suspendedBy?: InputMaybe<Scalars['ID']['input']>;
+    termsAndConditionsAcceptedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    timezone?: InputMaybe<Scalars['String']['input']>;
+    trustLevel?: InputMaybe<Scalars['Int']['input']>;
+    updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    updatedBy?: InputMaybe<Scalars['ID']['input']>;
+    userHandle?: InputMaybe<Scalars['String']['input']>;
+    websites?: InputMaybe<Array<LabeledStringValueInput>>;
+    yearsManagementExperience?: InputMaybe<Scalars['Int']['input']>;
+    yearsOwnershipExperience?: InputMaybe<Scalars['Int']['input']>;
 };
 export type Notification = {
     __typename?: 'Notification';
@@ -3772,6 +3862,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationUpdateContentTag = "graphQlMutationUpdateContentTag",
     GraphQlMutationUpdateGroup = "graphQlMutationUpdateGroup",
     GraphQlMutationUpdateGroupMembership = "graphQlMutationUpdateGroupMembership",
+    GraphQlMutationUpdateMyUser = "graphQlMutationUpdateMyUser",
     GraphQlMutationUpdateNlpConversation = "graphQlMutationUpdateNlpConversation",
     GraphQlMutationUpdateNlpMessage = "graphQlMutationUpdateNlpMessage",
     GraphQlMutationUpdateNotification = "graphQlMutationUpdateNotification",
@@ -4051,6 +4142,7 @@ export type SignUpUserInput = {
     events?: InputMaybe<Array<ModelEventInput>>;
     firstName?: InputMaybe<Scalars['String']['input']>;
     id?: InputMaybe<Scalars['ID']['input']>;
+    isTestUser?: InputMaybe<Scalars['Boolean']['input']>;
     lastName?: InputMaybe<Scalars['String']['input']>;
     metadata?: InputMaybe<BaseModelMetadataInput>;
     offersHelp?: InputMaybe<Scalars['Boolean']['input']>;

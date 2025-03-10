@@ -7,14 +7,16 @@ import {
 } from '../../fsdata/gql/graphql.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
-const startTokenSignIn = async (
+const verifyEmail = async (
+  userId: string,
   email: string,
 ): Promise<MutationResult<SidMultiStepActionProgress>> => {
   try {
-    console.log('startTokenSignIn called:', email);
+    console.log('verifyEmail Input:', { userId, email });
 
     const input: SidMultiStepActionInput = {
-      actionType: MultiStepActionType.TokenSignIn,
+      userId,
+      actionType: MultiStepActionType.VerifyEmail,
       email,
     };
     const response = await fsdata.multiStepAction.createMultiStepAction(input);
@@ -32,4 +34,4 @@ const startTokenSignIn = async (
   }
 };
 
-export default startTokenSignIn;
+export default verifyEmail;

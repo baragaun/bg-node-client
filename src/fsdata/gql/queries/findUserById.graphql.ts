@@ -1,4 +1,5 @@
-export default `query Q ($id: String!) {
+export default `
+query Q ($id: String!) {
   findUserById(id: $id) {
     id
     userHandle
@@ -7,4 +8,5 @@ export default `query Q ($id: String!) {
     createdAt
     updatedAt
   }
-}`;
+}
+`;

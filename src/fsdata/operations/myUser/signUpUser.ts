@@ -33,8 +33,6 @@ const signUpUser = async (input: SignUpUserInput): Promise<UserAuthResponse> => 
   >;
 
   try {
-    console.log('Sending signUpUser mutation with input:', input);
-
     const response = (await client
       // @ts-ignore
       .gql(document)

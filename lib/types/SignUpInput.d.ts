@@ -16,4 +16,5 @@ export interface SignUpInput {
     timezone?: string;
     trackId?: string;
     userHandle?: string;
+    isTestUser?: boolean;
 }

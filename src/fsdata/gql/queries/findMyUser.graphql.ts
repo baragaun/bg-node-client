@@ -1,4 +1,5 @@
-export default `query Q {
+export default `
+query Q {
   findMyUser {
     id
     userHandle
@@ -7,4 +8,5 @@ export default `query Q {
     email
     updatedAt
   }
-}`;
+}
+`;

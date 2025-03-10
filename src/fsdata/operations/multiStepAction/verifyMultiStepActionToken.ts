@@ -1,6 +1,6 @@
 import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
+// import { Opentelemetry } from 'graffle/extensions/opentelemetry';
+// import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
@@ -9,8 +9,12 @@ import {
   SidMultiStepActionProgress,
   VerifyMultiStepActionTokenInput,
 } from '../../gql/graphql.js';
-import verifyMultiStepActionTokenGql from '../../gql/mutations/verifyMultiStepActionToken.graphql.js';
+import gqlText from '../../gql/mutations/verifyMultiStepActionToken.graphql.js';
 import helpers from '../../helpers/helpers.js';
+
+type VerifyMultiStepActionTokenResponse = {
+  verifyMultiStepActionToken: SidMultiStepActionProgress;
+};
 
 // see: https://graffle.js.org/guides/topics/requests
 const verifyMultiStepActionToken = async (
@@ -23,26 +27,22 @@ const verifyMultiStepActionToken = async (
     throw new Error('unavailable');
   }
 
-  const client = Graffle.create()
-    .transport({
+  try {
+    const client = Graffle.create().transport({
       url: data.config().fsdata.url,
       headers: helpers.headers(),
-    })
-    .use(Throws())
-    .use(Opentelemetry());
+    });
+    // .use(Throws())
+    // .use(Opentelemetry());
 
-  const document = parse(verifyMultiStepActionTokenGql) as TypedQueryDocumentNode<
-    { verifyMultiStepActionToken: SidMultiStepActionProgress },
-    MutationVerifyMultiStepActionTokenArgs
-  >;
+    const document = parse(gqlText) as TypedQueryDocumentNode<
+      VerifyMultiStepActionTokenResponse,
+      MutationVerifyMultiStepActionTokenArgs
+    >;
 
-  try {
     console.log('Sending verifyMultiStepActionToken mutation with input:', input);
 
-    const response = (await client
-      // @ts-ignore
-      .gql(document)
-      .send({ input })) as { verifyMultiStepActionToken: SidMultiStepActionProgress };
+    const response = await client.gql(document).send({ input });
 
     console.log('verifyMultiStepActionToken response:', response);
 

@@ -9,19 +9,6 @@ import saveUserInfo, { SaveUserInfoArgs } from './helpers/saveUserInfo.js';
 import operations from './operations/operations.js';
 
 export class BgNodeClient {
-  // init: (config: BgNodeClientConfig) => Promise<void>;
-  // addListener: (listener: BgDataListener) => void;
-  // operations: Operations;
-  // removeListener: (id: string) => void;
-
-  // public constructor(config: BgNodeClientConfig) {
-  //   this.init(config).then(() => {
-  //     console.log('BgNodeClient: done.');
-  //   }, (error) => {
-  //     console.error('BgNodeClient: init threw error', error);
-  //   });
-  // }
-
   public async init(config: BgNodeClientConfig): Promise<BgNodeClient> {
     const userInfo = loadUserInfo();
 
@@ -65,4 +52,6 @@ export class BgNodeClient {
   public addListener = data.addListener;
   public operations = operations;
   public removeListener = data.removeListener;
+  public setConfig = data.setConfig;
+  public config = data.config;
 }

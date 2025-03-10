@@ -1,4 +1,5 @@
-export default `query Q ($id: String!) {
+export default `
+query Q ($id: String!) {
   findChannelInvitationById(id: $id) {
     id
     recipientId
@@ -7,4 +8,5 @@ export default `query Q ($id: String!) {
     createdBy
     updatedAt
   }
-}`;
+}
+`;

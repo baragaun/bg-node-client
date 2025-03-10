@@ -8,7 +8,12 @@ import tseslint from 'typescript-eslint';
 // This is just an example default config for ESLint.
 // You should change it to your needs following the documentation.
 export default tseslint.config(
+  eslint.configs.recommended,
+  eslintConfigPrettier,
   {
+    extends: [...tseslint.configs.recommended],
+
+    files: ['src/**/*.ts', 'src/**/*.mts'],
     ignores: [
       '**/lib/**',
       '**/tmp/**',
@@ -17,14 +22,8 @@ export default tseslint.config(
       '/tools/**',
       '/src/schema/**',
       '/src/graphql/gql/**',
+      '/src/fsdata/graffle/**',
     ],
-  },
-  eslint.configs.recommended,
-  eslintConfigPrettier,
-  {
-    extends: [...tseslint.configs.recommended],
-
-    files: ['src/**/*.ts', 'src/**/*.mts'],
 
     plugins: {
       '@typescript-eslint': tseslint.plugin,
@@ -43,6 +42,8 @@ export default tseslint.config(
       ],
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-namespace": "off",
     },
 
     languageOptions: {
@@ -57,6 +58,13 @@ export default tseslint.config(
       parserOptions: {
         project: './tsconfig.json',
       },
+    },
+  },
+  {
+    files: ['/src/fsdata/graffle/**'],
+    rules: {
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-namespace": "off",
     },
   },
   {
@@ -81,5 +89,17 @@ export default tseslint.config(
         ...vitest.environments.env.globals,
       },
     },
+  },
+  {
+    ignores: [
+      '**/lib/**',
+      '**/tmp/**',
+      '**/coverage/**',
+      '/node_modules/**',
+      '/tools/**',
+      '/src/schema/**',
+      '/src/graphql/gql/**',
+      '/src/fsdata/graffle/**',
+    ],
   },
 );

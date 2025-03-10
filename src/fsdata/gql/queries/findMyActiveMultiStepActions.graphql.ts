@@ -1,4 +1,5 @@
-export default `query Q {
+export default `
+query Q {
   findMyActiveMultiStepActions {
     actionStatus
     actionType
@@ -59,4 +60,5 @@ export default `query Q {
     userId
     userIdent
   }
-}`;
+}
+`;

@@ -59,8 +59,9 @@ export interface Operations {
         signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
         signMeOut: () => Promise<MutationResult>;
         signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
-        startVerifyEmail: (userId: string, email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
-        startTokenSignIn: (email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+        verifyEmail: (userId: string, email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+        signInWithToken: (email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+        updateMyUser: (myUser: Partial<MyUser>, queryOptions?: QueryOptions) => Promise<MutationResult<MyUser | null>>;
     };
     multiStepAction: {
         findMyActiveMultiStepActions: () => Promise<SidMultiStepAction[]>;

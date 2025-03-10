@@ -135,12 +135,17 @@ export interface Operations {
     signMeOut: () => Promise<MutationResult>;
     signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
 
-    startVerifyEmail: (
+    verifyEmail: (
       userId: string,
       email: string,
     ) => Promise<MutationResult<SidMultiStepActionProgress>>;
 
-    startTokenSignIn: (email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+    signInWithToken: (email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+
+    updateMyUser: (
+      myUser: Partial<MyUser>,
+      queryOptions?: QueryOptions,
+    ) => Promise<MutationResult<MyUser | null>>;
   };
 
   multiStepAction: {

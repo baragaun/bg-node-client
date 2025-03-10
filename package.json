@@ -21,8 +21,8 @@
   "scripts": {
     "clean": "rimraf coverage lib tmp",
     "prebuild": "npm run lint",
-    "build": "npm run clean && mkdir lib && cp src/index.html lib/ && tsc -p tsconfig.json",
-    "build:release": "npm run clean && mkdir lib && cp src/index.html lib/ && tsc -p tsconfig.release.json",
+    "build": "pnpm run clean && mkdir lib && cp src/index.html lib/ && tsc -p tsconfig.json",
+    "build:release": "pnpm run clean && mkdir lib && cp src/index.html lib/ && tsc -p tsconfig.release.json",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
     "lint": "eslint .",
     "lint:fix": "eslint src --fix --ext .js,.ts",

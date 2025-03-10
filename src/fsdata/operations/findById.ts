@@ -1,6 +1,6 @@
 import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
+// import { Opentelemetry } from 'graffle/extensions/opentelemetry';
+// import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import { ModelType } from '../../enums.js';
@@ -42,16 +42,16 @@ const findById = async <T extends BaseModel = BaseModel>(
     throw new Error('unavailable');
   }
 
-  const client = Graffle.create()
-    .transport({
-      url: data.config().fsdata.url,
-      headers: helpers.headers(),
-    })
-    .use(Throws())
-    .use(Opentelemetry());
+  const client = Graffle.create().transport({
+    url: data.config().fsdata.url,
+    headers: helpers.headers(),
+  });
+  // .use(Throws())
+  // .use(Opentelemetry());
 
   const fieldDef = _fieldDef[modelType];
 
+  // @ts-ignore
   const document = parse(fieldDef.gql) as TypedQueryDocumentNode<{ [fieldDef.field]: T | null }>;
   const variables = modelType === ModelType.MyUser ? {} : { id };
 
@@ -59,6 +59,7 @@ const findById = async <T extends BaseModel = BaseModel>(
     const response = (await client
       // @ts-ignore
       .gql(document)
+      // @ts-ignore
       .send(variables)) as { [fieldDef.field]: T | null };
 
     console.log(response);

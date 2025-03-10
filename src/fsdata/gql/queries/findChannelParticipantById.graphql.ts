@@ -1,8 +1,10 @@
-export default `query Q ($id: String!) {
+export default `
+query Q ($id: String!) {
   findChannelParticipantById(id: $id) {
     id
     channelId
     createdAt
     updatedAt
   }
-}`;
+}
+`;

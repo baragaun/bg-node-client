@@ -1,22 +1,26 @@
 import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
+// import { Opentelemetry } from 'graffle/extensions/opentelemetry';
+// import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import db from '../../../db/db.js';
 import { ModelType } from '../../../enums.js';
 import data from '../../../helpers/data.js';
-import { defaultQueryOptions } from '../../../helpers/defaults.js';
+import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { QueryOptions } from '../../../types/QueryOptions.js';
+import { MutationUpdateMyUserArgs, MyUserInput } from '../../gql/graphql.js';
 import gql from '../../gql/mutations/updateMyUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
+import findMyUser from './findMyUser.js';
+
+type UpdateMyUserResponse = { updateMyUser: string };
 
 // see: https://graffle.js.org/guides/topics/requests
 const updateMyUser = async (
-  myUser: MyUser,
-  queryOptions: QueryOptions = defaultQueryOptions,
+  changes: Partial<MyUser>,
+  queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<MyUser | null> => {
   const config = data.config();
 
@@ -26,59 +30,54 @@ const updateMyUser = async (
   }
 
   if (!queryOptions) {
-    queryOptions = defaultQueryOptions;
+    queryOptions = defaultQueryOptionsForMutations;
   }
 
   try {
-    const client = Graffle.create()
-      .transport({
-        url: data.config().fsdata.url,
-        headers: helpers.headers(),
-      })
-      .use(Throws())
-      .use(Opentelemetry());
+    const client = Graffle.create().transport({
+      url: data.config().fsdata.url,
+      headers: helpers.headers(),
+    });
+    // .use(Throws())
+    // .use(Opentelemetry());
 
-    const document = parse(gql) as TypedQueryDocumentNode<{ updateMyUser: string }>;
-    let oldUpdatedAt = myUser.updatedAt;
+    const document = parse(gql) as TypedQueryDocumentNode<
+      UpdateMyUserResponse,
+      MutationUpdateMyUserArgs
+    >;
+    let oldUpdatedAt = changes.updatedAt;
 
     if (!oldUpdatedAt) {
-      const { object: cachedUser } = await db.findById<MyUser>(myUser.id, ModelType.MyUser);
+      const { object: cachedUser } = await db.findById<MyUser>(changes.id, ModelType.MyUser);
 
-      if (!cachedUser || !cachedUser.updatedAt) {
-        console.error('updateMyUser: no cached user found, or updatedAt not set.');
-        return null;
+      if (cachedUser && cachedUser.updatedAt) {
+        oldUpdatedAt = cachedUser.updatedAt;
       }
-
-      oldUpdatedAt = cachedUser.updatedAt;
     }
 
-    const response = (await client
-      // @ts-ignore
-      .gql(document)
-      .send()) as { updateMyUser: string };
+    const response = await client.gql(document).send({ input: changes as unknown as MyUserInput });
 
     if (!response.updateMyUser) {
+      console.error('fsdata.updateMyUser: mutation did not return a valid response.');
       return null;
     }
 
-    if (queryOptions.polling) {
-      queryOptions.polling.oldUpdatedAt = oldUpdatedAt;
-    } else {
-      queryOptions.polling = {
-        isInTargetStateFunc: 'watch-updated-at',
-        oldUpdatedAt,
-      };
+    if (oldUpdatedAt) {
+      if (queryOptions.polling) {
+        queryOptions.polling.oldUpdatedAt = oldUpdatedAt;
+      } else {
+        queryOptions.polling = {
+          isInTargetStateFunc: 'watch-updated-at',
+          oldUpdatedAt,
+        };
+      }
+
+      return pollForUpdatedObject<MyUser>(changes.id, ModelType.MyUser, queryOptions);
     }
 
-    const updatedUser = await pollForUpdatedObject<MyUser>(
-      myUser.id,
-      ModelType.MyUser,
-      queryOptions,
-    );
-
-    return updatedUser;
+    return findMyUser();
   } catch (error) {
-    console.error(error);
+    console.error('fsdata.updateMyUser: failed with error', { error, headers: helpers.headers() });
     return null;
   }
 };
