@@ -1,6 +1,6 @@
 export default `
 query Q {
-  findMyUser {
+  getMyUser {
     id
     userHandle
     firstName
