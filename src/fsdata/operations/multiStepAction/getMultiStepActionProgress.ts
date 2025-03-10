@@ -50,12 +50,10 @@ const getMultiStepActionProgress = async (
       newAction.notificationResult &&
       (!previousAction || newAction.notificationResult !== previousAction.notificationResult)
     ) {
-      if (newAction.notificationResult === MultiStepActionSendNotificationResult.Ok) {
-        const listeners = data.listeners();
-        if (Array.isArray(listeners) && listeners.length > 0) {
-          for (const listener of listeners) {
-            listener.onMultiStepActionNotificationSent(newAction);
-          }
+      const listeners = data.listeners();
+      if (Array.isArray(listeners) && listeners.length > 0) {
+        for (const listener of listeners) {
+          listener.onMultiStepActionNotificationSent(newAction);
         }
       }
     }
