@@ -12,5 +12,6 @@ export const defaultQueryOptionsForMutations: QueryOptions = {
     oldUpdatedAt: undefined,
     initialDelay: 1000,
     interval: 1000,
+    timeout: 60000,
   },
 };

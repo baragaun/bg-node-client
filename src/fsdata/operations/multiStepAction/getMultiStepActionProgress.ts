@@ -9,7 +9,7 @@ import { MultiStepActionResult, MultiStepActionSendNotificationResult } from '..
 import gql from '../../gql/queries/getMultiStepActionProgress.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
-const observingActions: SidMultiStepActionProgress[] = [];
+const observingActions = new Map<string, SidMultiStepActionProgress>();
 
 // see: https://graffle.js.org/guides/topics/requests
 const getMultiStepActionProgress = async (
@@ -43,39 +43,48 @@ const getMultiStepActionProgress = async (
       getMultiStepActionProgress: SidMultiStepActionProgress | null;
     };
 
-    const previousAction = observingActions.find((a) => a.actionId === actionId);
+    const newAction = response.getMultiStepActionProgress;
+    const previousAction = observingActions.get(actionId);
 
     if (
-      response.getMultiStepActionProgress.notificationResult !== previousAction.notificationResult
+      newAction.notificationResult &&
+      (!previousAction || newAction.notificationResult !== previousAction.notificationResult)
     ) {
-      if (
-        response.getMultiStepActionProgress.notificationResult ===
-        MultiStepActionSendNotificationResult.Ok
-      ) {
+      if (newAction.notificationResult === MultiStepActionSendNotificationResult.Ok) {
         const listeners = data.listeners();
         if (Array.isArray(listeners) && listeners.length > 0) {
           for (const listener of listeners) {
-            listener.onMultiStepActionNotificationSent(response.getMultiStepActionProgress);
+            listener.onMultiStepActionNotificationSent(newAction);
           }
         }
       }
     }
 
     if (
-      previousAction.result === MultiStepActionResult.Unset &&
-      response.getMultiStepActionProgress.result !== MultiStepActionResult.Unset
+      newAction.result &&
+      newAction.result !== MultiStepActionResult.Unset &&
+      (!previousAction ||
+        !previousAction.result ||
+        previousAction.result === MultiStepActionResult.Unset)
     ) {
-      if (response.getMultiStepActionProgress.result) {
+      if (newAction.result) {
         const listeners = data.listeners();
         if (Array.isArray(listeners) && listeners.length > 0) {
           for (const listener of listeners) {
-            listener.onMultiStepActionFinished(response.getMultiStepActionProgress);
+            listener.onMultiStepActionFinished(newAction);
           }
         }
       }
     }
 
-    return response.getMultiStepActionProgress;
+    if (newAction.result && newAction.result !== MultiStepActionResult.Unset) {
+      // todo: stop polling
+      observingActions.delete(actionId);
+    } else {
+      observingActions.set(actionId, newAction);
+    }
+
+    return newAction;
   } catch (error) {
     console.error(error);
     return null;

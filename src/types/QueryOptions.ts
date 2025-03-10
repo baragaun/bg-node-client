@@ -8,6 +8,7 @@ export interface QueryPollingOptions {
   oldUpdatedAt?: string;
   initialDelay?: number;
   interval?: number;
+  timeout?: number;
 }
 
 export interface QueryOptions {

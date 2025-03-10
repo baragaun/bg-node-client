@@ -10,6 +10,7 @@ const pollForUpdatedObject = <T extends Model = Model>(
 ): Promise<T | null> => {
   return new Promise((resolve, reject) => {
     let activeIsInTargetStateFunc: ((object: T) => boolean) | undefined;
+    const startTime = Date.now();
 
     if (options.polling.isInTargetStateFunc === 'watch-updated-at') {
       if (options.polling.oldUpdatedAt) {
@@ -25,7 +26,11 @@ const pollForUpdatedObject = <T extends Model = Model>(
     const poll = (): void => {
       findById<T>(id, modelType).then(
         (object: T) => {
-          if (!activeIsInTargetStateFunc || activeIsInTargetStateFunc(object)) {
+          if (
+            Date.now() - startTime > (options.polling.timeout || 60000) ||
+            !activeIsInTargetStateFunc ||
+            activeIsInTargetStateFunc(object)
+          ) {
             // The object is now in the expected state (or no expected state was provided)
             resolve(object);
           }
