@@ -1,4 +1,4 @@
-import { AuthType, CookieChoiceTextId, UserIdentType } from '../fsdata/gql/graphql.js';
+import { CookieChoiceTextId, UserIdentType } from '../fsdata/gql/graphql.js';
 
 export * from '../BgNodeClient.js';
 export * from './BgDataListener.js';
@@ -45,4 +45,4 @@ export * from './models/UserPreferences.js';
 export * from './models/VerifyMultiStepActionTokenInput.js';
 
 export * from '../enums.js';
-export { AuthType, CookieChoiceTextId, UserIdentType };
+export { CookieChoiceTextId, UserIdentType };

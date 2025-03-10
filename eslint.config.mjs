@@ -4,15 +4,29 @@ import vitest from '@vitest/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import importPlugin from 'eslint-plugin-import';
 
 // This is just an example default config for ESLint.
 // You should change it to your needs following the documentation.
 export default tseslint.config(
   eslint.configs.recommended,
+  importPlugin.flatConfigs.recommended,
+  // 'plugin:import/typescript',
   eslintConfigPrettier,
   {
-    extends: [...tseslint.configs.recommended],
-
+    files: ['**/*.{ts,tsx}'],
+    extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
+    settings: {
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
+      },
+    },
+    // other configs...
+  },
+  {
     files: ['src/**/*.ts', 'src/**/*.mts'],
     ignores: [
       '**/lib/**',
@@ -24,6 +38,11 @@ export default tseslint.config(
       '/src/graphql/gql/**',
       '/src/fsdata/graffle/**',
     ],
+    extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
+    // other configs...
+  },
+  {
+    extends: [...tseslint.configs.recommended],
 
     plugins: {
       '@typescript-eslint': tseslint.plugin,
@@ -44,6 +63,8 @@ export default tseslint.config(
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-empty-object-type": "off",
       "@typescript-eslint/no-namespace": "off",
+      'import/no-dynamic-require': 'warn',
+      'import/no-nodejs-modules': 'warn',
     },
 
     languageOptions: {
