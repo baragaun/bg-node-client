@@ -114,25 +114,25 @@ const getMultiStepActionProgress = async (
 
         return result;
       }
-
-      // We're still polling, so we will call getMultiStepActionProgress again in a bit.
-      if (!run.pollingStartedAt) {
-        run.pollingStartedAt = new Date();
-      }
-
-      setTimeout(() => {
-        getMultiStepActionProgress(actionId, confirmToken, queryOptions);
-      }, queryOptions.polling.interval || 1000);
     }
 
-    return {
-      object: {
-        id: actionProgress.actionId,
-        actionProgress,
-        run,
-        createdAt: actionProgress.createdAt,
-      },
+    // We're still polling, so we will call getMultiStepActionProgress again in a bit.
+    if (!run.pollingStartedAt) {
+      run.pollingStartedAt = new Date();
+    }
+
+    setTimeout(() => {
+      getMultiStepActionProgress(actionId, confirmToken, queryOptions);
+    }, queryOptions.polling.interval || 1000);
+
+    result.object = {
+      id: actionProgress.actionId,
+      actionProgress,
+      run,
+      createdAt: actionProgress.createdAt,
     };
+
+    return result;
   } catch (error) {
     console.error('findMultiStepAction: fsdata.myUser.getMultiStepActionProgress failed', error);
     return null;
