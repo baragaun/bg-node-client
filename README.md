@@ -102,6 +102,16 @@ We use [Vitest](https://vitest.dev/). The tests are in `src/test`. To run the te
 pnpm test
 ```
 
+When testing `MultiStepAction`, you can cause the backend to use a confirmation token
+that you define. Create the user with these properties:
+
+```ts
+  isTestUser: true,
+  source: `testtoken=123456`
+```
+
+The server will then use `123456` as the confirmation token.
+
 ## Making Changes
 
 When you are working on this package, and you want your changes to show up in the project
