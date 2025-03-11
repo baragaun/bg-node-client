@@ -110,6 +110,12 @@ that you define. Create the user with these properties:
   source: `testtoken=123456`
 ```
 
+In the backend, you need to add this environment variables:
+
+```shell
+SECURE_ID_ALLOW_TESTING_CONFIRM_TOKENS=true
+```
+
 The server will then use `123456` as the confirmation token.
 
 ## Making Changes
