@@ -59,6 +59,19 @@ Then run:
 pnpm run codegen
 ```
 
+## Handling `MultiStepAction`
+
+The `MultiStepAction` is used for processes that involve user interactions along the way, 
+i.e. signing in with a token, resetting a password, or verifying an email address. 
+
+I.e., to sign in with a token, do this:
+
+1. Execute `client.operations.user.signInWithToken`. Set `queryOptions.polling.enabled` to `true`.
+2. Add a listener to the `client.operations.multiStepAction.addListener` event.
+3. Wait for the listener to be called when a notification was sent.
+4. After the user entered the confirmation token, call `client.operations.multiStepAction.verifyToken`.
+5. Wait for the listener to be called when the token was verified.
+
 ## Tests
 
 We use [Vitest](https://vitest.dev/). The tests are in `src/test`. To run the test suite:

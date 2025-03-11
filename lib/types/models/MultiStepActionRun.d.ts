@@ -11,6 +11,8 @@ export declare class MultiStepActionRun {
     timedOut?: boolean;
     pollingOptions: QueryPollingOptions;
     actionProgress?: SidMultiStepActionProgress;
+    addListener(listener: MultiStepActionListener): boolean;
+    removeListener(id: string): void;
     finish(): void;
     setNotificationSentOrFailed(): void;
     notifyListeners(event: 'notificationSentOrFailed' | 'finished'): void;

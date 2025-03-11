@@ -19,8 +19,10 @@ import updateChannelParticipant from './channelParticipant/updateChannelParticip
 import findById from './findById.js';
 import findOne from './findOne.js';
 import insertOne from './insertOne.js';
+import addMultiStepActionListener from './multiStepAction/addMultiStepActionListener.js';
 import findMyActiveMultiStepActions from './multiStepAction/findMyActiveMultiStepActions.js';
 import getMultiStepActionProgress from './multiStepAction/getMultiStepActionProgress.js';
+import removeMultiStepActionListener from './multiStepAction/removeMultiStepActionListener.js';
 import verifyMultiStepActionToken from './multiStepAction/verifyMultiStepActionToken.js';
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
@@ -81,8 +83,10 @@ const operations: Operations = {
   },
 
   multiStepAction: {
+    addMultiStepActionListener,
     findMyActiveMultiStepActions,
     getMultiStepActionProgress,
+    removeMultiStepActionListener,
     verifyMultiStepActionToken,
   },
 };

@@ -13,6 +13,28 @@ export class MultiStepActionRun {
   public pollingOptions: QueryPollingOptions;
   public actionProgress?: SidMultiStepActionProgress;
 
+  public addListener(listener: MultiStepActionListener): boolean {
+    if (!this.listeners) {
+      this.listeners = [];
+    }
+
+    const existingListener = this.listeners.find((l) => l.id === listener.id);
+
+    if (existingListener) {
+      return false;
+    }
+
+    this.listeners.push(listener);
+
+    return true;
+  }
+
+  public removeListener(id: string): void {
+    if (this.listeners) {
+      this.listeners = this.listeners.filter((l) => l.id !== id);
+    }
+  }
+
   public finish(): void {
     this.finished = true;
     this.notifyListeners('finished');
