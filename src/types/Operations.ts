@@ -20,7 +20,7 @@ import { QueryOptions } from './QueryOptions.js';
 import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
-import { SignUpInput } from './SignUpInput.js';
+import { SignUpUserInput } from './SignUpUserInput.js';
 
 export interface Operations {
   findById: <T extends Model = Model>(
@@ -135,7 +135,7 @@ export interface Operations {
 
     signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
     signMeOut: () => Promise<MutationResult<null>>;
-    signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
+    signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
 
     verifyEmail: (
       userId: string,

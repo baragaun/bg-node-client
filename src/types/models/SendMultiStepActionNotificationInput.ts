@@ -1,4 +1,4 @@
-import { NotificationMethod } from '../../fsdata/gql/graphql.js';
+import { NotificationMethod } from '../../enums.js';
 
 export class SendMultiStepActionNotificationInput {
   public actionId = '';

@@ -4,6 +4,7 @@ import findMyActiveMultiStepActions from './operations/multiStepAction/findMyAct
 import getMultiStepActionProgress from './operations/multiStepAction/getMultiStepActionProgress.js';
 import verifyMultiStepActionToken from './operations/multiStepAction/verifyMultiStepActionToken.js';
 import findMyUser from './operations/myUser/findMyUser.js';
+import isUserIdentAvailable from './operations/myUser/isUserIdentAvailable.js';
 import signInUser from './operations/myUser/signInUser.js';
 import signMeOut from './operations/myUser/signMeOut.js';
 import signUpUser from './operations/myUser/signUpUser.js';
@@ -17,6 +18,7 @@ const fsdata = {
 
   myUser: {
     findMyUser,
+    isUserIdentAvailable,
     signInUser,
     signMeOut,
     signUpUser,

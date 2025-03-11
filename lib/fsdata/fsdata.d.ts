@@ -3,9 +3,10 @@ declare const fsdata: {
     pollForUpdatedObject: <T extends import("../types/models/Model.js").Model = import("../types/models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, options: import("../types/QueryOptions.js").QueryOptions) => Promise<T | null>;
     myUser: {
         findMyUser: () => Promise<import("../types/index.js").MyUser | null>;
-        signInUser: (input: import("./gql/graphql.js").SignInUserInput) => Promise<import("./gql/graphql.js").UserAuthResponse>;
+        isUserIdentAvailable: (userIdent: string, identType: import("../enums.js").UserIdentType) => Promise<boolean>;
+        signInUser: (input: import("../types/SignInUserInput.js").SignInUserInput) => Promise<import("../types/UserAuthResponse.js").UserAuthResponse>;
         signMeOut: () => Promise<void>;
-        signUpUser: (input: import("./gql/graphql.js").SignUpUserInput) => Promise<import("./gql/graphql.js").UserAuthResponse>;
+        signUpUser: (input: import("../types/SignUpUserInput.js").SignUpUserInput) => Promise<import("../types/UserAuthResponse.js").UserAuthResponse>;
         updateMyUser: (changes: Partial<import("../types/index.js").MyUser>, queryOptions?: import("../types/QueryOptions.js").QueryOptions) => Promise<import("../types/index.js").MyUser | null>;
     };
     multiStepAction: {

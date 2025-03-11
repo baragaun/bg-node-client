@@ -20,7 +20,7 @@ import { QueryOptions } from './QueryOptions.js';
 import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
-import { SignUpInput } from './SignUpInput.js';
+import { SignUpUserInput } from './SignUpUserInput.js';
 export interface Operations {
     findById: <T extends Model = Model>(id: string, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findOne: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
@@ -61,7 +61,7 @@ export interface Operations {
         resetPassword: (userIdent: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
         signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
         signMeOut: () => Promise<MutationResult<null>>;
-        signUpUser: (input: SignUpInput) => Promise<MutationResult<SignInSignUpResponse>>;
+        signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
         verifyEmail: (userId: string, email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
         signInWithToken: (email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
         updateMyUser: (myUser: Partial<MyUser>, queryOptions?: QueryOptions) => Promise<MutationResult<MyUser | null>>;

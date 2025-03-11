@@ -1,8 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
-import { CachePolicy, ModelType } from '../../../enums.js';
-import { UserIdentType } from '../../../fsdata/gql/graphql.js';
+import { CachePolicy, ModelType, UserIdentType } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
 import findById from '../../../operations/findById.js';
@@ -45,7 +44,7 @@ describe('operations.myUser.signInUser', () => {
 
     const signInUserResponse = await client.operations.myUser.signInUser({
       ident: email,
-      identType: UserIdentType.Email,
+      identType: UserIdentType.email,
       password,
     });
 

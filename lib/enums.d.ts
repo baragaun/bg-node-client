@@ -120,6 +120,14 @@ export declare enum ModelType {
     User = "User",
     UserInbox = "UserInbox"
 }
+export declare enum NotificationMethod {
+    auto = "auto",
+    email = "email",
+    inAppNotification = "inAppNotification",
+    off = "off",
+    pushNotification = "pushNotification",
+    sms = "sms"
+}
 export declare enum NotificationType {
     accountDeletedConfirmation = "accountDeletedConfirmation",
     channelInvitationAccepted = "channelInvitationAccepted",
@@ -172,4 +180,19 @@ export declare enum CachePolicy {
      * Retrieve data from cache, if it is available there and not stale.
      */
     cacheFirst = "cache-first"
+}
+export declare enum UserIdentType {
+    any = "any",
+    email = "email",
+    id = "id",
+    inviteCode = "inviteCode",
+    oauthProfileUrl = "oauthProfileUrl",
+    oauthUserId = "oauthUserId",
+    phoneNumber = "phoneNumber",
+    userHandle = "userHandle"
+}
+export declare enum CookieChoiceTextId {
+    acceptAll = "acceptAll",
+    acceptEssentials = "acceptEssentials",
+    aejectAll = "rejectAll"
 }

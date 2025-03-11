@@ -1,5 +1,3 @@
-import { CookieChoiceTextId, UserIdentType } from '../fsdata/gql/graphql.js';
-
 export * from '../BgNodeClient.js';
 export * from './BgDataListener.js';
 export * from './BgNodeClientConfig.js';
@@ -12,10 +10,11 @@ export * from './Operations.js';
 export * from './QueryOptions.js';
 export * from './SignInInput.js';
 export * from './SignInSignUpResponse.js';
-export * from './SignUpInput.js';
+export * from './SignInUserInput.js';
+export * from './SignUpUserInput.js';
+export * from './UserAuthResponse.js';
 
 // Models:
-// export * from './Model.ts.HIDDEN';
 export * from './models/BaseModel.js';
 export * from './models/BaseModelMetadata.js';
 export * from './models/BgChannelStatus.js';
@@ -48,4 +47,3 @@ export * from './models/UserPreferences.js';
 export * from './models/VerifyMultiStepActionTokenInput.js';
 
 export * from '../enums.js';
-export { CookieChoiceTextId, UserIdentType };

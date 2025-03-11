@@ -4,7 +4,9 @@ import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
-import { MutationSignUpUserArgs, SignUpUserInput, UserAuthResponse } from '../../gql/graphql.js';
+import { SignUpUserInput } from '../../../types/SignUpUserInput.js';
+import { UserAuthResponse } from '../../../types/UserAuthResponse.js';
+import { MutationSignUpUserArgs } from '../../gql/graphql.js';
 import signUpUserGql from '../../gql/mutations/signUpUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
