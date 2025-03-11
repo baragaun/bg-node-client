@@ -31,17 +31,26 @@ describe('operations.myUser.findMyUser', () => {
   });
 
   test('should return the user from the remote API', async () => {
-    testConfig.myUserId = '67ce0a28b67bdfe03ba8fdf4';
-    testConfig.authToken =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2N2NlMGEyOGI2N2JkZmUwM2JhOGZkZjQiLCJkZXZpY2VVdWlkIjoiYWIyOWZiN2YzNjhhNGIyNmJmYzNhZGQxNmJlZjBlMjMiLCJpYXQiOjE3NDE1NTYyNjR9.jNYoDtxaxlscepaS7yWKMnNwWPGr7KIl1pTzk7KiVNQ';
-    testConfig.myUserDeviceUuid = 'ab29fb7f368a4b26bfc3add16bef0e23';
-
     const client = await new BgNodeClient().init(testConfig);
+    const firstName = chance.first();
+    const lastName = chance.last();
+    const userHandle = chance.word();
+    const email = chance.email();
+
+    await client.operations.myUser.signUpUser({
+      userHandle,
+      firstName,
+      lastName,
+      email,
+      isTestUser: true,
+    });
 
     const myUser = await client.operations.myUser.findMyUser({ cachePolicy: CachePolicy.network });
 
     expect(myUser.id).toBe(testConfig.myUserId);
-    expect(myUser.userHandle).toBe('rehza');
-    expect(myUser.email).toBe('pametez@vabgijwap.mx');
+    expect(myUser.userHandle).toBe(userHandle);
+    expect(myUser.firstName).toBe(firstName);
+    expect(myUser.lastName).toBe(lastName);
+    expect(myUser.email).toBe(email);
   });
 });

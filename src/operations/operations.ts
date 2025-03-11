@@ -26,6 +26,7 @@ import removeMultiStepActionListener from './multiStepAction/removeMultiStepActi
 import verifyMultiStepActionToken from './multiStepAction/verifyMultiStepActionToken.js';
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
+import isUserIdentAvailable from './myUser/isUserIdentAvailable.js';
 import resetPassword from './myUser/resetPassword.js';
 import signInUser from './myUser/signInUser.js';
 import signInWithToken from './myUser/signInWithToken.js';
@@ -73,6 +74,7 @@ const operations: Operations = {
   myUser: {
     getSignedOutUserId,
     findMyUser,
+    isUserIdentAvailable,
     resetPassword,
     signInUser,
     signMeOut,

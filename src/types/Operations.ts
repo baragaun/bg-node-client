@@ -1,4 +1,4 @@
-import { ModelType } from '../enums.js';
+import { ModelType, UserIdentType as UserIdentTypeFromClient } from '../enums.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './models/ChannelInvitationListFilter.js';
@@ -130,6 +130,11 @@ export interface Operations {
   myUser: {
     getSignedOutUserId: () => Promise<string | null>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
+
+    isUserIdentAvailable: (
+      userIdent: string,
+      identType: UserIdentTypeFromClient,
+    ) => Promise<boolean>;
 
     resetPassword: (userIdent: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
 
