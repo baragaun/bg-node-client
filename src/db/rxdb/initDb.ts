@@ -86,7 +86,6 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     storage: storage as RxStorage<any, any>,
     // see: https://rxdb.info/rx-database.html#eventreduce:
     eventReduce: true,
-    ignoreDuplicate: true, // for development mode
   });
 
   const collections = {

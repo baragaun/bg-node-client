@@ -27,19 +27,19 @@ const findMyUser = async (): Promise<MyUser | null> => {
     .use(Throws())
     .use(Opentelemetry());
 
-  const document = parse(findMyUserGql) as TypedQueryDocumentNode<{ getMyUser: MyUser | null }>;
+  const document = parse(findMyUserGql) as TypedQueryDocumentNode<{ findMyUser: MyUser | null }>;
 
   try {
     const response = (await client
       // @ts-ignore
       .gql(document)
-      .send()) as { getMyUser: MyUser | null };
+      .send()) as { findMyUser: MyUser | null };
 
-    if (!response.getMyUser) {
+    if (!response.findMyUser) {
       return null;
     }
 
-    return new MyUser(response.getMyUser);
+    return new MyUser(response.findMyUser);
   } catch (error) {
     const headers = helpers.headers();
     console.error('findMyUser failed.', { error, headers });
