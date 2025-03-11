@@ -38,9 +38,7 @@ const getMultiStepActionProgress = async (
 
     let run: MultiStepActionRun = helpers.run(actionProgress.actionId);
 
-    if (run) {
-      // anything?
-    } else {
+    if (!run) {
       run = new MultiStepActionRun({
         actionId: actionProgress.actionId,
         actionProgress,
@@ -49,8 +47,8 @@ const getMultiStepActionProgress = async (
       helpers.addRun(run);
     }
 
-    const notificationSentOrFailed = run ? run.notificationSentOrFailed : undefined;
-    const finished = run ? run.finished : undefined;
+    const notificationSentOrFailed = run.notificationSentOrFailed;
+    const finished = run.finished;
 
     if (!notificationSentOrFailed && actionProgress.notificationResult) {
       run.setNotificationSentOrFailed();
