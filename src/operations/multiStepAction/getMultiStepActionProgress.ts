@@ -56,13 +56,12 @@ const getMultiStepActionProgress = async (
       run.setNotificationSentOrFailed();
     }
 
+    // Has the action finished?
     if (
       !finished &&
       actionProgress.result &&
       actionProgress.result !== MultiStepActionResult.Unset
     ) {
-      run.finish();
-
       if (
         (actionProgress.actionType === MultiStepActionType.ResetPassword ||
           actionProgress.actionType === MultiStepActionType.TokenSignIn) &&
@@ -96,29 +95,29 @@ const getMultiStepActionProgress = async (
         run,
         createdAt: actionProgress.createdAt,
       };
+
       return result;
     }
 
+    // Has the polling timed out?
     if (queryOptions.polling.enabled && !run.pollingFinishedAt) {
-      if (run.pollingFinishedAt) {
-        if (Date.now() - run.pollingStartedAt.getTime() > run.pollingOptions.timeout) {
-          run.pollingFinishedAt = new Date();
-          run.finish();
-          helpers.removeRun(actionProgress.actionId);
-          result.object = {
-            id: actionProgress.actionId,
-            actionProgress,
-            run,
-            createdAt: actionProgress.createdAt,
-          };
-          return result;
-        }
-      } else {
+      if (Date.now() - run.pollingStartedAt.getTime() > run.pollingOptions.timeout) {
         run.pollingFinishedAt = new Date();
-      }
-    }
 
-    if (queryOptions.polling.enabled && !run.finished) {
+        run.finish();
+        helpers.removeRun(actionProgress.actionId);
+
+        result.object = {
+          id: actionProgress.actionId,
+          actionProgress,
+          run,
+          createdAt: actionProgress.createdAt,
+        };
+
+        return result;
+      }
+
+      // We're still polling, so we will call getMultiStepActionProgress again in a bit.
       if (!run.pollingStartedAt) {
         run.pollingStartedAt = new Date();
       }
