@@ -13,7 +13,7 @@ declare const fsdata: {
         createMultiStepAction: (input: import("./gql/graphql.js").SidMultiStepActionInput) => Promise<import("../types/index.js").SidMultiStepActionProgress>;
         findMyActiveMultiStepActions: () => Promise<import("../types/index.js").SidMultiStepAction[] | null>;
         getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined) => Promise<import("../types/index.js").SidMultiStepActionProgress | null>;
-        verifyMultiStepActionToken: (input: import("../types/index.js").VerifyMultiStepActionTokenInput) => Promise<import("../types/index.js").SidMultiStepActionProgress>;
+        verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<import("../types/index.js").SidMultiStepActionProgress>;
     };
     user: {
         findUserById: () => Promise<import("../types/index.js").MyUser | null>;

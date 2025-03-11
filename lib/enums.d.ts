@@ -196,3 +196,14 @@ export declare enum CookieChoiceTextId {
     acceptEssentials = "acceptEssentials",
     aejectAll = "rejectAll"
 }
+export declare enum MultiStepActionType {
+    resetPassword = "resetPassword",
+    tokenSignIn = "tokenSignIn",
+    unset = "unset",
+    updateEmail = "updateEmail",
+    updatePassword = "updatePassword",
+    updatePhoneNumber = "updatePhoneNumber",
+    verifyEmail = "verifyEmail",
+    verifyPhoneNumber = "verifyPhoneNumber",
+    verifyPhoneSignupOnSignup = "verifyPhoneSignupOnSignup"
+}

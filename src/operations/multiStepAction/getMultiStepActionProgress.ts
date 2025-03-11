@@ -38,9 +38,15 @@ const getMultiStepActionProgress = async (
 
     let run: MultiStepActionRun = helpers.run(actionProgress.actionId);
 
-    if (!run) {
+    if (run) {
+      run.actionProgress = actionProgress;
+      if (confirmToken && !run.confirmToken) {
+        run.confirmToken = confirmToken;
+      }
+    } else {
       run = new MultiStepActionRun({
         actionId: actionProgress.actionId,
+        confirmToken,
         actionProgress,
         pollingOptions: queryOptions.polling,
       });
@@ -98,22 +104,25 @@ const getMultiStepActionProgress = async (
     }
 
     // Has the polling timed out?
-    if (queryOptions.polling.enabled && !run.pollingFinishedAt) {
-      if (Date.now() - run.pollingStartedAt.getTime() > run.pollingOptions.timeout) {
-        run.pollingFinishedAt = new Date();
+    if (
+      queryOptions.polling.enabled &&
+      !run.pollingFinishedAt &&
+      run.pollingStartedAt &&
+      Date.now() - run.pollingStartedAt.getTime() > run.pollingOptions.timeout
+    ) {
+      run.pollingFinishedAt = new Date();
 
-        run.finish();
-        helpers.removeRun(actionProgress.actionId);
+      run.finish();
+      helpers.removeRun(actionProgress.actionId);
 
-        result.object = {
-          id: actionProgress.actionId,
-          actionProgress,
-          run,
-          createdAt: actionProgress.createdAt,
-        };
+      result.object = {
+        id: actionProgress.actionId,
+        actionProgress,
+        run,
+        createdAt: actionProgress.createdAt,
+      };
 
-        return result;
-      }
+      return result;
     }
 
     // We're still polling, so we will call getMultiStepActionProgress again in a bit.
@@ -122,7 +131,7 @@ const getMultiStepActionProgress = async (
     }
 
     setTimeout(() => {
-      getMultiStepActionProgress(actionId, confirmToken, queryOptions);
+      getMultiStepActionProgress(actionId, run.confirmToken, queryOptions);
     }, queryOptions.polling.interval || 1000);
 
     result.object = {

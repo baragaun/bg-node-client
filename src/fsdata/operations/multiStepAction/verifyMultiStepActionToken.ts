@@ -16,7 +16,9 @@ type VerifyMultiStepActionTokenResponse = {
 
 // see: https://graffle.js.org/guides/topics/requests
 const verifyMultiStepActionToken = async (
-  input: VerifyMultiStepActionTokenInput,
+  actionId: string,
+  confirmToken: string,
+  newPassword?: string,
 ): Promise<SidMultiStepActionProgress> => {
   const config = data.config();
 
@@ -37,6 +39,12 @@ const verifyMultiStepActionToken = async (
       VerifyMultiStepActionTokenResponse,
       MutationVerifyMultiStepActionTokenArgs
     >;
+
+    const input: VerifyMultiStepActionTokenInput = {
+      actionId,
+      token: confirmToken,
+      newPassword,
+    };
 
     console.log('Sending verifyMultiStepActionToken mutation with input:', input);
 

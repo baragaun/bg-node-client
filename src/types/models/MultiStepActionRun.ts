@@ -3,8 +3,9 @@ import { MultiStepActionListener } from '../MultiStepActionListener.js';
 import { QueryPollingOptions } from '../QueryOptions.js';
 
 export class MultiStepActionRun {
-  public listeners?: MultiStepActionListener[];
   public actionId: string;
+  public confirmToken?: string;
+  public listeners?: MultiStepActionListener[];
   public pollingStartedAt?: Date;
   public pollingFinishedAt?: Date;
   public notificationSentOrFailed?: boolean;

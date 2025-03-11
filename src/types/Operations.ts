@@ -12,7 +12,6 @@ import { MyUser } from './models/MyUser.js';
 import { SidMultiStepAction } from './models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from './models/SidMultiStepActionProgress.js';
 import { User } from './models/User.js';
-import { VerifyMultiStepActionTokenInput } from './models/VerifyMultiStepActionTokenInput.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
 import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
 import { MutationResult } from './MutationResult.js';
@@ -128,31 +127,39 @@ export interface Operations {
   };
 
   myUser: {
-    getSignedOutUserId: () => Promise<string | null>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
+    getSignedOutUserId: () => Promise<string | null>;
+    isSignedIn: () => boolean;
 
     isUserIdentAvailable: (
       userIdent: string,
       identType: UserIdentTypeFromClient,
     ) => Promise<boolean>;
 
-    resetPassword: (userIdent: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
+    resetMyPassword: (
+      userIdent: string,
+      queryOptions: QueryOptions,
+    ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
+
+    signInWithToken: (
+      email: string,
+      queryOptions: QueryOptions,
+    ) => Promise<QueryResult<MultiStepActionProgressResult>>;
+
     signMeOut: () => Promise<MutationResult<null>>;
     signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
-
-    verifyEmail: (
-      userId: string,
-      email: string,
-    ) => Promise<MutationResult<SidMultiStepActionProgress>>;
-
-    signInWithToken: (email: string) => Promise<MutationResult<SidMultiStepActionProgress>>;
 
     updateMyUser: (
       myUser: Partial<MyUser>,
       queryOptions?: QueryOptions,
     ) => Promise<MutationResult<MyUser | null>>;
+
+    verifyMyEmail: (
+      email: string,
+      queryOptions: QueryOptions,
+    ) => Promise<QueryResult<MultiStepActionProgressResult>>;
   };
 
   multiStepAction: {
@@ -169,7 +176,9 @@ export interface Operations {
     removeMultiStepActionListener: (actionId: string, id: string) => boolean;
 
     verifyMultiStepActionToken: (
-      input: VerifyMultiStepActionTokenInput,
+      actionId: string,
+      confirmToken: string,
+      newPassword?: string,
     ) => Promise<QueryResult<SidMultiStepActionProgress>>;
   };
 }

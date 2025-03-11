@@ -5,21 +5,21 @@ import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import getMultiStepActionProgress from '../multiStepAction/getMultiStepActionProgress.js';
 
-const signInWithToken = async (
+const resetMyPassword = async (
   userIdent: string,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
   try {
-    console.log('signInWithToken called.', { userIdent });
+    console.log('resetMyPassword called.', { userIdent });
 
     const input: SidMultiStepActionInput = {
       userIdent,
-      actionType: MultiStepActionType.TokenSignIn,
+      actionType: MultiStepActionType.ResetPassword,
     };
     const response = await fsdata.multiStepAction.createMultiStepAction(input);
 
     if (!response || !response.actionId) {
-      console.error('signInWithToken: action not found.');
+      console.error('resetMyPassword: action not found.');
       return {
         error: 'system-error',
       };
@@ -34,4 +34,4 @@ const signInWithToken = async (
   }
 };
 
-export default signInWithToken;
+export default resetMyPassword;

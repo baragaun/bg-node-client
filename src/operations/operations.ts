@@ -26,14 +26,15 @@ import removeMultiStepActionListener from './multiStepAction/removeMultiStepActi
 import verifyMultiStepActionToken from './multiStepAction/verifyMultiStepActionToken.js';
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
+import isSignedIn from './myUser/isSignedIn.js';
 import isUserIdentAvailable from './myUser/isUserIdentAvailable.js';
-import resetPassword from './myUser/resetPassword.js';
+import resetMyPassword from './myUser/resetMyPassword.js';
 import signInUser from './myUser/signInUser.js';
 import signInWithToken from './myUser/signInWithToken.js';
 import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
 import updateMyUser from './myUser/updateMyUser.js';
-import verifyEmail from './myUser/verifyEmail.js';
+import verifyMyEmail from './myUser/verifyMyEmail.js';
 import updateLocalObject from './updateLocalObject.js';
 
 const operations: Operations = {
@@ -74,13 +75,14 @@ const operations: Operations = {
   myUser: {
     getSignedOutUserId,
     findMyUser,
+    isSignedIn,
     isUserIdentAvailable,
-    resetPassword,
+    resetMyPassword,
     signInUser,
     signMeOut,
     signUpUser,
     signInWithToken,
-    verifyEmail,
+    verifyMyEmail,
     updateMyUser,
   },
 

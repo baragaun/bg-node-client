@@ -3,6 +3,7 @@ import { describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
+import data from '../../../helpers/data.js';
 import findById from '../../../operations/findById.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { testConfig } from '../../helpers/testConfig.js';
@@ -34,6 +35,11 @@ describe('signUpUser', () => {
     expect(signUpResponse.object.myUser.firstName).toBe(firstName);
     expect(signUpResponse.object.myUser.lastName).toBe(lastName);
     expect(signUpResponse.object.myUser.email).toBe(email);
+
+    const config = data.config();
+    expect(config.myUserId).toBe(signUpResponse.object.userAuthResponse.userId);
+    expect(config.authToken).toBe(signUpResponse.object.userAuthResponse.authToken);
+    expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
     const findMyUserResponse = await findById<MyUser>(
       signUpResponse.object.userAuthResponse.userId,

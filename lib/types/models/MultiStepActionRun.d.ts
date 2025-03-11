@@ -2,8 +2,9 @@ import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress
 import { MultiStepActionListener } from '../MultiStepActionListener.js';
 import { QueryPollingOptions } from '../QueryOptions.js';
 export declare class MultiStepActionRun {
-    listeners?: MultiStepActionListener[];
     actionId: string;
+    confirmToken?: string;
+    listeners?: MultiStepActionListener[];
     pollingStartedAt?: Date;
     pollingFinishedAt?: Date;
     notificationSentOrFailed?: boolean;
