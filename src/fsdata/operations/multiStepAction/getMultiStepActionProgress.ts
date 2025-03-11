@@ -5,11 +5,8 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
-import { MultiStepActionResult } from '../../gql/graphql.js';
 import gql from '../../gql/queries/getMultiStepActionProgress.graphql.js';
 import helpers from '../../helpers/helpers.js';
-
-const observingActions = new Map<string, SidMultiStepActionProgress>();
 
 // see: https://graffle.js.org/guides/topics/requests
 const getMultiStepActionProgress = async (
@@ -43,46 +40,7 @@ const getMultiStepActionProgress = async (
       getMultiStepActionProgress: SidMultiStepActionProgress | null;
     };
 
-    const newAction = response.getMultiStepActionProgress;
-    const previousAction = observingActions.get(actionId);
-
-    if (
-      newAction.notificationResult &&
-      (!previousAction || newAction.notificationResult !== previousAction.notificationResult)
-    ) {
-      const listeners = data.listeners();
-      if (Array.isArray(listeners) && listeners.length > 0) {
-        for (const listener of listeners) {
-          listener.onMultiStepActionNotificationSent(newAction);
-        }
-      }
-    }
-
-    if (
-      newAction.result &&
-      newAction.result !== MultiStepActionResult.Unset &&
-      (!previousAction ||
-        !previousAction.result ||
-        previousAction.result === MultiStepActionResult.Unset)
-    ) {
-      if (newAction.result) {
-        const listeners = data.listeners();
-        if (Array.isArray(listeners) && listeners.length > 0) {
-          for (const listener of listeners) {
-            listener.onMultiStepActionFinished(newAction);
-          }
-        }
-      }
-    }
-
-    if (newAction.result && newAction.result !== MultiStepActionResult.Unset) {
-      // todo: stop polling
-      observingActions.delete(actionId);
-    } else {
-      observingActions.set(actionId, newAction);
-    }
-
-    return newAction;
+    return response.getMultiStepActionProgress;
   } catch (error) {
     console.error(error);
     return null;

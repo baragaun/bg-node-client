@@ -67,6 +67,7 @@ const updateMyUser = async (
         queryOptions.polling.oldUpdatedAt = oldUpdatedAt;
       } else {
         queryOptions.polling = {
+          enabled: true,
           isInTargetStateFunc: 'watch-updated-at',
           oldUpdatedAt,
         };

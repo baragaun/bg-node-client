@@ -13,6 +13,7 @@ import { SidMultiStepAction } from './models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from './models/SidMultiStepActionProgress.js';
 import { User } from './models/User.js';
 import { VerifyMultiStepActionTokenInput } from './models/VerifyMultiStepActionTokenInput.js';
+import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
 import { MutationResult } from './MutationResult.js';
 import { QueryOptions } from './QueryOptions.js';
 import { QueryResult } from './QueryResult.js';
@@ -154,7 +155,8 @@ export interface Operations {
     getMultiStepActionProgress: (
       actionId: string,
       confirmToken: string | undefined,
-    ) => Promise<QueryResult<SidMultiStepActionProgress>>;
+      queryOptions: QueryOptions,
+    ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     verifyMultiStepActionToken: (
       input: VerifyMultiStepActionTokenInput,

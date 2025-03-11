@@ -8,6 +8,7 @@ export const defaultQueryOptions: QueryOptions = {
 export const defaultQueryOptionsForMutations: QueryOptions = {
   cachePolicy: CachePolicy.network,
   polling: {
+    enabled: false,
     isInTargetStateFunc: 'watch-updated-at',
     oldUpdatedAt: undefined,
     initialDelay: 1000,

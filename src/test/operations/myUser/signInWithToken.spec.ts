@@ -64,14 +64,15 @@ describe('operations.myUser.signInWithToken', () => {
     const progressResponse = await client.operations.multiStepAction.getMultiStepActionProgress(
       actionId,
       token,
+      { polling: { enabled: false } },
     );
 
     expect(progressResponse.object).toBeDefined();
-    expect(progressResponse.object.actionId).toBe(actionId);
-    expect(progressResponse.object.actionId).toBe(actionId);
-    expect(progressResponse.object.result).toBe('ok');
-    expect(progressResponse.object.userId).toBe(myUserId);
-    expect(progressResponse.object.authToken).toBeDefined();
-    expect(progressResponse.object.authToken.length).toBeGreaterThan(10);
+    expect(progressResponse.object.actionProgress.actionId).toBe(actionId);
+    expect(progressResponse.object.actionProgress.actionId).toBe(actionId);
+    expect(progressResponse.object.actionProgress.result).toBe('ok');
+    expect(progressResponse.object.actionProgress.userId).toBe(myUserId);
+    expect(progressResponse.object.actionProgress.authToken).toBeDefined();
+    expect(progressResponse.object.actionProgress.authToken.length).toBeGreaterThan(10);
   });
 }, 60000);
