@@ -66,11 +66,33 @@ i.e. signing in with a token, resetting a password, or verifying an email addres
 
 I.e., to sign in with a token, do this:
 
-1. Execute `client.operations.user.signInWithToken`. Set `queryOptions.polling.enabled` to `true`.
-2. Add a listener to the `client.operations.multiStepAction.addListener` event.
-3. Wait for the listener to be called when a notification was sent.
-4. After the user entered the confirmation token, call `client.operations.multiStepAction.verifyToken`.
-5. Wait for the listener to be called when the token was verified.
+### Step 1: Execute `client.operations.user.signInWithToken`. 
+
+Set `queryOptions.polling.enabled` to `true`. The return value will contain an 
+`SidMultiStepActionProgress`. You need its `id` to proceed.
+
+### Step 2: Call `client.operations.multiStepAction.getMultiStepActionProgress`
+
+To start the polling, set `queryOptions.polling.enabled` to `true`. The return value
+contains a `MultiStepActionRun` object. This the object that does the polling.
+
+### Step 3: Add a listener
+
+Use `MultiStepActionRun.addListener` to add a listener that will be called when the
+notification was sent out or the confirmation token was verified.
+
+### Step 4: Wait for the listener's `onNotificationSentOrFailed` to be called when a notification was sent.
+
+When the listener is called, make sure the notification was sent out successfully. If that is
+the case, show a token input UI to the user, otherwise an error message. 
+
+### Step 5: Call `client.operations.multiStepAction.verifyToken`
+
+Call this with the token that the user entered.
+
+### Step 6: Wait for the listener's `onFinished` to be called when the token was verified.
+
+This concludes the process.
 
 ## Tests
 
