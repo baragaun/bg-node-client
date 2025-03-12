@@ -81,32 +81,38 @@ Here is a sample listener:
 
 ```typescript
 const sampleListener: MultiStepActionListener = {
-  id: 'test-listener',
+  id: 'sign-in-page',
   onEvent: async (eventType: MultiStepActionEventType, action: SidMultiStepActionProgress) => {
     if (
       eventType === MultiStepActionEventType.notificationSent ||
       eventType === MultiStepActionEventType.notificationFailed
     ) {
-      // The notification has been sent out. Now we can show the token input UI to the user.
+      // The notification has been sent out. 
+      // todo Show the token input UI to the user.
       return;
     }
 
     if (eventType === MultiStepActionEventType.tokenFailed) {
-      // The token was rejected. Showing an error message to the user.
+      // The user entered the wrong token.
+      // todo: Show an error message to the user.
       return;
     }
 
     if (eventType === MultiStepActionEventType.failed) {
+      // Something went wrong.
       // todo: Showing an error message, depending on action.result
       return;
     }
 
     if (eventType === MultiStepActionEventType.success) {
       // The token was accepted. The user is now signed in.
+      // todo navigate to the dashboard
     }
   }
 };
 ```
+
+Refer to the end-to-end unit tests to learn more about the different types of multi-step actions.
 
 ### Step 3: Wait for the listener's `onNotificationSentOrFailed` to be called when a notification was sent.
 
