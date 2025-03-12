@@ -3554,6 +3554,7 @@ export type Query = {
   doesUserExist: Scalars['Boolean']['output'];
   findAdminTaskById: AdminTask;
   findAdminTaskDefs: Array<AdminTaskDef>;
+  findAvailableUserHandle: Scalars['String']['output'];
   findChannelById: Channel;
   findChannelInvitationById: ChannelInvitation;
   findChannelInvitationsBetweenUsers: Array<ChannelInvitation>;
@@ -3615,7 +3616,6 @@ export type Query = {
   findUserSearchResults: Array<UserWithScore>;
   findUserSearches: Array<UserSearch>;
   findUsers: Array<UserListItem>;
-  getAvailableUserHandleField: User;
   getMultiStepActionProgress: SidMultiStepActionProgress;
   /** @deprecated Use findMyBlockedUsers */
   getMyBlockedUsers: Array<User>;
@@ -3636,6 +3636,10 @@ export type QueryDoesUserExistArgs = {
 
 export type QueryFindAdminTaskByIdArgs = {
   adminTaskId: Scalars['String']['input'];
+};
+
+export type QueryFindAvailableUserHandleArgs = {
+  startValue: Scalars['String']['input'];
 };
 
 export type QueryFindChannelByIdArgs = {
@@ -3908,10 +3912,6 @@ export type QueryFindUsersArgs = {
   filter?: InputMaybe<UserListFilter>;
   match?: InputMaybe<UserInput>;
   options?: InputMaybe<FindObjectsOptions>;
-};
-
-export type QueryGetAvailableUserHandleFieldArgs = {
-  startValue: Scalars['String']['input'];
 };
 
 export type QueryGetMultiStepActionProgressArgs = {

@@ -3,6 +3,7 @@ import createMultiStepAction from './operations/multiStepAction/createMultiStepA
 import findMyActiveMultiStepActions from './operations/multiStepAction/findMyActiveMultiStepActions.js';
 import getMultiStepActionProgress from './operations/multiStepAction/getMultiStepActionProgress.js';
 import verifyMultiStepActionToken from './operations/multiStepAction/verifyMultiStepActionToken.js';
+import findAvailableUserHandle from './operations/myUser/findAvailableUserHandle.js';
 import findMyUser from './operations/myUser/findMyUser.js';
 import isUserIdentAvailable from './operations/myUser/isUserIdentAvailable.js';
 import signInUser from './operations/myUser/signInUser.js';
@@ -17,6 +18,7 @@ const fsdata = {
   pollForUpdatedObject,
 
   myUser: {
+    findAvailableUserHandle,
     findMyUser,
     isUserIdentAvailable,
     signInUser,
