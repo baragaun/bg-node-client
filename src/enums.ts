@@ -225,7 +225,7 @@ export enum UserIdentType {
 export enum CookieChoiceTextId {
   acceptAll = 'acceptAll',
   acceptEssentials = 'acceptEssentials',
-  aejectAll = 'rejectAll',
+  rejectAll = 'rejectAll',
 }
 
 export enum MultiStepActionType {
@@ -238,4 +238,70 @@ export enum MultiStepActionType {
   verifyEmail = 'verifyEmail',
   verifyPhoneNumber = 'verifyPhoneNumber',
   verifyPhoneSignupOnSignup = 'verifyPhoneSignupOnSignup',
+}
+
+export enum MultiStepActionEventType {
+  /** The multi-step action failed.
+   * Check `SidMultiStepActionProgress.result` for the reason. */
+  failed = 'failed',
+
+  /** The notification (i.e. email) has been sent successfully. */
+  notificationSent = 'notificationSent',
+
+  /** The notification (i.e. email) has failed to send. */
+  notificationFailed = 'notificationFailed',
+
+  /** The multi-step process has likely ended with an exception.
+   * Check `SidMultiStepActionProgress.result` for the reason. */
+  other = 'other',
+
+  /** The user supplied password was in correct. */
+  passwordMismatch = 'passwordMismatch',
+
+  /** The token has successfully been verified and the process finished. */
+  success = 'success',
+
+  /** The action has timed out. */
+  timedOut = 'timedOut',
+
+  /** The user has entered an incorrect confirmation token. */
+  tokenFailed = 'tokenFailed',
+}
+
+export enum MultiStepActionStatus {
+  created = 'created',
+  finished = 'finished',
+  started = 'started',
+}
+
+export enum MultiStepActionSendNotificationResult {
+  failed = 'failed',
+  ok = 'ok',
+  phoneNumberInvalid = 'phoneNumberInvalid',
+}
+
+export enum MultiStepActionResult {
+  confirmTokenMismatch = 'confirmTokenMismatch',
+  dataValidationFailed = 'dataValidationFailed',
+  deviceNotFound = 'deviceNotFound',
+  emailMismatch = 'emailMismatch',
+  emailNotVerified = 'emailNotVerified',
+  error = 'error',
+  expired = 'expired',
+  invalidEmail = 'invalidEmail',
+  missingEmail = 'missingEmail',
+  missingPhoneNumber = 'missingPhoneNumber',
+  notFound = 'notFound',
+  ok = 'ok',
+  passed = 'passed',
+  passwordMismatch = 'passwordMismatch',
+  passwordUpdated = 'passwordUpdated',
+  phoneNumberInvalid = 'phoneNumberInvalid',
+  phoneNumberMismatch = 'phoneNumberMismatch',
+  phoneNumberNotVerified = 'phoneNumberNotVerified',
+  systemError = 'systemError',
+  unset = 'unset',
+  userFailedValidation = 'userFailedValidation',
+  userNotFound = 'userNotFound',
+  userNotSignedIn = 'userNotSignedIn',
 }

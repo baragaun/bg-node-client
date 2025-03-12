@@ -163,7 +163,10 @@ export interface Operations {
   };
 
   multiStepAction: {
-    addMultiStepActionListener: (actionId: string, listener: MultiStepActionListener) => boolean;
+    addMultiStepActionListener: (
+      actionId: string,
+      listener: MultiStepActionListener,
+    ) => string | null;
 
     findMyActiveMultiStepActions: () => Promise<SidMultiStepAction[]>;
 

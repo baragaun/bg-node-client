@@ -1,3 +1,4 @@
+import { MultiStepActionEventType } from '../../enums.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
 import { MultiStepActionListener } from '../MultiStepActionListener.js';
 import { QueryPollingOptions } from '../QueryOptions.js';
@@ -5,7 +6,7 @@ import { QueryPollingOptions } from '../QueryOptions.js';
 export class MultiStepActionRun {
   public actionId: string;
   public confirmToken?: string;
-  public listeners?: MultiStepActionListener[];
+  public listeners = new Map<string, MultiStepActionListener>();
   public pollingStartedAt?: Date;
   public pollingFinishedAt?: Date;
   public notificationSentOrFailed?: boolean;
@@ -14,47 +15,37 @@ export class MultiStepActionRun {
   public pollingOptions: QueryPollingOptions;
   public actionProgress?: SidMultiStepActionProgress;
 
-  public addListener(listener: MultiStepActionListener): boolean {
-    if (!this.listeners) {
-      this.listeners = [];
+  /**
+   * Add a listener to the run.
+   * @param listener
+   * @returns id of the listener
+   */
+  public addListener(listener: MultiStepActionListener): string {
+    if (!listener.id) {
+      listener.id = crypto.randomUUID();
     }
+    this.listeners.set(listener.id, listener);
 
-    const existingListener = this.listeners.find((l) => l.id === listener.id);
-
-    if (existingListener) {
-      return false;
-    }
-
-    this.listeners.push(listener);
-
-    return true;
+    return listener.id;
   }
 
   public removeListener(id: string): void {
-    if (this.listeners) {
-      this.listeners = this.listeners.filter((l) => l.id !== id);
+    this.listeners.delete(id);
+  }
+
+  public onEventReceived(eventType: MultiStepActionEventType): void {
+    if (
+      eventType === MultiStepActionEventType.success ||
+      eventType === MultiStepActionEventType.timedOut
+    ) {
+      this.finished = true;
     }
+    this.notifyListeners(eventType);
   }
 
-  public finish(): void {
-    this.finished = true;
-    this.notifyListeners('finished');
-  }
-
-  public setNotificationSentOrFailed(): void {
-    this.notificationSentOrFailed = true;
-    this.notifyListeners('notificationSentOrFailed');
-  }
-
-  public notifyListeners(event: 'notificationSentOrFailed' | 'finished'): void {
-    if (this.listeners) {
-      for (const listener of this.listeners) {
-        if (event === 'notificationSentOrFailed') {
-          listener.onNotificationSentOrFailed(this.actionProgress!);
-        } else if (event === 'finished') {
-          listener.onFinished(this.actionProgress!);
-        }
-      }
+  public notifyListeners(event: MultiStepActionEventType): void {
+    for (const listener of this.listeners.values()) {
+      listener.onEvent(event, this.actionProgress!);
     }
   }
 

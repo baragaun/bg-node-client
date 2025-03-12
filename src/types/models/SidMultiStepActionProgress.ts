@@ -1,20 +1,20 @@
 import { BaseModel } from './BaseModel.js';
 import {
-  MultiStepActionError,
   MultiStepActionResult,
   MultiStepActionSendNotificationResult,
   MultiStepActionStatus,
   MultiStepActionType,
   NotificationMethod,
-} from '../../fsdata/gql/graphql.js';
+} from '../../enums.js';
+import { MultiStepActionError } from '../MultiStepActionError.js';
 
 export class SidMultiStepActionProgress extends BaseModel {
   public actionId = '';
   public userId = '';
-  public actionType: MultiStepActionType = MultiStepActionType.Unset;
+  public actionType: MultiStepActionType = MultiStepActionType.unset;
   public actionStatus?: MultiStepActionStatus | null;
   public notificationMethod?: NotificationMethod | null;
-  public result: MultiStepActionResult = MultiStepActionResult.Unset;
+  public result: MultiStepActionResult = MultiStepActionResult.unset;
   public attemptCount = 0;
   public notificationSentAt?: string | null;
   public notificationResult?: MultiStepActionSendNotificationResult | null;

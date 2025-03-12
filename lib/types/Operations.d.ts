@@ -68,7 +68,7 @@ export interface Operations {
         verifyMyEmail: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
     };
     multiStepAction: {
-        addMultiStepActionListener: (actionId: string, listener: MultiStepActionListener) => boolean;
+        addMultiStepActionListener: (actionId: string, listener: MultiStepActionListener) => string | null;
         findMyActiveMultiStepActions: () => Promise<SidMultiStepAction[]>;
         getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         removeMultiStepActionListener: (actionId: string, id: string) => boolean;

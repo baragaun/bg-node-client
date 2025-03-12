@@ -10,8 +10,6 @@ const verifyMultiStepActionToken = async (
   confirmToken: string,
   newPassword?: string,
 ): Promise<MutationResult<SidMultiStepActionProgress>> => {
-  console.log('verifyMultiStepActionToken Input:', { actionId, newPassword, confirmToken });
-
   try {
     const run: MultiStepActionRun = data.multiStepActionRun(actionId);
 
@@ -19,10 +17,22 @@ const verifyMultiStepActionToken = async (
       run.confirmToken = confirmToken;
     }
 
+    console.log('BgNodeClient.operations.multiStepAction.verifyMultiStepActionToken called.', {
+      actionId,
+      confirmToken,
+      newPassword,
+      run,
+    });
+
     const response = await fsdata.multiStepAction.verifyMultiStepActionToken(
       actionId,
       confirmToken,
       newPassword,
+    );
+
+    console.log(
+      'BgNodeClient.operations.multiStepAction.verifyMultiStepActionToken response received.',
+      { actionId, confirmToken, newPassword, response },
     );
 
     return {

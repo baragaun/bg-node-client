@@ -75,9 +75,38 @@ contains a `MultiStepActionRun` object. This the object that does the polling.
 
 Use `MultiStepActionRun.addListener` to add a listener that will be called when the
 notification was sent out or the confirmation token was verified. You can also add listeners
-through `BgNodeClient.addListener.operations.multiStepAction.addMultiStepActionListener`. Note
-that a listener does not have to implement both callbacks (`onNotificationSentOrFailed` 
-and `onFinished`). Only add the callback for the event this is of concern to the listener's scope.
+through `BgNodeClient.addListener.operations.multiStepAction.addMultiStepActionListener`. 
+
+Here is a sample listener:
+
+```typescript
+const sampleListener: MultiStepActionListener = {
+  id: 'test-listener',
+  onEvent: async (eventType: MultiStepActionEventType, action: SidMultiStepActionProgress) => {
+    if (
+      eventType === MultiStepActionEventType.notificationSent ||
+      eventType === MultiStepActionEventType.notificationFailed
+    ) {
+      // The notification has been sent out. Now we can show the token input UI to the user.
+      return;
+    }
+
+    if (eventType === MultiStepActionEventType.tokenFailed) {
+      // The token was rejected. Showing an error message to the user.
+      return;
+    }
+
+    if (eventType === MultiStepActionEventType.failed) {
+      // todo: Showing an error message, depending on action.result
+      return;
+    }
+
+    if (eventType === MultiStepActionEventType.success) {
+      // The token was accepted. The user is now signed in.
+    }
+  }
+};
+```
 
 ### Step 3: Wait for the listener's `onNotificationSentOrFailed` to be called when a notification was sent.
 

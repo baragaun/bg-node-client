@@ -1,10 +1,11 @@
+import { MultiStepActionEventType } from '../../enums.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
 import { MultiStepActionListener } from '../MultiStepActionListener.js';
 import { QueryPollingOptions } from '../QueryOptions.js';
 export declare class MultiStepActionRun {
     actionId: string;
     confirmToken?: string;
-    listeners?: MultiStepActionListener[];
+    listeners: Map<string, MultiStepActionListener>;
     pollingStartedAt?: Date;
     pollingFinishedAt?: Date;
     notificationSentOrFailed?: boolean;
@@ -12,10 +13,14 @@ export declare class MultiStepActionRun {
     timedOut?: boolean;
     pollingOptions: QueryPollingOptions;
     actionProgress?: SidMultiStepActionProgress;
-    addListener(listener: MultiStepActionListener): boolean;
+    /**
+     * Add a listener to the run.
+     * @param listener
+     * @returns id of the listener
+     */
+    addListener(listener: MultiStepActionListener): string;
     removeListener(id: string): void;
-    finish(): void;
-    setNotificationSentOrFailed(): void;
-    notifyListeners(event: 'notificationSentOrFailed' | 'finished'): void;
+    onEventReceived(eventType: MultiStepActionEventType): void;
+    notifyListeners(event: MultiStepActionEventType): void;
     constructor(attr: Partial<MultiStepActionRun>);
 }

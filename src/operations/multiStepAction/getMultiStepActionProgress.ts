@@ -1,24 +1,59 @@
-import { CachePolicy } from '../../enums.js';
+import {
+  CachePolicy,
+  MultiStepActionEventType,
+  MultiStepActionResult,
+  MultiStepActionSendNotificationResult,
+  MultiStepActionType,
+} from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import { MultiStepActionResult, MultiStepActionType } from '../../fsdata/gql/graphql.js';
 import data from '../../helpers/data.js';
 import saveUserInfo from '../../helpers/saveUserInfo.js';
 import { MultiStepActionRun } from '../../types/models/MultiStepActionRun.js';
+import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import findMyUser from '../myUser/findMyUser.js';
+
+const failureResults = [
+  MultiStepActionResult.confirmTokenMismatch,
+  MultiStepActionResult.dataValidationFailed,
+  MultiStepActionResult.deviceNotFound,
+  MultiStepActionResult.emailMismatch,
+  MultiStepActionResult.emailNotVerified,
+  MultiStepActionResult.error,
+  MultiStepActionResult.expired,
+  MultiStepActionResult.invalidEmail,
+  MultiStepActionResult.missingEmail,
+  MultiStepActionResult.missingPhoneNumber,
+  MultiStepActionResult.notFound,
+  MultiStepActionResult.passwordMismatch,
+  MultiStepActionResult.passwordUpdated,
+  MultiStepActionResult.phoneNumberInvalid,
+  MultiStepActionResult.phoneNumberMismatch,
+  MultiStepActionResult.phoneNumberNotVerified,
+  MultiStepActionResult.systemError,
+  MultiStepActionResult.userFailedValidation,
+  MultiStepActionResult.userNotFound,
+  MultiStepActionResult.userNotSignedIn,
+];
 
 const getMultiStepActionProgress = async (
   actionId: string,
   confirmToken: string | undefined,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
+  console.log('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress called.', {
+    actionId,
+    confirmToken,
+    queryOptions,
+  });
+
   const config = data.config();
   const result: QueryResult<MultiStepActionProgressResult> = {};
 
   if (!config) {
-    console.error('getMultiStepActionProgress: no config.');
+    console.error('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: no config.');
     result.error = 'unavailable';
     return result;
   }
@@ -29,17 +64,25 @@ const getMultiStepActionProgress = async (
       confirmToken,
     );
 
+    console.log(
+      'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: received response.',
+      { actionProgress },
+    );
+
     if (!actionProgress) {
-      console.error('getMultiStepActionProgress: action not found.');
+      console.error(
+        'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: action not found.',
+      );
       result.error = 'not-found';
       return result;
     }
 
-    let run: MultiStepActionRun = data.multiStepActionRun(actionProgress.actionId);
+    let run: MultiStepActionRun | null = data.multiStepActionRun(actionProgress.actionId);
+    const previousProgress: SidMultiStepActionProgress | undefined = run?.actionProgress;
 
     if (run) {
       run.actionProgress = actionProgress;
-      if (confirmToken && !run.confirmToken) {
+      if (confirmToken) {
         run.confirmToken = confirmToken;
       }
     } else {
@@ -52,23 +95,32 @@ const getMultiStepActionProgress = async (
       data.addMultiStepActionRun(run);
     }
 
-    const notificationSentOrFailed = run.notificationSentOrFailed;
-    const finished = run.finished;
+    console.log('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: run.', {
+      actionProgress,
+      run,
+    });
 
-    if (!notificationSentOrFailed && actionProgress.notificationResult) {
-      run.setNotificationSentOrFailed();
+    // Has the notification been sent?
+    if (!previousProgress?.notificationResult && actionProgress.notificationResult) {
+      if (actionProgress.notificationResult === MultiStepActionSendNotificationResult.ok) {
+        run.onEventReceived(MultiStepActionEventType.notificationSent);
+      } else {
+        run.onEventReceived(MultiStepActionEventType.notificationFailed);
+      }
     }
 
-    // Has the action finished?
+    // Has the action lead to a result?
     if (
-      !finished &&
+      !run.finished &&
       actionProgress.result &&
-      actionProgress.result !== MultiStepActionResult.Unset
+      actionProgress.result !== MultiStepActionResult.unset
     ) {
+      const success = actionProgress.result === MultiStepActionResult.ok;
+
       if (
-        (actionProgress.actionType === MultiStepActionType.ResetPassword ||
-          actionProgress.actionType === MultiStepActionType.TokenSignIn) &&
-        actionProgress.result === MultiStepActionResult.Ok &&
+        (actionProgress.actionType === MultiStepActionType.resetPassword ||
+          actionProgress.actionType === MultiStepActionType.tokenSignIn) &&
+        success &&
         actionProgress.authToken
       ) {
         // The user just signed in with a token.
@@ -89,17 +141,34 @@ const getMultiStepActionProgress = async (
         await findMyUser({ cachePolicy: CachePolicy.network });
       }
 
-      run.finish();
-      data.removeMultiStepActionRun(actionProgress.actionId);
+      if (success) {
+        run.onEventReceived(MultiStepActionEventType.success);
+      } else if (actionProgress.result === MultiStepActionResult.passwordMismatch) {
+        run.onEventReceived(MultiStepActionEventType.passwordMismatch);
+      } else if (actionProgress.result === MultiStepActionResult.confirmTokenMismatch) {
+        run.onEventReceived(MultiStepActionEventType.tokenFailed);
+      } else if (failureResults.includes(actionProgress.result)) {
+        run.onEventReceived(MultiStepActionEventType.failed);
+      } else {
+        run.onEventReceived(MultiStepActionEventType.other);
+      }
 
-      result.object = {
-        id: actionProgress.actionId,
-        actionProgress,
-        run,
-        createdAt: actionProgress.createdAt,
-      };
+      if (
+        actionProgress.result !== MultiStepActionResult.confirmTokenMismatch &&
+        actionProgress.result !== MultiStepActionResult.passwordMismatch
+      ) {
+        // This ends the polling.
+        data.removeMultiStepActionRun(actionProgress.actionId);
 
-      return result;
+        result.object = {
+          id: actionProgress.actionId,
+          actionProgress,
+          run,
+          createdAt: actionProgress.createdAt,
+        };
+
+        return result;
+      }
     }
 
     // Has the polling timed out?
@@ -111,7 +180,7 @@ const getMultiStepActionProgress = async (
     ) {
       run.pollingFinishedAt = new Date();
 
-      run.finish();
+      run.onEventReceived(MultiStepActionEventType.timedOut);
       data.removeMultiStepActionRun(actionProgress.actionId);
 
       result.object = {
@@ -121,6 +190,7 @@ const getMultiStepActionProgress = async (
         createdAt: actionProgress.createdAt,
       };
 
+      // No more polling
       return result;
     }
 
@@ -142,7 +212,9 @@ const getMultiStepActionProgress = async (
 
     return result;
   } catch (error) {
-    console.error('findMultiStepAction: fsdata.myUser.getMultiStepActionProgress failed', error);
+    console.error('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: failed.', {
+      error,
+    });
     return null;
   }
 };

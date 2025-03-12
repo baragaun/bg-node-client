@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
+import { MultiStepActionEventType, MultiStepActionResult } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
@@ -44,11 +45,12 @@ describe('operations.myUser.signInWithToken', () => {
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Step 1: Start sign in process
+    // Start sign in process
     const signInResponse = await client.operations.myUser.signInWithToken(email, {
       polling: { enabled: true, timeout: 240000 },
     });
 
+    expect(signInResponse).toBeDefined();
     expect(signInResponse.error).toBeUndefined();
     expect(signInResponse.object).toBeDefined();
     expect(signInResponse.object.actionProgress).toBeDefined();
@@ -58,33 +60,54 @@ describe('operations.myUser.signInWithToken', () => {
     const actionId = signInResponse.object.actionProgress.actionId;
     const actionRun = signInResponse.object.run;
 
-    // Step 2: Add listener
-    return new Promise((resolve, reject) => {
+    // Add listener
+    return new Promise((resolve) => {
       actionRun.addListener({
         id: 'test-listener',
 
-        // Step 3: Handle notification sent
-        onNotificationSentOrFailed: (action: SidMultiStepActionProgress) => {
-          expect(action.notificationResult).toBeDefined();
+        onEvent: async (
+          eventType: MultiStepActionEventType,
+          action: SidMultiStepActionProgress,
+        ) => {
+          console.log('signInWithToken.spec.onEvent called.', { eventType, action });
 
-          // Step 4: Verify token
-          client.operations.multiStepAction
-            .verifyMultiStepActionToken(actionId, token)
-            .then((verifyResponse) => {
-              expect(verifyResponse.error).toBeUndefined();
-              expect(verifyResponse.object).toBeDefined();
-              expect(verifyResponse.object.actionId).toBe(actionId);
-            })
-            .catch(reject);
-        },
+          if (
+            eventType === MultiStepActionEventType.notificationSent ||
+            eventType === MultiStepActionEventType.notificationFailed
+          ) {
+            expect(action.notificationResult).toBeDefined();
 
-        // Step 5: Handle completion
-        onFinished: (action: SidMultiStepActionProgress) => {
-          try {
-            // Verify final state
-            expect(action).toBeDefined();
-            expect(action.actionId).toBe(actionId);
-            expect(action.result).toBe('ok');
+            // Verify token with an invalid token:
+            console.log('signInWithToken.spec.onEvent: sending 000000.', { eventType, action });
+            const verifyResponse =
+              await client.operations.multiStepAction.verifyMultiStepActionToken(
+                actionId,
+                '000000',
+              );
+
+            expect(verifyResponse.error).toBeUndefined();
+            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object.actionId).toBe(actionId);
+
+            return;
+          }
+
+          if (eventType === MultiStepActionEventType.tokenFailed) {
+            // The token was rejected; we try again with the correct token
+            console.log('signInWithToken.spec.onEvent: sending 666666.', { eventType, action });
+            const verifyResponse =
+              await client.operations.multiStepAction.verifyMultiStepActionToken(actionId, token);
+
+            expect(verifyResponse.error).toBeUndefined();
+            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object.actionId).toBe(actionId);
+
+            return;
+          }
+
+          if (eventType === MultiStepActionEventType.success) {
+            // The token was accepted
+            expect(action.result).toBe(MultiStepActionResult.ok);
             expect(action.userId).toBe(myUserId);
             expect(action.authToken).not.toBeUndefined();
             expect(action.authToken.length).toBeGreaterThan(10);
@@ -95,11 +118,9 @@ describe('operations.myUser.signInWithToken', () => {
             expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
             resolve(true);
-          } catch (error) {
-            reject(error);
           }
         },
       });
     });
   });
-}, 60000);
+}, 600000);

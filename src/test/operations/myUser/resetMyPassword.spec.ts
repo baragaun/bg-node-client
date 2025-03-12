@@ -1,7 +1,12 @@
 import { describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
-import { CachePolicy, UserIdentType } from '../../../enums.js';
+import {
+  CachePolicy,
+  MultiStepActionEventType,
+  MultiStepActionResult,
+  UserIdentType,
+} from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
@@ -38,7 +43,7 @@ describe('operations.myUser.resetMyPassword', () => {
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Step 1: Start sign in process
+    // Start sign in process
     const response1 = await client.operations.myUser.resetMyPassword(email, {
       polling: { enabled: true },
     });
@@ -52,33 +57,60 @@ describe('operations.myUser.resetMyPassword', () => {
     const actionId = response1.object.actionProgress.actionId;
     const actionRun = response1.object.run;
 
-    // Step 2: Add listener
-    return new Promise((resolve, reject) => {
+    // Add listener
+    return new Promise((resolve) => {
       actionRun.addListener({
         id: 'test-listener',
 
-        // Step 3: Handle notification sent
-        onNotificationSentOrFailed: (action: SidMultiStepActionProgress) => {
+        onEvent: async (
+          eventType: MultiStepActionEventType,
+          action: SidMultiStepActionProgress,
+        ) => {
           expect(action.notificationResult).toBeDefined();
 
-          // Step 4: Verify token
-          client.operations.multiStepAction
-            .verifyMultiStepActionToken(actionId, token, newPassword)
-            .then((verifyResponse) => {
-              expect(verifyResponse.error).toBeUndefined();
-              expect(verifyResponse.object).toBeDefined();
-              expect(verifyResponse.object.actionId).toBe(actionId);
-            })
-            .catch(reject);
-        },
+          // Verify token
+          if (
+            eventType === MultiStepActionEventType.notificationSent ||
+            eventType === MultiStepActionEventType.notificationFailed
+          ) {
+            expect(action.notificationResult).toBeDefined();
 
-        // Step 5: Handle completion
-        onFinished: async (action: SidMultiStepActionProgress) => {
-          try {
-            // Verify final state
+            // Verify token with an invalid token:
+            const verifyResponse =
+              await client.operations.multiStepAction.verifyMultiStepActionToken(
+                actionId,
+                token,
+                newPassword,
+              );
+
+            expect(verifyResponse.error).toBeUndefined();
+            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object.actionId).toBe(actionId);
+
+            return;
+          }
+
+          if (eventType === MultiStepActionEventType.tokenFailed) {
+            // The token was rejected; we try again with the correct token
+            const verifyResponse =
+              await client.operations.multiStepAction.verifyMultiStepActionToken(
+                actionId,
+                token,
+                newPassword,
+              );
+
+            expect(verifyResponse.error).toBeUndefined();
+            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object.actionId).toBe(actionId);
+
+            return;
+          }
+
+          if (eventType === MultiStepActionEventType.success) {
+            // The token was accepted
             expect(action).toBeDefined();
             expect(action.actionId).toBe(actionId);
-            expect(action.result).toBe('ok');
+            expect(action.result).toBe(MultiStepActionResult.ok);
             expect(action.userId).toBe(myUserId);
 
             await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -135,8 +167,6 @@ describe('operations.myUser.resetMyPassword', () => {
             expect(signInUserResponse.object.myUser.email).toBe(email);
 
             resolve(true);
-          } catch (error) {
-            reject(error);
           }
         },
       });
