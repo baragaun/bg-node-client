@@ -83,10 +83,13 @@ Here is a sample listener:
 const sampleListener: MultiStepActionListener = {
   id: 'sign-in-page',
   onEvent: async (eventType: MultiStepActionEventType, action: SidMultiStepActionProgress) => {
-    if (
-      eventType === MultiStepActionEventType.notificationSent ||
-      eventType === MultiStepActionEventType.notificationFailed
-    ) {
+    if (eventType === MultiStepActionEventType.notificationFailed) {
+      // The notification failed to go out. 
+      // todo Show an error message to the user.
+      return;
+    }
+
+    if (eventType === MultiStepActionEventType.notificationSent) {
       // The notification has been sent out. 
       // todo Show the token input UI to the user.
       return;
@@ -95,6 +98,12 @@ const sampleListener: MultiStepActionListener = {
     if (eventType === MultiStepActionEventType.tokenFailed) {
       // The user entered the wrong token.
       // todo: Show an error message to the user.
+      return;
+    }
+
+    if (eventType === MultiStepActionEventType.timedOut) {
+      // The multi-step action timed out.
+      // todo: Showing an error message
       return;
     }
 
