@@ -1,4 +1,3 @@
-import helpers from './helpers.js';
 import { CachePolicy } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { MultiStepActionResult, MultiStepActionType } from '../../fsdata/gql/graphql.js';
@@ -36,7 +35,7 @@ const getMultiStepActionProgress = async (
       return result;
     }
 
-    let run: MultiStepActionRun = helpers.run(actionProgress.actionId);
+    let run: MultiStepActionRun = data.multiStepActionRun(actionProgress.actionId);
 
     if (run) {
       run.actionProgress = actionProgress;
@@ -50,7 +49,7 @@ const getMultiStepActionProgress = async (
         actionProgress,
         pollingOptions: queryOptions.polling,
       });
-      helpers.addRun(run);
+      data.addMultiStepActionRun(run);
     }
 
     const notificationSentOrFailed = run.notificationSentOrFailed;
@@ -91,7 +90,7 @@ const getMultiStepActionProgress = async (
       }
 
       run.finish();
-      helpers.removeRun(actionProgress.actionId);
+      data.removeMultiStepActionRun(actionProgress.actionId);
 
       result.object = {
         id: actionProgress.actionId,
@@ -113,7 +112,7 @@ const getMultiStepActionProgress = async (
       run.pollingFinishedAt = new Date();
 
       run.finish();
-      helpers.removeRun(actionProgress.actionId);
+      data.removeMultiStepActionRun(actionProgress.actionId);
 
       result.object = {
         id: actionProgress.actionId,

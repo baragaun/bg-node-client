@@ -1,7 +1,7 @@
-import helpers from './helpers.js';
+import data from '../../helpers/data.js';
 
 const removeMultiStepActionListener = (actionId: string, id: string): boolean => {
-  const run = helpers.run(actionId);
+  const run = data.multiStepActionRun(actionId);
 
   if (!run) {
     return false;

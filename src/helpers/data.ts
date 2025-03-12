@@ -1,8 +1,10 @@
 import { BgDataListener } from '../types/BgDataListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
+import { MultiStepActionRun } from '../types/index.js';
 
 let _config: BgNodeClientConfig | undefined;
 let _listeners: BgDataListener[] = [];
+const _multiStepActionRuns = new Map<string, MultiStepActionRun>();
 
 const data = {
   config: (): BgNodeClientConfig => _config,
@@ -38,6 +40,22 @@ const data = {
       _listeners.splice(index, 1);
     }
   },
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // MultiStepActionRun helpers
+
+  multiStepActionRuns: (): Map<string, MultiStepActionRun> => _multiStepActionRuns,
+
+  addMultiStepActionRun: (run: MultiStepActionRun): void => {
+    _multiStepActionRuns.set(run.actionId, run);
+  },
+
+  removeMultiStepActionRun: (actionId: string): void => {
+    _multiStepActionRuns.delete(actionId);
+  },
+
+  multiStepActionRun: (actionId: string): MultiStepActionRun | null =>
+    _multiStepActionRuns.get(actionId),
 };
 
 export default data;

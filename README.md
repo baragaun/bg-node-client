@@ -74,7 +74,8 @@ contains a `MultiStepActionRun` object. This the object that does the polling.
 ### Step 2: Add a listener
 
 Use `MultiStepActionRun.addListener` to add a listener that will be called when the
-notification was sent out or the confirmation token was verified.
+notification was sent out or the confirmation token was verified. You can also add listeners
+through `BgNodeClient.addListener.operations.multiStepAction.addMultiStepActionListener`.
 
 ### Step 3: Wait for the listener's `onNotificationSentOrFailed` to be called when a notification was sent.
 

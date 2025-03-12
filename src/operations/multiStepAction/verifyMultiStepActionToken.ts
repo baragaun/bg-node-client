@@ -1,6 +1,6 @@
-import helpers from './helpers.js';
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
+import data from '../../helpers/data.js';
 import { MultiStepActionRun } from '../../types/index.js';
 import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
 import { MutationResult } from '../../types/MutationResult.js';
@@ -13,7 +13,7 @@ const verifyMultiStepActionToken = async (
   console.log('verifyMultiStepActionToken Input:', { actionId, newPassword, confirmToken });
 
   try {
-    const run: MultiStepActionRun = helpers.run(actionId);
+    const run: MultiStepActionRun = data.multiStepActionRun(actionId);
 
     if (run) {
       run.confirmToken = confirmToken;
