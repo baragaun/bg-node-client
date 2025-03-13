@@ -79,5 +79,14 @@
   },
   "volta": {
     "node": "22.12.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@firebase/util",
+      "core-js",
+      "esbuild",
+      "protobufjs",
+      "rxdb"
+    ]
   }
 }
