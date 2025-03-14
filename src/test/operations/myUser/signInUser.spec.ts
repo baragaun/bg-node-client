@@ -5,6 +5,7 @@ import { CachePolicy, ModelType, UserIdentType } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
 import findById from '../../../operations/findById.js';
+import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { testConfig } from '../../helpers/testConfig.js';
 
@@ -80,5 +81,14 @@ describe('operations.myUser.signInUser', () => {
     const config4 = data.config();
     expect(config4.myUserId).toBe(myUserId);
     expect(config4.authToken).toBe(signInUserResponse.object.userAuthResponse.authToken);
+
+    // Deleting the user again:
+    const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+
+    expect(deleteMyUserResponse.error).toBeUndefined();
+
+    const config5 = data.config();
+    expect(config5.myUserId).toBeNull();
+    expect(config5.authToken).toBeNull();
   });
 });

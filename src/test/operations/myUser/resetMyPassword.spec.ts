@@ -9,6 +9,7 @@ import {
 } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
+import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
 import { testConfig } from '../../helpers/testConfig.js';
 
@@ -165,6 +166,14 @@ describe('operations.myUser.resetMyPassword', () => {
             expect(signInUserResponse.object.myUser.firstName).toBe(firstName);
             expect(signInUserResponse.object.myUser.lastName).toBe(lastName);
             expect(signInUserResponse.object.myUser.email).toBe(email);
+
+            const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+
+            expect(deleteMyUserResponse.error).toBeUndefined();
+
+            const config3 = data.config();
+            expect(config3.myUserId).toBeNull();
+            expect(config3.authToken).toBeNull();
 
             resolve(true);
           }

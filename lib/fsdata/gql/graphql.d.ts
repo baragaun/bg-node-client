@@ -2380,6 +2380,7 @@ export type Mutation = {
     deleteContentTag: ServiceRequest;
     deleteGroup: ServiceRequest;
     deleteGroupMembership: Scalars['String']['output'];
+    deleteMyUser: Scalars['String']['output'];
     deleteNotification: Scalars['String']['output'];
     deleteNotificationTemplate: Scalars['String']['output'];
     deleteSupportChannelConfig: ServiceRequest;
@@ -2565,6 +2566,11 @@ export type MutationDeleteGroupArgs = {
 export type MutationDeleteGroupMembershipArgs = {
     deletePhysically: Scalars['Boolean']['input'];
     groupMembershipId: Scalars['String']['input'];
+};
+export type MutationDeleteMyUserArgs = {
+    cause?: InputMaybe<Scalars['String']['input']>;
+    deletePhysically: Scalars['Boolean']['input'];
+    description?: InputMaybe<Scalars['String']['input']>;
 };
 export type MutationDeleteNotificationArgs = {
     deletePhysically: Scalars['Boolean']['input'];
@@ -3824,6 +3830,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationDeleteGroup = "graphQlMutationDeleteGroup",
     GraphQlMutationDeleteGroupMembership = "graphQlMutationDeleteGroupMembership",
     GraphQlMutationDeleteMm2Synchronization = "graphQlMutationDeleteMm2Synchronization",
+    GraphQlMutationDeleteMyUser = "graphQlMutationDeleteMyUser",
     GraphQlMutationDeleteNotification = "graphQlMutationDeleteNotification",
     GraphQlMutationDeleteNotificationTemplate = "graphQlMutationDeleteNotificationTemplate",
     GraphQlMutationDeleteSupportChannelConfig = "graphQlMutationDeleteSupportChannelConfig",

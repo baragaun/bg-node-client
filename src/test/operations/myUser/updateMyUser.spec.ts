@@ -3,6 +3,8 @@ import { describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
+import data from '../../../helpers/data.js';
+import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { testConfig } from '../../helpers/testConfig.js';
 
 describe('operations.myUser.updateMyUser', () => {
@@ -51,5 +53,14 @@ describe('operations.myUser.updateMyUser', () => {
     expect(myUserFromCache.firstName).toBe(firstName);
     expect(myUserFromCache.lastName).toBe(newLastName);
     expect(myUserFromCache.email).toBe(email);
+
+    // Deleting the user again:
+    const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+
+    expect(deleteMyUserResponse.error).toBeUndefined();
+
+    const config = data.config();
+    expect(config.myUserId).toBeNull();
+    expect(config.authToken).toBeNull();
   });
 }, 60000);

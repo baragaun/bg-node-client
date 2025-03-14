@@ -4,6 +4,7 @@ import { BgNodeClient } from '../../../BgNodeClient.js';
 import { MultiStepActionEventType, MultiStepActionResult } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
+import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
 import { testConfig } from '../../helpers/testConfig.js';
 
@@ -116,6 +117,15 @@ describe('operations.myUser.signInWithToken', () => {
             expect(config.myUserId).toBe(myUserId);
             expect(config.authToken).toBe(action.authToken);
             expect(client.operations.myUser.isSignedIn()).toBeTruthy();
+
+            // Deleting the user again:
+            const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+
+            expect(deleteMyUserResponse.error).toBeUndefined();
+
+            const config2 = data.config();
+            expect(config2.myUserId).toBeNull();
+            expect(config2.authToken).toBeNull();
 
             resolve(true);
           }

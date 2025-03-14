@@ -24,6 +24,7 @@ import findMyActiveMultiStepActions from './multiStepAction/findMyActiveMultiSte
 import getMultiStepActionProgress from './multiStepAction/getMultiStepActionProgress.js';
 import removeMultiStepActionListener from './multiStepAction/removeMultiStepActionListener.js';
 import verifyMultiStepActionToken from './multiStepAction/verifyMultiStepActionToken.js';
+import deleteMyUser from './myUser/deleteMyUser.js';
 import findAvailableUserHandle from './myUser/findAvailableUserHandle.js';
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
@@ -74,6 +75,7 @@ const operations: Operations = {
   },
 
   myUser: {
+    deleteMyUser,
     findAvailableUserHandle,
     getSignedOutUserId,
     findMyUser,

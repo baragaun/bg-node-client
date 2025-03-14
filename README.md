@@ -18,11 +18,17 @@ pnpm install "git+https://github.com/baragaun/bg-node-client"
 The following will create a mock channel with 2 participants and 10 messages:
 
 ```typescript
-import { createClient, BgNodeClient } from 'bg-node-client';
+import { BgNodeClient } from '@baragaun/bg-node-client';
 
-const client = createClient({
-  useMockData: true,
+const client = await new BgNodeClient().init({
   dbType: BgNodeClient.DbType.rxdb,
+  fsdata: {
+    url: '<api url>',
+    headers: {
+      [HttpHeaderName.consumer]: 'my-app',
+    },
+  },
+  useMockData: true,
 });
 
 // This will create a mock channel with 10 messages:

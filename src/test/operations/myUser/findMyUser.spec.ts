@@ -5,6 +5,7 @@ import db from '../../../db/db.js';
 import { CachePolicy } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
+import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import userFactory from '../../factories/user.js';
 import { testConfig } from '../../helpers/testConfig.js';
@@ -52,5 +53,13 @@ describe('operations.myUser.findMyUser', () => {
     expect(myUser.firstName).toBe(firstName);
     expect(myUser.lastName).toBe(lastName);
     expect(myUser.email).toBe(email);
+
+    const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+
+    expect(deleteMyUserResponse.error).toBeUndefined();
+
+    const config2 = data.config();
+    expect(config2.myUserId).toBeNull();
+    expect(config2.authToken).toBeNull();
   });
 });

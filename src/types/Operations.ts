@@ -127,6 +127,12 @@ export interface Operations {
   };
 
   myUser: {
+    deleteMyUser: (
+      cause: string | null | undefined,
+      description: string | null | undefined,
+      deletePhysically: boolean,
+    ) => Promise<MutationResult<null>>;
+
     findAvailableUserHandle: (startValue: string) => Promise<string>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
     getSignedOutUserId: () => Promise<string | null>;

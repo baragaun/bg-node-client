@@ -4,6 +4,7 @@ import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, MultiStepActionEventType, MultiStepActionResult } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import data from '../../../helpers/data.js';
+import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
 import { testConfig } from '../../helpers/testConfig.js';
 
@@ -127,6 +128,15 @@ describe('operations.myUser.verifyMyEmail', () => {
             expect(myUserFromCache.lastName).toBe(lastName);
             expect(myUserFromCache.email).toBe(email);
             expect(myUserFromCache.isEmailVerified).toBeTruthy();
+
+            // Deleting the user again:
+            const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+
+            expect(deleteMyUserResponse.error).toBeUndefined();
+
+            const config = data.config();
+            expect(config.myUserId).toBeNull();
+            expect(config.authToken).toBeNull();
 
             resolve(true);
           }
