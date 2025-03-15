@@ -54,8 +54,8 @@ const findById = async <T extends Model = Model>(
 
   const fieldDef = _fieldDef[modelType];
 
-  // @ts-ignore
   const document = parse(fieldDef.gql) as TypedQueryDocumentNode<{
+  // @ts-ignore
     [fieldDef.field]: T | null;
   }>;
   const variables = modelType === ModelType.MyUser ? {} : { id };
