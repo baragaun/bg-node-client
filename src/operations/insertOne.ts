@@ -3,7 +3,9 @@ import { MutationType } from '../enums.js';
 import { Model } from '../types/models/Model.js';
 import { MutationResult } from '../types/MutationResult.js';
 
-const insertOne = async <T extends Model = Model>(object: T): Promise<MutationResult<T>> => {
+const insertOne = async <T extends Model = Model>(
+  object: T,
+): Promise<MutationResult<T>> => {
   try {
     return db.insert<T>(object);
   } catch (error) {

@@ -1,7 +1,7 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import data from '../../helpers/data.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -9,21 +9,22 @@ import { QueryOptions } from '../../types/QueryOptions.js';
 const findMyUser = async (
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<MyUser | null> => {
-  const config = data.config();
-
-  if (!config) {
-    console.error('findMyUser: no config.');
-    return null;
-  }
+  const clientInfo = clientInfoStore.get();
 
   if (
     queryOptions.cachePolicy === CachePolicy.cache ||
     queryOptions.cachePolicy === CachePolicy.cacheFirst
   ) {
     try {
-      const queryResult = await db.findById<MyUser>(config.myUserId, ModelType.MyUser);
+      const queryResult = await db.findById<MyUser>(
+        clientInfo.myUserId,
+        ModelType.MyUser,
+      );
 
-      if (queryResult.object || queryOptions.cachePolicy === CachePolicy.cache) {
+      if (
+        queryResult.object ||
+        queryOptions.cachePolicy === CachePolicy.cache
+      ) {
         return queryResult.object;
       }
     } catch (error) {

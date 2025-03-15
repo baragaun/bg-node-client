@@ -7,7 +7,9 @@ import { Model } from '../types/models/Model.js';
 import { MyUser } from '../types/models/MyUser.js';
 import { User } from '../types/models/User.js';
 
-export const getModelTypeFromObject = <T extends Model = Model>(obj: T): ModelType | null => {
+export const getModelTypeFromObject = <T extends Model = Model>(
+  obj: T,
+): ModelType | null => {
   if (obj instanceof Channel) {
     return ModelType.Channel;
   }

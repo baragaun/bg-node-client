@@ -44,7 +44,8 @@ const data = {
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // MultiStepActionRun helpers
 
-  multiStepActionRuns: (): Map<string, MultiStepActionRun> => _multiStepActionRuns,
+  multiStepActionRuns: (): Map<string, MultiStepActionRun> =>
+    _multiStepActionRuns,
 
   addMultiStepActionRun: (run: MultiStepActionRun): void => {
     _multiStepActionRuns.set(run.actionId, run);

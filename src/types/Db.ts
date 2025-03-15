@@ -9,15 +9,29 @@ import { Model } from '../types/models/Model.js';
 export interface Db {
   init: (config: BgNodeClientConfig) => Promise<MyUser | null>;
 
-  insert: <T extends Model = Model>(obj: T, modelType?: ModelType) => Promise<MutationResult<T>>;
+  insert: <T extends Model = Model>(
+    obj: T,
+    modelType?: ModelType,
+  ) => Promise<MutationResult<T>>;
   isConnected: () => boolean;
-  delete: <T extends Model = Model>(id: string, modelType: ModelType) => Promise<MutationResult<T>>;
+  delete: <T extends Model = Model>(
+    id: string,
+    modelType: ModelType,
+  ) => Promise<MutationResult<T>>;
 
-  find: <T extends Model = Model>(match: Partial<T>, type: ModelType) => Promise<QueryResult<T>>;
+  find: <T extends Model = Model>(
+    match: Partial<T>,
+    type: ModelType,
+  ) => Promise<QueryResult<T>>;
 
-  findAll: <T extends Model = Model>(type: ModelType) => Promise<QueryResult<T>>;
+  findAll: <T extends Model = Model>(
+    type: ModelType,
+  ) => Promise<QueryResult<T>>;
 
-  findById: <T extends Model = Model>(id: string, modelType: ModelType) => Promise<QueryResult<T>>;
+  findById: <T extends Model = Model>(
+    id: string,
+    modelType: ModelType,
+  ) => Promise<QueryResult<T>>;
 
   findOne: <T extends Model = Model>(
     match: Partial<T>,
@@ -26,7 +40,10 @@ export interface Db {
 
   // libSignalStores: () => LibSignalStores;
 
-  replace: <T extends Model = Model>(obj: T, modelType?: ModelType) => Promise<MutationResult<T>>;
+  replace: <T extends Model = Model>(
+    obj: T,
+    modelType?: ModelType,
+  ) => Promise<MutationResult<T>>;
 
   update: <T extends Model = Model>(
     changes: Partial<T>,

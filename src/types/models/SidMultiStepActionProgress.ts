@@ -99,7 +99,10 @@ export class SidMultiStepActionProgress extends BaseModel {
       if (attributes.authTokenExpiresAt) {
         this.authTokenExpiresAt = attributes.authTokenExpiresAt;
       }
-      if (attributes.passwordPassed === true || attributes.passwordPassed === false) {
+      if (
+        attributes.passwordPassed === true ||
+        attributes.passwordPassed === false
+      ) {
         this.passwordPassed = attributes.passwordPassed;
       }
       if (attributes.passwordResettedAt) {
@@ -108,7 +111,10 @@ export class SidMultiStepActionProgress extends BaseModel {
       if (attributes.passwordUpdatedAt) {
         this.passwordUpdatedAt = attributes.passwordUpdatedAt;
       }
-      if (attributes.phoneNumberPassed === true || attributes.phoneNumberPassed === false) {
+      if (
+        attributes.phoneNumberPassed === true ||
+        attributes.phoneNumberPassed === false
+      ) {
         this.phoneNumberPassed = attributes.phoneNumberPassed;
       }
       if (attributes.phoneNumberUpdatedAt) {

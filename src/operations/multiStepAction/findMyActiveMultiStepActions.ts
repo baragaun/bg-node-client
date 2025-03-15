@@ -2,7 +2,9 @@ import fsdata from '../../fsdata/fsdata.js';
 import data from '../../helpers/data.js';
 import { SidMultiStepAction } from '../../types/models/SidMultiStepAction.js';
 
-const findMyActiveMultiStepActions = async (): Promise<SidMultiStepAction[]> => {
+const findMyActiveMultiStepActions = async (): Promise<
+  SidMultiStepAction[]
+> => {
   const config = data.config();
 
   if (!config) {

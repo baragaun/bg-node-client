@@ -17,12 +17,15 @@ const verifyMultiStepActionToken = async (
       run.confirmToken = confirmToken;
     }
 
-    console.log('BgNodeClient.operations.multiStepAction.verifyMultiStepActionToken called.', {
-      actionId,
-      confirmToken,
-      newPassword,
-      run,
-    });
+    console.log(
+      'BgNodeClient.operations.multiStepAction.verifyMultiStepActionToken called.',
+      {
+        actionId,
+        confirmToken,
+        newPassword,
+        run,
+      },
+    );
 
     const response = await fsdata.multiStepAction.verifyMultiStepActionToken(
       actionId,

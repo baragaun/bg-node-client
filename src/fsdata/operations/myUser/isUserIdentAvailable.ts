@@ -7,7 +7,10 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import { UserIdentType as UserIdentTypeFromClient } from '../../../enums.js';
 import data from '../../../helpers/data.js';
-import { QueryIsUserIdentAvailableArgs, UserIdentType } from '../../gql/graphql.js';
+import {
+  QueryIsUserIdentAvailableArgs,
+  UserIdentType,
+} from '../../gql/graphql.js';
 import isUserIdentAvailableGql from '../../gql/queries/isUserIdentAvailable.graphql.js';
 import helpers from '../../helpers/helpers.js';
 

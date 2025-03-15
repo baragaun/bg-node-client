@@ -7,7 +7,10 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
   $batch: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query<$Context['scalars']>>,
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query<$Context['scalars']>
+      >,
     ) => Promise<
       (null | {}) &
         $$Utilities.HandleOutput<
@@ -476,7 +479,9 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Query.findChannelInvitationsBetweenUsers<$Context['scalars']>
+        $$SelectionSets.Query.findChannelInvitationsBetweenUsers<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -536,7 +541,9 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Query.findPendingChannelInvitationsForUser<$Context['scalars']>
+        $$SelectionSets.Query.findPendingChannelInvitationsForUser<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -696,7 +703,9 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Query.findDeclineChannelInvitationReasons<$Context['scalars']>
+        $$SelectionSets.Query.findDeclineChannelInvitationReasons<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -996,7 +1005,9 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Query.findIqlaaJordanianGovernorates<$Context['scalars']>
+        $$SelectionSets.Query.findIqlaaJordanianGovernorates<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -1464,7 +1475,9 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Query.findTrainingSessionsByTrainingId<$Context['scalars']>
+        $$SelectionSets.Query.findTrainingSessionsByTrainingId<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -1484,7 +1497,9 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Query.findLatestTrainingSessionForMe<$Context['scalars']>
+        $$SelectionSets.Query.findLatestTrainingSessionForMe<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -1504,7 +1519,10 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   $batch: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation<$Context['scalars']>>,
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation<$Context['scalars']>
+      >,
     ) => Promise<
       (null | {}) &
         $$Utilities.HandleOutput<
@@ -1713,7 +1731,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet?: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Mutation.createOneTimeAuthTokenForMe<$Context['scalars']>
+        $$SelectionSets.Mutation.createOneTimeAuthTokenForMe<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -2193,7 +2213,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Mutation.dismissChannelInvitationFromInbox<$Context['scalars']>
+        $$SelectionSets.Mutation.dismissChannelInvitationFromInbox<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -2293,7 +2315,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Mutation.markChannelMessagesAsSeenByMe<$Context['scalars']>
+        $$SelectionSets.Mutation.markChannelMessagesAsSeenByMe<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -2573,7 +2597,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Mutation.createMenteesGroupMembership<$Context['scalars']>
+        $$SelectionSets.Mutation.createMenteesGroupMembership<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -2593,7 +2619,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Mutation.createMentorsGroupMembership<$Context['scalars']>
+        $$SelectionSets.Mutation.createMentorsGroupMembership<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -2673,7 +2701,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Mutation.updateMenteesGroupMembership<$Context['scalars']>
+        $$SelectionSets.Mutation.updateMenteesGroupMembership<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -2693,7 +2723,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Mutation.updateMentorsGroupMembership<$Context['scalars']>
+        $$SelectionSets.Mutation.updateMentorsGroupMembership<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &
@@ -2993,7 +3025,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Mutation.sendMultiStepActionNotification<$Context['scalars']>
+        $$SelectionSets.Mutation.sendMultiStepActionNotification<
+          $Context['scalars']
+        >
       >,
     ) => Promise<
       (null | {}) &

@@ -25,7 +25,9 @@ const findUserById = async (): Promise<MyUser | null> => {
     .use(Throws())
     .use(Opentelemetry());
 
-  const document = parse(findUserByIdGql) as TypedQueryDocumentNode<{ findMyUser: MyUser | null }>;
+  const document = parse(findUserByIdGql) as TypedQueryDocumentNode<{
+    findMyUser: MyUser | null;
+  }>;
 
   try {
     const response = (await client

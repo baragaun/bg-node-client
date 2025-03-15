@@ -48,17 +48,24 @@ const updateMyUser = async (
     let oldUpdatedAt = changes.updatedAt;
 
     if (!oldUpdatedAt) {
-      const { object: cachedUser } = await db.findById<MyUser>(changes.id, ModelType.MyUser);
+      const { object: cachedUser } = await db.findById<MyUser>(
+        changes.id,
+        ModelType.MyUser,
+      );
 
       if (cachedUser && cachedUser.updatedAt) {
         oldUpdatedAt = cachedUser.updatedAt;
       }
     }
 
-    const response = await client.gql(document).send({ input: changes as unknown as MyUserInput });
+    const response = await client
+      .gql(document)
+      .send({ input: changes as unknown as MyUserInput });
 
     if (!response.updateMyUser) {
-      console.error('fsdata.updateMyUser: mutation did not return a valid response.');
+      console.error(
+        'fsdata.updateMyUser: mutation did not return a valid response.',
+      );
       return null;
     }
 
@@ -73,12 +80,19 @@ const updateMyUser = async (
         };
       }
 
-      return pollForUpdatedObject<MyUser>(changes.id, ModelType.MyUser, queryOptions);
+      return pollForUpdatedObject<MyUser>(
+        changes.id,
+        ModelType.MyUser,
+        queryOptions,
+      );
     }
 
     return findMyUser();
   } catch (error) {
-    console.error('fsdata.updateMyUser: failed with error', { error, headers: helpers.headers() });
+    console.error('fsdata.updateMyUser: failed with error', {
+      error,
+      headers: helpers.headers(),
+    });
     return null;
   }
 };

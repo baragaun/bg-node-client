@@ -88,7 +88,8 @@ export const ChannelInvitationSchema = {
       type: 'string',
     },
     mm2Id: {
-      description: 'This attribute is only used by the MM2 synchronizer. Mm2 message ID.',
+      description:
+        'This attribute is only used by the MM2 synchronizer. Mm2 message ID.',
       type: 'string',
     },
     syncedWithMm2At: {

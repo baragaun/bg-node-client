@@ -46,7 +46,10 @@ const verifyMultiStepActionToken = async (
       newPassword,
     };
 
-    console.log('Sending verifyMultiStepActionToken mutation with input:', input);
+    console.log(
+      'Sending verifyMultiStepActionToken mutation with input:',
+      input,
+    );
 
     const response = await client.gql(document).send({ input });
 

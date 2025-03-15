@@ -35033,7 +35033,11 @@ export namespace Schema {
     kind: 'Enum';
     name: 'ServiceRequestMessageId';
     members: ['systemError', 'invalidInput', 'groupRuleFailed', 'unknown'];
-    membersUnion: 'systemError' | 'invalidInput' | 'groupRuleFailed' | 'unknown';
+    membersUnion:
+      | 'systemError'
+      | 'invalidInput'
+      | 'groupRuleFailed'
+      | 'unknown';
   }
 
   //                                             ErrorCode
@@ -35205,8 +35209,23 @@ export namespace Schema {
   export interface ServiceRequestSource {
     kind: 'Enum';
     name: 'ServiceRequestSource';
-    members: ['graphqlApi', 'restApi', 'httpRoute', 'system', 'admin', 'vts', 'mm2'];
-    membersUnion: 'graphqlApi' | 'restApi' | 'httpRoute' | 'system' | 'admin' | 'vts' | 'mm2';
+    members: [
+      'graphqlApi',
+      'restApi',
+      'httpRoute',
+      'system',
+      'admin',
+      'vts',
+      'mm2',
+    ];
+    membersUnion:
+      | 'graphqlApi'
+      | 'restApi'
+      | 'httpRoute'
+      | 'system'
+      | 'admin'
+      | 'vts'
+      | 'mm2';
   }
 
   //                                        MultiStepActionType
@@ -35257,8 +35276,21 @@ export namespace Schema {
   export interface NotificationMethod {
     kind: 'Enum';
     name: 'NotificationMethod';
-    members: ['off', 'auto', 'email', 'sms', 'pushNotification', 'inAppNotification'];
-    membersUnion: 'off' | 'auto' | 'email' | 'sms' | 'pushNotification' | 'inAppNotification';
+    members: [
+      'off',
+      'auto',
+      'email',
+      'sms',
+      'pushNotification',
+      'inAppNotification',
+    ];
+    membersUnion:
+      | 'off'
+      | 'auto'
+      | 'email'
+      | 'sms'
+      | 'pushNotification'
+      | 'inAppNotification';
   }
 
   //                                       MultiStepActionResult
@@ -35384,8 +35416,19 @@ export namespace Schema {
   export interface DeclineChannelInvitationReasonTextId {
     kind: 'Enum';
     name: 'DeclineChannelInvitationReasonTextId';
-    members: ['notGoodFit', 'tooBusy', 'noReason', 'fakeProfile', 'inappropriate'];
-    membersUnion: 'notGoodFit' | 'tooBusy' | 'noReason' | 'fakeProfile' | 'inappropriate';
+    members: [
+      'notGoodFit',
+      'tooBusy',
+      'noReason',
+      'fakeProfile',
+      'inappropriate',
+    ];
+    membersUnion:
+      | 'notGoodFit'
+      | 'tooBusy'
+      | 'noReason'
+      | 'fakeProfile'
+      | 'inappropriate';
   }
 
   //                                        ChannelMessageEvent
@@ -35617,7 +35660,8 @@ export namespace Schema {
     export type $$MenteesGroupMembership = MenteesGroupMembership;
     export type $$MentorsGroupMembership = MentorsGroupMembership;
     export type $$IqlaaGroupMembership = IqlaaGroupMembership;
-    export type $$StriveIndonesiaGroupMembership = StriveIndonesiaGroupMembership;
+    export type $$StriveIndonesiaGroupMembership =
+      StriveIndonesiaGroupMembership;
     export type $$CompanyStage = CompanyStage;
     export type $$CompanyType = CompanyType;
     export type $$EducationLevel = EducationLevel;
@@ -35647,10 +35691,12 @@ export namespace Schema {
     export type $$NotificationContext = NotificationContext;
     export type $$Channel = Channel;
     export type $$ChannelMetadata = ChannelMetadata;
-    export type $$BgLatestUnseenChannelMessageInfo = BgLatestUnseenChannelMessageInfo;
+    export type $$BgLatestUnseenChannelMessageInfo =
+      BgLatestUnseenChannelMessageInfo;
     export type $$BgChannelStatus = BgChannelStatus;
     export type $$ChannelInvitation = ChannelInvitation;
-    export type $$DeclineChannelInvitationReason = DeclineChannelInvitationReason;
+    export type $$DeclineChannelInvitationReason =
+      DeclineChannelInvitationReason;
     export type $$ChannelMessage = ChannelMessage;
     export type $$ChannelMessageMetadata = ChannelMessageMetadata;
     export type $$ChannelMessageStatus = ChannelMessageStatus;
@@ -35706,7 +35752,8 @@ export namespace Schema {
     export type $$GroupMembershipInput = GroupMembershipInput;
     export type $$AcademicExperienceInput = AcademicExperienceInput;
     export type $$BusinessExperienceInput = BusinessExperienceInput;
-    export type $$UserProfileRoleHistoryItemInput = UserProfileRoleHistoryItemInput;
+    export type $$UserProfileRoleHistoryItemInput =
+      UserProfileRoleHistoryItemInput;
     export type $$UserListFilter = UserListFilter;
     export type $$UserDeviceInput = UserDeviceInput;
     export type $$UserDeviceListFilter = UserDeviceListFilter;
@@ -35744,12 +35791,14 @@ export namespace Schema {
     export type $$IqlaaGroupMembershipInput = IqlaaGroupMembershipInput;
     export type $$SupportChannelConfigInput = SupportChannelConfigInput;
     export type $$NotificationInput = NotificationInput;
-    export type $$SendMultiStepActionNotificationInput = SendMultiStepActionNotificationInput;
+    export type $$SendMultiStepActionNotificationInput =
+      SendMultiStepActionNotificationInput;
     export type $$NotificationTemplateInput = NotificationTemplateInput;
     export type $$SidMultiStepActionInput = SidMultiStepActionInput;
     export type $$MultiStepActionErrorInput = MultiStepActionErrorInput;
     export type $$UserIdentInput = UserIdentInput;
-    export type $$VerifyMultiStepActionTokenInput = VerifyMultiStepActionTokenInput;
+    export type $$VerifyMultiStepActionTokenInput =
+      VerifyMultiStepActionTokenInput;
     export type $$MyUserInput = MyUserInput;
     export type $$UserTrackingInput = UserTrackingInput;
     export type $$BaseModelMetadata = BaseModelMetadata;
@@ -35793,10 +35842,12 @@ export namespace Schema {
     export type $$MultiStepActionStatus = MultiStepActionStatus;
     export type $$NotificationMethod = NotificationMethod;
     export type $$MultiStepActionResult = MultiStepActionResult;
-    export type $$MultiStepActionSendNotificationResult = MultiStepActionSendNotificationResult;
+    export type $$MultiStepActionSendNotificationResult =
+      MultiStepActionSendNotificationResult;
     export type $$CookieChoiceTextId = CookieChoiceTextId;
     export type $$ReportUserReasonTextId = ReportUserReasonTextId;
-    export type $$DeclineChannelInvitationReasonTextId = DeclineChannelInvitationReasonTextId;
+    export type $$DeclineChannelInvitationReasonTextId =
+      DeclineChannelInvitationReasonTextId;
     export type $$ChannelMessageEvent = ChannelMessageEvent;
     export type $$NotificationTemplateName = NotificationTemplateName;
     export type $$ChannelChangedEventType = ChannelChangedEventType;
@@ -35826,7 +35877,9 @@ export namespace Schema {
 //
 //
 
-export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Scalar.$Registry> {
+export interface Schema<
+  $Scalars extends $$Utilities.Schema.Scalar.Registry = $$Scalar.$Registry,
+> {
   name: $$Data.Name;
   operationsAvailable: ['query', 'mutation', 'subscription'];
   RootUnion: Schema.Query | Schema.Mutation | Schema.Subscription;
@@ -36070,7 +36123,13 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     BaseModelMetadata: Schema.BaseModelMetadata;
     IGroupMembership: Schema.IGroupMembership;
   };
-  scalarNamesUnion: 'DateTimeISO' | 'Int' | 'ID' | 'String' | 'Boolean' | 'Float';
+  scalarNamesUnion:
+    | 'DateTimeISO'
+    | 'Int'
+    | 'ID'
+    | 'String'
+    | 'Boolean'
+    | 'Float';
   scalars: {
     DateTimeISO: Schema.DateTimeISO;
     Int: Schema.Int;

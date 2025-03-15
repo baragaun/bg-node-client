@@ -1,5 +1,5 @@
-import data from '../../helpers/data.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 
-const isSignedIn = (): boolean => !!data.config().authToken;
+const isSignedIn = (): boolean => !!clientInfoStore.get().authToken;
 
 export default isSignedIn;

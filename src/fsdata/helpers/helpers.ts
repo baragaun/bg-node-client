@@ -1,4 +1,5 @@
 import { HttpHeaderName } from '../../enums.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import data from '../../helpers/data.js';
 import type { HttpHeaders } from '../../types/HttpHeaders.js';
 import { AuthType } from '../gql/graphql.js';
@@ -6,19 +7,23 @@ import { AuthType } from '../gql/graphql.js';
 const helpers = {
   headers: (): HttpHeaders => {
     const config = data.config();
+    const clientInfo = clientInfoStore.get();
     const headers: HttpHeaders =
-      config && config.fsdata && config.fsdata.headers
-        ? { ...config.fsdata.headers, [HttpHeaderName.contentType]: 'application/json' }
+      clientInfo && config.fsdata && config.fsdata.headers
+        ? {
+            ...config.fsdata.headers,
+            [HttpHeaderName.contentType]: 'application/json',
+          }
         : { [HttpHeaderName.contentType]: 'application/json' };
 
-    if (config && config.myUserId) {
-      headers[HttpHeaderName.userId] = config.myUserId;
+    if (clientInfo && clientInfo.myUserId) {
+      headers[HttpHeaderName.userId] = clientInfo.myUserId;
     }
-    if (config && config.myUserDeviceUuid) {
-      headers[HttpHeaderName.deviceUuid] = config.myUserDeviceUuid;
+    if (clientInfo && clientInfo.myUserDeviceUuid) {
+      headers[HttpHeaderName.deviceUuid] = clientInfo.myUserDeviceUuid;
     }
-    if (config && config.authToken) {
-      headers[HttpHeaderName.authorization] = `Bearer ${config.authToken}`;
+    if (clientInfo && clientInfo.authToken) {
+      headers[HttpHeaderName.authorization] = `Bearer ${clientInfo.authToken}`;
       headers[HttpHeaderName.authType] = AuthType.Token;
     } else {
       headers[HttpHeaderName.authorization] = `Bearer none`;

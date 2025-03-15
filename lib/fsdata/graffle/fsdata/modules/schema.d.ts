@@ -30448,7 +30448,15 @@ export declare namespace Schema {
     export interface ServiceRequestSource {
         kind: 'Enum';
         name: 'ServiceRequestSource';
-        members: ['graphqlApi', 'restApi', 'httpRoute', 'system', 'admin', 'vts', 'mm2'];
+        members: [
+            'graphqlApi',
+            'restApi',
+            'httpRoute',
+            'system',
+            'admin',
+            'vts',
+            'mm2'
+        ];
         membersUnion: 'graphqlApi' | 'restApi' | 'httpRoute' | 'system' | 'admin' | 'vts' | 'mm2';
     }
     export interface MultiStepActionType {
@@ -30476,7 +30484,14 @@ export declare namespace Schema {
     export interface NotificationMethod {
         kind: 'Enum';
         name: 'NotificationMethod';
-        members: ['off', 'auto', 'email', 'sms', 'pushNotification', 'inAppNotification'];
+        members: [
+            'off',
+            'auto',
+            'email',
+            'sms',
+            'pushNotification',
+            'inAppNotification'
+        ];
         membersUnion: 'off' | 'auto' | 'email' | 'sms' | 'pushNotification' | 'inAppNotification';
     }
     export interface MultiStepActionResult {
@@ -30543,7 +30558,13 @@ export declare namespace Schema {
     export interface DeclineChannelInvitationReasonTextId {
         kind: 'Enum';
         name: 'DeclineChannelInvitationReasonTextId';
-        members: ['notGoodFit', 'tooBusy', 'noReason', 'fakeProfile', 'inappropriate'];
+        members: [
+            'notGoodFit',
+            'tooBusy',
+            'noReason',
+            'fakeProfile',
+            'inappropriate'
+        ];
         membersUnion: 'notGoodFit' | 'tooBusy' | 'noReason' | 'fakeProfile' | 'inappropriate';
     }
     export interface ChannelMessageEvent {

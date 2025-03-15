@@ -19,7 +19,10 @@ const findChannelInvitations = async (
   ) {
     try {
       if (Array.isArray(filter.ids) && filter.ids.length === 1) {
-        return db.findById<ChannelInvitation>(filter.ids[0], ModelType.ChannelInvitation);
+        return db.findById<ChannelInvitation>(
+          filter.ids[0],
+          ModelType.ChannelInvitation,
+        );
       }
 
       const { objects: messages } = await db.findAll<ChannelInvitation>(
@@ -37,7 +40,8 @@ const findChannelInvitations = async (
 
       return {
         objects: list.sort(
-          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
         ),
       };
     } catch (error) {

@@ -6,8 +6,9 @@ import {
   MultiStepActionType,
 } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import data from '../../helpers/data.js';
-import saveUserInfo from '../../helpers/saveUserInfo.js';
+import saveClientInfo from '../../helpers/saveClientInfo.js';
 import { MultiStepActionRun } from '../../types/models/MultiStepActionRun.js';
 import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
@@ -43,26 +44,24 @@ const getMultiStepActionProgress = async (
   confirmToken: string | undefined,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
-  console.log('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress called.', {
-    actionId,
-    confirmToken,
-    queryOptions,
-  });
-
-  const config = data.config();
-  const result: QueryResult<MultiStepActionProgressResult> = {};
-
-  if (!config) {
-    console.error('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: no config.');
-    result.error = 'unavailable';
-    return result;
-  }
-
-  try {
-    const actionProgress = await fsdata.multiStepAction.getMultiStepActionProgress(
+  console.log(
+    'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress called.',
+    {
       actionId,
       confirmToken,
-    );
+      queryOptions,
+    },
+  );
+
+  const clientInfo = clientInfoStore.get();
+  const result: QueryResult<MultiStepActionProgressResult> = {};
+
+  try {
+    const actionProgress =
+      await fsdata.multiStepAction.getMultiStepActionProgress(
+        actionId,
+        confirmToken,
+      );
 
     console.log(
       'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: received response.',
@@ -77,8 +76,11 @@ const getMultiStepActionProgress = async (
       return result;
     }
 
-    let run: MultiStepActionRun | null = data.multiStepActionRun(actionProgress.actionId);
-    const previousProgress: SidMultiStepActionProgress | undefined = run?.actionProgress;
+    let run: MultiStepActionRun | null = data.multiStepActionRun(
+      actionProgress.actionId,
+    );
+    const previousProgress: SidMultiStepActionProgress | undefined =
+      run?.actionProgress;
 
     if (run) {
       run.actionProgress = actionProgress;
@@ -95,14 +97,23 @@ const getMultiStepActionProgress = async (
       data.addMultiStepActionRun(run);
     }
 
-    console.log('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: run.', {
-      actionProgress,
-      run,
-    });
+    console.log(
+      'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: run.',
+      {
+        actionProgress,
+        run,
+      },
+    );
 
     // Has the notification been sent?
-    if (!previousProgress?.notificationResult && actionProgress.notificationResult) {
-      if (actionProgress.notificationResult === MultiStepActionSendNotificationResult.ok) {
+    if (
+      !previousProgress?.notificationResult &&
+      actionProgress.notificationResult
+    ) {
+      if (
+        actionProgress.notificationResult ===
+        MultiStepActionSendNotificationResult.ok
+      ) {
         run.onEventReceived(MultiStepActionEventType.notificationSent);
       } else {
         run.onEventReceived(MultiStepActionEventType.notificationFailed);
@@ -126,14 +137,14 @@ const getMultiStepActionProgress = async (
         // The user just signed in with a token.
         // Making the user info available to the rest of the client:
         const config = data.config();
-        config.myUserId = actionProgress.userId;
-        config.authToken = actionProgress.authToken;
+        clientInfo.myUserId = actionProgress.userId;
+        clientInfo.authToken = actionProgress.authToken;
         data.setConfig(config);
 
         // Save the data to LocalStorage:
-        saveUserInfo({
+        await saveClientInfo({
           myUserId: actionProgress.userId,
-          myUserIdSignedOut: null,
+          signedOutUserId: null,
           authToken: actionProgress.authToken,
         });
 
@@ -143,9 +154,13 @@ const getMultiStepActionProgress = async (
 
       if (success) {
         run.onEventReceived(MultiStepActionEventType.success);
-      } else if (actionProgress.result === MultiStepActionResult.passwordMismatch) {
+      } else if (
+        actionProgress.result === MultiStepActionResult.passwordMismatch
+      ) {
         run.onEventReceived(MultiStepActionEventType.passwordMismatch);
-      } else if (actionProgress.result === MultiStepActionResult.confirmTokenMismatch) {
+      } else if (
+        actionProgress.result === MultiStepActionResult.confirmTokenMismatch
+      ) {
         run.onEventReceived(MultiStepActionEventType.tokenFailed);
       } else if (failureResults.includes(actionProgress.result)) {
         run.onEventReceived(MultiStepActionEventType.failed);
@@ -212,9 +227,12 @@ const getMultiStepActionProgress = async (
 
     return result;
   } catch (error) {
-    console.error('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: failed.', {
-      error,
-    });
+    console.error(
+      'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: failed.',
+      {
+        error,
+      },
+    );
     return null;
   }
 };

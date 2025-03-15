@@ -12,7 +12,10 @@ const findAvailableUserHandle = async (startValue: string): Promise<string> => {
   try {
     return fsdata.myUser.findAvailableUserHandle(startValue);
   } catch (error) {
-    console.error('findAvailableUserHandle: fsdata.myUser.findAvailableUserHandle failed', error);
+    console.error(
+      'findAvailableUserHandle: fsdata.myUser.findAvailableUserHandle failed',
+      error,
+    );
     return null;
   }
 };

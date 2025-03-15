@@ -1,13 +1,14 @@
 import findMyUser from './findMyUser.js';
 import { CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import data from '../../helpers/data.js';
-import saveUserInfo from '../../helpers/saveUserInfo.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInInput } from '../../types/SignInInput.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
 
-const signInUser = async (input: SignInInput): Promise<MutationResult<SignInSignUpResponse>> => {
+const signInUser = async (
+  input: SignInInput,
+): Promise<MutationResult<SignInSignUpResponse>> => {
   try {
     const userAuthResponse = await fsdata.myUser.signInUser(input);
 
@@ -20,15 +21,10 @@ const signInUser = async (input: SignInInput): Promise<MutationResult<SignInSign
     }
 
     // Making the user info available to the rest of the client:
-    const config = data.config();
-    config.myUserId = userAuthResponse.userId;
-    config.authToken = userAuthResponse.authToken;
-    data.setConfig(config);
-
     // Save the data to LocalStorage:
-    saveUserInfo({
+    await clientInfoStore.save({
       myUserId: userAuthResponse.userId,
-      myUserIdSignedOut: null,
+      signedOutUserId: null,
       authToken: userAuthResponse.authToken,
     });
 

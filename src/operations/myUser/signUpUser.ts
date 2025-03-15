@@ -1,8 +1,7 @@
 import findMyUser from './findMyUser.js';
 import { CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import data from '../../helpers/data.js';
-import saveUserInfo from '../../helpers/saveUserInfo.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
@@ -25,16 +24,9 @@ const signUpUser = async (
       };
     }
 
-    // Making the user info available to the rest of the client:
-    const config = data.config();
-    config.myUserId = userAuthResponse.userId;
-    config.authToken = userAuthResponse.authToken;
-    data.setConfig(config);
-
-    // Save the data to LocalStorage:
-    saveUserInfo({
+    await clientInfoStore.save({
       myUserId: userAuthResponse.userId,
-      myUserIdSignedOut: null,
+      signedOutUserId: null,
       authToken: userAuthResponse.authToken,
     });
 

@@ -17,7 +17,9 @@ const pollForUpdatedObject = <T extends Model = Model>(
         activeIsInTargetStateFunc = (obj: T): boolean =>
           obj.updatedAt !== options.polling.oldUpdatedAt;
       } else {
-        console.error('api.updateUser: watch-updated-at should not be used on a new insert.');
+        console.error(
+          'api.updateUser: watch-updated-at should not be used on a new insert.',
+        );
       }
     } else if (options.polling.isInTargetStateFunc) {
       activeIsInTargetStateFunc = options.polling.isInTargetStateFunc;

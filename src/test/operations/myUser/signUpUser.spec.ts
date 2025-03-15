@@ -3,7 +3,6 @@ import { describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
-import data from '../../../helpers/data.js';
 import findById from '../../../operations/findById.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { MyUser } from '../../../types/models/MyUser.js';
@@ -37,9 +36,13 @@ describe('signUpUser', () => {
     expect(signUpResponse.object.myUser.lastName).toBe(lastName);
     expect(signUpResponse.object.myUser.email).toBe(email);
 
-    const config = data.config();
-    expect(config.myUserId).toBe(signUpResponse.object.userAuthResponse.userId);
-    expect(config.authToken).toBe(signUpResponse.object.userAuthResponse.authToken);
+    const clientInfo1 = await client.clientInfoStore.load();
+    expect(clientInfo1.myUserId).toBe(
+      signUpResponse.object.userAuthResponse.userId,
+    );
+    expect(clientInfo1.authToken).toBe(
+      signUpResponse.object.userAuthResponse.authToken,
+    );
     expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
     const findMyUserResponse = await findById<MyUser>(
@@ -61,8 +64,8 @@ describe('signUpUser', () => {
 
     expect(deleteMyUserResponse.error).toBeUndefined();
 
-    const config2 = data.config();
-    expect(config2.myUserId).toBeNull();
-    expect(config2.authToken).toBeNull();
+    const clientInfo2 = await client.clientInfoStore.load();
+    expect(clientInfo2.myUserId).toBeUndefined();
+    expect(clientInfo2.authToken).toBeUndefined();
   });
 });

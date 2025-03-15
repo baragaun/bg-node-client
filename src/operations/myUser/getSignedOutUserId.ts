@@ -1,9 +1,9 @@
-import loadUserInfo from '../../helpers/loadUserInfo.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 
 const getSignedOutUserId = async (): Promise<string | null> => {
-  const userInfo = loadUserInfo();
+  const info = await clientInfoStore.load();
 
-  return userInfo ? userInfo.myUserIdSignedOut : null;
+  return info ? info.signedOutUserId : null;
 };
 
 export default getSignedOutUserId;

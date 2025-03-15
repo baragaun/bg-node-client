@@ -21,7 +21,10 @@ const _fieldDef = {
     field: 'findChannelInvitationById',
     gql: findChannelInvitationById,
   },
-  [ModelType.ChannelMessage]: { field: 'findChannelMessageById', gql: findChannelMessageById },
+  [ModelType.ChannelMessage]: {
+    field: 'findChannelMessageById',
+    gql: findChannelMessageById,
+  },
   [ModelType.ChannelParticipant]: {
     field: 'findChannelParticipantById',
     gql: findChannelParticipantById,
@@ -52,7 +55,9 @@ const findById = async <T extends Model = Model>(
   const fieldDef = _fieldDef[modelType];
 
   // @ts-ignore
-  const document = parse(fieldDef.gql) as TypedQueryDocumentNode<{ [fieldDef.field]: T | null }>;
+  const document = parse(fieldDef.gql) as TypedQueryDocumentNode<{
+    [fieldDef.field]: T | null;
+  }>;
   const variables = modelType === ModelType.MyUser ? {} : { id };
 
   try {

@@ -9,7 +9,9 @@ import gql from '../../gql/queries/findMyActiveMultiStepActions.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const findMyActiveMultiStepActions = async (): Promise<SidMultiStepAction[] | null> => {
+const findMyActiveMultiStepActions = async (): Promise<
+  SidMultiStepAction[] | null
+> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {

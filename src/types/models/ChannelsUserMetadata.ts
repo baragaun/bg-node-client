@@ -11,7 +11,8 @@ export class ChannelsUserMetadata extends BgChannelsUserMetadata {
     if (attributes) {
       if (
         attributes.mentoringSessionCount === 0 ||
-        (attributes.mentoringSessionCount && !isNaN(attributes.mentoringSessionCount))
+        (attributes.mentoringSessionCount &&
+          !isNaN(attributes.mentoringSessionCount))
       ) {
         this.mentoringSessionCount = attributes.mentoringSessionCount;
       }

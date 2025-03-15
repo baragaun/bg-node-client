@@ -9,7 +9,9 @@ import gql from '../../gql/mutations/signInUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const SignInUser = async (input: SignInUserInputFromClient): Promise<UserAuthResponse> => {
+const SignInUser = async (
+  input: SignInUserInputFromClient,
+): Promise<UserAuthResponse> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {

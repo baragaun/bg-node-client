@@ -3,7 +3,6 @@ import { describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, ModelType, UserIdentType } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
-import data from '../../../helpers/data.js';
 import findById from '../../../operations/findById.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { MyUser } from '../../../types/models/MyUser.js';
@@ -11,7 +10,12 @@ import { testConfig } from '../../helpers/testConfig.js';
 
 describe('operations.myUser.signInUser', () => {
   test('should sign in a user with valid input', async () => {
-    const client = await new BgNodeClient().init(testConfig);
+    const myUserDeviceUuid = 'ab29fb7f368a4b26bfc3add16bef0e23';
+    const client = await new BgNodeClient().init(
+      testConfig,
+      undefined,
+      myUserDeviceUuid,
+    );
 
     const firstName = chance.first();
     const lastName = chance.last();
@@ -21,27 +25,32 @@ describe('operations.myUser.signInUser', () => {
 
     console.log('Test input:', { userHandle, email, password });
 
-    const { object: signUpUserAuthResponse } = await client.operations.myUser.signUpUser({
-      userHandle,
-      firstName,
-      lastName,
-      email,
-      password,
-      isTestUser: true,
-    });
+    const { object: signUpUserAuthResponse } =
+      await client.operations.myUser.signUpUser({
+        userHandle,
+        firstName,
+        lastName,
+        email,
+        password,
+        isTestUser: true,
+      });
     const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
 
-    const config1 = data.config();
-    expect(config1.myUserId).toBe(signUpUserAuthResponse.userAuthResponse.userId);
-    expect(config1.authToken).toBe(signUpUserAuthResponse.userAuthResponse.authToken);
+    const clientInfo1 = await client.clientInfoStore.load();
+    expect(clientInfo1.myUserId).toBe(
+      signUpUserAuthResponse.userAuthResponse.userId,
+    );
+    expect(clientInfo1.authToken).toBe(
+      signUpUserAuthResponse.userAuthResponse.authToken,
+    );
 
     console.log('Sign Up User', signUpUserAuthResponse);
 
     await client.operations.myUser.signMeOut();
 
-    const config2 = data.config();
-    expect(config2.myUserId).toBeNull();
-    expect(config2.authToken).toBeNull();
+    const clientInfo2 = await client.clientInfoStore.load();
+    expect(clientInfo2.myUserId).toBeUndefined();
+    expect(clientInfo2.authToken).toBeUndefined();
 
     const signInUserResponse = await client.operations.myUser.signInUser({
       ident: email,
@@ -52,15 +61,23 @@ describe('operations.myUser.signInUser', () => {
     expect(signInUserResponse.error).toBeUndefined();
     expect(signInUserResponse.object.userAuthResponse).toBeDefined();
     expect(signInUserResponse.object.userAuthResponse.userId).toBe(myUserId);
-    expect(signInUserResponse.object.userAuthResponse.authToken.length).toBeGreaterThan(10);
+    expect(
+      signInUserResponse.object.userAuthResponse.authToken.length,
+    ).toBeGreaterThan(10);
     expect(signInUserResponse.object.myUser).toBeDefined();
     expect(signInUserResponse.object.myUser.id).toBeDefined();
 
-    const config3 = data.config();
-    expect(config3.myUserId).toBe(signInUserResponse.object.userAuthResponse.userId);
-    expect(config3.authToken).not.toBeNull();
-    expect(config3.myUserId).toBe(signInUserResponse.object.userAuthResponse.userId);
-    expect(config3.authToken).toBe(signInUserResponse.object.userAuthResponse.authToken);
+    const clientInfo3 = await client.clientInfoStore.load();
+    expect(clientInfo3.myUserId).toBe(
+      signInUserResponse.object.userAuthResponse.userId,
+    );
+    expect(clientInfo3.authToken).not.toBeNull();
+    expect(clientInfo3.myUserId).toBe(
+      signInUserResponse.object.userAuthResponse.userId,
+    );
+    expect(clientInfo3.authToken).toBe(
+      signInUserResponse.object.userAuthResponse.authToken,
+    );
     expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
     // Verifying the myUser object in the local cache/db:
@@ -78,17 +95,19 @@ describe('operations.myUser.signInUser', () => {
     expect(findMyUserResult.object.lastName).toBe(lastName);
     expect(findMyUserResult.object.email).toBe(email);
 
-    const config4 = data.config();
-    expect(config4.myUserId).toBe(myUserId);
-    expect(config4.authToken).toBe(signInUserResponse.object.userAuthResponse.authToken);
+    const clientInfo4 = await client.clientInfoStore.load();
+    expect(clientInfo4.myUserId).toBe(myUserId);
+    expect(clientInfo4.authToken).toBe(
+      signInUserResponse.object.userAuthResponse.authToken,
+    );
 
     // Deleting the user again:
     const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
 
     expect(deleteMyUserResponse.error).toBeUndefined();
 
-    const config5 = data.config();
-    expect(config5.myUserId).toBeNull();
-    expect(config5.authToken).toBeNull();
+    const clientInfo5 = await client.clientInfoStore.load();
+    expect(clientInfo5.myUserId).toBeUndefined();
+    expect(clientInfo5.authToken).toBeUndefined();
   });
 });

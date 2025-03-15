@@ -16,7 +16,10 @@ const isUserIdentAvailable = async (
   try {
     return fsdata.myUser.isUserIdentAvailable(userIdent, identType);
   } catch (error) {
-    console.error('isUserIdentAvailable: fsdata.myUser.isUserIdentAvailable failed', error);
+    console.error(
+      'isUserIdentAvailable: fsdata.myUser.isUserIdentAvailable failed',
+      error,
+    );
     return null;
   }
 };

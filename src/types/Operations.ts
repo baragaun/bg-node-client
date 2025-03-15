@@ -1,4 +1,7 @@
-import { ModelType, UserIdentType as UserIdentTypeFromClient } from '../enums.js';
+import {
+  ModelType,
+  UserIdentType as UserIdentTypeFromClient,
+} from '../enums.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './models/ChannelInvitationListFilter.js';
@@ -44,7 +47,9 @@ export interface Operations {
   ) => Promise<T | null>;
 
   channel: {
-    createChannel: (attributes: Partial<Channel>) => Promise<MutationResult<Channel>>;
+    createChannel: (
+      attributes: Partial<Channel>,
+    ) => Promise<MutationResult<Channel>>;
 
     createMockChannel: (
       attributes: Partial<Channel>,
@@ -63,7 +68,9 @@ export interface Operations {
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
 
-    updateChannel: (changes: Partial<Channel>) => Promise<MutationResult<Channel>>;
+    updateChannel: (
+      changes: Partial<Channel>,
+    ) => Promise<MutationResult<Channel>>;
   };
 
   channelInvitation: {
@@ -71,7 +78,9 @@ export interface Operations {
       attributes: Partial<ChannelInvitation>,
     ) => Promise<MutationResult<ChannelInvitation>>;
 
-    deleteChannelInvitation: (id: string) => Promise<MutationResult<ChannelInvitation>>;
+    deleteChannelInvitation: (
+      id: string,
+    ) => Promise<MutationResult<ChannelInvitation>>;
 
     findChannelInvitations: (
       filter: ChannelInvitationListFilter,
@@ -91,7 +100,9 @@ export interface Operations {
       attributes: Partial<ChannelMessage>,
     ) => Promise<MutationResult<ChannelMessage>>;
 
-    deleteChannelMessage: (id: string) => Promise<MutationResult<ChannelMessage>>;
+    deleteChannelMessage: (
+      id: string,
+    ) => Promise<MutationResult<ChannelMessage>>;
 
     findChannelMessages: (
       filter: ChannelMessageListFilter,
@@ -111,7 +122,9 @@ export interface Operations {
       attributes: Partial<ChannelParticipant>,
     ) => Promise<MutationResult<ChannelParticipant>>;
 
-    deleteChannelParticipant: (id: string) => Promise<MutationResult<ChannelParticipant>>;
+    deleteChannelParticipant: (
+      id: string,
+    ) => Promise<MutationResult<ChannelParticipant>>;
 
     findChannelParticipants: (
       filter: ChannelParticipantListFilter,
@@ -148,7 +161,9 @@ export interface Operations {
       queryOptions: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
-    signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
+    signInUser: (
+      input: SignInInput,
+    ) => Promise<MutationResult<SignInSignUpResponse>>;
 
     signInWithToken: (
       email: string,
@@ -156,7 +171,9 @@ export interface Operations {
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     signMeOut: () => Promise<MutationResult<null>>;
-    signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
+    signUpUser: (
+      input: SignUpUserInput,
+    ) => Promise<MutationResult<SignInSignUpResponse>>;
 
     updateMyUser: (
       myUser: Partial<MyUser>,

@@ -84,7 +84,10 @@ export class User extends BaseModel {
       if (attributes.emailUpdatedAt) {
         this.emailUpdatedAt = attributes.emailUpdatedAt;
       }
-      if (attributes.isEmailVerified === true || attributes.isEmailVerified === false) {
+      if (
+        attributes.isEmailVerified === true ||
+        attributes.isEmailVerified === false
+      ) {
         this.isEmailVerified = attributes.isEmailVerified;
       }
       // if (attributes.emailSource) {
@@ -153,7 +156,10 @@ export class User extends BaseModel {
       // if (attributes.preferences) {
       //   this.preferences = attributes.preferences
       // }
-      if (attributes.trustLevel === 0 || (attributes.trustLevel && !isNaN(attributes.trustLevel))) {
+      if (
+        attributes.trustLevel === 0 ||
+        (attributes.trustLevel && !isNaN(attributes.trustLevel))
+      ) {
         this.trustLevel = attributes.trustLevel;
       }
       if (attributes.signedInAt) {
@@ -184,9 +190,13 @@ export class User extends BaseModel {
         this.inactivatedBy = attributes.inactivatedBy;
       }
       if (attributes.termsAndConditionsAcceptedAt) {
-        this.termsAndConditionsAcceptedAt = attributes.termsAndConditionsAcceptedAt;
+        this.termsAndConditionsAcceptedAt =
+          attributes.termsAndConditionsAcceptedAt;
       }
-      if (attributes.optIntoNewsletter === true || attributes.optIntoNewsletter === false) {
+      if (
+        attributes.optIntoNewsletter === true ||
+        attributes.optIntoNewsletter === false
+      ) {
         this.optIntoNewsletter = attributes.optIntoNewsletter;
       }
       if (attributes.onboardingStage) {

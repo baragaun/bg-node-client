@@ -2,10 +2,11 @@
   "compilerOptions": {
     "declaration": true,
 //    "declarationDir": "./types",
-    "target": "es2022",
+    "target": "ES2022",
     "module": "node16",
     "lib": ["ES2022", "DOM"],
-    "moduleResolution": "node16",
+    "types": ["node"],
+    "moduleResolution": "NodeNext",
     "rootDir": "src",
     "outDir": "lib",
     "allowSyntheticDefaultImports": true,

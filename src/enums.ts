@@ -1,10 +1,5 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 
-export enum DbType {
-  mem = 'mem',
-  rxdb = 'rxdb',
-}
-
 export enum ModelEventType {
   error = 'error',
   warning = 'warning',
@@ -141,6 +136,7 @@ export enum ModelType {
   MyUser = 'MyUser',
   User = 'User',
   UserInbox = 'UserInbox',
+  ClientInfo = 'ClientInfo',
 }
 
 export enum NotificationMethod {

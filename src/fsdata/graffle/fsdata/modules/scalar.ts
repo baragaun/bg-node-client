@@ -14,7 +14,8 @@ export * from 'graffle/generator-helpers/standard-scalar-types';
 //
 //
 
-export type DateTimeISO = $$Utilities.Schema.Scalar.ScalarCodecless<'DateTimeISO'>;
+export type DateTimeISO =
+  $$Utilities.Schema.Scalar.ScalarCodecless<'DateTimeISO'>;
 
 //
 //

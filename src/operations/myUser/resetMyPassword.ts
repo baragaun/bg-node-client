@@ -1,5 +1,8 @@
 import fsdata from '../../fsdata/fsdata.js';
-import { MultiStepActionType, SidMultiStepActionInput } from '../../fsdata/gql/graphql.js';
+import {
+  MultiStepActionType,
+  SidMultiStepActionInput,
+} from '../../fsdata/gql/graphql.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
@@ -25,7 +28,11 @@ const resetMyPassword = async (
       };
     }
 
-    return getMultiStepActionProgress(response.actionId, undefined, queryOptions);
+    return getMultiStepActionProgress(
+      response.actionId,
+      undefined,
+      queryOptions,
+    );
   } catch (error) {
     console.error(error);
     return {
