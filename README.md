@@ -1,10 +1,15 @@
 # bg-node-client
 
-This is a Node.js client for [channels-service](https://github.com/baragaun/channels-service). 
+This is a Node.js client for [channels-service](https://github.com/baragaun/channels-service) and 
+[secureid-service](https://github.com/baragaun/secureid-service). 
 
 ## Installation
 
 ```bash
+npm install --save "@baragaun/bg-node-client"
+# or:
+yarn add "@baragaun/bg-node-client"
+# or:
 pnpm add "@baragaun/bg-node-client" 
 ```
 
