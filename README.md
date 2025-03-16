@@ -5,13 +5,20 @@ This is a Node.js client for [channels-service](https://github.com/baragaun/chan
 ## Installation
 
 ```bash
-pnpm add "git+https://github.com/baragaun/bg-node-client" 
+pnpm add "@baragaun/bg-node-client" 
 ```
 
 To update it:
 ```bash
-pnpm install "git+https://github.com/baragaun/bg-node-client" 
+pnpm install "@baragaun/bg-node-client"
 ```
+
+**Note On Node Version**
+
+This package is using [RxDB](https://rxdb.info/) which is using
+[Web Crypto](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API). To use 
+`bg-node-client` outside the browser, you need Node v20 or higher, as Web Crypto
+was added to Node in version 20. 
 
 ## Usage
 
