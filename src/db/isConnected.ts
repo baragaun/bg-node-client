@@ -1,6 +1,6 @@
-import { RxDatabase } from 'rxdb';
+import { RxDatabase } from "rxdb";
 
-import db from './helpers/db.js';
+import db from "./helpers/db.js";
 
 let _db: RxDatabase | undefined = undefined;
 

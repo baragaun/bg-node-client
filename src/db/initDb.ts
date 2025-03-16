@@ -1,26 +1,26 @@
-import addFormats from 'ajv-formats';
+import addFormats from "ajv-formats";
 import {
   addRxPlugin,
   createRxDatabase,
   isRxDatabase,
   RxStorage,
-} from 'rxdb/plugins/core';
-import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
-import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
-import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
-import { getAjv, wrappedValidateAjvStorage } from 'rxdb/plugins/validate-ajv';
+} from "rxdb/plugins/core";
+import { RxDBDevModePlugin } from "rxdb/plugins/dev-mode";
+import { getRxStorageDexie } from "rxdb/plugins/storage-dexie";
+import { getRxStorageMemory } from "rxdb/plugins/storage-memory";
+import { getAjv, wrappedValidateAjvStorage } from "rxdb/plugins/validate-ajv";
 
 // import Ajv from 'ajv';
 // import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
-import { DbCollection } from './enums.js';
-import findById from './findById.js';
-import { AppEnvironment, ModelType } from '../enums.js';
-import db from './helpers/db.js';
-import clientInfoStore from '../helpers/clientInfoStore.js';
-import logger from '../helpers/logger.js';
-import modelsSchema from '../models/schema/schema.js';
-import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
-import { MyUser } from '../types/models/MyUser.js';
+import { DbCollection } from "./enums.js";
+import findById from "./findById.js";
+import { AppEnvironment, ModelType } from "../enums.js";
+import db from "./helpers/db.js";
+import clientInfoStore from "../helpers/clientInfoStore.js";
+import logger from "../helpers/logger.js";
+import modelsSchema from "../models/schema/schema.js";
+import { BgNodeClientConfig } from "../types/BgNodeClientConfig.js";
+import { MyUser } from "../types/models/MyUser.js";
 // import initLibSignal from './initLibSignal.js';
 // import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
 
@@ -42,7 +42,7 @@ const loadMyUser = async (
 
 const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   if (isRxDatabase(db.getDb())) {
-    logger.error('RxDB.initDb called multiple times.');
+    logger.error("RxDB.initDb called multiple times.");
     const clientInfo = clientInfoStore.get();
 
     return loadMyUser(clientInfo.myUserId);
@@ -56,7 +56,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
 
   // see: https://github.com/ajv-validator/ajv/issues/1295
   const ajv = getAjv();
-  addFormats.default(ajv, ['date-time']);
+  addFormats.default(ajv, ["date-time"]);
   // ajv.addFormat('email', {
   //   type: 'string',
   //   validate: v => v.includes('@') // ensure email fields contain the @ symbol
@@ -76,7 +76,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   }
 
   // The default database name for production is 'firstspark'.
-  let name = config.dbName ?? 'firstspark';
+  let name = config.dbName ?? "firstspark";
 
   if (
     !config.dbName &&
@@ -84,11 +84,11 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
       config.appEnvironment === AppEnvironment.production)
   ) {
     if (config.appEnvironment === AppEnvironment.test) {
-      name = 'firstspark_test';
+      name = "firstspark_test";
     } else if (config.appEnvironment === AppEnvironment.development) {
-      name = 'firstspark_dev';
+      name = "firstspark_dev";
     } else if (config.appEnvironment === AppEnvironment.staging) {
-      name = 'firstspark_stag';
+      name = "firstspark_stag";
     }
   }
 
@@ -153,8 +153,8 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   await myDb.addCollections(collections);
   db.setDb(myDb);
 
-  if (typeof window !== 'undefined') {
-    window.addEventListener('unload', async () => {
+  if (typeof window !== "undefined") {
+    window.addEventListener("unload", async () => {
       await myDb.close();
     });
   }

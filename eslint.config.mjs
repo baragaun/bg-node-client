@@ -1,7 +1,6 @@
 // @ts-check
 import eslint from '@eslint/js';
 import vitest from '@vitest/eslint-plugin';
-import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import importPlugin from 'eslint-plugin-import';
@@ -13,7 +12,6 @@ export default tseslint.config(
   eslint.configs.recommended,
   importPlugin.flatConfigs.recommended,
   // 'plugin:import/typescript',
-  eslintConfigPrettier,
   {
     files: ['**/*.{ts,tsx}'],
     extends: [importPlugin.flatConfigs.recommended, importPlugin.flatConfigs.typescript],
