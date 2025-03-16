@@ -4,6 +4,7 @@ import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
 import { VerifyMultiStepActionTokenInput } from '../../../types/models/VerifyMultiStepActionTokenInput.js';
 import { MutationVerifyMultiStepActionTokenArgs } from '../../gql/graphql.js';
@@ -23,7 +24,7 @@ const verifyMultiStepActionToken = async (
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -46,18 +47,21 @@ const verifyMultiStepActionToken = async (
       newPassword,
     };
 
-    console.log(
+    logger.debug(
       'Sending verifyMultiStepActionToken mutation with input:',
       input,
     );
 
     const response = await client.gql(document).send({ input });
 
-    console.log('verifyMultiStepActionToken response:', response);
+    logger.debug('verifyMultiStepActionToken response:', response);
 
     return response.verifyMultiStepActionToken;
   } catch (error) {
-    console.error('verifyMultiStepActionToken mutation error:', error);
+    logger.error('verifyMultiStepActionToken mutation error:', {
+      error,
+      headers: helpers.headers(),
+    });
     throw error;
   }
 };

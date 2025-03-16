@@ -2,6 +2,7 @@ import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
 import {
   MutationCreateMultiStepActionArgs,
@@ -17,7 +18,7 @@ const createMultiStepAction = async (
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -40,7 +41,10 @@ const createMultiStepAction = async (
 
     return response.createMultiStepAction;
   } catch (error) {
-    console.error('fsdata.createMultiStepAction: failed', error);
+    logger.error('fsdata.createMultiStepAction: failed', {
+      error,
+      headers: helpers.headers(),
+    });
     throw error;
   }
 };

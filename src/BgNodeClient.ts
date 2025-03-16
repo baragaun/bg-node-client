@@ -1,8 +1,11 @@
+import { Logger } from 'winston';
+
 // import { BgDataListener } from './BgDataListener.js';
 // import { Operations } from './Operations.js';
 import db from './db/db.js';
 import clientInfoStore from './helpers/clientInfoStore.js';
 import data from './helpers/data.js';
+import logger, { setLogger } from './helpers/logger.js';
 import operations from './operations/operations.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 
@@ -11,7 +14,18 @@ export class BgNodeClient {
     config: BgNodeClientConfig,
     myUserId?: string,
     myUserDeviceUuid?: string,
+    appLogger?: Logger,
   ): Promise<BgNodeClient> {
+    if (appLogger && appLogger.transports.length > 0) {
+      setLogger(appLogger.child({ scope: 'BgNodeClient' }));
+    }
+
+    logger.debug('BgNodeClient.init called.', {
+      config,
+      myUserId,
+      myUserDeviceUuid,
+    });
+
     data.setConfig(config);
 
     await db.init(config);

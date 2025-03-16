@@ -35,5 +35,7 @@ export interface BgNodeClientConfig {
     registrationId: number;
   };
 
+  logLevel?: 'debug' | 'info' | 'warn' | 'error' | 'silent';
+
   inBrowser: boolean;
 }

@@ -7,6 +7,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import { UserIdentType as UserIdentTypeFromClient } from '../../../enums.js';
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import {
   QueryIsUserIdentAvailableArgs,
   UserIdentType,
@@ -22,7 +23,7 @@ const isUserIdentAvailable = async (
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -56,8 +57,10 @@ const isUserIdentAvailable = async (
 
     return response.isUserIdentAvailable;
   } catch (error) {
-    const headers = helpers.headers();
-    console.error('isUserIdentAvailable failed.', { error, headers });
+    logger.error('isUserIdentAvailable failed.', {
+      error,
+      headers: helpers.headers(),
+    });
     return null;
   }
 };

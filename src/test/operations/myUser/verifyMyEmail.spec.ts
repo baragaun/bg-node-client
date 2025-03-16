@@ -1,31 +1,28 @@
 import { describe, expect, test } from 'vitest';
 
-import { BgNodeClient } from '../../../BgNodeClient.js';
 import {
   CachePolicy,
   MultiStepActionEventType,
   MultiStepActionResult,
 } from '../../../enums.js';
-import chance from '../../../helpers/chance.js';
+import chance, {
+  uniqueEmail,
+  uniqueUserHandle,
+} from '../../../helpers/chance.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import { getTestClient } from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.verifyMyEmail', () => {
   test('should verify a correct token', async () => {
-    const myUserDeviceUuid = 'ab29fb7f368a4b26bfc3add16bef0e23';
-    const client = await new BgNodeClient().init(
-      testConfig,
-      undefined,
-      myUserDeviceUuid,
-    );
+    const client = await getTestClient();
 
     // Set up test user
     const firstName = chance.first();
     const lastName = chance.last();
-    const userHandle = chance.word();
+    const userHandle = uniqueUserHandle();
+    const email = uniqueEmail();
     const password = chance.word();
-    const email = chance.email();
     const token = '666666';
 
     const { object: signUpUserAuthResponse } =

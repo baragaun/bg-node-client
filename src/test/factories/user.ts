@@ -25,7 +25,7 @@ const userFactory = Factory.define<User>('User', User)
   )
   .attr('createdAt', () => randomDate())
   // .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
-  .sequence('email', (i) => `holger+test-${i}@${emailDomain}`)
+  .sequence('email', (i) => `holger+test-${i}-${Date.now()}@${emailDomain}`)
   .attr('fallbackUiLanguageTextId', () =>
     chance.bool({ likelihood: 80 })
       ? UiLanguage.en
@@ -83,7 +83,7 @@ const userFactory = Factory.define<User>('User', User)
         )
       : undefined,
   )
-  .attr('userHandle', () => chance.word()) as UserFactory;
+  .attr('userHandle', () => `${chance.word()}-${Date.now()}`) as UserFactory;
 
 userFactory.create = (
   props: Partial<User> | Partial<User>[],

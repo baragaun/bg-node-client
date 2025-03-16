@@ -1,29 +1,27 @@
 import { describe, expect, test } from 'vitest';
 
-import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, ModelType, UserIdentType } from '../../../enums.js';
-import chance from '../../../helpers/chance.js';
+import chance, {
+  uniqueEmail,
+  uniqueUserHandle,
+} from '../../../helpers/chance.js';
+import logger from '../../../helpers/logger.js';
 import findById from '../../../operations/findById.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { MyUser } from '../../../types/models/MyUser.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import { getTestClient } from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.signInUser', () => {
   test('should sign in a user with valid input', async () => {
-    const myUserDeviceUuid = 'ab29fb7f368a4b26bfc3add16bef0e23';
-    const client = await new BgNodeClient().init(
-      testConfig,
-      undefined,
-      myUserDeviceUuid,
-    );
+    const client = await getTestClient();
 
     const firstName = chance.first();
     const lastName = chance.last();
-    const userHandle = chance.word();
+    const userHandle = uniqueUserHandle();
+    const email = uniqueEmail();
     const password = chance.word();
-    const email = chance.email();
 
-    console.log('Test input:', { userHandle, email, password });
+    logger.debug('Test input:', { userHandle, email, password });
 
     const { object: signUpUserAuthResponse } =
       await client.operations.myUser.signUpUser({
@@ -44,7 +42,7 @@ describe('operations.myUser.signInUser', () => {
       signUpUserAuthResponse.userAuthResponse.authToken,
     );
 
-    console.log('Sign Up User', signUpUserAuthResponse);
+    logger.debug('Sign Up User', signUpUserAuthResponse);
 
     await client.operations.myUser.signMeOut();
 

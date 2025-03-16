@@ -2,6 +2,7 @@ import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import signMeOutGql from '../../gql/mutations/signMeOut.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
@@ -10,7 +11,7 @@ const signMeOut = async (): Promise<void> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -25,9 +26,12 @@ const signMeOut = async (): Promise<void> => {
 
   try {
     const response = await client.gql(document).send();
-    console.log('SignOutUser response:', response);
+    logger.debug('SignOutUser response:', response);
   } catch (error) {
-    console.error('SignOutUser mutation error:', error);
+    logger.error('SignOutUser mutation error:', {
+      error,
+      headers: helpers.headers(),
+    });
     throw error;
   }
 };

@@ -4,6 +4,7 @@ import { ModelType, MutationType } from '../enums.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 import { getModelTypeFromObject } from '../helpers/helpers.js';
+import logger from '../helpers/logger.js';
 import { Model } from '../types/models/Model.js';
 import { MutationResult } from '../types/MutationResult.js';
 
@@ -50,7 +51,7 @@ const insert = async <T extends Model = Model>(
 
     return result;
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     result.error = error.message;
     return result;
   }

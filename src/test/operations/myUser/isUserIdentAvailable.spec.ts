@@ -1,24 +1,21 @@
 import { describe, expect, test } from 'vitest';
 
-import { BgNodeClient } from '../../../BgNodeClient.js';
 import { UserIdentType } from '../../../enums.js';
-import chance from '../../../helpers/chance.js';
+import chance, {
+  uniqueEmail,
+  uniqueUserHandle,
+} from '../../../helpers/chance.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import { getTestClient } from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.isUserIdentAvailable', () => {
   test('should return false for an email that is already taken', async () => {
-    const myUserDeviceUuid = 'ab29fb7f368a4b26bfc3add16bef0e23';
-    const client = await new BgNodeClient().init(
-      testConfig,
-      undefined,
-      myUserDeviceUuid,
-    );
+    const client = await getTestClient();
 
-    const userHandle1 = chance.word();
-    const userHandle2 = chance.word();
-    const email1 = chance.email();
-    const email2 = chance.email();
+    const userHandle1 = uniqueUserHandle();
+    const userHandle2 = uniqueUserHandle();
+    const email1 = uniqueEmail();
+    const email2 = uniqueEmail();
     const password1 = chance.word({ length: 9 });
     const password2 = chance.word({ length: 9 });
 
@@ -29,13 +26,14 @@ describe('operations.myUser.isUserIdentAvailable', () => {
       password: password1,
       isTestUser: true,
     });
-    const user1 = signUpResponse1.object.myUser;
 
     expect(signUpResponse1.error).toBeUndefined();
     expect(signUpResponse1.object).toBeDefined();
     expect(signUpResponse1.object.userAuthResponse).toBeDefined();
     expect(signUpResponse1.object.userAuthResponse.userId).toBeDefined();
     expect(signUpResponse1.object.myUser).toBeDefined();
+
+    const user1 = signUpResponse1.object.myUser;
 
     // Signing out user1:
     await client.operations.myUser.signMeOut();
@@ -57,7 +55,7 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     // Testing any random email and userHandle - they should be available:
     const resultAvailableEmail =
       await client.operations.myUser.isUserIdentAvailable(
-        chance.email(),
+        uniqueEmail(),
         UserIdentType.email,
       );
     const resultAvailableUserHandle =

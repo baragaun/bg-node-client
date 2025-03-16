@@ -2,6 +2,7 @@ import findMyUser from './findMyUser.js';
 import { CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import logger from '../../helpers/logger.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
@@ -17,7 +18,11 @@ const signUpUser = async (
     let myUser: MyUser | null = null;
 
     if (!userAuthResponse.userId) {
-      console.error('signUpUser: userId is missing');
+      logger.error('signUpUser: userId is missing', {
+        userAuthResponse,
+        input,
+      });
+
       return {
         operation: MutationType.create,
         error: 'UserId is missing',
@@ -31,14 +36,17 @@ const signUpUser = async (
     });
 
     // Getting my user to save it into the cache:
-    myUser = await findMyUser({ cachePolicy: CachePolicy.network });
+    myUser = await findMyUser({
+      cachePolicy: CachePolicy.network,
+      polling: { enabled: false },
+    });
 
     return {
       operation: MutationType.create,
       object: { userAuthResponse, myUser },
     };
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return {
       operation: MutationType.create,
       error: (error as Error).message,

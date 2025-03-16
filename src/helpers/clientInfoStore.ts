@@ -1,5 +1,6 @@
 import clearMyUserFromClientInfo from './clearMyUserFromClientInfo.js';
 import loadClientInfo from './loadClientInfo.js';
+import logger from './logger.js';
 import saveClientInfo from './saveClientInfo.js';
 import { ClientInfo } from '../types/models/ClientInfo.js';
 
@@ -12,7 +13,7 @@ const clientInfoStore = {
     try {
       _clientInfo = await loadClientInfo();
     } catch (error) {
-      console.error('Error loading client info:', error);
+      logger.error('Error loading client info:', error);
     }
 
     return _clientInfo || new ClientInfo();
@@ -22,7 +23,7 @@ const clientInfoStore = {
     try {
       _clientInfo = await saveClientInfo(newClientInfo);
     } catch (error) {
-      console.error('Error saving client info:', error);
+      logger.error('Error saving client info:', error);
     }
 
     return _clientInfo || new ClientInfo();

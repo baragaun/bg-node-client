@@ -8,6 +8,7 @@ import {
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import data from '../../helpers/data.js';
+import logger from '../../helpers/logger.js';
 import saveClientInfo from '../../helpers/saveClientInfo.js';
 import { MultiStepActionRun } from '../../types/models/MultiStepActionRun.js';
 import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
@@ -44,7 +45,7 @@ const getMultiStepActionProgress = async (
   confirmToken: string | undefined,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
-  console.log(
+  logger.debug(
     'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress called.',
     {
       actionId,
@@ -63,13 +64,13 @@ const getMultiStepActionProgress = async (
         confirmToken,
       );
 
-    console.log(
+    logger.debug(
       'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: received response.',
       { actionProgress },
     );
 
     if (!actionProgress) {
-      console.error(
+      logger.error(
         'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: action not found.',
       );
       result.error = 'not-found';
@@ -97,7 +98,7 @@ const getMultiStepActionProgress = async (
       data.addMultiStepActionRun(run);
     }
 
-    console.log(
+    logger.debug(
       'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: run.',
       {
         actionProgress,
@@ -227,7 +228,7 @@ const getMultiStepActionProgress = async (
 
     return result;
   } catch (error) {
-    console.error(
+    logger.error(
       'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: failed.',
       {
         error,

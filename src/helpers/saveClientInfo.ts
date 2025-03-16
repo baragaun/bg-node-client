@@ -1,6 +1,7 @@
 import db from '../db/db.js';
 import { ModelType } from '../enums.js';
 import loadClientInfo from './loadClientInfo.js';
+import logger from './logger.js';
 import { ClientInfo } from '../types/models/ClientInfo.js';
 
 const USE_LOCAL_STORAGE = false;
@@ -53,7 +54,7 @@ const saveClientInfo = async (
     );
 
     if (mutationResult.error) {
-      console.error('Error saving client info:', mutationResult.error);
+      logger.error('Error saving client info:', mutationResult.error);
       throw new Error(mutationResult.error);
     }
 

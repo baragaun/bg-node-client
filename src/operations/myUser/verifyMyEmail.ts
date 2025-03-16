@@ -4,6 +4,7 @@ import {
   SidMultiStepActionInput,
 } from '../../fsdata/gql/graphql.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import logger from '../../helpers/logger.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
@@ -16,7 +17,7 @@ const verifyMyEmail = async (
   const clientInfo = clientInfoStore.get();
 
   try {
-    console.log('verifyEmail Input:', { email });
+    logger.debug('verifyEmail Input:', { email });
 
     const input: SidMultiStepActionInput = {
       userId: clientInfo.myUserId,
@@ -26,7 +27,7 @@ const verifyMyEmail = async (
     const response = await fsdata.multiStepAction.createMultiStepAction(input);
 
     if (!response || !response.actionId) {
-      console.error('verifyMyEmail: action not found.');
+      logger.error('verifyMyEmail: action not found.');
       return {
         error: 'system-error',
       };
@@ -38,7 +39,7 @@ const verifyMyEmail = async (
       queryOptions,
     );
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return {
       error: (error as Error).message,
     };

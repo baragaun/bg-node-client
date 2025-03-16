@@ -1,5 +1,6 @@
 import db from '../../../db/db.js';
 import { ModelType } from '../../../enums.js';
+import logger from '../../../helpers/logger.js';
 
 const deleteFunc = async (id: string, modelType: ModelType): Promise<void> => {
   if (!db.isConnected()) {
@@ -13,7 +14,7 @@ const deleteFunc = async (id: string, modelType: ModelType): Promise<void> => {
   try {
     await db.delete(id, modelType);
   } catch (error) {
-    console.error('Error deleting factory object', error);
+    logger.error('Error deleting factory object', error);
   }
 };
 

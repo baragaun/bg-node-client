@@ -17,6 +17,7 @@ import findById from './findById.js';
 import { AppEnvironment, ModelType } from '../enums.js';
 import db from './helpers/db.js';
 import clientInfoStore from '../helpers/clientInfoStore.js';
+import logger from '../helpers/logger.js';
 import modelsSchema from '../models/schema/schema.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { MyUser } from '../types/models/MyUser.js';
@@ -41,7 +42,7 @@ const loadMyUser = async (
 
 const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   if (isRxDatabase(db.getDb())) {
-    console.error('RxDB.initDb called multiple times.');
+    logger.error('RxDB.initDb called multiple times.');
     const clientInfo = clientInfoStore.get();
 
     return loadMyUser(clientInfo.myUserId);

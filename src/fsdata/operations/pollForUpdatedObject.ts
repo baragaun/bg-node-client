@@ -1,5 +1,6 @@
 import findById from './findById.js';
 import { ModelType } from '../../enums.js';
+import logger from '../../helpers/logger.js';
 import { Model } from '../../types/models/Model.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 
@@ -12,25 +13,50 @@ const pollForUpdatedObject = <T extends Model = Model>(
     let activeIsInTargetStateFunc: ((object: T) => boolean) | undefined;
     const startTime = Date.now();
 
-    if (options.polling.isInTargetStateFunc === 'watch-updated-at') {
-      if (options.polling.oldUpdatedAt) {
-        activeIsInTargetStateFunc = (obj: T): boolean =>
-          obj.updatedAt !== options.polling.oldUpdatedAt;
-      } else {
-        console.error(
-          'api.updateUser: watch-updated-at should not be used on a new insert.',
-        );
-      }
-    } else if (options.polling.isInTargetStateFunc) {
+    // Do the options have a function to check if the object is in the target state?
+    if (
+      options.polling &&
+      options.polling.isInTargetStateFunc &&
+      options.polling.isInTargetStateFunc !== 'watch-updated-at'
+    ) {
       activeIsInTargetStateFunc = options.polling.isInTargetStateFunc;
+    }
+
+    // Should we monitor the `updatedAt`?
+    if (
+      !activeIsInTargetStateFunc &&
+      options.polling &&
+      options.polling.isInTargetStateFunc === 'watch-updated-at' &&
+      options.polling.oldUpdatedAt
+    ) {
+      activeIsInTargetStateFunc = (obj: T): boolean => {
+        if (!obj?.updatedAt) {
+          return false;
+        }
+        return (
+          new Date(obj.updatedAt).getTime() >
+          new Date(options.polling.oldUpdatedAt).getTime()
+        );
+      };
+    }
+
+    if (!activeIsInTargetStateFunc) {
+      logger.error(
+        'fsdata.pollForUpdatedObjects: no activeIsInTargetStateFunc',
+      );
     }
 
     const poll = (): void => {
       findById<T>(id, modelType).then(
         (object: T) => {
           if (
+            // No object found?
+            !object ||
+            // Timed out?
             Date.now() - startTime > (options.polling.timeout || 60000) ||
+            // No comparison function? Then we are done
             !activeIsInTargetStateFunc ||
+            // Let the comparison function check if the object is in the target state
             activeIsInTargetStateFunc(object)
           ) {
             // The object is now in the expected state (or no expected state was provided)
@@ -42,7 +68,7 @@ const pollForUpdatedObject = <T extends Model = Model>(
           }, options.polling.interval || 1000); // default to 1 second
         },
         (error) => {
-          console.error('api.updateUser: error', { error });
+          logger.error('fsdata.pollForUpdatedObjects: error', { error });
           reject(error);
         },
       );

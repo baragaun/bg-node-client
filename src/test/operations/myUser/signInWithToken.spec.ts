@@ -1,30 +1,28 @@
 import { describe, expect, test } from 'vitest';
 
-import { BgNodeClient } from '../../../BgNodeClient.js';
 import {
   MultiStepActionEventType,
   MultiStepActionResult,
 } from '../../../enums.js';
-import chance from '../../../helpers/chance.js';
+import chance, {
+  uniqueEmail,
+  uniqueUserHandle,
+} from '../../../helpers/chance.js';
+import logger from '../../../helpers/logger.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import { getTestClient } from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.signInWithToken', () => {
   test('should verify a correct token', async () => {
-    const myUserDeviceUuid = 'ab29fb7f368a4b26bfc3add16bef0e23';
-    const client = await new BgNodeClient().init(
-      testConfig,
-      undefined,
-      myUserDeviceUuid,
-    );
+    const client = await getTestClient();
 
     // Set up test user
     const firstName = chance.first();
     const lastName = chance.last();
-    const userHandle = chance.word();
+    const userHandle = uniqueUserHandle();
+    const email = uniqueEmail();
     const password = chance.word();
-    const email = chance.email();
     const token = '666666';
 
     const { object: signUpUserAuthResponse } =
@@ -85,7 +83,7 @@ describe('operations.myUser.signInWithToken', () => {
           eventType: MultiStepActionEventType,
           action: SidMultiStepActionProgress,
         ) => {
-          console.log('signInWithToken.spec.onEvent called.', {
+          logger.debug('signInWithToken.spec.onEvent called.', {
             eventType,
             action,
           });
@@ -97,7 +95,7 @@ describe('operations.myUser.signInWithToken', () => {
             expect(action.notificationResult).toBeDefined();
 
             // Verify token with an invalid token:
-            console.log('signInWithToken.spec.onEvent: sending 000000.', {
+            logger.debug('signInWithToken.spec.onEvent: sending 000000.', {
               eventType,
               action,
             });
@@ -116,7 +114,7 @@ describe('operations.myUser.signInWithToken', () => {
 
           if (eventType === MultiStepActionEventType.tokenFailed) {
             // The token was rejected; we try again with the correct token
-            console.log('signInWithToken.spec.onEvent: sending 666666.', {
+            logger.debug('signInWithToken.spec.onEvent: sending 666666.', {
               eventType,
               action,
             });

@@ -3,6 +3,7 @@ import { CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
+import logger from '../../helpers/logger.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 
@@ -28,7 +29,7 @@ const findMyUser = async (
         return queryResult.object;
       }
     } catch (error) {
-      console.error('findMyUser: db.findById failed', error);
+      logger.error('findMyUser: db.findById failed', error);
       return null;
     }
   }
@@ -43,7 +44,7 @@ const findMyUser = async (
 
     return myUser;
   } catch (error) {
-    console.error('findMyUser: fsdata.myUser.findMyUser failed', error);
+    logger.error('findMyUser: fsdata.myUser.findMyUser failed', error);
     return null;
   }
 };

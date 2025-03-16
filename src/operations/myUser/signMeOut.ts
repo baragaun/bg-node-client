@@ -1,6 +1,7 @@
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import logger from '../../helpers/logger.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const signMeOut = async (): Promise<MutationResult<null>> => {
@@ -17,7 +18,7 @@ const signMeOut = async (): Promise<MutationResult<null>> => {
       operation: MutationType.update,
     };
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     return {
       operation: MutationType.update,
       error: (error as Error).message,

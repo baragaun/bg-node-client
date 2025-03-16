@@ -2,6 +2,7 @@ import findMyUser from './findMyUser.js';
 import { CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import logger from '../../helpers/logger.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInInput } from '../../types/SignInInput.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
@@ -13,7 +14,10 @@ const signInUser = async (
     const userAuthResponse = await fsdata.myUser.signInUser(input);
 
     if (!userAuthResponse.userId) {
-      console.error('signInUser: no userId in response.');
+      logger.error('signInUser: no userId in response.', {
+        userAuthResponse,
+        input,
+      });
       return {
         operation: MutationType.create,
         error: 'system error',
@@ -29,14 +33,17 @@ const signInUser = async (
     });
 
     // Fetching a fresh copy of the user:
-    const myUser = await findMyUser({ cachePolicy: CachePolicy.network });
+    const myUser = await findMyUser({
+      cachePolicy: CachePolicy.network,
+      polling: { enabled: false },
+    });
 
     return {
       operation: MutationType.create,
       object: { userAuthResponse, myUser },
     };
   } catch (error) {
-    console.error('signInUser failed.', error);
+    logger.error('signInUser failed.', error);
     return {
       operation: MutationType.create,
       error: (error as Error).message,

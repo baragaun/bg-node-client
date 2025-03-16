@@ -3,6 +3,7 @@ import { CachePolicy, ModelType, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
+import logger from '../../helpers/logger.js';
 import { MutationResult } from '../../types/index.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -52,7 +53,7 @@ const updateMyUser = async (
     result.object = updatedMyUser;
     return result;
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     result.error = error.message;
     return result;
   }

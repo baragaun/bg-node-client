@@ -14,6 +14,7 @@ import gql from '../../gql/mutations/updateMyUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
 import findMyUser from './findMyUser.js';
+import logger from '../../../helpers/logger.js';
 
 type UpdateMyUserResponse = { updateMyUser: string };
 
@@ -25,7 +26,7 @@ const updateMyUser = async (
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -45,15 +46,24 @@ const updateMyUser = async (
       UpdateMyUserResponse,
       MutationUpdateMyUserArgs
     >;
+    const needOldUpdatedAt =
+      queryOptions.polling?.enabled &&
+      queryOptions.polling?.isInTargetStateFunc === 'watch-updated-at';
     let oldUpdatedAt = changes.updatedAt;
 
-    if (!oldUpdatedAt) {
+    if (!oldUpdatedAt && needOldUpdatedAt) {
+      logger.debug(
+        'fsdata.updateMyUser: changes.updatedAt is null; reading from DB.',
+      );
       const { object: cachedUser } = await db.findById<MyUser>(
         changes.id,
         ModelType.MyUser,
       );
 
       if (cachedUser && cachedUser.updatedAt) {
+        logger.debug(
+          'fsdata.updateMyUser: setting oldUpdatedAt to cachedUser.updatedAt.',
+        );
         oldUpdatedAt = cachedUser.updatedAt;
       }
     }
@@ -63,33 +73,37 @@ const updateMyUser = async (
       .send({ input: changes as unknown as MyUserInput });
 
     if (!response.updateMyUser) {
-      console.error(
+      logger.error(
         'fsdata.updateMyUser: mutation did not return a valid response.',
       );
       return null;
     }
 
-    if (oldUpdatedAt) {
-      if (queryOptions.polling) {
-        queryOptions.polling.oldUpdatedAt = oldUpdatedAt;
-      } else {
-        queryOptions.polling = {
-          enabled: true,
-          isInTargetStateFunc: 'watch-updated-at',
-          oldUpdatedAt,
-        };
-      }
-
-      return pollForUpdatedObject<MyUser>(
-        changes.id,
-        ModelType.MyUser,
-        queryOptions,
-      );
+    if (!queryOptions.polling || (needOldUpdatedAt && !oldUpdatedAt)) {
+      return findMyUser();
     }
 
-    return findMyUser();
+    if (queryOptions.polling) {
+      queryOptions.polling.oldUpdatedAt = oldUpdatedAt;
+    } else {
+      queryOptions.polling = {
+        enabled: true,
+        isInTargetStateFunc: 'watch-updated-at',
+        oldUpdatedAt,
+      };
+    }
+
+    logger.debug('fsdata.updateMyUser: starting polling.');
+    const fetchedMyUser = await pollForUpdatedObject<MyUser>(
+      changes.id,
+      ModelType.MyUser,
+      queryOptions,
+    );
+    logger.debug('fsdata.updateMyUser: polling finished.', { fetchedMyUser });
+
+    return fetchedMyUser;
   } catch (error) {
-    console.error('fsdata.updateMyUser: failed with error', {
+    logger.error('fsdata.updateMyUser: failed with error', {
       error,
       headers: helpers.headers(),
     });

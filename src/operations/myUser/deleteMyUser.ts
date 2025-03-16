@@ -1,6 +1,7 @@
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import logger from '../../helpers/logger.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const deleteMyUser = async (
@@ -21,7 +22,7 @@ const deleteMyUser = async (
       operation: MutationType.delete,
     };
   } catch (error) {
-    console.error('deleteMyUser: fsdata.myUser.deleteMyUser failed', error);
+    logger.error('deleteMyUser: fsdata.myUser.deleteMyUser failed', error);
     return {
       operation: MutationType.delete,
       error: (error as Error).message,
