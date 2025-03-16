@@ -126,7 +126,10 @@ export class SidMultiStepAction extends BaseModel {
       if (attributes.password) {
         this.password = attributes.password;
       }
-      if (attributes.passwordPassed === true || attributes.passwordPassed === false) {
+      if (
+        attributes.passwordPassed === true ||
+        attributes.passwordPassed === false
+      ) {
         this.passwordPassed = attributes.passwordPassed;
       }
       if (attributes.passwordResettedAt) {
@@ -143,7 +146,10 @@ export class SidMultiStepAction extends BaseModel {
           this.passwordUpdatedAt = new Date(attributes.passwordUpdatedAt);
         }
       }
-      if (attributes.phoneNumberPassed === true || attributes.phoneNumberPassed === false) {
+      if (
+        attributes.phoneNumberPassed === true ||
+        attributes.phoneNumberPassed === false
+      ) {
         this.phoneNumberPassed = attributes.phoneNumberPassed;
       }
       if (attributes.phoneNumberUpdatedAt) {
@@ -157,7 +163,9 @@ export class SidMultiStepAction extends BaseModel {
         if (attributes.phoneNumberVerifiedAt instanceof Date) {
           this.phoneNumberVerifiedAt = attributes.phoneNumberVerifiedAt;
         } else {
-          this.phoneNumberVerifiedAt = new Date(attributes.phoneNumberVerifiedAt);
+          this.phoneNumberVerifiedAt = new Date(
+            attributes.phoneNumberVerifiedAt,
+          );
         }
       }
       if (attributes.signedInAt) {

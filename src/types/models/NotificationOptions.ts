@@ -16,7 +16,10 @@ export abstract class NotificationOptions {
       if (attributes.enableEmail === true || attributes.enableEmail === false) {
         this.enableEmail = attributes.enableEmail;
       }
-      if (attributes.enableInAppMessage === true || attributes.enableInAppMessage === false) {
+      if (
+        attributes.enableInAppMessage === true ||
+        attributes.enableInAppMessage === false
+      ) {
         this.enableInAppMessage = attributes.enableInAppMessage;
       }
       if (

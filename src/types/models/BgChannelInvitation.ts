@@ -41,10 +41,12 @@ export class BgChannelInvitation extends BaseModel {
         this.declineReasonTextId = attributes.declineReasonTextId;
       }
       if (attributes.dismissedFromInboxBySenderAt) {
-        this.dismissedFromInboxBySenderAt = attributes.dismissedFromInboxBySenderAt;
+        this.dismissedFromInboxBySenderAt =
+          attributes.dismissedFromInboxBySenderAt;
       }
       if (attributes.dismissedFromInboxByRecipientAt) {
-        this.dismissedFromInboxByRecipientAt = attributes.dismissedFromInboxByRecipientAt;
+        this.dismissedFromInboxByRecipientAt =
+          attributes.dismissedFromInboxByRecipientAt;
       }
       if (attributes.readByRecipientAt) {
         this.readByRecipientAt = attributes.readByRecipientAt;
@@ -61,7 +63,10 @@ export class BgChannelInvitation extends BaseModel {
       if (attributes.userSearchId) {
         this.userSearchId = attributes.userSearchId;
       }
-      if (attributes.searchRank === 0 || (attributes.searchRank && !isNaN(attributes.searchRank))) {
+      if (
+        attributes.searchRank === 0 ||
+        (attributes.searchRank && !isNaN(attributes.searchRank))
+      ) {
         this.searchRank = attributes.searchRank;
       }
     }

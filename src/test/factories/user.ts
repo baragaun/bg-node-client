@@ -14,16 +14,22 @@ import { User } from '../../types/models/User.js';
 const emailDomain = 'baragaun.com';
 
 const userFactory = Factory.define<User>('User', User)
-  .attr('avatarUrl', () => (chance.bool({ likelihood: 10 }) ? chance.url() : undefined))
-  .attr('cityOfResidence', () => (chance.bool({ likelihood: 10 }) ? chance.city() : undefined))
+  .attr('avatarUrl', () =>
+    chance.bool({ likelihood: 10 }) ? chance.url() : undefined,
+  )
+  .attr('cityOfResidence', () =>
+    chance.bool({ likelihood: 10 }) ? chance.city() : undefined,
+  )
   .attr('countryOfResidenceTextId', () =>
     chance.bool({ likelihood: 90 }) ? chance.country() : undefined,
   )
   .attr('createdAt', () => randomDate())
   // .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
-  .sequence('email', (i) => `holger+test-${i}@${emailDomain}`)
+  .sequence('email', (i) => `holger+test-${i}-${Date.now()}@${emailDomain}`)
   .attr('fallbackUiLanguageTextId', () =>
-    chance.bool({ likelihood: 80 }) ? UiLanguage.en : chance.pickone(Object.values(UiLanguage)),
+    chance.bool({ likelihood: 80 })
+      ? UiLanguage.en
+      : chance.pickone(Object.values(UiLanguage)),
   )
   .attr('firstName', () => chance.first())
   .attr('lastName', () => chance.last())
@@ -32,20 +38,33 @@ const userFactory = Factory.define<User>('User', User)
   //     ? chance.pickone([undefined, '', '-', 'f', 'm', 'x'])
   //     : undefined,
   // )
-  .attr('inactivatedAt', () => (chance.bool({ likelihood: 1 }) ? randomDate() : undefined))
+  .attr('inactivatedAt', () =>
+    chance.bool({ likelihood: 1 }) ? randomDate() : undefined,
+  )
   // .attr('phoneNumber', () => (chance.bool({ likelihood: 30 }) ? chance.phone() : undefined))
   // .attr('postalCode', () => (chance.bool({ likelihood: 90 }) ? chance.postcode() : undefined))
   .attr('preferredLanguageTextId', () =>
-    chance.bool({ likelihood: 9 }) ? chance.pickone(Object.values(UiLanguage)) : undefined,
+    chance.bool({ likelihood: 9 })
+      ? chance.pickone(Object.values(UiLanguage))
+      : undefined,
   )
-  .attr('regionOfResidence', () => (chance.bool({ likelihood: 10 }) ? chance.state() : undefined))
+  .attr('regionOfResidence', () =>
+    chance.bool({ likelihood: 10 }) ? chance.state() : undefined,
+  )
   .attr('selectedUiLanguageTextId', () =>
-    chance.bool({ likelihood: 30 }) ? UiLanguage.en : chance.pickone(Object.values(UiLanguage)),
+    chance.bool({ likelihood: 30 })
+      ? UiLanguage.en
+      : chance.pickone(Object.values(UiLanguage)),
   )
-  .attr('source', () => (chance.bool({ likelihood: 10 }) ? chance.word() : undefined))
+  .attr('source', () =>
+    chance.bool({ likelihood: 10 }) ? chance.word() : undefined,
+  )
   .attr('spokenLanguagesTextIds', () =>
     chance.bool({ likelihood: 10 })
-      ? chance.pickset(Object.values(UiLanguage), chance.integer({ min: 0, max: 2 }))
+      ? chance.pickset(
+          Object.values(UiLanguage),
+          chance.integer({ min: 0, max: 2 }),
+        )
       : undefined,
   )
   .attr('trustLevel', () =>
@@ -56,17 +75,22 @@ const userFactory = Factory.define<User>('User', User)
   .attr('websites', () =>
     chance.bool({ likelihood: 40 })
       ? Array.from({ length: chance.integer({ min: 0, max: 3 }) }).map(
-          (_) => new LabeledStringValue({ label: chance.word(), value: chance.url() }),
+          (_) =>
+            new LabeledStringValue({
+              label: chance.word(),
+              value: chance.url(),
+            }),
         )
       : undefined,
   )
-  .attr('userHandle', () => chance.word()) as UserFactory;
+  .attr('userHandle', () => `${chance.word()}-${Date.now()}`) as UserFactory;
 
 userFactory.create = (
   props: Partial<User> | Partial<User>[],
   options?: any,
   count?: number,
-): Promise<User | User[]> => create<User>(props, ModelType.User, options, count);
+): Promise<User | User[]> =>
+  create<User>(props, ModelType.User, options, count);
 
 // userFactory.create2 = async (
 //   props: Partial<User> | Partial<User>[],

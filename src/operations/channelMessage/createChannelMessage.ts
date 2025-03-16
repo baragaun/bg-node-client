@@ -8,7 +8,10 @@ const createChannelMessage = async (
   attributes: Partial<ChannelMessage>,
 ): Promise<MutationResult<ChannelMessage>> => {
   try {
-    const channel = db.findById<Channel>(attributes.channelId as string, ModelType.Channel);
+    const channel = db.findById<Channel>(
+      attributes.channelId as string,
+      ModelType.Channel,
+    );
 
     if (!channel) {
       return {

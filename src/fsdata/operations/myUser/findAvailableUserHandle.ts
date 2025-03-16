@@ -6,6 +6,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 // import { create } from '../../graffle/fsdata/_.js'
 
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import { QueryFindAvailableUserHandleArgs } from '../../gql/graphql.js';
 import gql from '../../gql/queries/findAvailableUserHandle.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -15,7 +16,7 @@ const findAvailableUserHandle = async (startValue: string): Promise<string> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -44,8 +45,10 @@ const findAvailableUserHandle = async (startValue: string): Promise<string> => {
 
     return response.findAvailableUserHandle;
   } catch (error) {
-    const headers = helpers.headers();
-    console.error('findAvailableUserHandle failed.', { error, headers });
+    logger.error('findAvailableUserHandle failed.', {
+      error,
+      headers: helpers.headers(),
+    });
     return null;
   }
 };

@@ -12,17 +12,18 @@ describe('operations.channel.updateChannel', () => {
     const client = await new BgNodeClient().init(testConfig);
     const channelProps = await factories.channel.build({});
 
-    const { object: channel } = await client.operations.channel.createChannel(channelProps);
+    const { object: channel } =
+      await client.operations.channel.createChannel(channelProps);
 
-    await client.operations.channel.updateChannel({ id: channel.id, name: 'newname' });
+    await client.operations.channel.updateChannel({
+      id: channel.id,
+      name: 'newname',
+    });
 
-    const { object: updatedChannel, error: updateError } = await findById<Channel>(
-      channel.id,
-      ModelType.Channel,
-      {
+    const { object: updatedChannel, error: updateError } =
+      await findById<Channel>(channel.id, ModelType.Channel, {
         cachePolicy: CachePolicy.cache,
-      },
-    );
+      });
 
     expect(updateError).toBeUndefined();
     expect(updatedChannel.id).toBe(channel.id);

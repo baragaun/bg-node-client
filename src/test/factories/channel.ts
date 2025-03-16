@@ -20,9 +20,11 @@ channelFactory.create = (
   props: Partial<Channel> | Partial<Channel>[],
   options?: any,
   count?: number,
-): Promise<Channel | Channel[]> => create<Channel>(props, ModelType.Channel, options, count);
+): Promise<Channel | Channel[]> =>
+  create<Channel>(props, ModelType.Channel, options, count);
 
-channelFactory.save = async (channel: Channel): Promise<Channel> => save(channel);
+channelFactory.save = async (channel: Channel): Promise<Channel> =>
+  save(channel);
 
 channelFactory.delete = async (channel: Channel): Promise<Channel> => {
   await deleteFunc(channel.id, ModelType.Channel);

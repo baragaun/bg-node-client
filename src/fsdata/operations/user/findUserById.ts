@@ -4,6 +4,7 @@ import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import findUserByIdGql from '../../gql/queries/findUserById.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -13,7 +14,7 @@ const findUserById = async (): Promise<MyUser | null> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -25,7 +26,9 @@ const findUserById = async (): Promise<MyUser | null> => {
     .use(Throws())
     .use(Opentelemetry());
 
-  const document = parse(findUserByIdGql) as TypedQueryDocumentNode<{ findMyUser: MyUser | null }>;
+  const document = parse(findUserByIdGql) as TypedQueryDocumentNode<{
+    findMyUser: MyUser | null;
+  }>;
 
   try {
     const response = (await client
@@ -33,11 +36,14 @@ const findUserById = async (): Promise<MyUser | null> => {
       .gql(document)
       .send()) as { findMyUser: MyUser | null };
 
-    console.log(response);
+    logger.debug(response);
 
     return response.findMyUser;
   } catch (error) {
-    console.error(error);
+    logger.error('fsdata.findMyUser: error', {
+      error,
+      headers: helpers.headers(),
+    });
     return null;
   }
 };

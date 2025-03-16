@@ -58,7 +58,8 @@ export const MyUserSchema = {
       type: 'string',
     },
     emailSource: {
-      description: 'The source of the email address, e.g. "google", "facebook", etc.',
+      description:
+        'The source of the email address, e.g. "google", "facebook", etc.',
       type: 'string',
     },
     emailUpdatedAt: {

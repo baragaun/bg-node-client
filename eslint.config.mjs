@@ -5,6 +5,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import importPlugin from 'eslint-plugin-import';
+import nodePlugin from 'eslint-plugin-node';
 
 // This is just an example default config for ESLint.
 // You should change it to your needs following the documentation.
@@ -55,26 +56,29 @@ export default tseslint.config(
     extends: [...tseslint.configs.recommended],
 
     plugins: {
+      'node': nodePlugin,
       '@typescript-eslint': tseslint.plugin,
     },
 
     rules: {
-      '@typescript-eslint/explicit-function-return-type': 'warn',
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "warn", // or "error"
+      'no-unused-vars': 'off',
+      'import/no-dynamic-require': 'warn',
+      'import/no-nodejs-modules': 'off',
+      'import/no-useless-path-segments': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error', // or 'error'
         {
-          "argsIgnorePattern": "^_",
-          "varsIgnorePattern": "^_",
-          "caughtErrorsIgnorePattern": "^_"
+          'argsIgnorePattern': '^_',
+          'varsIgnorePattern': '^_',
+          'caughtErrorsIgnorePattern': '^_'
         }
       ],
-      "@typescript-eslint/ban-ts-comment": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-empty-object-type": "off",
-      "@typescript-eslint/no-namespace": "off",
-      'import/no-dynamic-require': 'warn',
-      'import/no-nodejs-modules': 'warn',
+      '@typescript-eslint/explicit-function-return-type': 'warn',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-namespace': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/no-unnecessary-path-segments': 'off',
     },
 
     languageOptions: {
@@ -94,8 +98,8 @@ export default tseslint.config(
   {
     files: ['/src/fsdata/graffle/**'],
     rules: {
-      "@typescript-eslint/no-empty-object-type": "off",
-      "@typescript-eslint/no-namespace": "off",
+      '@typescript-eslint/no-empty-object-type': 'off',
+      '@typescript-eslint/no-namespace': 'off',
     },
   },
   {

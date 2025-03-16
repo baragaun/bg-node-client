@@ -8,8 +8,9 @@ import save from './helpers/save.js';
 import randomDate from '../../helpers/randomDate.js';
 import { UserInbox } from '../../types/models/UserInbox.js';
 
-const userInboxFactory = Factory.define<UserInbox>('UserInbox', UserInbox).attr('createdAt', () =>
-  randomDate(),
+const userInboxFactory = Factory.define<UserInbox>('UserInbox', UserInbox).attr(
+  'createdAt',
+  () => randomDate(),
 ) as UserInboxFactory;
 
 userInboxFactory.create = (
@@ -19,7 +20,8 @@ userInboxFactory.create = (
 ): Promise<UserInbox | UserInbox[]> =>
   create<UserInbox>(props, ModelType.UserInbox, options, count);
 
-userInboxFactory.save = async (userInbox: UserInbox): Promise<UserInbox> => save(userInbox);
+userInboxFactory.save = async (userInbox: UserInbox): Promise<UserInbox> =>
+  save(userInbox);
 
 userInboxFactory.delete = async (userInbox: UserInbox): Promise<UserInbox> => {
   await deleteFunc(userInbox.id, ModelType.UserInbox);

@@ -1,0 +1,17 @@
+export enum DbCollection {
+  userInbox = 'channel-inbox',
+  channelInvitations = 'channel-invitations',
+  channelMessages = 'channel-messages',
+  channelParticipants = 'channel-participants',
+  channels = 'channels',
+  clientInfo = 'client-info',
+  myUser = 'my-user',
+  users = 'users',
+  // libSignalIdentityKeys = 'libsignal_identity_keys',
+  // libSignalRegistration = 'libsignal_registration',
+  // libSignalKyberPreKeys = 'libsignal_kyber_pre_keys',
+  // libSignalPrekeys = 'libsignal_prekeys',
+  // libSignalSenderKeys = 'libsignal_sender_keys',
+  // libSignalSessions = 'libsignal_sessions',
+  // libSignalSignedPreKeys = 'libsignal_signed_pre_keys',
+}

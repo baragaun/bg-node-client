@@ -5,6 +5,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import { ModelType } from '../../enums.js';
 import data from '../../helpers/data.js';
+import logger from '../../helpers/logger.js';
 import modelFactory from '../../models/modelFactory.js';
 import { Model } from '../../types/models/Model.js';
 import findChannelById from '../gql/queries/findChannelById.graphql.js';
@@ -21,7 +22,10 @@ const _fieldDef = {
     field: 'findChannelInvitationById',
     gql: findChannelInvitationById,
   },
-  [ModelType.ChannelMessage]: { field: 'findChannelMessageById', gql: findChannelMessageById },
+  [ModelType.ChannelMessage]: {
+    field: 'findChannelMessageById',
+    gql: findChannelMessageById,
+  },
   [ModelType.ChannelParticipant]: {
     field: 'findChannelParticipantById',
     gql: findChannelParticipantById,
@@ -38,7 +42,7 @@ const findById = async <T extends Model = Model>(
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -51,8 +55,10 @@ const findById = async <T extends Model = Model>(
 
   const fieldDef = _fieldDef[modelType];
 
-  // @ts-ignore
-  const document = parse(fieldDef.gql) as TypedQueryDocumentNode<{ [fieldDef.field]: T | null }>;
+  const document = parse(fieldDef.gql) as TypedQueryDocumentNode<{
+    // @ts-ignore
+    [fieldDef.field]: T | null;
+  }>;
   const variables = modelType === ModelType.MyUser ? {} : { id };
 
   try {
@@ -62,7 +68,7 @@ const findById = async <T extends Model = Model>(
       // @ts-ignore
       .send(variables)) as { [fieldDef.field]: T | null };
 
-    console.log(response);
+    logger.debug('findById: response received', { response });
 
     if (!response[fieldDef.field]) {
       return null;
@@ -70,7 +76,7 @@ const findById = async <T extends Model = Model>(
 
     return modelFactory<T>(response[fieldDef.field], modelType);
   } catch (error) {
-    console.error(error);
+    logger.error('findById: error', { error, headers: helpers.headers() });
     return null;
   }
 };

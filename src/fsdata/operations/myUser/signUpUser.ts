@@ -4,6 +4,7 @@ import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import { SignUpUserInput } from '../../../types/SignUpUserInput.js';
 import { UserAuthResponse } from '../../../types/UserAuthResponse.js';
 import { MutationSignUpUserArgs } from '../../gql/graphql.js';
@@ -11,11 +12,13 @@ import signUpUserGql from '../../gql/mutations/signUpUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const signUpUser = async (input: SignUpUserInput): Promise<UserAuthResponse> => {
+const signUpUser = async (
+  input: SignUpUserInput,
+): Promise<UserAuthResponse> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -40,11 +43,15 @@ const signUpUser = async (input: SignUpUserInput): Promise<UserAuthResponse> => 
       .gql(document)
       .send({ input })) as { signUpUser: UserAuthResponse };
 
-    console.log('SignUpUser response:', response);
+    logger.debug('SignUpUser response:', response);
 
     return response.signUpUser;
   } catch (error) {
-    console.error('SignUpUser mutation error:', error);
+    logger.error('SignUpUser mutation error:', {
+      input,
+      error,
+      headers: helpers.headers(),
+    });
     throw error;
   }
 };

@@ -1,40 +1,50 @@
 import { describe, expect, test } from 'vitest';
 
-import { BgNodeClient } from '../../../BgNodeClient.js';
-import { CachePolicy, MultiStepActionEventType, MultiStepActionResult } from '../../../enums.js';
-import chance from '../../../helpers/chance.js';
-import data from '../../../helpers/data.js';
+import {
+  CachePolicy,
+  MultiStepActionEventType,
+  MultiStepActionResult,
+} from '../../../enums.js';
+import chance, {
+  uniqueEmail,
+  uniqueUserHandle,
+} from '../../../helpers/chance.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import { getTestClient } from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.verifyMyEmail', () => {
   test('should verify a correct token', async () => {
-    const client = await new BgNodeClient().init(testConfig);
+    const client = await getTestClient();
 
     // Set up test user
     const firstName = chance.first();
     const lastName = chance.last();
-    const userHandle = chance.word();
+    const userHandle = uniqueUserHandle();
+    const email = uniqueEmail();
     const password = chance.word();
-    const email = chance.email();
     const token = '666666';
 
-    const { object: signUpUserAuthResponse } = await client.operations.myUser.signUpUser({
-      userHandle,
-      firstName,
-      lastName,
-      email,
-      password,
-      isTestUser: true,
-      source: `testtoken=${token}`, // this causes all confirmation tokens to be set to '666666'
-    });
+    const { object: signUpUserAuthResponse } =
+      await client.operations.myUser.signUpUser({
+        userHandle,
+        firstName,
+        lastName,
+        email,
+        password,
+        isTestUser: true,
+        source: `testtoken=${token}`, // this causes all confirmation tokens to be set to '666666'
+      });
     const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
 
     // Verify we are signed in:
-    const config1 = data.config();
-    expect(config1.myUserId).toBe(signUpUserAuthResponse.userAuthResponse.userId);
-    expect(config1.authToken).toBe(signUpUserAuthResponse.userAuthResponse.authToken);
+    const clientInfo1 = await client.clientInfoStore.load();
+    expect(clientInfo1.myUserId).toBe(
+      signUpUserAuthResponse.userAuthResponse.userId,
+    );
+    expect(clientInfo1.authToken).toBe(
+      signUpUserAuthResponse.userAuthResponse.authToken,
+    );
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -72,7 +82,10 @@ describe('operations.myUser.verifyMyEmail', () => {
 
             // Verify token with an invalid token:
             const verifyResponse =
-              await client.operations.multiStepAction.verifyMultiStepActionToken(actionId, token);
+              await client.operations.multiStepAction.verifyMultiStepActionToken(
+                actionId,
+                token,
+              );
 
             expect(verifyResponse.error).toBeUndefined();
             expect(verifyResponse.object).toBeDefined();
@@ -84,7 +97,10 @@ describe('operations.myUser.verifyMyEmail', () => {
           if (eventType === MultiStepActionEventType.tokenFailed) {
             // The token was rejected; we try again with the correct token
             const verifyResponse =
-              await client.operations.multiStepAction.verifyMultiStepActionToken(actionId, token);
+              await client.operations.multiStepAction.verifyMultiStepActionToken(
+                actionId,
+                token,
+              );
 
             expect(verifyResponse.error).toBeUndefined();
             expect(verifyResponse.object).toBeDefined();
@@ -109,7 +125,7 @@ describe('operations.myUser.verifyMyEmail', () => {
             });
 
             expect(myUser.id).toBe(myUserId);
-            expect(myUser.id).toBe(testConfig.myUserId);
+            expect(myUser.id).toBe(client.myUserId);
             expect(myUser.userHandle).toBe(userHandle);
             expect(myUser.firstName).toBe(firstName);
             expect(myUser.lastName).toBe(lastName);
@@ -122,7 +138,7 @@ describe('operations.myUser.verifyMyEmail', () => {
             });
 
             expect(myUserFromCache.id).toBe(myUserId);
-            expect(myUserFromCache.id).toBe(testConfig.myUserId);
+            expect(myUserFromCache.id).toBe(client.myUserId);
             expect(myUserFromCache.userHandle).toBe(userHandle);
             expect(myUserFromCache.firstName).toBe(firstName);
             expect(myUserFromCache.lastName).toBe(lastName);
@@ -130,13 +146,17 @@ describe('operations.myUser.verifyMyEmail', () => {
             expect(myUserFromCache.isEmailVerified).toBeTruthy();
 
             // Deleting the user again:
-            const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+            const deleteMyUserResponse = await deleteMyUser(
+              undefined,
+              undefined,
+              true,
+            );
 
             expect(deleteMyUserResponse.error).toBeUndefined();
 
-            const config = data.config();
-            expect(config.myUserId).toBeNull();
-            expect(config.authToken).toBeNull();
+            const clientInfo2 = await client.clientInfoStore.load();
+            expect(clientInfo2.myUserId).toBeUndefined();
+            expect(clientInfo2.authToken).toBeUndefined();
 
             resolve(true);
           }

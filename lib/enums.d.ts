@@ -1,8 +1,4 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
-export declare enum DbType {
-    mem = "mem",
-    rxdb = "rxdb"
-}
 export declare enum ModelEventType {
     error = "error",
     warning = "warning",
@@ -118,7 +114,8 @@ export declare enum ModelType {
     ChannelParticipant = "ChannelParticipant",
     MyUser = "MyUser",
     User = "User",
-    UserInbox = "UserInbox"
+    UserInbox = "UserInbox",
+    ClientInfo = "ClientInfo"
 }
 export declare enum NotificationMethod {
     auto = "auto",

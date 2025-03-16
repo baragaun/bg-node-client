@@ -1,20 +1,21 @@
 import { describe, expect, test } from 'vitest';
 
-import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy } from '../../../enums.js';
-import chance from '../../../helpers/chance.js';
-import data from '../../../helpers/data.js';
+import chance, {
+  uniqueEmail,
+  uniqueUserHandle,
+} from '../../../helpers/chance.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import { getTestClient } from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.updateMyUser', () => {
   test('should update the user', async () => {
-    const client = await new BgNodeClient().init(testConfig);
+    const client = await getTestClient();
     const firstName = chance.first();
     const lastName = chance.last();
     const newLastName = chance.last();
-    const userHandle = chance.word();
-    const email = chance.email();
+    const userHandle = uniqueUserHandle();
+    const email = uniqueEmail();
 
     await client.operations.myUser.signUpUser({
       userHandle,
@@ -26,7 +27,7 @@ describe('operations.myUser.updateMyUser', () => {
 
     await client.operations.myUser.updateMyUser(
       {
-        id: testConfig.myUserId,
+        id: client.myUserId,
         lastName: newLastName,
       },
       { cachePolicy: CachePolicy.network },
@@ -38,7 +39,7 @@ describe('operations.myUser.updateMyUser', () => {
       cachePolicy: CachePolicy.network,
     });
 
-    expect(myUserFromNetwork.id).toBe(testConfig.myUserId);
+    expect(myUserFromNetwork.id).toBe(client.myUserId);
     expect(myUserFromNetwork.userHandle).toBe(userHandle);
     expect(myUserFromNetwork.firstName).toBe(firstName);
     expect(myUserFromNetwork.lastName).toBe(newLastName);
@@ -48,7 +49,7 @@ describe('operations.myUser.updateMyUser', () => {
       cachePolicy: CachePolicy.cache,
     });
 
-    expect(myUserFromCache.id).toBe(testConfig.myUserId);
+    expect(myUserFromCache.id).toBe(client.myUserId);
     expect(myUserFromCache.userHandle).toBe(userHandle);
     expect(myUserFromCache.firstName).toBe(firstName);
     expect(myUserFromCache.lastName).toBe(newLastName);
@@ -59,8 +60,8 @@ describe('operations.myUser.updateMyUser', () => {
 
     expect(deleteMyUserResponse.error).toBeUndefined();
 
-    const config = data.config();
-    expect(config.myUserId).toBeNull();
-    expect(config.authToken).toBeNull();
+    const clientInfo = await client.clientInfoStore.load();
+    expect(clientInfo.myUserId).toBeUndefined();
+    expect(clientInfo.authToken).toBeUndefined();
   });
 }, 60000);

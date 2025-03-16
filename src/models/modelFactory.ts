@@ -3,14 +3,20 @@ import { Channel } from '../types/models/Channel.js';
 import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
+import { ClientInfo } from '../types/models/ClientInfo.js';
 import { Model } from '../types/models/Model.js';
 import { MyUser } from '../types/models/MyUser.js';
 import { User } from '../types/models/User.js';
 import { UserInbox } from '../types/models/UserInbox.js';
 
-const modelFactory = <T extends Model = Model>(attributes: Partial<T>, modelType: ModelType): T => {
+const modelFactory = <T extends Model = Model>(
+  attributes: Partial<T>,
+  modelType: ModelType,
+): T => {
   if (modelType === ModelType.Channel) {
-    return new Channel(attributes as unknown as Partial<Channel>) as unknown as T;
+    return new Channel(
+      attributes as unknown as Partial<Channel>,
+    ) as unknown as T;
   }
   if (modelType === ModelType.ChannelInvitation) {
     return new ChannelInvitation(
@@ -18,11 +24,18 @@ const modelFactory = <T extends Model = Model>(attributes: Partial<T>, modelType
     ) as unknown as T;
   }
   if (modelType === ModelType.ChannelMessage) {
-    return new ChannelMessage(attributes as unknown as Partial<ChannelMessage>) as unknown as T;
+    return new ChannelMessage(
+      attributes as unknown as Partial<ChannelMessage>,
+    ) as unknown as T;
   }
   if (modelType === ModelType.ChannelParticipant) {
     return new ChannelParticipant(
       attributes as unknown as Partial<ChannelParticipant>,
+    ) as unknown as T;
+  }
+  if (modelType === ModelType.ClientInfo) {
+    return new ClientInfo(
+      attributes as unknown as Partial<ClientInfo>,
     ) as unknown as T;
   }
   if (modelType === ModelType.MyUser) {
@@ -35,7 +48,9 @@ const modelFactory = <T extends Model = Model>(attributes: Partial<T>, modelType
   //   return new UserBlock(attributes as unknown as Partial<UserBlock>) as unknown as T;
   // }
   if (modelType === ModelType.UserInbox) {
-    return new UserInbox(attributes as unknown as Partial<UserInbox>) as unknown as T;
+    return new UserInbox(
+      attributes as unknown as Partial<UserInbox>,
+    ) as unknown as T;
   }
 
   throw new Error(`Model type ${modelType} is not supported.`);

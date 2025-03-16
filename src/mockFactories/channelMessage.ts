@@ -2,7 +2,10 @@ import chance from '../helpers/chance.js';
 import { ChannelMessage } from '../types/models/ChannelMessage.js';
 import { User } from '../types/models/User.js';
 
-const createMessage = (attributes: Partial<ChannelMessage>, sender?: User): ChannelMessage => {
+const createMessage = (
+  attributes: Partial<ChannelMessage>,
+  sender?: User,
+): ChannelMessage => {
   const message = new ChannelMessage(attributes);
 
   if (!message.id) {

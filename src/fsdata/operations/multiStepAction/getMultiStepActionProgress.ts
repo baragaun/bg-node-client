@@ -4,6 +4,7 @@ import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
 import gql from '../../gql/queries/getMultiStepActionProgress.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -16,7 +17,7 @@ const getMultiStepActionProgress = async (
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -42,7 +43,10 @@ const getMultiStepActionProgress = async (
 
     return response.getMultiStepActionProgress;
   } catch (error) {
-    console.error(error);
+    logger.error('fsdata.getMultiStepActionProgress: error', {
+      error,
+      headers: helpers.headers(),
+    });
     return null;
   }
 };

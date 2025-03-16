@@ -21,7 +21,6 @@ The following will create a mock channel with 2 participants and 10 messages:
 import { BgNodeClient } from '@baragaun/bg-node-client';
 
 const client = await new BgNodeClient().init({
-  dbType: BgNodeClient.DbType.rxdb,
   fsdata: {
     url: '<api url>',
     headers: {

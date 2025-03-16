@@ -4,16 +4,19 @@ import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import { SidMultiStepAction } from '../../../types/models/SidMultiStepAction.js';
 import gql from '../../gql/queries/findMyActiveMultiStepActions.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const findMyActiveMultiStepActions = async (): Promise<SidMultiStepAction[] | null> => {
+const findMyActiveMultiStepActions = async (): Promise<
+  SidMultiStepAction[] | null
+> => {
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -35,11 +38,14 @@ const findMyActiveMultiStepActions = async (): Promise<SidMultiStepAction[] | nu
       .gql(document)
       .send()) as { findMyActiveMultiStepActions: SidMultiStepAction[] | null };
 
-    console.log(response);
+    logger.debug(response);
 
     return response.findMyActiveMultiStepActions;
   } catch (error) {
-    console.error(error);
+    logger.error('fsdata.findMyActiveMultiStepActions: error', {
+      error,
+      headers: helpers.headers(),
+    });
     return null;
   }
 };

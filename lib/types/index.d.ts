@@ -30,6 +30,7 @@ export * from './models/ChannelMetadata.js';
 export * from './models/ChannelParticipant.js';
 export * from './models/ChannelParticipantListFilter.js';
 export * from './models/ChannelsUserMetadata.js';
+export * from './models/ClientInfo.js';
 export * from './models/Contact.js';
 export * from './models/ContactMetadata.js';
 export * from './models/IBaseModel.js';

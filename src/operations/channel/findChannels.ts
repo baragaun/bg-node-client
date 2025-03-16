@@ -22,7 +22,9 @@ const findChannels = async (
         return db.findById<Channel>(filter.ids[0], ModelType.Channel);
       }
 
-      const { objects: channels } = await db.findAll<Channel>(ModelType.Channel);
+      const { objects: channels } = await db.findAll<Channel>(
+        ModelType.Channel,
+      );
       let list: Channel[] = channels;
 
       if (filter.userId) {
@@ -36,7 +38,9 @@ const findChannels = async (
       }
 
       if (match.name) {
-        list = channels.filter((c) => c.name && c.name.localeCompare(match.name as string) === 0);
+        list = channels.filter(
+          (c) => c.name && c.name.localeCompare(match.name as string) === 0,
+        );
       }
 
       if (skip > 0 && limit > 0) {
@@ -45,7 +49,8 @@ const findChannels = async (
 
       return {
         objects: list.sort(
-          (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
         ),
       };
     } catch (error) {

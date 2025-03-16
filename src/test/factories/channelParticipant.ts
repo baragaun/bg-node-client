@@ -18,7 +18,12 @@ channelParticipantFactory.create = (
   options?: any,
   count?: number,
 ): Promise<ChannelParticipant | ChannelParticipant[]> =>
-  create<ChannelParticipant>(props, ModelType.ChannelParticipant, options, count);
+  create<ChannelParticipant>(
+    props,
+    ModelType.ChannelParticipant,
+    options,
+    count,
+  );
 
 channelParticipantFactory.save = async (
   channelParticipant: ChannelParticipant,

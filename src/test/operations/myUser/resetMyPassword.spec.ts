@@ -1,46 +1,52 @@
 import { describe, expect, test } from 'vitest';
 
-import { BgNodeClient } from '../../../BgNodeClient.js';
 import {
   CachePolicy,
   MultiStepActionEventType,
   MultiStepActionResult,
   UserIdentType,
 } from '../../../enums.js';
-import chance from '../../../helpers/chance.js';
-import data from '../../../helpers/data.js';
+import chance, {
+  uniqueEmail,
+  uniqueUserHandle,
+} from '../../../helpers/chance.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import { getTestClient } from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.resetMyPassword', () => {
   test('should verify a correct token', async () => {
-    const client = await new BgNodeClient().init(testConfig);
+    const client = await getTestClient();
 
     // Set up test user
     const firstName = chance.first();
     const lastName = chance.last();
-    const userHandle = chance.word();
+    const userHandle = uniqueUserHandle();
+    const email = uniqueEmail();
     const password = chance.word();
     const newPassword = chance.word();
-    const email = chance.email();
     const token = '666666';
 
-    const { object: signUpUserAuthResponse } = await client.operations.myUser.signUpUser({
-      userHandle,
-      firstName,
-      lastName,
-      email,
-      password,
-      isTestUser: true,
-      source: `testtoken=${token}`, // this causes all confirmation tokens to be set to '666666'
-    });
+    const { object: signUpUserAuthResponse } =
+      await client.operations.myUser.signUpUser({
+        userHandle,
+        firstName,
+        lastName,
+        email,
+        password,
+        isTestUser: true,
+        source: `testtoken=${token}`, // this causes all confirmation tokens to be set to '666666'
+      });
     const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
 
     // Verify we are signed in:
-    const config1 = data.config();
-    expect(config1.myUserId).toBe(signUpUserAuthResponse.userAuthResponse.userId);
-    expect(config1.authToken).toBe(signUpUserAuthResponse.userAuthResponse.authToken);
+    const clientInfo1 = await client.clientInfoStore.load();
+    expect(clientInfo1.myUserId).toBe(
+      signUpUserAuthResponse.userAuthResponse.userId,
+    );
+    expect(clientInfo1.authToken).toBe(
+      signUpUserAuthResponse.userAuthResponse.authToken,
+    );
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -122,12 +128,14 @@ describe('operations.myUser.resetMyPassword', () => {
             });
 
             expect(myUser.id).toBe(myUserId);
-            expect(myUser.id).toBe(testConfig.myUserId);
+            expect(myUser.id).toBe(client.myUserId);
             expect(myUser.userHandle).toBe(userHandle);
             expect(myUser.firstName).toBe(firstName);
             expect(myUser.lastName).toBe(lastName);
             expect(myUser.email).toBe(email);
-            expect(Date.now() - new Date(myUser.passwordUpdatedAt).getTime()).toBeLessThan(10000);
+            expect(
+              Date.now() - new Date(myUser.passwordUpdatedAt).getTime(),
+            ).toBeLessThan(10000);
 
             // Verify the email has been marked as confirmed on the cached user object:
             const myUserFromCache = await client.operations.myUser.findMyUser({
@@ -135,45 +143,58 @@ describe('operations.myUser.resetMyPassword', () => {
             });
 
             expect(myUserFromCache.id).toBe(myUserId);
-            expect(myUserFromCache.id).toBe(testConfig.myUserId);
+            expect(myUserFromCache.id).toBe(client.myUserId);
             expect(myUserFromCache.userHandle).toBe(userHandle);
             expect(myUserFromCache.firstName).toBe(firstName);
             expect(myUserFromCache.lastName).toBe(lastName);
             expect(myUserFromCache.email).toBe(email);
-            expect(Date.now() - new Date(myUser.passwordUpdatedAt).getTime()).toBeLessThan(10000);
+            expect(
+              Date.now() - new Date(myUser.passwordUpdatedAt).getTime(),
+            ).toBeLessThan(10000);
 
             // Signing out the user, so we can test to sign in again with the new password:
             await client.operations.myUser.signMeOut();
 
-            const config2 = data.config();
-            expect(config2.myUserId).toBeNull();
-            expect(config2.authToken).toBeNull();
+            const clientInfo1 = await client.clientInfoStore.load();
+            expect(clientInfo1.myUserId).toBeUndefined();
+            expect(clientInfo1.authToken).toBeUndefined();
 
             // Signing in with the new password:
-            const signInUserResponse = await client.operations.myUser.signInUser({
-              ident: email,
-              identType: UserIdentType.email,
-              password: newPassword,
-            });
+            const signInUserResponse =
+              await client.operations.myUser.signInUser({
+                ident: email,
+                identType: UserIdentType.email,
+                password: newPassword,
+              });
 
             expect(signInUserResponse.error).toBeUndefined();
             expect(signInUserResponse.object.userAuthResponse).toBeDefined();
-            expect(signInUserResponse.object.userAuthResponse.userId).toBe(myUserId);
-            expect(signInUserResponse.object.userAuthResponse.authToken.length).toBeGreaterThan(10);
+            expect(signInUserResponse.object.userAuthResponse.userId).toBe(
+              myUserId,
+            );
+            expect(
+              signInUserResponse.object.userAuthResponse.authToken.length,
+            ).toBeGreaterThan(10);
             expect(signInUserResponse.object.myUser).toBeDefined();
             expect(signInUserResponse.object.myUser.id).toBe(myUserId);
-            expect(signInUserResponse.object.myUser.userHandle).toBe(userHandle);
+            expect(signInUserResponse.object.myUser.userHandle).toBe(
+              userHandle,
+            );
             expect(signInUserResponse.object.myUser.firstName).toBe(firstName);
             expect(signInUserResponse.object.myUser.lastName).toBe(lastName);
             expect(signInUserResponse.object.myUser.email).toBe(email);
 
-            const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+            const deleteMyUserResponse = await deleteMyUser(
+              undefined,
+              undefined,
+              true,
+            );
 
             expect(deleteMyUserResponse.error).toBeUndefined();
 
-            const config3 = data.config();
-            expect(config3.myUserId).toBeNull();
-            expect(config3.authToken).toBeNull();
+            const clientInfo2 = await client.clientInfoStore.load();
+            expect(clientInfo2.myUserId).toBeUndefined();
+            expect(clientInfo2.authToken).toBeUndefined();
 
             resolve(true);
           }

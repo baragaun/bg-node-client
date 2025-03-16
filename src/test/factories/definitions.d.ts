@@ -17,7 +17,8 @@ export interface ChannelFactory extends rosie.IFactory<Channel> {
   delete: (channel: Channel) => Promise<Channel>;
 }
 
-export interface ChannelInvitationFactory extends rosie.IFactory<ChannelInvitation> {
+export interface ChannelInvitationFactory
+  extends rosie.IFactory<ChannelInvitation> {
   create: (
     props: Partial<ChannelInvitation | ChannelInvitation[]>,
     options?: any,
@@ -37,18 +38,25 @@ export interface ChannelMessageFactory extends rosie.IFactory<ChannelMessage> {
   delete: (channelMessage: ChannelMessage) => Promise<ChannelMessage>;
 }
 
-export interface ChannelParticipantFactory extends rosie.IFactory<ChannelParticipant> {
+export interface ChannelParticipantFactory
+  extends rosie.IFactory<ChannelParticipant> {
   create: (
     props: Partial<ChannelParticipant | ChannelParticipant[]>,
     options?: any,
     count?: number,
   ) => Promise<ChannelParticipant | ChannelParticipant[]>;
   save: (channelParticipant: ChannelParticipant) => Promise<ChannelParticipant>;
-  delete: (channelParticipant: ChannelParticipant) => Promise<ChannelParticipant>;
+  delete: (
+    channelParticipant: ChannelParticipant,
+  ) => Promise<ChannelParticipant>;
 }
 
 export interface UserFactory extends rosie.IFactory<User> {
-  create: (props: Partial<User | User[]>, options?: any, count?: number) => Promise<User | User[]>;
+  create: (
+    props: Partial<User | User[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<User | User[]>;
   save: (user: User) => Promise<User>;
   delete: (user: User) => Promise<User>;
 }

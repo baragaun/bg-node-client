@@ -1,8 +1,9 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import data from '../../helpers/data.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
+import logger from '../../helpers/logger.js';
 import { MutationResult } from '../../types/index.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -11,18 +12,13 @@ const updateMyUser = async (
   myUser: Partial<MyUser>,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<MutationResult<MyUser | null>> => {
-  const result: MutationResult<MyUser | null> = { operation: MutationType.update };
-  const config = data.config();
+  const result: MutationResult<MyUser | null> = {
+    operation: MutationType.update,
+  };
+  const clientInfo = clientInfoStore.get();
 
   if (!queryOptions) {
     queryOptions = defaultQueryOptionsForMutations;
-  }
-
-  if (!config) {
-    console.error('updateMyUser: no config.');
-
-    result.error = 'not-available';
-    return result;
   }
 
   try {
@@ -30,15 +26,24 @@ const updateMyUser = async (
       queryOptions.cachePolicy === CachePolicy.cache ||
       queryOptions.cachePolicy === CachePolicy.cacheFirst
     ) {
-      const queryResult = await db.findById<MyUser>(config.myUserId, ModelType.MyUser);
+      const queryResult = await db.findById<MyUser>(
+        clientInfo.myUserId,
+        ModelType.MyUser,
+      );
 
-      if (queryResult.object || queryOptions.cachePolicy === CachePolicy.cache) {
+      if (
+        queryResult.object ||
+        queryOptions.cachePolicy === CachePolicy.cache
+      ) {
         result.object = queryResult.object;
         return result;
       }
     }
 
-    const updatedMyUser = await fsdata.myUser.updateMyUser(myUser, queryOptions);
+    const updatedMyUser = await fsdata.myUser.updateMyUser(
+      myUser,
+      queryOptions,
+    );
 
     if (updatedMyUser) {
       // Update local cache:
@@ -48,7 +53,7 @@ const updateMyUser = async (
     result.object = updatedMyUser;
     return result;
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     result.error = error.message;
     return result;
   }

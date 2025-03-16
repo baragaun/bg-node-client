@@ -20,7 +20,10 @@ export abstract class BaseListFilter {
       if (attributes.searchText) {
         this.searchText = attributes.searchText;
       }
-      if (attributes.caseSensitive === true || attributes.caseSensitive === false) {
+      if (
+        attributes.caseSensitive === true ||
+        attributes.caseSensitive === false
+      ) {
         this.caseSensitive = attributes.caseSensitive;
       }
       if (attributes.textSearchFields) {

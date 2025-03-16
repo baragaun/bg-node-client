@@ -1,55 +1,68 @@
 import { describe, expect, test } from 'vitest';
 
-import { BgNodeClient } from '../../../BgNodeClient.js';
-import { MultiStepActionEventType, MultiStepActionResult } from '../../../enums.js';
-import chance from '../../../helpers/chance.js';
-import data from '../../../helpers/data.js';
+import {
+  MultiStepActionEventType,
+  MultiStepActionResult,
+} from '../../../enums.js';
+import chance, {
+  uniqueEmail,
+  uniqueUserHandle,
+} from '../../../helpers/chance.js';
+import logger from '../../../helpers/logger.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import { getTestClient } from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.signInWithToken', () => {
   test('should verify a correct token', async () => {
-    const client = await new BgNodeClient().init(testConfig);
+    const client = await getTestClient();
 
     // Set up test user
     const firstName = chance.first();
     const lastName = chance.last();
-    const userHandle = chance.word();
+    const userHandle = uniqueUserHandle();
+    const email = uniqueEmail();
     const password = chance.word();
-    const email = chance.email();
     const token = '666666';
 
-    const { object: signUpUserAuthResponse } = await client.operations.myUser.signUpUser({
-      userHandle,
-      firstName,
-      lastName,
-      email,
-      password,
-      isTestUser: true,
-      source: `testtoken=${token}`, // this causes all confirmation tokens to be set to '666666'
-    });
+    const { object: signUpUserAuthResponse } =
+      await client.operations.myUser.signUpUser({
+        userHandle,
+        firstName,
+        lastName,
+        email,
+        password,
+        isTestUser: true,
+        source: `testtoken=${token}`, // this causes all confirmation tokens to be set to '666666'
+      });
     const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
 
     // Verifying we are signed in:
-    const config1 = data.config();
-    expect(config1.myUserId).toBe(signUpUserAuthResponse.userAuthResponse.userId);
-    expect(config1.authToken).toBe(signUpUserAuthResponse.userAuthResponse.authToken);
+    const clientInfo1 = await client.clientInfoStore.load();
+    expect(clientInfo1.myUserId).toBe(
+      signUpUserAuthResponse.userAuthResponse.userId,
+    );
+    expect(clientInfo1.authToken).toBe(
+      signUpUserAuthResponse.userAuthResponse.authToken,
+    );
 
     // Sign out to test sign in process
     await client.operations.myUser.signMeOut();
 
     // Verifying we are signed out:
-    const config2 = data.config();
-    expect(config2.myUserId).toBeNull();
-    expect(config2.authToken).toBeNull();
+    const clientInfo2 = await client.clientInfoStore.load();
+    expect(clientInfo2.myUserId).toBeUndefined();
+    expect(clientInfo2.authToken).toBeUndefined();
 
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Start sign in process
-    const signInResponse = await client.operations.myUser.signInWithToken(email, {
-      polling: { enabled: true, timeout: 240000 },
-    });
+    const signInResponse = await client.operations.myUser.signInWithToken(
+      email,
+      {
+        polling: { enabled: true, timeout: 240000 },
+      },
+    );
 
     expect(signInResponse).toBeDefined();
     expect(signInResponse.error).toBeUndefined();
@@ -70,7 +83,10 @@ describe('operations.myUser.signInWithToken', () => {
           eventType: MultiStepActionEventType,
           action: SidMultiStepActionProgress,
         ) => {
-          console.log('signInWithToken.spec.onEvent called.', { eventType, action });
+          logger.debug('signInWithToken.spec.onEvent called.', {
+            eventType,
+            action,
+          });
 
           if (
             eventType === MultiStepActionEventType.notificationSent ||
@@ -79,7 +95,10 @@ describe('operations.myUser.signInWithToken', () => {
             expect(action.notificationResult).toBeDefined();
 
             // Verify token with an invalid token:
-            console.log('signInWithToken.spec.onEvent: sending 000000.', { eventType, action });
+            logger.debug('signInWithToken.spec.onEvent: sending 000000.', {
+              eventType,
+              action,
+            });
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
                 actionId,
@@ -95,9 +114,15 @@ describe('operations.myUser.signInWithToken', () => {
 
           if (eventType === MultiStepActionEventType.tokenFailed) {
             // The token was rejected; we try again with the correct token
-            console.log('signInWithToken.spec.onEvent: sending 666666.', { eventType, action });
+            logger.debug('signInWithToken.spec.onEvent: sending 666666.', {
+              eventType,
+              action,
+            });
             const verifyResponse =
-              await client.operations.multiStepAction.verifyMultiStepActionToken(actionId, token);
+              await client.operations.multiStepAction.verifyMultiStepActionToken(
+                actionId,
+                token,
+              );
 
             expect(verifyResponse.error).toBeUndefined();
             expect(verifyResponse.object).toBeDefined();
@@ -113,19 +138,23 @@ describe('operations.myUser.signInWithToken', () => {
             expect(action.authToken).not.toBeUndefined();
             expect(action.authToken.length).toBeGreaterThan(10);
 
-            const config = data.config();
-            expect(config.myUserId).toBe(myUserId);
-            expect(config.authToken).toBe(action.authToken);
+            const clientInfo1 = await client.clientInfoStore.load();
+            expect(clientInfo1.myUserId).toBe(myUserId);
+            expect(clientInfo1.authToken).toBe(action.authToken);
             expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
             // Deleting the user again:
-            const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
+            const deleteMyUserResponse = await deleteMyUser(
+              undefined,
+              undefined,
+              true,
+            );
 
             expect(deleteMyUserResponse.error).toBeUndefined();
 
-            const config2 = data.config();
-            expect(config2.myUserId).toBeNull();
-            expect(config2.authToken).toBeNull();
+            const clientInfo2 = await client.clientInfoStore.load();
+            expect(clientInfo2.myUserId).toBeUndefined();
+            expect(clientInfo2.authToken).toBeUndefined();
 
             resolve(true);
           }

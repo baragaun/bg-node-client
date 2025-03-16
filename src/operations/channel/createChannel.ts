@@ -3,7 +3,9 @@ import { MutationType } from '../../enums.js';
 import { Channel } from '../../types/models/Channel.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
-const createChannel = async (attributes: Partial<Channel>): Promise<MutationResult<Channel>> => {
+const createChannel = async (
+  attributes: Partial<Channel>,
+): Promise<MutationResult<Channel>> => {
   try {
     const channel = new Channel(attributes);
 

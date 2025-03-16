@@ -14,10 +14,16 @@ export abstract class SidUserPreferences extends BaseModel {
       if (attributes.shareEmail === true || attributes.shareEmail === false) {
         this.shareEmail = attributes.shareEmail;
       }
-      if (attributes.sharePhoneNumber === true || attributes.sharePhoneNumber === false) {
+      if (
+        attributes.sharePhoneNumber === true ||
+        attributes.sharePhoneNumber === false
+      ) {
         this.sharePhoneNumber = attributes.sharePhoneNumber;
       }
-      if (attributes.showWelcomeMessage === true || attributes.showWelcomeMessage === false) {
+      if (
+        attributes.showWelcomeMessage === true ||
+        attributes.showWelcomeMessage === false
+      ) {
         this.showWelcomeMessage = attributes.showWelcomeMessage;
       }
       if (attributes.notificationOptions) {

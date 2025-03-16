@@ -9,7 +9,7 @@ const createUser = (attributes: Partial<User>): User => {
   }
 
   if (!user.userHandle) {
-    user.userHandle = chance.word();
+    user.userHandle = `${chance.word()}-${Date.now()}`;
   }
 
   if (!user.firstName) {
@@ -21,7 +21,7 @@ const createUser = (attributes: Partial<User>): User => {
   }
 
   if (!user.email) {
-    user.email = chance.email();
+    user.email = `holger+test-${Date.now()}@baragaun.com`;
   }
 
   if (!user.avatarUrl) {

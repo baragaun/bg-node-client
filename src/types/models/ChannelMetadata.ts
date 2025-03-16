@@ -19,7 +19,8 @@ export class ChannelMetadata extends BgChannelMetadata {
       }
       if (
         attributes.messagesSentByCreatorCount === 0 ||
-        (attributes.messagesSentByCreatorCount && !isNaN(attributes.messagesSentByCreatorCount))
+        (attributes.messagesSentByCreatorCount &&
+          !isNaN(attributes.messagesSentByCreatorCount))
       ) {
         this.messagesSentByCreatorCount = attributes.messagesSentByCreatorCount;
       }
@@ -28,7 +29,8 @@ export class ChannelMetadata extends BgChannelMetadata {
         (attributes.messagesSentByFirstParticipantCount &&
           !isNaN(attributes.messagesSentByFirstParticipantCount))
       ) {
-        this.messagesSentByFirstParticipantCount = attributes.messagesSentByFirstParticipantCount;
+        this.messagesSentByFirstParticipantCount =
+          attributes.messagesSentByFirstParticipantCount;
       }
     }
   }

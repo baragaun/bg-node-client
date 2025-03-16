@@ -5,7 +5,9 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 // import { create } from '../../graffle/fsdata/_.js'
 
+import clientInfoStore from '../../../helpers/clientInfoStore.js';
 import data from '../../../helpers/data.js';
+import logger from '../../../helpers/logger.js';
 import { MutationDeleteMyUserArgs } from '../../gql/graphql.js';
 import deleteMyUserGql from '../../gql/mutations/deleteMyUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -16,10 +18,12 @@ const deleteMyUser = async (
   description: string | null | undefined,
   deletePhysically: boolean,
 ): Promise<void> => {
+  const clientInfo = clientInfoStore.get();
+  const myUserId = clientInfo.myUserId;
   const config = data.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
-    console.error('GraphQL not configured.');
+    logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
 
@@ -41,17 +45,18 @@ const deleteMyUser = async (
     const response = (await client
       // @ts-ignore
       .gql(document)
-      .send({ cause, description, deletePhysically })) as { deleteMyUser: string };
+      .send({ cause, description, deletePhysically })) as {
+      deleteMyUser: string;
+    };
 
-    ok = response.deleteMyUser === config.myUserId;
+    ok = response.deleteMyUser === myUserId;
   } catch (error) {
-    const headers = helpers.headers();
-    console.error('deleteMyUser failed.', { error, headers });
+    logger.error('deleteMyUser failed.', { error, headers: helpers.headers() });
     return null;
   }
 
   if (!ok) {
-    console.error('deleteMyUser: backend did not send userId.');
+    logger.error('deleteMyUser: backend did not send userId.');
     throw new Error('system-error');
   }
 };
