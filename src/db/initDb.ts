@@ -1,4 +1,6 @@
 import addFormats from 'ajv-formats';
+// import crypto from 'node:crypto';
+import { webcrypto } from 'node:crypto';
 import {
   addRxPlugin,
   createRxDatabase,
@@ -9,6 +11,7 @@ import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
 import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
 import { getAjv, wrappedValidateAjvStorage } from 'rxdb/plugins/validate-ajv';
+import semver from 'semver';
 
 // import Ajv from 'ajv';
 // import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
@@ -23,6 +26,14 @@ import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { MyUser } from '../types/models/MyUser.js';
 // import initLibSignal from './initLibSignal.js';
 // import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
+
+// Make it globally available
+if (semver.lt(process.version, 'v19.0.0') && !globalThis.crypto) {
+  // For Node.js < 19.0.0, add webcrypto to globalThis
+  // @ts-ignore
+  globalThis.crypto = webcrypto;
+  console.log(`Added WebCrypto API to globalThis for Node.js ${process.version}`);
+}
 
 const loadMyUser = async (
   myUserId: string | null | undefined,
@@ -68,6 +79,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     config.appEnvironment === AppEnvironment.test ||
     config.appEnvironment === AppEnvironment.development
   ) {
+    // RxDBDevModePlugin.disableWarnings();
     addRxPlugin(RxDBDevModePlugin);
     storage = wrappedValidateAjvStorage({
       storage: storage as any,
