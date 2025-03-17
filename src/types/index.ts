@@ -3,6 +3,7 @@ export * from './BgDataListener.js';
 export * from './BgNodeClientConfig.js';
 export * from './ChannelEventPayload.js';
 export * from './HttpHeaders.js';
+export * from './logger.js';
 export * from './MultiStepActionError.js';
 export * from './MultiStepActionListener.js';
 export * from './MultiStepActionProgressResult.js';

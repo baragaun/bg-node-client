@@ -1,5 +1,5 @@
-import { Logger } from "winston";
-import { BgNodeClientConfig } from "./types/BgNodeClientConfig.js";
+import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
+import { Logger } from './types/logger.js';
 export declare class BgNodeClient {
     init(config: BgNodeClientConfig, myUserId?: string, myUserDeviceUuid?: string, appLogger?: Logger): Promise<BgNodeClient>;
     addListener: (listener: import("./types/BgDataListener.js").BgDataListener) => void;

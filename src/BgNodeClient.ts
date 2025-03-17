@@ -1,13 +1,12 @@
-import { Logger } from "winston";
-
 // import { BgDataListener } from './BgDataListener.js';
 // import { Operations } from './Operations.js';
-import db from "./db/db.js";
-import clientInfoStore from "./helpers/clientInfoStore.js";
-import data from "./helpers/data.js";
-import logger, { setLogger } from "./helpers/logger.js";
-import operations from "./operations/operations.js";
-import { BgNodeClientConfig } from "./types/BgNodeClientConfig.js";
+import db from './db/db.js';
+import clientInfoStore from './helpers/clientInfoStore.js';
+import data from './helpers/data.js';
+import logger, { setLogger } from './helpers/logger.js';
+import operations from './operations/operations.js';
+import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
+import { Logger } from './types/logger.js';
 
 export class BgNodeClient {
   public async init(
@@ -16,8 +15,8 @@ export class BgNodeClient {
     myUserDeviceUuid?: string,
     appLogger?: Logger,
   ): Promise<BgNodeClient> {
-    if (appLogger && appLogger.transports.length > 0) {
-      setLogger(appLogger.child({ scope: "BgNodeClient" }));
+    if (appLogger) {
+      setLogger(appLogger);
     }
 
     logger.debug("BgNodeClient.init called.", {

@@ -1,6 +1,6 @@
 {
   "name": "@baragaun/bg-node-client",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Node client for Baragaun backend services",
   "type": "module",
   "engines": {
@@ -38,27 +38,22 @@
   "dependencies": {
     "@graphql-typed-document-node/core": "^3.2.0",
     "@opentelemetry/api": "^1.9.0",
-    "add": "^2.0.6",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "chance": "^1.1.12",
-    "crypto-browserify": "^3.12.1",
     "graffle": "8.0.0-next.157",
     "graphql": "^16.10.0",
     "nats": "^2.29.2",
-    "npm": "^11.1.0",
     "rxdb": "^16.6.1",
     "rxjs": "^7.8.2",
     "tslib": "~2.8",
-    "uuid": "^11.1.0",
-    "winston": "^3.17.0"
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/js": "~9.17",
     "@graphql-codegen/cli": "^5.0.5",
     "@types/chance": "^1.1.6",
     "@types/eslint__js": "~8.42",
-    "@types/factory-girl": "^5.0.12",
     "@types/node": "~22.13.10",
     "@types/rosie": "^0.0.45",
     "@typescript-eslint/parser": "~8.19.1",
@@ -68,7 +63,6 @@
     "eslint-import-resolver-typescript": "^3.8.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-node": "^11.1.0",
-    "factory-girl": "^5.0.4",
     "factory.ts": "^1.4.2",
     "globals": "~15.14",
     "rimraf": "~6.0",

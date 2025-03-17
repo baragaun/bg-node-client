@@ -38,7 +38,7 @@ const findMyActiveMultiStepActions = async (): Promise<
       .gql(document)
       .send()) as { findMyActiveMultiStepActions: SidMultiStepAction[] | null };
 
-    logger.debug(response);
+    logger.debug('fsdata.findMyActiveMultiStepAction: response received.', response);
 
     return response.findMyActiveMultiStepActions;
   } catch (error) {

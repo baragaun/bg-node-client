@@ -36,7 +36,7 @@ const findUserById = async (): Promise<MyUser | null> => {
       .gql(document)
       .send()) as { findMyUser: MyUser | null };
 
-    logger.debug(response);
+    logger.debug('fsdata.findUserById: response received.', response);
 
     return response.findMyUser;
   } catch (error) {

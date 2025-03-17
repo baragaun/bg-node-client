@@ -1,24 +1,16 @@
-import winston, { Logger } from 'winston';
+import { DefaultLogger, LoggerConfig, LogLevel } from './DefaultLogger.js';
+import { Logger } from '../types/logger.js';
 
-let logger: Logger | undefined = undefined;
+const config: LoggerConfig = {
+  level: LogLevel.DEBUG,
+  showTimestamp: false,
+  showLogLevel: false,
+}
+
+let logger: Logger = new DefaultLogger(config);
 
 export const setLogger = (newLogger: Logger): void => {
   logger = newLogger;
 };
 
-const level = process.env.LOG_LEVEL || 'debug';
-
-logger = winston.createLogger({
-  level,
-  format: winston.format.json(),
-  defaultMeta: { service: 'bg-node-client' },
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.json(),
-    }),
-  ],
-});
-
-logger.debug('Logger initialized', { level });
-
-export default logger as unknown as Logger;
+export default logger;

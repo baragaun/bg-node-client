@@ -1,4 +1,4 @@
-import { Logger } from 'winston';
+import { Logger } from '../types/logger.js';
+declare let logger: Logger;
 export declare const setLogger: (newLogger: Logger) => void;
-declare const _default: Logger;
-export default _default;
+export default logger;
