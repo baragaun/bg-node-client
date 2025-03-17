@@ -3,7 +3,7 @@
 import db from './db/db.js';
 import clientInfoStore from './helpers/clientInfoStore.js';
 import data from './helpers/data.js';
-import logger, { setLogger } from './helpers/logger.js';
+import logger, { setLogger, setLogLevel } from './helpers/logger.js';
 import operations from './operations/operations.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { Logger } from './types/logger.js';
@@ -17,6 +17,8 @@ export class BgNodeClient {
   ): Promise<BgNodeClient> {
     if (appLogger) {
       setLogger(appLogger);
+    } else if (config.logLevel) {
+      setLogLevel(config.logLevel);
     }
 
     logger.debug("BgNodeClient.init called.", {
