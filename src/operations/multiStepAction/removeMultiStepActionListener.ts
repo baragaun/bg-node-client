@@ -1,10 +1,10 @@
-import data from '../../helpers/data.js';
+import libData from '../../helpers/libData.js';
 
 const removeMultiStepActionListener = (
   actionId: string,
   id: string,
 ): boolean => {
-  const run = data.multiStepActionRun(actionId);
+  const run = libData.multiStepActionRun(actionId);
 
   if (!run) {
     return false;

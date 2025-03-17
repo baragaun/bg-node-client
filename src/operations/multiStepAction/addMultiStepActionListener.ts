@@ -1,4 +1,4 @@
-import data from '../../helpers/data.js';
+import libData from '../../helpers/libData.js';
 import { MultiStepActionListener } from '../../types/index.js';
 
 /**
@@ -11,7 +11,7 @@ const addMultiStepActionListener = (
   actionId: string,
   listener: MultiStepActionListener,
 ): string | null => {
-  const run = data.multiStepActionRun(actionId);
+  const run = libData.multiStepActionRun(actionId);
 
   if (!run) {
     return null;

@@ -1,20 +1,30 @@
 import Chance from 'chance';
 
+import appStore from './libData.js';
+
 const chance = new Chance();
 
 const date = new Date();
 const dateMMDD = `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 
-const emailDomain = process.env.EMAIL_DOMAIN || 'baragaun.com';
-const emailPrefix = process.env.EMAIL_PREFIX || 'holger+test-';
+let emailDomain: string | undefined = undefined;
+let emailPrefix: string | undefined = undefined;
 let emailCounter = 1;
 let userHandleCounter = 1;
 
 export const uniqueEmail = (): string => {
+  if (!emailDomain) {
+    emailDomain = appStore.config()?.testEmailDomain || 'test.com';
+    emailPrefix = appStore.config()?.testEmailPrefix || 'test';
+  }
   return `${emailPrefix}${dateMMDD}-${crypto.randomUUID().replaceAll('-', '')}-${emailCounter++}@${emailDomain}`;
 };
 
 export const uniqueUserHandle = (): string => {
+  if (!emailDomain) {
+    emailDomain = appStore.config()?.testEmailDomain || 'test.com';
+    emailPrefix = appStore.config()?.testEmailPrefix || 'test';
+  }
   return `${chance.word()}-${crypto.randomUUID().replaceAll('-', '')}-${userHandleCounter++}`;
 };
 

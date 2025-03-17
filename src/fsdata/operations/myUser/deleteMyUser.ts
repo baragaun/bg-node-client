@@ -6,7 +6,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 // import { create } from '../../graffle/fsdata/_.js'
 
 import clientInfoStore from '../../../helpers/clientInfoStore.js';
-import data from '../../../helpers/data.js';
+import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { MutationDeleteMyUserArgs } from '../../gql/graphql.js';
 import deleteMyUserGql from '../../gql/mutations/deleteMyUser.graphql.js';
@@ -20,7 +20,7 @@ const deleteMyUser = async (
 ): Promise<void> => {
   const clientInfo = clientInfoStore.get();
   const myUserId = clientInfo.myUserId;
-  const config = data.config();
+  const config = libData.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
@@ -29,7 +29,7 @@ const deleteMyUser = async (
 
   const client = Graffle.create()
     .transport({
-      url: data.config().fsdata.url,
+      url: libData.config().fsdata.url,
       headers: helpers.headers(),
     })
     .use(Throws())

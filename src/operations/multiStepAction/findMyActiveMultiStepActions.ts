@@ -1,12 +1,12 @@
 import fsdata from '../../fsdata/fsdata.js';
-import data from '../../helpers/data.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { SidMultiStepAction } from '../../types/models/SidMultiStepAction.js';
 
 const findMyActiveMultiStepActions = async (): Promise<
   SidMultiStepAction[]
 > => {
-  const config = data.config();
+  const config = libData.config();
 
   if (!config) {
     logger.error('findMyActiveMultiStepActions: no config.');

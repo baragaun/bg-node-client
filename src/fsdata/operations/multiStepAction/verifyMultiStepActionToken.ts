@@ -3,7 +3,7 @@ import { Graffle } from 'graffle';
 // import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-import data from '../../../helpers/data.js';
+import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
 import { VerifyMultiStepActionTokenInput } from '../../../types/models/VerifyMultiStepActionTokenInput.js';
@@ -21,7 +21,7 @@ const verifyMultiStepActionToken = async (
   confirmToken: string,
   newPassword?: string,
 ): Promise<SidMultiStepActionProgress> => {
-  const config = data.config();
+  const config = libData.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
@@ -30,7 +30,7 @@ const verifyMultiStepActionToken = async (
 
   try {
     const client = Graffle.create().transport({
-      url: data.config().fsdata.url,
+      url: libData.config().fsdata.url,
       headers: helpers.headers(),
     });
     // .use(Throws())

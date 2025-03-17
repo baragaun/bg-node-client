@@ -7,7 +7,7 @@ import {
 } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
-import data from '../../helpers/data.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import saveClientInfo from '../../helpers/saveClientInfo.js';
 import { MultiStepActionRun } from '../../types/models/MultiStepActionRun.js';
@@ -77,7 +77,7 @@ const getMultiStepActionProgress = async (
       return result;
     }
 
-    let run: MultiStepActionRun | null = data.multiStepActionRun(
+    let run: MultiStepActionRun | null = libData.multiStepActionRun(
       actionProgress.actionId,
     );
     const previousProgress: SidMultiStepActionProgress | undefined =
@@ -95,7 +95,7 @@ const getMultiStepActionProgress = async (
         actionProgress,
         pollingOptions: queryOptions.polling,
       });
-      data.addMultiStepActionRun(run);
+      libData.addMultiStepActionRun(run);
     }
 
     logger.debug(
@@ -137,10 +137,10 @@ const getMultiStepActionProgress = async (
       ) {
         // The user just signed in with a token.
         // Making the user info available to the rest of the client:
-        const config = data.config();
+        const config = libData.config();
         clientInfo.myUserId = actionProgress.userId;
         clientInfo.authToken = actionProgress.authToken;
-        data.setConfig(config);
+        libData.setConfig(config);
 
         // Save the data to LocalStorage:
         await saveClientInfo({
@@ -174,7 +174,7 @@ const getMultiStepActionProgress = async (
         actionProgress.result !== MultiStepActionResult.passwordMismatch
       ) {
         // This ends the polling.
-        data.removeMultiStepActionRun(actionProgress.actionId);
+        libData.removeMultiStepActionRun(actionProgress.actionId);
 
         result.object = {
           id: actionProgress.actionId,
@@ -197,7 +197,7 @@ const getMultiStepActionProgress = async (
       run.pollingFinishedAt = new Date();
 
       run.onEventReceived(MultiStepActionEventType.timedOut);
-      data.removeMultiStepActionRun(actionProgress.actionId);
+      libData.removeMultiStepActionRun(actionProgress.actionId);
 
       result.object = {
         id: actionProgress.actionId,

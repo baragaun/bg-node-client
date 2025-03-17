@@ -13,11 +13,6 @@ yarn add "@baragaun/bg-node-client"
 pnpm add "@baragaun/bg-node-client" 
 ```
 
-To update it:
-```bash
-pnpm install "@baragaun/bg-node-client"
-```
-
 **Note On Node Version**
 
 This package is using [RxDB](https://rxdb.info/) which is using
@@ -39,6 +34,7 @@ const client = await new BgNodeClient().init({
       [HttpHeaderName.consumer]: 'my-app',
     },
   },
+  logLevel: 'debug',
   useMockData: true,
 });
 
@@ -54,6 +50,21 @@ const foundChannels = await client.operations.channel.findChannels({ id: mockCha
 
 // Load the messages of this channel:
 const foundMessages = await client.operations.channelMessage.findChannelMessages({ channelId: channels[0].id });
+```
+
+## Logger
+
+`bg-node-client` logs to the console by default, with the `logLevel` specified in the `config`
+param when the client is created. But you can also specify another logger when you create the client.
+
+That logger needs to be compatible with this interface:
+
+```typescript
+export interface Logger {
+  debug: (message: string, ...args: any[]) => void;
+  warn: (message: string, ...args: any[]) => void;
+  error: (message: string, ...args: any[]) => void;
+}
 ```
 
 ## Models

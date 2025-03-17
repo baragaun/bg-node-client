@@ -1,12 +1,12 @@
 import { HttpHeaderName } from '../../enums.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
-import data from '../../helpers/data.js';
+import libData from '../../helpers/libData.js';
 import type { HttpHeaders } from '../../types/HttpHeaders.js';
 import { AuthType } from '../gql/graphql.js';
 
 const helpers = {
   headers: (): HttpHeaders => {
-    const config = data.config();
+    const config = libData.config();
     const clientInfo = clientInfoStore.get();
     const headers: HttpHeaders =
       clientInfo && config.fsdata && config.fsdata.headers

@@ -4,7 +4,7 @@ import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import { ModelType } from '../../enums.js';
-import data from '../../helpers/data.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import modelFactory from '../../models/modelFactory.js';
 import { Model } from '../../types/models/Model.js';
@@ -39,7 +39,7 @@ const findById = async <T extends Model = Model>(
   id: string,
   modelType: ModelType,
 ): Promise<T | null> => {
-  const config = data.config();
+  const config = libData.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
@@ -47,7 +47,7 @@ const findById = async <T extends Model = Model>(
   }
 
   const client = Graffle.create().transport({
-    url: data.config().fsdata.url,
+    url: libData.config().fsdata.url,
     headers: helpers.headers(),
   });
   // .use(Throws())

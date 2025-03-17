@@ -1,7 +1,7 @@
 import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-import data from '../../../helpers/data.js';
+import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
 import {
@@ -15,7 +15,7 @@ import helpers from '../../helpers/helpers.js';
 const createMultiStepAction = async (
   input: SidMultiStepActionInput,
 ): Promise<SidMultiStepActionProgress> => {
-  const config = data.config();
+  const config = libData.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
@@ -23,7 +23,7 @@ const createMultiStepAction = async (
   }
 
   const client = Graffle.create().transport({
-    url: data.config().fsdata.url,
+    url: libData.config().fsdata.url,
     headers: helpers.headers(),
   });
   // .use(Throws())

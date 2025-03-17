@@ -6,7 +6,7 @@ let _config: BgNodeClientConfig | undefined;
 let _listeners: BgDataListener[] = [];
 const _multiStepActionRuns = new Map<string, MultiStepActionRun>();
 
-const data = {
+const libData = {
   config: (): BgNodeClientConfig => _config,
   listeners: (): BgDataListener[] => _listeners,
 
@@ -59,4 +59,4 @@ const data = {
     _multiStepActionRuns.get(actionId),
 };
 
-export default data;
+export default libData;

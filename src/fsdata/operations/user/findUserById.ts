@@ -3,7 +3,7 @@ import { Opentelemetry } from 'graffle/extensions/opentelemetry';
 import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-import data from '../../../helpers/data.js';
+import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import findUserByIdGql from '../../gql/queries/findUserById.graphql.js';
@@ -11,7 +11,7 @@ import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
 const findUserById = async (): Promise<MyUser | null> => {
-  const config = data.config();
+  const config = libData.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
@@ -20,7 +20,7 @@ const findUserById = async (): Promise<MyUser | null> => {
 
   const client = Graffle.create()
     .transport({
-      url: data.config().fsdata.url,
+      url: libData.config().fsdata.url,
       headers: helpers.headers(),
     })
     .use(Throws())

@@ -2,7 +2,7 @@
 // import { Operations } from './Operations.js';
 import db from './db/db.js';
 import clientInfoStore from './helpers/clientInfoStore.js';
-import data from './helpers/data.js';
+import libData from './helpers/libData.js';
 import logger, { setLogger, setLogLevel } from './helpers/logger.js';
 import operations from './operations/operations.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
@@ -27,7 +27,7 @@ export class BgNodeClient {
       myUserDeviceUuid,
     });
 
-    data.setConfig(config);
+    libData.setConfig(config);
 
     await db.init(config);
 
@@ -54,11 +54,11 @@ export class BgNodeClient {
     return this;
   }
 
-  public addListener = data.addListener;
+  public addListener = libData.addListener;
   public operations = operations;
-  public removeListener = data.removeListener;
-  public setConfig = data.setConfig;
-  public config = data.config;
+  public removeListener = libData.removeListener;
+  public setConfig = libData.setConfig;
+  public config = libData.config;
   public clientInfoStore = clientInfoStore;
 
   public get myUserId(): string | undefined {

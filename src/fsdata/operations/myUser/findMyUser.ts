@@ -5,7 +5,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 // import { create } from '../../graffle/fsdata/_.js'
 
-import data from '../../../helpers/data.js';
+import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import findMyUserGql from '../../gql/queries/findMyUser.graphql.js';
@@ -13,7 +13,7 @@ import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
 const findMyUser = async (): Promise<MyUser | null> => {
-  const config = data.config();
+  const config = libData.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
@@ -22,7 +22,7 @@ const findMyUser = async (): Promise<MyUser | null> => {
 
   const client = Graffle.create()
     .transport({
-      url: data.config().fsdata.url,
+      url: libData.config().fsdata.url,
       headers: helpers.headers(),
     })
     .use(Throws())

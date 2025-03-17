@@ -1,7 +1,7 @@
 import { BgDataListener } from '../types/BgDataListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { MultiStepActionRun } from '../types/index.js';
-declare const data: {
+declare const libData: {
     config: () => BgNodeClientConfig;
     listeners: () => BgDataListener[];
     setConfig: (config: BgNodeClientConfig) => void;
@@ -21,4 +21,4 @@ declare const data: {
     removeMultiStepActionRun: (actionId: string) => void;
     multiStepActionRun: (actionId: string) => MultiStepActionRun | null;
 };
-export default data;
+export default libData;

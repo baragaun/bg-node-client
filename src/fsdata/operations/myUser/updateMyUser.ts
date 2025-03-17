@@ -3,18 +3,18 @@ import { Graffle } from 'graffle';
 // import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
+import findMyUser from './findMyUser.js';
 import db from '../../../db/db.js';
 import { ModelType } from '../../../enums.js';
-import data from '../../../helpers/data.js';
 import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
+import libData from '../../../helpers/libData.js';
+import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { QueryOptions } from '../../../types/QueryOptions.js';
 import { MutationUpdateMyUserArgs, MyUserInput } from '../../gql/graphql.js';
 import gql from '../../gql/mutations/updateMyUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
-import findMyUser from './findMyUser.js';
-import logger from '../../../helpers/logger.js';
 
 type UpdateMyUserResponse = { updateMyUser: string };
 
@@ -23,7 +23,7 @@ const updateMyUser = async (
   changes: Partial<MyUser>,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<MyUser | null> => {
-  const config = data.config();
+  const config = libData.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
@@ -36,7 +36,7 @@ const updateMyUser = async (
 
   try {
     const client = Graffle.create().transport({
-      url: data.config().fsdata.url,
+      url: libData.config().fsdata.url,
       headers: helpers.headers(),
     });
     // .use(Throws())

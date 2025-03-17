@@ -5,11 +5,11 @@ import { CachePolicy, ModelType } from '../../../enums.js';
 import findById from '../../../operations/findById.js';
 import { Channel } from '../../../types/models/Channel.js';
 import factories from '../../factories/factories.js';
-import { testConfig } from '../../helpers/testConfig.js';
+import getTestConfig from '../../helpers/getTestConfig.js';
 
 describe('operations.channel.updateChannel', () => {
   test('should update channel properties', async () => {
-    const client = await new BgNodeClient().init(testConfig);
+    const client = await new BgNodeClient().init(getTestConfig());
     const channelProps = await factories.channel.build({});
 
     const { object: channel } =

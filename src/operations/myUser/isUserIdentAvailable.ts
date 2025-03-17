@@ -1,13 +1,13 @@
 import { UserIdentType as UserIdentTypeFromClient } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import data from '../../helpers/data.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 
 const isUserIdentAvailable = async (
   userIdent: string,
   identType: UserIdentTypeFromClient,
 ): Promise<boolean> => {
-  const config = data.config();
+  const config = libData.config();
 
   if (!config) {
     logger.error('isUserIdentAvailable: no config.');

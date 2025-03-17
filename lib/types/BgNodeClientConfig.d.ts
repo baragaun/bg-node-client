@@ -15,6 +15,7 @@ export interface BgNodeClientConfig {
     dbName?: string;
     fsdata?: {
         url: string;
+        testUrl?: string;
         /**
          * Optional headers to be included with every request
          */
@@ -26,4 +27,6 @@ export interface BgNodeClientConfig {
     };
     logLevel?: 'debug' | 'info' | 'warn' | 'error' | 'silent';
     inBrowser: boolean;
+    testEmailDomain?: string;
+    testEmailPrefix?: string;
 }
