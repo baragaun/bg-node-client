@@ -9,7 +9,7 @@ const getTestConfig = (): BgNodeClientConfig => {
     appEnvironment: AppEnvironment.test,
     inBrowser: false,
     fsdata: {
-      url: config.fsdata.testUrl || config.fsdata.url || 'http://localhost:8092/fsdata/api/graphql',
+      url: config?.fsdata?.testUrl || config?.fsdata?.url || 'http://localhost:8092/fsdata/api/graphql',
       headers: {
         [HttpHeaderName.consumer]: 'test',
       },
