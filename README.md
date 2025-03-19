@@ -1,6 +1,6 @@
 # bg-node-client
 
-This is a Node.js client for [channels-service](https://github.com/baragaun/channels-service) and 
+This is a Node.js/web app client for [channels-service](https://github.com/baragaun/channels-service) and 
 [secureid-service](https://github.com/baragaun/secureid-service). 
 
 ## Installation
@@ -18,7 +18,13 @@ pnpm add "@baragaun/bg-node-client"
 This package is using [RxDB](https://rxdb.info/) which is using
 [Web Crypto](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API). To use 
 `bg-node-client` outside the browser, you need Node v20 or higher, as Web Crypto
-was added to Node in version 20. 
+was added to Node in version 20.
+
+## Configuration
+
+Configure the client with `BgNodeClientConfig` given to `init` as an argument. 
+
+
 
 ## Usage
 
