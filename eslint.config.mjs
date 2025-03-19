@@ -60,6 +60,7 @@ export default tseslint.config(
 
     rules: {
       'no-unused-vars': 'off',
+      'max-length': 'off',
       'import/no-dynamic-require': 'warn',
       'import/no-nodejs-modules': 'off',
       'import/no-useless-path-segments': 'off',

@@ -10,8 +10,8 @@ import chance, {
   uniqueEmail,
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
-import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
+import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.resetMyPassword', () => {
@@ -184,17 +184,7 @@ describe('operations.myUser.resetMyPassword', () => {
             expect(signInUserResponse.object.myUser.lastName).toBe(lastName);
             expect(signInUserResponse.object.myUser.email).toBe(email);
 
-            const deleteMyUserResponse = await deleteMyUser(
-              undefined,
-              undefined,
-              true,
-            );
-
-            expect(deleteMyUserResponse.error).toBeUndefined();
-
-            const clientInfo2 = await client.clientInfoStore.load();
-            expect(clientInfo2.myUserId).toBeUndefined();
-            expect(clientInfo2.authToken).toBeUndefined();
+            await deleteMyUser(client);
 
             resolve(true);
           }

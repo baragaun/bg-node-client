@@ -1,4 +1,4 @@
-import { ModelType, UserIdentType as UserIdentTypeFromClient } from '../enums.js';
+import { ModelType, NotificationMethod, UserIdentType as UserIdentTypeFromClient } from '../enums.js';
 import { Channel } from './models/Channel.js';
 import { ChannelInvitation } from './models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from './models/ChannelInvitationListFilter.js';
@@ -66,7 +66,8 @@ export interface Operations {
         signInWithToken: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signMeOut: () => Promise<MutationResult<null>>;
         signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
-        updateMyUser: (myUser: Partial<MyUser>, queryOptions?: QueryOptions) => Promise<MutationResult<MyUser | null>>;
+        updateMyUser: (myUser: Partial<MyUser>, queryOptions?: QueryOptions) => Promise<MutationResult<MyUser>>;
+        updateMyPassword: (oldPassword: string, newPassword: string, queryOptions: QueryOptions) => Promise<MutationResult<MyUser>>;
         verifyMyEmail: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
     };
     multiStepAction: {
@@ -74,6 +75,7 @@ export interface Operations {
         findMyActiveMultiStepActions: () => Promise<SidMultiStepAction[]>;
         getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         removeMultiStepActionListener: (actionId: string, id: string) => boolean;
+        sendMultiStepActionNotification: (actionId: string, notificationMethod: NotificationMethod) => Promise<MutationResult<string>>;
         verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<QueryResult<SidMultiStepActionProgress>>;
     };
 }

@@ -5,7 +5,7 @@ import chance, {
   uniqueEmail,
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
-import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
+import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 import getTestClient from '../../helpers/getTestClient.js';
 
 describe('signUpUser', () => {
@@ -83,14 +83,6 @@ describe('signUpUser', () => {
     expect(findMyUserResponse.lastName).toBe(lastName);
     expect(findMyUserResponse.email).toBe(email);
 
-    // Deleting the test user:
-    const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
-    const clientInfo3 = await client2.clientInfoStore.load();
-
-    expect(deleteMyUserResponse.error).toBeUndefined();
-    expect(clientInfo3.myUserId).toBeUndefined();
-    expect(clientInfo3.authToken).toBeUndefined();
-    expect(clientInfo3.myUserDeviceUuid).toBe(myUserDeviceUuid);
-    expect(clientInfo3.signedOutUserId).toBe(myUserId);
+    await deleteMyUser(client2);
   });
 }, 120000);

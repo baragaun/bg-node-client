@@ -5,10 +5,11 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import findMyUser from './findMyUser.js';
 import db from '../../../db/db.js';
-import { ModelType } from '../../../enums.js';
+import { ModelType, MutationType } from '../../../enums.js';
 import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { MutationResult } from '../../../types/index.js';
 import { MyUser } from '../../../types/models/MyUser.js';
 import { QueryOptions } from '../../../types/QueryOptions.js';
 import { MutationUpdateMyUserArgs, MyUserInput } from '../../gql/graphql.js';
@@ -20,14 +21,18 @@ type UpdateMyUserResponse = { updateMyUser: string };
 
 // see: https://graffle.js.org/guides/topics/requests
 const updateMyUser = async (
-  changes: Partial<MyUser>,
+  changes: MyUserInput,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
-): Promise<MyUser | null> => {
+): Promise<MutationResult<MyUser>> => {
   const config = libData.config();
+  const result: MutationResult<MyUser | null> = {
+    operation: MutationType.update,
+  };
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+    result.error = 'unavailable';
+    return result;
   }
 
   if (!queryOptions) {
@@ -70,17 +75,17 @@ const updateMyUser = async (
 
     const response = await client
       .gql(document)
-      .send({ input: changes as unknown as MyUserInput });
+      .send({ input: changes });
 
     if (!response.updateMyUser) {
-      logger.error(
-        'fsdata.updateMyUser: mutation did not return a valid response.',
-      );
-      return null;
+      logger.error('fsdata.updateMyUser: mutation did not return a valid response.');
+      result.error = 'system-error';
+      return result;
     }
 
     if (!queryOptions.polling || (needOldUpdatedAt && !oldUpdatedAt)) {
-      return findMyUser();
+      result.object = await findMyUser();
+      return result;
     }
 
     if (queryOptions.polling) {
@@ -101,13 +106,12 @@ const updateMyUser = async (
     );
     logger.debug('fsdata.updateMyUser: polling finished.', { fetchedMyUser });
 
-    return fetchedMyUser;
+    result.object = fetchedMyUser;
+    return result;
   } catch (error) {
-    logger.error('fsdata.updateMyUser: failed with error', {
-      error,
-      headers: helpers.headers(),
-    });
-    return null;
+    logger.error('fsdata.updateMyUser: failed with error', { error, headers: helpers.headers()});
+    result.error = 'system-error';
+    return result;
   }
 };
 

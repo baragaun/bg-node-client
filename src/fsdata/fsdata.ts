@@ -2,6 +2,8 @@ import findById from './operations/findById.js';
 import createMultiStepAction from './operations/multiStepAction/createMultiStepAction.js';
 import findMyActiveMultiStepActions from './operations/multiStepAction/findMyActiveMultiStepActions.js';
 import getMultiStepActionProgress from './operations/multiStepAction/getMultiStepActionProgress.js';
+import sendMultiStepActionNotification
+  from './operations/multiStepAction/sendMultiStepActionNotification.js';
 import verifyMultiStepActionToken from './operations/multiStepAction/verifyMultiStepActionToken.js';
 import deleteMyUser from './operations/myUser/deleteMyUser.js';
 import findAvailableUserHandle from './operations/myUser/findAvailableUserHandle.js';
@@ -33,6 +35,7 @@ const fsdata = {
     createMultiStepAction,
     findMyActiveMultiStepActions,
     getMultiStepActionProgress,
+    sendMultiStepActionNotification,
     verifyMultiStepActionToken,
   },
 

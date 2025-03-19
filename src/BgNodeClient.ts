@@ -84,6 +84,10 @@ export class BgNodeClient {
     return clientInfoStore.get().myUserId;
   }
 
+  public get isSignedIn(): string | undefined {
+    return clientInfoStore.get().myUserId;
+  }
+
   public get myUserDeviceUuid(): string | undefined {
     return clientInfoStore.get().myUserDeviceUuid;
   }
