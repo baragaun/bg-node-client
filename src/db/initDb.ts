@@ -5,7 +5,7 @@ import {
   isRxDatabase,
   RxStorage,
 } from "rxdb/plugins/core";
-import { RxDBDevModePlugin } from "rxdb/plugins/dev-mode";
+import { RxDBDevModePlugin, disableWarnings } from "rxdb/plugins/dev-mode";
 import { getRxStorageDexie } from "rxdb/plugins/storage-dexie";
 import { getRxStorageMemory } from "rxdb/plugins/storage-memory";
 import { getAjv, wrappedValidateAjvStorage } from "rxdb/plugins/validate-ajv";
@@ -68,7 +68,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     config.appEnvironment === AppEnvironment.test ||
     config.appEnvironment === AppEnvironment.development
   ) {
-    // RxDBDevModePlugin.disableWarnings();
+    disableWarnings();
     addRxPlugin(RxDBDevModePlugin);
     storage = wrappedValidateAjvStorage({
       storage: storage as any,

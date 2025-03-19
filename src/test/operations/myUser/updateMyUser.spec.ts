@@ -5,7 +5,7 @@ import chance, {
   uniqueEmail,
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
-import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
+import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.updateMyUser', () => {
@@ -25,7 +25,8 @@ describe('operations.myUser.updateMyUser', () => {
       isTestUser: true,
     });
 
-    await client.operations.myUser.updateMyUser(
+    // With the polling settings not specified, the client will poll until the object is updated.
+    const updateResult = await client.operations.myUser.updateMyUser(
       {
         id: client.myUserId,
         lastName: newLastName,
@@ -33,8 +34,25 @@ describe('operations.myUser.updateMyUser', () => {
       { cachePolicy: CachePolicy.network },
     );
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // Even though the backend updates the object asynchronously, the client will poll until the
+    // object is updated. The updated object is then returned.
+    expect(updateResult).toBeDefined();
+    expect(updateResult.error).toBeUndefined();
+    expect(updateResult.object.id).toBe(client.myUserId);
+    expect(updateResult.object.lastName).toBe(newLastName);
 
+    // It should have also updated the cached object:
+    const myUserFromCache1 = await client.operations.myUser.findMyUser({
+      cachePolicy: CachePolicy.cache,
+    });
+
+    expect(myUserFromCache1.id).toBe(client.myUserId);
+    expect(myUserFromCache1.userHandle).toBe(userHandle);
+    expect(myUserFromCache1.firstName).toBe(firstName);
+    expect(myUserFromCache1.lastName).toBe(newLastName);
+    expect(myUserFromCache1.email).toBe(email);
+
+    // Let's verify the object again, by pulling a fresh copy of it from the backend:
     const myUserFromNetwork = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.network,
     });
@@ -45,23 +63,17 @@ describe('operations.myUser.updateMyUser', () => {
     expect(myUserFromNetwork.lastName).toBe(newLastName);
     expect(myUserFromNetwork.email).toBe(email);
 
-    const myUserFromCache = await client.operations.myUser.findMyUser({
+    const myUserFromCache2 = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.cache,
     });
 
-    expect(myUserFromCache.id).toBe(client.myUserId);
-    expect(myUserFromCache.userHandle).toBe(userHandle);
-    expect(myUserFromCache.firstName).toBe(firstName);
-    expect(myUserFromCache.lastName).toBe(newLastName);
-    expect(myUserFromCache.email).toBe(email);
+    expect(myUserFromCache2.id).toBe(client.myUserId);
+    expect(myUserFromCache2.userHandle).toBe(userHandle);
+    expect(myUserFromCache2.firstName).toBe(firstName);
+    expect(myUserFromCache2.lastName).toBe(newLastName);
+    expect(myUserFromCache2.email).toBe(email);
 
     // Deleting the user again:
-    const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
-
-    expect(deleteMyUserResponse.error).toBeUndefined();
-
-    const clientInfo = await client.clientInfoStore.load();
-    expect(clientInfo.myUserId).toBeUndefined();
-    expect(clientInfo.authToken).toBeUndefined();
+    await deleteMyUser(client);
   });
 }, 60000);

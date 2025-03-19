@@ -1,5 +1,5 @@
 import {
-  ModelType,
+  ModelType, NotificationMethod,
   UserIdentType as UserIdentTypeFromClient,
 } from '../enums.js';
 import { Channel } from './models/Channel.js';
@@ -178,7 +178,13 @@ export interface Operations {
     updateMyUser: (
       myUser: Partial<MyUser>,
       queryOptions?: QueryOptions,
-    ) => Promise<MutationResult<MyUser | null>>;
+    ) => Promise<MutationResult<MyUser>>;
+
+    updateMyPassword: (
+      oldPassword: string,
+      newPassword: string,
+      queryOptions: QueryOptions,
+    ) => Promise<MutationResult<MyUser>>
 
     verifyMyEmail: (
       email: string,
@@ -201,6 +207,11 @@ export interface Operations {
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     removeMultiStepActionListener: (actionId: string, id: string) => boolean;
+
+    sendMultiStepActionNotification: (
+      actionId: string,
+      notificationMethod: NotificationMethod,
+    ) => Promise<MutationResult<string>>
 
     verifyMultiStepActionToken: (
       actionId: string,

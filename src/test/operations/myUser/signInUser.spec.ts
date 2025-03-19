@@ -7,8 +7,8 @@ import chance, {
 } from '../../../helpers/chance.js';
 import logger from '../../../helpers/logger.js';
 import findById from '../../../operations/findById.js';
-import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { MyUser } from '../../../types/models/MyUser.js';
+import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.signInUser', () => {
@@ -59,9 +59,7 @@ describe('operations.myUser.signInUser', () => {
     expect(signInUserResponse.error).toBeUndefined();
     expect(signInUserResponse.object.userAuthResponse).toBeDefined();
     expect(signInUserResponse.object.userAuthResponse.userId).toBe(myUserId);
-    expect(
-      signInUserResponse.object.userAuthResponse.authToken.length,
-    ).toBeGreaterThan(10);
+    expect(signInUserResponse.object.userAuthResponse.authToken.length).toBeGreaterThan(10);
     expect(signInUserResponse.object.myUser).toBeDefined();
     expect(signInUserResponse.object.myUser.id).toBeDefined();
 
@@ -99,13 +97,6 @@ describe('operations.myUser.signInUser', () => {
       signInUserResponse.object.userAuthResponse.authToken,
     );
 
-    // Deleting the user again:
-    const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
-
-    expect(deleteMyUserResponse.error).toBeUndefined();
-
-    const clientInfo5 = await client.clientInfoStore.load();
-    expect(clientInfo5.myUserId).toBeUndefined();
-    expect(clientInfo5.authToken).toBeUndefined();
+    await deleteMyUser(client);
   });
 });

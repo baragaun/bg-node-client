@@ -9,12 +9,13 @@ declare const fsdata: {
         signInUser: (input: import("../types/SignInUserInput.js").SignInUserInput) => Promise<import("../types/UserAuthResponse.js").UserAuthResponse>;
         signMeOut: () => Promise<void>;
         signUpUser: (input: import("../types/SignUpUserInput.js").SignUpUserInput) => Promise<import("../types/UserAuthResponse.js").UserAuthResponse>;
-        updateMyUser: (changes: Partial<import("../types/index.js").MyUser>, queryOptions?: import("../types/QueryOptions.js").QueryOptions) => Promise<import("../types/index.js").MyUser | null>;
+        updateMyUser: (changes: import("./gql/graphql.js").MyUserInput, queryOptions?: import("../types/QueryOptions.js").QueryOptions) => Promise<import("../types/MutationResult.js").MutationResult<import("../types/index.js").MyUser>>;
     };
     multiStepAction: {
         createMultiStepAction: (input: import("./gql/graphql.js").SidMultiStepActionInput) => Promise<import("../types/index.js").SidMultiStepActionProgress>;
         findMyActiveMultiStepActions: () => Promise<import("../types/index.js").SidMultiStepAction[] | null>;
         getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined) => Promise<import("../types/index.js").SidMultiStepActionProgress | null>;
+        sendMultiStepActionNotification: (actionId: string, notificationMethod: import("../enums.js").NotificationMethod) => Promise<string>;
         verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<import("../types/index.js").SidMultiStepActionProgress>;
     };
     user: {

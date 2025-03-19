@@ -3,14 +3,12 @@ import { describe, expect, test } from 'vitest';
 import {
   MultiStepActionEventType,
   MultiStepActionResult,
+  NotificationMethod,
 } from '../../../enums.js';
-import chance, {
-  uniqueEmail,
-  uniqueUserHandle,
-} from '../../../helpers/chance.js';
+import chance, { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import logger from '../../../helpers/logger.js';
-import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
+import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.signInWithToken', () => {
@@ -83,10 +81,7 @@ describe('operations.myUser.signInWithToken', () => {
           eventType: MultiStepActionEventType,
           action: SidMultiStepActionProgress,
         ) => {
-          logger.debug('signInWithToken.spec.onEvent called.', {
-            eventType,
-            action,
-          });
+          logger.debug('signInWithToken.spec.onEvent called.', { eventType, action });
 
           if (
             eventType === MultiStepActionEventType.notificationSent ||
@@ -94,11 +89,18 @@ describe('operations.myUser.signInWithToken', () => {
           ) {
             expect(action.notificationResult).toBeDefined();
 
+            // Let's send out another notification:
+            const sendNotificationResponse =
+              await client.operations.multiStepAction.sendMultiStepActionNotification(
+                actionId,
+                NotificationMethod.email,
+              );
+
+            expect(sendNotificationResponse.error).toBeUndefined();
+            expect(sendNotificationResponse.object).toBe(actionId);
+
             // Verify token with an invalid token:
-            logger.debug('signInWithToken.spec.onEvent: sending 000000.', {
-              eventType,
-              action,
-            });
+            logger.debug('signInWithToken.spec.onEvent: sending 000000.', { eventType, action });
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
                 actionId,
@@ -114,10 +116,7 @@ describe('operations.myUser.signInWithToken', () => {
 
           if (eventType === MultiStepActionEventType.tokenFailed) {
             // The token was rejected; we try again with the correct token
-            logger.debug('signInWithToken.spec.onEvent: sending 666666.', {
-              eventType,
-              action,
-            });
+            logger.debug('signInWithToken.spec.onEvent: sending 666666.', { eventType, action });
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
                 actionId,
@@ -143,18 +142,7 @@ describe('operations.myUser.signInWithToken', () => {
             expect(clientInfo1.authToken).toBe(action.authToken);
             expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
-            // Deleting the user again:
-            const deleteMyUserResponse = await deleteMyUser(
-              undefined,
-              undefined,
-              true,
-            );
-
-            expect(deleteMyUserResponse.error).toBeUndefined();
-
-            const clientInfo2 = await client.clientInfoStore.load();
-            expect(clientInfo2.myUserId).toBeUndefined();
-            expect(clientInfo2.authToken).toBeUndefined();
+            await deleteMyUser(client);
 
             resolve(true);
           }

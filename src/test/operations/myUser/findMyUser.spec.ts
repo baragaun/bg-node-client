@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { CachePolicy } from '../../../enums.js';
 import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
-import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
+import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.findMyUser', () => {
@@ -35,12 +35,6 @@ describe('operations.myUser.findMyUser', () => {
     expect(myUserFromNetwork.userHandle).toBe(userHandle);
     expect(myUserFromNetwork.email).toBe(email);
 
-    const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
-
-    expect(deleteMyUserResponse.error).toBeUndefined();
-
-    const clientInfo = await client.clientInfoStore.load();
-    expect(clientInfo.myUserId).toBeUndefined();
-    expect(clientInfo.authToken).toBeUndefined();
+    await deleteMyUser(client);
   });
 });

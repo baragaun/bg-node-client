@@ -45,14 +45,8 @@ const getMultiStepActionProgress = async (
   confirmToken: string | undefined,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
-  logger.debug(
-    'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress called.',
-    {
-      actionId,
-      confirmToken,
-      queryOptions,
-    },
-  );
+  logger.debug('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress called.',
+    { actionId, confirmToken, queryOptions });
 
   const clientInfo = clientInfoStore.get();
   const result: QueryResult<MultiStepActionProgressResult> = {};
@@ -64,22 +58,14 @@ const getMultiStepActionProgress = async (
         confirmToken,
       );
 
-    logger.debug(
-      'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: received response.',
-      { actionProgress },
-    );
-
     if (!actionProgress) {
-      logger.error(
-        'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: action not found.',
-      );
+      logger.error('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: received error.',
+        { actionId, confirmToken });
       result.error = 'not-found';
       return result;
     }
 
-    let run: MultiStepActionRun | null = libData.multiStepActionRun(
-      actionProgress.actionId,
-    );
+    let run: MultiStepActionRun | null = libData.multiStepActionRun(actionProgress.actionId);
     const previousProgress: SidMultiStepActionProgress | undefined =
       run?.actionProgress;
 
@@ -98,13 +84,8 @@ const getMultiStepActionProgress = async (
       libData.addMultiStepActionRun(run);
     }
 
-    logger.debug(
-      'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: run.',
-      {
-        actionProgress,
-        run,
-      },
-    );
+    logger.debug('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: run.',
+      { actionProgress, run });
 
     // Has the notification been sent?
     if (
@@ -228,12 +209,8 @@ const getMultiStepActionProgress = async (
 
     return result;
   } catch (error) {
-    logger.error(
-      'BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: failed.',
-      {
-        error,
-      },
-    );
+    logger.error('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: failed.',
+      { error });
     return null;
   }
 };

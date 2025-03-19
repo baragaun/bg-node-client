@@ -22,9 +22,8 @@ was added to Node in version 20.
 
 ## Configuration
 
-Configure the client with `BgNodeClientConfig` given to `init` as an argument. 
-
-
+Configure the client with [BgNodeClientConfig](./src/types/BgNodeClientConfig.ts)
+given to `init` as an argument.
 
 ## Usage
 

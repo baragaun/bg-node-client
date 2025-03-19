@@ -5,7 +5,7 @@ import chance, {
   uniqueEmail,
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
-import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
+import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.isUserIdentAvailable', () => {
@@ -97,17 +97,7 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     expect(resultUnavailableUserHandle2).toBeFalsy();
 
     // Deleting user2 (which is still signed in):
-    const deleteMyUser2Response = await deleteMyUser(
-      undefined,
-      undefined,
-      true,
-    );
-
-    expect(deleteMyUser2Response.error).toBeUndefined();
-
-    const clientInfo = await client.clientInfoStore.load();
-    expect(clientInfo.myUserId).toBeUndefined();
-    expect(clientInfo.authToken).toBeUndefined();
+    await deleteMyUser(client);
 
     // Signing in user1, so that we can delete it, too:
     const signInUser1Response = await client.operations.myUser.signInUser({
@@ -141,12 +131,6 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
     // Deleting user1:
-    const deleteMyUserResponse = await deleteMyUser(undefined, undefined, true);
-
-    expect(deleteMyUserResponse.error).toBeUndefined();
-
-    const clientInfo3 = await client.clientInfoStore.load();
-    expect(clientInfo3.myUserId).toBeUndefined();
-    expect(clientInfo3.authToken).toBeUndefined();
+    await deleteMyUser(client);
   });
 });

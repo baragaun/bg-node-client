@@ -23,6 +23,7 @@ import addMultiStepActionListener from './multiStepAction/addMultiStepActionList
 import findMyActiveMultiStepActions from './multiStepAction/findMyActiveMultiStepActions.js';
 import getMultiStepActionProgress from './multiStepAction/getMultiStepActionProgress.js';
 import removeMultiStepActionListener from './multiStepAction/removeMultiStepActionListener.js';
+import sendMultiStepActionNotification from './multiStepAction/sendMultiStepActionNotification.js';
 import verifyMultiStepActionToken from './multiStepAction/verifyMultiStepActionToken.js';
 import deleteMyUser from './myUser/deleteMyUser.js';
 import findAvailableUserHandle from './myUser/findAvailableUserHandle.js';
@@ -35,6 +36,7 @@ import signInUser from './myUser/signInUser.js';
 import signInWithToken from './myUser/signInWithToken.js';
 import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
+import updateMyPassword from './myUser/updateMyPassword.js';
 import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import updateLocalObject from './updateLocalObject.js';
@@ -77,17 +79,18 @@ const operations: Operations = {
   myUser: {
     deleteMyUser,
     findAvailableUserHandle,
-    getSignedOutUserId,
     findMyUser,
+    getSignedOutUserId,
     isSignedIn,
     isUserIdentAvailable,
     resetMyPassword,
     signInUser,
+    signInWithToken,
     signMeOut,
     signUpUser,
-    signInWithToken,
-    verifyMyEmail,
+    updateMyPassword,
     updateMyUser,
+    verifyMyEmail,
   },
 
   multiStepAction: {
@@ -95,6 +98,7 @@ const operations: Operations = {
     findMyActiveMultiStepActions,
     getMultiStepActionProgress,
     removeMultiStepActionListener,
+    sendMultiStepActionNotification,
     verifyMultiStepActionToken,
   },
 };
