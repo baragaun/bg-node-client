@@ -98,6 +98,12 @@ export enum ChannelInvitationStatus {
   unset = 'unset',
 }
 
+export enum ClientInfoStoreType {
+  localStorage = 'localStorage',
+  db = 'db',
+  delegated = 'delegated',
+}
+
 export enum UserRole {
   admin = 'admin',
   support = 'support',

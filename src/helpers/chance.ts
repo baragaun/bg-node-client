@@ -1,6 +1,6 @@
 import Chance from 'chance';
 
-import appStore from './libData.js';
+import libData from './libData.js';
 
 const chance = new Chance();
 
@@ -14,16 +14,16 @@ let userHandleCounter = 1;
 
 export const uniqueEmail = (): string => {
   if (!emailDomain) {
-    emailDomain = appStore.config()?.testEmailDomain || 'test.com';
-    emailPrefix = appStore.config()?.testEmailPrefix || 'test';
+    emailDomain = libData.config()?.testEmailDomain || 'test.com';
+    emailPrefix = libData.config()?.testEmailPrefix || 'test';
   }
   return `${emailPrefix}${dateMMDD}-${crypto.randomUUID().replaceAll('-', '')}-${emailCounter++}@${emailDomain}`;
 };
 
 export const uniqueUserHandle = (): string => {
   if (!emailDomain) {
-    emailDomain = appStore.config()?.testEmailDomain || 'test.com';
-    emailPrefix = appStore.config()?.testEmailPrefix || 'test';
+    emailDomain = libData.config()?.testEmailDomain || 'test.com';
+    emailPrefix = libData.config()?.testEmailPrefix || 'test';
   }
   return `${chance.word()}-${crypto.randomUUID().replaceAll('-', '')}-${userHandleCounter++}`;
 };

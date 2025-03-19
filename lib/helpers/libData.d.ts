@@ -2,6 +2,7 @@ import { BgDataListener } from '../types/BgDataListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { MultiStepActionRun } from '../types/index.js';
 declare const libData: {
+    close: () => void;
     config: () => BgNodeClientConfig;
     listeners: () => BgDataListener[];
     setConfig: (config: BgNodeClientConfig) => void;
@@ -13,7 +14,7 @@ declare const libData: {
     addListener(listener: BgDataListener): void;
     /**
      * Unsubscribes from channel events.
-     * @param listener - The listener to be removed.
+     * @param id the ID of the listener to be removed.
      */
     removeListener(id: string): void;
     multiStepActionRuns: () => Map<string, MultiStepActionRun>;

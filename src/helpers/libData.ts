@@ -7,6 +7,12 @@ let _listeners: BgDataListener[] = [];
 const _multiStepActionRuns = new Map<string, MultiStepActionRun>();
 
 const libData = {
+  close: (): void => {
+    _config = undefined;
+    _listeners = [];
+    _multiStepActionRuns.clear();
+  },
+
   config: (): BgNodeClientConfig => _config,
   listeners: (): BgDataListener[] => _listeners,
 
@@ -32,7 +38,7 @@ const libData = {
 
   /**
    * Unsubscribes from channel events.
-   * @param listener - The listener to be removed.
+   * @param id the ID of the listener to be removed.
    */
   removeListener(id: string): void {
     const index = _listeners.findIndex((l) => l.id === id);

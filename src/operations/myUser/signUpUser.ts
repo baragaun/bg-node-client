@@ -12,9 +12,7 @@ const signUpUser = async (
   input: SignUpUserInput,
 ): Promise<MutationResult<SignInSignUpResponse>> => {
   try {
-    const argInput: SignUpUserInput = input;
-
-    const userAuthResponse = await fsdata.myUser.signUpUser(argInput);
+    const userAuthResponse = await fsdata.myUser.signUpUser(input);
     let myUser: MyUser | null = null;
 
     if (!userAuthResponse.userId) {
@@ -29,7 +27,7 @@ const signUpUser = async (
       };
     }
 
-    await clientInfoStore.save({
+    await clientInfoStore.persist({
       myUserId: userAuthResponse.userId,
       signedOutUserId: null,
       authToken: userAuthResponse.authToken,

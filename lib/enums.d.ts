@@ -81,6 +81,11 @@ export declare enum ChannelInvitationStatus {
     declined = "declined",
     unset = "unset"
 }
+export declare enum ClientInfoStoreType {
+    localStorage = "localStorage",
+    db = "db",
+    delegated = "delegated"
+}
 export declare enum UserRole {
     admin = "admin",
     support = "support",

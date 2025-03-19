@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import { uniqueEmail } from '../../../helpers/chance.js';
 import logger from '../../../helpers/logger.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
-import { getTestClient } from '../../helpers/getTestClient.js';
+import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.findAvailableUserHandle', () => {
   test('should return an available user handle', async () => {

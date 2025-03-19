@@ -11,7 +11,7 @@ import chance, {
 } from '../../../helpers/chance.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
-import { getTestClient } from '../../helpers/getTestClient.js';
+import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.verifyMyEmail', () => {
   test('should verify a correct token', async () => {

@@ -28,4 +28,8 @@ export class ClientInfo extends Model {
       }
     }
   }
+
+  public static createDeviceUuid(): string {
+    return crypto.randomUUID().replaceAll('-', '');
+  }
 }

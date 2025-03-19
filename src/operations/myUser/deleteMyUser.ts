@@ -9,7 +9,8 @@ const deleteMyUser = async (
   description: string | null | undefined,
   deletePhysically: boolean,
 ): Promise<MutationResult<null>> => {
-  const signedOutUserId = clientInfoStore.get().signedOutUserId;
+  const clientInfo = clientInfoStore.get();
+  const signedOutUserId = clientInfo.myUserId || clientInfo.signedOutUserId;
 
   try {
     await fsdata.myUser.deleteMyUser(cause, description, deletePhysically);

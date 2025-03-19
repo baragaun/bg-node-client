@@ -1,3 +1,4 @@
+import close from './close.js';
 import deleteFunc from "./delete.js";
 import find from "./find.js";
 import findAll from "./findAll.js";
@@ -12,6 +13,7 @@ import update from "./update.js";
 import { Db } from "../types/Db.js";
 
 const db: Db = {
+  close,
   delete: deleteFunc,
   find,
   findAll,

@@ -9,7 +9,7 @@ import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import saveClientInfo from '../../helpers/saveClientInfo.js';
+import persistClientInfo from '../../helpers/persistClientInfo.js';
 import { MultiStepActionRun } from '../../types/models/MultiStepActionRun.js';
 import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
@@ -143,7 +143,7 @@ const getMultiStepActionProgress = async (
         libData.setConfig(config);
 
         // Save the data to LocalStorage:
-        await saveClientInfo({
+        await persistClientInfo({
           myUserId: actionProgress.userId,
           signedOutUserId: null,
           authToken: actionProgress.authToken,

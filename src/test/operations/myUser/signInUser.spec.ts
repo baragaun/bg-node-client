@@ -9,7 +9,7 @@ import logger from '../../../helpers/logger.js';
 import findById from '../../../operations/findById.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
 import { MyUser } from '../../../types/models/MyUser.js';
-import { getTestClient } from '../../helpers/getTestClient.js';
+import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.signInUser', () => {
   test('should sign in a user with valid input', async () => {

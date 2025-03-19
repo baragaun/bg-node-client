@@ -1,5 +1,6 @@
-import { AppEnvironment } from '../enums.js';
+import { AppEnvironment, ClientInfoStoreType } from '../enums.js';
 import { HttpHeaders } from './HttpHeaders.js';
+import { ClientInfo } from './models/ClientInfo.js';
 
 /**
  * Configuration for BgNodeClient.
@@ -20,6 +21,14 @@ export interface BgNodeClientConfig {
   useMockData?: boolean;
 
   dbName?: string;
+
+  clientInfoStore?: {
+    type: ClientInfoStoreType;
+    delegate?: {
+      persist?: (info: ClientInfo) => Promise<ClientInfo>;
+      load?: () => Promise<ClientInfo | null>;
+    }
+  };
 
   fsdata?: {
     url: string;

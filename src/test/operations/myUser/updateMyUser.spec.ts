@@ -6,7 +6,7 @@ import chance, {
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
 import deleteMyUser from '../../../operations/myUser/deleteMyUser.js';
-import { getTestClient } from '../../helpers/getTestClient.js';
+import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.updateMyUser', () => {
   test('should update the user', async () => {

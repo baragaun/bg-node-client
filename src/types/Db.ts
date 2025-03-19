@@ -7,13 +7,8 @@ import { QueryResult } from './QueryResult.js';
 import { Model } from '../types/models/Model.js';
 
 export interface Db {
-  init: (config: BgNodeClientConfig) => Promise<MyUser | null>;
+  close: () => Promise<void>;
 
-  insert: <T extends Model = Model>(
-    obj: T,
-    modelType?: ModelType,
-  ) => Promise<MutationResult<T>>;
-  isConnected: () => boolean;
   delete: <T extends Model = Model>(
     id: string,
     modelType: ModelType,
@@ -38,6 +33,13 @@ export interface Db {
     modelType: ModelType,
   ) => Promise<QueryResult<T>>;
 
+  init: (config: BgNodeClientConfig) => Promise<MyUser | null>;
+
+  insert: <T extends Model = Model>(
+    obj: T,
+    modelType?: ModelType,
+  ) => Promise<MutationResult<T>>;
+  isConnected: () => boolean;
   // libSignalStores: () => LibSignalStores;
 
   replace: <T extends Model = Model>(

@@ -1,2 +1,3 @@
 import { BgNodeClient } from '../../BgNodeClient.js';
-export declare const getTestClient: () => Promise<BgNodeClient>;
+declare const getTestClient: (createNew?: boolean) => Promise<BgNodeClient>;
+export default getTestClient;

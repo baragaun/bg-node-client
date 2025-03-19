@@ -1,9 +1,29 @@
 import db from '../db/db.js';
-import { ModelType } from '../enums.js';
+import { ClientInfoStoreType, ModelType } from '../enums.js';
+import libData from './libData.js';
 import { ClientInfo } from '../types/models/ClientInfo.js';
 
-const loadClientInfo = async (): Promise<ClientInfo> => {
-  if (typeof window !== 'undefined' && window.localStorage) {
+// const defaultClientInfo: ClientInfo = { id: 'default', createdAt: new Date().toISOString() };
+
+const loadClientInfo = async (): Promise<ClientInfo | null> => {
+  const config = libData.config();
+  const persistType = config.clientInfoStore?.type;
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // Delegated:
+  if (
+    (!persistType || persistType === ClientInfoStoreType.delegated) &&
+    config.clientInfoStore?.delegate?.load
+  ) {
+    return config.clientInfoStore.delegate.load();
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // LocalStorage:
+  if (
+    persistType === ClientInfoStoreType.localStorage &&
+    (typeof window === 'undefined' || !window.localStorage)
+  ) {
     const clientInfo: ClientInfo = {
       id: 'default',
       myUserId: undefined,
@@ -20,18 +40,20 @@ const loadClientInfo = async (): Promise<ClientInfo> => {
     clientInfo.signedOutUserId = window.localStorage.getItem('signedOutUserId');
 
     return clientInfo;
-  } else {
-    const queryResult = await db.findById<ClientInfo>(
-      'default',
-      ModelType.ClientInfo,
-    );
-
-    if (queryResult && queryResult.object) {
-      return queryResult.object;
-    }
-
-    return { id: 'default', createdAt: new Date().toISOString() };
   }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // DB:
+  const queryResult = await db.findById<ClientInfo>(
+    'default',
+    ModelType.ClientInfo,
+  );
+
+  if (queryResult && queryResult.object) {
+    return queryResult.object;
+  }
+
+  return null;
 };
 
 export default loadClientInfo;

@@ -26,7 +26,7 @@ const signInUser = async (
 
     // Making the user info available to the rest of the client:
     // Save the data to LocalStorage:
-    await clientInfoStore.save({
+    await clientInfoStore.persist({
       myUserId: userAuthResponse.userId,
       signedOutUserId: null,
       authToken: userAuthResponse.authToken,

@@ -7,6 +7,7 @@ import logger, { setLogger, setLogLevel } from './helpers/logger.js';
 import operations from './operations/operations.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { Logger } from './types/logger.js';
+import { ClientInfo } from './types/models/ClientInfo.js';
 
 export class BgNodeClient {
   public async init(
@@ -33,22 +34,25 @@ export class BgNodeClient {
 
     const existingClientInfo = await clientInfoStore.load();
 
-    if (!myUserDeviceUuid) {
-      myUserDeviceUuid = existingClientInfo.myUserDeviceUuid;
+    let saveClientInfo = false;
 
-      if (!myUserDeviceUuid) {
-        myUserDeviceUuid = crypto.randomUUID().replaceAll("-", "");
-      }
+    if (myUserId && existingClientInfo.myUserId !== myUserId) {
+      existingClientInfo.myUserId = myUserId;
+      saveClientInfo = true;
     }
 
-    if (
-      existingClientInfo.myUserId !== myUserId ||
-      existingClientInfo.myUserDeviceUuid !== myUserDeviceUuid
-    ) {
-      existingClientInfo.myUserId = myUserId;
+    if (myUserDeviceUuid && existingClientInfo.myUserDeviceUuid !== myUserDeviceUuid) {
       existingClientInfo.myUserDeviceUuid = myUserDeviceUuid;
+      saveClientInfo = true;
+    }
 
-      await clientInfoStore.save(existingClientInfo);
+    if (!existingClientInfo.myUserDeviceUuid) {
+      existingClientInfo.myUserDeviceUuid = ClientInfo.createDeviceUuid();
+      saveClientInfo = true;
+    }
+
+    if (saveClientInfo) {
+      await clientInfoStore.persist(existingClientInfo);
     }
 
     return this;
@@ -61,6 +65,21 @@ export class BgNodeClient {
   public config = libData.config;
   public clientInfoStore = clientInfoStore;
 
+  public close = (done?: () => void): void => {
+    libData.close();
+    clientInfoStore.close();
+    db.close().then(() => {
+      logger.debug("BgNodeClient closed.");
+      if (done) {
+        done();
+      }
+    }, (error) => {
+      logger.error("BgNodeClient close failed.", error);
+    });
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // Getters:
   public get myUserId(): string | undefined {
     return clientInfoStore.get().myUserId;
   }

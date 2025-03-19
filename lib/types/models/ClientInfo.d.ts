@@ -5,4 +5,5 @@ export declare class ClientInfo extends Model {
     myUserDeviceUuid?: string;
     signedOutUserId?: string;
     constructor(attributes?: Partial<ClientInfo> | null);
+    static createDeviceUuid(): string;
 }
