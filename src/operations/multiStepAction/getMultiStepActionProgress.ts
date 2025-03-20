@@ -74,6 +74,23 @@ const getMultiStepActionProgress = async (
       if (confirmToken) {
         run.confirmToken = confirmToken;
       }
+
+      if (run.isStopped()) {
+        run.pollingFinishedAt = new Date();
+
+        run.onEventReceived(MultiStepActionEventType.other);
+        libData.removeMultiStepActionRun(actionProgress.actionId);
+
+        result.object = {
+          id: actionProgress.actionId,
+          actionProgress,
+          run,
+          createdAt: actionProgress.createdAt,
+          error: 'polling-stopped',
+        };
+
+        return result;
+      }
     } else {
       run = new MultiStepActionRun({
         actionId: actionProgress.actionId,
@@ -88,14 +105,8 @@ const getMultiStepActionProgress = async (
       { actionProgress, run });
 
     // Has the notification been sent?
-    if (
-      !previousProgress?.notificationResult &&
-      actionProgress.notificationResult
-    ) {
-      if (
-        actionProgress.notificationResult ===
-        MultiStepActionSendNotificationResult.ok
-      ) {
+    if (!previousProgress?.notificationResult && actionProgress.notificationResult) {
+      if (actionProgress.notificationResult === MultiStepActionSendNotificationResult.ok) {
         run.onEventReceived(MultiStepActionEventType.notificationSent);
       } else {
         run.onEventReceived(MultiStepActionEventType.notificationFailed);

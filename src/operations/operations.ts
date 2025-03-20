@@ -40,6 +40,7 @@ import updateMyPassword from './myUser/updateMyPassword.js';
 import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import updateLocalObject from './updateLocalObject.js';
+import abortMultiStepAction from './multiStepAction/abortMultiStepAction.js';
 
 const operations: Operations = {
   findById,
@@ -94,6 +95,7 @@ const operations: Operations = {
   },
 
   multiStepAction: {
+    abortMultiStepAction,
     addMultiStepActionListener,
     findMyActiveMultiStepActions,
     getMultiStepActionProgress,

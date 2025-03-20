@@ -193,6 +193,8 @@ export interface Operations {
   };
 
   multiStepAction: {
+    abortMultiStepAction: (actionId: string) => boolean;
+
     addMultiStepActionListener: (
       actionId: string,
       listener: MultiStepActionListener,
@@ -211,7 +213,7 @@ export interface Operations {
     sendMultiStepActionNotification: (
       actionId: string,
       notificationMethod: NotificationMethod,
-    ) => Promise<MutationResult<string>>
+    ) => Promise<MutationResult<string>>;
 
     verifyMultiStepActionToken: (
       actionId: string,
