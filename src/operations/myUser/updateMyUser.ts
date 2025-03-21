@@ -22,6 +22,10 @@ const updateMyUser = async (
     queryOptions = defaultQueryOptionsForMutations;
   }
 
+  if (!changes.id) {
+    changes.id = clientInfo.myUserId;
+  }
+
   try {
     if (
       queryOptions.cachePolicy === CachePolicy.cache ||
