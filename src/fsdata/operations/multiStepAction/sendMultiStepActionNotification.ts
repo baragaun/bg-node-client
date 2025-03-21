@@ -15,6 +15,8 @@ import helpers from '../../helpers/helpers.js';
 // see: https://graffle.js.org/guides/topics/requests
 const sendMultiStepActionNotification = async (
   actionId: string,
+  email: string | undefined,
+  phoneNumber: string | undefined,
   notificationMethod: NotificationMethodFromClient,
 ): Promise<string> => {
   const config = libData.config();
@@ -38,6 +40,8 @@ const sendMultiStepActionNotification = async (
 
   const input: SendMultiStepActionNotificationInput = {
     actionId,
+    email,
+    phoneNumber,
     notificationMethod: notificationMethod as unknown as NotificationMethod,
   };
 

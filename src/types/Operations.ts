@@ -212,6 +212,8 @@ export interface Operations {
 
     sendMultiStepActionNotification: (
       actionId: string,
+      email: string | undefined,
+      phoneNumber: string | undefined,
       notificationMethod: NotificationMethod,
     ) => Promise<MutationResult<string>>;
 

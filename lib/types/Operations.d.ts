@@ -76,7 +76,7 @@ export interface Operations {
         findMyActiveMultiStepActions: () => Promise<SidMultiStepAction[]>;
         getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         removeMultiStepActionListener: (actionId: string, id: string) => boolean;
-        sendMultiStepActionNotification: (actionId: string, notificationMethod: NotificationMethod) => Promise<MutationResult<string>>;
+        sendMultiStepActionNotification: (actionId: string, email: string | undefined, phoneNumber: string | undefined, notificationMethod: NotificationMethod) => Promise<MutationResult<string>>;
         verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<QueryResult<SidMultiStepActionProgress>>;
     };
 }

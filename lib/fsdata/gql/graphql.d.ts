@@ -182,6 +182,7 @@ export declare enum AdminTaskResult {
 export declare enum AdminTaskType {
     AddAppFeature = "addAppFeature",
     AddLanguageText = "addLanguageText",
+    AddOrRemoveAppFeature = "addOrRemoveAppFeature",
     ClearBusMessages = "clearBusMessages",
     CompareMm2Object = "compareMm2Object",
     CompareMm2ObjectIdsOfModel = "compareMm2ObjectIdsOfModel",
@@ -315,6 +316,9 @@ export type BgChannelParticipantMetadata = {
     firstName?: Maybe<Scalars['String']['output']>;
     lastName?: Maybe<Scalars['String']['output']>;
     nickname?: Maybe<Scalars['String']['output']>;
+    sentMessageCount: Scalars['Float']['output'];
+    unseenMessageCount: Scalars['Float']['output'];
+    unseenSystemMessageCount: Scalars['Float']['output'];
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     userHandle?: Maybe<Scalars['String']['output']>;
 };
@@ -1965,6 +1969,97 @@ export type Language = {
     updatedBy?: Maybe<Scalars['ID']['output']>;
     value: Scalars['String']['output'];
 };
+export type MastercardBank = {
+    __typename?: 'MastercardBank';
+    adminNotes?: Maybe<Scalars['String']['output']>;
+    countryTextId: Scalars['String']['output'];
+    createdAt: Scalars['DateTimeISO']['output'];
+    createdBy?: Maybe<Scalars['ID']['output']>;
+    deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    deletedBy?: Maybe<Scalars['ID']['output']>;
+    /** Not stored, just used for graphQL API */
+    displayName?: Maybe<Scalars['String']['output']>;
+    /** (<Country name in English>) <Bank name> */
+    enDisplayName: Scalars['String']['output'];
+    /** (<Country name in Spanish>) <Bank name> */
+    esDisplayName: Scalars['String']['output'];
+    events?: Maybe<Array<ModelEvent>>;
+    id: Scalars['ID']['output'];
+    metadata?: Maybe<BaseModelMetadata>;
+    /** The name of the bank */
+    name: Scalars['String']['output'];
+    textId: Scalars['String']['output'];
+    updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    updatedBy?: Maybe<Scalars['ID']['output']>;
+};
+export declare enum MastercardCardType {
+    Credit = "credit",
+    Debit = "debit",
+    None = "none",
+    NotProvided = "notProvided",
+    Prepaid = "prepaid"
+}
+/**
+ *
+ * This object contains the profile information describing an MASTERCARD user.
+ *
+ * MASTERCARD users are members of the "mastercard" group, which comes with extra
+ * profile attributes. These fields are used to store the user's
+ * MASTERCARD-specific information.
+ */
+export type MastercardGroupMembership = IGroupMembership & {
+    __typename?: 'MastercardGroupMembership';
+    adminNotes?: Maybe<Scalars['String']['output']>;
+    /** Names of banks for reports */
+    bankNames?: Maybe<Array<Scalars['String']['output']>>;
+    /** Text IDs of banks for reports */
+    bankTextIds?: Maybe<Array<Scalars['String']['output']>>;
+    createdAt: Scalars['DateTimeISO']['output'];
+    createdBy?: Maybe<Scalars['ID']['output']>;
+    deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    deletedBy?: Maybe<Scalars['ID']['output']>;
+    events?: Maybe<Array<ModelEvent>>;
+    expertises: Array<Expertise>;
+    groupId: Scalars['ID']['output'];
+    groupIdent: Scalars['String']['output'];
+    id: Scalars['ID']['output'];
+    industries: Array<Industry>;
+    industry?: Maybe<Industry>;
+    metadata?: Maybe<BaseModelMetadata>;
+    /** Personal card types */
+    personalCardTypes?: Maybe<Array<MastercardCardType>>;
+    roles: Array<GroupMembershipRole>;
+    /** Small business card types, e.g. credit, debit, etc */
+    smallBusinessCardTypes?: Maybe<Array<MastercardCardType>>;
+    soughtExpertises: Array<Expertise>;
+    updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    updatedBy?: Maybe<Scalars['ID']['output']>;
+    userId: Scalars['ID']['output'];
+};
+export type MastercardGroupMembershipInput = {
+    adminNotes?: InputMaybe<Scalars['String']['input']>;
+    /** Names of banks for reports */
+    bankNames?: InputMaybe<Array<Scalars['String']['input']>>;
+    /** Text IDs of banks for reports */
+    bankTextIds?: InputMaybe<Array<Scalars['String']['input']>>;
+    createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    createdBy?: InputMaybe<Scalars['ID']['input']>;
+    deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    deletedBy?: InputMaybe<Scalars['ID']['input']>;
+    events?: InputMaybe<Array<ModelEventInput>>;
+    groupId?: InputMaybe<Scalars['ID']['input']>;
+    groupIdent?: InputMaybe<Scalars['String']['input']>;
+    id?: InputMaybe<Scalars['ID']['input']>;
+    metadata?: InputMaybe<BaseModelMetadataInput>;
+    /** Personal card types */
+    personalCardTypes?: InputMaybe<Array<MastercardCardType>>;
+    roles?: InputMaybe<Array<GroupMembershipRole>>;
+    /** Small business card types */
+    smallBusinessCardTypes?: InputMaybe<Array<MastercardCardType>>;
+    updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    updatedBy?: InputMaybe<Scalars['ID']['input']>;
+    userId?: InputMaybe<Scalars['ID']['input']>;
+};
 /**
  *
  * This object contains the profile information describing a mentee/entrepreneur/business owner.
@@ -2149,6 +2244,7 @@ export declare enum ModelType {
     GroupMembership = "GroupMembership",
     GroupRule = "GroupRule",
     GroupRuleConfig = "GroupRuleConfig",
+    MastercardBank = "MastercardBank",
     Match = "Match",
     MatchProfile = "MatchProfile",
     MatchingEngine = "MatchingEngine",
@@ -2335,12 +2431,14 @@ export declare enum MultiStepActionType {
     UpdatePassword = "updatePassword",
     UpdatePhoneNumber = "updatePhoneNumber",
     VerifyEmail = "verifyEmail",
+    VerifyEmailOnSignUp = "verifyEmailOnSignUp",
     VerifyPhoneNumber = "verifyPhoneNumber",
-    VerifyPhoneSignupOnSignup = "verifyPhoneSignupOnSignup"
+    VerifyPhoneNumberOnSignUp = "verifyPhoneNumberOnSignUp"
 }
 export type Mutation = {
     __typename?: 'Mutation';
     acceptChannelInvitation: Scalars['String']['output'];
+    addAppFeatureToUser: Scalars['String']['output'];
     addChannelMessageEvent: Scalars['String']['output'];
     addUserToGroup: ServiceRequest;
     archiveChannelForMe: Scalars['String']['output'];
@@ -2393,6 +2491,7 @@ export type Mutation = {
     initAssetUpload: UploadedAsset;
     markChannelMessagesAsSeenByMe: Scalars['String']['output'];
     markInAppMessageReceived: Scalars['String']['output'];
+    removeAppFeatureFromUser: Scalars['String']['output'];
     removeUserFromGroup: Scalars['String']['output'];
     reportUser: Scalars['String']['output'];
     runAdminTask: ServiceRequest;
@@ -2420,6 +2519,7 @@ export type Mutation = {
     updateGroup: ServiceRequest;
     updateGroupMembership: ServiceRequest;
     updateIqlaaGroupMembership: ServiceRequest;
+    updateMastercardGroupMembership: ServiceRequest;
     updateMenteesGroupMembership: ServiceRequest;
     updateMentorsGroupMembership: ServiceRequest;
     updateMyUser: Scalars['String']['output'];
@@ -2435,6 +2535,12 @@ export type Mutation = {
 };
 export type MutationAcceptChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
+};
+export type MutationAddAppFeatureToUserArgs = {
+    appFeature: AppFeature;
+    filter?: InputMaybe<UserListFilter>;
+    match?: InputMaybe<UserInput>;
+    options?: InputMaybe<FindObjectsOptions>;
 };
 export type MutationAddChannelMessageEventArgs = {
     input: BgAddChannelMessageEventInput;
@@ -2614,6 +2720,12 @@ export type MutationMarkInAppMessageReceivedArgs = {
     actionTaken: AppAction;
     notificationId: Scalars['String']['input'];
 };
+export type MutationRemoveAppFeatureFromUserArgs = {
+    appFeature: AppFeature;
+    filter?: InputMaybe<UserListFilter>;
+    match?: InputMaybe<UserInput>;
+    options?: InputMaybe<FindObjectsOptions>;
+};
 export type MutationRemoveUserFromGroupArgs = {
     force: Scalars['Boolean']['input'];
     groupId?: InputMaybe<Scalars['String']['input']>;
@@ -2696,6 +2808,9 @@ export type MutationUpdateGroupMembershipArgs = {
 export type MutationUpdateIqlaaGroupMembershipArgs = {
     input: IqlaaGroupMembershipInput;
 };
+export type MutationUpdateMastercardGroupMembershipArgs = {
+    input: MastercardGroupMembershipInput;
+};
 export type MutationUpdateMenteesGroupMembershipArgs = {
     input: MenteesGroupMembershipInput;
 };
@@ -2766,6 +2881,7 @@ export type MyUser = {
     educationLevel?: Maybe<EducationLevel>;
     educationLevelTextId?: Maybe<Scalars['String']['output']>;
     email?: Maybe<Scalars['String']['output']>;
+    /** The source of the email address, e.g. "google", "facebook", etc. */
     emailSource?: Maybe<Scalars['String']['output']>;
     emailUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     endorsements?: Maybe<Array<EndorsementWithTypes>>;
@@ -2897,10 +3013,10 @@ export type MyUserInput = {
     currentPassword?: InputMaybe<Scalars['String']['input']>;
     deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     deletedBy?: InputMaybe<Scalars['ID']['input']>;
-    /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
     discoverable?: InputMaybe<Scalars['Boolean']['input']>;
     educationLevelTextId?: InputMaybe<Scalars['String']['input']>;
     email?: InputMaybe<Scalars['String']['input']>;
+    /** The source of the email address, e.g. "google", "facebook", etc. */
     emailSource?: InputMaybe<Scalars['String']['input']>;
     emailUpdatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     ethnicity?: InputMaybe<Scalars['String']['input']>;
@@ -3396,6 +3512,7 @@ export type Query = {
     findIqlaaJordanianGovernorates: Array<IqlaaJordanianGovernorate>;
     findLanguages: Array<Language>;
     findLatestTrainingSessionForMe?: Maybe<TrainingSession>;
+    findMastercardBanks: Array<MastercardBank>;
     /** @deprecated Use findMyActiveMultiStepActions instead */
     findMyActiveMultiStepAction: Array<SidMultiStepAction>;
     findMyActiveMultiStepActions: Array<SidMultiStepAction>;
@@ -3564,6 +3681,9 @@ export type QueryFindLanguagesArgs = {
 export type QueryFindLatestTrainingSessionForMeArgs = {
     options?: InputMaybe<FindObjectsOptions>;
     trainingId: Scalars['String']['input'];
+};
+export type QueryFindMastercardBanksArgs = {
+    fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 export type QueryFindMyChannelsArgs = {
     options?: InputMaybe<FindObjectsOptions>;
@@ -3743,7 +3863,11 @@ export declare enum ReportUserReasonTextId {
 }
 export type SendMultiStepActionNotificationInput = {
     actionId?: Scalars['String']['input'];
+    /** Only allowed for certain flows, i.e. during sign-up with only an email or phone number. */
+    email?: InputMaybe<Scalars['String']['input']>;
     notificationMethod?: InputMaybe<NotificationMethod>;
+    /** Only allowed for certain flows, i.e. during sign-up with only an email or phone number. */
+    phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
 export type ServiceRequest = {
     __typename?: 'ServiceRequest';
@@ -3791,6 +3915,7 @@ export declare enum ServiceRequestSource {
 }
 export declare enum ServiceRequestType {
     GraphQlMutationAddChannelMessageEvent = "graphQlMutationAddChannelMessageEvent",
+    GraphQlMutationAddFeatureToUser = "graphQlMutationAddFeatureToUser",
     GraphQlMutationAddUserToGroup = "graphQlMutationAddUserToGroup",
     GraphQlMutationArchiveChannelForUserByMe = "graphQlMutationArchiveChannelForUserByMe",
     GraphQlMutationBlockUser = "graphQlMutationBlockUser",
@@ -3845,6 +3970,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationMarkChannelMessagesAsSeenByMe = "graphQlMutationMarkChannelMessagesAsSeenByMe",
     GraphQlMutationMarkInAppMessageReceived = "graphQlMutationMarkInAppMessageReceived",
     GraphQlMutationNlpLabelMessage = "graphQlMutationNlpLabelMessage",
+    GraphQlMutationRemoveFeatureFromUser = "graphQlMutationRemoveFeatureFromUser",
     GraphQlMutationRemoveUserFromAllGroups = "graphQlMutationRemoveUserFromAllGroups",
     GraphQlMutationRemoveUserFromGroup = "graphQlMutationRemoveUserFromGroup",
     GraphQlMutationReportUser = "graphQlMutationReportUser",
@@ -3893,6 +4019,7 @@ export declare enum ServiceRequestType {
     GraphQlQueryContentTag = "graphQlQueryContentTag",
     GraphQlQueryFindAdminTask = "graphQlQueryFindAdminTask",
     GraphQlQueryFindAndUpdateAllMm2Users = "graphQlQueryFindAndUpdateAllMm2Users",
+    GraphQlQueryFindAvailableUserHandle = "graphQlQueryFindAvailableUserHandle",
     GraphQlQueryFindChannelById = "graphQlQueryFindChannelById",
     GraphQlQueryFindChannelInvitationById = "graphQlQueryFindChannelInvitationById",
     GraphQlQueryFindChannelInvitationsBetweenUsers = "graphQlQueryFindChannelInvitationsBetweenUsers",
@@ -4579,6 +4706,7 @@ export type User = {
     educationLevel?: Maybe<EducationLevel>;
     educationLevelTextId?: Maybe<Scalars['String']['output']>;
     email?: Maybe<Scalars['String']['output']>;
+    /** The source of the email address, e.g. "google", "facebook", etc. */
     emailSource?: Maybe<Scalars['String']['output']>;
     emailUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     endorsements?: Maybe<Array<EndorsementWithTypes>>;
@@ -4874,10 +5002,10 @@ export type UserInput = {
     currentPassword?: InputMaybe<Scalars['String']['input']>;
     deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     deletedBy?: InputMaybe<Scalars['ID']['input']>;
-    /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
     discoverable?: InputMaybe<Scalars['Boolean']['input']>;
     educationLevelTextId?: InputMaybe<Scalars['String']['input']>;
     email?: InputMaybe<Scalars['String']['input']>;
+    /** The source of the email address, e.g. "google", "facebook", etc. */
     emailSource?: InputMaybe<Scalars['String']['input']>;
     emailUpdatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     ethnicity?: InputMaybe<Scalars['String']['input']>;

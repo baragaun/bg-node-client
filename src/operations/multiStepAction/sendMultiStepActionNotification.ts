@@ -5,6 +5,8 @@ import { MutationResult } from '../../types/MutationResult.js';
 
 const sendMultiStepActionNotification = async (
   actionId: string,
+  email: string | undefined,
+  phoneNumber: string | undefined,
   notificationMethod: NotificationMethod,
 ): Promise<MutationResult<string>> => {
   try {
@@ -13,6 +15,8 @@ const sendMultiStepActionNotification = async (
 
     const response = await fsdata.multiStepAction.sendMultiStepActionNotification(
       actionId,
+      email,
+      phoneNumber,
       notificationMethod,
     );
 

@@ -1,34 +1,20 @@
+/* eslint-disable */
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
-export type MakeEmpty<
-  T extends { [key: string]: unknown },
-  K extends keyof T,
-> = {
-  [_ in K]?: never;
-};
-export type Incremental<T> =
-  | T
-  | {
-      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
-    };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string };
-  String: { input: string; output: string };
-  Boolean: { input: boolean; output: boolean };
-  Int: { input: number; output: number };
-  Float: { input: number; output: number };
+  ID: { input: string; output: string; }
+  String: { input: string; output: string; }
+  Boolean: { input: boolean; output: boolean; }
+  Int: { input: number; output: number; }
+  Float: { input: number; output: number; }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.This scalar is serialized to a string in ISO 8601 format and parsed from a string in ISO 8601 format. */
-  DateTimeISO: { input: any; output: any };
+  DateTimeISO: { input: any; output: any; }
 };
 
 export type AcademicExperience = {
@@ -167,12 +153,13 @@ export type AdminTaskInput = {
 
 export enum AdminTaskResult {
   Error = 'error',
-  Ok = 'ok',
+  Ok = 'ok'
 }
 
 export enum AdminTaskType {
   AddAppFeature = 'addAppFeature',
   AddLanguageText = 'addLanguageText',
+  AddOrRemoveAppFeature = 'addOrRemoveAppFeature',
   ClearBusMessages = 'clearBusMessages',
   CompareMm2Object = 'compareMm2Object',
   CompareMm2ObjectIdsOfModel = 'compareMm2ObjectIdsOfModel',
@@ -210,18 +197,18 @@ export enum AdminTaskType {
   Unset = 'unset',
   UpdateChannelMetadata = 'updateChannelMetadata',
   UpdateGroupIdentsInAllGroupMemberships = 'updateGroupIdentsInAllGroupMemberships',
-  VerifyUserPassword = 'verifyUserPassword',
+  VerifyUserPassword = 'verifyUserPassword'
 }
 
 export enum AppAction {
   EditProfile = 'editProfile',
   Unset = 'unset',
-  UpdateApp = 'updateApp',
+  UpdateApp = 'updateApp'
 }
 
 export enum AppFeature {
   TestFeatures1 = 'testFeatures1',
-  TestFeatures2 = 'testFeatures2',
+  TestFeatures2 = 'testFeatures2'
 }
 
 export type AppliedGroupRule = {
@@ -261,7 +248,7 @@ export type AppliedGroupRuleInput = {
 
 export enum AssetHostingService {
   S3 = 's3',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export enum AuthType {
@@ -269,7 +256,7 @@ export enum AuthType {
   None = 'none',
   Oauth = 'oauth',
   Saml = 'saml',
-  Token = 'token',
+  Token = 'token'
 }
 
 export type BaseModel = {
@@ -318,6 +305,9 @@ export type BgChannelParticipantMetadata = {
   firstName?: Maybe<Scalars['String']['output']>;
   lastName?: Maybe<Scalars['String']['output']>;
   nickname?: Maybe<Scalars['String']['output']>;
+  sentMessageCount: Scalars['Float']['output'];
+  unseenMessageCount: Scalars['Float']['output'];
+  unseenSystemMessageCount: Scalars['Float']['output'];
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   userHandle?: Maybe<Scalars['String']['output']>;
 };
@@ -442,7 +432,7 @@ export enum ChannelChangedEventType {
   MessageUpdated = 'messageUpdated',
   ParticipantCreated = 'participantCreated',
   ParticipantDeleted = 'participantDeleted',
-  ParticipantUpdated = 'participantUpdated',
+  ParticipantUpdated = 'participantUpdated'
 }
 
 export type ChannelInbox = {
@@ -570,7 +560,7 @@ export type ChannelInvitation = {
 
 export enum ChannelInvitationDirection {
   Received = 'received',
-  Sent = 'sent',
+  Sent = 'sent'
 }
 
 export type ChannelInvitationInput = {
@@ -610,7 +600,7 @@ export enum ChannelInvitationStatus {
   Accepted = 'accepted',
   Created = 'created',
   Declined = 'declined',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export type ChannelListFilter = {
@@ -659,7 +649,7 @@ export type ChannelMessage = {
 export enum ChannelMessageEvent {
   Received = 'received',
   Seen = 'seen',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export type ChannelMessageInput = {
@@ -735,7 +725,7 @@ export enum ChannelMessageType {
   Support = 'support',
   System = 'system',
   Unset = 'unset',
-  Welcome = 'welcome',
+  Welcome = 'welcome'
 }
 
 export type ChannelMetadata = {
@@ -795,14 +785,14 @@ export enum ChannelParticipantRole {
   Admin = 'admin',
   Moderator = 'moderator',
   Owner = 'owner',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export enum ChannelType {
   Mentoring = 'mentoring',
   Support = 'support',
   Unset = 'unset',
-  Welcome = 'welcome',
+  Welcome = 'welcome'
 }
 
 export type ChannelsUserMetadata = {
@@ -1157,7 +1147,7 @@ export type ContentTagType = {
 export enum CookieChoiceTextId {
   AcceptAll = 'acceptAll',
   AcceptEssentials = 'acceptEssentials',
-  RejectAll = 'rejectAll',
+  RejectAll = 'rejectAll'
 }
 
 export type Country = {
@@ -1242,7 +1232,7 @@ export enum DeclineChannelInvitationReasonTextId {
   Inappropriate = 'inappropriate',
   NoReason = 'noReason',
   NotGoodFit = 'notGoodFit',
-  TooBusy = 'tooBusy',
+  TooBusy = 'tooBusy'
 }
 
 export type EducationLevel = {
@@ -1389,7 +1379,7 @@ export enum ErrorCode {
   UserAlreadyExists = 'userAlreadyExists',
   UserDeviceNotFound = 'userDeviceNotFound',
   UserNotActive = 'userNotActive',
-  UserNotFound = 'userNotFound',
+  UserNotFound = 'userNotFound'
 }
 
 export type ErrorCodeOption = {
@@ -1470,7 +1460,7 @@ export type Expertise = {
 
 export enum FederatedIdentityProvider {
   Firebase = 'firebase',
-  None = 'none',
+  None = 'none'
 }
 
 export type FindObjectsOptions = {
@@ -1669,7 +1659,7 @@ export enum GroupMembershipRole {
   Admin = 'admin',
   Coordinator = 'coordinator',
   Moderator = 'moderator',
-  Owner = 'owner',
+  Owner = 'owner'
 }
 
 export type GroupRuleBaseConfig = {
@@ -1698,7 +1688,7 @@ export enum GroupRuleEventType {
   SignUp = 'signUp',
   Unknown = 'unknown',
   UpdateUser = 'updateUser',
-  UserSearch = 'userSearch',
+  UserSearch = 'userSearch'
 }
 
 export type GroupsUserMetadata = {
@@ -1726,13 +1716,13 @@ export enum IdentityProvider {
   Sso = 'sso',
   Telegram = 'telegram',
   Twitter = 'twitter',
-  WhatsApp = 'whatsApp',
+  WhatsApp = 'whatsApp'
 }
 
 export enum IncludeFilterOption {
   Exclude = 'exclude',
   Include = 'include',
-  Only = 'only',
+  Only = 'only'
 }
 
 export type IndonesianCity = {
@@ -2048,6 +2038,101 @@ export type Language = {
   value: Scalars['String']['output'];
 };
 
+export type MastercardBank = {
+  __typename?: 'MastercardBank';
+  adminNotes?: Maybe<Scalars['String']['output']>;
+  countryTextId: Scalars['String']['output'];
+  createdAt: Scalars['DateTimeISO']['output'];
+  createdBy?: Maybe<Scalars['ID']['output']>;
+  deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  deletedBy?: Maybe<Scalars['ID']['output']>;
+  /** Not stored, just used for graphQL API */
+  displayName?: Maybe<Scalars['String']['output']>;
+  /** (<Country name in English>) <Bank name> */
+  enDisplayName: Scalars['String']['output'];
+  /** (<Country name in Spanish>) <Bank name> */
+  esDisplayName: Scalars['String']['output'];
+  events?: Maybe<Array<ModelEvent>>;
+  id: Scalars['ID']['output'];
+  metadata?: Maybe<BaseModelMetadata>;
+  /** The name of the bank */
+  name: Scalars['String']['output'];
+  textId: Scalars['String']['output'];
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<Scalars['ID']['output']>;
+};
+
+export enum MastercardCardType {
+  Credit = 'credit',
+  Debit = 'debit',
+  None = 'none',
+  NotProvided = 'notProvided',
+  Prepaid = 'prepaid'
+}
+
+/**
+ *
+ * This object contains the profile information describing an MASTERCARD user.
+ *
+ * MASTERCARD users are members of the "mastercard" group, which comes with extra
+ * profile attributes. These fields are used to store the user's
+ * MASTERCARD-specific information.
+ */
+export type MastercardGroupMembership = IGroupMembership & {
+  __typename?: 'MastercardGroupMembership';
+  adminNotes?: Maybe<Scalars['String']['output']>;
+  /** Names of banks for reports */
+  bankNames?: Maybe<Array<Scalars['String']['output']>>;
+  /** Text IDs of banks for reports */
+  bankTextIds?: Maybe<Array<Scalars['String']['output']>>;
+  createdAt: Scalars['DateTimeISO']['output'];
+  createdBy?: Maybe<Scalars['ID']['output']>;
+  deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  deletedBy?: Maybe<Scalars['ID']['output']>;
+  events?: Maybe<Array<ModelEvent>>;
+  expertises: Array<Expertise>;
+  groupId: Scalars['ID']['output'];
+  groupIdent: Scalars['String']['output'];
+  id: Scalars['ID']['output'];
+  industries: Array<Industry>;
+  industry?: Maybe<Industry>;
+  metadata?: Maybe<BaseModelMetadata>;
+  /** Personal card types */
+  personalCardTypes?: Maybe<Array<MastercardCardType>>;
+  roles: Array<GroupMembershipRole>;
+  /** Small business card types, e.g. credit, debit, etc */
+  smallBusinessCardTypes?: Maybe<Array<MastercardCardType>>;
+  soughtExpertises: Array<Expertise>;
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<Scalars['ID']['output']>;
+  userId: Scalars['ID']['output'];
+};
+
+export type MastercardGroupMembershipInput = {
+  adminNotes?: InputMaybe<Scalars['String']['input']>;
+  /** Names of banks for reports */
+  bankNames?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** Text IDs of banks for reports */
+  bankTextIds?: InputMaybe<Array<Scalars['String']['input']>>;
+  createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdBy?: InputMaybe<Scalars['ID']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  deletedBy?: InputMaybe<Scalars['ID']['input']>;
+  events?: InputMaybe<Array<ModelEventInput>>;
+  groupId?: InputMaybe<Scalars['ID']['input']>;
+  groupIdent?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  metadata?: InputMaybe<BaseModelMetadataInput>;
+  /** Personal card types */
+  personalCardTypes?: InputMaybe<Array<MastercardCardType>>;
+  roles?: InputMaybe<Array<GroupMembershipRole>>;
+  /** Small business card types */
+  smallBusinessCardTypes?: InputMaybe<Array<MastercardCardType>>;
+  updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedBy?: InputMaybe<Scalars['ID']['input']>;
+  userId?: InputMaybe<Scalars['ID']['input']>;
+};
+
 /**
  *
  * This object contains the profile information describing a mentee/entrepreneur/business owner.
@@ -2100,9 +2185,7 @@ export type MenteesGroupMembership = IGroupMembership & {
 export type MenteesGroupMembershipInput = {
   actionsTaken?: InputMaybe<Scalars['String']['input']>;
   /** Must match expertise textIds. */
-  additionalSoughtExpertisesTextIds?: InputMaybe<
-    Array<Scalars['String']['input']>
-  >;
+  additionalSoughtExpertisesTextIds?: InputMaybe<Array<Scalars['String']['input']>>;
   adminNotes?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   createdBy?: InputMaybe<Scalars['ID']['input']>;
@@ -2219,7 +2302,7 @@ export type ModelEventInput = {
 export enum ModelEventType {
   Error = 'error',
   Info = 'info',
-  Warning = 'warning',
+  Warning = 'warning'
 }
 
 export enum ModelType {
@@ -2241,6 +2324,7 @@ export enum ModelType {
   GroupMembership = 'GroupMembership',
   GroupRule = 'GroupRule',
   GroupRuleConfig = 'GroupRuleConfig',
+  MastercardBank = 'MastercardBank',
   Match = 'Match',
   MatchProfile = 'MatchProfile',
   MatchingEngine = 'MatchingEngine',
@@ -2270,7 +2354,7 @@ export enum ModelType {
   UserPreferences = 'UserPreferences',
   UserSearch = 'UserSearch',
   UserTracking = 'UserTracking',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export type ModerationConcern = {
@@ -2354,7 +2438,7 @@ export type ModerationConcernInput = {
 
 export enum ModerationConcernType {
   Phrase = 'phrase',
-  Unknown = 'unknown',
+  Unknown = 'unknown'
 }
 
 export type MultiStepActionError = {
@@ -2413,19 +2497,19 @@ export enum MultiStepActionResult {
   Unset = 'unset',
   UserFailedValidation = 'userFailedValidation',
   UserNotFound = 'userNotFound',
-  UserNotSignedIn = 'userNotSignedIn',
+  UserNotSignedIn = 'userNotSignedIn'
 }
 
 export enum MultiStepActionSendNotificationResult {
   Failed = 'failed',
   Ok = 'ok',
-  PhoneNumberInvalid = 'phoneNumberInvalid',
+  PhoneNumberInvalid = 'phoneNumberInvalid'
 }
 
 export enum MultiStepActionStatus {
   Created = 'created',
   Finished = 'finished',
-  Started = 'started',
+  Started = 'started'
 }
 
 export enum MultiStepActionType {
@@ -2436,13 +2520,15 @@ export enum MultiStepActionType {
   UpdatePassword = 'updatePassword',
   UpdatePhoneNumber = 'updatePhoneNumber',
   VerifyEmail = 'verifyEmail',
+  VerifyEmailOnSignUp = 'verifyEmailOnSignUp',
   VerifyPhoneNumber = 'verifyPhoneNumber',
-  VerifyPhoneSignupOnSignup = 'verifyPhoneSignupOnSignup',
+  VerifyPhoneNumberOnSignUp = 'verifyPhoneNumberOnSignUp'
 }
 
 export type Mutation = {
   __typename?: 'Mutation';
   acceptChannelInvitation: Scalars['String']['output'];
+  addAppFeatureToUser: Scalars['String']['output'];
   addChannelMessageEvent: Scalars['String']['output'];
   addUserToGroup: ServiceRequest;
   archiveChannelForMe: Scalars['String']['output'];
@@ -2495,6 +2581,7 @@ export type Mutation = {
   initAssetUpload: UploadedAsset;
   markChannelMessagesAsSeenByMe: Scalars['String']['output'];
   markInAppMessageReceived: Scalars['String']['output'];
+  removeAppFeatureFromUser: Scalars['String']['output'];
   removeUserFromGroup: Scalars['String']['output'];
   reportUser: Scalars['String']['output'];
   runAdminTask: ServiceRequest;
@@ -2522,6 +2609,7 @@ export type Mutation = {
   updateGroup: ServiceRequest;
   updateGroupMembership: ServiceRequest;
   updateIqlaaGroupMembership: ServiceRequest;
+  updateMastercardGroupMembership: ServiceRequest;
   updateMenteesGroupMembership: ServiceRequest;
   updateMentorsGroupMembership: ServiceRequest;
   updateMyUser: Scalars['String']['output'];
@@ -2536,13 +2624,24 @@ export type Mutation = {
   verifyOneTimeAuthToken: Scalars['Boolean']['output'];
 };
 
+
 export type MutationAcceptChannelInvitationArgs = {
   channelInvitationId: Scalars['String']['input'];
 };
 
+
+export type MutationAddAppFeatureToUserArgs = {
+  appFeature: AppFeature;
+  filter?: InputMaybe<UserListFilter>;
+  match?: InputMaybe<UserInput>;
+  options?: InputMaybe<FindObjectsOptions>;
+};
+
+
 export type MutationAddChannelMessageEventArgs = {
   input: BgAddChannelMessageEventInput;
 };
+
 
 export type MutationAddUserToGroupArgs = {
   groupId?: InputMaybe<Scalars['String']['input']>;
@@ -2551,9 +2650,11 @@ export type MutationAddUserToGroupArgs = {
   userId: Scalars['String']['input'];
 };
 
+
 export type MutationArchiveChannelForMeArgs = {
   channelId: Scalars['String']['input'];
 };
+
 
 export type MutationBlockUserForMeArgs = {
   notes?: InputMaybe<Scalars['String']['input']>;
@@ -2561,153 +2662,188 @@ export type MutationBlockUserForMeArgs = {
   userId: Scalars['String']['input'];
 };
 
+
 export type MutationCreateAcademicExperienceArgs = {
   input: AcademicExperienceInput;
 };
+
 
 export type MutationCreateAdminTaskArgs = {
   adminTaskInput: AdminTaskInput;
 };
 
+
 export type MutationCreateBusinessExperienceArgs = {
   input: BusinessExperienceInput;
 };
+
 
 export type MutationCreateChannelArgs = {
   input: ChannelInput;
 };
 
+
 export type MutationCreateChannelInvitationArgs = {
   input: ChannelInvitationInput;
 };
+
 
 export type MutationCreateChannelMessageArgs = {
   input: ChannelMessageInput;
 };
 
+
 export type MutationCreateChannelParticipantArgs = {
   input: ChannelParticipantInput;
 };
+
 
 export type MutationCreateCompanyArgs = {
   input: CompanyInput;
 };
 
+
 export type MutationCreateContactArgs = {
   input: ContactInput;
 };
+
 
 export type MutationCreateContentTagArgs = {
   input: ContentTagInput;
 };
 
+
 export type MutationCreateGroupArgs = {
   input: GroupInput;
 };
+
 
 export type MutationCreateGroupMembershipArgs = {
   input: GroupMembershipInput;
 };
 
+
 export type MutationCreateMenteesGroupMembershipArgs = {
   input: MenteesGroupMembershipInput;
 };
+
 
 export type MutationCreateMentorsGroupMembershipArgs = {
   input: MentorsGroupMembershipInput;
 };
 
+
 export type MutationCreateMultiStepActionArgs = {
   input: SidMultiStepActionInput;
 };
+
 
 export type MutationCreateNotificationArgs = {
   notificationInput: NotificationInput;
 };
 
+
 export type MutationCreateNotificationTemplateArgs = {
   notificationTemplateInput: NotificationTemplateInput;
 };
+
 
 export type MutationCreateSupportChannelConfigArgs = {
   input: SupportChannelConfigInput;
 };
 
+
 export type MutationCreateUploadedAssetArgs = {
   input: UploadedAssetInput;
 };
+
 
 export type MutationCreateUserDeviceArgs = {
   input: UserDeviceInput;
 };
 
+
 export type MutationCreateUserSearchArgs = {
   input: UserSearchInput;
 };
 
+
 export type MutationCreateUserTrackingArgs = {
   input: UserTrackingInput;
 };
+
 
 export type MutationDeclineChannelInvitationArgs = {
   channelInvitationId: Scalars['String']['input'];
   reasonTextId: DeclineChannelInvitationReasonTextId;
 };
 
+
 export type MutationDeleteAcademicExperienceArgs = {
   academicExperienceId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
+
 
 export type MutationDeleteAdminTaskArgs = {
   adminTaskId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
 
+
 export type MutationDeleteBusinessExperienceArgs = {
   businessExperienceId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
+
 
 export type MutationDeleteChannelArgs = {
   channelId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
 
+
 export type MutationDeleteChannelInvitationArgs = {
   channelInvitationId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
+
 
 export type MutationDeleteChannelMessageArgs = {
   channelMessageId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
 
+
 export type MutationDeleteChannelParticipantArgs = {
   channelParticipantId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
+
 
 export type MutationDeleteCompanyArgs = {
   companyId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
 
+
 export type MutationDeleteContentTagArgs = {
   contentTagId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
 };
+
 
 export type MutationDeleteGroupArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   groupId: Scalars['String']['input'];
 };
 
+
 export type MutationDeleteGroupMembershipArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   groupMembershipId: Scalars['String']['input'];
 };
+
 
 export type MutationDeleteMyUserArgs = {
   cause?: InputMaybe<Scalars['String']['input']>;
@@ -2715,25 +2851,30 @@ export type MutationDeleteMyUserArgs = {
   description?: InputMaybe<Scalars['String']['input']>;
 };
 
+
 export type MutationDeleteNotificationArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   notificationId: Scalars['String']['input'];
 };
+
 
 export type MutationDeleteNotificationTemplateArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   notificationTemplateId: Scalars['String']['input'];
 };
 
+
 export type MutationDeleteSupportChannelConfigArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   supportChannelConfigId: Scalars['String']['input'];
 };
 
+
 export type MutationDeleteUploadedAssetArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   id: Scalars['String']['input'];
 };
+
 
 export type MutationDeleteUserArgs = {
   cause?: InputMaybe<Scalars['String']['input']>;
@@ -2742,31 +2883,46 @@ export type MutationDeleteUserArgs = {
   userId: Scalars['String']['input'];
 };
 
+
 export type MutationDeleteUserSearchArgs = {
   deletePhysically: Scalars['Boolean']['input'];
   userSearchId: Scalars['String']['input'];
 };
 
+
 export type MutationDismissChannelInvitationFromInboxArgs = {
   channelInvitationId: Scalars['String']['input'];
 };
+
 
 export type MutationEndMySessionArgs = {
   deviceUuid: Scalars['String']['input'];
 };
 
+
 export type MutationInitAssetUploadArgs = {
   input: UploadedAssetInput;
 };
+
 
 export type MutationMarkChannelMessagesAsSeenByMeArgs = {
   channelId: Scalars['String']['input'];
 };
 
+
 export type MutationMarkInAppMessageReceivedArgs = {
   actionTaken: AppAction;
   notificationId: Scalars['String']['input'];
 };
+
+
+export type MutationRemoveAppFeatureFromUserArgs = {
+  appFeature: AppFeature;
+  filter?: InputMaybe<UserListFilter>;
+  match?: InputMaybe<UserInput>;
+  options?: InputMaybe<FindObjectsOptions>;
+};
+
 
 export type MutationRemoveUserFromGroupArgs = {
   force: Scalars['Boolean']['input'];
@@ -2775,150 +2931,192 @@ export type MutationRemoveUserFromGroupArgs = {
   userId: Scalars['String']['input'];
 };
 
+
 export type MutationReportUserArgs = {
   input: ReportUserInput;
 };
+
 
 export type MutationRunAdminTaskArgs = {
   adminTaskId: Scalars['String']['input'];
 };
 
+
 export type MutationSendMultiStepActionNotificationArgs = {
   input: SendMultiStepActionNotificationInput;
 };
+
 
 export type MutationSignInOauthUserArgs = {
   input: SignInOauthUserInput;
 };
 
+
 export type MutationSignInUserArgs = {
   input: SignInUserInput;
 };
 
+
 export type MutationSignUpUserArgs = {
   input: SignUpUserInput;
 };
+
 
 export type MutationStartMySessionArgs = {
   deviceUuid: Scalars['String']['input'];
   pushNotificationToken?: InputMaybe<Scalars['String']['input']>;
 };
 
+
 export type MutationStartResetPasswordArgs = {
   input: UserIdentInput;
 };
+
 
 export type MutationStartVerifyEmailArgs = {
   email: Scalars['String']['input'];
 };
 
+
 export type MutationStartVerifyPhoneNumberArgs = {
   phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
+
 
 export type MutationUnarchiveChannelForMeArgs = {
   channelId: Scalars['String']['input'];
 };
 
+
 export type MutationUnblockUserForMeArgs = {
   userId: Scalars['String']['input'];
 };
+
 
 export type MutationUpdateAcademicExperienceArgs = {
   input: AcademicExperienceInput;
 };
 
+
 export type MutationUpdateAdminTaskArgs = {
   adminTaskInput: AdminTaskInput;
 };
+
 
 export type MutationUpdateBusinessExperienceArgs = {
   input: BusinessExperienceInput;
 };
 
+
 export type MutationUpdateChannelArgs = {
   input: ChannelInput;
 };
+
 
 export type MutationUpdateChannelInvitationArgs = {
   input: ChannelInvitationInput;
 };
 
+
 export type MutationUpdateChannelMessageArgs = {
   input: ChannelMessageInput;
 };
+
 
 export type MutationUpdateChannelParticipantArgs = {
   input: ChannelParticipantInput;
 };
 
+
 export type MutationUpdateCompanyArgs = {
   input: CompanyInput;
 };
+
 
 export type MutationUpdateContactArgs = {
   input: ContactInput;
 };
 
+
 export type MutationUpdateContentTagArgs = {
   input: ContentTagInput;
 };
+
 
 export type MutationUpdateGroupArgs = {
   input: GroupInput;
 };
 
+
 export type MutationUpdateGroupMembershipArgs = {
   input: GroupMembershipInput;
 };
+
 
 export type MutationUpdateIqlaaGroupMembershipArgs = {
   input: IqlaaGroupMembershipInput;
 };
 
+
+export type MutationUpdateMastercardGroupMembershipArgs = {
+  input: MastercardGroupMembershipInput;
+};
+
+
 export type MutationUpdateMenteesGroupMembershipArgs = {
   input: MenteesGroupMembershipInput;
 };
+
 
 export type MutationUpdateMentorsGroupMembershipArgs = {
   input: MentorsGroupMembershipInput;
 };
 
+
 export type MutationUpdateMyUserArgs = {
   input: MyUserInput;
 };
+
 
 export type MutationUpdateNotificationArgs = {
   notificationInput: NotificationInput;
 };
 
+
 export type MutationUpdateNotificationTemplateArgs = {
   notificationTemplateInput: NotificationTemplateInput;
 };
+
 
 export type MutationUpdateSupportChannelConfigArgs = {
   input: SupportChannelConfigInput;
 };
 
+
 export type MutationUpdateUploadedAssetArgs = {
   input: UploadedAssetInput;
 };
+
 
 export type MutationUpdateUserArgs = {
   input: UserInput;
 };
 
+
 export type MutationUpdateUserDeviceArgs = {
   input: UserDeviceInput;
 };
+
 
 export type MutationUpdateUserSearchArgs = {
   input: UserSearchInput;
 };
 
+
 export type MutationVerifyMultiStepActionTokenArgs = {
   input: VerifyMultiStepActionTokenInput;
 };
+
 
 export type MutationVerifyOneTimeAuthTokenArgs = {
   input: VerifyOneTimeAuthTokenInput;
@@ -2958,6 +3156,7 @@ export type MyUser = {
   educationLevel?: Maybe<EducationLevel>;
   educationLevelTextId?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
+  /** The source of the email address, e.g. "google", "facebook", etc. */
   emailSource?: Maybe<Scalars['String']['output']>;
   emailUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   endorsements?: Maybe<Array<EndorsementWithTypes>>;
@@ -3057,6 +3256,7 @@ export type MyUser = {
   yearsOwnershipExperience?: Maybe<Scalars['Int']['output']>;
 };
 
+
 export type MyUserChannelsArgs = {
   mustBeAccepted?: InputMaybe<Scalars['Boolean']['input']>;
   mustHaveMessages?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3091,10 +3291,10 @@ export type MyUserInput = {
   currentPassword?: InputMaybe<Scalars['String']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   deletedBy?: InputMaybe<Scalars['ID']['input']>;
-  /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
   discoverable?: InputMaybe<Scalars['Boolean']['input']>;
   educationLevelTextId?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
+  /** The source of the email address, e.g. "google", "facebook", etc. */
   emailSource?: InputMaybe<Scalars['String']['input']>;
   emailUpdatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   ethnicity?: InputMaybe<Scalars['String']['input']>;
@@ -3281,7 +3481,7 @@ export enum NotificationMethod {
   InAppNotification = 'inAppNotification',
   Off = 'off',
   PushNotification = 'pushNotification',
-  Sms = 'sms',
+  Sms = 'sms'
 }
 
 export type NotificationOptions = {
@@ -3429,7 +3629,7 @@ export enum NotificationTemplateName {
   SendFirstInvitationForMentor = 'sendFirstInvitationForMentor',
   Unset = 'unset',
   WelcomeForMentee = 'welcomeForMentee',
-  WelcomeForMentor = 'welcomeForMentor',
+  WelcomeForMentor = 'welcomeForMentor'
 }
 
 export enum NotificationType {
@@ -3447,7 +3647,7 @@ export enum NotificationType {
   ResetPasswordConfirmation = 'resetPasswordConfirmation',
   SendFirstInvitation = 'sendFirstInvitation',
   Unset = 'unset',
-  Welcome = 'welcome',
+  Welcome = 'welcome'
 }
 
 export type ObjectChangedEvent = {
@@ -3464,7 +3664,7 @@ export type ObjectChangedEvent = {
 export enum ObjectChangedEventType {
   Created = 'created',
   Deleted = 'deleted',
-  Updated = 'updated',
+  Updated = 'updated'
 }
 
 export type Option = {
@@ -3528,7 +3728,7 @@ export enum OptionType {
   NotificationTypeOption = 'notificationTypeOption',
   Pronoun = 'pronoun',
   ReportUserReason = 'reportUserReason',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export type Pronoun = {
@@ -3606,6 +3806,7 @@ export type Query = {
   findIqlaaJordanianGovernorates: Array<IqlaaJordanianGovernorate>;
   findLanguages: Array<Language>;
   findLatestTrainingSessionForMe?: Maybe<TrainingSession>;
+  findMastercardBanks: Array<MastercardBank>;
   /** @deprecated Use findMyActiveMultiStepActions instead */
   findMyActiveMultiStepAction: Array<SidMultiStepAction>;
   findMyActiveMultiStepActions: Array<SidMultiStepAction>;
@@ -3649,26 +3850,32 @@ export type Query = {
   userWillReceiveWelcomeMessage: Scalars['Boolean']['output'];
 };
 
+
 export type QueryDoesUserExistArgs = {
   ident: Scalars['String']['input'];
   identType: UserIdentType;
 };
 
+
 export type QueryFindAdminTaskByIdArgs = {
   adminTaskId: Scalars['String']['input'];
 };
+
 
 export type QueryFindAvailableUserHandleArgs = {
   startValue: Scalars['String']['input'];
 };
 
+
 export type QueryFindChannelByIdArgs = {
   id: Scalars['String']['input'];
 };
 
+
 export type QueryFindChannelInvitationByIdArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type QueryFindChannelInvitationsBetweenUsersArgs = {
   onlyPending?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3676,6 +3883,7 @@ export type QueryFindChannelInvitationsBetweenUsersArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userIds: Array<Scalars['String']['input']>;
 };
+
 
 export type QueryFindChannelInvitationsForUserArgs = {
   direction?: InputMaybe<ChannelInvitationDirection>;
@@ -3685,9 +3893,11 @@ export type QueryFindChannelInvitationsForUserArgs = {
   userId: Scalars['String']['input'];
 };
 
+
 export type QueryFindChannelMessageByIdArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type QueryFindChannelMessagesArgs = {
   filter?: InputMaybe<ChannelMessageListFilter>;
@@ -3695,15 +3905,18 @@ export type QueryFindChannelMessagesArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryFindChannelParticipantByIdArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type QueryFindChannelsArgs = {
   filter?: InputMaybe<ChannelListFilter>;
   match?: InputMaybe<ChannelInput>;
   options?: InputMaybe<FindObjectsOptions>;
 };
+
 
 export type QueryFindChannelsForUserArgs = {
   mustBeAccepted?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3712,22 +3925,27 @@ export type QueryFindChannelsForUserArgs = {
   userId: Scalars['String']['input'];
 };
 
+
 export type QueryFindCompanyStagesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
+
 export type QueryFindCompanyTypesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
+
 
 export type QueryFindContactArgs = {
   createIfNotExist?: InputMaybe<Scalars['Boolean']['input']>;
   match: ContactInput;
 };
 
+
 export type QueryFindContactByIdArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type QueryFindContactsArgs = {
   filter?: InputMaybe<SidContactListFilter>;
@@ -3735,21 +3953,26 @@ export type QueryFindContactsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryFindCountriesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
+
 
 export type QueryFindDeclineChannelInvitationReasonsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
+
 export type QueryFindEducationLevelsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
+
 export type QueryFindErrorCodesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
+
 
 export type QueryFindExpertisesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
@@ -3757,17 +3980,21 @@ export type QueryFindExpertisesArgs = {
   parentTextId?: InputMaybe<Scalars['String']['input']>;
 };
 
+
 export type QueryFindGendersArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
+
 
 export type QueryFindGroupByIdArgs = {
   id: Scalars['String']['input'];
 };
 
+
 export type QueryFindGroupMembershipByIdArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type QueryFindGroupMembershipsArgs = {
   filter?: InputMaybe<GroupMembershipListFilter>;
@@ -3775,48 +4002,64 @@ export type QueryFindGroupMembershipsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryFindGroupsArgs = {
   filter?: InputMaybe<GroupListFilter>;
   match?: InputMaybe<GroupInput>;
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryFindIndonesianCitiesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
+
 
 export type QueryFindIndonesianProvincesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
+
 export type QueryFindIndustriesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
+
 
 export type QueryFindIqlaaJordanianDistrictsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
+
 export type QueryFindIqlaaJordanianGovernoratesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
+
 export type QueryFindLanguagesArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
+
 
 export type QueryFindLatestTrainingSessionForMeArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   trainingId: Scalars['String']['input'];
 };
 
+
+export type QueryFindMastercardBanksArgs = {
+  fallbackUiLanguage?: InputMaybe<UiLanguage>;
+};
+
+
 export type QueryFindMyChannelsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryFindMyUserDevicesArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
+
 
 export type QueryFindOptionsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
@@ -3825,31 +4068,38 @@ export type QueryFindOptionsArgs = {
   parentTextId?: InputMaybe<Scalars['String']['input']>;
 };
 
+
 export type QueryFindPendingChannelInvitationsForUserArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userId: Scalars['String']['input'];
 };
 
+
 export type QueryFindPronounsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
+
 
 export type QueryFindReportUserReasonsArgs = {
   fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 
+
 export type QueryFindServiceRequestByIdArgs = {
   serviceRequestId: Scalars['String']['input'];
 };
+
 
 export type QueryFindTrainingByIdArgs = {
   id: Scalars['String']['input'];
   selectedLanguage?: InputMaybe<UiLanguage>;
 };
 
+
 export type QueryFindTrainingSessionByIdArgs = {
   id: Scalars['String']['input'];
 };
+
 
 export type QueryFindTrainingSessionsByTrainingIdArgs = {
   options?: InputMaybe<FindObjectsOptions>;
@@ -3857,15 +4107,18 @@ export type QueryFindTrainingSessionsByTrainingIdArgs = {
   userId?: InputMaybe<Scalars['String']['input']>;
 };
 
+
 export type QueryFindTrainingSessionsForMeArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   trainingId: Scalars['String']['input'];
 };
 
+
 export type QueryFindTrainingsForMeArgs = {
   displayInTrainingsList?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<FindObjectsOptions>;
 };
+
 
 export type QueryFindTrainingsForUserArgs = {
   displayInTrainingsList?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3873,10 +4126,12 @@ export type QueryFindTrainingsForUserArgs = {
   userId: Scalars['String']['input'];
 };
 
+
 export type QueryFindUploadedAssetByIdArgs = {
   id: Scalars['String']['input'];
   options?: InputMaybe<FindObjectsOptions>;
 };
+
 
 export type QueryFindUploadedAssetsArgs = {
   filter?: InputMaybe<UploadedAssetListFilter>;
@@ -3884,15 +4139,18 @@ export type QueryFindUploadedAssetsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryFindUploadedAssetsForUserArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userId: Scalars['String']['input'];
 };
 
+
 export type QueryFindUserByIdArgs = {
   id: Scalars['String']['input'];
   options?: InputMaybe<FindObjectsOptions>;
 };
+
 
 export type QueryFindUserByIdentArgs = {
   ident: Scalars['String']['input'];
@@ -3900,10 +4158,12 @@ export type QueryFindUserByIdentArgs = {
   options?: InputMaybe<FindUserByIdentOptions>;
 };
 
+
 export type QueryFindUserDeviceByIdArgs = {
   id: Scalars['String']['input'];
   options?: InputMaybe<FindObjectsOptions>;
 };
+
 
 export type QueryFindUserDevicesArgs = {
   filter?: InputMaybe<UserDeviceListFilter>;
@@ -3911,10 +4171,12 @@ export type QueryFindUserDevicesArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryFindUserSearchByIdArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userSearchId: Scalars['String']['input'];
 };
+
 
 export type QueryFindUserSearchResultsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
@@ -3922,11 +4184,13 @@ export type QueryFindUserSearchResultsArgs = {
   userSearchId: Scalars['String']['input'];
 };
 
+
 export type QueryFindUserSearchesArgs = {
   filter?: InputMaybe<UserSearchListFilter>;
   match?: InputMaybe<UserSearchInput>;
   options?: InputMaybe<FindObjectsOptions>;
 };
+
 
 export type QueryFindUsersArgs = {
   filter?: InputMaybe<UserListFilter>;
@@ -3934,15 +4198,18 @@ export type QueryFindUsersArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryGetMultiStepActionProgressArgs = {
   actionId: Scalars['String']['input'];
   confirmToken?: InputMaybe<Scalars['String']['input']>;
 };
 
+
 export type QueryIsUserIdentAvailableArgs = {
   ident: Scalars['String']['input'];
   identType?: InputMaybe<UserIdentType>;
 };
+
 
 export type QueryMyChannelInvitationsArgs = {
   direction?: InputMaybe<ChannelInvitationDirection>;
@@ -3951,9 +4218,11 @@ export type QueryMyChannelInvitationsArgs = {
   options?: InputMaybe<FindObjectsOptions>;
 };
 
+
 export type QueryMyInboxArgs = {
   refresh?: InputMaybe<Scalars['Boolean']['input']>;
 };
+
 
 export type QueryUserWillReceiveWelcomeMessageArgs = {
   userId: Scalars['String']['input'];
@@ -4015,12 +4284,16 @@ export enum ReportUserReasonTextId {
   SharesObjectionableContent = 'sharesObjectionableContent',
   Spammer = 'spammer',
   UsesObjectionableLanguage = 'usesObjectionableLanguage',
-  ViolatesRules = 'violatesRules',
+  ViolatesRules = 'violatesRules'
 }
 
 export type SendMultiStepActionNotificationInput = {
   actionId?: Scalars['String']['input'];
+  /** Only allowed for certain flows, i.e. during sign-up with only an email or phone number. */
+  email?: InputMaybe<Scalars['String']['input']>;
   notificationMethod?: InputMaybe<NotificationMethod>;
+  /** Only allowed for certain flows, i.e. during sign-up with only an email or phone number. */
+  phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ServiceRequest = {
@@ -4052,13 +4325,13 @@ export enum ServiceRequestMessageId {
   GroupRuleFailed = 'groupRuleFailed',
   InvalidInput = 'invalidInput',
   SystemError = 'systemError',
-  Unknown = 'unknown',
+  Unknown = 'unknown'
 }
 
 export enum ServiceRequestResult {
   Error = 'error',
   Ok = 'ok',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export enum ServiceRequestSource {
@@ -4068,11 +4341,12 @@ export enum ServiceRequestSource {
   Mm2 = 'mm2',
   RestApi = 'restApi',
   System = 'system',
-  Vts = 'vts',
+  Vts = 'vts'
 }
 
 export enum ServiceRequestType {
   GraphQlMutationAddChannelMessageEvent = 'graphQlMutationAddChannelMessageEvent',
+  GraphQlMutationAddFeatureToUser = 'graphQlMutationAddFeatureToUser',
   GraphQlMutationAddUserToGroup = 'graphQlMutationAddUserToGroup',
   GraphQlMutationArchiveChannelForUserByMe = 'graphQlMutationArchiveChannelForUserByMe',
   GraphQlMutationBlockUser = 'graphQlMutationBlockUser',
@@ -4127,6 +4401,7 @@ export enum ServiceRequestType {
   GraphQlMutationMarkChannelMessagesAsSeenByMe = 'graphQlMutationMarkChannelMessagesAsSeenByMe',
   GraphQlMutationMarkInAppMessageReceived = 'graphQlMutationMarkInAppMessageReceived',
   GraphQlMutationNlpLabelMessage = 'graphQlMutationNlpLabelMessage',
+  GraphQlMutationRemoveFeatureFromUser = 'graphQlMutationRemoveFeatureFromUser',
   GraphQlMutationRemoveUserFromAllGroups = 'graphQlMutationRemoveUserFromAllGroups',
   GraphQlMutationRemoveUserFromGroup = 'graphQlMutationRemoveUserFromGroup',
   GraphQlMutationReportUser = 'graphQlMutationReportUser',
@@ -4175,6 +4450,7 @@ export enum ServiceRequestType {
   GraphQlQueryContentTag = 'graphQlQueryContentTag',
   GraphQlQueryFindAdminTask = 'graphQlQueryFindAdminTask',
   GraphQlQueryFindAndUpdateAllMm2Users = 'graphQlQueryFindAndUpdateAllMm2Users',
+  GraphQlQueryFindAvailableUserHandle = 'graphQlQueryFindAvailableUserHandle',
   GraphQlQueryFindChannelById = 'graphQlQueryFindChannelById',
   GraphQlQueryFindChannelInvitationById = 'graphQlQueryFindChannelInvitationById',
   GraphQlQueryFindChannelInvitationsBetweenUsers = 'graphQlQueryFindChannelInvitationsBetweenUsers',
@@ -4233,7 +4509,7 @@ export enum ServiceRequestType {
   GraphQlQueryUserGroups = 'graphQlQueryUserGroups',
   GraphQlQueryUserInboxUser = 'graphQlQueryUserInboxUser',
   GraphQlQueryUserSearchFoundUsers = 'graphQlQueryUserSearchFoundUsers',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export type SidContactListFilter = {
@@ -4457,7 +4733,7 @@ export type SignUpUserInput = {
 
 export enum SortDirection {
   Asc = 'asc',
-  Desc = 'desc',
+  Desc = 'desc'
 }
 
 export type SortItem = {
@@ -4501,9 +4777,11 @@ export type Subscription = {
   objectChanged: ObjectChangedEvent;
 };
 
+
 export type SubscriptionChannelChangedArgs = {
   channelId?: Scalars['ID']['input'];
 };
+
 
 export type SubscriptionObjectChangedArgs = {
   modelType?: InputMaybe<ModelType>;
@@ -4778,7 +5056,7 @@ export enum UiLanguage {
   Es = 'es',
   Id = 'id',
   Ru = 'ru',
-  So = 'so',
+  So = 'so'
 }
 
 export type UploadedAsset = {
@@ -4849,7 +5127,7 @@ export type UploadedAssetListFilter = {
 export enum UploadedAssetType {
   Avatar = 'avatar',
   ProfileHeroImage = 'profileHeroImage',
-  Unset = 'unset',
+  Unset = 'unset'
 }
 
 export type User = {
@@ -4886,6 +5164,7 @@ export type User = {
   educationLevel?: Maybe<EducationLevel>;
   educationLevelTextId?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
+  /** The source of the email address, e.g. "google", "facebook", etc. */
   emailSource?: Maybe<Scalars['String']['output']>;
   emailUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   endorsements?: Maybe<Array<EndorsementWithTypes>>;
@@ -4982,6 +5261,7 @@ export type User = {
   yearsManagementExperience?: Maybe<Scalars['Int']['output']>;
   yearsOwnershipExperience?: Maybe<Scalars['Int']['output']>;
 };
+
 
 export type UserChannelsArgs = {
   mustBeAccepted?: InputMaybe<Scalars['Boolean']['input']>;
@@ -5144,7 +5424,7 @@ export enum UserIdentType {
   OauthProfileUrl = 'oauthProfileUrl',
   OauthUserId = 'oauthUserId',
   PhoneNumber = 'phoneNumber',
-  UserHandle = 'userHandle',
+  UserHandle = 'userHandle'
 }
 
 export type UserInbox = {
@@ -5191,10 +5471,10 @@ export type UserInput = {
   currentPassword?: InputMaybe<Scalars['String']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   deletedBy?: InputMaybe<Scalars['ID']['input']>;
-  /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
   discoverable?: InputMaybe<Scalars['Boolean']['input']>;
   educationLevelTextId?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
+  /** The source of the email address, e.g. "google", "facebook", etc. */
   emailSource?: InputMaybe<Scalars['String']['input']>;
   emailUpdatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   ethnicity?: InputMaybe<Scalars['String']['input']>;
@@ -5369,7 +5649,7 @@ export enum UserProfileRole {
   Both = 'both',
   Mentee = 'mentee',
   Mentor = 'mentor',
-  None = 'none',
+  None = 'none'
 }
 
 export type UserProfileRoleHistoryItem = {
@@ -5388,7 +5668,7 @@ export enum UserRole {
   Qa = 'qa',
   Staff = 'staff',
   Support = 'support',
-  Test = 'test',
+  Test = 'test'
 }
 
 export type UserSearch = {
@@ -5423,7 +5703,7 @@ export enum UserSearchFieldOption {
   Any = 'any',
   IsFalse = 'isFalse',
   IsTrue = 'isTrue',
-  Match = 'match',
+  Match = 'match'
 }
 
 export type UserSearchFilter = {
@@ -5510,13 +5790,13 @@ export enum UserSearchSubscriptionType {
   Daily = 'daily',
   Monthly = 'monthly',
   None = 'none',
-  Weekly = 'weekly',
+  Weekly = 'weekly'
 }
 
 export enum UserSearchType {
   MenteeRecommendation = 'menteeRecommendation',
   MentorRecommendation = 'mentorRecommendation',
-  Search = 'search',
+  Search = 'search'
 }
 
 export type UserTrackingInput = {

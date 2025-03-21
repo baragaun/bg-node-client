@@ -93,6 +93,8 @@ describe('operations.myUser.signInWithToken', () => {
             const sendNotificationResponse =
               await client.operations.multiStepAction.sendMultiStepActionNotification(
                 actionId,
+                undefined,
+                undefined,
                 NotificationMethod.email,
               );
 
