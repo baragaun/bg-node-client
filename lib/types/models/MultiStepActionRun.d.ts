@@ -13,6 +13,8 @@ export declare class MultiStepActionRun {
     timedOut?: boolean;
     pollingOptions: QueryPollingOptions;
     actionProgress?: SidMultiStepActionProgress;
+    abortRequested?: boolean;
+    constructor(attr: Partial<MultiStepActionRun>);
     /**
      * Add a listener to the run.
      * @param listener
@@ -22,5 +24,6 @@ export declare class MultiStepActionRun {
     removeListener(id: string): void;
     onEventReceived(eventType: MultiStepActionEventType): void;
     notifyListeners(event: MultiStepActionEventType): void;
-    constructor(attr: Partial<MultiStepActionRun>);
+    abort(): void;
+    isStopped(): boolean;
 }

@@ -10,6 +10,7 @@ export * from './MultiStepActionProgressResult.js';
 export * from './MutationResult.js';
 export * from './Operations.js';
 export * from './QueryOptions.js';
+export * from './QueryResult.js';
 export * from './SignInInput.js';
 export * from './SignInSignUpResponse.js';
 export * from './SignInUserInput.js';

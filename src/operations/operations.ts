@@ -19,6 +19,7 @@ import updateChannelParticipant from './channelParticipant/updateChannelParticip
 import findById from './findById.js';
 import findOne from './findOne.js';
 import insertOne from './insertOne.js';
+import abortMultiStepAction from './multiStepAction/abortMultiStepAction.js';
 import addMultiStepActionListener from './multiStepAction/addMultiStepActionListener.js';
 import findMyActiveMultiStepActions from './multiStepAction/findMyActiveMultiStepActions.js';
 import getMultiStepActionProgress from './multiStepAction/getMultiStepActionProgress.js';
@@ -94,6 +95,7 @@ const operations: Operations = {
   },
 
   multiStepAction: {
+    abortMultiStepAction,
     addMultiStepActionListener,
     findMyActiveMultiStepActions,
     getMultiStepActionProgress,
