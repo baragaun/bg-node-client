@@ -19,6 +19,7 @@ import updateChannelParticipant from './channelParticipant/updateChannelParticip
 import findById from './findById.js';
 import findOne from './findOne.js';
 import insertOne from './insertOne.js';
+import abortMultiStepAction from './multiStepAction/abortMultiStepAction.js';
 import addMultiStepActionListener from './multiStepAction/addMultiStepActionListener.js';
 import findMyActiveMultiStepActions from './multiStepAction/findMyActiveMultiStepActions.js';
 import getMultiStepActionProgress from './multiStepAction/getMultiStepActionProgress.js';
@@ -40,7 +41,6 @@ import updateMyPassword from './myUser/updateMyPassword.js';
 import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import updateLocalObject from './updateLocalObject.js';
-import abortMultiStepAction from './multiStepAction/abortMultiStepAction.js';
 
 const operations: Operations = {
   findById,
