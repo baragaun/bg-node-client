@@ -76,18 +76,20 @@ const getMultiStepActionProgress = async (
       }
 
       if (run.isStopped()) {
-        run.pollingFinishedAt = new Date();
+        if (!run.pollingFinishedAt && !run.finished) { // Only proceed if the action hasn't already finished
+          run.pollingFinishedAt = new Date();
 
-        run.onEventReceived(MultiStepActionEventType.other);
-        libData.removeMultiStepActionRun(actionProgress.actionId);
+          run.onEventReceived(MultiStepActionEventType.other);
+          libData.removeMultiStepActionRun(actionProgress.actionId);
 
-        result.object = {
-          id: actionProgress.actionId,
-          actionProgress,
-          run,
-          createdAt: actionProgress.createdAt,
-          error: 'polling-stopped',
-        };
+          result.object = {
+            id: actionProgress.actionId,
+            actionProgress,
+            run,
+            createdAt: actionProgress.createdAt,
+            error: 'polling-stopped',
+          };
+        }
 
         return result;
       }
