@@ -15,9 +15,10 @@ export declare class BgNodeClient {
         persist: (newClientInfo?: Partial<ClientInfo>) => Promise<ClientInfo>;
         get: () => ClientInfo;
     };
+    translate: (key: string, uiMessageType?: import("./enums.js").UiMessageType, language?: import("./enums.js").UiLanguage, defaultKey?: string, defaultMessage?: string) => string;
     close: (done?: () => void) => void;
-    get myUserId(): string | undefined;
     get isInitialized(): boolean;
     get isSignedIn(): string | undefined;
     get myUserDeviceUuid(): string | undefined;
+    get myUserId(): string | undefined;
 }

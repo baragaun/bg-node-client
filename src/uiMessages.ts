@@ -1,4 +1,4 @@
-import { BgNodeClientUiErrorCode, MultiStepActionResult, UiLanguage } from './enums.js';
+import { BgNodeClientUiErrorCode, MultiStepActionResult, UiLanguage, UiMessageType } from './enums.js';
 import { ErrorCode as ServerErrorCode } from './fsdata/gql/graphql.js';
 
 let uiMessages = {
@@ -107,13 +107,6 @@ let uiMessages = {
     [`MultiStepActionResult.${MultiStepActionResult.userNotFound}`]: '',
     [`MultiStepActionResult.${MultiStepActionResult.userNotSignedIn}`]: '',
   }
-}
-
-export enum UiMessageType {
-  appErrorCode = 'appErrorCode',
-  bgNodeClientUiErrorCode = 'bgNodeClientUiErrorCode',
-  multiStepActionResult = 'multiStepActionResult',
-  serverErrorCode = 'serverErrorCode',
 }
 
 export const translate = (

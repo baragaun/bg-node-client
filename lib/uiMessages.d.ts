@@ -1,4 +1,4 @@
-import { UiLanguage } from './enums.js';
+import { UiLanguage, UiMessageType } from './enums.js';
 declare let uiMessages: {
     en: {
         "BgNodeClientUiErrorCode.invalidInput": string;
@@ -104,12 +104,6 @@ declare let uiMessages: {
         "MultiStepActionResult.userNotSignedIn": string;
     };
 };
-export declare enum UiMessageType {
-    appErrorCode = "appErrorCode",
-    bgNodeClientUiErrorCode = "bgNodeClientUiErrorCode",
-    multiStepActionResult = "multiStepActionResult",
-    serverErrorCode = "serverErrorCode"
-}
 export declare const translate: (key: string, uiMessageType?: UiMessageType, language?: UiLanguage, defaultKey?: string, defaultMessage?: string) => string;
 export declare const getUiMessages: () => typeof uiMessages;
 export declare const setUiMessages: (newMessages: typeof uiMessages) => void;

@@ -134,6 +134,13 @@ export enum UiLanguage {
   so = 'so', // Somali
 }
 
+export enum UiMessageType {
+  appErrorCode = 'appErrorCode',
+  bgNodeClientUiErrorCode = 'bgNodeClientUiErrorCode',
+  multiStepActionResult = 'multiStepActionResult',
+  serverErrorCode = 'serverErrorCode',
+}
+
 export enum ModelType {
   Channel = 'Channel',
   ChannelInvitation = 'ChannelInvitation',

@@ -8,6 +8,7 @@ import operations from './operations/operations.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { Logger } from './types/logger.js';
 import { ClientInfo } from './types/models/ClientInfo.js';
+import { translate } from './uiMessages.js';
 
 export class BgNodeClient {
   public async init(
@@ -76,6 +77,7 @@ export class BgNodeClient {
   public setConfig = libData.setConfig;
   public config = libData.config;
   public clientInfoStore = clientInfoStore;
+  public translate = translate;
 
   public close = (done?: () => void): void => {
     libData.close();
