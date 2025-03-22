@@ -51,3 +51,5 @@ export * from './models/UserPreferences.js';
 export * from './models/VerifyMultiStepActionTokenInput.js';
 
 export * from '../enums.js';
+export * from '../uiMessages.js';
+export { ErrorCode } from '../fsdata/gql/graphql.js';

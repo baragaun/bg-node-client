@@ -5,12 +5,12 @@ import chance, {
   uniqueEmail,
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
+import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
-import getTestClient from '../../helpers/getTestClient.js';
 
 describe('signUpUser', () => {
   test('should sign up a user with valid input', async () => {
-    const client1 = await getTestClient();
+    const client1 = await clientStore.getTestClient();
 
     const firstName = chance.first();
     const lastName = chance.last();
@@ -63,7 +63,7 @@ describe('signUpUser', () => {
     })();
 
     // Creating a new client to verify the user info has been persisted:
-    const client2 = await getTestClient(true);
+    const client2 = await clientStore.getTestClient(true);
 
     const clientInfo2 = await client2.clientInfoStore.load();
 

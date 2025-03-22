@@ -8,12 +8,12 @@ import {
 import chance, { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
+import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
-import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.signInWithToken', () => {
   test('should verify a correct token', async () => {
-    const client = await getTestClient();
+    const client = await clientStore.getTestClient();
 
     // Set up test user
     const firstName = chance.first();

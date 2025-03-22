@@ -2,12 +2,20 @@ import { BgDataListener } from '../types/BgDataListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { MultiStepActionRun } from '../types/index.js';
 
+let _isInitialized = false;
 let _config: BgNodeClientConfig | undefined;
 let _listeners: BgDataListener[] = [];
 const _multiStepActionRuns = new Map<string, MultiStepActionRun>();
 
 const libData = {
+  isInitialized: (): boolean => _isInitialized,
+
+  setInitialized: (isInitialized: boolean): void => {
+    _isInitialized = isInitialized;
+  },
+
   close: (): void => {
+    _isInitialized = false;
     _config = undefined;
     _listeners = [];
     _multiStepActionRuns.clear();

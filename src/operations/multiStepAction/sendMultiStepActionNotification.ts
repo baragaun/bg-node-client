@@ -1,5 +1,6 @@
 import { MutationType, NotificationMethod } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
@@ -9,6 +10,10 @@ const sendMultiStepActionNotification = async (
   phoneNumber: string | undefined,
   notificationMethod: NotificationMethod,
 ): Promise<MutationResult<string>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   try {
     logger.debug('BgNodeClient.operations.multiStepAction.sendMultiStepActionNotification called.',
       { actionId, notificationMethod });

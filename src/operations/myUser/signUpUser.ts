@@ -2,6 +2,7 @@ import findMyUser from './findMyUser.js';
 import { CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../types/models/MyUser.js';
 import { MutationResult } from '../../types/MutationResult.js';
@@ -11,6 +12,10 @@ import { SignUpUserInput } from '../../types/SignUpUserInput.js';
 const signUpUser = async (
   input: SignUpUserInput,
 ): Promise<MutationResult<SignInSignUpResponse>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   try {
     const userAuthResponse = await fsdata.myUser.signUpUser(input);
     let myUser: MyUser | null = null;

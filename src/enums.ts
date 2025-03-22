@@ -307,3 +307,10 @@ export enum MultiStepActionResult {
   userNotFound = 'userNotFound',
   userNotSignedIn = 'userNotSignedIn',
 }
+
+export enum BgNodeClientUiErrorCode {
+  invalidInput = 'invalidInput',
+  notFound = 'notFound',
+  unauthorized = 'unauthorized',
+}
+

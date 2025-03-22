@@ -6,6 +6,10 @@ import { SidMultiStepAction } from '../../types/models/SidMultiStepAction.js';
 const findMyActiveMultiStepActions = async (): Promise<
   SidMultiStepAction[]
 > => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   const config = libData.config();
 
   if (!config) {

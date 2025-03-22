@@ -1,6 +1,7 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
+import libData from '../../helpers/libData.js';
 import { ChannelInvitation } from '../../types/models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../../types/models/ChannelInvitationListFilter.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -13,6 +14,10 @@ const findChannelInvitations = async (
   limit: number,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelInvitation>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   if (
     queryOptions.cachePolicy === CachePolicy.cache ||
     queryOptions.cachePolicy === CachePolicy.cacheFirst

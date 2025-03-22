@@ -4,11 +4,11 @@ import { CachePolicy, ModelType } from '../../../enums.js';
 import findById from '../../../operations/findById.js';
 import { Channel } from '../../../types/models/Channel.js';
 import factories from '../../factories/factories.js';
-import getTestClient from '../../helpers/getTestClient.js';
+import clientStore from '../../helpers/clientStore.js';
 
 describe('operations.channel.updateChannel', () => {
   test('should update channel properties', async () => {
-    const client = await getTestClient();
+    const client = await clientStore.getTestClient();
     const channelProps = await factories.channel.build({});
 
     const { object: channel } =

@@ -17,6 +17,7 @@ export declare class BgNodeClient {
     };
     close: (done?: () => void) => void;
     get myUserId(): string | undefined;
+    get isInitialized(): boolean;
     get isSignedIn(): string | undefined;
     get myUserDeviceUuid(): string | undefined;
 }

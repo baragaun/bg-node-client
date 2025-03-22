@@ -6,11 +6,15 @@ import {
   HttpHeaderName,
 } from '../../types/index.js';
 
-let client: BgNodeClient | undefined = undefined;
+let _client: BgNodeClient | undefined = undefined;
 let _clientInfo: ClientInfo | undefined = undefined;
 
 const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
-  if (createNew || !client) {
+  if (createNew || _client) {
+    _client = undefined;
+  }
+
+  if (createNew || !_client) {
     const config: BgNodeClientConfig = {
       appEnvironment: AppEnvironment.test,
       inBrowser: false,
@@ -37,10 +41,17 @@ const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
         },
       },
     };
-    client = await new BgNodeClient().init(config);
+    _client = await new BgNodeClient().init(config);
   }
 
-  return client;
+  return _client;
 };
 
-export default getTestClient;
+const clientStore = {
+  clearClientInfo: () => {
+    _clientInfo = undefined;
+  },
+  getTestClient,
+};
+
+export default clientStore;

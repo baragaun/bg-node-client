@@ -45,6 +45,10 @@ const getMultiStepActionProgress = async (
   confirmToken: string | undefined,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   logger.debug('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress called.',
     { actionId, confirmToken, queryOptions });
 

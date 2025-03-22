@@ -5,12 +5,12 @@ import chance, {
   uniqueEmail,
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
+import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
-import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.isUserIdentAvailable', () => {
   test('should return false for an email that is already taken', async () => {
-    const client = await getTestClient();
+    const client = await clientStore.getTestClient();
 
     const userHandle1 = uniqueUserHandle();
     const userHandle2 = uniqueUserHandle();
