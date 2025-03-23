@@ -127,6 +127,7 @@ export enum AuthType {
 
 export enum UiLanguage {
   ar = 'ar', // Arabic
+  de = 'de', // German
   en = 'en', // English
   es = 'es', // Spanish
   id = 'id', // Indonesian
@@ -134,12 +135,12 @@ export enum UiLanguage {
   so = 'so', // Somali
 }
 
-export enum UiMessageType {
-  appErrorCode = 'appErrorCode',
-  bgNodeClientUiErrorCode = 'bgNodeClientUiErrorCode',
-  multiStepActionResult = 'multiStepActionResult',
-  serverErrorCode = 'serverErrorCode',
-}
+// export enum UiMessageType {
+//   appErrorCode = 'appErrorCode',
+//   bgNodeClientUiErrorCode = 'bgNodeClientUiErrorCode',
+//   multiStepActionResult = 'multiStepActionResult',
+//   serverErrorCode = 'serverErrorCode',
+// }
 
 export enum ModelType {
   Channel = 'Channel',

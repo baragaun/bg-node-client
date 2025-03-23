@@ -106,17 +106,12 @@ export declare enum AuthType {
 }
 export declare enum UiLanguage {
     ar = "ar",// Arabic
+    de = "de",// German
     en = "en",// English
     es = "es",// Spanish
     id = "id",// Indonesian
     ru = "ru",// Russian
     so = "so"
-}
-export declare enum UiMessageType {
-    appErrorCode = "appErrorCode",
-    bgNodeClientUiErrorCode = "bgNodeClientUiErrorCode",
-    multiStepActionResult = "multiStepActionResult",
-    serverErrorCode = "serverErrorCode"
 }
 export declare enum ModelType {
     Channel = "Channel",
