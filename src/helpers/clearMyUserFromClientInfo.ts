@@ -1,6 +1,6 @@
 import loadClientInfo from './loadClientInfo.js';
 import persistClientInfo from './persistClientInfo.js';
-import { ClientInfo } from '../types/models/ClientInfo.js';
+import { ClientInfo } from '../models/ClientInfo.js';
 
 const clearMyUserFromClientInfo = async (
   signedOutUserId?: string,

@@ -7,7 +7,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { ContentStatus } from '../../../types/models/ContentStatus.js';
+import { ContentStatus } from '../../../models/ContentStatus.js';
 import { MutationStartMySessionV2Args } from '../../gql/graphql.js';
 import startMySessionGql from '../../gql/mutations/startMySession.graphql.js';
 import helpers from '../../helpers/helpers.js';

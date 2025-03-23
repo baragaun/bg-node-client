@@ -1,10 +1,11 @@
 import { BgNodeClient } from '../../BgNodeClient.js';
 import {
-  AppEnvironment, BgNodeClientConfig,
+  AppEnvironment,
+  BgNodeClientConfig,
   ClientInfo,
   ClientInfoStoreType,
   HttpHeaderName,
-} from '../../types/index.js';
+} from '../../index.js';
 
 let _client: BgNodeClient | undefined = undefined;
 let _clientInfo: ClientInfo | undefined = undefined;

@@ -6,7 +6,8 @@ import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { MutationResult, MyUser } from '../../types/index.js';
+import { MyUser } from '../../models/MyUser.js';
+import { MutationResult } from '../../types/MutationResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 
 const updateMyPassword = async (

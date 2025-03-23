@@ -1,6 +1,6 @@
 import { AppEnvironment, ClientInfoStoreType } from '../enums.js';
 import { HttpHeaders } from './HttpHeaders.js';
-import { ClientInfo } from './models/ClientInfo.js';
+import { ClientInfo } from '../models/ClientInfo.js';
 
 /**
  * Configuration for BgNodeClient.

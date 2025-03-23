@@ -1,4 +1,4 @@
-import { Model } from './models/Model.js';
+import { Model } from '../models/Model.js';
 /**
  * The return type for channel object query.
  **/

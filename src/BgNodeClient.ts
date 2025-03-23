@@ -4,10 +4,10 @@ import db from './db/db.js';
 import clientInfoStore from './helpers/clientInfoStore.js';
 import libData from './helpers/libData.js';
 import logger, { setLogger, setLogLevel } from './helpers/logger.js';
+import { ClientInfo } from './models/ClientInfo.js';
 import operations from './operations/operations.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { Logger } from './types/logger.js';
-import { ClientInfo } from './types/models/ClientInfo.js';
 
 export class BgNodeClient {
   public async init(

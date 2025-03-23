@@ -2,7 +2,7 @@ import db from '../db/db.js';
 import { CachePolicy, ModelType } from '../enums.js';
 import { defaultQueryOptions } from '../helpers/defaults.js';
 import libData from '../helpers/libData.js';
-import { Model } from '../types/models/Model.js';
+import { Model } from '../models/Model.js';
 import { QueryOptions } from '../types/QueryOptions.js';
 import { QueryResult } from '../types/QueryResult.js';
 

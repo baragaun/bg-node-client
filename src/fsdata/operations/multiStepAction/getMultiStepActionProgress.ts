@@ -5,7 +5,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
+import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
 import gql from '../../gql/queries/getMultiStepActionProgress.graphql.js';
 import helpers from '../../helpers/helpers.js';
 

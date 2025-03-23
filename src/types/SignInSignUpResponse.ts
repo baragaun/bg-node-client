@@ -1,5 +1,5 @@
-import { MyUser } from './models/MyUser.js';
 import { UserAuthResponse } from './UserAuthResponse.js';
+import { MyUser } from '../models/MyUser.js';
 
 export interface SignInSignUpResponse {
   userAuthResponse: UserAuthResponse;

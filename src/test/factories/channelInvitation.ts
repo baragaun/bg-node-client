@@ -7,7 +7,7 @@ import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';
 import chance from '../../helpers/chance.js';
 import randomDate from '../../helpers/randomDate.js';
-import { ChannelInvitation } from '../../types/models/ChannelInvitation.js';
+import { ChannelInvitation } from '../../models/ChannelInvitation.js';
 
 const channelInvitationFactory = Factory.define<ChannelInvitation>(
   'ChannelInvitation',

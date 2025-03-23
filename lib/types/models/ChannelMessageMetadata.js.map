@@ -1,1 +1,0 @@
-{"version":3,"file":"ChannelMessageMetadata.js","sourceRoot":"","sources":["../../../src/types/models/ChannelMessageMetadata.ts"],"names":[],"mappings":"AAAA,4DAA4D;AAE5D,OAAO,EAAE,wBAAwB,EAAE,MAAM,+BAA+B,CAAC;AAEzE,MAAM,OAAO,sBAAuB,SAAQ,wBAAwB;IAClE,YAAY,UAA4C;QACtD,KAAK,CAAC,UAAU,CAAC,CAAC;IACpB,CAAC;CACF"}

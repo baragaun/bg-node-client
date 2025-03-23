@@ -1,8 +1,8 @@
 import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../enums.js';
 import libData from '../../helpers/libData.js';
-import { Channel } from '../../types/models/Channel.js';
-import { ChannelMessage } from '../../types/models/ChannelMessage.js';
+import { Channel } from '../../models/Channel.js';
+import { ChannelMessage } from '../../models/ChannelMessage.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const createChannelMessage = async (

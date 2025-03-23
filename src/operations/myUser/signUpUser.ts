@@ -4,7 +4,7 @@ import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { MyUser } from '../../types/models/MyUser.js';
+import { MyUser } from '../../models/MyUser.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
 import { SignUpUserInput } from '../../types/SignUpUserInput.js';

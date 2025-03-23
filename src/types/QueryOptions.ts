@@ -1,5 +1,5 @@
 import { CachePolicy } from '../enums.js';
-import { Model } from '../types/models/Model.js';
+import { Model } from '../models/Model.js';
 
 export type IsInTargetStateFunc = <T extends Model = Model>(obj: T) => boolean;
 

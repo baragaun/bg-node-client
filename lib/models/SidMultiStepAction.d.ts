@@ -1,0 +1,36 @@
+import { BaseModel } from './BaseModel.js';
+import { MultiStepActionError, MultiStepActionResult, MultiStepActionSendNotificationResult, MultiStepActionStatus, MultiStepActionType, NotificationMethod } from '../fsdata/gql/graphql.js';
+export declare class SidMultiStepAction extends BaseModel {
+    userId: string;
+    userIdent?: string | null;
+    userHandle?: string | null;
+    email?: string | null;
+    phoneNumber?: string | null;
+    deviceUuid?: string | null;
+    actionType: MultiStepActionType;
+    actionStatus: MultiStepActionStatus;
+    notificationMethod: NotificationMethod;
+    result: MultiStepActionResult;
+    confirmToken?: string | null;
+    attemptCount: number;
+    notificationSentAt?: Date | null;
+    notificationResult?: MultiStepActionSendNotificationResult | null;
+    notificationId?: string | null;
+    textData?: string | null;
+    report?: string | null;
+    emailPassed?: boolean | null;
+    emailUpdatedAt?: Date | null;
+    emailVerifiedAt?: Date | null;
+    errors?: MultiStepActionError[] | null;
+    password?: string | null;
+    passwordPassed?: boolean | null;
+    passwordResettedAt?: Date | null;
+    passwordUpdatedAt?: Date | null;
+    phoneNumberPassed?: boolean | null;
+    phoneNumberUpdatedAt?: Date | null;
+    phoneNumberVerifiedAt?: Date | null;
+    signedInAt?: Date | null;
+    tfaBackupCodes?: string | null;
+    expiresAt?: Date | null;
+    constructor(attributes?: Partial<SidMultiStepAction>);
+}

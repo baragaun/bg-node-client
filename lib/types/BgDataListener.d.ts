@@ -1,7 +1,7 @@
-import { Channel } from './models/Channel.js';
-import { ChannelInvitation } from './models/ChannelInvitation.js';
-import { ChannelMessage } from './models/ChannelMessage.js';
 import { MutationResult } from './MutationResult.js';
+import { Channel } from '../models/Channel.js';
+import { ChannelInvitation } from '../models/ChannelInvitation.js';
+import { ChannelMessage } from '../models/ChannelMessage.js';
 /**
  * Interface representing a listener for channel events.
  */

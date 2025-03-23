@@ -1,1 +1,0 @@
-{"version":3,"file":"ChannelInvitationListFilter.js","sourceRoot":"","sources":["../../../src/types/models/ChannelInvitationListFilter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,6BAA6B,EAAE,MAAM,oCAAoC,CAAC;AAEnF,MAAM,OAAO,2BAA4B,SAAQ,6BAA6B;IAC5E,YAAY,UAAiD;QAC3D,KAAK,CAAC,UAAU,CAAC,CAAC;IACpB,CAAC;CACF"}

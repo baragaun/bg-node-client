@@ -8,8 +8,8 @@ import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';
 import chance from '../../helpers/chance.js';
 import randomDate from '../../helpers/randomDate.js';
-import { LabeledStringValue } from '../../types/models/LabeledStringValue.js';
-import { User } from '../../types/models/User.js';
+import { LabeledStringValue } from '../../models/LabeledStringValue.js';
+import { User } from '../../models/User.js';
 
 const emailDomain = 'baragaun.com';
 

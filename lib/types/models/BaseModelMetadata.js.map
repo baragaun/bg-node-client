@@ -1,1 +1,0 @@
-{"version":3,"file":"BaseModelMetadata.js","sourceRoot":"","sources":["../../../src/types/models/BaseModelMetadata.ts"],"names":[],"mappings":"AAAA,4DAA4D;AAE5D,MAAM,OAAO,iBAAiB;IACrB,SAAS,CAAiB;IAEjC,YAAmB,UAAuC;QACxD,IAAI,UAAU,EAAE,CAAC;YACf,IAAI,UAAU,CAAC,SAAS,EAAE,CAAC;gBACzB,IAAI,CAAC,SAAS,GAAG,UAAU,CAAC,SAAS,CAAC;YACxC,CAAC;QACH,CAAC;IACH,CAAC;CACF"}

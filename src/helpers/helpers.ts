@@ -1,11 +1,11 @@
 import { ModelType } from '../enums.js';
-import { Channel } from '../types/models/Channel.js';
-import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
-import { ChannelMessage } from '../types/models/ChannelMessage.js';
-import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
-import { Model } from '../types/models/Model.js';
-import { MyUser } from '../types/models/MyUser.js';
-import { User } from '../types/models/User.js';
+import { Channel } from '../models/Channel.js';
+import { ChannelInvitation } from '../models/ChannelInvitation.js';
+import { ChannelMessage } from '../models/ChannelMessage.js';
+import { ChannelParticipant } from '../models/ChannelParticipant.js';
+import { Model } from '../models/Model.js';
+import { MyUser } from '../models/MyUser.js';
+import { User } from '../models/User.js';
 
 export const getModelTypeFromObject = <T extends Model = Model>(
   obj: T,

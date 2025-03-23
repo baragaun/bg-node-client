@@ -1,0 +1,32 @@
+import { BaseModel } from './BaseModel.js';
+import { MultiStepActionResult, MultiStepActionSendNotificationResult, MultiStepActionStatus, MultiStepActionType, NotificationMethod } from '../enums.js';
+import { MultiStepActionError } from '../types/MultiStepActionError.js';
+export declare class SidMultiStepActionProgress extends BaseModel {
+    actionId: string;
+    userId: string;
+    actionType: MultiStepActionType;
+    actionStatus?: MultiStepActionStatus | null;
+    notificationMethod?: NotificationMethod | null;
+    result: MultiStepActionResult;
+    attemptCount: number;
+    notificationSentAt?: string | null;
+    notificationResult?: MultiStepActionSendNotificationResult | null;
+    notificationId?: string | null;
+    textData?: string | null;
+    report?: string | null;
+    emailPassed?: boolean | null;
+    emailUpdatedAt?: string | null;
+    emailVerifiedAt?: string | null;
+    errors?: MultiStepActionError[] | null;
+    authToken?: string | null;
+    authTokenExpiresAt?: string | null;
+    passwordPassed?: boolean | null;
+    passwordResettedAt?: string | null;
+    passwordUpdatedAt?: string | null;
+    phoneNumberPassed?: boolean | null;
+    phoneNumberUpdatedAt?: string | null;
+    phoneNumberVerifiedAt?: string | null;
+    signedInAt?: string | null;
+    expiresAt?: string | null;
+    constructor(attributes?: Partial<SidMultiStepActionProgress>);
+}

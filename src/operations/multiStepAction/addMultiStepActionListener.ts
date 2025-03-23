@@ -1,5 +1,5 @@
 import libData from '../../helpers/libData.js';
-import { MultiStepActionListener } from '../../types/index.js';
+import { MultiStepActionListener } from '../../types/MultiStepActionListener.js';
 
 /**
  * Add a listener to a multi-step action.

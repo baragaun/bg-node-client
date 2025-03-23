@@ -1,11 +1,11 @@
 import rosie from 'rosie';
 
-import { Channel } from '../../types/models/Channel.ts';
-import { ChannelInvitation } from '../../types/models/ChannelInvitation.ts';
-import { ChannelMessage } from '../../types/models/ChannelMessage.ts';
-import { ChannelParticipant } from '../../types/models/ChannelParticipant.ts';
-import { User } from '../../types/models/User.js';
-import { UserInbox } from '../../types/models/UserInbox.ts';
+import { Channel } from '../../models/Channel.ts';
+import { ChannelInvitation } from '../../models/ChannelInvitation.ts';
+import { ChannelMessage } from '../../models/ChannelMessage.ts';
+import { ChannelParticipant } from '../../models/ChannelParticipant.ts';
+import { User } from '../../models/User.js';
+import { UserInbox } from '../../models/UserInbox.ts';
 
 export interface ChannelFactory extends rosie.IFactory<Channel> {
   create: (

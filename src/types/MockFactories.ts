@@ -1,6 +1,6 @@
-import { Channel } from './models/Channel.js';
-import { ChannelMessage } from './models/ChannelMessage.js';
-import { User } from './models/User.js';
+import { Channel } from '../models/Channel.js';
+import { ChannelMessage } from '../models/ChannelMessage.js';
+import { User } from '../models/User.js';
 
 export interface MockFactories {
   channel: (

@@ -1,6 +1,6 @@
 import chance from '../helpers/chance.js';
-import { ChannelMessage } from '../types/models/ChannelMessage.js';
-import { User } from '../types/models/User.js';
+import { ChannelMessage } from '../models/ChannelMessage.js';
+import { User } from '../models/User.js';
 
 const createMessage = (
   attributes: Partial<ChannelMessage>,

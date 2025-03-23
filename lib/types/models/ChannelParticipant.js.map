@@ -1,1 +1,0 @@
-{"version":3,"file":"ChannelParticipant.js","sourceRoot":"","sources":["../../../src/types/models/ChannelParticipant.ts"],"names":[],"mappings":"AAAA,4DAA4D;AAE5D,OAAO,EAAE,oBAAoB,EAAE,MAAM,2BAA2B,CAAC;AAEjE,MAAM,OAAO,kBAAmB,SAAQ,oBAAoB;IAC1D,YAAY,UAAwC;QAClD,KAAK,CAAC,UAAU,CAAC,CAAC;IACpB,CAAC;CACF"}
