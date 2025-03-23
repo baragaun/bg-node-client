@@ -26,6 +26,7 @@ import channelMessage from './models/first-spark-server/channelMessage.js'
 import channelParticipant from './models/first-spark-server/channelParticipant.js';
 import clientInfo from './models/clientInfo.js'
 import contact from './models/first-spark-server/contact.js'
+import contentStatus from './models/first-spark-server/contentStatus.js'
 import myUser from './models/first-spark-server/myUser.js';
 import sendMultiStepActionNotificationInput from './models/secureid-service/sendMultiStepActionNotificationInput.js';
 import sidContact from './models/secureid-service/sidContact.js';
@@ -72,6 +73,7 @@ const jsonSchemaTask: JsonSchemaTask = {
     channelParticipant,
     clientInfo,
     contact,
+    contentStatus,
     myUser,
     sendMultiStepActionNotificationInput,
     sidContact,

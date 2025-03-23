@@ -150,6 +150,7 @@ export interface Operations {
     findAvailableUserHandle: (startValue: string) => Promise<string>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
     getSignedOutUserId: () => Promise<string | null>;
+    isSessionActive: () => boolean;
     isSignedIn: () => boolean;
 
     isUserIdentAvailable: (

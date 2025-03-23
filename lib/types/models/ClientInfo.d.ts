@@ -7,6 +7,8 @@ export declare class ClientInfo extends Model {
     signedOutUserId?: string;
     localContentStatus?: ContentStatus;
     remoteContentStatus?: ContentStatus;
+    sessionStartedAt?: number | null;
+    sessionEndedAt?: number | null;
     constructor(attributes?: Partial<ClientInfo> | null);
     static createDeviceUuid(): string;
 }

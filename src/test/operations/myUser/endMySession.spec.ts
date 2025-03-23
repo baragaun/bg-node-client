@@ -17,14 +17,17 @@ describe('operations.myUser.startMySession', () => {
     });
     const clientInfo1 = await client.clientInfoStore.load();
 
-    expect(clientInfo1.remoteContentStatus).toBeUndefined();
+    expect(clientInfo1.sessionStartedAt).toBeUndefined();
+    expect(clientInfo1.sessionEndedAt).toBeUndefined();
+    expect(client.operations.myUser.isSessionActive()).toBeFalsy();
 
     await client.operations.myUser.endMySession();
 
-    // const clientInfo2 = await client.clientInfoStore.load();
-    //
-    // expect(clientInfo2.remoteContentStatus).toBeDefined();
-    // expect(clientInfo2.remoteContentStatus.myUserUpdatedAt).toBeGreaterThan(Date.now() - 1000);
+    const clientInfo2 = await client.clientInfoStore.load();
+
+    expect(clientInfo2.sessionStartedAt).toBeUndefined();
+    expect(clientInfo2.sessionEndedAt).toBeGreaterThan(Date.now() - 1000);
+    expect(client.operations.myUser.isSessionActive()).toBeFalsy();
 
     await deleteMyUser(client);
   });

@@ -92,6 +92,21 @@ Then run:
 pnpm run codegen
 ```
 
+### Graffle
+
+We use [Graffle](https://graffle.com/) for this GraphQL client. Graffle can generate a
+client. To generate the client, run:
+
+```shell
+pnpm graffle
+```
+The client is in `src/fsdata/graffle`.
+
+**Note**
+
+The generated client will contain lint/TS errors. You'll have to fix those errors manually.
+Also, I haven't yet figured out how to properly use this client. 
+
 ## Handling `MultiStepAction`
 
 The `MultiStepAction` is used for processes that involve user interactions along the way, 

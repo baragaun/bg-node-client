@@ -7,18 +7,10 @@ export declare const ClientInfoSchema: {
             type: string;
             maxLength: number;
         };
-        myUserId: {
+        adminNotes: {
             type: string;
         };
-        authToken: {
-            type: string;
-        };
-        myUserDeviceUuid: {
-            type: string;
-        };
-        signedOutUserId: {
-            type: string;
-        };
+        metadata: {};
         createdAt: {
             type: string;
             format: string;
@@ -42,6 +34,54 @@ export declare const ClientInfoSchema: {
         deletedBy: {
             type: string;
             maxLength: number;
+        };
+        myUserId: {
+            type: string;
+            maxLength: number;
+        };
+        authToken: {
+            type: string;
+        };
+        myUserDeviceUuid: {
+            type: string;
+        };
+        signedOutUserId: {
+            type: string;
+            maxLength: number;
+        };
+        remoteContentStatus: {
+            type: string;
+            properties: {
+                optionsUpdatedAt: {
+                    type: string;
+                };
+                myUserUpdatedAt: {
+                    type: string;
+                };
+                myUserInboxUpdatedAt: {
+                    type: string;
+                };
+            };
+        };
+        localContentStatus: {
+            type: string;
+            properties: {
+                optionsUpdatedAt: {
+                    type: string;
+                };
+                myUserUpdatedAt: {
+                    type: string;
+                };
+                myUserInboxUpdatedAt: {
+                    type: string;
+                };
+            };
+        };
+        sessionStartedAt: {
+            type: string;
+        };
+        sessionEndedAt: {
+            type: string;
         };
     };
     required: string[];

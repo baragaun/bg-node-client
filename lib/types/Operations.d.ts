@@ -60,6 +60,7 @@ export interface Operations {
         findAvailableUserHandle: (startValue: string) => Promise<string>;
         findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
         getSignedOutUserId: () => Promise<string | null>;
+        isSessionActive: () => boolean;
         isSignedIn: () => boolean;
         isUserIdentAvailable: (userIdent: string, identType: UserIdentTypeFromClient) => Promise<boolean>;
         resetMyPassword: (userIdent: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;

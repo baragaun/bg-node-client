@@ -14,7 +14,7 @@ const startMySession = async (): Promise<void> => {
     if (contentStatus) {
       const clientInfo = clientInfoStore.get();
       clientInfo.remoteContentStatus = contentStatus;
-      await clientInfoStore.persist(clientInfo);
+      clientInfoStore.sessionStarted();
     }
   } catch (error) {
     logger.error('startMySession: fsdata.myUser.startMySession failed', error);

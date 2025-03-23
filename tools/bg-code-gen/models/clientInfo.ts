@@ -13,8 +13,24 @@ const contentStatus: TypeGraphqlClass = {
     { name: 'authToken', dataType: 'string', optional: true },
     { name: 'myUserDeviceUuid', dataType: 'string', optional: true },
     { name: 'signedOutUserId', dataType: 'id', optional: true },
-    { name: 'remoteContentStatus', dataType: 'ContentStatus', optional: true },
-    { name: 'localContentStatus', dataType: 'ContentStatus', optional: true },
+    {
+      name: 'remoteContentStatus',
+      dataType: 'ContentStatus',
+      optional: true,
+      schema: {
+        type: 'object',
+        modelType: 'ContentStatus',
+      },
+    },
+    {
+      name: 'localContentStatus',
+      dataType: 'ContentStatus',
+      optional: true,
+      schema: {
+        type: 'object',
+        modelType: 'ContentStatus',
+      },
+    },
     { name: 'sessionStartedAt', dataType: 'integer', optional: true },
     { name: 'sessionEndedAt', dataType: 'integer', optional: true },
   ]

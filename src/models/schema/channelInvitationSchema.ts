@@ -1,102 +1,103 @@
 export const ChannelInvitationSchema = {
-  version: 0,
-  primaryKey: 'id',
-  type: 'object',
-  properties: {
-    id: {
-      type: 'string',
-      maxLength: 32,
+  "version": 0,
+  "primaryKey": "id",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "maxLength": 32
     },
-    adminNotes: {
-      type: 'string',
+    "adminNotes": {
+      "type": "string"
     },
-    metadata: {},
-    createdAt: {
-      type: 'string',
-      format: 'date-time',
+    "metadata": {},
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    createdBy: {
-      type: 'string',
-      maxLength: 32,
+    "createdBy": {
+      "type": "string",
+      "maxLength": 32
     },
-    updatedAt: {
-      type: 'string',
-      format: 'date-time',
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    updatedBy: {
-      type: 'string',
-      maxLength: 32,
+    "updatedBy": {
+      "type": "string",
+      "maxLength": 32
     },
-    deletedAt: {
-      type: 'string',
-      format: 'date-time',
+    "deletedAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    deletedBy: {
-      type: 'string',
-      maxLength: 32,
+    "deletedBy": {
+      "type": "string",
+      "maxLength": 32
     },
-    channelId: {
-      type: 'string',
-      maxLength: 32,
+    "channelId": {
+      "type": "string",
+      "maxLength": 32
     },
-    recipientId: {
-      type: 'string',
-      maxLength: 32,
+    "recipientId": {
+      "type": "string",
+      "maxLength": 32
     },
-    channelName: {
-      type: 'string',
+    "channelName": {
+      "type": "string"
     },
-    channelTopic: {
-      type: 'string',
+    "channelTopic": {
+      "type": "string"
     },
-    messageText: {
-      type: 'string',
+    "messageText": {
+      "type": "string"
     },
-    declineReasonTextId: {
-      type: 'string',
+    "declineReasonTextId": {
+      "type": "string"
     },
-    dismissedFromInboxBySenderAt: {
-      type: 'string',
-      format: 'date-time',
+    "dismissedFromInboxBySenderAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    dismissedFromInboxByRecipientAt: {
-      type: 'string',
-      format: 'date-time',
+    "dismissedFromInboxByRecipientAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    readByRecipientAt: {
-      type: 'string',
-      format: 'date-time',
+    "readByRecipientAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    status: {},
-    suspendedAt: {
-      type: 'string',
-      format: 'date-time',
+    "status": {},
+    "suspendedAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    suspendedBy: {
-      type: 'string',
-      maxLength: 32,
+    "suspendedBy": {
+      "type": "string",
+      "maxLength": 32
     },
-    userSearchId: {
-      type: 'string',
-      maxLength: 32,
+    "userSearchId": {
+      "type": "string",
+      "maxLength": 32
     },
-    searchRank: {
-      type: 'integer',
+    "searchRank": {
+      "type": "integer"
     },
-    mm2ConversationId: {
-      description: 'This attribute is only used by the MM2 synchronizer.',
-      type: 'string',
+    "mm2ConversationId": {
+      "description": "This attribute is only used by the MM2 synchronizer.",
+      "type": "string"
     },
-    mm2Id: {
-      description:
-        'This attribute is only used by the MM2 synchronizer. Mm2 message ID.',
-      type: 'string',
+    "mm2Id": {
+      "description": "This attribute is only used by the MM2 synchronizer. Mm2 message ID.",
+      "type": "string"
     },
-    syncedWithMm2At: {
-      description: 'This attribute is only used by the MM2 synchronizer.',
-      type: 'string',
-      format: 'date-time',
-    },
+    "syncedWithMm2At": {
+      "description": "This attribute is only used by the MM2 synchronizer.",
+      "type": "string",
+      "format": "date-time"
+    }
   },
-  required: ['id'],
+  "required": [
+    "id"
+  ]
 };

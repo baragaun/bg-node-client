@@ -31,6 +31,7 @@ import endMySession from './myUser/endMySession.js';
 import findAvailableUserHandle from './myUser/findAvailableUserHandle.js';
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
+import isSessionActive from './myUser/isSessionActive.js';
 import isSignedIn from './myUser/isSignedIn.js';
 import isUserIdentAvailable from './myUser/isUserIdentAvailable.js';
 import resetMyPassword from './myUser/resetMyPassword.js';
@@ -85,6 +86,7 @@ const operations: Operations = {
     findAvailableUserHandle,
     findMyUser,
     getSignedOutUserId,
+    isSessionActive,
     isSignedIn,
     isUserIdentAvailable,
     resetMyPassword,

@@ -8,6 +8,8 @@ export class ClientInfo extends Model {
   public signedOutUserId?: string;
   public localContentStatus?: ContentStatus;
   public remoteContentStatus?: ContentStatus;
+  public sessionStartedAt?: number | null;
+  public sessionEndedAt?: number | null;
 
   public constructor(attributes?: Partial<ClientInfo> | null) {
     super(attributes);
@@ -34,6 +36,12 @@ export class ClientInfo extends Model {
       }
       if (attributes.remoteContentStatus) {
         this.remoteContentStatus = attributes.remoteContentStatus;
+      }
+      if (attributes.sessionStartedAt) {
+        this.sessionStartedAt = attributes.sessionStartedAt;
+      }
+      if (attributes.sessionEndedAt) {
+        this.sessionEndedAt = attributes.sessionEndedAt;
       }
     }
   }

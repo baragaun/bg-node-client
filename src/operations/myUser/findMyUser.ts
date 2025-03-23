@@ -45,6 +45,8 @@ const findMyUser = async (
     if (myUser) {
       // Update local cache:
       await db.replace<MyUser>(myUser, ModelType.MyUser);
+
+      clientInfoStore.updateMyUserUpdatedAt(new Date(myUser.updatedAt).getTime());
     }
 
     return myUser;
