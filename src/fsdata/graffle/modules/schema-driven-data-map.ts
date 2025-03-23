@@ -46,6 +46,8 @@ const Float  = $$Scalar.Float
 
 const DateTimeISO  = "DateTimeISO"
 
+const Long  = "Long"
+
 
 //
     //
@@ -14053,6 +14055,65 @@ isCore: {
 }
 }
 
+const ContentStatus :$$Utilities.SchemaDrivenDataMap.OutputObject = {
+f: {
+id: {
+
+
+},
+adminNotes: {
+
+
+},
+events: {
+
+
+// nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+},
+metadata: {
+
+
+// nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+},
+createdAt: {
+
+nt: DateTimeISO
+},
+createdBy: {
+
+
+},
+updatedAt: {
+
+nt: DateTimeISO
+},
+updatedBy: {
+
+
+},
+deletedAt: {
+
+nt: DateTimeISO
+},
+deletedBy: {
+
+
+},
+optionsUpdatedAt: {
+
+nt: Long
+},
+myUserUpdatedAt: {
+
+nt: Long
+},
+myUserInboxUpdatedAt: {
+
+nt: Long
+}
+}
+}
+
 const BgChannelChangedEvent :$$Utilities.SchemaDrivenDataMap.OutputObject = {
 f: {
 serviceRequest: {
@@ -16166,7 +16227,7 @@ endMySession: {
 a: {
 deviceUuid: {
 nt: String,
-it: [1, ]
+it: [0, ]
 }
 }
 },
@@ -16182,6 +16243,24 @@ nt: String,
 it: [1, ]
 }
 }
+},
+startMySessionV2: {
+
+a: {
+returnContentStatus: {
+nt: Boolean,
+it: [0, ]
+},
+pushNotificationToken: {
+nt: String,
+it: [0, ]
+},
+deviceUuid: {
+nt: String,
+it: [1, ]
+}
+}
+// nt: ContentStatus, <-- Assigned later to avoid potential circular dependency.
 },
 unblockUserForMe: {
 
@@ -16681,6 +16760,8 @@ SupportChannelConfig.f[`events`]!.nt = ModelEvent
 SupportChannelConfig.f[`metadata`]!.nt = BaseModelMetadata
 NotificationTemplate.f[`events`]!.nt = ModelEvent
 NotificationTemplate.f[`metadata`]!.nt = BaseModelMetadata
+ContentStatus.f[`events`]!.nt = ModelEvent
+ContentStatus.f[`metadata`]!.nt = BaseModelMetadata
 BgChannelChangedEvent.f[`serviceRequest`]!.nt = ServiceRequest
 ObjectChangedEvent.f[`serviceRequest`]!.nt = ServiceRequest
 ObjectChangedEvent.f[`object`]!.nt = BaseModel
@@ -16809,6 +16890,7 @@ Mutation.f[`startVerifyEmail`]!.nt = SidMultiStepActionProgress
 Mutation.f[`startVerifyPhoneNumber`]!.nt = SidMultiStepActionProgress
 Mutation.f[`verifyMultiStepActionToken`]!.nt = SidMultiStepActionProgress
 Mutation.f[`blockUserForMe`]!.nt = ServiceRequest
+Mutation.f[`startMySessionV2`]!.nt = ContentStatus
 Mutation.f[`unblockUserForMe`]!.nt = ServiceRequest
 Subscription.f[`channelChanged`]!.nt = BgChannelChangedEvent
 Subscription.f[`objectChanged`]!.nt = ObjectChangedEvent
@@ -16848,6 +16930,7 @@ String,
 Boolean,
 Float,
 DateTimeISO,
+Long,
 GroupMembershipRole,
 ModelEventType,
 OptionType,
@@ -17042,6 +17125,7 @@ UserAuthResponse,
 ContentTag,
 SupportChannelConfig,
 NotificationTemplate,
+ContentStatus,
 BgChannelChangedEvent,
 ObjectChangedEvent,
 BaseModel,

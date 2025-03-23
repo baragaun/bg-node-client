@@ -1646,6 +1646,7 @@ blockUserForMe: Mutation.blockUserForMe,
 deleteMyUser: Mutation.deleteMyUser,
 endMySession: Mutation.endMySession,
 startMySession: Mutation.startMySession,
+startMySessionV2: Mutation.startMySessionV2,
 unblockUserForMe: Mutation.unblockUserForMe,
 updateMyUser: Mutation.updateMyUser,
 createUserTracking: Mutation.createUserTracking
@@ -3227,10 +3228,13 @@ namedType: $$NamedTypes.$$String
 kind: "OutputField",
 name: "endMySession",
 arguments: {
+/**
+* @deprecated specify in HTTP header
+*/
 deviceUuid: {
 kind: "InputField",
 name: "deviceUuid",
-inlineType: [1, ],
+inlineType: [0, ],
 namedType: $$NamedTypes.$$String
 }
 },
@@ -3238,6 +3242,9 @@ inlineType: [1, ],
 namedType: $$NamedTypes.$$String
 }
 
+/**
+* @deprecated Use startMySessionV2
+*/
  export  interface startMySession   {
 kind: "OutputField",
 name: "startMySession",
@@ -3257,6 +3264,33 @@ namedType: $$NamedTypes.$$String
 },
 inlineType: [1, ],
 namedType: $$NamedTypes.$$String
+}
+
+ export  interface startMySessionV2   {
+kind: "OutputField",
+name: "startMySessionV2",
+arguments: {
+returnContentStatus: {
+kind: "InputField",
+name: "returnContentStatus",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+pushNotificationToken: {
+kind: "InputField",
+name: "pushNotificationToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+deviceUuid: {
+kind: "InputField",
+name: "deviceUuid",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ContentStatus
 }
 
  export  interface unblockUserForMe   {
@@ -28814,6 +28848,176 @@ namedType: $$NamedTypes.$$Boolean
 }
 }
 
+//                                           ContentStatus
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContentStatus   {
+kind: "Object",
+name: "ContentStatus",
+fields: {
+__typename: ContentStatus.__typename,
+id: ContentStatus.id,
+adminNotes: ContentStatus.adminNotes,
+events: ContentStatus.events,
+metadata: ContentStatus.metadata,
+createdAt: ContentStatus.createdAt,
+createdBy: ContentStatus.createdBy,
+updatedAt: ContentStatus.updatedAt,
+updatedBy: ContentStatus.updatedBy,
+deletedAt: ContentStatus.deletedAt,
+deletedBy: ContentStatus.deletedBy,
+optionsUpdatedAt: ContentStatus.optionsUpdatedAt,
+myUserUpdatedAt: ContentStatus.myUserUpdatedAt,
+myUserInboxUpdatedAt: ContentStatus.myUserInboxUpdatedAt
+}
+}
+
+export namespace ContentStatus {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ContentStatus"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface optionsUpdatedAt   {
+kind: "OutputField",
+name: "optionsUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Long
+}
+
+ export  interface myUserUpdatedAt   {
+kind: "OutputField",
+name: "myUserUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Long
+}
+
+ export  interface myUserInboxUpdatedAt   {
+kind: "OutputField",
+name: "myUserInboxUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Long
+}
+}
+
 //                                       BgChannelChangedEvent
     // --------------------------------------------------------------------------------------------------
     //
@@ -40231,6 +40435,12 @@ membersUnion: "created"
 
 export type DateTimeISO = $$Scalar.DateTimeISO
 
+//                                                Long
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export type Long = $$Scalar.Long
+
 //
     //
     //
@@ -40391,6 +40601,7 @@ export type $$UserAuthResponse = UserAuthResponse
 export type $$ContentTag = ContentTag
 export type $$SupportChannelConfig = SupportChannelConfig
 export type $$NotificationTemplate = NotificationTemplate
+export type $$ContentStatus = ContentStatus
 export type $$BgChannelChangedEvent = BgChannelChangedEvent
 export type $$ObjectChangedEvent = ObjectChangedEvent
 export type $$BaseModel = BaseModel
@@ -40505,6 +40716,7 @@ export type $$NotificationTemplateName = NotificationTemplateName
 export type $$ChannelChangedEventType = ChannelChangedEventType
 export type $$ObjectChangedEventType = ObjectChangedEventType
 export type $$DateTimeISO = DateTimeISO
+export type $$Long = Long
 export type $$Int = Int
 export type $$ID = ID
 export type $$String = String
@@ -40679,6 +40891,7 @@ UserAuthResponse: Schema.UserAuthResponse,
 ContentTag: Schema.ContentTag,
 SupportChannelConfig: Schema.SupportChannelConfig,
 NotificationTemplate: Schema.NotificationTemplate,
+ContentStatus: Schema.ContentStatus,
 BgChannelChangedEvent: Schema.BgChannelChangedEvent,
 ObjectChangedEvent: Schema.ObjectChangedEvent,
 BaseModel: Schema.BaseModel,
@@ -40772,6 +40985,7 @@ UserAuthResponse: Schema.UserAuthResponse,
 ContentTag: Schema.ContentTag,
 SupportChannelConfig: Schema.SupportChannelConfig,
 NotificationTemplate: Schema.NotificationTemplate,
+ContentStatus: Schema.ContentStatus,
 BgChannelChangedEvent: Schema.BgChannelChangedEvent,
 ObjectChangedEvent: Schema.ObjectChangedEvent,
 BaseModel: Schema.BaseModel
@@ -40784,6 +40998,7 @@ BaseModelMetadata: Schema.BaseModelMetadata,
 IGroupMembership: Schema.IGroupMembership
 },
 scalarNamesUnion: "DateTimeISO"
+| "Long"
 | "Int"
 | "ID"
 | "String"
@@ -40791,6 +41006,7 @@ scalarNamesUnion: "DateTimeISO"
 | "Float",
 scalars: {
 DateTimeISO: Schema.DateTimeISO,
+Long: Schema.Long,
 Int: Schema.Int,
 ID: Schema.ID,
 String: Schema.String,

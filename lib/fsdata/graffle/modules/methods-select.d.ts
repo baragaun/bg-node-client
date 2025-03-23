@@ -90,6 +90,7 @@ export interface $MethodsSelect {
     ContentTag: ContentTag;
     SupportChannelConfig: SupportChannelConfig;
     NotificationTemplate: NotificationTemplate;
+    ContentStatus: ContentStatus;
     BgChannelChangedEvent: BgChannelChangedEvent;
     ObjectChangedEvent: ObjectChangedEvent;
     BaseModel: BaseModel;
@@ -362,6 +363,9 @@ export interface SupportChannelConfig {
 }
 export interface NotificationTemplate {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.NotificationTemplate>): $SelectionSet;
+}
+export interface ContentStatus {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContentStatus>): $SelectionSet;
 }
 export interface BgChannelChangedEvent {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelChangedEvent>): $SelectionSet;

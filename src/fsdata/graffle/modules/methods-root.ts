@@ -2366,7 +2366,7 @@ deleteMyUser:
 endMySession:
         $$Utilities.ClientTransports.PreflightCheck<
           $Context,
-          <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.endMySession<$Context['scalars']>>) =>
+          <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.endMySession<$Context['scalars']>>) =>
             Promise<
               & (null | {})
               & $$Utilities.HandleOutputDocumentBuilderRootField<
@@ -2376,7 +2376,9 @@ endMySession:
                 >
             >
         >
-
+/**
+* @deprecated Use startMySessionV2
+*/
 startMySession:
         $$Utilities.ClientTransports.PreflightCheck<
           $Context,
@@ -2387,6 +2389,20 @@ startMySession:
                   $Context,
                   $$Utilities.DocumentBuilder.InferResult.OperationMutation<{ startMySession: $SelectionSet}, $$Schema.Schema<$Context['scalars']>>,
                   'startMySession'
+                >
+            >
+        >
+
+startMySessionV2:
+        $$Utilities.ClientTransports.PreflightCheck<
+          $Context,
+          <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.startMySessionV2<$Context['scalars']>>) =>
+            Promise<
+              & (null | {})
+              & $$Utilities.HandleOutputDocumentBuilderRootField<
+                  $Context,
+                  $$Utilities.DocumentBuilder.InferResult.OperationMutation<{ startMySessionV2: $SelectionSet}, $$Schema.Schema<$Context['scalars']>>,
+                  'startMySessionV2'
                 >
             >
         >

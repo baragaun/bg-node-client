@@ -1522,6 +1522,7 @@ export declare namespace Schema {
             deleteMyUser: Mutation.deleteMyUser;
             endMySession: Mutation.endMySession;
             startMySession: Mutation.startMySession;
+            startMySessionV2: Mutation.startMySessionV2;
             unblockUserForMe: Mutation.unblockUserForMe;
             updateMyUser: Mutation.updateMyUser;
             createUserTracking: Mutation.createUserTracking;
@@ -3003,16 +3004,22 @@ export declare namespace Schema {
             kind: "OutputField";
             name: "endMySession";
             arguments: {
+                /**
+                * @deprecated specify in HTTP header
+                */
                 deviceUuid: {
                     kind: "InputField";
                     name: "deviceUuid";
-                    inlineType: [1];
+                    inlineType: [0];
                     namedType: $$NamedTypes.$$String;
                 };
             };
             inlineType: [1];
             namedType: $$NamedTypes.$$String;
         }
+        /**
+        * @deprecated Use startMySessionV2
+        */
         interface startMySession {
             kind: "OutputField";
             name: "startMySession";
@@ -3032,6 +3039,32 @@ export declare namespace Schema {
             };
             inlineType: [1];
             namedType: $$NamedTypes.$$String;
+        }
+        interface startMySessionV2 {
+            kind: "OutputField";
+            name: "startMySessionV2";
+            arguments: {
+                returnContentStatus: {
+                    kind: "InputField";
+                    name: "returnContentStatus";
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                pushNotificationToken: {
+                    kind: "InputField";
+                    name: "pushNotificationToken";
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$String;
+                };
+                deviceUuid: {
+                    kind: "InputField";
+                    name: "deviceUuid";
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ContentStatus;
         }
         interface unblockUserForMe {
             kind: "OutputField";
@@ -21803,6 +21836,129 @@ export declare namespace Schema {
             namedType: $$NamedTypes.$$Boolean;
         }
     }
+    export interface ContentStatus {
+        kind: "Object";
+        name: "ContentStatus";
+        fields: {
+            __typename: ContentStatus.__typename;
+            id: ContentStatus.id;
+            adminNotes: ContentStatus.adminNotes;
+            events: ContentStatus.events;
+            metadata: ContentStatus.metadata;
+            createdAt: ContentStatus.createdAt;
+            createdBy: ContentStatus.createdBy;
+            updatedAt: ContentStatus.updatedAt;
+            updatedBy: ContentStatus.updatedBy;
+            deletedAt: ContentStatus.deletedAt;
+            deletedBy: ContentStatus.deletedBy;
+            optionsUpdatedAt: ContentStatus.optionsUpdatedAt;
+            myUserUpdatedAt: ContentStatus.myUserUpdatedAt;
+            myUserInboxUpdatedAt: ContentStatus.myUserInboxUpdatedAt;
+        };
+    }
+    export namespace ContentStatus {
+        interface __typename {
+            kind: "OutputField";
+            name: "__typename";
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: "__typename";
+                value: "ContentStatus";
+            };
+        }
+        interface id {
+            kind: "OutputField";
+            name: "id";
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: "OutputField";
+            name: "adminNotes";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: "OutputField";
+            name: "events";
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: "OutputField";
+            name: "metadata";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: "OutputField";
+            name: "createdAt";
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: "OutputField";
+            name: "createdBy";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: "OutputField";
+            name: "updatedAt";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: "OutputField";
+            name: "updatedBy";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: "OutputField";
+            name: "deletedAt";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: "OutputField";
+            name: "deletedBy";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface optionsUpdatedAt {
+            kind: "OutputField";
+            name: "optionsUpdatedAt";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Long;
+        }
+        interface myUserUpdatedAt {
+            kind: "OutputField";
+            name: "myUserUpdatedAt";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Long;
+        }
+        interface myUserInboxUpdatedAt {
+            kind: "OutputField";
+            name: "myUserInboxUpdatedAt";
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Long;
+        }
+    }
     export interface BgChannelChangedEvent {
         kind: "Object";
         name: "BgChannelChangedEvent";
@@ -30821,6 +30977,7 @@ export declare namespace Schema {
         membersUnion: "created" | "updated" | "deleted";
     }
     export type DateTimeISO = $$Scalar.DateTimeISO;
+    export type Long = $$Scalar.Long;
     export type Int = $.StandardTypes.Int;
     export type ID = $.StandardTypes.ID;
     export type String = $.StandardTypes.String;
@@ -30923,6 +31080,7 @@ export declare namespace Schema {
         type $$ContentTag = ContentTag;
         type $$SupportChannelConfig = SupportChannelConfig;
         type $$NotificationTemplate = NotificationTemplate;
+        type $$ContentStatus = ContentStatus;
         type $$BgChannelChangedEvent = BgChannelChangedEvent;
         type $$ObjectChangedEvent = ObjectChangedEvent;
         type $$BaseModel = BaseModel;
@@ -31037,6 +31195,7 @@ export declare namespace Schema {
         type $$ChannelChangedEventType = ChannelChangedEventType;
         type $$ObjectChangedEventType = ObjectChangedEventType;
         type $$DateTimeISO = DateTimeISO;
+        type $$Long = Long;
         type $$Int = Int;
         type $$ID = ID;
         type $$String = String;
@@ -31192,6 +31351,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         ContentTag: Schema.ContentTag;
         SupportChannelConfig: Schema.SupportChannelConfig;
         NotificationTemplate: Schema.NotificationTemplate;
+        ContentStatus: Schema.ContentStatus;
         BgChannelChangedEvent: Schema.BgChannelChangedEvent;
         ObjectChangedEvent: Schema.ObjectChangedEvent;
         BaseModel: Schema.BaseModel;
@@ -31285,6 +31445,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         ContentTag: Schema.ContentTag;
         SupportChannelConfig: Schema.SupportChannelConfig;
         NotificationTemplate: Schema.NotificationTemplate;
+        ContentStatus: Schema.ContentStatus;
         BgChannelChangedEvent: Schema.BgChannelChangedEvent;
         ObjectChangedEvent: Schema.ObjectChangedEvent;
         BaseModel: Schema.BaseModel;
@@ -31294,9 +31455,10 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         BaseModelMetadata: Schema.BaseModelMetadata;
         IGroupMembership: Schema.IGroupMembership;
     };
-    scalarNamesUnion: "DateTimeISO" | "Int" | "ID" | "String" | "Boolean" | "Float";
+    scalarNamesUnion: "DateTimeISO" | "Long" | "Int" | "ID" | "String" | "Boolean" | "Float";
     scalars: {
         DateTimeISO: Schema.DateTimeISO;
+        Long: Schema.Long;
         Int: Schema.Int;
         ID: Schema.ID;
         String: Schema.String;
