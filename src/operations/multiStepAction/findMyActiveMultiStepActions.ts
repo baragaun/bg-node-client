@@ -1,7 +1,7 @@
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { SidMultiStepAction } from '../../types/models/SidMultiStepAction.js';
+import { SidMultiStepAction } from '../../models/SidMultiStepAction.js';
 
 const findMyActiveMultiStepActions = async (): Promise<
   SidMultiStepAction[]

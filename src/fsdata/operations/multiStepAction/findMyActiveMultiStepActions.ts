@@ -5,7 +5,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { SidMultiStepAction } from '../../../types/models/SidMultiStepAction.js';
+import { SidMultiStepAction } from '../../../models/SidMultiStepAction.js';
 import gql from '../../gql/queries/findMyActiveMultiStepActions.graphql.js';
 import helpers from '../../helpers/helpers.js';
 

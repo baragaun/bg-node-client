@@ -1,7 +1,7 @@
 import findById from './findById.js';
 import { ModelType } from '../../enums.js';
 import logger from '../../helpers/logger.js';
-import { Model } from '../../types/models/Model.js';
+import { Model } from '../../models/Model.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 
 const pollForUpdatedObject = <T extends Model = Model>(

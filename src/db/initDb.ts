@@ -1,3 +1,4 @@
+// import Dexie from 'dexie';
 import addFormats from "ajv-formats";
 import {
   addRxPlugin,
@@ -18,9 +19,9 @@ import { AppEnvironment, ModelType } from "../enums.js";
 import db from "./helpers/db.js";
 import clientInfoStore from "../helpers/clientInfoStore.js";
 import logger from "../helpers/logger.js";
+import { MyUser } from "../models/MyUser.js";
 import modelsSchema from "../models/schema/schema.js";
 import { BgNodeClientConfig } from "../types/BgNodeClientConfig.js";
-import { MyUser } from "../types/models/MyUser.js";
 // import initLibSignal from './initLibSignal.js';
 // import libSignalSchema from './libSignalStores/schema/libSignalSchema.js';
 
@@ -46,6 +47,10 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     const clientInfo = clientInfoStore.get();
 
     return loadMyUser(clientInfo.myUserId);
+  }
+
+  if (!('indexedDB' in window)) {
+    throw new Error('indexeddb-not-supported');
   }
 
   // @ts-ignore

@@ -1,6 +1,6 @@
+import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
 import { BgDataListener } from '../types/BgDataListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
-import { MultiStepActionRun } from '../types/index.js';
 
 let _isInitialized = false;
 let _config: BgNodeClientConfig | undefined;

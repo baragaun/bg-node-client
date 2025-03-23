@@ -6,8 +6,8 @@ import chance, {
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
 import logger from '../../../helpers/logger.js';
+import { MyUser } from '../../../models/MyUser.js';
 import findById from '../../../operations/findById.js';
-import { MyUser } from '../../../types/models/MyUser.js';
 import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 

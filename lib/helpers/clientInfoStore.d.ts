@@ -1,4 +1,4 @@
-import { ClientInfo } from '../types/models/ClientInfo.js';
+import { ClientInfo } from '../models/ClientInfo.js';
 declare const clientInfoStore: {
     clearMyUserFromClientInfo: (signedOutUserId?: string) => Promise<ClientInfo>;
     close: () => void;

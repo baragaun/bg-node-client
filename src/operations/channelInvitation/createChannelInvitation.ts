@@ -1,7 +1,7 @@
 import db from '../../db/db.js';
 import { MutationType } from '../../enums.js';
 import libData from '../../helpers/libData.js';
-import { ChannelInvitation } from '../../types/models/ChannelInvitation.js';
+import { ChannelInvitation } from '../../models/ChannelInvitation.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const createChannelInvitation = async (

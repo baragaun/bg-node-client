@@ -1,13 +1,13 @@
 import { ModelType } from '../enums.js';
-import { Channel } from '../types/models/Channel.js';
-import { ChannelInvitation } from '../types/models/ChannelInvitation.js';
-import { ChannelMessage } from '../types/models/ChannelMessage.js';
-import { ChannelParticipant } from '../types/models/ChannelParticipant.js';
-import { ClientInfo } from '../types/models/ClientInfo.js';
-import { Model } from '../types/models/Model.js';
-import { MyUser } from '../types/models/MyUser.js';
-import { User } from '../types/models/User.js';
-import { UserInbox } from '../types/models/UserInbox.js';
+import { Channel } from '../models/Channel.js';
+import { ChannelInvitation } from '../models/ChannelInvitation.js';
+import { ChannelMessage } from '../models/ChannelMessage.js';
+import { ChannelParticipant } from '../models/ChannelParticipant.js';
+import { ClientInfo } from '../models/ClientInfo.js';
+import { Model } from '../models/Model.js';
+import { MyUser } from '../models/MyUser.js';
+import { User } from '../models/User.js';
+import { UserInbox } from '../models/UserInbox.js';
 
 const modelFactory = <T extends Model = Model>(
   attributes: Partial<T>,

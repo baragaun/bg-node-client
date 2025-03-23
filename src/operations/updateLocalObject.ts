@@ -2,7 +2,7 @@ import db from '../db/db.js';
 import { ModelType } from '../enums.js';
 import fsdata from '../fsdata/fsdata.js';
 import libData from '../helpers/libData.js';
-import { Model } from '../types/models/Model.js';
+import { Model } from '../models/Model.js';
 import { QueryOptions } from '../types/QueryOptions.js';
 
 const updateLocalObject = async <T extends Model = Model>(

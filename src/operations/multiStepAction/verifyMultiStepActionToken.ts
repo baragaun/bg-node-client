@@ -2,8 +2,8 @@ import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { MultiStepActionRun } from '../../types/index.js';
-import { SidMultiStepActionProgress } from '../../types/models/SidMultiStepActionProgress.js';
+import { MultiStepActionRun } from '../../models/MultiStepActionRun.js';
+import { SidMultiStepActionProgress } from '../../models/SidMultiStepActionProgress.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const verifyMultiStepActionToken = async (

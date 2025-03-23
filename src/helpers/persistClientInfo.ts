@@ -3,7 +3,7 @@ import { ClientInfoStoreType, ModelType } from '../enums.js';
 import libData from './libData.js';
 import loadClientInfo from './loadClientInfo.js';
 import logger from './logger.js';
-import { ClientInfo } from '../types/models/ClientInfo.js';
+import { ClientInfo } from '../models/ClientInfo.js';
 
 const persistClientInfo = async (
   clientInfo: Partial<ClientInfo>,

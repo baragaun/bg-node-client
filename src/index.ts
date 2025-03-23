@@ -1,6 +1,57 @@
-import { BgNodeClient } from './BgNodeClient.js';
-
 export * from './enums.js';
 export { ErrorCode } from './fsdata/gql/graphql.js';
-export { BgNodeClient };
-// export * from './uiMessages.js';
+
+export * from './BgNodeClient.js';
+
+// Models:
+export * from './models/BaseModel.js';
+export * from './models/BaseModelMetadata.js';
+export * from './models/BgChannelStatus.js';
+export * from './models/BgLatestUnseenChannelMessageInfo.js';
+export * from './models/Channel.js';
+export * from './models/ChannelInvitation.js';
+export * from './models/ChannelInvitationListFilter.js';
+export * from './models/ChannelListFilter.js';
+export * from './models/ChannelMessage.js';
+export * from './models/ChannelMessageListFilter.js';
+export * from './models/ChannelMessageMetadata.js';
+export * from './models/ChannelMessageStatus.js';
+export * from './models/ChannelMetadata.js';
+export * from './models/ChannelParticipant.js';
+export * from './models/ChannelParticipantListFilter.js';
+export * from './models/ChannelsUserMetadata.js';
+export * from './models/ClientInfo.js';
+export * from './models/Contact.js';
+export * from './models/ContactMetadata.js';
+export * from './models/ContentStatus.js';
+export * from './models/IBaseModel.js';
+export * from './models/LabeledStringValue.js';
+export * from './models/ModelEvent.js';
+export * from './models/MultiStepActionRun.js';
+export * from './models/MyUser.js';
+export * from './models/NotificationOptions.js';
+export * from './models/SidMultiStepAction.js';
+export * from './models/SidMultiStepActionProgress.js';
+export * from './models/User.js';
+export * from './models/UserBlock.js';
+export * from './models/UserPreferences.js';
+export * from './models/VerifyMultiStepActionTokenInput.js';
+
+// Types:
+export * from './types/BgDataListener.js';
+export * from './types/BgNodeClientConfig.js';
+export * from './types/ChannelEventPayload.js';
+export * from './types/HttpHeaders.js';
+export * from './types/logger.js';
+export * from './types/MultiStepActionError.js';
+export * from './types/MultiStepActionListener.js';
+export * from './types/MultiStepActionProgressResult.js';
+export * from './types/MutationResult.js';
+export * from './types/Operations.js';
+export * from './types/QueryOptions.js';
+export * from './types/QueryResult.js';
+export * from './types/SignInInput.js';
+export * from './types/SignInSignUpResponse.js';
+export * from './types/SignInUserInput.js';
+export * from './types/SignUpUserInput.js';
+export * from './types/UserAuthResponse.js';

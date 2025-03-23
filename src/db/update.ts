@@ -4,7 +4,7 @@ import { ModelType, MutationType } from '../enums.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 import { getModelTypeFromObject } from '../helpers/helpers.js';
-import { Model } from '../types/models/Model.js';
+import { Model } from '../models/Model.js';
 import { MutationResult } from '../types/MutationResult.js';
 
 let _db: RxDatabase | undefined = undefined;

@@ -7,7 +7,7 @@ import {
 } from '../../../enums.js';
 import chance, { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import logger from '../../../helpers/logger.js';
-import { SidMultiStepActionProgress } from '../../../types/models/SidMultiStepActionProgress.js';
+import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
 import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 
