@@ -4,6 +4,7 @@ import fsdata from '../../fsdata/fsdata.js';
 import { MyUserInput } from '../../fsdata/gql/graphql.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MutationResult, MyUser } from '../../types/index.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -13,6 +14,10 @@ const updateMyPassword = async (
   newPassword: string,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<MutationResult<MyUser>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   const clientInfo = clientInfoStore.get();
   const myUserId = clientInfo.myUserId;
   const result: MutationResult<MyUser | null> = {

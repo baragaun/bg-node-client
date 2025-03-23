@@ -47,6 +47,22 @@ const persistClientInfo = async (
     newClientInfo.signedOutUserId = existingClientInfo.signedOutUserId;
   }
 
+  if (
+    !newClientInfo.localContentStatus &&
+    newClientInfo.localContentStatus !== null &&
+    existingClientInfo?.localContentStatus
+  ) {
+    newClientInfo.localContentStatus = existingClientInfo.localContentStatus;
+  }
+
+  if (
+    !newClientInfo.remoteContentStatus &&
+    newClientInfo.remoteContentStatus !== null &&
+    existingClientInfo?.remoteContentStatus
+  ) {
+    newClientInfo.remoteContentStatus = existingClientInfo.remoteContentStatus;
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // LocalStorage:
   if (
@@ -80,6 +96,14 @@ const persistClientInfo = async (
 
   if (!newClientInfo.signedOutUserId) {
     delete newClientInfo.signedOutUserId;
+  }
+
+  if (!newClientInfo.localContentStatus) {
+    delete newClientInfo.localContentStatus;
+  }
+
+  if (!newClientInfo.remoteContentStatus) {
+    delete newClientInfo.remoteContentStatus;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

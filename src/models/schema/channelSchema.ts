@@ -1,227 +1,229 @@
 export const ChannelSchema = {
-  version: 0,
-  primaryKey: 'id',
-  type: 'object',
-  properties: {
-    id: {
-      type: 'string',
-      maxLength: 32,
+  "version": 0,
+  "primaryKey": "id",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "maxLength": 32
     },
-    adminNotes: {
-      type: 'string',
+    "adminNotes": {
+      "type": "string"
     },
-    metadata: {
-      type: 'object',
-      properties: {
-        unseenMessageInfo: {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: {
-              userId: {
-                type: 'string',
-                maxLength: 32,
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "unseenMessageInfo": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "type": "string",
+                "maxLength": 32
               },
-              createdAt: {
-                type: 'string',
-                format: 'date-time',
+              "createdAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdBy": {
+      "type": "string",
+      "maxLength": 32
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedBy": {
+      "type": "string",
+      "maxLength": 32
+    },
+    "deletedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "deletedBy": {
+      "type": "string",
+      "maxLength": 32
+    },
+    "name": {
+      "type": "string"
+    },
+    "topic": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "channelType": {},
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "adminNotes": {
+            "type": "string"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "userHandle": {
+                "type": "string"
               },
-            },
-          },
-        },
-      },
-    },
-    createdAt: {
-      type: 'string',
-      format: 'date-time',
-    },
-    createdBy: {
-      type: 'string',
-      maxLength: 32,
-    },
-    updatedAt: {
-      type: 'string',
-      format: 'date-time',
-    },
-    updatedBy: {
-      type: 'string',
-      maxLength: 32,
-    },
-    deletedAt: {
-      type: 'string',
-      format: 'date-time',
-    },
-    deletedBy: {
-      type: 'string',
-      maxLength: 32,
-    },
-    name: {
-      type: 'string',
-    },
-    topic: {
-      type: 'string',
-    },
-    description: {
-      type: 'string',
-    },
-    tags: {
-      type: 'array',
-      items: {
-        type: 'string',
-      },
-    },
-    channelType: {},
-    participants: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          id: {
-            type: 'string',
-            maxLength: 32,
-          },
-          adminNotes: {
-            type: 'string',
-          },
-          metadata: {
-            type: 'object',
-            properties: {
-              userHandle: {
-                type: 'string',
+              "firstName": {
+                "type": "string"
               },
-              firstName: {
-                type: 'string',
+              "lastName": {
+                "type": "string"
               },
-              lastName: {
-                type: 'string',
+              "nickname": {
+                "type": "string"
               },
-              nickname: {
-                type: 'string',
-              },
-              avatarUrl: {
-                type: 'string',
-              },
-            },
+              "avatarUrl": {
+                "type": "string"
+              }
+            }
           },
-          createdAt: {
-            type: 'string',
-            format: 'date-time',
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
           },
-          createdBy: {
-            type: 'string',
-            maxLength: 32,
+          "createdBy": {
+            "type": "string",
+            "maxLength": 32
           },
-          updatedAt: {
-            type: 'string',
-            format: 'date-time',
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
           },
-          updatedBy: {
-            type: 'string',
-            maxLength: 32,
+          "updatedBy": {
+            "type": "string",
+            "maxLength": 32
           },
-          deletedAt: {
-            type: 'string',
-            format: 'date-time',
+          "deletedAt": {
+            "type": "string",
+            "format": "date-time"
           },
-          deletedBy: {
-            type: 'string',
-            maxLength: 32,
+          "deletedBy": {
+            "type": "string",
+            "maxLength": 32
           },
-          channelId: {
-            type: 'string',
-            maxLength: 32,
+          "channelId": {
+            "type": "string",
+            "maxLength": 32
           },
-          userId: {
-            type: 'string',
-            maxLength: 32,
+          "userId": {
+            "type": "string",
+            "maxLength": 32
           },
-          invitedBy: {
-            type: 'string',
-            maxLength: 32,
+          "invitedBy": {
+            "type": "string",
+            "maxLength": 32
           },
-          channelName: {
-            type: 'string',
+          "channelName": {
+            "type": "string"
           },
-          role: {},
-          suspendedAt: {
-            type: 'string',
-            format: 'date-time',
+          "role": {},
+          "suspendedAt": {
+            "type": "string",
+            "format": "date-time"
           },
-          suspendedBy: {
-            type: 'string',
-            maxLength: 32,
-          },
-        },
-      },
+          "suspendedBy": {
+            "type": "string",
+            "maxLength": 32
+          }
+        }
+      }
     },
-    statuses: {
-      type: 'array',
-      items: {
-        type: 'object',
-        properties: {
-          userId: {
-            type: 'string',
-            maxLength: 32,
+    "statuses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "maxLength": 32
           },
-          archivedAt: {
-            type: 'string',
-            format: 'date-time',
-          },
-        },
-      },
+          "archivedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
     },
-    userIds: {
-      type: 'array',
-      items: {
-        type: 'string',
-        maxLength: 32,
-      },
+    "userIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 32
+      }
     },
-    pausedAt: {
-      type: 'string',
-      format: 'date-time',
+    "pausedAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    pausedBy: {
-      type: 'string',
-      maxLength: 32,
+    "pausedBy": {
+      "type": "string",
+      "maxLength": 32
     },
-    suspendedAt: {
-      type: 'string',
-      format: 'date-time',
+    "suspendedAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    suspendedBy: {
-      type: 'string',
-      maxLength: 32,
+    "suspendedBy": {
+      "type": "string",
+      "maxLength": 32
     },
-    lockedAt: {
-      type: 'string',
-      format: 'date-time',
+    "lockedAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    lockedBy: {
-      type: 'string',
-      maxLength: 32,
+    "lockedBy": {
+      "type": "string",
+      "maxLength": 32
     },
-    archivedAt: {
-      type: 'string',
-      format: 'date-time',
+    "archivedAt": {
+      "type": "string",
+      "format": "date-time"
     },
-    archivedBy: {
-      type: 'string',
-      maxLength: 32,
+    "archivedBy": {
+      "type": "string",
+      "maxLength": 32
     },
-    assumedMentorId: {
-      type: 'string',
-      maxLength: 32,
+    "assumedMentorId": {
+      "type": "string",
+      "maxLength": 32
     },
-    mm2Id: {
-      description: 'This attribute is only used by the MM2 synchronizer.',
-      type: 'string',
+    "mm2Id": {
+      "description": "This attribute is only used by the MM2 synchronizer.",
+      "type": "string"
     },
-    syncedWithMm2At: {
-      description: 'This attribute is only used by the MM2 synchronizer.',
-      type: 'string',
-      format: 'date-time',
-    },
+    "syncedWithMm2At": {
+      "description": "This attribute is only used by the MM2 synchronizer.",
+      "type": "string",
+      "format": "date-time"
+    }
   },
-  required: ['id'],
+  "required": [
+    "id"
+  ]
 };

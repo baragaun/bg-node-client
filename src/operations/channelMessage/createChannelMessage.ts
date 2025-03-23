@@ -1,5 +1,6 @@
 import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../enums.js';
+import libData from '../../helpers/libData.js';
 import { Channel } from '../../types/models/Channel.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { MutationResult } from '../../types/MutationResult.js';
@@ -7,6 +8,10 @@ import { MutationResult } from '../../types/MutationResult.js';
 const createChannelMessage = async (
   attributes: Partial<ChannelMessage>,
 ): Promise<MutationResult<ChannelMessage>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   try {
     const channel = db.findById<Channel>(
       attributes.channelId as string,

@@ -7,6 +7,10 @@ const isUserIdentAvailable = async (
   userIdent: string,
   identType: UserIdentTypeFromClient,
 ): Promise<boolean> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   const config = libData.config();
 
   if (!config) {

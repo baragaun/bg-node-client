@@ -1,6 +1,7 @@
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
@@ -9,6 +10,10 @@ const deleteMyUser = async (
   description: string | null | undefined,
   deletePhysically: boolean,
 ): Promise<MutationResult<null>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   const clientInfo = clientInfoStore.get();
   const signedOutUserId = clientInfo.myUserId || clientInfo.signedOutUserId;
 

@@ -37,6 +37,7 @@ export * from './models/ChannelsUserMetadata.js';
 export * from './models/ClientInfo.js';
 export * from './models/Contact.js';
 export * from './models/ContactMetadata.js';
+export * from './models/ContentStatus.js';
 export * from './models/IBaseModel.js';
 export * from './models/LabeledStringValue.js';
 export * from './models/ModelEvent.js';
@@ -51,3 +52,5 @@ export * from './models/UserPreferences.js';
 export * from './models/VerifyMultiStepActionTokenInput.js';
 
 export * from '../enums.js';
+export * from '../uiMessages.js';
+export { ErrorCode } from '../fsdata/gql/graphql.js';

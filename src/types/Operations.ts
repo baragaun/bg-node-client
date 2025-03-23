@@ -146,9 +146,11 @@ export interface Operations {
       deletePhysically: boolean,
     ) => Promise<MutationResult<null>>;
 
+    endMySession: () => Promise<void>;
     findAvailableUserHandle: (startValue: string) => Promise<string>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
     getSignedOutUserId: () => Promise<string | null>;
+    isSessionActive: () => boolean;
     isSignedIn: () => boolean;
 
     isUserIdentAvailable: (
@@ -174,6 +176,8 @@ export interface Operations {
     signUpUser: (
       input: SignUpUserInput,
     ) => Promise<MutationResult<SignInSignUpResponse>>;
+
+    startMySession: () => Promise<void>;
 
     updateMyUser: (
       myUser: Partial<MyUser>,
@@ -212,6 +216,8 @@ export interface Operations {
 
     sendMultiStepActionNotification: (
       actionId: string,
+      email: string | undefined,
+      phoneNumber: string | undefined,
       notificationMethod: NotificationMethod,
     ) => Promise<MutationResult<string>>;
 

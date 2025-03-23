@@ -1,10 +1,15 @@
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const signMeOut = async (): Promise<MutationResult<null>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   try {
     const clientInfo = clientInfoStore.get();
     const signedOutUserId = clientInfo.signedOutUserId;

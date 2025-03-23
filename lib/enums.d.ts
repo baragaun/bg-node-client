@@ -106,6 +106,7 @@ export declare enum AuthType {
 }
 export declare enum UiLanguage {
     ar = "ar",// Arabic
+    de = "de",// German
     en = "en",// English
     es = "es",// Spanish
     id = "id",// Indonesian
@@ -263,4 +264,9 @@ export declare enum MultiStepActionResult {
     userFailedValidation = "userFailedValidation",
     userNotFound = "userNotFound",
     userNotSignedIn = "userNotSignedIn"
+}
+export declare enum BgNodeClientUiErrorCode {
+    invalidInput = "invalidInput",
+    notFound = "notFound",
+    unauthorized = "unauthorized"
 }

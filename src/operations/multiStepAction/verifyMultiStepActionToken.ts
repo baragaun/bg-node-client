@@ -11,6 +11,10 @@ const verifyMultiStepActionToken = async (
   confirmToken: string,
   newPassword?: string,
 ): Promise<MutationResult<SidMultiStepActionProgress>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   try {
     const run: MultiStepActionRun = libData.multiStepActionRun(actionId);
 

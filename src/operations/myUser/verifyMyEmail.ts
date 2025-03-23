@@ -4,6 +4,7 @@ import {
   SidMultiStepActionInput,
 } from '../../fsdata/gql/graphql.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -14,6 +15,10 @@ const verifyMyEmail = async (
   email: string,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   const clientInfo = clientInfoStore.get();
 
   try {

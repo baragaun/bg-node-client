@@ -11,12 +11,16 @@ export declare class BgNodeClient {
     clientInfoStore: {
         clearMyUserFromClientInfo: (signedOutUserId?: string) => Promise<ClientInfo>;
         close: () => void;
+        get: () => ClientInfo;
         load: () => Promise<ClientInfo>;
         persist: (newClientInfo?: Partial<ClientInfo>) => Promise<ClientInfo>;
-        get: () => ClientInfo;
+        updateMyUserUpdatedAt: (myUserUpdatedAt: number) => void;
+        sessionEnded: () => void;
+        sessionStarted: () => void;
     };
     close: (done?: () => void) => void;
-    get myUserId(): string | undefined;
+    get isInitialized(): boolean;
     get isSignedIn(): string | undefined;
     get myUserDeviceUuid(): string | undefined;
+    get myUserId(): string | undefined;
 }

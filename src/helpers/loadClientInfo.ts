@@ -1,12 +1,19 @@
 import db from '../db/db.js';
 import { ClientInfoStoreType, ModelType } from '../enums.js';
 import libData from './libData.js';
+import logger from './logger.js';
 import { ClientInfo } from '../types/models/ClientInfo.js';
 
 // const defaultClientInfo: ClientInfo = { id: 'default', createdAt: new Date().toISOString() };
 
 const loadClientInfo = async (): Promise<ClientInfo | null> => {
   const config = libData.config();
+
+  if (!config) {
+    logger.error('loadClientInfo: no config.');
+    return null;
+  }
+
   const persistType = config.clientInfoStore?.type;
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

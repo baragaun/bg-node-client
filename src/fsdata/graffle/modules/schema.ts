@@ -1,0 +1,41012 @@
+      import type { Schema as $ } from 'graffle/utilities-for-generated'
+      import type * as $$Utilities from 'graffle/utilities-for-generated'
+
+import * as $$Data from './data.js'
+      import * as $$Scalar from './scalar.js'
+
+export namespace Schema {
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                                Root
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+//                                               Query
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Query   {
+kind: "Object",
+name: "Query",
+fields: {
+__typename: Query.__typename,
+findCompanyStages: Query.findCompanyStages,
+findCompanyTypes: Query.findCompanyTypes,
+findEducationLevels: Query.findEducationLevels,
+findExpertises: Query.findExpertises,
+findGenders: Query.findGenders,
+findPronouns: Query.findPronouns,
+myInbox: Query.myInbox,
+doesUserExist: Query.doesUserExist,
+findUserById: Query.findUserById,
+findUserByIdent: Query.findUserByIdent,
+isUserIdentAvailable: Query.isUserIdentAvailable,
+findUsers: Query.findUsers,
+findUserDeviceById: Query.findUserDeviceById,
+findUserDevices: Query.findUserDevices,
+findMyUserDevices: Query.findMyUserDevices,
+findAdminTaskById: Query.findAdminTaskById,
+findAdminTaskDefs: Query.findAdminTaskDefs,
+findUploadedAssetById: Query.findUploadedAssetById,
+findUploadedAssets: Query.findUploadedAssets,
+findUploadedAssetsForUser: Query.findUploadedAssetsForUser,
+findChannelInvitationById: Query.findChannelInvitationById,
+findChannelInvitationsBetweenUsers: Query.findChannelInvitationsBetweenUsers,
+findChannelInvitationsForUser: Query.findChannelInvitationsForUser,
+myChannelInvitations: Query.myChannelInvitations,
+findPendingChannelInvitationsForUser: Query.findPendingChannelInvitationsForUser,
+findChannelById: Query.findChannelById,
+findChannels: Query.findChannels,
+findChannelsForUser: Query.findChannelsForUser,
+findMyChannels: Query.findMyChannels,
+findChannelMessageById: Query.findChannelMessageById,
+findChannelMessages: Query.findChannelMessages,
+findChannelParticipantById: Query.findChannelParticipantById,
+findDeclineChannelInvitationReasons: Query.findDeclineChannelInvitationReasons,
+findOptions: Query.findOptions,
+findCountries: Query.findCountries,
+findErrorCodes: Query.findErrorCodes,
+findIndustries: Query.findIndustries,
+findLanguages: Query.findLanguages,
+apiVersion: Query.apiVersion,
+findGroupMembershipById: Query.findGroupMembershipById,
+myGroupMemberships: Query.myGroupMemberships,
+findGroupMemberships: Query.findGroupMemberships,
+findGroupById: Query.findGroupById,
+findGroups: Query.findGroups,
+findIndonesianCities: Query.findIndonesianCities,
+findIndonesianProvinces: Query.findIndonesianProvinces,
+findIqlaaJordanianDistricts: Query.findIqlaaJordanianDistricts,
+findIqlaaJordanianGovernorates: Query.findIqlaaJordanianGovernorates,
+findMastercardBanks: Query.findMastercardBanks,
+userWillReceiveWelcomeMessage: Query.userWillReceiveWelcomeMessage,
+findUserSearchById: Query.findUserSearchById,
+findUserSearches: Query.findUserSearches,
+findUserSearchResults: Query.findUserSearchResults,
+myUserSearches: Query.myUserSearches,
+findServiceRequestById: Query.findServiceRequestById,
+findContactById: Query.findContactById,
+findContact: Query.findContact,
+findContacts: Query.findContacts,
+findMyActiveMultiStepActions: Query.findMyActiveMultiStepActions,
+findMyActiveMultiStepAction: Query.findMyActiveMultiStepAction,
+getMultiStepActionProgress: Query.getMultiStepActionProgress,
+findAvailableUserHandle: Query.findAvailableUserHandle,
+getMyUser: Query.getMyUser,
+findMyUser: Query.findMyUser,
+getMyBlockedUsers: Query.getMyBlockedUsers,
+findMyBlockedUsers: Query.findMyBlockedUsers,
+findReportUserReasons: Query.findReportUserReasons,
+findTrainingsForMe: Query.findTrainingsForMe,
+findTrainingsForUser: Query.findTrainingsForUser,
+findTrainingById: Query.findTrainingById,
+findTrainingSessionById: Query.findTrainingSessionById,
+findTrainingSessionsForMe: Query.findTrainingSessionsForMe,
+findTrainingSessionsByTrainingId: Query.findTrainingSessionsByTrainingId,
+findLatestTrainingSessionForMe: Query.findLatestTrainingSessionForMe
+}
+}
+
+export namespace Query {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Query"
+}
+}
+
+ export  interface findCompanyStages   {
+kind: "OutputField",
+name: "findCompanyStages",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$CompanyStage
+}
+
+ export  interface findCompanyTypes   {
+kind: "OutputField",
+name: "findCompanyTypes",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$CompanyType
+}
+
+ export  interface findEducationLevels   {
+kind: "OutputField",
+name: "findEducationLevels",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$EducationLevel
+}
+
+ export  interface findExpertises   {
+kind: "OutputField",
+name: "findExpertises",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+},
+isParent: {
+kind: "InputField",
+name: "isParent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+parentTextId: {
+kind: "InputField",
+name: "parentTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+ export  interface findGenders   {
+kind: "OutputField",
+name: "findGenders",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Gender
+}
+
+ export  interface findPronouns   {
+kind: "OutputField",
+name: "findPronouns",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Pronoun
+}
+
+ export  interface myInbox   {
+kind: "OutputField",
+name: "myInbox",
+arguments: {
+refresh: {
+kind: "InputField",
+name: "refresh",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserInbox
+}
+
+ export  interface doesUserExist   {
+kind: "OutputField",
+name: "doesUserExist",
+arguments: {
+identType: {
+kind: "InputField",
+name: "identType",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserIdentType
+},
+ident: {
+kind: "InputField",
+name: "ident",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface findUserById   {
+kind: "OutputField",
+name: "findUserById",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$User
+}
+
+ export  interface findUserByIdent   {
+kind: "OutputField",
+name: "findUserByIdent",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindUserByIdentOptions
+},
+identType: {
+kind: "InputField",
+name: "identType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserIdentType
+},
+ident: {
+kind: "InputField",
+name: "ident",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$User
+}
+
+ export  interface isUserIdentAvailable   {
+kind: "OutputField",
+name: "isUserIdentAvailable",
+arguments: {
+identType: {
+kind: "InputField",
+name: "identType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserIdentType
+},
+ident: {
+kind: "InputField",
+name: "ident",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface findUsers   {
+kind: "OutputField",
+name: "findUsers",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserListItem
+}
+
+ export  interface findUserDeviceById   {
+kind: "OutputField",
+name: "findUserDeviceById",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserDeviceWithoutAuth
+}
+
+ export  interface findUserDevices   {
+kind: "OutputField",
+name: "findUserDevices",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserDeviceInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserDeviceListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserDeviceWithoutAuth
+}
+
+ export  interface findMyUserDevices   {
+kind: "OutputField",
+name: "findMyUserDevices",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserDeviceWithoutAuth
+}
+
+ export  interface findAdminTaskById   {
+kind: "OutputField",
+name: "findAdminTaskById",
+arguments: {
+adminTaskId: {
+kind: "InputField",
+name: "adminTaskId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AdminTask
+}
+
+ export  interface findAdminTaskDefs   {
+kind: "OutputField",
+name: "findAdminTaskDefs",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$AdminTaskDef
+}
+
+ export  interface findUploadedAssetById   {
+kind: "OutputField",
+name: "findUploadedAssetById",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+ export  interface findUploadedAssets   {
+kind: "OutputField",
+name: "findUploadedAssets",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UploadedAssetInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UploadedAssetListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+ export  interface findUploadedAssetsForUser   {
+kind: "OutputField",
+name: "findUploadedAssetsForUser",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+ export  interface findChannelInvitationById   {
+kind: "OutputField",
+name: "findChannelInvitationById",
+arguments: {
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface findChannelInvitationsBetweenUsers   {
+kind: "OutputField",
+name: "findChannelInvitationsBetweenUsers",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+onlyUnseen: {
+kind: "InputField",
+name: "onlyUnseen",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+onlyPending: {
+kind: "InputField",
+name: "onlyPending",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+userIds: {
+kind: "InputField",
+name: "userIds",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface findChannelInvitationsForUser   {
+kind: "OutputField",
+name: "findChannelInvitationsForUser",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+onlyUnseen: {
+kind: "InputField",
+name: "onlyUnseen",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+onlyPending: {
+kind: "InputField",
+name: "onlyPending",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+direction: {
+kind: "InputField",
+name: "direction",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelInvitationDirection
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface myChannelInvitations   {
+kind: "OutputField",
+name: "myChannelInvitations",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+onlyUnseen: {
+kind: "InputField",
+name: "onlyUnseen",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+onlyPending: {
+kind: "InputField",
+name: "onlyPending",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+direction: {
+kind: "InputField",
+name: "direction",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelInvitationDirection
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface findPendingChannelInvitationsForUser   {
+kind: "OutputField",
+name: "findPendingChannelInvitationsForUser",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface findChannelById   {
+kind: "OutputField",
+name: "findChannelById",
+arguments: {
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface findChannels   {
+kind: "OutputField",
+name: "findChannels",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface findChannelsForUser   {
+kind: "OutputField",
+name: "findChannelsForUser",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+mustBeAccepted: {
+kind: "InputField",
+name: "mustBeAccepted",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+mustHaveMessages: {
+kind: "InputField",
+name: "mustHaveMessages",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface findMyChannels   {
+kind: "OutputField",
+name: "findMyChannels",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface findChannelMessageById   {
+kind: "OutputField",
+name: "findChannelMessageById",
+arguments: {
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelMessage
+}
+
+ export  interface findChannelMessages   {
+kind: "OutputField",
+name: "findChannelMessages",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelMessageInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelMessageListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelMessage
+}
+
+ export  interface findChannelParticipantById   {
+kind: "OutputField",
+name: "findChannelParticipantById",
+arguments: {
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelParticipant
+}
+
+ export  interface findDeclineChannelInvitationReasons   {
+kind: "OutputField",
+name: "findDeclineChannelInvitationReasons",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$DeclineChannelInvitationReason
+}
+
+ export  interface findOptions   {
+kind: "OutputField",
+name: "findOptions",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+},
+isParent: {
+kind: "InputField",
+name: "isParent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+parentTextId: {
+kind: "InputField",
+name: "parentTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+optionType: {
+kind: "InputField",
+name: "optionType",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface findCountries   {
+kind: "OutputField",
+name: "findCountries",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface findErrorCodes   {
+kind: "OutputField",
+name: "findErrorCodes",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ErrorCodeOption
+}
+
+ export  interface findIndustries   {
+kind: "OutputField",
+name: "findIndustries",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface findLanguages   {
+kind: "OutputField",
+name: "findLanguages",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface apiVersion   {
+kind: "OutputField",
+name: "apiVersion",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface findGroupMembershipById   {
+kind: "OutputField",
+name: "findGroupMembershipById",
+arguments: {
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$GroupMembership
+}
+
+ export  interface myGroupMemberships   {
+kind: "OutputField",
+name: "myGroupMemberships",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IGroupMembership
+}
+
+ export  interface findGroupMemberships   {
+kind: "OutputField",
+name: "findGroupMemberships",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$GroupMembershipInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$GroupMembershipListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IGroupMembership
+}
+
+ export  interface findGroupById   {
+kind: "OutputField",
+name: "findGroupById",
+arguments: {
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Group
+}
+
+ export  interface findGroups   {
+kind: "OutputField",
+name: "findGroups",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$GroupInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$GroupListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Group
+}
+
+ export  interface findIndonesianCities   {
+kind: "OutputField",
+name: "findIndonesianCities",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IndonesianCity
+}
+
+ export  interface findIndonesianProvinces   {
+kind: "OutputField",
+name: "findIndonesianProvinces",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IndonesianProvince
+}
+
+ export  interface findIqlaaJordanianDistricts   {
+kind: "OutputField",
+name: "findIqlaaJordanianDistricts",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IqlaaJordanianDistrict
+}
+
+ export  interface findIqlaaJordanianGovernorates   {
+kind: "OutputField",
+name: "findIqlaaJordanianGovernorates",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IqlaaJordanianGovernorate
+}
+
+ export  interface findMastercardBanks   {
+kind: "OutputField",
+name: "findMastercardBanks",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$MastercardBank
+}
+
+ export  interface userWillReceiveWelcomeMessage   {
+kind: "OutputField",
+name: "userWillReceiveWelcomeMessage",
+arguments: {
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface findUserSearchById   {
+kind: "OutputField",
+name: "findUserSearchById",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+userSearchId: {
+kind: "InputField",
+name: "userSearchId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserSearch
+}
+
+ export  interface findUserSearches   {
+kind: "OutputField",
+name: "findUserSearches",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserSearch
+}
+
+ export  interface findUserSearchResults   {
+kind: "OutputField",
+name: "findUserSearchResults",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+runIndex: {
+kind: "InputField",
+name: "runIndex",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+},
+userSearchId: {
+kind: "InputField",
+name: "userSearchId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserWithScore
+}
+
+ export  interface myUserSearches   {
+kind: "OutputField",
+name: "myUserSearches",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserSearch
+}
+
+ export  interface findServiceRequestById   {
+kind: "OutputField",
+name: "findServiceRequestById",
+arguments: {
+serviceRequestId: {
+kind: "InputField",
+name: "serviceRequestId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface findContactById   {
+kind: "OutputField",
+name: "findContactById",
+arguments: {
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Contact
+}
+
+ export  interface findContact   {
+kind: "OutputField",
+name: "findContact",
+arguments: {
+createIfNotExist: {
+kind: "InputField",
+name: "createIfNotExist",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ContactInput
+}
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Contact
+}
+
+ export  interface findContacts   {
+kind: "OutputField",
+name: "findContacts",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ContactInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$SidContactListFilter
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ContactListItem
+}
+
+ export  interface findMyActiveMultiStepActions   {
+kind: "OutputField",
+name: "findMyActiveMultiStepActions",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$SidMultiStepAction
+}
+
+/**
+* @deprecated Use findMyActiveMultiStepActions instead
+*/
+ export  interface findMyActiveMultiStepAction   {
+kind: "OutputField",
+name: "findMyActiveMultiStepAction",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$SidMultiStepAction
+}
+
+ export  interface getMultiStepActionProgress   {
+kind: "OutputField",
+name: "getMultiStepActionProgress",
+arguments: {
+/**
+* The result will only contain the authToken, if you specify a valid confirmToken
+*/
+confirmToken: {
+kind: "InputField",
+name: "confirmToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+actionId: {
+kind: "InputField",
+name: "actionId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SidMultiStepActionProgress
+}
+
+ export  interface findAvailableUserHandle   {
+kind: "OutputField",
+name: "findAvailableUserHandle",
+arguments: {
+startValue: {
+kind: "InputField",
+name: "startValue",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* @deprecated Use findMyUser
+*/
+ export  interface getMyUser   {
+kind: "OutputField",
+name: "getMyUser",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$User
+}
+
+ export  interface findMyUser   {
+kind: "OutputField",
+name: "findMyUser",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MyUser
+}
+
+/**
+* @deprecated Use findMyBlockedUsers
+*/
+ export  interface getMyBlockedUsers   {
+kind: "OutputField",
+name: "getMyBlockedUsers",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$User
+}
+
+ export  interface findMyBlockedUsers   {
+kind: "OutputField",
+name: "findMyBlockedUsers",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$User
+}
+
+ export  interface findReportUserReasons   {
+kind: "OutputField",
+name: "findReportUserReasons",
+arguments: {
+fallbackUiLanguage: {
+kind: "InputField",
+name: "fallbackUiLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ReportUserReason
+}
+
+ export  interface findTrainingsForMe   {
+kind: "OutputField",
+name: "findTrainingsForMe",
+arguments: {
+displayInTrainingsList: {
+kind: "InputField",
+name: "displayInTrainingsList",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Training
+}
+
+ export  interface findTrainingsForUser   {
+kind: "OutputField",
+name: "findTrainingsForUser",
+arguments: {
+displayInTrainingsList: {
+kind: "InputField",
+name: "displayInTrainingsList",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Training
+}
+
+ export  interface findTrainingById   {
+kind: "OutputField",
+name: "findTrainingById",
+arguments: {
+selectedLanguage: {
+kind: "InputField",
+name: "selectedLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+},
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Training
+}
+
+ export  interface findTrainingSessionById   {
+kind: "OutputField",
+name: "findTrainingSessionById",
+arguments: {
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$TrainingSession
+}
+
+ export  interface findTrainingSessionsForMe   {
+kind: "OutputField",
+name: "findTrainingSessionsForMe",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+trainingId: {
+kind: "InputField",
+name: "trainingId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$TrainingSession
+}
+
+/**
+* Find training sessions by training  id. By default, finds the requestor's sessions.
+*/
+ export  interface findTrainingSessionsByTrainingId   {
+kind: "OutputField",
+name: "findTrainingSessionsByTrainingId",
+arguments: {
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+trainingId: {
+kind: "InputField",
+name: "trainingId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$TrainingSession
+}
+
+ export  interface findLatestTrainingSessionForMe   {
+kind: "OutputField",
+name: "findLatestTrainingSessionForMe",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+trainingId: {
+kind: "InputField",
+name: "trainingId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$TrainingSession
+}
+}
+
+//                                              Mutation
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Mutation   {
+kind: "Object",
+name: "Mutation",
+fields: {
+__typename: Mutation.__typename,
+createAcademicExperience: Mutation.createAcademicExperience,
+deleteAcademicExperience: Mutation.deleteAcademicExperience,
+updateAcademicExperience: Mutation.updateAcademicExperience,
+createBusinessExperience: Mutation.createBusinessExperience,
+deleteBusinessExperience: Mutation.deleteBusinessExperience,
+updateBusinessExperience: Mutation.updateBusinessExperience,
+createCompany: Mutation.createCompany,
+deleteCompany: Mutation.deleteCompany,
+updateCompany: Mutation.updateCompany,
+createOneTimeAuthTokenForMe: Mutation.createOneTimeAuthTokenForMe,
+signInUser: Mutation.signInUser,
+signInOauthUser: Mutation.signInOauthUser,
+signMeOut: Mutation.signMeOut,
+signUpUser: Mutation.signUpUser,
+verifyOneTimeAuthToken: Mutation.verifyOneTimeAuthToken,
+addAppFeatureToUser: Mutation.addAppFeatureToUser,
+deleteUser: Mutation.deleteUser,
+removeAppFeatureFromUser: Mutation.removeAppFeatureFromUser,
+reportUser: Mutation.reportUser,
+updateUser: Mutation.updateUser,
+createUserDevice: Mutation.createUserDevice,
+updateUserDevice: Mutation.updateUserDevice,
+findAndUpdateAllMm2Users: Mutation.findAndUpdateAllMm2Users,
+createAdminTask: Mutation.createAdminTask,
+deleteAdminTask: Mutation.deleteAdminTask,
+runAdminTask: Mutation.runAdminTask,
+updateAdminTask: Mutation.updateAdminTask,
+createUploadedAsset: Mutation.createUploadedAsset,
+deleteUploadedAsset: Mutation.deleteUploadedAsset,
+initAssetUpload: Mutation.initAssetUpload,
+updateUploadedAsset: Mutation.updateUploadedAsset,
+acceptChannelInvitation: Mutation.acceptChannelInvitation,
+createChannelInvitation: Mutation.createChannelInvitation,
+declineChannelInvitation: Mutation.declineChannelInvitation,
+deleteChannelInvitation: Mutation.deleteChannelInvitation,
+dismissChannelInvitationFromInbox: Mutation.dismissChannelInvitationFromInbox,
+updateChannelInvitation: Mutation.updateChannelInvitation,
+archiveChannelForMe: Mutation.archiveChannelForMe,
+createChannel: Mutation.createChannel,
+deleteChannel: Mutation.deleteChannel,
+markChannelMessagesAsSeenByMe: Mutation.markChannelMessagesAsSeenByMe,
+updateChannel: Mutation.updateChannel,
+unarchiveChannelForMe: Mutation.unarchiveChannelForMe,
+addChannelMessageEvent: Mutation.addChannelMessageEvent,
+createChannelMessage: Mutation.createChannelMessage,
+deleteChannelMessage: Mutation.deleteChannelMessage,
+updateChannelMessage: Mutation.updateChannelMessage,
+createChannelParticipant: Mutation.createChannelParticipant,
+deleteChannelParticipant: Mutation.deleteChannelParticipant,
+updateChannelParticipant: Mutation.updateChannelParticipant,
+createContentTag: Mutation.createContentTag,
+deleteContentTag: Mutation.deleteContentTag,
+updateContentTag: Mutation.updateContentTag,
+createGroupMembership: Mutation.createGroupMembership,
+createMenteesGroupMembership: Mutation.createMenteesGroupMembership,
+createMentorsGroupMembership: Mutation.createMentorsGroupMembership,
+deleteGroupMembership: Mutation.deleteGroupMembership,
+updateGroupMembership: Mutation.updateGroupMembership,
+updateIqlaaGroupMembership: Mutation.updateIqlaaGroupMembership,
+updateMastercardGroupMembership: Mutation.updateMastercardGroupMembership,
+updateMenteesGroupMembership: Mutation.updateMenteesGroupMembership,
+updateMentorsGroupMembership: Mutation.updateMentorsGroupMembership,
+addUserToGroup: Mutation.addUserToGroup,
+createGroup: Mutation.createGroup,
+deleteGroup: Mutation.deleteGroup,
+removeUserFromGroup: Mutation.removeUserFromGroup,
+updateGroup: Mutation.updateGroup,
+createSupportChannelConfig: Mutation.createSupportChannelConfig,
+deleteSupportChannelConfig: Mutation.deleteSupportChannelConfig,
+updateSupportChannelConfig: Mutation.updateSupportChannelConfig,
+createUserSearch: Mutation.createUserSearch,
+deleteUserSearch: Mutation.deleteUserSearch,
+updateUserSearch: Mutation.updateUserSearch,
+createNotification: Mutation.createNotification,
+deleteNotification: Mutation.deleteNotification,
+markInAppMessageReceived: Mutation.markInAppMessageReceived,
+sendMultiStepActionNotification: Mutation.sendMultiStepActionNotification,
+updateNotification: Mutation.updateNotification,
+createNotificationTemplate: Mutation.createNotificationTemplate,
+deleteNotificationTemplate: Mutation.deleteNotificationTemplate,
+updateNotificationTemplate: Mutation.updateNotificationTemplate,
+createContact: Mutation.createContact,
+updateContact: Mutation.updateContact,
+createMultiStepAction: Mutation.createMultiStepAction,
+startResetPassword: Mutation.startResetPassword,
+startVerifyEmail: Mutation.startVerifyEmail,
+startVerifyPhoneNumber: Mutation.startVerifyPhoneNumber,
+verifyMultiStepActionToken: Mutation.verifyMultiStepActionToken,
+blockUserForMe: Mutation.blockUserForMe,
+deleteMyUser: Mutation.deleteMyUser,
+endMySession: Mutation.endMySession,
+startMySession: Mutation.startMySession,
+startMySessionV2: Mutation.startMySessionV2,
+unblockUserForMe: Mutation.unblockUserForMe,
+updateMyUser: Mutation.updateMyUser,
+createUserTracking: Mutation.createUserTracking
+}
+}
+
+export namespace Mutation {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Mutation"
+}
+}
+
+ export  interface createAcademicExperience   {
+kind: "OutputField",
+name: "createAcademicExperience",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AcademicExperienceInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AcademicExperience
+}
+
+ export  interface deleteAcademicExperience   {
+kind: "OutputField",
+name: "deleteAcademicExperience",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+academicExperienceId: {
+kind: "InputField",
+name: "academicExperienceId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateAcademicExperience   {
+kind: "OutputField",
+name: "updateAcademicExperience",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AcademicExperienceInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createBusinessExperience   {
+kind: "OutputField",
+name: "createBusinessExperience",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$BusinessExperienceInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$BusinessExperience
+}
+
+ export  interface deleteBusinessExperience   {
+kind: "OutputField",
+name: "deleteBusinessExperience",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+businessExperienceId: {
+kind: "InputField",
+name: "businessExperienceId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateBusinessExperience   {
+kind: "OutputField",
+name: "updateBusinessExperience",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$BusinessExperienceInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createCompany   {
+kind: "OutputField",
+name: "createCompany",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$CompanyInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Company
+}
+
+ export  interface deleteCompany   {
+kind: "OutputField",
+name: "deleteCompany",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+companyId: {
+kind: "InputField",
+name: "companyId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateCompany   {
+kind: "OutputField",
+name: "updateCompany",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$CompanyInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createOneTimeAuthTokenForMe   {
+kind: "OutputField",
+name: "createOneTimeAuthTokenForMe",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface signInUser   {
+kind: "OutputField",
+name: "signInUser",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SignInUserInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserAuthResponse
+}
+
+ export  interface signInOauthUser   {
+kind: "OutputField",
+name: "signInOauthUser",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SignInOauthUserInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserAuthResponse
+}
+
+ export  interface signMeOut   {
+kind: "OutputField",
+name: "signMeOut",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface signUpUser   {
+kind: "OutputField",
+name: "signUpUser",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SignUpUserInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserAuthResponse
+}
+
+ export  interface verifyOneTimeAuthToken   {
+kind: "OutputField",
+name: "verifyOneTimeAuthToken",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$VerifyOneTimeAuthTokenInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface addAppFeatureToUser   {
+kind: "OutputField",
+name: "addAppFeatureToUser",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserListFilter
+},
+appFeature: {
+kind: "InputField",
+name: "appFeature",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AppFeature
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface deleteUser   {
+kind: "OutputField",
+name: "deleteUser",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+description: {
+kind: "InputField",
+name: "description",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+cause: {
+kind: "InputField",
+name: "cause",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface removeAppFeatureFromUser   {
+kind: "OutputField",
+name: "removeAppFeatureFromUser",
+arguments: {
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+match: {
+kind: "InputField",
+name: "match",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserInput
+},
+filter: {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserListFilter
+},
+appFeature: {
+kind: "InputField",
+name: "appFeature",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AppFeature
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface reportUser   {
+kind: "OutputField",
+name: "reportUser",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ReportUserInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateUser   {
+kind: "OutputField",
+name: "updateUser",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createUserDevice   {
+kind: "OutputField",
+name: "createUserDevice",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserDeviceInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserDeviceWithoutAuth
+}
+
+ export  interface updateUserDevice   {
+kind: "OutputField",
+name: "updateUserDevice",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserDeviceInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface findAndUpdateAllMm2Users   {
+kind: "OutputField",
+name: "findAndUpdateAllMm2Users",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface createAdminTask   {
+kind: "OutputField",
+name: "createAdminTask",
+arguments: {
+adminTaskInput: {
+kind: "InputField",
+name: "adminTaskInput",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AdminTaskInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AdminTask
+}
+
+ export  interface deleteAdminTask   {
+kind: "OutputField",
+name: "deleteAdminTask",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+adminTaskId: {
+kind: "InputField",
+name: "adminTaskId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface runAdminTask   {
+kind: "OutputField",
+name: "runAdminTask",
+arguments: {
+adminTaskId: {
+kind: "InputField",
+name: "adminTaskId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateAdminTask   {
+kind: "OutputField",
+name: "updateAdminTask",
+arguments: {
+adminTaskInput: {
+kind: "InputField",
+name: "adminTaskInput",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AdminTaskInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AdminTask
+}
+
+ export  interface createUploadedAsset   {
+kind: "OutputField",
+name: "createUploadedAsset",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UploadedAssetInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+ export  interface deleteUploadedAsset   {
+kind: "OutputField",
+name: "deleteUploadedAsset",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+id: {
+kind: "InputField",
+name: "id",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+ export  interface initAssetUpload   {
+kind: "OutputField",
+name: "initAssetUpload",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UploadedAssetInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+ export  interface updateUploadedAsset   {
+kind: "OutputField",
+name: "updateUploadedAsset",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UploadedAssetInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface acceptChannelInvitation   {
+kind: "OutputField",
+name: "acceptChannelInvitation",
+arguments: {
+channelInvitationId: {
+kind: "InputField",
+name: "channelInvitationId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createChannelInvitation   {
+kind: "OutputField",
+name: "createChannelInvitation",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelInvitationInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface declineChannelInvitation   {
+kind: "OutputField",
+name: "declineChannelInvitation",
+arguments: {
+reasonTextId: {
+kind: "InputField",
+name: "reasonTextId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DeclineChannelInvitationReasonTextId
+},
+channelInvitationId: {
+kind: "InputField",
+name: "channelInvitationId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface deleteChannelInvitation   {
+kind: "OutputField",
+name: "deleteChannelInvitation",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+channelInvitationId: {
+kind: "InputField",
+name: "channelInvitationId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface dismissChannelInvitationFromInbox   {
+kind: "OutputField",
+name: "dismissChannelInvitationFromInbox",
+arguments: {
+channelInvitationId: {
+kind: "InputField",
+name: "channelInvitationId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateChannelInvitation   {
+kind: "OutputField",
+name: "updateChannelInvitation",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelInvitationInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface archiveChannelForMe   {
+kind: "OutputField",
+name: "archiveChannelForMe",
+arguments: {
+channelId: {
+kind: "InputField",
+name: "channelId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createChannel   {
+kind: "OutputField",
+name: "createChannel",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface deleteChannel   {
+kind: "OutputField",
+name: "deleteChannel",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+channelId: {
+kind: "InputField",
+name: "channelId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface markChannelMessagesAsSeenByMe   {
+kind: "OutputField",
+name: "markChannelMessagesAsSeenByMe",
+arguments: {
+channelId: {
+kind: "InputField",
+name: "channelId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateChannel   {
+kind: "OutputField",
+name: "updateChannel",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface unarchiveChannelForMe   {
+kind: "OutputField",
+name: "unarchiveChannelForMe",
+arguments: {
+channelId: {
+kind: "InputField",
+name: "channelId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface addChannelMessageEvent   {
+kind: "OutputField",
+name: "addChannelMessageEvent",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$BgAddChannelMessageEventInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createChannelMessage   {
+kind: "OutputField",
+name: "createChannelMessage",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelMessageInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelMessage
+}
+
+ export  interface deleteChannelMessage   {
+kind: "OutputField",
+name: "deleteChannelMessage",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+channelMessageId: {
+kind: "InputField",
+name: "channelMessageId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateChannelMessage   {
+kind: "OutputField",
+name: "updateChannelMessage",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelMessageInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createChannelParticipant   {
+kind: "OutputField",
+name: "createChannelParticipant",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelParticipantInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelParticipant
+}
+
+ export  interface deleteChannelParticipant   {
+kind: "OutputField",
+name: "deleteChannelParticipant",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+channelParticipantId: {
+kind: "InputField",
+name: "channelParticipantId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateChannelParticipant   {
+kind: "OutputField",
+name: "updateChannelParticipant",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelParticipantInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createContentTag   {
+kind: "OutputField",
+name: "createContentTag",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ContentTagInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ContentTag
+}
+
+ export  interface deleteContentTag   {
+kind: "OutputField",
+name: "deleteContentTag",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+contentTagId: {
+kind: "InputField",
+name: "contentTagId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateContentTag   {
+kind: "OutputField",
+name: "updateContentTag",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ContentTagInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createGroupMembership   {
+kind: "OutputField",
+name: "createGroupMembership",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$GroupMembershipInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createMenteesGroupMembership   {
+kind: "OutputField",
+name: "createMenteesGroupMembership",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MenteesGroupMembershipInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createMentorsGroupMembership   {
+kind: "OutputField",
+name: "createMentorsGroupMembership",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MentorsGroupMembershipInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface deleteGroupMembership   {
+kind: "OutputField",
+name: "deleteGroupMembership",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+groupMembershipId: {
+kind: "InputField",
+name: "groupMembershipId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateGroupMembership   {
+kind: "OutputField",
+name: "updateGroupMembership",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$GroupMembershipInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateIqlaaGroupMembership   {
+kind: "OutputField",
+name: "updateIqlaaGroupMembership",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$IqlaaGroupMembershipInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateMastercardGroupMembership   {
+kind: "OutputField",
+name: "updateMastercardGroupMembership",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MastercardGroupMembershipInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateMenteesGroupMembership   {
+kind: "OutputField",
+name: "updateMenteesGroupMembership",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MenteesGroupMembershipInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateMentorsGroupMembership   {
+kind: "OutputField",
+name: "updateMentorsGroupMembership",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MentorsGroupMembershipInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface addUserToGroup   {
+kind: "OutputField",
+name: "addUserToGroup",
+arguments: {
+roles: {
+kind: "InputField",
+name: "roles",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+},
+groupIdent: {
+kind: "InputField",
+name: "groupIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+groupId: {
+kind: "InputField",
+name: "groupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createGroup   {
+kind: "OutputField",
+name: "createGroup",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$GroupInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Group
+}
+
+ export  interface deleteGroup   {
+kind: "OutputField",
+name: "deleteGroup",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+groupId: {
+kind: "InputField",
+name: "groupId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface removeUserFromGroup   {
+kind: "OutputField",
+name: "removeUserFromGroup",
+arguments: {
+force: {
+kind: "InputField",
+name: "force",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+groupIdent: {
+kind: "InputField",
+name: "groupIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+groupId: {
+kind: "InputField",
+name: "groupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateGroup   {
+kind: "OutputField",
+name: "updateGroup",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$GroupInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createSupportChannelConfig   {
+kind: "OutputField",
+name: "createSupportChannelConfig",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SupportChannelConfigInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SupportChannelConfig
+}
+
+ export  interface deleteSupportChannelConfig   {
+kind: "OutputField",
+name: "deleteSupportChannelConfig",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+supportChannelConfigId: {
+kind: "InputField",
+name: "supportChannelConfigId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateSupportChannelConfig   {
+kind: "OutputField",
+name: "updateSupportChannelConfig",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SupportChannelConfigInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createUserSearch   {
+kind: "OutputField",
+name: "createUserSearch",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserSearchInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserSearch
+}
+
+ export  interface deleteUserSearch   {
+kind: "OutputField",
+name: "deleteUserSearch",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+userSearchId: {
+kind: "InputField",
+name: "userSearchId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateUserSearch   {
+kind: "OutputField",
+name: "updateUserSearch",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserSearchInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface createNotification   {
+kind: "OutputField",
+name: "createNotification",
+arguments: {
+notificationInput: {
+kind: "InputField",
+name: "notificationInput",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Notification
+}
+
+ export  interface deleteNotification   {
+kind: "OutputField",
+name: "deleteNotification",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+notificationId: {
+kind: "InputField",
+name: "notificationId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface markInAppMessageReceived   {
+kind: "OutputField",
+name: "markInAppMessageReceived",
+arguments: {
+actionTaken: {
+kind: "InputField",
+name: "actionTaken",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AppAction
+},
+notificationId: {
+kind: "InputField",
+name: "notificationId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface sendMultiStepActionNotification   {
+kind: "OutputField",
+name: "sendMultiStepActionNotification",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SendMultiStepActionNotificationInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateNotification   {
+kind: "OutputField",
+name: "updateNotification",
+arguments: {
+notificationInput: {
+kind: "InputField",
+name: "notificationInput",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createNotificationTemplate   {
+kind: "OutputField",
+name: "createNotificationTemplate",
+arguments: {
+notificationTemplateInput: {
+kind: "InputField",
+name: "notificationTemplateInput",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationTemplateInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationTemplate
+}
+
+ export  interface deleteNotificationTemplate   {
+kind: "OutputField",
+name: "deleteNotificationTemplate",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+notificationTemplateId: {
+kind: "InputField",
+name: "notificationTemplateId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updateNotificationTemplate   {
+kind: "OutputField",
+name: "updateNotificationTemplate",
+arguments: {
+notificationTemplateInput: {
+kind: "InputField",
+name: "notificationTemplateInput",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationTemplateInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createContact   {
+kind: "OutputField",
+name: "createContact",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ContactInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Contact
+}
+
+ export  interface updateContact   {
+kind: "OutputField",
+name: "updateContact",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ContactInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createMultiStepAction   {
+kind: "OutputField",
+name: "createMultiStepAction",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SidMultiStepActionInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SidMultiStepActionProgress
+}
+
+ export  interface startResetPassword   {
+kind: "OutputField",
+name: "startResetPassword",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserIdentInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SidMultiStepActionProgress
+}
+
+ export  interface startVerifyEmail   {
+kind: "OutputField",
+name: "startVerifyEmail",
+arguments: {
+email: {
+kind: "InputField",
+name: "email",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SidMultiStepActionProgress
+}
+
+ export  interface startVerifyPhoneNumber   {
+kind: "OutputField",
+name: "startVerifyPhoneNumber",
+arguments: {
+phoneNumber: {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SidMultiStepActionProgress
+}
+
+ export  interface verifyMultiStepActionToken   {
+kind: "OutputField",
+name: "verifyMultiStepActionToken",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$VerifyMultiStepActionTokenInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$SidMultiStepActionProgress
+}
+
+ export  interface blockUserForMe   {
+kind: "OutputField",
+name: "blockUserForMe",
+arguments: {
+notes: {
+kind: "InputField",
+name: "notes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+reasonTextId: {
+kind: "InputField",
+name: "reasonTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface deleteMyUser   {
+kind: "OutputField",
+name: "deleteMyUser",
+arguments: {
+deletePhysically: {
+kind: "InputField",
+name: "deletePhysically",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+},
+description: {
+kind: "InputField",
+name: "description",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+cause: {
+kind: "InputField",
+name: "cause",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface endMySession   {
+kind: "OutputField",
+name: "endMySession",
+arguments: {
+/**
+* @deprecated specify in HTTP header
+*/
+deviceUuid: {
+kind: "InputField",
+name: "deviceUuid",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* @deprecated Use startMySessionV2
+*/
+ export  interface startMySession   {
+kind: "OutputField",
+name: "startMySession",
+arguments: {
+pushNotificationToken: {
+kind: "InputField",
+name: "pushNotificationToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+},
+deviceUuid: {
+kind: "InputField",
+name: "deviceUuid",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface startMySessionV2   {
+kind: "OutputField",
+name: "startMySessionV2",
+arguments: {
+returnContentStatus: {
+kind: "InputField",
+name: "returnContentStatus",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+pushNotificationToken: {
+kind: "InputField",
+name: "pushNotificationToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ContentStatus
+}
+
+ export  interface unblockUserForMe   {
+kind: "OutputField",
+name: "unblockUserForMe",
+arguments: {
+userId: {
+kind: "InputField",
+name: "userId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface updateMyUser   {
+kind: "OutputField",
+name: "updateMyUser",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MyUserInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createUserTracking   {
+kind: "OutputField",
+name: "createUserTracking",
+arguments: {
+input: {
+kind: "InputField",
+name: "input",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserTrackingInput
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                            Subscription
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Subscription   {
+kind: "Object",
+name: "Subscription",
+fields: {
+__typename: Subscription.__typename,
+channelChanged: Subscription.channelChanged,
+objectChanged: Subscription.objectChanged
+}
+}
+
+export namespace Subscription {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Subscription"
+}
+}
+
+ export  interface channelChanged   {
+kind: "OutputField",
+name: "channelChanged",
+arguments: {
+channelId: {
+kind: "InputField",
+name: "channelId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$BgChannelChangedEvent
+}
+
+ export  interface objectChanged   {
+kind: "OutputField",
+name: "objectChanged",
+arguments: {
+objectId: {
+kind: "InputField",
+name: "objectId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+},
+modelType: {
+kind: "InputField",
+name: "modelType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ModelType
+},
+ownerUserId: {
+kind: "InputField",
+name: "ownerUserId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ObjectChangedEvent
+}
+}
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                            OutputObject
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+//                                            UserMetadata
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserMetadata   {
+kind: "Object",
+name: "UserMetadata",
+fields: {
+__typename: UserMetadata.__typename,
+updatedAt: UserMetadata.updatedAt,
+totalTimeOnPlatform: UserMetadata.totalTimeOnPlatform,
+channelsMetadata: UserMetadata.channelsMetadata,
+groupsMetadata: UserMetadata.groupsMetadata
+}
+}
+
+export namespace UserMetadata {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserMetadata"
+}
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface totalTimeOnPlatform   {
+kind: "OutputField",
+name: "totalTimeOnPlatform",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface channelsMetadata   {
+kind: "OutputField",
+name: "channelsMetadata",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelsUserMetadata
+}
+
+ export  interface groupsMetadata   {
+kind: "OutputField",
+name: "groupsMetadata",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$GroupsUserMetadata
+}
+}
+
+//                                        ChannelsUserMetadata
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelsUserMetadata   {
+kind: "Object",
+name: "ChannelsUserMetadata",
+fields: {
+__typename: ChannelsUserMetadata.__typename,
+mentoringSessionCount: ChannelsUserMetadata.mentoringSessionCount
+}
+}
+
+export namespace ChannelsUserMetadata {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelsUserMetadata"
+}
+}
+
+ export  interface mentoringSessionCount   {
+kind: "OutputField",
+name: "mentoringSessionCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+}
+
+//                                         GroupsUserMetadata
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupsUserMetadata   {
+kind: "Object",
+name: "GroupsUserMetadata",
+fields: {
+__typename: GroupsUserMetadata.__typename,
+groupCount: GroupsUserMetadata.groupCount,
+updatedAt: GroupsUserMetadata.updatedAt
+}
+}
+
+export namespace GroupsUserMetadata {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "GroupsUserMetadata"
+}
+}
+
+ export  interface groupCount   {
+kind: "OutputField",
+name: "groupCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                          GroupMembership
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupMembership   {
+kind: "Object",
+name: "GroupMembership",
+fields: {
+__typename: GroupMembership.__typename,
+id: GroupMembership.id,
+adminNotes: GroupMembership.adminNotes,
+events: GroupMembership.events,
+metadata: GroupMembership.metadata,
+createdAt: GroupMembership.createdAt,
+createdBy: GroupMembership.createdBy,
+updatedAt: GroupMembership.updatedAt,
+updatedBy: GroupMembership.updatedBy,
+deletedAt: GroupMembership.deletedAt,
+deletedBy: GroupMembership.deletedBy,
+groupId: GroupMembership.groupId,
+groupIdent: GroupMembership.groupIdent,
+userId: GroupMembership.userId,
+roles: GroupMembership.roles,
+expertises: GroupMembership.expertises,
+industries: GroupMembership.industries,
+industry: GroupMembership.industry,
+soughtExpertises: GroupMembership.soughtExpertises
+}
+}
+
+export namespace GroupMembership {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "GroupMembership"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "OutputField",
+name: "groupIdent",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+ export  interface expertises   {
+kind: "OutputField",
+name: "expertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+ export  interface industries   {
+kind: "OutputField",
+name: "industries",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface industry   {
+kind: "OutputField",
+name: "industry",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface soughtExpertises   {
+kind: "OutputField",
+name: "soughtExpertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+}
+
+//                                             ModelEvent
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ModelEvent   {
+kind: "Object",
+name: "ModelEvent",
+fields: {
+__typename: ModelEvent.__typename,
+time: ModelEvent.time,
+modelEventType: ModelEvent.modelEventType,
+message: ModelEvent.message
+}
+}
+
+export namespace ModelEvent {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ModelEvent"
+}
+}
+
+ export  interface time   {
+kind: "OutputField",
+name: "time",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface modelEventType   {
+kind: "OutputField",
+name: "modelEventType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ModelEventType
+}
+
+ export  interface message   {
+kind: "OutputField",
+name: "message",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                             Expertise
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Expertise   {
+kind: "Object",
+name: "Expertise",
+fields: {
+__typename: Expertise.__typename,
+id: Expertise.id,
+adminNotes: Expertise.adminNotes,
+events: Expertise.events,
+metadata: Expertise.metadata,
+createdAt: Expertise.createdAt,
+createdBy: Expertise.createdBy,
+updatedAt: Expertise.updatedAt,
+updatedBy: Expertise.updatedBy,
+deletedAt: Expertise.deletedAt,
+deletedBy: Expertise.deletedBy,
+textId: Expertise.textId,
+parentTextId: Expertise.parentTextId,
+isParent: Expertise.isParent,
+optionType: Expertise.optionType,
+value: Expertise.value,
+translatedValue: Expertise.translatedValue,
+supportedLanguages: Expertise.supportedLanguages,
+materialIconName: Expertise.materialIconName,
+description: Expertise.description,
+translatedDescription: Expertise.translatedDescription,
+language: Expertise.language,
+mm2Id: Expertise.mm2Id,
+mm2Value: Expertise.mm2Value,
+syncedWithMm2At: Expertise.syncedWithMm2At,
+mm2TextId: Expertise.mm2TextId,
+mm3TextId: Expertise.mm3TextId,
+childOptions: Expertise.childOptions,
+parentOption: Expertise.parentOption,
+childExpertises: Expertise.childExpertises,
+parentExpertise: Expertise.parentExpertise
+}
+}
+
+export namespace Expertise {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Expertise"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface childExpertises   {
+kind: "OutputField",
+name: "childExpertises",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+ export  interface parentExpertise   {
+kind: "OutputField",
+name: "parentExpertise",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Expertise
+}
+}
+
+//                                               Option
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Option   {
+kind: "Object",
+name: "Option",
+fields: {
+__typename: Option.__typename,
+id: Option.id,
+adminNotes: Option.adminNotes,
+events: Option.events,
+metadata: Option.metadata,
+createdAt: Option.createdAt,
+createdBy: Option.createdBy,
+updatedAt: Option.updatedAt,
+updatedBy: Option.updatedBy,
+deletedAt: Option.deletedAt,
+deletedBy: Option.deletedBy,
+textId: Option.textId,
+parentTextId: Option.parentTextId,
+isParent: Option.isParent,
+optionType: Option.optionType,
+value: Option.value,
+translatedValue: Option.translatedValue,
+supportedLanguages: Option.supportedLanguages,
+materialIconName: Option.materialIconName,
+description: Option.description,
+translatedDescription: Option.translatedDescription,
+language: Option.language,
+mm2Id: Option.mm2Id,
+mm2Value: Option.mm2Value,
+syncedWithMm2At: Option.syncedWithMm2At,
+mm2TextId: Option.mm2TextId,
+mm3TextId: Option.mm3TextId,
+childOptions: Option.childOptions,
+parentOption: Option.parentOption
+}
+}
+
+export namespace Option {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Option"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                              Industry
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Industry   {
+kind: "Object",
+name: "Industry",
+fields: {
+__typename: Industry.__typename,
+id: Industry.id,
+adminNotes: Industry.adminNotes,
+events: Industry.events,
+metadata: Industry.metadata,
+createdAt: Industry.createdAt,
+createdBy: Industry.createdBy,
+updatedAt: Industry.updatedAt,
+updatedBy: Industry.updatedBy,
+deletedAt: Industry.deletedAt,
+deletedBy: Industry.deletedBy,
+textId: Industry.textId,
+parentTextId: Industry.parentTextId,
+isParent: Industry.isParent,
+optionType: Industry.optionType,
+value: Industry.value,
+translatedValue: Industry.translatedValue,
+supportedLanguages: Industry.supportedLanguages,
+materialIconName: Industry.materialIconName,
+description: Industry.description,
+translatedDescription: Industry.translatedDescription,
+language: Industry.language,
+mm2Id: Industry.mm2Id,
+mm2Value: Industry.mm2Value,
+syncedWithMm2At: Industry.syncedWithMm2At,
+mm2TextId: Industry.mm2TextId,
+mm3TextId: Industry.mm3TextId,
+childOptions: Industry.childOptions,
+parentOption: Industry.parentOption
+}
+}
+
+export namespace Industry {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Industry"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                       MenteesGroupMembership
+    // --------------------------------------------------------------------------------------------------
+    //
+
+/**
+* 
+* This object contains the profile information describing a mentee/entrepreneur/business owner.
+* 
+* Users with User.seeksHelp are members of the "mentees" group, which comes with extra
+* profile attributes. This is one of the 'embedded' group memberships that are available
+* through User.groupMemberships.
+*/
+ export  interface MenteesGroupMembership   {
+kind: "Object",
+name: "MenteesGroupMembership",
+fields: {
+__typename: MenteesGroupMembership.__typename,
+id: MenteesGroupMembership.id,
+adminNotes: MenteesGroupMembership.adminNotes,
+events: MenteesGroupMembership.events,
+metadata: MenteesGroupMembership.metadata,
+createdAt: MenteesGroupMembership.createdAt,
+createdBy: MenteesGroupMembership.createdBy,
+updatedAt: MenteesGroupMembership.updatedAt,
+updatedBy: MenteesGroupMembership.updatedBy,
+deletedAt: MenteesGroupMembership.deletedAt,
+deletedBy: MenteesGroupMembership.deletedBy,
+groupId: MenteesGroupMembership.groupId,
+groupIdent: MenteesGroupMembership.groupIdent,
+userId: MenteesGroupMembership.userId,
+roles: MenteesGroupMembership.roles,
+expertises: MenteesGroupMembership.expertises,
+industries: MenteesGroupMembership.industries,
+industry: MenteesGroupMembership.industry,
+soughtExpertises: MenteesGroupMembership.soughtExpertises,
+soughtExpertisesTextIds: MenteesGroupMembership.soughtExpertisesTextIds,
+additionalSoughtExpertisesTextIds: MenteesGroupMembership.additionalSoughtExpertisesTextIds,
+industryTextId: MenteesGroupMembership.industryTextId,
+mm2SoughtExpertisesTextIds: MenteesGroupMembership.mm2SoughtExpertisesTextIds,
+mm2IndustryTextId: MenteesGroupMembership.mm2IndustryTextId,
+actionsTaken: MenteesGroupMembership.actionsTaken,
+currentChallenges: MenteesGroupMembership.currentChallenges,
+futureGoals: MenteesGroupMembership.futureGoals,
+motivationsForMentorship: MenteesGroupMembership.motivationsForMentorship,
+reasonsForStartingBusiness: MenteesGroupMembership.reasonsForStartingBusiness
+}
+}
+
+export namespace MenteesGroupMembership {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "MenteesGroupMembership"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "OutputField",
+name: "groupIdent",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+ export  interface expertises   {
+kind: "OutputField",
+name: "expertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+ export  interface industries   {
+kind: "OutputField",
+name: "industries",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface industry   {
+kind: "OutputField",
+name: "industry",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface soughtExpertises   {
+kind: "OutputField",
+name: "soughtExpertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+/**
+* Must match expertise textIds.
+*/
+ export  interface soughtExpertisesTextIds   {
+kind: "OutputField",
+name: "soughtExpertisesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match expertise textIds.
+*/
+ export  interface additionalSoughtExpertisesTextIds   {
+kind: "OutputField",
+name: "additionalSoughtExpertisesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match industry textIds.
+*/
+ export  interface industryTextId   {
+kind: "OutputField",
+name: "industryTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match mm2 expertise textIds -- only used by synchronizer
+*/
+ export  interface mm2SoughtExpertisesTextIds   {
+kind: "OutputField",
+name: "mm2SoughtExpertisesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match mm2 industry textIds -- only used by synchronizer
+*/
+ export  interface mm2IndustryTextId   {
+kind: "OutputField",
+name: "mm2IndustryTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* From MM2, not used in MM3 (yet)
+*/
+ export  interface actionsTaken   {
+kind: "OutputField",
+name: "actionsTaken",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* From MM2, not used in MM3 (yet)
+*/
+ export  interface currentChallenges   {
+kind: "OutputField",
+name: "currentChallenges",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* From MM2, not used in MM3 (yet)
+*/
+ export  interface futureGoals   {
+kind: "OutputField",
+name: "futureGoals",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* From MM2, not used in MM3 (yet)
+*/
+ export  interface motivationsForMentorship   {
+kind: "OutputField",
+name: "motivationsForMentorship",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface reasonsForStartingBusiness   {
+kind: "OutputField",
+name: "reasonsForStartingBusiness",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                       MentorsGroupMembership
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MentorsGroupMembership   {
+kind: "Object",
+name: "MentorsGroupMembership",
+fields: {
+__typename: MentorsGroupMembership.__typename,
+id: MentorsGroupMembership.id,
+adminNotes: MentorsGroupMembership.adminNotes,
+events: MentorsGroupMembership.events,
+metadata: MentorsGroupMembership.metadata,
+createdAt: MentorsGroupMembership.createdAt,
+createdBy: MentorsGroupMembership.createdBy,
+updatedAt: MentorsGroupMembership.updatedAt,
+updatedBy: MentorsGroupMembership.updatedBy,
+deletedAt: MentorsGroupMembership.deletedAt,
+deletedBy: MentorsGroupMembership.deletedBy,
+groupId: MentorsGroupMembership.groupId,
+groupIdent: MentorsGroupMembership.groupIdent,
+userId: MentorsGroupMembership.userId,
+roles: MentorsGroupMembership.roles,
+expertises: MentorsGroupMembership.expertises,
+industries: MentorsGroupMembership.industries,
+industry: MentorsGroupMembership.industry,
+soughtExpertises: MentorsGroupMembership.soughtExpertises,
+expertisesTextIds: MentorsGroupMembership.expertisesTextIds,
+additionalExpertisesTextIds: MentorsGroupMembership.additionalExpertisesTextIds,
+industriesTextIds: MentorsGroupMembership.industriesTextIds,
+mm2ExpertisesTextIds: MentorsGroupMembership.mm2ExpertisesTextIds,
+mm2IndustriesTextIds: MentorsGroupMembership.mm2IndustriesTextIds,
+helpICanOffer: MentorsGroupMembership.helpICanOffer,
+expectationsForMentees: MentorsGroupMembership.expectationsForMentees,
+menteePreparationInstructions: MentorsGroupMembership.menteePreparationInstructions,
+endorsements: MentorsGroupMembership.endorsements,
+reasonsForMentoring: MentorsGroupMembership.reasonsForMentoring
+}
+}
+
+export namespace MentorsGroupMembership {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "MentorsGroupMembership"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "OutputField",
+name: "groupIdent",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+ export  interface expertises   {
+kind: "OutputField",
+name: "expertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+ export  interface industries   {
+kind: "OutputField",
+name: "industries",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface industry   {
+kind: "OutputField",
+name: "industry",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface soughtExpertises   {
+kind: "OutputField",
+name: "soughtExpertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+/**
+* Must match expertise textIds.
+*/
+ export  interface expertisesTextIds   {
+kind: "OutputField",
+name: "expertisesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match expertise textIds.
+*/
+ export  interface additionalExpertisesTextIds   {
+kind: "OutputField",
+name: "additionalExpertisesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match industry textIds.
+*/
+ export  interface industriesTextIds   {
+kind: "OutputField",
+name: "industriesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match mm2 expertise textIds -- only used by synchronizer
+*/
+ export  interface mm2ExpertisesTextIds   {
+kind: "OutputField",
+name: "mm2ExpertisesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match mm2 industry textIds -- only used by synchronizer
+*/
+ export  interface mm2IndustriesTextIds   {
+kind: "OutputField",
+name: "mm2IndustriesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface helpICanOffer   {
+kind: "OutputField",
+name: "helpICanOffer",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface expectationsForMentees   {
+kind: "OutputField",
+name: "expectationsForMentees",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface menteePreparationInstructions   {
+kind: "OutputField",
+name: "menteePreparationInstructions",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface endorsements   {
+kind: "OutputField",
+name: "endorsements",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface reasonsForMentoring   {
+kind: "OutputField",
+name: "reasonsForMentoring",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                     MastercardGroupMembership
+    // --------------------------------------------------------------------------------------------------
+    //
+
+/**
+* 
+* This object contains the profile information describing an MASTERCARD user.
+* 
+* MASTERCARD users are members of the "mastercard" group, which comes with extra
+* profile attributes. These fields are used to store the user's
+* MASTERCARD-specific information.
+*/
+ export  interface MastercardGroupMembership   {
+kind: "Object",
+name: "MastercardGroupMembership",
+fields: {
+__typename: MastercardGroupMembership.__typename,
+id: MastercardGroupMembership.id,
+adminNotes: MastercardGroupMembership.adminNotes,
+events: MastercardGroupMembership.events,
+metadata: MastercardGroupMembership.metadata,
+createdAt: MastercardGroupMembership.createdAt,
+createdBy: MastercardGroupMembership.createdBy,
+updatedAt: MastercardGroupMembership.updatedAt,
+updatedBy: MastercardGroupMembership.updatedBy,
+deletedAt: MastercardGroupMembership.deletedAt,
+deletedBy: MastercardGroupMembership.deletedBy,
+groupId: MastercardGroupMembership.groupId,
+groupIdent: MastercardGroupMembership.groupIdent,
+userId: MastercardGroupMembership.userId,
+roles: MastercardGroupMembership.roles,
+expertises: MastercardGroupMembership.expertises,
+industries: MastercardGroupMembership.industries,
+industry: MastercardGroupMembership.industry,
+soughtExpertises: MastercardGroupMembership.soughtExpertises,
+bankNames: MastercardGroupMembership.bankNames,
+bankTextIds: MastercardGroupMembership.bankTextIds,
+smallBusinessCardTypes: MastercardGroupMembership.smallBusinessCardTypes,
+personalCardTypes: MastercardGroupMembership.personalCardTypes
+}
+}
+
+export namespace MastercardGroupMembership {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "MastercardGroupMembership"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "OutputField",
+name: "groupIdent",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+ export  interface expertises   {
+kind: "OutputField",
+name: "expertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+ export  interface industries   {
+kind: "OutputField",
+name: "industries",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface industry   {
+kind: "OutputField",
+name: "industry",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface soughtExpertises   {
+kind: "OutputField",
+name: "soughtExpertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+/**
+* Names of banks for reports
+*/
+ export  interface bankNames   {
+kind: "OutputField",
+name: "bankNames",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Text IDs of banks for reports
+*/
+ export  interface bankTextIds   {
+kind: "OutputField",
+name: "bankTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Small business card types, e.g. credit, debit, etc
+*/
+ export  interface smallBusinessCardTypes   {
+kind: "OutputField",
+name: "smallBusinessCardTypes",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$MastercardCardType
+}
+
+/**
+* Personal card types
+*/
+ export  interface personalCardTypes   {
+kind: "OutputField",
+name: "personalCardTypes",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$MastercardCardType
+}
+}
+
+//                                        IqlaaGroupMembership
+    // --------------------------------------------------------------------------------------------------
+    //
+
+/**
+* 
+* This object contains the profile information describing an IQLAA user.
+* 
+* IQLAA users are members of the "iqlaa" group, which comes with extra
+* profile attributes. These fields are used to store the user's
+* IQLAA-specific information.
+*/
+ export  interface IqlaaGroupMembership   {
+kind: "Object",
+name: "IqlaaGroupMembership",
+fields: {
+__typename: IqlaaGroupMembership.__typename,
+id: IqlaaGroupMembership.id,
+adminNotes: IqlaaGroupMembership.adminNotes,
+events: IqlaaGroupMembership.events,
+metadata: IqlaaGroupMembership.metadata,
+createdAt: IqlaaGroupMembership.createdAt,
+createdBy: IqlaaGroupMembership.createdBy,
+updatedAt: IqlaaGroupMembership.updatedAt,
+updatedBy: IqlaaGroupMembership.updatedBy,
+deletedAt: IqlaaGroupMembership.deletedAt,
+deletedBy: IqlaaGroupMembership.deletedBy,
+groupId: IqlaaGroupMembership.groupId,
+groupIdent: IqlaaGroupMembership.groupIdent,
+userId: IqlaaGroupMembership.userId,
+roles: IqlaaGroupMembership.roles,
+expertises: IqlaaGroupMembership.expertises,
+industries: IqlaaGroupMembership.industries,
+industry: IqlaaGroupMembership.industry,
+soughtExpertises: IqlaaGroupMembership.soughtExpertises,
+fatherName: IqlaaGroupMembership.fatherName,
+birthDate: IqlaaGroupMembership.birthDate,
+isBusinessHomeBased: IqlaaGroupMembership.isBusinessHomeBased,
+isBusinessRegisteredWithCCD: IqlaaGroupMembership.isBusinessRegisteredWithCCD,
+businessRegistrationNumber: IqlaaGroupMembership.businessRegistrationNumber,
+isJordanNational: IqlaaGroupMembership.isJordanNational
+}
+}
+
+export namespace IqlaaGroupMembership {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "IqlaaGroupMembership"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "OutputField",
+name: "groupIdent",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+ export  interface expertises   {
+kind: "OutputField",
+name: "expertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+ export  interface industries   {
+kind: "OutputField",
+name: "industries",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface industry   {
+kind: "OutputField",
+name: "industry",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface soughtExpertises   {
+kind: "OutputField",
+name: "soughtExpertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+/**
+* Fathers name
+*/
+ export  interface fatherName   {
+kind: "OutputField",
+name: "fatherName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Date of birth
+*/
+ export  interface birthDate   {
+kind: "OutputField",
+name: "birthDate",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* "Is your business a home-based business?"
+*/
+ export  interface isBusinessHomeBased   {
+kind: "OutputField",
+name: "isBusinessHomeBased",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* "Is the Business/ Project registered in the Companies Control Department -Ministry of industries and trading?"
+*/
+ export  interface isBusinessRegisteredWithCCD   {
+kind: "OutputField",
+name: "isBusinessRegisteredWithCCD",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* (Optional) Business registration number
+*/
+ export  interface businessRegistrationNumber   {
+kind: "OutputField",
+name: "businessRegistrationNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Is the user a Jordan national?
+*/
+ export  interface isJordanNational   {
+kind: "OutputField",
+name: "isJordanNational",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                   StriveIndonesiaGroupMembership
+    // --------------------------------------------------------------------------------------------------
+    //
+
+/**
+* 
+* This object contains the profile information describing an a Strive Indonesia user.
+*/
+ export  interface StriveIndonesiaGroupMembership   {
+kind: "Object",
+name: "StriveIndonesiaGroupMembership",
+fields: {
+__typename: StriveIndonesiaGroupMembership.__typename,
+id: StriveIndonesiaGroupMembership.id,
+adminNotes: StriveIndonesiaGroupMembership.adminNotes,
+events: StriveIndonesiaGroupMembership.events,
+metadata: StriveIndonesiaGroupMembership.metadata,
+createdAt: StriveIndonesiaGroupMembership.createdAt,
+createdBy: StriveIndonesiaGroupMembership.createdBy,
+updatedAt: StriveIndonesiaGroupMembership.updatedAt,
+updatedBy: StriveIndonesiaGroupMembership.updatedBy,
+deletedAt: StriveIndonesiaGroupMembership.deletedAt,
+deletedBy: StriveIndonesiaGroupMembership.deletedBy,
+groupId: StriveIndonesiaGroupMembership.groupId,
+groupIdent: StriveIndonesiaGroupMembership.groupIdent,
+userId: StriveIndonesiaGroupMembership.userId,
+roles: StriveIndonesiaGroupMembership.roles,
+expertises: StriveIndonesiaGroupMembership.expertises,
+industries: StriveIndonesiaGroupMembership.industries,
+industry: StriveIndonesiaGroupMembership.industry,
+soughtExpertises: StriveIndonesiaGroupMembership.soughtExpertises,
+ventureStartDate: StriveIndonesiaGroupMembership.ventureStartDate,
+numberOfEmployees: StriveIndonesiaGroupMembership.numberOfEmployees
+}
+}
+
+export namespace StriveIndonesiaGroupMembership {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "StriveIndonesiaGroupMembership"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "OutputField",
+name: "groupIdent",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+ export  interface expertises   {
+kind: "OutputField",
+name: "expertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+ export  interface industries   {
+kind: "OutputField",
+name: "industries",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface industry   {
+kind: "OutputField",
+name: "industry",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Industry
+}
+
+ export  interface soughtExpertises   {
+kind: "OutputField",
+name: "soughtExpertises",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Expertise
+}
+
+/**
+* Venture Start Date
+*/
+ export  interface ventureStartDate   {
+kind: "OutputField",
+name: "ventureStartDate",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* Number of employees
+*/
+ export  interface numberOfEmployees   {
+kind: "OutputField",
+name: "numberOfEmployees",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+}
+
+//                                            CompanyStage
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface CompanyStage   {
+kind: "Object",
+name: "CompanyStage",
+fields: {
+__typename: CompanyStage.__typename,
+id: CompanyStage.id,
+adminNotes: CompanyStage.adminNotes,
+events: CompanyStage.events,
+metadata: CompanyStage.metadata,
+createdAt: CompanyStage.createdAt,
+createdBy: CompanyStage.createdBy,
+updatedAt: CompanyStage.updatedAt,
+updatedBy: CompanyStage.updatedBy,
+deletedAt: CompanyStage.deletedAt,
+deletedBy: CompanyStage.deletedBy,
+textId: CompanyStage.textId,
+parentTextId: CompanyStage.parentTextId,
+isParent: CompanyStage.isParent,
+optionType: CompanyStage.optionType,
+value: CompanyStage.value,
+translatedValue: CompanyStage.translatedValue,
+supportedLanguages: CompanyStage.supportedLanguages,
+materialIconName: CompanyStage.materialIconName,
+description: CompanyStage.description,
+translatedDescription: CompanyStage.translatedDescription,
+language: CompanyStage.language,
+mm2Id: CompanyStage.mm2Id,
+mm2Value: CompanyStage.mm2Value,
+syncedWithMm2At: CompanyStage.syncedWithMm2At,
+mm2TextId: CompanyStage.mm2TextId,
+mm3TextId: CompanyStage.mm3TextId,
+childOptions: CompanyStage.childOptions,
+parentOption: CompanyStage.parentOption
+}
+}
+
+export namespace CompanyStage {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "CompanyStage"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                            CompanyType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface CompanyType   {
+kind: "Object",
+name: "CompanyType",
+fields: {
+__typename: CompanyType.__typename,
+id: CompanyType.id,
+adminNotes: CompanyType.adminNotes,
+events: CompanyType.events,
+metadata: CompanyType.metadata,
+createdAt: CompanyType.createdAt,
+createdBy: CompanyType.createdBy,
+updatedAt: CompanyType.updatedAt,
+updatedBy: CompanyType.updatedBy,
+deletedAt: CompanyType.deletedAt,
+deletedBy: CompanyType.deletedBy,
+textId: CompanyType.textId,
+parentTextId: CompanyType.parentTextId,
+isParent: CompanyType.isParent,
+optionType: CompanyType.optionType,
+value: CompanyType.value,
+translatedValue: CompanyType.translatedValue,
+supportedLanguages: CompanyType.supportedLanguages,
+materialIconName: CompanyType.materialIconName,
+description: CompanyType.description,
+translatedDescription: CompanyType.translatedDescription,
+language: CompanyType.language,
+mm2Id: CompanyType.mm2Id,
+mm2Value: CompanyType.mm2Value,
+syncedWithMm2At: CompanyType.syncedWithMm2At,
+mm2TextId: CompanyType.mm2TextId,
+mm3TextId: CompanyType.mm3TextId,
+childOptions: CompanyType.childOptions,
+parentOption: CompanyType.parentOption
+}
+}
+
+export namespace CompanyType {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "CompanyType"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                           EducationLevel
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface EducationLevel   {
+kind: "Object",
+name: "EducationLevel",
+fields: {
+__typename: EducationLevel.__typename,
+id: EducationLevel.id,
+adminNotes: EducationLevel.adminNotes,
+events: EducationLevel.events,
+metadata: EducationLevel.metadata,
+createdAt: EducationLevel.createdAt,
+createdBy: EducationLevel.createdBy,
+updatedAt: EducationLevel.updatedAt,
+updatedBy: EducationLevel.updatedBy,
+deletedAt: EducationLevel.deletedAt,
+deletedBy: EducationLevel.deletedBy,
+textId: EducationLevel.textId,
+parentTextId: EducationLevel.parentTextId,
+isParent: EducationLevel.isParent,
+optionType: EducationLevel.optionType,
+value: EducationLevel.value,
+translatedValue: EducationLevel.translatedValue,
+supportedLanguages: EducationLevel.supportedLanguages,
+materialIconName: EducationLevel.materialIconName,
+description: EducationLevel.description,
+translatedDescription: EducationLevel.translatedDescription,
+language: EducationLevel.language,
+mm2Id: EducationLevel.mm2Id,
+mm2Value: EducationLevel.mm2Value,
+syncedWithMm2At: EducationLevel.syncedWithMm2At,
+mm2TextId: EducationLevel.mm2TextId,
+mm3TextId: EducationLevel.mm3TextId,
+childOptions: EducationLevel.childOptions,
+parentOption: EducationLevel.parentOption
+}
+}
+
+export namespace EducationLevel {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "EducationLevel"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                               Gender
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Gender   {
+kind: "Object",
+name: "Gender",
+fields: {
+__typename: Gender.__typename,
+id: Gender.id,
+adminNotes: Gender.adminNotes,
+events: Gender.events,
+metadata: Gender.metadata,
+createdAt: Gender.createdAt,
+createdBy: Gender.createdBy,
+updatedAt: Gender.updatedAt,
+updatedBy: Gender.updatedBy,
+deletedAt: Gender.deletedAt,
+deletedBy: Gender.deletedBy,
+textId: Gender.textId,
+parentTextId: Gender.parentTextId,
+isParent: Gender.isParent,
+optionType: Gender.optionType,
+value: Gender.value,
+translatedValue: Gender.translatedValue,
+supportedLanguages: Gender.supportedLanguages,
+materialIconName: Gender.materialIconName,
+description: Gender.description,
+translatedDescription: Gender.translatedDescription,
+language: Gender.language,
+mm2Id: Gender.mm2Id,
+mm2Value: Gender.mm2Value,
+syncedWithMm2At: Gender.syncedWithMm2At,
+mm2TextId: Gender.mm2TextId,
+mm3TextId: Gender.mm3TextId,
+childOptions: Gender.childOptions,
+parentOption: Gender.parentOption
+}
+}
+
+export namespace Gender {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Gender"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                              Pronoun
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Pronoun   {
+kind: "Object",
+name: "Pronoun",
+fields: {
+__typename: Pronoun.__typename,
+id: Pronoun.id,
+adminNotes: Pronoun.adminNotes,
+events: Pronoun.events,
+metadata: Pronoun.metadata,
+createdAt: Pronoun.createdAt,
+createdBy: Pronoun.createdBy,
+updatedAt: Pronoun.updatedAt,
+updatedBy: Pronoun.updatedBy,
+deletedAt: Pronoun.deletedAt,
+deletedBy: Pronoun.deletedBy,
+textId: Pronoun.textId,
+parentTextId: Pronoun.parentTextId,
+isParent: Pronoun.isParent,
+optionType: Pronoun.optionType,
+value: Pronoun.value,
+translatedValue: Pronoun.translatedValue,
+supportedLanguages: Pronoun.supportedLanguages,
+materialIconName: Pronoun.materialIconName,
+description: Pronoun.description,
+translatedDescription: Pronoun.translatedDescription,
+language: Pronoun.language,
+mm2Id: Pronoun.mm2Id,
+mm2Value: Pronoun.mm2Value,
+syncedWithMm2At: Pronoun.syncedWithMm2At,
+mm2TextId: Pronoun.mm2TextId,
+mm3TextId: Pronoun.mm3TextId,
+childOptions: Pronoun.childOptions,
+parentOption: Pronoun.parentOption
+}
+}
+
+export namespace Pronoun {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Pronoun"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                             UserInbox
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserInbox   {
+kind: "Object",
+name: "UserInbox",
+fields: {
+__typename: UserInbox.__typename,
+id: UserInbox.id,
+adminNotes: UserInbox.adminNotes,
+events: UserInbox.events,
+metadata: UserInbox.metadata,
+createdAt: UserInbox.createdAt,
+createdBy: UserInbox.createdBy,
+updatedAt: UserInbox.updatedAt,
+updatedBy: UserInbox.updatedBy,
+deletedAt: UserInbox.deletedAt,
+deletedBy: UserInbox.deletedBy,
+userId: UserInbox.userId,
+channels: UserInbox.channels
+}
+}
+
+export namespace UserInbox {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserInbox"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channels   {
+kind: "OutputField",
+name: "channels",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelInbox
+}
+}
+
+//                                            ChannelInbox
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelInbox   {
+kind: "Object",
+name: "ChannelInbox",
+fields: {
+__typename: ChannelInbox.__typename,
+userId: ChannelInbox.userId,
+unseenMessages: ChannelInbox.unseenMessages,
+unseenArchivedMessages: ChannelInbox.unseenArchivedMessages,
+unseenSystemMessages: ChannelInbox.unseenSystemMessages,
+latestMessages: ChannelInbox.latestMessages,
+latestArchivedMessages: ChannelInbox.latestArchivedMessages,
+pendingInvitations: ChannelInbox.pendingInvitations,
+invitations: ChannelInbox.invitations,
+itemIdHash: ChannelInbox.itemIdHash,
+updatedAt: ChannelInbox.updatedAt,
+updatedBy: ChannelInbox.updatedBy
+}
+}
+
+export namespace ChannelInbox {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelInbox"
+}
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Messages that the recipient has not seen yet
+*/
+ export  interface unseenMessages   {
+kind: "OutputField",
+name: "unseenMessages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelInboxItemMessage
+}
+
+/**
+* Messages in archived channels that the recipient has not seen yet
+*/
+ export  interface unseenArchivedMessages   {
+kind: "OutputField",
+name: "unseenArchivedMessages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelInboxItemMessage
+}
+
+/**
+* Messages in system channels that the recipient has not seen yet
+*/
+ export  interface unseenSystemMessages   {
+kind: "OutputField",
+name: "unseenSystemMessages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelInboxItemMessage
+}
+
+/**
+* List of the latest message of each channel
+*/
+ export  interface latestMessages   {
+kind: "OutputField",
+name: "latestMessages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelInboxItemMessage
+}
+
+ export  interface latestArchivedMessages   {
+kind: "OutputField",
+name: "latestArchivedMessages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelInboxItemMessage
+}
+
+/**
+* Invitations that the recipient has not accepted or rejected yet
+*/
+ export  interface pendingInvitations   {
+kind: "OutputField",
+name: "pendingInvitations",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelInboxItemInvitation
+}
+
+ export  interface invitations   {
+kind: "OutputField",
+name: "invitations",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelInboxItemInvitation
+}
+
+/**
+* MD5 hash of all item IDs to check whether there are any new or removed items.
+*/
+ export  interface itemIdHash   {
+kind: "OutputField",
+name: "itemIdHash",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                      ChannelInboxItemMessage
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelInboxItemMessage   {
+kind: "Object",
+name: "ChannelInboxItemMessage",
+fields: {
+__typename: ChannelInboxItemMessage.__typename,
+id: ChannelInboxItemMessage.id,
+channelId: ChannelInboxItemMessage.channelId,
+replyToMessageId: ChannelInboxItemMessage.replyToMessageId,
+channelMessageType: ChannelInboxItemMessage.channelMessageType,
+messageText: ChannelInboxItemMessage.messageText,
+senderUserHandle: ChannelInboxItemMessage.senderUserHandle,
+senderFirstName: ChannelInboxItemMessage.senderFirstName,
+senderLastName: ChannelInboxItemMessage.senderLastName,
+senderAvatarUrl: ChannelInboxItemMessage.senderAvatarUrl,
+seenAt: ChannelInboxItemMessage.seenAt,
+isArchived: ChannelInboxItemMessage.isArchived,
+createdAt: ChannelInboxItemMessage.createdAt,
+createdBy: ChannelInboxItemMessage.createdBy,
+updatedAt: ChannelInboxItemMessage.updatedAt,
+updatedBy: ChannelInboxItemMessage.updatedBy,
+userIds: ChannelInboxItemMessage.userIds
+}
+}
+
+export namespace ChannelInboxItemMessage {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelInboxItemMessage"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "OutputField",
+name: "channelId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface replyToMessageId   {
+kind: "OutputField",
+name: "replyToMessageId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelMessageType   {
+kind: "OutputField",
+name: "channelMessageType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelMessageType
+}
+
+ export  interface messageText   {
+kind: "OutputField",
+name: "messageText",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderUserHandle   {
+kind: "OutputField",
+name: "senderUserHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderFirstName   {
+kind: "OutputField",
+name: "senderFirstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderLastName   {
+kind: "OutputField",
+name: "senderLastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderAvatarUrl   {
+kind: "OutputField",
+name: "senderAvatarUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface seenAt   {
+kind: "OutputField",
+name: "seenAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isArchived   {
+kind: "OutputField",
+name: "isArchived",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userIds   {
+kind: "OutputField",
+name: "userIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                     ChannelInboxItemInvitation
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelInboxItemInvitation   {
+kind: "Object",
+name: "ChannelInboxItemInvitation",
+fields: {
+__typename: ChannelInboxItemInvitation.__typename,
+id: ChannelInboxItemInvitation.id,
+channelId: ChannelInboxItemInvitation.channelId,
+messageText: ChannelInboxItemInvitation.messageText,
+readByRecipientAt: ChannelInboxItemInvitation.readByRecipientAt,
+status: ChannelInboxItemInvitation.status,
+createdAt: ChannelInboxItemInvitation.createdAt,
+createdBy: ChannelInboxItemInvitation.createdBy,
+recipientId: ChannelInboxItemInvitation.recipientId
+}
+}
+
+export namespace ChannelInboxItemInvitation {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelInboxItemInvitation"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "OutputField",
+name: "channelId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface messageText   {
+kind: "OutputField",
+name: "messageText",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface readByRecipientAt   {
+kind: "OutputField",
+name: "readByRecipientAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface status   {
+kind: "OutputField",
+name: "status",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelInvitationStatus
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface recipientId   {
+kind: "OutputField",
+name: "recipientId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                                User
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface User   {
+kind: "Object",
+name: "User",
+fields: {
+__typename: User.__typename,
+id: User.id,
+adminNotes: User.adminNotes,
+events: User.events,
+metadata: User.metadata,
+createdAt: User.createdAt,
+createdBy: User.createdBy,
+updatedAt: User.updatedAt,
+updatedBy: User.updatedBy,
+deletedAt: User.deletedAt,
+deletedBy: User.deletedBy,
+firstName: User.firstName,
+lastName: User.lastName,
+userHandle: User.userHandle,
+phoneNumber: User.phoneNumber,
+phoneNumberUpdatedAt: User.phoneNumberUpdatedAt,
+isPhoneNumberVerified: User.isPhoneNumberVerified,
+email: User.email,
+emailSource: User.emailSource,
+emailUpdatedAt: User.emailUpdatedAt,
+isEmailVerified: User.isEmailVerified,
+genderTextId: User.genderTextId,
+cityOfResidence: User.cityOfResidence,
+regionOfResidence: User.regionOfResidence,
+countryOfResidenceTextId: User.countryOfResidenceTextId,
+postalCode: User.postalCode,
+avatarUrl: User.avatarUrl,
+websites: User.websites,
+authType: User.authType,
+inviteCode: User.inviteCode,
+tfaBackupCodes: User.tfaBackupCodes,
+passwordUpdatedAt: User.passwordUpdatedAt,
+preferredLanguageTextId: User.preferredLanguageTextId,
+spokenLanguagesTextIds: User.spokenLanguagesTextIds,
+selectedUiLanguageTextId: User.selectedUiLanguageTextId,
+fallbackUiLanguageTextId: User.fallbackUiLanguageTextId,
+discoverable: User.discoverable,
+roles: User.roles,
+appFeatures: User.appFeatures,
+source: User.source,
+timezone: User.timezone,
+preferences: User.preferences,
+trustLevel: User.trustLevel,
+signedInAt: User.signedInAt,
+signedOutAt: User.signedOutAt,
+latestActivityAt: User.latestActivityAt,
+userDevices: User.userDevices,
+userBlocks: User.userBlocks,
+contacts: User.contacts,
+inactivatedAt: User.inactivatedAt,
+inactivatedBy: User.inactivatedBy,
+termsAndConditionsAcceptedAt: User.termsAndConditionsAcceptedAt,
+optIntoNewsletter: User.optIntoNewsletter,
+onboardingStage: User.onboardingStage,
+suspendedAt: User.suspendedAt,
+suspendedBy: User.suspendedBy,
+addedToBgVaultAt: User.addedToBgVaultAt,
+companyIds: User.companyIds,
+companies: User.companies,
+groupIds: User.groupIds,
+parentGroupIds: User.parentGroupIds,
+externalGroupIds: User.externalGroupIds,
+pronounsTextIds: User.pronounsTextIds,
+groupMemberships: User.groupMemberships,
+seeksHelp: User.seeksHelp,
+offersHelp: User.offersHelp,
+birthYear: User.birthYear,
+ethnicity: User.ethnicity,
+educationLevelTextId: User.educationLevelTextId,
+personalBio: User.personalBio,
+yearsManagementExperience: User.yearsManagementExperience,
+yearsOwnershipExperience: User.yearsOwnershipExperience,
+academicExperienceIds: User.academicExperienceIds,
+academicExperiences: User.academicExperiences,
+genderSelfDescribed: User.genderSelfDescribed,
+businessExperienceIds: User.businessExperienceIds,
+businessExperiences: User.businessExperiences,
+cityOfOrigin: User.cityOfOrigin,
+regionOfOrigin: User.regionOfOrigin,
+countryOfOriginTextId: User.countryOfOriginTextId,
+isOnVacation: User.isOnVacation,
+avatarAsset: User.avatarAsset,
+profileRoleHistory: User.profileRoleHistory,
+ssoIdp: User.ssoIdp,
+originatedInMm2: User.originatedInMm2,
+syncedWithMm2At: User.syncedWithMm2At,
+mm2PasswordHash: User.mm2PasswordHash,
+mm2Id: User.mm2Id,
+mm2PhotoOriginal: User.mm2PhotoOriginal,
+mm2BasicAccountCompleted: User.mm2BasicAccountCompleted,
+hasSignedInToMm3: User.hasSignedInToMm3,
+hasSignedInToMm2: User.hasSignedInToMm2,
+mentor: User.mentor,
+mentee: User.mentee,
+countryOfResidence: User.countryOfResidence,
+gender: User.gender,
+latestUserDevice: User.latestUserDevice,
+spokenLanguages: User.spokenLanguages,
+preferredLanguage: User.preferredLanguage,
+fallbackUiLanguage: User.fallbackUiLanguage,
+preferredUiLanguage: User.preferredUiLanguage,
+unreadInAppMessages: User.unreadInAppMessages,
+channels: User.channels,
+channelInvitations: User.channelInvitations,
+channelParticipants: User.channelParticipants,
+countryOfOrigin: User.countryOfOrigin,
+educationLevel: User.educationLevel,
+endorsements: User.endorsements,
+groupMembers: User.groupMembers,
+groups: User.groups,
+hasTrainings: User.hasTrainings,
+profileCompletionPercentage: User.profileCompletionPercentage,
+profileRole: User.profileRole,
+pronouns: User.pronouns,
+pronounsDisplay: User.pronounsDisplay,
+uploadedAssets: User.uploadedAssets
+}
+}
+
+export namespace User {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "User"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface firstName   {
+kind: "OutputField",
+name: "firstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "OutputField",
+name: "lastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "OutputField",
+name: "userHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "OutputField",
+name: "phoneNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "OutputField",
+name: "phoneNumberUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isPhoneNumberVerified   {
+kind: "OutputField",
+name: "isPhoneNumberVerified",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface email   {
+kind: "OutputField",
+name: "email",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The source of the email address, e.g. "google", "facebook", etc.
+*/
+ export  interface emailSource   {
+kind: "OutputField",
+name: "emailSource",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailUpdatedAt   {
+kind: "OutputField",
+name: "emailUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isEmailVerified   {
+kind: "OutputField",
+name: "isEmailVerified",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface genderTextId   {
+kind: "OutputField",
+name: "genderTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface cityOfResidence   {
+kind: "OutputField",
+name: "cityOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfResidence   {
+kind: "OutputField",
+name: "regionOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryOfResidenceTextId   {
+kind: "OutputField",
+name: "countryOfResidenceTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface postalCode   {
+kind: "OutputField",
+name: "postalCode",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "OutputField",
+name: "avatarUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface websites   {
+kind: "OutputField",
+name: "websites",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$LabeledStringValue
+}
+
+ export  interface authType   {
+kind: "OutputField",
+name: "authType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AuthType
+}
+
+ export  interface inviteCode   {
+kind: "OutputField",
+name: "inviteCode",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface tfaBackupCodes   {
+kind: "OutputField",
+name: "tfaBackupCodes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface passwordUpdatedAt   {
+kind: "OutputField",
+name: "passwordUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface preferredLanguageTextId   {
+kind: "OutputField",
+name: "preferredLanguageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface spokenLanguagesTextIds   {
+kind: "OutputField",
+name: "spokenLanguagesTextIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface selectedUiLanguageTextId   {
+kind: "OutputField",
+name: "selectedUiLanguageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+ export  interface fallbackUiLanguageTextId   {
+kind: "OutputField",
+name: "fallbackUiLanguageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.
+*/
+ export  interface discoverable   {
+kind: "OutputField",
+name: "discoverable",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserRole
+}
+
+ export  interface appFeatures   {
+kind: "OutputField",
+name: "appFeatures",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AppFeature
+}
+
+ export  interface source   {
+kind: "OutputField",
+name: "source",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "OutputField",
+name: "timezone",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface preferences   {
+kind: "OutputField",
+name: "preferences",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserPreferences
+}
+
+ export  interface trustLevel   {
+kind: "OutputField",
+name: "trustLevel",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface signedInAt   {
+kind: "OutputField",
+name: "signedInAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedOutAt   {
+kind: "OutputField",
+name: "signedOutAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface latestActivityAt   {
+kind: "OutputField",
+name: "latestActivityAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userDevices   {
+kind: "OutputField",
+name: "userDevices",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserDeviceWithoutAuth
+}
+
+ export  interface userBlocks   {
+kind: "OutputField",
+name: "userBlocks",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserBlock
+}
+
+ export  interface contacts   {
+kind: "OutputField",
+name: "contacts",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Contact
+}
+
+ export  interface inactivatedAt   {
+kind: "OutputField",
+name: "inactivatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inactivatedBy   {
+kind: "OutputField",
+name: "inactivatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface termsAndConditionsAcceptedAt   {
+kind: "OutputField",
+name: "termsAndConditionsAcceptedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface optIntoNewsletter   {
+kind: "OutputField",
+name: "optIntoNewsletter",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface onboardingStage   {
+kind: "OutputField",
+name: "onboardingStage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface suspendedAt   {
+kind: "OutputField",
+name: "suspendedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "OutputField",
+name: "suspendedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface addedToBgVaultAt   {
+kind: "OutputField",
+name: "addedToBgVaultAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface companyIds   {
+kind: "OutputField",
+name: "companyIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface companies   {
+kind: "OutputField",
+name: "companies",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Company
+}
+
+ export  interface groupIds   {
+kind: "OutputField",
+name: "groupIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface parentGroupIds   {
+kind: "OutputField",
+name: "parentGroupIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface externalGroupIds   {
+kind: "OutputField",
+name: "externalGroupIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface pronounsTextIds   {
+kind: "OutputField",
+name: "pronounsTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface groupMemberships   {
+kind: "OutputField",
+name: "groupMemberships",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IGroupMembership
+}
+
+ export  interface seeksHelp   {
+kind: "OutputField",
+name: "seeksHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface offersHelp   {
+kind: "OutputField",
+name: "offersHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface birthYear   {
+kind: "OutputField",
+name: "birthYear",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface ethnicity   {
+kind: "OutputField",
+name: "ethnicity",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface educationLevelTextId   {
+kind: "OutputField",
+name: "educationLevelTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface personalBio   {
+kind: "OutputField",
+name: "personalBio",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface yearsManagementExperience   {
+kind: "OutputField",
+name: "yearsManagementExperience",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface yearsOwnershipExperience   {
+kind: "OutputField",
+name: "yearsOwnershipExperience",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface academicExperienceIds   {
+kind: "OutputField",
+name: "academicExperienceIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface academicExperiences   {
+kind: "OutputField",
+name: "academicExperiences",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AcademicExperience
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface genderSelfDescribed   {
+kind: "OutputField",
+name: "genderSelfDescribed",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface businessExperienceIds   {
+kind: "OutputField",
+name: "businessExperienceIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface businessExperiences   {
+kind: "OutputField",
+name: "businessExperiences",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BusinessExperience
+}
+
+ export  interface cityOfOrigin   {
+kind: "OutputField",
+name: "cityOfOrigin",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfOrigin   {
+kind: "OutputField",
+name: "regionOfOrigin",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryOfOriginTextId   {
+kind: "OutputField",
+name: "countryOfOriginTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isOnVacation   {
+kind: "OutputField",
+name: "isOnVacation",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface avatarAsset   {
+kind: "OutputField",
+name: "avatarAsset",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+ export  interface profileRoleHistory   {
+kind: "OutputField",
+name: "profileRoleHistory",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserProfileRoleHistoryItem
+}
+
+ export  interface ssoIdp   {
+kind: "OutputField",
+name: "ssoIdp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Records whether a user was originally created in MM2.
+*/
+ export  interface originatedInMm2   {
+kind: "OutputField",
+name: "originatedInMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This is the MM2 password hash.
+*/
+ export  interface mm2PasswordHash   {
+kind: "OutputField",
+name: "mm2PasswordHash",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2PhotoOriginal   {
+kind: "OutputField",
+name: "mm2PhotoOriginal",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* For MM2 users, this means a profile is completed.
+*/
+ export  interface mm2BasicAccountCompleted   {
+kind: "OutputField",
+name: "mm2BasicAccountCompleted",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Records whether a user has logged into MM3.
+*/
+ export  interface hasSignedInToMm3   {
+kind: "OutputField",
+name: "hasSignedInToMm3",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Records whether a user has logged into MM2.
+*/
+ export  interface hasSignedInToMm2   {
+kind: "OutputField",
+name: "hasSignedInToMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is a copy of the mentor group membership.
+*/
+ export  interface mentor   {
+kind: "OutputField",
+name: "mentor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MentorsGroupMembership
+}
+
+/**
+* This attribute is a copy of the mentee group membership.
+*/
+ export  interface mentee   {
+kind: "OutputField",
+name: "mentee",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MenteesGroupMembership
+}
+
+ export  interface countryOfResidence   {
+kind: "OutputField",
+name: "countryOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface gender   {
+kind: "OutputField",
+name: "gender",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Gender
+}
+
+ export  interface latestUserDevice   {
+kind: "OutputField",
+name: "latestUserDevice",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserDeviceWithoutAuth
+}
+
+ export  interface spokenLanguages   {
+kind: "OutputField",
+name: "spokenLanguages",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface preferredLanguage   {
+kind: "OutputField",
+name: "preferredLanguage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface fallbackUiLanguage   {
+kind: "OutputField",
+name: "fallbackUiLanguage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface preferredUiLanguage   {
+kind: "OutputField",
+name: "preferredUiLanguage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface unreadInAppMessages   {
+kind: "OutputField",
+name: "unreadInAppMessages",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Notification
+}
+
+ export  interface channels   {
+kind: "OutputField",
+name: "channels",
+arguments: {
+/**
+* Set options on channels, e.g. to include archived channels.
+*/
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+/**
+* Set to True to return only channels which have been accepted. Default is False, which also returns channels with multiple messages that have not been accepted. Channels with only unaccepted invitations have no messages (except for channels created via the synchronizer).
+*/
+mustBeAccepted: {
+kind: "InputField",
+name: "mustBeAccepted",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+/**
+* Set to True to return only channels with messages. Default is False, which also returns channels without messages. Channels with only unaccepted invitations have no messages (except for channels created via the synchronizer).
+*/
+mustHaveMessages: {
+kind: "InputField",
+name: "mustHaveMessages",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface channelInvitations   {
+kind: "OutputField",
+name: "channelInvitations",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface channelParticipants   {
+kind: "OutputField",
+name: "channelParticipants",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelParticipant
+}
+
+ export  interface countryOfOrigin   {
+kind: "OutputField",
+name: "countryOfOrigin",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface educationLevel   {
+kind: "OutputField",
+name: "educationLevel",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$EducationLevel
+}
+
+ export  interface endorsements   {
+kind: "OutputField",
+name: "endorsements",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$EndorsementWithTypes
+}
+
+ export  interface groupMembers   {
+kind: "OutputField",
+name: "groupMembers",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IGroupMembership
+}
+
+ export  interface groups   {
+kind: "OutputField",
+name: "groups",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Group
+}
+
+ export  interface hasTrainings   {
+kind: "OutputField",
+name: "hasTrainings",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface profileCompletionPercentage   {
+kind: "OutputField",
+name: "profileCompletionPercentage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface profileRole   {
+kind: "OutputField",
+name: "profileRole",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserProfileRole
+}
+
+ export  interface pronouns   {
+kind: "OutputField",
+name: "pronouns",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Pronoun
+}
+
+ export  interface pronounsDisplay   {
+kind: "OutputField",
+name: "pronounsDisplay",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface uploadedAssets   {
+kind: "OutputField",
+name: "uploadedAssets",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+}
+
+//                                         LabeledStringValue
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface LabeledStringValue   {
+kind: "Object",
+name: "LabeledStringValue",
+fields: {
+__typename: LabeledStringValue.__typename,
+label: LabeledStringValue.label,
+value: LabeledStringValue.value,
+tags: LabeledStringValue.tags
+}
+}
+
+export namespace LabeledStringValue {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "LabeledStringValue"
+}
+}
+
+ export  interface label   {
+kind: "OutputField",
+name: "label",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface tags   {
+kind: "OutputField",
+name: "tags",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                          UserPreferences
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserPreferences   {
+kind: "Object",
+name: "UserPreferences",
+fields: {
+__typename: UserPreferences.__typename,
+id: UserPreferences.id,
+adminNotes: UserPreferences.adminNotes,
+events: UserPreferences.events,
+metadata: UserPreferences.metadata,
+createdAt: UserPreferences.createdAt,
+createdBy: UserPreferences.createdBy,
+updatedAt: UserPreferences.updatedAt,
+updatedBy: UserPreferences.updatedBy,
+deletedAt: UserPreferences.deletedAt,
+deletedBy: UserPreferences.deletedBy,
+shareEmail: UserPreferences.shareEmail,
+sharePhoneNumber: UserPreferences.sharePhoneNumber,
+showWelcomeMessage: UserPreferences.showWelcomeMessage,
+notificationOptions: UserPreferences.notificationOptions
+}
+}
+
+export namespace UserPreferences {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserPreferences"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface shareEmail   {
+kind: "OutputField",
+name: "shareEmail",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sharePhoneNumber   {
+kind: "OutputField",
+name: "sharePhoneNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface showWelcomeMessage   {
+kind: "OutputField",
+name: "showWelcomeMessage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface notificationOptions   {
+kind: "OutputField",
+name: "notificationOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$NotificationOptions
+}
+}
+
+//                                        NotificationOptions
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationOptions   {
+kind: "Object",
+name: "NotificationOptions",
+fields: {
+__typename: NotificationOptions.__typename,
+notificationType: NotificationOptions.notificationType,
+enableEmail: NotificationOptions.enableEmail,
+enableInAppMessage: NotificationOptions.enableInAppMessage,
+enablePushNotification: NotificationOptions.enablePushNotification,
+enableSms: NotificationOptions.enableSms,
+frequency: NotificationOptions.frequency
+}
+}
+
+export namespace NotificationOptions {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "NotificationOptions"
+}
+}
+
+ export  interface notificationType   {
+kind: "OutputField",
+name: "notificationType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationType
+}
+
+ export  interface enableEmail   {
+kind: "OutputField",
+name: "enableEmail",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface enableInAppMessage   {
+kind: "OutputField",
+name: "enableInAppMessage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface enablePushNotification   {
+kind: "OutputField",
+name: "enablePushNotification",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface enableSms   {
+kind: "OutputField",
+name: "enableSms",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface frequency   {
+kind: "OutputField",
+name: "frequency",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                       UserDeviceWithoutAuth
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserDeviceWithoutAuth   {
+kind: "Object",
+name: "UserDeviceWithoutAuth",
+fields: {
+__typename: UserDeviceWithoutAuth.__typename,
+id: UserDeviceWithoutAuth.id,
+adminNotes: UserDeviceWithoutAuth.adminNotes,
+events: UserDeviceWithoutAuth.events,
+metadata: UserDeviceWithoutAuth.metadata,
+createdAt: UserDeviceWithoutAuth.createdAt,
+createdBy: UserDeviceWithoutAuth.createdBy,
+updatedAt: UserDeviceWithoutAuth.updatedAt,
+updatedBy: UserDeviceWithoutAuth.updatedBy,
+deletedAt: UserDeviceWithoutAuth.deletedAt,
+deletedBy: UserDeviceWithoutAuth.deletedBy,
+userId: UserDeviceWithoutAuth.userId,
+deviceUuid: UserDeviceWithoutAuth.deviceUuid,
+deviceType: UserDeviceWithoutAuth.deviceType,
+trusted: UserDeviceWithoutAuth.trusted,
+phoneNumber: UserDeviceWithoutAuth.phoneNumber,
+phoneNumberUpdatedAt: UserDeviceWithoutAuth.phoneNumberUpdatedAt,
+isPhoneNumberVerified: UserDeviceWithoutAuth.isPhoneNumberVerified,
+brand: UserDeviceWithoutAuth.brand,
+model: UserDeviceWithoutAuth.model,
+isTablet: UserDeviceWithoutAuth.isTablet,
+screenWidth: UserDeviceWithoutAuth.screenWidth,
+screenHeight: UserDeviceWithoutAuth.screenHeight,
+os: UserDeviceWithoutAuth.os,
+osVersion: UserDeviceWithoutAuth.osVersion,
+timezone: UserDeviceWithoutAuth.timezone,
+ipAddress: UserDeviceWithoutAuth.ipAddress,
+consumer: UserDeviceWithoutAuth.consumer,
+consumerVersion: UserDeviceWithoutAuth.consumerVersion,
+acceptedLanguage: UserDeviceWithoutAuth.acceptedLanguage,
+locale: UserDeviceWithoutAuth.locale,
+countryCode: UserDeviceWithoutAuth.countryCode,
+appVersion: UserDeviceWithoutAuth.appVersion,
+signedInAt: UserDeviceWithoutAuth.signedInAt,
+signedOutAt: UserDeviceWithoutAuth.signedOutAt,
+sessionStartedAt: UserDeviceWithoutAuth.sessionStartedAt,
+sessionEndedAt: UserDeviceWithoutAuth.sessionEndedAt,
+identityProvider: UserDeviceWithoutAuth.identityProvider,
+oauthProfileUrl: UserDeviceWithoutAuth.oauthProfileUrl,
+trustedAt: UserDeviceWithoutAuth.trustedAt
+}
+}
+
+export namespace UserDeviceWithoutAuth {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserDeviceWithoutAuth"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deviceUuid   {
+kind: "OutputField",
+name: "deviceUuid",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface deviceType   {
+kind: "OutputField",
+name: "deviceType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface trusted   {
+kind: "OutputField",
+name: "trusted",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface phoneNumber   {
+kind: "OutputField",
+name: "phoneNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "OutputField",
+name: "phoneNumberUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isPhoneNumberVerified   {
+kind: "OutputField",
+name: "isPhoneNumberVerified",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface brand   {
+kind: "OutputField",
+name: "brand",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface model   {
+kind: "OutputField",
+name: "model",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isTablet   {
+kind: "OutputField",
+name: "isTablet",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface screenWidth   {
+kind: "OutputField",
+name: "screenWidth",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface screenHeight   {
+kind: "OutputField",
+name: "screenHeight",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface os   {
+kind: "OutputField",
+name: "os",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface osVersion   {
+kind: "OutputField",
+name: "osVersion",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "OutputField",
+name: "timezone",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface ipAddress   {
+kind: "OutputField",
+name: "ipAddress",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface consumer   {
+kind: "OutputField",
+name: "consumer",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface consumerVersion   {
+kind: "OutputField",
+name: "consumerVersion",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface acceptedLanguage   {
+kind: "OutputField",
+name: "acceptedLanguage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface locale   {
+kind: "OutputField",
+name: "locale",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryCode   {
+kind: "OutputField",
+name: "countryCode",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface appVersion   {
+kind: "OutputField",
+name: "appVersion",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface signedInAt   {
+kind: "OutputField",
+name: "signedInAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedOutAt   {
+kind: "OutputField",
+name: "signedOutAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface sessionStartedAt   {
+kind: "OutputField",
+name: "sessionStartedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface sessionEndedAt   {
+kind: "OutputField",
+name: "sessionEndedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface identityProvider   {
+kind: "OutputField",
+name: "identityProvider",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$IdentityProvider
+}
+
+ export  interface oauthProfileUrl   {
+kind: "OutputField",
+name: "oauthProfileUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface trustedAt   {
+kind: "OutputField",
+name: "trustedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                             UserBlock
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserBlock   {
+kind: "Object",
+name: "UserBlock",
+fields: {
+__typename: UserBlock.__typename,
+userId: UserBlock.userId,
+reasonTextId: UserBlock.reasonTextId,
+notes: UserBlock.notes,
+adminNotes: UserBlock.adminNotes,
+createdAt: UserBlock.createdAt,
+syncedWithMm2At: UserBlock.syncedWithMm2At,
+mm2Id: UserBlock.mm2Id
+}
+}
+
+export namespace UserBlock {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserBlock"
+}
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface reasonTextId   {
+kind: "OutputField",
+name: "reasonTextId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface notes   {
+kind: "OutputField",
+name: "notes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                              Contact
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Contact   {
+kind: "Object",
+name: "Contact",
+fields: {
+__typename: Contact.__typename,
+id: Contact.id,
+adminNotes: Contact.adminNotes,
+events: Contact.events,
+metadata: Contact.metadata,
+createdAt: Contact.createdAt,
+createdBy: Contact.createdBy,
+updatedAt: Contact.updatedAt,
+updatedBy: Contact.updatedBy,
+deletedAt: Contact.deletedAt,
+deletedBy: Contact.deletedBy,
+userId: Contact.userId,
+channelId: Contact.channelId,
+nickname: Contact.nickname,
+typeTextIds: Contact.typeTextIds,
+favorite: Contact.favorite,
+notes: Contact.notes,
+archivedAt: Contact.archivedAt,
+user: Contact.user,
+contactTypes: Contact.contactTypes
+}
+}
+
+export namespace Contact {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Contact"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ContactMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "OutputField",
+name: "channelId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface nickname   {
+kind: "OutputField",
+name: "nickname",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface typeTextIds   {
+kind: "OutputField",
+name: "typeTextIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface favorite   {
+kind: "OutputField",
+name: "favorite",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface notes   {
+kind: "OutputField",
+name: "notes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface archivedAt   {
+kind: "OutputField",
+name: "archivedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface user   {
+kind: "OutputField",
+name: "user",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$User
+}
+
+ export  interface contactTypes   {
+kind: "OutputField",
+name: "contactTypes",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ContactType
+}
+}
+
+//                                          ContactMetadata
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContactMetadata   {
+kind: "Object",
+name: "ContactMetadata",
+fields: {
+__typename: ContactMetadata.__typename,
+updatedAt: ContactMetadata.updatedAt,
+firstName: ContactMetadata.firstName,
+lastName: ContactMetadata.lastName,
+userHandle: ContactMetadata.userHandle,
+avatarUrl: ContactMetadata.avatarUrl
+}
+}
+
+export namespace ContactMetadata {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ContactMetadata"
+}
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface firstName   {
+kind: "OutputField",
+name: "firstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "OutputField",
+name: "lastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "OutputField",
+name: "userHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "OutputField",
+name: "avatarUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                            ContactType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContactType   {
+kind: "Object",
+name: "ContactType",
+fields: {
+__typename: ContactType.__typename,
+id: ContactType.id,
+adminNotes: ContactType.adminNotes,
+events: ContactType.events,
+metadata: ContactType.metadata,
+createdAt: ContactType.createdAt,
+createdBy: ContactType.createdBy,
+updatedAt: ContactType.updatedAt,
+updatedBy: ContactType.updatedBy,
+deletedAt: ContactType.deletedAt,
+deletedBy: ContactType.deletedBy,
+textId: ContactType.textId,
+parentTextId: ContactType.parentTextId,
+isParent: ContactType.isParent,
+optionType: ContactType.optionType,
+value: ContactType.value,
+translatedValue: ContactType.translatedValue,
+supportedLanguages: ContactType.supportedLanguages,
+materialIconName: ContactType.materialIconName,
+description: ContactType.description,
+translatedDescription: ContactType.translatedDescription,
+language: ContactType.language,
+mm2Id: ContactType.mm2Id,
+mm2Value: ContactType.mm2Value,
+syncedWithMm2At: ContactType.syncedWithMm2At,
+mm2TextId: ContactType.mm2TextId,
+mm3TextId: ContactType.mm3TextId,
+childOptions: ContactType.childOptions,
+parentOption: ContactType.parentOption
+}
+}
+
+export namespace ContactType {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ContactType"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                              Company
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Company   {
+kind: "Object",
+name: "Company",
+fields: {
+__typename: Company.__typename,
+id: Company.id,
+adminNotes: Company.adminNotes,
+events: Company.events,
+metadata: Company.metadata,
+createdAt: Company.createdAt,
+createdBy: Company.createdBy,
+updatedAt: Company.updatedAt,
+updatedBy: Company.updatedBy,
+deletedAt: Company.deletedAt,
+deletedBy: Company.deletedBy,
+userIds: Company.userIds,
+name: Company.name,
+description: Company.description,
+location: Company.location,
+companyTypeTextId: Company.companyTypeTextId,
+companyStageTextId: Company.companyStageTextId,
+websites: Company.websites,
+industries: Company.industries,
+isOperational: Company.isOperational,
+isFundraising: Company.isFundraising,
+annualRevenue: Company.annualRevenue,
+employeeCount: Company.employeeCount,
+foundedAt: Company.foundedAt,
+mm2UserId: Company.mm2UserId,
+mm2CompanyRole: Company.mm2CompanyRole,
+syncedWithMm2At: Company.syncedWithMm2At,
+companyStage: Company.companyStage,
+companyType: Company.companyType
+}
+}
+
+export namespace Company {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Company"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userIds   {
+kind: "OutputField",
+name: "userIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface name   {
+kind: "OutputField",
+name: "name",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface location   {
+kind: "OutputField",
+name: "location",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface companyTypeTextId   {
+kind: "OutputField",
+name: "companyTypeTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface companyStageTextId   {
+kind: "OutputField",
+name: "companyStageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface websites   {
+kind: "OutputField",
+name: "websites",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$LabeledStringValue
+}
+
+ export  interface industries   {
+kind: "OutputField",
+name: "industries",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isOperational   {
+kind: "OutputField",
+name: "isOperational",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface isFundraising   {
+kind: "OutputField",
+name: "isFundraising",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface annualRevenue   {
+kind: "OutputField",
+name: "annualRevenue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface employeeCount   {
+kind: "OutputField",
+name: "employeeCount",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface foundedAt   {
+kind: "OutputField",
+name: "foundedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* If a Company was created from the imported attributes of an MM2 Profile, mm2UserId references the MM2 user ID. This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2UserId   {
+kind: "OutputField",
+name: "mm2UserId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* If a Company was created from the imported from MM2, mm2CompanyRole is either "mentor" or "mentee". This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2CompanyRole   {
+kind: "OutputField",
+name: "mm2CompanyRole",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface companyStage   {
+kind: "OutputField",
+name: "companyStage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$CompanyStage
+}
+
+ export  interface companyType   {
+kind: "OutputField",
+name: "companyType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$CompanyType
+}
+}
+
+//                                         AcademicExperience
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AcademicExperience   {
+kind: "Object",
+name: "AcademicExperience",
+fields: {
+__typename: AcademicExperience.__typename,
+id: AcademicExperience.id,
+adminNotes: AcademicExperience.adminNotes,
+events: AcademicExperience.events,
+metadata: AcademicExperience.metadata,
+createdAt: AcademicExperience.createdAt,
+createdBy: AcademicExperience.createdBy,
+updatedAt: AcademicExperience.updatedAt,
+updatedBy: AcademicExperience.updatedBy,
+deletedAt: AcademicExperience.deletedAt,
+deletedBy: AcademicExperience.deletedBy,
+institutionName: AcademicExperience.institutionName,
+degreeType: AcademicExperience.degreeType,
+fieldOfStudy: AcademicExperience.fieldOfStudy,
+startDate: AcademicExperience.startDate,
+endDate: AcademicExperience.endDate,
+userId: AcademicExperience.userId
+}
+}
+
+export namespace AcademicExperience {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "AcademicExperience"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface institutionName   {
+kind: "OutputField",
+name: "institutionName",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* E.g. "Bachelor of Science"
+*/
+ export  interface degreeType   {
+kind: "OutputField",
+name: "degreeType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* E.g. "Computer Science"
+*/
+ export  interface fieldOfStudy   {
+kind: "OutputField",
+name: "fieldOfStudy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* If no start date is provided, startDate is null.
+*/
+ export  interface startDate   {
+kind: "OutputField",
+name: "startDate",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* If the experience is ongoing, endDate is null.
+*/
+ export  interface endDate   {
+kind: "OutputField",
+name: "endDate",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                         BusinessExperience
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BusinessExperience   {
+kind: "Object",
+name: "BusinessExperience",
+fields: {
+__typename: BusinessExperience.__typename,
+id: BusinessExperience.id,
+adminNotes: BusinessExperience.adminNotes,
+events: BusinessExperience.events,
+metadata: BusinessExperience.metadata,
+createdAt: BusinessExperience.createdAt,
+createdBy: BusinessExperience.createdBy,
+updatedAt: BusinessExperience.updatedAt,
+updatedBy: BusinessExperience.updatedBy,
+deletedAt: BusinessExperience.deletedAt,
+deletedBy: BusinessExperience.deletedBy,
+businessName: BusinessExperience.businessName,
+jobTitle: BusinessExperience.jobTitle,
+city: BusinessExperience.city,
+state: BusinessExperience.state,
+country: BusinessExperience.country,
+startDate: BusinessExperience.startDate,
+endDate: BusinessExperience.endDate,
+userId: BusinessExperience.userId
+}
+}
+
+export namespace BusinessExperience {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "BusinessExperience"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface businessName   {
+kind: "OutputField",
+name: "businessName",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface jobTitle   {
+kind: "OutputField",
+name: "jobTitle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface city   {
+kind: "OutputField",
+name: "city",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface state   {
+kind: "OutputField",
+name: "state",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface country   {
+kind: "OutputField",
+name: "country",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* If no start date is provided, startDate is null.
+*/
+ export  interface startDate   {
+kind: "OutputField",
+name: "startDate",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* If the experience is ongoing, endDate is null.
+*/
+ export  interface endDate   {
+kind: "OutputField",
+name: "endDate",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                           UploadedAsset
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UploadedAsset   {
+kind: "Object",
+name: "UploadedAsset",
+fields: {
+__typename: UploadedAsset.__typename,
+id: UploadedAsset.id,
+adminNotes: UploadedAsset.adminNotes,
+events: UploadedAsset.events,
+metadata: UploadedAsset.metadata,
+createdAt: UploadedAsset.createdAt,
+createdBy: UploadedAsset.createdBy,
+updatedAt: UploadedAsset.updatedAt,
+updatedBy: UploadedAsset.updatedBy,
+deletedAt: UploadedAsset.deletedAt,
+deletedBy: UploadedAsset.deletedBy,
+ownerId: UploadedAsset.ownerId,
+ownerModelType: UploadedAsset.ownerModelType,
+assetType: UploadedAsset.assetType,
+hostingService: UploadedAsset.hostingService,
+url: UploadedAsset.url,
+path: UploadedAsset.path,
+s3Bucket: UploadedAsset.s3Bucket,
+s3Key: UploadedAsset.s3Key,
+mimeType: UploadedAsset.mimeType,
+uploadUrl: UploadedAsset.uploadUrl,
+uploadUrlExpiresAt: UploadedAsset.uploadUrlExpiresAt,
+uploadedAt: UploadedAsset.uploadedAt,
+expiresAt: UploadedAsset.expiresAt
+}
+}
+
+export namespace UploadedAsset {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UploadedAsset"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface ownerId   {
+kind: "OutputField",
+name: "ownerId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface ownerModelType   {
+kind: "OutputField",
+name: "ownerModelType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ModelType
+}
+
+ export  interface assetType   {
+kind: "OutputField",
+name: "assetType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UploadedAssetType
+}
+
+ export  interface hostingService   {
+kind: "OutputField",
+name: "hostingService",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AssetHostingService
+}
+
+ export  interface url   {
+kind: "OutputField",
+name: "url",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface path   {
+kind: "OutputField",
+name: "path",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface s3Bucket   {
+kind: "OutputField",
+name: "s3Bucket",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface s3Key   {
+kind: "OutputField",
+name: "s3Key",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mimeType   {
+kind: "OutputField",
+name: "mimeType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface uploadUrl   {
+kind: "OutputField",
+name: "uploadUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface uploadUrlExpiresAt   {
+kind: "OutputField",
+name: "uploadUrlExpiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface uploadedAt   {
+kind: "OutputField",
+name: "uploadedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface expiresAt   {
+kind: "OutputField",
+name: "expiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                     UserProfileRoleHistoryItem
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserProfileRoleHistoryItem   {
+kind: "Object",
+name: "UserProfileRoleHistoryItem",
+fields: {
+__typename: UserProfileRoleHistoryItem.__typename,
+newRole: UserProfileRoleHistoryItem.newRole,
+createdAt: UserProfileRoleHistoryItem.createdAt
+}
+}
+
+export namespace UserProfileRoleHistoryItem {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserProfileRoleHistoryItem"
+}
+}
+
+ export  interface newRole   {
+kind: "OutputField",
+name: "newRole",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserProfileRole
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                              Country
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Country   {
+kind: "Object",
+name: "Country",
+fields: {
+__typename: Country.__typename,
+id: Country.id,
+adminNotes: Country.adminNotes,
+events: Country.events,
+metadata: Country.metadata,
+createdAt: Country.createdAt,
+createdBy: Country.createdBy,
+updatedAt: Country.updatedAt,
+updatedBy: Country.updatedBy,
+deletedAt: Country.deletedAt,
+deletedBy: Country.deletedBy,
+textId: Country.textId,
+parentTextId: Country.parentTextId,
+isParent: Country.isParent,
+optionType: Country.optionType,
+value: Country.value,
+translatedValue: Country.translatedValue,
+supportedLanguages: Country.supportedLanguages,
+materialIconName: Country.materialIconName,
+description: Country.description,
+translatedDescription: Country.translatedDescription,
+language: Country.language,
+mm2Id: Country.mm2Id,
+mm2Value: Country.mm2Value,
+syncedWithMm2At: Country.syncedWithMm2At,
+mm2TextId: Country.mm2TextId,
+mm3TextId: Country.mm3TextId,
+childOptions: Country.childOptions,
+parentOption: Country.parentOption,
+alpha2Key: Country.alpha2Key,
+alpha3Key: Country.alpha3Key,
+phoneCode: Country.phoneCode
+}
+}
+
+export namespace Country {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Country"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface alpha2Key   {
+kind: "OutputField",
+name: "alpha2Key",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface alpha3Key   {
+kind: "OutputField",
+name: "alpha3Key",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneCode   {
+kind: "OutputField",
+name: "phoneCode",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                              Language
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Language   {
+kind: "Object",
+name: "Language",
+fields: {
+__typename: Language.__typename,
+id: Language.id,
+adminNotes: Language.adminNotes,
+events: Language.events,
+metadata: Language.metadata,
+createdAt: Language.createdAt,
+createdBy: Language.createdBy,
+updatedAt: Language.updatedAt,
+updatedBy: Language.updatedBy,
+deletedAt: Language.deletedAt,
+deletedBy: Language.deletedBy,
+textId: Language.textId,
+parentTextId: Language.parentTextId,
+isParent: Language.isParent,
+optionType: Language.optionType,
+value: Language.value,
+translatedValue: Language.translatedValue,
+supportedLanguages: Language.supportedLanguages,
+materialIconName: Language.materialIconName,
+description: Language.description,
+translatedDescription: Language.translatedDescription,
+language: Language.language,
+mm2Id: Language.mm2Id,
+mm2Value: Language.mm2Value,
+syncedWithMm2At: Language.syncedWithMm2At,
+mm2TextId: Language.mm2TextId,
+mm3TextId: Language.mm3TextId,
+childOptions: Language.childOptions,
+parentOption: Language.parentOption,
+shortLangCode: Language.shortLangCode,
+longLangCode: Language.longLangCode,
+isUiLanguage: Language.isUiLanguage,
+isRtl: Language.isRtl
+}
+}
+
+export namespace Language {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Language"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+/**
+* ISO 639-1, 2 letter language code. e.g. "en" for English.
+*/
+ export  interface shortLangCode   {
+kind: "OutputField",
+name: "shortLangCode",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* ISO 639-2, 3 letter language code. e.g. "eng" for English.
+*/
+ export  interface longLangCode   {
+kind: "OutputField",
+name: "longLangCode",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isUiLanguage   {
+kind: "OutputField",
+name: "isUiLanguage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Right to left text flow.
+*/
+ export  interface isRtl   {
+kind: "OutputField",
+name: "isRtl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                            Notification
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Notification   {
+kind: "Object",
+name: "Notification",
+fields: {
+__typename: Notification.__typename,
+id: Notification.id,
+adminNotes: Notification.adminNotes,
+events: Notification.events,
+metadata: Notification.metadata,
+createdAt: Notification.createdAt,
+createdBy: Notification.createdBy,
+updatedAt: Notification.updatedAt,
+updatedBy: Notification.updatedBy,
+deletedAt: Notification.deletedAt,
+deletedBy: Notification.deletedBy,
+notificationType: Notification.notificationType,
+templateId: Notification.templateId,
+recipientId: Notification.recipientId,
+multiStepActionId: Notification.multiStepActionId,
+initiatorId: Notification.initiatorId,
+replyingToId: Notification.replyingToId,
+title: Notification.title,
+messageText: Notification.messageText,
+shortMessageText: Notification.shortMessageText,
+htmlMessage: Notification.htmlMessage,
+language: Notification.language,
+isTranslated: Notification.isTranslated,
+appLink: Notification.appLink,
+action0: Notification.action0,
+action1: Notification.action1,
+action2: Notification.action2,
+actionTaken: Notification.actionTaken,
+sendEmail: Notification.sendEmail,
+sendInAppMessage: Notification.sendInAppMessage,
+sendPushNotification: Notification.sendPushNotification,
+sendSms: Notification.sendSms,
+emailSentAt: Notification.emailSentAt,
+inAppMessageSentAt: Notification.inAppMessageSentAt,
+inAppMessageReceivedAt: Notification.inAppMessageReceivedAt,
+pushNotificationSentAt: Notification.pushNotificationSentAt,
+smsSentAt: Notification.smsSentAt,
+emailSendReport: Notification.emailSendReport,
+pushNotificationSendReport: Notification.pushNotificationSendReport,
+smsSendReport: Notification.smsSendReport,
+sentMessagesCount: Notification.sentMessagesCount,
+context: Notification.context
+}
+}
+
+export namespace Notification {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Notification"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface notificationType   {
+kind: "OutputField",
+name: "notificationType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationType
+}
+
+ export  interface templateId   {
+kind: "OutputField",
+name: "templateId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface recipientId   {
+kind: "OutputField",
+name: "recipientId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface multiStepActionId   {
+kind: "OutputField",
+name: "multiStepActionId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface initiatorId   {
+kind: "OutputField",
+name: "initiatorId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface replyingToId   {
+kind: "OutputField",
+name: "replyingToId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface title   {
+kind: "OutputField",
+name: "title",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageText   {
+kind: "OutputField",
+name: "messageText",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageText   {
+kind: "OutputField",
+name: "shortMessageText",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessage   {
+kind: "OutputField",
+name: "htmlMessage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+ export  interface isTranslated   {
+kind: "OutputField",
+name: "isTranslated",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface appLink   {
+kind: "OutputField",
+name: "appLink",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface action0   {
+kind: "OutputField",
+name: "action0",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface action1   {
+kind: "OutputField",
+name: "action1",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface action2   {
+kind: "OutputField",
+name: "action2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface actionTaken   {
+kind: "OutputField",
+name: "actionTaken",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface sendEmail   {
+kind: "OutputField",
+name: "sendEmail",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendInAppMessage   {
+kind: "OutputField",
+name: "sendInAppMessage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendPushNotification   {
+kind: "OutputField",
+name: "sendPushNotification",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendSms   {
+kind: "OutputField",
+name: "sendSms",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface emailSentAt   {
+kind: "OutputField",
+name: "emailSentAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inAppMessageSentAt   {
+kind: "OutputField",
+name: "inAppMessageSentAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inAppMessageReceivedAt   {
+kind: "OutputField",
+name: "inAppMessageReceivedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface pushNotificationSentAt   {
+kind: "OutputField",
+name: "pushNotificationSentAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface smsSentAt   {
+kind: "OutputField",
+name: "smsSentAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface emailSendReport   {
+kind: "OutputField",
+name: "emailSendReport",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface pushNotificationSendReport   {
+kind: "OutputField",
+name: "pushNotificationSendReport",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface smsSendReport   {
+kind: "OutputField",
+name: "smsSendReport",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface sentMessagesCount   {
+kind: "OutputField",
+name: "sentMessagesCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface context   {
+kind: "OutputField",
+name: "context",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$NotificationContext
+}
+}
+
+//                                        NotificationContext
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationContext   {
+kind: "Object",
+name: "NotificationContext",
+fields: {
+__typename: NotificationContext.__typename,
+title: NotificationContext.title,
+senderId: NotificationContext.senderId,
+senderFirstName: NotificationContext.senderFirstName,
+senderLastName: NotificationContext.senderLastName,
+senderFullName: NotificationContext.senderFullName,
+senderEmail: NotificationContext.senderEmail,
+senderPhoneNumber: NotificationContext.senderPhoneNumber,
+recipientId: NotificationContext.recipientId,
+recipientFirstName: NotificationContext.recipientFirstName,
+recipientLastName: NotificationContext.recipientLastName,
+recipientFullName: NotificationContext.recipientFullName,
+recipientEmail: NotificationContext.recipientEmail,
+recipientPhoneNumber: NotificationContext.recipientPhoneNumber,
+displayedUserId: NotificationContext.displayedUserId,
+displayedUserFirstName: NotificationContext.displayedUserFirstName,
+displayedUserLastName: NotificationContext.displayedUserLastName,
+displayedUserFullName: NotificationContext.displayedUserFullName,
+displayedUserEmail: NotificationContext.displayedUserEmail,
+displayedUserPhoneNumber: NotificationContext.displayedUserPhoneNumber,
+displayedUserCountry: NotificationContext.displayedUserCountry,
+displayedUserBusinessOrJobTitle: NotificationContext.displayedUserBusinessOrJobTitle,
+appLink: NotificationContext.appLink,
+locale: NotificationContext.locale,
+textDirection: NotificationContext.textDirection,
+confirmToken: NotificationContext.confirmToken
+}
+}
+
+export namespace NotificationContext {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "NotificationContext"
+}
+}
+
+ export  interface title   {
+kind: "OutputField",
+name: "title",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderId   {
+kind: "OutputField",
+name: "senderId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderFirstName   {
+kind: "OutputField",
+name: "senderFirstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderLastName   {
+kind: "OutputField",
+name: "senderLastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderFullName   {
+kind: "OutputField",
+name: "senderFullName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderEmail   {
+kind: "OutputField",
+name: "senderEmail",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderPhoneNumber   {
+kind: "OutputField",
+name: "senderPhoneNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface recipientId   {
+kind: "OutputField",
+name: "recipientId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface recipientFirstName   {
+kind: "OutputField",
+name: "recipientFirstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface recipientLastName   {
+kind: "OutputField",
+name: "recipientLastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface recipientFullName   {
+kind: "OutputField",
+name: "recipientFullName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface recipientEmail   {
+kind: "OutputField",
+name: "recipientEmail",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface recipientPhoneNumber   {
+kind: "OutputField",
+name: "recipientPhoneNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The user id of the user who appears in a notification
+*/
+ export  interface displayedUserId   {
+kind: "OutputField",
+name: "displayedUserId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The first name of the user who appears in a notification
+*/
+ export  interface displayedUserFirstName   {
+kind: "OutputField",
+name: "displayedUserFirstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface displayedUserLastName   {
+kind: "OutputField",
+name: "displayedUserLastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface displayedUserFullName   {
+kind: "OutputField",
+name: "displayedUserFullName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface displayedUserEmail   {
+kind: "OutputField",
+name: "displayedUserEmail",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface displayedUserPhoneNumber   {
+kind: "OutputField",
+name: "displayedUserPhoneNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface displayedUserCountry   {
+kind: "OutputField",
+name: "displayedUserCountry",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface displayedUserBusinessOrJobTitle   {
+kind: "OutputField",
+name: "displayedUserBusinessOrJobTitle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface appLink   {
+kind: "OutputField",
+name: "appLink",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface locale   {
+kind: "OutputField",
+name: "locale",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface textDirection   {
+kind: "OutputField",
+name: "textDirection",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface confirmToken   {
+kind: "OutputField",
+name: "confirmToken",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                              Channel
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Channel   {
+kind: "Object",
+name: "Channel",
+fields: {
+__typename: Channel.__typename,
+id: Channel.id,
+adminNotes: Channel.adminNotes,
+events: Channel.events,
+metadata: Channel.metadata,
+createdAt: Channel.createdAt,
+createdBy: Channel.createdBy,
+updatedAt: Channel.updatedAt,
+updatedBy: Channel.updatedBy,
+deletedAt: Channel.deletedAt,
+deletedBy: Channel.deletedBy,
+name: Channel.name,
+topic: Channel.topic,
+description: Channel.description,
+tags: Channel.tags,
+channelType: Channel.channelType,
+statuses: Channel.statuses,
+userIds: Channel.userIds,
+pausedAt: Channel.pausedAt,
+pausedBy: Channel.pausedBy,
+suspendedAt: Channel.suspendedAt,
+suspendedBy: Channel.suspendedBy,
+lockedAt: Channel.lockedAt,
+lockedBy: Channel.lockedBy,
+archivedAt: Channel.archivedAt,
+archivedBy: Channel.archivedBy,
+assumedMentorId: Channel.assumedMentorId,
+mm2Id: Channel.mm2Id,
+syncedWithMm2At: Channel.syncedWithMm2At,
+creator: Channel.creator,
+status: Channel.status,
+invitations: Channel.invitations,
+isArchivedForMe: Channel.isArchivedForMe,
+latestMessage: Channel.latestMessage,
+messages: Channel.messages,
+myContacts: Channel.myContacts,
+participants: Channel.participants,
+pendingInvitations: Channel.pendingInvitations
+}
+}
+
+export namespace Channel {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Channel"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface name   {
+kind: "OutputField",
+name: "name",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface topic   {
+kind: "OutputField",
+name: "topic",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface tags   {
+kind: "OutputField",
+name: "tags",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface channelType   {
+kind: "OutputField",
+name: "channelType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelType
+}
+
+ export  interface statuses   {
+kind: "OutputField",
+name: "statuses",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BgChannelStatus
+}
+
+ export  interface userIds   {
+kind: "OutputField",
+name: "userIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface pausedAt   {
+kind: "OutputField",
+name: "pausedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface pausedBy   {
+kind: "OutputField",
+name: "pausedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface suspendedAt   {
+kind: "OutputField",
+name: "suspendedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "OutputField",
+name: "suspendedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface lockedAt   {
+kind: "OutputField",
+name: "lockedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface lockedBy   {
+kind: "OutputField",
+name: "lockedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface archivedAt   {
+kind: "OutputField",
+name: "archivedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface archivedBy   {
+kind: "OutputField",
+name: "archivedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface assumedMentorId   {
+kind: "OutputField",
+name: "assumedMentorId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface creator   {
+kind: "OutputField",
+name: "creator",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$User
+}
+
+ export  interface status   {
+kind: "OutputField",
+name: "status",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BgChannelStatus
+}
+
+ export  interface invitations   {
+kind: "OutputField",
+name: "invitations",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface isArchivedForMe   {
+kind: "OutputField",
+name: "isArchivedForMe",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface latestMessage   {
+kind: "OutputField",
+name: "latestMessage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelMessage
+}
+
+ export  interface messages   {
+kind: "OutputField",
+name: "messages",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelMessage
+}
+
+ export  interface myContacts   {
+kind: "OutputField",
+name: "myContacts",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Contact
+}
+
+ export  interface participants   {
+kind: "OutputField",
+name: "participants",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelParticipant
+}
+
+ export  interface pendingInvitations   {
+kind: "OutputField",
+name: "pendingInvitations",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+}
+
+//                                          ChannelMetadata
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMetadata   {
+kind: "Object",
+name: "ChannelMetadata",
+fields: {
+__typename: ChannelMetadata.__typename,
+updatedAt: ChannelMetadata.updatedAt,
+unseenMessageInfo: ChannelMetadata.unseenMessageInfo,
+channelInvitationAccepted: ChannelMetadata.channelInvitationAccepted,
+messagesSentByCreatorCount: ChannelMetadata.messagesSentByCreatorCount,
+messagesSentByFirstParticipantCount: ChannelMetadata.messagesSentByFirstParticipantCount
+}
+}
+
+export namespace ChannelMetadata {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelMetadata"
+}
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface unseenMessageInfo   {
+kind: "OutputField",
+name: "unseenMessageInfo",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BgLatestUnseenChannelMessageInfo
+}
+
+ export  interface channelInvitationAccepted   {
+kind: "OutputField",
+name: "channelInvitationAccepted",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface messagesSentByCreatorCount   {
+kind: "OutputField",
+name: "messagesSentByCreatorCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface messagesSentByFirstParticipantCount   {
+kind: "OutputField",
+name: "messagesSentByFirstParticipantCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+}
+
+//                                  BgLatestUnseenChannelMessageInfo
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BgLatestUnseenChannelMessageInfo   {
+kind: "Object",
+name: "BgLatestUnseenChannelMessageInfo",
+fields: {
+__typename: BgLatestUnseenChannelMessageInfo.__typename,
+userId: BgLatestUnseenChannelMessageInfo.userId,
+createdAt: BgLatestUnseenChannelMessageInfo.createdAt
+}
+}
+
+export namespace BgLatestUnseenChannelMessageInfo {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "BgLatestUnseenChannelMessageInfo"
+}
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                          BgChannelStatus
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BgChannelStatus   {
+kind: "Object",
+name: "BgChannelStatus",
+fields: {
+__typename: BgChannelStatus.__typename,
+userId: BgChannelStatus.userId,
+archivedAt: BgChannelStatus.archivedAt
+}
+}
+
+export namespace BgChannelStatus {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "BgChannelStatus"
+}
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface archivedAt   {
+kind: "OutputField",
+name: "archivedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                         ChannelInvitation
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelInvitation   {
+kind: "Object",
+name: "ChannelInvitation",
+fields: {
+__typename: ChannelInvitation.__typename,
+id: ChannelInvitation.id,
+adminNotes: ChannelInvitation.adminNotes,
+events: ChannelInvitation.events,
+metadata: ChannelInvitation.metadata,
+createdAt: ChannelInvitation.createdAt,
+createdBy: ChannelInvitation.createdBy,
+updatedAt: ChannelInvitation.updatedAt,
+updatedBy: ChannelInvitation.updatedBy,
+deletedAt: ChannelInvitation.deletedAt,
+deletedBy: ChannelInvitation.deletedBy,
+channelId: ChannelInvitation.channelId,
+recipientId: ChannelInvitation.recipientId,
+channelName: ChannelInvitation.channelName,
+channelTopic: ChannelInvitation.channelTopic,
+messageText: ChannelInvitation.messageText,
+declineReasonTextId: ChannelInvitation.declineReasonTextId,
+dismissedFromInboxBySenderAt: ChannelInvitation.dismissedFromInboxBySenderAt,
+dismissedFromInboxByRecipientAt: ChannelInvitation.dismissedFromInboxByRecipientAt,
+readByRecipientAt: ChannelInvitation.readByRecipientAt,
+status: ChannelInvitation.status,
+suspendedAt: ChannelInvitation.suspendedAt,
+suspendedBy: ChannelInvitation.suspendedBy,
+userSearchId: ChannelInvitation.userSearchId,
+searchRank: ChannelInvitation.searchRank,
+mm2ConversationId: ChannelInvitation.mm2ConversationId,
+mm2Id: ChannelInvitation.mm2Id,
+syncedWithMm2At: ChannelInvitation.syncedWithMm2At,
+channel: ChannelInvitation.channel,
+declineReason: ChannelInvitation.declineReason,
+recipient: ChannelInvitation.recipient,
+sender: ChannelInvitation.sender
+}
+}
+
+export namespace ChannelInvitation {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelInvitation"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "OutputField",
+name: "channelId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface recipientId   {
+kind: "OutputField",
+name: "recipientId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelName   {
+kind: "OutputField",
+name: "channelName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface channelTopic   {
+kind: "OutputField",
+name: "channelTopic",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageText   {
+kind: "OutputField",
+name: "messageText",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface declineReasonTextId   {
+kind: "OutputField",
+name: "declineReasonTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface dismissedFromInboxBySenderAt   {
+kind: "OutputField",
+name: "dismissedFromInboxBySenderAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface dismissedFromInboxByRecipientAt   {
+kind: "OutputField",
+name: "dismissedFromInboxByRecipientAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface readByRecipientAt   {
+kind: "OutputField",
+name: "readByRecipientAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface status   {
+kind: "OutputField",
+name: "status",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelInvitationStatus
+}
+
+ export  interface suspendedAt   {
+kind: "OutputField",
+name: "suspendedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "OutputField",
+name: "suspendedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userSearchId   {
+kind: "OutputField",
+name: "userSearchId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchRank   {
+kind: "OutputField",
+name: "searchRank",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2ConversationId   {
+kind: "OutputField",
+name: "mm2ConversationId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer. Mm2 message ID.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface channel   {
+kind: "OutputField",
+name: "channel",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface declineReason   {
+kind: "OutputField",
+name: "declineReason",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DeclineChannelInvitationReason
+}
+
+ export  interface recipient   {
+kind: "OutputField",
+name: "recipient",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$User
+}
+
+ export  interface sender   {
+kind: "OutputField",
+name: "sender",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$User
+}
+}
+
+//                                   DeclineChannelInvitationReason
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface DeclineChannelInvitationReason   {
+kind: "Object",
+name: "DeclineChannelInvitationReason",
+fields: {
+__typename: DeclineChannelInvitationReason.__typename,
+id: DeclineChannelInvitationReason.id,
+adminNotes: DeclineChannelInvitationReason.adminNotes,
+events: DeclineChannelInvitationReason.events,
+metadata: DeclineChannelInvitationReason.metadata,
+createdAt: DeclineChannelInvitationReason.createdAt,
+createdBy: DeclineChannelInvitationReason.createdBy,
+updatedAt: DeclineChannelInvitationReason.updatedAt,
+updatedBy: DeclineChannelInvitationReason.updatedBy,
+deletedAt: DeclineChannelInvitationReason.deletedAt,
+deletedBy: DeclineChannelInvitationReason.deletedBy,
+textId: DeclineChannelInvitationReason.textId,
+parentTextId: DeclineChannelInvitationReason.parentTextId,
+isParent: DeclineChannelInvitationReason.isParent,
+optionType: DeclineChannelInvitationReason.optionType,
+value: DeclineChannelInvitationReason.value,
+translatedValue: DeclineChannelInvitationReason.translatedValue,
+supportedLanguages: DeclineChannelInvitationReason.supportedLanguages,
+materialIconName: DeclineChannelInvitationReason.materialIconName,
+description: DeclineChannelInvitationReason.description,
+translatedDescription: DeclineChannelInvitationReason.translatedDescription,
+language: DeclineChannelInvitationReason.language,
+mm2Id: DeclineChannelInvitationReason.mm2Id,
+mm2Value: DeclineChannelInvitationReason.mm2Value,
+syncedWithMm2At: DeclineChannelInvitationReason.syncedWithMm2At,
+mm2TextId: DeclineChannelInvitationReason.mm2TextId,
+mm3TextId: DeclineChannelInvitationReason.mm3TextId,
+childOptions: DeclineChannelInvitationReason.childOptions,
+parentOption: DeclineChannelInvitationReason.parentOption
+}
+}
+
+export namespace DeclineChannelInvitationReason {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "DeclineChannelInvitationReason"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                           ChannelMessage
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMessage   {
+kind: "Object",
+name: "ChannelMessage",
+fields: {
+__typename: ChannelMessage.__typename,
+id: ChannelMessage.id,
+adminNotes: ChannelMessage.adminNotes,
+events: ChannelMessage.events,
+metadata: ChannelMessage.metadata,
+createdAt: ChannelMessage.createdAt,
+createdBy: ChannelMessage.createdBy,
+updatedAt: ChannelMessage.updatedAt,
+updatedBy: ChannelMessage.updatedBy,
+deletedAt: ChannelMessage.deletedAt,
+deletedBy: ChannelMessage.deletedBy,
+channelId: ChannelMessage.channelId,
+replyToMessageId: ChannelMessage.replyToMessageId,
+channelMessageType: ChannelMessage.channelMessageType,
+messageText: ChannelMessage.messageText,
+statuses: ChannelMessage.statuses,
+editedAt: ChannelMessage.editedAt,
+suspendedAt: ChannelMessage.suspendedAt,
+suspendedBy: ChannelMessage.suspendedBy,
+mm2ConversationId: ChannelMessage.mm2ConversationId,
+mm2Id: ChannelMessage.mm2Id,
+syncedWithMm2At: ChannelMessage.syncedWithMm2At,
+channel: ChannelMessage.channel,
+sender: ChannelMessage.sender
+}
+}
+
+export namespace ChannelMessage {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelMessage"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelMessageMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "OutputField",
+name: "channelId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface replyToMessageId   {
+kind: "OutputField",
+name: "replyToMessageId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelMessageType   {
+kind: "OutputField",
+name: "channelMessageType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelMessageType
+}
+
+ export  interface messageText   {
+kind: "OutputField",
+name: "messageText",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface statuses   {
+kind: "OutputField",
+name: "statuses",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelMessageStatus
+}
+
+ export  interface editedAt   {
+kind: "OutputField",
+name: "editedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedAt   {
+kind: "OutputField",
+name: "suspendedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "OutputField",
+name: "suspendedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2ConversationId   {
+kind: "OutputField",
+name: "mm2ConversationId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer. Mm2 message ID.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface channel   {
+kind: "OutputField",
+name: "channel",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface sender   {
+kind: "OutputField",
+name: "sender",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$User
+}
+}
+
+//                                       ChannelMessageMetadata
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMessageMetadata   {
+kind: "Object",
+name: "ChannelMessageMetadata",
+fields: {
+__typename: ChannelMessageMetadata.__typename,
+updatedAt: ChannelMessageMetadata.updatedAt,
+senderUserHandle: ChannelMessageMetadata.senderUserHandle,
+senderFirstName: ChannelMessageMetadata.senderFirstName,
+senderLastName: ChannelMessageMetadata.senderLastName,
+senderAvatarUrl: ChannelMessageMetadata.senderAvatarUrl
+}
+}
+
+export namespace ChannelMessageMetadata {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelMessageMetadata"
+}
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface senderUserHandle   {
+kind: "OutputField",
+name: "senderUserHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderFirstName   {
+kind: "OutputField",
+name: "senderFirstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderLastName   {
+kind: "OutputField",
+name: "senderLastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderAvatarUrl   {
+kind: "OutputField",
+name: "senderAvatarUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                        ChannelMessageStatus
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMessageStatus   {
+kind: "Object",
+name: "ChannelMessageStatus",
+fields: {
+__typename: ChannelMessageStatus.__typename,
+userId: ChannelMessageStatus.userId,
+isInArchivedChannel: ChannelMessageStatus.isInArchivedChannel,
+receivedAt: ChannelMessageStatus.receivedAt,
+seenAt: ChannelMessageStatus.seenAt
+}
+}
+
+export namespace ChannelMessageStatus {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelMessageStatus"
+}
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface isInArchivedChannel   {
+kind: "OutputField",
+name: "isInArchivedChannel",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface receivedAt   {
+kind: "OutputField",
+name: "receivedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface seenAt   {
+kind: "OutputField",
+name: "seenAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                         ChannelParticipant
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelParticipant   {
+kind: "Object",
+name: "ChannelParticipant",
+fields: {
+__typename: ChannelParticipant.__typename,
+id: ChannelParticipant.id,
+adminNotes: ChannelParticipant.adminNotes,
+events: ChannelParticipant.events,
+metadata: ChannelParticipant.metadata,
+createdAt: ChannelParticipant.createdAt,
+createdBy: ChannelParticipant.createdBy,
+updatedAt: ChannelParticipant.updatedAt,
+updatedBy: ChannelParticipant.updatedBy,
+deletedAt: ChannelParticipant.deletedAt,
+deletedBy: ChannelParticipant.deletedBy,
+channelId: ChannelParticipant.channelId,
+userId: ChannelParticipant.userId,
+invitedBy: ChannelParticipant.invitedBy,
+channelName: ChannelParticipant.channelName,
+role: ChannelParticipant.role,
+suspendedAt: ChannelParticipant.suspendedAt,
+suspendedBy: ChannelParticipant.suspendedBy,
+channel: ChannelParticipant.channel,
+myContact: ChannelParticipant.myContact,
+user: ChannelParticipant.user
+}
+}
+
+export namespace ChannelParticipant {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ChannelParticipant"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BgChannelParticipantMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "OutputField",
+name: "channelId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface invitedBy   {
+kind: "OutputField",
+name: "invitedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelName   {
+kind: "OutputField",
+name: "channelName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface role   {
+kind: "OutputField",
+name: "role",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelParticipantRole
+}
+
+ export  interface suspendedAt   {
+kind: "OutputField",
+name: "suspendedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "OutputField",
+name: "suspendedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channel   {
+kind: "OutputField",
+name: "channel",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface myContact   {
+kind: "OutputField",
+name: "myContact",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Contact
+}
+
+ export  interface user   {
+kind: "OutputField",
+name: "user",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserListItem
+}
+}
+
+//                                    BgChannelParticipantMetadata
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BgChannelParticipantMetadata   {
+kind: "Object",
+name: "BgChannelParticipantMetadata",
+fields: {
+__typename: BgChannelParticipantMetadata.__typename,
+updatedAt: BgChannelParticipantMetadata.updatedAt,
+userHandle: BgChannelParticipantMetadata.userHandle,
+firstName: BgChannelParticipantMetadata.firstName,
+lastName: BgChannelParticipantMetadata.lastName,
+nickname: BgChannelParticipantMetadata.nickname,
+avatarUrl: BgChannelParticipantMetadata.avatarUrl,
+sentMessageCount: BgChannelParticipantMetadata.sentMessageCount,
+unseenMessageCount: BgChannelParticipantMetadata.unseenMessageCount,
+unseenSystemMessageCount: BgChannelParticipantMetadata.unseenSystemMessageCount
+}
+}
+
+export namespace BgChannelParticipantMetadata {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "BgChannelParticipantMetadata"
+}
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userHandle   {
+kind: "OutputField",
+name: "userHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface firstName   {
+kind: "OutputField",
+name: "firstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "OutputField",
+name: "lastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface nickname   {
+kind: "OutputField",
+name: "nickname",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "OutputField",
+name: "avatarUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface sentMessageCount   {
+kind: "OutputField",
+name: "sentMessageCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Float
+}
+
+ export  interface unseenMessageCount   {
+kind: "OutputField",
+name: "unseenMessageCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Float
+}
+
+ export  interface unseenSystemMessageCount   {
+kind: "OutputField",
+name: "unseenSystemMessageCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Float
+}
+}
+
+//                                            UserListItem
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserListItem   {
+kind: "Object",
+name: "UserListItem",
+fields: {
+__typename: UserListItem.__typename,
+id: UserListItem.id,
+createdAt: UserListItem.createdAt,
+updatedAt: UserListItem.updatedAt,
+deletedAt: UserListItem.deletedAt,
+userHandle: UserListItem.userHandle,
+firstName: UserListItem.firstName,
+lastName: UserListItem.lastName,
+avatarUrl: UserListItem.avatarUrl,
+timezone: UserListItem.timezone,
+discoverable: UserListItem.discoverable,
+trustLevel: UserListItem.trustLevel,
+latestActivityAt: UserListItem.latestActivityAt,
+userBlocks: UserListItem.userBlocks,
+inactivatedAt: UserListItem.inactivatedAt,
+suspendedAt: UserListItem.suspendedAt,
+cityOfResidence: UserListItem.cityOfResidence,
+regionOfResidence: UserListItem.regionOfResidence,
+websites: UserListItem.websites,
+seeksHelp: UserListItem.seeksHelp,
+offersHelp: UserListItem.offersHelp,
+yearsManagementExperience: UserListItem.yearsManagementExperience,
+yearsOwnershipExperience: UserListItem.yearsOwnershipExperience,
+academicExperiences: UserListItem.academicExperiences,
+businessExperiences: UserListItem.businessExperiences,
+isOnVacation: UserListItem.isOnVacation,
+mentor: UserListItem.mentor,
+mentee: UserListItem.mentee,
+groupMemberships: UserListItem.groupMemberships,
+companies: UserListItem.companies,
+countryOfOrigin: UserListItem.countryOfOrigin,
+countryOfResidence: UserListItem.countryOfResidence,
+educationLevel: UserListItem.educationLevel,
+endorsements: UserListItem.endorsements,
+groups: UserListItem.groups,
+profileCompletionPercentage: UserListItem.profileCompletionPercentage,
+profileRole: UserListItem.profileRole,
+pronouns: UserListItem.pronouns,
+pronounsDisplay: UserListItem.pronounsDisplay
+}
+}
+
+export namespace UserListItem {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserListItem"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userHandle   {
+kind: "OutputField",
+name: "userHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface firstName   {
+kind: "OutputField",
+name: "firstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "OutputField",
+name: "lastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "OutputField",
+name: "avatarUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "OutputField",
+name: "timezone",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.
+*/
+ export  interface discoverable   {
+kind: "OutputField",
+name: "discoverable",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface trustLevel   {
+kind: "OutputField",
+name: "trustLevel",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface latestActivityAt   {
+kind: "OutputField",
+name: "latestActivityAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userBlocks   {
+kind: "OutputField",
+name: "userBlocks",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserBlock
+}
+
+ export  interface inactivatedAt   {
+kind: "OutputField",
+name: "inactivatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedAt   {
+kind: "OutputField",
+name: "suspendedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface cityOfResidence   {
+kind: "OutputField",
+name: "cityOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfResidence   {
+kind: "OutputField",
+name: "regionOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface websites   {
+kind: "OutputField",
+name: "websites",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$LabeledStringValue
+}
+
+ export  interface seeksHelp   {
+kind: "OutputField",
+name: "seeksHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface offersHelp   {
+kind: "OutputField",
+name: "offersHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface yearsManagementExperience   {
+kind: "OutputField",
+name: "yearsManagementExperience",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface yearsOwnershipExperience   {
+kind: "OutputField",
+name: "yearsOwnershipExperience",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface academicExperiences   {
+kind: "OutputField",
+name: "academicExperiences",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AcademicExperience
+}
+
+ export  interface businessExperiences   {
+kind: "OutputField",
+name: "businessExperiences",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BusinessExperience
+}
+
+ export  interface isOnVacation   {
+kind: "OutputField",
+name: "isOnVacation",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is a copy of the mentor group membership.
+*/
+ export  interface mentor   {
+kind: "OutputField",
+name: "mentor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MentorsGroupMembership
+}
+
+/**
+* This attribute is a copy of the mentee group membership.
+*/
+ export  interface mentee   {
+kind: "OutputField",
+name: "mentee",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MenteesGroupMembership
+}
+
+ export  interface groupMemberships   {
+kind: "OutputField",
+name: "groupMemberships",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IGroupMembership
+}
+
+ export  interface companies   {
+kind: "OutputField",
+name: "companies",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Company
+}
+
+ export  interface countryOfOrigin   {
+kind: "OutputField",
+name: "countryOfOrigin",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface countryOfResidence   {
+kind: "OutputField",
+name: "countryOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface educationLevel   {
+kind: "OutputField",
+name: "educationLevel",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$EducationLevel
+}
+
+ export  interface endorsements   {
+kind: "OutputField",
+name: "endorsements",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$EndorsementWithTypes
+}
+
+ export  interface groups   {
+kind: "OutputField",
+name: "groups",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Group
+}
+
+ export  interface profileCompletionPercentage   {
+kind: "OutputField",
+name: "profileCompletionPercentage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface profileRole   {
+kind: "OutputField",
+name: "profileRole",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserProfileRole
+}
+
+ export  interface pronouns   {
+kind: "OutputField",
+name: "pronouns",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Pronoun
+}
+
+ export  interface pronounsDisplay   {
+kind: "OutputField",
+name: "pronounsDisplay",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                        EndorsementWithTypes
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface EndorsementWithTypes   {
+kind: "Object",
+name: "EndorsementWithTypes",
+fields: {
+__typename: EndorsementWithTypes.__typename,
+id: EndorsementWithTypes.id,
+adminNotes: EndorsementWithTypes.adminNotes,
+events: EndorsementWithTypes.events,
+metadata: EndorsementWithTypes.metadata,
+createdAt: EndorsementWithTypes.createdAt,
+createdBy: EndorsementWithTypes.createdBy,
+updatedAt: EndorsementWithTypes.updatedAt,
+updatedBy: EndorsementWithTypes.updatedBy,
+deletedAt: EndorsementWithTypes.deletedAt,
+deletedBy: EndorsementWithTypes.deletedBy,
+objectId: EndorsementWithTypes.objectId,
+contentModelType: EndorsementWithTypes.contentModelType,
+userId: EndorsementWithTypes.userId,
+contentTagTypeTextId: EndorsementWithTypes.contentTagTypeTextId,
+childContentTagTypeTextId: EndorsementWithTypes.childContentTagTypeTextId,
+messageText: EndorsementWithTypes.messageText,
+moderationConcern: EndorsementWithTypes.moderationConcern,
+allModerationConcerns: EndorsementWithTypes.allModerationConcerns,
+approvedByRecipientAt: EndorsementWithTypes.approvedByRecipientAt,
+verifiedBy: EndorsementWithTypes.verifiedBy,
+verifiedAt: EndorsementWithTypes.verifiedAt,
+dismissedBy: EndorsementWithTypes.dismissedBy,
+dismissedAt: EndorsementWithTypes.dismissedAt,
+childContentTagType: EndorsementWithTypes.childContentTagType,
+contentTagType: EndorsementWithTypes.contentTagType
+}
+}
+
+export namespace EndorsementWithTypes {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "EndorsementWithTypes"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface objectId   {
+kind: "OutputField",
+name: "objectId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface contentModelType   {
+kind: "OutputField",
+name: "contentModelType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ModelType
+}
+
+/**
+* ID of the user that created/owns the content referred to in this ContentTag. The ID of the user that created this ContentTag is stored in the createdBy field for ContentTags that were created by a user.
+*/
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface contentTagTypeTextId   {
+kind: "OutputField",
+name: "contentTagTypeTextId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childContentTagTypeTextId   {
+kind: "OutputField",
+name: "childContentTagTypeTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageText   {
+kind: "OutputField",
+name: "messageText",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface moderationConcern   {
+kind: "OutputField",
+name: "moderationConcern",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ModerationConcern
+}
+
+ export  interface allModerationConcerns   {
+kind: "OutputField",
+name: "allModerationConcerns",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModerationConcern
+}
+
+ export  interface approvedByRecipientAt   {
+kind: "OutputField",
+name: "approvedByRecipientAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* ID of the admin user that verified the tag.
+*/
+ export  interface verifiedBy   {
+kind: "OutputField",
+name: "verifiedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface verifiedAt   {
+kind: "OutputField",
+name: "verifiedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* ID of the admin user that dimsissed the tag.
+*/
+ export  interface dismissedBy   {
+kind: "OutputField",
+name: "dismissedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface dismissedAt   {
+kind: "OutputField",
+name: "dismissedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface childContentTagType   {
+kind: "OutputField",
+name: "childContentTagType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ContentTagType
+}
+
+ export  interface contentTagType   {
+kind: "OutputField",
+name: "contentTagType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ContentTagType
+}
+}
+
+//                                         ModerationConcern
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ModerationConcern   {
+kind: "Object",
+name: "ModerationConcern",
+fields: {
+__typename: ModerationConcern.__typename,
+id: ModerationConcern.id,
+adminNotes: ModerationConcern.adminNotes,
+events: ModerationConcern.events,
+metadata: ModerationConcern.metadata,
+createdAt: ModerationConcern.createdAt,
+createdBy: ModerationConcern.createdBy,
+updatedAt: ModerationConcern.updatedAt,
+updatedBy: ModerationConcern.updatedBy,
+deletedAt: ModerationConcern.deletedAt,
+deletedBy: ModerationConcern.deletedBy,
+moderationConcernType: ModerationConcern.moderationConcernType,
+name: ModerationConcern.name,
+description: ModerationConcern.description,
+value: ModerationConcern.value,
+languageTextId: ModerationConcern.languageTextId,
+isCaseSensitive: ModerationConcern.isCaseSensitive,
+isWord: ModerationConcern.isWord,
+isRegex: ModerationConcern.isRegex,
+isNameOfBadActor: ModerationConcern.isNameOfBadActor,
+isCompanyNameOfBadActor: ModerationConcern.isCompanyNameOfBadActor,
+isEmailOfBadActor: ModerationConcern.isEmailOfBadActor,
+isPhoneNumberOfBadActor: ModerationConcern.isPhoneNumberOfBadActor,
+isWebsiteOfBadActor: ModerationConcern.isWebsiteOfBadActor,
+deleteContent: ModerationConcern.deleteContent,
+trustLevelImpact: ModerationConcern.trustLevelImpact,
+version: ModerationConcern.version
+}
+}
+
+export namespace ModerationConcern {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ModerationConcern"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface moderationConcernType   {
+kind: "OutputField",
+name: "moderationConcernType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ModerationConcernType
+}
+
+ export  interface name   {
+kind: "OutputField",
+name: "name",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface languageTextId   {
+kind: "OutputField",
+name: "languageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* must match with capitalization; ignored if isRegex = true; default = true
+*/
+ export  interface isCaseSensitive   {
+kind: "OutputField",
+name: "isCaseSensitive",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* only matches full words; ignored if isRegex = true; default = false
+*/
+ export  interface isWord   {
+kind: "OutputField",
+name: "isWord",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* value is a regex expression without flags; default = false
+*/
+ export  interface isRegex   {
+kind: "OutputField",
+name: "isRegex",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isNameOfBadActor   {
+kind: "OutputField",
+name: "isNameOfBadActor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isCompanyNameOfBadActor   {
+kind: "OutputField",
+name: "isCompanyNameOfBadActor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isEmailOfBadActor   {
+kind: "OutputField",
+name: "isEmailOfBadActor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isPhoneNumberOfBadActor   {
+kind: "OutputField",
+name: "isPhoneNumberOfBadActor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isWebsiteOfBadActor   {
+kind: "OutputField",
+name: "isWebsiteOfBadActor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* delete the content, if a match is found; default = false
+*/
+ export  interface deleteContent   {
+kind: "OutputField",
+name: "deleteContent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* number of points to reduce a users trustLevel, if found
+*/
+ export  interface trustLevelImpact   {
+kind: "OutputField",
+name: "trustLevelImpact",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface version   {
+kind: "OutputField",
+name: "version",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                           ContentTagType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContentTagType   {
+kind: "Object",
+name: "ContentTagType",
+fields: {
+__typename: ContentTagType.__typename,
+id: ContentTagType.id,
+adminNotes: ContentTagType.adminNotes,
+events: ContentTagType.events,
+metadata: ContentTagType.metadata,
+createdAt: ContentTagType.createdAt,
+createdBy: ContentTagType.createdBy,
+updatedAt: ContentTagType.updatedAt,
+updatedBy: ContentTagType.updatedBy,
+deletedAt: ContentTagType.deletedAt,
+deletedBy: ContentTagType.deletedBy,
+textId: ContentTagType.textId,
+parentTextId: ContentTagType.parentTextId,
+isParent: ContentTagType.isParent,
+optionType: ContentTagType.optionType,
+value: ContentTagType.value,
+translatedValue: ContentTagType.translatedValue,
+supportedLanguages: ContentTagType.supportedLanguages,
+materialIconName: ContentTagType.materialIconName,
+description: ContentTagType.description,
+translatedDescription: ContentTagType.translatedDescription,
+language: ContentTagType.language,
+mm2Id: ContentTagType.mm2Id,
+mm2Value: ContentTagType.mm2Value,
+syncedWithMm2At: ContentTagType.syncedWithMm2At,
+mm2TextId: ContentTagType.mm2TextId,
+mm3TextId: ContentTagType.mm3TextId,
+childOptions: ContentTagType.childOptions,
+parentOption: ContentTagType.parentOption,
+addToTrustLevel: ContentTagType.addToTrustLevel
+}
+}
+
+export namespace ContentTagType {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ContentTagType"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface addToTrustLevel   {
+kind: "OutputField",
+name: "addToTrustLevel",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+}
+
+//                                               Group
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Group   {
+kind: "Object",
+name: "Group",
+fields: {
+__typename: Group.__typename,
+id: Group.id,
+adminNotes: Group.adminNotes,
+events: Group.events,
+metadata: Group.metadata,
+createdAt: Group.createdAt,
+createdBy: Group.createdBy,
+updatedAt: Group.updatedAt,
+updatedBy: Group.updatedBy,
+deletedAt: Group.deletedAt,
+deletedBy: Group.deletedBy,
+parentGroupId: Group.parentGroupId,
+matchingEngineId: Group.matchingEngineId,
+name: Group.name,
+shortName: Group.shortName,
+ident: Group.ident,
+slug: Group.slug,
+badgeName: Group.badgeName,
+description: Group.description,
+planType: Group.planType,
+embedded: Group.embedded,
+appliedGroupRules: Group.appliedGroupRules,
+mm2Id: Group.mm2Id,
+isMm2Organization: Group.isMm2Organization,
+syncedWithMm2At: Group.syncedWithMm2At,
+isMigratedToMm3: Group.isMigratedToMm3,
+mm2RedirectUrl: Group.mm2RedirectUrl,
+mm3DeepLinksUrl: Group.mm3DeepLinksUrl
+}
+}
+
+export namespace Group {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Group"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface parentGroupId   {
+kind: "OutputField",
+name: "parentGroupId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface matchingEngineId   {
+kind: "OutputField",
+name: "matchingEngineId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface name   {
+kind: "OutputField",
+name: "name",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortName   {
+kind: "OutputField",
+name: "shortName",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface ident   {
+kind: "OutputField",
+name: "ident",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slug   {
+kind: "OutputField",
+name: "slug",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface badgeName   {
+kind: "OutputField",
+name: "badgeName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface planType   {
+kind: "OutputField",
+name: "planType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface embedded   {
+kind: "OutputField",
+name: "embedded",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface appliedGroupRules   {
+kind: "OutputField",
+name: "appliedGroupRules",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AppliedGroupRule
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface isMm2Organization   {
+kind: "OutputField",
+name: "isMm2Organization",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This is false for groups which are expected to continue using MM2.
+*/
+ export  interface isMigratedToMm3   {
+kind: "OutputField",
+name: "isMigratedToMm3",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* The URL which can be used to redirect a group to MM2.
+*/
+ export  interface mm2RedirectUrl   {
+kind: "OutputField",
+name: "mm2RedirectUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The domain name used by the MM3 deep links, if different from the default groups.
+*/
+ export  interface mm3DeepLinksUrl   {
+kind: "OutputField",
+name: "mm3DeepLinksUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                          AppliedGroupRule
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AppliedGroupRule   {
+kind: "Object",
+name: "AppliedGroupRule",
+fields: {
+__typename: AppliedGroupRule.__typename,
+id: AppliedGroupRule.id,
+adminNotes: AppliedGroupRule.adminNotes,
+events: AppliedGroupRule.events,
+metadata: AppliedGroupRule.metadata,
+createdAt: AppliedGroupRule.createdAt,
+createdBy: AppliedGroupRule.createdBy,
+updatedAt: AppliedGroupRule.updatedAt,
+updatedBy: AppliedGroupRule.updatedBy,
+deletedAt: AppliedGroupRule.deletedAt,
+deletedBy: AppliedGroupRule.deletedBy,
+groupRuleId: AppliedGroupRule.groupRuleId,
+groupId: AppliedGroupRule.groupId,
+subscribedToEvents: AppliedGroupRule.subscribedToEvents,
+config: AppliedGroupRule.config
+}
+}
+
+export namespace AppliedGroupRule {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "AppliedGroupRule"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupRuleId   {
+kind: "OutputField",
+name: "groupRuleId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface subscribedToEvents   {
+kind: "OutputField",
+name: "subscribedToEvents",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupRuleEventType
+}
+
+ export  interface config   {
+kind: "OutputField",
+name: "config",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$GroupRuleBaseConfig
+}
+}
+
+//                                        GroupRuleBaseConfig
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupRuleBaseConfig   {
+kind: "Object",
+name: "GroupRuleBaseConfig",
+fields: {
+__typename: GroupRuleBaseConfig.__typename,
+id: GroupRuleBaseConfig.id,
+adminNotes: GroupRuleBaseConfig.adminNotes,
+events: GroupRuleBaseConfig.events,
+metadata: GroupRuleBaseConfig.metadata,
+createdAt: GroupRuleBaseConfig.createdAt,
+createdBy: GroupRuleBaseConfig.createdBy,
+updatedAt: GroupRuleBaseConfig.updatedAt,
+updatedBy: GroupRuleBaseConfig.updatedBy,
+deletedAt: GroupRuleBaseConfig.deletedAt,
+deletedBy: GroupRuleBaseConfig.deletedBy,
+value: GroupRuleBaseConfig.value
+}
+}
+
+export namespace GroupRuleBaseConfig {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "GroupRuleBaseConfig"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                             AdminTask
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AdminTask   {
+kind: "Object",
+name: "AdminTask",
+fields: {
+__typename: AdminTask.__typename,
+id: AdminTask.id,
+adminNotes: AdminTask.adminNotes,
+events: AdminTask.events,
+metadata: AdminTask.metadata,
+createdAt: AdminTask.createdAt,
+createdBy: AdminTask.createdBy,
+updatedAt: AdminTask.updatedAt,
+updatedBy: AdminTask.updatedBy,
+deletedAt: AdminTask.deletedAt,
+deletedBy: AdminTask.deletedBy,
+adminTaskType: AdminTask.adminTaskType,
+result: AdminTask.result,
+resultMessage: AdminTask.resultMessage,
+error: AdminTask.error,
+args: AdminTask.args,
+timeout: AdminTask.timeout,
+autoRun: AdminTask.autoRun,
+synchronous: AdminTask.synchronous,
+startedAt: AdminTask.startedAt,
+expiresAt: AdminTask.expiresAt,
+finishedAt: AdminTask.finishedAt
+}
+}
+
+export namespace AdminTask {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "AdminTask"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminTaskType   {
+kind: "OutputField",
+name: "adminTaskType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AdminTaskType
+}
+
+ export  interface result   {
+kind: "OutputField",
+name: "result",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AdminTaskResult
+}
+
+ export  interface resultMessage   {
+kind: "OutputField",
+name: "resultMessage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Any error messages that happened during the run
+*/
+ export  interface error   {
+kind: "OutputField",
+name: "error",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* arguments
+*/
+ export  interface args   {
+kind: "OutputField",
+name: "args",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* number of milliseconds before timeout
+*/
+ export  interface timeout   {
+kind: "OutputField",
+name: "timeout",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+/**
+* run ask after creation
+*/
+ export  interface autoRun   {
+kind: "OutputField",
+name: "autoRun",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* should the task run synchronously, or in the background?
+*/
+ export  interface synchronous   {
+kind: "OutputField",
+name: "synchronous",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Date/time this task started to run
+*/
+ export  interface startedAt   {
+kind: "OutputField",
+name: "startedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* Date/time this task will be removed from the db
+*/
+ export  interface expiresAt   {
+kind: "OutputField",
+name: "expiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* Date/time this task completed its run
+*/
+ export  interface finishedAt   {
+kind: "OutputField",
+name: "finishedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                            AdminTaskDef
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AdminTaskDef   {
+kind: "Object",
+name: "AdminTaskDef",
+fields: {
+__typename: AdminTaskDef.__typename,
+adminTaskType: AdminTaskDef.adminTaskType,
+label: AdminTaskDef.label,
+description: AdminTaskDef.description,
+args: AdminTaskDef.args,
+available: AdminTaskDef.available,
+timeout: AdminTaskDef.timeout
+}
+}
+
+export namespace AdminTaskDef {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "AdminTaskDef"
+}
+}
+
+ export  interface adminTaskType   {
+kind: "OutputField",
+name: "adminTaskType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AdminTaskType
+}
+
+ export  interface label   {
+kind: "OutputField",
+name: "label",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* arguments
+*/
+ export  interface args   {
+kind: "OutputField",
+name: "args",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AdminTaskArgDef
+}
+
+/**
+* is this admin task available?
+*/
+ export  interface available   {
+kind: "OutputField",
+name: "available",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* number of milliseconds before timeout
+*/
+ export  interface timeout   {
+kind: "OutputField",
+name: "timeout",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+}
+
+//                                          AdminTaskArgDef
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AdminTaskArgDef   {
+kind: "Object",
+name: "AdminTaskArgDef",
+fields: {
+__typename: AdminTaskArgDef.__typename,
+name: AdminTaskArgDef.name,
+label: AdminTaskArgDef.label,
+dataType: AdminTaskArgDef.dataType,
+choices: AdminTaskArgDef.choices,
+optional: AdminTaskArgDef.optional,
+description: AdminTaskArgDef.description
+}
+}
+
+export namespace AdminTaskArgDef {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "AdminTaskArgDef"
+}
+}
+
+ export  interface name   {
+kind: "OutputField",
+name: "name",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface label   {
+kind: "OutputField",
+name: "label",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface dataType   {
+kind: "OutputField",
+name: "dataType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface choices   {
+kind: "OutputField",
+name: "choices",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface optional   {
+kind: "OutputField",
+name: "optional",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                          ErrorCodeOption
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ErrorCodeOption   {
+kind: "Object",
+name: "ErrorCodeOption",
+fields: {
+__typename: ErrorCodeOption.__typename,
+id: ErrorCodeOption.id,
+adminNotes: ErrorCodeOption.adminNotes,
+events: ErrorCodeOption.events,
+metadata: ErrorCodeOption.metadata,
+createdAt: ErrorCodeOption.createdAt,
+createdBy: ErrorCodeOption.createdBy,
+updatedAt: ErrorCodeOption.updatedAt,
+updatedBy: ErrorCodeOption.updatedBy,
+deletedAt: ErrorCodeOption.deletedAt,
+deletedBy: ErrorCodeOption.deletedBy,
+textId: ErrorCodeOption.textId,
+parentTextId: ErrorCodeOption.parentTextId,
+isParent: ErrorCodeOption.isParent,
+optionType: ErrorCodeOption.optionType,
+value: ErrorCodeOption.value,
+translatedValue: ErrorCodeOption.translatedValue,
+supportedLanguages: ErrorCodeOption.supportedLanguages,
+materialIconName: ErrorCodeOption.materialIconName,
+description: ErrorCodeOption.description,
+translatedDescription: ErrorCodeOption.translatedDescription,
+language: ErrorCodeOption.language,
+mm2Id: ErrorCodeOption.mm2Id,
+mm2Value: ErrorCodeOption.mm2Value,
+syncedWithMm2At: ErrorCodeOption.syncedWithMm2At,
+mm2TextId: ErrorCodeOption.mm2TextId,
+mm3TextId: ErrorCodeOption.mm3TextId,
+childOptions: ErrorCodeOption.childOptions,
+parentOption: ErrorCodeOption.parentOption
+}
+}
+
+export namespace ErrorCodeOption {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ErrorCodeOption"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                           IndonesianCity
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface IndonesianCity   {
+kind: "Object",
+name: "IndonesianCity",
+fields: {
+__typename: IndonesianCity.__typename,
+id: IndonesianCity.id,
+adminNotes: IndonesianCity.adminNotes,
+events: IndonesianCity.events,
+metadata: IndonesianCity.metadata,
+createdAt: IndonesianCity.createdAt,
+createdBy: IndonesianCity.createdBy,
+updatedAt: IndonesianCity.updatedAt,
+updatedBy: IndonesianCity.updatedBy,
+deletedAt: IndonesianCity.deletedAt,
+deletedBy: IndonesianCity.deletedBy,
+textId: IndonesianCity.textId,
+parentTextId: IndonesianCity.parentTextId,
+isParent: IndonesianCity.isParent,
+optionType: IndonesianCity.optionType,
+value: IndonesianCity.value,
+translatedValue: IndonesianCity.translatedValue,
+supportedLanguages: IndonesianCity.supportedLanguages,
+materialIconName: IndonesianCity.materialIconName,
+description: IndonesianCity.description,
+translatedDescription: IndonesianCity.translatedDescription,
+language: IndonesianCity.language,
+mm2Id: IndonesianCity.mm2Id,
+mm2Value: IndonesianCity.mm2Value,
+syncedWithMm2At: IndonesianCity.syncedWithMm2At,
+mm2TextId: IndonesianCity.mm2TextId,
+mm3TextId: IndonesianCity.mm3TextId,
+childOptions: IndonesianCity.childOptions,
+parentOption: IndonesianCity.parentOption
+}
+}
+
+export namespace IndonesianCity {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "IndonesianCity"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                         IndonesianProvince
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface IndonesianProvince   {
+kind: "Object",
+name: "IndonesianProvince",
+fields: {
+__typename: IndonesianProvince.__typename,
+id: IndonesianProvince.id,
+adminNotes: IndonesianProvince.adminNotes,
+events: IndonesianProvince.events,
+metadata: IndonesianProvince.metadata,
+createdAt: IndonesianProvince.createdAt,
+createdBy: IndonesianProvince.createdBy,
+updatedAt: IndonesianProvince.updatedAt,
+updatedBy: IndonesianProvince.updatedBy,
+deletedAt: IndonesianProvince.deletedAt,
+deletedBy: IndonesianProvince.deletedBy,
+textId: IndonesianProvince.textId,
+parentTextId: IndonesianProvince.parentTextId,
+isParent: IndonesianProvince.isParent,
+optionType: IndonesianProvince.optionType,
+value: IndonesianProvince.value,
+translatedValue: IndonesianProvince.translatedValue,
+supportedLanguages: IndonesianProvince.supportedLanguages,
+materialIconName: IndonesianProvince.materialIconName,
+description: IndonesianProvince.description,
+translatedDescription: IndonesianProvince.translatedDescription,
+language: IndonesianProvince.language,
+mm2Id: IndonesianProvince.mm2Id,
+mm2Value: IndonesianProvince.mm2Value,
+syncedWithMm2At: IndonesianProvince.syncedWithMm2At,
+mm2TextId: IndonesianProvince.mm2TextId,
+mm3TextId: IndonesianProvince.mm3TextId,
+childOptions: IndonesianProvince.childOptions,
+parentOption: IndonesianProvince.parentOption
+}
+}
+
+export namespace IndonesianProvince {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "IndonesianProvince"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                       IqlaaJordanianDistrict
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface IqlaaJordanianDistrict   {
+kind: "Object",
+name: "IqlaaJordanianDistrict",
+fields: {
+__typename: IqlaaJordanianDistrict.__typename,
+id: IqlaaJordanianDistrict.id,
+adminNotes: IqlaaJordanianDistrict.adminNotes,
+events: IqlaaJordanianDistrict.events,
+metadata: IqlaaJordanianDistrict.metadata,
+createdAt: IqlaaJordanianDistrict.createdAt,
+createdBy: IqlaaJordanianDistrict.createdBy,
+updatedAt: IqlaaJordanianDistrict.updatedAt,
+updatedBy: IqlaaJordanianDistrict.updatedBy,
+deletedAt: IqlaaJordanianDistrict.deletedAt,
+deletedBy: IqlaaJordanianDistrict.deletedBy,
+textId: IqlaaJordanianDistrict.textId,
+parentTextId: IqlaaJordanianDistrict.parentTextId,
+isParent: IqlaaJordanianDistrict.isParent,
+optionType: IqlaaJordanianDistrict.optionType,
+value: IqlaaJordanianDistrict.value,
+translatedValue: IqlaaJordanianDistrict.translatedValue,
+supportedLanguages: IqlaaJordanianDistrict.supportedLanguages,
+materialIconName: IqlaaJordanianDistrict.materialIconName,
+description: IqlaaJordanianDistrict.description,
+translatedDescription: IqlaaJordanianDistrict.translatedDescription,
+language: IqlaaJordanianDistrict.language,
+mm2Id: IqlaaJordanianDistrict.mm2Id,
+mm2Value: IqlaaJordanianDistrict.mm2Value,
+syncedWithMm2At: IqlaaJordanianDistrict.syncedWithMm2At,
+mm2TextId: IqlaaJordanianDistrict.mm2TextId,
+mm3TextId: IqlaaJordanianDistrict.mm3TextId,
+childOptions: IqlaaJordanianDistrict.childOptions,
+parentOption: IqlaaJordanianDistrict.parentOption
+}
+}
+
+export namespace IqlaaJordanianDistrict {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "IqlaaJordanianDistrict"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                     IqlaaJordanianGovernorate
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface IqlaaJordanianGovernorate   {
+kind: "Object",
+name: "IqlaaJordanianGovernorate",
+fields: {
+__typename: IqlaaJordanianGovernorate.__typename,
+id: IqlaaJordanianGovernorate.id,
+adminNotes: IqlaaJordanianGovernorate.adminNotes,
+events: IqlaaJordanianGovernorate.events,
+metadata: IqlaaJordanianGovernorate.metadata,
+createdAt: IqlaaJordanianGovernorate.createdAt,
+createdBy: IqlaaJordanianGovernorate.createdBy,
+updatedAt: IqlaaJordanianGovernorate.updatedAt,
+updatedBy: IqlaaJordanianGovernorate.updatedBy,
+deletedAt: IqlaaJordanianGovernorate.deletedAt,
+deletedBy: IqlaaJordanianGovernorate.deletedBy,
+textId: IqlaaJordanianGovernorate.textId,
+parentTextId: IqlaaJordanianGovernorate.parentTextId,
+isParent: IqlaaJordanianGovernorate.isParent,
+optionType: IqlaaJordanianGovernorate.optionType,
+value: IqlaaJordanianGovernorate.value,
+translatedValue: IqlaaJordanianGovernorate.translatedValue,
+supportedLanguages: IqlaaJordanianGovernorate.supportedLanguages,
+materialIconName: IqlaaJordanianGovernorate.materialIconName,
+description: IqlaaJordanianGovernorate.description,
+translatedDescription: IqlaaJordanianGovernorate.translatedDescription,
+language: IqlaaJordanianGovernorate.language,
+mm2Id: IqlaaJordanianGovernorate.mm2Id,
+mm2Value: IqlaaJordanianGovernorate.mm2Value,
+syncedWithMm2At: IqlaaJordanianGovernorate.syncedWithMm2At,
+mm2TextId: IqlaaJordanianGovernorate.mm2TextId,
+mm3TextId: IqlaaJordanianGovernorate.mm3TextId,
+childOptions: IqlaaJordanianGovernorate.childOptions,
+parentOption: IqlaaJordanianGovernorate.parentOption
+}
+}
+
+export namespace IqlaaJordanianGovernorate {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "IqlaaJordanianGovernorate"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                           MastercardBank
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MastercardBank   {
+kind: "Object",
+name: "MastercardBank",
+fields: {
+__typename: MastercardBank.__typename,
+id: MastercardBank.id,
+adminNotes: MastercardBank.adminNotes,
+events: MastercardBank.events,
+metadata: MastercardBank.metadata,
+createdAt: MastercardBank.createdAt,
+createdBy: MastercardBank.createdBy,
+updatedAt: MastercardBank.updatedAt,
+updatedBy: MastercardBank.updatedBy,
+deletedAt: MastercardBank.deletedAt,
+deletedBy: MastercardBank.deletedBy,
+textId: MastercardBank.textId,
+countryTextId: MastercardBank.countryTextId,
+name: MastercardBank.name,
+enDisplayName: MastercardBank.enDisplayName,
+esDisplayName: MastercardBank.esDisplayName,
+displayName: MastercardBank.displayName
+}
+}
+
+export namespace MastercardBank {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "MastercardBank"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryTextId   {
+kind: "OutputField",
+name: "countryTextId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The name of the bank
+*/
+ export  interface name   {
+kind: "OutputField",
+name: "name",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* (<Country name in English>) <Bank name>
+*/
+ export  interface enDisplayName   {
+kind: "OutputField",
+name: "enDisplayName",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* (<Country name in Spanish>) <Bank name>
+*/
+ export  interface esDisplayName   {
+kind: "OutputField",
+name: "esDisplayName",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Not stored, just used for graphQL API
+*/
+ export  interface displayName   {
+kind: "OutputField",
+name: "displayName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                             UserSearch
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearch   {
+kind: "Object",
+name: "UserSearch",
+fields: {
+__typename: UserSearch.__typename,
+id: UserSearch.id,
+adminNotes: UserSearch.adminNotes,
+events: UserSearch.events,
+metadata: UserSearch.metadata,
+createdAt: UserSearch.createdAt,
+createdBy: UserSearch.createdBy,
+updatedAt: UserSearch.updatedAt,
+updatedBy: UserSearch.updatedBy,
+deletedAt: UserSearch.deletedAt,
+deletedBy: UserSearch.deletedBy,
+userId: UserSearch.userId,
+matchingEngineId: UserSearch.matchingEngineId,
+userSearchType: UserSearch.userSearchType,
+name: UserSearch.name,
+filter: UserSearch.filter,
+excludeUserIds: UserSearch.excludeUserIds,
+maxResultCount: UserSearch.maxResultCount,
+subscription: UserSearch.subscription,
+expiresAt: UserSearch.expiresAt,
+resultExpiresAt: UserSearch.resultExpiresAt,
+runInfos: UserSearch.runInfos,
+topFoundUsers: UserSearch.topFoundUsers
+}
+}
+
+export namespace UserSearch {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserSearch"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* The ID of the user that is searching and owns this object
+*/
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface matchingEngineId   {
+kind: "OutputField",
+name: "matchingEngineId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userSearchType   {
+kind: "OutputField",
+name: "userSearchType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserSearchType
+}
+
+ export  interface name   {
+kind: "OutputField",
+name: "name",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface filter   {
+kind: "OutputField",
+name: "filter",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchFilter
+}
+
+/**
+* A list of user IDs of users that should not be included into the search results, i.e. blocked users.
+*/
+ export  interface excludeUserIds   {
+kind: "OutputField",
+name: "excludeUserIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface maxResultCount   {
+kind: "OutputField",
+name: "maxResultCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface subscription   {
+kind: "OutputField",
+name: "subscription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchSubscriptionType
+}
+
+ export  interface expiresAt   {
+kind: "OutputField",
+name: "expiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface resultExpiresAt   {
+kind: "OutputField",
+name: "resultExpiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface runInfos   {
+kind: "OutputField",
+name: "runInfos",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserSearchRunInfo
+}
+
+ export  interface topFoundUsers   {
+kind: "OutputField",
+name: "topFoundUsers",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserListItem
+}
+}
+
+//                                          UserSearchFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearchFilter   {
+kind: "Object",
+name: "UserSearchFilter",
+fields: {
+__typename: UserSearchFilter.__typename,
+searchText: UserSearchFilter.searchText,
+seeksHelp: UserSearchFilter.seeksHelp,
+offersHelp: UserSearchFilter.offersHelp,
+languagesTextIds: UserSearchFilter.languagesTextIds,
+expertisesTextIds: UserSearchFilter.expertisesTextIds,
+industriesTextIds: UserSearchFilter.industriesTextIds,
+countryTextIds: UserSearchFilter.countryTextIds,
+companyStagesTextIds: UserSearchFilter.companyStagesTextIds,
+latestActivityAfter: UserSearchFilter.latestActivityAfter
+}
+}
+
+export namespace UserSearchFilter {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserSearchFilter"
+}
+}
+
+ export  interface searchText   {
+kind: "OutputField",
+name: "searchText",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface seeksHelp   {
+kind: "OutputField",
+name: "seeksHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchFieldOption
+}
+
+ export  interface offersHelp   {
+kind: "OutputField",
+name: "offersHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchFieldOption
+}
+
+ export  interface languagesTextIds   {
+kind: "OutputField",
+name: "languagesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface expertisesTextIds   {
+kind: "OutputField",
+name: "expertisesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface industriesTextIds   {
+kind: "OutputField",
+name: "industriesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryTextIds   {
+kind: "OutputField",
+name: "countryTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface companyStagesTextIds   {
+kind: "OutputField",
+name: "companyStagesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface latestActivityAfter   {
+kind: "OutputField",
+name: "latestActivityAfter",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                         UserSearchRunInfo
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearchRunInfo   {
+kind: "Object",
+name: "UserSearchRunInfo",
+fields: {
+__typename: UserSearchRunInfo.__typename,
+topUserIds: UserSearchRunInfo.topUserIds,
+userCount: UserSearchRunInfo.userCount,
+matchCount: UserSearchRunInfo.matchCount,
+batchSize: UserSearchRunInfo.batchSize,
+batchCount: UserSearchRunInfo.batchCount,
+startedAt: UserSearchRunInfo.startedAt,
+finishedAt: UserSearchRunInfo.finishedAt,
+durationInSecs: UserSearchRunInfo.durationInSecs,
+durationHuman: UserSearchRunInfo.durationHuman,
+totalDurationSearchInDb: UserSearchRunInfo.totalDurationSearchInDb,
+totalDurationReadFromDb: UserSearchRunInfo.totalDurationReadFromDb,
+totalDurationWriteToDb: UserSearchRunInfo.totalDurationWriteToDb,
+totalDurationMatching: UserSearchRunInfo.totalDurationMatching
+}
+}
+
+export namespace UserSearchRunInfo {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserSearchRunInfo"
+}
+}
+
+ export  interface topUserIds   {
+kind: "OutputField",
+name: "topUserIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userCount   {
+kind: "OutputField",
+name: "userCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface matchCount   {
+kind: "OutputField",
+name: "matchCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface batchSize   {
+kind: "OutputField",
+name: "batchSize",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface batchCount   {
+kind: "OutputField",
+name: "batchCount",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface startedAt   {
+kind: "OutputField",
+name: "startedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface finishedAt   {
+kind: "OutputField",
+name: "finishedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface durationInSecs   {
+kind: "OutputField",
+name: "durationInSecs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface durationHuman   {
+kind: "OutputField",
+name: "durationHuman",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface totalDurationSearchInDb   {
+kind: "OutputField",
+name: "totalDurationSearchInDb",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface totalDurationReadFromDb   {
+kind: "OutputField",
+name: "totalDurationReadFromDb",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface totalDurationWriteToDb   {
+kind: "OutputField",
+name: "totalDurationWriteToDb",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface totalDurationMatching   {
+kind: "OutputField",
+name: "totalDurationMatching",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+}
+
+//                                           UserWithScore
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserWithScore   {
+kind: "Object",
+name: "UserWithScore",
+fields: {
+__typename: UserWithScore.__typename,
+id: UserWithScore.id,
+createdAt: UserWithScore.createdAt,
+updatedAt: UserWithScore.updatedAt,
+deletedAt: UserWithScore.deletedAt,
+userHandle: UserWithScore.userHandle,
+firstName: UserWithScore.firstName,
+lastName: UserWithScore.lastName,
+avatarUrl: UserWithScore.avatarUrl,
+timezone: UserWithScore.timezone,
+discoverable: UserWithScore.discoverable,
+trustLevel: UserWithScore.trustLevel,
+latestActivityAt: UserWithScore.latestActivityAt,
+userBlocks: UserWithScore.userBlocks,
+inactivatedAt: UserWithScore.inactivatedAt,
+suspendedAt: UserWithScore.suspendedAt,
+cityOfResidence: UserWithScore.cityOfResidence,
+regionOfResidence: UserWithScore.regionOfResidence,
+websites: UserWithScore.websites,
+seeksHelp: UserWithScore.seeksHelp,
+offersHelp: UserWithScore.offersHelp,
+yearsManagementExperience: UserWithScore.yearsManagementExperience,
+yearsOwnershipExperience: UserWithScore.yearsOwnershipExperience,
+academicExperiences: UserWithScore.academicExperiences,
+businessExperiences: UserWithScore.businessExperiences,
+isOnVacation: UserWithScore.isOnVacation,
+mentor: UserWithScore.mentor,
+mentee: UserWithScore.mentee,
+groupMemberships: UserWithScore.groupMemberships,
+companies: UserWithScore.companies,
+countryOfOrigin: UserWithScore.countryOfOrigin,
+countryOfResidence: UserWithScore.countryOfResidence,
+educationLevel: UserWithScore.educationLevel,
+endorsements: UserWithScore.endorsements,
+groups: UserWithScore.groups,
+profileCompletionPercentage: UserWithScore.profileCompletionPercentage,
+profileRole: UserWithScore.profileRole,
+pronouns: UserWithScore.pronouns,
+pronounsDisplay: UserWithScore.pronounsDisplay,
+score: UserWithScore.score
+}
+}
+
+export namespace UserWithScore {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserWithScore"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userHandle   {
+kind: "OutputField",
+name: "userHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface firstName   {
+kind: "OutputField",
+name: "firstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "OutputField",
+name: "lastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "OutputField",
+name: "avatarUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "OutputField",
+name: "timezone",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.
+*/
+ export  interface discoverable   {
+kind: "OutputField",
+name: "discoverable",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface trustLevel   {
+kind: "OutputField",
+name: "trustLevel",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface latestActivityAt   {
+kind: "OutputField",
+name: "latestActivityAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userBlocks   {
+kind: "OutputField",
+name: "userBlocks",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserBlock
+}
+
+ export  interface inactivatedAt   {
+kind: "OutputField",
+name: "inactivatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedAt   {
+kind: "OutputField",
+name: "suspendedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface cityOfResidence   {
+kind: "OutputField",
+name: "cityOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfResidence   {
+kind: "OutputField",
+name: "regionOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface websites   {
+kind: "OutputField",
+name: "websites",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$LabeledStringValue
+}
+
+ export  interface seeksHelp   {
+kind: "OutputField",
+name: "seeksHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface offersHelp   {
+kind: "OutputField",
+name: "offersHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface yearsManagementExperience   {
+kind: "OutputField",
+name: "yearsManagementExperience",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface yearsOwnershipExperience   {
+kind: "OutputField",
+name: "yearsOwnershipExperience",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface academicExperiences   {
+kind: "OutputField",
+name: "academicExperiences",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AcademicExperience
+}
+
+ export  interface businessExperiences   {
+kind: "OutputField",
+name: "businessExperiences",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BusinessExperience
+}
+
+ export  interface isOnVacation   {
+kind: "OutputField",
+name: "isOnVacation",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is a copy of the mentor group membership.
+*/
+ export  interface mentor   {
+kind: "OutputField",
+name: "mentor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MentorsGroupMembership
+}
+
+/**
+* This attribute is a copy of the mentee group membership.
+*/
+ export  interface mentee   {
+kind: "OutputField",
+name: "mentee",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MenteesGroupMembership
+}
+
+ export  interface groupMemberships   {
+kind: "OutputField",
+name: "groupMemberships",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IGroupMembership
+}
+
+ export  interface companies   {
+kind: "OutputField",
+name: "companies",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Company
+}
+
+ export  interface countryOfOrigin   {
+kind: "OutputField",
+name: "countryOfOrigin",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface countryOfResidence   {
+kind: "OutputField",
+name: "countryOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface educationLevel   {
+kind: "OutputField",
+name: "educationLevel",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$EducationLevel
+}
+
+ export  interface endorsements   {
+kind: "OutputField",
+name: "endorsements",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$EndorsementWithTypes
+}
+
+ export  interface groups   {
+kind: "OutputField",
+name: "groups",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Group
+}
+
+ export  interface profileCompletionPercentage   {
+kind: "OutputField",
+name: "profileCompletionPercentage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface profileRole   {
+kind: "OutputField",
+name: "profileRole",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserProfileRole
+}
+
+ export  interface pronouns   {
+kind: "OutputField",
+name: "pronouns",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Pronoun
+}
+
+ export  interface pronounsDisplay   {
+kind: "OutputField",
+name: "pronounsDisplay",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The score value that the matching engine assigned to this user.
+*/
+ export  interface score   {
+kind: "OutputField",
+name: "score",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Float
+}
+}
+
+//                                           ServiceRequest
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ServiceRequest   {
+kind: "Object",
+name: "ServiceRequest",
+fields: {
+__typename: ServiceRequest.__typename,
+id: ServiceRequest.id,
+serviceRequestType: ServiceRequest.serviceRequestType,
+userId: ServiceRequest.userId,
+userRoles: ServiceRequest.userRoles,
+objectIds: ServiceRequest.objectIds,
+modelTypes: ServiceRequest.modelTypes,
+result: ServiceRequest.result,
+messageIds: ServiceRequest.messageIds,
+message: ServiceRequest.message,
+errorCode: ServiceRequest.errorCode,
+events: ServiceRequest.events,
+deviceUuid: ServiceRequest.deviceUuid,
+source: ServiceRequest.source,
+createdAt: ServiceRequest.createdAt,
+createdBy: ServiceRequest.createdBy,
+updatedAt: ServiceRequest.updatedAt,
+updatedBy: ServiceRequest.updatedBy,
+deletedAt: ServiceRequest.deletedAt,
+deletedBy: ServiceRequest.deletedBy,
+finishedAt: ServiceRequest.finishedAt,
+expiresAt: ServiceRequest.expiresAt
+}
+}
+
+export namespace ServiceRequest {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ServiceRequest"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface serviceRequestType   {
+kind: "OutputField",
+name: "serviceRequestType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequestType
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userRoles   {
+kind: "OutputField",
+name: "userRoles",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserRole
+}
+
+ export  interface objectIds   {
+kind: "OutputField",
+name: "objectIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface modelTypes   {
+kind: "OutputField",
+name: "modelTypes",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelType
+}
+
+ export  interface result   {
+kind: "OutputField",
+name: "result",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequestResult
+}
+
+ export  interface messageIds   {
+kind: "OutputField",
+name: "messageIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ServiceRequestMessageId
+}
+
+ export  interface message   {
+kind: "OutputField",
+name: "message",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface errorCode   {
+kind: "OutputField",
+name: "errorCode",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ErrorCode
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface deviceUuid   {
+kind: "OutputField",
+name: "deviceUuid",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface source   {
+kind: "OutputField",
+name: "source",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ServiceRequestSource
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface finishedAt   {
+kind: "OutputField",
+name: "finishedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface expiresAt   {
+kind: "OutputField",
+name: "expiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                          ContactListItem
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContactListItem   {
+kind: "Object",
+name: "ContactListItem",
+fields: {
+__typename: ContactListItem.__typename,
+id: ContactListItem.id,
+adminNotes: ContactListItem.adminNotes,
+events: ContactListItem.events,
+metadata: ContactListItem.metadata,
+createdAt: ContactListItem.createdAt,
+createdBy: ContactListItem.createdBy,
+updatedAt: ContactListItem.updatedAt,
+updatedBy: ContactListItem.updatedBy,
+deletedAt: ContactListItem.deletedAt,
+deletedBy: ContactListItem.deletedBy,
+userId: ContactListItem.userId,
+channelId: ContactListItem.channelId,
+nickname: ContactListItem.nickname,
+typeTextIds: ContactListItem.typeTextIds,
+favorite: ContactListItem.favorite,
+notes: ContactListItem.notes,
+archivedAt: ContactListItem.archivedAt
+}
+}
+
+export namespace ContactListItem {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ContactListItem"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ContactMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "OutputField",
+name: "channelId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface nickname   {
+kind: "OutputField",
+name: "nickname",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface typeTextIds   {
+kind: "OutputField",
+name: "typeTextIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface favorite   {
+kind: "OutputField",
+name: "favorite",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface notes   {
+kind: "OutputField",
+name: "notes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface archivedAt   {
+kind: "OutputField",
+name: "archivedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                         SidMultiStepAction
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SidMultiStepAction   {
+kind: "Object",
+name: "SidMultiStepAction",
+fields: {
+__typename: SidMultiStepAction.__typename,
+id: SidMultiStepAction.id,
+adminNotes: SidMultiStepAction.adminNotes,
+events: SidMultiStepAction.events,
+metadata: SidMultiStepAction.metadata,
+createdAt: SidMultiStepAction.createdAt,
+createdBy: SidMultiStepAction.createdBy,
+updatedAt: SidMultiStepAction.updatedAt,
+updatedBy: SidMultiStepAction.updatedBy,
+deletedAt: SidMultiStepAction.deletedAt,
+deletedBy: SidMultiStepAction.deletedBy,
+userId: SidMultiStepAction.userId,
+userIdent: SidMultiStepAction.userIdent,
+userHandle: SidMultiStepAction.userHandle,
+email: SidMultiStepAction.email,
+phoneNumber: SidMultiStepAction.phoneNumber,
+deviceUuid: SidMultiStepAction.deviceUuid,
+actionType: SidMultiStepAction.actionType,
+actionStatus: SidMultiStepAction.actionStatus,
+notificationMethod: SidMultiStepAction.notificationMethod,
+result: SidMultiStepAction.result,
+confirmToken: SidMultiStepAction.confirmToken,
+attemptCount: SidMultiStepAction.attemptCount,
+notificationSentAt: SidMultiStepAction.notificationSentAt,
+notificationResult: SidMultiStepAction.notificationResult,
+notificationId: SidMultiStepAction.notificationId,
+textData: SidMultiStepAction.textData,
+report: SidMultiStepAction.report,
+emailPassed: SidMultiStepAction.emailPassed,
+emailUpdatedAt: SidMultiStepAction.emailUpdatedAt,
+emailVerifiedAt: SidMultiStepAction.emailVerifiedAt,
+errors: SidMultiStepAction.errors,
+password: SidMultiStepAction.password,
+passwordPassed: SidMultiStepAction.passwordPassed,
+passwordResettedAt: SidMultiStepAction.passwordResettedAt,
+passwordUpdatedAt: SidMultiStepAction.passwordUpdatedAt,
+phoneNumberPassed: SidMultiStepAction.phoneNumberPassed,
+phoneNumberUpdatedAt: SidMultiStepAction.phoneNumberUpdatedAt,
+phoneNumberVerifiedAt: SidMultiStepAction.phoneNumberVerifiedAt,
+signedInAt: SidMultiStepAction.signedInAt,
+tfaBackupCodes: SidMultiStepAction.tfaBackupCodes,
+expiresAt: SidMultiStepAction.expiresAt
+}
+}
+
+export namespace SidMultiStepAction {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "SidMultiStepAction"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userIdent   {
+kind: "OutputField",
+name: "userIdent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "OutputField",
+name: "userHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface email   {
+kind: "OutputField",
+name: "email",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "OutputField",
+name: "phoneNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface deviceUuid   {
+kind: "OutputField",
+name: "deviceUuid",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface actionType   {
+kind: "OutputField",
+name: "actionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MultiStepActionType
+}
+
+ export  interface actionStatus   {
+kind: "OutputField",
+name: "actionStatus",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MultiStepActionStatus
+}
+
+ export  interface notificationMethod   {
+kind: "OutputField",
+name: "notificationMethod",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationMethod
+}
+
+ export  interface result   {
+kind: "OutputField",
+name: "result",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MultiStepActionResult
+}
+
+ export  interface confirmToken   {
+kind: "OutputField",
+name: "confirmToken",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface attemptCount   {
+kind: "OutputField",
+name: "attemptCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface notificationSentAt   {
+kind: "OutputField",
+name: "notificationSentAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface notificationResult   {
+kind: "OutputField",
+name: "notificationResult",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MultiStepActionSendNotificationResult
+}
+
+ export  interface notificationId   {
+kind: "OutputField",
+name: "notificationId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface textData   {
+kind: "OutputField",
+name: "textData",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface report   {
+kind: "OutputField",
+name: "report",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailPassed   {
+kind: "OutputField",
+name: "emailPassed",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface emailUpdatedAt   {
+kind: "OutputField",
+name: "emailUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface emailVerifiedAt   {
+kind: "OutputField",
+name: "emailVerifiedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface errors   {
+kind: "OutputField",
+name: "errors",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$MultiStepActionError
+}
+
+ export  interface password   {
+kind: "OutputField",
+name: "password",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface passwordPassed   {
+kind: "OutputField",
+name: "passwordPassed",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface passwordResettedAt   {
+kind: "OutputField",
+name: "passwordResettedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface passwordUpdatedAt   {
+kind: "OutputField",
+name: "passwordUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface phoneNumberPassed   {
+kind: "OutputField",
+name: "phoneNumberPassed",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "OutputField",
+name: "phoneNumberUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface phoneNumberVerifiedAt   {
+kind: "OutputField",
+name: "phoneNumberVerifiedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedInAt   {
+kind: "OutputField",
+name: "signedInAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface tfaBackupCodes   {
+kind: "OutputField",
+name: "tfaBackupCodes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface expiresAt   {
+kind: "OutputField",
+name: "expiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                        MultiStepActionError
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MultiStepActionError   {
+kind: "Object",
+name: "MultiStepActionError",
+fields: {
+__typename: MultiStepActionError.__typename,
+id: MultiStepActionError.id,
+adminNotes: MultiStepActionError.adminNotes,
+events: MultiStepActionError.events,
+metadata: MultiStepActionError.metadata,
+createdAt: MultiStepActionError.createdAt,
+createdBy: MultiStepActionError.createdBy,
+updatedAt: MultiStepActionError.updatedAt,
+updatedBy: MultiStepActionError.updatedBy,
+deletedAt: MultiStepActionError.deletedAt,
+deletedBy: MultiStepActionError.deletedBy,
+key: MultiStepActionError.key,
+messageId: MultiStepActionError.messageId,
+message: MultiStepActionError.message
+}
+}
+
+export namespace MultiStepActionError {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "MultiStepActionError"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface key   {
+kind: "OutputField",
+name: "key",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageId   {
+kind: "OutputField",
+name: "messageId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface message   {
+kind: "OutputField",
+name: "message",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                     SidMultiStepActionProgress
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SidMultiStepActionProgress   {
+kind: "Object",
+name: "SidMultiStepActionProgress",
+fields: {
+__typename: SidMultiStepActionProgress.__typename,
+actionId: SidMultiStepActionProgress.actionId,
+userId: SidMultiStepActionProgress.userId,
+actionType: SidMultiStepActionProgress.actionType,
+actionStatus: SidMultiStepActionProgress.actionStatus,
+notificationMethod: SidMultiStepActionProgress.notificationMethod,
+result: SidMultiStepActionProgress.result,
+attemptCount: SidMultiStepActionProgress.attemptCount,
+notificationSentAt: SidMultiStepActionProgress.notificationSentAt,
+notificationResult: SidMultiStepActionProgress.notificationResult,
+notificationId: SidMultiStepActionProgress.notificationId,
+textData: SidMultiStepActionProgress.textData,
+report: SidMultiStepActionProgress.report,
+emailPassed: SidMultiStepActionProgress.emailPassed,
+emailUpdatedAt: SidMultiStepActionProgress.emailUpdatedAt,
+emailVerifiedAt: SidMultiStepActionProgress.emailVerifiedAt,
+errors: SidMultiStepActionProgress.errors,
+authToken: SidMultiStepActionProgress.authToken,
+authTokenExpiresAt: SidMultiStepActionProgress.authTokenExpiresAt,
+passwordPassed: SidMultiStepActionProgress.passwordPassed,
+passwordResettedAt: SidMultiStepActionProgress.passwordResettedAt,
+passwordUpdatedAt: SidMultiStepActionProgress.passwordUpdatedAt,
+phoneNumberPassed: SidMultiStepActionProgress.phoneNumberPassed,
+phoneNumberUpdatedAt: SidMultiStepActionProgress.phoneNumberUpdatedAt,
+phoneNumberVerifiedAt: SidMultiStepActionProgress.phoneNumberVerifiedAt,
+signedInAt: SidMultiStepActionProgress.signedInAt,
+expiresAt: SidMultiStepActionProgress.expiresAt,
+events: SidMultiStepActionProgress.events,
+metadata: SidMultiStepActionProgress.metadata,
+createdAt: SidMultiStepActionProgress.createdAt,
+createdBy: SidMultiStepActionProgress.createdBy,
+updatedAt: SidMultiStepActionProgress.updatedAt,
+updatedBy: SidMultiStepActionProgress.updatedBy,
+deletedAt: SidMultiStepActionProgress.deletedAt,
+deletedBy: SidMultiStepActionProgress.deletedBy
+}
+}
+
+export namespace SidMultiStepActionProgress {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "SidMultiStepActionProgress"
+}
+}
+
+ export  interface actionId   {
+kind: "OutputField",
+name: "actionId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface actionType   {
+kind: "OutputField",
+name: "actionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MultiStepActionType
+}
+
+ export  interface actionStatus   {
+kind: "OutputField",
+name: "actionStatus",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MultiStepActionStatus
+}
+
+ export  interface notificationMethod   {
+kind: "OutputField",
+name: "notificationMethod",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$NotificationMethod
+}
+
+ export  interface result   {
+kind: "OutputField",
+name: "result",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$MultiStepActionResult
+}
+
+ export  interface attemptCount   {
+kind: "OutputField",
+name: "attemptCount",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface notificationSentAt   {
+kind: "OutputField",
+name: "notificationSentAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface notificationResult   {
+kind: "OutputField",
+name: "notificationResult",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MultiStepActionSendNotificationResult
+}
+
+ export  interface notificationId   {
+kind: "OutputField",
+name: "notificationId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface textData   {
+kind: "OutputField",
+name: "textData",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface report   {
+kind: "OutputField",
+name: "report",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailPassed   {
+kind: "OutputField",
+name: "emailPassed",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface emailUpdatedAt   {
+kind: "OutputField",
+name: "emailUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface emailVerifiedAt   {
+kind: "OutputField",
+name: "emailVerifiedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface errors   {
+kind: "OutputField",
+name: "errors",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$MultiStepActionError
+}
+
+ export  interface authToken   {
+kind: "OutputField",
+name: "authToken",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface authTokenExpiresAt   {
+kind: "OutputField",
+name: "authTokenExpiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface passwordPassed   {
+kind: "OutputField",
+name: "passwordPassed",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface passwordResettedAt   {
+kind: "OutputField",
+name: "passwordResettedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface passwordUpdatedAt   {
+kind: "OutputField",
+name: "passwordUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface phoneNumberPassed   {
+kind: "OutputField",
+name: "phoneNumberPassed",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "OutputField",
+name: "phoneNumberUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface phoneNumberVerifiedAt   {
+kind: "OutputField",
+name: "phoneNumberVerifiedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedInAt   {
+kind: "OutputField",
+name: "signedInAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface expiresAt   {
+kind: "OutputField",
+name: "expiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                               MyUser
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MyUser   {
+kind: "Object",
+name: "MyUser",
+fields: {
+__typename: MyUser.__typename,
+id: MyUser.id,
+adminNotes: MyUser.adminNotes,
+events: MyUser.events,
+metadata: MyUser.metadata,
+createdAt: MyUser.createdAt,
+createdBy: MyUser.createdBy,
+updatedAt: MyUser.updatedAt,
+updatedBy: MyUser.updatedBy,
+deletedAt: MyUser.deletedAt,
+deletedBy: MyUser.deletedBy,
+firstName: MyUser.firstName,
+lastName: MyUser.lastName,
+userHandle: MyUser.userHandle,
+phoneNumber: MyUser.phoneNumber,
+phoneNumberUpdatedAt: MyUser.phoneNumberUpdatedAt,
+isPhoneNumberVerified: MyUser.isPhoneNumberVerified,
+email: MyUser.email,
+emailSource: MyUser.emailSource,
+emailUpdatedAt: MyUser.emailUpdatedAt,
+isEmailVerified: MyUser.isEmailVerified,
+genderTextId: MyUser.genderTextId,
+cityOfResidence: MyUser.cityOfResidence,
+regionOfResidence: MyUser.regionOfResidence,
+countryOfResidenceTextId: MyUser.countryOfResidenceTextId,
+postalCode: MyUser.postalCode,
+avatarUrl: MyUser.avatarUrl,
+websites: MyUser.websites,
+authType: MyUser.authType,
+inviteCode: MyUser.inviteCode,
+tfaBackupCodes: MyUser.tfaBackupCodes,
+passwordUpdatedAt: MyUser.passwordUpdatedAt,
+preferredLanguageTextId: MyUser.preferredLanguageTextId,
+spokenLanguagesTextIds: MyUser.spokenLanguagesTextIds,
+selectedUiLanguageTextId: MyUser.selectedUiLanguageTextId,
+fallbackUiLanguageTextId: MyUser.fallbackUiLanguageTextId,
+discoverable: MyUser.discoverable,
+roles: MyUser.roles,
+appFeatures: MyUser.appFeatures,
+source: MyUser.source,
+timezone: MyUser.timezone,
+preferences: MyUser.preferences,
+trustLevel: MyUser.trustLevel,
+signedInAt: MyUser.signedInAt,
+signedOutAt: MyUser.signedOutAt,
+latestActivityAt: MyUser.latestActivityAt,
+userDevices: MyUser.userDevices,
+userBlocks: MyUser.userBlocks,
+contacts: MyUser.contacts,
+inactivatedAt: MyUser.inactivatedAt,
+inactivatedBy: MyUser.inactivatedBy,
+termsAndConditionsAcceptedAt: MyUser.termsAndConditionsAcceptedAt,
+optIntoNewsletter: MyUser.optIntoNewsletter,
+onboardingStage: MyUser.onboardingStage,
+suspendedAt: MyUser.suspendedAt,
+suspendedBy: MyUser.suspendedBy,
+addedToBgVaultAt: MyUser.addedToBgVaultAt,
+companyIds: MyUser.companyIds,
+companies: MyUser.companies,
+groupIds: MyUser.groupIds,
+parentGroupIds: MyUser.parentGroupIds,
+externalGroupIds: MyUser.externalGroupIds,
+pronounsTextIds: MyUser.pronounsTextIds,
+groupMemberships: MyUser.groupMemberships,
+seeksHelp: MyUser.seeksHelp,
+offersHelp: MyUser.offersHelp,
+birthYear: MyUser.birthYear,
+ethnicity: MyUser.ethnicity,
+educationLevelTextId: MyUser.educationLevelTextId,
+personalBio: MyUser.personalBio,
+yearsManagementExperience: MyUser.yearsManagementExperience,
+yearsOwnershipExperience: MyUser.yearsOwnershipExperience,
+academicExperienceIds: MyUser.academicExperienceIds,
+academicExperiences: MyUser.academicExperiences,
+genderSelfDescribed: MyUser.genderSelfDescribed,
+businessExperienceIds: MyUser.businessExperienceIds,
+businessExperiences: MyUser.businessExperiences,
+cityOfOrigin: MyUser.cityOfOrigin,
+regionOfOrigin: MyUser.regionOfOrigin,
+countryOfOriginTextId: MyUser.countryOfOriginTextId,
+isOnVacation: MyUser.isOnVacation,
+avatarAsset: MyUser.avatarAsset,
+profileRoleHistory: MyUser.profileRoleHistory,
+ssoIdp: MyUser.ssoIdp,
+originatedInMm2: MyUser.originatedInMm2,
+syncedWithMm2At: MyUser.syncedWithMm2At,
+mm2PasswordHash: MyUser.mm2PasswordHash,
+mm2Id: MyUser.mm2Id,
+mm2PhotoOriginal: MyUser.mm2PhotoOriginal,
+mm2BasicAccountCompleted: MyUser.mm2BasicAccountCompleted,
+hasSignedInToMm3: MyUser.hasSignedInToMm3,
+hasSignedInToMm2: MyUser.hasSignedInToMm2,
+mentor: MyUser.mentor,
+mentee: MyUser.mentee,
+countryOfResidence: MyUser.countryOfResidence,
+gender: MyUser.gender,
+latestUserDevice: MyUser.latestUserDevice,
+spokenLanguages: MyUser.spokenLanguages,
+preferredLanguage: MyUser.preferredLanguage,
+fallbackUiLanguage: MyUser.fallbackUiLanguage,
+preferredUiLanguage: MyUser.preferredUiLanguage,
+unreadInAppMessages: MyUser.unreadInAppMessages,
+channels: MyUser.channels,
+channelInvitations: MyUser.channelInvitations,
+channelParticipants: MyUser.channelParticipants,
+countryOfOrigin: MyUser.countryOfOrigin,
+educationLevel: MyUser.educationLevel,
+endorsements: MyUser.endorsements,
+groupMembers: MyUser.groupMembers,
+groups: MyUser.groups,
+hasTrainings: MyUser.hasTrainings,
+profileCompletionPercentage: MyUser.profileCompletionPercentage,
+profileRole: MyUser.profileRole,
+pronouns: MyUser.pronouns,
+pronounsDisplay: MyUser.pronounsDisplay,
+uploadedAssets: MyUser.uploadedAssets,
+inbox: MyUser.inbox
+}
+}
+
+export namespace MyUser {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "MyUser"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface firstName   {
+kind: "OutputField",
+name: "firstName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "OutputField",
+name: "lastName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "OutputField",
+name: "userHandle",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "OutputField",
+name: "phoneNumber",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "OutputField",
+name: "phoneNumberUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isPhoneNumberVerified   {
+kind: "OutputField",
+name: "isPhoneNumberVerified",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface email   {
+kind: "OutputField",
+name: "email",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The source of the email address, e.g. "google", "facebook", etc.
+*/
+ export  interface emailSource   {
+kind: "OutputField",
+name: "emailSource",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailUpdatedAt   {
+kind: "OutputField",
+name: "emailUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isEmailVerified   {
+kind: "OutputField",
+name: "isEmailVerified",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface genderTextId   {
+kind: "OutputField",
+name: "genderTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface cityOfResidence   {
+kind: "OutputField",
+name: "cityOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfResidence   {
+kind: "OutputField",
+name: "regionOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryOfResidenceTextId   {
+kind: "OutputField",
+name: "countryOfResidenceTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface postalCode   {
+kind: "OutputField",
+name: "postalCode",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "OutputField",
+name: "avatarUrl",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface websites   {
+kind: "OutputField",
+name: "websites",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$LabeledStringValue
+}
+
+ export  interface authType   {
+kind: "OutputField",
+name: "authType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AuthType
+}
+
+ export  interface inviteCode   {
+kind: "OutputField",
+name: "inviteCode",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface tfaBackupCodes   {
+kind: "OutputField",
+name: "tfaBackupCodes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface passwordUpdatedAt   {
+kind: "OutputField",
+name: "passwordUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface preferredLanguageTextId   {
+kind: "OutputField",
+name: "preferredLanguageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface spokenLanguagesTextIds   {
+kind: "OutputField",
+name: "spokenLanguagesTextIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface selectedUiLanguageTextId   {
+kind: "OutputField",
+name: "selectedUiLanguageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+ export  interface fallbackUiLanguageTextId   {
+kind: "OutputField",
+name: "fallbackUiLanguageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.
+*/
+ export  interface discoverable   {
+kind: "OutputField",
+name: "discoverable",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserRole
+}
+
+ export  interface appFeatures   {
+kind: "OutputField",
+name: "appFeatures",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AppFeature
+}
+
+ export  interface source   {
+kind: "OutputField",
+name: "source",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "OutputField",
+name: "timezone",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface preferences   {
+kind: "OutputField",
+name: "preferences",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserPreferences
+}
+
+ export  interface trustLevel   {
+kind: "OutputField",
+name: "trustLevel",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface signedInAt   {
+kind: "OutputField",
+name: "signedInAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedOutAt   {
+kind: "OutputField",
+name: "signedOutAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface latestActivityAt   {
+kind: "OutputField",
+name: "latestActivityAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userDevices   {
+kind: "OutputField",
+name: "userDevices",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserDeviceWithoutAuth
+}
+
+ export  interface userBlocks   {
+kind: "OutputField",
+name: "userBlocks",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserBlock
+}
+
+ export  interface contacts   {
+kind: "OutputField",
+name: "contacts",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Contact
+}
+
+ export  interface inactivatedAt   {
+kind: "OutputField",
+name: "inactivatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inactivatedBy   {
+kind: "OutputField",
+name: "inactivatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface termsAndConditionsAcceptedAt   {
+kind: "OutputField",
+name: "termsAndConditionsAcceptedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface optIntoNewsletter   {
+kind: "OutputField",
+name: "optIntoNewsletter",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface onboardingStage   {
+kind: "OutputField",
+name: "onboardingStage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface suspendedAt   {
+kind: "OutputField",
+name: "suspendedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "OutputField",
+name: "suspendedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface addedToBgVaultAt   {
+kind: "OutputField",
+name: "addedToBgVaultAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface companyIds   {
+kind: "OutputField",
+name: "companyIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface companies   {
+kind: "OutputField",
+name: "companies",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Company
+}
+
+ export  interface groupIds   {
+kind: "OutputField",
+name: "groupIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface parentGroupIds   {
+kind: "OutputField",
+name: "parentGroupIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface externalGroupIds   {
+kind: "OutputField",
+name: "externalGroupIds",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface pronounsTextIds   {
+kind: "OutputField",
+name: "pronounsTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface groupMemberships   {
+kind: "OutputField",
+name: "groupMemberships",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IGroupMembership
+}
+
+ export  interface seeksHelp   {
+kind: "OutputField",
+name: "seeksHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface offersHelp   {
+kind: "OutputField",
+name: "offersHelp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface birthYear   {
+kind: "OutputField",
+name: "birthYear",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface ethnicity   {
+kind: "OutputField",
+name: "ethnicity",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface educationLevelTextId   {
+kind: "OutputField",
+name: "educationLevelTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface personalBio   {
+kind: "OutputField",
+name: "personalBio",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface yearsManagementExperience   {
+kind: "OutputField",
+name: "yearsManagementExperience",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface yearsOwnershipExperience   {
+kind: "OutputField",
+name: "yearsOwnershipExperience",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface academicExperienceIds   {
+kind: "OutputField",
+name: "academicExperienceIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface academicExperiences   {
+kind: "OutputField",
+name: "academicExperiences",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AcademicExperience
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface genderSelfDescribed   {
+kind: "OutputField",
+name: "genderSelfDescribed",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface businessExperienceIds   {
+kind: "OutputField",
+name: "businessExperienceIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface businessExperiences   {
+kind: "OutputField",
+name: "businessExperiences",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BusinessExperience
+}
+
+ export  interface cityOfOrigin   {
+kind: "OutputField",
+name: "cityOfOrigin",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfOrigin   {
+kind: "OutputField",
+name: "regionOfOrigin",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryOfOriginTextId   {
+kind: "OutputField",
+name: "countryOfOriginTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isOnVacation   {
+kind: "OutputField",
+name: "isOnVacation",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface avatarAsset   {
+kind: "OutputField",
+name: "avatarAsset",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+ export  interface profileRoleHistory   {
+kind: "OutputField",
+name: "profileRoleHistory",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserProfileRoleHistoryItem
+}
+
+ export  interface ssoIdp   {
+kind: "OutputField",
+name: "ssoIdp",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Records whether a user was originally created in MM2.
+*/
+ export  interface originatedInMm2   {
+kind: "OutputField",
+name: "originatedInMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This is the MM2 password hash.
+*/
+ export  interface mm2PasswordHash   {
+kind: "OutputField",
+name: "mm2PasswordHash",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2PhotoOriginal   {
+kind: "OutputField",
+name: "mm2PhotoOriginal",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* For MM2 users, this means a profile is completed.
+*/
+ export  interface mm2BasicAccountCompleted   {
+kind: "OutputField",
+name: "mm2BasicAccountCompleted",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Records whether a user has logged into MM3.
+*/
+ export  interface hasSignedInToMm3   {
+kind: "OutputField",
+name: "hasSignedInToMm3",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Records whether a user has logged into MM2.
+*/
+ export  interface hasSignedInToMm2   {
+kind: "OutputField",
+name: "hasSignedInToMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is a copy of the mentor group membership.
+*/
+ export  interface mentor   {
+kind: "OutputField",
+name: "mentor",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MentorsGroupMembership
+}
+
+/**
+* This attribute is a copy of the mentee group membership.
+*/
+ export  interface mentee   {
+kind: "OutputField",
+name: "mentee",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MenteesGroupMembership
+}
+
+ export  interface countryOfResidence   {
+kind: "OutputField",
+name: "countryOfResidence",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface gender   {
+kind: "OutputField",
+name: "gender",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Gender
+}
+
+ export  interface latestUserDevice   {
+kind: "OutputField",
+name: "latestUserDevice",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserDeviceWithoutAuth
+}
+
+ export  interface spokenLanguages   {
+kind: "OutputField",
+name: "spokenLanguages",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface preferredLanguage   {
+kind: "OutputField",
+name: "preferredLanguage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface fallbackUiLanguage   {
+kind: "OutputField",
+name: "fallbackUiLanguage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface preferredUiLanguage   {
+kind: "OutputField",
+name: "preferredUiLanguage",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Language
+}
+
+ export  interface unreadInAppMessages   {
+kind: "OutputField",
+name: "unreadInAppMessages",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Notification
+}
+
+ export  interface channels   {
+kind: "OutputField",
+name: "channels",
+arguments: {
+/**
+* Set options on channels, e.g. to include archived channels.
+*/
+options: {
+kind: "InputField",
+name: "options",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FindObjectsOptions
+},
+/**
+* Set to True to return only channels which have been accepted. Default is False, which also returns channels with multiple messages that have not been accepted. Channels with only unaccepted invitations have no messages (except for channels created via the synchronizer).
+*/
+mustBeAccepted: {
+kind: "InputField",
+name: "mustBeAccepted",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+},
+/**
+* Set to True to return only channels with messages. Default is False, which also returns channels without messages. Channels with only unaccepted invitations have no messages (except for channels created via the synchronizer).
+*/
+mustHaveMessages: {
+kind: "InputField",
+name: "mustHaveMessages",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Channel
+}
+
+ export  interface channelInvitations   {
+kind: "OutputField",
+name: "channelInvitations",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelInvitation
+}
+
+ export  interface channelParticipants   {
+kind: "OutputField",
+name: "channelParticipants",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ChannelParticipant
+}
+
+ export  interface countryOfOrigin   {
+kind: "OutputField",
+name: "countryOfOrigin",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Country
+}
+
+ export  interface educationLevel   {
+kind: "OutputField",
+name: "educationLevel",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$EducationLevel
+}
+
+ export  interface endorsements   {
+kind: "OutputField",
+name: "endorsements",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$EndorsementWithTypes
+}
+
+ export  interface groupMembers   {
+kind: "OutputField",
+name: "groupMembers",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$IGroupMembership
+}
+
+ export  interface groups   {
+kind: "OutputField",
+name: "groups",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Group
+}
+
+ export  interface hasTrainings   {
+kind: "OutputField",
+name: "hasTrainings",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface profileCompletionPercentage   {
+kind: "OutputField",
+name: "profileCompletionPercentage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface profileRole   {
+kind: "OutputField",
+name: "profileRole",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserProfileRole
+}
+
+ export  interface pronouns   {
+kind: "OutputField",
+name: "pronouns",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$Pronoun
+}
+
+ export  interface pronounsDisplay   {
+kind: "OutputField",
+name: "pronounsDisplay",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface uploadedAssets   {
+kind: "OutputField",
+name: "uploadedAssets",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UploadedAsset
+}
+
+/**
+* @deprecated Use findMyInbox
+*/
+ export  interface inbox   {
+kind: "OutputField",
+name: "inbox",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserInbox
+}
+}
+
+//                                          ReportUserReason
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ReportUserReason   {
+kind: "Object",
+name: "ReportUserReason",
+fields: {
+__typename: ReportUserReason.__typename,
+id: ReportUserReason.id,
+adminNotes: ReportUserReason.adminNotes,
+events: ReportUserReason.events,
+metadata: ReportUserReason.metadata,
+createdAt: ReportUserReason.createdAt,
+createdBy: ReportUserReason.createdBy,
+updatedAt: ReportUserReason.updatedAt,
+updatedBy: ReportUserReason.updatedBy,
+deletedAt: ReportUserReason.deletedAt,
+deletedBy: ReportUserReason.deletedBy,
+textId: ReportUserReason.textId,
+parentTextId: ReportUserReason.parentTextId,
+isParent: ReportUserReason.isParent,
+optionType: ReportUserReason.optionType,
+value: ReportUserReason.value,
+translatedValue: ReportUserReason.translatedValue,
+supportedLanguages: ReportUserReason.supportedLanguages,
+materialIconName: ReportUserReason.materialIconName,
+description: ReportUserReason.description,
+translatedDescription: ReportUserReason.translatedDescription,
+language: ReportUserReason.language,
+mm2Id: ReportUserReason.mm2Id,
+mm2Value: ReportUserReason.mm2Value,
+syncedWithMm2At: ReportUserReason.syncedWithMm2At,
+mm2TextId: ReportUserReason.mm2TextId,
+mm3TextId: ReportUserReason.mm3TextId,
+childOptions: ReportUserReason.childOptions,
+parentOption: ReportUserReason.parentOption
+}
+}
+
+export namespace ReportUserReason {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ReportUserReason"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface textId   {
+kind: "OutputField",
+name: "textId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface parentTextId   {
+kind: "OutputField",
+name: "parentTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isParent   {
+kind: "OutputField",
+name: "isParent",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface optionType   {
+kind: "OutputField",
+name: "optionType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$OptionType
+}
+
+ export  interface value   {
+kind: "OutputField",
+name: "value",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedValue   {
+kind: "OutputField",
+name: "translatedValue",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface supportedLanguages   {
+kind: "OutputField",
+name: "supportedLanguages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+*/
+ export  interface materialIconName   {
+kind: "OutputField",
+name: "materialIconName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface translatedDescription   {
+kind: "OutputField",
+name: "translatedDescription",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "OutputField",
+name: "language",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mm2Value   {
+kind: "OutputField",
+name: "mm2Value",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2TextId   {
+kind: "OutputField",
+name: "mm2TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm3TextId   {
+kind: "OutputField",
+name: "mm3TextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childOptions   {
+kind: "OutputField",
+name: "childOptions",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+
+ export  interface parentOption   {
+kind: "OutputField",
+name: "parentOption",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$Option
+}
+}
+
+//                                              Training
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface Training   {
+kind: "Object",
+name: "Training",
+fields: {
+__typename: Training.__typename,
+id: Training.id,
+adminNotes: Training.adminNotes,
+events: Training.events,
+metadata: Training.metadata,
+createdAt: Training.createdAt,
+createdBy: Training.createdBy,
+updatedAt: Training.updatedAt,
+updatedBy: Training.updatedBy,
+deletedAt: Training.deletedAt,
+deletedBy: Training.deletedBy,
+title: Training.title,
+titleAr: Training.titleAr,
+titleEn: Training.titleEn,
+titleEs: Training.titleEs,
+titleInd: Training.titleInd,
+titleRu: Training.titleRu,
+titleSo: Training.titleSo,
+slug: Training.slug,
+slugAr: Training.slugAr,
+slugEn: Training.slugEn,
+slugEs: Training.slugEs,
+slugInd: Training.slugInd,
+slugRu: Training.slugRu,
+slugSo: Training.slugSo,
+urlPath: Training.urlPath,
+urlPathAr: Training.urlPathAr,
+urlPathEn: Training.urlPathEn,
+urlPathEs: Training.urlPathEs,
+urlPathInd: Training.urlPathInd,
+urlPathRu: Training.urlPathRu,
+urlPathSo: Training.urlPathSo,
+relativeUrlPath: Training.relativeUrlPath,
+relativeUrlPathAr: Training.relativeUrlPathAr,
+relativeUrlPathEn: Training.relativeUrlPathEn,
+relativeUrlPathEs: Training.relativeUrlPathEs,
+relativeUrlPathInd: Training.relativeUrlPathInd,
+relativeUrlPathRu: Training.relativeUrlPathRu,
+relativeUrlPathSo: Training.relativeUrlPathSo,
+live: Training.live,
+locked: Training.locked,
+expired: Training.expired,
+mm2Id: Training.mm2Id,
+syncedWithMm2At: Training.syncedWithMm2At,
+numCorrectAnswersToPass: Training.numCorrectAnswersToPass,
+about: Training.about,
+aboutAr: Training.aboutAr,
+aboutEn: Training.aboutEn,
+aboutEs: Training.aboutEs,
+aboutInd: Training.aboutInd,
+aboutRu: Training.aboutRu,
+aboutSo: Training.aboutSo,
+aboutMm2: Training.aboutMm2,
+aboutArMm2: Training.aboutArMm2,
+aboutEnMm2: Training.aboutEnMm2,
+aboutEsMm2: Training.aboutEsMm2,
+aboutIndMm2: Training.aboutIndMm2,
+aboutRuMm2: Training.aboutRuMm2,
+aboutSoMm2: Training.aboutSoMm2,
+introduction: Training.introduction,
+introductionAr: Training.introductionAr,
+introductionEn: Training.introductionEn,
+introductionEs: Training.introductionEs,
+introductionInd: Training.introductionInd,
+introductionRu: Training.introductionRu,
+introductionSo: Training.introductionSo,
+introductionMm2: Training.introductionMm2,
+introductionArMm2: Training.introductionArMm2,
+introductionEnMm2: Training.introductionEnMm2,
+introductionEsMm2: Training.introductionEsMm2,
+introductionIndMm2: Training.introductionIndMm2,
+introductionRuMm2: Training.introductionRuMm2,
+introductionSoMm2: Training.introductionSoMm2,
+lessonPlanLevels: Training.lessonPlanLevels,
+certificateTemplateId: Training.certificateTemplateId,
+code: Training.code,
+restricted: Training.restricted,
+showInMenus: Training.showInMenus,
+countriesTextIds: Training.countriesTextIds,
+groupIds: Training.groupIds,
+languagesTextIds: Training.languagesTextIds,
+seeksHelp: Training.seeksHelp,
+offersHelp: Training.offersHelp,
+imageUrls: Training.imageUrls,
+lessonPlan: Training.lessonPlan,
+lessonPlanAr: Training.lessonPlanAr,
+lessonPlanEn: Training.lessonPlanEn,
+lessonPlanEs: Training.lessonPlanEs,
+lessonPlanInd: Training.lessonPlanInd,
+lessonPlanRu: Training.lessonPlanRu,
+lessonPlanSo: Training.lessonPlanSo,
+trainingContentPages: Training.trainingContentPages,
+myTrainingSessions: Training.myTrainingSessions,
+myLatestTrainingSession: Training.myLatestTrainingSession,
+isTrainingCompletedForMe: Training.isTrainingCompletedForMe,
+isTrainingPassedForMe: Training.isTrainingPassedForMe
+}
+}
+
+export namespace Training {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "Training"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface title   {
+kind: "OutputField",
+name: "title",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleAr   {
+kind: "OutputField",
+name: "titleAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleEn   {
+kind: "OutputField",
+name: "titleEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleEs   {
+kind: "OutputField",
+name: "titleEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleInd   {
+kind: "OutputField",
+name: "titleInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleRu   {
+kind: "OutputField",
+name: "titleRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleSo   {
+kind: "OutputField",
+name: "titleSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slug   {
+kind: "OutputField",
+name: "slug",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugAr   {
+kind: "OutputField",
+name: "slugAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugEn   {
+kind: "OutputField",
+name: "slugEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugEs   {
+kind: "OutputField",
+name: "slugEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugInd   {
+kind: "OutputField",
+name: "slugInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugRu   {
+kind: "OutputField",
+name: "slugRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugSo   {
+kind: "OutputField",
+name: "slugSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPath   {
+kind: "OutputField",
+name: "urlPath",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathAr   {
+kind: "OutputField",
+name: "urlPathAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathEn   {
+kind: "OutputField",
+name: "urlPathEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathEs   {
+kind: "OutputField",
+name: "urlPathEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathInd   {
+kind: "OutputField",
+name: "urlPathInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathRu   {
+kind: "OutputField",
+name: "urlPathRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathSo   {
+kind: "OutputField",
+name: "urlPathSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPath   {
+kind: "OutputField",
+name: "relativeUrlPath",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathAr   {
+kind: "OutputField",
+name: "relativeUrlPathAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathEn   {
+kind: "OutputField",
+name: "relativeUrlPathEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathEs   {
+kind: "OutputField",
+name: "relativeUrlPathEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathInd   {
+kind: "OutputField",
+name: "relativeUrlPathInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathRu   {
+kind: "OutputField",
+name: "relativeUrlPathRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathSo   {
+kind: "OutputField",
+name: "relativeUrlPathSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface live   {
+kind: "OutputField",
+name: "live",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface locked   {
+kind: "OutputField",
+name: "locked",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface expired   {
+kind: "OutputField",
+name: "expired",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is only used by the MM2/VTS synchronizer. MM2 Wagtail page PK/ MM2 training page ID.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface numCorrectAnswersToPass   {
+kind: "OutputField",
+name: "numCorrectAnswersToPass",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface about   {
+kind: "OutputField",
+name: "about",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutAr   {
+kind: "OutputField",
+name: "aboutAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutEn   {
+kind: "OutputField",
+name: "aboutEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutEs   {
+kind: "OutputField",
+name: "aboutEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutInd   {
+kind: "OutputField",
+name: "aboutInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutRu   {
+kind: "OutputField",
+name: "aboutRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutSo   {
+kind: "OutputField",
+name: "aboutSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutMm2   {
+kind: "OutputField",
+name: "aboutMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutArMm2   {
+kind: "OutputField",
+name: "aboutArMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutEnMm2   {
+kind: "OutputField",
+name: "aboutEnMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutEsMm2   {
+kind: "OutputField",
+name: "aboutEsMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutIndMm2   {
+kind: "OutputField",
+name: "aboutIndMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutRuMm2   {
+kind: "OutputField",
+name: "aboutRuMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface aboutSoMm2   {
+kind: "OutputField",
+name: "aboutSoMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introduction   {
+kind: "OutputField",
+name: "introduction",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionAr   {
+kind: "OutputField",
+name: "introductionAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionEn   {
+kind: "OutputField",
+name: "introductionEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionEs   {
+kind: "OutputField",
+name: "introductionEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionInd   {
+kind: "OutputField",
+name: "introductionInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionRu   {
+kind: "OutputField",
+name: "introductionRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionSo   {
+kind: "OutputField",
+name: "introductionSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionMm2   {
+kind: "OutputField",
+name: "introductionMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionArMm2   {
+kind: "OutputField",
+name: "introductionArMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionEnMm2   {
+kind: "OutputField",
+name: "introductionEnMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionEsMm2   {
+kind: "OutputField",
+name: "introductionEsMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionIndMm2   {
+kind: "OutputField",
+name: "introductionIndMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionRuMm2   {
+kind: "OutputField",
+name: "introductionRuMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface introductionSoMm2   {
+kind: "OutputField",
+name: "introductionSoMm2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lessonPlanLevels   {
+kind: "OutputField",
+name: "lessonPlanLevels",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface certificateTemplateId   {
+kind: "OutputField",
+name: "certificateTemplateId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface code   {
+kind: "OutputField",
+name: "code",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface restricted   {
+kind: "OutputField",
+name: "restricted",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Maps to wagtailcore_page.show_in_menus from MM2
+*/
+ export  interface showInMenus   {
+kind: "OutputField",
+name: "showInMenus",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Maps to TrainingPageCountry from MM2
+*/
+ export  interface countriesTextIds   {
+kind: "OutputField",
+name: "countriesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Maps to TrainingPageCommmunity from MM2
+*/
+ export  interface groupIds   {
+kind: "OutputField",
+name: "groupIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Maps to TrainingPageLanguage from MM2
+*/
+ export  interface languagesTextIds   {
+kind: "OutputField",
+name: "languagesTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Restrict the training to mentees. Maps to MM2 TrainingPage.role.
+*/
+ export  interface seeksHelp   {
+kind: "OutputField",
+name: "seeksHelp",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Restrict the training to mentors. Maps to MM2 TrainingPage.role.
+*/
+ export  interface offersHelp   {
+kind: "OutputField",
+name: "offersHelp",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface imageUrls   {
+kind: "OutputField",
+name: "imageUrls",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Markdown field which contains the trainings lesson plan
+*/
+ export  interface lessonPlan   {
+kind: "OutputField",
+name: "lessonPlan",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Markdown field which contains the trainings lesson plan in Arabic
+*/
+ export  interface lessonPlanAr   {
+kind: "OutputField",
+name: "lessonPlanAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Markdown field which contains the trainings lesson plan in English
+*/
+ export  interface lessonPlanEn   {
+kind: "OutputField",
+name: "lessonPlanEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Markdown field which contains the trainings lesson plan in Spanish
+*/
+ export  interface lessonPlanEs   {
+kind: "OutputField",
+name: "lessonPlanEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Markdown field which contains the trainings lesson plan in Bahasa Indonesian
+*/
+ export  interface lessonPlanInd   {
+kind: "OutputField",
+name: "lessonPlanInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Markdown field which contains the trainings lesson plan in Russian
+*/
+ export  interface lessonPlanRu   {
+kind: "OutputField",
+name: "lessonPlanRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Markdown field which contains the trainings lesson plan in Somali
+*/
+ export  interface lessonPlanSo   {
+kind: "OutputField",
+name: "lessonPlanSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Training content pages used for the lesson plan
+*/
+ export  interface trainingContentPages   {
+kind: "OutputField",
+name: "trainingContentPages",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$TrainingContentPage
+}
+
+ export  interface myTrainingSessions   {
+kind: "OutputField",
+name: "myTrainingSessions",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$TrainingSession
+}
+
+ export  interface myLatestTrainingSession   {
+kind: "OutputField",
+name: "myLatestTrainingSession",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$TrainingSession
+}
+
+ export  interface isTrainingCompletedForMe   {
+kind: "OutputField",
+name: "isTrainingCompletedForMe",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface isTrainingPassedForMe   {
+kind: "OutputField",
+name: "isTrainingPassedForMe",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                        TrainingContentPage
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface TrainingContentPage   {
+kind: "Object",
+name: "TrainingContentPage",
+fields: {
+__typename: TrainingContentPage.__typename,
+id: TrainingContentPage.id,
+adminNotes: TrainingContentPage.adminNotes,
+events: TrainingContentPage.events,
+metadata: TrainingContentPage.metadata,
+createdAt: TrainingContentPage.createdAt,
+createdBy: TrainingContentPage.createdBy,
+updatedAt: TrainingContentPage.updatedAt,
+updatedBy: TrainingContentPage.updatedBy,
+deletedAt: TrainingContentPage.deletedAt,
+deletedBy: TrainingContentPage.deletedBy,
+title: TrainingContentPage.title,
+titleAr: TrainingContentPage.titleAr,
+titleEn: TrainingContentPage.titleEn,
+titleEs: TrainingContentPage.titleEs,
+titleInd: TrainingContentPage.titleInd,
+titleRu: TrainingContentPage.titleRu,
+titleSo: TrainingContentPage.titleSo,
+slug: TrainingContentPage.slug,
+slugAr: TrainingContentPage.slugAr,
+slugEn: TrainingContentPage.slugEn,
+slugEs: TrainingContentPage.slugEs,
+slugInd: TrainingContentPage.slugInd,
+slugRu: TrainingContentPage.slugRu,
+slugSo: TrainingContentPage.slugSo,
+urlPath: TrainingContentPage.urlPath,
+urlPathAr: TrainingContentPage.urlPathAr,
+urlPathEn: TrainingContentPage.urlPathEn,
+urlPathEs: TrainingContentPage.urlPathEs,
+urlPathInd: TrainingContentPage.urlPathInd,
+urlPathRu: TrainingContentPage.urlPathRu,
+urlPathSo: TrainingContentPage.urlPathSo,
+relativeUrlPath: TrainingContentPage.relativeUrlPath,
+relativeUrlPathAr: TrainingContentPage.relativeUrlPathAr,
+relativeUrlPathEn: TrainingContentPage.relativeUrlPathEn,
+relativeUrlPathEs: TrainingContentPage.relativeUrlPathEs,
+relativeUrlPathInd: TrainingContentPage.relativeUrlPathInd,
+relativeUrlPathRu: TrainingContentPage.relativeUrlPathRu,
+relativeUrlPathSo: TrainingContentPage.relativeUrlPathSo,
+live: TrainingContentPage.live,
+locked: TrainingContentPage.locked,
+expired: TrainingContentPage.expired,
+mm2Id: TrainingContentPage.mm2Id,
+syncedWithMm2At: TrainingContentPage.syncedWithMm2At,
+children: TrainingContentPage.children,
+trainingId: TrainingContentPage.trainingId
+}
+}
+
+export namespace TrainingContentPage {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "TrainingContentPage"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface title   {
+kind: "OutputField",
+name: "title",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleAr   {
+kind: "OutputField",
+name: "titleAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleEn   {
+kind: "OutputField",
+name: "titleEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleEs   {
+kind: "OutputField",
+name: "titleEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleInd   {
+kind: "OutputField",
+name: "titleInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleRu   {
+kind: "OutputField",
+name: "titleRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleSo   {
+kind: "OutputField",
+name: "titleSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slug   {
+kind: "OutputField",
+name: "slug",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugAr   {
+kind: "OutputField",
+name: "slugAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugEn   {
+kind: "OutputField",
+name: "slugEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugEs   {
+kind: "OutputField",
+name: "slugEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugInd   {
+kind: "OutputField",
+name: "slugInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugRu   {
+kind: "OutputField",
+name: "slugRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slugSo   {
+kind: "OutputField",
+name: "slugSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPath   {
+kind: "OutputField",
+name: "urlPath",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathAr   {
+kind: "OutputField",
+name: "urlPathAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathEn   {
+kind: "OutputField",
+name: "urlPathEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathEs   {
+kind: "OutputField",
+name: "urlPathEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathInd   {
+kind: "OutputField",
+name: "urlPathInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathRu   {
+kind: "OutputField",
+name: "urlPathRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface urlPathSo   {
+kind: "OutputField",
+name: "urlPathSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPath   {
+kind: "OutputField",
+name: "relativeUrlPath",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathAr   {
+kind: "OutputField",
+name: "relativeUrlPathAr",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathEn   {
+kind: "OutputField",
+name: "relativeUrlPathEn",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathEs   {
+kind: "OutputField",
+name: "relativeUrlPathEs",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathInd   {
+kind: "OutputField",
+name: "relativeUrlPathInd",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathRu   {
+kind: "OutputField",
+name: "relativeUrlPathRu",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface relativeUrlPathSo   {
+kind: "OutputField",
+name: "relativeUrlPathSo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface live   {
+kind: "OutputField",
+name: "live",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface locked   {
+kind: "OutputField",
+name: "locked",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface expired   {
+kind: "OutputField",
+name: "expired",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* This attribute is only used by the MM2/VTS synchronizer. MM2 Wagtail page PK/ MM2 trainingContentPage page ID.
+*/
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* TrainingContentPages can have children TrainingContentPages. This is used to represent the tree structure of the training content.
+*/
+ export  interface children   {
+kind: "OutputField",
+name: "children",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$TrainingContentPage
+}
+
+/**
+* FK to Training model
+*/
+ export  interface trainingId   {
+kind: "OutputField",
+name: "trainingId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                          TrainingSession
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface TrainingSession   {
+kind: "Object",
+name: "TrainingSession",
+fields: {
+__typename: TrainingSession.__typename,
+id: TrainingSession.id,
+adminNotes: TrainingSession.adminNotes,
+events: TrainingSession.events,
+metadata: TrainingSession.metadata,
+createdAt: TrainingSession.createdAt,
+createdBy: TrainingSession.createdBy,
+updatedAt: TrainingSession.updatedAt,
+updatedBy: TrainingSession.updatedBy,
+deletedAt: TrainingSession.deletedAt,
+deletedBy: TrainingSession.deletedBy,
+mm2Id: TrainingSession.mm2Id,
+syncedWithMm2At: TrainingSession.syncedWithMm2At,
+startedAt: TrainingSession.startedAt,
+trainingId: TrainingSession.trainingId,
+userId: TrainingSession.userId,
+isInProgress: TrainingSession.isInProgress,
+percentCompleted: TrainingSession.percentCompleted,
+completionInfo: TrainingSession.completionInfo
+}
+}
+
+export namespace TrainingSession {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "TrainingSession"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface startedAt   {
+kind: "OutputField",
+name: "startedAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* The ID of the training in MM3.
+*/
+ export  interface trainingId   {
+kind: "OutputField",
+name: "trainingId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isInProgress   {
+kind: "OutputField",
+name: "isInProgress",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface percentCompleted   {
+kind: "OutputField",
+name: "percentCompleted",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Float
+}
+
+ export  interface completionInfo   {
+kind: "OutputField",
+name: "completionInfo",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$TrainingSessionCompletionInfo
+}
+}
+
+//                                   TrainingSessionCompletionInfo
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface TrainingSessionCompletionInfo   {
+kind: "Object",
+name: "TrainingSessionCompletionInfo",
+fields: {
+__typename: TrainingSessionCompletionInfo.__typename,
+updatedAt: TrainingSessionCompletionInfo.updatedAt,
+mm2Id: TrainingSessionCompletionInfo.mm2Id,
+syncedWithMm2At: TrainingSessionCompletionInfo.syncedWithMm2At,
+completedAt: TrainingSessionCompletionInfo.completedAt,
+questionsAnsweredCorrectly: TrainingSessionCompletionInfo.questionsAnsweredCorrectly,
+numberOfQuestions: TrainingSessionCompletionInfo.numberOfQuestions,
+numCorrectAnswersToPass: TrainingSessionCompletionInfo.numCorrectAnswersToPass,
+isPassingScore: TrainingSessionCompletionInfo.isPassingScore,
+preTestQuestionsAnsweredCorrectly: TrainingSessionCompletionInfo.preTestQuestionsAnsweredCorrectly,
+numberOfPreTestQuestions: TrainingSessionCompletionInfo.numberOfPreTestQuestions
+}
+}
+
+export namespace TrainingSessionCompletionInfo {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "TrainingSessionCompletionInfo"
+}
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface mm2Id   {
+kind: "OutputField",
+name: "mm2Id",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "OutputField",
+name: "syncedWithMm2At",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface completedAt   {
+kind: "OutputField",
+name: "completedAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface questionsAnsweredCorrectly   {
+kind: "OutputField",
+name: "questionsAnsweredCorrectly",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface numberOfQuestions   {
+kind: "OutputField",
+name: "numberOfQuestions",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface numCorrectAnswersToPass   {
+kind: "OutputField",
+name: "numCorrectAnswersToPass",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface isPassingScore   {
+kind: "OutputField",
+name: "isPassingScore",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface preTestQuestionsAnsweredCorrectly   {
+kind: "OutputField",
+name: "preTestQuestionsAnsweredCorrectly",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface numberOfPreTestQuestions   {
+kind: "OutputField",
+name: "numberOfPreTestQuestions",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Int
+}
+}
+
+//                                          UserAuthResponse
+    // --------------------------------------------------------------------------------------------------
+    //
+
+/**
+* API response to signInUser/signUpUser/signInOauthUser
+*/
+ export  interface UserAuthResponse   {
+kind: "Object",
+name: "UserAuthResponse",
+fields: {
+__typename: UserAuthResponse.__typename,
+userId: UserAuthResponse.userId,
+firstName: UserAuthResponse.firstName,
+lastName: UserAuthResponse.lastName,
+userHandle: UserAuthResponse.userHandle,
+email: UserAuthResponse.email,
+phoneNumber: UserAuthResponse.phoneNumber,
+roles: UserAuthResponse.roles,
+onboardingStage: UserAuthResponse.onboardingStage,
+foundUser: UserAuthResponse.foundUser,
+authType: UserAuthResponse.authType,
+authToken: UserAuthResponse.authToken,
+authTokenExpiresAt: UserAuthResponse.authTokenExpiresAt
+}
+}
+
+export namespace UserAuthResponse {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "UserAuthResponse"
+}
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface firstName   {
+kind: "OutputField",
+name: "firstName",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "OutputField",
+name: "lastName",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "OutputField",
+name: "userHandle",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface email   {
+kind: "OutputField",
+name: "email",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "OutputField",
+name: "phoneNumber",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$UserRole
+}
+
+ export  interface onboardingStage   {
+kind: "OutputField",
+name: "onboardingStage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface foundUser   {
+kind: "OutputField",
+name: "foundUser",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface authType   {
+kind: "OutputField",
+name: "authType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AuthType
+}
+
+ export  interface authToken   {
+kind: "OutputField",
+name: "authToken",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface authTokenExpiresAt   {
+kind: "OutputField",
+name: "authTokenExpiresAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                             ContentTag
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContentTag   {
+kind: "Object",
+name: "ContentTag",
+fields: {
+__typename: ContentTag.__typename,
+id: ContentTag.id,
+adminNotes: ContentTag.adminNotes,
+events: ContentTag.events,
+metadata: ContentTag.metadata,
+createdAt: ContentTag.createdAt,
+createdBy: ContentTag.createdBy,
+updatedAt: ContentTag.updatedAt,
+updatedBy: ContentTag.updatedBy,
+deletedAt: ContentTag.deletedAt,
+deletedBy: ContentTag.deletedBy,
+objectId: ContentTag.objectId,
+contentModelType: ContentTag.contentModelType,
+userId: ContentTag.userId,
+contentTagTypeTextId: ContentTag.contentTagTypeTextId,
+childContentTagTypeTextId: ContentTag.childContentTagTypeTextId,
+messageText: ContentTag.messageText,
+moderationConcern: ContentTag.moderationConcern,
+allModerationConcerns: ContentTag.allModerationConcerns,
+approvedByRecipientAt: ContentTag.approvedByRecipientAt,
+verifiedBy: ContentTag.verifiedBy,
+verifiedAt: ContentTag.verifiedAt,
+dismissedBy: ContentTag.dismissedBy,
+dismissedAt: ContentTag.dismissedAt,
+childContentTagType: ContentTag.childContentTagType,
+contentTagType: ContentTag.contentTagType
+}
+}
+
+export namespace ContentTag {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ContentTag"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface objectId   {
+kind: "OutputField",
+name: "objectId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface contentModelType   {
+kind: "OutputField",
+name: "contentModelType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ModelType
+}
+
+/**
+* ID of the user that created/owns the content referred to in this ContentTag. The ID of the user that created this ContentTag is stored in the createdBy field for ContentTags that were created by a user.
+*/
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface contentTagTypeTextId   {
+kind: "OutputField",
+name: "contentTagTypeTextId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childContentTagTypeTextId   {
+kind: "OutputField",
+name: "childContentTagTypeTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageText   {
+kind: "OutputField",
+name: "messageText",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface moderationConcern   {
+kind: "OutputField",
+name: "moderationConcern",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ModerationConcern
+}
+
+ export  interface allModerationConcerns   {
+kind: "OutputField",
+name: "allModerationConcerns",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModerationConcern
+}
+
+ export  interface approvedByRecipientAt   {
+kind: "OutputField",
+name: "approvedByRecipientAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* ID of the admin user that verified the tag.
+*/
+ export  interface verifiedBy   {
+kind: "OutputField",
+name: "verifiedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface verifiedAt   {
+kind: "OutputField",
+name: "verifiedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* ID of the admin user that dimsissed the tag.
+*/
+ export  interface dismissedBy   {
+kind: "OutputField",
+name: "dismissedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface dismissedAt   {
+kind: "OutputField",
+name: "dismissedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface childContentTagType   {
+kind: "OutputField",
+name: "childContentTagType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ContentTagType
+}
+
+ export  interface contentTagType   {
+kind: "OutputField",
+name: "contentTagType",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ContentTagType
+}
+}
+
+//                                        SupportChannelConfig
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SupportChannelConfig   {
+kind: "Object",
+name: "SupportChannelConfig",
+fields: {
+__typename: SupportChannelConfig.__typename,
+id: SupportChannelConfig.id,
+adminNotes: SupportChannelConfig.adminNotes,
+events: SupportChannelConfig.events,
+metadata: SupportChannelConfig.metadata,
+createdAt: SupportChannelConfig.createdAt,
+createdBy: SupportChannelConfig.createdBy,
+updatedAt: SupportChannelConfig.updatedAt,
+updatedBy: SupportChannelConfig.updatedBy,
+deletedAt: SupportChannelConfig.deletedAt,
+deletedBy: SupportChannelConfig.deletedBy,
+groupId: SupportChannelConfig.groupId,
+senderUserId: SupportChannelConfig.senderUserId,
+isActive: SupportChannelConfig.isActive,
+createSupportChannelForMentees: SupportChannelConfig.createSupportChannelForMentees,
+createSupportChannelForMentors: SupportChannelConfig.createSupportChannelForMentors,
+channelLanguageTextId: SupportChannelConfig.channelLanguageTextId,
+filterByGenderTextIds: SupportChannelConfig.filterByGenderTextIds,
+firstMessageText: SupportChannelConfig.firstMessageText,
+sendNotifications: SupportChannelConfig.sendNotifications
+}
+}
+
+export namespace SupportChannelConfig {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "SupportChannelConfig"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface senderUserId   {
+kind: "OutputField",
+name: "senderUserId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Is this welcome message active / should we send it to users?
+*/
+ export  interface isActive   {
+kind: "OutputField",
+name: "isActive",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface createSupportChannelForMentees   {
+kind: "OutputField",
+name: "createSupportChannelForMentees",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface createSupportChannelForMentors   {
+kind: "OutputField",
+name: "createSupportChannelForMentors",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Any language option can be selected, not just a UiLanguage
+*/
+ export  interface channelLanguageTextId   {
+kind: "OutputField",
+name: "channelLanguageTextId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface filterByGenderTextIds   {
+kind: "OutputField",
+name: "filterByGenderTextIds",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The welcome message is a plain text field
+*/
+ export  interface firstMessageText   {
+kind: "OutputField",
+name: "firstMessageText",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Setting to false will ensure no notifications are sent. Setting to true will still check notification template settings.
+*/
+ export  interface sendNotifications   {
+kind: "OutputField",
+name: "sendNotifications",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                        NotificationTemplate
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationTemplate   {
+kind: "Object",
+name: "NotificationTemplate",
+fields: {
+__typename: NotificationTemplate.__typename,
+id: NotificationTemplate.id,
+adminNotes: NotificationTemplate.adminNotes,
+events: NotificationTemplate.events,
+metadata: NotificationTemplate.metadata,
+createdAt: NotificationTemplate.createdAt,
+createdBy: NotificationTemplate.createdBy,
+updatedAt: NotificationTemplate.updatedAt,
+updatedBy: NotificationTemplate.updatedBy,
+deletedAt: NotificationTemplate.deletedAt,
+deletedBy: NotificationTemplate.deletedBy,
+name: NotificationTemplate.name,
+description: NotificationTemplate.description,
+titleAr: NotificationTemplate.titleAr,
+messageTextAr: NotificationTemplate.messageTextAr,
+shortMessageTextAr: NotificationTemplate.shortMessageTextAr,
+htmlMessageAr: NotificationTemplate.htmlMessageAr,
+titleEn: NotificationTemplate.titleEn,
+messageTextEn: NotificationTemplate.messageTextEn,
+shortMessageTextEn: NotificationTemplate.shortMessageTextEn,
+htmlMessageEn: NotificationTemplate.htmlMessageEn,
+titleEs: NotificationTemplate.titleEs,
+messageTextEs: NotificationTemplate.messageTextEs,
+shortMessageTextEs: NotificationTemplate.shortMessageTextEs,
+htmlMessageEs: NotificationTemplate.htmlMessageEs,
+titleId: NotificationTemplate.titleId,
+messageTextId: NotificationTemplate.messageTextId,
+shortMessageTextId: NotificationTemplate.shortMessageTextId,
+htmlMessageId: NotificationTemplate.htmlMessageId,
+titleRu: NotificationTemplate.titleRu,
+messageTextRu: NotificationTemplate.messageTextRu,
+shortMessageTextRu: NotificationTemplate.shortMessageTextRu,
+htmlMessageRu: NotificationTemplate.htmlMessageRu,
+titleSo: NotificationTemplate.titleSo,
+messageTextSo: NotificationTemplate.messageTextSo,
+shortMessageTextSo: NotificationTemplate.shortMessageTextSo,
+htmlMessageSo: NotificationTemplate.htmlMessageSo,
+version: NotificationTemplate.version,
+senderName: NotificationTemplate.senderName,
+senderEmail: NotificationTemplate.senderEmail,
+action0: NotificationTemplate.action0,
+action1: NotificationTemplate.action1,
+action2: NotificationTemplate.action2,
+sendEmail: NotificationTemplate.sendEmail,
+sendInAppMessage: NotificationTemplate.sendInAppMessage,
+sendPushNotification: NotificationTemplate.sendPushNotification,
+sendSms: NotificationTemplate.sendSms,
+isCore: NotificationTemplate.isCore
+}
+}
+
+export namespace NotificationTemplate {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "NotificationTemplate"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface name   {
+kind: "OutputField",
+name: "name",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$NotificationTemplateName
+}
+
+ export  interface description   {
+kind: "OutputField",
+name: "description",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleAr   {
+kind: "OutputField",
+name: "titleAr",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextAr   {
+kind: "OutputField",
+name: "messageTextAr",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextAr   {
+kind: "OutputField",
+name: "shortMessageTextAr",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageAr   {
+kind: "OutputField",
+name: "htmlMessageAr",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleEn   {
+kind: "OutputField",
+name: "titleEn",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextEn   {
+kind: "OutputField",
+name: "messageTextEn",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextEn   {
+kind: "OutputField",
+name: "shortMessageTextEn",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageEn   {
+kind: "OutputField",
+name: "htmlMessageEn",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleEs   {
+kind: "OutputField",
+name: "titleEs",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextEs   {
+kind: "OutputField",
+name: "messageTextEs",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextEs   {
+kind: "OutputField",
+name: "shortMessageTextEs",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageEs   {
+kind: "OutputField",
+name: "htmlMessageEs",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleId   {
+kind: "OutputField",
+name: "titleId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextId   {
+kind: "OutputField",
+name: "messageTextId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextId   {
+kind: "OutputField",
+name: "shortMessageTextId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageId   {
+kind: "OutputField",
+name: "htmlMessageId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleRu   {
+kind: "OutputField",
+name: "titleRu",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextRu   {
+kind: "OutputField",
+name: "messageTextRu",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextRu   {
+kind: "OutputField",
+name: "shortMessageTextRu",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageRu   {
+kind: "OutputField",
+name: "htmlMessageRu",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleSo   {
+kind: "OutputField",
+name: "titleSo",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextSo   {
+kind: "OutputField",
+name: "messageTextSo",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextSo   {
+kind: "OutputField",
+name: "shortMessageTextSo",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageSo   {
+kind: "OutputField",
+name: "htmlMessageSo",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface version   {
+kind: "OutputField",
+name: "version",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderName   {
+kind: "OutputField",
+name: "senderName",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderEmail   {
+kind: "OutputField",
+name: "senderEmail",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface action0   {
+kind: "OutputField",
+name: "action0",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface action1   {
+kind: "OutputField",
+name: "action1",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface action2   {
+kind: "OutputField",
+name: "action2",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface sendEmail   {
+kind: "OutputField",
+name: "sendEmail",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendInAppMessage   {
+kind: "OutputField",
+name: "sendInAppMessage",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendPushNotification   {
+kind: "OutputField",
+name: "sendPushNotification",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendSms   {
+kind: "OutputField",
+name: "sendSms",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface isCore   {
+kind: "OutputField",
+name: "isCore",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                           ContentStatus
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContentStatus   {
+kind: "Object",
+name: "ContentStatus",
+fields: {
+__typename: ContentStatus.__typename,
+id: ContentStatus.id,
+adminNotes: ContentStatus.adminNotes,
+events: ContentStatus.events,
+metadata: ContentStatus.metadata,
+createdAt: ContentStatus.createdAt,
+createdBy: ContentStatus.createdBy,
+updatedAt: ContentStatus.updatedAt,
+updatedBy: ContentStatus.updatedBy,
+deletedAt: ContentStatus.deletedAt,
+deletedBy: ContentStatus.deletedBy,
+optionsUpdatedAt: ContentStatus.optionsUpdatedAt,
+myUserUpdatedAt: ContentStatus.myUserUpdatedAt,
+myUserInboxUpdatedAt: ContentStatus.myUserInboxUpdatedAt
+}
+}
+
+export namespace ContentStatus {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ContentStatus"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface optionsUpdatedAt   {
+kind: "OutputField",
+name: "optionsUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Long
+}
+
+ export  interface myUserUpdatedAt   {
+kind: "OutputField",
+name: "myUserUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Long
+}
+
+ export  interface myUserInboxUpdatedAt   {
+kind: "OutputField",
+name: "myUserInboxUpdatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Long
+}
+}
+
+//                                       BgChannelChangedEvent
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BgChannelChangedEvent   {
+kind: "Object",
+name: "BgChannelChangedEvent",
+fields: {
+__typename: BgChannelChangedEvent.__typename,
+serviceRequest: BgChannelChangedEvent.serviceRequest,
+channelId: BgChannelChangedEvent.channelId,
+invitationId: BgChannelChangedEvent.invitationId,
+messageId: BgChannelChangedEvent.messageId,
+participantId: BgChannelChangedEvent.participantId,
+eventType: BgChannelChangedEvent.eventType,
+requestId: BgChannelChangedEvent.requestId
+}
+}
+
+export namespace BgChannelChangedEvent {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "BgChannelChangedEvent"
+}
+}
+
+ export  interface serviceRequest   {
+kind: "OutputField",
+name: "serviceRequest",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface channelId   {
+kind: "OutputField",
+name: "channelId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface invitationId   {
+kind: "OutputField",
+name: "invitationId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface messageId   {
+kind: "OutputField",
+name: "messageId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface participantId   {
+kind: "OutputField",
+name: "participantId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface eventType   {
+kind: "OutputField",
+name: "eventType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelChangedEventType
+}
+
+ export  interface requestId   {
+kind: "OutputField",
+name: "requestId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                         ObjectChangedEvent
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ObjectChangedEvent   {
+kind: "Object",
+name: "ObjectChangedEvent",
+fields: {
+__typename: ObjectChangedEvent.__typename,
+serviceRequest: ObjectChangedEvent.serviceRequest,
+objectId: ObjectChangedEvent.objectId,
+modelType: ObjectChangedEvent.modelType,
+ownerUserId: ObjectChangedEvent.ownerUserId,
+messageType: ObjectChangedEvent.messageType,
+requestId: ObjectChangedEvent.requestId,
+object: ObjectChangedEvent.$object
+}
+}
+
+export namespace ObjectChangedEvent {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "ObjectChangedEvent"
+}
+}
+
+ export  interface serviceRequest   {
+kind: "OutputField",
+name: "serviceRequest",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ServiceRequest
+}
+
+ export  interface objectId   {
+kind: "OutputField",
+name: "objectId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface modelType   {
+kind: "OutputField",
+name: "modelType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ModelType
+}
+
+ export  interface ownerUserId   {
+kind: "OutputField",
+name: "ownerUserId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface messageType   {
+kind: "OutputField",
+name: "messageType",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ObjectChangedEventType
+}
+
+ export  interface requestId   {
+kind: "OutputField",
+name: "requestId",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface $object   {
+kind: "OutputField",
+name: "object",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModel
+}
+}
+
+//                                             BaseModel
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BaseModel   {
+kind: "Object",
+name: "BaseModel",
+fields: {
+__typename: BaseModel.__typename,
+id: BaseModel.id,
+adminNotes: BaseModel.adminNotes,
+events: BaseModel.events,
+metadata: BaseModel.metadata,
+createdAt: BaseModel.createdAt,
+createdBy: BaseModel.createdBy,
+updatedAt: BaseModel.updatedAt,
+updatedBy: BaseModel.updatedBy,
+deletedAt: BaseModel.deletedAt,
+deletedBy: BaseModel.deletedBy
+}
+}
+
+export namespace BaseModel {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "BaseModel"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "OutputField",
+name: "adminNotes",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "OutputField",
+name: "events",
+arguments: {
+
+},
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEvent
+}
+
+ export  interface metadata   {
+kind: "OutputField",
+name: "metadata",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadata
+}
+
+ export  interface createdAt   {
+kind: "OutputField",
+name: "createdAt",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "OutputField",
+name: "createdBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "OutputField",
+name: "updatedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "OutputField",
+name: "deletedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "OutputField",
+name: "deletedBy",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                            InputObject
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+//                                         FindObjectsOptions
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface FindObjectsOptions   {
+kind: "InputObject",
+name: "FindObjectsOptions",
+isAllFieldsNullable: true,
+fields: {
+limit: FindObjectsOptions.limit,
+sort: FindObjectsOptions.sort,
+skip: FindObjectsOptions.skip,
+timeout: FindObjectsOptions.timeout,
+tailable: FindObjectsOptions.tailable,
+awaitData: FindObjectsOptions.awaitData,
+batchSize: FindObjectsOptions.batchSize,
+returnKey: FindObjectsOptions.returnKey,
+maxTimeMS: FindObjectsOptions.maxTimeMS,
+maxAwaitTimeMS: FindObjectsOptions.maxAwaitTimeMS,
+noCursorTimeout: FindObjectsOptions.noCursorTimeout,
+singleBatch: FindObjectsOptions.singleBatch,
+allowPartialResults: FindObjectsOptions.allowPartialResults,
+showRecordId: FindObjectsOptions.showRecordId,
+includeArchived: FindObjectsOptions.includeArchived,
+includeBlocked: FindObjectsOptions.includeBlocked,
+includeDeleted: FindObjectsOptions.includeDeleted,
+includeSuspended: FindObjectsOptions.includeSuspended
+}
+}
+
+export namespace FindObjectsOptions {
+ export  interface limit   {
+kind: "InputField",
+name: "limit",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface sort   {
+kind: "InputField",
+name: "sort",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$SortItem
+}
+
+ export  interface skip   {
+kind: "InputField",
+name: "skip",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface timeout   {
+kind: "InputField",
+name: "timeout",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface tailable   {
+kind: "InputField",
+name: "tailable",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface awaitData   {
+kind: "InputField",
+name: "awaitData",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface batchSize   {
+kind: "InputField",
+name: "batchSize",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface returnKey   {
+kind: "InputField",
+name: "returnKey",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface maxTimeMS   {
+kind: "InputField",
+name: "maxTimeMS",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface maxAwaitTimeMS   {
+kind: "InputField",
+name: "maxAwaitTimeMS",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface noCursorTimeout   {
+kind: "InputField",
+name: "noCursorTimeout",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface singleBatch   {
+kind: "InputField",
+name: "singleBatch",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface allowPartialResults   {
+kind: "InputField",
+name: "allowPartialResults",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface showRecordId   {
+kind: "InputField",
+name: "showRecordId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface includeArchived   {
+kind: "InputField",
+name: "includeArchived",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$IncludeFilterOption
+}
+
+ export  interface includeBlocked   {
+kind: "InputField",
+name: "includeBlocked",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$IncludeFilterOption
+}
+
+ export  interface includeDeleted   {
+kind: "InputField",
+name: "includeDeleted",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$IncludeFilterOption
+}
+
+ export  interface includeSuspended   {
+kind: "InputField",
+name: "includeSuspended",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$IncludeFilterOption
+}
+}
+
+//                                              SortItem
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SortItem   {
+kind: "InputObject",
+name: "SortItem",
+isAllFieldsNullable: true,
+fields: {
+field: SortItem.field,
+direction: SortItem.direction
+}
+}
+
+export namespace SortItem {
+ export  interface field   {
+kind: "InputField",
+name: "field",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface direction   {
+kind: "InputField",
+name: "direction",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$SortDirection
+}
+}
+
+//                                       FindUserByIdentOptions
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface FindUserByIdentOptions   {
+kind: "InputObject",
+name: "FindUserByIdentOptions",
+isAllFieldsNullable: true,
+fields: {
+includeDeleted: FindUserByIdentOptions.includeDeleted,
+includeGroupProfiles: FindUserByIdentOptions.includeGroupProfiles
+}
+}
+
+export namespace FindUserByIdentOptions {
+ export  interface includeDeleted   {
+kind: "InputField",
+name: "includeDeleted",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface includeGroupProfiles   {
+kind: "InputField",
+name: "includeGroupProfiles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                             UserInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserInput   {
+kind: "InputObject",
+name: "UserInput",
+isAllFieldsNullable: true,
+fields: {
+id: UserInput.id,
+adminNotes: UserInput.adminNotes,
+events: UserInput.events,
+metadata: UserInput.metadata,
+createdAt: UserInput.createdAt,
+createdBy: UserInput.createdBy,
+updatedAt: UserInput.updatedAt,
+updatedBy: UserInput.updatedBy,
+deletedAt: UserInput.deletedAt,
+deletedBy: UserInput.deletedBy,
+firstName: UserInput.firstName,
+lastName: UserInput.lastName,
+fullName: UserInput.fullName,
+userHandle: UserInput.userHandle,
+phoneNumber: UserInput.phoneNumber,
+phoneNumberUpdatedAt: UserInput.phoneNumberUpdatedAt,
+isPhoneNumberVerified: UserInput.isPhoneNumberVerified,
+email: UserInput.email,
+emailUpdatedAt: UserInput.emailUpdatedAt,
+isEmailVerified: UserInput.isEmailVerified,
+emailSource: UserInput.emailSource,
+genderTextId: UserInput.genderTextId,
+cityOfResidence: UserInput.cityOfResidence,
+regionOfResidence: UserInput.regionOfResidence,
+countryOfResidenceTextId: UserInput.countryOfResidenceTextId,
+postalCode: UserInput.postalCode,
+avatarUrl: UserInput.avatarUrl,
+websites: UserInput.websites,
+authType: UserInput.authType,
+inviteCode: UserInput.inviteCode,
+currentPassword: UserInput.currentPassword,
+newPassword: UserInput.newPassword,
+preferredLanguageTextId: UserInput.preferredLanguageTextId,
+spokenLanguagesTextIds: UserInput.spokenLanguagesTextIds,
+selectedUiLanguageTextId: UserInput.selectedUiLanguageTextId,
+fallbackUiLanguageTextId: UserInput.fallbackUiLanguageTextId,
+discoverable: UserInput.discoverable,
+roles: UserInput.roles,
+appFeatures: UserInput.appFeatures,
+source: UserInput.source,
+timezone: UserInput.timezone,
+preferences: UserInput.preferences,
+trustLevel: UserInput.trustLevel,
+signedInAt: UserInput.signedInAt,
+signedOutAt: UserInput.signedOutAt,
+latestActivityAt: UserInput.latestActivityAt,
+inactivatedAt: UserInput.inactivatedAt,
+inactivatedBy: UserInput.inactivatedBy,
+termsAndConditionsAcceptedAt: UserInput.termsAndConditionsAcceptedAt,
+optIntoNewsletter: UserInput.optIntoNewsletter,
+onboardingStage: UserInput.onboardingStage,
+suspendedAt: UserInput.suspendedAt,
+suspendedBy: UserInput.suspendedBy,
+companyIds: UserInput.companyIds,
+companies: UserInput.companies,
+groupIds: UserInput.groupIds,
+parentGroupIds: UserInput.parentGroupIds,
+externalGroupIds: UserInput.externalGroupIds,
+pronounsTextIds: UserInput.pronounsTextIds,
+groupMemberships: UserInput.groupMemberships,
+addToGroupIds: UserInput.addToGroupIds,
+removeFromGroupIds: UserInput.removeFromGroupIds,
+seeksHelp: UserInput.seeksHelp,
+offersHelp: UserInput.offersHelp,
+birthYear: UserInput.birthYear,
+ethnicity: UserInput.ethnicity,
+educationLevelTextId: UserInput.educationLevelTextId,
+personalBio: UserInput.personalBio,
+yearsManagementExperience: UserInput.yearsManagementExperience,
+yearsOwnershipExperience: UserInput.yearsOwnershipExperience,
+academicExperienceIds: UserInput.academicExperienceIds,
+company: UserInput.company,
+academicExperiences: UserInput.academicExperiences,
+businessExperienceIds: UserInput.businessExperienceIds,
+businessExperiences: UserInput.businessExperiences,
+cityOfOrigin: UserInput.cityOfOrigin,
+regionOfOrigin: UserInput.regionOfOrigin,
+countryOfOriginTextId: UserInput.countryOfOriginTextId,
+isOnVacation: UserInput.isOnVacation,
+profileRoleHistory: UserInput.profileRoleHistory,
+ssoIdp: UserInput.ssoIdp
+}
+}
+
+export namespace UserInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface firstName   {
+kind: "InputField",
+name: "firstName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "InputField",
+name: "lastName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface fullName   {
+kind: "InputField",
+name: "fullName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "InputField",
+name: "userHandle",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "InputField",
+name: "phoneNumberUpdatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isPhoneNumberVerified   {
+kind: "InputField",
+name: "isPhoneNumberVerified",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface email   {
+kind: "InputField",
+name: "email",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailUpdatedAt   {
+kind: "InputField",
+name: "emailUpdatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isEmailVerified   {
+kind: "InputField",
+name: "isEmailVerified",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* The source of the email address, e.g. "google", "facebook", etc.
+*/
+ export  interface emailSource   {
+kind: "InputField",
+name: "emailSource",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface genderTextId   {
+kind: "InputField",
+name: "genderTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface cityOfResidence   {
+kind: "InputField",
+name: "cityOfResidence",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfResidence   {
+kind: "InputField",
+name: "regionOfResidence",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryOfResidenceTextId   {
+kind: "InputField",
+name: "countryOfResidenceTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface postalCode   {
+kind: "InputField",
+name: "postalCode",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "InputField",
+name: "avatarUrl",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface websites   {
+kind: "InputField",
+name: "websites",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$LabeledStringValueInput
+}
+
+ export  interface authType   {
+kind: "InputField",
+name: "authType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AuthType
+}
+
+ export  interface inviteCode   {
+kind: "InputField",
+name: "inviteCode",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface currentPassword   {
+kind: "InputField",
+name: "currentPassword",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface newPassword   {
+kind: "InputField",
+name: "newPassword",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface preferredLanguageTextId   {
+kind: "InputField",
+name: "preferredLanguageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface spokenLanguagesTextIds   {
+kind: "InputField",
+name: "spokenLanguagesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface selectedUiLanguageTextId   {
+kind: "InputField",
+name: "selectedUiLanguageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+ export  interface fallbackUiLanguageTextId   {
+kind: "InputField",
+name: "fallbackUiLanguageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+ export  interface discoverable   {
+kind: "InputField",
+name: "discoverable",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface roles   {
+kind: "InputField",
+name: "roles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserRole
+}
+
+ export  interface appFeatures   {
+kind: "InputField",
+name: "appFeatures",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AppFeature
+}
+
+ export  interface source   {
+kind: "InputField",
+name: "source",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "InputField",
+name: "timezone",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface preferences   {
+kind: "InputField",
+name: "preferences",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserPreferencesInput
+}
+
+ export  interface trustLevel   {
+kind: "InputField",
+name: "trustLevel",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface signedInAt   {
+kind: "InputField",
+name: "signedInAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedOutAt   {
+kind: "InputField",
+name: "signedOutAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface latestActivityAt   {
+kind: "InputField",
+name: "latestActivityAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inactivatedAt   {
+kind: "InputField",
+name: "inactivatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inactivatedBy   {
+kind: "InputField",
+name: "inactivatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface termsAndConditionsAcceptedAt   {
+kind: "InputField",
+name: "termsAndConditionsAcceptedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface optIntoNewsletter   {
+kind: "InputField",
+name: "optIntoNewsletter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface onboardingStage   {
+kind: "InputField",
+name: "onboardingStage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface suspendedAt   {
+kind: "InputField",
+name: "suspendedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "InputField",
+name: "suspendedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface companyIds   {
+kind: "InputField",
+name: "companyIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Used internally, will not work in GraphQL queries.
+*/
+ export  interface companies   {
+kind: "InputField",
+name: "companies",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$CompanyInput
+}
+
+ export  interface groupIds   {
+kind: "InputField",
+name: "groupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface parentGroupIds   {
+kind: "InputField",
+name: "parentGroupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface externalGroupIds   {
+kind: "InputField",
+name: "externalGroupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface pronounsTextIds   {
+kind: "InputField",
+name: "pronounsTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface groupMemberships   {
+kind: "InputField",
+name: "groupMemberships",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipInput
+}
+
+ export  interface addToGroupIds   {
+kind: "InputField",
+name: "addToGroupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface removeFromGroupIds   {
+kind: "InputField",
+name: "removeFromGroupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface seeksHelp   {
+kind: "InputField",
+name: "seeksHelp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface offersHelp   {
+kind: "InputField",
+name: "offersHelp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface birthYear   {
+kind: "InputField",
+name: "birthYear",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface ethnicity   {
+kind: "InputField",
+name: "ethnicity",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface educationLevelTextId   {
+kind: "InputField",
+name: "educationLevelTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface personalBio   {
+kind: "InputField",
+name: "personalBio",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface yearsManagementExperience   {
+kind: "InputField",
+name: "yearsManagementExperience",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface yearsOwnershipExperience   {
+kind: "InputField",
+name: "yearsOwnershipExperience",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface academicExperienceIds   {
+kind: "InputField",
+name: "academicExperienceIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Specify a company you want to create and add the user to.
+*/
+ export  interface company   {
+kind: "InputField",
+name: "company",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$CompanyInput
+}
+
+/**
+* Specify a list of academic experiences you want to create for the user.
+*/
+ export  interface academicExperiences   {
+kind: "InputField",
+name: "academicExperiences",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AcademicExperienceInput
+}
+
+ export  interface businessExperienceIds   {
+kind: "InputField",
+name: "businessExperienceIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Specify a list of business experiences you want to create for the user.
+*/
+ export  interface businessExperiences   {
+kind: "InputField",
+name: "businessExperiences",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BusinessExperienceInput
+}
+
+ export  interface cityOfOrigin   {
+kind: "InputField",
+name: "cityOfOrigin",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfOrigin   {
+kind: "InputField",
+name: "regionOfOrigin",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Users Country of origin. Use a Country Options textId.
+*/
+ export  interface countryOfOriginTextId   {
+kind: "InputField",
+name: "countryOfOriginTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isOnVacation   {
+kind: "InputField",
+name: "isOnVacation",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface profileRoleHistory   {
+kind: "InputField",
+name: "profileRoleHistory",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserProfileRoleHistoryItemInput
+}
+
+ export  interface ssoIdp   {
+kind: "InputField",
+name: "ssoIdp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                          ModelEventInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ModelEventInput   {
+kind: "InputObject",
+name: "ModelEventInput",
+isAllFieldsNullable: false,
+fields: {
+time: ModelEventInput.time,
+modelEventType: ModelEventInput.modelEventType,
+message: ModelEventInput.message
+}
+}
+
+export namespace ModelEventInput {
+ export  interface time   {
+kind: "InputField",
+name: "time",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface modelEventType   {
+kind: "InputField",
+name: "modelEventType",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ModelEventType
+}
+
+ export  interface message   {
+kind: "InputField",
+name: "message",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                       BaseModelMetadataInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BaseModelMetadataInput   {
+kind: "InputObject",
+name: "BaseModelMetadataInput",
+isAllFieldsNullable: true,
+fields: {
+updatedAt: BaseModelMetadataInput.updatedAt
+}
+}
+
+export namespace BaseModelMetadataInput {
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                      LabeledStringValueInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface LabeledStringValueInput   {
+kind: "InputObject",
+name: "LabeledStringValueInput",
+isAllFieldsNullable: true,
+fields: {
+label: LabeledStringValueInput.label,
+value: LabeledStringValueInput.value,
+tags: LabeledStringValueInput.tags
+}
+}
+
+export namespace LabeledStringValueInput {
+ export  interface label   {
+kind: "InputField",
+name: "label",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface value   {
+kind: "InputField",
+name: "value",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface tags   {
+kind: "InputField",
+name: "tags",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                        UserPreferencesInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserPreferencesInput   {
+kind: "InputObject",
+name: "UserPreferencesInput",
+isAllFieldsNullable: true,
+fields: {
+id: UserPreferencesInput.id,
+adminNotes: UserPreferencesInput.adminNotes,
+events: UserPreferencesInput.events,
+metadata: UserPreferencesInput.metadata,
+createdAt: UserPreferencesInput.createdAt,
+createdBy: UserPreferencesInput.createdBy,
+updatedAt: UserPreferencesInput.updatedAt,
+updatedBy: UserPreferencesInput.updatedBy,
+deletedAt: UserPreferencesInput.deletedAt,
+deletedBy: UserPreferencesInput.deletedBy,
+shareEmail: UserPreferencesInput.shareEmail,
+sharePhoneNumber: UserPreferencesInput.sharePhoneNumber,
+showWelcomeMessage: UserPreferencesInput.showWelcomeMessage,
+notificationOptionsInput: UserPreferencesInput.notificationOptionsInput
+}
+}
+
+export namespace UserPreferencesInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface shareEmail   {
+kind: "InputField",
+name: "shareEmail",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sharePhoneNumber   {
+kind: "InputField",
+name: "sharePhoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface showWelcomeMessage   {
+kind: "InputField",
+name: "showWelcomeMessage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface notificationOptionsInput   {
+kind: "InputField",
+name: "notificationOptionsInput",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$NotificationOptionsInput
+}
+}
+
+//                                      NotificationOptionsInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationOptionsInput   {
+kind: "InputObject",
+name: "NotificationOptionsInput",
+isAllFieldsNullable: true,
+fields: {
+notificationType: NotificationOptionsInput.notificationType,
+enableEmail: NotificationOptionsInput.enableEmail,
+enableInAppMessage: NotificationOptionsInput.enableInAppMessage,
+enablePushNotification: NotificationOptionsInput.enablePushNotification,
+enableSms: NotificationOptionsInput.enableSms,
+frequency: NotificationOptionsInput.frequency
+}
+}
+
+export namespace NotificationOptionsInput {
+ export  interface notificationType   {
+kind: "InputField",
+name: "notificationType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$NotificationType
+}
+
+ export  interface enableEmail   {
+kind: "InputField",
+name: "enableEmail",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface enableInAppMessage   {
+kind: "InputField",
+name: "enableInAppMessage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface enablePushNotification   {
+kind: "InputField",
+name: "enablePushNotification",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface enableSms   {
+kind: "InputField",
+name: "enableSms",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface frequency   {
+kind: "InputField",
+name: "frequency",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                            CompanyInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface CompanyInput   {
+kind: "InputObject",
+name: "CompanyInput",
+isAllFieldsNullable: true,
+fields: {
+id: CompanyInput.id,
+adminNotes: CompanyInput.adminNotes,
+events: CompanyInput.events,
+metadata: CompanyInput.metadata,
+createdAt: CompanyInput.createdAt,
+createdBy: CompanyInput.createdBy,
+updatedAt: CompanyInput.updatedAt,
+updatedBy: CompanyInput.updatedBy,
+deletedAt: CompanyInput.deletedAt,
+deletedBy: CompanyInput.deletedBy,
+name: CompanyInput.name,
+description: CompanyInput.description,
+location: CompanyInput.location,
+companyTypeTextId: CompanyInput.companyTypeTextId,
+companyStageTextId: CompanyInput.companyStageTextId,
+websites: CompanyInput.websites,
+industries: CompanyInput.industries,
+isOperational: CompanyInput.isOperational,
+isFundraising: CompanyInput.isFundraising,
+annualRevenue: CompanyInput.annualRevenue,
+employeeCount: CompanyInput.employeeCount,
+foundedAt: CompanyInput.foundedAt,
+addUserIds: CompanyInput.addUserIds
+}
+}
+
+export namespace CompanyInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface name   {
+kind: "InputField",
+name: "name",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "InputField",
+name: "description",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface location   {
+kind: "InputField",
+name: "location",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface companyTypeTextId   {
+kind: "InputField",
+name: "companyTypeTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface companyStageTextId   {
+kind: "InputField",
+name: "companyStageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface websites   {
+kind: "InputField",
+name: "websites",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$LabeledStringValueInput
+}
+
+ export  interface industries   {
+kind: "InputField",
+name: "industries",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isOperational   {
+kind: "InputField",
+name: "isOperational",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface isFundraising   {
+kind: "InputField",
+name: "isFundraising",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface annualRevenue   {
+kind: "InputField",
+name: "annualRevenue",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface employeeCount   {
+kind: "InputField",
+name: "employeeCount",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface foundedAt   {
+kind: "InputField",
+name: "foundedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface addUserIds   {
+kind: "InputField",
+name: "addUserIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                        GroupMembershipInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupMembershipInput   {
+kind: "InputObject",
+name: "GroupMembershipInput",
+isAllFieldsNullable: true,
+fields: {
+id: GroupMembershipInput.id,
+adminNotes: GroupMembershipInput.adminNotes,
+events: GroupMembershipInput.events,
+metadata: GroupMembershipInput.metadata,
+createdAt: GroupMembershipInput.createdAt,
+createdBy: GroupMembershipInput.createdBy,
+updatedAt: GroupMembershipInput.updatedAt,
+updatedBy: GroupMembershipInput.updatedBy,
+deletedAt: GroupMembershipInput.deletedAt,
+deletedBy: GroupMembershipInput.deletedBy,
+groupId: GroupMembershipInput.groupId,
+groupIdent: GroupMembershipInput.groupIdent,
+userId: GroupMembershipInput.userId,
+roles: GroupMembershipInput.roles
+}
+}
+
+export namespace GroupMembershipInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "InputField",
+name: "groupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "InputField",
+name: "groupIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "InputField",
+name: "roles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+}
+
+//                                      AcademicExperienceInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AcademicExperienceInput   {
+kind: "InputObject",
+name: "AcademicExperienceInput",
+isAllFieldsNullable: true,
+fields: {
+id: AcademicExperienceInput.id,
+adminNotes: AcademicExperienceInput.adminNotes,
+events: AcademicExperienceInput.events,
+metadata: AcademicExperienceInput.metadata,
+createdAt: AcademicExperienceInput.createdAt,
+createdBy: AcademicExperienceInput.createdBy,
+updatedAt: AcademicExperienceInput.updatedAt,
+updatedBy: AcademicExperienceInput.updatedBy,
+deletedAt: AcademicExperienceInput.deletedAt,
+deletedBy: AcademicExperienceInput.deletedBy,
+institutionName: AcademicExperienceInput.institutionName,
+degreeType: AcademicExperienceInput.degreeType,
+fieldOfStudy: AcademicExperienceInput.fieldOfStudy,
+startDate: AcademicExperienceInput.startDate,
+endDate: AcademicExperienceInput.endDate,
+userId: AcademicExperienceInput.userId
+}
+}
+
+export namespace AcademicExperienceInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface institutionName   {
+kind: "InputField",
+name: "institutionName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* E.g. "Bachelor of Science"
+*/
+ export  interface degreeType   {
+kind: "InputField",
+name: "degreeType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* E.g. "Computer Science"
+*/
+ export  interface fieldOfStudy   {
+kind: "InputField",
+name: "fieldOfStudy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface startDate   {
+kind: "InputField",
+name: "startDate",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* If the experience is ongoing, endDate is null.
+*/
+ export  interface endDate   {
+kind: "InputField",
+name: "endDate",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                      BusinessExperienceInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BusinessExperienceInput   {
+kind: "InputObject",
+name: "BusinessExperienceInput",
+isAllFieldsNullable: true,
+fields: {
+id: BusinessExperienceInput.id,
+adminNotes: BusinessExperienceInput.adminNotes,
+events: BusinessExperienceInput.events,
+metadata: BusinessExperienceInput.metadata,
+createdAt: BusinessExperienceInput.createdAt,
+createdBy: BusinessExperienceInput.createdBy,
+updatedAt: BusinessExperienceInput.updatedAt,
+updatedBy: BusinessExperienceInput.updatedBy,
+deletedAt: BusinessExperienceInput.deletedAt,
+deletedBy: BusinessExperienceInput.deletedBy,
+businessName: BusinessExperienceInput.businessName,
+jobTitle: BusinessExperienceInput.jobTitle,
+city: BusinessExperienceInput.city,
+state: BusinessExperienceInput.state,
+country: BusinessExperienceInput.country,
+startDate: BusinessExperienceInput.startDate,
+endDate: BusinessExperienceInput.endDate,
+userId: BusinessExperienceInput.userId
+}
+}
+
+export namespace BusinessExperienceInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface businessName   {
+kind: "InputField",
+name: "businessName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface jobTitle   {
+kind: "InputField",
+name: "jobTitle",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface city   {
+kind: "InputField",
+name: "city",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface state   {
+kind: "InputField",
+name: "state",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface country   {
+kind: "InputField",
+name: "country",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface startDate   {
+kind: "InputField",
+name: "startDate",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* If the experience is ongoing, endDate is null.
+*/
+ export  interface endDate   {
+kind: "InputField",
+name: "endDate",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                  UserProfileRoleHistoryItemInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserProfileRoleHistoryItemInput   {
+kind: "InputObject",
+name: "UserProfileRoleHistoryItemInput",
+isAllFieldsNullable: false,
+fields: {
+newRole: UserProfileRoleHistoryItemInput.newRole,
+createdAt: UserProfileRoleHistoryItemInput.createdAt
+}
+}
+
+export namespace UserProfileRoleHistoryItemInput {
+ export  interface newRole   {
+kind: "InputField",
+name: "newRole",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$UserProfileRole
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                           UserListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserListFilter   {
+kind: "InputObject",
+name: "UserListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: UserListFilter.ids,
+excludeIds: UserListFilter.excludeIds,
+searchText: UserListFilter.searchText,
+caseSensitive: UserListFilter.caseSensitive,
+textSearchFields: UserListFilter.textSearchFields,
+createdAtFrom: UserListFilter.createdAtFrom,
+createdAtUntil: UserListFilter.createdAtUntil,
+updatedAtFrom: UserListFilter.updatedAtFrom,
+updatedAtUntil: UserListFilter.updatedAtUntil,
+ident: UserListFilter.ident,
+emailIn: UserListFilter.emailIn,
+phoneNumberIn: UserListFilter.phoneNumberIn,
+inviteCodeIn: UserListFilter.inviteCodeIn,
+rolesIn: UserListFilter.rolesIn,
+excludeRoles: UserListFilter.excludeRoles,
+excludeContacts: UserListFilter.excludeContacts,
+createdAtGreaterThan: UserListFilter.createdAtGreaterThan,
+latestActivityAtGreaterThan: UserListFilter.latestActivityAtGreaterThan,
+companyId: UserListFilter.companyId,
+syncedWithMm2: UserListFilter.syncedWithMm2,
+isMm2User: UserListFilter.isMm2User
+}
+}
+
+export namespace UserListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface ident   {
+kind: "InputField",
+name: "ident",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailIn   {
+kind: "InputField",
+name: "emailIn",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumberIn   {
+kind: "InputField",
+name: "phoneNumberIn",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface inviteCodeIn   {
+kind: "InputField",
+name: "inviteCodeIn",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface rolesIn   {
+kind: "InputField",
+name: "rolesIn",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserRole
+}
+
+ export  interface excludeRoles   {
+kind: "InputField",
+name: "excludeRoles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeContacts   {
+kind: "InputField",
+name: "excludeContacts",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface createdAtGreaterThan   {
+kind: "InputField",
+name: "createdAtGreaterThan",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface latestActivityAtGreaterThan   {
+kind: "InputField",
+name: "latestActivityAtGreaterThan",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface companyId   {
+kind: "InputField",
+name: "companyId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface syncedWithMm2   {
+kind: "InputField",
+name: "syncedWithMm2",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface isMm2User   {
+kind: "InputField",
+name: "isMm2User",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                          UserDeviceInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserDeviceInput   {
+kind: "InputObject",
+name: "UserDeviceInput",
+isAllFieldsNullable: true,
+fields: {
+id: UserDeviceInput.id,
+adminNotes: UserDeviceInput.adminNotes,
+events: UserDeviceInput.events,
+metadata: UserDeviceInput.metadata,
+createdAt: UserDeviceInput.createdAt,
+createdBy: UserDeviceInput.createdBy,
+updatedAt: UserDeviceInput.updatedAt,
+updatedBy: UserDeviceInput.updatedBy,
+deletedAt: UserDeviceInput.deletedAt,
+deletedBy: UserDeviceInput.deletedBy,
+userId: UserDeviceInput.userId,
+deviceUuid: UserDeviceInput.deviceUuid,
+deviceType: UserDeviceInput.deviceType,
+trusted: UserDeviceInput.trusted,
+phoneNumber: UserDeviceInput.phoneNumber,
+phoneNumberUpdatedAt: UserDeviceInput.phoneNumberUpdatedAt,
+isPhoneNumberVerified: UserDeviceInput.isPhoneNumberVerified,
+brand: UserDeviceInput.brand,
+model: UserDeviceInput.model,
+isTablet: UserDeviceInput.isTablet,
+screenWidth: UserDeviceInput.screenWidth,
+screenHeight: UserDeviceInput.screenHeight,
+os: UserDeviceInput.os,
+osVersion: UserDeviceInput.osVersion,
+timezone: UserDeviceInput.timezone,
+ipAddress: UserDeviceInput.ipAddress,
+consumer: UserDeviceInput.consumer,
+consumerVersion: UserDeviceInput.consumerVersion,
+acceptedLanguage: UserDeviceInput.acceptedLanguage,
+locale: UserDeviceInput.locale,
+countryCode: UserDeviceInput.countryCode,
+appVersion: UserDeviceInput.appVersion,
+signedInAt: UserDeviceInput.signedInAt,
+signedOutAt: UserDeviceInput.signedOutAt,
+sessionStartedAt: UserDeviceInput.sessionStartedAt,
+sessionEndedAt: UserDeviceInput.sessionEndedAt,
+authType: UserDeviceInput.authType,
+identityProvider: UserDeviceInput.identityProvider,
+oauthFederatedProvider: UserDeviceInput.oauthFederatedProvider,
+oauthUserId: UserDeviceInput.oauthUserId,
+oauthDelegateUserId: UserDeviceInput.oauthDelegateUserId,
+oauthProfileUrl: UserDeviceInput.oauthProfileUrl,
+oauthToken: UserDeviceInput.oauthToken,
+oauthTokenCreatedAt: UserDeviceInput.oauthTokenCreatedAt,
+oauthTokenExpiresAt: UserDeviceInput.oauthTokenExpiresAt,
+oauthRefreshToken: UserDeviceInput.oauthRefreshToken,
+oauthRefreshTokenCreatedAt: UserDeviceInput.oauthRefreshTokenCreatedAt,
+oauthRefreshTokenExpiresAt: UserDeviceInput.oauthRefreshTokenExpiresAt,
+pushNotificationToken: UserDeviceInput.pushNotificationToken,
+trustedAt: UserDeviceInput.trustedAt
+}
+}
+
+export namespace UserDeviceInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deviceUuid   {
+kind: "InputField",
+name: "deviceUuid",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface deviceType   {
+kind: "InputField",
+name: "deviceType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface trusted   {
+kind: "InputField",
+name: "trusted",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface phoneNumber   {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "InputField",
+name: "phoneNumberUpdatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isPhoneNumberVerified   {
+kind: "InputField",
+name: "isPhoneNumberVerified",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface brand   {
+kind: "InputField",
+name: "brand",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface model   {
+kind: "InputField",
+name: "model",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isTablet   {
+kind: "InputField",
+name: "isTablet",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface screenWidth   {
+kind: "InputField",
+name: "screenWidth",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface screenHeight   {
+kind: "InputField",
+name: "screenHeight",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface os   {
+kind: "InputField",
+name: "os",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface osVersion   {
+kind: "InputField",
+name: "osVersion",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "InputField",
+name: "timezone",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface ipAddress   {
+kind: "InputField",
+name: "ipAddress",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface consumer   {
+kind: "InputField",
+name: "consumer",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface consumerVersion   {
+kind: "InputField",
+name: "consumerVersion",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface acceptedLanguage   {
+kind: "InputField",
+name: "acceptedLanguage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface locale   {
+kind: "InputField",
+name: "locale",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryCode   {
+kind: "InputField",
+name: "countryCode",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface appVersion   {
+kind: "InputField",
+name: "appVersion",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface signedInAt   {
+kind: "InputField",
+name: "signedInAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedOutAt   {
+kind: "InputField",
+name: "signedOutAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface sessionStartedAt   {
+kind: "InputField",
+name: "sessionStartedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface sessionEndedAt   {
+kind: "InputField",
+name: "sessionEndedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface authType   {
+kind: "InputField",
+name: "authType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AuthType
+}
+
+ export  interface identityProvider   {
+kind: "InputField",
+name: "identityProvider",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$IdentityProvider
+}
+
+ export  interface oauthFederatedProvider   {
+kind: "InputField",
+name: "oauthFederatedProvider",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FederatedIdentityProvider
+}
+
+ export  interface oauthUserId   {
+kind: "InputField",
+name: "oauthUserId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthDelegateUserId   {
+kind: "InputField",
+name: "oauthDelegateUserId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthProfileUrl   {
+kind: "InputField",
+name: "oauthProfileUrl",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthToken   {
+kind: "InputField",
+name: "oauthToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthTokenCreatedAt   {
+kind: "InputField",
+name: "oauthTokenCreatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface oauthTokenExpiresAt   {
+kind: "InputField",
+name: "oauthTokenExpiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface oauthRefreshToken   {
+kind: "InputField",
+name: "oauthRefreshToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthRefreshTokenCreatedAt   {
+kind: "InputField",
+name: "oauthRefreshTokenCreatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface oauthRefreshTokenExpiresAt   {
+kind: "InputField",
+name: "oauthRefreshTokenExpiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface pushNotificationToken   {
+kind: "InputField",
+name: "pushNotificationToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface trustedAt   {
+kind: "InputField",
+name: "trustedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                        UserDeviceListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserDeviceListFilter   {
+kind: "InputObject",
+name: "UserDeviceListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: UserDeviceListFilter.ids,
+excludeIds: UserDeviceListFilter.excludeIds,
+searchText: UserDeviceListFilter.searchText,
+caseSensitive: UserDeviceListFilter.caseSensitive,
+textSearchFields: UserDeviceListFilter.textSearchFields,
+createdAtFrom: UserDeviceListFilter.createdAtFrom,
+createdAtUntil: UserDeviceListFilter.createdAtUntil,
+updatedAtFrom: UserDeviceListFilter.updatedAtFrom,
+updatedAtUntil: UserDeviceListFilter.updatedAtUntil
+}
+}
+
+export namespace UserDeviceListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                         UploadedAssetInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UploadedAssetInput   {
+kind: "InputObject",
+name: "UploadedAssetInput",
+isAllFieldsNullable: true,
+fields: {
+id: UploadedAssetInput.id,
+adminNotes: UploadedAssetInput.adminNotes,
+events: UploadedAssetInput.events,
+metadata: UploadedAssetInput.metadata,
+createdAt: UploadedAssetInput.createdAt,
+createdBy: UploadedAssetInput.createdBy,
+updatedAt: UploadedAssetInput.updatedAt,
+updatedBy: UploadedAssetInput.updatedBy,
+deletedAt: UploadedAssetInput.deletedAt,
+deletedBy: UploadedAssetInput.deletedBy,
+ownerId: UploadedAssetInput.ownerId,
+ownerModelType: UploadedAssetInput.ownerModelType,
+assetType: UploadedAssetInput.assetType,
+hostingService: UploadedAssetInput.hostingService,
+url: UploadedAssetInput.url,
+path: UploadedAssetInput.path,
+s3Bucket: UploadedAssetInput.s3Bucket,
+s3Key: UploadedAssetInput.s3Key,
+mimeType: UploadedAssetInput.mimeType,
+uploadUrl: UploadedAssetInput.uploadUrl,
+uploadUrlExpiresAt: UploadedAssetInput.uploadUrlExpiresAt,
+uploadedAt: UploadedAssetInput.uploadedAt,
+expiresAt: UploadedAssetInput.expiresAt
+}
+}
+
+export namespace UploadedAssetInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface ownerId   {
+kind: "InputField",
+name: "ownerId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface ownerModelType   {
+kind: "InputField",
+name: "ownerModelType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ModelType
+}
+
+ export  interface assetType   {
+kind: "InputField",
+name: "assetType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UploadedAssetType
+}
+
+ export  interface hostingService   {
+kind: "InputField",
+name: "hostingService",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AssetHostingService
+}
+
+ export  interface url   {
+kind: "InputField",
+name: "url",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface path   {
+kind: "InputField",
+name: "path",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface s3Bucket   {
+kind: "InputField",
+name: "s3Bucket",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface s3Key   {
+kind: "InputField",
+name: "s3Key",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface mimeType   {
+kind: "InputField",
+name: "mimeType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface uploadUrl   {
+kind: "InputField",
+name: "uploadUrl",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface uploadUrlExpiresAt   {
+kind: "InputField",
+name: "uploadUrlExpiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface uploadedAt   {
+kind: "InputField",
+name: "uploadedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface expiresAt   {
+kind: "InputField",
+name: "expiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                      UploadedAssetListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UploadedAssetListFilter   {
+kind: "InputObject",
+name: "UploadedAssetListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: UploadedAssetListFilter.ids,
+excludeIds: UploadedAssetListFilter.excludeIds,
+searchText: UploadedAssetListFilter.searchText,
+caseSensitive: UploadedAssetListFilter.caseSensitive,
+textSearchFields: UploadedAssetListFilter.textSearchFields,
+createdAtFrom: UploadedAssetListFilter.createdAtFrom,
+createdAtUntil: UploadedAssetListFilter.createdAtUntil,
+updatedAtFrom: UploadedAssetListFilter.updatedAtFrom,
+updatedAtUntil: UploadedAssetListFilter.updatedAtUntil
+}
+}
+
+export namespace UploadedAssetListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                            ChannelInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelInput   {
+kind: "InputObject",
+name: "ChannelInput",
+isAllFieldsNullable: true,
+fields: {
+id: ChannelInput.id,
+adminNotes: ChannelInput.adminNotes,
+events: ChannelInput.events,
+metadata: ChannelInput.metadata,
+createdAt: ChannelInput.createdAt,
+createdBy: ChannelInput.createdBy,
+updatedAt: ChannelInput.updatedAt,
+updatedBy: ChannelInput.updatedBy,
+deletedAt: ChannelInput.deletedAt,
+deletedBy: ChannelInput.deletedBy,
+name: ChannelInput.name,
+topic: ChannelInput.topic,
+description: ChannelInput.description,
+tags: ChannelInput.tags,
+channelType: ChannelInput.channelType,
+statuses: ChannelInput.statuses,
+userIds: ChannelInput.userIds,
+inviteUserIds: ChannelInput.inviteUserIds,
+pausedAt: ChannelInput.pausedAt,
+pausedBy: ChannelInput.pausedBy,
+suspendedAt: ChannelInput.suspendedAt,
+suspendedBy: ChannelInput.suspendedBy,
+archivedAt: ChannelInput.archivedAt,
+archivedBy: ChannelInput.archivedBy,
+assumedMentorId: ChannelInput.assumedMentorId,
+mm2Id: ChannelInput.mm2Id,
+syncedWithMm2At: ChannelInput.syncedWithMm2At
+}
+}
+
+export namespace ChannelInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface name   {
+kind: "InputField",
+name: "name",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface topic   {
+kind: "InputField",
+name: "topic",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "InputField",
+name: "description",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface tags   {
+kind: "InputField",
+name: "tags",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface channelType   {
+kind: "InputField",
+name: "channelType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelType
+}
+
+ export  interface statuses   {
+kind: "InputField",
+name: "statuses",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BgChannelStatusInput
+}
+
+ export  interface userIds   {
+kind: "InputField",
+name: "userIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface inviteUserIds   {
+kind: "InputField",
+name: "inviteUserIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface pausedAt   {
+kind: "InputField",
+name: "pausedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface pausedBy   {
+kind: "InputField",
+name: "pausedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface suspendedAt   {
+kind: "InputField",
+name: "suspendedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "InputField",
+name: "suspendedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface archivedAt   {
+kind: "InputField",
+name: "archivedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface archivedBy   {
+kind: "InputField",
+name: "archivedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface assumedMentorId   {
+kind: "InputField",
+name: "assumedMentorId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2Id   {
+kind: "InputField",
+name: "mm2Id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "InputField",
+name: "syncedWithMm2At",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                        BgChannelStatusInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BgChannelStatusInput   {
+kind: "InputObject",
+name: "BgChannelStatusInput",
+isAllFieldsNullable: true,
+fields: {
+userId: BgChannelStatusInput.userId,
+archivedAt: BgChannelStatusInput.archivedAt
+}
+}
+
+export namespace BgChannelStatusInput {
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface archivedAt   {
+kind: "InputField",
+name: "archivedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                         ChannelListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelListFilter   {
+kind: "InputObject",
+name: "ChannelListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: ChannelListFilter.ids,
+excludeIds: ChannelListFilter.excludeIds,
+searchText: ChannelListFilter.searchText,
+caseSensitive: ChannelListFilter.caseSensitive,
+textSearchFields: ChannelListFilter.textSearchFields,
+createdAtFrom: ChannelListFilter.createdAtFrom,
+createdAtUntil: ChannelListFilter.createdAtUntil,
+updatedAtFrom: ChannelListFilter.updatedAtFrom,
+updatedAtUntil: ChannelListFilter.updatedAtUntil,
+userId: ChannelListFilter.userId
+}
+}
+
+export namespace ChannelListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                        ChannelMessageInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMessageInput   {
+kind: "InputObject",
+name: "ChannelMessageInput",
+isAllFieldsNullable: true,
+fields: {
+id: ChannelMessageInput.id,
+adminNotes: ChannelMessageInput.adminNotes,
+events: ChannelMessageInput.events,
+metadata: ChannelMessageInput.metadata,
+createdAt: ChannelMessageInput.createdAt,
+createdBy: ChannelMessageInput.createdBy,
+updatedAt: ChannelMessageInput.updatedAt,
+updatedBy: ChannelMessageInput.updatedBy,
+deletedAt: ChannelMessageInput.deletedAt,
+deletedBy: ChannelMessageInput.deletedBy,
+channelId: ChannelMessageInput.channelId,
+replyToMessageId: ChannelMessageInput.replyToMessageId,
+channelMessageType: ChannelMessageInput.channelMessageType,
+messageText: ChannelMessageInput.messageText,
+statuses: ChannelMessageInput.statuses,
+editedAt: ChannelMessageInput.editedAt,
+suspendedAt: ChannelMessageInput.suspendedAt,
+suspendedBy: ChannelMessageInput.suspendedBy,
+mm2ConversationId: ChannelMessageInput.mm2ConversationId,
+mm2Id: ChannelMessageInput.mm2Id,
+syncedWithMm2At: ChannelMessageInput.syncedWithMm2At
+}
+}
+
+export namespace ChannelMessageInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "InputField",
+name: "channelId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface replyToMessageId   {
+kind: "InputField",
+name: "replyToMessageId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelMessageType   {
+kind: "InputField",
+name: "channelMessageType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelMessageType
+}
+
+ export  interface messageText   {
+kind: "InputField",
+name: "messageText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface statuses   {
+kind: "InputField",
+name: "statuses",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelMessageStatusInput
+}
+
+ export  interface editedAt   {
+kind: "InputField",
+name: "editedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedAt   {
+kind: "InputField",
+name: "suspendedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "InputField",
+name: "suspendedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2ConversationId   {
+kind: "InputField",
+name: "mm2ConversationId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer. Mm2 message ID.
+*/
+ export  interface mm2Id   {
+kind: "InputField",
+name: "mm2Id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "InputField",
+name: "syncedWithMm2At",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                     ChannelMessageStatusInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMessageStatusInput   {
+kind: "InputObject",
+name: "ChannelMessageStatusInput",
+isAllFieldsNullable: true,
+fields: {
+userId: ChannelMessageStatusInput.userId,
+receivedAt: ChannelMessageStatusInput.receivedAt,
+seenAt: ChannelMessageStatusInput.seenAt
+}
+}
+
+export namespace ChannelMessageStatusInput {
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface receivedAt   {
+kind: "InputField",
+name: "receivedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface seenAt   {
+kind: "InputField",
+name: "seenAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                      ChannelMessageListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMessageListFilter   {
+kind: "InputObject",
+name: "ChannelMessageListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: ChannelMessageListFilter.ids,
+excludeIds: ChannelMessageListFilter.excludeIds,
+searchText: ChannelMessageListFilter.searchText,
+caseSensitive: ChannelMessageListFilter.caseSensitive,
+textSearchFields: ChannelMessageListFilter.textSearchFields,
+createdAtFrom: ChannelMessageListFilter.createdAtFrom,
+createdAtUntil: ChannelMessageListFilter.createdAtUntil,
+updatedAtFrom: ChannelMessageListFilter.updatedAtFrom,
+updatedAtUntil: ChannelMessageListFilter.updatedAtUntil,
+channelId: ChannelMessageListFilter.channelId,
+receiverUserId: ChannelMessageListFilter.receiverUserId,
+replyToMessageId: ChannelMessageListFilter.replyToMessageId,
+includeChannelMessageType: ChannelMessageListFilter.includeChannelMessageType,
+received: ChannelMessageListFilter.received,
+seen: ChannelMessageListFilter.seen
+}
+}
+
+export namespace ChannelMessageListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface channelId   {
+kind: "InputField",
+name: "channelId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface receiverUserId   {
+kind: "InputField",
+name: "receiverUserId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface replyToMessageId   {
+kind: "InputField",
+name: "replyToMessageId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface includeChannelMessageType   {
+kind: "InputField",
+name: "includeChannelMessageType",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ChannelMessageType
+}
+
+ export  interface received   {
+kind: "InputField",
+name: "received",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface seen   {
+kind: "InputField",
+name: "seen",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                     GroupMembershipListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupMembershipListFilter   {
+kind: "InputObject",
+name: "GroupMembershipListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: GroupMembershipListFilter.ids,
+excludeIds: GroupMembershipListFilter.excludeIds,
+searchText: GroupMembershipListFilter.searchText,
+caseSensitive: GroupMembershipListFilter.caseSensitive,
+textSearchFields: GroupMembershipListFilter.textSearchFields,
+createdAtFrom: GroupMembershipListFilter.createdAtFrom,
+createdAtUntil: GroupMembershipListFilter.createdAtUntil,
+updatedAtFrom: GroupMembershipListFilter.updatedAtFrom,
+updatedAtUntil: GroupMembershipListFilter.updatedAtUntil,
+userId: GroupMembershipListFilter.userId,
+embedded: GroupMembershipListFilter.embedded,
+roles: GroupMembershipListFilter.roles
+}
+}
+
+export namespace GroupMembershipListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface embedded   {
+kind: "InputField",
+name: "embedded",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface roles   {
+kind: "InputField",
+name: "roles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+}
+
+//                                             GroupInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupInput   {
+kind: "InputObject",
+name: "GroupInput",
+isAllFieldsNullable: true,
+fields: {
+id: GroupInput.id,
+adminNotes: GroupInput.adminNotes,
+events: GroupInput.events,
+metadata: GroupInput.metadata,
+createdAt: GroupInput.createdAt,
+createdBy: GroupInput.createdBy,
+updatedAt: GroupInput.updatedAt,
+updatedBy: GroupInput.updatedBy,
+deletedAt: GroupInput.deletedAt,
+deletedBy: GroupInput.deletedBy,
+parentGroupId: GroupInput.parentGroupId,
+matchingEngineId: GroupInput.matchingEngineId,
+name: GroupInput.name,
+shortName: GroupInput.shortName,
+ident: GroupInput.ident,
+slug: GroupInput.slug,
+badgeName: GroupInput.badgeName,
+description: GroupInput.description,
+planType: GroupInput.planType,
+embedded: GroupInput.embedded,
+appliedGroupRules: GroupInput.appliedGroupRules
+}
+}
+
+export namespace GroupInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface parentGroupId   {
+kind: "InputField",
+name: "parentGroupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface matchingEngineId   {
+kind: "InputField",
+name: "matchingEngineId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface name   {
+kind: "InputField",
+name: "name",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortName   {
+kind: "InputField",
+name: "shortName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface ident   {
+kind: "InputField",
+name: "ident",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface slug   {
+kind: "InputField",
+name: "slug",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface badgeName   {
+kind: "InputField",
+name: "badgeName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "InputField",
+name: "description",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface planType   {
+kind: "InputField",
+name: "planType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface embedded   {
+kind: "InputField",
+name: "embedded",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface appliedGroupRules   {
+kind: "InputField",
+name: "appliedGroupRules",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AppliedGroupRuleInput
+}
+}
+
+//                                       AppliedGroupRuleInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AppliedGroupRuleInput   {
+kind: "InputObject",
+name: "AppliedGroupRuleInput",
+isAllFieldsNullable: true,
+fields: {
+id: AppliedGroupRuleInput.id,
+adminNotes: AppliedGroupRuleInput.adminNotes,
+events: AppliedGroupRuleInput.events,
+metadata: AppliedGroupRuleInput.metadata,
+createdAt: AppliedGroupRuleInput.createdAt,
+createdBy: AppliedGroupRuleInput.createdBy,
+updatedAt: AppliedGroupRuleInput.updatedAt,
+updatedBy: AppliedGroupRuleInput.updatedBy,
+deletedAt: AppliedGroupRuleInput.deletedAt,
+deletedBy: AppliedGroupRuleInput.deletedBy,
+groupRuleId: AppliedGroupRuleInput.groupRuleId,
+groupId: AppliedGroupRuleInput.groupId,
+subscribedToEvents: AppliedGroupRuleInput.subscribedToEvents,
+config: AppliedGroupRuleInput.config
+}
+}
+
+export namespace AppliedGroupRuleInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupRuleId   {
+kind: "InputField",
+name: "groupRuleId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "InputField",
+name: "groupId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface subscribedToEvents   {
+kind: "InputField",
+name: "subscribedToEvents",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupRuleEventType
+}
+
+ export  interface config   {
+kind: "InputField",
+name: "config",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$GroupRuleBaseConfigInput
+}
+}
+
+//                                      GroupRuleBaseConfigInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupRuleBaseConfigInput   {
+kind: "InputObject",
+name: "GroupRuleBaseConfigInput",
+isAllFieldsNullable: false,
+fields: {
+value: GroupRuleBaseConfigInput.value
+}
+}
+
+export namespace GroupRuleBaseConfigInput {
+ export  interface value   {
+kind: "InputField",
+name: "value",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                          GroupListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupListFilter   {
+kind: "InputObject",
+name: "GroupListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: GroupListFilter.ids,
+excludeIds: GroupListFilter.excludeIds,
+searchText: GroupListFilter.searchText,
+caseSensitive: GroupListFilter.caseSensitive,
+textSearchFields: GroupListFilter.textSearchFields,
+createdAtFrom: GroupListFilter.createdAtFrom,
+createdAtUntil: GroupListFilter.createdAtUntil,
+updatedAtFrom: GroupListFilter.updatedAtFrom,
+updatedAtUntil: GroupListFilter.updatedAtUntil,
+embedded: GroupListFilter.embedded,
+syncedWithMm2: GroupListFilter.syncedWithMm2
+}
+}
+
+export namespace GroupListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface embedded   {
+kind: "InputField",
+name: "embedded",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface syncedWithMm2   {
+kind: "InputField",
+name: "syncedWithMm2",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                          UserSearchInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearchInput   {
+kind: "InputObject",
+name: "UserSearchInput",
+isAllFieldsNullable: true,
+fields: {
+id: UserSearchInput.id,
+adminNotes: UserSearchInput.adminNotes,
+events: UserSearchInput.events,
+metadata: UserSearchInput.metadata,
+createdAt: UserSearchInput.createdAt,
+createdBy: UserSearchInput.createdBy,
+updatedAt: UserSearchInput.updatedAt,
+updatedBy: UserSearchInput.updatedBy,
+deletedAt: UserSearchInput.deletedAt,
+deletedBy: UserSearchInput.deletedBy,
+userId: UserSearchInput.userId,
+matchingEngineId: UserSearchInput.matchingEngineId,
+userSearchType: UserSearchInput.userSearchType,
+name: UserSearchInput.name,
+filter: UserSearchInput.filter,
+excludeUserIds: UserSearchInput.excludeUserIds,
+maxResultCount: UserSearchInput.maxResultCount,
+subscription: UserSearchInput.subscription,
+expiresAt: UserSearchInput.expiresAt,
+resultExpiresAt: UserSearchInput.resultExpiresAt,
+startSearch: UserSearchInput.startSearch
+}
+}
+
+export namespace UserSearchInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* The ID of the user that is searching and owns this object
+*/
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface matchingEngineId   {
+kind: "InputField",
+name: "matchingEngineId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userSearchType   {
+kind: "InputField",
+name: "userSearchType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchType
+}
+
+ export  interface name   {
+kind: "InputField",
+name: "name",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface filter   {
+kind: "InputField",
+name: "filter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchFilterInput
+}
+
+/**
+* A list of user IDs of users that should not be included into the search results, i.e. blocked users.
+*/
+ export  interface excludeUserIds   {
+kind: "InputField",
+name: "excludeUserIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface maxResultCount   {
+kind: "InputField",
+name: "maxResultCount",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface subscription   {
+kind: "InputField",
+name: "subscription",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchSubscriptionType
+}
+
+ export  interface expiresAt   {
+kind: "InputField",
+name: "expiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface resultExpiresAt   {
+kind: "InputField",
+name: "resultExpiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface startSearch   {
+kind: "InputField",
+name: "startSearch",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                       UserSearchFilterInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearchFilterInput   {
+kind: "InputObject",
+name: "UserSearchFilterInput",
+isAllFieldsNullable: true,
+fields: {
+searchText: UserSearchFilterInput.searchText,
+seeksHelp: UserSearchFilterInput.seeksHelp,
+offersHelp: UserSearchFilterInput.offersHelp,
+languagesTextIds: UserSearchFilterInput.languagesTextIds,
+expertisesTextIds: UserSearchFilterInput.expertisesTextIds,
+industriesTextIds: UserSearchFilterInput.industriesTextIds,
+countryTextIds: UserSearchFilterInput.countryTextIds,
+companyStagesTextIds: UserSearchFilterInput.companyStagesTextIds,
+latestActivityAfter: UserSearchFilterInput.latestActivityAfter
+}
+}
+
+export namespace UserSearchFilterInput {
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface seeksHelp   {
+kind: "InputField",
+name: "seeksHelp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchFieldOption
+}
+
+ export  interface offersHelp   {
+kind: "InputField",
+name: "offersHelp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserSearchFieldOption
+}
+
+ export  interface languagesTextIds   {
+kind: "InputField",
+name: "languagesTextIds",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface expertisesTextIds   {
+kind: "InputField",
+name: "expertisesTextIds",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface industriesTextIds   {
+kind: "InputField",
+name: "industriesTextIds",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryTextIds   {
+kind: "InputField",
+name: "countryTextIds",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface companyStagesTextIds   {
+kind: "InputField",
+name: "companyStagesTextIds",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface latestActivityAfter   {
+kind: "InputField",
+name: "latestActivityAfter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                        UserSearchListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearchListFilter   {
+kind: "InputObject",
+name: "UserSearchListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: UserSearchListFilter.ids,
+excludeIds: UserSearchListFilter.excludeIds,
+searchText: UserSearchListFilter.searchText,
+caseSensitive: UserSearchListFilter.caseSensitive,
+textSearchFields: UserSearchListFilter.textSearchFields,
+createdAtFrom: UserSearchListFilter.createdAtFrom,
+createdAtUntil: UserSearchListFilter.createdAtUntil,
+updatedAtFrom: UserSearchListFilter.updatedAtFrom,
+updatedAtUntil: UserSearchListFilter.updatedAtUntil
+}
+}
+
+export namespace UserSearchListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                            ContactInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContactInput   {
+kind: "InputObject",
+name: "ContactInput",
+isAllFieldsNullable: true,
+fields: {
+id: ContactInput.id,
+adminNotes: ContactInput.adminNotes,
+events: ContactInput.events,
+metadata: ContactInput.metadata,
+createdAt: ContactInput.createdAt,
+createdBy: ContactInput.createdBy,
+updatedAt: ContactInput.updatedAt,
+updatedBy: ContactInput.updatedBy,
+deletedAt: ContactInput.deletedAt,
+deletedBy: ContactInput.deletedBy,
+userId: ContactInput.userId,
+channelId: ContactInput.channelId,
+nickname: ContactInput.nickname,
+typeTextIds: ContactInput.typeTextIds,
+favorite: ContactInput.favorite,
+notes: ContactInput.notes,
+archivedAt: ContactInput.archivedAt
+}
+}
+
+export namespace ContactInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "InputField",
+name: "channelId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface nickname   {
+kind: "InputField",
+name: "nickname",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface typeTextIds   {
+kind: "InputField",
+name: "typeTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface favorite   {
+kind: "InputField",
+name: "favorite",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface notes   {
+kind: "InputField",
+name: "notes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface archivedAt   {
+kind: "InputField",
+name: "archivedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                        SidContactListFilter
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SidContactListFilter   {
+kind: "InputObject",
+name: "SidContactListFilter",
+isAllFieldsNullable: true,
+fields: {
+ids: SidContactListFilter.ids,
+excludeIds: SidContactListFilter.excludeIds,
+searchText: SidContactListFilter.searchText,
+caseSensitive: SidContactListFilter.caseSensitive,
+textSearchFields: SidContactListFilter.textSearchFields,
+createdAtFrom: SidContactListFilter.createdAtFrom,
+createdAtUntil: SidContactListFilter.createdAtUntil,
+updatedAtFrom: SidContactListFilter.updatedAtFrom,
+updatedAtUntil: SidContactListFilter.updatedAtUntil,
+userIdIn: SidContactListFilter.userIdIn,
+createdBy: SidContactListFilter.createdBy
+}
+}
+
+export namespace SidContactListFilter {
+ export  interface ids   {
+kind: "InputField",
+name: "ids",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface excludeIds   {
+kind: "InputField",
+name: "excludeIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchText   {
+kind: "InputField",
+name: "searchText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface caseSensitive   {
+kind: "InputField",
+name: "caseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface textSearchFields   {
+kind: "InputField",
+name: "textSearchFields",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdAtFrom   {
+kind: "InputField",
+name: "createdAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdAtUntil   {
+kind: "InputField",
+name: "createdAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtFrom   {
+kind: "InputField",
+name: "updatedAtFrom",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedAtUntil   {
+kind: "InputField",
+name: "updatedAtUntil",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface userIdIn   {
+kind: "InputField",
+name: "userIdIn",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                          SignInUserInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+/**
+* User sign up input data
+*/
+ export  interface SignInUserInput   {
+kind: "InputObject",
+name: "SignInUserInput",
+isAllFieldsNullable: true,
+fields: {
+authType: SignInUserInput.authType,
+ident: SignInUserInput.ident,
+identType: SignInUserInput.identType,
+password: SignInUserInput.password,
+pushNotificationToken: SignInUserInput.pushNotificationToken,
+cookieConsentChoice: SignInUserInput.cookieConsentChoice,
+allowToTrack: SignInUserInput.allowToTrack
+}
+}
+
+export namespace SignInUserInput {
+ export  interface authType   {
+kind: "InputField",
+name: "authType",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AuthType
+}
+
+ export  interface ident   {
+kind: "InputField",
+name: "ident",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface identType   {
+kind: "InputField",
+name: "identType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserIdentType
+}
+
+ export  interface password   {
+kind: "InputField",
+name: "password",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface pushNotificationToken   {
+kind: "InputField",
+name: "pushNotificationToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface cookieConsentChoice   {
+kind: "InputField",
+name: "cookieConsentChoice",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$CookieChoiceTextId
+}
+
+ export  interface allowToTrack   {
+kind: "InputField",
+name: "allowToTrack",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                        SignInOauthUserInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+/**
+* User sign up input data
+*/
+ export  interface SignInOauthUserInput   {
+kind: "InputObject",
+name: "SignInOauthUserInput",
+isAllFieldsNullable: true,
+fields: {
+ident: SignInOauthUserInput.ident,
+identType: SignInOauthUserInput.identType,
+firstName: SignInOauthUserInput.firstName,
+lastName: SignInOauthUserInput.lastName,
+displayName: SignInOauthUserInput.displayName,
+userHandle: SignInOauthUserInput.userHandle,
+email: SignInOauthUserInput.email,
+emailVerified: SignInOauthUserInput.emailVerified,
+phoneNumber: SignInOauthUserInput.phoneNumber,
+phoneNumberVerified: SignInOauthUserInput.phoneNumberVerified,
+identityProvider: SignInOauthUserInput.identityProvider,
+oauthFederatedProvider: SignInOauthUserInput.oauthFederatedProvider,
+oauthUserId: SignInOauthUserInput.oauthUserId,
+oauthDelegateUserId: SignInOauthUserInput.oauthDelegateUserId,
+oauthProfileUrl: SignInOauthUserInput.oauthProfileUrl,
+oauthToken: SignInOauthUserInput.oauthToken,
+oauthTokenId: SignInOauthUserInput.oauthTokenId,
+oauthIdToken: SignInOauthUserInput.oauthIdToken,
+oauthTokenCreatedAt: SignInOauthUserInput.oauthTokenCreatedAt,
+oauthTokenExpiresAt: SignInOauthUserInput.oauthTokenExpiresAt,
+oauthRefreshToken: SignInOauthUserInput.oauthRefreshToken,
+oauthRefreshTokenCreatedAt: SignInOauthUserInput.oauthRefreshTokenCreatedAt,
+oauthRefreshTokenExpiresAt: SignInOauthUserInput.oauthRefreshTokenExpiresAt,
+pushNotificationToken: SignInOauthUserInput.pushNotificationToken,
+source: SignInOauthUserInput.source,
+trackId: SignInOauthUserInput.trackId,
+cookieConsentChoice: SignInOauthUserInput.cookieConsentChoice,
+allowToTrack: SignInOauthUserInput.allowToTrack,
+checkAvailable: SignInOauthUserInput.checkAvailable
+}
+}
+
+export namespace SignInOauthUserInput {
+ export  interface ident   {
+kind: "InputField",
+name: "ident",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface identType   {
+kind: "InputField",
+name: "identType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserIdentType
+}
+
+ export  interface firstName   {
+kind: "InputField",
+name: "firstName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "InputField",
+name: "lastName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface displayName   {
+kind: "InputField",
+name: "displayName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "InputField",
+name: "userHandle",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface email   {
+kind: "InputField",
+name: "email",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailVerified   {
+kind: "InputField",
+name: "emailVerified",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface phoneNumber   {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumberVerified   {
+kind: "InputField",
+name: "phoneNumberVerified",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface identityProvider   {
+kind: "InputField",
+name: "identityProvider",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$IdentityProvider
+}
+
+ export  interface oauthFederatedProvider   {
+kind: "InputField",
+name: "oauthFederatedProvider",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$FederatedIdentityProvider
+}
+
+ export  interface oauthUserId   {
+kind: "InputField",
+name: "oauthUserId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthDelegateUserId   {
+kind: "InputField",
+name: "oauthDelegateUserId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthProfileUrl   {
+kind: "InputField",
+name: "oauthProfileUrl",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthToken   {
+kind: "InputField",
+name: "oauthToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthTokenId   {
+kind: "InputField",
+name: "oauthTokenId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthIdToken   {
+kind: "InputField",
+name: "oauthIdToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthTokenCreatedAt   {
+kind: "InputField",
+name: "oauthTokenCreatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface oauthTokenExpiresAt   {
+kind: "InputField",
+name: "oauthTokenExpiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface oauthRefreshToken   {
+kind: "InputField",
+name: "oauthRefreshToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface oauthRefreshTokenCreatedAt   {
+kind: "InputField",
+name: "oauthRefreshTokenCreatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface oauthRefreshTokenExpiresAt   {
+kind: "InputField",
+name: "oauthRefreshTokenExpiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface pushNotificationToken   {
+kind: "InputField",
+name: "pushNotificationToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface source   {
+kind: "InputField",
+name: "source",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface trackId   {
+kind: "InputField",
+name: "trackId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface cookieConsentChoice   {
+kind: "InputField",
+name: "cookieConsentChoice",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$CookieChoiceTextId
+}
+
+ export  interface allowToTrack   {
+kind: "InputField",
+name: "allowToTrack",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface checkAvailable   {
+kind: "InputField",
+name: "checkAvailable",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                          SignUpUserInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+/**
+* User sign up input data
+*/
+ export  interface SignUpUserInput   {
+kind: "InputObject",
+name: "SignUpUserInput",
+isAllFieldsNullable: true,
+fields: {
+id: SignUpUserInput.id,
+adminNotes: SignUpUserInput.adminNotes,
+events: SignUpUserInput.events,
+metadata: SignUpUserInput.metadata,
+createdAt: SignUpUserInput.createdAt,
+createdBy: SignUpUserInput.createdBy,
+updatedAt: SignUpUserInput.updatedAt,
+updatedBy: SignUpUserInput.updatedBy,
+deletedAt: SignUpUserInput.deletedAt,
+deletedBy: SignUpUserInput.deletedBy,
+firstName: SignUpUserInput.firstName,
+lastName: SignUpUserInput.lastName,
+userHandle: SignUpUserInput.userHandle,
+email: SignUpUserInput.email,
+emailVerifiedAt: SignUpUserInput.emailVerifiedAt,
+emailSource: SignUpUserInput.emailSource,
+phoneNumber: SignUpUserInput.phoneNumber,
+authType: SignUpUserInput.authType,
+password: SignUpUserInput.password,
+avatarUrl: SignUpUserInput.avatarUrl,
+source: SignUpUserInput.source,
+timezone: SignUpUserInput.timezone,
+optIntoNewsletter: SignUpUserInput.optIntoNewsletter,
+pushNotificationToken: SignUpUserInput.pushNotificationToken,
+trackId: SignUpUserInput.trackId,
+cookieConsentChoice: SignUpUserInput.cookieConsentChoice,
+allowToTrack: SignUpUserInput.allowToTrack,
+checkAvailable: SignUpUserInput.checkAvailable,
+isTestUser: SignUpUserInput.isTestUser,
+offersHelp: SignUpUserInput.offersHelp,
+seeksHelp: SignUpUserInput.seeksHelp
+}
+}
+
+export namespace SignUpUserInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface firstName   {
+kind: "InputField",
+name: "firstName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "InputField",
+name: "lastName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "InputField",
+name: "userHandle",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface email   {
+kind: "InputField",
+name: "email",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailVerifiedAt   {
+kind: "InputField",
+name: "emailVerifiedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface emailSource   {
+kind: "InputField",
+name: "emailSource",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface authType   {
+kind: "InputField",
+name: "authType",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$AuthType
+}
+
+ export  interface password   {
+kind: "InputField",
+name: "password",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "InputField",
+name: "avatarUrl",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface source   {
+kind: "InputField",
+name: "source",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "InputField",
+name: "timezone",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface optIntoNewsletter   {
+kind: "InputField",
+name: "optIntoNewsletter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface pushNotificationToken   {
+kind: "InputField",
+name: "pushNotificationToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface trackId   {
+kind: "InputField",
+name: "trackId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface cookieConsentChoice   {
+kind: "InputField",
+name: "cookieConsentChoice",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$CookieChoiceTextId
+}
+
+ export  interface allowToTrack   {
+kind: "InputField",
+name: "allowToTrack",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface checkAvailable   {
+kind: "InputField",
+name: "checkAvailable",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface isTestUser   {
+kind: "InputField",
+name: "isTestUser",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface offersHelp   {
+kind: "InputField",
+name: "offersHelp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface seeksHelp   {
+kind: "InputField",
+name: "seeksHelp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                    VerifyOneTimeAuthTokenInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface VerifyOneTimeAuthTokenInput   {
+kind: "InputObject",
+name: "VerifyOneTimeAuthTokenInput",
+isAllFieldsNullable: true,
+fields: {
+id: VerifyOneTimeAuthTokenInput.id,
+adminNotes: VerifyOneTimeAuthTokenInput.adminNotes,
+events: VerifyOneTimeAuthTokenInput.events,
+metadata: VerifyOneTimeAuthTokenInput.metadata,
+createdAt: VerifyOneTimeAuthTokenInput.createdAt,
+createdBy: VerifyOneTimeAuthTokenInput.createdBy,
+updatedAt: VerifyOneTimeAuthTokenInput.updatedAt,
+updatedBy: VerifyOneTimeAuthTokenInput.updatedBy,
+deletedAt: VerifyOneTimeAuthTokenInput.deletedAt,
+deletedBy: VerifyOneTimeAuthTokenInput.deletedBy,
+userIdent: VerifyOneTimeAuthTokenInput.userIdent,
+userIdentType: VerifyOneTimeAuthTokenInput.userIdentType,
+deviceUuid: VerifyOneTimeAuthTokenInput.deviceUuid,
+token: VerifyOneTimeAuthTokenInput.token
+}
+}
+
+export namespace VerifyOneTimeAuthTokenInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userIdent   {
+kind: "InputField",
+name: "userIdent",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userIdentType   {
+kind: "InputField",
+name: "userIdentType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserIdentType
+}
+
+ export  interface deviceUuid   {
+kind: "InputField",
+name: "deviceUuid",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface token   {
+kind: "InputField",
+name: "token",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                          ReportUserInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ReportUserInput   {
+kind: "InputObject",
+name: "ReportUserInput",
+isAllFieldsNullable: true,
+fields: {
+userId: ReportUserInput.userId,
+reasonTextId: ReportUserInput.reasonTextId,
+messageText: ReportUserInput.messageText,
+createdBy: ReportUserInput.createdBy
+}
+}
+
+export namespace ReportUserInput {
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface reasonTextId   {
+kind: "InputField",
+name: "reasonTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ReportUserReasonTextId
+}
+
+ export  interface messageText   {
+kind: "InputField",
+name: "messageText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                           AdminTaskInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AdminTaskInput   {
+kind: "InputObject",
+name: "AdminTaskInput",
+isAllFieldsNullable: true,
+fields: {
+id: AdminTaskInput.id,
+adminNotes: AdminTaskInput.adminNotes,
+events: AdminTaskInput.events,
+metadata: AdminTaskInput.metadata,
+createdAt: AdminTaskInput.createdAt,
+createdBy: AdminTaskInput.createdBy,
+updatedAt: AdminTaskInput.updatedAt,
+updatedBy: AdminTaskInput.updatedBy,
+deletedAt: AdminTaskInput.deletedAt,
+deletedBy: AdminTaskInput.deletedBy,
+adminTaskType: AdminTaskInput.adminTaskType,
+result: AdminTaskInput.result,
+resultMessage: AdminTaskInput.resultMessage,
+error: AdminTaskInput.error,
+args: AdminTaskInput.args,
+timeout: AdminTaskInput.timeout,
+autoRun: AdminTaskInput.autoRun,
+synchronous: AdminTaskInput.synchronous,
+startedAt: AdminTaskInput.startedAt,
+expiresAt: AdminTaskInput.expiresAt,
+finishedAt: AdminTaskInput.finishedAt
+}
+}
+
+export namespace AdminTaskInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminTaskType   {
+kind: "InputField",
+name: "adminTaskType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AdminTaskType
+}
+
+ export  interface result   {
+kind: "InputField",
+name: "result",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AdminTaskResult
+}
+
+ export  interface resultMessage   {
+kind: "InputField",
+name: "resultMessage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Any error messages that happened during the run
+*/
+ export  interface error   {
+kind: "InputField",
+name: "error",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* arguments
+*/
+ export  interface args   {
+kind: "InputField",
+name: "args",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* number of milliseconds before timeout
+*/
+ export  interface timeout   {
+kind: "InputField",
+name: "timeout",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+/**
+* run ask after creation
+*/
+ export  interface autoRun   {
+kind: "InputField",
+name: "autoRun",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* should the task run synchronously, or in the background?
+*/
+ export  interface synchronous   {
+kind: "InputField",
+name: "synchronous",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Date/time this task started to run
+*/
+ export  interface startedAt   {
+kind: "InputField",
+name: "startedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* Date/time this task will be removed from the db
+*/
+ export  interface expiresAt   {
+kind: "InputField",
+name: "expiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* Date/time this task completed its run
+*/
+ export  interface finishedAt   {
+kind: "InputField",
+name: "finishedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                       ChannelInvitationInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelInvitationInput   {
+kind: "InputObject",
+name: "ChannelInvitationInput",
+isAllFieldsNullable: true,
+fields: {
+id: ChannelInvitationInput.id,
+adminNotes: ChannelInvitationInput.adminNotes,
+events: ChannelInvitationInput.events,
+metadata: ChannelInvitationInput.metadata,
+createdAt: ChannelInvitationInput.createdAt,
+createdBy: ChannelInvitationInput.createdBy,
+updatedAt: ChannelInvitationInput.updatedAt,
+updatedBy: ChannelInvitationInput.updatedBy,
+deletedAt: ChannelInvitationInput.deletedAt,
+deletedBy: ChannelInvitationInput.deletedBy,
+channelId: ChannelInvitationInput.channelId,
+recipientId: ChannelInvitationInput.recipientId,
+channelName: ChannelInvitationInput.channelName,
+channelTopic: ChannelInvitationInput.channelTopic,
+messageText: ChannelInvitationInput.messageText,
+declineReasonTextId: ChannelInvitationInput.declineReasonTextId,
+dismissedFromInboxBySenderAt: ChannelInvitationInput.dismissedFromInboxBySenderAt,
+dismissedFromInboxByRecipientAt: ChannelInvitationInput.dismissedFromInboxByRecipientAt,
+readByRecipientAt: ChannelInvitationInput.readByRecipientAt,
+status: ChannelInvitationInput.status,
+suspendedAt: ChannelInvitationInput.suspendedAt,
+suspendedBy: ChannelInvitationInput.suspendedBy,
+userSearchId: ChannelInvitationInput.userSearchId,
+searchRank: ChannelInvitationInput.searchRank,
+mm2ConversationId: ChannelInvitationInput.mm2ConversationId,
+mm2Id: ChannelInvitationInput.mm2Id,
+syncedWithMm2At: ChannelInvitationInput.syncedWithMm2At
+}
+}
+
+export namespace ChannelInvitationInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "InputField",
+name: "channelId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface recipientId   {
+kind: "InputField",
+name: "recipientId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelName   {
+kind: "InputField",
+name: "channelName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface channelTopic   {
+kind: "InputField",
+name: "channelTopic",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageText   {
+kind: "InputField",
+name: "messageText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface declineReasonTextId   {
+kind: "InputField",
+name: "declineReasonTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface dismissedFromInboxBySenderAt   {
+kind: "InputField",
+name: "dismissedFromInboxBySenderAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface dismissedFromInboxByRecipientAt   {
+kind: "InputField",
+name: "dismissedFromInboxByRecipientAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface readByRecipientAt   {
+kind: "InputField",
+name: "readByRecipientAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface status   {
+kind: "InputField",
+name: "status",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelInvitationStatus
+}
+
+ export  interface suspendedAt   {
+kind: "InputField",
+name: "suspendedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "InputField",
+name: "suspendedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userSearchId   {
+kind: "InputField",
+name: "userSearchId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface searchRank   {
+kind: "InputField",
+name: "searchRank",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface mm2ConversationId   {
+kind: "InputField",
+name: "mm2ConversationId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer. Mm2 message ID.
+*/
+ export  interface mm2Id   {
+kind: "InputField",
+name: "mm2Id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This attribute is only used by the MM2 synchronizer.
+*/
+ export  interface syncedWithMm2At   {
+kind: "InputField",
+name: "syncedWithMm2At",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                   BgAddChannelMessageEventInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BgAddChannelMessageEventInput   {
+kind: "InputObject",
+name: "BgAddChannelMessageEventInput",
+isAllFieldsNullable: false,
+fields: {
+channelId: BgAddChannelMessageEventInput.channelId,
+messageIds: BgAddChannelMessageEventInput.messageIds,
+recipientId: BgAddChannelMessageEventInput.recipientId,
+event: BgAddChannelMessageEventInput.event
+}
+}
+
+export namespace BgAddChannelMessageEventInput {
+ export  interface channelId   {
+kind: "InputField",
+name: "channelId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface messageIds   {
+kind: "InputField",
+name: "messageIds",
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface recipientId   {
+kind: "InputField",
+name: "recipientId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface event   {
+kind: "InputField",
+name: "event",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ChannelMessageEvent
+}
+}
+
+//                                      ChannelParticipantInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelParticipantInput   {
+kind: "InputObject",
+name: "ChannelParticipantInput",
+isAllFieldsNullable: true,
+fields: {
+id: ChannelParticipantInput.id,
+adminNotes: ChannelParticipantInput.adminNotes,
+events: ChannelParticipantInput.events,
+metadata: ChannelParticipantInput.metadata,
+createdAt: ChannelParticipantInput.createdAt,
+createdBy: ChannelParticipantInput.createdBy,
+updatedAt: ChannelParticipantInput.updatedAt,
+updatedBy: ChannelParticipantInput.updatedBy,
+deletedAt: ChannelParticipantInput.deletedAt,
+deletedBy: ChannelParticipantInput.deletedBy,
+channelId: ChannelParticipantInput.channelId,
+userId: ChannelParticipantInput.userId,
+invitedBy: ChannelParticipantInput.invitedBy,
+channelName: ChannelParticipantInput.channelName,
+role: ChannelParticipantInput.role,
+suspendedAt: ChannelParticipantInput.suspendedAt,
+suspendedBy: ChannelParticipantInput.suspendedBy
+}
+}
+
+export namespace ChannelParticipantInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelId   {
+kind: "InputField",
+name: "channelId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface invitedBy   {
+kind: "InputField",
+name: "invitedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface channelName   {
+kind: "InputField",
+name: "channelName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface role   {
+kind: "InputField",
+name: "role",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ChannelParticipantRole
+}
+
+ export  interface suspendedAt   {
+kind: "InputField",
+name: "suspendedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "InputField",
+name: "suspendedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+}
+
+//                                          ContentTagInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ContentTagInput   {
+kind: "InputObject",
+name: "ContentTagInput",
+isAllFieldsNullable: true,
+fields: {
+id: ContentTagInput.id,
+adminNotes: ContentTagInput.adminNotes,
+events: ContentTagInput.events,
+metadata: ContentTagInput.metadata,
+createdAt: ContentTagInput.createdAt,
+createdBy: ContentTagInput.createdBy,
+updatedAt: ContentTagInput.updatedAt,
+updatedBy: ContentTagInput.updatedBy,
+deletedAt: ContentTagInput.deletedAt,
+deletedBy: ContentTagInput.deletedBy,
+objectId: ContentTagInput.objectId,
+contentModelType: ContentTagInput.contentModelType,
+userId: ContentTagInput.userId,
+contentTagTypeTextId: ContentTagInput.contentTagTypeTextId,
+childContentTagTypeTextId: ContentTagInput.childContentTagTypeTextId,
+messageText: ContentTagInput.messageText,
+moderationConcern: ContentTagInput.moderationConcern,
+allModerationConcerns: ContentTagInput.allModerationConcerns,
+approvedByRecipientAt: ContentTagInput.approvedByRecipientAt,
+verifiedBy: ContentTagInput.verifiedBy,
+verifiedAt: ContentTagInput.verifiedAt,
+dismissedBy: ContentTagInput.dismissedBy,
+dismissedAt: ContentTagInput.dismissedAt
+}
+}
+
+export namespace ContentTagInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface objectId   {
+kind: "InputField",
+name: "objectId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface contentModelType   {
+kind: "InputField",
+name: "contentModelType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ModelType
+}
+
+/**
+* ID of the user that created/owns the content referred to in this ContentTag. The ID of the user that created this ContentTag is stored in the createdBy field for ContentTags that were created by a user.
+*/
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface contentTagTypeTextId   {
+kind: "InputField",
+name: "contentTagTypeTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface childContentTagTypeTextId   {
+kind: "InputField",
+name: "childContentTagTypeTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageText   {
+kind: "InputField",
+name: "messageText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface moderationConcern   {
+kind: "InputField",
+name: "moderationConcern",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ModerationConcernInput
+}
+
+ export  interface allModerationConcerns   {
+kind: "InputField",
+name: "allModerationConcerns",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModerationConcernInput
+}
+
+ export  interface approvedByRecipientAt   {
+kind: "InputField",
+name: "approvedByRecipientAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* ID of the admin user that verified the tag.
+*/
+ export  interface verifiedBy   {
+kind: "InputField",
+name: "verifiedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface verifiedAt   {
+kind: "InputField",
+name: "verifiedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* ID of the admin user that dimsissed the tag.
+*/
+ export  interface dismissedBy   {
+kind: "InputField",
+name: "dismissedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface dismissedAt   {
+kind: "InputField",
+name: "dismissedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                       ModerationConcernInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ModerationConcernInput   {
+kind: "InputObject",
+name: "ModerationConcernInput",
+isAllFieldsNullable: true,
+fields: {
+id: ModerationConcernInput.id,
+adminNotes: ModerationConcernInput.adminNotes,
+events: ModerationConcernInput.events,
+metadata: ModerationConcernInput.metadata,
+createdAt: ModerationConcernInput.createdAt,
+createdBy: ModerationConcernInput.createdBy,
+updatedAt: ModerationConcernInput.updatedAt,
+updatedBy: ModerationConcernInput.updatedBy,
+deletedAt: ModerationConcernInput.deletedAt,
+deletedBy: ModerationConcernInput.deletedBy,
+moderationConcernType: ModerationConcernInput.moderationConcernType,
+name: ModerationConcernInput.name,
+description: ModerationConcernInput.description,
+value: ModerationConcernInput.value,
+languageTextId: ModerationConcernInput.languageTextId,
+isCaseSensitive: ModerationConcernInput.isCaseSensitive,
+isWord: ModerationConcernInput.isWord,
+isRegex: ModerationConcernInput.isRegex,
+isNameOfBadActor: ModerationConcernInput.isNameOfBadActor,
+isCompanyNameOfBadActor: ModerationConcernInput.isCompanyNameOfBadActor,
+isEmailOfBadActor: ModerationConcernInput.isEmailOfBadActor,
+isPhoneNumberOfBadActor: ModerationConcernInput.isPhoneNumberOfBadActor,
+isWebsiteOfBadActor: ModerationConcernInput.isWebsiteOfBadActor,
+deleteContent: ModerationConcernInput.deleteContent,
+trustLevelImpact: ModerationConcernInput.trustLevelImpact,
+version: ModerationConcernInput.version
+}
+}
+
+export namespace ModerationConcernInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface moderationConcernType   {
+kind: "InputField",
+name: "moderationConcernType",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ModerationConcernType
+}
+
+ export  interface name   {
+kind: "InputField",
+name: "name",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface description   {
+kind: "InputField",
+name: "description",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface value   {
+kind: "InputField",
+name: "value",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface languageTextId   {
+kind: "InputField",
+name: "languageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* must match with capitalization; ignored if isRegex = true; default = true
+*/
+ export  interface isCaseSensitive   {
+kind: "InputField",
+name: "isCaseSensitive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* only matches full words; ignored if isRegex = true; default = true
+*/
+ export  interface isWord   {
+kind: "InputField",
+name: "isWord",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* value is a regex expression without flags; default = false
+*/
+ export  interface isRegex   {
+kind: "InputField",
+name: "isRegex",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isNameOfBadActor   {
+kind: "InputField",
+name: "isNameOfBadActor",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isCompanyNameOfBadActor   {
+kind: "InputField",
+name: "isCompanyNameOfBadActor",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isEmailOfBadActor   {
+kind: "InputField",
+name: "isEmailOfBadActor",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isPhoneNumberOfBadActor   {
+kind: "InputField",
+name: "isPhoneNumberOfBadActor",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* default = false
+*/
+ export  interface isWebsiteOfBadActor   {
+kind: "InputField",
+name: "isWebsiteOfBadActor",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* delete the content, if a match is found; default = false
+*/
+ export  interface deleteContent   {
+kind: "InputField",
+name: "deleteContent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* number of points to reduce a users trustLevel, if found
+*/
+ export  interface trustLevelImpact   {
+kind: "InputField",
+name: "trustLevelImpact",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface version   {
+kind: "InputField",
+name: "version",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                    MenteesGroupMembershipInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MenteesGroupMembershipInput   {
+kind: "InputObject",
+name: "MenteesGroupMembershipInput",
+isAllFieldsNullable: true,
+fields: {
+id: MenteesGroupMembershipInput.id,
+adminNotes: MenteesGroupMembershipInput.adminNotes,
+events: MenteesGroupMembershipInput.events,
+metadata: MenteesGroupMembershipInput.metadata,
+createdAt: MenteesGroupMembershipInput.createdAt,
+createdBy: MenteesGroupMembershipInput.createdBy,
+updatedAt: MenteesGroupMembershipInput.updatedAt,
+updatedBy: MenteesGroupMembershipInput.updatedBy,
+deletedAt: MenteesGroupMembershipInput.deletedAt,
+deletedBy: MenteesGroupMembershipInput.deletedBy,
+groupId: MenteesGroupMembershipInput.groupId,
+groupIdent: MenteesGroupMembershipInput.groupIdent,
+userId: MenteesGroupMembershipInput.userId,
+roles: MenteesGroupMembershipInput.roles,
+soughtExpertisesTextIds: MenteesGroupMembershipInput.soughtExpertisesTextIds,
+additionalSoughtExpertisesTextIds: MenteesGroupMembershipInput.additionalSoughtExpertisesTextIds,
+industryTextId: MenteesGroupMembershipInput.industryTextId,
+mm2SoughtExpertisesTextIds: MenteesGroupMembershipInput.mm2SoughtExpertisesTextIds,
+mm2IndustryTextId: MenteesGroupMembershipInput.mm2IndustryTextId,
+actionsTaken: MenteesGroupMembershipInput.actionsTaken,
+currentChallenges: MenteesGroupMembershipInput.currentChallenges,
+futureGoals: MenteesGroupMembershipInput.futureGoals,
+motivationsForMentorship: MenteesGroupMembershipInput.motivationsForMentorship,
+reasonsForStartingBusiness: MenteesGroupMembershipInput.reasonsForStartingBusiness
+}
+}
+
+export namespace MenteesGroupMembershipInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "InputField",
+name: "groupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "InputField",
+name: "groupIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "InputField",
+name: "roles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+/**
+* Must match expertise textIds.
+*/
+ export  interface soughtExpertisesTextIds   {
+kind: "InputField",
+name: "soughtExpertisesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match expertise textIds.
+*/
+ export  interface additionalSoughtExpertisesTextIds   {
+kind: "InputField",
+name: "additionalSoughtExpertisesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match industry textId.
+*/
+ export  interface industryTextId   {
+kind: "InputField",
+name: "industryTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match mm2 expertise textIds -- only used by synchronizer
+*/
+ export  interface mm2SoughtExpertisesTextIds   {
+kind: "InputField",
+name: "mm2SoughtExpertisesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match mm2 industry textIds -- only used by synchronizer
+*/
+ export  interface mm2IndustryTextId   {
+kind: "InputField",
+name: "mm2IndustryTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface actionsTaken   {
+kind: "InputField",
+name: "actionsTaken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* From MM2, not used in MM3 (yet)
+*/
+ export  interface currentChallenges   {
+kind: "InputField",
+name: "currentChallenges",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* From MM2, not used in MM3 (yet)
+*/
+ export  interface futureGoals   {
+kind: "InputField",
+name: "futureGoals",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* From MM2, not used in MM3 (yet)
+*/
+ export  interface motivationsForMentorship   {
+kind: "InputField",
+name: "motivationsForMentorship",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface reasonsForStartingBusiness   {
+kind: "InputField",
+name: "reasonsForStartingBusiness",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                    MentorsGroupMembershipInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MentorsGroupMembershipInput   {
+kind: "InputObject",
+name: "MentorsGroupMembershipInput",
+isAllFieldsNullable: true,
+fields: {
+id: MentorsGroupMembershipInput.id,
+adminNotes: MentorsGroupMembershipInput.adminNotes,
+events: MentorsGroupMembershipInput.events,
+metadata: MentorsGroupMembershipInput.metadata,
+createdAt: MentorsGroupMembershipInput.createdAt,
+createdBy: MentorsGroupMembershipInput.createdBy,
+updatedAt: MentorsGroupMembershipInput.updatedAt,
+updatedBy: MentorsGroupMembershipInput.updatedBy,
+deletedAt: MentorsGroupMembershipInput.deletedAt,
+deletedBy: MentorsGroupMembershipInput.deletedBy,
+groupId: MentorsGroupMembershipInput.groupId,
+groupIdent: MentorsGroupMembershipInput.groupIdent,
+userId: MentorsGroupMembershipInput.userId,
+roles: MentorsGroupMembershipInput.roles,
+expertisesTextIds: MentorsGroupMembershipInput.expertisesTextIds,
+additionalExpertisesTextIds: MentorsGroupMembershipInput.additionalExpertisesTextIds,
+industriesTextIds: MentorsGroupMembershipInput.industriesTextIds,
+mm2ExpertisesTextIds: MentorsGroupMembershipInput.mm2ExpertisesTextIds,
+mm2IndustriesTextIds: MentorsGroupMembershipInput.mm2IndustriesTextIds,
+helpICanOffer: MentorsGroupMembershipInput.helpICanOffer,
+expectationsForMentees: MentorsGroupMembershipInput.expectationsForMentees,
+menteePreparationInstructions: MentorsGroupMembershipInput.menteePreparationInstructions,
+endorsements: MentorsGroupMembershipInput.endorsements,
+reasonsForMentoring: MentorsGroupMembershipInput.reasonsForMentoring
+}
+}
+
+export namespace MentorsGroupMembershipInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "InputField",
+name: "groupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "InputField",
+name: "groupIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "InputField",
+name: "roles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+/**
+* Must match expertise textIds.
+*/
+ export  interface expertisesTextIds   {
+kind: "InputField",
+name: "expertisesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match expertise textIds.
+*/
+ export  interface additionalExpertisesTextIds   {
+kind: "InputField",
+name: "additionalExpertisesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match industry textIds.
+*/
+ export  interface industriesTextIds   {
+kind: "InputField",
+name: "industriesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match mm2 expertise textIds -- only used by synchronizer
+*/
+ export  interface mm2ExpertisesTextIds   {
+kind: "InputField",
+name: "mm2ExpertisesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Must match mm2 industry textIds -- only used by synchronizer
+*/
+ export  interface mm2IndustriesTextIds   {
+kind: "InputField",
+name: "mm2IndustriesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface helpICanOffer   {
+kind: "InputField",
+name: "helpICanOffer",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface expectationsForMentees   {
+kind: "InputField",
+name: "expectationsForMentees",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface menteePreparationInstructions   {
+kind: "InputField",
+name: "menteePreparationInstructions",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface endorsements   {
+kind: "InputField",
+name: "endorsements",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface reasonsForMentoring   {
+kind: "InputField",
+name: "reasonsForMentoring",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                     IqlaaGroupMembershipInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface IqlaaGroupMembershipInput   {
+kind: "InputObject",
+name: "IqlaaGroupMembershipInput",
+isAllFieldsNullable: true,
+fields: {
+id: IqlaaGroupMembershipInput.id,
+adminNotes: IqlaaGroupMembershipInput.adminNotes,
+events: IqlaaGroupMembershipInput.events,
+metadata: IqlaaGroupMembershipInput.metadata,
+createdAt: IqlaaGroupMembershipInput.createdAt,
+createdBy: IqlaaGroupMembershipInput.createdBy,
+updatedAt: IqlaaGroupMembershipInput.updatedAt,
+updatedBy: IqlaaGroupMembershipInput.updatedBy,
+deletedAt: IqlaaGroupMembershipInput.deletedAt,
+deletedBy: IqlaaGroupMembershipInput.deletedBy,
+groupId: IqlaaGroupMembershipInput.groupId,
+groupIdent: IqlaaGroupMembershipInput.groupIdent,
+userId: IqlaaGroupMembershipInput.userId,
+roles: IqlaaGroupMembershipInput.roles,
+fatherName: IqlaaGroupMembershipInput.fatherName,
+birthDate: IqlaaGroupMembershipInput.birthDate,
+isBusinessHomeBased: IqlaaGroupMembershipInput.isBusinessHomeBased,
+isBusinessRegisteredWithCCD: IqlaaGroupMembershipInput.isBusinessRegisteredWithCCD,
+businessRegistrationNumber: IqlaaGroupMembershipInput.businessRegistrationNumber,
+isJordanNational: IqlaaGroupMembershipInput.isJordanNational
+}
+}
+
+export namespace IqlaaGroupMembershipInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "InputField",
+name: "groupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "InputField",
+name: "groupIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "InputField",
+name: "roles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+/**
+* Fathers name
+*/
+ export  interface fatherName   {
+kind: "InputField",
+name: "fatherName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Date of birth
+*/
+ export  interface birthDate   {
+kind: "InputField",
+name: "birthDate",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+/**
+* "Is your business a home-based business?"
+*/
+ export  interface isBusinessHomeBased   {
+kind: "InputField",
+name: "isBusinessHomeBased",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* "Is the Business/ Project registered in the Companies Control Department -Ministry of industries and trading?"
+*/
+ export  interface isBusinessRegisteredWithCCD   {
+kind: "InputField",
+name: "isBusinessRegisteredWithCCD",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* (Optional) Business registration number
+*/
+ export  interface businessRegistrationNumber   {
+kind: "InputField",
+name: "businessRegistrationNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Is the user a Jordan national?
+*/
+ export  interface isJordanNational   {
+kind: "InputField",
+name: "isJordanNational",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                   MastercardGroupMembershipInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MastercardGroupMembershipInput   {
+kind: "InputObject",
+name: "MastercardGroupMembershipInput",
+isAllFieldsNullable: true,
+fields: {
+id: MastercardGroupMembershipInput.id,
+adminNotes: MastercardGroupMembershipInput.adminNotes,
+events: MastercardGroupMembershipInput.events,
+metadata: MastercardGroupMembershipInput.metadata,
+createdAt: MastercardGroupMembershipInput.createdAt,
+createdBy: MastercardGroupMembershipInput.createdBy,
+updatedAt: MastercardGroupMembershipInput.updatedAt,
+updatedBy: MastercardGroupMembershipInput.updatedBy,
+deletedAt: MastercardGroupMembershipInput.deletedAt,
+deletedBy: MastercardGroupMembershipInput.deletedBy,
+groupId: MastercardGroupMembershipInput.groupId,
+groupIdent: MastercardGroupMembershipInput.groupIdent,
+userId: MastercardGroupMembershipInput.userId,
+roles: MastercardGroupMembershipInput.roles,
+bankNames: MastercardGroupMembershipInput.bankNames,
+bankTextIds: MastercardGroupMembershipInput.bankTextIds,
+smallBusinessCardTypes: MastercardGroupMembershipInput.smallBusinessCardTypes,
+personalCardTypes: MastercardGroupMembershipInput.personalCardTypes
+}
+}
+
+export namespace MastercardGroupMembershipInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "InputField",
+name: "groupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "InputField",
+name: "groupIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "InputField",
+name: "roles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+
+/**
+* Names of banks for reports
+*/
+ export  interface bankNames   {
+kind: "InputField",
+name: "bankNames",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Text IDs of banks for reports
+*/
+ export  interface bankTextIds   {
+kind: "InputField",
+name: "bankTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Small business card types
+*/
+ export  interface smallBusinessCardTypes   {
+kind: "InputField",
+name: "smallBusinessCardTypes",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$MastercardCardType
+}
+
+/**
+* Personal card types
+*/
+ export  interface personalCardTypes   {
+kind: "InputField",
+name: "personalCardTypes",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$MastercardCardType
+}
+}
+
+//                                     SupportChannelConfigInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SupportChannelConfigInput   {
+kind: "InputObject",
+name: "SupportChannelConfigInput",
+isAllFieldsNullable: true,
+fields: {
+id: SupportChannelConfigInput.id,
+adminNotes: SupportChannelConfigInput.adminNotes,
+events: SupportChannelConfigInput.events,
+metadata: SupportChannelConfigInput.metadata,
+createdAt: SupportChannelConfigInput.createdAt,
+createdBy: SupportChannelConfigInput.createdBy,
+updatedAt: SupportChannelConfigInput.updatedAt,
+updatedBy: SupportChannelConfigInput.updatedBy,
+deletedAt: SupportChannelConfigInput.deletedAt,
+deletedBy: SupportChannelConfigInput.deletedBy,
+groupId: SupportChannelConfigInput.groupId,
+groupIdent: SupportChannelConfigInput.groupIdent,
+senderUserId: SupportChannelConfigInput.senderUserId,
+isActive: SupportChannelConfigInput.isActive,
+createSupportChannelForMentees: SupportChannelConfigInput.createSupportChannelForMentees,
+createSupportChannelForMentors: SupportChannelConfigInput.createSupportChannelForMentors,
+channelLanguageTextId: SupportChannelConfigInput.channelLanguageTextId,
+filterByGenderTextIds: SupportChannelConfigInput.filterByGenderTextIds,
+firstMessageText: SupportChannelConfigInput.firstMessageText,
+sendNotifications: SupportChannelConfigInput.sendNotifications
+}
+}
+
+export namespace SupportChannelConfigInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "InputField",
+name: "groupId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "InputField",
+name: "groupIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderUserId   {
+kind: "InputField",
+name: "senderUserId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Is this welcome message active / should we send it to users?
+*/
+ export  interface isActive   {
+kind: "InputField",
+name: "isActive",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface createSupportChannelForMentees   {
+kind: "InputField",
+name: "createSupportChannelForMentees",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface createSupportChannelForMentors   {
+kind: "InputField",
+name: "createSupportChannelForMentors",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* Any language option can be selected, not just a UiLanguage
+*/
+ export  interface channelLanguageTextId   {
+kind: "InputField",
+name: "channelLanguageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface filterByGenderTextIds   {
+kind: "InputField",
+name: "filterByGenderTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* The welcome message is a plain text
+*/
+ export  interface firstMessageText   {
+kind: "InputField",
+name: "firstMessageText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Setting to false will ensure no notifications are sent. Setting to true will still check notification template settings.
+*/
+ export  interface sendNotifications   {
+kind: "InputField",
+name: "sendNotifications",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                         NotificationInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationInput   {
+kind: "InputObject",
+name: "NotificationInput",
+isAllFieldsNullable: true,
+fields: {
+id: NotificationInput.id,
+adminNotes: NotificationInput.adminNotes,
+events: NotificationInput.events,
+metadata: NotificationInput.metadata,
+createdAt: NotificationInput.createdAt,
+createdBy: NotificationInput.createdBy,
+updatedAt: NotificationInput.updatedAt,
+updatedBy: NotificationInput.updatedBy,
+deletedAt: NotificationInput.deletedAt,
+deletedBy: NotificationInput.deletedBy,
+notificationType: NotificationInput.notificationType,
+templateId: NotificationInput.templateId,
+templateName: NotificationInput.templateName,
+recipientId: NotificationInput.recipientId,
+multiStepActionId: NotificationInput.multiStepActionId,
+initiatorId: NotificationInput.initiatorId,
+replyingToId: NotificationInput.replyingToId,
+title: NotificationInput.title,
+messageText: NotificationInput.messageText,
+shortMessageText: NotificationInput.shortMessageText,
+htmlMessage: NotificationInput.htmlMessage,
+language: NotificationInput.language,
+isTranslated: NotificationInput.isTranslated,
+appLink: NotificationInput.appLink,
+action0: NotificationInput.action0,
+action1: NotificationInput.action1,
+action2: NotificationInput.action2,
+actionTaken: NotificationInput.actionTaken,
+sendEmail: NotificationInput.sendEmail,
+sendInAppMessage: NotificationInput.sendInAppMessage,
+sendPushNotification: NotificationInput.sendPushNotification,
+sendSms: NotificationInput.sendSms,
+allowSendingToSuspendedUser: NotificationInput.allowSendingToSuspendedUser,
+emailSentAt: NotificationInput.emailSentAt,
+inAppMessageSentAt: NotificationInput.inAppMessageSentAt,
+inAppMessageReceivedAt: NotificationInput.inAppMessageReceivedAt,
+pushNotificationSentAt: NotificationInput.pushNotificationSentAt,
+smsSentAt: NotificationInput.smsSentAt,
+emailSendReport: NotificationInput.emailSendReport,
+pushNotificationSendReport: NotificationInput.pushNotificationSendReport,
+smsSendReport: NotificationInput.smsSendReport,
+sentMessagesCount: NotificationInput.sentMessagesCount,
+context: NotificationInput.context
+}
+}
+
+export namespace NotificationInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface notificationType   {
+kind: "InputField",
+name: "notificationType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$NotificationType
+}
+
+ export  interface templateId   {
+kind: "InputField",
+name: "templateId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface templateName   {
+kind: "InputField",
+name: "templateName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface recipientId   {
+kind: "InputField",
+name: "recipientId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface multiStepActionId   {
+kind: "InputField",
+name: "multiStepActionId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface initiatorId   {
+kind: "InputField",
+name: "initiatorId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface replyingToId   {
+kind: "InputField",
+name: "replyingToId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface title   {
+kind: "InputField",
+name: "title",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageText   {
+kind: "InputField",
+name: "messageText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageText   {
+kind: "InputField",
+name: "shortMessageText",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessage   {
+kind: "InputField",
+name: "htmlMessage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface language   {
+kind: "InputField",
+name: "language",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+ export  interface isTranslated   {
+kind: "InputField",
+name: "isTranslated",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface appLink   {
+kind: "InputField",
+name: "appLink",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface action0   {
+kind: "InputField",
+name: "action0",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface action1   {
+kind: "InputField",
+name: "action1",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface action2   {
+kind: "InputField",
+name: "action2",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface actionTaken   {
+kind: "InputField",
+name: "actionTaken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface sendEmail   {
+kind: "InputField",
+name: "sendEmail",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendInAppMessage   {
+kind: "InputField",
+name: "sendInAppMessage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendPushNotification   {
+kind: "InputField",
+name: "sendPushNotification",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendSms   {
+kind: "InputField",
+name: "sendSms",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface allowSendingToSuspendedUser   {
+kind: "InputField",
+name: "allowSendingToSuspendedUser",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface emailSentAt   {
+kind: "InputField",
+name: "emailSentAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inAppMessageSentAt   {
+kind: "InputField",
+name: "inAppMessageSentAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inAppMessageReceivedAt   {
+kind: "InputField",
+name: "inAppMessageReceivedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface pushNotificationSentAt   {
+kind: "InputField",
+name: "pushNotificationSentAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface smsSentAt   {
+kind: "InputField",
+name: "smsSentAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface emailSendReport   {
+kind: "InputField",
+name: "emailSendReport",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface pushNotificationSendReport   {
+kind: "InputField",
+name: "pushNotificationSendReport",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface smsSendReport   {
+kind: "InputField",
+name: "smsSendReport",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface sentMessagesCount   {
+kind: "InputField",
+name: "sentMessagesCount",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface context   {
+kind: "InputField",
+name: "context",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$NotificationInput
+}
+}
+
+//                                SendMultiStepActionNotificationInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SendMultiStepActionNotificationInput   {
+kind: "InputObject",
+name: "SendMultiStepActionNotificationInput",
+isAllFieldsNullable: true,
+fields: {
+actionId: SendMultiStepActionNotificationInput.actionId,
+email: SendMultiStepActionNotificationInput.email,
+phoneNumber: SendMultiStepActionNotificationInput.phoneNumber,
+notificationMethod: SendMultiStepActionNotificationInput.notificationMethod
+}
+}
+
+export namespace SendMultiStepActionNotificationInput {
+ export  interface actionId   {
+kind: "InputField",
+name: "actionId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Only allowed for certain flows, i.e. during sign-up with only an email or phone number.
+*/
+ export  interface email   {
+kind: "InputField",
+name: "email",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Only allowed for certain flows, i.e. during sign-up with only an email or phone number.
+*/
+ export  interface phoneNumber   {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface notificationMethod   {
+kind: "InputField",
+name: "notificationMethod",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$NotificationMethod
+}
+}
+
+//                                     NotificationTemplateInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationTemplateInput   {
+kind: "InputObject",
+name: "NotificationTemplateInput",
+isAllFieldsNullable: true,
+fields: {
+id: NotificationTemplateInput.id,
+adminNotes: NotificationTemplateInput.adminNotes,
+events: NotificationTemplateInput.events,
+metadata: NotificationTemplateInput.metadata,
+createdAt: NotificationTemplateInput.createdAt,
+createdBy: NotificationTemplateInput.createdBy,
+updatedAt: NotificationTemplateInput.updatedAt,
+updatedBy: NotificationTemplateInput.updatedBy,
+deletedAt: NotificationTemplateInput.deletedAt,
+deletedBy: NotificationTemplateInput.deletedBy,
+templateId: NotificationTemplateInput.templateId,
+name: NotificationTemplateInput.name,
+description: NotificationTemplateInput.description,
+titleAr: NotificationTemplateInput.titleAr,
+messageTextAr: NotificationTemplateInput.messageTextAr,
+shortMessageTextAr: NotificationTemplateInput.shortMessageTextAr,
+htmlMessageAr: NotificationTemplateInput.htmlMessageAr,
+titleEn: NotificationTemplateInput.titleEn,
+messageTextEn: NotificationTemplateInput.messageTextEn,
+shortMessageTextEn: NotificationTemplateInput.shortMessageTextEn,
+htmlMessageEn: NotificationTemplateInput.htmlMessageEn,
+titleEs: NotificationTemplateInput.titleEs,
+messageTextEs: NotificationTemplateInput.messageTextEs,
+shortMessageTextEs: NotificationTemplateInput.shortMessageTextEs,
+htmlMessageEs: NotificationTemplateInput.htmlMessageEs,
+titleId: NotificationTemplateInput.titleId,
+messageTextId: NotificationTemplateInput.messageTextId,
+shortMessageTextId: NotificationTemplateInput.shortMessageTextId,
+htmlMessageId: NotificationTemplateInput.htmlMessageId,
+titleRu: NotificationTemplateInput.titleRu,
+messageTextRu: NotificationTemplateInput.messageTextRu,
+shortMessageTextRu: NotificationTemplateInput.shortMessageTextRu,
+htmlMessageRu: NotificationTemplateInput.htmlMessageRu,
+titleSo: NotificationTemplateInput.titleSo,
+messageTextSo: NotificationTemplateInput.messageTextSo,
+shortMessageTextSo: NotificationTemplateInput.shortMessageTextSo,
+htmlMessageSo: NotificationTemplateInput.htmlMessageSo,
+version: NotificationTemplateInput.version,
+senderName: NotificationTemplateInput.senderName,
+senderEmail: NotificationTemplateInput.senderEmail,
+action0: NotificationTemplateInput.action0,
+action1: NotificationTemplateInput.action1,
+action2: NotificationTemplateInput.action2,
+sendEmail: NotificationTemplateInput.sendEmail,
+sendInAppMessage: NotificationTemplateInput.sendInAppMessage,
+sendPushNotification: NotificationTemplateInput.sendPushNotification,
+sendSms: NotificationTemplateInput.sendSms,
+isCore: NotificationTemplateInput.isCore
+}
+}
+
+export namespace NotificationTemplateInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface templateId   {
+kind: "InputField",
+name: "templateId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface name   {
+kind: "InputField",
+name: "name",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$NotificationTemplateName
+}
+
+ export  interface description   {
+kind: "InputField",
+name: "description",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleAr   {
+kind: "InputField",
+name: "titleAr",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextAr   {
+kind: "InputField",
+name: "messageTextAr",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextAr   {
+kind: "InputField",
+name: "shortMessageTextAr",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageAr   {
+kind: "InputField",
+name: "htmlMessageAr",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleEn   {
+kind: "InputField",
+name: "titleEn",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextEn   {
+kind: "InputField",
+name: "messageTextEn",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextEn   {
+kind: "InputField",
+name: "shortMessageTextEn",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageEn   {
+kind: "InputField",
+name: "htmlMessageEn",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleEs   {
+kind: "InputField",
+name: "titleEs",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextEs   {
+kind: "InputField",
+name: "messageTextEs",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextEs   {
+kind: "InputField",
+name: "shortMessageTextEs",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageEs   {
+kind: "InputField",
+name: "htmlMessageEs",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleId   {
+kind: "InputField",
+name: "titleId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextId   {
+kind: "InputField",
+name: "messageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextId   {
+kind: "InputField",
+name: "shortMessageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageId   {
+kind: "InputField",
+name: "htmlMessageId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleRu   {
+kind: "InputField",
+name: "titleRu",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextRu   {
+kind: "InputField",
+name: "messageTextRu",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextRu   {
+kind: "InputField",
+name: "shortMessageTextRu",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageRu   {
+kind: "InputField",
+name: "htmlMessageRu",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface titleSo   {
+kind: "InputField",
+name: "titleSo",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageTextSo   {
+kind: "InputField",
+name: "messageTextSo",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface shortMessageTextSo   {
+kind: "InputField",
+name: "shortMessageTextSo",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface htmlMessageSo   {
+kind: "InputField",
+name: "htmlMessageSo",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface version   {
+kind: "InputField",
+name: "version",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderName   {
+kind: "InputField",
+name: "senderName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface senderEmail   {
+kind: "InputField",
+name: "senderEmail",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface action0   {
+kind: "InputField",
+name: "action0",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface action1   {
+kind: "InputField",
+name: "action1",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface action2   {
+kind: "InputField",
+name: "action2",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AppAction
+}
+
+ export  interface sendEmail   {
+kind: "InputField",
+name: "sendEmail",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendInAppMessage   {
+kind: "InputField",
+name: "sendInAppMessage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendPushNotification   {
+kind: "InputField",
+name: "sendPushNotification",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface sendSms   {
+kind: "InputField",
+name: "sendSms",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface isCore   {
+kind: "InputField",
+name: "isCore",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//                                      SidMultiStepActionInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SidMultiStepActionInput   {
+kind: "InputObject",
+name: "SidMultiStepActionInput",
+isAllFieldsNullable: true,
+fields: {
+id: SidMultiStepActionInput.id,
+adminNotes: SidMultiStepActionInput.adminNotes,
+events: SidMultiStepActionInput.events,
+metadata: SidMultiStepActionInput.metadata,
+createdAt: SidMultiStepActionInput.createdAt,
+createdBy: SidMultiStepActionInput.createdBy,
+updatedAt: SidMultiStepActionInput.updatedAt,
+updatedBy: SidMultiStepActionInput.updatedBy,
+deletedAt: SidMultiStepActionInput.deletedAt,
+deletedBy: SidMultiStepActionInput.deletedBy,
+userId: SidMultiStepActionInput.userId,
+userIdent: SidMultiStepActionInput.userIdent,
+userHandle: SidMultiStepActionInput.userHandle,
+email: SidMultiStepActionInput.email,
+phoneNumber: SidMultiStepActionInput.phoneNumber,
+actionType: SidMultiStepActionInput.actionType,
+actionStatus: SidMultiStepActionInput.actionStatus,
+notificationMethod: SidMultiStepActionInput.notificationMethod,
+result: SidMultiStepActionInput.result,
+confirmToken: SidMultiStepActionInput.confirmToken,
+attemptCount: SidMultiStepActionInput.attemptCount,
+notificationSentAt: SidMultiStepActionInput.notificationSentAt,
+notificationResult: SidMultiStepActionInput.notificationResult,
+notificationId: SidMultiStepActionInput.notificationId,
+textData: SidMultiStepActionInput.textData,
+report: SidMultiStepActionInput.report,
+emailPassed: SidMultiStepActionInput.emailPassed,
+emailUpdatedAt: SidMultiStepActionInput.emailUpdatedAt,
+emailVerifiedAt: SidMultiStepActionInput.emailVerifiedAt,
+errors: SidMultiStepActionInput.errors,
+password: SidMultiStepActionInput.password,
+passwordPassed: SidMultiStepActionInput.passwordPassed,
+passwordResettedAt: SidMultiStepActionInput.passwordResettedAt,
+passwordUpdatedAt: SidMultiStepActionInput.passwordUpdatedAt,
+phoneNumberPassed: SidMultiStepActionInput.phoneNumberPassed,
+phoneNumberUpdatedAt: SidMultiStepActionInput.phoneNumberUpdatedAt,
+phoneNumberVerifiedAt: SidMultiStepActionInput.phoneNumberVerifiedAt,
+signedInAt: SidMultiStepActionInput.signedInAt,
+tfaBackupCodes: SidMultiStepActionInput.tfaBackupCodes,
+expiresAt: SidMultiStepActionInput.expiresAt
+}
+}
+
+export namespace SidMultiStepActionInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userIdent   {
+kind: "InputField",
+name: "userIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "InputField",
+name: "userHandle",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface email   {
+kind: "InputField",
+name: "email",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface actionType   {
+kind: "InputField",
+name: "actionType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MultiStepActionType
+}
+
+ export  interface actionStatus   {
+kind: "InputField",
+name: "actionStatus",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MultiStepActionStatus
+}
+
+ export  interface notificationMethod   {
+kind: "InputField",
+name: "notificationMethod",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$NotificationMethod
+}
+
+ export  interface result   {
+kind: "InputField",
+name: "result",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MultiStepActionResult
+}
+
+ export  interface confirmToken   {
+kind: "InputField",
+name: "confirmToken",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface attemptCount   {
+kind: "InputField",
+name: "attemptCount",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface notificationSentAt   {
+kind: "InputField",
+name: "notificationSentAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface notificationResult   {
+kind: "InputField",
+name: "notificationResult",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$MultiStepActionSendNotificationResult
+}
+
+ export  interface notificationId   {
+kind: "InputField",
+name: "notificationId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface textData   {
+kind: "InputField",
+name: "textData",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface report   {
+kind: "InputField",
+name: "report",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailPassed   {
+kind: "InputField",
+name: "emailPassed",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface emailUpdatedAt   {
+kind: "InputField",
+name: "emailUpdatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface emailVerifiedAt   {
+kind: "InputField",
+name: "emailVerifiedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface errors   {
+kind: "InputField",
+name: "errors",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$MultiStepActionErrorInput
+}
+
+ export  interface password   {
+kind: "InputField",
+name: "password",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface passwordPassed   {
+kind: "InputField",
+name: "passwordPassed",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface passwordResettedAt   {
+kind: "InputField",
+name: "passwordResettedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface passwordUpdatedAt   {
+kind: "InputField",
+name: "passwordUpdatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface phoneNumberPassed   {
+kind: "InputField",
+name: "phoneNumberPassed",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "InputField",
+name: "phoneNumberUpdatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface phoneNumberVerifiedAt   {
+kind: "InputField",
+name: "phoneNumberVerifiedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedInAt   {
+kind: "InputField",
+name: "signedInAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface tfaBackupCodes   {
+kind: "InputField",
+name: "tfaBackupCodes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface expiresAt   {
+kind: "InputField",
+name: "expiresAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                     MultiStepActionErrorInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MultiStepActionErrorInput   {
+kind: "InputObject",
+name: "MultiStepActionErrorInput",
+isAllFieldsNullable: true,
+fields: {
+id: MultiStepActionErrorInput.id,
+adminNotes: MultiStepActionErrorInput.adminNotes,
+events: MultiStepActionErrorInput.events,
+metadata: MultiStepActionErrorInput.metadata,
+createdAt: MultiStepActionErrorInput.createdAt,
+createdBy: MultiStepActionErrorInput.createdBy,
+updatedAt: MultiStepActionErrorInput.updatedAt,
+updatedBy: MultiStepActionErrorInput.updatedBy,
+deletedAt: MultiStepActionErrorInput.deletedAt,
+deletedBy: MultiStepActionErrorInput.deletedBy,
+key: MultiStepActionErrorInput.key,
+messageId: MultiStepActionErrorInput.messageId,
+message: MultiStepActionErrorInput.message
+}
+}
+
+export namespace MultiStepActionErrorInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface key   {
+kind: "InputField",
+name: "key",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface messageId   {
+kind: "InputField",
+name: "messageId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface message   {
+kind: "InputField",
+name: "message",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                           UserIdentInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserIdentInput   {
+kind: "InputObject",
+name: "UserIdentInput",
+isAllFieldsNullable: true,
+fields: {
+userId: UserIdentInput.userId,
+userIdent: UserIdentInput.userIdent,
+userHandle: UserIdentInput.userHandle,
+email: UserIdentInput.email,
+phoneNumber: UserIdentInput.phoneNumber,
+inviteCode: UserIdentInput.inviteCode
+}
+}
+
+export namespace UserIdentInput {
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userIdent   {
+kind: "InputField",
+name: "userIdent",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "InputField",
+name: "userHandle",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface email   {
+kind: "InputField",
+name: "email",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface inviteCode   {
+kind: "InputField",
+name: "inviteCode",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                  VerifyMultiStepActionTokenInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface VerifyMultiStepActionTokenInput   {
+kind: "InputObject",
+name: "VerifyMultiStepActionTokenInput",
+isAllFieldsNullable: true,
+fields: {
+actionId: VerifyMultiStepActionTokenInput.actionId,
+token: VerifyMultiStepActionTokenInput.token,
+newPassword: VerifyMultiStepActionTokenInput.newPassword
+}
+}
+
+export namespace VerifyMultiStepActionTokenInput {
+ export  interface actionId   {
+kind: "InputField",
+name: "actionId",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface token   {
+kind: "InputField",
+name: "token",
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface newPassword   {
+kind: "InputField",
+name: "newPassword",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                            MyUserInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MyUserInput   {
+kind: "InputObject",
+name: "MyUserInput",
+isAllFieldsNullable: true,
+fields: {
+id: MyUserInput.id,
+adminNotes: MyUserInput.adminNotes,
+events: MyUserInput.events,
+metadata: MyUserInput.metadata,
+createdAt: MyUserInput.createdAt,
+createdBy: MyUserInput.createdBy,
+updatedAt: MyUserInput.updatedAt,
+updatedBy: MyUserInput.updatedBy,
+deletedAt: MyUserInput.deletedAt,
+deletedBy: MyUserInput.deletedBy,
+firstName: MyUserInput.firstName,
+lastName: MyUserInput.lastName,
+fullName: MyUserInput.fullName,
+userHandle: MyUserInput.userHandle,
+phoneNumber: MyUserInput.phoneNumber,
+phoneNumberUpdatedAt: MyUserInput.phoneNumberUpdatedAt,
+isPhoneNumberVerified: MyUserInput.isPhoneNumberVerified,
+email: MyUserInput.email,
+emailUpdatedAt: MyUserInput.emailUpdatedAt,
+isEmailVerified: MyUserInput.isEmailVerified,
+emailSource: MyUserInput.emailSource,
+genderTextId: MyUserInput.genderTextId,
+cityOfResidence: MyUserInput.cityOfResidence,
+regionOfResidence: MyUserInput.regionOfResidence,
+countryOfResidenceTextId: MyUserInput.countryOfResidenceTextId,
+postalCode: MyUserInput.postalCode,
+avatarUrl: MyUserInput.avatarUrl,
+websites: MyUserInput.websites,
+authType: MyUserInput.authType,
+inviteCode: MyUserInput.inviteCode,
+currentPassword: MyUserInput.currentPassword,
+newPassword: MyUserInput.newPassword,
+preferredLanguageTextId: MyUserInput.preferredLanguageTextId,
+spokenLanguagesTextIds: MyUserInput.spokenLanguagesTextIds,
+selectedUiLanguageTextId: MyUserInput.selectedUiLanguageTextId,
+fallbackUiLanguageTextId: MyUserInput.fallbackUiLanguageTextId,
+discoverable: MyUserInput.discoverable,
+roles: MyUserInput.roles,
+appFeatures: MyUserInput.appFeatures,
+source: MyUserInput.source,
+timezone: MyUserInput.timezone,
+preferences: MyUserInput.preferences,
+trustLevel: MyUserInput.trustLevel,
+signedInAt: MyUserInput.signedInAt,
+signedOutAt: MyUserInput.signedOutAt,
+latestActivityAt: MyUserInput.latestActivityAt,
+inactivatedAt: MyUserInput.inactivatedAt,
+inactivatedBy: MyUserInput.inactivatedBy,
+termsAndConditionsAcceptedAt: MyUserInput.termsAndConditionsAcceptedAt,
+optIntoNewsletter: MyUserInput.optIntoNewsletter,
+onboardingStage: MyUserInput.onboardingStage,
+suspendedAt: MyUserInput.suspendedAt,
+suspendedBy: MyUserInput.suspendedBy,
+companyIds: MyUserInput.companyIds,
+companies: MyUserInput.companies,
+groupIds: MyUserInput.groupIds,
+parentGroupIds: MyUserInput.parentGroupIds,
+externalGroupIds: MyUserInput.externalGroupIds,
+pronounsTextIds: MyUserInput.pronounsTextIds,
+groupMemberships: MyUserInput.groupMemberships,
+addToGroupIds: MyUserInput.addToGroupIds,
+removeFromGroupIds: MyUserInput.removeFromGroupIds,
+seeksHelp: MyUserInput.seeksHelp,
+offersHelp: MyUserInput.offersHelp,
+birthYear: MyUserInput.birthYear,
+ethnicity: MyUserInput.ethnicity,
+educationLevelTextId: MyUserInput.educationLevelTextId,
+personalBio: MyUserInput.personalBio,
+yearsManagementExperience: MyUserInput.yearsManagementExperience,
+yearsOwnershipExperience: MyUserInput.yearsOwnershipExperience,
+academicExperienceIds: MyUserInput.academicExperienceIds,
+company: MyUserInput.company,
+academicExperiences: MyUserInput.academicExperiences,
+businessExperienceIds: MyUserInput.businessExperienceIds,
+businessExperiences: MyUserInput.businessExperiences,
+cityOfOrigin: MyUserInput.cityOfOrigin,
+regionOfOrigin: MyUserInput.regionOfOrigin,
+countryOfOriginTextId: MyUserInput.countryOfOriginTextId,
+isOnVacation: MyUserInput.isOnVacation,
+profileRoleHistory: MyUserInput.profileRoleHistory,
+ssoIdp: MyUserInput.ssoIdp
+}
+}
+
+export namespace MyUserInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface firstName   {
+kind: "InputField",
+name: "firstName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface lastName   {
+kind: "InputField",
+name: "lastName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface fullName   {
+kind: "InputField",
+name: "fullName",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userHandle   {
+kind: "InputField",
+name: "userHandle",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumber   {
+kind: "InputField",
+name: "phoneNumber",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface phoneNumberUpdatedAt   {
+kind: "InputField",
+name: "phoneNumberUpdatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isPhoneNumberVerified   {
+kind: "InputField",
+name: "isPhoneNumberVerified",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface email   {
+kind: "InputField",
+name: "email",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface emailUpdatedAt   {
+kind: "InputField",
+name: "emailUpdatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface isEmailVerified   {
+kind: "InputField",
+name: "isEmailVerified",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+/**
+* The source of the email address, e.g. "google", "facebook", etc.
+*/
+ export  interface emailSource   {
+kind: "InputField",
+name: "emailSource",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface genderTextId   {
+kind: "InputField",
+name: "genderTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface cityOfResidence   {
+kind: "InputField",
+name: "cityOfResidence",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfResidence   {
+kind: "InputField",
+name: "regionOfResidence",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface countryOfResidenceTextId   {
+kind: "InputField",
+name: "countryOfResidenceTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface postalCode   {
+kind: "InputField",
+name: "postalCode",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface avatarUrl   {
+kind: "InputField",
+name: "avatarUrl",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface websites   {
+kind: "InputField",
+name: "websites",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$LabeledStringValueInput
+}
+
+ export  interface authType   {
+kind: "InputField",
+name: "authType",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$AuthType
+}
+
+ export  interface inviteCode   {
+kind: "InputField",
+name: "inviteCode",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface currentPassword   {
+kind: "InputField",
+name: "currentPassword",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface newPassword   {
+kind: "InputField",
+name: "newPassword",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface preferredLanguageTextId   {
+kind: "InputField",
+name: "preferredLanguageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface spokenLanguagesTextIds   {
+kind: "InputField",
+name: "spokenLanguagesTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface selectedUiLanguageTextId   {
+kind: "InputField",
+name: "selectedUiLanguageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+ export  interface fallbackUiLanguageTextId   {
+kind: "InputField",
+name: "fallbackUiLanguageTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UiLanguage
+}
+
+ export  interface discoverable   {
+kind: "InputField",
+name: "discoverable",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface roles   {
+kind: "InputField",
+name: "roles",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserRole
+}
+
+ export  interface appFeatures   {
+kind: "InputField",
+name: "appFeatures",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AppFeature
+}
+
+ export  interface source   {
+kind: "InputField",
+name: "source",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface timezone   {
+kind: "InputField",
+name: "timezone",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface preferences   {
+kind: "InputField",
+name: "preferences",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$UserPreferencesInput
+}
+
+ export  interface trustLevel   {
+kind: "InputField",
+name: "trustLevel",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface signedInAt   {
+kind: "InputField",
+name: "signedInAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface signedOutAt   {
+kind: "InputField",
+name: "signedOutAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface latestActivityAt   {
+kind: "InputField",
+name: "latestActivityAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inactivatedAt   {
+kind: "InputField",
+name: "inactivatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface inactivatedBy   {
+kind: "InputField",
+name: "inactivatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface termsAndConditionsAcceptedAt   {
+kind: "InputField",
+name: "termsAndConditionsAcceptedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface optIntoNewsletter   {
+kind: "InputField",
+name: "optIntoNewsletter",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface onboardingStage   {
+kind: "InputField",
+name: "onboardingStage",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface suspendedAt   {
+kind: "InputField",
+name: "suspendedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface suspendedBy   {
+kind: "InputField",
+name: "suspendedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface companyIds   {
+kind: "InputField",
+name: "companyIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Used internally, will not work in GraphQL queries.
+*/
+ export  interface companies   {
+kind: "InputField",
+name: "companies",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$CompanyInput
+}
+
+ export  interface groupIds   {
+kind: "InputField",
+name: "groupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface parentGroupIds   {
+kind: "InputField",
+name: "parentGroupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface externalGroupIds   {
+kind: "InputField",
+name: "externalGroupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface pronounsTextIds   {
+kind: "InputField",
+name: "pronounsTextIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface groupMemberships   {
+kind: "InputField",
+name: "groupMemberships",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipInput
+}
+
+ export  interface addToGroupIds   {
+kind: "InputField",
+name: "addToGroupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface removeFromGroupIds   {
+kind: "InputField",
+name: "removeFromGroupIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface seeksHelp   {
+kind: "InputField",
+name: "seeksHelp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface offersHelp   {
+kind: "InputField",
+name: "offersHelp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface birthYear   {
+kind: "InputField",
+name: "birthYear",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface ethnicity   {
+kind: "InputField",
+name: "ethnicity",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface educationLevelTextId   {
+kind: "InputField",
+name: "educationLevelTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface personalBio   {
+kind: "InputField",
+name: "personalBio",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface yearsManagementExperience   {
+kind: "InputField",
+name: "yearsManagementExperience",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface yearsOwnershipExperience   {
+kind: "InputField",
+name: "yearsOwnershipExperience",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Int
+}
+
+ export  interface academicExperienceIds   {
+kind: "InputField",
+name: "academicExperienceIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Specify a company you want to create and add the user to.
+*/
+ export  interface company   {
+kind: "InputField",
+name: "company",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$CompanyInput
+}
+
+/**
+* Specify a list of academic experiences you want to create for the user.
+*/
+ export  interface academicExperiences   {
+kind: "InputField",
+name: "academicExperiences",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$AcademicExperienceInput
+}
+
+ export  interface businessExperienceIds   {
+kind: "InputField",
+name: "businessExperienceIds",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ID
+}
+
+/**
+* Specify a list of business experiences you want to create for the user.
+*/
+ export  interface businessExperiences   {
+kind: "InputField",
+name: "businessExperiences",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$BusinessExperienceInput
+}
+
+ export  interface cityOfOrigin   {
+kind: "InputField",
+name: "cityOfOrigin",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface regionOfOrigin   {
+kind: "InputField",
+name: "regionOfOrigin",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* Users Country of origin. Use a Country Options textId.
+*/
+ export  interface countryOfOriginTextId   {
+kind: "InputField",
+name: "countryOfOriginTextId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface isOnVacation   {
+kind: "InputField",
+name: "isOnVacation",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+
+ export  interface profileRoleHistory   {
+kind: "InputField",
+name: "profileRoleHistory",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$UserProfileRoleHistoryItemInput
+}
+
+ export  interface ssoIdp   {
+kind: "InputField",
+name: "ssoIdp",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+}
+
+//                                         UserTrackingInput
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserTrackingInput   {
+kind: "InputObject",
+name: "UserTrackingInput",
+isAllFieldsNullable: true,
+fields: {
+id: UserTrackingInput.id,
+adminNotes: UserTrackingInput.adminNotes,
+events: UserTrackingInput.events,
+metadata: UserTrackingInput.metadata,
+createdAt: UserTrackingInput.createdAt,
+createdBy: UserTrackingInput.createdBy,
+updatedAt: UserTrackingInput.updatedAt,
+updatedBy: UserTrackingInput.updatedBy,
+deletedAt: UserTrackingInput.deletedAt,
+deletedBy: UserTrackingInput.deletedBy,
+userId: UserTrackingInput.userId,
+trackId: UserTrackingInput.trackId,
+metaPixelId: UserTrackingInput.metaPixelId,
+metaClickId: UserTrackingInput.metaClickId,
+metaBrowserId: UserTrackingInput.metaBrowserId,
+googleId: UserTrackingInput.googleId,
+googleClickId: UserTrackingInput.googleClickId,
+cookieConsentChoice: UserTrackingInput.cookieConsentChoice,
+allowToTrack: UserTrackingInput.allowToTrack
+}
+}
+
+export namespace UserTrackingInput {
+ export  interface id   {
+kind: "InputField",
+name: "id",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface adminNotes   {
+kind: "InputField",
+name: "adminNotes",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface events   {
+kind: "InputField",
+name: "events",
+inlineType: [0, [1, ]],
+namedType: $$NamedTypes.$$ModelEventInput
+}
+
+ export  interface metadata   {
+kind: "InputField",
+name: "metadata",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$BaseModelMetadataInput
+}
+
+ export  interface createdAt   {
+kind: "InputField",
+name: "createdAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface createdBy   {
+kind: "InputField",
+name: "createdBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface updatedAt   {
+kind: "InputField",
+name: "updatedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface updatedBy   {
+kind: "InputField",
+name: "updatedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface deletedAt   {
+kind: "InputField",
+name: "deletedAt",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+
+ export  interface deletedBy   {
+kind: "InputField",
+name: "deletedBy",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface userId   {
+kind: "InputField",
+name: "userId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface trackId   {
+kind: "InputField",
+name: "trackId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface metaPixelId   {
+kind: "InputField",
+name: "metaPixelId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* fbc cookie (FBCLID)
+*/
+ export  interface metaClickId   {
+kind: "InputField",
+name: "metaClickId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* fbp cookie
+*/
+ export  interface metaBrowserId   {
+kind: "InputField",
+name: "metaBrowserId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+/**
+* This is the Google Analytics tracking ID
+*/
+ export  interface googleId   {
+kind: "InputField",
+name: "googleId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface googleClickId   {
+kind: "InputField",
+name: "googleClickId",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface cookieConsentChoice   {
+kind: "InputField",
+name: "cookieConsentChoice",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$CookieChoiceTextId
+}
+
+ export  interface allowToTrack   {
+kind: "InputField",
+name: "allowToTrack",
+inlineType: [0, ],
+namedType: $$NamedTypes.$$Boolean
+}
+}
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                             Interface
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+//                                         BaseModelMetadata
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface BaseModelMetadata   {
+kind: "Interface",
+fields: {
+updatedAt: BaseModelMetadata.updatedAt
+},
+name: "BaseModelMetadata",
+implementors: [UserMetadata],
+implementorsUnion: UserMetadata,
+implementorsIndex: {
+UserMetadata: UserMetadata
+}
+}
+
+export namespace BaseModelMetadata {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "BaseModelMetadata"
+}
+}
+
+ export  interface updatedAt   {
+kind: "OutputField",
+name: "updatedAt",
+arguments: {
+
+},
+inlineType: [0, ],
+namedType: $$NamedTypes.$$DateTimeISO
+}
+}
+
+//                                          IGroupMembership
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface IGroupMembership   {
+kind: "Interface",
+fields: {
+id: IGroupMembership.id,
+groupId: IGroupMembership.groupId,
+groupIdent: IGroupMembership.groupIdent,
+userId: IGroupMembership.userId,
+roles: IGroupMembership.roles
+},
+name: "IGroupMembership",
+implementors: [GroupMembership, MenteesGroupMembership, MentorsGroupMembership, MastercardGroupMembership, IqlaaGroupMembership, StriveIndonesiaGroupMembership],
+implementorsUnion: GroupMembership
+| MenteesGroupMembership
+| MentorsGroupMembership
+| MastercardGroupMembership
+| IqlaaGroupMembership
+| StriveIndonesiaGroupMembership,
+implementorsIndex: {
+GroupMembership: GroupMembership,
+MenteesGroupMembership: MenteesGroupMembership,
+MentorsGroupMembership: MentorsGroupMembership,
+MastercardGroupMembership: MastercardGroupMembership,
+IqlaaGroupMembership: IqlaaGroupMembership,
+StriveIndonesiaGroupMembership: StriveIndonesiaGroupMembership
+}
+}
+
+export namespace IGroupMembership {
+ export  interface __typename   {
+kind: "OutputField",
+name: "__typename",
+arguments: {
+
+},
+inlineType: [1],
+namedType: {
+kind: "__typename",
+value: "IGroupMembership"
+}
+}
+
+ export  interface id   {
+kind: "OutputField",
+name: "id",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupId   {
+kind: "OutputField",
+name: "groupId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface groupIdent   {
+kind: "OutputField",
+name: "groupIdent",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$String
+}
+
+ export  interface userId   {
+kind: "OutputField",
+name: "userId",
+arguments: {
+
+},
+inlineType: [1, ],
+namedType: $$NamedTypes.$$ID
+}
+
+ export  interface roles   {
+kind: "OutputField",
+name: "roles",
+arguments: {
+
+},
+inlineType: [1, [1, ]],
+namedType: $$NamedTypes.$$GroupMembershipRole
+}
+}
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                               Union
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                                Enum
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+//                                        GroupMembershipRole
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupMembershipRole   {
+kind: "Enum",
+name: "GroupMembershipRole",
+members: ["admin", "coordinator", "moderator", "owner"],
+membersUnion: "admin"
+| "coordinator"
+| "moderator"
+| "owner"
+}
+
+//                                           ModelEventType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ModelEventType   {
+kind: "Enum",
+name: "ModelEventType",
+members: ["error", "warning", "info"],
+membersUnion: "error"
+| "warning"
+| "info"
+}
+
+//                                             OptionType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface OptionType   {
+kind: "Enum",
+name: "OptionType",
+members: ["errorCode", "companyStage", "companyType", "contactType", "educationLevel", "ethnicity", "expertise", "gender", "pronoun", "declineChannelInvitationReason", "country", "industry", "language", "unset", "contentTagType", "indonesianCity", "indonesianProvince", "iqlaaJordanianDistrict", "iqlaaJordanianGovernorate", "mm2Expertise", "mm2Industry", "blockUserReason", "notificationTypeOption", "reportUserReason"],
+membersUnion: "errorCode"
+| "companyStage"
+| "companyType"
+| "contactType"
+| "educationLevel"
+| "ethnicity"
+| "expertise"
+| "gender"
+| "pronoun"
+| "declineChannelInvitationReason"
+| "country"
+| "industry"
+| "language"
+| "unset"
+| "contentTagType"
+| "indonesianCity"
+| "indonesianProvince"
+| "iqlaaJordanianDistrict"
+| "iqlaaJordanianGovernorate"
+| "mm2Expertise"
+| "mm2Industry"
+| "blockUserReason"
+| "notificationTypeOption"
+| "reportUserReason"
+}
+
+//                                             UiLanguage
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UiLanguage   {
+kind: "Enum",
+name: "UiLanguage",
+members: ["ar", "en", "es", "id", "ru", "so"],
+membersUnion: "ar"
+| "en"
+| "es"
+| "id"
+| "ru"
+| "so"
+}
+
+//                                         MastercardCardType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MastercardCardType   {
+kind: "Enum",
+name: "MastercardCardType",
+members: ["credit", "debit", "prepaid", "none", "notProvided"],
+membersUnion: "credit"
+| "debit"
+| "prepaid"
+| "none"
+| "notProvided"
+}
+
+//                                         ChannelMessageType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMessageType   {
+kind: "Enum",
+name: "ChannelMessageType",
+members: ["unset", "invitation", "support", "system", "welcome"],
+membersUnion: "unset"
+| "invitation"
+| "support"
+| "system"
+| "welcome"
+}
+
+//                                      ChannelInvitationStatus
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelInvitationStatus   {
+kind: "Enum",
+name: "ChannelInvitationStatus",
+members: ["created", "accepted", "declined", "unset"],
+membersUnion: "created"
+| "accepted"
+| "declined"
+| "unset"
+}
+
+//                                           UserIdentType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserIdentType   {
+kind: "Enum",
+name: "UserIdentType",
+members: ["any", "email", "id", "inviteCode", "oauthProfileUrl", "oauthUserId", "phoneNumber", "userHandle"],
+membersUnion: "any"
+| "email"
+| "id"
+| "inviteCode"
+| "oauthProfileUrl"
+| "oauthUserId"
+| "phoneNumber"
+| "userHandle"
+}
+
+//                                              AuthType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AuthType   {
+kind: "Enum",
+name: "AuthType",
+members: ["none", "oauth", "token", "hmac", "saml"],
+membersUnion: "none"
+| "oauth"
+| "token"
+| "hmac"
+| "saml"
+}
+
+//                                              UserRole
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserRole   {
+kind: "Enum",
+name: "UserRole",
+members: ["admin", "support", "staff", "qa", "test"],
+membersUnion: "admin"
+| "support"
+| "staff"
+| "qa"
+| "test"
+}
+
+//                                             AppFeature
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AppFeature   {
+kind: "Enum",
+name: "AppFeature",
+members: ["testFeatures1", "testFeatures2"],
+membersUnion: "testFeatures1"
+| "testFeatures2"
+}
+
+//                                          NotificationType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationType   {
+kind: "Enum",
+name: "NotificationType",
+members: ["accountDeletedConfirmation", "channelInvitationAccepted", "channelInvitationDeclined", "channelInvitationReceived", "channelMessageReceived", "completeProfile", "completeSignUp", "matchesRecommendations", "newPrivacyRules", "newsletter", "resetPasswordConfirmation", "resetPasswordConfirmToken", "sendFirstInvitation", "unset", "welcome"],
+membersUnion: "accountDeletedConfirmation"
+| "channelInvitationAccepted"
+| "channelInvitationDeclined"
+| "channelInvitationReceived"
+| "channelMessageReceived"
+| "completeProfile"
+| "completeSignUp"
+| "matchesRecommendations"
+| "newPrivacyRules"
+| "newsletter"
+| "resetPasswordConfirmation"
+| "resetPasswordConfirmToken"
+| "sendFirstInvitation"
+| "unset"
+| "welcome"
+}
+
+//                                          IdentityProvider
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface IdentityProvider   {
+kind: "Enum",
+name: "IdentityProvider",
+members: ["apple", "facebook", "google", "instagram", "linkedIn", "microsoft", "own", "sso", "telegram", "twitter", "whatsApp"],
+membersUnion: "apple"
+| "facebook"
+| "google"
+| "instagram"
+| "linkedIn"
+| "microsoft"
+| "own"
+| "sso"
+| "telegram"
+| "twitter"
+| "whatsApp"
+}
+
+//                                             ModelType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ModelType   {
+kind: "Enum",
+name: "ModelType",
+members: ["AcademicExperience", "BusinessExperience", "Company", "DataDeletion", "MentorBoard", "MentoringSession", "UserInbox", "UserMetadata", "UserPreferences", "AdminTask", "UploadedAsset", "Channel", "ChannelInbox", "ChannelInvitation", "ChannelMessage", "ChannelParticipant", "ContentStatus", "Option", "ContentTag", "AppliedGroupRule", "Group", "GroupMembership", "GroupRule", "GroupRuleConfig", "MastercardBank", "SupportChannelConfig", "Match", "MatchProfile", "MatchingEngine", "UserSearch", "Notification", "NotificationTemplate", "Mm2Integration", "Mm2Synchronization", "Mm2SynchronizationResultItem", "ModerationConcern", "NatsMessage", "ApiAuthInfo", "Contact", "MultiStepAction", "MyUser", "ServiceRequest", "User", "UserDevice", "TrackingEvent", "UserTracking", "Training", "TrainingContentPage", "TrainingSession", "unset"],
+membersUnion: "AcademicExperience"
+| "BusinessExperience"
+| "Company"
+| "DataDeletion"
+| "MentorBoard"
+| "MentoringSession"
+| "UserInbox"
+| "UserMetadata"
+| "UserPreferences"
+| "AdminTask"
+| "UploadedAsset"
+| "Channel"
+| "ChannelInbox"
+| "ChannelInvitation"
+| "ChannelMessage"
+| "ChannelParticipant"
+| "ContentStatus"
+| "Option"
+| "ContentTag"
+| "AppliedGroupRule"
+| "Group"
+| "GroupMembership"
+| "GroupRule"
+| "GroupRuleConfig"
+| "MastercardBank"
+| "SupportChannelConfig"
+| "Match"
+| "MatchProfile"
+| "MatchingEngine"
+| "UserSearch"
+| "Notification"
+| "NotificationTemplate"
+| "Mm2Integration"
+| "Mm2Synchronization"
+| "Mm2SynchronizationResultItem"
+| "ModerationConcern"
+| "NatsMessage"
+| "ApiAuthInfo"
+| "Contact"
+| "MultiStepAction"
+| "MyUser"
+| "ServiceRequest"
+| "User"
+| "UserDevice"
+| "TrackingEvent"
+| "UserTracking"
+| "Training"
+| "TrainingContentPage"
+| "TrainingSession"
+| "unset"
+}
+
+//                                         UploadedAssetType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UploadedAssetType   {
+kind: "Enum",
+name: "UploadedAssetType",
+members: ["unset", "avatar", "profileHeroImage"],
+membersUnion: "unset"
+| "avatar"
+| "profileHeroImage"
+}
+
+//                                        AssetHostingService
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AssetHostingService   {
+kind: "Enum",
+name: "AssetHostingService",
+members: ["s3", "unset"],
+membersUnion: "s3"
+| "unset"
+}
+
+//                                          UserProfileRole
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserProfileRole   {
+kind: "Enum",
+name: "UserProfileRole",
+members: ["mentee", "mentor", "both", "none"],
+membersUnion: "mentee"
+| "mentor"
+| "both"
+| "none"
+}
+
+//                                             AppAction
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AppAction   {
+kind: "Enum",
+name: "AppAction",
+members: ["editProfile", "updateApp", "unset"],
+membersUnion: "editProfile"
+| "updateApp"
+| "unset"
+}
+
+//                                            ChannelType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelType   {
+kind: "Enum",
+name: "ChannelType",
+members: ["unset", "mentoring", "support", "welcome"],
+membersUnion: "unset"
+| "mentoring"
+| "support"
+| "welcome"
+}
+
+//                                       ChannelParticipantRole
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelParticipantRole   {
+kind: "Enum",
+name: "ChannelParticipantRole",
+members: ["admin", "moderator", "owner", "unset"],
+membersUnion: "admin"
+| "moderator"
+| "owner"
+| "unset"
+}
+
+//                                       ModerationConcernType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ModerationConcernType   {
+kind: "Enum",
+name: "ModerationConcernType",
+members: ["phrase", "unknown"],
+membersUnion: "phrase"
+| "unknown"
+}
+
+//                                         GroupRuleEventType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface GroupRuleEventType   {
+kind: "Enum",
+name: "GroupRuleEventType",
+members: ["enterGroup", "exitGroup", "signUp", "sendMessage", "userSearch", "updateUser", "unknown"],
+membersUnion: "enterGroup"
+| "exitGroup"
+| "signUp"
+| "sendMessage"
+| "userSearch"
+| "updateUser"
+| "unknown"
+}
+
+//                                           SortDirection
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface SortDirection   {
+kind: "Enum",
+name: "SortDirection",
+members: ["asc", "desc"],
+membersUnion: "asc"
+| "desc"
+}
+
+//                                        IncludeFilterOption
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface IncludeFilterOption   {
+kind: "Enum",
+name: "IncludeFilterOption",
+members: ["include", "exclude", "only"],
+membersUnion: "include"
+| "exclude"
+| "only"
+}
+
+//                                     FederatedIdentityProvider
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface FederatedIdentityProvider   {
+kind: "Enum",
+name: "FederatedIdentityProvider",
+members: ["none", "firebase"],
+membersUnion: "none"
+| "firebase"
+}
+
+//                                           AdminTaskType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AdminTaskType   {
+kind: "Enum",
+name: "AdminTaskType",
+members: ["addAppFeature", "deleteUser", "formatPhoneNumbers", "mergeUsers", "refreshAllEmbeddedCompanies", "refreshAllUserInboxes", "removeAppFeature", "resetUserPassword", "setUserPassword", "suspendUser", "verifyUserPassword", "decryptString", "unset", "updateChannelMetadata", "runDataGenerator", "loadDbCache", "queryDbVersion", "recreateDbIndexes", "updateGroupIdentsInAllGroupMemberships", "addLanguageText", "recreateDefaultMatchingEngine", "refreshAllMatchProfiles", "clearBusMessages", "removeBusMessage", "sendPushNotification", "compareMm2Object", "compareMm2ObjectIdsOfModel", "fixAllSyncedChannelInvitationInitialMessages", "mergeAllDuplicateMm3ChatObjects", "pauseMm2Synchronization", "runMm2Synchronization", "syncAllUsersWhoSignedUpInMm3", "syncDocsWithoutMm2Ids", "syncUsersWithLanguageMismatch", "triggerRandomSynchronizations", "addOrRemoveAppFeature", "createApiAuthInfo", "removeAllInvalidUserBlocks", "doDataMaintenance", "mergeAllDuplicateMm3Users", "sendPendingTrackingEvents"],
+membersUnion: "addAppFeature"
+| "deleteUser"
+| "formatPhoneNumbers"
+| "mergeUsers"
+| "refreshAllEmbeddedCompanies"
+| "refreshAllUserInboxes"
+| "removeAppFeature"
+| "resetUserPassword"
+| "setUserPassword"
+| "suspendUser"
+| "verifyUserPassword"
+| "decryptString"
+| "unset"
+| "updateChannelMetadata"
+| "runDataGenerator"
+| "loadDbCache"
+| "queryDbVersion"
+| "recreateDbIndexes"
+| "updateGroupIdentsInAllGroupMemberships"
+| "addLanguageText"
+| "recreateDefaultMatchingEngine"
+| "refreshAllMatchProfiles"
+| "clearBusMessages"
+| "removeBusMessage"
+| "sendPushNotification"
+| "compareMm2Object"
+| "compareMm2ObjectIdsOfModel"
+| "fixAllSyncedChannelInvitationInitialMessages"
+| "mergeAllDuplicateMm3ChatObjects"
+| "pauseMm2Synchronization"
+| "runMm2Synchronization"
+| "syncAllUsersWhoSignedUpInMm3"
+| "syncDocsWithoutMm2Ids"
+| "syncUsersWithLanguageMismatch"
+| "triggerRandomSynchronizations"
+| "addOrRemoveAppFeature"
+| "createApiAuthInfo"
+| "removeAllInvalidUserBlocks"
+| "doDataMaintenance"
+| "mergeAllDuplicateMm3Users"
+| "sendPendingTrackingEvents"
+}
+
+//                                          AdminTaskResult
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface AdminTaskResult   {
+kind: "Enum",
+name: "AdminTaskResult",
+members: ["ok", "error"],
+membersUnion: "ok"
+| "error"
+}
+
+//                                     ChannelInvitationDirection
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelInvitationDirection   {
+kind: "Enum",
+name: "ChannelInvitationDirection",
+members: ["sent", "received"],
+membersUnion: "sent"
+| "received"
+}
+
+//                                           UserSearchType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearchType   {
+kind: "Enum",
+name: "UserSearchType",
+members: ["search", "mentorRecommendation", "menteeRecommendation"],
+membersUnion: "search"
+| "mentorRecommendation"
+| "menteeRecommendation"
+}
+
+//                                       UserSearchFieldOption
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearchFieldOption   {
+kind: "Enum",
+name: "UserSearchFieldOption",
+members: ["isTrue", "isFalse", "any", "match"],
+membersUnion: "isTrue"
+| "isFalse"
+| "any"
+| "match"
+}
+
+//                                     UserSearchSubscriptionType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface UserSearchSubscriptionType   {
+kind: "Enum",
+name: "UserSearchSubscriptionType",
+members: ["none", "daily", "weekly", "monthly"],
+membersUnion: "none"
+| "daily"
+| "weekly"
+| "monthly"
+}
+
+//                                         ServiceRequestType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ServiceRequestType   {
+kind: "Enum",
+name: "ServiceRequestType",
+members: ["graphQlMutationCreateAcademicExperience", "graphQlMutationDeleteAcademicExperience", "graphQlMutationUpdateAcademicExperience", "graphQlMutationCreateBusinessExperience", "graphQlMutationDeleteBusinessExperience", "graphQlMutationUpdateBusinessExperience", "graphQlMutationCreateCompany", "graphQlMutationDeleteCompany", "graphQlMutationUpdateCompany", "graphQlQueryFindAndUpdateAllMm2Users", "graphQlQueryUserInboxUser", "graphQlMutationCreateAdminTask", "graphQlMutationFindAdminTaskById", "graphQlMutationDeleteAdminTask", "graphQlMutationUpdateAdminTask", "graphQlQueryFindAdminTask", "graphQlQueryAdminTaskDefinitions", "graphQlMutationCreateUploadedAsset", "graphQlMutationDeleteUploadedAsset", "graphQlMutationFindUploadedAssetById", "graphQlMutationFindUploadedAssetForUser", "graphQlMutationInitAssetUpload", "graphQlMutationUpdateUploadedAsset", "graphQlQueryFindUploadedAssetById", "graphQlQueryFindUploadedAssets", "graphQlQueryFindUploadedAssetsForUser", "graphQlMutationAddChannelMessageEvent", "graphQlMutationArchiveChannelForUserByMe", "graphQlMutationCreateChannel", "graphQlMutationCreateChannelInvitation", "graphQlMutationCreateChannelMessage", "graphQlMutationCreateChannelParticipant", "graphQlMutationDeleteChannel", "graphQlMutationDeleteChannelInvitation", "graphQlMutationDeleteChannelMessage", "graphQlMutationDeleteChannelParticipant", "graphQlMutationDeleteGroup", "graphQlMutationDeleteGroupMembership", "graphQlMutationMarkChannelMessagesAsSeenByMe", "graphQlMutationUpdateChannel", "graphQlMutationUpdateChannelInvitation", "graphQlMutationUpdateChannelMessage", "graphQlMutationUpdateChannelParticipant", "graphQlQueryChannelInvitations", "graphQlQueryChannelMessageChannel", "graphQlQueryChannelParticipants", "graphQlQueryFindChannelById", "graphQlQueryFindChannelInvitationById", "graphQlQueryFindChannelInvitationsBetweenUsers", "graphQlQueryFindChannelInvitationsForUser", "graphQlQueryFindChannelMessageById", "graphQlQueryFindChannelMessages", "graphQlQueryFindChannelParticipantById", "graphQlQueryFindChannels", "graphQlQueryFindChannelsForUser", "graphQlQueryFindMyChannels", "graphQlQueryFindPendingChannelInvitationsForUser", "graphQlQueryMyContacts", "graphQlQueryMyInbox", "graphQlQueryUserChannels", "graphQlQueryUserCompanies", "graphQlQueryUserGroupMembers", "graphQlQueryUserGroups", "graphQlQueryFindCountries", "graphQlQueryFindExpertises", "graphQlQueryFindIndustries", "graphQlQueryFindOptions", "unset", "graphQlQueryContentTag", "graphQlMutationCreateContentTag", "graphQlMutationDeleteContentTag", "graphQlMutationUpdateContentTag", "graphQlMutationRunDataGenerator", "graphQlQueryNotificationTemplate", "graphQlQueryAvailableUserHandle", "graphQlQueryUser", "graphQlMutationAddUserToGroup", "graphQlMutationCreateGroup", "graphQlMutationCreateGroupMembership", "graphQlMutationCreateSupportChannelConfig", "graphQlMutationDeleteSupportChannelConfig", "graphQlMutationRemoveUserFromAllGroups", "graphQlMutationRemoveUserFromGroup", "graphQlMutationUpdateGroup", "graphQlMutationUpdateGroupMembership", "graphQlMutationUpdateSupportChannelConfig", "graphQlQueryFindGroupById", "graphQlQueryFindGroupMembershipByIdField", "graphQlQueryFindGroupMemberships", "graphQlQueryFindGroupsField", "graphQlQueryMyGroupMemberships", "graphQlMutationCreateUserSearch", "graphQlMutationDeleteUserSearch", "graphQlMutationUpdateUserSearch", "graphQlQueryFindUserSearchById", "graphQlQueryFindUserSearchResults", "graphQlQueryUserSearchFoundUsers", "graphQlMutationCreateNotification", "graphQlMutationCreateNotificationTemplate", "graphQlMutationDeleteNotification", "graphQlMutationDeleteNotificationTemplate", "graphQlMutationMarkInAppMessageReceived", "graphQlMutationSendMultiStepActionNotification", "graphQlMutationUpdateNotification", "graphQlMutationUpdateNotificationTemplate", "graphQlMutationCreateNatsMessage", "graphQlMutationClearAllSyncInfo", "graphQlMutationCreateMm2Synchronization", "graphQlMutationDeleteAllMm2DataInMm3", "graphQlMutationDeleteMm2Synchronization", "graphQlMutationRunMm2Synchronization", "graphQlQueryFindMm2SynchronizationById", "graphQlQueryGetMm2Integration", "graphQlMutationNlpLabelMessage", "graphQlMutationUpdateNlpConversation", "graphQlMutationUpdateNlpMessage", "graphQlQueryFindNlpConversation", "graphQlMutationAddFeatureToUser", "graphQlMutationBlockUser", "graphQlMutationCreateContact", "graphQlMutationCreateMultiStepAction", "graphQlMutationCreateUserDevice", "graphQlMutationDeleteMyUser", "graphQlMutationDeleteUser", "graphQlMutationEndMySession", "graphQlMutationRemoveFeatureFromUser", "graphQlMutationReportUser", "graphQlMutationSignInUser", "graphQlMutationSignMeOut", "graphQlMutationSignUpOauthUser", "graphQlMutationSignUpUser", "graphQlMutationStartMySession", "graphQlMutationUnblockUser", "graphQlMutationUpdateContact", "graphQlMutationUpdateMyUser", "graphQlMutationUpdateUser", "graphQlMutationUpdateUserDevice", "graphQlMutationUpsertBackgroundTask", "graphQlMutationVerifyMultiStepActionToken", "graphQlQueryBackgroundTask", "graphQlQueryContacts", "graphQlQueryContactTypes", "graphQlQueryFindContact", "graphQlQueryFindContactById", "graphQlQueryFindContacts", "graphQlQueryFindAvailableUserHandle", "graphQlQueryFindMyBlockedUsers", "graphQlQueryFindMyUser", "graphQlQueryFindMyUserDevices", "graphQlQueryFindUserById", "graphQlQueryFindUserByIdent", "graphQlQueryFindUserDeviceById", "graphQlQueryFindUserDevices", "graphQlQueryFindUsers", "graphQlQueryGetMultiStepActionProgress", "graphQlQueryLatestUserDevice", "graphQlQueryUnreadInAppMessages", "graphQlMutationCreateUserTracking", "graphQlMutationUpdateUserTracking", "graphQlQueryFindTrainingById", "graphQlQueryFindTrainingsForMe", "graphQlQueryFindTrainingsForUser", "graphQlQueryFindTrainingSessionById", "graphQlQueryFindTrainingSessionsByTrainingId", "graphQlQueryFindTrainingSessionsForMe"],
+membersUnion: "graphQlMutationCreateAcademicExperience"
+| "graphQlMutationDeleteAcademicExperience"
+| "graphQlMutationUpdateAcademicExperience"
+| "graphQlMutationCreateBusinessExperience"
+| "graphQlMutationDeleteBusinessExperience"
+| "graphQlMutationUpdateBusinessExperience"
+| "graphQlMutationCreateCompany"
+| "graphQlMutationDeleteCompany"
+| "graphQlMutationUpdateCompany"
+| "graphQlQueryFindAndUpdateAllMm2Users"
+| "graphQlQueryUserInboxUser"
+| "graphQlMutationCreateAdminTask"
+| "graphQlMutationFindAdminTaskById"
+| "graphQlMutationDeleteAdminTask"
+| "graphQlMutationUpdateAdminTask"
+| "graphQlQueryFindAdminTask"
+| "graphQlQueryAdminTaskDefinitions"
+| "graphQlMutationCreateUploadedAsset"
+| "graphQlMutationDeleteUploadedAsset"
+| "graphQlMutationFindUploadedAssetById"
+| "graphQlMutationFindUploadedAssetForUser"
+| "graphQlMutationInitAssetUpload"
+| "graphQlMutationUpdateUploadedAsset"
+| "graphQlQueryFindUploadedAssetById"
+| "graphQlQueryFindUploadedAssets"
+| "graphQlQueryFindUploadedAssetsForUser"
+| "graphQlMutationAddChannelMessageEvent"
+| "graphQlMutationArchiveChannelForUserByMe"
+| "graphQlMutationCreateChannel"
+| "graphQlMutationCreateChannelInvitation"
+| "graphQlMutationCreateChannelMessage"
+| "graphQlMutationCreateChannelParticipant"
+| "graphQlMutationDeleteChannel"
+| "graphQlMutationDeleteChannelInvitation"
+| "graphQlMutationDeleteChannelMessage"
+| "graphQlMutationDeleteChannelParticipant"
+| "graphQlMutationDeleteGroup"
+| "graphQlMutationDeleteGroupMembership"
+| "graphQlMutationMarkChannelMessagesAsSeenByMe"
+| "graphQlMutationUpdateChannel"
+| "graphQlMutationUpdateChannelInvitation"
+| "graphQlMutationUpdateChannelMessage"
+| "graphQlMutationUpdateChannelParticipant"
+| "graphQlQueryChannelInvitations"
+| "graphQlQueryChannelMessageChannel"
+| "graphQlQueryChannelParticipants"
+| "graphQlQueryFindChannelById"
+| "graphQlQueryFindChannelInvitationById"
+| "graphQlQueryFindChannelInvitationsBetweenUsers"
+| "graphQlQueryFindChannelInvitationsForUser"
+| "graphQlQueryFindChannelMessageById"
+| "graphQlQueryFindChannelMessages"
+| "graphQlQueryFindChannelParticipantById"
+| "graphQlQueryFindChannels"
+| "graphQlQueryFindChannelsForUser"
+| "graphQlQueryFindMyChannels"
+| "graphQlQueryFindPendingChannelInvitationsForUser"
+| "graphQlQueryMyContacts"
+| "graphQlQueryMyInbox"
+| "graphQlQueryUserChannels"
+| "graphQlQueryUserCompanies"
+| "graphQlQueryUserGroupMembers"
+| "graphQlQueryUserGroups"
+| "graphQlQueryFindCountries"
+| "graphQlQueryFindExpertises"
+| "graphQlQueryFindIndustries"
+| "graphQlQueryFindOptions"
+| "unset"
+| "graphQlQueryContentTag"
+| "graphQlMutationCreateContentTag"
+| "graphQlMutationDeleteContentTag"
+| "graphQlMutationUpdateContentTag"
+| "graphQlMutationRunDataGenerator"
+| "graphQlQueryNotificationTemplate"
+| "graphQlQueryAvailableUserHandle"
+| "graphQlQueryUser"
+| "graphQlMutationAddUserToGroup"
+| "graphQlMutationCreateGroup"
+| "graphQlMutationCreateGroupMembership"
+| "graphQlMutationCreateSupportChannelConfig"
+| "graphQlMutationDeleteSupportChannelConfig"
+| "graphQlMutationRemoveUserFromAllGroups"
+| "graphQlMutationRemoveUserFromGroup"
+| "graphQlMutationUpdateGroup"
+| "graphQlMutationUpdateGroupMembership"
+| "graphQlMutationUpdateSupportChannelConfig"
+| "graphQlQueryFindGroupById"
+| "graphQlQueryFindGroupMembershipByIdField"
+| "graphQlQueryFindGroupMemberships"
+| "graphQlQueryFindGroupsField"
+| "graphQlQueryMyGroupMemberships"
+| "graphQlMutationCreateUserSearch"
+| "graphQlMutationDeleteUserSearch"
+| "graphQlMutationUpdateUserSearch"
+| "graphQlQueryFindUserSearchById"
+| "graphQlQueryFindUserSearchResults"
+| "graphQlQueryUserSearchFoundUsers"
+| "graphQlMutationCreateNotification"
+| "graphQlMutationCreateNotificationTemplate"
+| "graphQlMutationDeleteNotification"
+| "graphQlMutationDeleteNotificationTemplate"
+| "graphQlMutationMarkInAppMessageReceived"
+| "graphQlMutationSendMultiStepActionNotification"
+| "graphQlMutationUpdateNotification"
+| "graphQlMutationUpdateNotificationTemplate"
+| "graphQlMutationCreateNatsMessage"
+| "graphQlMutationClearAllSyncInfo"
+| "graphQlMutationCreateMm2Synchronization"
+| "graphQlMutationDeleteAllMm2DataInMm3"
+| "graphQlMutationDeleteMm2Synchronization"
+| "graphQlMutationRunMm2Synchronization"
+| "graphQlQueryFindMm2SynchronizationById"
+| "graphQlQueryGetMm2Integration"
+| "graphQlMutationNlpLabelMessage"
+| "graphQlMutationUpdateNlpConversation"
+| "graphQlMutationUpdateNlpMessage"
+| "graphQlQueryFindNlpConversation"
+| "graphQlMutationAddFeatureToUser"
+| "graphQlMutationBlockUser"
+| "graphQlMutationCreateContact"
+| "graphQlMutationCreateMultiStepAction"
+| "graphQlMutationCreateUserDevice"
+| "graphQlMutationDeleteMyUser"
+| "graphQlMutationDeleteUser"
+| "graphQlMutationEndMySession"
+| "graphQlMutationRemoveFeatureFromUser"
+| "graphQlMutationReportUser"
+| "graphQlMutationSignInUser"
+| "graphQlMutationSignMeOut"
+| "graphQlMutationSignUpOauthUser"
+| "graphQlMutationSignUpUser"
+| "graphQlMutationStartMySession"
+| "graphQlMutationUnblockUser"
+| "graphQlMutationUpdateContact"
+| "graphQlMutationUpdateMyUser"
+| "graphQlMutationUpdateUser"
+| "graphQlMutationUpdateUserDevice"
+| "graphQlMutationUpsertBackgroundTask"
+| "graphQlMutationVerifyMultiStepActionToken"
+| "graphQlQueryBackgroundTask"
+| "graphQlQueryContacts"
+| "graphQlQueryContactTypes"
+| "graphQlQueryFindContact"
+| "graphQlQueryFindContactById"
+| "graphQlQueryFindContacts"
+| "graphQlQueryFindAvailableUserHandle"
+| "graphQlQueryFindMyBlockedUsers"
+| "graphQlQueryFindMyUser"
+| "graphQlQueryFindMyUserDevices"
+| "graphQlQueryFindUserById"
+| "graphQlQueryFindUserByIdent"
+| "graphQlQueryFindUserDeviceById"
+| "graphQlQueryFindUserDevices"
+| "graphQlQueryFindUsers"
+| "graphQlQueryGetMultiStepActionProgress"
+| "graphQlQueryLatestUserDevice"
+| "graphQlQueryUnreadInAppMessages"
+| "graphQlMutationCreateUserTracking"
+| "graphQlMutationUpdateUserTracking"
+| "graphQlQueryFindTrainingById"
+| "graphQlQueryFindTrainingsForMe"
+| "graphQlQueryFindTrainingsForUser"
+| "graphQlQueryFindTrainingSessionById"
+| "graphQlQueryFindTrainingSessionsByTrainingId"
+| "graphQlQueryFindTrainingSessionsForMe"
+}
+
+//                                        ServiceRequestResult
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ServiceRequestResult   {
+kind: "Enum",
+name: "ServiceRequestResult",
+members: ["ok", "error", "unset"],
+membersUnion: "ok"
+| "error"
+| "unset"
+}
+
+//                                      ServiceRequestMessageId
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ServiceRequestMessageId   {
+kind: "Enum",
+name: "ServiceRequestMessageId",
+members: ["systemError", "invalidInput", "groupRuleFailed", "unknown"],
+membersUnion: "systemError"
+| "invalidInput"
+| "groupRuleFailed"
+| "unknown"
+}
+
+//                                             ErrorCode
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ErrorCode   {
+kind: "Enum",
+name: "ErrorCode",
+members: ["academicExperienceNameMissing", "academicExperienceUserIdMissing", "businessExperienceNameMissing", "businessExperienceUserIdMissing", "companyNameMissing", "companyNameTaken", "contentTagAlreadyExist", "contentTagModelTypeMissing", "contentTagObjectIdMissing", "contentTagTypeMissing", "failedToConnect", "failedToUpdate", "unknown", "alreadyGroupMember", "groupLevelTooDeep", "groupNameMissing", "groupNameTaken", "groupNotActive", "groupRuleFailed", "groupSlugMissing", "groupSlugTaken", "notAGroupMember", "parentGroupNotFound", "matchingEngineNameMissing", "matchingEngineNameTaken", "expertiseBidirectionalMappingError", "expertiseTextIdDNE", "alreadyExists", "alreadyInitialized", "dataValidationFailed", "exceedsLimit", "invalidInput", "noLiveWebsocketConnectionAvailable", "noNotificationMethodAvailable", "notAllowed", "notFound", "notImplemented", "notInitialized", "notSupported", "serviceNotAvailable", "systemError", "timeout", "tooManyRequests", "authTokenNoMatch", "currentPasswordIncorrect", "currentPasswordMissing", "deviceUuidMissing", "emailInvalid", "emailMissing", "failedToCreateAccount", "failedToSignin", "invalidPushNotificationToken", "passwordMissing", "passwordNoMatch", "phoneNumberInvalid", "phoneNumberMissing", "phoneNumberNotSupported", "unauthorized", "userAlreadyExists", "userDeviceNotFound", "userNotActive", "userNotFound", "trackingInvalidTrackId", "trainingCannotUpdateFields", "trainingContentPageCannotUpdateFields", "trainingContentPageMm2IdMissing", "trainingContentPageMm2IdTaken", "trainingMm2IdMissing", "trainingMm2IdTaken", "trainingSessionCannotUpdateFields", "trainingSessionMm2IdMissing", "trainingSessionMm2IdTaken", "trainingSessionProgressInvalid", "trainingSessionTrainingMissing", "trainingSessionUserIdMissing"],
+membersUnion: "academicExperienceNameMissing"
+| "academicExperienceUserIdMissing"
+| "businessExperienceNameMissing"
+| "businessExperienceUserIdMissing"
+| "companyNameMissing"
+| "companyNameTaken"
+| "contentTagAlreadyExist"
+| "contentTagModelTypeMissing"
+| "contentTagObjectIdMissing"
+| "contentTagTypeMissing"
+| "failedToConnect"
+| "failedToUpdate"
+| "unknown"
+| "alreadyGroupMember"
+| "groupLevelTooDeep"
+| "groupNameMissing"
+| "groupNameTaken"
+| "groupNotActive"
+| "groupRuleFailed"
+| "groupSlugMissing"
+| "groupSlugTaken"
+| "notAGroupMember"
+| "parentGroupNotFound"
+| "matchingEngineNameMissing"
+| "matchingEngineNameTaken"
+| "expertiseBidirectionalMappingError"
+| "expertiseTextIdDNE"
+| "alreadyExists"
+| "alreadyInitialized"
+| "dataValidationFailed"
+| "exceedsLimit"
+| "invalidInput"
+| "noLiveWebsocketConnectionAvailable"
+| "noNotificationMethodAvailable"
+| "notAllowed"
+| "notFound"
+| "notImplemented"
+| "notInitialized"
+| "notSupported"
+| "serviceNotAvailable"
+| "systemError"
+| "timeout"
+| "tooManyRequests"
+| "authTokenNoMatch"
+| "currentPasswordIncorrect"
+| "currentPasswordMissing"
+| "deviceUuidMissing"
+| "emailInvalid"
+| "emailMissing"
+| "failedToCreateAccount"
+| "failedToSignin"
+| "invalidPushNotificationToken"
+| "passwordMissing"
+| "passwordNoMatch"
+| "phoneNumberInvalid"
+| "phoneNumberMissing"
+| "phoneNumberNotSupported"
+| "unauthorized"
+| "userAlreadyExists"
+| "userDeviceNotFound"
+| "userNotActive"
+| "userNotFound"
+| "trackingInvalidTrackId"
+| "trainingCannotUpdateFields"
+| "trainingContentPageCannotUpdateFields"
+| "trainingContentPageMm2IdMissing"
+| "trainingContentPageMm2IdTaken"
+| "trainingMm2IdMissing"
+| "trainingMm2IdTaken"
+| "trainingSessionCannotUpdateFields"
+| "trainingSessionMm2IdMissing"
+| "trainingSessionMm2IdTaken"
+| "trainingSessionProgressInvalid"
+| "trainingSessionTrainingMissing"
+| "trainingSessionUserIdMissing"
+}
+
+//                                        ServiceRequestSource
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ServiceRequestSource   {
+kind: "Enum",
+name: "ServiceRequestSource",
+members: ["graphqlApi", "restApi", "httpRoute", "system", "admin", "vts", "mm2"],
+membersUnion: "graphqlApi"
+| "restApi"
+| "httpRoute"
+| "system"
+| "admin"
+| "vts"
+| "mm2"
+}
+
+//                                        MultiStepActionType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MultiStepActionType   {
+kind: "Enum",
+name: "MultiStepActionType",
+members: ["resetPassword", "tokenSignIn", "unset", "updateEmail", "updatePassword", "updatePhoneNumber", "verifyEmail", "verifyEmailOnSignUp", "verifyPhoneNumber", "verifyPhoneNumberOnSignUp"],
+membersUnion: "resetPassword"
+| "tokenSignIn"
+| "unset"
+| "updateEmail"
+| "updatePassword"
+| "updatePhoneNumber"
+| "verifyEmail"
+| "verifyEmailOnSignUp"
+| "verifyPhoneNumber"
+| "verifyPhoneNumberOnSignUp"
+}
+
+//                                       MultiStepActionStatus
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MultiStepActionStatus   {
+kind: "Enum",
+name: "MultiStepActionStatus",
+members: ["created", "started", "finished"],
+membersUnion: "created"
+| "started"
+| "finished"
+}
+
+//                                         NotificationMethod
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationMethod   {
+kind: "Enum",
+name: "NotificationMethod",
+members: ["off", "auto", "email", "sms", "pushNotification", "inAppNotification"],
+membersUnion: "off"
+| "auto"
+| "email"
+| "sms"
+| "pushNotification"
+| "inAppNotification"
+}
+
+//                                       MultiStepActionResult
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MultiStepActionResult   {
+kind: "Enum",
+name: "MultiStepActionResult",
+members: ["confirmTokenMismatch", "dataValidationFailed", "deviceNotFound", "emailMismatch", "emailNotVerified", "error", "expired", "invalidEmail", "phoneNumberInvalid", "missingEmail", "missingPhoneNumber", "notFound", "ok", "passed", "passwordMismatch", "passwordUpdated", "phoneNumberMismatch", "phoneNumberNotVerified", "systemError", "unset", "userFailedValidation", "userNotFound", "userNotSignedIn"],
+membersUnion: "confirmTokenMismatch"
+| "dataValidationFailed"
+| "deviceNotFound"
+| "emailMismatch"
+| "emailNotVerified"
+| "error"
+| "expired"
+| "invalidEmail"
+| "phoneNumberInvalid"
+| "missingEmail"
+| "missingPhoneNumber"
+| "notFound"
+| "ok"
+| "passed"
+| "passwordMismatch"
+| "passwordUpdated"
+| "phoneNumberMismatch"
+| "phoneNumberNotVerified"
+| "systemError"
+| "unset"
+| "userFailedValidation"
+| "userNotFound"
+| "userNotSignedIn"
+}
+
+//                               MultiStepActionSendNotificationResult
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface MultiStepActionSendNotificationResult   {
+kind: "Enum",
+name: "MultiStepActionSendNotificationResult",
+members: ["ok", "failed", "phoneNumberInvalid"],
+membersUnion: "ok"
+| "failed"
+| "phoneNumberInvalid"
+}
+
+//                                         CookieChoiceTextId
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface CookieChoiceTextId   {
+kind: "Enum",
+name: "CookieChoiceTextId",
+members: ["acceptAll", "rejectAll", "acceptEssentials"],
+membersUnion: "acceptAll"
+| "rejectAll"
+| "acceptEssentials"
+}
+
+//                                       ReportUserReasonTextId
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ReportUserReasonTextId   {
+kind: "Enum",
+name: "ReportUserReasonTextId",
+members: ["notSet", "badActor", "fakePerson", "harasses", "impersonator", "inappropriate", "objectionableLanguage", "promotesHate", "sharesObjectionableContent", "spammer", "usesObjectionableLanguage", "violatesRules"],
+membersUnion: "notSet"
+| "badActor"
+| "fakePerson"
+| "harasses"
+| "impersonator"
+| "inappropriate"
+| "objectionableLanguage"
+| "promotesHate"
+| "sharesObjectionableContent"
+| "spammer"
+| "usesObjectionableLanguage"
+| "violatesRules"
+}
+
+//                                DeclineChannelInvitationReasonTextId
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface DeclineChannelInvitationReasonTextId   {
+kind: "Enum",
+name: "DeclineChannelInvitationReasonTextId",
+members: ["notGoodFit", "tooBusy", "noReason", "fakeProfile", "inappropriate"],
+membersUnion: "notGoodFit"
+| "tooBusy"
+| "noReason"
+| "fakeProfile"
+| "inappropriate"
+}
+
+//                                        ChannelMessageEvent
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelMessageEvent   {
+kind: "Enum",
+name: "ChannelMessageEvent",
+members: ["received", "seen", "unset"],
+membersUnion: "received"
+| "seen"
+| "unset"
+}
+
+//                                      NotificationTemplateName
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface NotificationTemplateName   {
+kind: "Enum",
+name: "NotificationTemplateName",
+members: ["accountDeletedConfirmation", "channelInvitationAcceptedForMentee", "channelInvitationAcceptedForMentor", "channelInvitationDeclinedForMentee", "channelInvitationDeclinedForMentor", "channelInvitationReceivedForMentee", "channelInvitationReceivedForMentor", "channelMessageReceivedForMentee", "channelMessageReceivedForMentor", "completeProfileForMentee", "completeProfileForMentor", "completeSignUpForMentee", "completeSignUpForMentor", "matchesRecommendationsForMentee", "matchesRecommendationsForMentor", "newPrivacyRules", "newsletter", "resetPasswordConfirmation", "resetPasswordConfirmToken", "sendFirstInvitationForMentee", "sendFirstInvitationForMentor", "unset", "welcomeForMentee", "welcomeForMentor"],
+membersUnion: "accountDeletedConfirmation"
+| "channelInvitationAcceptedForMentee"
+| "channelInvitationAcceptedForMentor"
+| "channelInvitationDeclinedForMentee"
+| "channelInvitationDeclinedForMentor"
+| "channelInvitationReceivedForMentee"
+| "channelInvitationReceivedForMentor"
+| "channelMessageReceivedForMentee"
+| "channelMessageReceivedForMentor"
+| "completeProfileForMentee"
+| "completeProfileForMentor"
+| "completeSignUpForMentee"
+| "completeSignUpForMentor"
+| "matchesRecommendationsForMentee"
+| "matchesRecommendationsForMentor"
+| "newPrivacyRules"
+| "newsletter"
+| "resetPasswordConfirmation"
+| "resetPasswordConfirmToken"
+| "sendFirstInvitationForMentee"
+| "sendFirstInvitationForMentor"
+| "unset"
+| "welcomeForMentee"
+| "welcomeForMentor"
+}
+
+//                                      ChannelChangedEventType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ChannelChangedEventType   {
+kind: "Enum",
+name: "ChannelChangedEventType",
+members: ["channelDeleted", "channelUpdated", "invitationAccepted", "invitationCreated", "invitationDeclined", "invitationDeleted", "invitationUpdated", "messageCreated", "messageDeleted", "messageStatusChanged", "messageUpdated", "participantCreated", "participantDeleted", "participantUpdated"],
+membersUnion: "channelDeleted"
+| "channelUpdated"
+| "invitationAccepted"
+| "invitationCreated"
+| "invitationDeclined"
+| "invitationDeleted"
+| "invitationUpdated"
+| "messageCreated"
+| "messageDeleted"
+| "messageStatusChanged"
+| "messageUpdated"
+| "participantCreated"
+| "participantDeleted"
+| "participantUpdated"
+}
+
+//                                       ObjectChangedEventType
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export  interface ObjectChangedEventType   {
+kind: "Enum",
+name: "ObjectChangedEventType",
+members: ["created", "updated", "deleted"],
+membersUnion: "created"
+| "updated"
+| "deleted"
+}
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                            ScalarCustom
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+//                                            DateTimeISO
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export type DateTimeISO = $$Scalar.DateTimeISO
+
+//                                                Long
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export type Long = $$Scalar.Long
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                           ScalarStandard
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+//                                                Int
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export type Int = $.StandardTypes.Int
+
+//                                                 ID
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export type ID = $.StandardTypes.ID
+
+//                                               String
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export type String = $.StandardTypes.String
+
+//                                              Boolean
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export type Boolean = $.StandardTypes.Boolean
+
+//                                               Float
+    // --------------------------------------------------------------------------------------------------
+    //
+
+export type Float = $.StandardTypes.Float
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                         Named Types Index
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+/**
+       * [1] These definitions serve to allow field selection interfaces to extend their respective object type without
+       *     name clashing between the field name and the object name.
+       * 
+       *     For example imagine `Query.Foo` field with type also called `Foo`. Our generated interfaces for each field
+       *     would end up with an error of `export interface Foo extends Foo ...`
+       */
+
+namespace $$NamedTypes {
+export type $$Query = Query
+export type $$Mutation = Mutation
+export type $$Subscription = Subscription
+export type $$UserMetadata = UserMetadata
+export type $$ChannelsUserMetadata = ChannelsUserMetadata
+export type $$GroupsUserMetadata = GroupsUserMetadata
+export type $$GroupMembership = GroupMembership
+export type $$ModelEvent = ModelEvent
+export type $$Expertise = Expertise
+export type $$Option = Option
+export type $$Industry = Industry
+export type $$MenteesGroupMembership = MenteesGroupMembership
+export type $$MentorsGroupMembership = MentorsGroupMembership
+export type $$MastercardGroupMembership = MastercardGroupMembership
+export type $$IqlaaGroupMembership = IqlaaGroupMembership
+export type $$StriveIndonesiaGroupMembership = StriveIndonesiaGroupMembership
+export type $$CompanyStage = CompanyStage
+export type $$CompanyType = CompanyType
+export type $$EducationLevel = EducationLevel
+export type $$Gender = Gender
+export type $$Pronoun = Pronoun
+export type $$UserInbox = UserInbox
+export type $$ChannelInbox = ChannelInbox
+export type $$ChannelInboxItemMessage = ChannelInboxItemMessage
+export type $$ChannelInboxItemInvitation = ChannelInboxItemInvitation
+export type $$User = User
+export type $$LabeledStringValue = LabeledStringValue
+export type $$UserPreferences = UserPreferences
+export type $$NotificationOptions = NotificationOptions
+export type $$UserDeviceWithoutAuth = UserDeviceWithoutAuth
+export type $$UserBlock = UserBlock
+export type $$Contact = Contact
+export type $$ContactMetadata = ContactMetadata
+export type $$ContactType = ContactType
+export type $$Company = Company
+export type $$AcademicExperience = AcademicExperience
+export type $$BusinessExperience = BusinessExperience
+export type $$UploadedAsset = UploadedAsset
+export type $$UserProfileRoleHistoryItem = UserProfileRoleHistoryItem
+export type $$Country = Country
+export type $$Language = Language
+export type $$Notification = Notification
+export type $$NotificationContext = NotificationContext
+export type $$Channel = Channel
+export type $$ChannelMetadata = ChannelMetadata
+export type $$BgLatestUnseenChannelMessageInfo = BgLatestUnseenChannelMessageInfo
+export type $$BgChannelStatus = BgChannelStatus
+export type $$ChannelInvitation = ChannelInvitation
+export type $$DeclineChannelInvitationReason = DeclineChannelInvitationReason
+export type $$ChannelMessage = ChannelMessage
+export type $$ChannelMessageMetadata = ChannelMessageMetadata
+export type $$ChannelMessageStatus = ChannelMessageStatus
+export type $$ChannelParticipant = ChannelParticipant
+export type $$BgChannelParticipantMetadata = BgChannelParticipantMetadata
+export type $$UserListItem = UserListItem
+export type $$EndorsementWithTypes = EndorsementWithTypes
+export type $$ModerationConcern = ModerationConcern
+export type $$ContentTagType = ContentTagType
+export type $$Group = Group
+export type $$AppliedGroupRule = AppliedGroupRule
+export type $$GroupRuleBaseConfig = GroupRuleBaseConfig
+export type $$AdminTask = AdminTask
+export type $$AdminTaskDef = AdminTaskDef
+export type $$AdminTaskArgDef = AdminTaskArgDef
+export type $$ErrorCodeOption = ErrorCodeOption
+export type $$IndonesianCity = IndonesianCity
+export type $$IndonesianProvince = IndonesianProvince
+export type $$IqlaaJordanianDistrict = IqlaaJordanianDistrict
+export type $$IqlaaJordanianGovernorate = IqlaaJordanianGovernorate
+export type $$MastercardBank = MastercardBank
+export type $$UserSearch = UserSearch
+export type $$UserSearchFilter = UserSearchFilter
+export type $$UserSearchRunInfo = UserSearchRunInfo
+export type $$UserWithScore = UserWithScore
+export type $$ServiceRequest = ServiceRequest
+export type $$ContactListItem = ContactListItem
+export type $$SidMultiStepAction = SidMultiStepAction
+export type $$MultiStepActionError = MultiStepActionError
+export type $$SidMultiStepActionProgress = SidMultiStepActionProgress
+export type $$MyUser = MyUser
+export type $$ReportUserReason = ReportUserReason
+export type $$Training = Training
+export type $$TrainingContentPage = TrainingContentPage
+export type $$TrainingSession = TrainingSession
+export type $$TrainingSessionCompletionInfo = TrainingSessionCompletionInfo
+export type $$UserAuthResponse = UserAuthResponse
+export type $$ContentTag = ContentTag
+export type $$SupportChannelConfig = SupportChannelConfig
+export type $$NotificationTemplate = NotificationTemplate
+export type $$ContentStatus = ContentStatus
+export type $$BgChannelChangedEvent = BgChannelChangedEvent
+export type $$ObjectChangedEvent = ObjectChangedEvent
+export type $$BaseModel = BaseModel
+export type $$FindObjectsOptions = FindObjectsOptions
+export type $$SortItem = SortItem
+export type $$FindUserByIdentOptions = FindUserByIdentOptions
+export type $$UserInput = UserInput
+export type $$ModelEventInput = ModelEventInput
+export type $$BaseModelMetadataInput = BaseModelMetadataInput
+export type $$LabeledStringValueInput = LabeledStringValueInput
+export type $$UserPreferencesInput = UserPreferencesInput
+export type $$NotificationOptionsInput = NotificationOptionsInput
+export type $$CompanyInput = CompanyInput
+export type $$GroupMembershipInput = GroupMembershipInput
+export type $$AcademicExperienceInput = AcademicExperienceInput
+export type $$BusinessExperienceInput = BusinessExperienceInput
+export type $$UserProfileRoleHistoryItemInput = UserProfileRoleHistoryItemInput
+export type $$UserListFilter = UserListFilter
+export type $$UserDeviceInput = UserDeviceInput
+export type $$UserDeviceListFilter = UserDeviceListFilter
+export type $$UploadedAssetInput = UploadedAssetInput
+export type $$UploadedAssetListFilter = UploadedAssetListFilter
+export type $$ChannelInput = ChannelInput
+export type $$BgChannelStatusInput = BgChannelStatusInput
+export type $$ChannelListFilter = ChannelListFilter
+export type $$ChannelMessageInput = ChannelMessageInput
+export type $$ChannelMessageStatusInput = ChannelMessageStatusInput
+export type $$ChannelMessageListFilter = ChannelMessageListFilter
+export type $$GroupMembershipListFilter = GroupMembershipListFilter
+export type $$GroupInput = GroupInput
+export type $$AppliedGroupRuleInput = AppliedGroupRuleInput
+export type $$GroupRuleBaseConfigInput = GroupRuleBaseConfigInput
+export type $$GroupListFilter = GroupListFilter
+export type $$UserSearchInput = UserSearchInput
+export type $$UserSearchFilterInput = UserSearchFilterInput
+export type $$UserSearchListFilter = UserSearchListFilter
+export type $$ContactInput = ContactInput
+export type $$SidContactListFilter = SidContactListFilter
+export type $$SignInUserInput = SignInUserInput
+export type $$SignInOauthUserInput = SignInOauthUserInput
+export type $$SignUpUserInput = SignUpUserInput
+export type $$VerifyOneTimeAuthTokenInput = VerifyOneTimeAuthTokenInput
+export type $$ReportUserInput = ReportUserInput
+export type $$AdminTaskInput = AdminTaskInput
+export type $$ChannelInvitationInput = ChannelInvitationInput
+export type $$BgAddChannelMessageEventInput = BgAddChannelMessageEventInput
+export type $$ChannelParticipantInput = ChannelParticipantInput
+export type $$ContentTagInput = ContentTagInput
+export type $$ModerationConcernInput = ModerationConcernInput
+export type $$MenteesGroupMembershipInput = MenteesGroupMembershipInput
+export type $$MentorsGroupMembershipInput = MentorsGroupMembershipInput
+export type $$IqlaaGroupMembershipInput = IqlaaGroupMembershipInput
+export type $$MastercardGroupMembershipInput = MastercardGroupMembershipInput
+export type $$SupportChannelConfigInput = SupportChannelConfigInput
+export type $$NotificationInput = NotificationInput
+export type $$SendMultiStepActionNotificationInput = SendMultiStepActionNotificationInput
+export type $$NotificationTemplateInput = NotificationTemplateInput
+export type $$SidMultiStepActionInput = SidMultiStepActionInput
+export type $$MultiStepActionErrorInput = MultiStepActionErrorInput
+export type $$UserIdentInput = UserIdentInput
+export type $$VerifyMultiStepActionTokenInput = VerifyMultiStepActionTokenInput
+export type $$MyUserInput = MyUserInput
+export type $$UserTrackingInput = UserTrackingInput
+export type $$BaseModelMetadata = BaseModelMetadata
+export type $$IGroupMembership = IGroupMembership
+export type $$GroupMembershipRole = GroupMembershipRole
+export type $$ModelEventType = ModelEventType
+export type $$OptionType = OptionType
+export type $$UiLanguage = UiLanguage
+export type $$MastercardCardType = MastercardCardType
+export type $$ChannelMessageType = ChannelMessageType
+export type $$ChannelInvitationStatus = ChannelInvitationStatus
+export type $$UserIdentType = UserIdentType
+export type $$AuthType = AuthType
+export type $$UserRole = UserRole
+export type $$AppFeature = AppFeature
+export type $$NotificationType = NotificationType
+export type $$IdentityProvider = IdentityProvider
+export type $$ModelType = ModelType
+export type $$UploadedAssetType = UploadedAssetType
+export type $$AssetHostingService = AssetHostingService
+export type $$UserProfileRole = UserProfileRole
+export type $$AppAction = AppAction
+export type $$ChannelType = ChannelType
+export type $$ChannelParticipantRole = ChannelParticipantRole
+export type $$ModerationConcernType = ModerationConcernType
+export type $$GroupRuleEventType = GroupRuleEventType
+export type $$SortDirection = SortDirection
+export type $$IncludeFilterOption = IncludeFilterOption
+export type $$FederatedIdentityProvider = FederatedIdentityProvider
+export type $$AdminTaskType = AdminTaskType
+export type $$AdminTaskResult = AdminTaskResult
+export type $$ChannelInvitationDirection = ChannelInvitationDirection
+export type $$UserSearchType = UserSearchType
+export type $$UserSearchFieldOption = UserSearchFieldOption
+export type $$UserSearchSubscriptionType = UserSearchSubscriptionType
+export type $$ServiceRequestType = ServiceRequestType
+export type $$ServiceRequestResult = ServiceRequestResult
+export type $$ServiceRequestMessageId = ServiceRequestMessageId
+export type $$ErrorCode = ErrorCode
+export type $$ServiceRequestSource = ServiceRequestSource
+export type $$MultiStepActionType = MultiStepActionType
+export type $$MultiStepActionStatus = MultiStepActionStatus
+export type $$NotificationMethod = NotificationMethod
+export type $$MultiStepActionResult = MultiStepActionResult
+export type $$MultiStepActionSendNotificationResult = MultiStepActionSendNotificationResult
+export type $$CookieChoiceTextId = CookieChoiceTextId
+export type $$ReportUserReasonTextId = ReportUserReasonTextId
+export type $$DeclineChannelInvitationReasonTextId = DeclineChannelInvitationReasonTextId
+export type $$ChannelMessageEvent = ChannelMessageEvent
+export type $$NotificationTemplateName = NotificationTemplateName
+export type $$ChannelChangedEventType = ChannelChangedEventType
+export type $$ObjectChangedEventType = ObjectChangedEventType
+export type $$DateTimeISO = DateTimeISO
+export type $$Long = Long
+export type $$Int = Int
+export type $$ID = ID
+export type $$String = String
+export type $$Boolean = Boolean
+export type $$Float = Float
+}
+
+}
+
+//
+    //
+    //
+    //
+    //
+    //
+    // ==================================================================================================
+    //                                               Schema
+    // ==================================================================================================
+    //
+    //
+    //
+    //
+    //
+    //
+
+export  interface Schema <$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Scalar.$Registry>  {
+name: $$Data.Name,
+operationsAvailable: ["query", "mutation", "subscription"],
+RootUnion: Schema.Query
+| Schema.Mutation
+| Schema.Subscription,
+Root: {
+query: Schema.Query,
+mutation: Schema.Mutation,
+subscription: Schema.Subscription
+},
+allTypes: {
+Query: Schema.Query,
+Mutation: Schema.Mutation,
+Subscription: Schema.Subscription,
+GroupMembershipRole: Schema.GroupMembershipRole,
+ModelEventType: Schema.ModelEventType,
+OptionType: Schema.OptionType,
+UiLanguage: Schema.UiLanguage,
+MastercardCardType: Schema.MastercardCardType,
+ChannelMessageType: Schema.ChannelMessageType,
+ChannelInvitationStatus: Schema.ChannelInvitationStatus,
+UserIdentType: Schema.UserIdentType,
+AuthType: Schema.AuthType,
+UserRole: Schema.UserRole,
+AppFeature: Schema.AppFeature,
+NotificationType: Schema.NotificationType,
+IdentityProvider: Schema.IdentityProvider,
+ModelType: Schema.ModelType,
+UploadedAssetType: Schema.UploadedAssetType,
+AssetHostingService: Schema.AssetHostingService,
+UserProfileRole: Schema.UserProfileRole,
+AppAction: Schema.AppAction,
+ChannelType: Schema.ChannelType,
+ChannelParticipantRole: Schema.ChannelParticipantRole,
+ModerationConcernType: Schema.ModerationConcernType,
+GroupRuleEventType: Schema.GroupRuleEventType,
+SortDirection: Schema.SortDirection,
+IncludeFilterOption: Schema.IncludeFilterOption,
+FederatedIdentityProvider: Schema.FederatedIdentityProvider,
+AdminTaskType: Schema.AdminTaskType,
+AdminTaskResult: Schema.AdminTaskResult,
+ChannelInvitationDirection: Schema.ChannelInvitationDirection,
+UserSearchType: Schema.UserSearchType,
+UserSearchFieldOption: Schema.UserSearchFieldOption,
+UserSearchSubscriptionType: Schema.UserSearchSubscriptionType,
+ServiceRequestType: Schema.ServiceRequestType,
+ServiceRequestResult: Schema.ServiceRequestResult,
+ServiceRequestMessageId: Schema.ServiceRequestMessageId,
+ErrorCode: Schema.ErrorCode,
+ServiceRequestSource: Schema.ServiceRequestSource,
+MultiStepActionType: Schema.MultiStepActionType,
+MultiStepActionStatus: Schema.MultiStepActionStatus,
+NotificationMethod: Schema.NotificationMethod,
+MultiStepActionResult: Schema.MultiStepActionResult,
+MultiStepActionSendNotificationResult: Schema.MultiStepActionSendNotificationResult,
+CookieChoiceTextId: Schema.CookieChoiceTextId,
+ReportUserReasonTextId: Schema.ReportUserReasonTextId,
+DeclineChannelInvitationReasonTextId: Schema.DeclineChannelInvitationReasonTextId,
+ChannelMessageEvent: Schema.ChannelMessageEvent,
+NotificationTemplateName: Schema.NotificationTemplateName,
+ChannelChangedEventType: Schema.ChannelChangedEventType,
+ObjectChangedEventType: Schema.ObjectChangedEventType,
+UserMetadata: Schema.UserMetadata,
+ChannelsUserMetadata: Schema.ChannelsUserMetadata,
+GroupsUserMetadata: Schema.GroupsUserMetadata,
+GroupMembership: Schema.GroupMembership,
+ModelEvent: Schema.ModelEvent,
+Expertise: Schema.Expertise,
+Option: Schema.Option,
+Industry: Schema.Industry,
+MenteesGroupMembership: Schema.MenteesGroupMembership,
+MentorsGroupMembership: Schema.MentorsGroupMembership,
+MastercardGroupMembership: Schema.MastercardGroupMembership,
+IqlaaGroupMembership: Schema.IqlaaGroupMembership,
+StriveIndonesiaGroupMembership: Schema.StriveIndonesiaGroupMembership,
+CompanyStage: Schema.CompanyStage,
+CompanyType: Schema.CompanyType,
+EducationLevel: Schema.EducationLevel,
+Gender: Schema.Gender,
+Pronoun: Schema.Pronoun,
+UserInbox: Schema.UserInbox,
+ChannelInbox: Schema.ChannelInbox,
+ChannelInboxItemMessage: Schema.ChannelInboxItemMessage,
+ChannelInboxItemInvitation: Schema.ChannelInboxItemInvitation,
+User: Schema.User,
+LabeledStringValue: Schema.LabeledStringValue,
+UserPreferences: Schema.UserPreferences,
+NotificationOptions: Schema.NotificationOptions,
+UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth,
+UserBlock: Schema.UserBlock,
+Contact: Schema.Contact,
+ContactMetadata: Schema.ContactMetadata,
+ContactType: Schema.ContactType,
+Company: Schema.Company,
+AcademicExperience: Schema.AcademicExperience,
+BusinessExperience: Schema.BusinessExperience,
+UploadedAsset: Schema.UploadedAsset,
+UserProfileRoleHistoryItem: Schema.UserProfileRoleHistoryItem,
+Country: Schema.Country,
+Language: Schema.Language,
+Notification: Schema.Notification,
+NotificationContext: Schema.NotificationContext,
+Channel: Schema.Channel,
+ChannelMetadata: Schema.ChannelMetadata,
+BgLatestUnseenChannelMessageInfo: Schema.BgLatestUnseenChannelMessageInfo,
+BgChannelStatus: Schema.BgChannelStatus,
+ChannelInvitation: Schema.ChannelInvitation,
+DeclineChannelInvitationReason: Schema.DeclineChannelInvitationReason,
+ChannelMessage: Schema.ChannelMessage,
+ChannelMessageMetadata: Schema.ChannelMessageMetadata,
+ChannelMessageStatus: Schema.ChannelMessageStatus,
+ChannelParticipant: Schema.ChannelParticipant,
+BgChannelParticipantMetadata: Schema.BgChannelParticipantMetadata,
+UserListItem: Schema.UserListItem,
+EndorsementWithTypes: Schema.EndorsementWithTypes,
+ModerationConcern: Schema.ModerationConcern,
+ContentTagType: Schema.ContentTagType,
+Group: Schema.Group,
+AppliedGroupRule: Schema.AppliedGroupRule,
+GroupRuleBaseConfig: Schema.GroupRuleBaseConfig,
+AdminTask: Schema.AdminTask,
+AdminTaskDef: Schema.AdminTaskDef,
+AdminTaskArgDef: Schema.AdminTaskArgDef,
+ErrorCodeOption: Schema.ErrorCodeOption,
+IndonesianCity: Schema.IndonesianCity,
+IndonesianProvince: Schema.IndonesianProvince,
+IqlaaJordanianDistrict: Schema.IqlaaJordanianDistrict,
+IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate,
+MastercardBank: Schema.MastercardBank,
+UserSearch: Schema.UserSearch,
+UserSearchFilter: Schema.UserSearchFilter,
+UserSearchRunInfo: Schema.UserSearchRunInfo,
+UserWithScore: Schema.UserWithScore,
+ServiceRequest: Schema.ServiceRequest,
+ContactListItem: Schema.ContactListItem,
+SidMultiStepAction: Schema.SidMultiStepAction,
+MultiStepActionError: Schema.MultiStepActionError,
+SidMultiStepActionProgress: Schema.SidMultiStepActionProgress,
+MyUser: Schema.MyUser,
+ReportUserReason: Schema.ReportUserReason,
+Training: Schema.Training,
+TrainingContentPage: Schema.TrainingContentPage,
+TrainingSession: Schema.TrainingSession,
+TrainingSessionCompletionInfo: Schema.TrainingSessionCompletionInfo,
+UserAuthResponse: Schema.UserAuthResponse,
+ContentTag: Schema.ContentTag,
+SupportChannelConfig: Schema.SupportChannelConfig,
+NotificationTemplate: Schema.NotificationTemplate,
+ContentStatus: Schema.ContentStatus,
+BgChannelChangedEvent: Schema.BgChannelChangedEvent,
+ObjectChangedEvent: Schema.ObjectChangedEvent,
+BaseModel: Schema.BaseModel,
+BaseModelMetadata: Schema.BaseModelMetadata,
+IGroupMembership: Schema.IGroupMembership
+},
+objects: {
+UserMetadata: Schema.UserMetadata,
+ChannelsUserMetadata: Schema.ChannelsUserMetadata,
+GroupsUserMetadata: Schema.GroupsUserMetadata,
+GroupMembership: Schema.GroupMembership,
+ModelEvent: Schema.ModelEvent,
+Expertise: Schema.Expertise,
+Option: Schema.Option,
+Industry: Schema.Industry,
+MenteesGroupMembership: Schema.MenteesGroupMembership,
+MentorsGroupMembership: Schema.MentorsGroupMembership,
+MastercardGroupMembership: Schema.MastercardGroupMembership,
+IqlaaGroupMembership: Schema.IqlaaGroupMembership,
+StriveIndonesiaGroupMembership: Schema.StriveIndonesiaGroupMembership,
+CompanyStage: Schema.CompanyStage,
+CompanyType: Schema.CompanyType,
+EducationLevel: Schema.EducationLevel,
+Gender: Schema.Gender,
+Pronoun: Schema.Pronoun,
+UserInbox: Schema.UserInbox,
+ChannelInbox: Schema.ChannelInbox,
+ChannelInboxItemMessage: Schema.ChannelInboxItemMessage,
+ChannelInboxItemInvitation: Schema.ChannelInboxItemInvitation,
+User: Schema.User,
+LabeledStringValue: Schema.LabeledStringValue,
+UserPreferences: Schema.UserPreferences,
+NotificationOptions: Schema.NotificationOptions,
+UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth,
+UserBlock: Schema.UserBlock,
+Contact: Schema.Contact,
+ContactMetadata: Schema.ContactMetadata,
+ContactType: Schema.ContactType,
+Company: Schema.Company,
+AcademicExperience: Schema.AcademicExperience,
+BusinessExperience: Schema.BusinessExperience,
+UploadedAsset: Schema.UploadedAsset,
+UserProfileRoleHistoryItem: Schema.UserProfileRoleHistoryItem,
+Country: Schema.Country,
+Language: Schema.Language,
+Notification: Schema.Notification,
+NotificationContext: Schema.NotificationContext,
+Channel: Schema.Channel,
+ChannelMetadata: Schema.ChannelMetadata,
+BgLatestUnseenChannelMessageInfo: Schema.BgLatestUnseenChannelMessageInfo,
+BgChannelStatus: Schema.BgChannelStatus,
+ChannelInvitation: Schema.ChannelInvitation,
+DeclineChannelInvitationReason: Schema.DeclineChannelInvitationReason,
+ChannelMessage: Schema.ChannelMessage,
+ChannelMessageMetadata: Schema.ChannelMessageMetadata,
+ChannelMessageStatus: Schema.ChannelMessageStatus,
+ChannelParticipant: Schema.ChannelParticipant,
+BgChannelParticipantMetadata: Schema.BgChannelParticipantMetadata,
+UserListItem: Schema.UserListItem,
+EndorsementWithTypes: Schema.EndorsementWithTypes,
+ModerationConcern: Schema.ModerationConcern,
+ContentTagType: Schema.ContentTagType,
+Group: Schema.Group,
+AppliedGroupRule: Schema.AppliedGroupRule,
+GroupRuleBaseConfig: Schema.GroupRuleBaseConfig,
+AdminTask: Schema.AdminTask,
+AdminTaskDef: Schema.AdminTaskDef,
+AdminTaskArgDef: Schema.AdminTaskArgDef,
+ErrorCodeOption: Schema.ErrorCodeOption,
+IndonesianCity: Schema.IndonesianCity,
+IndonesianProvince: Schema.IndonesianProvince,
+IqlaaJordanianDistrict: Schema.IqlaaJordanianDistrict,
+IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate,
+MastercardBank: Schema.MastercardBank,
+UserSearch: Schema.UserSearch,
+UserSearchFilter: Schema.UserSearchFilter,
+UserSearchRunInfo: Schema.UserSearchRunInfo,
+UserWithScore: Schema.UserWithScore,
+ServiceRequest: Schema.ServiceRequest,
+ContactListItem: Schema.ContactListItem,
+SidMultiStepAction: Schema.SidMultiStepAction,
+MultiStepActionError: Schema.MultiStepActionError,
+SidMultiStepActionProgress: Schema.SidMultiStepActionProgress,
+MyUser: Schema.MyUser,
+ReportUserReason: Schema.ReportUserReason,
+Training: Schema.Training,
+TrainingContentPage: Schema.TrainingContentPage,
+TrainingSession: Schema.TrainingSession,
+TrainingSessionCompletionInfo: Schema.TrainingSessionCompletionInfo,
+UserAuthResponse: Schema.UserAuthResponse,
+ContentTag: Schema.ContentTag,
+SupportChannelConfig: Schema.SupportChannelConfig,
+NotificationTemplate: Schema.NotificationTemplate,
+ContentStatus: Schema.ContentStatus,
+BgChannelChangedEvent: Schema.BgChannelChangedEvent,
+ObjectChangedEvent: Schema.ObjectChangedEvent,
+BaseModel: Schema.BaseModel
+},
+unions: {
+
+},
+interfaces: {
+BaseModelMetadata: Schema.BaseModelMetadata,
+IGroupMembership: Schema.IGroupMembership
+},
+scalarNamesUnion: "DateTimeISO"
+| "Long"
+| "Int"
+| "ID"
+| "String"
+| "Boolean"
+| "Float",
+scalars: {
+DateTimeISO: Schema.DateTimeISO,
+Long: Schema.Long,
+Int: Schema.Int,
+ID: Schema.ID,
+String: Schema.String,
+Boolean: Schema.Boolean,
+Float: Schema.Float
+},
+scalarRegistry: $Scalars,
+extensions: $$Utilities.GlobalRegistry.TypeExtensions
+}

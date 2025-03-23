@@ -5,12 +5,12 @@ import chance, {
   uniqueEmail,
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
+import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
-import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.updateMyPassword', () => {
   test('should update the password', async () => {
-    const client = await getTestClient();
+    const client = await clientStore.getTestClient();
     const firstName = chance.first();
     const lastName = chance.last();
     const userHandle = uniqueUserHandle();

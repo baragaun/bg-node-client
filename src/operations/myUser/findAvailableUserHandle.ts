@@ -3,6 +3,10 @@ import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 
 const findAvailableUserHandle = async (startValue: string): Promise<string> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   const config = libData.config();
 
   if (!config) {

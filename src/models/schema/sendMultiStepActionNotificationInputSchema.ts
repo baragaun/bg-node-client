@@ -1,12 +1,14 @@
 export const SendMultiStepActionNotificationInputSchema = {
-  version: 0,
-  primaryKey: 'id',
-  type: 'object',
-  properties: {
-    actionId: {
-      type: 'string',
+  "version": 0,
+  "primaryKey": "id",
+  "type": "object",
+  "properties": {
+    "actionId": {
+      "type": "string"
     },
-    notificationMethod: {},
+    "notificationMethod": {}
   },
-  required: ['id'],
+  "required": [
+    "id"
+  ]
 };

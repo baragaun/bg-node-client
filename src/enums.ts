@@ -127,12 +127,20 @@ export enum AuthType {
 
 export enum UiLanguage {
   ar = 'ar', // Arabic
+  de = 'de', // German
   en = 'en', // English
   es = 'es', // Spanish
   id = 'id', // Indonesian
   ru = 'ru', // Russian
   so = 'so', // Somali
 }
+
+// export enum UiMessageType {
+//   appErrorCode = 'appErrorCode',
+//   bgNodeClientUiErrorCode = 'bgNodeClientUiErrorCode',
+//   multiStepActionResult = 'multiStepActionResult',
+//   serverErrorCode = 'serverErrorCode',
+// }
 
 export enum ModelType {
   Channel = 'Channel',
@@ -307,3 +315,10 @@ export enum MultiStepActionResult {
   userNotFound = 'userNotFound',
   userNotSignedIn = 'userNotSignedIn',
 }
+
+export enum BgNodeClientUiErrorCode {
+  invalidInput = 'invalidInput',
+  notFound = 'notFound',
+  unauthorized = 'unauthorized',
+}
+

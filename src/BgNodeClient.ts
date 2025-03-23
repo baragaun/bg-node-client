@@ -16,6 +16,16 @@ export class BgNodeClient {
     myUserDeviceUuid?: string,
     appLogger?: Logger,
   ): Promise<BgNodeClient> {
+    if (libData.isInitialized()) {
+      logger.error("BgNodeClient.init: already initialized.", {
+        config,
+        myUserId,
+        myUserDeviceUuid,
+      });
+
+      return this;
+    }
+
     if (appLogger) {
       setLogger(appLogger);
     } else if (config.logLevel) {
@@ -55,6 +65,8 @@ export class BgNodeClient {
       await clientInfoStore.persist(existingClientInfo);
     }
 
+    libData.setInitialized(true);
+
     return this;
   }
 
@@ -80,8 +92,9 @@ export class BgNodeClient {
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // Getters:
-  public get myUserId(): string | undefined {
-    return clientInfoStore.get().myUserId;
+
+  public get isInitialized(): boolean {
+    return libData.isInitialized();
   }
 
   public get isSignedIn(): string | undefined {
@@ -90,5 +103,9 @@ export class BgNodeClient {
 
   public get myUserDeviceUuid(): string | undefined {
     return clientInfoStore.get().myUserDeviceUuid;
+  }
+
+  public get myUserId(): string | undefined {
+    return clientInfoStore.get().myUserId;
   }
 }

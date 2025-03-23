@@ -56,9 +56,11 @@ export interface Operations {
     };
     myUser: {
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<MutationResult<null>>;
+        endMySession: () => Promise<void>;
         findAvailableUserHandle: (startValue: string) => Promise<string>;
         findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
         getSignedOutUserId: () => Promise<string | null>;
+        isSessionActive: () => boolean;
         isSignedIn: () => boolean;
         isUserIdentAvailable: (userIdent: string, identType: UserIdentTypeFromClient) => Promise<boolean>;
         resetMyPassword: (userIdent: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
@@ -66,6 +68,7 @@ export interface Operations {
         signInWithToken: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signMeOut: () => Promise<MutationResult<null>>;
         signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
+        startMySession: () => Promise<void>;
         updateMyUser: (myUser: Partial<MyUser>, queryOptions?: QueryOptions) => Promise<MutationResult<MyUser>>;
         updateMyPassword: (oldPassword: string, newPassword: string, queryOptions: QueryOptions) => Promise<MutationResult<MyUser>>;
         verifyMyEmail: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
@@ -76,7 +79,7 @@ export interface Operations {
         findMyActiveMultiStepActions: () => Promise<SidMultiStepAction[]>;
         getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         removeMultiStepActionListener: (actionId: string, id: string) => boolean;
-        sendMultiStepActionNotification: (actionId: string, notificationMethod: NotificationMethod) => Promise<MutationResult<string>>;
+        sendMultiStepActionNotification: (actionId: string, email: string | undefined, phoneNumber: string | undefined, notificationMethod: NotificationMethod) => Promise<MutationResult<string>>;
         verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<QueryResult<SidMultiStepActionProgress>>;
     };
 }

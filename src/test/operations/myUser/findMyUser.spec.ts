@@ -2,12 +2,12 @@ import { describe, expect, test } from 'vitest';
 
 import { CachePolicy } from '../../../enums.js';
 import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
+import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
-import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.findMyUser', () => {
   test('should return the cached user from the local db', async () => {
-    const client = await getTestClient();
+    const client = await clientStore.getTestClient();
     const userHandle = uniqueUserHandle();
     const email = uniqueEmail();
 

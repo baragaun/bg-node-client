@@ -2,6 +2,8 @@ import { BgDataListener } from '../types/BgDataListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { MultiStepActionRun } from '../types/index.js';
 declare const libData: {
+    isInitialized: () => boolean;
+    setInitialized: (isInitialized: boolean) => void;
     close: () => void;
     config: () => BgNodeClientConfig;
     listeners: () => BgDataListener[];

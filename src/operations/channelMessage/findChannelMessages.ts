@@ -1,6 +1,7 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
+import libData from '../../helpers/libData.js';
 import { ChannelMessage } from '../../types/models/ChannelMessage.js';
 import { ChannelMessageListFilter } from '../../types/models/ChannelMessageListFilter.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -13,6 +14,10 @@ const findChannelMessages = async (
   limit: number,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelMessage>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   if (
     queryOptions.cachePolicy === CachePolicy.cache ||
     queryOptions.cachePolicy === CachePolicy.cacheFirst

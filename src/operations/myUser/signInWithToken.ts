@@ -3,6 +3,7 @@ import {
   MultiStepActionType,
   SidMultiStepActionInput,
 } from '../../fsdata/gql/graphql.js';
+import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -13,6 +14,10 @@ const signInWithToken = async (
   userIdent: string,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
+  if (!libData.isInitialized()) {
+    throw new Error('not-initialized');
+  }
+
   try {
     logger.debug('signInWithToken called.', { userIdent });
 

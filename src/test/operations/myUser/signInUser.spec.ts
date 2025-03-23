@@ -8,12 +8,12 @@ import chance, {
 import logger from '../../../helpers/logger.js';
 import findById from '../../../operations/findById.js';
 import { MyUser } from '../../../types/models/MyUser.js';
+import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
-import getTestClient from '../../helpers/getTestClient.js';
 
 describe('operations.myUser.signInUser', () => {
   test('should sign in a user with valid input', async () => {
-    const client = await getTestClient();
+    const client = await clientStore.getTestClient();
 
     const firstName = chance.first();
     const lastName = chance.last();
