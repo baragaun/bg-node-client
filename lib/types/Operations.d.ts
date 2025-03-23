@@ -56,6 +56,7 @@ export interface Operations {
     };
     myUser: {
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<MutationResult<null>>;
+        endMySession: () => Promise<void>;
         findAvailableUserHandle: (startValue: string) => Promise<string>;
         findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
         getSignedOutUserId: () => Promise<string | null>;
@@ -66,6 +67,7 @@ export interface Operations {
         signInWithToken: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signMeOut: () => Promise<MutationResult<null>>;
         signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
+        startMySession: () => Promise<void>;
         updateMyUser: (myUser: Partial<MyUser>, queryOptions?: QueryOptions) => Promise<MutationResult<MyUser>>;
         updateMyPassword: (oldPassword: string, newPassword: string, queryOptions: QueryOptions) => Promise<MutationResult<MyUser>>;
         verifyMyEmail: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;

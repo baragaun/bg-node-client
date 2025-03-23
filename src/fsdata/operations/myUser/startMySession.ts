@@ -8,8 +8,11 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { ContentStatus } from '../../../types/models/ContentStatus.js';
+import { MutationStartMySessionV2Args } from '../../gql/graphql.js';
 import startMySessionGql from '../../gql/mutations/startMySession.graphql.js';
 import helpers from '../../helpers/helpers.js';
+
+type StartMySessionResponse = { startMySessionV2: ContentStatus };
 
 // see: https://graffle.js.org/guides/topics/requests
 const startMySession = async (): Promise<ContentStatus | null> => {
@@ -28,15 +31,16 @@ const startMySession = async (): Promise<ContentStatus | null> => {
     .use(Throws())
     .use(Opentelemetry());
 
-  const document = parse(startMySessionGql) as TypedQueryDocumentNode<{
-    startMySessionV2: ContentStatus;
-  }>;
+  const document = parse(startMySessionGql) as TypedQueryDocumentNode<
+    StartMySessionResponse,
+    MutationStartMySessionV2Args
+  >;
 
   try {
     const response = (await client
       // @ts-ignore
       .gql(document)
-      .send()) as { startMySessionV2: ContentStatus };
+      .send({ returnContentStatus: true })) as { startMySessionV2: ContentStatus };
 
     if (!response.startMySessionV2) {
       return null;

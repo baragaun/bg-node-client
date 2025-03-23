@@ -16254,10 +16254,6 @@ it: [0, ]
 pushNotificationToken: {
 nt: String,
 it: [0, ]
-},
-deviceUuid: {
-nt: String,
-it: [1, ]
 }
 }
 // nt: ContentStatus, <-- Assigned later to avoid potential circular dependency.

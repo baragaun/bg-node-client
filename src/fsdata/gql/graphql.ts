@@ -15,6 +15,8 @@ export type Scalars = {
   Float: { input: number; output: number; }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.This scalar is serialized to a string in ISO 8601 format and parsed from a string in ISO 8601 format. */
   DateTimeISO: { input: any; output: any; }
+  /** Long type for 64-bit integers */
+  Long: { input: any; output: any; }
 };
 
 export type AcademicExperience = {
@@ -1043,6 +1045,23 @@ export type ContactType = {
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
   value: Scalars['String']['output'];
+};
+
+export type ContentStatus = {
+  __typename?: 'ContentStatus';
+  adminNotes?: Maybe<Scalars['String']['output']>;
+  createdAt: Scalars['DateTimeISO']['output'];
+  createdBy?: Maybe<Scalars['ID']['output']>;
+  deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  deletedBy?: Maybe<Scalars['ID']['output']>;
+  events?: Maybe<Array<ModelEvent>>;
+  id: Scalars['ID']['output'];
+  metadata?: Maybe<BaseModelMetadata>;
+  myUserInboxUpdatedAt?: Maybe<Scalars['Long']['output']>;
+  myUserUpdatedAt?: Maybe<Scalars['Long']['output']>;
+  optionsUpdatedAt?: Maybe<Scalars['Long']['output']>;
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<Scalars['ID']['output']>;
 };
 
 export type ContentTag = {
@@ -2591,7 +2610,9 @@ export type Mutation = {
   signInUser: UserAuthResponse;
   signMeOut: Scalars['String']['output'];
   signUpUser: UserAuthResponse;
+  /** @deprecated Use startMySessionV2 */
   startMySession: Scalars['String']['output'];
+  startMySessionV2: ContentStatus;
   startResetPassword: SidMultiStepActionProgress;
   startVerifyEmail: SidMultiStepActionProgress;
   startVerifyPhoneNumber: SidMultiStepActionProgress;
@@ -2896,11 +2917,6 @@ export type MutationDismissChannelInvitationFromInboxArgs = {
 };
 
 
-export type MutationEndMySessionArgs = {
-  deviceUuid: Scalars['String']['input'];
-};
-
-
 export type MutationInitAssetUploadArgs = {
   input: UploadedAssetInput;
 };
@@ -2966,6 +2982,12 @@ export type MutationSignUpUserArgs = {
 export type MutationStartMySessionArgs = {
   deviceUuid: Scalars['String']['input'];
   pushNotificationToken?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type MutationStartMySessionV2Args = {
+  pushNotificationToken?: InputMaybe<Scalars['String']['input']>;
+  returnContentStatus?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 

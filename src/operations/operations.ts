@@ -27,6 +27,7 @@ import removeMultiStepActionListener from './multiStepAction/removeMultiStepActi
 import sendMultiStepActionNotification from './multiStepAction/sendMultiStepActionNotification.js';
 import verifyMultiStepActionToken from './multiStepAction/verifyMultiStepActionToken.js';
 import deleteMyUser from './myUser/deleteMyUser.js';
+import endMySession from './myUser/endMySession.js';
 import findAvailableUserHandle from './myUser/findAvailableUserHandle.js';
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
@@ -37,6 +38,7 @@ import signInUser from './myUser/signInUser.js';
 import signInWithToken from './myUser/signInWithToken.js';
 import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
+import startMySession from './myUser/startMySession.js';
 import updateMyPassword from './myUser/updateMyPassword.js';
 import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
@@ -79,6 +81,7 @@ const operations: Operations = {
 
   myUser: {
     deleteMyUser,
+    endMySession,
     findAvailableUserHandle,
     findMyUser,
     getSignedOutUserId,
@@ -89,6 +92,7 @@ const operations: Operations = {
     signInWithToken,
     signMeOut,
     signUpUser,
+    startMySession,
     updateMyPassword,
     updateMyUser,
     verifyMyEmail,

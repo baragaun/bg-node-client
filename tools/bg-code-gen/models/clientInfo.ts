@@ -15,6 +15,8 @@ const contentStatus: TypeGraphqlClass = {
     { name: 'signedOutUserId', dataType: 'id', optional: true },
     { name: 'remoteContentStatus', dataType: 'ContentStatus', optional: true },
     { name: 'localContentStatus', dataType: 'ContentStatus', optional: true },
+    { name: 'sessionStartedAt', dataType: 'integer', optional: true },
+    { name: 'sessionEndedAt', dataType: 'integer', optional: true },
   ]
 }
 

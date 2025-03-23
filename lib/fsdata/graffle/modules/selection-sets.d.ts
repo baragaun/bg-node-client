@@ -2161,7 +2161,7 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
     * Select the `startMySessionV2` field on the `Mutation` object. Its type is `ContentStatus` (a `OutputObject` kind of type).
     *
     */
-    startMySessionV2?: Mutation.startMySessionV2<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.startMySessionV2<_$Scalars>>;
+    startMySessionV2?: Mutation.startMySessionV2$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.startMySessionV2<_$Scalars>>;
     /**
     *
     * Select the `unblockUserForMe` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
@@ -3614,12 +3614,11 @@ export declare namespace Mutation {
     type startMySession$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<startMySession$SelectionSet<_$Scalars>>;
     type startMySessionV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = startMySessionV2$SelectionSet<_$Scalars>;
     interface startMySessionV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ContentStatus<_$Scalars> {
-        $: startMySessionV2$Arguments<_$Scalars>;
+        $?: startMySessionV2$Arguments<_$Scalars>;
     }
     interface startMySessionV2$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
         returnContentStatus?: boolean | undefined | null;
         pushNotificationToken?: string | undefined | null;
-        deviceUuid: string;
     }
     /**
     *

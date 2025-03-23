@@ -3281,12 +3281,6 @@ kind: "InputField",
 name: "pushNotificationToken",
 inlineType: [0, ],
 namedType: $$NamedTypes.$$String
-},
-deviceUuid: {
-kind: "InputField",
-name: "deviceUuid",
-inlineType: [1, ],
-namedType: $$NamedTypes.$$String
 }
 },
 inlineType: [1, ],

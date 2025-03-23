@@ -146,6 +146,7 @@ export interface Operations {
       deletePhysically: boolean,
     ) => Promise<MutationResult<null>>;
 
+    endMySession: () => Promise<void>;
     findAvailableUserHandle: (startValue: string) => Promise<string>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
     getSignedOutUserId: () => Promise<string | null>;
@@ -174,6 +175,8 @@ export interface Operations {
     signUpUser: (
       input: SignUpUserInput,
     ) => Promise<MutationResult<SignInSignUpResponse>>;
+
+    startMySession: () => Promise<void>;
 
     updateMyUser: (
       myUser: Partial<MyUser>,
