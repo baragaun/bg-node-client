@@ -3,12 +3,14 @@ declare const fsdata: {
     pollForUpdatedObject: <T extends import("../types/models/Model.js").Model = import("../types/models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, options: import("../types/QueryOptions.js").QueryOptions) => Promise<T | null>;
     myUser: {
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<void>;
+        endMySession: () => Promise<void>;
         findAvailableUserHandle: (startValue: string) => Promise<string>;
         findMyUser: () => Promise<import("../types/index.js").MyUser | null>;
         isUserIdentAvailable: (userIdent: string, identType: import("../enums.js").UserIdentType) => Promise<boolean>;
         signInUser: (input: import("../types/SignInUserInput.js").SignInUserInput) => Promise<import("../types/UserAuthResponse.js").UserAuthResponse>;
         signMeOut: () => Promise<void>;
         signUpUser: (input: import("../types/SignUpUserInput.js").SignUpUserInput) => Promise<import("../types/UserAuthResponse.js").UserAuthResponse>;
+        startMySession: () => Promise<import("../types/index.js").ContentStatus | null>;
         updateMyUser: (changes: import("./gql/graphql.js").MyUserInput, queryOptions?: import("../types/QueryOptions.js").QueryOptions) => Promise<import("../types/MutationResult.js").MutationResult<import("../types/index.js").MyUser>>;
     };
     multiStepAction: {

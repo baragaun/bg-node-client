@@ -48,7 +48,7 @@ const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
 };
 
 const clientStore = {
-  clearClientInfo: () => {
+  clearClientInfo: (): void => {
     _clientInfo = undefined;
   },
   getTestClient,

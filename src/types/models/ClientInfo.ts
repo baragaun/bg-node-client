@@ -1,3 +1,4 @@
+import { ContentStatus } from './ContentStatus.js';
 import { Model } from './Model.js';
 
 export class ClientInfo extends Model {
@@ -5,6 +6,8 @@ export class ClientInfo extends Model {
   public authToken?: string;
   public myUserDeviceUuid?: string;
   public signedOutUserId?: string;
+  public localContentStatus?: ContentStatus;
+  public remoteContentStatus?: ContentStatus;
 
   public constructor(attributes?: Partial<ClientInfo> | null) {
     super(attributes);
@@ -25,6 +28,12 @@ export class ClientInfo extends Model {
       }
       if (attributes.signedOutUserId) {
         this.signedOutUserId = attributes.signedOutUserId;
+      }
+      if (attributes.localContentStatus) {
+        this.localContentStatus = attributes.localContentStatus;
+      }
+      if (attributes.remoteContentStatus) {
+        this.remoteContentStatus = attributes.remoteContentStatus;
       }
     }
   }

@@ -13,6 +13,7 @@ cp ../first-spark-server/tools/bg-code-gen/models/channelInvitation.ts "./tools/
 cp ../first-spark-server/tools/bg-code-gen/models/channelMessage.ts "./tools/bg-code-gen/models/first-spark-server/"
 cp ../first-spark-server/tools/bg-code-gen/models/channelParticipant.ts "./tools/bg-code-gen/models/first-spark-server/"
 cp ../first-spark-server/tools/bg-code-gen/models/company.ts "./tools/bg-code-gen/models/first-spark-server/"
+cp ../first-spark-server/tools/bg-code-gen/models/contentStatus.ts "./tools/bg-code-gen/models/first-spark-server/"
 cp ../first-spark-server/tools/bg-code-gen/models/contact.ts "./tools/bg-code-gen/models/first-spark-server/"
 cp ../first-spark-server/tools/bg-code-gen/models/myUser.ts "./tools/bg-code-gen/models/first-spark-server/"
 cp ../first-spark-server/tools/bg-code-gen/models/user.ts "./tools/bg-code-gen/models/first-spark-server/"

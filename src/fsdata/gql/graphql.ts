@@ -2318,6 +2318,7 @@ export enum ModelType {
   ChannelParticipant = 'ChannelParticipant',
   Company = 'Company',
   Contact = 'Contact',
+  ContentStatus = 'ContentStatus',
   ContentTag = 'ContentTag',
   DataDeletion = 'DataDeletion',
   Group = 'Group',
