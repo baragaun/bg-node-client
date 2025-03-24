@@ -1,6 +1,6 @@
 {
   "name": "@baragaun/bg-node-client",
-  "version": "0.0.15",
+  "version": "0.0.17",
   "description": "Node client for Baragaun backend services",
   "type": "module",
   "engines": {
@@ -45,7 +45,6 @@
     "dexie": "^4.0.10",
     "graffle": "8.0.0-next.157",
     "graphql": "^16.10.0",
-    "migration-schema": "link:rxdb/plugins/migration-schema",
     "nats": "^2.29.3",
     "rxdb": "^16.8.1",
     "rxjs": "^7.8.2",

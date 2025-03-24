@@ -21,10 +21,6 @@ export const uniqueEmail = (): string => {
 };
 
 export const uniqueUserHandle = (): string => {
-  if (!emailDomain) {
-    emailDomain = libData.config()?.testEmailDomain || 'test.com';
-    emailPrefix = libData.config()?.testEmailPrefix || 'test';
-  }
   return `${chance.word()}-${crypto.randomUUID().replaceAll('-', '')}-${userHandleCounter++}`;
 };
 
