@@ -6,12 +6,10 @@ import { ModelType, UiLanguage } from '../../enums.js';
 import create from './helpers/create.js';
 import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';
-import chance from '../../helpers/chance.js';
+import chance, { uniqueEmail, uniqueUserHandle } from '../../helpers/chance.js';
 import randomDate from '../../helpers/randomDate.js';
 import { LabeledStringValue } from '../../models/LabeledStringValue.js';
 import { User } from '../../models/User.js';
-
-const emailDomain = 'baragaun.com';
 
 const userFactory = Factory.define<User>('User', User)
   .attr('avatarUrl', () =>
@@ -25,7 +23,7 @@ const userFactory = Factory.define<User>('User', User)
   )
   .attr('createdAt', () => randomDate())
   // .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
-  .sequence('email', (i) => `holger+test-${i}-${Date.now()}@${emailDomain}`)
+  .sequence('email', () => uniqueEmail())
   .attr('fallbackUiLanguageTextId', () =>
     chance.bool({ likelihood: 80 })
       ? UiLanguage.en
@@ -83,7 +81,7 @@ const userFactory = Factory.define<User>('User', User)
         )
       : undefined,
   )
-  .attr('userHandle', () => `${chance.word()}-${Date.now()}`) as UserFactory;
+  .attr('userHandle', () => uniqueUserHandle()) as UserFactory;
 
 userFactory.create = (
   props: Partial<User> | Partial<User>[],

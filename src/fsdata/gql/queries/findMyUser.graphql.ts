@@ -41,7 +41,6 @@ query FindMyUser {
       tags
     }
     authType
-    inviteCode
     tfaBackupCodes
     passwordUpdatedAt
     preferredLanguageTextId

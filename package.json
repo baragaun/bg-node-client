@@ -1,6 +1,6 @@
 {
   "name": "@baragaun/bg-node-client",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Node client for Baragaun backend services",
   "type": "module",
   "engines": {
@@ -27,6 +27,7 @@
     "clean": "rimraf coverage lib tmp",
     "prebuild": "npm run lint",
     "build": "pnpm run clean && mkdir lib && cp src/index.html lib/ && tsc -p tsconfig.json",
+    "compile": "tsc -p tsconfig.json",
     "build:release": "pnpm run clean && mkdir lib && cp src/index.html lib/ && tsc -p tsconfig.release.json",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix --ext .js,.ts",
@@ -44,6 +45,7 @@
     "dexie": "^4.0.10",
     "graffle": "8.0.0-next.157",
     "graphql": "^16.10.0",
+    "migration-schema": "link:rxdb/plugins/migration-schema",
     "nats": "^2.29.3",
     "rxdb": "^16.8.1",
     "rxjs": "^7.8.2",
@@ -86,6 +88,7 @@
     ],
     "overrides": {
       "dexie": "4.0.10"
-    }
+    },
+    "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
   }
 }
