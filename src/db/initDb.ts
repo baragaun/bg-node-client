@@ -2,11 +2,13 @@
 import addFormats from "ajv-formats";
 import {
   addRxPlugin,
+  // RxCollection,
   createRxDatabase,
   isRxDatabase,
   RxStorage,
 } from "rxdb/plugins/core";
 import { RxDBDevModePlugin, disableWarnings } from "rxdb/plugins/dev-mode";
+import { RxDBMigrationSchemaPlugin } from 'rxdb/plugins/migration-schema';
 import { getRxStorageDexie } from "rxdb/plugins/storage-dexie";
 import { getRxStorageMemory } from "rxdb/plugins/storage-memory";
 import { getAjv, wrappedValidateAjvStorage } from "rxdb/plugins/validate-ajv";
@@ -49,7 +51,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     return loadMyUser(clientInfo.myUserId);
   }
 
-  if (!('indexedDB' in window)) {
+  if (config.inBrowser && (typeof window === "undefined" || !('indexedDB' in window))) {
     throw new Error('indexeddb-not-supported');
   }
 
@@ -58,6 +60,9 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   // addFormats.default(ajv, ['date-time']);
 
   // addRxPlugin(RxDBUpdatePlugin);
+
+  // see: https://rxdb.info/migration-schema.html
+  addRxPlugin(RxDBMigrationSchemaPlugin);
 
   // see: https://github.com/ajv-validator/ajv/issues/1295
   const ajv = getAjv();
@@ -104,30 +109,40 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     eventReduce: true,
   });
 
+  // const collections: { [key in DbCollection]: Partial<RxCollection>} = {
   const collections = {
     [DbCollection.channels]: {
       schema: modelsSchema.Channel,
+      autoMigrate: true,
+      migrationStrategies: {},
     },
     [DbCollection.channelInvitations]: {
       schema: modelsSchema.ChannelInvitation,
+      autoMigrate: true,
     },
     [DbCollection.channelMessages]: {
       schema: modelsSchema.ChannelMessage,
+      autoMigrate: true,
     },
     [DbCollection.channelParticipants]: {
       schema: modelsSchema.ChannelParticipant,
+      autoMigrate: true,
     },
     [DbCollection.users]: {
       schema: modelsSchema.User,
+      autoMigrate: true,
     },
     [DbCollection.clientInfo]: {
       schema: modelsSchema.ClientInfo,
+      autoMigrate: true,
     },
     [DbCollection.myUser]: {
       schema: modelsSchema.MyUser,
+      autoMigrate: true,
     },
     [DbCollection.userInbox]: {
       schema: modelsSchema.UserInbox,
+      autoMigrate: true,
     },
   };
 

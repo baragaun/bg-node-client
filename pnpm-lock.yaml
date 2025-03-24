@@ -35,6 +35,9 @@ importers:
       graphql:
         specifier: ^16.10.0
         version: 16.10.0
+      migration-schema:
+        specifier: link:rxdb/plugins/migration-schema
+        version: link:rxdb/plugins/migration-schema
       nats:
         specifier: ^2.29.3
         version: 2.29.3
