@@ -3,16 +3,19 @@ import { expect } from 'vitest';
 import { BgNodeClient } from '../../BgNodeClient.js';
 
 export const deleteMyUserSpecHelper = async (client: BgNodeClient): Promise<void> => {
+  const clientInfo1 = await client.clientInfoStore.load();
+  expect(clientInfo1.isSignedIn).toBeTruthy();
+
   const deleteMyUserResponse = await client.operations.myUser.deleteMyUser(undefined, undefined, true);
 
   expect(deleteMyUserResponse.error).toBeUndefined();
 
-  const clientInfo = await client.clientInfoStore.load();
+  const clientInfo2 = await client.clientInfoStore.load();
 
-  expect(clientInfo.isSignedIn).toBeFalsy();
-  expect(clientInfo.authToken).toBeUndefined();
-  expect(clientInfo.localContentStatus).toBeUndefined();
-  expect(clientInfo.remoteContentStatus).toBeUndefined();
-  expect(clientInfo.sessionStartedAt).toBeUndefined();
-  expect(clientInfo.sessionEndedAt).toBeUndefined();
+  expect(clientInfo2.isSignedIn).toBeFalsy();
+  expect(clientInfo2.authToken).toBeUndefined();
+  expect(clientInfo2.localContentStatus).toBeUndefined();
+  expect(clientInfo2.remoteContentStatus).toBeUndefined();
+  expect(clientInfo2.sessionStartedAt).toBeUndefined();
+  expect(clientInfo2.sessionEndedAt).toBeUndefined();
 }

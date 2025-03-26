@@ -1,23 +1,25 @@
 import { expect } from 'vitest';
 
-import logger from '../../helpers/logger.js';
-import { UserProps } from '../types.js';
 import { signMeOutSpecHelper } from './signMeOut.specHelper.js';
+import { userPasswordSpecHelper } from './userPassword.specHelper.js';
 import { verifyUserPropsSpecHelper } from './verifyUserProps.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { CachePolicy } from '../../enums.js';
 import chance, { uniqueEmail, uniqueUserHandle } from '../../helpers/chance.js';
 import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
 import { SignUpUserInput } from '../../types/SignUpUserInput.js';
 
 export const signMeUpSpecHelper = async (
-  props: UserProps,
+  props: Partial<MyUser> | undefined,
   signOut: boolean,
   client: BgNodeClient,
 ): Promise<MyUser | null> => {
   logger.debug('BgServiceApiCheck.createMyUser: calling API/signUpUser',
     { props });
+
+  const password = userPasswordSpecHelper(props) || chance.string({ length: 8});
 
   const input: SignUpUserInput = {
     firstName: props?.firstName || chance.first(),
@@ -27,7 +29,7 @@ export const signMeUpSpecHelper = async (
       libData.config()?.testEmailPrefix || 'test',
       libData.config()?.testEmailDomain || 'test.com',
     ),
-    password: props?.password || chance.word(),
+    password,
     source: props?.source || 'testtoken=666666',
     isTestUser: true,
   }
@@ -58,7 +60,7 @@ export const signMeUpSpecHelper = async (
   expect(myUser).toBeDefined();
 
   verifyUserPropsSpecHelper(
-    myUser as Partial<UserProps>,
+    myUser as Partial<MyUser>,
     {
       firstName: input.firstName,
       lastName: input.lastName,
@@ -67,6 +69,10 @@ export const signMeUpSpecHelper = async (
       source: input.source,
     },
   );
+
+  if (!myUser.adminNotes) {
+    myUser.adminNotes = JSON.stringify({ password });
+  }
 
   if (signOut) {
     await signMeOutSpecHelper(client);

@@ -1,16 +1,16 @@
 import { expect } from 'vitest';
 
-import logger from '../../helpers/logger.js';
-import { UserProps } from '../types.js';
 import { verifyUserPropsSpecHelper } from './verifyUserProps.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { CachePolicy, UserIdentType } from '../../enums.js';
+import logger from '../../helpers/logger.js';
+import { MyUser } from '../../models/MyUser.js';
 
 export const signMeInSpecHelper = async (
   email: string,
   password: string,
   client: BgNodeClient,
-): Promise<boolean> => {
+): Promise<void> => {
   logger.debug('BgServiceApiCheck.signMeIn: calling API/signInUser');
 
   const signInUserResponse = await client.operations.myUser.signInUser({
@@ -42,7 +42,7 @@ export const signMeInSpecHelper = async (
   });
 
   verifyUserPropsSpecHelper(
-    myUserFromCache as Partial<UserProps>,
+    myUserFromCache as Partial<MyUser>,
     {
       id: signInUserResponse.object?.userAuthResponse?.userId,
       firstName: signInUserResponse.object?.userAuthResponse?.firstName,
@@ -50,6 +50,4 @@ export const signMeInSpecHelper = async (
       email,
     },
   );
-
-  return true;
 };

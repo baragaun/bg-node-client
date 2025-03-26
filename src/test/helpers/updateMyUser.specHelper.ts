@@ -1,13 +1,14 @@
 import { expect } from 'vitest';
 
-import logger from '../../helpers/logger.js';
-import { UserProps } from '../types.js';
 import { verifyUserPropsSpecHelper } from './verifyUserProps.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { CachePolicy } from '../../enums.js';
+import { MyUserInput } from '../../fsdata/gql/graphql.js';
+import logger from '../../helpers/logger.js';
+import { MyUser } from '../../models/MyUser.js';
 
 export const updateMyUserSpecHelper = async (
-  changes: Partial<UserProps>,
+  changes: Partial<MyUserInput>,
   client: BgNodeClient,
 ): Promise<boolean> => {
   logger.debug('BgServiceApiCheck.updateMyUser: calling API/signUpUser',
@@ -16,7 +17,7 @@ export const updateMyUserSpecHelper = async (
   logger.debug('BgServiceApiCheck.updateMyUser: calling API/updateMyUser');
 
   const updateUserResponse = await client.operations.myUser.updateMyUser(
-    changes,
+    changes as unknown as Partial<MyUser>,
     { cachePolicy: CachePolicy.network },
   );
 
@@ -28,8 +29,8 @@ export const updateMyUserSpecHelper = async (
   expect(updateUserResponse.object).toBeDefined();
 
   verifyUserPropsSpecHelper(
-    updateUserResponse.object as Partial<UserProps>,
-    changes,
+    updateUserResponse.object as Partial<MyUser>,
+    changes as unknown as Partial<MyUser>,
   );
 
   // Verifying the local user object:
@@ -40,8 +41,8 @@ export const updateMyUserSpecHelper = async (
   expect(myUserFromCache?.id).toBe(changes.id);
 
   verifyUserPropsSpecHelper(
-    updateUserResponse.object as Partial<UserProps>,
-    changes,
+    updateUserResponse.object as Partial<MyUser>,
+    changes as unknown as Partial<MyUser>,
   );
 
   // Verifying the remote user object:
@@ -53,8 +54,8 @@ export const updateMyUserSpecHelper = async (
   expect(myUserFromNetwork?.id).toBe(changes.id);
 
   verifyUserPropsSpecHelper(
-    updateUserResponse.object as Partial<UserProps>,
-    changes,
+    updateUserResponse.object as Partial<MyUser>,
+    changes as unknown as Partial<MyUser>,
   );
 
   return true;

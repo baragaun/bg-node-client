@@ -1,14 +1,14 @@
 import { expect } from 'vitest';
 
-import { UserProps } from '../types.js';
+import { MyUser } from '../../models/MyUser.js';
 
 export const verifyUserPropsSpecHelper = (
-  user: Partial<UserProps>,
-  target: Partial<UserProps>,
+  user: Partial<MyUser>,
+  target: Partial<MyUser>,
 ): void => {
   for (const key in target) {
-    const targetValue = target[key as keyof UserProps];
-    const objValue = user[key as keyof UserProps];
+    const targetValue = target[key as keyof MyUser];
+    const objValue = user[key as keyof MyUser];
 
     if (typeof targetValue === 'string') {
       expect(objValue).toBe(targetValue);

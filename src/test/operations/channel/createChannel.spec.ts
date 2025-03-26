@@ -5,11 +5,19 @@ import { Channel } from '../../../models/Channel.js';
 import findById from '../../../operations/findById.js';
 import factories from '../../factories/factories.js';
 import clientStore from '../../helpers/clientStore.js';
+import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 
 describe('operations.channel.createChannel', () => {
   test('should create a channel with the given properties', async () => {
     const client = await clientStore.getTestClient();
     const channelProps = await factories.channel.build({});
+
+    const user = await signMeUpSpecHelper(
+      undefined,
+      false,
+      client,
+    );
+    expect(user).toBeDefined();
 
     const { object: channel } =
       await client.operations.channel.createChannel(channelProps);

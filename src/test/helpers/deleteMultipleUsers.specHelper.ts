@@ -1,22 +1,26 @@
-import { expect } from 'vitest';
-
 import { deleteMyUserSpecHelper } from './deleteMyUser.specHelper.js';
 import { signMeInSpecHelper } from './signMeIn.specHelper.js';
+import { userPasswordSpecHelper } from './userPassword.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
+import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
 
 export const deleteMultipleUsersSpecHelper = async (
   users: MyUser[],
   client: BgNodeClient,
 ): Promise<boolean> => {
+  logger.debug('deleteMultipleUsersSpecHelper: called', { users });
+
   for (let i = 0; i < 2; i++) {
-    const signInResult = await signMeInSpecHelper(
+    logger.debug(`deleteMultipleUsersSpecHelper: signing in user #${i}`);
+    await signMeInSpecHelper(
       users[i].email as string,
-      users[i].adminNotes as string,
+      userPasswordSpecHelper(users[i]),
       client,
     );
-    expect(signInResult).toBeTruthy();
-    expect(await deleteMyUserSpecHelper(client)).toBeTruthy();
+
+    logger.debug(`deleteMultipleUsersSpecHelper: deleting user #${i}`);
+    await deleteMyUserSpecHelper(client);
   }
 
   return true;

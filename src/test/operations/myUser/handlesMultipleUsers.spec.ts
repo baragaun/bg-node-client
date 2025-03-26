@@ -7,6 +7,8 @@ import findById from '../../../operations/findById.js';
 import clientStore from '../../helpers/clientStore.js';
 import { createMultipleUsersSpecHelper } from '../../helpers/createMultipleUsers.specHelper.js';
 import { deleteMultipleUsersSpecHelper } from '../../helpers/deleteMultipleUsers.specHelper.js';
+import { signMeOutSpecHelper } from '../../helpers/signMeOut.specHelper.js';
+import { userPasswordSpecHelper } from '../../helpers/userPassword.specHelper.js';
 
 describe('operations.myUser.signInUser', () => {
   test('handles multiple users', async () => {
@@ -26,7 +28,7 @@ describe('operations.myUser.signInUser', () => {
       const signInUserResponse = await client.operations.myUser.signInUser({
         ident: user.email,
         identType: UserIdentType.email,
-        password: user.adminNotes,
+        password: userPasswordSpecHelper(user),
       });
 
       const myUserId = signInUserResponse.object.userAuthResponse.userId;
@@ -71,12 +73,7 @@ describe('operations.myUser.signInUser', () => {
         signInUserResponse.object.userAuthResponse.authToken,
       );
 
-      // Signing Out:
-      await client.operations.myUser.signMeOut();
-
-      const clientInfo5 = await client.clientInfoStore.load();
-      expect(clientInfo5.myUserId).toBeUndefined();
-      expect(clientInfo5.authToken).toBeUndefined();
+      await signMeOutSpecHelper(client);
     }
 
     await deleteMultipleUsersSpecHelper(users, client);

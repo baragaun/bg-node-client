@@ -1,2 +1,2 @@
-import { UserProps } from '../types.js';
-export declare const generateUserPropsSpecHelper: (props?: UserProps) => UserProps;
+import { MyUser } from '../../models/MyUser.js';
+export declare const generateUserPropsSpecHelper: (props?: Partial<MyUser>) => Partial<MyUser>;

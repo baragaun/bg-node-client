@@ -1,13 +1,12 @@
 import { expect } from 'vitest';
 
-import { signMeUpSpecHelper } from './signMeUp.specHelper.js';
-import { UserProps } from '../types.js';
 import { generateUserPropsSpecHelper } from './generateUserProps.specHelper.js';
+import { signMeUpSpecHelper } from './signMeUp.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { MyUser } from '../../models/MyUser.js';
 
 export const createMultipleUsersSpecHelper = async (
-  props: UserProps[] | number,
+  props: Partial<MyUser>[] | number,
   client: BgNodeClient,
 ): Promise<MyUser[] | null> => {
   const users: MyUser[] = [];
@@ -23,7 +22,6 @@ export const createMultipleUsersSpecHelper = async (
       client,
     );
     expect(user).toBeDefined();
-    user.adminNotes = props[i].password;
     users.push(user);
   }
 
