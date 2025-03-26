@@ -97,8 +97,8 @@ export class BgNodeClient {
     return libData.isInitialized();
   }
 
-  public get isSignedIn(): string | undefined {
-    return clientInfoStore.get().myUserId;
+  public get isSignedIn(): boolean {
+    return clientInfoStore.get().isSignedIn;
   }
 
   public get myUserDeviceUuid(): string | undefined {

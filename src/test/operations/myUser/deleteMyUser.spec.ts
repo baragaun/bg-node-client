@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.deleteMyUser', () => {
   test('should delete the user and reset the client', async () => {
@@ -16,7 +16,7 @@ describe('operations.myUser.deleteMyUser', () => {
       isTestUser: true,
     });
 
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
 
     const clientInfo = await client.clientInfoStore.load();
 

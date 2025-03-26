@@ -8,10 +8,7 @@ const isSessionActive = (): boolean => {
   }
 
   try {
-    const clientInfo = clientInfoStore.get();
-    return clientInfo.isSignedIn &&
-      clientInfo.sessionStartedAt &&
-      !clientInfo.sessionEndedAt;
+    return clientInfoStore.get().isSessionActive;
   } catch (error) {
     logger.error('isSessionActive: fsdata.myUser.isSessionActive failed', error);
     return false;

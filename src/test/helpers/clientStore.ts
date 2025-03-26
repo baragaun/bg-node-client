@@ -28,10 +28,10 @@ const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
             return info;
           },
           load: async (): Promise<ClientInfo> => {
-            return _clientInfo || {
+            return _clientInfo || new ClientInfo({
               id: 'default',
               createdAt: new Date().toISOString(),
-            };
+            });
           },
         },
       },

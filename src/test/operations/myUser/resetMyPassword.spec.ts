@@ -12,7 +12,7 @@ import chance, {
 } from '../../../helpers/chance.js';
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.resetMyPassword', () => {
   test('should verify a correct token', async () => {
@@ -184,7 +184,7 @@ describe('operations.myUser.resetMyPassword', () => {
             expect(signInUserResponse.object.myUser.lastName).toBe(lastName);
             expect(signInUserResponse.object.myUser.email).toBe(email);
 
-            await deleteMyUser(client);
+            await deleteMyUserSpecHelper(client);
 
             resolve(true);
           }

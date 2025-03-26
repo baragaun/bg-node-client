@@ -6,7 +6,7 @@ import chance, {
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.isUserIdentAvailable', () => {
   test('should return false for an email that is already taken', async () => {
@@ -97,7 +97,7 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     expect(resultUnavailableUserHandle2).toBeFalsy();
 
     // Deleting user2 (which is still signed in):
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
 
     // Signing in user1, so that we can delete it, too:
     const signInUser1Response = await client.operations.myUser.signInUser({
@@ -131,6 +131,6 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
     // Deleting user1:
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
   });
 });

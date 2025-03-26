@@ -12,10 +12,10 @@ let emailPrefix: string | undefined = undefined;
 let emailCounter = 1;
 let userHandleCounter = 1;
 
-export const uniqueEmail = (): string => {
+export const uniqueEmail = (prefix?: string, domain?: string): string => {
   if (!emailDomain) {
-    emailDomain = libData.config()?.testEmailDomain || 'test.com';
-    emailPrefix = libData.config()?.testEmailPrefix || 'test';
+    emailPrefix = prefix || libData.config()?.testEmailPrefix || 'test';
+    emailDomain = domain || libData.config()?.testEmailDomain || 'test.com';
   }
   return `${emailPrefix}${dateMMDD}-${crypto.randomUUID().replaceAll('-', '')}-${emailCounter++}@${emailDomain}`;
 };

@@ -11,7 +11,7 @@ import chance, {
 } from '../../../helpers/chance.js';
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.verifyMyEmail', () => {
   test('should verify a correct token', async () => {
@@ -146,7 +146,7 @@ describe('operations.myUser.verifyMyEmail', () => {
             expect(myUserFromCache.isEmailVerified).toBeTruthy();
 
             // Deleting the user again:
-            await deleteMyUser(client);
+            await deleteMyUserSpecHelper(client);
 
             resolve(true);
           }

@@ -41,7 +41,7 @@ const findById = async <T extends Model = Model>(
     .exec();
 
   return {
-    object: record ? record.toMutableJSON() : null,
+    object: record ? new (record.constructor as { new(data: any): T })(record.toMutableJSON()) : null,
   };
 };
 

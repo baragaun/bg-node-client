@@ -47,7 +47,11 @@ export class ClientInfo extends Model {
   }
 
   public get isSignedIn(): boolean {
-    return !!this.myUserId && !!this.myUserDeviceUuid && !!this.authToken;
+    return !!(this.myUserId && this.myUserDeviceUuid && this.authToken);
+  }
+
+  public get isSessionActive(): boolean {
+    return this.isSignedIn && !!this.sessionStartedAt && !this.sessionEndedAt;
   }
 
   public static createDeviceUuid(): string {

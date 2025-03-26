@@ -30,10 +30,10 @@ const persist = async (newClientInfo?: Partial<ClientInfo>): Promise<ClientInfo>
   return _clientInfo || new ClientInfo();
 };
 
-const get = (): ClientInfo => _clientInfo || {
+const get = (): ClientInfo => _clientInfo || new ClientInfo({
   id: 'default',
   createdAt: new Date().toISOString(),
-};
+});
 
 const updateMyUserUpdatedAt = (myUserUpdatedAt: number): void => {
   if (!_clientInfo.localContentStatus) {

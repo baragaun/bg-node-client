@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.startMySessionV2', () => {
   test.skip('should start the app session and return the content status', async () => {
@@ -31,6 +31,6 @@ describe('operations.myUser.startMySessionV2', () => {
     expect(clientInfo2.sessionEndedAt).toBeUndefined();
     expect(client.operations.myUser.isSessionActive()).toBeTruthy();
 
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
   });
 });

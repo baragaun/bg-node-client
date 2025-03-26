@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.endMySession', () => {
   test('should end the app session and save sessionEndedAt', async () => {
@@ -29,6 +29,6 @@ describe('operations.myUser.endMySession', () => {
     expect(clientInfo2.sessionEndedAt).toBeGreaterThan(Date.now() - 1000);
     expect(client.operations.myUser.isSessionActive()).toBeFalsy();
 
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
   });
 });

@@ -9,7 +9,7 @@ import chance, { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.j
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.signInWithToken', () => {
   test('should verify a correct token', async () => {
@@ -144,7 +144,7 @@ describe('operations.myUser.signInWithToken', () => {
             expect(clientInfo1.authToken).toBe(action.authToken);
             expect(client.operations.myUser.isSignedIn()).toBeTruthy();
 
-            await deleteMyUser(client);
+            await deleteMyUserSpecHelper(client);
 
             resolve(true);
           }

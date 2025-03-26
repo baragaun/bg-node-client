@@ -10,5 +10,7 @@ export declare class ClientInfo extends Model {
     sessionStartedAt?: number | null;
     sessionEndedAt?: number | null;
     constructor(attributes?: Partial<ClientInfo> | null);
+    get isSignedIn(): boolean;
+    get isSessionActive(): boolean;
     static createDeviceUuid(): string;
 }

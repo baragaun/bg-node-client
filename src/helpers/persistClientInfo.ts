@@ -11,12 +11,12 @@ const persistClientInfo = async (
   const config = libData.config();
   const persistType = config.clientInfoStore?.type;
   const existingClientInfo = await loadClientInfo();
-  const newClientInfo: ClientInfo = {
+  const newClientInfo: ClientInfo = new ClientInfo({
     ...clientInfo,
     id: 'default',
     updatedAt: new Date().toISOString(),
     createdAt: existingClientInfo?.createdAt || new Date().toISOString(),
-  };
+  });
 
   if (
     !newClientInfo.myUserId &&
@@ -84,7 +84,7 @@ const persistClientInfo = async (
       }
     });
 
-    return { ...existingClientInfo, ...clientInfo };
+    return new ClientInfo({ ...existingClientInfo, ...clientInfo });
   }
 
   // Removing empty props:

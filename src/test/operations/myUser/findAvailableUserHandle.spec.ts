@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { uniqueEmail } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.findAvailableUserHandle', () => {
   test('should return an available user handle', async () => {
@@ -16,6 +16,6 @@ describe('operations.myUser.findAvailableUserHandle', () => {
     expect(response).toBeDefined();
     expect(response.length).toBeGreaterThan(3);
 
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
   });
 });

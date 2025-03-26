@@ -6,7 +6,7 @@ import chance, {
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.updateMyUser', () => {
   test('should update the user', async () => {
@@ -74,6 +74,6 @@ describe('operations.myUser.updateMyUser', () => {
     expect(myUserFromCache2.email).toBe(email);
 
     // Deleting the user again:
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
   });
 }, 60000);

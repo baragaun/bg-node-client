@@ -1,0 +1,31 @@
+import { expect } from 'vitest';
+
+import { signMeUpSpecHelper } from './signMeUp.specHelper.js';
+import { UserProps } from '../types.js';
+import { generateUserPropsSpecHelper } from './generateUserProps.specHelper.js';
+import { BgNodeClient } from '../../BgNodeClient.js';
+import { MyUser } from '../../models/MyUser.js';
+
+export const createMultipleUsersSpecHelper = async (
+  props: UserProps[] | number,
+  client: BgNodeClient,
+): Promise<MyUser[] | null> => {
+  const users: MyUser[] = [];
+
+  if (!Array.isArray(props)) {
+    props = Array.from({ length: props }, () => generateUserPropsSpecHelper());
+  }
+
+  for (let i = 0; i < 2; i++) {
+    const user = await signMeUpSpecHelper(
+      props[i],
+      true,
+      client,
+    );
+    expect(user).toBeDefined();
+    user.adminNotes = props[i].password;
+    users.push(user);
+  }
+
+  return users;
+};
