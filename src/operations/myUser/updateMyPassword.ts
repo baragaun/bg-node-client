@@ -20,7 +20,7 @@ const updateMyPassword = async (
   }
 
   const clientInfo = clientInfoStore.get();
-  if (!clientInfo.myUserId) {
+  if (!clientInfo.isSignedIn) {
     throw new Error('not-authorized');
   }
 

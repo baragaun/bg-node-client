@@ -17,7 +17,7 @@ const deleteMyUser = async (
   const clientInfo = clientInfoStore.get();
   const signedOutUserId = clientInfo.myUserId || clientInfo.signedOutUserId;
 
-  if (!clientInfo.myUserId) {
+  if (!clientInfo.isSignedIn) {
     throw new Error('not-authorized');
   }
 

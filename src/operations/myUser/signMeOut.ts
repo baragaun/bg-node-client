@@ -11,7 +11,7 @@ const signMeOut = async (): Promise<MutationResult<null>> => {
   }
 
   const clientInfo = clientInfoStore.get();
-  if (!clientInfo.myUserId) {
+  if (!clientInfo.isSignedIn) {
     throw new Error('not-authorized');
   }
 

@@ -1,5 +1,6 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import { Channel } from '../../models/Channel.js';
@@ -16,6 +17,11 @@ const findChannels = async (
 ): Promise<QueryResult<Channel>> => {
   if (!libData.isInitialized()) {
     throw new Error('not-initialized');
+  }
+
+  const clientInfo = clientInfoStore.get();
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
   }
 
   if (

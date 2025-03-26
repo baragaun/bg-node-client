@@ -1,6 +1,7 @@
 import db from '../db/db.js';
 import { CachePolicy, ModelType } from '../enums.js';
 import fsdata from '../fsdata/fsdata.js';
+import clientInfoStore from '../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../helpers/defaults.js';
 import libData from '../helpers/libData.js';
 import { Model } from '../models/Model.js';
@@ -14,6 +15,11 @@ const findById = async <T extends Model = Model>(
 ): Promise<QueryResult<T>> => {
   if (!libData.isInitialized()) {
     throw new Error('not-initialized');
+  }
+
+  const clientInfo = clientInfoStore.get();
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
   }
 
   if (

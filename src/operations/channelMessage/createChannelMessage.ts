@@ -1,5 +1,6 @@
 import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../enums.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import { Channel } from '../../models/Channel.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
@@ -10,6 +11,11 @@ const createChannelMessage = async (
 ): Promise<MutationResult<ChannelMessage>> => {
   if (!libData.isInitialized()) {
     throw new Error('not-initialized');
+  }
+
+  const clientInfo = clientInfoStore.get();
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
   }
 
   try {

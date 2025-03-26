@@ -22,7 +22,7 @@ const startMySession = async (): Promise<void> => {
     throw new Error('unavailable');
   }
 
-  if (!clientInfo.myUserId || !clientInfo.myUserDeviceUuid) {
+  if (!clientInfo.isSignedIn) {
     throw new Error('not-authorized');
   }
 

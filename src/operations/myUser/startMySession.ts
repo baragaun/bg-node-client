@@ -9,7 +9,7 @@ const startMySession = async (): Promise<void> => {
   }
 
   const clientInfo = clientInfoStore.get();
-  if (!clientInfo.myUserId) {
+  if (!clientInfo.isSignedIn) {
     throw new Error('not-authorized');
   }
 
