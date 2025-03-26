@@ -178,6 +178,7 @@ export interface Operations {
     ) => Promise<MutationResult<SignInSignUpResponse>>;
 
     startMySession: () => Promise<void>;
+    startMySessionV2: () => Promise<void>;
 
     updateMyUser: (
       myUser: Partial<MyUser>,

@@ -20,6 +20,10 @@ const updateMyPassword = async (
   }
 
   const clientInfo = clientInfoStore.get();
+  if (!clientInfo.myUserId) {
+    throw new Error('not-authorized');
+  }
+
   const myUserId = clientInfo.myUserId;
   const result: MutationResult<MyUser | null> = {
     operation: MutationType.update,

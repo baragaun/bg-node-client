@@ -69,6 +69,7 @@ export interface Operations {
         signMeOut: () => Promise<MutationResult<null>>;
         signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
         startMySession: () => Promise<void>;
+        startMySessionV2: () => Promise<void>;
         updateMyUser: (myUser: Partial<MyUser>, queryOptions?: QueryOptions) => Promise<MutationResult<MyUser>>;
         updateMyPassword: (oldPassword: string, newPassword: string, queryOptions: QueryOptions) => Promise<MutationResult<MyUser>>;
         verifyMyEmail: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;

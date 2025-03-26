@@ -11,6 +11,10 @@ const clearMyUserFromClientInfo = async (
   clientInfo.myUserId = null;
   clientInfo.authToken = null;
   clientInfo.signedOutUserId = signedOutUserId || clientInfo.signedOutUserId;
+  clientInfo.localContentStatus = null;
+  clientInfo.remoteContentStatus = null;
+  clientInfo.sessionStartedAt = null;
+  clientInfo.sessionEndedAt = null;
 
   return persistClientInfo(clientInfo);
 };

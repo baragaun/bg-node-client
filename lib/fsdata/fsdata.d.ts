@@ -10,7 +10,8 @@ declare const fsdata: {
         signInUser: (input: import("../index.js").SignInUserInput) => Promise<import("../index.js").UserAuthResponse>;
         signMeOut: () => Promise<void>;
         signUpUser: (input: import("../index.js").SignUpUserInput) => Promise<import("../index.js").UserAuthResponse>;
-        startMySession: () => Promise<import("../index.js").ContentStatus | null>;
+        startMySession: () => Promise<void>;
+        startMySessionV2: () => Promise<import("../index.js").ContentStatus | null>;
         updateMyUser: (changes: import("./gql/graphql.js").MyUserInput, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<import("../index.js").MyUser>>;
     };
     multiStepAction: {

@@ -1,2 +1,2 @@
-declare const _default: "\nmutation M($returnContentStatus: Boolean, $pushNotificationToken: String) {\n  startMySessionV2(returnContentStatus: $returnContentStatus, pushNotificationToken: $pushNotificationToken) {\n    myUserInboxUpdatedAt\n    myUserUpdatedAt\n    optionsUpdatedAt\n  }\n}\n";
+declare const _default: "\nmutation StartMySession($deviceUuid: String!, $pushNotificationToken: String) {\n  startMySession(deviceUuid: $deviceUuid, pushNotificationToken: $pushNotificationToken)\n}\n";
 export default _default;

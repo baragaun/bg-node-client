@@ -4,8 +4,8 @@ import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
 import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
 
-describe('operations.myUser.startMySession', () => {
-  test('should start the app session and return the content status', async () => {
+describe('operations.myUser.endMySession', () => {
+  test('should end the app session and save sessionEndedAt', async () => {
     const client = await clientStore.getTestClient();
     const userHandle = uniqueUserHandle();
     const email = uniqueEmail();

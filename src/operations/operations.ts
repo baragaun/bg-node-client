@@ -40,6 +40,7 @@ import signInWithToken from './myUser/signInWithToken.js';
 import signMeOut from './myUser/signMeOut.js';
 import signUpUser from './myUser/signUpUser.js';
 import startMySession from './myUser/startMySession.js';
+import startMySessionV2 from './myUser/startMySessionV2.js';
 import updateMyPassword from './myUser/updateMyPassword.js';
 import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
@@ -95,6 +96,7 @@ const operations: Operations = {
     signMeOut,
     signUpUser,
     startMySession,
+    startMySessionV2,
     updateMyPassword,
     updateMyUser,
     verifyMyEmail,

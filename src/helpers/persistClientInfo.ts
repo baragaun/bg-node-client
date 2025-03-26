@@ -74,6 +74,8 @@ const persistClientInfo = async (
       { name: 'authToken', value: clientInfo.authToken },
       { name: 'myUserDeviceUuid', value: clientInfo.myUserDeviceUuid },
       { name: 'signedOutUserId', value: clientInfo.signedOutUserId },
+      { name: 'sessionEndedAt', value: clientInfo.sessionEndedAt.toString() },
+      { name: 'sessionStartedAt', value: clientInfo.sessionStartedAt.toString() },
     ].forEach((field) => {
       if (field.value === null) {
         window.localStorage.removeItem(field.name);
@@ -104,6 +106,14 @@ const persistClientInfo = async (
 
   if (!newClientInfo.remoteContentStatus) {
     delete newClientInfo.remoteContentStatus;
+  }
+
+  if (!newClientInfo.sessionEndedAt) {
+    delete newClientInfo.sessionEndedAt;
+  }
+
+  if (!newClientInfo.sessionStartedAt) {
+    delete newClientInfo.sessionStartedAt;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

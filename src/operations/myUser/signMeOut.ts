@@ -10,8 +10,12 @@ const signMeOut = async (): Promise<MutationResult<null>> => {
     throw new Error('not-initialized');
   }
 
+  const clientInfo = clientInfoStore.get();
+  if (!clientInfo.myUserId) {
+    throw new Error('not-authorized');
+  }
+
   try {
-    const clientInfo = clientInfoStore.get();
     const signedOutUserId = clientInfo.signedOutUserId;
     await fsdata.myUser.signMeOut();
 

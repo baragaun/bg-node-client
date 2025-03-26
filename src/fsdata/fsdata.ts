@@ -14,6 +14,7 @@ import signInUser from './operations/myUser/signInUser.js';
 import signMeOut from './operations/myUser/signMeOut.js';
 import signUpUser from './operations/myUser/signUpUser.js';
 import startMySession from './operations/myUser/startMySession.js';
+import startMySessionV2 from './operations/myUser/startMySessionV2.js';
 import updateMyUser from './operations/myUser/updateMyUser.js';
 import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
 import findUserById from './operations/user/findUserById.js';
@@ -32,6 +33,7 @@ const fsdata = {
     signMeOut,
     signUpUser,
     startMySession,
+    startMySessionV2,
     updateMyUser,
   },
 

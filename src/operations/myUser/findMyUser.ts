@@ -17,6 +17,10 @@ const findMyUser = async (
 
   const clientInfo = clientInfoStore.get();
 
+  if (!clientInfo.myUserId) {
+    throw new Error('not-authorized');
+  }
+
   if (
     queryOptions.cachePolicy === CachePolicy.cache ||
     queryOptions.cachePolicy === CachePolicy.cacheFirst
