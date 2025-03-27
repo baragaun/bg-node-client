@@ -1,4 +1,3 @@
-// import * as Factory from 'factory.ts';
 import { Factory } from 'rosie';
 
 import { UserFactory } from './definitions.js';
@@ -7,6 +6,7 @@ import create from './helpers/create.js';
 import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';
 import chance, { uniqueEmail, uniqueUserHandle } from '../../helpers/chance.js';
+import libData from '../../helpers/libData.js';
 import randomDate from '../../helpers/randomDate.js';
 import { LabeledStringValue } from '../../models/LabeledStringValue.js';
 import { User } from '../../models/User.js';
@@ -23,7 +23,10 @@ const userFactory = Factory.define<User>('User', User)
   )
   .attr('createdAt', () => randomDate())
   // .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
-  .sequence('email', () => uniqueEmail())
+  .sequence('email', () => uniqueEmail(
+    libData.config()?.testEmailPrefix || 'test',
+    libData.config()?.testEmailDomain || 'test.com',
+  ))
   .attr('fallbackUiLanguageTextId', () =>
     chance.bool({ likelihood: 80 })
       ? UiLanguage.en
@@ -81,7 +84,8 @@ const userFactory = Factory.define<User>('User', User)
         )
       : undefined,
   )
-  .attr('userHandle', () => uniqueUserHandle()) as UserFactory;
+  .attr('userHandle', () => uniqueUserHandle())
+  .attr('adminNotes', () => JSON.stringify({ password: chance.string({ length: 8 }) })) as UserFactory;
 
 userFactory.create = (
   props: Partial<User> | Partial<User>[],

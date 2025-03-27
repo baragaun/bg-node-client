@@ -1,9 +1,9 @@
 import { expect } from 'vitest';
 
-import { generateUserPropsSpecHelper } from './generateUserProps.specHelper.js';
 import { signMeUpSpecHelper } from './signMeUp.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { MyUser } from '../../models/MyUser.js';
+import userFactory from '../factories/user.js';
 
 export const createMultipleUsersSpecHelper = async (
   props: Partial<MyUser>[] | number,
@@ -12,7 +12,7 @@ export const createMultipleUsersSpecHelper = async (
   const users: MyUser[] = [];
 
   if (!Array.isArray(props)) {
-    props = Array.from({ length: props }, () => generateUserPropsSpecHelper());
+    props = Array.from({ length: props }, () => userFactory.build());
   }
 
   for (let i = 0; i < 2; i++) {
