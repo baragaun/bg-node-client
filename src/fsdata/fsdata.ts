@@ -1,3 +1,13 @@
+import createChannel from './operations/channel/createChannel.js';
+import findChannels from './operations/channel/findChannels.js';
+import findMyChannels from './operations/channel/findMyChannels.js';
+import acceptChannelInvitation from './operations/channelInvitation/acceptChannelInvitation.js';
+import createChannelInvitation from './operations/channelInvitation/createChannelInvitation.js';
+import declineChannelInvitation from './operations/channelInvitation/declineChannelInvitation.js';
+import findChannelInvitationsForUser
+  from './operations/channelInvitation/findChannelInvitationsForUser.js';
+import createChannelMessage from './operations/channelMessage/createChannelMessage.js';
+import findChannelMessages from './operations/channelMessage/findChannelMessages.js';
 import findById from './operations/findById.js';
 import createMultiStepAction from './operations/multiStepAction/createMultiStepAction.js';
 import findMyActiveMultiStepActions from './operations/multiStepAction/findMyActiveMultiStepActions.js';
@@ -23,6 +33,21 @@ const fsdata = {
   findById,
   pollForUpdatedObject,
 
+  channel: {
+    createChannel,
+    findChannels,
+    findMyChannels,
+  },
+  channelInvitation: {
+    acceptChannelInvitation,
+    createChannelInvitation,
+    declineChannelInvitation,
+    findChannelInvitationsForUser,
+  },
+  channelMessage: {
+    createChannelMessage,
+    findChannelMessages,
+  },
   myUser: {
     deleteMyUser,
     endMySession,

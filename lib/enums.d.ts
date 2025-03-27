@@ -270,3 +270,23 @@ export declare enum BgNodeClientUiErrorCode {
     notFound = "notFound",
     unauthorized = "unauthorized"
 }
+export declare enum IncludeFilterOption {
+    include = "include",
+    exclude = "exclude",
+    only = "only"
+}
+export declare enum SortDirection {
+    asc = "asc",
+    desc = "desc"
+}
+export declare enum ChannelInvitationDirection {
+    received = "received",
+    sent = "sent"
+}
+export declare enum DeclineChannelInvitationReasonTextId {
+    fakeProfile = "fakeProfile",
+    inappropriate = "inappropriate",
+    noReason = "noReason",
+    notGoodFit = "notGoodFit",
+    tooBusy = "tooBusy"
+}

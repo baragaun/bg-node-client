@@ -16,4 +16,5 @@ export interface Db {
     isConnected: () => boolean;
     replace: <T extends Model = Model>(obj: T, modelType?: ModelType) => Promise<MutationResult<T>>;
     update: <T extends Model = Model>(changes: Partial<T>, modelType?: ModelType) => Promise<MutationResult<T>>;
+    upsert: <T extends Model = Model>(changes: Partial<T>, modelType?: ModelType) => Promise<MutationResult<T>>;
 }

@@ -11,6 +11,7 @@ import isConnected from "./isConnected.js";
 import replace from "./replace.js";
 import update from "./update.js";
 import { Db } from "../types/Db.js";
+import upsert from './upsert.js';
 
 const db: Db = {
   close,
@@ -25,6 +26,7 @@ const db: Db = {
   // libSignalStores: db.getLibSignalStores,
   replace,
   update,
+  upsert,
 };
 
 export default db;

@@ -322,3 +322,26 @@ export enum BgNodeClientUiErrorCode {
   unauthorized = 'unauthorized',
 }
 
+export enum IncludeFilterOption {
+  include = 'include',
+  exclude = 'exclude',
+  only = 'only',
+}
+
+export enum SortDirection {
+  asc = 'asc',
+  desc = 'desc',
+}
+
+export enum ChannelInvitationDirection {
+  received = 'received',
+  sent = 'sent'
+}
+
+export enum DeclineChannelInvitationReasonTextId {
+  fakeProfile = 'fakeProfile',
+  inappropriate = 'inappropriate',
+  noReason = 'noReason',
+  notGoodFit = 'notGoodFit',
+  tooBusy = 'tooBusy'
+}
