@@ -52,8 +52,6 @@ describe('operations.myUser.signInWithToken', () => {
     expect(clientInfo2.myUserId).toBeUndefined();
     expect(clientInfo2.authToken).toBeUndefined();
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     // Start sign in process
     const signInResponse = await client.operations.myUser.signInWithToken(
       email,

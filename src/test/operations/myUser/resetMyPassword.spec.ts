@@ -48,8 +48,6 @@ describe('operations.myUser.resetMyPassword', () => {
       signUpUserAuthResponse.userAuthResponse.authToken,
     );
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     // Start sign in process
     const response1 = await client.operations.myUser.resetMyPassword(email, {
       polling: { enabled: true },
@@ -120,7 +118,7 @@ describe('operations.myUser.resetMyPassword', () => {
             expect(action.result).toBe(MultiStepActionResult.ok);
             expect(action.userId).toBe(myUserId);
 
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            // await new Promise((resolve) => setTimeout(resolve, 1000));
 
             // Verify the email has been marked as confirmed on the remote user object:
             const myUser = await client.operations.myUser.findMyUser({

@@ -46,8 +46,6 @@ describe('operations.myUser.verifyMyEmail', () => {
       signUpUserAuthResponse.userAuthResponse.authToken,
     );
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
     // Step 1: Start sign in process
     const signInResponse = await client.operations.myUser.verifyMyEmail(email, {
       polling: { enabled: true },
@@ -117,7 +115,7 @@ describe('operations.myUser.verifyMyEmail', () => {
             expect(action.result).toBe(MultiStepActionResult.ok);
             expect(action.userId).toBe(myUserId);
 
-            await new Promise((resolve) => setTimeout(resolve, 1000));
+            // await new Promise((resolve) => setTimeout(resolve, 1000));
 
             // Verify the email has been marked as confirmed on the remote user object:
             const myUser = await client.operations.myUser.findMyUser({
