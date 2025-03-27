@@ -1,39 +1,20 @@
 import { describe, expect, test } from 'vitest';
 
-import { CachePolicy, ModelType } from '../../../enums.js';
-import { Channel } from '../../../models/Channel.js';
-import findById from '../../../operations/findById.js';
 import factories from '../../factories/factories.js';
 import clientStore from '../../helpers/clientStore.js';
+import { createChannelSpecHelper } from '../../helpers/createChannel.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 
 describe('operations.channel.createChannel', () => {
   test('should create a channel with the given properties', async () => {
     const client = await clientStore.getTestClient();
-    const channelProps = await factories.channel.build({});
+    const props = factories.channel.build({});
 
-    const user = await signMeUpSpecHelper(
-      undefined,
-      false,
-      client,
-    );
-    expect(user).toBeDefined();
+    expect(client).toBeDefined();
 
-    const { object: channel } =
-      await client.operations.channel.createChannel(channelProps);
-    const { object: reloadedChannel, error } = await findById<Channel>(
-      channel.id,
-      ModelType.Channel,
-      {
-        cachePolicy: CachePolicy.cache,
-      },
-    );
-
-    expect(error).toBeUndefined();
-    expect(reloadedChannel.id).toBe(channel.id);
-    expect(reloadedChannel.name).toBe(channel.name);
-    expect(reloadedChannel.topic).toBe(channel.topic);
-    expect(reloadedChannel.description).toBe(channel.description);
-    expect(reloadedChannel.channelType).toBe(channel.channelType);
+    await signMeUpSpecHelper(undefined, false, client);
+    await createChannelSpecHelper(props, client);
+    await deleteMyUserSpecHelper(client);
   });
 });

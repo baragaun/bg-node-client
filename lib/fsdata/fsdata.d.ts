@@ -17,16 +17,19 @@ declare const fsdata: {
         findChannelMessages: (filter: import("./gql/graphql.js").ChannelListFilter | undefined, match: import("./gql/graphql.js").ChannelInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
     };
     myUser: {
+        blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<import("../index.js").MyUser>>;
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<void>;
         endMySession: () => Promise<void>;
         findAvailableUserHandle: (startValue: string) => Promise<string>;
         findMyUser: () => Promise<import("../index.js").MyUser | null>;
         isUserIdentAvailable: (userIdent: string, identType: import("../enums.js").UserIdentType) => Promise<boolean>;
+        reportUser: (userId: string, reasonTextId: import("./gql/graphql.js").ReportUserReasonTextId, messageText: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<void>>;
         signInUser: (input: import("../index.js").SignInUserInput) => Promise<import("../index.js").UserAuthResponse>;
         signMeOut: () => Promise<void>;
         signUpUser: (input: import("../index.js").SignUpUserInput) => Promise<import("../index.js").UserAuthResponse>;
         startMySession: () => Promise<void>;
         startMySessionV2: () => Promise<import("../index.js").ContentStatus | null>;
+        unblockUserForMe: (userId: string, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<import("../index.js").MyUser>>;
         updateMyUser: (changes: import("./gql/graphql.js").MyUserInput, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<import("../index.js").MyUser>>;
     };
     multiStepAction: {

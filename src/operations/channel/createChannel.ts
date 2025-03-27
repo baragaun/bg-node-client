@@ -1,11 +1,11 @@
 import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
+import { ChannelInput } from '../../fsdata/gql/graphql.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import { Channel } from '../../models/Channel.js';
 import { MutationResult } from '../../types/MutationResult.js';
-import fsdata from '../../fsdata/fsdata.js';
-import { ChannelInput } from '../../fsdata/gql/graphql.js';
 
 const createChannel = async (
   props: Partial<Channel>,

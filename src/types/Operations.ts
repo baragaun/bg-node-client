@@ -1,5 +1,5 @@
 import {
-  ModelType, NotificationMethod,
+  ModelType, NotificationMethod, ReportUserReasonTextId as ReportUserReasonTextIdFromClient,
   UserIdentType as UserIdentTypeFromClient,
 } from '../enums.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
@@ -140,6 +140,13 @@ export interface Operations {
   };
 
   myUser: {
+    blockUserForMe: (
+      userId: string,
+      reasonTextId: string | undefined,
+      notes: string | undefined,
+      queryOptions: QueryOptions | undefined,
+    ) => Promise<MutationResult<MyUser>>
+
     deleteMyUser: (
       cause: string | null | undefined,
       description: string | null | undefined,
@@ -157,6 +164,13 @@ export interface Operations {
       userIdent: string,
       identType: UserIdentTypeFromClient,
     ) => Promise<boolean>;
+
+    reportUserForMe: (
+      userId: string,
+      reasonTextId: ReportUserReasonTextIdFromClient,
+      messageText: string | undefined,
+      queryOptions: QueryOptions | undefined,
+    ) => Promise<MutationResult<void>>
 
     resetMyPassword: (
       userIdent: string,
@@ -180,6 +194,11 @@ export interface Operations {
     startMySession: () => Promise<void>;
     startMySessionV2: () => Promise<void>;
 
+    unblockUserForMe: (
+      userId: string,
+      queryOptions: QueryOptions | undefined,
+    ) => Promise<MutationResult<MyUser>>;
+
     updateMyUser: (
       myUser: Partial<MyUser>,
       queryOptions?: QueryOptions,
@@ -189,7 +208,7 @@ export interface Operations {
       oldPassword: string,
       newPassword: string,
       queryOptions: QueryOptions,
-    ) => Promise<MutationResult<MyUser>>
+    ) => Promise<MutationResult<MyUser>>;
 
     verifyMyEmail: (
       email: string,

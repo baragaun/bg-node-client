@@ -10,8 +10,8 @@ import insert from "./insert.js";
 import isConnected from "./isConnected.js";
 import replace from "./replace.js";
 import update from "./update.js";
-import { Db } from "../types/Db.js";
 import upsert from './upsert.js';
+import { Db } from "../types/Db.js";
 
 const db: Db = {
   close,

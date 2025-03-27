@@ -6,7 +6,9 @@ export declare enum ModelEventType {
 }
 export declare enum ChannelType {
     unset = "unset",
-    test = "test"
+    mentoring = "mentoring",
+    support = "support",
+    welcome = "welcome"
 }
 export declare enum ChannelMessageType {
     unset = "unset",
@@ -289,4 +291,18 @@ export declare enum DeclineChannelInvitationReasonTextId {
     noReason = "noReason",
     notGoodFit = "notGoodFit",
     tooBusy = "tooBusy"
+}
+export declare enum ReportUserReasonTextId {
+    badActor = "badActor",
+    fakePerson = "fakePerson",
+    harasses = "harasses",
+    impersonator = "impersonator",
+    inappropriate = "inappropriate",
+    notSet = "notSet",
+    objectionableLanguage = "objectionableLanguage",
+    promotesHate = "promotesHate",
+    sharesObjectionableContent = "sharesObjectionableContent",
+    spammer = "spammer",
+    usesObjectionableLanguage = "usesObjectionableLanguage",
+    violatesRules = "violatesRules"
 }

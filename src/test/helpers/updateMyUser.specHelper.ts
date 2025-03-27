@@ -11,7 +11,7 @@ export const updateMyUserSpecHelper = async (
   changes: Partial<MyUserInput>,
   client: BgNodeClient,
 ): Promise<boolean> => {
-  logger.debug('BgServiceApiCheck.updateMyUser: calling API/signUpUser',
+  logger.debug('BgServiceApiCheck.updateMyUser: calling API/updateMyUser',
     { changes });
 
   logger.debug('BgServiceApiCheck.updateMyUser: calling API/updateMyUser');

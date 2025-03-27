@@ -1,14 +1,14 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import { Channel } from '../../models/Channel.js';
 import { ChannelListFilter } from '../../models/ChannelListFilter.js';
+import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
-import fsdata from '../../fsdata/fsdata.js';
-import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
 
 const findMyChannels = async (
   filter: ChannelListFilter,
