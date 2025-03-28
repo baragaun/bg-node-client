@@ -1,15 +1,15 @@
 import { expect } from 'vitest';
 
+import { getTestUserPropsSpecHelper } from './getTestUserProps.specHelper.js';
 import { signMeOutSpecHelper } from './signMeOut.specHelper.js';
-import { userPasswordSpecHelper } from './userPassword.specHelper.js';
 import { verifyUserPropsSpecHelper } from './verifyUserProps.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { CachePolicy } from '../../enums.js';
-import chance, { uniqueEmail, uniqueUserHandle } from '../../helpers/chance.js';
-import libData from '../../helpers/libData.js';
+import chance from '../../helpers/chance.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
 import { SignUpUserInput } from '../../types/SignUpUserInput.js';
+import userFactory from '../factories/user.js';
 
 export const signMeUpSpecHelper = async (
   props: Partial<MyUser> | undefined,
@@ -19,18 +19,21 @@ export const signMeUpSpecHelper = async (
   logger.debug('BgServiceApiCheck.createMyUser: calling API/signUpUser',
     { props });
 
-  const password = userPasswordSpecHelper(props) || chance.string({ length: 8});
+  props = userFactory.build(props);
+
+
+  const testUserProps = getTestUserPropsSpecHelper(props);
+  if (!testUserProps.password) {
+    testUserProps.password = chance.string({ length: 8 });
+  }
 
   const input: SignUpUserInput = {
-    firstName: props?.firstName || chance.first(),
-    lastName: props?.lastName || chance.last(),
-    userHandle: props?.userHandle || uniqueUserHandle(),
-    email: props?.email || uniqueEmail(
-      libData.config()?.testEmailPrefix || 'test',
-      libData.config()?.testEmailDomain || 'test.com',
-    ),
-    password,
-    source: props?.source || 'testtoken=666666',
+    firstName: props.firstName,
+    lastName: props.lastName,
+    userHandle: props.userHandle,
+    email: props.email,
+    password: testUserProps.password,
+    source: props.source,
     isTestUser: true,
   }
 
@@ -69,10 +72,6 @@ export const signMeUpSpecHelper = async (
       source: input.source,
     },
   );
-
-  if (!myUser.adminNotes) {
-    myUser.adminNotes = JSON.stringify({ password });
-  }
 
   if (signOut) {
     await signMeOutSpecHelper(client);

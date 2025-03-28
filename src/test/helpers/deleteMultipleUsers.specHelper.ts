@@ -1,6 +1,6 @@
 import { deleteMyUserSpecHelper } from './deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from './getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from './signMeIn.specHelper.js';
-import { userPasswordSpecHelper } from './userPassword.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
@@ -15,7 +15,7 @@ export const deleteMultipleUsersSpecHelper = async (
     logger.debug(`deleteMultipleUsersSpecHelper: signing in user #${i}`);
     await signMeInSpecHelper(
       users[i].email as string,
-      userPasswordSpecHelper(users[i]),
+      getTestUserPropsSpecHelper(users[i]).password,
       client,
     );
 

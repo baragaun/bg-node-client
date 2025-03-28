@@ -4,59 +4,40 @@ import {
   CachePolicy,
   MultiStepActionEventType,
   MultiStepActionResult,
-  UserIdentType,
+  MultiStepActionType,
 } from '../../../enums.js';
-import chance, {
-  uniqueEmail,
-  uniqueUserHandle,
-} from '../../../helpers/chance.js';
+import chance from '../../../helpers/chance.js';
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
 import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
+import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 
 describe('operations.myUser.resetMyPassword', () => {
   test('should verify a correct token', async () => {
     const client = await clientStore.getTestClient();
 
-    // Set up test user
-    const firstName = chance.first();
-    const lastName = chance.last();
-    const userHandle = uniqueUserHandle();
-    const email = uniqueEmail();
-    const password = chance.word();
-    const newPassword = chance.word();
-    const token = '666666';
+    const myUser = await signMeUpSpecHelper(undefined, true, client);
+    const myUserId = myUser.id;
+    const { msaToken } = getTestUserPropsSpecHelper(myUser);
+    const newPassword = chance.string({ length: 8 });
 
-    const { object: signUpUserAuthResponse } =
-      await client.operations.myUser.signUpUser({
-        userHandle,
-        firstName,
-        lastName,
-        email,
-        password,
-        isTestUser: true,
-        source: `testtoken=${token}`, // this causes all confirmation tokens to be set to '666666'
-      });
-    const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
-
-    // Verify we are signed in:
-    const clientInfo1 = await client.clientInfoStore.load();
-    expect(clientInfo1.myUserId).toBe(
-      signUpUserAuthResponse.userAuthResponse.userId,
+    // Start reset password process
+    const response1 = await client.operations.myUser.resetMyPassword(
+      myUser.email,
+      {
+        polling: { enabled: true },
+      },
     );
-    expect(clientInfo1.authToken).toBe(
-      signUpUserAuthResponse.userAuthResponse.authToken,
-    );
-
-    // Start sign in process
-    const response1 = await client.operations.myUser.resetMyPassword(email, {
-      polling: { enabled: true },
-    });
 
     expect(response1.error).toBeUndefined();
     expect(response1.object).toBeDefined();
     expect(response1.object.actionProgress).toBeDefined();
     expect(response1.object.run).toBeDefined();
+    expect(response1.object.run.actionId).toBeDefined();
+    expect(response1.object.actionProgress.userId).toBe(myUserId);
+    expect(response1.object.actionProgress.actionType).toBe(MultiStepActionType.resetPassword);
     expect(response1.object.error).toBeUndefined();
 
     const actionId = response1.object.actionProgress.actionId;
@@ -84,7 +65,7 @@ describe('operations.myUser.resetMyPassword', () => {
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
                 actionId,
-                token,
+                msaToken,
                 newPassword,
               );
 
@@ -100,7 +81,7 @@ describe('operations.myUser.resetMyPassword', () => {
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
                 actionId,
-                token,
+                msaToken,
                 newPassword,
               );
 
@@ -121,19 +102,17 @@ describe('operations.myUser.resetMyPassword', () => {
             // await new Promise((resolve) => setTimeout(resolve, 1000));
 
             // Verify the email has been marked as confirmed on the remote user object:
-            const myUser = await client.operations.myUser.findMyUser({
+            const reloadedMyUser = await client.operations.myUser.findMyUser({
               cachePolicy: CachePolicy.network,
             });
 
-            expect(myUser.id).toBe(myUserId);
-            expect(myUser.id).toBe(client.myUserId);
-            expect(myUser.userHandle).toBe(userHandle);
-            expect(myUser.firstName).toBe(firstName);
-            expect(myUser.lastName).toBe(lastName);
-            expect(myUser.email).toBe(email);
-            expect(
-              Date.now() - new Date(myUser.passwordUpdatedAt).getTime(),
-            ).toBeLessThan(10000);
+            expect(reloadedMyUser.id).toBe(myUserId);
+            expect(reloadedMyUser.id).toBe(client.myUserId);
+            expect(reloadedMyUser.userHandle).toBe(myUser.userHandle);
+            expect(reloadedMyUser.firstName).toBe(myUser.firstName);
+            expect(reloadedMyUser.lastName).toBe(myUser.lastName);
+            expect(reloadedMyUser.email).toBe(myUser.email);
+            expect(Date.now() - new Date(reloadedMyUser.passwordUpdatedAt).getTime()).toBeLessThan(10000);
 
             // Verify the email has been marked as confirmed on the cached user object:
             const myUserFromCache = await client.operations.myUser.findMyUser({
@@ -142,13 +121,11 @@ describe('operations.myUser.resetMyPassword', () => {
 
             expect(myUserFromCache.id).toBe(myUserId);
             expect(myUserFromCache.id).toBe(client.myUserId);
-            expect(myUserFromCache.userHandle).toBe(userHandle);
-            expect(myUserFromCache.firstName).toBe(firstName);
-            expect(myUserFromCache.lastName).toBe(lastName);
-            expect(myUserFromCache.email).toBe(email);
-            expect(
-              Date.now() - new Date(myUser.passwordUpdatedAt).getTime(),
-            ).toBeLessThan(10000);
+            expect(myUserFromCache.userHandle).toBe(myUser.userHandle);
+            expect(myUserFromCache.firstName).toBe(myUser.firstName);
+            expect(myUserFromCache.lastName).toBe(myUser.lastName);
+            expect(myUserFromCache.email).toBe(myUser.email);
+            expect(Date.now() - new Date(myUserFromCache.passwordUpdatedAt).getTime()).toBeLessThan(10000);
 
             // Signing out the user, so we can test to sign in again with the new password:
             await client.operations.myUser.signMeOut();
@@ -158,29 +135,7 @@ describe('operations.myUser.resetMyPassword', () => {
             expect(clientInfo1.authToken).toBeUndefined();
 
             // Signing in with the new password:
-            const signInUserResponse =
-              await client.operations.myUser.signInUser({
-                ident: email,
-                identType: UserIdentType.email,
-                password: newPassword,
-              });
-
-            expect(signInUserResponse.error).toBeUndefined();
-            expect(signInUserResponse.object.userAuthResponse).toBeDefined();
-            expect(signInUserResponse.object.userAuthResponse.userId).toBe(
-              myUserId,
-            );
-            expect(
-              signInUserResponse.object.userAuthResponse.authToken.length,
-            ).toBeGreaterThan(10);
-            expect(signInUserResponse.object.myUser).toBeDefined();
-            expect(signInUserResponse.object.myUser.id).toBe(myUserId);
-            expect(signInUserResponse.object.myUser.userHandle).toBe(
-              userHandle,
-            );
-            expect(signInUserResponse.object.myUser.firstName).toBe(firstName);
-            expect(signInUserResponse.object.myUser.lastName).toBe(lastName);
-            expect(signInUserResponse.object.myUser.email).toBe(email);
+            await signMeInSpecHelper(myUser.email, newPassword, client);
 
             await deleteMyUserSpecHelper(client);
 

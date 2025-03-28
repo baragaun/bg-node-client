@@ -5,9 +5,9 @@ import chance from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
 import { createMultipleUsersSpecHelper } from '../../helpers/createMultipleUsers.specHelper.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
 import { reportUserForMeSpecHelper } from '../../helpers/reportUserForMe.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
-import { userPasswordSpecHelper } from '../../helpers/userPassword.specHelper.js';
 
 describe('operations.myUser.reportUserForMe', () => {
   test('should report another user', async () => {
@@ -17,7 +17,7 @@ describe('operations.myUser.reportUserForMe', () => {
 
     const users = await createMultipleUsersSpecHelper(2, client);
 
-    await signMeInSpecHelper(users[0].email, userPasswordSpecHelper(users[0]), client);
+    await signMeInSpecHelper(users[0].email, getTestUserPropsSpecHelper(users[0]).password, client);
 
     await reportUserForMeSpecHelper(
       users[1].id,

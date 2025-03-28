@@ -5,8 +5,8 @@ import { blockUserForMeSpecHelper } from '../../helpers/blockUserForMe.specHelpe
 import clientStore from '../../helpers/clientStore.js';
 import { createMultipleUsersSpecHelper } from '../../helpers/createMultipleUsers.specHelper.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
-import { userPasswordSpecHelper } from '../../helpers/userPassword.specHelper.js';
 
 describe('operations.myUser.blockUserForMe', () => {
   test('should add a UserBlock object to myUser', async () => {
@@ -16,7 +16,7 @@ describe('operations.myUser.blockUserForMe', () => {
 
     const users = await createMultipleUsersSpecHelper(2, client);
 
-    await signMeInSpecHelper(users[0].email, userPasswordSpecHelper(users[0]), client);
+    await signMeInSpecHelper(users[0].email, getTestUserPropsSpecHelper(users[0]).password, client);
 
     const response = await blockUserForMeSpecHelper(users[1].id, reasonTextId, notes, client);
 

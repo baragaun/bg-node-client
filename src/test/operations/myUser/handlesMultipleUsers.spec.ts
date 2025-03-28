@@ -7,8 +7,8 @@ import findById from '../../../operations/findById.js';
 import clientStore from '../../helpers/clientStore.js';
 import { createMultipleUsersSpecHelper } from '../../helpers/createMultipleUsers.specHelper.js';
 import { deleteMultipleUsersSpecHelper } from '../../helpers/deleteMultipleUsers.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
 import { signMeOutSpecHelper } from '../../helpers/signMeOut.specHelper.js';
-import { userPasswordSpecHelper } from '../../helpers/userPassword.specHelper.js';
 
 describe('operations.myUser.signInUser', () => {
   test('handles multiple users', async () => {
@@ -28,7 +28,7 @@ describe('operations.myUser.signInUser', () => {
       const signInUserResponse = await client.operations.myUser.signInUser({
         ident: user.email,
         identType: UserIdentType.email,
-        password: userPasswordSpecHelper(user),
+        password: getTestUserPropsSpecHelper(user).password,
       });
 
       const myUserId = signInUserResponse.object.userAuthResponse.userId;

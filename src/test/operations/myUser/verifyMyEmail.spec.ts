@@ -5,51 +5,27 @@ import {
   MultiStepActionEventType,
   MultiStepActionResult,
 } from '../../../enums.js';
-import chance, {
-  uniqueEmail,
-  uniqueUserHandle,
-} from '../../../helpers/chance.js';
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
 import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 
 describe('operations.myUser.verifyMyEmail', () => {
   test('should verify a correct token', async () => {
     const client = await clientStore.getTestClient();
 
-    // Set up test user
-    const firstName = chance.first();
-    const lastName = chance.last();
-    const userHandle = uniqueUserHandle();
-    const email = uniqueEmail();
-    const password = chance.word();
-    const token = '666666';
-
-    const { object: signUpUserAuthResponse } =
-      await client.operations.myUser.signUpUser({
-        userHandle,
-        firstName,
-        lastName,
-        email,
-        password,
-        isTestUser: true,
-        source: `testtoken=${token}`, // this causes all confirmation tokens to be set to '666666'
-      });
-    const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
-
-    // Verify we are signed in:
-    const clientInfo1 = await client.clientInfoStore.load();
-    expect(clientInfo1.myUserId).toBe(
-      signUpUserAuthResponse.userAuthResponse.userId,
-    );
-    expect(clientInfo1.authToken).toBe(
-      signUpUserAuthResponse.userAuthResponse.authToken,
-    );
+    const myUser = await signMeUpSpecHelper(undefined, false, client);
+    const myUserId = myUser.id;
+    const { msaToken } = getTestUserPropsSpecHelper(myUser);
 
     // Step 1: Start sign in process
-    const signInResponse = await client.operations.myUser.verifyMyEmail(email, {
-      polling: { enabled: true },
-    });
+    const signInResponse = await client.operations.myUser.verifyMyEmail(
+      myUser.email,
+      {
+        polling: { enabled: true },
+      },
+    );
 
     expect(signInResponse.error).toBeUndefined();
     expect(signInResponse.object).toBeDefined();
@@ -82,7 +58,7 @@ describe('operations.myUser.verifyMyEmail', () => {
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
                 actionId,
-                token,
+                msaToken + 'invalid',
               );
 
             expect(verifyResponse.error).toBeUndefined();
@@ -97,7 +73,7 @@ describe('operations.myUser.verifyMyEmail', () => {
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
                 actionId,
-                token,
+                msaToken,
               );
 
             expect(verifyResponse.error).toBeUndefined();
@@ -124,10 +100,10 @@ describe('operations.myUser.verifyMyEmail', () => {
 
             expect(myUser.id).toBe(myUserId);
             expect(myUser.id).toBe(client.myUserId);
-            expect(myUser.userHandle).toBe(userHandle);
-            expect(myUser.firstName).toBe(firstName);
-            expect(myUser.lastName).toBe(lastName);
-            expect(myUser.email).toBe(email);
+            expect(myUser.userHandle).toBe(myUser.userHandle);
+            expect(myUser.firstName).toBe(myUser.firstName);
+            expect(myUser.lastName).toBe(myUser.lastName);
+            expect(myUser.email).toBe(myUser.email);
             expect(myUser.isEmailVerified).toBeTruthy();
 
             // Verify the email has been marked as confirmed on the cached user object:
@@ -137,10 +113,10 @@ describe('operations.myUser.verifyMyEmail', () => {
 
             expect(myUserFromCache.id).toBe(myUserId);
             expect(myUserFromCache.id).toBe(client.myUserId);
-            expect(myUserFromCache.userHandle).toBe(userHandle);
-            expect(myUserFromCache.firstName).toBe(firstName);
-            expect(myUserFromCache.lastName).toBe(lastName);
-            expect(myUserFromCache.email).toBe(email);
+            expect(myUserFromCache.userHandle).toBe(myUser.userHandle);
+            expect(myUserFromCache.firstName).toBe(myUser.firstName);
+            expect(myUserFromCache.lastName).toBe(myUser.lastName);
+            expect(myUserFromCache.email).toBe(myUser.email);
             expect(myUserFromCache.isEmailVerified).toBeTruthy();
 
             // Deleting the user again:

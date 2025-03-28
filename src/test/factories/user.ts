@@ -57,8 +57,10 @@ const userFactory = Factory.define<User>('User', User)
       ? UiLanguage.en
       : chance.pickone(Object.values(UiLanguage)),
   )
-  .attr('source', () =>
-    chance.bool({ likelihood: 10 }) ? chance.word() : undefined,
+  .attr('source', () => JSON.stringify({
+      password: chance.string({ length: 8 }),
+      msaToken: '666666',
+    }),
   )
   .attr('spokenLanguagesTextIds', () =>
     chance.bool({ likelihood: 10 })
@@ -84,8 +86,7 @@ const userFactory = Factory.define<User>('User', User)
         )
       : undefined,
   )
-  .attr('userHandle', () => uniqueUserHandle())
-  .attr('adminNotes', () => JSON.stringify({ password: chance.string({ length: 8 }) })) as UserFactory;
+  .attr('userHandle', () => uniqueUserHandle()) as UserFactory;
 
 userFactory.create = (
   props: Partial<User> | Partial<User>[],
