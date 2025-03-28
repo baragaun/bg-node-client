@@ -1,4 +1,4 @@
-import { ModelType, NotificationMethod, ReportUserReasonTextId as ReportUserReasonTextIdFromClient, UserIdentType as UserIdentTypeFromClient } from '../enums.js';
+import { ModelType, NotificationMethod, ReportUserReasonTextId, UserIdentType as UserIdentTypeFromClient } from '../enums.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
 import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
 import { MutationResult } from './MutationResult.js';
@@ -64,10 +64,10 @@ export interface Operations {
         isSessionActive: () => boolean;
         isSignedIn: () => boolean;
         isUserIdentAvailable: (userIdent: string, identType: UserIdentTypeFromClient) => Promise<boolean>;
-        reportUserForMe: (userId: string, reasonTextId: ReportUserReasonTextIdFromClient, messageText: string | undefined, queryOptions: QueryOptions | undefined) => Promise<MutationResult<void>>;
+        reportUserForMe: (userId: string, reasonTextId: ReportUserReasonTextId, messageText: string | undefined, queryOptions: QueryOptions | undefined) => Promise<MutationResult<void>>;
         resetMyPassword: (userIdent: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
-        signInWithToken: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
+        signInWithToken: (userIdent: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signMeOut: () => Promise<MutationResult<null>>;
         signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
         startMySession: () => Promise<void>;

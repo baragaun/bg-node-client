@@ -57,7 +57,7 @@ const loadClientInfo = async (): Promise<ClientInfo | null> => {
   );
 
   if (queryResult && queryResult.object) {
-    return queryResult.object;
+    return new ClientInfo(queryResult.object);
   }
 
   return null;

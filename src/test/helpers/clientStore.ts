@@ -36,8 +36,8 @@ const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
         },
       },
       fsdata: {
-        // url: 'http://localhost:8092/fsdata/api/graphql',
-        url: 'http://localhost:3000/mmdata/api/graphql',
+        url: 'http://localhost:8092/fsdata/api/graphql',
+        // url: 'http://localhost:3000/mmdata/api/graphql',
         headers: {
           [HttpHeaderName.consumer]: 'test',
         },

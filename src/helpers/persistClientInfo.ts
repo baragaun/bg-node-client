@@ -20,7 +20,7 @@ const persistClientInfo = async (
 
   if (
     !newClientInfo.myUserId &&
-    newClientInfo.myUserId !== null &&
+    clientInfo.myUserId !== null &&
     existingClientInfo?.myUserId
   ) {
     newClientInfo.myUserId = existingClientInfo.myUserId;
@@ -33,7 +33,7 @@ const persistClientInfo = async (
 
   if (
     !newClientInfo.authToken &&
-    newClientInfo.authToken !== null &&
+    clientInfo.authToken !== null &&
     existingClientInfo?.authToken
   ) {
     newClientInfo.authToken = existingClientInfo.authToken;
@@ -41,7 +41,7 @@ const persistClientInfo = async (
 
   if (
     !newClientInfo.signedOutUserId &&
-    newClientInfo.signedOutUserId !== null &&
+    clientInfo.signedOutUserId !== null &&
     existingClientInfo?.signedOutUserId
   ) {
     newClientInfo.signedOutUserId = existingClientInfo.signedOutUserId;
@@ -49,7 +49,7 @@ const persistClientInfo = async (
 
   if (
     !newClientInfo.localContentStatus &&
-    newClientInfo.localContentStatus !== null &&
+    clientInfo.localContentStatus !== null &&
     existingClientInfo?.localContentStatus
   ) {
     newClientInfo.localContentStatus = existingClientInfo.localContentStatus;
@@ -57,7 +57,7 @@ const persistClientInfo = async (
 
   if (
     !newClientInfo.remoteContentStatus &&
-    newClientInfo.remoteContentStatus !== null &&
+    clientInfo.remoteContentStatus !== null &&
     existingClientInfo?.remoteContentStatus
   ) {
     newClientInfo.remoteContentStatus = existingClientInfo.remoteContentStatus;
@@ -127,6 +127,7 @@ const persistClientInfo = async (
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // DB:
+  // console.log('>>>>>>>>>Replacing ClientInfo', { newClientInfo });
   const mutationResult = await db.replace<ClientInfo>(
     newClientInfo,
     ModelType.ClientInfo,
@@ -137,7 +138,7 @@ const persistClientInfo = async (
     throw new Error(mutationResult.error);
   }
 
-  return mutationResult.object;
+  return new ClientInfo(mutationResult.object);
 };
 
 export default persistClientInfo;
