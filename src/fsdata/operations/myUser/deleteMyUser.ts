@@ -51,7 +51,8 @@ const deleteMyUser = async (
 
     ok = response.deleteMyUser === myUserId;
   } catch (error) {
-    logger.error('deleteMyUser failed.', { error, headers: helpers.headers() });
+    logger.error('deleteMyUser failed.',
+      { error: error.messages, stack: error.stack, headers: helpers.headers() });
     return null;
   }
 

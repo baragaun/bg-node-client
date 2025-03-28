@@ -6,7 +6,7 @@ import chance, {
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('signUpUser', () => {
   test('should sign up a user with valid input', async () => {
@@ -83,6 +83,6 @@ describe('signUpUser', () => {
     expect(findMyUserResponse.lastName).toBe(lastName);
     expect(findMyUserResponse.email).toBe(email);
 
-    await deleteMyUser(client2);
+    await deleteMyUserSpecHelper(client2);
   });
 }, 120000);

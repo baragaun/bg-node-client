@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import { CachePolicy } from '../../../enums.js';
 import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.findMyUser', () => {
   test('should return the cached user from the local db', async () => {
@@ -35,6 +35,6 @@ describe('operations.myUser.findMyUser', () => {
     expect(myUserFromNetwork.userHandle).toBe(userHandle);
     expect(myUserFromNetwork.email).toBe(email);
 
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
   });
 });

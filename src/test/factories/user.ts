@@ -1,4 +1,3 @@
-// import * as Factory from 'factory.ts';
 import { Factory } from 'rosie';
 
 import { UserFactory } from './definitions.js';
@@ -7,6 +6,7 @@ import create from './helpers/create.js';
 import deleteFunc from './helpers/delete.js';
 import save from './helpers/save.js';
 import chance, { uniqueEmail, uniqueUserHandle } from '../../helpers/chance.js';
+import libData from '../../helpers/libData.js';
 import randomDate from '../../helpers/randomDate.js';
 import { LabeledStringValue } from '../../models/LabeledStringValue.js';
 import { User } from '../../models/User.js';
@@ -23,7 +23,10 @@ const userFactory = Factory.define<User>('User', User)
   )
   .attr('createdAt', () => randomDate())
   // .attr('discoverable', () => chance.bool({ likelihood: 99.5 }))
-  .sequence('email', () => uniqueEmail())
+  .sequence('email', () => uniqueEmail(
+    libData.config()?.testEmailPrefix || 'test',
+    libData.config()?.testEmailDomain || 'test.com',
+  ))
   .attr('fallbackUiLanguageTextId', () =>
     chance.bool({ likelihood: 80 })
       ? UiLanguage.en
@@ -54,8 +57,10 @@ const userFactory = Factory.define<User>('User', User)
       ? UiLanguage.en
       : chance.pickone(Object.values(UiLanguage)),
   )
-  .attr('source', () =>
-    chance.bool({ likelihood: 10 }) ? chance.word() : undefined,
+  .attr('source', () => JSON.stringify({
+      password: chance.string({ length: 8 }),
+      msaToken: '666666',
+    }),
   )
   .attr('spokenLanguagesTextIds', () =>
     chance.bool({ likelihood: 10 })

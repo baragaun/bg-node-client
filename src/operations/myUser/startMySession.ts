@@ -8,14 +8,15 @@ const startMySession = async (): Promise<void> => {
     throw new Error('not-initialized');
   }
 
-  try {
-    const contentStatus = await fsdata.myUser.startMySession();
+  const clientInfo = clientInfoStore.get();
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
+  }
 
-    if (contentStatus) {
-      const clientInfo = clientInfoStore.get();
-      clientInfo.remoteContentStatus = contentStatus;
-      clientInfoStore.sessionStarted();
-    }
+  try {
+    await fsdata.myUser.startMySession();
+
+    clientInfoStore.sessionStarted();
   } catch (error) {
     logger.error('startMySession: fsdata.myUser.startMySession failed', error);
     return null;

@@ -44,7 +44,8 @@ const findMyUser = async (): Promise<MyUser | null> => {
 
     return new MyUser(response.findMyUser);
   } catch (error) {
-    logger.error('findMyUser failed.', { error, headers: helpers.headers() });
+    const headers = helpers.headers();
+    logger.error('findMyUser failed.', { error, headers });
     return null;
   }
 };

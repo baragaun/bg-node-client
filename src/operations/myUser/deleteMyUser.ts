@@ -17,6 +17,10 @@ const deleteMyUser = async (
   const clientInfo = clientInfoStore.get();
   const signedOutUserId = clientInfo.myUserId || clientInfo.signedOutUserId;
 
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
+  }
+
   try {
     await fsdata.myUser.deleteMyUser(cause, description, deletePhysically);
 

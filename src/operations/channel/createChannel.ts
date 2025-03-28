@@ -1,20 +1,32 @@
 import db from '../../db/db.js';
-import { MutationType } from '../../enums.js';
+import { ModelType, MutationType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
+import { ChannelInput } from '../../fsdata/gql/graphql.js';
+import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import { Channel } from '../../models/Channel.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const createChannel = async (
-  attributes: Partial<Channel>,
+  props: Partial<Channel>,
 ): Promise<MutationResult<Channel>> => {
   if (!libData.isInitialized()) {
     throw new Error('not-initialized');
   }
 
-  try {
-    const channel = new Channel(attributes);
+  const clientInfo = clientInfoStore.get();
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
+  }
 
-    return db.insert<Channel>(channel);
+  try {
+    const result = await fsdata.channel.createChannel(props as unknown as ChannelInput);
+
+    if (!result.error || result.object) {
+      await db.insert<Channel>(result.object, ModelType.Channel);
+    }
+
+    return result;
   } catch (error) {
     return {
       operation: MutationType.create,

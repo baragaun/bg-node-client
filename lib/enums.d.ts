@@ -6,7 +6,9 @@ export declare enum ModelEventType {
 }
 export declare enum ChannelType {
     unset = "unset",
-    test = "test"
+    mentoring = "mentoring",
+    support = "support",
+    welcome = "welcome"
 }
 export declare enum ChannelMessageType {
     unset = "unset",
@@ -269,4 +271,38 @@ export declare enum BgNodeClientUiErrorCode {
     invalidInput = "invalidInput",
     notFound = "notFound",
     unauthorized = "unauthorized"
+}
+export declare enum IncludeFilterOption {
+    include = "include",
+    exclude = "exclude",
+    only = "only"
+}
+export declare enum SortDirection {
+    asc = "asc",
+    desc = "desc"
+}
+export declare enum ChannelInvitationDirection {
+    received = "received",
+    sent = "sent"
+}
+export declare enum DeclineChannelInvitationReasonTextId {
+    fakeProfile = "fakeProfile",
+    inappropriate = "inappropriate",
+    noReason = "noReason",
+    notGoodFit = "notGoodFit",
+    tooBusy = "tooBusy"
+}
+export declare enum ReportUserReasonTextId {
+    badActor = "badActor",
+    fakePerson = "fakePerson",
+    harasses = "harasses",
+    impersonator = "impersonator",
+    inappropriate = "inappropriate",
+    notSet = "notSet",
+    objectionableLanguage = "objectionableLanguage",
+    promotesHate = "promotesHate",
+    sharesObjectionableContent = "sharesObjectionableContent",
+    spammer = "spammer",
+    usesObjectionableLanguage = "usesObjectionableLanguage",
+    violatesRules = "violatesRules"
 }

@@ -180,8 +180,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   }
 
   const clientInfo = await clientInfoStore.load();
-
-  if (!clientInfo.myUserId) {
+  if (!clientInfo.isSignedIn) {
     return null;
   }
 

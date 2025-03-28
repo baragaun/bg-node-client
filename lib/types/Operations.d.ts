@@ -1,4 +1,4 @@
-import { ModelType, NotificationMethod, UserIdentType as UserIdentTypeFromClient } from '../enums.js';
+import { ModelType, NotificationMethod, ReportUserReasonTextId as ReportUserReasonTextIdFromClient, UserIdentType as UserIdentTypeFromClient } from '../enums.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
 import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
 import { MutationResult } from './MutationResult.js';
@@ -55,6 +55,7 @@ export interface Operations {
         updateChannelParticipant: (changes: Partial<ChannelParticipant>) => Promise<MutationResult<ChannelParticipant>>;
     };
     myUser: {
+        blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions: QueryOptions | undefined) => Promise<MutationResult<MyUser>>;
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<MutationResult<null>>;
         endMySession: () => Promise<void>;
         findAvailableUserHandle: (startValue: string) => Promise<string>;
@@ -63,12 +64,15 @@ export interface Operations {
         isSessionActive: () => boolean;
         isSignedIn: () => boolean;
         isUserIdentAvailable: (userIdent: string, identType: UserIdentTypeFromClient) => Promise<boolean>;
+        reportUserForMe: (userId: string, reasonTextId: ReportUserReasonTextIdFromClient, messageText: string | undefined, queryOptions: QueryOptions | undefined) => Promise<MutationResult<void>>;
         resetMyPassword: (userIdent: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
         signInWithToken: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signMeOut: () => Promise<MutationResult<null>>;
         signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
         startMySession: () => Promise<void>;
+        startMySessionV2: () => Promise<void>;
+        unblockUserForMe: (userId: string, queryOptions: QueryOptions | undefined) => Promise<MutationResult<MyUser>>;
         updateMyUser: (myUser: Partial<MyUser>, queryOptions?: QueryOptions) => Promise<MutationResult<MyUser>>;
         updateMyPassword: (oldPassword: string, newPassword: string, queryOptions: QueryOptions) => Promise<MutationResult<MyUser>>;
         verifyMyEmail: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;

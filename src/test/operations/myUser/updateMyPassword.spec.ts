@@ -6,7 +6,7 @@ import chance, {
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.updateMyPassword', () => {
   test('should update the password', async () => {
@@ -58,6 +58,6 @@ describe('operations.myUser.updateMyPassword', () => {
     expect(signInUserResponse.object.myUser).toBeDefined();
     expect(signInUserResponse.object.myUser.id).toBeDefined();
 
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
   });
 });

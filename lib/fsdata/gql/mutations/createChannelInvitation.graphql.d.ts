@@ -1,0 +1,2 @@
+declare const _default: "\nmutation M($input: ChannelInvitationInput!) {\n  createChannelInvitation(input: $input) {\n    id\n    adminNotes\n    createdAt\n    createdBy\n    updatedAt\n    updatedBy\n    deletedAt\n    deletedBy\n    channelId\n    recipientId\n    channelName\n    channelTopic\n    messageText\n    declineReasonTextId\n    dismissedFromInboxBySenderAt\n    dismissedFromInboxByRecipientAt\n    readByRecipientAt\n    status\n    suspendedAt\n    suspendedBy\n    userSearchId\n    searchRank\n  }\n}\n";
+export default _default;

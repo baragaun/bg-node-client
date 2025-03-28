@@ -1,1 +1,1 @@
-{"version":3,"file":"isSignedIn.js","sourceRoot":"","sources":["../../../src/operations/myUser/isSignedIn.ts"],"names":[],"mappings":"AAAA,OAAO,eAAe,MAAM,kCAAkC,CAAC;AAE/D,MAAM,UAAU,GAAG,GAAY,EAAE,CAAC,CAAC,CAAC,eAAe,CAAC,GAAG,EAAE,CAAC,SAAS,CAAC;AAEpE,eAAe,UAAU,CAAC"}
+{"version":3,"file":"isSignedIn.js","sourceRoot":"","sources":["../../../src/operations/myUser/isSignedIn.ts"],"names":[],"mappings":"AAAA,OAAO,eAAe,MAAM,kCAAkC,CAAC;AAE/D,MAAM,UAAU,GAAG,GAAY,EAAE,CAAC,CAAC,CAAC,eAAe,CAAC,GAAG,EAAE,CAAC,UAAU,CAAC;AAErE,eAAe,UAAU,CAAC"}

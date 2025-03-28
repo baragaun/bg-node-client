@@ -9,7 +9,7 @@ import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../models/MyUser.js';
 import findById from '../../../operations/findById.js';
 import clientStore from '../../helpers/clientStore.js';
-import deleteMyUser from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.signInUser', () => {
   test('should sign in a user with valid input', async () => {
@@ -97,6 +97,6 @@ describe('operations.myUser.signInUser', () => {
       signInUserResponse.object.userAuthResponse.authToken,
     );
 
-    await deleteMyUser(client);
+    await deleteMyUserSpecHelper(client);
   });
 });

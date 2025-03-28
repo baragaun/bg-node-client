@@ -109,7 +109,7 @@ const updateMyUser = async (
     result.object = fetchedMyUser;
     return result;
   } catch (error) {
-    logger.error('fsdata.updateMyUser: failed with error', { error, headers: helpers.headers()});
+    logger.error('fsdata.updateMyUser: failed with error', { error, headers: helpers.headers() });
     result.error = 'system-error';
     return result;
   }

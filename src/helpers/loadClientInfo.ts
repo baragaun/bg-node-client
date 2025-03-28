@@ -31,14 +31,14 @@ const loadClientInfo = async (): Promise<ClientInfo | null> => {
     persistType === ClientInfoStoreType.localStorage &&
     (typeof window === 'undefined' || !window.localStorage)
   ) {
-    const clientInfo: ClientInfo = {
+    const clientInfo: ClientInfo = new ClientInfo({
       id: 'default',
       myUserId: undefined,
       authToken: undefined,
       myUserDeviceUuid: undefined,
       signedOutUserId: undefined,
       createdAt: new Date().toISOString(),
-    };
+    });
 
     clientInfo.myUserId = window.localStorage.getItem('myUserId');
     clientInfo.authToken = window.localStorage.getItem('authToken');

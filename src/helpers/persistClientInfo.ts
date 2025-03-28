@@ -11,12 +11,12 @@ const persistClientInfo = async (
   const config = libData.config();
   const persistType = config.clientInfoStore?.type;
   const existingClientInfo = await loadClientInfo();
-  const newClientInfo: ClientInfo = {
+  const newClientInfo: ClientInfo = new ClientInfo({
     ...clientInfo,
     id: 'default',
     updatedAt: new Date().toISOString(),
     createdAt: existingClientInfo?.createdAt || new Date().toISOString(),
-  };
+  });
 
   if (
     !newClientInfo.myUserId &&
@@ -74,6 +74,8 @@ const persistClientInfo = async (
       { name: 'authToken', value: clientInfo.authToken },
       { name: 'myUserDeviceUuid', value: clientInfo.myUserDeviceUuid },
       { name: 'signedOutUserId', value: clientInfo.signedOutUserId },
+      { name: 'sessionEndedAt', value: clientInfo.sessionEndedAt.toString() },
+      { name: 'sessionStartedAt', value: clientInfo.sessionStartedAt.toString() },
     ].forEach((field) => {
       if (field.value === null) {
         window.localStorage.removeItem(field.name);
@@ -82,7 +84,7 @@ const persistClientInfo = async (
       }
     });
 
-    return { ...existingClientInfo, ...clientInfo };
+    return new ClientInfo({ ...existingClientInfo, ...clientInfo });
   }
 
   // Removing empty props:
@@ -104,6 +106,14 @@ const persistClientInfo = async (
 
   if (!newClientInfo.remoteContentStatus) {
     delete newClientInfo.remoteContentStatus;
+  }
+
+  if (!newClientInfo.sessionEndedAt) {
+    delete newClientInfo.sessionEndedAt;
+  }
+
+  if (!newClientInfo.sessionStartedAt) {
+    delete newClientInfo.sessionStartedAt;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

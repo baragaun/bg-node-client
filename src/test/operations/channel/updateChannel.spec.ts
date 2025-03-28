@@ -1,34 +1,25 @@
 import { describe, expect, test } from 'vitest';
 
-import { CachePolicy, ModelType } from '../../../enums.js';
-import { Channel } from '../../../models/Channel.js';
-import findById from '../../../operations/findById.js';
 import factories from '../../factories/factories.js';
 import clientStore from '../../helpers/clientStore.js';
+import { createChannelSpecHelper } from '../../helpers/createChannel.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
+import { updateChannelSpecHelper } from '../../helpers/updateChannel.specHelper.js';
 
 describe('operations.channel.updateChannel', () => {
   test('should update channel properties', async () => {
     const client = await clientStore.getTestClient();
-    const channelProps = await factories.channel.build({});
+    const props = await factories.channel.build({});
 
-    const { object: channel } =
-      await client.operations.channel.createChannel(channelProps);
+    expect(client).toBeDefined();
 
-    await client.operations.channel.updateChannel({
+    await signMeUpSpecHelper(undefined, false, client);
+    const channel = await createChannelSpecHelper(props, client);
+    const updatedChannel = await updateChannelSpecHelper({
       id: channel.id,
       name: 'newname',
-    });
+    }, client);
 
-    const { object: updatedChannel, error: updateError } =
-      await findById<Channel>(channel.id, ModelType.Channel, {
-        cachePolicy: CachePolicy.cache,
-      });
-
-    expect(updateError).toBeUndefined();
-    expect(updatedChannel.id).toBe(channel.id);
     expect(updatedChannel.name).toBe('newname');
-    expect(updatedChannel.topic).toBe(channelProps.topic);
-    expect(updatedChannel.description).toBe(channelProps.description);
-    expect(updatedChannel.channelType).toBe(channelProps.channelType);
   });
 });

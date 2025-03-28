@@ -3,25 +3,30 @@ import { Opentelemetry } from 'graffle/extensions/opentelemetry';
 import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-// import { create } from '../../graffle/fsdata/_.js'
-
+import clientInfoStore from '../../../helpers/clientInfoStore.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { ContentStatus } from '../../../models/ContentStatus.js';
-import { MutationStartMySessionV2Args } from '../../gql/graphql.js';
+import { MutationStartMySessionArgs } from '../../gql/graphql.js';
 import startMySessionGql from '../../gql/mutations/startMySession.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
-type StartMySessionResponse = { startMySessionV2: ContentStatus };
+type StartMySessionResponse = { startMySession: string };
 
 // see: https://graffle.js.org/guides/topics/requests
-const startMySession = async (): Promise<ContentStatus | null> => {
+const startMySession = async (): Promise<void> => {
   const config = libData.config();
+  const clientInfo = clientInfoStore.get();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
     throw new Error('unavailable');
   }
+
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
+  }
+
+  const deviceUuid = clientInfo.myUserDeviceUuid;
 
   const client = Graffle.create()
     .transport({
@@ -33,20 +38,18 @@ const startMySession = async (): Promise<ContentStatus | null> => {
 
   const document = parse(startMySessionGql) as TypedQueryDocumentNode<
     StartMySessionResponse,
-    MutationStartMySessionV2Args
+    MutationStartMySessionArgs
   >;
 
   try {
     const response = (await client
       // @ts-ignore
       .gql(document)
-      .send({ returnContentStatus: true })) as { startMySessionV2: ContentStatus };
+      .send({ deviceUuid })) as { startMySession: string };
 
-    if (!response.startMySessionV2) {
+    if (response.startMySession != 'ok') {
       return null;
     }
-
-    return new ContentStatus(response.startMySessionV2);
   } catch (error) {
     logger.error('startMySession failed.', { error, headers: helpers.headers() });
     return null;

@@ -18,10 +18,14 @@ const updateMyUser = async (
     throw new Error('not-initialized');
   }
 
+  const clientInfo = clientInfoStore.get();
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
+  }
+
   const result: MutationResult<MyUser | null> = {
     operation: MutationType.update,
   };
-  const clientInfo = clientInfoStore.get();
 
   if (!queryOptions) {
     queryOptions = defaultQueryOptionsForMutations;

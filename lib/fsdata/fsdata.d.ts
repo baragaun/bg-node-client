@@ -1,16 +1,35 @@
 declare const fsdata: {
     findById: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType) => Promise<T | null>;
     pollForUpdatedObject: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, options: import("../index.js").QueryOptions) => Promise<T | null>;
+    channel: {
+        createChannel: (input: import("./gql/graphql.js").ChannelInput) => Promise<import("../index.js").MutationResult<import("../index.js").Channel>>;
+        findChannels: (filter: import("./gql/graphql.js").ChannelListFilter | undefined, match: Partial<import("../index.js").Channel> | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        findMyChannels: (options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+    };
+    channelInvitation: {
+        acceptChannelInvitation: (channelInvitationId: string) => Promise<import("../index.js").MutationResult<void>>;
+        createChannelInvitation: (input: import("./gql/graphql.js").ChannelInvitationInput) => Promise<import("../index.js").MutationResult<import("../index.js").ChannelInvitation>>;
+        declineChannelInvitation: (channelInvitationId: string, reasonTextId: import("../enums.js").DeclineChannelInvitationReasonTextId) => Promise<import("../index.js").MutationResult<void>>;
+        findChannelInvitationsForUser: (userId: string, onlyUnseen: boolean, onlyPending: boolean, direction: import("../enums.js").ChannelInvitationDirection, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+    };
+    channelMessage: {
+        createChannelMessage: (input: import("./gql/graphql.js").ChannelMessageInput) => Promise<import("../index.js").MutationResult<import("../index.js").ChannelMessage>>;
+        findChannelMessages: (filter: import("./gql/graphql.js").ChannelListFilter | undefined, match: import("./gql/graphql.js").ChannelInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+    };
     myUser: {
+        blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<import("../index.js").MyUser>>;
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<void>;
         endMySession: () => Promise<void>;
         findAvailableUserHandle: (startValue: string) => Promise<string>;
         findMyUser: () => Promise<import("../index.js").MyUser | null>;
         isUserIdentAvailable: (userIdent: string, identType: import("../enums.js").UserIdentType) => Promise<boolean>;
+        reportUser: (userId: string, reasonTextId: import("./gql/graphql.js").ReportUserReasonTextId, messageText: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<void>>;
         signInUser: (input: import("../index.js").SignInUserInput) => Promise<import("../index.js").UserAuthResponse>;
         signMeOut: () => Promise<void>;
         signUpUser: (input: import("../index.js").SignUpUserInput) => Promise<import("../index.js").UserAuthResponse>;
-        startMySession: () => Promise<import("../index.js").ContentStatus | null>;
+        startMySession: () => Promise<void>;
+        startMySessionV2: () => Promise<import("../index.js").ContentStatus | null>;
+        unblockUserForMe: (userId: string, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<import("../index.js").MyUser>>;
         updateMyUser: (changes: import("./gql/graphql.js").MyUserInput, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").MutationResult<import("../index.js").MyUser>>;
     };
     multiStepAction: {

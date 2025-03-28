@@ -28,15 +28,16 @@ const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
             return info;
           },
           load: async (): Promise<ClientInfo> => {
-            return _clientInfo || {
+            return _clientInfo || new ClientInfo({
               id: 'default',
               createdAt: new Date().toISOString(),
-            };
+            });
           },
         },
       },
       fsdata: {
-        url: 'http://localhost:8092/fsdata/api/graphql',
+        // url: 'http://localhost:8092/fsdata/api/graphql',
+        url: 'http://localhost:3000/mmdata/api/graphql',
         headers: {
           [HttpHeaderName.consumer]: 'test',
         },

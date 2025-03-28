@@ -51,4 +51,9 @@ export interface Db {
     changes: Partial<T>,
     modelType?: ModelType,
   ) => Promise<MutationResult<T>>;
+
+  upsert: <T extends Model = Model>(
+    changes: Partial<T>,
+    modelType?: ModelType,
+  ) => Promise<MutationResult<T>>;
 }

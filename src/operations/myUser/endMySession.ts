@@ -8,6 +8,11 @@ const endMySession = async (): Promise<void> => {
     throw new Error('not-initialized');
   }
 
+  const clientInfo = clientInfoStore.get();
+  if (!clientInfo.isSignedIn) {
+    throw new Error('not-authorized');
+  }
+
   try {
     await fsdata.myUser.endMySession();
     clientInfoStore.sessionEnded();
