@@ -1,5 +1,7 @@
 import {
-  ModelType, NotificationMethod, ReportUserReasonTextId as ReportUserReasonTextIdFromClient,
+  ModelType,
+  NotificationMethod,
+  ReportUserReasonTextId,
   UserIdentType as UserIdentTypeFromClient,
 } from '../enums.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
@@ -167,7 +169,7 @@ export interface Operations {
 
     reportUserForMe: (
       userId: string,
-      reasonTextId: ReportUserReasonTextIdFromClient,
+      reasonTextId: ReportUserReasonTextId,
       messageText: string | undefined,
       queryOptions: QueryOptions | undefined,
     ) => Promise<MutationResult<void>>
@@ -182,7 +184,7 @@ export interface Operations {
     ) => Promise<MutationResult<SignInSignUpResponse>>;
 
     signInWithToken: (
-      email: string,
+      userIdent: string,
       queryOptions: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
