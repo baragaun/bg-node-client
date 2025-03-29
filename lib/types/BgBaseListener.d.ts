@@ -1,12 +1,14 @@
 import { MutationResult } from './MutationResult.js';
+import { BgListenerTopic } from '../enums.js';
 import { Channel } from '../models/Channel.js';
 import { ChannelInvitation } from '../models/ChannelInvitation.js';
 import { ChannelMessage } from '../models/ChannelMessage.js';
 /**
  * Interface representing a listener for channel events.
  */
-export interface BgDataListener {
+export interface BgBaseListener {
     id: string;
+    topic: BgListenerTopic;
     channelId?: string;
     channelMessageId?: string;
     onChannelCreated?: (result: MutationResult<Channel>) => void;

@@ -185,8 +185,8 @@ export interface Operations {
 
     signInWithToken: (
       userIdent: string,
-      queryOptions: QueryOptions,
-    ) => Promise<QueryResult<MultiStepActionProgressResult>>;
+      queryOptions: QueryOptions | undefined,
+    ) => Promise<MutationResult<MultiStepActionProgressResult>>;
 
     signMeOut: () => Promise<MutationResult<null>>;
     signUpUser: (

@@ -1,11 +1,12 @@
 import db from '../../db/db.js';
-import { CachePolicy, ModelType } from '../../enums.js';
+import { BgListenerTopic, CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
+import { BgMyUserListener } from '../../types/BgMyUserListener.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 
 const findMyUser = async (
@@ -50,6 +51,15 @@ const findMyUser = async (
       await db.replace<MyUser>(myUser, ModelType.MyUser);
 
       clientInfoStore.updateMyUserUpdatedAt(new Date(myUser.updatedAt).getTime());
+
+      for (const listener of libData.listeners()) {
+        if (
+          listener.topic === BgListenerTopic.myUser &&
+          typeof (listener as BgMyUserListener).onMyUserUpdated === 'function'
+        ) {
+          (listener as BgMyUserListener).onMyUserUpdated(myUser);
+        }
+      }
     }
 
     return myUser;

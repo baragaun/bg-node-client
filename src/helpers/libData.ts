@@ -1,10 +1,10 @@
 import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
-import { BgDataListener } from '../types/BgDataListener.js';
+import { BgBaseListener } from '../types/BgBaseListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 
 let _isInitialized = false;
 let _config: BgNodeClientConfig | undefined;
-let _listeners: BgDataListener[] = [];
+let _listeners: BgBaseListener[] = [];
 const _multiStepActionRuns = new Map<string, MultiStepActionRun>();
 
 const libData = {
@@ -22,13 +22,13 @@ const libData = {
   },
 
   config: (): BgNodeClientConfig => _config,
-  listeners: (): BgDataListener[] => _listeners,
+  listeners: (): BgBaseListener[] => _listeners,
 
   setConfig: (config: BgNodeClientConfig): void => {
     _config = config;
   },
 
-  setListeners: (listeners: BgDataListener[]): void => {
+  setListeners: (listeners: BgBaseListener[]): void => {
     _listeners = listeners;
   },
 
@@ -36,7 +36,7 @@ const libData = {
    * Subscribe to channel events.
    * @param listener - The listener to be added.
    */
-  addListener(listener: BgDataListener): void {
+  addListener(listener: BgBaseListener): void {
     if (_listeners.some((l) => l.id === listener.id)) {
       throw new Error(`Listener with id ${listener.id} already exists.`);
     }

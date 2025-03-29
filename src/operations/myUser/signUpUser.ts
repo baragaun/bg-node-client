@@ -1,10 +1,11 @@
 import findMyUser from './findMyUser.js';
-import { CachePolicy, MutationType } from '../../enums.js';
+import { BgListenerTopic, CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
+import { BgMyUserListener } from '../../types/BgMyUserListener.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
 import { SignUpUserInput } from '../../types/SignUpUserInput.js';
@@ -43,6 +44,15 @@ const signUpUser = async (
       cachePolicy: CachePolicy.network,
       polling: { enabled: false },
     });
+
+    for (const listener of libData.listeners()) {
+      if (
+        listener.topic === BgListenerTopic.myUser &&
+        typeof (listener as BgMyUserListener).onSignedIn === 'function'
+      ) {
+        (listener as BgMyUserListener).onSignedIn();
+      }
+    }
 
     return {
       operation: MutationType.create,

@@ -1,4 +1,4 @@
-import clearMyUserFromClientInfo from './clearMyUserFromClientInfo.js';
+import clearMyUserFromClientInfoFnc from './clearMyUserFromClientInfo.js';
 import loadClientInfo from './loadClientInfo.js';
 import logger from './logger.js';
 import persistClientInfo from './persistClientInfo.js';
@@ -76,7 +76,10 @@ const sessionStarted = (): void => {
 };
 
 const clientInfoStore = {
-  clearMyUserFromClientInfo,
+  clearMyUserFromClientInfo: async (signedOutUserId?: string): Promise<ClientInfo> => {
+    _clientInfo = await clearMyUserFromClientInfoFnc(signedOutUserId);
+    return _clientInfo;
+  },
   close,
   get,
   load,

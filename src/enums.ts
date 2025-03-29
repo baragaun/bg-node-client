@@ -1,5 +1,10 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 
+export enum BgListenerTopic {
+  channel = 'channel',
+  myUser = 'myUser',
+}
+
 export enum ModelEventType {
   error = 'error',
   warning = 'warning',
