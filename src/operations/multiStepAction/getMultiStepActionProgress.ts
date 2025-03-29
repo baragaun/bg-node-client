@@ -1,4 +1,5 @@
 import {
+  BgListenerTopic,
   CachePolicy,
   MultiStepActionEventType,
   MultiStepActionResult,
@@ -12,6 +13,7 @@ import logger from '../../helpers/logger.js';
 import persistClientInfo from '../../helpers/persistClientInfo.js';
 import { MultiStepActionRun } from '../../models/MultiStepActionRun.js';
 import { SidMultiStepActionProgress } from '../../models/SidMultiStepActionProgress.js';
+import { BgMyUserListener } from '../../types/BgMyUserListener.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
@@ -149,6 +151,15 @@ const getMultiStepActionProgress = async (
 
         // Fetching a fresh copy of the user:
         await findMyUser({ cachePolicy: CachePolicy.network });
+
+        for (const listener of libData.listeners()) {
+          if (
+            listener.topic === BgListenerTopic.myUser &&
+            typeof (listener as BgMyUserListener).onSignedIn === 'function'
+          ) {
+            (listener as BgMyUserListener).onSignedIn();
+          }
+        }
       }
 
       if (success) {

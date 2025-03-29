@@ -1,9 +1,10 @@
 import findMyUser from './findMyUser.js';
-import { CachePolicy, MutationType } from '../../enums.js';
+import { BgListenerTopic, CachePolicy, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import { BgMyUserListener } from '../../types/BgMyUserListener.js';
 import { MutationResult } from '../../types/MutationResult.js';
 import { SignInInput } from '../../types/SignInInput.js';
 import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
@@ -24,7 +25,7 @@ const signInUser = async (
         input,
       });
       return {
-        operation: MutationType.create,
+        operation: MutationType.update,
         error: 'system error',
       };
     }
@@ -43,14 +44,23 @@ const signInUser = async (
       polling: { enabled: false },
     });
 
+    for (const listener of libData.listeners()) {
+      if (
+        listener.topic === BgListenerTopic.myUser &&
+        typeof (listener as BgMyUserListener).onSignedIn === 'function'
+      ) {
+        (listener as BgMyUserListener).onSignedIn();
+      }
+    }
+
     return {
-      operation: MutationType.create,
+      operation: MutationType.update,
       object: { userAuthResponse, myUser },
     };
   } catch (error) {
     logger.error('signInUser failed.', error);
     return {
-      operation: MutationType.create,
+      operation: MutationType.update,
       error: (error as Error).message,
     };
   }

@@ -1,4 +1,8 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
+export declare enum BgListenerTopic {
+    channel = "channel",
+    myUser = "myUser"
+}
 export declare enum ModelEventType {
     error = "error",
     warning = "warning",

@@ -3,7 +3,7 @@ import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { Logger } from './types/logger.js';
 export declare class BgNodeClient {
     init(config: BgNodeClientConfig, myUserId?: string, myUserDeviceUuid?: string, appLogger?: Logger): Promise<BgNodeClient>;
-    addListener: (listener: import("./index.js").BgDataListener) => void;
+    addListener: (listener: import("./index.js").BgBaseListener) => void;
     operations: import("./index.js").Operations;
     removeListener: (id: string) => void;
     setConfig: (config: BgNodeClientConfig) => void;

@@ -1,8 +1,9 @@
-import { MutationType } from '../../enums.js';
+import { BgListenerTopic, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import { BgMyUserListener } from '../../types/BgMyUserListener.js';
 import { MutationResult } from '../../types/MutationResult.js';
 
 const signMeOut = async (): Promise<MutationResult<null>> => {
@@ -22,6 +23,15 @@ const signMeOut = async (): Promise<MutationResult<null>> => {
     // Removing the signed-in user info from local storage; leaving
     // the deviceUuid untouched.
     await clientInfoStore.clearMyUserFromClientInfo(signedOutUserId);
+
+    for (const listener of libData.listeners()) {
+      if (
+        listener.topic === BgListenerTopic.myUser &&
+        typeof (listener as BgMyUserListener).onSignedOut === 'function'
+      ) {
+        (listener as BgMyUserListener).onSignedOut();
+      }
+    }
 
     return {
       operation: MutationType.update,

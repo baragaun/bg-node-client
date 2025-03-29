@@ -1,19 +1,19 @@
 import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
-import { BgDataListener } from '../types/BgDataListener.js';
+import { BgBaseListener } from '../types/BgBaseListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 declare const libData: {
     isInitialized: () => boolean;
     setInitialized: (isInitialized: boolean) => void;
     close: () => void;
     config: () => BgNodeClientConfig;
-    listeners: () => BgDataListener[];
+    listeners: () => BgBaseListener[];
     setConfig: (config: BgNodeClientConfig) => void;
-    setListeners: (listeners: BgDataListener[]) => void;
+    setListeners: (listeners: BgBaseListener[]) => void;
     /**
      * Subscribe to channel events.
      * @param listener - The listener to be added.
      */
-    addListener(listener: BgDataListener): void;
+    addListener(listener: BgBaseListener): void;
     /**
      * Unsubscribes from channel events.
      * @param id the ID of the listener to be removed.

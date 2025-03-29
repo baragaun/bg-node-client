@@ -67,7 +67,7 @@ export interface Operations {
         reportUserForMe: (userId: string, reasonTextId: ReportUserReasonTextId, messageText: string | undefined, queryOptions: QueryOptions | undefined) => Promise<MutationResult<void>>;
         resetMyPassword: (userIdent: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signInUser: (input: SignInInput) => Promise<MutationResult<SignInSignUpResponse>>;
-        signInWithToken: (userIdent: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
+        signInWithToken: (userIdent: string, queryOptions: QueryOptions | undefined) => Promise<MutationResult<MultiStepActionProgressResult>>;
         signMeOut: () => Promise<MutationResult<null>>;
         signUpUser: (input: SignUpUserInput) => Promise<MutationResult<SignInSignUpResponse>>;
         startMySession: () => Promise<void>;
