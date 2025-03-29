@@ -4,29 +4,33 @@ import {
 } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { ReportUserReasonTextId } from '../../fsdata/gql/graphql.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { MutationResult } from '../../types/MutationResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const reportUserForMe = async (
   userId: string,
   reasonTextId: ReportUserReasonTextIdFromClient,
   messageText: string | undefined,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
-): Promise<MutationResult<void>> => {
+): Promise<QueryResult<void>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('reportUserForMe: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    return { error: 'unauthorized' };
   }
 
-  const result: MutationResult<void> = {
+  if (libData.isOffline() && !libData.config().enableMockMode) {
+    logger.error('reportUserForMe: offline');
+    return { error: 'offline' };
+  }
+
+  const result: QueryResult<void> = {
     operation: MutationType.create,
   };
 

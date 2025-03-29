@@ -1,3 +1,4 @@
+import { ClientInfoStore } from '../ClientInfoStore.js';
 import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
 import { BgBaseListener } from '../types/BgBaseListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
@@ -6,8 +7,13 @@ declare const libData: {
     setInitialized: (isInitialized: boolean) => void;
     close: () => void;
     config: () => BgNodeClientConfig;
+    clientInfoStore: () => ClientInfoStore;
+    isOffline: () => boolean;
+    isOnline: () => boolean;
     listeners: () => BgBaseListener[];
     setConfig: (config: BgNodeClientConfig) => void;
+    setIsOffline: (isOffline: boolean) => void;
+    setClientInfoStore: (clientInfoStore: ClientInfoStore) => void;
     setListeners: (listeners: BgBaseListener[]) => void;
     /**
      * Subscribe to channel events.

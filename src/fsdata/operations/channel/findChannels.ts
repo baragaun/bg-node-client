@@ -26,11 +26,9 @@ const findChannels = async (
   match: Partial<Channel> | undefined,
   options: FindObjectsOptionsFromClient,
 ): Promise<QueryResult<Channel>> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+  if (!libData.isInitialized()) {
+    logger.error('findChannels: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -64,11 +62,8 @@ const findChannels = async (
       objects: response.findChannels.map((channel) => new Channel(channel)),
     }
   } catch (error) {
-    logger.error('fsdata.findChannels: error', {
-      error,
-      headers: helpers.headers(),
-    });
-    return null;
+    logger.error('fsdata.findChannels: error', { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

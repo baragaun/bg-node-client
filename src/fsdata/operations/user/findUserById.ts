@@ -5,17 +5,23 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { MyUser } from '../../../models/MyUser.js';
-import findUserByIdGql from '../../gql/queries/findUserById.graphql.js';
+import { User } from '../../../models/User.js';
+import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
+import { QueryResult } from '../../../types/QueryResult.js';
+import { FindObjectsOptions, InputMaybe, QueryFindUserByIdArgs } from '../../gql/graphql.js';
+import gql from '../../gql/queries/findUserById.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
-// see: https://graffle.js.org/guides/topics/requests
-const findUserById = async (): Promise<MyUser | null> => {
-  const config = libData.config();
+type ResponseDataType = { findUserById: User | null };
 
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+// see: https://graffle.js.org/guides/topics/requests
+const findUserById = async (
+  userId: string,
+  options: FindObjectsOptionsFromClient,
+): Promise<QueryResult<User>> => {
+  if (!libData.isInitialized()) {
+    logger.error('findUserById: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -26,25 +32,27 @@ const findUserById = async (): Promise<MyUser | null> => {
     .use(Throws())
     .use(Opentelemetry());
 
-  const document = parse(findUserByIdGql) as TypedQueryDocumentNode<{
-    findMyUser: MyUser | null;
-  }>;
+  const document = parse(gql) as TypedQueryDocumentNode<
+    ResponseDataType,
+    QueryFindUserByIdArgs
+  >;
+  const args: QueryFindUserByIdArgs = {
+    id: userId,
+    options: options as unknown as InputMaybe<FindObjectsOptions>,
+  }
 
   try {
     const response = (await client
       // @ts-ignore
       .gql(document)
-      .send()) as { findMyUser: MyUser | null };
+      .send(args)) as ResponseDataType;
 
     logger.debug('fsdata.findUserById: response received.', response);
 
-    return response.findMyUser;
+    return { object: response.findUserById };
   } catch (error) {
-    logger.error('fsdata.findMyUser: error', {
-      error,
-      headers: helpers.headers(),
-    });
-    return null;
+    logger.error('fsdata.findMyUser: error', { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

@@ -1,5 +1,5 @@
 import { Channel } from '../../../models/Channel.js';
-import { MutationResult } from '../../../types/MutationResult.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { ChannelInput } from '../../gql/graphql.js';
-declare const createChannel: (input: ChannelInput) => Promise<MutationResult<Channel>>;
+declare const createChannel: (input: ChannelInput) => Promise<QueryResult<Channel>>;
 export default createChannel;

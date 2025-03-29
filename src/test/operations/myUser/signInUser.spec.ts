@@ -74,7 +74,7 @@ describe('operations.myUser.signInUser', () => {
     expect(clientInfo3.authToken).toBe(
       signInUserResponse.object.userAuthResponse.authToken,
     );
-    expect(client.operations.myUser.isSignedIn()).toBeTruthy();
+    expect(client.isSignedIn).toBeTruthy();
 
     // Verifying the myUser object in the local cache/db:
     const findMyUserResult = await findById<MyUser>(

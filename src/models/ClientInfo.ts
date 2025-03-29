@@ -44,6 +44,10 @@ export class ClientInfo extends Model {
         this.sessionEndedAt = attributes.sessionEndedAt;
       }
     }
+
+    if (!this.myUserDeviceUuid) {
+      this.myUserDeviceUuid = ClientInfo.createDeviceUuid();
+    }
   }
 
   public get isSignedIn(): boolean {

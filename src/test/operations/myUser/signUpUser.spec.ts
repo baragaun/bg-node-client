@@ -28,6 +28,7 @@ describe('signUpUser', () => {
       isTestUser: true,
     });
     const myUserId = signUpResponse.object.userAuthResponse.userId
+    const clientInfo1 = client1.clientInfoStore.clientInfo
 
     expect(signUpResponse.error).toBeUndefined();
     expect(signUpResponse.object).toBeDefined();
@@ -41,19 +42,28 @@ describe('signUpUser', () => {
 
     // Before reloading the client info:
     expect(client1.myUserId).toBe(myUserId);
-    expect(client1.clientInfoStore.get().authToken).toBe(signUpResponse.object.userAuthResponse.authToken);
-    expect(client1.myUserDeviceUuid).toBe(myUserDeviceUuid);
-    expect(client1.operations.myUser.isSignedIn()).toBeTruthy();
-
-    // Reloading the client info:
-    const clientInfo1 = await client1.clientInfoStore.load();
-
+    expect(client1.isSignedIn).toBeTruthy();
     expect(clientInfo1.myUserId).toBe(myUserId);
     expect(clientInfo1.authToken).toBe(signUpResponse.object.userAuthResponse.authToken);
     expect(clientInfo1.myUserDeviceUuid).toBe(myUserDeviceUuid);
-    expect(client1.operations.myUser.isSignedIn()).toBeTruthy();
 
-    await client1.clientInfoStore.persist();
+    // Reloading the client info:
+    const clientInfo2 = await client1.clientInfoStore.load();
+
+    expect(client1.myUserId).toBe(myUserId);
+    expect(client1.isSignedIn).toBeTruthy();
+    expect(clientInfo2.myUserId).toBe(myUserId);
+    expect(clientInfo2.authToken).toBe(signUpResponse.object.userAuthResponse.authToken);
+    expect(clientInfo2.myUserDeviceUuid).toBe(myUserDeviceUuid);
+
+    await client1.clientInfoStore.save();
+    const clientInfo3 = await client1.clientInfoStore.clientInfo;
+
+    expect(client1.myUserId).toBe(myUserId);
+    expect(client1.isSignedIn).toBeTruthy();
+    expect(clientInfo3.myUserId).toBe(myUserId);
+    expect(clientInfo3.authToken).toBe(signUpResponse.object.userAuthResponse.authToken);
+    expect(clientInfo3.myUserDeviceUuid).toBe(myUserDeviceUuid);
 
     // Closing the client to simulate the closing of the app:
     await (async (): Promise<void> => {
@@ -64,13 +74,13 @@ describe('signUpUser', () => {
 
     // Creating a new client to verify the user info has been persisted:
     const client2 = await clientStore.getTestClient(true);
+    const clientInfo4 = await client2.clientInfoStore.load();
 
-    const clientInfo2 = await client2.clientInfoStore.load();
-
-    expect(clientInfo2.myUserId).toBe(myUserId);
-    expect(clientInfo2.authToken).toBe(signUpResponse.object.userAuthResponse.authToken);
-    expect(clientInfo2.myUserDeviceUuid).toBe(myUserDeviceUuid);
-    expect(client2.operations.myUser.isSignedIn()).toBeTruthy();
+    expect(client2.myUserId).toBe(myUserId);
+    expect(client2.isSignedIn).toBeTruthy();
+    expect(clientInfo4.myUserId).toBe(myUserId);
+    expect(clientInfo4.authToken).toBe(signUpResponse.object.userAuthResponse.authToken);
+    expect(clientInfo4.myUserDeviceUuid).toBe(myUserDeviceUuid);
 
     // Verifying the cached user:
     const findMyUserResponse = await client2.operations.myUser.findMyUser(
@@ -78,10 +88,12 @@ describe('signUpUser', () => {
     );
 
     expect(findMyUserResponse).toBeDefined();
-    expect(findMyUserResponse.userHandle).toBe(userHandle);
-    expect(findMyUserResponse.firstName).toBe(firstName);
-    expect(findMyUserResponse.lastName).toBe(lastName);
-    expect(findMyUserResponse.email).toBe(email);
+    expect(findMyUserResponse.error).toBeUndefined();
+    expect(findMyUserResponse.object).toBeDefined();
+    expect(findMyUserResponse.object.userHandle).toBe(userHandle);
+    expect(findMyUserResponse.object.firstName).toBe(firstName);
+    expect(findMyUserResponse.object.lastName).toBe(lastName);
+    expect(findMyUserResponse.object.email).toBe(email);
 
     await deleteMyUserSpecHelper(client2);
   });

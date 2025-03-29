@@ -90,7 +90,7 @@ export declare enum ChannelInvitationStatus {
 export declare enum ClientInfoStoreType {
     localStorage = "localStorage",
     db = "db",
-    delegated = "delegated"
+    inMemory = "inMemory"
 }
 export declare enum UserRole {
     admin = "admin",

@@ -34,9 +34,17 @@ export const updateMyUserSpecHelper = async (
   );
 
   // Verifying the local user object:
-  const myUserFromCache = await client.operations.myUser.findMyUser({
+  const findMyUserFromCacheResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
+
+  if (findMyUserFromCacheResult.error || !findMyUserFromCacheResult.object) {
+    logger.error('BgServiceApiCheck.updateMyUser: failed to find my user from cache',
+      { findMyUserFromCacheResult });
+    return false; // Indicate failure
+  }
+
+  const myUserFromCache = findMyUserFromCacheResult.object;
 
   expect(myUserFromCache?.id).toBe(changes.id);
 
@@ -46,12 +54,13 @@ export const updateMyUserSpecHelper = async (
   );
 
   // Verifying the remote user object:
-  const myUserFromNetwork = await client.operations.myUser.findMyUser({
+  const findMyUserFromNetworkResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.network,
   });
 
-  expect(myUserFromNetwork).toBeDefined();
-  expect(myUserFromNetwork?.id).toBe(changes.id);
+  expect(findMyUserFromNetworkResult).toBeDefined();
+  expect(findMyUserFromNetworkResult.error).toBeUndefined();
+  expect(findMyUserFromNetworkResult.object?.id).toBe(changes.id);
 
   verifyUserPropsSpecHelper(
     updateUserResponse.object as Partial<MyUser>,

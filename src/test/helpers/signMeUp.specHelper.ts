@@ -16,11 +16,9 @@ export const signMeUpSpecHelper = async (
   signOut: boolean,
   client: BgNodeClient,
 ): Promise<MyUser | null> => {
-  logger.debug('BgServiceApiCheck.createMyUser: calling API/signUpUser',
-    { props });
+  logger.debug('BgServiceApiCheck.createMyUser: calling API/signUpUser', { props });
 
   props = userFactory.build(props);
-
 
   const testUserProps = getTestUserPropsSpecHelper(props);
   if (!testUserProps.password) {
@@ -43,8 +41,9 @@ export const signMeUpSpecHelper = async (
     { signUpUserAuthResponse });
 
   expect(signUpUserAuthResponse.error).toBeUndefined();
+  expect(signUpUserAuthResponse.object).toBeDefined();
 
-  const authResponse = signUpUserAuthResponse.object?.userAuthResponse;
+  const authResponse = signUpUserAuthResponse.object.userAuthResponse;
   const myUserId = authResponse.userId;
 
   expect(authResponse).toBeDefined();
@@ -56,10 +55,13 @@ export const signMeUpSpecHelper = async (
   expect(clientInfo1.authToken).toBeDefined();
   expect(clientInfo1.myUserDeviceUuid).toBeDefined();
 
-  const myUser = await client.operations.myUser.findMyUser({
+  const findMyUserResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
+  const myUser = findMyUserResult.object;
 
+  expect(findMyUserResult.error).toBeUndefined();
+  expect(findMyUserResult.object).toBeDefined();
   expect(myUser).toBeDefined();
 
   verifyUserPropsSpecHelper(

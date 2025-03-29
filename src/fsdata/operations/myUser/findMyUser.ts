@@ -8,16 +8,15 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../models/MyUser.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import findMyUserGql from '../../gql/queries/findMyUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const findMyUser = async (): Promise<MyUser | null> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+const findMyUser = async (): Promise<QueryResult<MyUser>> => {
+  if (!libData.isInitialized()) {
+    logger.error('findMyUser: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -39,14 +38,15 @@ const findMyUser = async (): Promise<MyUser | null> => {
       .send()) as { findMyUser: MyUser | null };
 
     if (!response.findMyUser) {
-      return null;
+      logger.error('fsdata.findMyUser: not found.')
+      return { error: 'not-found' };
     }
 
-    return new MyUser(response.findMyUser);
+    return { object: new MyUser(response.findMyUser) };
   } catch (error) {
     const headers = helpers.headers();
     logger.error('findMyUser failed.', { error, headers });
-    return null;
+    return { error: (error as Error).message };
   }
 };
 

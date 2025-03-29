@@ -1,40 +1,52 @@
-import { BgListenerTopic, MutationType } from '../../enums.js';
+import db from '../../db/db.js';
+import { BgListenerTopic, ModelType, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { BgMyUserListener } from '../../types/BgMyUserListener.js';
-import { MutationResult } from '../../types/MutationResult.js';
+import { MyUser } from '../../models/MyUser.js';
+import { MyUserListener } from '../../types/MyUserListener.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const deleteMyUser = async (
   cause: string | null | undefined,
   description: string | null | undefined,
   deletePhysically: boolean,
-): Promise<MutationResult<null>> => {
+): Promise<QueryResult<void>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('deleteMyUser: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
+  const clientInfo = libData.clientInfoStore().clientInfo;
   const signedOutUserId = clientInfo.myUserId || clientInfo.signedOutUserId;
 
   if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+    throw new Error('unauthorized');
   }
 
   try {
-    await fsdata.myUser.deleteMyUser(cause, description, deletePhysically);
+    if (libData.isOnline()) {
+      await fsdata.myUser.deleteMyUser(cause, description, deletePhysically);
+    }
+
+    await db.delete<MyUser>(clientInfo.myUserId, ModelType.MyUser);
 
     // Removing the signed-in user info from local storage; leaving
     // the deviceUuid untouched.
-    await clientInfoStore.clearMyUserFromClientInfo(signedOutUserId);
+    await libData.clientInfoStore().clearMyUserFromClientInfo(signedOutUserId);
 
     for (const listener of libData.listeners()) {
       if (
         listener.topic === BgListenerTopic.myUser &&
-        typeof (listener as BgMyUserListener).onSignedOut === 'function'
+        typeof (listener as MyUserListener).onSignedOut === 'function'
       ) {
-        (listener as BgMyUserListener).onSignedOut();
+        const response = (listener as MyUserListener).onSignedOut();
+        if (response && typeof response.then === 'function') {
+          response.catch((error) => {
+            logger.error('deleteMyUser: listener onSignedOut failed.',
+              { error });
+          });
+        }
       }
     }
 

@@ -29,6 +29,7 @@ export * from './models/LabeledStringValue.js';
 export * from './models/ModelEvent.js';
 export * from './models/MultiStepActionRun.js';
 export * from './models/MyUser.js';
+export * from './models/MyUserChanges.js';
 export * from './models/NotificationOptions.js';
 export * from './models/SidMultiStepAction.js';
 export * from './models/SidMultiStepActionProgress.js';
@@ -38,9 +39,10 @@ export * from './models/UserPreferences.js';
 export * from './models/VerifyMultiStepActionTokenInput.js';
 
 // Types:
+export * from './ClientInfoStore.js';
 export * from './types/BgBaseListener.js';
 export * from './types/BgChannelListener.js';
-export * from './types/BgMyUserListener.js';
+export * from './types/MyUserListener.js';
 export * from './types/BgNodeClientConfig.js';
 export * from './types/ChannelEventPayload.js';
 export * from './types/HttpHeaders.js';
@@ -48,7 +50,6 @@ export * from './types/logger.js';
 export * from './types/MultiStepActionError.js';
 export * from './types/MultiStepActionListener.js';
 export * from './types/MultiStepActionProgressResult.js';
-export * from './types/MutationResult.js';
 export * from './types/Operations.js';
 export * from './types/QueryOptions.js';
 export * from './types/QueryResult.js';

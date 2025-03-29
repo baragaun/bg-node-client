@@ -1,29 +1,36 @@
 import fsdata from '../../fsdata/fsdata.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 
 const startMySessionV2 = async (): Promise<void> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('startMySessionV2: unavailable.');
+    return;
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('startMySessionV2: user not signed in.');
+    return;
+  }
+
+  if (libData.isOffline()) {
+    logger.error('startMySessionV2: offline.');
+    return;
   }
 
   try {
-    const contentStatus = await fsdata.myUser.startMySessionV2();
+    const response = await fsdata.myUser.startMySessionV2();
 
-    if (contentStatus) {
-      const clientInfo = clientInfoStore.get();
-      clientInfo.remoteContentStatus = contentStatus;
-      clientInfoStore.sessionStarted();
+    if (response.error || !response.object) {
+      logger.error('startMySessionV2: failed to start session.', { response });
+      return;
     }
+
+    const clientInfo = libData.clientInfoStore().clientInfo;
+    clientInfo.remoteContentStatus = response.object;
+    libData.clientInfoStore().sessionStarted();
   } catch (error) {
-    logger.error('startMySessionV2: fsdata.myUser.startMySessionV2 failed', error);
-    return null;
+    logger.error('startMySessionV2: error.', { error });
   }
 };
 

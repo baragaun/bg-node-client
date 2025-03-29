@@ -4,15 +4,15 @@ import { ModelType, MutationType } from "../enums.js";
 import db from "./helpers/db.js";
 import getCollectionFromModelType from "./helpers/getCollectionFromModelType.js";
 import { Model } from "../models/Model.js";
-import { MutationResult } from "../types/MutationResult.js";
+import { QueryResult } from "../types/QueryResult.js";
 
 let _db: RxDatabase | undefined = undefined;
 
 const deleteFunc = async <T extends Model = Model>(
   id: string,
   modelType: ModelType,
-): Promise<MutationResult<T>> => {
-  const result: MutationResult<T> = { operation: MutationType.delete };
+): Promise<QueryResult<T>> => {
+  const result: QueryResult<T> = { operation: MutationType.delete };
 
   if (!_db) {
     _db = db.getDb();

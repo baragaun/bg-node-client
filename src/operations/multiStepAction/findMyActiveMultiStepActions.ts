@@ -2,30 +2,22 @@ import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { SidMultiStepAction } from '../../models/SidMultiStepAction.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const findMyActiveMultiStepActions = async (): Promise<
-  SidMultiStepAction[]
+  QueryResult<SidMultiStepAction>
 > => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('findMyActiveMultiStepActions: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const config = libData.config();
-
-  if (!config) {
-    logger.error('findMyActiveMultiStepActions: no config.');
-    return null;
-  }
   try {
-    const actions = await fsdata.multiStepAction.findMyActiveMultiStepActions();
-
-    return actions;
+    return fsdata.multiStepAction.findMyActiveMultiStepActions();
   } catch (error) {
-    logger.error(
-      'findMyActiveMultiStepActions: fsdata.myUser.findMyActiveMultiStepActions failed',
-      error,
-    );
-    return null;
+    logger.error('findMyActiveMultiStepActions: fsdata.myUser.findMyActiveMultiStepActions failed',
+      { error } );
+    return { error: (error as Error).message };
   }
 };
 

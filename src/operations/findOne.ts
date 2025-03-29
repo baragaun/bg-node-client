@@ -1,8 +1,8 @@
 import db from '../db/db.js';
 import { CachePolicy, ModelType } from '../enums.js';
-import clientInfoStore from '../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../helpers/defaults.js';
 import libData from '../helpers/libData.js';
+import logger from '../helpers/logger.js';
 import { Model } from '../models/Model.js';
 import { QueryOptions } from '../types/QueryOptions.js';
 import { QueryResult } from '../types/QueryResult.js';
@@ -13,12 +13,13 @@ const findOne = async <T extends Model = Model>(
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<T>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('findOne: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('findOne: unauthorized');
+    return { error: 'unauthorized' };
   }
 
   if (

@@ -1,4 +1,4 @@
 import { NotificationMethod } from '../../enums.js';
-import { MutationResult } from '../../types/MutationResult.js';
-declare const sendMultiStepActionNotification: (actionId: string, email: string | undefined, phoneNumber: string | undefined, notificationMethod: NotificationMethod) => Promise<MutationResult<string>>;
+import { QueryResult } from '../../types/QueryResult.js';
+declare const sendMultiStepActionNotification: (actionId: string, email: string | undefined, phoneNumber: string | undefined, notificationMethod: NotificationMethod) => Promise<QueryResult<string>>;
 export default sendMultiStepActionNotification;

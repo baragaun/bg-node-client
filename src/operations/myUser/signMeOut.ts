@@ -1,19 +1,25 @@
-import { BgListenerTopic, MutationType } from '../../enums.js';
+import { BgListenerTopic } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { BgMyUserListener } from '../../types/BgMyUserListener.js';
-import { MutationResult } from '../../types/MutationResult.js';
+import { MyUserListener } from '../../types/MyUserListener.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
-const signMeOut = async (): Promise<MutationResult<null>> => {
+const signMeOut = async (): Promise<QueryResult<void>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('signMeOut: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
+  if (libData.isOffline() && !libData.config().enableMockMode) {
+    logger.error('signMeOut: offline');
+    return { error: 'offline' };
+  }
+
+  const clientInfo = libData.clientInfoStore().clientInfo;
+
   if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+    return { error: 'unauthorized' };
   }
 
   try {
@@ -22,26 +28,27 @@ const signMeOut = async (): Promise<MutationResult<null>> => {
 
     // Removing the signed-in user info from local storage; leaving
     // the deviceUuid untouched.
-    await clientInfoStore.clearMyUserFromClientInfo(signedOutUserId);
+    await libData.clientInfoStore().clearMyUserFromClientInfo(signedOutUserId);
 
     for (const listener of libData.listeners()) {
       if (
         listener.topic === BgListenerTopic.myUser &&
-        typeof (listener as BgMyUserListener).onSignedOut === 'function'
+        typeof (listener as MyUserListener).onSignedOut === 'function'
       ) {
-        (listener as BgMyUserListener).onSignedOut();
+        const listenerResponse = (listener as MyUserListener).onSignedOut();
+        if (listenerResponse && typeof listenerResponse.then === 'function') {
+          listenerResponse.catch((error) => {
+            logger.error('signMeOut: listener onSignedOut failed.',
+              { error });
+          });
+        }
       }
     }
 
-    return {
-      operation: MutationType.update,
-    };
+    return {};
   } catch (error) {
     logger.error(error);
-    return {
-      operation: MutationType.update,
-      error: (error as Error).message,
-    };
+    return { error: (error as Error).message };
   }
 };
 

@@ -1,10 +1,7 @@
 import { describe, expect, test } from 'vitest';
 
 import { UserIdentType } from '../../../enums.js';
-import chance, {
-  uniqueEmail,
-  uniqueUserHandle,
-} from '../../../helpers/chance.js';
+import chance, { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
@@ -54,47 +51,29 @@ describe('operations.myUser.isUserIdentAvailable', () => {
 
     // Testing any random email and userHandle - they should be available:
     const resultAvailableEmail =
-      await client.operations.myUser.isUserIdentAvailable(
-        uniqueEmail(),
-        UserIdentType.email,
-      );
+      await client.operations.myUser.isUserIdentAvailable(uniqueEmail(), UserIdentType.email);
     const resultAvailableUserHandle =
-      await client.operations.myUser.isUserIdentAvailable(
-        chance.word(),
-        UserIdentType.userHandle,
-      );
+      await client.operations.myUser.isUserIdentAvailable(chance.word(), UserIdentType.userHandle);
 
-    expect(resultAvailableEmail).toBeTruthy();
-    expect(resultAvailableUserHandle).toBeTruthy();
+    expect(resultAvailableEmail.object).toBeTruthy();
+    expect(resultAvailableUserHandle.object).toBeTruthy();
 
     // Testing the email and userHandle of the two existing users - they should be unavailable:
     const resultUnavailableEmail1 =
-      await client.operations.myUser.isUserIdentAvailable(
-        email1,
-        UserIdentType.email,
-      );
+      await client.operations.myUser.isUserIdentAvailable(email1, UserIdentType.email);
     const resultUnavailableUserHandle1 =
-      await client.operations.myUser.isUserIdentAvailable(
-        userHandle1,
-        UserIdentType.userHandle,
-      );
+      await client.operations.myUser.isUserIdentAvailable(userHandle1, UserIdentType.userHandle);
 
-    expect(resultUnavailableEmail1).toBeFalsy();
-    expect(resultUnavailableUserHandle1).toBeFalsy();
+    expect(resultUnavailableEmail1.object).toBeFalsy();
+    expect(resultUnavailableUserHandle1.object).toBeFalsy();
 
     const resultUnavailableEmail2 =
-      await client.operations.myUser.isUserIdentAvailable(
-        email2,
-        UserIdentType.email,
-      );
+      await client.operations.myUser.isUserIdentAvailable(email2, UserIdentType.email);
     const resultUnavailableUserHandle2 =
-      await client.operations.myUser.isUserIdentAvailable(
-        userHandle2,
-        UserIdentType.userHandle,
-      );
+      await client.operations.myUser.isUserIdentAvailable(userHandle2, UserIdentType.userHandle);
 
-    expect(resultUnavailableEmail2).toBeFalsy();
-    expect(resultUnavailableUserHandle2).toBeFalsy();
+    expect(resultUnavailableEmail2.object).toBeFalsy();
+    expect(resultUnavailableUserHandle2.object).toBeFalsy();
 
     // Deleting user2 (which is still signed in):
     await deleteMyUserSpecHelper(client);
@@ -108,27 +87,17 @@ describe('operations.myUser.isUserIdentAvailable', () => {
 
     expect(signInUser1Response.error).toBeUndefined();
     expect(signInUser1Response.object.userAuthResponse).toBeDefined();
-    expect(signInUser1Response.object.userAuthResponse.userId).toBe(
-      user1.id as string,
-    );
-    expect(
-      signInUser1Response.object.userAuthResponse.authToken.length,
-    ).toBeGreaterThan(10);
+    expect(signInUser1Response.object.userAuthResponse.userId).toBe(user1.id as string);
+    expect(signInUser1Response.object.userAuthResponse.authToken.length).toBeGreaterThan(10);
     expect(signInUser1Response.object.myUser).toBeDefined();
     expect(signInUser1Response.object.myUser.id).toBeDefined();
 
+    expect(client.isSignedIn).toBeTruthy();
     const clientInfo2 = await client.clientInfoStore.load();
-    expect(clientInfo2.myUserId).toBe(
-      signInUser1Response.object.userAuthResponse.userId,
-    );
+    expect(clientInfo2.myUserId).toBe(signInUser1Response.object.userAuthResponse.userId);
     expect(clientInfo2.authToken).not.toBeNull();
-    expect(clientInfo2.myUserId).toBe(
-      signInUser1Response.object.userAuthResponse.userId,
-    );
-    expect(clientInfo2.authToken).toBe(
-      signInUser1Response.object.userAuthResponse.authToken,
-    );
-    expect(client.operations.myUser.isSignedIn()).toBeTruthy();
+    expect(clientInfo2.myUserId).toBe(signInUser1Response.object.userAuthResponse.userId);
+    expect(clientInfo2.authToken).toBe(signInUser1Response.object.userAuthResponse.authToken);
 
     // Deleting user1:
     await deleteMyUserSpecHelper(client);

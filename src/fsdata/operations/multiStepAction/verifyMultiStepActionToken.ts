@@ -7,6 +7,7 @@ import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
 import { VerifyMultiStepActionTokenInput } from '../../../models/VerifyMultiStepActionTokenInput.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationVerifyMultiStepActionTokenArgs } from '../../gql/graphql.js';
 import gqlText from '../../gql/mutations/verifyMultiStepActionToken.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -20,12 +21,10 @@ const verifyMultiStepActionToken = async (
   actionId: string,
   confirmToken: string,
   newPassword?: string,
-): Promise<SidMultiStepActionProgress> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<SidMultiStepActionProgress>> => {
+  if (!libData.isInitialized()) {
+    logger.error('verifyMultiStepActionToken: unavailable');
+    return { error: 'unavailable' };
   }
 
   try {
@@ -56,13 +55,11 @@ const verifyMultiStepActionToken = async (
 
     logger.debug('verifyMultiStepActionToken response:', response);
 
-    return response.verifyMultiStepActionToken;
+    return { object: response.verifyMultiStepActionToken };
   } catch (error) {
-    logger.error('verifyMultiStepActionToken mutation error:', {
-      error,
-      headers: helpers.headers(),
-    });
-    throw error;
+    logger.error('verifyMultiStepActionToken mutation error:',
+      { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

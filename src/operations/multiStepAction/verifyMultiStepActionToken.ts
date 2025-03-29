@@ -1,18 +1,18 @@
-import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MultiStepActionRun } from '../../models/MultiStepActionRun.js';
 import { SidMultiStepActionProgress } from '../../models/SidMultiStepActionProgress.js';
-import { MutationResult } from '../../types/MutationResult.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const verifyMultiStepActionToken = async (
   actionId: string,
   confirmToken: string,
   newPassword?: string,
-): Promise<MutationResult<SidMultiStepActionProgress>> => {
+): Promise<QueryResult<SidMultiStepActionProgress>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('verifyMultiStepActionToken: unavailable');
+    return { error: 'unavailable' };
   }
 
   try {
@@ -43,16 +43,10 @@ const verifyMultiStepActionToken = async (
       { actionId, confirmToken, newPassword, response },
     );
 
-    return {
-      operation: MutationType.create,
-      object: response,
-    };
+    return response;
   } catch (error) {
-    logger.error(error);
-    return {
-      operation: MutationType.create,
-      error: (error as Error).message,
-    };
+    logger.error('verifyMultiStepActionToken: failed to verify token', { error });
+    return { error: (error as Error).message };
   }
 };
 

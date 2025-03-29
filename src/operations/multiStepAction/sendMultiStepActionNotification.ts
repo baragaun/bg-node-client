@@ -1,17 +1,18 @@
-import { MutationType, NotificationMethod } from '../../enums.js';
+import { NotificationMethod } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { MutationResult } from '../../types/MutationResult.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const sendMultiStepActionNotification = async (
   actionId: string,
   email: string | undefined,
   phoneNumber: string | undefined,
   notificationMethod: NotificationMethod,
-): Promise<MutationResult<string>> => {
+): Promise<QueryResult<string>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('sendMultiStepActionNotification: unavailable');
+    return { error: 'unavailable' };
   }
 
   try {
@@ -28,16 +29,10 @@ const sendMultiStepActionNotification = async (
     logger.debug('BgNodeClient.operations.multiStepAction.sendMultiStepActionNotification response received.',
       { actionId, notificationMethod, response });
 
-    return {
-      operation: MutationType.create,
-      object: response,
-    };
+    return response;
   } catch (error) {
-    logger.error(error);
-    return {
-      operation: MutationType.create,
-      error: (error as Error).message,
-    };
+    logger.error('sendMultiStepActionNotification: error.', { error });
+    return { error: (error as Error).message };
   }
 };
 

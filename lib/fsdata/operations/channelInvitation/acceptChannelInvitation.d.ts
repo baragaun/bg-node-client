@@ -1,3 +1,3 @@
-import { MutationResult } from '../../../types/MutationResult.js';
-declare const acceptChannelInvitation: (channelInvitationId: string) => Promise<MutationResult<void>>;
+import { QueryResult } from '../../../types/QueryResult.js';
+declare const acceptChannelInvitation: (channelInvitationId: string) => Promise<QueryResult<void>>;
 export default acceptChannelInvitation;

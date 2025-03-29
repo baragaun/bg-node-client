@@ -1,3 +1,4 @@
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
-declare const verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<SidMultiStepActionProgress>;
+import { QueryResult } from '../../../types/QueryResult.js';
+declare const verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<QueryResult<SidMultiStepActionProgress>>;
 export default verifyMultiStepActionToken;

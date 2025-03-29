@@ -34,10 +34,13 @@ export const blockUserForMeSpecHelper = async (
   expect(response.object.userBlocks[0].notes).toBe(notes);
 
   // It should have also updated the cached object:
-  const myUserFromCache1 = await client.operations.myUser.findMyUser({
+  const findMyUserFromCache1Result = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
+  const myUserFromCache1 = findMyUserFromCache1Result.object;
 
+  expect(findMyUserFromCache1Result.error).toBeUndefined();
+  expect(findMyUserFromCache1Result.object).toBeDefined();
   expect(myUserFromCache1.id).toBe(client.myUserId);
   expect(response.object.userBlocks).toBeDefined();
   expect(response.object.userBlocks.length).toBe(1);
@@ -46,10 +49,13 @@ export const blockUserForMeSpecHelper = async (
   expect(response.object.userBlocks[0].notes).toBe(notes);
 
   // Let's verify the object again, by pulling a fresh copy of it from the backend:
-  const myUserFromNetwork = await client.operations.myUser.findMyUser({
+  const findMyUserFromNetworkResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.network,
   });
+  const myUserFromNetwork = findMyUserFromNetworkResult.object;
 
+  expect(findMyUserFromNetworkResult.error).toBeUndefined();
+  expect(findMyUserFromNetworkResult.object).toBeDefined();
   expect(myUserFromNetwork.id).toBe(client.myUserId);
   expect(response.object.userBlocks).toBeDefined();
   expect(response.object.userBlocks.length).toBe(1);
@@ -57,10 +63,13 @@ export const blockUserForMeSpecHelper = async (
   expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
   expect(response.object.userBlocks[0].notes).toBe(notes);
 
-  const myUserFromCache2 = await client.operations.myUser.findMyUser({
+  const findMyUserFromCache2Result = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
+  const myUserFromCache2 = findMyUserFromCache2Result.object;
 
+  expect(findMyUserFromCache2Result.error).toBeUndefined();
+  expect(findMyUserFromCache2Result.object).toBeDefined();
   expect(myUserFromCache2.id).toBe(client.myUserId);
   expect(response.object.userBlocks).toBeDefined();
   expect(response.object.userBlocks.length).toBe(1);

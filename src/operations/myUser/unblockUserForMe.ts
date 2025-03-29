@@ -1,30 +1,31 @@
 import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
+import { ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
-import { MutationResult } from '../../types/MutationResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const unblockUserForMe = async (
   userId: string,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
-): Promise<MutationResult<MyUser>> => {
+): Promise<QueryResult<MyUser>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('unblockUserForMe: unavailable.');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('unblockUserForMe: user not signed in.');
+    return { error: 'unauthorized' };
   }
 
-  const result: MutationResult<MyUser | null> = {
-    operation: MutationType.update,
-  };
+  if (libData.isOffline() && !libData.config().enableMockMode) {
+    logger.error('unblockUserForMe: offline');
+    return { error: 'offline' };
+  }
 
   if (!queryOptions) {
     queryOptions = defaultQueryOptionsForMutations;
@@ -47,9 +48,8 @@ const unblockUserForMe = async (
 
     return updateResult;
   } catch (error) {
-    logger.error(error);
-    result.error = error.message;
-    return result;
+    logger.error('unblockUserForMe: error.', { error });
+    return { error: (error as Error).message };
   }
 };
 

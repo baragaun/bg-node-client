@@ -14,6 +14,7 @@ export declare class MultiStepActionRun {
     pollingOptions: QueryPollingOptions;
     actionProgress?: SidMultiStepActionProgress;
     abortRequested?: boolean;
+    timeoutRef?: NodeJS.Timeout;
     constructor(attr: Partial<MultiStepActionRun>);
     /**
      * Add a listener to the run.

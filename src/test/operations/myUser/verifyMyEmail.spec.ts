@@ -94,10 +94,13 @@ describe('operations.myUser.verifyMyEmail', () => {
             // await new Promise((resolve) => setTimeout(resolve, 1000));
 
             // Verify the email has been marked as confirmed on the remote user object:
-            const myUser = await client.operations.myUser.findMyUser({
+            const findMyUserResult = await client.operations.myUser.findMyUser({
               cachePolicy: CachePolicy.network,
             });
+            const myUser = findMyUserResult.object;
 
+            expect(findMyUserResult.error).toBeUndefined();
+            expect(findMyUserResult.object).toBeDefined();
             expect(myUser.id).toBe(myUserId);
             expect(myUser.id).toBe(client.myUserId);
             expect(myUser.userHandle).toBe(myUser.userHandle);
@@ -107,10 +110,13 @@ describe('operations.myUser.verifyMyEmail', () => {
             expect(myUser.isEmailVerified).toBeTruthy();
 
             // Verify the email has been marked as confirmed on the cached user object:
-            const myUserFromCache = await client.operations.myUser.findMyUser({
+            const findMyUserFromCacheResult = await client.operations.myUser.findMyUser({
               cachePolicy: CachePolicy.network,
             });
+            const myUserFromCache = findMyUserFromCacheResult.object;
 
+            expect(findMyUserFromCacheResult.error).toBeUndefined();
+            expect(findMyUserFromCacheResult.object).toBeDefined();
             expect(myUserFromCache.id).toBe(myUserId);
             expect(myUserFromCache.id).toBe(client.myUserId);
             expect(myUserFromCache.userHandle).toBe(myUser.userHandle);

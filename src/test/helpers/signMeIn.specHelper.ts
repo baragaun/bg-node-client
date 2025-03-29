@@ -4,7 +4,6 @@ import { verifyUserPropsSpecHelper } from './verifyUserProps.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { CachePolicy, UserIdentType } from '../../enums.js';
 import logger from '../../helpers/logger.js';
-import { MyUser } from '../../models/MyUser.js';
 
 export const signMeInSpecHelper = async (
   email: string,
@@ -37,12 +36,17 @@ export const signMeInSpecHelper = async (
   expect(clientInfo.myUserDeviceUuid).toBeDefined();
 
   // Verifying the local user object:
-  const myUserFromCache = await client.operations.myUser.findMyUser({
+  const findMyUserFromCacheResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
+  const myUserFromCache = findMyUserFromCacheResult.object;
+
+  expect(findMyUserFromCacheResult).toBeDefined();
+  expect(findMyUserFromCacheResult.error).toBeUndefined();
+  expect(findMyUserFromCacheResult.object).toBeDefined();
 
   verifyUserPropsSpecHelper(
-    myUserFromCache as Partial<MyUser>,
+    myUserFromCache,
     {
       id: signInUserResponse.object?.userAuthResponse?.userId,
       firstName: signInUserResponse.object?.userAuthResponse?.firstName,

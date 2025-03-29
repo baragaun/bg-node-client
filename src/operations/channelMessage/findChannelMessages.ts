@@ -1,8 +1,8 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
 import { ChannelMessageListFilter } from '../../models/ChannelMessageListFilter.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -16,12 +16,13 @@ const findChannelMessages = async (
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelMessage>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('findChannelMessages: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('findChannelMessages: unauthorized');
+    return { error: 'unauthorized' };
   }
 
   if (

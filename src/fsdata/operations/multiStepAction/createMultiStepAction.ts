@@ -4,6 +4,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import {
   MutationCreateMultiStepActionArgs,
   SidMultiStepActionInput,
@@ -14,12 +15,10 @@ import helpers from '../../helpers/helpers.js';
 // see: https://graffle.js.org/guides/topics/requests
 const createMultiStepAction = async (
   input: SidMultiStepActionInput,
-): Promise<SidMultiStepActionProgress> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<SidMultiStepActionProgress>> => {
+  if (!libData.isInitialized()) {
+    logger.error('createMultiStepAction: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create().transport({
@@ -39,13 +38,10 @@ const createMultiStepAction = async (
       createMultiStepAction: SidMultiStepActionProgress;
     };
 
-    return response.createMultiStepAction;
+    return { object: response.createMultiStepAction };
   } catch (error) {
-    logger.error('fsdata.createMultiStepAction: failed', {
-      error,
-      headers: helpers.headers(),
-    });
-    throw error;
+    logger.error('fsdata.createMultiStepAction: failed', { error, headers: helpers.headers() });
+    return { error: error.message };
   }
 };
 

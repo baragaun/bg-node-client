@@ -1,9 +1,9 @@
 import db from '../db/db.js';
 import { CachePolicy, ModelType } from '../enums.js';
 import fsdata from '../fsdata/fsdata.js';
-import clientInfoStore from '../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../helpers/defaults.js';
 import libData from '../helpers/libData.js';
+import logger from '../helpers/logger.js';
 import { Model } from '../models/Model.js';
 import { QueryOptions } from '../types/QueryOptions.js';
 import { QueryResult } from '../types/QueryResult.js';
@@ -14,12 +14,13 @@ const findById = async <T extends Model = Model>(
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<T>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('findById: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('findById: unauthorized');
+    return { error: 'unauthorized' };
   }
 
   if (
@@ -37,15 +38,20 @@ const findById = async <T extends Model = Model>(
     }
   }
 
-  const object = await fsdata.findById<T>(id, modelType);
+  const response = await fsdata.findById<T>(id, modelType);
 
-  if (object) {
-    // todo: What if the object does not exist anymore. How do we delete it from the local store?
-    // Update local cache:
-    await db.replace<T>(object, modelType);
+  if (response.error) {
+    logger.error('findById: fsdata.findById failed', { error: response.error });
+    return response;
   }
 
-  return { object };
+  if (response.object) {
+    // todo: What if the object does not exist anymore. How do we delete it from the local store?
+    // Update local cache:
+    await db.replace<T>(response.object, modelType);
+  }
+
+  return response;
 };
 
 export default findById;

@@ -9,8 +9,8 @@ import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../models/MyUser.js';
-import { MutationResult } from '../../../types/MutationResult.js';
 import { IsInTargetStateFunc, QueryOptions } from '../../../types/QueryOptions.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationUnblockUserForMeArgs } from '../../gql/graphql.js';
 import gql from '../../gql/mutations/unblockUserForMe.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -22,9 +22,9 @@ type UnblockUserForMeResponse = { unblockUserForMe: string };
 const unblockUserForMe = async (
   userId: string,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
-): Promise<MutationResult<MyUser>> => {
+): Promise<QueryResult<MyUser>> => {
   const config = libData.config();
-  const result: MutationResult<MyUser | null> = {
+  const result: QueryResult<MyUser | null> = {
     operation: MutationType.update,
   };
 
@@ -39,7 +39,12 @@ const unblockUserForMe = async (
   }
 
   try {
-    const myUser = await findMyUser();
+    const findMyUserResult = await findMyUser();
+    const myUser = findMyUserResult.object;
+
+    if (findMyUserResult.error || !findMyUserResult.object) {
+      return findMyUserResult;
+    }
     const oldUserBlockCount = myUser.userBlocks
       ? myUser.userBlocks.length
       : 0;
@@ -73,19 +78,18 @@ const unblockUserForMe = async (
     };
 
     logger.debug('fsdata.unblockUserForMe: starting polling.');
-    const fetchedMyUser = await pollForUpdatedObject<MyUser>(
+    const pollingResult = await pollForUpdatedObject<MyUser>(
       myUser.id,
       ModelType.MyUser,
       queryOptions,
     );
-    logger.debug('fsdata.unblockUserForMe: polling finished.', { fetchedMyUser });
+    logger.debug('fsdata.unblockUserForMe: polling finished.', { pollingResult });
 
-    result.object = fetchedMyUser;
-    return result;
+    return pollingResult;
   } catch (error) {
-    logger.error('fsdata.unblockUserForMe: failed with error', { error, headers: helpers.headers() });
-    result.error = 'system-error';
-    return result;
+    logger.error('fsdata.unblockUserForMe: failed with error',
+      { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

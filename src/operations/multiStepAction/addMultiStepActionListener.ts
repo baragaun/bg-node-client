@@ -1,4 +1,5 @@
 import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
 import { MultiStepActionListener } from '../../types/MultiStepActionListener.js';
 
 /**
@@ -12,7 +13,8 @@ const addMultiStepActionListener = (
   listener: MultiStepActionListener,
 ): string | null => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('addMultiStepActionListener: unavailable');
+    return null;
   }
 
   const run = libData.multiStepActionRun(actionId);

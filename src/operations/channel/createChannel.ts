@@ -2,21 +2,22 @@ import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { ChannelInput } from '../../fsdata/gql/graphql.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
-import { MutationResult } from '../../types/MutationResult.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannel = async (
   props: Partial<Channel>,
-): Promise<MutationResult<Channel>> => {
+): Promise<QueryResult<Channel>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('createChannel: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('createChannel: unauthorized');
+    return { error: 'unauthorized' };
   }
 
   try {

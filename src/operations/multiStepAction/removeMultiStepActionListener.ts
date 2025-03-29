@@ -1,11 +1,13 @@
 import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
 
 const removeMultiStepActionListener = (
   actionId: string,
   id: string,
 ): boolean => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('removeMultiStepActionListener: unavailable');
+    return false;
   }
 
   const run = libData.multiStepActionRun(actionId);

@@ -1,2 +1,2 @@
-declare const getSignedOutUserId: () => Promise<string | null>;
+declare const getSignedOutUserId: () => string | null;
 export default getSignedOutUserId;

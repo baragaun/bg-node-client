@@ -12,9 +12,14 @@ export const unblockUserForMeSpecHelper = async (
   logger.debug('BgServiceApiCheck.blockUserForMe: calling API/blockUserForMe',
     { userId });
 
-  const myUser = await client.operations.myUser.findMyUser({
+  const findMyUserResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
+
+  expect(findMyUserResult.error).toBeUndefined();
+  expect(findMyUserResult.object).toBeDefined();
+
+  const myUser = findMyUserResult.object;
   const oldUserBlockCount = myUser.userBlocks ? myUser.userBlocks.length : 0;
 
   const response = await client.operations.myUser.unblockUserForMe(
@@ -36,10 +41,13 @@ export const unblockUserForMeSpecHelper = async (
   }
 
   // It should have also updated the cached object:
-  const myUserFromCache1 = await client.operations.myUser.findMyUser({
+  const findMyUserFromCache1Result = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
+  const myUserFromCache1 = findMyUserFromCache1Result.object;
 
+  expect(findMyUserFromCache1Result.error).toBeUndefined();
+  expect(findMyUserFromCache1Result.object).toBeDefined();
   expect(myUserFromCache1.id).toBe(client.myUserId);
   expect(myUserFromCache1.userBlocks.length).toBe(oldUserBlockCount - 1);
 
@@ -48,10 +56,13 @@ export const unblockUserForMeSpecHelper = async (
   }
 
   // Let's verify the object again, by pulling a fresh copy of it from the backend:
-  const myUserFromNetwork = await client.operations.myUser.findMyUser({
+  const findMyUserFromNetworkResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.network,
   });
+  const myUserFromNetwork = findMyUserFromNetworkResult.object;
 
+  expect(findMyUserFromNetworkResult.error).toBeUndefined();
+  expect(findMyUserFromNetworkResult.object).toBeDefined();
   expect(myUserFromNetwork.id).toBe(client.myUserId);
   expect(myUserFromNetwork.userBlocks.length).toBe(oldUserBlockCount - 1);
 
@@ -59,10 +70,13 @@ export const unblockUserForMeSpecHelper = async (
     expect(myUserFromNetwork.userBlocks.filter(b => b.userId === userId).length).toBe(0);
   }
 
-  const myUserFromCache2 = await client.operations.myUser.findMyUser({
+  const findMyUserFromCacheResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
+  const myUserFromCache2 = findMyUserFromCacheResult.object;
 
+  expect(findMyUserFromCacheResult.error).toBeUndefined();
+  expect(findMyUserFromCacheResult.object).toBeDefined();
   expect(myUserFromCache2.id).toBe(client.myUserId);
   expect(myUserFromCache2.userBlocks.length).toBe(oldUserBlockCount - 1);
 

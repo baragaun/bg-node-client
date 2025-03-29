@@ -15,6 +15,7 @@ export class MultiStepActionRun {
   public pollingOptions: QueryPollingOptions;
   public actionProgress?: SidMultiStepActionProgress;
   public abortRequested?: boolean;
+  public timeoutRef?: NodeJS.Timeout;
 
   public constructor(attr: Partial<MultiStepActionRun>) {
     if (attr) {
@@ -30,10 +31,7 @@ export class MultiStepActionRun {
       if (attr.pollingFinishedAt) {
         this.pollingFinishedAt = attr.pollingFinishedAt;
       }
-      if (
-        attr.notificationSentOrFailed === true ||
-        attr.notificationSentOrFailed === false
-      ) {
+      if (attr.notificationSentOrFailed === true || attr.notificationSentOrFailed === false) {
         this.notificationSentOrFailed = attr.notificationSentOrFailed;
       }
       if (attr.finished === true || attr.finished === false) {

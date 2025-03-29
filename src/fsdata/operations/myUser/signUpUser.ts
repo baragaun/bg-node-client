@@ -5,21 +5,22 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { SignUpUserInput } from '../../../types/SignUpUserInput.js';
 import { UserAuthResponse } from '../../../types/UserAuthResponse.js';
 import { MutationSignUpUserArgs } from '../../gql/graphql.js';
 import signUpUserGql from '../../gql/mutations/signUpUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
+type ResponseDataType = { signUpUser: UserAuthResponse };
+
 // see: https://graffle.js.org/guides/topics/requests
 const signUpUser = async (
   input: SignUpUserInput,
-): Promise<UserAuthResponse> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<UserAuthResponse>> => {
+  if (!libData.isInitialized()) {
+    logger.error('signUpUser: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -33,7 +34,7 @@ const signUpUser = async (
   input.checkAvailable = true;
 
   const document = parse(signUpUserGql) as TypedQueryDocumentNode<
-    { signUpUser: UserAuthResponse },
+    ResponseDataType,
     MutationSignUpUserArgs
   >;
 
@@ -41,18 +42,14 @@ const signUpUser = async (
     const response = (await client
       // @ts-ignore
       .gql(document)
-      .send({ input })) as { signUpUser: UserAuthResponse };
+      .send({ input })) as ResponseDataType;
 
     logger.debug('SignUpUser response:', response);
 
-    return response.signUpUser;
+    return { object: response.signUpUser };
   } catch (error) {
-    logger.error('SignUpUser mutation error:', {
-      input,
-      error,
-      headers: helpers.headers(),
-    });
-    throw error;
+    logger.error('SignUpUser mutation error:', { input, error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

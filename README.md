@@ -40,7 +40,7 @@ const client = await new BgNodeClient().init({
     },
   },
   logLevel: 'debug',
-  useMockData: true,
+  enableMockMode: true,
 });
 
 // This will create a mock channel with 10 messages:

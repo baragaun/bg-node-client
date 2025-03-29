@@ -1,20 +1,21 @@
 import db from '../../db/db.js';
 import { MutationType } from '../../enums.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
 import { ChannelInvitation } from '../../models/ChannelInvitation.js';
-import { MutationResult } from '../../types/MutationResult.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannelInvitation = async (
   attributes: Partial<ChannelInvitation>,
-): Promise<MutationResult<ChannelInvitation>> => {
+): Promise<QueryResult<ChannelInvitation>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('createChannelInvitation: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('createChannelInvitation: unauthorized');
+    return { error: 'unauthorized' };
   }
 
   try {

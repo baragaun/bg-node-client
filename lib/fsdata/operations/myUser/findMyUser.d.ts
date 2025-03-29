@@ -1,3 +1,4 @@
 import { MyUser } from '../../../models/MyUser.js';
-declare const findMyUser: () => Promise<MyUser | null>;
+import { QueryResult } from '../../../types/QueryResult.js';
+declare const findMyUser: () => Promise<QueryResult<MyUser>>;
 export default findMyUser;
