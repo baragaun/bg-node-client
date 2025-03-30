@@ -59,11 +59,15 @@ export default tseslint.config(
     },
 
     rules: {
-      'no-unused-vars': 'off',
-      'max-length': 'off',
+      'comma-dangle': ['error', 'always-multiline'],
       'import/no-dynamic-require': 'warn',
       'import/no-nodejs-modules': 'off',
       'import/no-useless-path-segments': 'off',
+      'max-length': 'off',
+      'no-nested-ternary': 'error',
+      'no-unused-vars': 'off',
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'always'],
       '@typescript-eslint/no-unused-vars': [
         'error', // or 'error'
         {

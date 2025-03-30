@@ -28,7 +28,7 @@ const LOG_LEVEL_MAPPING = {
   error: LogLevel.ERROR,
   fatal: LogLevel.FATAL,
   silent: LogLevel.NONE,
-}
+};
 
 /**
  * Simple TypeScript logger that wraps console methods
@@ -178,7 +178,7 @@ const setLogLevel = (level: 'debug' | 'info' | 'warn' | 'error' | 'fatal' | 'sil
       transformedLevel = LogLevel.ERROR;
     }
     logger.updateConfig({ level: transformedLevel });
-    logger.debug("BgNodeClient: log level set.", { level });
+    logger.debug('BgNodeClient: log level set.', { level });
   }
 };
 

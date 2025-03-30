@@ -12,50 +12,47 @@ import { QueryResult } from '../../types/QueryResult.js';
 const findMyUser = async (
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<MyUser>> => {
-  if (!libData.isInitialized()) {
-    logger.error('findMyUser: unavailable');
-    return { error: 'unavailable' };
-  }
+  try {
+    if (!libData.isInitialized()) {
+      logger.error('findMyUser: unavailable');
+      return { error: 'unavailable' };
+    }
 
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('findMyUser: unauthorized');
-    return { error: 'unauthorized' };
-  }
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('findMyUser: unauthorized');
+      return { error: 'unauthorized' };
+    }
 
-  if (
-    queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst ||
-    libData.isOffline()
-  ) {
-    try {
-      const queryResult = await db.findById<MyUser>(
+    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
+      const result = await db.findById<MyUser>(
         libData.clientInfoStore().myUserId,
         ModelType.MyUser,
       );
 
-      if (
-        queryResult.object ||
-        queryOptions.cachePolicy === CachePolicy.cache ||
-        libData.isOffline()
-      ) {
-        return queryResult;
+      if ((!result.error && result.object) || !allowNetwork) {
+        return result;
       }
-    } catch (error) {
-      logger.error('findMyUser: db.findById failed', { error });
-      return { error: (error as Error).message };
     }
-  }
 
-  try {
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
+
     const response = await fsdata.myUser.findMyUser();
 
-    if (response.error) {
+    if (response.error || !response.object) {
       return response;
     }
 
-    // Update local cache:
-    await db.replace<MyUser>(response.object, ModelType.MyUser);
+    logger.debug('findMyUser: replacing local user');
 
+    await db.replace<MyUser>(response.object, ModelType.MyUser);
     libData.clientInfoStore().updateMyUserUpdatedAt(new Date(response.object.updatedAt).getTime());
 
     for (const listener of libData.listeners()) {
@@ -63,6 +60,7 @@ const findMyUser = async (
         listener.topic === BgListenerTopic.myUser &&
         typeof (listener as MyUserListener).onMyUserUpdated === 'function'
       ) {
+        logger.debug('findMyUser: notifying listener', { id: listener.id });
         const listenerResponse = (listener as MyUserListener).onMyUserUpdated(response.object);
         if (listenerResponse && typeof listenerResponse.then === 'function') {
           listenerResponse.catch((error) => {

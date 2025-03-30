@@ -7,5 +7,5 @@ export interface BgBaseListener {
   id: string;
   topic: BgListenerTopic;
 
-  onChangeOffline: (isOffline: boolean) => void | Promise<void>;
+  onChangeOnline?: (isOffline: boolean) => void | Promise<void>;
 }

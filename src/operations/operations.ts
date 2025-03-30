@@ -1,12 +1,15 @@
-import createMockChannel from '../mockFactories/channel.js';
 import { Operations } from '../types/Operations.js';
 import createChannel from './channel/createChannel.js';
 import deleteChannel from './channel/deleteChannel.js';
 import findChannels from './channel/findChannels.js';
+import findMyChannels from './channel/findMyChannels.js';
 import updateChannel from './channel/updateChannel.js';
+import acceptChannelInvitation from './channelInvitation/acceptChannelInvitation.js';
 import createChannelInvitation from './channelInvitation/createChannelInvitation.js';
+import declineChannelInvitation from './channelInvitation/declineChannelInvitation.js';
 import deleteChannelInvitation from './channelInvitation/deleteChannelInvitation.js';
 import findChannelInvitations from './channelInvitation/findChannelInvitations.js';
+import findChannelInvitationsForUser from './channelInvitation/findChannelInvitationsForUser.js';
 import updateChannelInvitation from './channelInvitation/updateChannelInvitation.js';
 import createChannelMessage from './channelMessage/createChannelMessage.js';
 import deleteChannelMessage from './channelMessage/deleteChannelMessage.js';
@@ -16,6 +19,7 @@ import createChannelParticipant from './channelParticipant/createChannelParticip
 import deleteChannelParticipant from './channelParticipant/deleteChannelParticipant.js';
 import findChannelParticipants from './channelParticipant/findChannelParticipants.js';
 import updateChannelParticipant from './channelParticipant/updateChannelParticipant.js';
+import count from './count.js';
 import findById from './findById.js';
 import findOne from './findOne.js';
 import insertOne from './insertOne.js';
@@ -32,6 +36,7 @@ import endMySession from './myUser/endMySession.js';
 import findAvailableUserHandle from './myUser/findAvailableUserHandle.js';
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
+import isCachedUserFresh from './myUser/isCachedUserFresh.js';
 import isSessionActive from './myUser/isSessionActive.js';
 import isUserIdentAvailable from './myUser/isUserIdentAvailable.js';
 import reportUserForMe from './myUser/reportUserForMe.js';
@@ -46,26 +51,30 @@ import unblockUserForMe from './myUser/unblockUserForMe.js';
 import updateMyPassword from './myUser/updateMyPassword.js';
 import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
-import updateLocalObject from './updateLocalObject.js';
+import update from './update.js';
 
 const operations: Operations = {
+  count,
   findById,
   findOne,
   insertOne,
-  updateLocalObject,
+  update,
 
   channel: {
     createChannel,
-    createMockChannel,
     deleteChannel,
     findChannels,
+    findMyChannels,
     updateChannel,
   },
 
   channelInvitation: {
+    acceptChannelInvitation,
     createChannelInvitation,
+    declineChannelInvitation,
     deleteChannelInvitation,
     findChannelInvitations,
+    findChannelInvitationsForUser,
     updateChannelInvitation,
   },
 
@@ -90,6 +99,7 @@ const operations: Operations = {
     findAvailableUserHandle,
     findMyUser,
     getSignedOutUserId,
+    isCachedUserFresh,
     isSessionActive,
     isUserIdentAvailable,
     reportUserForMe,

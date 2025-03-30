@@ -1,7 +1,7 @@
-import { RxCollection, RxDatabase } from "rxdb";
+import { RxCollection, RxDatabase } from 'rxdb';
 
-import db from "./db.js";
-import { ModelType } from "../../enums.js";
+import db from './db.js';
+import { ModelType } from '../../enums.js';
 
 let _db: RxDatabase | undefined = undefined;
 
@@ -21,27 +21,27 @@ const getCollectionFromModelType = (type: ModelType): RxCollection | null => {
 
   if (type === ModelType.ChannelInvitation) {
     // @ts-ignore
-    return _db["channel-invitations"];
+    return _db['channel-invitations'];
   }
 
   if (type === ModelType.ChannelMessage) {
     // @ts-ignore
-    return _db["channel-messages"];
+    return _db['channel-messages'];
   }
 
   if (type === ModelType.ChannelParticipant) {
     // @ts-ignore
-    return _db["channel-participants"];
+    return _db['channel-participants'];
   }
 
   if (type === ModelType.MyUser) {
     // @ts-ignore
-    return _db["my-user"];
+    return _db['my-user'];
   }
 
   if (type === ModelType.ClientInfo) {
     // @ts-ignore
-    return _db["client-info"];
+    return _db['client-info'];
   }
 
   if (type === ModelType.User) {

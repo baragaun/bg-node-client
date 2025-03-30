@@ -1,80 +1,91 @@
-import { Graffle } from 'graffle';
-// import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-// import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
 import { ModelType } from '../../enums.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { Model } from '../../models/Model.js';
 import modelFactory from '../../models/modelFactory.js';
 import { QueryResult } from '../../types/QueryResult.js';
-import findChannelById from '../gql/queries/findChannelById.graphql.js';
-import findChannelInvitationById from '../gql/queries/findChannelInvitationById.graphql.js';
-import findChannelMessageById from '../gql/queries/findChannelMessageById.graphql.js';
-import findChannelParticipantById from '../gql/queries/findChannelParticipantById.graphql.js';
-import findMyUser from '../gql/queries/findMyUser.graphql.js';
-import findUserById from '../gql/queries/findUserById.graphql.js';
+import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
+import modelFields from '../helpers/modelFields.js';
 
 const _fieldDef = {
-  [ModelType.Channel]: { field: 'findChannelById', gql: findChannelById },
+  [ModelType.Channel]: {
+    field: 'findChannelById',
+    selections: modelFields.channel,
+  },
   [ModelType.ChannelInvitation]: {
     field: 'findChannelInvitationById',
-    gql: findChannelInvitationById,
+    selections: modelFields.channelInvitation,
   },
   [ModelType.ChannelMessage]: {
     field: 'findChannelMessageById',
-    gql: findChannelMessageById,
+    selections: modelFields.channelMessage,
   },
   [ModelType.ChannelParticipant]: {
     field: 'findChannelParticipantById',
-    gql: findChannelParticipantById,
+    selections: modelFields.channelParticipant,
   },
-  [ModelType.MyUser]: { field: 'findMyUser', gql: findMyUser, skipVars: true },
-  [ModelType.User]: { field: 'findUserById', gql: findUserById },
+  [ModelType.SidMultiStepAction]: {
+    field: 'findChannelParticipantById',
+    selections: modelFields.sidMultiStepAction,
+  },
+  [ModelType.SidMultiStepActionProgress]: {
+    field: 'findChannelParticipantById',
+    selections: modelFields.sidMultiStepActionProgress,
+  },
+  [ModelType.MyUser]: {
+    field: 'findMyUser',
+    selections: modelFields.myUser,
+    skipVars: true,
+  },
+  [ModelType.User]: {
+    field: 'findUserById',
+    selections: modelFields.user,
+  },
 };
 
-// see: https://graffle.js.org/guides/topics/requests
 const findById = async <T extends Model = Model>(
   id: string,
   modelType: ModelType,
+  selections?: any,
 ): Promise<QueryResult<T>> => {
-  if (!libData.isInitialized()) {
-    logger.error('findById: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  const client = Graffle.create().transport({
-    url: libData.config().fsdata.url,
-    headers: helpers.headers(),
-  });
-  // .use(Throws())
-  // .use(Opentelemetry());
-
-  const fieldDef = _fieldDef[modelType];
-
-  const document = parse(fieldDef.gql) as TypedQueryDocumentNode<{
-    // @ts-ignore
-    [fieldDef.field]: T | null;
-  }>;
-  const variables = modelType === ModelType.MyUser ? {} : { id };
-
   try {
-    const response = (await client
-      // @ts-ignore
-      .gql(document)
-      // @ts-ignore
-      .send(variables)) as { [fieldDef.field]: T | null };
-
-    logger.debug('fsdata.findById: response received', { response });
-
-    if (!response[fieldDef.field]) {
-      logger.error('fsdata.findById: no object received.')
-      return { error: 'system-error' };
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.findById: unavailable');
+      return { error: 'unavailable' };
     }
 
-    return { object: modelFactory<T>(response[fieldDef.field], modelType) };
+    const client = graffleClientStore.get();
+    const fieldDef = _fieldDef[modelType];
+
+    if (!fieldDef) {
+      logger.error('fsdata.findById: invalid modelType provided', { modelType });
+      return { error: 'invalid-model-type' };
+    }
+
+    const args = fieldDef.skipVars ? {} : { $: { id } };
+
+    logger.debug('fsdata.findById: sending.', { args });
+
+    const response = await client.query[fieldDef.field]({
+      ...args,
+      ...(selections || fieldDef.selections),
+    });
+
+    logger.debug('fsdata.findById: response received.',
+      { response, object: response.data[fieldDef.field] });
+
+    if (response.errors) {
+      logger.error('fsdata.findById: failed with error', { error: response.errors });
+      return { error: response.errors.map(e => e.message).join(', ')};
+    }
+
+    if (!response.data[fieldDef.field]) {
+      logger.error('fsdata.findById: not found.');
+      return { error: 'not-found' };
+    }
+
+    return { object: modelFactory<T>(response.data[fieldDef.field], modelType) };
   } catch (error) {
     logger.error('findById: error', { error, headers: helpers.headers() });
     return null;

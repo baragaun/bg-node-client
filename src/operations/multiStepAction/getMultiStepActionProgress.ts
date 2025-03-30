@@ -74,7 +74,7 @@ const getMultiStepActionProgress = async (
     const previousProgress: SidMultiStepActionProgress | undefined = run?.actionProgress;
     const actionProgress = response.object;
     const actionHasFinished = actionProgress.result &&
-      actionProgress.result !== MultiStepActionResult.unset
+      actionProgress.result !== MultiStepActionResult.unset;
     const actionHasExpired = actionProgress.expiresAt &&
       new Date(actionProgress.expiresAt).getTime() < Date.now();
 
@@ -111,7 +111,7 @@ const getMultiStepActionProgress = async (
         return result;
       }
     } else {
-      logger.debug('removeMultiStepActionRun: creating a new run.');
+      logger.debug('getMultiStepActionProgress: creating a new run.');
       run = new MultiStepActionRun({
         actionId: actionProgress.actionId,
         confirmToken,
@@ -266,7 +266,7 @@ const getMultiStepActionProgress = async (
       run.pollingStartedAt = new Date();
     }
 
-    logger.debug('getMultiStepActionProgress: calling setTimeout.');
+    logger.debug('getMultiStepActionProgress: polling.');
     run.timeoutRef = setTimeout(() => {
       getMultiStepActionProgress(actionId, run.confirmToken, queryOptions);
     }, queryOptions.polling.interval || 2000);

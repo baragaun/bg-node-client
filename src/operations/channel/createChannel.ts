@@ -1,7 +1,6 @@
 import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import { ChannelInput } from '../../fsdata/gql/graphql.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
@@ -10,18 +9,43 @@ import { QueryResult } from '../../types/QueryResult.js';
 const createChannel = async (
   props: Partial<Channel>,
 ): Promise<QueryResult<Channel>> => {
-  if (!libData.isInitialized()) {
-    logger.error('createChannel: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('createChannel: unauthorized');
-    return { error: 'unauthorized' };
-  }
-
   try {
-    const result = await fsdata.channel.createChannel(props as unknown as ChannelInput);
+    if (!libData.isInitialized()) {
+      logger.error('createChannel: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('createChannel: unauthorized');
+      return { error: 'unauthorized' };
+    }
+
+    const allowNetwork = libData.allowNetwork();
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (!allowNetwork) {
+      const response = await db.insert<Channel>(props, ModelType.Channel);
+
+      if (response.object) {
+        response.object = new Channel(response.object);
+        return response;
+      }
+
+      return response;
+    }
+
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline', operation: MutationType.create };
+    }
+
+    const result = await fsdata.channel.createChannel(props);
+
+    if (result.object) {
+      result.object = new Channel(result.object);
+    }
 
     if (!result.error || result.object) {
       await db.insert<Channel>(result.object, ModelType.Channel);

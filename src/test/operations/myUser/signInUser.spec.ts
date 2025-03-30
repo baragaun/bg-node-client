@@ -21,8 +21,6 @@ describe('operations.myUser.signInUser', () => {
     const email = uniqueEmail();
     const password = chance.word();
 
-    logger.debug('Test input:', { userHandle, email, password });
-
     const { object: signUpUserAuthResponse } =
       await client.operations.myUser.signUpUser({
         userHandle,

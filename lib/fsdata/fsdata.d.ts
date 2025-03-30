@@ -1,20 +1,26 @@
 declare const fsdata: {
-    findById: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType) => Promise<import("../index.js").QueryResult<T>>;
+    create: <T extends import("../index.js").BaseModel = import("../index.js").BaseModel>(props: Partial<T>, modelType: import("../enums.js").ModelType) => Promise<import("../index.js").QueryResult<T>>;
+    findById: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, selections?: any) => Promise<import("../index.js").QueryResult<T>>;
     pollForUpdatedObject: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, options: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<T>>;
+    update: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(changes: Partial<T>, modelType: import("../enums.js").ModelType, queryOptions?: import("../index.js").QueryOptions<T>) => Promise<import("../index.js").QueryResult<T>>;
     channel: {
-        createChannel: (input: import("./gql/graphql.js").ChannelInput) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        createChannel: (props: Partial<import("../index.js").Channel>) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
         findChannels: (filter: import("./gql/graphql.js").ChannelListFilter | undefined, match: Partial<import("../index.js").Channel> | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
         findMyChannels: (options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        updateChannel: (changes: Partial<import("../index.js").Channel>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").Channel>) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
     };
     channelInvitation: {
-        acceptChannelInvitation: (channelInvitationId: string) => Promise<import("../index.js").QueryResult<void>>;
-        createChannelInvitation: (input: import("./gql/graphql.js").ChannelInvitationInput) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;
-        declineChannelInvitation: (channelInvitationId: string, reasonTextId: import("../enums.js").DeclineChannelInvitationReasonTextId) => Promise<import("../index.js").QueryResult<void>>;
-        findChannelInvitationsForUser: (userId: string, onlyUnseen: boolean, onlyPending: boolean, direction: import("../enums.js").ChannelInvitationDirection, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        acceptChannelInvitation: (channelInvitationId: string, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelInvitation>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;
+        createChannelInvitation: (props: Partial<import("../index.js").ChannelInvitation>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;
+        declineChannelInvitation: (channelInvitationId: string, reasonTextId: import("../enums.js").DeclineChannelInvitationReasonTextId, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelInvitation>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;
+        findChannelInvitations: (_filter: import("../index.js").ChannelInvitationListFilter, _match: Partial<import("../index.js").ChannelInvitation>, _options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;
+        findChannelInvitationsForUser: (userId: string, onlyUnseen: boolean, onlyPending: boolean, direction: import("../enums.js").ChannelInvitationDirection, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;
+        updateChannelInvitation: (changes: Partial<import("../index.js").ChannelInvitation>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelInvitation>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;
     };
     channelMessage: {
-        createChannelMessage: (input: import("./gql/graphql.js").ChannelMessageInput) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
-        findChannelMessages: (filter: import("./gql/graphql.js").ChannelListFilter | undefined, match: import("./gql/graphql.js").ChannelInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        createChannelMessage: (props: Partial<import("../index.js").ChannelMessage>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
+        findChannelMessages: (filter: import("./gql/graphql.js").ChannelListFilter | undefined, match: import("./gql/graphql.js").ChannelInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
+        updateChannelMessage: (changes: Partial<import("../index.js").ChannelMessage>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelMessage>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
     };
     myUser: {
         blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
@@ -23,14 +29,14 @@ declare const fsdata: {
         findAvailableUserHandle: (startValue: string) => Promise<import("../index.js").QueryResult<string>>;
         findMyUser: () => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
         isUserIdentAvailable: (userIdent: string, identType: import("../enums.js").UserIdentType) => Promise<import("../index.js").QueryResult<boolean>>;
-        reportUser: (userId: string, reasonTextId: import("./gql/graphql.js").ReportUserReasonTextId, messageText: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<void>>;
+        reportUser: (userId: string, reasonTextId: import("./gql/graphql.js").ReportUserReasonTextId, messageText: string | undefined, _queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<void>>;
         signInUser: (input: import("../index.js").SignInUserInput) => Promise<import("../index.js").QueryResult<import("../index.js").UserAuthResponse>>;
         signMeOut: () => Promise<import("../index.js").QueryResult<void>>;
         signUpUser: (input: import("../index.js").SignUpUserInput) => Promise<import("../index.js").QueryResult<import("../index.js").UserAuthResponse>>;
-        startMySession: () => Promise<import("../index.js").QueryResult<void>>;
-        startMySessionV2: () => Promise<import("../index.js").QueryResult<import("../index.js").ContentStatus>>;
+        startMySession: (pushNotificationToken: string | null | undefined) => Promise<import("../index.js").QueryResult<void>>;
+        startMySessionV2: (pushNotificationToken: string | null | undefined, returnContentStatus: boolean) => Promise<import("../index.js").QueryResult<import("../index.js").ContentStatus>>;
         unblockUserForMe: (userId: string, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
-        updateMyUser: (changes: import("./gql/graphql.js").MyUserInput, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
+        updateMyUser: (changes: Partial<import("../index.js").MyUserChanges>, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
     };
     multiStepAction: {
         createMultiStepAction: (input: import("./gql/graphql.js").SidMultiStepActionInput) => Promise<import("../index.js").QueryResult<import("../index.js").SidMultiStepActionProgress>>;

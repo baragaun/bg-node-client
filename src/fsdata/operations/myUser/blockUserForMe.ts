@@ -1,8 +1,3 @@
-import { Graffle } from 'graffle';
-// import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-// import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
 import findMyUser from './findMyUser.js';
 import { ModelType } from '../../../enums.js';
 import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
@@ -12,29 +7,30 @@ import { MyUser } from '../../../models/MyUser.js';
 import { IsInTargetStateFunc, QueryOptions } from '../../../types/QueryOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationBlockUserForMeArgs } from '../../gql/graphql.js';
-import gql from '../../gql/mutations/blockUserForMe.graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
 
-type BlockUserForMeResponse = { blockUserForMe: string };
+type ResponseDataType = { data: { blockUserForMe: string }, errors?: { message: string }[] };
 
-// see: https://graffle.js.org/guides/topics/requests
 const blockUserForMe = async (
   userId: string,
   reasonTextId: string | undefined,
   notes: string | undefined,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<MyUser>> => {
-  if (!libData.isInitialized()) {
-    logger.error('blockUserForMe: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  if (!queryOptions) {
-    queryOptions = defaultQueryOptionsForMutations;
-  }
-
   try {
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.blockUserForMe: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    const client = graffleClientStore.get();
+
+    if (!queryOptions) {
+      queryOptions = defaultQueryOptionsForMutations;
+    }
+
     const findMyUserResponse = await findMyUser();
     const myUser = findMyUserResponse.object;
 
@@ -46,26 +42,23 @@ const blockUserForMe = async (
       ? myUser.userBlocks.length
       : 0;
 
-    const client = Graffle.create().transport({
-      url: libData.config().fsdata.url,
-      headers: helpers.headers(),
-    });
-
-    const document = parse(gql) as TypedQueryDocumentNode<
-      BlockUserForMeResponse,
-      MutationBlockUserForMeArgs
-    >;
-
     const args: MutationBlockUserForMeArgs = {
       userId,
       reasonTextId,
       notes,
-    }
-    const response = await client
-      .gql(document)
-      .send(args);
+    };
+    logger.debug('fsdata.blockUserForMe: sending.', { args });
 
-    if (!response.blockUserForMe) {
+    const response: ResponseDataType = await client.mutation.blockUserForMe({ $: args });
+
+    logger.debug('fsdata.blockUserForMe: response received.', { response });
+
+    if (response.errors) {
+      logger.error('fsdata.blockUserForMe: failed with error', { error: response.errors });
+      return { error: response.errors.map(e => e.message).join(', ')};
+    }
+
+    if (!response.data.blockUserForMe) {
       logger.error('fsdata.blockUserForMe: mutation did not return a valid response.');
       return { error: 'system-error' };
     }

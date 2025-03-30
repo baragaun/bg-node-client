@@ -1,9 +1,12 @@
 import {
+  ChannelInvitationDirection,
+  DeclineChannelInvitationReasonTextId as DeclineChannelInvitationReasonTextIdFromClient,
   ModelType,
   NotificationMethod,
   ReportUserReasonTextId,
-  UserIdentType as UserIdentTypeFromClient,
+  UserIdentType,
 } from '../enums.js';
+import { FindObjectsOptions } from './FindObjectsOptions.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
 import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
 import { QueryOptions } from './QueryOptions.js';
@@ -24,9 +27,14 @@ import { MyUser } from '../models/MyUser.js';
 import { MyUserChanges } from '../models/MyUserChanges.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
-import { User } from '../models/User.js';
 
 export interface Operations {
+  count: <T extends Model = Model>(
+    match: Partial<T>,
+    modelType: ModelType,
+    queryOptions?: QueryOptions,
+  ) => Promise<QueryResult<number>>
+
   findById: <T extends Model = Model>(
     id: string,
     modelType: ModelType,
@@ -41,11 +49,10 @@ export interface Operations {
 
   insertOne: <T extends Model = Model>(object: T) => Promise<QueryResult<T>>;
 
-  updateLocalObject: <T extends Model = Model>(
-    id: string,
-    object: T | null | undefined,
+  update: <T extends Model = Model>(
+    changes: Partial<T>,
     modelType: ModelType,
-    options: QueryOptions,
+    queryOptions?: QueryOptions,
   ) => Promise<QueryResult<T>>;
 
   channel: {
@@ -53,32 +60,41 @@ export interface Operations {
       attributes: Partial<Channel>,
     ) => Promise<QueryResult<Channel>>;
 
-    createMockChannel: (
-      attributes: Partial<Channel>,
-      userCount: number,
-      messageCount: number,
-      users?: User[],
-      messages?: ChannelMessage[],
-    ) => { channel: Channel; messages: ChannelMessage[]; users: User[] };
-
     deleteChannel: (id: string) => Promise<QueryResult<Channel>>;
+
     findChannels: (
       filter: ChannelListFilter,
       match: Partial<Channel>,
-      skip: number,
-      limit: number,
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<Channel>>;
+
+    findMyChannels: (
+      filter: ChannelListFilter,
+      match: Partial<Channel>,
+      options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
 
     updateChannel: (
       changes: Partial<Channel>,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
   };
 
   channelInvitation: {
+    acceptChannelInvitation: (
+      id: string,
+    ) => Promise<QueryResult<ChannelInvitation>>
+
     createChannelInvitation: (
       attributes: Partial<ChannelInvitation>,
     ) => Promise<QueryResult<ChannelInvitation>>;
+
+    declineChannelInvitation: (
+      id: string,
+      reasonTextId: DeclineChannelInvitationReasonTextIdFromClient,
+    ) => Promise<QueryResult<ChannelInvitation>>
 
     deleteChannelInvitation: (
       id: string,
@@ -87,13 +103,22 @@ export interface Operations {
     findChannelInvitations: (
       filter: ChannelInvitationListFilter,
       match: Partial<ChannelInvitation>,
-      skip: number,
-      limit: number,
+      options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelInvitation>>;
 
+    findChannelInvitationsForUser: (
+      userId: string,
+      onlyUnseen: boolean,
+      onlyPending: boolean,
+      direction: ChannelInvitationDirection,
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<ChannelInvitation>>
+
     updateChannelInvitation: (
       changes: Partial<ChannelInvitation>,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelInvitation>>;
   };
 
@@ -109,13 +134,13 @@ export interface Operations {
     findChannelMessages: (
       filter: ChannelMessageListFilter,
       match: Partial<ChannelMessage>,
-      skip: number,
-      limit: number,
+      options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelMessage>>;
 
     updateChannelMessage: (
       changes: Partial<ChannelMessage>,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelMessage>>;
   };
 
@@ -131,13 +156,13 @@ export interface Operations {
     findChannelParticipants: (
       filter: ChannelParticipantListFilter,
       match: Partial<ChannelParticipant>,
-      skip: number,
-      limit: number,
+      options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelParticipant>>;
 
     updateChannelParticipant: (
       changes: Partial<ChannelParticipant>,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelParticipant>>;
   };
 
@@ -159,11 +184,12 @@ export interface Operations {
     findAvailableUserHandle: (startValue: string) => Promise<QueryResult<string>>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
     getSignedOutUserId: () => string | null;
+    isCachedUserFresh: () => Promise<boolean>;
     isSessionActive: () => boolean;
 
     isUserIdentAvailable: (
       userIdent: string,
-      identType: UserIdentTypeFromClient,
+      identType: UserIdentType,
     ) => Promise<QueryResult<boolean>>;
 
     reportUserForMe: (
@@ -192,8 +218,13 @@ export interface Operations {
       input: SignUpUserInput,
     ) => Promise<QueryResult<SignInSignUpResponse>>;
 
-    startMySession: () => Promise<void>;
-    startMySessionV2: () => Promise<void>;
+    startMySession: (
+      pushNotificationToken: string | null | undefined,
+    ) => Promise<void>;
+    startMySessionV2: (
+      pushNotificationToken: string | null | undefined,
+      returnContentStatus: boolean,
+    ) => Promise<void>;
 
     unblockUserForMe: (
       userId: string,

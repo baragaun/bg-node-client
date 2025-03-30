@@ -3,24 +3,29 @@ import db from './db/db.js';
 import { ClientInfoStoreType } from './enums.js';
 import libData from './helpers/libData.js';
 import logger, { setLogger, setLogLevel } from './helpers/logger.js';
+import mockOperations from './mockOperations/mockOperations.js';
 import { ClientInfo } from './models/ClientInfo.js';
 import operations from './operations/operations.js';
-import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
-import { Logger } from './types/logger.js';
+import { InitBgNodeClientArgs } from './types/InitBgNodeClientArgs.js';
 
 export class BgNodeClient {
-  public async init(
-    config: BgNodeClientConfig,
-    myUserId?: string,
-    myUserDeviceUuid?: string,
-    appLogger?: Logger,
-  ): Promise<BgNodeClient> {
-    logger.debug("BgNodeClient.init called.", { config });
+  public async init(args: InitBgNodeClientArgs): Promise<BgNodeClient> {
+    logger.debug('BgNodeClient.init called.', { args });
 
     if (libData.isInitialized()) {
-      logger.error("BgNodeClient.init: already initialized.", { config, myUserId, myUserDeviceUuid });
+      logger.error('BgNodeClient.init: already initialized.', { args });
       return this;
     }
+
+    const {
+      config,
+      myUserId,
+      myUserDeviceUuid,
+      isOnline,
+      startSession,
+      appLogger,
+      listener,
+    } = args;
 
     if (appLogger) {
       setLogger(appLogger);
@@ -28,15 +33,10 @@ export class BgNodeClient {
       setLogLevel(config.logLevel);
     }
 
-    logger.debug("BgNodeClient.init called.", {
-      config,
-      myUserId,
-      myUserDeviceUuid,
-    });
-
     libData.setConfig(config);
 
     await db.init(config);
+    libData.setIsOnline(isOnline ?? true);
 
     let clientInfoStoreType = config.clientInfoStoreType || ClientInfoStoreType.inMemory;
 
@@ -47,7 +47,7 @@ export class BgNodeClient {
     this.clientInfoStore = config.clientInfoStore ||
       new ClientInfoStore(clientInfoStoreType);
 
-    const clientInfo = await this.clientInfoStore.load()
+    const clientInfo = await this.clientInfoStore.load();
 
     let updateClientInfo = false;
 
@@ -73,10 +73,19 @@ export class BgNodeClient {
     libData.setClientInfoStore(this.clientInfoStore);
     libData.setInitialized(true);
 
+    if (listener) {
+      libData.addListener(listener);
+    }
+
+    if (startSession && this.clientInfoStore.isSignedIn) {
+      await this.operations.myUser.startMySessionV2(undefined, true);
+    }
+
     return this;
   }
 
   public addListener = libData.addListener;
+  public mockOperations = mockOperations;
   public operations = operations;
   public removeListener = libData.removeListener;
   public setConfig = libData.setConfig;
@@ -87,14 +96,14 @@ export class BgNodeClient {
     libData.close();
     this.clientInfoStore.close();
     db.close().then(() => {
-      logger.debug("BgNodeClient closed.");
+      logger.debug('BgNodeClient closed.');
       if (done) {
         done();
       }
     }, (error) => {
-      logger.error("BgNodeClient close failed.", error);
+      logger.error('BgNodeClient close failed.', error);
     });
-  }
+  };
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // Getters:
@@ -102,12 +111,12 @@ export class BgNodeClient {
     return libData.isInitialized();
   }
 
-  public get isOffline(): boolean {
-    return libData.isOffline();
+  public get isOnline(): boolean {
+    return libData.isOnline();
   }
 
-  public set isOffline(isOffline: boolean) {
-    libData.setIsOffline(isOffline);
+  public set isOnline(isOnline: boolean) {
+    libData.setIsOnline(isOnline);
   }
 
   public get isSignedIn(): boolean {

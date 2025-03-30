@@ -1,3 +1,3 @@
 import { QueryResult } from '../../../types/QueryResult.js';
-declare const startMySession: () => Promise<QueryResult<void>>;
+declare const startMySession: (pushNotificationToken: string | null | undefined) => Promise<QueryResult<void>>;
 export default startMySession;

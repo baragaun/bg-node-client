@@ -1,2 +1,2 @@
-declare const startMySessionV2: () => Promise<void>;
+declare const startMySessionV2: (pushNotificationToken: string | null | undefined, returnContentStatus: boolean) => Promise<void>;
 export default startMySessionV2;

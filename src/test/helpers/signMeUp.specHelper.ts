@@ -33,7 +33,7 @@ export const signMeUpSpecHelper = async (
     password: testUserProps.password,
     source: props.source,
     isTestUser: true,
-  }
+  };
 
   const signUpUserAuthResponse = await client.operations.myUser.signUpUser(input);
 

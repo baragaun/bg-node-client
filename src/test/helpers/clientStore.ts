@@ -10,6 +10,7 @@ import {
 
 let _client: BgNodeClient | undefined = undefined;
 const _clientInfoStore = new ClientInfoStore(ClientInfoStoreType.inMemory);
+const _isOnline = true;
 
 const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
   if (createNew && _client) {
@@ -29,7 +30,7 @@ const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
       },
       logLevel: 'debug',
     };
-    _client = await new BgNodeClient().init(config);
+    _client = await new BgNodeClient().init({ config, isOnline: _isOnline });
   }
 
   return _client;

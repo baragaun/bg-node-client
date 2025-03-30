@@ -4,13 +4,16 @@ import { verifyChannelInvitationPropsSpecHelper } from './verifyChannelInvitatio
 import { BgNodeClient } from '../../BgNodeClient.js';
 import logger from '../../helpers/logger.js';
 import { ChannelInvitation } from '../../models/ChannelInvitation.js';
+import factories from '../factories/factories.js';
 
 export const createChannelInvitationSpecHelper = async (
-  props: Partial<ChannelInvitation>,
+  props: Partial<ChannelInvitation> | undefined,
   client: BgNodeClient,
 ): Promise<ChannelInvitation | null> => {
   logger.debug('BgServiceApiCheck.createChannelInvitation: calling API/createChannelInvitation',
     { props });
+
+  props = factories.channelInvitation.build(props);
 
   const response = await client.operations.channelInvitation.createChannelInvitation(
     props,

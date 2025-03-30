@@ -1,0 +1,98 @@
+import db from '../db/db.js';
+import { CachePolicy, ModelType, MutationType } from '../enums.js';
+import fsdata from '../fsdata/fsdata.js';
+import { defaultQueryOptionsForMutations } from '../helpers/defaults.js';
+import libData from '../helpers/libData.js';
+import logger from '../helpers/logger.js';
+import publishMyUserUpdate from '../helpers/publishMyUserUpdate.js';
+import { Model } from '../models/Model.js';
+import { MyUser } from '../models/MyUser.js';
+import { MyUserChanges } from '../models/MyUserChanges.js';
+import { QueryOptions } from '../types/QueryOptions.js';
+import { QueryResult } from '../types/QueryResult.js';
+
+const update = async <T extends Model = Model>(
+  changes: Partial<T>,
+  modelType: ModelType,
+  queryOptions: QueryOptions = defaultQueryOptionsForMutations,
+): Promise<QueryResult<T>> => {
+  try {
+    if (!libData.isInitialized()) {
+      logger.error('update: unavailable.');
+      return { error: 'unavailable' };
+    }
+
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('update: unauthorized.');
+      return { error: 'unauthorized' };
+    }
+
+    const isOffline = libData.isOffline();
+    const allowNetwork = !isOffline && queryOptions.cachePolicy !== CachePolicy.cache;
+
+    if (!queryOptions) {
+      queryOptions = defaultQueryOptionsForMutations;
+    }
+
+    if (!changes.id) {
+      if (modelType === ModelType.MyUser) {
+        changes.id = libData.clientInfoStore().myUserId;
+      }
+
+      if (!changes.id) {
+        logger.error('update: missing changes.id.');
+        return { error: 'invalid-input' };
+      }
+    }
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (!allowNetwork || queryOptions.cachePolicy === CachePolicy.cache) {
+      let cleanChanges = changes;
+
+      if (modelType === ModelType.MyUser) {
+        cleanChanges = { ...changes };
+        delete (cleanChanges as unknown as MyUserChanges).currentPassword;
+        delete (cleanChanges as unknown as MyUserChanges).newPassword;
+      }
+      const updateResult = await db.update<T>(cleanChanges, modelType);
+
+      if (!updateResult.error && updateResult.object && modelType === ModelType.MyUser) {
+        publishMyUserUpdate(updateResult.object as unknown as MyUser);
+      }
+
+      return updateResult;
+    }
+
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline', operation: MutationType.update };
+    }
+
+    const updateResult = await fsdata.update<T>(
+      changes,
+      modelType,
+      queryOptions,
+    );
+
+    if (!updateResult.error && updateResult.object) {
+      // Update local cache:
+      await db.replace<T>(updateResult.object, modelType);
+
+      if (modelType === ModelType.MyUser) {
+        publishMyUserUpdate(updateResult.object as unknown as MyUser);
+      }
+    }
+
+    return updateResult;
+  } catch (error) {
+    logger.error('update: error.', { error });
+    return {
+      operation: MutationType.update,
+      error: (error as Error).message,
+    };
+  }
+};
+
+export default update;

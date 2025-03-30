@@ -21,7 +21,7 @@ describe('operations.myUser.startMySessionV2', () => {
     expect(clientInfo1.sessionEndedAt).toBeUndefined();
     expect(client.operations.myUser.isSessionActive()).toBeFalsy();
 
-    await client.operations.myUser.startMySessionV2();
+    await client.operations.myUser.startMySessionV2(null, true);
 
     const clientInfo2 = await client.clientInfoStore.load();
 

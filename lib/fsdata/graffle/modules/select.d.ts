@@ -2,6 +2,7 @@ import type * as $$Utilities from 'graffle/utilities-for-generated';
 import type { OperationTypeNode } from 'graphql';
 import * as $$Schema from './schema.js';
 import * as $$SelectionSets from './selection-sets.js';
+export declare const Select: import("./methods-select.js").$MethodsSelect;
 export declare namespace Select {
     type Query<$SelectionSet extends $$SelectionSets.Query> = $$Utilities.DocumentBuilder.InferResult.Operation<$SelectionSet, $$Schema.Schema, OperationTypeNode.QUERY>;
     type Mutation<$SelectionSet extends $$SelectionSets.Mutation> = $$Utilities.DocumentBuilder.InferResult.Operation<$SelectionSet, $$Schema.Schema, OperationTypeNode.MUTATION>;
@@ -34,9 +35,7 @@ export declare namespace Select {
     type NotificationOptions<$SelectionSet extends $$SelectionSets.NotificationOptions> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['NotificationOptions']>;
     type UserDeviceWithoutAuth<$SelectionSet extends $$SelectionSets.UserDeviceWithoutAuth> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['UserDeviceWithoutAuth']>;
     type UserBlock<$SelectionSet extends $$SelectionSets.UserBlock> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['UserBlock']>;
-    type Contact<$SelectionSet extends $$SelectionSets.Contact> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['Contact']>;
-    type ContactMetadata<$SelectionSet extends $$SelectionSets.ContactMetadata> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ContactMetadata']>;
-    type ContactType<$SelectionSet extends $$SelectionSets.ContactType> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ContactType']>;
+    type UserRelationship<$SelectionSet extends $$SelectionSets.UserRelationship> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['UserRelationship']>;
     type Company<$SelectionSet extends $$SelectionSets.Company> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['Company']>;
     type AcademicExperience<$SelectionSet extends $$SelectionSets.AcademicExperience> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['AcademicExperience']>;
     type BusinessExperience<$SelectionSet extends $$SelectionSets.BusinessExperience> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['BusinessExperience']>;
@@ -56,7 +55,6 @@ export declare namespace Select {
     type ChannelMessageMetadata<$SelectionSet extends $$SelectionSets.ChannelMessageMetadata> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ChannelMessageMetadata']>;
     type ChannelMessageStatus<$SelectionSet extends $$SelectionSets.ChannelMessageStatus> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ChannelMessageStatus']>;
     type ChannelParticipant<$SelectionSet extends $$SelectionSets.ChannelParticipant> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ChannelParticipant']>;
-    type BgChannelParticipantMetadata<$SelectionSet extends $$SelectionSets.BgChannelParticipantMetadata> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['BgChannelParticipantMetadata']>;
     type UserListItem<$SelectionSet extends $$SelectionSets.UserListItem> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['UserListItem']>;
     type EndorsementWithTypes<$SelectionSet extends $$SelectionSets.EndorsementWithTypes> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['EndorsementWithTypes']>;
     type ModerationConcern<$SelectionSet extends $$SelectionSets.ModerationConcern> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ModerationConcern']>;
@@ -77,8 +75,8 @@ export declare namespace Select {
     type UserSearchFilter<$SelectionSet extends $$SelectionSets.UserSearchFilter> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['UserSearchFilter']>;
     type UserSearchRunInfo<$SelectionSet extends $$SelectionSets.UserSearchRunInfo> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['UserSearchRunInfo']>;
     type UserWithScore<$SelectionSet extends $$SelectionSets.UserWithScore> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['UserWithScore']>;
+    type Mm2Integration<$SelectionSet extends $$SelectionSets.Mm2Integration> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['Mm2Integration']>;
     type ServiceRequest<$SelectionSet extends $$SelectionSets.ServiceRequest> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ServiceRequest']>;
-    type ContactListItem<$SelectionSet extends $$SelectionSets.ContactListItem> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ContactListItem']>;
     type SidMultiStepAction<$SelectionSet extends $$SelectionSets.SidMultiStepAction> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['SidMultiStepAction']>;
     type MultiStepActionError<$SelectionSet extends $$SelectionSets.MultiStepActionError> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['MultiStepActionError']>;
     type SidMultiStepActionProgress<$SelectionSet extends $$SelectionSets.SidMultiStepActionProgress> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['SidMultiStepActionProgress']>;
@@ -92,6 +90,9 @@ export declare namespace Select {
     type ContentTag<$SelectionSet extends $$SelectionSets.ContentTag> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ContentTag']>;
     type SupportChannelConfig<$SelectionSet extends $$SelectionSets.SupportChannelConfig> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['SupportChannelConfig']>;
     type NotificationTemplate<$SelectionSet extends $$SelectionSets.NotificationTemplate> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['NotificationTemplate']>;
+    type Mm2Synchronization<$SelectionSet extends $$SelectionSets.Mm2Synchronization> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['Mm2Synchronization']>;
+    type Mm2SynchronizationResult<$SelectionSet extends $$SelectionSets.Mm2SynchronizationResult> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['Mm2SynchronizationResult']>;
+    type Mm2SynchronizationResultItem<$SelectionSet extends $$SelectionSets.Mm2SynchronizationResultItem> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['Mm2SynchronizationResultItem']>;
     type ContentStatus<$SelectionSet extends $$SelectionSets.ContentStatus> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ContentStatus']>;
     type BgChannelChangedEvent<$SelectionSet extends $$SelectionSets.BgChannelChangedEvent> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['BgChannelChangedEvent']>;
     type ObjectChangedEvent<$SelectionSet extends $$SelectionSets.ObjectChangedEvent> = $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<$SelectionSet, $$Schema.Schema, $$Schema.Schema['allTypes']['ObjectChangedEvent']>;

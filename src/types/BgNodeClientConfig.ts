@@ -17,14 +17,6 @@ export interface BgNodeClientConfig {
   enableMockMode?: boolean;
 
   /**
-   * If true, the client will be set to offline. It can then be set to online again later.
-   * But setting the client to offline at the initializiation phase ensures it won't connect
-   * to the backend. That can be helpful when running tests, or Storybook.
-   * Note: This will not call the `onChangeOffline` method of any listeners.
-   */
-  setOffline?: boolean;
-
-  /**
    * The name of the database that RxDB will use.
    */
   dbName?: string;

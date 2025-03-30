@@ -27,8 +27,8 @@ describe('signUpUser', () => {
       password,
       isTestUser: true,
     });
-    const myUserId = signUpResponse.object.userAuthResponse.userId
-    const clientInfo1 = client1.clientInfoStore.clientInfo
+    const myUserId = signUpResponse.object.userAuthResponse.userId;
+    const clientInfo1 = client1.clientInfoStore.clientInfo;
 
     expect(signUpResponse.error).toBeUndefined();
     expect(signUpResponse.object).toBeDefined();
@@ -69,7 +69,7 @@ describe('signUpUser', () => {
     await (async (): Promise<void> => {
       return new Promise((resolve) => {
         client1.close(resolve);
-      })
+      });
     })();
 
     // Creating a new client to verify the user info has been persisted:

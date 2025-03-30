@@ -1,45 +1,44 @@
-import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
-// import { create } from '../../graffle/fsdata/_.js'
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-import gql from '../../gql/mutations/endMySession.graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-// see: https://graffle.js.org/guides/topics/requests
+type ResponseDataType = { data: { endMySession: string }, errors?: { message: string }[] };
+
 const endMySession = async (): Promise<QueryResult<void>> => {
-  if (!libData.isInitialized()) {
-    logger.error('endMySession: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  const client = Graffle.create()
-    .transport({
-      url: libData.config().fsdata.url,
-      headers: helpers.headers(),
-    })
-    .use(Throws())
-    .use(Opentelemetry());
-
-  const document = parse(gql) as TypedQueryDocumentNode<{
-    endMySession: string;
-  }>;
-
   try {
-    await client
-      // @ts-ignore
-      .gql(document)
-      .send();
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.endMySession: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    const clientInfo = libData.clientInfoStore().clientInfo;
+    const myUserId = clientInfo.myUserId;
+
+    const client = graffleClientStore.get();
+
+    logger.debug('fsdata.endMySession: sending');
+
+    const response: ResponseDataType = await client.mutation.endMySession();
+
+    logger.debug('fsdata.endMySession: response received.', { response });
+
+    if (response.errors) {
+      logger.error('fsdata.endMySession: failed with error', { error: response.errors });
+      return { error: response.errors.map(e => e.message).join(', ')};
+    }
+
+    if (response.data.endMySession !== myUserId) {
+      logger.error('fsdata.endMySession: incorrect response',
+        { expected: myUserId, actual: response.data.endMySession });
+      return { error: 'incorrect response' };
+    }
 
     return {};
   } catch (error) {
-    logger.error('endMySession failed.', { error, headers: helpers.headers() });
-    return { error: (error as Error).message }
+    logger.error('fsdata.endMySession failed.', { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 
