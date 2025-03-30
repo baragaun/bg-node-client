@@ -16,12 +16,12 @@ export const signMeOutSpecHelper = async (
   expect(clientInfo.authToken).toBeUndefined();
 
   try {
-    // Verifying the local user object:
-    const myUserFromCache = await client.operations.myUser.findMyUser({
+    // Verifying we can no longer pull the local user object:
+    const response = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.cache,
     });
 
-    expect(myUserFromCache).toBeUndefined();
+    expect(response.error).toBe('unauthorized');
   } catch {
     // ignore
   }

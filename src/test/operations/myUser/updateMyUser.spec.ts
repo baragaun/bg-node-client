@@ -42,31 +42,41 @@ describe('operations.myUser.updateMyUser', () => {
     expect(updateResult.object.lastName).toBe(newLastName);
 
     // It should have also updated the cached object:
-    const myUserFromCache1 = await client.operations.myUser.findMyUser({
+    const findMyUserFromCacheResult1 = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.cache,
     });
+    const myUserFromCache = findMyUserFromCacheResult1.object;
 
-    expect(myUserFromCache1.id).toBe(client.myUserId);
-    expect(myUserFromCache1.userHandle).toBe(userHandle);
-    expect(myUserFromCache1.firstName).toBe(firstName);
-    expect(myUserFromCache1.lastName).toBe(newLastName);
-    expect(myUserFromCache1.email).toBe(email);
+    expect(findMyUserFromCacheResult1.error).toBeUndefined();
+    expect(findMyUserFromCacheResult1.object).toBeDefined();
+    expect(myUserFromCache).toBeDefined();
+    expect(myUserFromCache.id).toBe(client.myUserId);
+    expect(myUserFromCache.userHandle).toBe(userHandle);
+    expect(myUserFromCache.firstName).toBe(firstName);
+    expect(myUserFromCache.lastName).toBe(newLastName);
+    expect(myUserFromCache.email).toBe(email);
 
     // Let's verify the object again, by pulling a fresh copy of it from the backend:
-    const myUserFromNetwork = await client.operations.myUser.findMyUser({
+    const myUserFromNetworkResult = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.network,
     });
+    const myUserFromNetwork = myUserFromNetworkResult.object;
 
+    expect(myUserFromNetworkResult.error).toBeUndefined();
+    expect(myUserFromNetworkResult.object).toBeDefined();
     expect(myUserFromNetwork.id).toBe(client.myUserId);
     expect(myUserFromNetwork.userHandle).toBe(userHandle);
     expect(myUserFromNetwork.firstName).toBe(firstName);
     expect(myUserFromNetwork.lastName).toBe(newLastName);
     expect(myUserFromNetwork.email).toBe(email);
 
-    const myUserFromCache2 = await client.operations.myUser.findMyUser({
+    const findMyUserFromCacheResult2 = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.cache,
     });
+    const myUserFromCache2 = findMyUserFromCacheResult2.object
 
+    expect(findMyUserFromCacheResult2.error).toBeUndefined();
+    expect(findMyUserFromCacheResult2.object).toBeDefined();
     expect(myUserFromCache2.id).toBe(client.myUserId);
     expect(myUserFromCache2.userHandle).toBe(userHandle);
     expect(myUserFromCache2.firstName).toBe(firstName);

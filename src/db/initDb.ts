@@ -19,7 +19,7 @@ import { DbCollection } from "./enums.js";
 import findById from "./findById.js";
 import { AppEnvironment, ModelType } from "../enums.js";
 import db from "./helpers/db.js";
-import clientInfoStore from "../helpers/clientInfoStore.js";
+import libData from "../helpers/libData.js";
 import logger from "../helpers/logger.js";
 import { MyUser } from "../models/MyUser.js";
 import modelsSchema from "../models/schema/schema.js";
@@ -46,7 +46,7 @@ const loadMyUser = async (
 const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   if (isRxDatabase(db.getDb())) {
     logger.error("RxDB.initDb called multiple times.");
-    const clientInfo = clientInfoStore.get();
+    const clientInfo = libData.clientInfoStore().clientInfo;
 
     return loadMyUser(clientInfo.myUserId);
   }
@@ -179,12 +179,12 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     });
   }
 
-  const clientInfo = await clientInfoStore.load();
-  if (!clientInfo.isSignedIn) {
+  const clientInfoStore = libData.clientInfoStore();
+  if (!clientInfoStore?.isSignedIn) {
     return null;
   }
 
-  return loadMyUser(clientInfo.myUserId);
+  return loadMyUser(libData.clientInfoStore().myUserId);
 };
 
 export default initDb;

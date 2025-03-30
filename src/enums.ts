@@ -108,7 +108,7 @@ export enum ChannelInvitationStatus {
 export enum ClientInfoStoreType {
   localStorage = 'localStorage',
   db = 'db',
-  delegated = 'delegated',
+  inMemory = 'inMemory',
 }
 
 export enum UserRole {

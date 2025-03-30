@@ -7,14 +7,12 @@ import {
   MultiStepActionType,
 } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import persistClientInfo from '../../helpers/persistClientInfo.js';
 import { MultiStepActionRun } from '../../models/MultiStepActionRun.js';
 import { SidMultiStepActionProgress } from '../../models/SidMultiStepActionProgress.js';
-import { BgMyUserListener } from '../../types/BgMyUserListener.js';
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
+import { MyUserListener } from '../../types/MyUserListener.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import findMyUser from '../myUser/findMyUser.js';
@@ -48,32 +46,37 @@ const getMultiStepActionProgress = async (
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('getMultiStepActionProgress: unavailable');
+    return { error: 'unavailable' };
   }
 
-  logger.debug('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress called.',
-    { actionId, confirmToken, queryOptions });
+  logger.debug('getMultiStepActionProgress called.', { actionId, confirmToken, queryOptions });
 
-  const clientInfo = clientInfoStore.get();
+  const clientInfo = libData.clientInfoStore().clientInfo;
   const result: QueryResult<MultiStepActionProgressResult> = {};
 
   try {
-    const actionProgress =
+    const response =
       await fsdata.multiStepAction.getMultiStepActionProgress(
         actionId,
         confirmToken,
       );
 
-    if (!actionProgress) {
-      logger.error('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: received error.',
-        { actionId, confirmToken });
+    if (response.error || !response.object) {
+      logger.error('getMultiStepActionProgress: received error.', { actionId, confirmToken });
       result.error = 'not-found';
       return result;
     }
 
-    let run: MultiStepActionRun | null = libData.multiStepActionRun(actionProgress.actionId);
-    const previousProgress: SidMultiStepActionProgress | undefined =
-      run?.actionProgress;
+    logger.debug('getMultiStepActionProgress: received progress.', { response });
+
+    let run: MultiStepActionRun | null = libData.multiStepActionRun(response.object.actionId);
+    const previousProgress: SidMultiStepActionProgress | undefined = run?.actionProgress;
+    const actionProgress = response.object;
+    const actionHasFinished = actionProgress.result &&
+      actionProgress.result !== MultiStepActionResult.unset
+    const actionHasExpired = actionProgress.expiresAt &&
+      new Date(actionProgress.expiresAt).getTime() < Date.now();
 
     if (run) {
       run.actionProgress = actionProgress;
@@ -82,7 +85,15 @@ const getMultiStepActionProgress = async (
       }
 
       if (run.isStopped()) {
-        if (!run.pollingFinishedAt && !run.finished) { // Only proceed if the action hasn't already finished
+        logger.debug('getMultiStepActionProgress: run has been aborted.', { run });
+
+        if (!run.pollingFinishedAt && !run.finished) {
+          logger.debug('getMultiStepActionProgress: run has not yet been finished.', { run });
+
+          if (run.timeoutRef) {
+            clearTimeout(run.timeoutRef);
+            run.timeoutRef = undefined;
+          }
           run.pollingFinishedAt = new Date();
 
           run.onEventReceived(MultiStepActionEventType.other);
@@ -90,7 +101,7 @@ const getMultiStepActionProgress = async (
 
           result.object = {
             id: actionProgress.actionId,
-            actionProgress,
+            actionProgress: actionProgress,
             run,
             createdAt: actionProgress.createdAt,
             error: 'polling-stopped',
@@ -100,6 +111,7 @@ const getMultiStepActionProgress = async (
         return result;
       }
     } else {
+      logger.debug('removeMultiStepActionRun: creating a new run.');
       run = new MultiStepActionRun({
         actionId: actionProgress.actionId,
         confirmToken,
@@ -109,8 +121,8 @@ const getMultiStepActionProgress = async (
       libData.addMultiStepActionRun(run);
     }
 
-    logger.debug('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: run.',
-      { actionProgress, run });
+    logger.debug('getMultiStepActionProgress: processing progress.',
+      { previousProgress, actionProgress });
 
     // Has the notification been sent?
     if (!previousProgress?.notificationResult && actionProgress.notificationResult) {
@@ -122,11 +134,7 @@ const getMultiStepActionProgress = async (
     }
 
     // Has the action lead to a result?
-    if (
-      !run.finished &&
-      actionProgress.result &&
-      actionProgress.result !== MultiStepActionResult.unset
-    ) {
+    if (!run.finished && actionHasFinished) {
       const success = actionProgress.result === MultiStepActionResult.ok;
 
       if (
@@ -135,6 +143,8 @@ const getMultiStepActionProgress = async (
         success &&
         actionProgress.authToken
       ) {
+        logger.debug('getMultiStepActionProgress: resetPassport or tokenSignIn succeeded.');
+
         // The user just signed in with a token.
         // Making the user info available to the rest of the client:
         const config = libData.config();
@@ -143,7 +153,7 @@ const getMultiStepActionProgress = async (
         libData.setConfig(config);
 
         // Save the data to LocalStorage:
-        await persistClientInfo({
+        await libData.clientInfoStore().save({
           myUserId: actionProgress.userId,
           signedOutUserId: null,
           authToken: actionProgress.authToken,
@@ -155,9 +165,15 @@ const getMultiStepActionProgress = async (
         for (const listener of libData.listeners()) {
           if (
             listener.topic === BgListenerTopic.myUser &&
-            typeof (listener as BgMyUserListener).onSignedIn === 'function'
+            typeof (listener as MyUserListener).onSignedIn === 'function'
           ) {
-            (listener as BgMyUserListener).onSignedIn();
+            const response = (listener as MyUserListener).onSignedIn();
+            if (response && typeof response.then === 'function') {
+              response.catch((error) => {
+                logger.error('getMultiStepActionProgress: listener onSignedIn failed.',
+                  { error });
+              });
+            }
           }
         }
       }
@@ -182,6 +198,15 @@ const getMultiStepActionProgress = async (
         actionProgress.result !== MultiStepActionResult.confirmTokenMismatch &&
         actionProgress.result !== MultiStepActionResult.passwordMismatch
       ) {
+        logger.debug('getMultiStepActionProgress: result not (confirmToken|password)Mismatch, ending run.');
+
+        if (run.timeoutRef) {
+          clearTimeout(run.timeoutRef);
+          run.timeoutRef = undefined;
+        }
+        run.finished = true;
+        run.pollingFinishedAt = new Date();
+
         // This ends the polling.
         libData.removeMultiStepActionRun(actionProgress.actionId);
 
@@ -198,11 +223,28 @@ const getMultiStepActionProgress = async (
 
     // Has the polling timed out?
     if (
-      queryOptions.polling.enabled &&
-      !run.pollingFinishedAt &&
-      run.pollingStartedAt &&
-      Date.now() - run.pollingStartedAt.getTime() > run.pollingOptions.timeout
+      actionHasExpired ||
+      (
+        queryOptions.polling.enabled &&
+        !run.pollingFinishedAt &&
+        run.pollingStartedAt &&
+        run.pollingOptions.timeout &&
+        Date.now() - run.pollingStartedAt.getTime() > run.pollingOptions.timeout
+      )
     ) {
+      logger.debug('getMultiStepActionProgress: polling timed out.',
+        {
+          actionId,
+          actionHasExpired,
+          pollingStartedAt: run.pollingStartedAt,
+          timeout: run.pollingOptions.timeout,
+          elapsed: Date.now() - (run.pollingStartedAt ? run.pollingStartedAt.getTime() : 0),
+          queryOptions,
+        });
+      if (run.timeoutRef) {
+        clearTimeout(run.timeoutRef);
+        run.timeoutRef = undefined;
+      }
       run.pollingFinishedAt = new Date();
 
       run.onEventReceived(MultiStepActionEventType.timedOut);
@@ -224,9 +266,10 @@ const getMultiStepActionProgress = async (
       run.pollingStartedAt = new Date();
     }
 
-    setTimeout(() => {
+    logger.debug('getMultiStepActionProgress: calling setTimeout.');
+    run.timeoutRef = setTimeout(() => {
       getMultiStepActionProgress(actionId, run.confirmToken, queryOptions);
-    }, queryOptions.polling.interval || 1000);
+    }, queryOptions.polling.interval || 2000);
 
     result.object = {
       id: actionProgress.actionId,
@@ -237,9 +280,9 @@ const getMultiStepActionProgress = async (
 
     return result;
   } catch (error) {
-    logger.error('BgNodeClient.operations.multiStepAction.getMultiStepActionProgress: failed.',
+    logger.error('getMultiStepActionProgress: failed.',
       { error });
-    return null;
+    return { error: (error as Error).message };
   }
 };
 

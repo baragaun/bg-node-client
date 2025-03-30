@@ -8,6 +8,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 import { UserIdentType as UserIdentTypeFromClient } from '../../../enums.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import {
   QueryIsUserIdentAvailableArgs,
   UserIdentType,
@@ -19,12 +20,10 @@ import helpers from '../../helpers/helpers.js';
 const isUserIdentAvailable = async (
   userIdent: string,
   identType: UserIdentTypeFromClient,
-): Promise<boolean> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<boolean>> => {
+  if (!libData.isInitialized()) {
+    logger.error('isUserIdentAvailable: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -51,17 +50,15 @@ const isUserIdentAvailable = async (
       .gql(document)
       .send(args)) as { isUserIdentAvailable: boolean };
 
-    if (!response.isUserIdentAvailable) {
-      return null;
+    if (response.isUserIdentAvailable !== true && response.isUserIdentAvailable !== false) {
+      logger.error('fsdata.isUserIdentAvailable: no valid response received.');
+      return { error: 'system-error' };
     }
 
-    return response.isUserIdentAvailable;
+    return { object: response.isUserIdentAvailable };
   } catch (error) {
-    logger.error('isUserIdentAvailable failed.', {
-      error,
-      headers: helpers.headers(),
-    });
-    return null;
+    logger.error('isUserIdentAvailable failed.', { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

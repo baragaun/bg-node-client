@@ -2,34 +2,37 @@ import db from '../db/db.js';
 import { ModelType } from '../enums.js';
 import fsdata from '../fsdata/fsdata.js';
 import libData from '../helpers/libData.js';
+import logger from '../helpers/logger.js';
 import { Model } from '../models/Model.js';
 import { QueryOptions } from '../types/QueryOptions.js';
+import { QueryResult } from '../types/QueryResult.js';
 
 const updateLocalObject = async <T extends Model = Model>(
   id: string,
   object: T | null | undefined,
   modelType: ModelType,
   options: QueryOptions,
-): Promise<T | null> => {
+): Promise<QueryResult<T>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('updateLocalObject: unavailable');
+    return { error: 'unavailable' };
   }
 
   if (!object) {
-    object = await fsdata.pollForUpdatedObject<T>(id, modelType, options);
+    const pollingResult = await fsdata.pollForUpdatedObject<T>(id, modelType, options);
 
-    if (!object) {
-      return null;
+    if (pollingResult.error || !pollingResult.object) {
+      return pollingResult;
     }
+
+    object = pollingResult.object;
   }
 
   if (!object) {
-    return null;
+    return { error: 'system-error' };
   }
 
-  await db.replace(object, modelType);
-
-  return object;
+  return db.replace(object, modelType);
 };
 
 export default updateLocalObject;

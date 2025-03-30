@@ -10,8 +10,8 @@ import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../models/MyUser.js';
-import { MutationResult } from '../../../types/MutationResult.js';
 import { QueryOptions } from '../../../types/QueryOptions.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationUpdateMyUserArgs, MyUserInput } from '../../gql/graphql.js';
 import gql from '../../gql/mutations/updateMyUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -23,9 +23,9 @@ type UpdateMyUserResponse = { updateMyUser: string };
 const updateMyUser = async (
   changes: MyUserInput,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
-): Promise<MutationResult<MyUser>> => {
+): Promise<QueryResult<MyUser>> => {
   const config = libData.config();
-  const result: MutationResult<MyUser | null> = {
+  const result: QueryResult<MyUser | null> = {
     operation: MutationType.update,
   };
 
@@ -84,8 +84,7 @@ const updateMyUser = async (
     }
 
     if (!queryOptions.polling || (needOldUpdatedAt && !oldUpdatedAt)) {
-      result.object = await findMyUser();
-      return result;
+      return findMyUser();
     }
 
     if (queryOptions.polling) {
@@ -99,19 +98,17 @@ const updateMyUser = async (
     }
 
     logger.debug('fsdata.updateMyUser: starting polling.');
-    const fetchedMyUser = await pollForUpdatedObject<MyUser>(
+    const pollingResponse = await pollForUpdatedObject<MyUser>(
       changes.id,
       ModelType.MyUser,
       queryOptions,
     );
-    logger.debug('fsdata.updateMyUser: polling finished.', { fetchedMyUser });
+    logger.debug('fsdata.updateMyUser: polling finished.', { pollingResponse });
 
-    result.object = fetchedMyUser;
-    return result;
+    return pollingResponse as QueryResult<MyUser>;
   } catch (error) {
     logger.error('fsdata.updateMyUser: failed with error', { error, headers: helpers.headers() });
-    result.error = 'system-error';
-    return result;
+    return { error: (error as Error).message };
   }
 };
 

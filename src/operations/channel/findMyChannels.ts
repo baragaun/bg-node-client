@@ -1,9 +1,9 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
 import { ChannelListFilter } from '../../models/ChannelListFilter.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
@@ -18,12 +18,13 @@ const findMyChannels = async (
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<Channel>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('findMyChannels: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('findMyChannels: unauthorized');
+    return { error: 'unauthorized' };
   }
 
   //------------------------------------------------------------------------------------------------

@@ -4,13 +4,13 @@ import { Graffle } from 'graffle';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import findMyUser from './findMyUser.js';
-import { ModelType, MutationType } from '../../../enums.js';
+import { ModelType } from '../../../enums.js';
 import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../models/MyUser.js';
-import { MutationResult } from '../../../types/MutationResult.js';
 import { IsInTargetStateFunc, QueryOptions } from '../../../types/QueryOptions.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationBlockUserForMeArgs } from '../../gql/graphql.js';
 import gql from '../../gql/mutations/blockUserForMe.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -24,16 +24,10 @@ const blockUserForMe = async (
   reasonTextId: string | undefined,
   notes: string | undefined,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
-): Promise<MutationResult<MyUser>> => {
-  const config = libData.config();
-  const result: MutationResult<MyUser | null> = {
-    operation: MutationType.update,
-  };
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    result.error = 'unavailable';
-    return result;
+): Promise<QueryResult<MyUser>> => {
+  if (!libData.isInitialized()) {
+    logger.error('blockUserForMe: unavailable');
+    return { error: 'unavailable' };
   }
 
   if (!queryOptions) {
@@ -41,7 +35,13 @@ const blockUserForMe = async (
   }
 
   try {
-    const myUser = await findMyUser();
+    const findMyUserResponse = await findMyUser();
+    const myUser = findMyUserResponse.object;
+
+    if (findMyUserResponse.error || !myUser) {
+      logger.error('blockUserForMe: failed to find my user.', { findMyUserResponse });
+      return findMyUserResponse;
+    }
     const oldUserBlockCount = myUser.userBlocks
       ? myUser.userBlocks.length
       : 0;
@@ -67,8 +67,7 @@ const blockUserForMe = async (
 
     if (!response.blockUserForMe) {
       logger.error('fsdata.blockUserForMe: mutation did not return a valid response.');
-      result.error = 'system-error';
-      return result;
+      return { error: 'system-error' };
     }
 
     queryOptions.polling = {
@@ -79,19 +78,17 @@ const blockUserForMe = async (
     };
 
     logger.debug('fsdata.blockUserForMe: starting polling.');
-    const fetchedMyUser = await pollForUpdatedObject<MyUser>(
+    const pollingResult = await pollForUpdatedObject<MyUser>(
       myUser.id,
       ModelType.MyUser,
       queryOptions,
     );
-    logger.debug('fsdata.blockUserForMe: polling finished.', { fetchedMyUser });
+    logger.debug('fsdata.blockUserForMe: polling finished.', { pollingResult });
 
-    result.object = fetchedMyUser;
-    return result;
+    return pollingResult;
   } catch (error) {
     logger.error('fsdata.blockUserForMe: failed with error', { error, headers: helpers.headers() });
-    result.error = 'system-error';
-    return result;
+    return { error: (error as Error).message };
   }
 };
 

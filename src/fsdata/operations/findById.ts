@@ -8,6 +8,7 @@ import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { Model } from '../../models/Model.js';
 import modelFactory from '../../models/modelFactory.js';
+import { QueryResult } from '../../types/QueryResult.js';
 import findChannelById from '../gql/queries/findChannelById.graphql.js';
 import findChannelInvitationById from '../gql/queries/findChannelInvitationById.graphql.js';
 import findChannelMessageById from '../gql/queries/findChannelMessageById.graphql.js';
@@ -38,12 +39,10 @@ const _fieldDef = {
 const findById = async <T extends Model = Model>(
   id: string,
   modelType: ModelType,
-): Promise<T | null> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<T>> => {
+  if (!libData.isInitialized()) {
+    logger.error('findById: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create().transport({
@@ -68,13 +67,14 @@ const findById = async <T extends Model = Model>(
       // @ts-ignore
       .send(variables)) as { [fieldDef.field]: T | null };
 
-    logger.debug('findById: response received', { response });
+    logger.debug('fsdata.findById: response received', { response });
 
     if (!response[fieldDef.field]) {
-      return null;
+      logger.error('fsdata.findById: no object received.')
+      return { error: 'system-error' };
     }
 
-    return modelFactory<T>(response[fieldDef.field], modelType);
+    return { object: modelFactory<T>(response[fieldDef.field], modelType) };
   } catch (error) {
     logger.error('findById: error', { error, headers: helpers.headers() });
     return null;

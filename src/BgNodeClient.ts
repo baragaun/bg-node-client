@@ -1,7 +1,6 @@
-// import { BgBaseListener } from './BgBaseListener.js';
-// import { Operations } from './Operations.js';
+import { ClientInfoStore } from './ClientInfoStore.js';
 import db from './db/db.js';
-import clientInfoStore from './helpers/clientInfoStore.js';
+import { ClientInfoStoreType } from './enums.js';
 import libData from './helpers/libData.js';
 import logger, { setLogger, setLogLevel } from './helpers/logger.js';
 import { ClientInfo } from './models/ClientInfo.js';
@@ -16,13 +15,10 @@ export class BgNodeClient {
     myUserDeviceUuid?: string,
     appLogger?: Logger,
   ): Promise<BgNodeClient> {
-    if (libData.isInitialized()) {
-      logger.error("BgNodeClient.init: already initialized.", {
-        config,
-        myUserId,
-        myUserDeviceUuid,
-      });
+    logger.debug("BgNodeClient.init called.", { config });
 
+    if (libData.isInitialized()) {
+      logger.error("BgNodeClient.init: already initialized.", { config, myUserId, myUserDeviceUuid });
       return this;
     }
 
@@ -42,29 +38,39 @@ export class BgNodeClient {
 
     await db.init(config);
 
-    const existingClientInfo = await clientInfoStore.load();
+    let clientInfoStoreType = config.clientInfoStoreType || ClientInfoStoreType.inMemory;
 
-    let saveClientInfo = false;
-
-    if (myUserId && existingClientInfo.myUserId !== myUserId) {
-      existingClientInfo.myUserId = myUserId;
-      saveClientInfo = true;
+    if (!config.clientInfoStoreType && config.dbName) {
+      clientInfoStoreType = ClientInfoStoreType.db;
     }
 
-    if (myUserDeviceUuid && existingClientInfo.myUserDeviceUuid !== myUserDeviceUuid) {
-      existingClientInfo.myUserDeviceUuid = myUserDeviceUuid;
-      saveClientInfo = true;
+    this.clientInfoStore = config.clientInfoStore ||
+      new ClientInfoStore(clientInfoStoreType);
+
+    const clientInfo = await this.clientInfoStore.load()
+
+    let updateClientInfo = false;
+
+    if (myUserId && clientInfo.myUserId !== myUserId) {
+      clientInfo.myUserId = myUserId;
+      updateClientInfo = true;
     }
 
-    if (!existingClientInfo.myUserDeviceUuid) {
-      existingClientInfo.myUserDeviceUuid = ClientInfo.createDeviceUuid();
-      saveClientInfo = true;
+    if (myUserDeviceUuid && clientInfo.myUserDeviceUuid !== myUserDeviceUuid) {
+      clientInfo.myUserDeviceUuid = myUserDeviceUuid;
+      updateClientInfo = true;
     }
 
-    if (saveClientInfo) {
-      await clientInfoStore.persist(existingClientInfo);
+    if (!clientInfo.myUserDeviceUuid) {
+      clientInfo.myUserDeviceUuid = ClientInfo.createDeviceUuid();
+      updateClientInfo = true;
     }
 
+    if (updateClientInfo) {
+      await this.clientInfoStore.save(clientInfo);
+    }
+
+    libData.setClientInfoStore(this.clientInfoStore);
     libData.setInitialized(true);
 
     return this;
@@ -75,11 +81,11 @@ export class BgNodeClient {
   public removeListener = libData.removeListener;
   public setConfig = libData.setConfig;
   public config = libData.config;
-  public clientInfoStore = clientInfoStore;
+  public clientInfoStore: ClientInfoStore;
 
   public close = (done?: () => void): void => {
     libData.close();
-    clientInfoStore.close();
+    this.clientInfoStore.close();
     db.close().then(() => {
       logger.debug("BgNodeClient closed.");
       if (done) {
@@ -92,20 +98,27 @@ export class BgNodeClient {
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   // Getters:
-
   public get isInitialized(): boolean {
     return libData.isInitialized();
   }
 
+  public get isOffline(): boolean {
+    return libData.isOffline();
+  }
+
+  public set isOffline(isOffline: boolean) {
+    libData.setIsOffline(isOffline);
+  }
+
   public get isSignedIn(): boolean {
-    return clientInfoStore.get().isSignedIn;
+    return this.clientInfoStore.isSignedIn;
   }
 
   public get myUserDeviceUuid(): string | undefined {
-    return clientInfoStore.get().myUserDeviceUuid;
+    return this.clientInfoStore.myUserDeviceUuid;
   }
 
   public get myUserId(): string | undefined {
-    return clientInfoStore.get().myUserId;
+    return this.clientInfoStore.myUserId;
   }
 }

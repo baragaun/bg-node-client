@@ -8,6 +8,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { ContentStatus } from '../../../models/ContentStatus.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationStartMySessionV2Args } from '../../gql/graphql.js';
 import gql from '../../gql/mutations/startMySessionV2.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -15,12 +16,10 @@ import helpers from '../../helpers/helpers.js';
 type StartMySessionResponse = { startMySessionV2: ContentStatus };
 
 // see: https://graffle.js.org/guides/topics/requests
-const startMySessionV2 = async (): Promise<ContentStatus | null> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+const startMySessionV2 = async (): Promise<QueryResult<ContentStatus>> => {
+  if (!libData.isInitialized()) {
+    logger.error('startMySessionV2: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -43,13 +42,14 @@ const startMySessionV2 = async (): Promise<ContentStatus | null> => {
       .send({ returnContentStatus: true })) as { startMySessionV2: ContentStatus };
 
     if (!response.startMySessionV2) {
-      return null;
+      logger.error('fsdata.startMySessionV2: no valid response received.');
+      return { error: 'system-error' };
     }
 
-    return new ContentStatus(response.startMySessionV2);
+    return { object: new ContentStatus(response.startMySessionV2) };
   } catch (error) {
     logger.error('startMySessionV2 failed.', { error, headers: helpers.headers() });
-    return null;
+    return { error: (error as Error).message };
   }
 };
 

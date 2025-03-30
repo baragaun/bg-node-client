@@ -1,4 +1,5 @@
+import { QueryResult } from '../../../types/QueryResult.js';
 import { SignUpUserInput } from '../../../types/SignUpUserInput.js';
 import { UserAuthResponse } from '../../../types/UserAuthResponse.js';
-declare const signUpUser: (input: SignUpUserInput) => Promise<UserAuthResponse>;
+declare const signUpUser: (input: SignUpUserInput) => Promise<QueryResult<UserAuthResponse>>;
 export default signUpUser;

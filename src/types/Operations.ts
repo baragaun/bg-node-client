@@ -6,7 +6,6 @@ import {
 } from '../enums.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
 import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
-import { MutationResult } from './MutationResult.js';
 import { QueryOptions } from './QueryOptions.js';
 import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
@@ -22,6 +21,7 @@ import { ChannelParticipant } from '../models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from '../models/ChannelParticipantListFilter.js';
 import { Model } from '../models/Model.js';
 import { MyUser } from '../models/MyUser.js';
+import { MyUserChanges } from '../models/MyUserChanges.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
 import { User } from '../models/User.js';
@@ -39,19 +39,19 @@ export interface Operations {
     queryOptions?: QueryOptions,
   ) => Promise<QueryResult<T>>;
 
-  insertOne: <T extends Model = Model>(object: T) => Promise<MutationResult<T>>;
+  insertOne: <T extends Model = Model>(object: T) => Promise<QueryResult<T>>;
 
   updateLocalObject: <T extends Model = Model>(
     id: string,
     object: T | null | undefined,
     modelType: ModelType,
     options: QueryOptions,
-  ) => Promise<T | null>;
+  ) => Promise<QueryResult<T>>;
 
   channel: {
     createChannel: (
       attributes: Partial<Channel>,
-    ) => Promise<MutationResult<Channel>>;
+    ) => Promise<QueryResult<Channel>>;
 
     createMockChannel: (
       attributes: Partial<Channel>,
@@ -61,7 +61,7 @@ export interface Operations {
       messages?: ChannelMessage[],
     ) => { channel: Channel; messages: ChannelMessage[]; users: User[] };
 
-    deleteChannel: (id: string) => Promise<MutationResult<Channel>>;
+    deleteChannel: (id: string) => Promise<QueryResult<Channel>>;
     findChannels: (
       filter: ChannelListFilter,
       match: Partial<Channel>,
@@ -72,17 +72,17 @@ export interface Operations {
 
     updateChannel: (
       changes: Partial<Channel>,
-    ) => Promise<MutationResult<Channel>>;
+    ) => Promise<QueryResult<Channel>>;
   };
 
   channelInvitation: {
     createChannelInvitation: (
       attributes: Partial<ChannelInvitation>,
-    ) => Promise<MutationResult<ChannelInvitation>>;
+    ) => Promise<QueryResult<ChannelInvitation>>;
 
     deleteChannelInvitation: (
       id: string,
-    ) => Promise<MutationResult<ChannelInvitation>>;
+    ) => Promise<QueryResult<ChannelInvitation>>;
 
     findChannelInvitations: (
       filter: ChannelInvitationListFilter,
@@ -94,17 +94,17 @@ export interface Operations {
 
     updateChannelInvitation: (
       changes: Partial<ChannelInvitation>,
-    ) => Promise<MutationResult<ChannelInvitation>>;
+    ) => Promise<QueryResult<ChannelInvitation>>;
   };
 
   channelMessage: {
     createChannelMessage: (
       attributes: Partial<ChannelMessage>,
-    ) => Promise<MutationResult<ChannelMessage>>;
+    ) => Promise<QueryResult<ChannelMessage>>;
 
     deleteChannelMessage: (
       id: string,
-    ) => Promise<MutationResult<ChannelMessage>>;
+    ) => Promise<QueryResult<ChannelMessage>>;
 
     findChannelMessages: (
       filter: ChannelMessageListFilter,
@@ -116,17 +116,17 @@ export interface Operations {
 
     updateChannelMessage: (
       changes: Partial<ChannelMessage>,
-    ) => Promise<MutationResult<ChannelMessage>>;
+    ) => Promise<QueryResult<ChannelMessage>>;
   };
 
   channelParticipant: {
     createChannelParticipant: (
       attributes: Partial<ChannelParticipant>,
-    ) => Promise<MutationResult<ChannelParticipant>>;
+    ) => Promise<QueryResult<ChannelParticipant>>;
 
     deleteChannelParticipant: (
       id: string,
-    ) => Promise<MutationResult<ChannelParticipant>>;
+    ) => Promise<QueryResult<ChannelParticipant>>;
 
     findChannelParticipants: (
       filter: ChannelParticipantListFilter,
@@ -138,7 +138,7 @@ export interface Operations {
 
     updateChannelParticipant: (
       changes: Partial<ChannelParticipant>,
-    ) => Promise<MutationResult<ChannelParticipant>>;
+    ) => Promise<QueryResult<ChannelParticipant>>;
   };
 
   myUser: {
@@ -147,32 +147,31 @@ export interface Operations {
       reasonTextId: string | undefined,
       notes: string | undefined,
       queryOptions: QueryOptions | undefined,
-    ) => Promise<MutationResult<MyUser>>
+    ) => Promise<QueryResult<MyUser>>
 
     deleteMyUser: (
       cause: string | null | undefined,
       description: string | null | undefined,
       deletePhysically: boolean,
-    ) => Promise<MutationResult<null>>;
+    ) => Promise<QueryResult<void>>;
 
     endMySession: () => Promise<void>;
-    findAvailableUserHandle: (startValue: string) => Promise<string>;
-    findMyUser: (queryOptions?: QueryOptions) => Promise<MyUser | null>;
-    getSignedOutUserId: () => Promise<string | null>;
+    findAvailableUserHandle: (startValue: string) => Promise<QueryResult<string>>;
+    findMyUser: (queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
+    getSignedOutUserId: () => string | null;
     isSessionActive: () => boolean;
-    isSignedIn: () => boolean;
 
     isUserIdentAvailable: (
       userIdent: string,
       identType: UserIdentTypeFromClient,
-    ) => Promise<boolean>;
+    ) => Promise<QueryResult<boolean>>;
 
     reportUserForMe: (
       userId: string,
       reasonTextId: ReportUserReasonTextId,
       messageText: string | undefined,
       queryOptions: QueryOptions | undefined,
-    ) => Promise<MutationResult<void>>
+    ) => Promise<QueryResult<void>>
 
     resetMyPassword: (
       userIdent: string,
@@ -181,36 +180,36 @@ export interface Operations {
 
     signInUser: (
       input: SignInInput,
-    ) => Promise<MutationResult<SignInSignUpResponse>>;
+    ) => Promise<QueryResult<SignInSignUpResponse>>;
 
     signInWithToken: (
       userIdent: string,
-      queryOptions: QueryOptions | undefined,
-    ) => Promise<MutationResult<MultiStepActionProgressResult>>;
+      queryOptions?: QueryOptions | undefined,
+    ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
-    signMeOut: () => Promise<MutationResult<null>>;
+    signMeOut: () => Promise<QueryResult<void>>;
     signUpUser: (
       input: SignUpUserInput,
-    ) => Promise<MutationResult<SignInSignUpResponse>>;
+    ) => Promise<QueryResult<SignInSignUpResponse>>;
 
     startMySession: () => Promise<void>;
     startMySessionV2: () => Promise<void>;
 
     unblockUserForMe: (
       userId: string,
-      queryOptions: QueryOptions | undefined,
-    ) => Promise<MutationResult<MyUser>>;
+      queryOptions?: QueryOptions | undefined,
+    ) => Promise<QueryResult<MyUser>>;
 
     updateMyUser: (
-      myUser: Partial<MyUser>,
+      myUser: Partial<MyUserChanges>,
       queryOptions?: QueryOptions,
-    ) => Promise<MutationResult<MyUser>>;
+    ) => Promise<QueryResult<MyUser>>;
 
     updateMyPassword: (
       oldPassword: string,
       newPassword: string,
-      queryOptions: QueryOptions,
-    ) => Promise<MutationResult<MyUser>>;
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<MyUser>>;
 
     verifyMyEmail: (
       email: string,
@@ -226,7 +225,7 @@ export interface Operations {
       listener: MultiStepActionListener,
     ) => string | null;
 
-    findMyActiveMultiStepActions: () => Promise<SidMultiStepAction[]>;
+    findMyActiveMultiStepActions: () => Promise<QueryResult<SidMultiStepAction>>;
 
     getMultiStepActionProgress: (
       actionId: string,
@@ -241,7 +240,7 @@ export interface Operations {
       email: string | undefined,
       phoneNumber: string | undefined,
       notificationMethod: NotificationMethod,
-    ) => Promise<MutationResult<string>>;
+    ) => Promise<QueryResult<string>>;
 
     verifyMultiStepActionToken: (
       actionId: string,

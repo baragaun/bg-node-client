@@ -6,18 +6,17 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepAction } from '../../../models/SidMultiStepAction.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import gql from '../../gql/queries/findMyActiveMultiStepActions.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
 const findMyActiveMultiStepActions = async (): Promise<
-  SidMultiStepAction[] | null
+  QueryResult<SidMultiStepAction>
 > => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+  if (!libData.isInitialized()) {
+    logger.error('findMyActiveMultiStepActions: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -40,13 +39,10 @@ const findMyActiveMultiStepActions = async (): Promise<
 
     logger.debug('fsdata.findMyActiveMultiStepAction: response received.', response);
 
-    return response.findMyActiveMultiStepActions;
+    return { objects: response.findMyActiveMultiStepActions };
   } catch (error) {
-    logger.error('fsdata.findMyActiveMultiStepActions: error', {
-      error,
-      headers: helpers.headers(),
-    });
-    return null;
+    logger.error('fsdata.findMyActiveMultiStepActions: error', { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

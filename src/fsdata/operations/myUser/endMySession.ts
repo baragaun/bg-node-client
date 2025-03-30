@@ -7,16 +7,15 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import gql from '../../gql/mutations/endMySession.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
 // see: https://graffle.js.org/guides/topics/requests
-const endMySession = async (): Promise<void> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+const endMySession = async (): Promise<QueryResult<void>> => {
+  if (!libData.isInitialized()) {
+    logger.error('endMySession: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -36,9 +35,11 @@ const endMySession = async (): Promise<void> => {
       // @ts-ignore
       .gql(document)
       .send();
+
+    return {};
   } catch (error) {
     logger.error('endMySession failed.', { error, headers: helpers.headers() });
-    return null;
+    return { error: (error as Error).message }
   }
 };
 

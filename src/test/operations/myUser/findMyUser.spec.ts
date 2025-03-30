@@ -19,18 +19,24 @@ describe('operations.myUser.findMyUser', () => {
       });
     const myUserId = signUpUserAuthResponse.userAuthResponse.userId;
 
-    const myUserFromCache = await client.operations.myUser.findMyUser({
+    const findMyUserFromCacheResult = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.cache,
     });
+    const myUserFromCache = findMyUserFromCacheResult.object;
 
+    expect(findMyUserFromCacheResult.error).toBeUndefined();
+    expect(findMyUserFromCacheResult.object).toBeDefined();
     expect(myUserFromCache.id).toBe(myUserId);
     expect(myUserFromCache.userHandle).toBe(userHandle);
     expect(myUserFromCache.email).toBe(email);
 
-    const myUserFromNetwork = await client.operations.myUser.findMyUser({
+    const findMyUserFromNetworkResult = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.network,
     });
+    const myUserFromNetwork = findMyUserFromNetworkResult.object;
 
+    expect(findMyUserFromNetworkResult.error).toBeUndefined();
+    expect(findMyUserFromNetworkResult.object).toBeDefined();
     expect(myUserFromNetwork.id).toBe(client.myUserId);
     expect(myUserFromNetwork.userHandle).toBe(userHandle);
     expect(myUserFromNetwork.email).toBe(email);

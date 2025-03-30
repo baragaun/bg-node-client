@@ -1,25 +1,29 @@
 import fsdata from '../../fsdata/fsdata.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 
 const startMySession = async (): Promise<void> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('startMySession: unavailable.');
+    return;
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('startMySession: user not signed in.');
+    return;
+  }
+
+  if (libData.isOffline()) {
+    logger.error('startMySession: offline.');
+    return;
   }
 
   try {
     await fsdata.myUser.startMySession();
 
-    clientInfoStore.sessionStarted();
+    libData.clientInfoStore().sessionStarted();
   } catch (error) {
-    logger.error('startMySession: fsdata.myUser.startMySession failed', error);
-    return null;
+    logger.error('startMySession: error.', { error });
   }
 };
 

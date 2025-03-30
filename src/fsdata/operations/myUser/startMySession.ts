@@ -3,9 +3,9 @@ import { Opentelemetry } from 'graffle/extensions/opentelemetry';
 import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-import clientInfoStore from '../../../helpers/clientInfoStore.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationStartMySessionArgs } from '../../gql/graphql.js';
 import startMySessionGql from '../../gql/mutations/startMySession.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -13,17 +13,16 @@ import helpers from '../../helpers/helpers.js';
 type StartMySessionResponse = { startMySession: string };
 
 // see: https://graffle.js.org/guides/topics/requests
-const startMySession = async (): Promise<void> => {
-  const config = libData.config();
-  const clientInfo = clientInfoStore.get();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+const startMySession = async (): Promise<QueryResult<void>> => {
+  if (!libData.isInitialized()) {
+    logger.error('startMySession: unavailable');
+    return { error: 'unavailable' };
   }
+  const clientInfo = libData.clientInfoStore().clientInfo;
 
   if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+    logger.error('startMySession: unauthorized');
+    return { error: 'unauthorized' };
   }
 
   const deviceUuid = clientInfo.myUserDeviceUuid;
@@ -48,11 +47,13 @@ const startMySession = async (): Promise<void> => {
       .send({ deviceUuid })) as { startMySession: string };
 
     if (response.startMySession != 'ok') {
-      return null;
+      return { error: 'system-error' };
     }
+
+    return {}
   } catch (error) {
     logger.error('startMySession failed.', { error, headers: helpers.headers() });
-    return null;
+    return { error: (error as Error).message };
   }
 };
 

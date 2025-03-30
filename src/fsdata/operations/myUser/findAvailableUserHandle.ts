@@ -3,21 +3,24 @@ import { Opentelemetry } from 'graffle/extensions/opentelemetry';
 import { Throws } from 'graffle/extensions/throws';
 import { parse, type TypedQueryDocumentNode } from 'graphql';
 
-// import { create } from '../../graffle/fsdata/_.js'
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { QueryFindAvailableUserHandleArgs } from '../../gql/graphql.js';
 import gql from '../../gql/queries/findAvailableUserHandle.graphql.js';
 import helpers from '../../helpers/helpers.js';
 
+type ResponseDataType = { findAvailableUserHandle: string };
+
 // see: https://graffle.js.org/guides/topics/requests
-const findAvailableUserHandle = async (startValue: string): Promise<string> => {
+const findAvailableUserHandle = async (
+  startValue: string,
+): Promise<QueryResult<string>> => {
   const config = libData.config();
 
   if (!config || !config.fsdata || !config.fsdata.url) {
     logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create()
@@ -29,7 +32,7 @@ const findAvailableUserHandle = async (startValue: string): Promise<string> => {
     .use(Opentelemetry());
 
   const document = parse(gql) as TypedQueryDocumentNode<
-    { findAvailableUserHandle: string },
+    ResponseDataType,
     QueryFindAvailableUserHandleArgs
   >;
 
@@ -37,19 +40,12 @@ const findAvailableUserHandle = async (startValue: string): Promise<string> => {
     const response = (await client
       // @ts-ignore
       .gql(document)
-      .send({ startValue })) as { findAvailableUserHandle: string };
+      .send({ startValue })) as ResponseDataType;
 
-    if (!response.findAvailableUserHandle) {
-      return null;
-    }
-
-    return response.findAvailableUserHandle;
+    return { object: response.findAvailableUserHandle };
   } catch (error) {
-    logger.error('findAvailableUserHandle failed.', {
-      error,
-      headers: helpers.headers(),
-    });
-    return null;
+    logger.error('findAvailableUserHandle failed.', { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

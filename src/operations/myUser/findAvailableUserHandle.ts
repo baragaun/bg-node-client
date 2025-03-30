@@ -1,27 +1,29 @@
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
-const findAvailableUserHandle = async (startValue: string): Promise<string> => {
+const findAvailableUserHandle = async (
+  startValue: string,
+): Promise<QueryResult<string>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('findAvailableUserHandle: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const config = libData.config();
-
-  if (!config) {
-    logger.error('findAvailableUserHandle: no config.');
-    return null;
+  if (libData.isOffline() && !libData.config().enableMockMode) {
+    return { error: 'offline' };
   }
 
   try {
-    return fsdata.myUser.findAvailableUserHandle(startValue);
+    if (libData.isOnline()) {
+      return fsdata.myUser.findAvailableUserHandle(startValue);
+    }
+
+    return { object: crypto.randomUUID().replaceAll('-', '') };
   } catch (error) {
-    logger.error(
-      'findAvailableUserHandle: fsdata.myUser.findAvailableUserHandle failed',
-      error,
-    );
-    return null;
+    logger.error('findAvailableUserHandle: fsdata.myUser.findAvailableUserHandle failed', error);
+    return { error: 'system-error' };
   }
 };
 

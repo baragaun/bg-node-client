@@ -1,4 +1,4 @@
 import { ChannelMessage } from '../../models/ChannelMessage.js';
-import { MutationResult } from '../../types/MutationResult.js';
-declare const deleteChannelMessage: (id: string) => Promise<MutationResult<ChannelMessage>>;
+import { QueryResult } from '../../types/QueryResult.js';
+declare const deleteChannelMessage: (id: string) => Promise<QueryResult<ChannelMessage>>;
 export default deleteChannelMessage;

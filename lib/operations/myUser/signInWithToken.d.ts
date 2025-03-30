@@ -1,5 +1,5 @@
 import { MultiStepActionProgressResult } from '../../types/MultiStepActionProgressResult.js';
-import { MutationResult } from '../../types/MutationResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
-declare const signInWithToken: (userIdent: string, queryOptions?: QueryOptions) => Promise<MutationResult<MultiStepActionProgressResult>>;
+import { QueryResult } from '../../types/QueryResult.js';
+declare const signInWithToken: (userIdent: string, queryOptions?: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
 export default signInWithToken;

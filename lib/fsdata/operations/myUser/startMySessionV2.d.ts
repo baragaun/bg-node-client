@@ -1,3 +1,4 @@
 import { ContentStatus } from '../../../models/ContentStatus.js';
-declare const startMySessionV2: () => Promise<ContentStatus | null>;
+import { QueryResult } from '../../../types/QueryResult.js';
+declare const startMySessionV2: () => Promise<QueryResult<ContentStatus>>;
 export default startMySessionV2;

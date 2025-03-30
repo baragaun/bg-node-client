@@ -1,6 +1,6 @@
+import { ClientInfoStore } from '../ClientInfoStore.js';
 import { AppEnvironment, ClientInfoStoreType } from '../enums.js';
 import { HttpHeaders } from './HttpHeaders.js';
-import { ClientInfo } from '../models/ClientInfo.js';
 /**
  * Configuration for BgNodeClient.
  */
@@ -12,7 +12,14 @@ export interface BgNodeClientConfig {
     /**
      * If true, the client will use mock data instead of real data.
      */
-    useMockData?: boolean;
+    enableMockMode?: boolean;
+    /**
+     * If true, the client will be set to offline. It can then be set to online again later.
+     * But setting the client to offline at the initializiation phase ensures it won't connect
+     * to the backend. That can be helpful when running tests, or Storybook.
+     * Note: This will not call the `onChangeOffline` method of any listeners.
+     */
+    setOffline?: boolean;
     /**
      * The name of the database that RxDB will use.
      */
@@ -26,16 +33,11 @@ export interface BgNodeClientConfig {
      * The unit tests use `delegated` when they test using multiple client instances. In this case
      * they just save the client info in memory.
      */
-    clientInfoStore?: {
-        /** Define where the client info is stored */
-        type: ClientInfoStoreType;
-        delegate?: {
-            /** Function to save the client info */
-            persist?: (info: ClientInfo) => Promise<ClientInfo>;
-            /** Function to load the client info */
-            load?: () => Promise<ClientInfo | null>;
-        };
-    };
+    clientInfoStoreType?: ClientInfoStoreType;
+    /**
+     * A reference to a clientInfo store, if BgNodeClient should not use one of its built-in.
+     */
+    clientInfoStore?: ClientInfoStore;
     /** Integration with the GraphQL API */
     fsdata?: {
         /** The URL of the GraphQL API */
@@ -46,10 +48,6 @@ export interface BgNodeClientConfig {
          * Optional headers to be included with every request
          */
         headers?: HttpHeaders;
-    };
-    libSignal?: {
-        enable: boolean;
-        registrationId: number;
     };
     logLevel?: 'debug' | 'info' | 'warn' | 'error' | 'silent';
     /**

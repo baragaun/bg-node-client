@@ -91,7 +91,7 @@ class DefaultLogger implements Logger {
    */
   debug(message: any, ...args: any[]): void {
     if (this.config.level <= LogLevel.DEBUG) {
-      console.debug(...this.formatMessage(LogLevel.DEBUG, message, ...args));
+      console.log(...this.formatMessage(LogLevel.DEBUG, message, ...args));
     }
   }
 
@@ -102,7 +102,7 @@ class DefaultLogger implements Logger {
    */
   info(message: any, ...args: any[]): void {
     if (this.config.level <= LogLevel.INFO) {
-      console.info(...this.formatMessage(LogLevel.INFO, message, ...args));
+      console.log(...this.formatMessage(LogLevel.INFO, message, ...args));
     }
   }
 
@@ -113,7 +113,7 @@ class DefaultLogger implements Logger {
    */
   warn(message: any, ...args: any[]): void {
     if (this.config.level <= LogLevel.WARN) {
-      console.warn(...this.formatMessage(LogLevel.WARN, message, ...args));
+      console.log(...this.formatMessage(LogLevel.WARN, message, ...args));
     }
   }
 
@@ -173,8 +173,12 @@ export const setLogger = (newLogger: Logger): void => {
 
 const setLogLevel = (level: 'debug' | 'info' | 'warn' | 'error' | 'fatal' | 'silent'): void => {
   if (logger instanceof DefaultLogger) {
-    const transformedLevel = LOG_LEVEL_MAPPING[level];
-    logger.updateConfig({ level: transformedLevel || LogLevel.ERROR });
+    let transformedLevel = LOG_LEVEL_MAPPING[level];
+    if (isNaN(transformedLevel) || transformedLevel < 0 || transformedLevel > LogLevel.FATAL) {
+      transformedLevel = LogLevel.ERROR;
+    }
+    logger.updateConfig({ level: transformedLevel });
+    logger.debug("BgNodeClient: log level set.", { level });
   }
 };
 

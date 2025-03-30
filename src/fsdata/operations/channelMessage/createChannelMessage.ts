@@ -5,7 +5,7 @@ import { MutationType } from '../../../enums.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { ChannelMessage } from '../../../models/ChannelMessage.js';
-import { MutationResult } from '../../../types/MutationResult.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import {
   MutationCreateChannelMessageArgs,
   ChannelMessageInput,
@@ -18,12 +18,10 @@ type ResponseDataType = { createChannelMessage: ChannelMessage | null };
 // see: https://graffle.js.org/guides/topics/requests
 const createChannelMessage = async (
   input: ChannelMessageInput,
-): Promise<MutationResult<ChannelMessage>> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<ChannelMessage>> => {
+  if (!libData.isInitialized()) {
+    logger.error('createChannelMessage: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create().transport({
@@ -50,7 +48,7 @@ const createChannelMessage = async (
       error,
       headers: helpers.headers(),
     });
-    throw error;
+    return { error: (error as Error).message };
   }
 };
 

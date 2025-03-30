@@ -1,47 +1,45 @@
 import db from '../../db/db.js';
-import { CachePolicy, ModelType, MutationType } from '../../enums.js';
+import { CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { MyUserInput } from '../../fsdata/gql/graphql.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
-import { MutationResult } from '../../types/MutationResult.js';
+import { MyUserChanges } from '../../models/MyUserChanges.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const updateMyUser = async (
-  changes: Partial<MyUser>,
+  changes: Partial<MyUserChanges>,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
-): Promise<MutationResult<MyUser>> => {
+): Promise<QueryResult<MyUser>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('updateMyUser: unavailable.');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('updateMyUser: unavailable.');
+    return { error: 'unauthorized' };
   }
-
-  const result: MutationResult<MyUser | null> = {
-    operation: MutationType.update,
-  };
 
   if (!queryOptions) {
     queryOptions = defaultQueryOptionsForMutations;
   }
 
   if (!changes.id) {
-    changes.id = clientInfo.myUserId;
+    changes.id = libData.clientInfoStore().myUserId;
   }
 
   try {
     if (
       queryOptions.cachePolicy === CachePolicy.cache ||
-      queryOptions.cachePolicy === CachePolicy.cacheFirst
+      queryOptions.cachePolicy === CachePolicy.cacheFirst ||
+      libData.isOffline()
     ) {
       const queryResult = await db.findById<MyUser>(
-        clientInfo.myUserId,
+        libData.clientInfoStore().myUserId,
         ModelType.MyUser,
       );
 
@@ -51,18 +49,19 @@ const updateMyUser = async (
       ) {
         // With the policy set to CachePolicy.cache, we will only update
         // the local copy.
-        const mutationResult = await db.update<MyUser>(
+        const changesWithoutPassword = { ...changes };
+        delete changesWithoutPassword.currentPassword; // Don't allow password change via this method
+        delete changesWithoutPassword.newPassword; // Don't allow password change via this method
+
+        const QueryResult = await db.update<MyUser>(
           changes,
           ModelType.MyUser,
         );
 
-        if (mutationResult.error) {
-          result.error = mutationResult.error;
-          return result;
+        if (queryOptions.cachePolicy === CachePolicy.cache || libData.isOffline()) {
+          // If the policy is not cacheFirst, we are only handling the cache:
+          return QueryResult;
         }
-
-        result.object = mutationResult.object;
-        return result;
       }
     }
 
@@ -82,9 +81,8 @@ const updateMyUser = async (
 
     return updateResult;
   } catch (error) {
-    logger.error(error);
-    result.error = error.message;
-    return result;
+    logger.error('updateMyUser: error.', { error });
+    return { error: (error as Error).message };
   }
 };
 

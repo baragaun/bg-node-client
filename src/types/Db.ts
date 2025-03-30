@@ -1,7 +1,6 @@
 // import { LibSignalStores } from '../db/rxdb/libSignalStores/LibSignalStores.js';
 import { ModelType } from '../enums.js';
 import { BgNodeClientConfig } from './BgNodeClientConfig.js';
-import { MutationResult } from './MutationResult.js';
 import { QueryResult } from './QueryResult.js';
 import { Model } from '../models/Model.js';
 import { MyUser } from '../models/MyUser.js';
@@ -12,7 +11,7 @@ export interface Db {
   delete: <T extends Model = Model>(
     id: string,
     modelType: ModelType,
-  ) => Promise<MutationResult<T>>;
+  ) => Promise<QueryResult<T>>;
 
   find: <T extends Model = Model>(
     match: Partial<T>,
@@ -38,22 +37,22 @@ export interface Db {
   insert: <T extends Model = Model>(
     obj: T,
     modelType?: ModelType,
-  ) => Promise<MutationResult<T>>;
+  ) => Promise<QueryResult<T>>;
   isConnected: () => boolean;
   // libSignalStores: () => LibSignalStores;
 
   replace: <T extends Model = Model>(
     obj: T,
     modelType?: ModelType,
-  ) => Promise<MutationResult<T>>;
+  ) => Promise<QueryResult<T>>;
 
   update: <T extends Model = Model>(
     changes: Partial<T>,
     modelType?: ModelType,
-  ) => Promise<MutationResult<T>>;
+  ) => Promise<QueryResult<T>>;
 
   upsert: <T extends Model = Model>(
     changes: Partial<T>,
     modelType?: ModelType,
-  ) => Promise<MutationResult<T>>;
+  ) => Promise<QueryResult<T>>;
 }

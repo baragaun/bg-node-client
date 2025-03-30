@@ -1,71 +1,81 @@
 import db from '../../db/db.js';
 import { BgListenerTopic, CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
-import { BgMyUserListener } from '../../types/BgMyUserListener.js';
+import { MyUserListener } from '../../types/MyUserListener.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const findMyUser = async (
   queryOptions: QueryOptions = defaultQueryOptions,
-): Promise<MyUser | null> => {
+): Promise<QueryResult<MyUser>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('findMyUser: unavailable');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('findMyUser: unauthorized');
+    return { error: 'unauthorized' };
   }
 
   if (
     queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst
+    queryOptions.cachePolicy === CachePolicy.cacheFirst ||
+    libData.isOffline()
   ) {
     try {
       const queryResult = await db.findById<MyUser>(
-        clientInfo.myUserId,
+        libData.clientInfoStore().myUserId,
         ModelType.MyUser,
       );
 
       if (
         queryResult.object ||
-        queryOptions.cachePolicy === CachePolicy.cache
+        queryOptions.cachePolicy === CachePolicy.cache ||
+        libData.isOffline()
       ) {
-        return queryResult.object;
+        return queryResult;
       }
     } catch (error) {
-      logger.error('findMyUser: db.findById failed', error);
-      return null;
+      logger.error('findMyUser: db.findById failed', { error });
+      return { error: (error as Error).message };
     }
   }
 
   try {
-    const myUser = await fsdata.myUser.findMyUser();
+    const response = await fsdata.myUser.findMyUser();
 
-    if (myUser) {
-      // Update local cache:
-      await db.replace<MyUser>(myUser, ModelType.MyUser);
+    if (response.error) {
+      return response;
+    }
 
-      clientInfoStore.updateMyUserUpdatedAt(new Date(myUser.updatedAt).getTime());
+    // Update local cache:
+    await db.replace<MyUser>(response.object, ModelType.MyUser);
 
-      for (const listener of libData.listeners()) {
-        if (
-          listener.topic === BgListenerTopic.myUser &&
-          typeof (listener as BgMyUserListener).onMyUserUpdated === 'function'
-        ) {
-          (listener as BgMyUserListener).onMyUserUpdated(myUser);
+    libData.clientInfoStore().updateMyUserUpdatedAt(new Date(response.object.updatedAt).getTime());
+
+    for (const listener of libData.listeners()) {
+      if (
+        listener.topic === BgListenerTopic.myUser &&
+        typeof (listener as MyUserListener).onMyUserUpdated === 'function'
+      ) {
+        const listenerResponse = (listener as MyUserListener).onMyUserUpdated(response.object);
+        if (listenerResponse && typeof listenerResponse.then === 'function') {
+          listenerResponse.catch((error) => {
+            logger.error('findMyUser: listener onMyUserUpdated failed.', { error });
+          });
         }
       }
     }
 
-    return myUser;
+    return response;
   } catch (error) {
     logger.error('findMyUser: fsdata.myUser.findMyUser failed', error);
-    return null;
+    return { error: (error as Error).message };
   }
 };
 

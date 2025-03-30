@@ -15,7 +15,13 @@ const resetMyPassword = async (
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('resetMyPassword: unavailable');
+    return { error: 'unavailable' };
+  }
+
+  if (libData.isOffline() && !libData.config().enableMockMode) {
+    logger.error('resetMyPassword: offline');
+    return { error: 'offline' };
   }
 
   try {
@@ -27,23 +33,19 @@ const resetMyPassword = async (
     };
     const response = await fsdata.multiStepAction.createMultiStepAction(input);
 
-    if (!response || !response.actionId) {
-      logger.error('resetMyPassword: action not found.');
-      return {
-        error: 'system-error',
-      };
+    if (response.error || !response || !response.object.actionId) {
+      logger.error('resetMyPassword: action not found.', { response });
+      return response;
     }
 
     return getMultiStepActionProgress(
-      response.actionId,
+      response.object.actionId,
       undefined,
       queryOptions,
     );
   } catch (error) {
     logger.error(error);
-    return {
-      error: (error as Error).message,
-    };
+    return { error: (error as Error).message };
   }
 };
 

@@ -5,9 +5,9 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 // import { create } from '../../graffle/fsdata/_.js'
 
-import clientInfoStore from '../../../helpers/clientInfoStore.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationDeleteMyUserArgs } from '../../gql/graphql.js';
 import deleteMyUserGql from '../../gql/mutations/deleteMyUser.graphql.js';
 import helpers from '../../helpers/helpers.js';
@@ -17,15 +17,14 @@ const deleteMyUser = async (
   cause: string | null | undefined,
   description: string | null | undefined,
   deletePhysically: boolean,
-): Promise<void> => {
-  const clientInfo = clientInfoStore.get();
-  const myUserId = clientInfo.myUserId;
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<void>> => {
+  if (!libData.isInitialized()) {
+    logger.error('deleteMyUser: unavailable');
+    return { error: 'unavailable' };
   }
+
+  const clientInfo = libData.clientInfoStore().clientInfo;
+  const myUserId = clientInfo.myUserId;
 
   const client = Graffle.create()
     .transport({
@@ -53,13 +52,15 @@ const deleteMyUser = async (
   } catch (error) {
     logger.error('deleteMyUser failed.',
       { error: error.messages, stack: error.stack, headers: helpers.headers() });
-    return null;
+    return {};
   }
 
   if (!ok) {
     logger.error('deleteMyUser: backend did not send userId.');
-    throw new Error('system-error');
+    return { error: 'system-error' }
   }
+
+  return {};
 };
 
 export default deleteMyUser;

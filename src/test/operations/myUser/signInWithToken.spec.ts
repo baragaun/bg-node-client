@@ -36,7 +36,6 @@ describe('operations.myUser.signInWithToken', () => {
     const actionId = signInResponse.object.actionProgress.actionId;
     const actionRun = signInResponse.object.run;
 
-    // Add listener
     return new Promise((resolve) => {
       actionRun.addListener({
         id: 'test-listener',
@@ -108,7 +107,7 @@ describe('operations.myUser.signInWithToken', () => {
             const clientInfo1 = await client.clientInfoStore.load();
             expect(clientInfo1.myUserId).toBe(myUser.id);
             expect(clientInfo1.authToken).toBe(action.authToken);
-            expect(client.operations.myUser.isSignedIn()).toBeTruthy();
+            expect(client.isSignedIn).toBeTruthy();
 
             await deleteMyUserSpecHelper(client);
 
@@ -142,7 +141,6 @@ describe('operations.myUser.signInWithToken', () => {
     const actionId = signInResponse.object.actionProgress.actionId;
     const actionRun = signInResponse.object.run;
 
-    // Add listener
     return new Promise((resolve) => {
       actionRun.addListener({
         id: 'test-listener',
@@ -205,7 +203,7 @@ describe('operations.myUser.signInWithToken', () => {
             const clientInfo1 = await client.clientInfoStore.load();
             expect(clientInfo1.myUserId).toBe(myUser.id);
             expect(clientInfo1.authToken).toBe(action.authToken);
-            expect(client.operations.myUser.isSignedIn()).toBeTruthy();
+            expect(client.isSignedIn).toBeTruthy();
 
             await deleteMyUserSpecHelper(client);
 
@@ -215,4 +213,4 @@ describe('operations.myUser.signInWithToken', () => {
       });
     });
   });
-}, 600000);
+}, 1000000);

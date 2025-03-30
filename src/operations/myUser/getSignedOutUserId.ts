@@ -1,14 +1,13 @@
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
 
-const getSignedOutUserId = async (): Promise<string | null> => {
+const getSignedOutUserId = (): string | null => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('getSignedOutUserId: unavailable');
+    return null;
   }
 
-  const info = await clientInfoStore.load();
-
-  return info ? info.signedOutUserId : null;
+  return libData.clientInfoStore().clientInfo.signedOutUserId;
 };
 
 export default getSignedOutUserId;

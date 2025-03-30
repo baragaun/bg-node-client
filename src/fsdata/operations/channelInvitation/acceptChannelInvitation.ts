@@ -4,7 +4,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 import { MutationType } from '../../../enums.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { MutationResult } from '../../../types/MutationResult.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import {
   MutationAcceptChannelInvitationArgs,
 } from '../../gql/graphql.js';
@@ -16,12 +16,10 @@ type ResponseDataType = { acceptChannelInvitation: string };
 // see: https://graffle.js.org/guides/topics/requests
 const acceptChannelInvitation = async (
   channelInvitationId: string,
-): Promise<MutationResult<void>> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<void>> => {
+  if (!libData.isInitialized()) {
+    logger.error('acceptChannelInvitation: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create().transport({
@@ -47,7 +45,7 @@ const acceptChannelInvitation = async (
       error,
       headers: helpers.headers(),
     });
-    throw error;
+    return { error: (error as Error).message };
   }
 };
 

@@ -1,4 +1,4 @@
-import { ClientInfo } from './models/ClientInfo.js';
+import { ClientInfoStore } from './ClientInfoStore.js';
 import { BgNodeClientConfig } from './types/BgNodeClientConfig.js';
 import { Logger } from './types/logger.js';
 export declare class BgNodeClient {
@@ -8,18 +8,11 @@ export declare class BgNodeClient {
     removeListener: (id: string) => void;
     setConfig: (config: BgNodeClientConfig) => void;
     config: () => BgNodeClientConfig;
-    clientInfoStore: {
-        clearMyUserFromClientInfo: (signedOutUserId?: string) => Promise<ClientInfo>;
-        close: () => void;
-        get: () => ClientInfo;
-        load: () => Promise<ClientInfo>;
-        persist: (newClientInfo?: Partial<ClientInfo>) => Promise<ClientInfo>;
-        updateMyUserUpdatedAt: (myUserUpdatedAt: number) => void;
-        sessionEnded: () => void;
-        sessionStarted: () => void;
-    };
+    clientInfoStore: ClientInfoStore;
     close: (done?: () => void) => void;
     get isInitialized(): boolean;
+    get isOffline(): boolean;
+    set isOffline(isOffline: boolean);
     get isSignedIn(): boolean;
     get myUserDeviceUuid(): string | undefined;
     get myUserId(): string | undefined;

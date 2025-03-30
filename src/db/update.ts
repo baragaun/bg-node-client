@@ -5,15 +5,15 @@ import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 import { getModelTypeFromObject } from '../helpers/helpers.js';
 import { Model } from '../models/Model.js';
-import { MutationResult } from '../types/MutationResult.js';
+import { QueryResult } from '../types/QueryResult.js';
 
 let _db: RxDatabase | undefined = undefined;
 
 const update = async <T extends Model = Model>(
   changes: Partial<T>,
   modelType?: ModelType,
-): Promise<MutationResult<T>> => {
-  const result: MutationResult<T> = { operation: MutationType.update };
+): Promise<QueryResult<T>> => {
+  const result: QueryResult<T> = { operation: MutationType.update };
   if (!_db) {
     _db = db.getDb();
 

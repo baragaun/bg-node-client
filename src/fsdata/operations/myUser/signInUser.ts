@@ -3,6 +3,7 @@ import { parse, type TypedQueryDocumentNode } from 'graphql';
 
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { QueryResult } from '../../../types/QueryResult.js';
 import { SignInUserInput as SignInUserInputFromClient } from '../../../types/SignInUserInput.js';
 import { UserAuthResponse } from '../../../types/UserAuthResponse.js';
 import { MutationSignInUserArgs, SignInUserInput } from '../../gql/graphql.js';
@@ -12,12 +13,10 @@ import helpers from '../../helpers/helpers.js';
 // see: https://graffle.js.org/guides/topics/requests
 const SignInUser = async (
   input: SignInUserInputFromClient,
-): Promise<UserAuthResponse> => {
-  const config = libData.config();
-
-  if (!config || !config.fsdata || !config.fsdata.url) {
-    logger.error('GraphQL not configured.');
-    throw new Error('unavailable');
+): Promise<QueryResult<UserAuthResponse>> => {
+  if (!libData.isInitialized()) {
+    logger.error('SignInUser: unavailable');
+    return { error: 'unavailable' };
   }
 
   const client = Graffle.create().transport({
@@ -44,14 +43,10 @@ const SignInUser = async (
       signInUser: UserAuthResponse;
     };
 
-    return response.signInUser;
+    return { object: response.signInUser };
   } catch (error) {
-    logger.error('fsdata.SignInUser: failed', {
-      input,
-      error,
-      headers: helpers.headers(),
-    });
-    throw error;
+    logger.error('fsdata.SignInUser: failed', { input, error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

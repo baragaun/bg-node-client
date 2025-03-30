@@ -1,4 +1,4 @@
 import { ChannelMessage } from '../../models/ChannelMessage.js';
-import { MutationResult } from '../../types/MutationResult.js';
-declare const createChannelMessage: (attributes: Partial<ChannelMessage>) => Promise<MutationResult<ChannelMessage>>;
+import { QueryResult } from '../../types/QueryResult.js';
+declare const createChannelMessage: (attributes: Partial<ChannelMessage>) => Promise<QueryResult<ChannelMessage>>;
 export default createChannelMessage;

@@ -6,5 +6,6 @@ export default defineConfig({
     globals: true,
     include: ['./src/test/**/*.spec.ts'],
     // setupFiles: ['./src/test/setup.ts'],
+    reporters: ['verbose'],
   },
 });

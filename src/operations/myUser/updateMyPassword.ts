@@ -1,38 +1,32 @@
 import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
+import { ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { MyUserInput } from '../../fsdata/gql/graphql.js';
-import clientInfoStore from '../../helpers/clientInfoStore.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
-import { MutationResult } from '../../types/MutationResult.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
+import { QueryResult } from '../../types/QueryResult.js';
 
 const updateMyPassword = async (
   oldPassword: string,
   newPassword: string,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
-): Promise<MutationResult<MyUser>> => {
+): Promise<QueryResult<MyUser>> => {
   if (!libData.isInitialized()) {
-    throw new Error('not-initialized');
+    logger.error('updateMyPassword: unavailable.');
+    return { error: 'unavailable' };
   }
 
-  const clientInfo = clientInfoStore.get();
-  if (!clientInfo.isSignedIn) {
-    throw new Error('not-authorized');
+  if (!libData.clientInfoStore().isSignedIn) {
+    logger.error('updateMyPassword: user not signed in.');
+    return { error: 'unauthorized' };
   }
 
-  const myUserId = clientInfo.myUserId;
-  const result: MutationResult<MyUser | null> = {
-    operation: MutationType.update,
-  };
-
-  if (!myUserId) {
-    logger.error('updateMyPassword: myUserId not found.');
-    result.error = 'unauthorized';
-    return result;
+  if (libData.isOffline() && !libData.config().enableMockMode) {
+    logger.error('updateMyPassword: offline');
+    return { error: 'offline' };
   }
 
   if (!queryOptions) {
@@ -41,31 +35,28 @@ const updateMyPassword = async (
 
   try {
     const input: MyUserInput = {
-      id: myUserId,
+      id: libData.clientInfoStore().myUserId,
       currentPassword: oldPassword,
       newPassword,
     };
-    const mutationResult = await fsdata.myUser.updateMyUser(
+    const QueryResult = await fsdata.myUser.updateMyUser(
       input,
       queryOptions,
     );
 
-    if (mutationResult.error) {
-      result.error = mutationResult.error;
-      return result;
+    if (QueryResult.error) {
+      return QueryResult;
     }
 
-    if (mutationResult.object) {
+    if (QueryResult.object) {
       // Update local cache:
-      await db.replace<MyUser>(mutationResult.object, ModelType.MyUser);
+      await db.replace<MyUser>(QueryResult.object, ModelType.MyUser);
     }
 
-    result.object = mutationResult.object;
-    return result;
+    return QueryResult;
   } catch (error) {
-    logger.error(error);
-    result.error = error.message;
-    return result;
+    logger.error('updateMyPassword: error.', { error });
+    return { error: (error as Error).message };
   }
 };
 
