@@ -34,7 +34,7 @@ const findByMatch = async <T extends Model = Model>(
   const records = await collection.find(query).exec();
 
   return {
-    objects: records.map((r) => r.toMutableJSON()),
+    objects: records.map(record => new (record.constructor as { new(data: any): T })(record.toMutableJSON())),
   };
 };
 

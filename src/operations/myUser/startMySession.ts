@@ -5,23 +5,22 @@ import logger from '../../helpers/logger.js';
 const startMySession = async (
   pushNotificationToken: string | null | undefined,
 ): Promise<void> => {
-  if (!libData.isInitialized()) {
-    logger.error('startMySession: unavailable.');
-    return;
-  }
-
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('startMySession: user not signed in.');
-    return;
-  }
-
-  if (libData.isOffline()) {
-    logger.error('startMySession: offline.');
-    return;
-  }
-
   try {
-    await fsdata.myUser.startMySession(pushNotificationToken);
+    if (!libData.isInitialized()) {
+      logger.error('startMySession: unavailable.');
+      return;
+    }
+
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('startMySession: user not signed in.');
+      return;
+    }
+
+    if (libData.isOnline()) {
+      await fsdata.myUser.startMySession(pushNotificationToken);
+    } else {
+      logger.error('startMySession: offline.');
+    }
 
     libData.clientInfoStore().sessionStarted();
   } catch (error) {

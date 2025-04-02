@@ -28,7 +28,7 @@ const count = async <T extends Model = Model>(
     libData.isOffline()
   ) {
     try {
-      const result = await db.count<T>(match, modelType);
+      const result = await db.countByMatch<T>(match, modelType);
 
       if (
         !result.error &&

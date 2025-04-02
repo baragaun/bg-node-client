@@ -3,6 +3,7 @@ import { BgListenerTopic, CachePolicy } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import signInUserMock from '../../mockOperations/myUser/signInUserMock.js';
 import { MyUserListener } from '../../types/MyUserListener.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import { SignInInput } from '../../types/SignInInput.js';
@@ -11,17 +12,21 @@ import { SignInSignUpResponse } from '../../types/SignInSignUpResponse.js';
 const signInUser = async (
   input: SignInInput,
 ): Promise<QueryResult<SignInSignUpResponse>> => {
-  if (!libData.isInitialized()) {
-    logger.error('resetMyPassword: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  if (libData.isOffline() && !libData.config().enableMockMode) {
-    logger.error('signInUser: offline');
-    return { error: 'offline' };
-  }
-
   try {
+    if (libData.config().enableMockMode) {
+      return signInUserMock(input);
+    }
+
+    if (!libData.isInitialized()) {
+      logger.error('signInUser: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    if (libData.isOffline()) {
+      logger.error('signInUser: offline');
+      return { error: 'offline' };
+    }
+
     const signInUserResponse = await fsdata.myUser.signInUser(input);
     const userAuthResponse = signInUserResponse.object;
 

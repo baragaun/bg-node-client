@@ -27,34 +27,40 @@ given to `init` as an argument.
 
 ## Usage
 
-The following will create a mock channel with 2 participants and 10 messages:
+To instantiate, initialize the `BgNodeClient`, subscribe to events and receive the `MyUser` object
+right away:
 
 ```typescript
 import { BgNodeClient } from '@baragaun/bg-node-client';
 
-const client = await new BgNodeClient().init({
+const client = new BgNodeClient();
+
+const config: BgNodeClientConfig = {
+  inBrowser: true,
   fsdata: {
-    url: '<api url>',
+    url: import.meta.env.VITE_FSDATA_URL,
     headers: {
       [HttpHeaderName.consumer]: 'my-app',
     },
   },
+  clientInfoStoreType: ClientInfoStoreType.db,
   logLevel: 'debug',
-  enableMockMode: true,
+};
+
+const listener: MyUserListener = {
+  id: 'MyUserContext',
+  topic: BgListenerTopic.myUser,
+  onSignedIn: () => { ... },
+  onSignedOut: () => { ... },
+  onMyUserUpdated: (myUser) => { ... },
+};
+
+await this.client.init({
+  config,
+  isOnline: true,
+  startSession: true,
+  listener,
 });
-
-// This will create a mock channel with 10 messages:
-const { channel, messages, users } = client.createMockChannel(
-  { name: 'Test Channel' }, // channel data
-  2,   // 2 participants
-  10,  // 10 messages
-);
-
-// Find this channel again:
-const foundChannels = await client.operations.channel.findChannels({ id: mockChannel.id });
-
-// Load the messages of this channel:
-const foundMessages = await client.operations.channelMessage.findChannelMessages({ channelId: channels[0].id });
 ```
 
 ## Logger
@@ -94,18 +100,15 @@ pnpm run codegen
 
 ### Graffle
 
-We use [Graffle](https://graffle.com/) for this GraphQL client. Graffle can generate a
-client. To generate the client, run:
+We use [Graffle](https://graffle.com/) for this GraphQL client. Graffle can generate a client. To generate the 
+client, run:
 
 ```shell
 pnpm graffle
 ```
-The client is in `src/fsdata/graffle`.
-
-**Note**
-
-The generated client will contain lint/TS errors. You'll have to fix those errors manually.
-Also, I haven't yet figured out how to properly use this client. 
+It uses the `graffle.config.js` config file in the root of the project. You'll have to modify
+that config file for your environment, i.e. set the URL of the backend that provides the 
+GraphQL schema. The client is then saved into `src/fsdata/graffle`.
 
 ## Handling `MultiStepAction`
 
@@ -207,6 +210,42 @@ SECURE_ID_ALLOW_TESTING_CONFIRM_TOKENS=true
 ```
 
 The server will then use `123456` as the confirmation token.
+
+## Mock Mode
+
+BgNodeClient can be used in "mock mode" for unit testing or development purposes. In this mode,
+it will not connect to the network but use the local database only.
+
+To set the client to mock mode, you can set the `enableMockMode` property to `true` in the
+`BgNodeClientConfig` when initializing the client:
+
+```typescript
+const client = new BgNodeClient();
+await client.init({ config: { enableMockMode: true } });
+```
+
+All operations are available in mock mode. You can sign up a user, create channels, etc.
+
+There are also some factories to create mock data. The following will create a mock
+channel with 2 participants and 10 messages:
+
+```typescript
+// This will create a mock channel with 10 messages:
+const { channel, messages, users } = client.mockOperations.factories.channel(
+  { name: 'Test Channel' }, // channel data
+  2,   // 2 participants
+  10,  // 10 messages
+);
+
+// Find this channel again:
+const foundChannels = await client.operations.channel.findChannels({ id: mockChannel.id });
+
+// Load the messages of this channel:
+const foundMessages = await client.operations.channelMessage.findChannelMessages({ channelId: channels[0].id });
+```
+
+It is also possible to leave the mock mode off and call mock operations selectively. For this,
+use the `client.mockOperations`, i.e. `client.mockOperations.myUser.signUpUser` directly.
 
 ## Making Changes
 

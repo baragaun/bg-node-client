@@ -37,7 +37,7 @@ const graffleClientStore = {
           url: libData.config().fsdata.url,
           // headers: helpers.headers(),
         })
-        .anyware(({ pack }) => {
+        .anyware(({ pack }: any) => {
           if (pack.input.transportType !== 'http') return pack();
           return pack({
             input: {

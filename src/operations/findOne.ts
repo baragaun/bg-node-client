@@ -1,3 +1,5 @@
+import { MangoQuery } from 'rxdb';
+
 import db from '../db/db.js';
 import { CachePolicy, ModelType } from '../enums.js';
 import { defaultQueryOptions } from '../helpers/defaults.js';
@@ -8,7 +10,7 @@ import { QueryOptions } from '../types/QueryOptions.js';
 import { QueryResult } from '../types/QueryResult.js';
 
 const findOne = async <T extends Model = Model>(
-  match: Partial<T>,
+  query: MangoQuery<T>,
   modelType: ModelType,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<T>> => {
@@ -28,7 +30,7 @@ const findOne = async <T extends Model = Model>(
     libData.isOffline()
   ) {
     try {
-      const result = await db.findOne<T>(match, modelType);
+      const result = await db.findOne<T>(query, modelType);
 
       if (
         !result.error &&

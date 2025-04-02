@@ -1,4 +1,4 @@
-import { RxDatabase } from 'rxdb';
+import { MangoQuery, RxDatabase } from 'rxdb';
 
 import { ModelType } from '../enums.js';
 import db from './helpers/db.js';
@@ -9,7 +9,7 @@ import { QueryResult } from '../types/QueryResult.js';
 let _db: RxDatabase | undefined = undefined;
 
 const findOne = async <T extends Model = Model>(
-  match: Partial<T>,
+  query: MangoQuery<T>,
   modelType: ModelType,
 ): Promise<QueryResult<T>> => {
   const result: QueryResult<T> = {};
@@ -30,18 +30,9 @@ const findOne = async <T extends Model = Model>(
     return result;
   }
 
-  // todo: implement
-  const record = await collection
-    .findOne({
-      selector: {
-        id: {
-          $eq: match.id,
-        },
-      },
-    })
-    .exec();
+  const record = await collection.findOne(query).exec();
 
-  return { object: record.toMutableJSON() ?? null };
+  return { object: record ? new (record.constructor as { new(data: any): T })(record.toMutableJSON()) : null };
 };
 
 export default findOne;

@@ -27,8 +27,8 @@ const update = async <T extends Model = Model>(
       return { error: 'unauthorized' };
     }
 
-    const isOffline = libData.isOffline();
-    const allowNetwork = !isOffline && queryOptions.cachePolicy !== CachePolicy.cache;
+    const isOnline = libData.isOnline();
+    const allowNetwork = isOnline && queryOptions.cachePolicy !== CachePolicy.cache;
 
     if (!queryOptions) {
       queryOptions = defaultQueryOptionsForMutations;
@@ -66,10 +66,6 @@ const update = async <T extends Model = Model>(
 
     //------------------------------------------------------------------------------------------------
     // Network
-    if (!allowNetwork) {
-      return { error: 'offline', operation: MutationType.update };
-    }
-
     const updateResult = await fsdata.update<T>(
       changes,
       modelType,

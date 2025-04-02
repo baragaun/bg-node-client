@@ -7,12 +7,18 @@ export declare class User extends BaseModel {
     firstName?: string | null;
     lastName?: string | null;
     userHandle?: string | null;
+    phoneNumber?: string | null;
+    phoneNumberUpdatedAt?: string | null;
+    isPhoneNumberVerified: boolean;
     email?: string | null;
     emailUpdatedAt?: string | null;
     isEmailVerified: boolean;
+    emailSource?: string | null;
+    genderTextId?: string | null;
     cityOfResidence?: string | null;
     regionOfResidence?: string | null;
     countryOfResidenceTextId?: string | null;
+    postalCode?: string | null;
     avatarUrl?: string | null;
     websites?: LabeledStringValue[] | null;
     authType?: AuthType | null;
@@ -22,6 +28,7 @@ export declare class User extends BaseModel {
     spokenLanguagesTextIds: string[];
     selectedUiLanguageTextId?: UiLanguage | null;
     fallbackUiLanguageTextId?: UiLanguage | null;
+    discoverable?: boolean | null;
     roles: UserRole[];
     appFeatures?: AppFeature[] | null;
     source?: string | null;
@@ -39,5 +46,8 @@ export declare class User extends BaseModel {
     onboardingStage?: string | null;
     suspendedAt?: string | null;
     suspendedBy?: string | null;
+    offersHelp?: boolean;
+    seeksHelp?: boolean;
+    isTestUser?: boolean;
     constructor(attributes?: Partial<User>);
 }

@@ -1,3 +1,5 @@
+import { MangoQuery } from 'rxdb';
+
 import {
   ChannelInvitationDirection,
   DeclineChannelInvitationReasonTextId as DeclineChannelInvitationReasonTextIdFromClient,
@@ -27,6 +29,7 @@ import { MyUser } from '../models/MyUser.js';
 import { MyUserChanges } from '../models/MyUserChanges.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
+import { UserInbox } from '../models/UserInbox.js';
 
 export interface Operations {
   count: <T extends Model = Model>(
@@ -35,6 +38,18 @@ export interface Operations {
     queryOptions?: QueryOptions,
   ) => Promise<QueryResult<number>>
 
+  find: <T extends Model = Model>(
+    query: MangoQuery<T>,
+    modelType: ModelType,
+    queryOptions?: QueryOptions,
+  ) => Promise<QueryResult<T>>;
+
+  findByMatch: <T extends Model = Model>(
+    match: Partial<T>,
+    modelType: ModelType,
+    queryOptions?: QueryOptions,
+  ) => Promise<QueryResult<T>>;
+
   findById: <T extends Model = Model>(
     id: string,
     modelType: ModelType,
@@ -42,6 +57,12 @@ export interface Operations {
   ) => Promise<QueryResult<T>>;
 
   findOne: <T extends Model = Model>(
+    query: MangoQuery<T>,
+    modelType: ModelType,
+    queryOptions?: QueryOptions,
+  ) => Promise<QueryResult<T>>
+
+  findOneByMatch: <T extends Model = Model>(
     match: Partial<T>,
     modelType: ModelType,
     queryOptions?: QueryOptions,
@@ -75,6 +96,15 @@ export interface Operations {
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
+
+    findMyArchivedChannels: (
+      filter: ChannelListFilter,
+      match: Partial<Channel>,
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<Channel>>;
+
+    isChannelArchivedForMe: (channel: Channel) => boolean;
 
     updateChannel: (
       changes: Partial<Channel>,
@@ -182,6 +212,7 @@ export interface Operations {
 
     endMySession: () => Promise<void>;
     findAvailableUserHandle: (startValue: string) => Promise<QueryResult<string>>;
+    findMyInbox: (queryOptions?: QueryOptions) => Promise<QueryResult<UserInbox>>;
     findMyUser: (queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
     getSignedOutUserId: () => string | null;
     isCachedUserFresh: () => Promise<boolean>;
@@ -246,6 +277,10 @@ export interface Operations {
       email: string,
       queryOptions: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
+
+    verifyMyPassword: (
+      password: string,
+    ) => Promise<QueryResult<boolean>>;
   };
 
   multiStepAction: {
