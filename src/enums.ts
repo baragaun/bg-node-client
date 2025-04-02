@@ -155,6 +155,8 @@ export enum ModelType {
   ChannelMessage = 'ChannelMessage',
   ChannelParticipant = 'ChannelParticipant',
   MyUser = 'MyUser',
+  SidMultiStepAction = 'SidMultiStepAction',
+  SidMultiStepActionProgress = 'SidMultiStepActionProgress',
   User = 'User',
   UserInbox = 'UserInbox',
   ClientInfo = 'ClientInfo',

@@ -1,6 +1,6 @@
 import { ChannelInvitationDirection as ChannelInvitationDirectionFromClient } from '../../../enums.js';
-import { Channel } from '../../../models/Channel.js';
+import { ChannelInvitation } from '../../../models/ChannelInvitation.js';
 import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-declare const findChannelInvitationsForUser: (userId: string, onlyUnseen: boolean, onlyPending: boolean, direction: ChannelInvitationDirectionFromClient, options: FindObjectsOptionsFromClient) => Promise<QueryResult<Channel>>;
+declare const findChannelInvitationsForUser: (userId: string, onlyUnseen: boolean, onlyPending: boolean, direction: ChannelInvitationDirectionFromClient, options: FindObjectsOptionsFromClient) => Promise<QueryResult<ChannelInvitation>>;
 export default findChannelInvitationsForUser;

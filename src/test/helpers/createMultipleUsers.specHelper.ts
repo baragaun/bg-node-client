@@ -15,7 +15,7 @@ export const createMultipleUsersSpecHelper = async (
     props = Array.from({ length: props }, () => userFactory.build());
   }
 
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < props.length; i++) {
     const user = await signMeUpSpecHelper(
       props[i],
       true,

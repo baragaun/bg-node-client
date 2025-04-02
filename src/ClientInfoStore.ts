@@ -29,7 +29,7 @@ export class ClientInfoStore {
         id: 'default',
         myUserDeviceUuid: ClientInfo.createDeviceUuid(),
         createdAt: new Date().toISOString(),
-      })
+      });
     }
     return this._clientInfo;
   }

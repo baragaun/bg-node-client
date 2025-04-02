@@ -1,8 +1,3 @@
-import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { Channel } from '../../../models/Channel.js';
@@ -15,52 +10,47 @@ import {
   InputMaybe,
   QueryFindChannelsArgs,
 } from '../../gql/graphql.js';
-import gql from '../../gql/queries/findChannels.graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
+import modelFields from '../../helpers/modelFields.js';
 
-type ResponseDataType = { findChannels: Channel[] | null };
+type ResponseDataType = {
+  data: {
+    findChannels: Channel[] | null;
+  };
+  errors?: { message: string }[];
+};
 
-// see: https://graffle.js.org/guides/topics/requests
 const findChannels = async (
   filter: ChannelListFilter | undefined,
   match: Partial<Channel> | undefined,
   options: FindObjectsOptionsFromClient,
 ): Promise<QueryResult<Channel>> => {
-  if (!libData.isInitialized()) {
-    logger.error('findChannels: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  const client = Graffle.create()
-    .transport({
-      url: libData.config().fsdata.url,
-      headers: helpers.headers(),
-    })
-    .use(Throws())
-    .use(Opentelemetry());
-
-  const document = parse(gql) as TypedQueryDocumentNode<
-    ResponseDataType,
-    QueryFindChannelsArgs
-  >;
-
-  const args: QueryFindChannelsArgs = {
-    filter,
-    match: match as unknown as InputMaybe<ChannelInput>,
-    options: options as unknown as InputMaybe<FindObjectsOptions>,
-  };
-
   try {
-    const response = (await client
-      // @ts-ignore
-      .gql(document)
-      .send(args)) as ResponseDataType;
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.findChannels: unavailable');
+      return { error: 'unavailable' };
+    }
 
-    logger.debug('fsdata.findChannels: response received.', response);
+    const client = graffleClientStore.get();
+    const args: QueryFindChannelsArgs = {
+      filter,
+      match: match as unknown as InputMaybe<ChannelInput>,
+      options: options as unknown as InputMaybe<FindObjectsOptions>,
+    };
+
+    const response: ResponseDataType = await client.mutation.findChannels({
+      $: args,
+      ...modelFields.channel,
+    });
+
+    logger.debug('fsdata.findChannels response:', { response });
 
     return {
-      objects: response.findChannels.map((channel) => new Channel(channel)),
-    }
+      objects: response.data.findChannels
+        ? response.data.findChannels.map((channel) => new Channel(channel))
+        : null,
+    };
   } catch (error) {
     logger.error('fsdata.findChannels: error', { error, headers: helpers.headers() });
     return { error: (error as Error).message };

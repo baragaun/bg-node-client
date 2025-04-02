@@ -1,45 +1,41 @@
-import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepAction } from '../../../models/SidMultiStepAction.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-import gql from '../../gql/queries/findMyActiveMultiStepActions.graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
+import modelFields from '../../helpers/modelFields.js';
 
-// see: https://graffle.js.org/guides/topics/requests
+type ResponseDataType = { data: { findMyActiveMultiStepActions: SidMultiStepAction[] | null }, errors?: { message: string }[] };
+
 const findMyActiveMultiStepActions = async (): Promise<
   QueryResult<SidMultiStepAction>
 > => {
-  if (!libData.isInitialized()) {
-    logger.error('findMyActiveMultiStepActions: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  const client = Graffle.create()
-    .transport({
-      url: libData.config().fsdata.url,
-      headers: helpers.headers(),
-    })
-    .use(Throws())
-    .use(Opentelemetry());
-
-  const document = parse(gql) as TypedQueryDocumentNode<{
-    findMyActiveMultiStepActions: SidMultiStepAction[] | null;
-  }>;
-
   try {
-    const response = (await client
-      // @ts-ignore
-      .gql(document)
-      .send()) as { findMyActiveMultiStepActions: SidMultiStepAction[] | null };
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.findMyActiveMultiStepActions: unavailable');
+      return { error: 'unavailable' };
+    }
 
-    logger.debug('fsdata.findMyActiveMultiStepAction: response received.', response);
+    const client = graffleClientStore.get();
 
-    return { objects: response.findMyActiveMultiStepActions };
+    const response: ResponseDataType = await client.query.findMyActiveMultiStepActions(
+      modelFields.sidMultiStepAction,
+    );
+
+    logger.debug('fsdata.findMyActiveMultiStepActions: response received.', { response });
+
+    if (response.errors) {
+      logger.error('fsdata.findMyActiveMultiStepActions: failed with error', { error: response.errors });
+      return { error: response.errors.map(e => e.message).join(', ')};
+    }
+
+    if (!response.data.findMyActiveMultiStepActions) {
+      logger.error('fsdata.findMyActiveMultiStepActions: not found.');
+      return { error: 'not-found' };
+    }
+
+    return { objects: response.data.findMyActiveMultiStepActions };
   } catch (error) {
     logger.error('fsdata.findMyActiveMultiStepActions: error', { error, headers: helpers.headers() });
     return { error: (error as Error).message };

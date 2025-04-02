@@ -25,7 +25,7 @@ const helpers = {
       headers[HttpHeaderName.authorization] = `Bearer ${clientInfo.authToken}`;
       headers[HttpHeaderName.authType] = AuthType.Token;
     } else {
-      headers[HttpHeaderName.authorization] = `Bearer none`;
+      headers[HttpHeaderName.authorization] = 'Bearer none';
     }
 
     // todo: Add the other headers:

@@ -2,7 +2,9 @@ import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 
-const startMySession = async (): Promise<void> => {
+const startMySession = async (
+  pushNotificationToken: string | null | undefined,
+): Promise<void> => {
   if (!libData.isInitialized()) {
     logger.error('startMySession: unavailable.');
     return;
@@ -19,7 +21,7 @@ const startMySession = async (): Promise<void> => {
   }
 
   try {
-    await fsdata.myUser.startMySession();
+    await fsdata.myUser.startMySession(pushNotificationToken);
 
     libData.clientInfoStore().sessionStarted();
   } catch (error) {

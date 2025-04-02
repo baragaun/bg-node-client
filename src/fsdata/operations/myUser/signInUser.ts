@@ -1,51 +1,42 @@
-import { Graffle } from 'graffle';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import { SignInUserInput as SignInUserInputFromClient } from '../../../types/SignInUserInput.js';
 import { UserAuthResponse } from '../../../types/UserAuthResponse.js';
-import { MutationSignInUserArgs, SignInUserInput } from '../../gql/graphql.js';
-import gql from '../../gql/mutations/signInUser.graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-// see: https://graffle.js.org/guides/topics/requests
+type ResponseDataType = { data: { signInUser: UserAuthResponse }, errors?: { message: string }[] };
+
 const SignInUser = async (
   input: SignInUserInputFromClient,
 ): Promise<QueryResult<UserAuthResponse>> => {
   if (!libData.isInitialized()) {
-    logger.error('SignInUser: unavailable');
+    logger.error('fsdata.signInUser: unavailable');
     return { error: 'unavailable' };
   }
 
-  const client = Graffle.create().transport({
-    url: libData.config().fsdata.url,
-    headers: helpers.headers(),
-  });
-  // .use(Throws())
-  // .use(Opentelemetry())
+  const client = graffleClientStore.get();
 
-  const document = parse(gql) as TypedQueryDocumentNode<
-    { signInUser: UserAuthResponse },
-    MutationSignInUserArgs
-  >;
-
-  logger.debug('fsdata.SignInUser: sending request.', {
-    input,
-    headers: helpers.headers(),
-  });
+  logger.debug('fsdata.signInUser: sending input', { input });
 
   try {
-    const response = (await client
-      .gql(document)
-      .send({ input: input as unknown as SignInUserInput })) as {
-      signInUser: UserAuthResponse;
-    };
+    const response: ResponseDataType = await client.mutation.signInUser({
+      $: { input },
+      userId: true,
+      authToken: true,
+    });
 
-    return { object: response.signInUser };
+    logger.debug('fsdata.signInUser: response received.', { response });
+
+    if (response.errors) {
+      logger.error('fsdata.signInUser: failed with error', { error: response.errors });
+      return { error: response.errors.map(e => e.message).join(', ')};
+    }
+
+    return { object: response.data.signInUser };
   } catch (error) {
-    logger.error('fsdata.SignInUser: failed', { input, error, headers: helpers.headers() });
+    logger.error('fsdata.signInUser: failed', { input, error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

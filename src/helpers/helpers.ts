@@ -8,7 +8,7 @@ import { MyUser } from '../models/MyUser.js';
 import { User } from '../models/User.js';
 
 export const getModelTypeFromObject = <T extends Model = Model>(
-  obj: T,
+  obj: Partial<T>,
 ): ModelType | null => {
   if (obj instanceof Channel) {
     return ModelType.Channel;

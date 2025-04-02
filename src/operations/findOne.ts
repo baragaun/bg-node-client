@@ -24,12 +24,17 @@ const findOne = async <T extends Model = Model>(
 
   if (
     queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst
+    queryOptions.cachePolicy === CachePolicy.cacheFirst ||
+    libData.isOffline()
   ) {
     try {
       const result = await db.findOne<T>(match, modelType);
 
-      if (result.object || queryOptions.cachePolicy === CachePolicy.cache) {
+      if (
+        !result.error &&
+        (queryOptions.cachePolicy === CachePolicy.cache || libData.isOffline()) &&
+        result.object
+      ) {
         return result;
       }
     } catch (error) {

@@ -1,4 +1,4 @@
-import { RxDatabase } from "rxdb";
+import { RxDatabase } from 'rxdb';
 // import { LibSignalStores } from 'libSignalStores/LibSignalStores.js';
 
 let _db: RxDatabase | undefined = undefined;

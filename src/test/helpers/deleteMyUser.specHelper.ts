@@ -18,4 +18,4 @@ export const deleteMyUserSpecHelper = async (client: BgNodeClient): Promise<void
   expect(clientInfo2.remoteContentStatus).toBeUndefined();
   expect(clientInfo2.sessionStartedAt).toBeUndefined();
   expect(clientInfo2.sessionEndedAt).toBeUndefined();
-}
+};

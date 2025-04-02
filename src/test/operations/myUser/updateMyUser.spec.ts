@@ -73,7 +73,7 @@ describe('operations.myUser.updateMyUser', () => {
     const findMyUserFromCacheResult2 = await client.operations.myUser.findMyUser({
       cachePolicy: CachePolicy.cache,
     });
-    const myUserFromCache2 = findMyUserFromCacheResult2.object
+    const myUserFromCache2 = findMyUserFromCacheResult2.object;
 
     expect(findMyUserFromCacheResult2.error).toBeUndefined();
     expect(findMyUserFromCacheResult2.object).toBeDefined();

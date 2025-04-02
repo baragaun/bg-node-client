@@ -1,13 +1,18 @@
 import createChannel from './operations/channel/createChannel.js';
 import findChannels from './operations/channel/findChannels.js';
 import findMyChannels from './operations/channel/findMyChannels.js';
+import updateChannel from './operations/channel/updateChannel.js';
 import acceptChannelInvitation from './operations/channelInvitation/acceptChannelInvitation.js';
 import createChannelInvitation from './operations/channelInvitation/createChannelInvitation.js';
 import declineChannelInvitation from './operations/channelInvitation/declineChannelInvitation.js';
+import findChannelInvitations from './operations/channelInvitation/findChannelInvitations.js';
 import findChannelInvitationsForUser
   from './operations/channelInvitation/findChannelInvitationsForUser.js';
+import updateChannelInvitation from './operations/channelInvitation/updateChannelInvitation.js';
 import createChannelMessage from './operations/channelMessage/createChannelMessage.js';
 import findChannelMessages from './operations/channelMessage/findChannelMessages.js';
+import updateChannelMessage from './operations/channelMessage/updateChannelMessage.js';
+import create from './operations/create.js';
 import findById from './operations/findById.js';
 import createMultiStepAction from './operations/multiStepAction/createMultiStepAction.js';
 import findMyActiveMultiStepActions from './operations/multiStepAction/findMyActiveMultiStepActions.js';
@@ -30,26 +35,33 @@ import startMySessionV2 from './operations/myUser/startMySessionV2.js';
 import unblockUserForMe from './operations/myUser/unblockUserForMe.js';
 import updateMyUser from './operations/myUser/updateMyUser.js';
 import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
+import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
 
 const fsdata = {
+  create,
   findById,
   pollForUpdatedObject,
+  update,
 
   channel: {
     createChannel,
     findChannels,
     findMyChannels,
+    updateChannel,
   },
   channelInvitation: {
     acceptChannelInvitation,
     createChannelInvitation,
     declineChannelInvitation,
+    findChannelInvitations,
     findChannelInvitationsForUser,
+    updateChannelInvitation,
   },
   channelMessage: {
     createChannelMessage,
     findChannelMessages,
+    updateChannelMessage,
   },
   myUser: {
     blockUserForMe,

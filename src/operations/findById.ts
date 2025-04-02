@@ -13,45 +13,50 @@ const findById = async <T extends Model = Model>(
   modelType: ModelType,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<T>> => {
-  if (!libData.isInitialized()) {
-    logger.error('findById: unavailable');
-    return { error: 'unavailable' };
-  }
+  try {
+    if (!libData.isInitialized()) {
+      logger.error('findById: unavailable');
+      return { error: 'unavailable' };
+    }
 
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('findById: unauthorized');
-    return { error: 'unauthorized' };
-  }
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('findById: unauthorized');
+      return { error: 'unauthorized' };
+    }
 
-  if (
-    queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst
-  ) {
-    try {
+    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       const result = await db.findById<T>(id, modelType);
 
-      if (result.object || queryOptions.cachePolicy === CachePolicy.cache) {
+      if ((result.object && !result.error) || !allowNetwork) {
         return result;
       }
-    } catch (error) {
-      return { error: (error as Error).message };
     }
-  }
 
-  const response = await fsdata.findById<T>(id, modelType);
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
 
-  if (response.error) {
-    logger.error('findById: fsdata.findById failed', { error: response.error });
-    return response;
-  }
+    const response = await fsdata.findById<T>(id, modelType);
 
-  if (response.object) {
-    // todo: What if the object does not exist anymore. How do we delete it from the local store?
-    // Update local cache:
-    await db.replace<T>(response.object, modelType);
-  }
+    if (response.error) {
+      logger.error('findById: fsdata.findById failed', { error: response.error });
+      return response;
+    } else if (response.object) {
+      // todo: What if the object does not exist anymore. How do we delete it from the local store?
+      // Update local cache:
+      await db.replace<T>(response.object, modelType);
+    }
 
   return response;
+  } catch (error) {
+    return { error: (error as Error).message };
+  }
 };
 
 export default findById;

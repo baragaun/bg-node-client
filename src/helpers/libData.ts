@@ -6,21 +6,15 @@ import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { MyUserListener } from '../types/MyUserListener.js';
 
 let _isInitialized = false;
-let _isOffline = false;
+let _isOnline = false;
 let _config: BgNodeClientConfig;
 let _clientInfoStore: ClientInfoStore;
 let _listeners: BgBaseListener[] = [];
 const _multiStepActionRuns = new Map<string, MultiStepActionRun>();
 
 const libData = {
-  isInitialized: (): boolean => _isInitialized &&
-    !!_config &&
-    !!_config.fsdata &&
-    !!_config.fsdata.url,
-
-  setInitialized: (isInitialized: boolean): void => {
-    _isInitialized = isInitialized;
-  },
+  config: (): BgNodeClientConfig => _config,
+  clientInfoStore: (): ClientInfoStore => _clientInfoStore,
 
   close: (): void => {
     _isInitialized = false;
@@ -29,28 +23,40 @@ const libData = {
     _multiStepActionRuns.clear();
   },
 
-  config: (): BgNodeClientConfig => _config,
-  clientInfoStore: (): ClientInfoStore => _clientInfoStore,
-  isOffline: (): boolean => _isOffline,
-  isOnline: (): boolean => !_isOffline,
-  listeners: (): BgBaseListener[] => _listeners,
+  enableMockMode: (): boolean => _config.enableMockMode,
+
+  isInitialized: (): boolean => _isInitialized &&
+    !!_config &&
+    !!_config.fsdata &&
+    !!_config.fsdata.url,
 
   setConfig: (config: BgNodeClientConfig): void => {
     _config = config;
-    if (config.setOffline) {
-      _isOffline = true;
-    }
   },
 
-  setIsOffline: (isOffline: boolean): void => {
-    _isOffline = isOffline;
+  setClientInfoStore: (clientInfoStore: ClientInfoStore): void => {
+    _clientInfoStore = clientInfoStore;
+  },
+
+  setInitialized: (isInitialized: boolean): void => {
+    _isInitialized = isInitialized;
+  },
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // Network Status:
+  allowNetwork: (): boolean => _isOnline && !_config.enableMockMode,
+  isOffline: (): boolean => !_isOnline,
+  isOnline: (): boolean => _isOnline,
+
+  setIsOnline: (isOnline: boolean): void => {
+    _isOnline = isOnline;
 
     for (const listener of libData.listeners()) {
-      if (typeof (listener as MyUserListener).onChangeOffline === 'function') {
-        const response = listener.onChangeOffline(isOffline);
+      if (typeof (listener as MyUserListener).onChangeOnline === 'function') {
+        const response = listener.onChangeOnline(isOnline);
         if (response && typeof response.then === 'function') {
           response.catch((error) => {
-            logger.error('setIsOffline: listener onChangeOffline failed.',
+            logger.error('setIsOnline: listener onChangeOnline failed.',
               { error });
           });
         }
@@ -58,14 +64,8 @@ const libData = {
     }
   },
 
-  setClientInfoStore: (clientInfoStore: ClientInfoStore): void => {
-    _clientInfoStore = clientInfoStore;
-  },
-
-  setListeners: (listeners: BgBaseListener[]): void => {
-    _listeners = listeners;
-  },
-
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // Listeners:
   /**
    * Subscribe to channel events.
    * @param listener - The listener to be added.
@@ -78,6 +78,8 @@ const libData = {
     _listeners.push(listener);
   },
 
+  listeners: (): BgBaseListener[] => _listeners,
+
   /**
    * Unsubscribes from channel events.
    * @param id the ID of the listener to be removed.
@@ -87,6 +89,10 @@ const libData = {
     if (index > -1) {
       _listeners.splice(index, 1);
     }
+  },
+
+  setListeners: (listeners: BgBaseListener[]): void => {
+    _listeners = listeners;
   },
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

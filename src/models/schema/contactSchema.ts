@@ -1,69 +1,69 @@
 export const ContactSchema = {
-  "version": 0,
-  "primaryKey": "id",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "maxLength": 32
+  'version': 0,
+  'primaryKey': 'id',
+  'type': 'object',
+  'properties': {
+    'id': {
+      'type': 'string',
+      'maxLength': 32,
     },
-    "adminNotes": {
-      "type": "string"
+    'adminNotes': {
+      'type': 'string',
     },
-    "metadata": {},
-    "createdAt": {
-      "type": "string",
-      "format": "date-time"
+    'metadata': {},
+    'createdAt': {
+      'type': 'string',
+      'format': 'date-time',
     },
-    "createdBy": {
-      "type": "string",
-      "maxLength": 32
+    'createdBy': {
+      'type': 'string',
+      'maxLength': 32,
     },
-    "updatedAt": {
-      "type": "string",
-      "format": "date-time"
+    'updatedAt': {
+      'type': 'string',
+      'format': 'date-time',
     },
-    "updatedBy": {
-      "type": "string",
-      "maxLength": 32
+    'updatedBy': {
+      'type': 'string',
+      'maxLength': 32,
     },
-    "deletedAt": {
-      "type": "string",
-      "format": "date-time"
+    'deletedAt': {
+      'type': 'string',
+      'format': 'date-time',
     },
-    "deletedBy": {
-      "type": "string",
-      "maxLength": 32
+    'deletedBy': {
+      'type': 'string',
+      'maxLength': 32,
     },
-    "userId": {
-      "type": "string",
-      "maxLength": 32
+    'userId': {
+      'type': 'string',
+      'maxLength': 32,
     },
-    "channelId": {
-      "type": "string",
-      "maxLength": 32
+    'channelId': {
+      'type': 'string',
+      'maxLength': 32,
     },
-    "nickname": {
-      "type": "string"
+    'nickname': {
+      'type': 'string',
     },
-    "typeTextIds": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
+    'typeTextIds': {
+      'type': 'array',
+      'items': {
+        'type': 'string',
+      },
     },
-    "favorite": {
-      "type": "boolean"
+    'favorite': {
+      'type': 'boolean',
     },
-    "notes": {
-      "type": "string"
+    'notes': {
+      'type': 'string',
     },
-    "archivedAt": {
-      "type": "string",
-      "format": "date-time"
-    }
+    'archivedAt': {
+      'type': 'string',
+      'format': 'date-time',
+    },
   },
-  "required": [
-    "id"
-  ]
+  'required': [
+    'id',
+  ],
 };

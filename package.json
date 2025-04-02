@@ -1,6 +1,6 @@
 {
   "name": "@baragaun/bg-node-client",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Node client for Baragaun backend services",
   "type": "module",
   "engines": {
@@ -52,6 +52,8 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@dprint/formatter": "^0.4.1",
+    "@dprint/typescript": "^0.94.0",
     "@eslint/js": "~9.23.0",
     "@graphql-codegen/cli": "^5.0.5",
     "@types/chance": "^1.1.6",

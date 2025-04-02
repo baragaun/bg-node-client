@@ -5,5 +5,5 @@ import { BgListenerTopic } from '../enums.js';
 export interface BgBaseListener {
     id: string;
     topic: BgListenerTopic;
-    onChangeOffline: (isOffline: boolean) => void | Promise<void>;
+    onChangeOnline?: (isOffline: boolean) => void | Promise<void>;
 }

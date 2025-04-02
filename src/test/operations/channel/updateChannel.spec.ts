@@ -15,11 +15,14 @@ describe('operations.channel.updateChannel', () => {
 
     await signMeUpSpecHelper(undefined, false, client);
     const channel = await createChannelSpecHelper(props, client);
-    const updatedChannel = await updateChannelSpecHelper({
-      id: channel.id,
-      name: 'newname',
-    }, client);
+    const updatedChannel = await updateChannelSpecHelper(
+      {
+        id: channel.id,
+        name: 'newname',
+      },
+      client,
+    );
 
     expect(updatedChannel.name).toBe('newname');
   });
-});
+}, 10000);

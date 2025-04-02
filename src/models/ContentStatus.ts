@@ -1,4 +1,4 @@
-import { BaseModel } from './BaseModel.js'
+import { BaseModel } from './BaseModel.js';
 
 export class ContentStatus extends BaseModel {
   public optionsUpdatedAt?: number | null;
@@ -6,7 +6,7 @@ export class ContentStatus extends BaseModel {
   public myUserInboxUpdatedAt?: number | null;
 
   constructor(attributes?: Partial<ContentStatus>) {
-    super(attributes)
+    super(attributes);
 
     if (attributes) {
       if (attributes.optionsUpdatedAt) {

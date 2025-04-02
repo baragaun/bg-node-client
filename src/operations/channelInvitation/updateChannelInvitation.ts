@@ -1,31 +1,15 @@
-import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
-import libData from '../../helpers/libData.js';
-import logger from '../../helpers/logger.js';
+import { ModelType } from '../../enums.js';
+import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import { ChannelInvitation } from '../../models/ChannelInvitation.js';
+import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
+import update from '../update.js';
 
 const updateChannelInvitation = async (
   changes: Partial<ChannelInvitation>,
+  queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<ChannelInvitation>> => {
-  if (!libData.isInitialized()) {
-    logger.error('updateChannelInvitation: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('updateChannelInvitation: unauthorized');
-    return { error: 'unauthorized' };
-  }
-
-  try {
-    return db.update<ChannelInvitation>(changes, ModelType.ChannelInvitation);
-  } catch (error) {
-    return {
-      operation: MutationType.update,
-      error: (error as Error).message,
-    };
-  }
+  return update<ChannelInvitation>(changes, ModelType.ChannelInvitation, queryOptions);
 };
 
 export default updateChannelInvitation;

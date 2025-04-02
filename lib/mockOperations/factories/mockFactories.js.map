@@ -1,0 +1,1 @@
+{"version":3,"file":"mockFactories.js","sourceRoot":"","sources":["../../../src/mockOperations/factories/mockFactories.ts"],"names":[],"mappings":"AAAA,OAAO,OAAO,MAAM,wBAAwB,CAAC;AAC7C,OAAO,cAAc,MAAM,+BAA+B,CAAC;AAC3D,OAAO,IAAI,MAAM,qBAAqB,CAAC;AAGvC,MAAM,aAAa,GAAkB;IACnC,OAAO;IACP,cAAc;IACd,IAAI;CACL,CAAC;AAEF,eAAe,aAAa,CAAC"}

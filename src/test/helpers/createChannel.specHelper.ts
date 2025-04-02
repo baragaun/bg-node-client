@@ -2,13 +2,20 @@ import { expect } from 'vitest';
 
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../enums.js';
+import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
 import findById from '../../operations/findById.js';
+import factories from '../factories/factories.js';
 
 export const createChannelSpecHelper = async (
-  props: Partial<Channel>,
+  props: Partial<Channel> | undefined,
   client: BgNodeClient,
 ): Promise<Channel | null> => {
+    logger.debug('BgServiceApiCheck.createChannel: calling API/createChannel',
+      { props });
+
+    props = factories.channel.build(props);
+
     const response = await client.operations.channel.createChannel(props);
     const channel = response.object;
 

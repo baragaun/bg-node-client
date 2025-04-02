@@ -1,67 +1,87 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { ChannelInvitation } from '../../models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../../models/ChannelInvitationListFilter.js';
+import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
-const findChannelInvitations = async (
+const findChannelInvitationsForUser = async (
   filter: ChannelInvitationListFilter,
   match: Partial<ChannelInvitation>,
-  skip: number,
-  limit: number,
+  options: FindObjectsOptions,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelInvitation>> => {
-  if (!libData.isInitialized()) {
-    logger.error('findChannelInvitations: unavailable');
-    return { error: 'unavailable' };
-  }
+  try {
+    if (!libData.isInitialized()) {
+      logger.error('findChannelInvitations: unavailable');
+      return { error: 'unavailable' };
+    }
 
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('findChannelInvitations: unauthorized');
-    return { error: 'unauthorized' };
-  }
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('findChannelInvitations: unauthorized');
+      return { error: 'unauthorized' };
+    }
 
-  if (
-    queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst
-  ) {
-    try {
+    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
+      // todo: proper filtering
       if (Array.isArray(filter.ids) && filter.ids.length === 1) {
-        return db.findById<ChannelInvitation>(
-          filter.ids[0],
-          ModelType.ChannelInvitation,
-        );
+        return db.findById<ChannelInvitation>(filter.ids[0], ModelType.ChannelInvitation);
       }
 
-      const { objects: messages } = await db.findAll<ChannelInvitation>(
+      const localResult = await db.findAll<ChannelInvitation>(
         ModelType.ChannelInvitation,
       );
-      let list: ChannelInvitation[] = messages;
+      let list: ChannelInvitation[] = localResult.objects;
 
       if (!match.channelId) {
-        list = messages.filter((m) => m.channelId === match.channelId);
+        list = list.filter((m) => m.channelId === match.channelId);
       }
 
-      if (skip > 0 && limit > 0) {
-        list = list.slice(skip, skip + limit);
+      if (options.skip > 0 && options.limit > 0) {
+        list = list.slice(options.skip, options.skip + options.limit);
       }
 
-      return {
-        objects: list.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-        ),
-      };
-    } catch (error) {
-      return { error: (error as Error).message };
+      if ((!localResult.error && list) || !allowNetwork) {
+        return {
+          objects: list.sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          ),
+        };
+      }
     }
-  }
 
-  return { objects: null };
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
+
+    const result = await fsdata.channelInvitation.findChannelInvitations(
+      filter,
+      match,
+      options,
+    );
+
+    if (Array.isArray(result.objects) && result.objects.length > 0) {
+      for (const invitation of result.objects) {
+        await db.upsert<ChannelInvitation>(invitation, ModelType.ChannelInvitation);
+      }
+    }
+
+    return result;
+  } catch (error) {
+    return { error: (error as Error).message };
+  }
 };
 
-export default findChannelInvitations;
+export default findChannelInvitationsForUser;

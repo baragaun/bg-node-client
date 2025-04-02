@@ -1,4 +1,4 @@
-export const Name = `fsdata`
-export type Name = 'fsdata'
+export const Name = 'fsdata';
+export type Name = 'fsdata';
 
-export const defaultSchemaUrl = undefined
+export const defaultSchemaUrl = undefined;

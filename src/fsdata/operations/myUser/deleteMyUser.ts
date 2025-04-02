@@ -1,66 +1,52 @@
-import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
-// import { create } from '../../graffle/fsdata/_.js'
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationDeleteMyUserArgs } from '../../gql/graphql.js';
-import deleteMyUserGql from '../../gql/mutations/deleteMyUser.graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-// see: https://graffle.js.org/guides/topics/requests
+type ResponseDataType = { data: { deleteMyUser: string }, errors?: { message: string }[] };
+
 const deleteMyUser = async (
   cause: string | null | undefined,
   description: string | null | undefined,
   deletePhysically: boolean,
 ): Promise<QueryResult<void>> => {
-  if (!libData.isInitialized()) {
-    logger.error('deleteMyUser: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  const clientInfo = libData.clientInfoStore().clientInfo;
-  const myUserId = clientInfo.myUserId;
-
-  const client = Graffle.create()
-    .transport({
-      url: libData.config().fsdata.url,
-      headers: helpers.headers(),
-    })
-    .use(Throws())
-    .use(Opentelemetry());
-
-  const document = parse(deleteMyUserGql) as TypedQueryDocumentNode<
-    { deleteMyUser: string },
-    MutationDeleteMyUserArgs
-  >;
-  let ok = false;
-
   try {
-    const response = (await client
-      // @ts-ignore
-      .gql(document)
-      .send({ cause, description, deletePhysically })) as {
-      deleteMyUser: string;
-    };
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.deleteMyUser: unavailable');
+      return { error: 'unavailable' };
+    }
 
-    ok = response.deleteMyUser === myUserId;
+    const clientInfo = libData.clientInfoStore().clientInfo;
+    const myUserId = clientInfo.myUserId;
+
+    const client = graffleClientStore.get();
+
+    logger.debug('fsdata.deleteMyUser: sending');
+
+    const args: MutationDeleteMyUserArgs = { cause, description, deletePhysically };
+    const response: ResponseDataType = await client.mutation.deleteMyUser({ $: args });
+
+    logger.debug('fsdata.deleteMyUser: response received.', { response });
+
+    if (response.errors) {
+      logger.error('fsdata.deleteMyUser: failed with error', { error: response.errors });
+      return { error: response.errors.map(e => e.message).join(', ')};
+    }
+
+    if (response.data.deleteMyUser !== myUserId) {
+      logger.error('fsdata.deleteMyUser: incorrect response',
+        { expected: myUserId, actual: response.data.deleteMyUser });
+      return { error: 'incorrect response' };
+    }
+
+    return {};
   } catch (error) {
-    logger.error('deleteMyUser failed.',
+    logger.error('fsdata.deleteMyUser failed.',
       { error: error.messages, stack: error.stack, headers: helpers.headers() });
     return {};
   }
-
-  if (!ok) {
-    logger.error('deleteMyUser: backend did not send userId.');
-    return { error: 'system-error' }
-  }
-
-  return {};
 };
 
 export default deleteMyUser;

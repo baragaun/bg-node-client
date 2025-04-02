@@ -1,17 +1,17 @@
-import { RxDatabase } from "rxdb";
+import { RxDatabase } from 'rxdb';
 
-import { ModelType, MutationType } from "../enums.js";
-import db from "./helpers/db.js";
-import getCollectionFromModelType from "./helpers/getCollectionFromModelType.js";
-import { getModelTypeFromObject } from "../helpers/helpers.js";
-import logger from "../helpers/logger.js";
-import { Model } from "../models/Model.js";
-import { QueryResult } from "../types/QueryResult.js";
+import { ModelType, MutationType } from '../enums.js';
+import db from './helpers/db.js';
+import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
+import { getModelTypeFromObject } from '../helpers/helpers.js';
+import logger from '../helpers/logger.js';
+import { Model } from '../models/Model.js';
+import { QueryResult } from '../types/QueryResult.js';
 
 let _db: RxDatabase | undefined = undefined;
 
 const insert = async <T extends Model = Model>(
-  obj: T,
+  obj: Partial<T>,
   modelType?: ModelType,
 ): Promise<QueryResult<T>> => {
   const result: QueryResult<T> = { operation: MutationType.create };
@@ -20,7 +20,7 @@ const insert = async <T extends Model = Model>(
     _db = db.getDb();
 
     if (!_db) {
-      result.error = "db-unavailable";
+      result.error = 'db-unavailable';
       return result;
     }
   }
@@ -30,19 +30,19 @@ const insert = async <T extends Model = Model>(
   }
 
   if (!modelType) {
-    result.error = "model-type-not-identified";
+    result.error = 'model-type-not-identified';
     return result;
   }
 
   const collection = getCollectionFromModelType(modelType);
 
   if (!collection) {
-    result.error = "collection-not-found";
+    result.error = 'collection-not-found';
     return result;
   }
 
   if (!obj.id) {
-    obj.id = crypto.randomUUID().replaceAll("-", "");
+    obj.id = crypto.randomUUID().replaceAll('-', '');
   }
 
   try {

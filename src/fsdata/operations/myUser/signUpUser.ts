@@ -1,54 +1,45 @@
-import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-import { SignUpUserInput } from '../../../types/SignUpUserInput.js';
+import { SignUpUserInput as SignUpUserInputFromClient } from '../../../types/SignUpUserInput.js';
 import { UserAuthResponse } from '../../../types/UserAuthResponse.js';
-import { MutationSignUpUserArgs } from '../../gql/graphql.js';
-import signUpUserGql from '../../gql/mutations/signUpUser.graphql.js';
+import { MutationSignUpUserArgs, SignUpUserInput } from '../../gql/graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-type ResponseDataType = { signUpUser: UserAuthResponse };
+type ResponseDataType = {
+  data: {
+    signUpUser: UserAuthResponse;
+  };
+  errors?: { message: string }[];
+};
 
-// see: https://graffle.js.org/guides/topics/requests
 const signUpUser = async (
-  input: SignUpUserInput,
+  input: SignUpUserInputFromClient,
 ): Promise<QueryResult<UserAuthResponse>> => {
-  if (!libData.isInitialized()) {
-    logger.error('signUpUser: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  const client = Graffle.create()
-    .transport({
-      url: libData.config().fsdata.url,
-      headers: helpers.headers(),
-    })
-    .use(Throws())
-    .use(Opentelemetry());
-
-  input.checkAvailable = true;
-
-  const document = parse(signUpUserGql) as TypedQueryDocumentNode<
-    ResponseDataType,
-    MutationSignUpUserArgs
-  >;
-
   try {
-    const response = (await client
-      // @ts-ignore
-      .gql(document)
-      .send({ input })) as ResponseDataType;
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.signUpUser: unavailable');
+      return { error: 'unavailable' };
+    }
 
-    logger.debug('SignUpUser response:', response);
+    const client = graffleClientStore.get();
+    input.checkAvailable = true;
+    const args: MutationSignUpUserArgs = {
+      input: input as unknown as SignUpUserInput,
+    };
 
-    return { object: response.signUpUser };
+    const response: ResponseDataType = await client.mutation.signUpUser({
+      $: args,
+      userId: true,
+      authToken: true,
+    });
+
+    logger.debug('fsdata.signUpUser response:', { response });
+
+    return { object: response.data.signUpUser };
   } catch (error) {
-    logger.error('SignUpUser mutation error:', { input, error, headers: helpers.headers() });
+    logger.error('fsdata.signUpUser mutation error:', { input, error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

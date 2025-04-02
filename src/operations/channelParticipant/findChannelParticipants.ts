@@ -5,31 +5,32 @@ import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { ChannelParticipant } from '../../models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from '../../models/ChannelParticipantListFilter.js';
+import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const findChannelParticipants = async (
   filter: ChannelParticipantListFilter,
   match: Partial<ChannelParticipant>,
-  skip: number,
-  limit: number,
+  options: FindObjectsOptions,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelParticipant>> => {
-  if (!libData.isInitialized()) {
-    logger.error('findChannelParticipants: unavailable');
-    return { error: 'unavailable' };
-  }
+  try {
+    if (!libData.isInitialized()) {
+      logger.error('findChannelParticipants: unavailable');
+      return { error: 'unavailable' };
+    }
 
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('findChannelParticipants: unauthorized');
-    return { error: 'unauthorized' };
-  }
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('findChannelParticipants: unauthorized');
+      return { error: 'unauthorized' };
+    }
 
-  if (
-    queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst
-  ) {
-    try {
+    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       if (Array.isArray(filter.ids) && filter.ids.length === 1) {
         return db.findById<ChannelParticipant>(
           filter.ids[0],
@@ -37,33 +38,42 @@ const findChannelParticipants = async (
         );
       }
 
-      const { objects: participants } = await db.findAll<ChannelParticipant>(
+      // todo: apply filter
+      const localResult = await db.findAll<ChannelParticipant>(
         ModelType.ChannelParticipant,
       );
-      let list: ChannelParticipant[] = participants;
+      let list: ChannelParticipant[] = localResult.objects;
 
       if (filter.channelId || match.channelId) {
-        list = participants.filter(
+        list = list.filter(
           (m) => m.channelId === filter.channelId || match.channelId,
         );
       }
 
-      if (skip > 0 && limit > 0) {
-        list = list.slice(skip, skip + limit);
+      if (options.skip > 0 && options.limit > 0) {
+        list = list.slice(options.skip, options.skip + options.limit);
       }
 
-      return {
-        objects: list.sort(
-          (a, b) =>
-            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-        ),
-      };
-    } catch (error) {
-      return { error: (error as Error).message };
+      if ((!localResult.error && list) || !allowNetwork) {
+        return {
+          objects: list.sort(
+            (a, b) =>
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+          ),
+        };
+      }
     }
-  }
 
-  return { objects: null };
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
+
+    return { error: 'not-implemented' };
+  } catch (error) {
+    return { error: (error as Error).message };
+  }
 };
 
 export default findChannelParticipants;

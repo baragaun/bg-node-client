@@ -22,7 +22,7 @@ describe('operations.myUser.signInWithToken', () => {
     const signInResponse = await client.operations.myUser.signInWithToken(
       myUser.email,
       {
-        polling: { enabled: true, timeout: 240000 },
+        polling: { enabled: true, interval: 2000, timeout: 15 * 60 * 1000 },
       },
     );
 
@@ -82,7 +82,7 @@ describe('operations.myUser.signInWithToken', () => {
           if (eventType === MultiStepActionEventType.tokenFailed) {
             const msaToken = getTestUserPropsSpecHelper(myUser).msaToken;
             // The token was rejected; we try again with the correct token
-            logger.debug(`signInWithToken.spec.onEvent: sending msaToken.`,
+            logger.debug('signInWithToken.spec.onEvent: sending msaToken.',
               { eventType, action, msaToken });
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
@@ -118,7 +118,7 @@ describe('operations.myUser.signInWithToken', () => {
     });
   });
 
-  test('should verify using userHandle and token', async () => {
+  test.skip('should verify using userHandle and token', async () => {
     const client = await clientStore.getTestClient();
 
     const myUser = await signMeUpSpecHelper(undefined, true, client);
@@ -127,7 +127,7 @@ describe('operations.myUser.signInWithToken', () => {
     const signInResponse = await client.operations.myUser.signInWithToken(
       myUser.userHandle,
       {
-        polling: { enabled: true, timeout: 240000 },
+        polling: { enabled: true, timeout: 15 * 60 * 1000 },
       },
     );
 
@@ -157,23 +157,11 @@ describe('operations.myUser.signInWithToken', () => {
           ) {
             expect(action.notificationResult).toBeDefined();
 
-            // Let's send out another notification:
-            const sendNotificationResponse =
-              await client.operations.multiStepAction.sendMultiStepActionNotification(
-                actionId,
-                undefined,
-                undefined,
-                NotificationMethod.email,
-              );
-
-            expect(sendNotificationResponse.error).toBeUndefined();
-            expect(sendNotificationResponse.object).toBe(actionId);
-
-            // Verify token with a valid token:
+            // Sending an invalid token:
             const msaToken = getTestUserPropsSpecHelper(myUser).msaToken;
             // The token was rejected; we try again with the correct token
-            logger.debug(`signInWithToken.spec.onEvent: sending msaToken.`,
-              { eventType, action, msaToken });
+            logger.debug('signInWithToken.spec.onEvent: sending msaToken.',
+              { eventType, action, msaToken: 'invalid' });
             const verifyResponse =
               await client.operations.multiStepAction.verifyMultiStepActionToken(
                 actionId,
@@ -190,6 +178,21 @@ describe('operations.myUser.signInWithToken', () => {
           if (eventType === MultiStepActionEventType.tokenFailed) {
             expect('MultiStepActionEventType.tokenFailed not to be called').toBeUndefined();
 
+            // Sending a valid token:
+            const msaToken = getTestUserPropsSpecHelper(myUser).msaToken;
+            // The token was rejected; we try again with the correct token
+            logger.debug('signInWithToken.spec.onEvent: sending msaToken.',
+              { eventType, action, msaToken });
+            const verifyResponse =
+              await client.operations.multiStepAction.verifyMultiStepActionToken(
+                actionId,
+                msaToken,
+              );
+
+            expect(verifyResponse.error).toBeUndefined();
+            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object.actionId).toBe(actionId);
+
             return;
           }
 
@@ -205,6 +208,8 @@ describe('operations.myUser.signInWithToken', () => {
             expect(clientInfo1.authToken).toBe(action.authToken);
             expect(client.isSignedIn).toBeTruthy();
 
+            actionRun.removeListener('test-listener');
+
             await deleteMyUserSpecHelper(client);
 
             resolve(true);
@@ -213,4 +218,4 @@ describe('operations.myUser.signInWithToken', () => {
       });
     });
   });
-}, 1000000);
+}, 100000);

@@ -168,24 +168,12 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     myUserSearches: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.myUserSearches<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         myUserSearches: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'myUserSearches'>>>;
+    getMm2Integration: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.getMm2Integration<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
+        getMm2Integration: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'getMm2Integration'>>>;
     findServiceRequestById: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findServiceRequestById<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findServiceRequestById: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findServiceRequestById'>>>;
-    findContactById: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findContactById<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
-        findContactById: $SelectionSet;
-    }, $$Schema.Schema<$Context['scalars']>>, 'findContactById'>>>;
-    findContact: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findContact<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
-        findContact: $SelectionSet;
-    }, $$Schema.Schema<$Context['scalars']>>, 'findContact'>>>;
-    findContacts: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findContacts<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
-        findContacts: $SelectionSet;
-    }, $$Schema.Schema<$Context['scalars']>>, 'findContacts'>>>;
-    findMyActiveMultiStepActions: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyActiveMultiStepActions<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
-        findMyActiveMultiStepActions: $SelectionSet;
-    }, $$Schema.Schema<$Context['scalars']>>, 'findMyActiveMultiStepActions'>>>;
-    /**
-    * @deprecated Use findMyActiveMultiStepActions instead
-    */
     findMyActiveMultiStepAction: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyActiveMultiStepAction<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findMyActiveMultiStepAction: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findMyActiveMultiStepAction'>>>;
@@ -196,8 +184,8 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
         findAvailableUserHandle: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findAvailableUserHandle'>>>;
     /**
-    * @deprecated Use findMyUser
-    */
+     * @deprecated Use findMyUser
+     */
     getMyUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.getMyUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         getMyUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'getMyUser'>>>;
@@ -205,8 +193,8 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
         findMyUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findMyUser'>>>;
     /**
-    * @deprecated Use findMyBlockedUsers
-    */
+     * @deprecated Use findMyBlockedUsers
+     */
     getMyBlockedUsers: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.getMyBlockedUsers<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         getMyBlockedUsers: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'getMyBlockedUsers'>>>;
@@ -232,8 +220,8 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
         findTrainingSessionsForMe: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findTrainingSessionsForMe'>>>;
     /**
-    * Find training sessions by training  id. By default, finds the requestor's sessions.
-    */
+     * Find training sessions by training  id. By default, finds the requestor's sessions.
+     */
     findTrainingSessionsByTrainingId: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findTrainingSessionsByTrainingId<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findTrainingSessionsByTrainingId: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findTrainingSessionsByTrainingId'>>>;
@@ -405,6 +393,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     updateContentTag: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateContentTag<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateContentTag: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateContentTag'>>>;
+    runDataGenerator: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.runDataGenerator<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        runDataGenerator: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'runDataGenerator'>>>;
     createGroupMembership: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createGroupMembership<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         createGroupMembership: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'createGroupMembership'>>>;
@@ -489,12 +480,27 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     updateNotificationTemplate: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateNotificationTemplate<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateNotificationTemplate: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateNotificationTemplate'>>>;
-    createContact: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createContact<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
-        createContact: $SelectionSet;
-    }, $$Schema.Schema<$Context['scalars']>>, 'createContact'>>>;
-    updateContact: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateContact<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
-        updateContact: $SelectionSet;
-    }, $$Schema.Schema<$Context['scalars']>>, 'updateContact'>>>;
+    clearAllSyncInfo: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.clearAllSyncInfo<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        clearAllSyncInfo: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'clearAllSyncInfo'>>>;
+    /**
+     * Deletes all data that was imported from MM2. This field is only available in non-production environments.
+     */
+    deleteAllMm2DataInMm3: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteAllMm2DataInMm3<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteAllMm2DataInMm3: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteAllMm2DataInMm3'>>>;
+    createMm2Synchronization: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createMm2Synchronization<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        createMm2Synchronization: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'createMm2Synchronization'>>>;
+    deleteMm2Synchronization: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMm2Synchronization<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteMm2Synchronization: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteMm2Synchronization'>>>;
+    findMm2SynchronizationById: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.findMm2SynchronizationById<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        findMm2SynchronizationById: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'findMm2SynchronizationById'>>>;
+    runMm2Synchronization: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.runMm2Synchronization<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        runMm2Synchronization: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'runMm2Synchronization'>>>;
     createMultiStepAction: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createMultiStepAction<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         createMultiStepAction: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'createMultiStepAction'>>>;
@@ -510,27 +516,45 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     verifyMultiStepActionToken: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.verifyMultiStepActionToken<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         verifyMultiStepActionToken: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'verifyMultiStepActionToken'>>>;
+    /**
+     * @deprecated Use blockUserForMeV2
+     */
     blockUserForMe: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.blockUserForMe<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         blockUserForMe: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'blockUserForMe'>>>;
+    blockUserForMeV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.blockUserForMeV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        blockUserForMeV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'blockUserForMeV2'>>>;
     deleteMyUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteMyUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteMyUser'>>>;
-    endMySession: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.endMySession<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+    /**
+     * @deprecated Use endMySessionV2
+     */
+    endMySession: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.endMySession<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         endMySession: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'endMySession'>>>;
+    endMySessionV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.endMySessionV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        endMySessionV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'endMySessionV2'>>>;
     /**
-    * @deprecated Use startMySessionV2
-    */
+     * @deprecated Use startMySessionV2
+     */
     startMySession: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.startMySession<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         startMySession: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'startMySession'>>>;
     startMySessionV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.startMySessionV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         startMySessionV2: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'startMySessionV2'>>>;
+    /**
+     * @deprecated Use unblockUserForMeV2
+     */
     unblockUserForMe: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.unblockUserForMe<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         unblockUserForMe: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'unblockUserForMe'>>>;
+    unblockUserForMeV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.unblockUserForMeV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        unblockUserForMeV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'unblockUserForMeV2'>>>;
     updateMyUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateMyUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateMyUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateMyUser'>>>;

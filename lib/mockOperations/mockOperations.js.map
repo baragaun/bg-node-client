@@ -1,0 +1,1 @@
+{"version":3,"file":"mockOperations.js","sourceRoot":"","sources":["../../src/mockOperations/mockOperations.ts"],"names":[],"mappings":"AACA,OAAO,OAAO,MAAM,kCAAkC,CAAC;AACvD,OAAO,cAAc,MAAM,yCAAyC,CAAC;AACrE,OAAO,IAAI,MAAM,+BAA+B,CAAC;AAEjD,MAAM,cAAc,GAAmB;IACrC,SAAS,EAAE;QACT,OAAO;QACP,cAAc;QACd,IAAI;KACL;CACF,CAAC;AAEF,eAAe,cAAc,CAAC"}

@@ -8,21 +8,34 @@ import { QueryResult } from '../../types/QueryResult.js';
 const deleteChannelMessage = async (
   id: string,
 ): Promise<QueryResult<ChannelMessage>> => {
-  if (!libData.isInitialized()) {
-    logger.error('deleteChannelMessage: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('deleteChannelMessage: unauthorized');
-    return { error: 'unauthorized' };
-  }
-
   try {
-    await db.delete(id, ModelType.ChannelMessage);
+    if (!libData.isInitialized()) {
+      logger.error('deleteChannelMessage: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('deleteChannelMessage: unauthorized');
+      return { error: 'unauthorized' };
+    }
+
+    const allowNetwork = libData.allowNetwork();
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (!allowNetwork) {
+      return db.delete(id, ModelType.ChannelMessage);
+    }
+
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline', operation: MutationType.delete };
+    }
 
     return {
       operation: MutationType.delete,
+      error: 'not-implemented',
     };
   } catch (error) {
     return {

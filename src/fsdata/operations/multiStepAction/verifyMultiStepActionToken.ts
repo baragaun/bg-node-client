@@ -1,61 +1,48 @@
-import { Graffle } from 'graffle';
-// import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-// import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { SidMultiStepActionProgress } from '../../../models/SidMultiStepActionProgress.js';
-import { VerifyMultiStepActionTokenInput } from '../../../models/VerifyMultiStepActionTokenInput.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationVerifyMultiStepActionTokenArgs } from '../../gql/graphql.js';
-import gqlText from '../../gql/mutations/verifyMultiStepActionToken.graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
+import modelFields from '../../helpers/modelFields.js';
 
-type VerifyMultiStepActionTokenResponse = {
-  verifyMultiStepActionToken: SidMultiStepActionProgress;
+type ResponseDataType = {
+  data: {
+    verifyMultiStepActionToken: SidMultiStepActionProgress;
+  };
+  errors?: { message: string }[];
 };
 
-// see: https://graffle.js.org/guides/topics/requests
 const verifyMultiStepActionToken = async (
   actionId: string,
   confirmToken: string,
   newPassword?: string,
 ): Promise<QueryResult<SidMultiStepActionProgress>> => {
-  if (!libData.isInitialized()) {
-    logger.error('verifyMultiStepActionToken: unavailable');
-    return { error: 'unavailable' };
-  }
-
   try {
-    const client = Graffle.create().transport({
-      url: libData.config().fsdata.url,
-      headers: helpers.headers(),
-    });
-    // .use(Throws())
-    // .use(Opentelemetry());
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.verifyMultiStepActionToken: unavailable');
+      return { error: 'unavailable' };
+    }
 
-    const document = parse(gqlText) as TypedQueryDocumentNode<
-      VerifyMultiStepActionTokenResponse,
-      MutationVerifyMultiStepActionTokenArgs
-    >;
-
-    const input: VerifyMultiStepActionTokenInput = {
-      actionId,
-      token: confirmToken,
-      newPassword,
+    const client = graffleClientStore.get();
+    const args: MutationVerifyMultiStepActionTokenArgs = {
+      input: {
+        actionId,
+        token: confirmToken,
+        newPassword,
+      },
     };
+    logger.debug('fsdata.verifyMultiStepActionToken: sending:', { args });
 
-    logger.debug(
-      'Sending verifyMultiStepActionToken mutation with input:',
-      input,
-    );
+    const response: ResponseDataType = await client.mutation.verifyMultiStepActionToken({
+      $: args,
+      ...modelFields.sidMultiStepActionProgress,
+    });
 
-    const response = await client.gql(document).send({ input });
+    logger.debug('fsdata.verifyMultiStepActionToken: received response:', { response });
 
-    logger.debug('verifyMultiStepActionToken response:', response);
-
-    return { object: response.verifyMultiStepActionToken };
+    return { object: response.data.verifyMultiStepActionToken };
   } catch (error) {
     logger.error('verifyMultiStepActionToken mutation error:',
       { error, headers: helpers.headers() });

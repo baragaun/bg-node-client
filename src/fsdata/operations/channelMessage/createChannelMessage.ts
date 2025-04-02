@@ -1,53 +1,47 @@
-import { Graffle } from 'graffle';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
-import { MutationType } from '../../../enums.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { ChannelMessage } from '../../../models/ChannelMessage.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-import {
-  MutationCreateChannelMessageArgs,
-  ChannelMessageInput,
-} from '../../gql/graphql.js';
-import gql from '../../gql/mutations/createChannelMessage.graphql.js';
+import { MutationCreateChannelMessageArgs, ChannelMessageInput } from '../../gql/graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
+import modelFields from '../../helpers/modelFields.js';
 
-type ResponseDataType = { createChannelMessage: ChannelMessage | null };
+type ResponseDataType = {
+  data: {
+    createChannelMessage: ChannelMessage;
+  };
+  errors?: { message: string }[];
+};
 
-// see: https://graffle.js.org/guides/topics/requests
 const createChannelMessage = async (
-  input: ChannelMessageInput,
+  props: Partial<ChannelMessage>,
 ): Promise<QueryResult<ChannelMessage>> => {
-  if (!libData.isInitialized()) {
-    logger.error('createChannelMessage: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  const client = Graffle.create().transport({
-    url: libData.config().fsdata.url,
-    headers: helpers.headers(),
-  });
-  // .use(Throws())
-  // .use(Opentelemetry())
-
-  const document = parse(gql) as TypedQueryDocumentNode<
-    ResponseDataType,
-    MutationCreateChannelMessageArgs
-  >;
-
   try {
-    const response = (await client.gql(document).send({ input })) as ResponseDataType;
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.createChannelMessage: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    const client = graffleClientStore.get();
+    const args: MutationCreateChannelMessageArgs = {
+      input: props as unknown as ChannelMessageInput,
+    };
+
+    const response: ResponseDataType = await client.mutation.createChannelMessage({
+      $: args,
+      ...modelFields.channelMessage,
+    });
+
+    logger.debug('fsdata.createChannelMessage response:', { response });
 
     return {
-      operation: MutationType.create,
-      object: response.createChannelMessage ? new ChannelMessage(response.createChannelMessage) : null,
+      object: response.data.createChannelMessage
+        ? new ChannelMessage(response.data.createChannelMessage)
+        : null,
     };
   } catch (error) {
-    logger.error('fsdata.createChannelMessage: failed', {
-      error,
-      headers: helpers.headers(),
-    });
+    logger.error('fsdata.createChannelMessage: failed', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

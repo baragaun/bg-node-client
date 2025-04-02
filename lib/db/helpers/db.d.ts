@@ -1,4 +1,4 @@
-import { RxDatabase } from "rxdb";
+import { RxDatabase } from 'rxdb';
 declare const _default: {
     getDb: () => RxDatabase | undefined;
     setDb: (db: RxDatabase) => void;

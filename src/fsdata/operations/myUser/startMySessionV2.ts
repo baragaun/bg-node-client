@@ -1,54 +1,67 @@
-import { Graffle } from 'graffle';
-import { Opentelemetry } from 'graffle/extensions/opentelemetry';
-import { Throws } from 'graffle/extensions/throws';
-import { parse, type TypedQueryDocumentNode } from 'graphql';
-
-// import { create } from '../../graffle/fsdata/_.js'
-
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { ContentStatus } from '../../../models/ContentStatus.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationStartMySessionV2Args } from '../../gql/graphql.js';
-import gql from '../../gql/mutations/startMySessionV2.graphql.js';
+import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-type StartMySessionResponse = { startMySessionV2: ContentStatus };
+type ResponseDataType = { data: { startMySessionV2: ContentStatus }, errors?: { message: string }[] };
 
-// see: https://graffle.js.org/guides/topics/requests
-const startMySessionV2 = async (): Promise<QueryResult<ContentStatus>> => {
-  if (!libData.isInitialized()) {
-    logger.error('startMySessionV2: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  const client = Graffle.create()
-    .transport({
-      url: libData.config().fsdata.url,
-      headers: helpers.headers(),
-    })
-    .use(Throws())
-    .use(Opentelemetry());
-
-  const document = parse(gql) as TypedQueryDocumentNode<
-    StartMySessionResponse,
-    MutationStartMySessionV2Args
-  >;
-
+const startMySessionV2 = async (
+  pushNotificationToken: string | null | undefined,
+  returnContentStatus: boolean,
+): Promise<QueryResult<ContentStatus>> => {
   try {
-    const response = (await client
-      // @ts-ignore
-      .gql(document)
-      .send({ returnContentStatus: true })) as { startMySessionV2: ContentStatus };
 
-    if (!response.startMySessionV2) {
-      logger.error('fsdata.startMySessionV2: no valid response received.');
-      return { error: 'system-error' };
+    if (!libData.isInitialized()) {
+      logger.error('fsdata.startMySessionV2: unavailable');
+      return { error: 'unavailable' };
     }
 
-    return { object: new ContentStatus(response.startMySessionV2) };
+    const clientInfo = libData.clientInfoStore().clientInfo;
+    const myUserId = clientInfo.myUserId;
+    const client = graffleClientStore.get();
+
+    if (!clientInfo.isSignedIn) {
+      logger.error('startMySessionV2: unauthorized');
+      return { error: 'unauthorized' };
+    }
+
+    const args: MutationStartMySessionV2Args = {
+      pushNotificationToken,
+      returnContentStatus,
+    };
+    logger.debug('fsdata.startMySessionV2: sending', {
+      $: args,
+      optionsUpdatedAt: true,
+      myUserUpdatedAt: true,
+      myUserInboxUpdatedAt: true,
+    });
+
+    const response: ResponseDataType = await client.mutation.startMySessionV2({
+      $: args,
+      optionsUpdatedAt: true,
+      myUserUpdatedAt: true,
+      myUserInboxUpdatedAt: true,
+    });
+
+    logger.debug('fsdata.startMySessionV2: response received.', { response });
+
+    if (response.errors) {
+      logger.error('fsdata.startMySessionV2: failed with error', { error: response.errors });
+      return { error: response.errors.map(e => e.message).join(', ')};
+    }
+
+    if (!response.data.startMySessionV2.optionsUpdatedAt) {
+      logger.error('fsdata.startMySessionV2: incorrect response',
+        { expected: myUserId, actual: response.data.startMySessionV2 });
+      return { error: 'incorrect response' };
+    }
+
+    return { object: new ContentStatus(response.data.startMySessionV2) };
   } catch (error) {
-    logger.error('startMySessionV2 failed.', { error, headers: helpers.headers() });
+    logger.error('fsdata.startMySessionV2 failed.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

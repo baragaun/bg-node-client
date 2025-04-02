@@ -1,39 +1,57 @@
 import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { Channel } from '../../models/Channel.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannelMessage = async (
-  attributes: Partial<ChannelMessage>,
+  props: Partial<ChannelMessage>,
 ): Promise<QueryResult<ChannelMessage>> => {
-  if (!libData.isInitialized()) {
-    logger.error('createChannelMessage: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('createChannelMessage: unauthorized');
-    return { error: 'unauthorized' };
-  }
-
   try {
-    const channel = db.findById<Channel>(
-      attributes.channelId as string,
-      ModelType.Channel,
-    );
-
-    if (!channel) {
-      return {
-        operation: MutationType.create,
-        error: 'channel-not-found',
-      };
+    if (!libData.isInitialized()) {
+      logger.error('createChannelMessage: unavailable');
+      return { error: 'unavailable' };
     }
 
-    const input = new ChannelMessage(attributes);
-    return db.insert(input);
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('createChannelMessage: unauthorized');
+      return { error: 'unauthorized' };
+    }
+
+    const allowNetwork = libData.allowNetwork();
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (!allowNetwork) {
+      const response = await db.insert<ChannelMessage>(props, ModelType.ChannelMessage);
+
+      if (response.object) {
+        response.object = new ChannelMessage(response.object);
+        return response;
+      }
+
+      return response;
+    }
+
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline', operation: MutationType.create };
+    }
+
+    const result = await fsdata.channelMessage.createChannelMessage(props);
+
+    if (result.object) {
+      result.object = new ChannelMessage(result.object);
+    }
+
+    if (!result.error || result.object) {
+      await db.insert<ChannelMessage>(result.object, ModelType.ChannelMessage);
+    }
+
+    return result;
   } catch (error) {
     return {
       operation: MutationType.create,
