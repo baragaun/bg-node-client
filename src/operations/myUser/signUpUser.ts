@@ -3,6 +3,7 @@ import { BgListenerTopic, CachePolicy } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import signUpUserMock from '../../mockOperations/myUser/signUpUserMock.js';
 import { MyUser } from '../../models/MyUser.js';
 import { MyUserListener } from '../../types/MyUserListener.js';
 import { QueryResult } from '../../types/QueryResult.js';
@@ -12,17 +13,21 @@ import { SignUpUserInput } from '../../types/SignUpUserInput.js';
 const signUpUser = async (
   input: SignUpUserInput,
 ): Promise<QueryResult<SignInSignUpResponse>> => {
-  if (!libData.isInitialized()) {
-    logger.error('signUpUser: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  if (libData.isOffline() && !libData.config().enableMockMode) {
-    logger.error('signUpUser: offline');
-    return { error: 'offline' };
-  }
-
   try {
+    if (libData.config().enableMockMode) {
+      return signUpUserMock(input);
+    }
+
+    if (!libData.isInitialized()) {
+      logger.error('signUpUser: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    if (libData.isOffline()) {
+      logger.error('signUpUser: offline');
+      return { error: 'offline' };
+    }
+
     const signUpUserResult = await fsdata.myUser.signUpUser(input);
 
     if (signUpUserResult.error || !signUpUserResult.object) {

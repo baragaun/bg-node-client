@@ -173,6 +173,15 @@ export declare const UserSchema: {
             type: string;
             format: string;
         };
+        isTestUser: {
+            type: string;
+        };
+        userHandleLowerCase: {
+            type: string;
+        };
+        emailLowerCase: {
+            type: string;
+        };
         companyIds: {
             type: string;
             items: {

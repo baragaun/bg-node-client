@@ -1,4 +1,4 @@
-import { RxDatabase } from 'rxdb';
+import { MangoQuery, RxDatabase } from 'rxdb';
 
 import { ModelType } from '../enums.js';
 import db from './helpers/db.js';
@@ -9,7 +9,7 @@ import { QueryResult } from '../types/QueryResult.js';
 let _db: RxDatabase | undefined = undefined;
 
 const count = async <T extends Model = Model>(
-  match: Partial<T>,
+  query: MangoQuery<T>,
   modelType: ModelType,
 ): Promise<QueryResult<number>> => {
   const result: QueryResult<number> = {};
@@ -31,15 +31,7 @@ const count = async <T extends Model = Model>(
   }
 
   // todo: implement based on model
-  const count = await collection
-    .count({
-      selector: {
-        id: {
-          $eq: match.id,
-        },
-      },
-    })
-    .exec();
+  const count = await collection.count(query).exec();
 
   return { object: count };
 };

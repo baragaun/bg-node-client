@@ -58,6 +58,10 @@ const sidUser: TypeGraphqlClass = {
     { name: 'suspendedAt', dataType: 'date', optional: true },
     { name: 'suspendedBy', dataType: 'id', optional: true },
     { name: 'addedToBgVaultAt', dataType: 'Date', optional: true },
+    // Not exposed to GraphQL:
+    { name: 'isTestUser', dataType: 'boolean', optional: true },
+    { name: 'userHandleLowerCase', dataType: 'string', optional: true },
+    { name: 'emailLowerCase', dataType: 'string', optional: true },
   ]
 }
 

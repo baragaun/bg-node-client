@@ -293,36 +293,6 @@ const NotificationTemplateName: $$Utilities.SchemaDrivenDataMap.Enum = {
   n: 'NotificationTemplateName',
 };
 
-const Mm2SyncDirection: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'Mm2SyncDirection',
-};
-
-const Mm2ModelType: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'Mm2ModelType',
-};
-
-const Mm2SynchronizationMode: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'Mm2SynchronizationMode',
-};
-
-const SyncRunMode: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'SyncRunMode',
-};
-
-const Mm2SynchronizerLogLevel: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'Mm2SynchronizerLogLevel',
-};
-
-const SyncActionTaken: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'SyncActionTaken',
-};
-
 const ChannelChangedEventType: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'ChannelChangedEventType',
@@ -457,6 +427,7 @@ const UserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     avatarUrl: {},
     websites: {},
     authType: {},
+    inviteCode: {},
     currentPassword: {},
     newPassword: {},
     preferredLanguageTextId: {},
@@ -799,8 +770,13 @@ const UserListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
     updatedAtUntil: {
       nt: DateTimeISO,
     },
-    rolesIn: {},
+    ident: {},
     emailIn: {},
+    phoneNumberIn: {},
+    inviteCodeIn: {},
+    rolesIn: {},
+    excludeRoles: {},
+    excludeContacts: {},
     createdAtGreaterThan: {
       nt: DateTimeISO,
     },
@@ -1428,6 +1404,68 @@ const UserSearchListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
   },
 };
 
+const ContactInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'ContactInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'archivedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    userId: {},
+    channelId: {},
+    nickname: {},
+    typeTextIds: {},
+    favorite: {},
+    notes: {},
+    archivedAt: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const SidContactListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'SidContactListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
+    userIdIn: {},
+    createdBy: {},
+  },
+};
+
 const SignInUserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'SignInUserInput',
   f: {
@@ -1835,204 +1873,6 @@ const ModerationConcernInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   },
 };
 
-const GenRequest: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'GenRequest',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'users', 'groups'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    clearDb: {},
-    channelCount: {},
-    invitationCount: {},
-    messageCount: {},
-    users: {
-      // nt: GenUserInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    groups: {
-      // nt: GenGroupsInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    publishAppEvents: {},
-  },
-};
-
-const GenUserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'GenUserInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    count: {},
-    dualRoleCount: {},
-    emailDomain: {},
-    emailPrefix: {},
-    mentorCount: {},
-    menteeCount: {},
-    mentorRatio: {},
-    password: {},
-  },
-};
-
-const GenGroupsInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'GenGroupsInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'specificGroups'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    count: {},
-    specificGroups: {
-      // nt: GenSpecificGroupInput, <-- Assigned later to avoid potential circular dependency.
-    },
-  },
-};
-
-const GenSpecificGroupInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'GenSpecificGroupInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'groupRules', 'matchingEngine'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    name: {},
-    mentorCount: {},
-    menteeCount: {},
-    groupRules: {
-      // nt: GenGroupRuleInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    matchingEngine: {
-      // nt: GenMatchingEngineInput, <-- Assigned later to avoid potential circular dependency.
-    },
-  },
-};
-
-const GenGroupRuleInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'GenGroupRuleInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    someGroupRule: {},
-    someOtherGroupRule: {},
-  },
-};
-
-const GenMatchingEngineInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'GenMatchingEngineInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    someMatchingRule: {},
-    someOtherMatchingRule: {},
-  },
-};
-
 const MenteesGroupMembershipInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'MenteesGroupMembershipInput',
   fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
@@ -2314,6 +2154,8 @@ const SendMultiStepActionNotificationInput: $$Utilities.SchemaDrivenDataMap.Inpu
   n: 'SendMultiStepActionNotificationInput',
   f: {
     actionId: {},
+    email: {},
+    phoneNumber: {},
     notificationMethod: {},
   },
 };
@@ -2380,48 +2222,6 @@ const NotificationTemplateInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     sendPushNotification: {},
     sendSms: {},
     isCore: {},
-  },
-};
-
-const Mm2SynchronizationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'Mm2SynchronizationInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'expiresAt'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    direction: {},
-    objectId: {},
-    mm2ModelType: {},
-    mm3ModelType: {},
-    syncMode: {},
-    runMode: {},
-    skip: {},
-    batchSize: {},
-    limit: {},
-    autorun: {},
-    usersSinceUpdatedAt: {},
-    logLevel: {},
-    expiresAt: {
-      nt: DateTimeISO,
-    },
   },
 };
 
@@ -2556,6 +2356,7 @@ const UserIdentInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     userHandle: {},
     email: {},
     phoneNumber: {},
+    inviteCode: {},
   },
 };
 
@@ -2636,6 +2437,7 @@ const MyUserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     avatarUrl: {},
     websites: {},
     authType: {},
+    inviteCode: {},
     currentPassword: {},
     newPassword: {},
     preferredLanguageTextId: {},
@@ -3526,6 +3328,9 @@ const ChannelInbox: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     unseenArchivedMessages: {
       // nt: ChannelInboxItemMessage, <-- Assigned later to avoid potential circular dependency.
     },
+    unseenSystemMessages: {
+      // nt: ChannelInboxItemMessage, <-- Assigned later to avoid potential circular dependency.
+    },
     latestMessages: {
       // nt: ChannelInboxItemMessage, <-- Assigned later to avoid potential circular dependency.
     },
@@ -3538,6 +3343,7 @@ const ChannelInbox: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     invitations: {
       // nt: ChannelInboxItemInvitation, <-- Assigned later to avoid potential circular dependency.
     },
+    itemIdHash: {},
     updatedAt: {
       nt: DateTimeISO,
     },
@@ -3620,11 +3426,11 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     isPhoneNumberVerified: {},
     email: {},
+    emailSource: {},
     emailUpdatedAt: {
       nt: DateTimeISO,
     },
     isEmailVerified: {},
-    emailSource: {},
     genderTextId: {},
     cityOfResidence: {},
     regionOfResidence: {},
@@ -3635,6 +3441,7 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
     authType: {},
+    inviteCode: {},
     tfaBackupCodes: {},
     passwordUpdatedAt: {
       nt: DateTimeISO,
@@ -3667,8 +3474,8 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     userBlocks: {
       // nt: UserBlock, <-- Assigned later to avoid potential circular dependency.
     },
-    relationships: {
-      // nt: UserRelationship, <-- Assigned later to avoid potential circular dependency.
+    contacts: {
+      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
     },
     inactivatedAt: {
       nt: DateTimeISO,
@@ -3948,7 +3755,59 @@ const UserBlock: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
-const UserRelationship: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+const Contact: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: ContactMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    userId: {},
+    channelId: {},
+    nickname: {},
+    typeTextIds: {},
+    favorite: {},
+    notes: {},
+    archivedAt: {
+      nt: DateTimeISO,
+    },
+    user: {
+      // nt: User, <-- Assigned later to avoid potential circular dependency.
+    },
+    contactTypes: {
+      // nt: ContactType, <-- Assigned later to avoid potential circular dependency.
+    },
+  },
+};
+
+const ContactMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    firstName: {},
+    lastName: {},
+    userHandle: {},
+    avatarUrl: {},
+  },
+};
+
+const ContactType: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     id: {},
     adminNotes: {},
@@ -3970,13 +3829,30 @@ const UserRelationship: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
-    userId: {},
-    typeTextIds: {},
-    blockedAt: {
+    textId: {},
+    parentTextId: {},
+    isParent: {},
+    optionType: {},
+    value: {},
+    translatedValue: {},
+    supportedLanguages: {},
+    materialIconName: {},
+    description: {},
+    translatedDescription: {},
+    language: {},
+    mm2Id: {},
+    mm2Value: {},
+    syncedWithMm2At: {
       nt: DateTimeISO,
     },
-    blockReason: {},
-    notes: {},
+    mm2TextId: {},
+    mm3TextId: {},
+    childOptions: {
+      // nt: Option, <-- Assigned later to avoid potential circular dependency.
+    },
+    parentOption: {
+      // nt: Option, <-- Assigned later to avoid potential circular dependency.
+    },
   },
 };
 
@@ -4429,6 +4305,9 @@ const Channel: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     messages: {
       // nt: ChannelMessage, <-- Assigned later to avoid potential circular dependency.
     },
+    myContacts: {
+      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
+    },
     participants: {
       // nt: ChannelParticipant, <-- Assigned later to avoid potential circular dependency.
     },
@@ -4648,6 +4527,7 @@ const ChannelMessageMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject = {
 const ChannelMessageStatus: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     userId: {},
+    isInArchivedChannel: {},
     receivedAt: {
       nt: DateTimeISO,
     },
@@ -4665,7 +4545,7 @@ const ChannelParticipant: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
     },
     metadata: {
-      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+      // nt: BgChannelParticipantMetadata, <-- Assigned later to avoid potential circular dependency.
     },
     createdAt: {
       nt: DateTimeISO,
@@ -4691,9 +4571,28 @@ const ChannelParticipant: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     channel: {
       // nt: Channel, <-- Assigned later to avoid potential circular dependency.
     },
+    myContact: {
+      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
+    },
     user: {
       // nt: UserListItem, <-- Assigned later to avoid potential circular dependency.
     },
+  },
+};
+
+const BgChannelParticipantMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    userHandle: {},
+    firstName: {},
+    lastName: {},
+    nickname: {},
+    avatarUrl: {},
+    sentMessageCount: {},
+    unseenMessageCount: {},
+    unseenSystemMessageCount: {},
   },
 };
 
@@ -5539,34 +5438,6 @@ const UserWithScore: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
-const Mm2Integration: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    fullSyncAt: {
-      nt: DateTimeISO,
-    },
-  },
-};
-
 const ServiceRequest: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     id: {},
@@ -5600,6 +5471,40 @@ const ServiceRequest: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       nt: DateTimeISO,
     },
     expiresAt: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const ContactListItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: ContactMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    userId: {},
+    channelId: {},
+    nickname: {},
+    typeTextIds: {},
+    favorite: {},
+    notes: {},
+    archivedAt: {
       nt: DateTimeISO,
     },
   },
@@ -5811,11 +5716,11 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     isPhoneNumberVerified: {},
     email: {},
+    emailSource: {},
     emailUpdatedAt: {
       nt: DateTimeISO,
     },
     isEmailVerified: {},
-    emailSource: {},
     genderTextId: {},
     cityOfResidence: {},
     regionOfResidence: {},
@@ -5826,6 +5731,7 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
     authType: {},
+    inviteCode: {},
     tfaBackupCodes: {},
     passwordUpdatedAt: {
       nt: DateTimeISO,
@@ -5858,8 +5764,8 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     userBlocks: {
       // nt: UserBlock, <-- Assigned later to avoid potential circular dependency.
     },
-    relationships: {
-      // nt: UserRelationship, <-- Assigned later to avoid potential circular dependency.
+    contacts: {
+      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
     },
     inactivatedAt: {
       nt: DateTimeISO,
@@ -6003,9 +5909,6 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     pronounsDisplay: {},
     uploadedAssets: {
       // nt: UploadedAsset, <-- Assigned later to avoid potential circular dependency.
-    },
-    inbox: {
-      // nt: UserInbox, <-- Assigned later to avoid potential circular dependency.
     },
   },
 };
@@ -6306,6 +6209,10 @@ const UserAuthResponse: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     userId: {},
     firstName: {},
     lastName: {},
+    userHandle: {},
+    email: {},
+    phoneNumber: {},
+    roles: {},
     onboardingStage: {},
     foundUser: {},
     authType: {},
@@ -6463,109 +6370,6 @@ const NotificationTemplate: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     sendPushNotification: {},
     sendSms: {},
     isCore: {},
-  },
-};
-
-const Mm2Synchronization: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    direction: {},
-    objectId: {},
-    mm2ModelType: {},
-    mm3ModelType: {},
-    syncMode: {},
-    runMode: {},
-    skip: {},
-    batchSize: {},
-    limit: {},
-    autorun: {},
-    logLevel: {},
-    result: {
-      // nt: Mm2SynchronizationResult, <-- Assigned later to avoid potential circular dependency.
-    },
-    duration: {},
-    itemCount: {},
-    pace: {},
-    usersSinceUpdatedAt: {},
-    previousSyncAt: {
-      nt: DateTimeISO,
-    },
-    startedAt: {
-      nt: DateTimeISO,
-    },
-    finishedAt: {
-      nt: DateTimeISO,
-    },
-    expiresAt: {
-      nt: DateTimeISO,
-    },
-  },
-};
-
-const Mm2SynchronizationResult: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    items: {
-      // nt: Mm2SynchronizationResultItem, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdCount: {},
-    deletedCount: {},
-    updatedCount: {},
-    skippedCount: {},
-    errorCount: {},
-    error: {},
-  },
-};
-
-const Mm2SynchronizationResultItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    synchronizationId: {},
-    modelType: {},
-    mm2ModelType: {},
-    objectId: {},
-    mm2ObjectId: {},
-    name: {},
-    operation: {},
-    error: {},
-    duration: {},
   },
 };
 
@@ -6790,6 +6594,15 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: Pronoun, <-- Assigned later to avoid potential circular dependency.
     },
     myInbox: {
+      a: {
+        refresh: {
+          nt: Boolean,
+          it: [0],
+        },
+      },
+      // nt: UserInbox, <-- Assigned later to avoid potential circular dependency.
+    },
+    findMyInbox: {
       a: {
         refresh: {
           nt: Boolean,
@@ -7368,9 +7181,6 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     myUserSearches: {
       // nt: UserSearch, <-- Assigned later to avoid potential circular dependency.
     },
-    getMm2Integration: {
-      // nt: Mm2Integration, <-- Assigned later to avoid potential circular dependency.
-    },
     findServiceRequestById: {
       a: {
         serviceRequestId: {
@@ -7379,6 +7189,48 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
       // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
+    findContactById: {
+      a: {
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
+    },
+    findContact: {
+      a: {
+        createIfNotExist: {
+          nt: Boolean,
+          it: [0],
+        },
+        match: {
+          nt: ContactInput,
+          it: [1],
+        },
+      },
+      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
+    },
+    findContacts: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: ContactInput,
+          it: [0],
+        },
+        filter: {
+          nt: SidContactListFilter,
+          it: [0],
+        },
+      },
+      // nt: ContactListItem, <-- Assigned later to avoid potential circular dependency.
+    },
+    findMyActiveMultiStepActions: {
+      // nt: SidMultiStepAction, <-- Assigned later to avoid potential circular dependency.
     },
     findMyActiveMultiStepAction: {
       // nt: SidMultiStepAction, <-- Assigned later to avoid potential circular dependency.
@@ -7415,6 +7267,14 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     findMyBlockedUsers: {
       // nt: User, <-- Assigned later to avoid potential circular dependency.
+    },
+    verifyMyPassword: {
+      a: {
+        password: {
+          nt: String,
+          it: [1],
+        },
+      },
     },
     findReportUserReasons: {
       a: {
@@ -8035,14 +7895,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
-    runDataGenerator: {
-      a: {
-        input: {
-          nt: GenRequest,
-          it: [1],
-        },
-      },
-    },
     createGroupMembership: {
       a: {
         input: {
@@ -8339,58 +8191,22 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    clearAllSyncInfo: {
-      a: {
-        includeMm3: {
-          nt: Boolean,
-          it: [1],
-        },
-        includeMm2: {
-          nt: Boolean,
-          it: [1],
-        },
-      },
-    },
-    deleteAllMm2DataInMm3: {},
-    createMm2Synchronization: {
+    createContact: {
       a: {
         input: {
-          nt: Mm2SynchronizationInput,
+          nt: ContactInput,
           it: [1],
         },
       },
-      // nt: Mm2Synchronization, <-- Assigned later to avoid potential circular dependency.
+      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
     },
-    deleteMm2Synchronization: {
+    updateContact: {
       a: {
-        mm2SynchronizationId: {
-          nt: String,
+        input: {
+          nt: ContactInput,
           it: [1],
         },
       },
-      // nt: Mm2Synchronization, <-- Assigned later to avoid potential circular dependency.
-    },
-    findMm2SynchronizationById: {
-      a: {
-        mm2SynchronizationId: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: Mm2Synchronization, <-- Assigned later to avoid potential circular dependency.
-    },
-    runMm2Synchronization: {
-      a: {
-        runAgain: {
-          nt: Boolean,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: Mm2Synchronization, <-- Assigned later to avoid potential circular dependency.
     },
     createMultiStepAction: {
       a: {
@@ -8641,6 +8457,8 @@ AppliedGroupRuleInput.f!['metadata']!.nt = BaseModelMetadataInput;
 UserSearchInput.f!['events']!.nt = ModelEventInput;
 UserSearchInput.f!['metadata']!.nt = BaseModelMetadataInput;
 UserSearchInput.f!['filter']!.nt = UserSearchFilterInput;
+ContactInput.f!['events']!.nt = ModelEventInput;
+ContactInput.f!['metadata']!.nt = BaseModelMetadataInput;
 SignUpUserInput.f!['events']!.nt = ModelEventInput;
 SignUpUserInput.f!['metadata']!.nt = BaseModelMetadataInput;
 VerifyOneTimeAuthTokenInput.f!['events']!.nt = ModelEventInput;
@@ -8657,23 +8475,6 @@ ContentTagInput.f!['moderationConcern']!.nt = ModerationConcernInput;
 ContentTagInput.f!['allModerationConcerns']!.nt = ModerationConcernInput;
 ModerationConcernInput.f!['events']!.nt = ModelEventInput;
 ModerationConcernInput.f!['metadata']!.nt = BaseModelMetadataInput;
-GenRequest.f!['events']!.nt = ModelEventInput;
-GenRequest.f!['metadata']!.nt = BaseModelMetadataInput;
-GenRequest.f!['users']!.nt = GenUserInput;
-GenRequest.f!['groups']!.nt = GenGroupsInput;
-GenUserInput.f!['events']!.nt = ModelEventInput;
-GenUserInput.f!['metadata']!.nt = BaseModelMetadataInput;
-GenGroupsInput.f!['events']!.nt = ModelEventInput;
-GenGroupsInput.f!['metadata']!.nt = BaseModelMetadataInput;
-GenGroupsInput.f!['specificGroups']!.nt = GenSpecificGroupInput;
-GenSpecificGroupInput.f!['events']!.nt = ModelEventInput;
-GenSpecificGroupInput.f!['metadata']!.nt = BaseModelMetadataInput;
-GenSpecificGroupInput.f!['groupRules']!.nt = GenGroupRuleInput;
-GenSpecificGroupInput.f!['matchingEngine']!.nt = GenMatchingEngineInput;
-GenGroupRuleInput.f!['events']!.nt = ModelEventInput;
-GenGroupRuleInput.f!['metadata']!.nt = BaseModelMetadataInput;
-GenMatchingEngineInput.f!['events']!.nt = ModelEventInput;
-GenMatchingEngineInput.f!['metadata']!.nt = BaseModelMetadataInput;
 MenteesGroupMembershipInput.f!['events']!.nt = ModelEventInput;
 MenteesGroupMembershipInput.f!['metadata']!.nt = BaseModelMetadataInput;
 MentorsGroupMembershipInput.f!['events']!.nt = ModelEventInput;
@@ -8689,8 +8490,6 @@ NotificationInput.f!['metadata']!.nt = BaseModelMetadataInput;
 NotificationInput.f!['context']!.nt = NotificationInput;
 NotificationTemplateInput.f!['events']!.nt = ModelEventInput;
 NotificationTemplateInput.f!['metadata']!.nt = BaseModelMetadataInput;
-Mm2SynchronizationInput.f!['events']!.nt = ModelEventInput;
-Mm2SynchronizationInput.f!['metadata']!.nt = BaseModelMetadataInput;
 SidMultiStepActionInput.f!['events']!.nt = ModelEventInput;
 SidMultiStepActionInput.f!['metadata']!.nt = BaseModelMetadataInput;
 SidMultiStepActionInput.f!['errors']!.nt = MultiStepActionErrorInput;
@@ -8784,6 +8583,7 @@ UserInbox.f['metadata']!.nt = BaseModelMetadata;
 UserInbox.f['channels']!.nt = ChannelInbox;
 ChannelInbox.f['unseenMessages']!.nt = ChannelInboxItemMessage;
 ChannelInbox.f['unseenArchivedMessages']!.nt = ChannelInboxItemMessage;
+ChannelInbox.f['unseenSystemMessages']!.nt = ChannelInboxItemMessage;
 ChannelInbox.f['latestMessages']!.nt = ChannelInboxItemMessage;
 ChannelInbox.f['latestArchivedMessages']!.nt = ChannelInboxItemMessage;
 ChannelInbox.f['pendingInvitations']!.nt = ChannelInboxItemInvitation;
@@ -8794,7 +8594,7 @@ User.f['websites']!.nt = LabeledStringValue;
 User.f['preferences']!.nt = UserPreferences;
 User.f['userDevices']!.nt = UserDeviceWithoutAuth;
 User.f['userBlocks']!.nt = UserBlock;
-User.f['relationships']!.nt = UserRelationship;
+User.f['contacts']!.nt = Contact;
 User.f['companies']!.nt = Company;
 User.f['groupMemberships']!.nt = IGroupMembership;
 User.f['academicExperiences']!.nt = AcademicExperience;
@@ -8826,8 +8626,14 @@ UserPreferences.f['metadata']!.nt = BaseModelMetadata;
 UserPreferences.f['notificationOptions']!.nt = NotificationOptions;
 UserDeviceWithoutAuth.f['events']!.nt = ModelEvent;
 UserDeviceWithoutAuth.f['metadata']!.nt = BaseModelMetadata;
-UserRelationship.f['events']!.nt = ModelEvent;
-UserRelationship.f['metadata']!.nt = BaseModelMetadata;
+Contact.f['events']!.nt = ModelEvent;
+Contact.f['metadata']!.nt = ContactMetadata;
+Contact.f['user']!.nt = User;
+Contact.f['contactTypes']!.nt = ContactType;
+ContactType.f['events']!.nt = ModelEvent;
+ContactType.f['metadata']!.nt = BaseModelMetadata;
+ContactType.f['childOptions']!.nt = Option;
+ContactType.f['parentOption']!.nt = Option;
 Company.f['events']!.nt = ModelEvent;
 Company.f['metadata']!.nt = BaseModelMetadata;
 Company.f['websites']!.nt = LabeledStringValue;
@@ -8858,6 +8664,7 @@ Channel.f['status']!.nt = BgChannelStatus;
 Channel.f['invitations']!.nt = ChannelInvitation;
 Channel.f['latestMessage']!.nt = ChannelMessage;
 Channel.f['messages']!.nt = ChannelMessage;
+Channel.f['myContacts']!.nt = Contact;
 Channel.f['participants']!.nt = ChannelParticipant;
 Channel.f['pendingInvitations']!.nt = ChannelInvitation;
 ChannelMetadata.f['unseenMessageInfo']!.nt = BgLatestUnseenChannelMessageInfo;
@@ -8877,8 +8684,9 @@ ChannelMessage.f['statuses']!.nt = ChannelMessageStatus;
 ChannelMessage.f['channel']!.nt = Channel;
 ChannelMessage.f['sender']!.nt = User;
 ChannelParticipant.f['events']!.nt = ModelEvent;
-ChannelParticipant.f['metadata']!.nt = BaseModelMetadata;
+ChannelParticipant.f['metadata']!.nt = BgChannelParticipantMetadata;
 ChannelParticipant.f['channel']!.nt = Channel;
+ChannelParticipant.f['myContact']!.nt = Contact;
 ChannelParticipant.f['user']!.nt = UserListItem;
 UserListItem.f['userBlocks']!.nt = UserBlock;
 UserListItem.f['websites']!.nt = LabeledStringValue;
@@ -8958,9 +8766,9 @@ UserWithScore.f['educationLevel']!.nt = EducationLevel;
 UserWithScore.f['endorsements']!.nt = EndorsementWithTypes;
 UserWithScore.f['groups']!.nt = Group;
 UserWithScore.f['pronouns']!.nt = Pronoun;
-Mm2Integration.f['events']!.nt = ModelEvent;
-Mm2Integration.f['metadata']!.nt = BaseModelMetadata;
 ServiceRequest.f['events']!.nt = ModelEvent;
+ContactListItem.f['events']!.nt = ModelEvent;
+ContactListItem.f['metadata']!.nt = ContactMetadata;
 SidMultiStepAction.f['events']!.nt = ModelEvent;
 SidMultiStepAction.f['metadata']!.nt = BaseModelMetadata;
 SidMultiStepAction.f['errors']!.nt = MultiStepActionError;
@@ -8975,7 +8783,7 @@ MyUser.f['websites']!.nt = LabeledStringValue;
 MyUser.f['preferences']!.nt = UserPreferences;
 MyUser.f['userDevices']!.nt = UserDeviceWithoutAuth;
 MyUser.f['userBlocks']!.nt = UserBlock;
-MyUser.f['relationships']!.nt = UserRelationship;
+MyUser.f['contacts']!.nt = Contact;
 MyUser.f['companies']!.nt = Company;
 MyUser.f['groupMemberships']!.nt = IGroupMembership;
 MyUser.f['academicExperiences']!.nt = AcademicExperience;
@@ -9002,7 +8810,6 @@ MyUser.f['groupMembers']!.nt = IGroupMembership;
 MyUser.f['groups']!.nt = Group;
 MyUser.f['pronouns']!.nt = Pronoun;
 MyUser.f['uploadedAssets']!.nt = UploadedAsset;
-MyUser.f['inbox']!.nt = UserInbox;
 ReportUserReason.f['events']!.nt = ModelEvent;
 ReportUserReason.f['metadata']!.nt = BaseModelMetadata;
 ReportUserReason.f['childOptions']!.nt = Option;
@@ -9028,12 +8835,6 @@ SupportChannelConfig.f['events']!.nt = ModelEvent;
 SupportChannelConfig.f['metadata']!.nt = BaseModelMetadata;
 NotificationTemplate.f['events']!.nt = ModelEvent;
 NotificationTemplate.f['metadata']!.nt = BaseModelMetadata;
-Mm2Synchronization.f['events']!.nt = ModelEvent;
-Mm2Synchronization.f['metadata']!.nt = BaseModelMetadata;
-Mm2Synchronization.f['result']!.nt = Mm2SynchronizationResult;
-Mm2SynchronizationResult.f['items']!.nt = Mm2SynchronizationResultItem;
-Mm2SynchronizationResultItem.f['events']!.nt = ModelEvent;
-Mm2SynchronizationResultItem.f['metadata']!.nt = BaseModelMetadata;
 ContentStatus.f['events']!.nt = ModelEvent;
 ContentStatus.f['metadata']!.nt = BaseModelMetadata;
 BgChannelChangedEvent.f['serviceRequest']!.nt = ServiceRequest;
@@ -9048,6 +8849,7 @@ Query.f['findExpertises']!.nt = Expertise;
 Query.f['findGenders']!.nt = Gender;
 Query.f['findPronouns']!.nt = Pronoun;
 Query.f['myInbox']!.nt = UserInbox;
+Query.f['findMyInbox']!.nt = UserInbox;
 Query.f['findUserById']!.nt = User;
 Query.f['findUserByIdent']!.nt = User;
 Query.f['findUsers']!.nt = UserListItem;
@@ -9091,8 +8893,11 @@ Query.f['findUserSearchById']!.nt = UserSearch;
 Query.f['findUserSearches']!.nt = UserSearch;
 Query.f['findUserSearchResults']!.nt = UserWithScore;
 Query.f['myUserSearches']!.nt = UserSearch;
-Query.f['getMm2Integration']!.nt = Mm2Integration;
 Query.f['findServiceRequestById']!.nt = ServiceRequest;
+Query.f['findContactById']!.nt = Contact;
+Query.f['findContact']!.nt = Contact;
+Query.f['findContacts']!.nt = ContactListItem;
+Query.f['findMyActiveMultiStepActions']!.nt = SidMultiStepAction;
 Query.f['findMyActiveMultiStepAction']!.nt = SidMultiStepAction;
 Query.f['getMultiStepActionProgress']!.nt = SidMultiStepActionProgress;
 Query.f['getMyUser']!.nt = User;
@@ -9154,10 +8959,7 @@ Mutation.f['deleteUserSearch']!.nt = ServiceRequest;
 Mutation.f['updateUserSearch']!.nt = ServiceRequest;
 Mutation.f['createNotification']!.nt = Notification;
 Mutation.f['createNotificationTemplate']!.nt = NotificationTemplate;
-Mutation.f['createMm2Synchronization']!.nt = Mm2Synchronization;
-Mutation.f['deleteMm2Synchronization']!.nt = Mm2Synchronization;
-Mutation.f['findMm2SynchronizationById']!.nt = Mm2Synchronization;
-Mutation.f['runMm2Synchronization']!.nt = Mm2Synchronization;
+Mutation.f['createContact']!.nt = Contact;
 Mutation.f['createMultiStepAction']!.nt = SidMultiStepActionProgress;
 Mutation.f['startResetPassword']!.nt = SidMultiStepActionProgress;
 Mutation.f['startVerifyEmail']!.nt = SidMultiStepActionProgress;
@@ -9246,12 +9048,6 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     DeclineChannelInvitationReasonTextId,
     ChannelMessageEvent,
     NotificationTemplateName,
-    Mm2SyncDirection,
-    Mm2ModelType,
-    Mm2SynchronizationMode,
-    SyncRunMode,
-    Mm2SynchronizerLogLevel,
-    SyncActionTaken,
     ChannelChangedEventType,
     ObjectChangedEventType,
     FindObjectsOptions,
@@ -9287,6 +9083,8 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     UserSearchInput,
     UserSearchFilterInput,
     UserSearchListFilter,
+    ContactInput,
+    SidContactListFilter,
     SignInUserInput,
     SignInOauthUserInput,
     SignUpUserInput,
@@ -9298,12 +9096,6 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ChannelParticipantInput,
     ContentTagInput,
     ModerationConcernInput,
-    GenRequest,
-    GenUserInput,
-    GenGroupsInput,
-    GenSpecificGroupInput,
-    GenGroupRuleInput,
-    GenMatchingEngineInput,
     MenteesGroupMembershipInput,
     MentorsGroupMembershipInput,
     IqlaaGroupMembershipInput,
@@ -9312,7 +9104,6 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     NotificationInput,
     SendMultiStepActionNotificationInput,
     NotificationTemplateInput,
-    Mm2SynchronizationInput,
     SidMultiStepActionInput,
     MultiStepActionErrorInput,
     UserIdentInput,
@@ -9347,7 +9138,9 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     NotificationOptions,
     UserDeviceWithoutAuth,
     UserBlock,
-    UserRelationship,
+    Contact,
+    ContactMetadata,
+    ContactType,
     Company,
     AcademicExperience,
     BusinessExperience,
@@ -9367,6 +9160,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ChannelMessageMetadata,
     ChannelMessageStatus,
     ChannelParticipant,
+    BgChannelParticipantMetadata,
     UserListItem,
     EndorsementWithTypes,
     ModerationConcern,
@@ -9387,8 +9181,8 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     UserSearchFilter,
     UserSearchRunInfo,
     UserWithScore,
-    Mm2Integration,
     ServiceRequest,
+    ContactListItem,
     SidMultiStepAction,
     MultiStepActionError,
     SidMultiStepActionProgress,
@@ -9402,9 +9196,6 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ContentTag,
     SupportChannelConfig,
     NotificationTemplate,
-    Mm2Synchronization,
-    Mm2SynchronizationResult,
-    Mm2SynchronizationResultItem,
     ContentStatus,
     BgChannelChangedEvent,
     ObjectChangedEvent,

@@ -50,7 +50,9 @@ export interface $MethodsSelect {
   NotificationOptions: NotificationOptions;
   UserDeviceWithoutAuth: UserDeviceWithoutAuth;
   UserBlock: UserBlock;
-  UserRelationship: UserRelationship;
+  Contact: Contact;
+  ContactMetadata: ContactMetadata;
+  ContactType: ContactType;
   Company: Company;
   AcademicExperience: AcademicExperience;
   BusinessExperience: BusinessExperience;
@@ -70,6 +72,7 @@ export interface $MethodsSelect {
   ChannelMessageMetadata: ChannelMessageMetadata;
   ChannelMessageStatus: ChannelMessageStatus;
   ChannelParticipant: ChannelParticipant;
+  BgChannelParticipantMetadata: BgChannelParticipantMetadata;
   UserListItem: UserListItem;
   EndorsementWithTypes: EndorsementWithTypes;
   ModerationConcern: ModerationConcern;
@@ -90,8 +93,8 @@ export interface $MethodsSelect {
   UserSearchFilter: UserSearchFilter;
   UserSearchRunInfo: UserSearchRunInfo;
   UserWithScore: UserWithScore;
-  Mm2Integration: Mm2Integration;
   ServiceRequest: ServiceRequest;
+  ContactListItem: ContactListItem;
   SidMultiStepAction: SidMultiStepAction;
   MultiStepActionError: MultiStepActionError;
   SidMultiStepActionProgress: SidMultiStepActionProgress;
@@ -105,9 +108,6 @@ export interface $MethodsSelect {
   ContentTag: ContentTag;
   SupportChannelConfig: SupportChannelConfig;
   NotificationTemplate: NotificationTemplate;
-  Mm2Synchronization: Mm2Synchronization;
-  Mm2SynchronizationResult: Mm2SynchronizationResult;
-  Mm2SynchronizationResultItem: Mm2SynchronizationResultItem;
   ContentStatus: ContentStatus;
   BgChannelChangedEvent: BgChannelChangedEvent;
   ObjectChangedEvent: ObjectChangedEvent;
@@ -284,8 +284,16 @@ export interface UserBlock {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserBlock>): $SelectionSet;
 }
 
-export interface UserRelationship {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserRelationship>): $SelectionSet;
+export interface Contact {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Contact>): $SelectionSet;
+}
+
+export interface ContactMetadata {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContactMetadata>): $SelectionSet;
+}
+
+export interface ContactType {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContactType>): $SelectionSet;
 }
 
 export interface Company {
@@ -372,6 +380,12 @@ export interface ChannelParticipant {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelParticipant>): $SelectionSet;
 }
 
+export interface BgChannelParticipantMetadata {
+  <$SelectionSet>(
+    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelParticipantMetadata>,
+  ): $SelectionSet;
+}
+
 export interface UserListItem {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserListItem>): $SelectionSet;
 }
@@ -456,12 +470,12 @@ export interface UserWithScore {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserWithScore>): $SelectionSet;
 }
 
-export interface Mm2Integration {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mm2Integration>): $SelectionSet;
-}
-
 export interface ServiceRequest {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ServiceRequest>): $SelectionSet;
+}
+
+export interface ContactListItem {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContactListItem>): $SelectionSet;
 }
 
 export interface SidMultiStepAction {
@@ -518,22 +532,6 @@ export interface SupportChannelConfig {
 
 export interface NotificationTemplate {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.NotificationTemplate>): $SelectionSet;
-}
-
-export interface Mm2Synchronization {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mm2Synchronization>): $SelectionSet;
-}
-
-export interface Mm2SynchronizationResult {
-  <$SelectionSet>(
-    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mm2SynchronizationResult>,
-  ): $SelectionSet;
-}
-
-export interface Mm2SynchronizationResultItem {
-  <$SelectionSet>(
-    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mm2SynchronizationResultItem>,
-  ): $SelectionSet;
 }
 
 export interface ContentStatus {

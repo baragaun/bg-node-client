@@ -27,6 +27,7 @@ declare const fsdata: {
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<import("../index.js").QueryResult<void>>;
         endMySession: () => Promise<import("../index.js").QueryResult<void>>;
         findAvailableUserHandle: (startValue: string) => Promise<import("../index.js").QueryResult<string>>;
+        findMyInbox: () => Promise<import("../index.js").QueryResult<import("../models/UserInbox.js").UserInbox>>;
         findMyUser: () => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
         isUserIdentAvailable: (userIdent: string, identType: import("../enums.js").UserIdentType) => Promise<import("../index.js").QueryResult<boolean>>;
         reportUser: (userId: string, reasonTextId: import("./gql/graphql.js").ReportUserReasonTextId, messageText: string | undefined, _queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<void>>;
@@ -37,6 +38,7 @@ declare const fsdata: {
         startMySessionV2: (pushNotificationToken: string | null | undefined, returnContentStatus: boolean) => Promise<import("../index.js").QueryResult<import("../index.js").ContentStatus>>;
         unblockUserForMe: (userId: string, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
         updateMyUser: (changes: Partial<import("../index.js").MyUserChanges>, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
+        verifyMyPassword: (password: string) => Promise<import("../index.js").QueryResult<boolean>>;
     };
     multiStepAction: {
         createMultiStepAction: (input: import("./gql/graphql.js").SidMultiStepActionInput) => Promise<import("../index.js").QueryResult<import("../index.js").SidMultiStepActionProgress>>;

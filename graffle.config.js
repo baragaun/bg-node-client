@@ -5,7 +5,11 @@ const config = Generator.configure({
   outputDirPath: 'src/fsdata/graffle',
   outputCase: 'camel',
   // eslint-disable-next-line no-undef
-  schema: { type: `url`, url: new URL('http://localhost:3000/mmdata/api/graphql') },
+  schema: {
+    type: `url`,
+    url1: new URL('http://localhost:3000/mmdata/api/graphql'),
+    url: new URL('http://localhost:8092/fsdata/api/graphql'),
+  },
   importFormat: 'jsExtension',
   // lint: {
   //   missingCustomScalarCodec: false,

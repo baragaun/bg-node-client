@@ -14,19 +14,19 @@ const verifyMyEmail = async (
   email: string,
   queryOptions: QueryOptions,
 ): Promise<QueryResult<MultiStepActionProgressResult>> => {
-  if (!libData.isInitialized()) {
-    logger.error('verifyMyEmail: unavailable.');
-    return { error: 'unavailable' };
-  }
-
-  if (libData.isOffline() && !libData.config().enableMockMode) {
-    logger.error('verifyMyEmail: offline');
-    return { error: 'offline' };
-  }
-
-  const clientInfo = libData.clientInfoStore().clientInfo;
-
   try {
+    if (!libData.isInitialized()) {
+      logger.error('verifyMyEmail: unavailable.');
+      return { error: 'unavailable' };
+    }
+
+    if (libData.isOffline() && !libData.config().enableMockMode) {
+      logger.error('verifyMyEmail: offline');
+      return { error: 'offline' };
+    }
+
+    const clientInfo = libData.clientInfoStore().clientInfo;
+
     logger.debug('verifyEmail Input:', { email });
 
     const input: SidMultiStepActionInput = {

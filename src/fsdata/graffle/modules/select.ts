@@ -224,11 +224,23 @@ export namespace Select {
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['UserBlock']
     >;
-  export type UserRelationship<$SelectionSet extends $$SelectionSets.UserRelationship> =
+  export type Contact<$SelectionSet extends $$SelectionSets.Contact> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
       $SelectionSet,
       $$Schema.Schema,
-      $$Schema.Schema['allTypes']['UserRelationship']
+      $$Schema.Schema['allTypes']['Contact']
+    >;
+  export type ContactMetadata<$SelectionSet extends $$SelectionSets.ContactMetadata> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['ContactMetadata']
+    >;
+  export type ContactType<$SelectionSet extends $$SelectionSets.ContactType> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['ContactType']
     >;
   export type Company<$SelectionSet extends $$SelectionSets.Company> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
@@ -343,6 +355,12 @@ export namespace Select {
       $SelectionSet,
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['ChannelParticipant']
+    >;
+  export type BgChannelParticipantMetadata<$SelectionSet extends $$SelectionSets.BgChannelParticipantMetadata> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['BgChannelParticipantMetadata']
     >;
   export type UserListItem<$SelectionSet extends $$SelectionSets.UserListItem> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
@@ -464,17 +482,17 @@ export namespace Select {
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['UserWithScore']
     >;
-  export type Mm2Integration<$SelectionSet extends $$SelectionSets.Mm2Integration> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['Mm2Integration']
-    >;
   export type ServiceRequest<$SelectionSet extends $$SelectionSets.ServiceRequest> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
       $SelectionSet,
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['ServiceRequest']
+    >;
+  export type ContactListItem<$SelectionSet extends $$SelectionSets.ContactListItem> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['ContactListItem']
     >;
   export type SidMultiStepAction<$SelectionSet extends $$SelectionSets.SidMultiStepAction> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
@@ -553,24 +571,6 @@ export namespace Select {
       $SelectionSet,
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['NotificationTemplate']
-    >;
-  export type Mm2Synchronization<$SelectionSet extends $$SelectionSets.Mm2Synchronization> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['Mm2Synchronization']
-    >;
-  export type Mm2SynchronizationResult<$SelectionSet extends $$SelectionSets.Mm2SynchronizationResult> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['Mm2SynchronizationResult']
-    >;
-  export type Mm2SynchronizationResultItem<$SelectionSet extends $$SelectionSets.Mm2SynchronizationResultItem> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['Mm2SynchronizationResultItem']
     >;
   export type ContentStatus<$SelectionSet extends $$SelectionSets.ContentStatus> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<

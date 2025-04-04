@@ -2,7 +2,9 @@ import { Operations } from '../types/Operations.js';
 import createChannel from './channel/createChannel.js';
 import deleteChannel from './channel/deleteChannel.js';
 import findChannels from './channel/findChannels.js';
+import findMyArchivedChannels from './channel/findMyArchivedChannels.js';
 import findMyChannels from './channel/findMyChannels.js';
+import isChannelArchivedForMe from './channel/isChannelArchivedForMe.js';
 import updateChannel from './channel/updateChannel.js';
 import acceptChannelInvitation from './channelInvitation/acceptChannelInvitation.js';
 import createChannelInvitation from './channelInvitation/createChannelInvitation.js';
@@ -20,8 +22,11 @@ import deleteChannelParticipant from './channelParticipant/deleteChannelParticip
 import findChannelParticipants from './channelParticipant/findChannelParticipants.js';
 import updateChannelParticipant from './channelParticipant/updateChannelParticipant.js';
 import count from './count.js';
+import find from './find.js';
 import findById from './findById.js';
+import findByMatch from './findByMatch.js';
 import findOne from './findOne.js';
+import findOneByMatch from './findOneByMatch.js';
 import insertOne from './insertOne.js';
 import abortMultiStepAction from './multiStepAction/abortMultiStepAction.js';
 import addMultiStepActionListener from './multiStepAction/addMultiStepActionListener.js';
@@ -34,6 +39,7 @@ import blockUserForMe from './myUser/blockUserForMe.js';
 import deleteMyUser from './myUser/deleteMyUser.js';
 import endMySession from './myUser/endMySession.js';
 import findAvailableUserHandle from './myUser/findAvailableUserHandle.js';
+import findMyInbox from './myUser/findMyInbox.js';
 import findMyUser from './myUser/findMyUser.js';
 import getSignedOutUserId from './myUser/getSignedOutUserId.js';
 import isCachedUserFresh from './myUser/isCachedUserFresh.js';
@@ -51,12 +57,16 @@ import unblockUserForMe from './myUser/unblockUserForMe.js';
 import updateMyPassword from './myUser/updateMyPassword.js';
 import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
+import verifyMyPassword from './myUser/verifyMyPassword.js';
 import update from './update.js';
 
 const operations: Operations = {
   count,
   findById,
+  find,
+  findByMatch,
   findOne,
+  findOneByMatch,
   insertOne,
   update,
 
@@ -65,6 +75,8 @@ const operations: Operations = {
     deleteChannel,
     findChannels,
     findMyChannels,
+    findMyArchivedChannels,
+    isChannelArchivedForMe,
     updateChannel,
   },
 
@@ -97,6 +109,7 @@ const operations: Operations = {
     deleteMyUser,
     endMySession,
     findAvailableUserHandle,
+    findMyInbox,
     findMyUser,
     getSignedOutUserId,
     isCachedUserFresh,
@@ -114,6 +127,7 @@ const operations: Operations = {
     updateMyPassword,
     updateMyUser,
     verifyMyEmail,
+    verifyMyPassword,
   },
 
   multiStepAction: {

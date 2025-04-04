@@ -11,6 +11,11 @@ export interface Db {
   close: () => Promise<void>;
 
   count: <T extends Model = Model>(
+    query: MangoQuery<T>,
+    modelType: ModelType,
+  ) => Promise<QueryResult<number>>;
+
+  countByMatch: <T extends Model = Model>(
     match: Partial<T>,
     modelType: ModelType,
   ) => Promise<QueryResult<number>>;
@@ -39,8 +44,13 @@ export interface Db {
     modelType: ModelType,
   ) => Promise<QueryResult<T>>;
 
-  findOne: <T extends Model = Model>(
+  findOneByMatch: <T extends Model = Model>(
     match: Partial<T>,
+    modelType: ModelType,
+  ) => Promise<QueryResult<T>>;
+
+  findOne: <T extends Model = Model>(
+    query: MangoQuery<T>,
     modelType: ModelType,
   ) => Promise<QueryResult<T>>;
 
