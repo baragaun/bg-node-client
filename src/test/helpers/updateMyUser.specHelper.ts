@@ -18,7 +18,6 @@ export const updateMyUserSpecHelper = async (
 
   const updateUserResponse = await client.operations.myUser.updateMyUser(
     changes as unknown as Partial<MyUser>,
-    { cachePolicy: CachePolicy.network },
   );
 
   logger.debug('BgServiceApiCheck.updateMyUser: received response from updateMyUser',
@@ -53,19 +52,21 @@ export const updateMyUserSpecHelper = async (
     changes as unknown as Partial<MyUser>,
   );
 
-  // Verifying the remote user object:
-  const findMyUserFromNetworkResult = await client.operations.myUser.findMyUser({
-    cachePolicy: CachePolicy.network,
-  });
+  if (!client.isInMockMode) {
+    // Verifying the remote user object:
+    const findMyUserFromNetworkResult = await client.operations.myUser.findMyUser({
+      cachePolicy: CachePolicy.network,
+    });
 
-  expect(findMyUserFromNetworkResult).toBeDefined();
-  expect(findMyUserFromNetworkResult.error).toBeUndefined();
-  expect(findMyUserFromNetworkResult.object?.id).toBe(changes.id);
+    expect(findMyUserFromNetworkResult).toBeDefined();
+    expect(findMyUserFromNetworkResult.error).toBeUndefined();
+    expect(findMyUserFromNetworkResult.object?.id).toBe(changes.id);
 
-  verifyUserPropsSpecHelper(
-    updateUserResponse.object as Partial<MyUser>,
-    changes as unknown as Partial<MyUser>,
-  );
+    verifyUserPropsSpecHelper(
+      updateUserResponse.object as Partial<MyUser>,
+      changes as unknown as Partial<MyUser>,
+    );
+  }
 
   return true;
 };

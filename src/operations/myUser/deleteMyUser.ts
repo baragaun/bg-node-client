@@ -32,7 +32,7 @@ const deleteMyUser = async (
       operation: MutationType.delete,
     };
   } catch (error) {
-    logger.error('deleteMyUser: fsdata.myUser.deleteMyUser failed', error);
+    logger.error('deleteMyUser: myUser.deleteMyUser failed', error);
     return {
       operation: MutationType.delete,
       error: (error as Error).message,

@@ -62,7 +62,7 @@ export interface Operations {
         updateChannelParticipant: (changes: Partial<ChannelParticipant>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelParticipant>>;
     };
     myUser: {
-        blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions: QueryOptions | undefined) => Promise<QueryResult<MyUser>>;
+        blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<QueryResult<void>>;
         endMySession: () => Promise<void>;
         findAvailableUserHandle: (startValue: string) => Promise<QueryResult<string>>;
@@ -72,18 +72,18 @@ export interface Operations {
         isCachedUserFresh: () => Promise<boolean>;
         isSessionActive: () => boolean;
         isUserIdentAvailable: (userIdent: string, identType: UserIdentType) => Promise<QueryResult<boolean>>;
-        reportUserForMe: (userId: string, reasonTextId: ReportUserReasonTextId, messageText: string | undefined, queryOptions: QueryOptions | undefined) => Promise<QueryResult<void>>;
-        resetMyPassword: (userIdent: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
+        reportUserForMe: (userId: string, reasonTextId: ReportUserReasonTextId, messageText: string | undefined, queryOptions?: QueryOptions) => Promise<QueryResult<void>>;
+        resetMyPassword: (userIdent: string, queryOptions?: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signInUser: (input: SignInInput) => Promise<QueryResult<SignInSignUpResponse>>;
-        signInWithToken: (userIdent: string, queryOptions?: QueryOptions | undefined) => Promise<QueryResult<MultiStepActionProgressResult>>;
+        signInWithToken: (userIdent: string, queryOptions?: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         signMeOut: () => Promise<QueryResult<void>>;
         signUpUser: (input: SignUpUserInput) => Promise<QueryResult<SignInSignUpResponse>>;
         startMySession: (pushNotificationToken: string | null | undefined) => Promise<void>;
         startMySessionV2: (pushNotificationToken: string | null | undefined, returnContentStatus: boolean) => Promise<void>;
-        unblockUserForMe: (userId: string, queryOptions?: QueryOptions | undefined) => Promise<QueryResult<MyUser>>;
+        unblockUserForMe: (userId: string, queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
         updateMyUser: (myUser: Partial<MyUserChanges>, queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
         updateMyPassword: (oldPassword: string, newPassword: string, queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
-        verifyMyEmail: (email: string, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
+        verifyMyEmail: (email: string, queryOptions?: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         verifyMyPassword: (password: string) => Promise<QueryResult<boolean>>;
     };
     multiStepAction: {

@@ -119,6 +119,10 @@ export class BgNodeClient {
     libData.setIsOnline(isOnline);
   }
 
+  public get isInMockMode(): boolean {
+    return libData.isInMockMode();
+  }
+
   public set enableMockMode(enable: boolean) {
     libData.setEnableMockMode(enable);
   }

@@ -1,5 +1,5 @@
 import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
+import { ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
@@ -7,6 +7,7 @@ import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
+import blockUserForMeMock from '../../mockOperations/myUser/blockUserForMeMock.js';
 
 const blockUserForMe = async (
   userId: string,
@@ -14,25 +15,25 @@ const blockUserForMe = async (
   notes: string | undefined,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<MyUser>> => {
-  if (!libData.isInitialized()) {
-    logger.error('blockUserForMe: unavailable');
-    return { error: 'unavailable' };
-  }
-
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('blockUserForMe: unauthorized');
-    return { error: 'unauthorized' };
-  }
-
-  const result: QueryResult<MyUser | null> = {
-    operation: MutationType.update,
-  };
-
-  if (!queryOptions) {
-    queryOptions = defaultQueryOptionsForMutations;
-  }
-
   try {
+    if (libData.config().enableMockMode) {
+      return blockUserForMeMock(userId, reasonTextId, notes);
+    }
+
+    if (!libData.isInitialized()) {
+      logger.error('blockUserForMe: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('blockUserForMe: unauthorized');
+      return { error: 'unauthorized' };
+    }
+
+    if (!queryOptions) {
+      queryOptions = defaultQueryOptionsForMutations;
+    }
+
     const updateResult = await fsdata.myUser.blockUserForMe(
       userId,
       reasonTextId,
@@ -51,9 +52,8 @@ const blockUserForMe = async (
 
     return updateResult;
   } catch (error) {
-    logger.error(error);
-    result.error = error.message;
-    return result;
+    logger.error('blockUserForMe: error.', { error });
+    return { error: error.message };
   }
 };
 

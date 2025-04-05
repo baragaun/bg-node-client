@@ -201,7 +201,7 @@ export interface Operations {
       userId: string,
       reasonTextId: string | undefined,
       notes: string | undefined,
-      queryOptions: QueryOptions | undefined,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MyUser>>
 
     deleteMyUser: (
@@ -227,12 +227,12 @@ export interface Operations {
       userId: string,
       reasonTextId: ReportUserReasonTextId,
       messageText: string | undefined,
-      queryOptions: QueryOptions | undefined,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<void>>
 
     resetMyPassword: (
       userIdent: string,
-      queryOptions: QueryOptions,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     signInUser: (
@@ -241,7 +241,7 @@ export interface Operations {
 
     signInWithToken: (
       userIdent: string,
-      queryOptions?: QueryOptions | undefined,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     signMeOut: () => Promise<QueryResult<void>>;
@@ -259,7 +259,7 @@ export interface Operations {
 
     unblockUserForMe: (
       userId: string,
-      queryOptions?: QueryOptions | undefined,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MyUser>>;
 
     updateMyUser: (
@@ -275,7 +275,7 @@ export interface Operations {
 
     verifyMyEmail: (
       email: string,
-      queryOptions: QueryOptions,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     verifyMyPassword: (

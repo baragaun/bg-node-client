@@ -1,4 +1,4 @@
-import { RxDatabase, RxDocument } from 'rxdb';
+import { RxDatabase } from 'rxdb';
 
 import { ModelType, MutationType } from '../enums.js';
 import db from './helpers/db.js';
@@ -34,8 +34,8 @@ const update = async <T extends Model = Model>(
     return result;
   }
 
-  const foundDocuments: RxDocument[] = await collection
-    .find({
+  const obj = await collection
+    .findOne({
       selector: {
         id: {
           $eq: changes.id,
@@ -44,15 +44,32 @@ const update = async <T extends Model = Model>(
     })
     .exec();
 
-  if (foundDocuments.length === 0) {
+  if (!obj) {
     result.error = 'not-found';
+    return result;
   }
 
-  const firstDocument = foundDocuments[0];
-  const doc = await firstDocument.patch(changes);
-  result.object = doc.toMutableJSON() as T;
+  try {
+    const doc = await obj.patch(changes);
+    result.object = doc.toMutableJSON() as T;
 
-  return result;
+    return result;
+  } catch (error) {
+    // see: https://rxdb.info/rx-document.html#prevent-conflicts-with-the-incremental-methods
+    console.error('Failed to patch object from collection', { changes, modelType, error });
+    try {
+      const doc = await obj.incrementalPatch(changes);
+      result.object = doc.toMutableJSON() as T;
+
+      return result;
+    } catch (error2) {
+      // fallback to incremental patch if the first patch fails
+      console.error('Failed to incrementally patch object',
+        { changes, modelType, error: error2 });
+      result.error = 'remove-failed';
+      return result;
+    }
+  }
 };
 
 export default update;

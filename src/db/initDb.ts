@@ -7,6 +7,7 @@ import {
   isRxDatabase,
   RxStorage,
 } from 'rxdb/plugins/core';
+import { RxDBCleanupPlugin } from 'rxdb/plugins/cleanup';
 import { RxDBDevModePlugin, disableWarnings } from 'rxdb/plugins/dev-mode';
 import { RxDBMigrationSchemaPlugin } from 'rxdb/plugins/migration-schema';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
@@ -62,6 +63,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   // addRxPlugin(RxDBUpdatePlugin);
 
   // see: https://rxdb.info/migration-schema.html
+  addRxPlugin(RxDBCleanupPlugin);
   addRxPlugin(RxDBMigrationSchemaPlugin);
 
   // see: https://github.com/ajv-validator/ajv/issues/1295

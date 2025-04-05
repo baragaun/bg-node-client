@@ -30,6 +30,10 @@ const libData = {
     !!_config.fsdata &&
     (!!_config.fsdata.url || _config.enableMockMode),
 
+  isInMockMode: (): boolean => {
+    return _config.enableMockMode;
+  },
+
   setConfig: (config: BgNodeClientConfig): void => {
     _config = config;
   },
@@ -40,6 +44,9 @@ const libData = {
 
   setEnableMockMode: (enable: boolean): void => {
     _config.enableMockMode = enable;
+    if (enable) {
+      _isOnline = false;
+    }
   },
 
   setInitialized: (isInitialized: boolean): void => {

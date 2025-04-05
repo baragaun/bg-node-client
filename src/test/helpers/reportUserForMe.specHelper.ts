@@ -1,7 +1,7 @@
 import { expect } from 'vitest';
 
 import { BgNodeClient } from '../../BgNodeClient.js';
-import { CachePolicy, ReportUserReasonTextId } from '../../enums.js';
+import { ReportUserReasonTextId } from '../../enums.js';
 import logger from '../../helpers/logger.js';
 
 export const reportUserForMeSpecHelper = async (
@@ -17,7 +17,6 @@ export const reportUserForMeSpecHelper = async (
     userId,
     reasonTextId,
     notes,
-    { cachePolicy: CachePolicy.network },
   );
 
   logger.debug('BgServiceApiCheck.reportUserForMe: received response from reportUserForMe',
@@ -25,4 +24,6 @@ export const reportUserForMeSpecHelper = async (
 
   expect(response).toBeDefined();
   expect(response.error).toBeUndefined();
+
+  // todo: verify
 };
