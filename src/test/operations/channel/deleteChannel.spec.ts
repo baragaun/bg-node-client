@@ -6,8 +6,9 @@ import { createChannelSpecHelper } from '../../helpers/createChannel.specHelper.
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 import { BgNodeClient } from '../../../BgNodeClient.js';
+import { deleteChannelSpecHelper } from '../../helpers/deleteChannel.specHelper.js';
 
-describe('operations.channel.createChannel', () => {
+describe('operations.channel.deleteChannel', () => {
   let client: BgNodeClient;
 
   afterEach(async () => {
@@ -21,7 +22,8 @@ describe('operations.channel.createChannel', () => {
     expect(client).toBeDefined();
 
     await signMeUpSpecHelper(undefined, false, client);
-    await createChannelSpecHelper(props, client);
+    const channel = await createChannelSpecHelper(props, client);
+    await deleteChannelSpecHelper(channel.id, client);
   });
 
   test('should create a channel with the given properties (mock mode)', async () => {
@@ -32,6 +34,7 @@ describe('operations.channel.createChannel', () => {
     expect(client).toBeDefined();
 
     await signMeUpSpecHelper(undefined, false, client);
-    await createChannelSpecHelper(props, client);
+    const channel = await createChannelSpecHelper(props, client);
+    await deleteChannelSpecHelper(channel.id, client);
   });
 });

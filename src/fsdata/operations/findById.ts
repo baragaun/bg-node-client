@@ -26,11 +26,12 @@ const _fieldDef = {
     selections: modelFields.channelParticipant,
   },
   [ModelType.SidMultiStepAction]: {
-    field: 'findChannelParticipantById',
+    field: '', // todo
     selections: modelFields.sidMultiStepAction,
   },
   [ModelType.SidMultiStepActionProgress]: {
-    field: 'findChannelParticipantById',
+    field: 'getMultiStepActionProgress',
+    keyFieldName: 'actionId',
     selections: modelFields.sidMultiStepActionProgress,
   },
   [ModelType.MyUser]: {
@@ -63,7 +64,9 @@ const findById = async <T extends Model = Model>(
       return { error: 'invalid-model-type' };
     }
 
-    const args = fieldDef.skipVars ? {} : { $: { id } };
+    const args = fieldDef.skipVars
+      ? {}
+      : { $: { [fieldDef.keyFieldName || 'id']: id } };
 
     logger.debug('fsdata.findById: sending.', { args });
 

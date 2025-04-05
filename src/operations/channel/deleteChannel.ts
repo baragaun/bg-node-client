@@ -1,11 +1,11 @@
 import db from '../../db/db.js';
 import { ModelType, MutationType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { Channel } from '../../models/Channel.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
-const deleteChannel = async (id: string): Promise<QueryResult<Channel>> => {
+const deleteChannel = async (id: string): Promise<QueryResult<void>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('deleteChannel: unavailable');
@@ -21,20 +21,21 @@ const deleteChannel = async (id: string): Promise<QueryResult<Channel>> => {
 
     //------------------------------------------------------------------------------------------------
     // Local cache
-    if (!allowNetwork) {
-      return db.delete(id, ModelType.Channel);
+    const resultLocal = await db.delete(id, ModelType.Channel);
+
+    if (resultLocal.error) {
+      // If the local delete fails, return the error
+      logger.error('deleteChannel: failed to delete from local cache', { id, error: resultLocal.error });
+      return resultLocal as unknown as QueryResult<void>;
     }
 
     //------------------------------------------------------------------------------------------------
     // Network
     if (!allowNetwork) {
-      return { error: 'offline', operation: MutationType.delete };
+      return resultLocal as unknown as QueryResult<void>;
     }
 
-    return {
-      operation: MutationType.delete,
-      error: 'not-implemented',
-    };
+    return fsdata.delete(id, ModelType.Channel);
   } catch (error) {
     return {
       operation: MutationType.delete,

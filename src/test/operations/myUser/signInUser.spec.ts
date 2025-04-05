@@ -19,7 +19,7 @@ describe('operations.myUser.signInUser', () => {
   });
 
   test('should sign in a user with valid input', async () => {
-    client = await clientStore.getTestClient(true);
+    client = await clientStore.getTestClient();
     const firstName = chance.first();
     const lastName = chance.last();
     const userHandle = uniqueUserHandle();
@@ -67,7 +67,8 @@ describe('operations.myUser.signInUser', () => {
   });
 
   test('should sign in a user with valid input (mock mode)', async () => {
-    client = await clientStore.getTestClient(true, true);
+    client = await clientStore.getTestClient();
+    client.enableMockMode = true;
     const firstName = chance.first();
     const lastName = chance.last();
     const userHandle = uniqueUserHandle();

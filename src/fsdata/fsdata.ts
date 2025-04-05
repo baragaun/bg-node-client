@@ -39,9 +39,11 @@ import verifyMyPassword from './operations/myUser/verifyMyPassword.js';
 import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
 import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
+import deleteFnc from './operations/delete.js';
 
 const fsdata = {
   create,
+  delete: deleteFnc,
   findById,
   pollForUpdatedObject,
   update,

@@ -28,7 +28,7 @@ describe('operations.myUser.blockUserForMe', () => {
   });
 
   test('should add a UserBlock object to myUser (mock mode)', async () => {
-    client = await clientStore.getTestClient(false);
+    client = await clientStore.getTestClient();
     client.enableMockMode = true;
     const notes = chance.sentence();
     const reasonTextId = chance.word();

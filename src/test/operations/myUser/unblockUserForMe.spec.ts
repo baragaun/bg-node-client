@@ -30,7 +30,7 @@ describe('operations.myUser.unblockUserForMe', () => {
   });
 
   test('should remove a UserBlock object from myUser (mock mode)', async () => {
-    client = await clientStore.getTestClient(false);
+    client = await clientStore.getTestClient();
     client.enableMockMode = true;
     const notes = chance.sentence();
     const reasonTextId = chance.word();
