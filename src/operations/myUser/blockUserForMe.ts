@@ -4,10 +4,10 @@ import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import blockUserForMeMock from '../../mockOperations/myUser/blockUserForMeMock.js';
 import { MyUser } from '../../models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
-import blockUserForMeMock from '../../mockOperations/myUser/blockUserForMeMock.js';
 
 const blockUserForMe = async (
   userId: string,

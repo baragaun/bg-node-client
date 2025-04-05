@@ -36,7 +36,7 @@ const unblockUserForMeMock = async (
     return db.update<MyUser>(
       {
         id: libData.clientInfoStore().myUserId,
-        userBlocks: myUser.userBlocks.filter(b => b.userId !== userId)
+        userBlocks: myUser.userBlocks.filter(b => b.userId !== userId),
       },
       ModelType.MyUser,
     );

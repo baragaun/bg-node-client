@@ -1,9 +1,9 @@
 import { ModelType, MutationType } from '../enums.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
-import { QueryResult } from '../types/QueryResult.js';
-import logger from '../helpers/logger.js';
 import { RxDatabase } from '../../../thirdparty/rxdb/dist/types/index.js';
+import logger from '../helpers/logger.js';
+import { QueryResult } from '../types/QueryResult.js';
 
 let _db: RxDatabase | undefined = undefined;
 

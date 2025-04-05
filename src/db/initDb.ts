@@ -1,5 +1,6 @@
 // import Dexie from 'dexie';
 import addFormats from 'ajv-formats';
+import { RxDBCleanupPlugin } from 'rxdb/plugins/cleanup';
 import {
   addRxPlugin,
   // RxCollection,
@@ -7,7 +8,6 @@ import {
   isRxDatabase,
   RxStorage,
 } from 'rxdb/plugins/core';
-import { RxDBCleanupPlugin } from 'rxdb/plugins/cleanup';
 import { RxDBDevModePlugin, disableWarnings } from 'rxdb/plugins/dev-mode';
 import { RxDBMigrationSchemaPlugin } from 'rxdb/plugins/migration-schema';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';

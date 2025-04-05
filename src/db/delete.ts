@@ -1,11 +1,11 @@
 import { RxDatabase } from 'rxdb';
 
 import { ModelType, MutationType } from '../enums.js';
+import cleanup from './cleanup.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 import { Model } from '../models/Model.js';
 import { QueryResult } from '../types/QueryResult.js';
-import cleanup from './cleanup.js';
 
 let _db: RxDatabase | undefined = undefined;
 

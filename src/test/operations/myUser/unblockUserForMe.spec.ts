@@ -1,5 +1,6 @@
 import { afterEach, describe, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import chance from '../../../helpers/chance.js';
 import { blockUserForMeSpecHelper } from '../../helpers/blockUserForMe.specHelper.js';
 import clientStore from '../../helpers/clientStore.js';
@@ -8,7 +9,6 @@ import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js
 import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
 import { unblockUserForMeSpecHelper } from '../../helpers/unblockUserForMe.specHelper.js';
-import { BgNodeClient } from '../../../BgNodeClient.js';
 
 describe('operations.myUser.unblockUserForMe', () => {
   let client: BgNodeClient;
