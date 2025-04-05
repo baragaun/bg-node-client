@@ -10,9 +10,11 @@ import {
 
 let _client: BgNodeClient | undefined = undefined;
 const _clientInfoStore = new ClientInfoStore(ClientInfoStoreType.inMemory);
-const _isOnline = true;
 
-const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
+const getTestClient = async (
+  createNew = false,
+  enableMockMode = false,
+): Promise<BgNodeClient> => {
   if (createNew && _client) {
     _client.close();
   }
@@ -29,8 +31,15 @@ const getTestClient = async (createNew = false): Promise<BgNodeClient> => {
         },
       },
       logLevel: 'debug',
+      enableMockMode,
     };
-    _client = await new BgNodeClient().init({ config, isOnline: _isOnline });
+    if (enableMockMode) {
+      // In mock mode, we do not want to connect to the actual API.
+      config.fsdata.url = null;
+      // _clientInfoStore.setMockMode(true);
+    }
+
+    _client = await new BgNodeClient().init({ config, isOnline: !enableMockMode });
   }
 
   return _client;

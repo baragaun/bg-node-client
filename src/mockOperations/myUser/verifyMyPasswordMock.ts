@@ -24,7 +24,7 @@ const verifyMyPasswordMock = async (
       ModelType.MyUser,
     );
 
-    if (!result.error && result.object) {
+    if (result.error && !result.object) {
       return { error: 'not-found' };
     }
 

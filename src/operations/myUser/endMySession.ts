@@ -16,7 +16,7 @@ const endMySession = async (): Promise<void> => {
 
     if (libData.isOnline()) {
       await fsdata.myUser.endMySession();
-    } else {
+    } else if (!libData.isInMockMode()) {
       logger.error('endMySession: offline.');
     }
 

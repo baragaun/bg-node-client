@@ -6,7 +6,10 @@ export const deleteMyUserSpecHelper = async (client: BgNodeClient): Promise<void
   const clientInfo1 = await client.clientInfoStore.load();
   expect(clientInfo1.isSignedIn).toBeTruthy();
 
-  const deleteMyUserResponse = await client.operations.myUser.deleteMyUser(undefined, undefined, true);
+  const deleteMyUserResponse = await client.operations.myUser.deleteMyUser(
+    undefined,
+    undefined,
+  );
 
   expect(deleteMyUserResponse.error).toBeUndefined();
 

@@ -18,7 +18,7 @@ const startMySession = async (
 
     if (libData.isOnline()) {
       await fsdata.myUser.startMySession(pushNotificationToken);
-    } else {
+    } else if (!libData.isInMockMode()) {
       logger.error('startMySession: offline.');
     }
 

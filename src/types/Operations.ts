@@ -38,6 +38,11 @@ export interface Operations {
     queryOptions?: QueryOptions,
   ) => Promise<QueryResult<number>>
 
+  delete: (
+    id: string,
+    modelType: ModelType,
+  ) => Promise<QueryResult<void>>;
+
   find: <T extends Model = Model>(
     query: MangoQuery<T>,
     modelType: ModelType,
@@ -81,7 +86,7 @@ export interface Operations {
       attributes: Partial<Channel>,
     ) => Promise<QueryResult<Channel>>;
 
-    deleteChannel: (id: string) => Promise<QueryResult<Channel>>;
+    deleteChannel: (id: string) => Promise<QueryResult<void>>;
 
     findChannels: (
       filter: ChannelListFilter,
@@ -128,7 +133,7 @@ export interface Operations {
 
     deleteChannelInvitation: (
       id: string,
-    ) => Promise<QueryResult<ChannelInvitation>>;
+    ) => Promise<QueryResult<void>>;
 
     findChannelInvitations: (
       filter: ChannelInvitationListFilter,
@@ -159,7 +164,7 @@ export interface Operations {
 
     deleteChannelMessage: (
       id: string,
-    ) => Promise<QueryResult<ChannelMessage>>;
+    ) => Promise<QueryResult<void>>;
 
     findChannelMessages: (
       filter: ChannelMessageListFilter,
@@ -181,7 +186,7 @@ export interface Operations {
 
     deleteChannelParticipant: (
       id: string,
-    ) => Promise<QueryResult<ChannelParticipant>>;
+    ) => Promise<QueryResult<void>>;
 
     findChannelParticipants: (
       filter: ChannelParticipantListFilter,
@@ -201,13 +206,12 @@ export interface Operations {
       userId: string,
       reasonTextId: string | undefined,
       notes: string | undefined,
-      queryOptions: QueryOptions | undefined,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MyUser>>
 
     deleteMyUser: (
       cause: string | null | undefined,
       description: string | null | undefined,
-      deletePhysically: boolean,
     ) => Promise<QueryResult<void>>;
 
     endMySession: () => Promise<void>;
@@ -227,12 +231,12 @@ export interface Operations {
       userId: string,
       reasonTextId: ReportUserReasonTextId,
       messageText: string | undefined,
-      queryOptions: QueryOptions | undefined,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<void>>
 
     resetMyPassword: (
       userIdent: string,
-      queryOptions: QueryOptions,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     signInUser: (
@@ -241,7 +245,7 @@ export interface Operations {
 
     signInWithToken: (
       userIdent: string,
-      queryOptions?: QueryOptions | undefined,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     signMeOut: () => Promise<QueryResult<void>>;
@@ -259,7 +263,7 @@ export interface Operations {
 
     unblockUserForMe: (
       userId: string,
-      queryOptions?: QueryOptions | undefined,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MyUser>>;
 
     updateMyUser: (
@@ -275,7 +279,7 @@ export interface Operations {
 
     verifyMyEmail: (
       email: string,
-      queryOptions: QueryOptions,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
     verifyMyPassword: (

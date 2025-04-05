@@ -27,20 +27,34 @@ export const createChannelSpecHelper = async (
     expect(channel.channelType).toBe(props.channelType);
 
     // Verifying local copy:
-    const { object: reloadedChannel, error } = await findById<Channel>(
+    const { object: channelFromCache, error: errorFromCache } = await findById<Channel>(
       channel.id,
       ModelType.Channel,
-      {
-        cachePolicy: CachePolicy.cache,
-      },
+      { cachePolicy: CachePolicy.cache },
     );
 
-    expect(error).toBeUndefined();
-    expect(reloadedChannel.id).toBe(channel.id);
-    expect(reloadedChannel.name).toBe(props.name);
-    expect(reloadedChannel.topic).toBe(props.topic);
-    expect(reloadedChannel.description).toBe(props.description);
-    expect(reloadedChannel.channelType).toBe(props.channelType);
+    expect(errorFromCache).toBeUndefined();
+    expect(channelFromCache.id).toBe(channel.id);
+    expect(channelFromCache.name).toBe(props.name);
+    expect(channelFromCache.topic).toBe(props.topic);
+    expect(channelFromCache.description).toBe(props.description);
+    expect(channelFromCache.channelType).toBe(props.channelType);
+
+    if (!client.isInMockMode) {
+        // Verifying remote copy:
+        const { object: channelFromNetwork, error: errorFromNetwork } = await findById<Channel>(
+          channel.id,
+          ModelType.Channel,
+          { cachePolicy: CachePolicy.network },
+        );
+
+        expect(errorFromNetwork).toBeUndefined();
+        expect(channelFromNetwork.id).toBe(channel.id);
+        expect(channelFromNetwork.name).toBe(props.name);
+        expect(channelFromNetwork.topic).toBe(props.topic);
+        expect(channelFromNetwork.description).toBe(props.description);
+        expect(channelFromNetwork.channelType).toBe(props.channelType);
+    }
 
     return channel;
 };
