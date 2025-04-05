@@ -26,7 +26,7 @@ const signUpUserMock = async (
     return { error: 'offline' };
   }
 
-  const myUserId = `mock-${crypto.randomUUID().replaceAll('-', '')}`;
+  const myUserId = crypto.randomUUID().replaceAll('-', '');
   const authToken = `mock-${crypto.randomUUID().replaceAll('-', '')}`;
   const authTokenExpiresAt = new Date(Date.now() + 10 * 24 * 3600 * 1000).toISOString();
 

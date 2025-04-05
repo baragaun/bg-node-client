@@ -3,6 +3,7 @@ import { RxDatabase } from 'rxdb';
 import { ModelType } from '../enums.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
+import logger from '../helpers/logger.js';
 import { Model } from '../models/Model.js';
 import { QueryResult } from '../types/QueryResult.js';
 
@@ -13,6 +14,11 @@ const findById = async <T extends Model = Model>(
   modelType: ModelType,
 ): Promise<QueryResult<T>> => {
   const result: QueryResult<T> = {};
+
+  if (!id) {
+    result.error = 'invalid-input';
+    return result;
+  }
 
   if (!_db) {
     _db = db.getDb();
@@ -30,19 +36,26 @@ const findById = async <T extends Model = Model>(
     return result;
   }
 
-  const record = await collection
-    .findOne({
-      selector: {
-        id: {
-          $eq: id,
+  try {
+    const record = await collection
+      .findOne({
+        selector: {
+          id: {
+            $eq: id,
+          },
         },
-      },
-    })
-    .exec();
+      })
+      .exec(false as any);
 
-  return {
-    object: record ? new (record.constructor as { new(data: any): T })(record.toMutableJSON()) : null,
-  };
+    return {
+      object: record
+        ? new (record.constructor as { new(data: any): T })(record.toMutableJSON())
+        : null,
+    };
+  } catch (error) {
+    logger.error('findById: failed to find record', { error, id, modelType });
+    return { object: null };
+  }
 };
 
 export default findById;

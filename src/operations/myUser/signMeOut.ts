@@ -1,9 +1,8 @@
-import { BgListenerTopic } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
+import clearUser from '../../helpers/clearUser.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import signMeOutMock from '../../mockOperations/myUser/signMeOutMock.js';
-import { MyUserListener } from '../../types/MyUserListener.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const signMeOut = async (): Promise<QueryResult<void>> => {
@@ -28,27 +27,9 @@ const signMeOut = async (): Promise<QueryResult<void>> => {
       return { error: 'unauthorized' };
     }
 
-    const signedOutUserId = clientInfo.signedOutUserId;
     await fsdata.myUser.signMeOut();
 
-    // Removing the signed-in user info from local storage; leaving
-    // the deviceUuid untouched.
-    await libData.clientInfoStore().clearMyUserFromClientInfo(signedOutUserId);
-
-    for (const listener of libData.listeners()) {
-      if (
-        listener.topic === BgListenerTopic.myUser &&
-        typeof (listener as MyUserListener).onSignedOut === 'function'
-      ) {
-        const listenerResponse = (listener as MyUserListener).onSignedOut();
-        if (listenerResponse && typeof listenerResponse.then === 'function') {
-          listenerResponse.catch((error) => {
-            logger.error('signMeOut: listener onSignedOut failed.',
-              { error });
-          });
-        }
-      }
-    }
+    await clearUser(false);
 
     return {};
   } catch (error) {

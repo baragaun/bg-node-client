@@ -28,7 +28,7 @@ const libData = {
   isInitialized: (): boolean => _isInitialized &&
     !!_config &&
     !!_config.fsdata &&
-    !!_config.fsdata.url,
+    (!!_config.fsdata.url || _config.enableMockMode),
 
   setConfig: (config: BgNodeClientConfig): void => {
     _config = config;
@@ -36,6 +36,10 @@ const libData = {
 
   setClientInfoStore: (clientInfoStore: ClientInfoStore): void => {
     _clientInfoStore = clientInfoStore;
+  },
+
+  setEnableMockMode: (enable: boolean): void => {
+    _config.enableMockMode = enable;
   },
 
   setInitialized: (isInitialized: boolean): void => {

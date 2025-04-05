@@ -10,6 +10,7 @@ declare const libData: {
     isInitialized: () => boolean;
     setConfig: (config: BgNodeClientConfig) => void;
     setClientInfoStore: (clientInfoStore: ClientInfoStore) => void;
+    setEnableMockMode: (enable: boolean) => void;
     setInitialized: (isInitialized: boolean) => void;
     allowNetwork: () => boolean;
     isOffline: () => boolean;
