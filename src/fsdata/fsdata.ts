@@ -13,6 +13,7 @@ import createChannelMessage from './operations/channelMessage/createChannelMessa
 import findChannelMessages from './operations/channelMessage/findChannelMessages.js';
 import updateChannelMessage from './operations/channelMessage/updateChannelMessage.js';
 import create from './operations/create.js';
+import deleteFnc from './operations/delete.js';
 import findById from './operations/findById.js';
 import createMultiStepAction from './operations/multiStepAction/createMultiStepAction.js';
 import findMyActiveMultiStepActions from './operations/multiStepAction/findMyActiveMultiStepActions.js';
@@ -39,7 +40,6 @@ import verifyMyPassword from './operations/myUser/verifyMyPassword.js';
 import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
 import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
-import deleteFnc from './operations/delete.js';
 
 const fsdata = {
   create,

@@ -1,12 +1,12 @@
 import { afterEach, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import factories from '../../factories/factories.js';
 import clientStore from '../../helpers/clientStore.js';
 import { createChannelSpecHelper } from '../../helpers/createChannel.specHelper.js';
+import { deleteChannelSpecHelper } from '../../helpers/deleteChannel.specHelper.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
-import { BgNodeClient } from '../../../BgNodeClient.js';
-import { deleteChannelSpecHelper } from '../../helpers/deleteChannel.specHelper.js';
 
 describe('operations.channel.deleteChannel', () => {
   let client: BgNodeClient;

@@ -81,7 +81,7 @@ export interface Operations {
       attributes: Partial<Channel>,
     ) => Promise<QueryResult<Channel>>;
 
-    deleteChannel: (id: string) => Promise<QueryResult<Channel>>;
+    deleteChannel: (id: string) => Promise<QueryResult<void>>;
 
     findChannels: (
       filter: ChannelListFilter,

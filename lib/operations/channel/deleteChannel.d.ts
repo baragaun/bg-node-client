@@ -1,4 +1,3 @@
-import { Channel } from '../../models/Channel.js';
 import { QueryResult } from '../../types/QueryResult.js';
-declare const deleteChannel: (id: string) => Promise<QueryResult<Channel>>;
+declare const deleteChannel: (id: string) => Promise<QueryResult<void>>;
 export default deleteChannel;
