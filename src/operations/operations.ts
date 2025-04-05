@@ -59,8 +59,10 @@ import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import verifyMyPassword from './myUser/verifyMyPassword.js';
 import update from './update.js';
+import deleteFnc from './delete.js';
 
 const operations: Operations = {
+  delete: deleteFnc,
   count,
   findById,
   find,

@@ -24,6 +24,7 @@ import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress
 import { UserInbox } from '../models/UserInbox.js';
 export interface Operations {
     count: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
+    delete: (id: string, modelType: ModelType) => Promise<QueryResult<void>>;
     find: <T extends Model = Model>(query: MangoQuery<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findByMatch: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findById: <T extends Model = Model>(id: string, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
@@ -33,7 +34,7 @@ export interface Operations {
     update: <T extends Model = Model>(changes: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     channel: {
         createChannel: (attributes: Partial<Channel>) => Promise<QueryResult<Channel>>;
-        deleteChannel: (id: string) => Promise<QueryResult<Channel>>;
+        deleteChannel: (id: string) => Promise<QueryResult<void>>;
         findChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
         findMyChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
         findMyArchivedChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
@@ -44,26 +45,26 @@ export interface Operations {
         acceptChannelInvitation: (id: string) => Promise<QueryResult<ChannelInvitation>>;
         createChannelInvitation: (attributes: Partial<ChannelInvitation>) => Promise<QueryResult<ChannelInvitation>>;
         declineChannelInvitation: (id: string, reasonTextId: DeclineChannelInvitationReasonTextIdFromClient) => Promise<QueryResult<ChannelInvitation>>;
-        deleteChannelInvitation: (id: string) => Promise<QueryResult<ChannelInvitation>>;
+        deleteChannelInvitation: (id: string) => Promise<QueryResult<void>>;
         findChannelInvitations: (filter: ChannelInvitationListFilter, match: Partial<ChannelInvitation>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
         findChannelInvitationsForUser: (userId: string, onlyUnseen: boolean, onlyPending: boolean, direction: ChannelInvitationDirection, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
         updateChannelInvitation: (changes: Partial<ChannelInvitation>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
     };
     channelMessage: {
         createChannelMessage: (attributes: Partial<ChannelMessage>) => Promise<QueryResult<ChannelMessage>>;
-        deleteChannelMessage: (id: string) => Promise<QueryResult<ChannelMessage>>;
+        deleteChannelMessage: (id: string) => Promise<QueryResult<void>>;
         findChannelMessages: (filter: ChannelMessageListFilter, match: Partial<ChannelMessage>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelMessage>>;
         updateChannelMessage: (changes: Partial<ChannelMessage>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelMessage>>;
     };
     channelParticipant: {
         createChannelParticipant: (attributes: Partial<ChannelParticipant>) => Promise<QueryResult<ChannelParticipant>>;
-        deleteChannelParticipant: (id: string) => Promise<QueryResult<ChannelParticipant>>;
+        deleteChannelParticipant: (id: string) => Promise<QueryResult<void>>;
         findChannelParticipants: (filter: ChannelParticipantListFilter, match: Partial<ChannelParticipant>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelParticipant>>;
         updateChannelParticipant: (changes: Partial<ChannelParticipant>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelParticipant>>;
     };
     myUser: {
         blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
-        deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<QueryResult<void>>;
+        deleteMyUser: (cause: string | null | undefined, description: string | null | undefined) => Promise<QueryResult<void>>;
         endMySession: () => Promise<void>;
         findAvailableUserHandle: (startValue: string) => Promise<QueryResult<string>>;
         findMyInbox: (queryOptions?: QueryOptions) => Promise<QueryResult<UserInbox>>;

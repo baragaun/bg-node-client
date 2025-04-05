@@ -8,7 +8,6 @@ import { QueryResult } from '../../types/QueryResult.js';
 const deleteMyUser = async (
   cause: string | null | undefined,
   description: string | null | undefined,
-  deletePhysically: boolean,
 ): Promise<QueryResult<void>> => {
   try {
     if (!libData.isInitialized()) {
@@ -23,7 +22,7 @@ const deleteMyUser = async (
     }
 
     if (libData.isOnline()) {
-      await fsdata.myUser.deleteMyUser(cause, description, deletePhysically);
+      await fsdata.myUser.deleteMyUser(cause, description, true);
     }
 
     await clearUser(true);

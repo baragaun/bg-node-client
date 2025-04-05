@@ -38,6 +38,11 @@ export interface Operations {
     queryOptions?: QueryOptions,
   ) => Promise<QueryResult<number>>
 
+  delete: (
+    id: string,
+    modelType: ModelType,
+  ) => Promise<QueryResult<void>>;
+
   find: <T extends Model = Model>(
     query: MangoQuery<T>,
     modelType: ModelType,
@@ -128,7 +133,7 @@ export interface Operations {
 
     deleteChannelInvitation: (
       id: string,
-    ) => Promise<QueryResult<ChannelInvitation>>;
+    ) => Promise<QueryResult<void>>;
 
     findChannelInvitations: (
       filter: ChannelInvitationListFilter,
@@ -159,7 +164,7 @@ export interface Operations {
 
     deleteChannelMessage: (
       id: string,
-    ) => Promise<QueryResult<ChannelMessage>>;
+    ) => Promise<QueryResult<void>>;
 
     findChannelMessages: (
       filter: ChannelMessageListFilter,
@@ -181,7 +186,7 @@ export interface Operations {
 
     deleteChannelParticipant: (
       id: string,
-    ) => Promise<QueryResult<ChannelParticipant>>;
+    ) => Promise<QueryResult<void>>;
 
     findChannelParticipants: (
       filter: ChannelParticipantListFilter,
@@ -207,7 +212,6 @@ export interface Operations {
     deleteMyUser: (
       cause: string | null | undefined,
       description: string | null | undefined,
-      deletePhysically: boolean,
     ) => Promise<QueryResult<void>>;
 
     endMySession: () => Promise<void>;
