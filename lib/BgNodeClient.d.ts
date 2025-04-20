@@ -13,6 +13,8 @@ export declare class BgNodeClient {
     get isInitialized(): boolean;
     get isOnline(): boolean;
     set isOnline(isOnline: boolean);
+    get isInMockMode(): boolean;
+    set enableMockMode(enable: boolean);
     get isSignedIn(): boolean;
     get myUserDeviceUuid(): string | undefined;
     get myUserId(): string | undefined;

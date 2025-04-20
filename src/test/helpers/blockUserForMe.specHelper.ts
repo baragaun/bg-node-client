@@ -14,12 +14,7 @@ export const blockUserForMeSpecHelper = async (
   logger.debug('BgServiceApiCheck.blockUserForMe: calling API/blockUserForMe',
     { userId, reasonTextId, notes });
 
-  const response = await client.operations.myUser.blockUserForMe(
-    userId,
-    reasonTextId,
-    notes,
-    { cachePolicy: CachePolicy.network },
-  );
+  const response = await client.operations.myUser.blockUserForMe(userId, reasonTextId, notes);
 
   logger.debug('BgServiceApiCheck.blockUserForMe: received response from blockUserForMe',
     { updateUserResponse: response });
@@ -48,34 +43,36 @@ export const blockUserForMeSpecHelper = async (
   expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
   expect(response.object.userBlocks[0].notes).toBe(notes);
 
-  // Let's verify the object again, by pulling a fresh copy of it from the backend:
-  const findMyUserFromNetworkResult = await client.operations.myUser.findMyUser({
-    cachePolicy: CachePolicy.network,
-  });
-  const myUserFromNetwork = findMyUserFromNetworkResult.object;
+  if (!client.isInMockMode) {
+    // Let's verify the object again, by pulling a fresh copy of it from the backend:
+    const findMyUserFromNetworkResult = await client.operations.myUser.findMyUser({
+      cachePolicy: CachePolicy.network,
+    });
+    const myUserFromNetwork = findMyUserFromNetworkResult.object;
 
-  expect(findMyUserFromNetworkResult.error).toBeUndefined();
-  expect(findMyUserFromNetworkResult.object).toBeDefined();
-  expect(myUserFromNetwork.id).toBe(client.myUserId);
-  expect(response.object.userBlocks).toBeDefined();
-  expect(response.object.userBlocks.length).toBe(1);
-  expect(response.object.userBlocks[0].userId).toBe(userId);
-  expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
-  expect(response.object.userBlocks[0].notes).toBe(notes);
+    expect(findMyUserFromNetworkResult.error).toBeUndefined();
+    expect(findMyUserFromNetworkResult.object).toBeDefined();
+    expect(myUserFromNetwork.id).toBe(client.myUserId);
+    expect(response.object.userBlocks).toBeDefined();
+    expect(response.object.userBlocks.length).toBe(1);
+    expect(response.object.userBlocks[0].userId).toBe(userId);
+    expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
+    expect(response.object.userBlocks[0].notes).toBe(notes);
 
-  const findMyUserFromCache2Result = await client.operations.myUser.findMyUser({
-    cachePolicy: CachePolicy.cache,
-  });
-  const myUserFromCache2 = findMyUserFromCache2Result.object;
+    const findMyUserFromCache2Result = await client.operations.myUser.findMyUser({
+      cachePolicy: CachePolicy.cache,
+    });
+    const myUserFromCache2 = findMyUserFromCache2Result.object;
 
-  expect(findMyUserFromCache2Result.error).toBeUndefined();
-  expect(findMyUserFromCache2Result.object).toBeDefined();
-  expect(myUserFromCache2.id).toBe(client.myUserId);
-  expect(response.object.userBlocks).toBeDefined();
-  expect(response.object.userBlocks.length).toBe(1);
-  expect(response.object.userBlocks[0].userId).toBe(userId);
-  expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
-  expect(response.object.userBlocks[0].notes).toBe(notes);
+    expect(findMyUserFromCache2Result.error).toBeUndefined();
+    expect(findMyUserFromCache2Result.object).toBeDefined();
+    expect(myUserFromCache2.id).toBe(client.myUserId);
+    expect(response.object.userBlocks).toBeDefined();
+    expect(response.object.userBlocks.length).toBe(1);
+    expect(response.object.userBlocks[0].userId).toBe(userId);
+    expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
+    expect(response.object.userBlocks[0].notes).toBe(notes);
+  }
 
   return response.object;
 };

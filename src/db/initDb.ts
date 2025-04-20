@@ -1,5 +1,6 @@
 // import Dexie from 'dexie';
 import addFormats from 'ajv-formats';
+import { RxDBCleanupPlugin } from 'rxdb/plugins/cleanup';
 import {
   addRxPlugin,
   // RxCollection,
@@ -62,6 +63,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   // addRxPlugin(RxDBUpdatePlugin);
 
   // see: https://rxdb.info/migration-schema.html
+  addRxPlugin(RxDBCleanupPlugin);
   addRxPlugin(RxDBMigrationSchemaPlugin);
 
   // see: https://github.com/ajv-validator/ajv/issues/1295

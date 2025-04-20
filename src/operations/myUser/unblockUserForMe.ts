@@ -4,6 +4,7 @@ import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import unblockUserForMeMock from '../../mockOperations/myUser/unblockUserForMeMock.js';
 import { MyUser } from '../../models/MyUser.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
@@ -12,6 +13,10 @@ const unblockUserForMe = async (
   userId: string,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<MyUser>> => {
+  if (libData.config().enableMockMode) {
+    return unblockUserForMeMock(userId);
+  }
+
   if (!libData.isInitialized()) {
     logger.error('unblockUserForMe: unavailable.');
     return { error: 'unavailable' };

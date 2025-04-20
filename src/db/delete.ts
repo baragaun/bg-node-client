@@ -1,6 +1,7 @@
 import { RxDatabase } from 'rxdb';
 
 import { ModelType, MutationType } from '../enums.js';
+import cleanup from './cleanup.js';
 import db from './helpers/db.js';
 import getCollectionFromModelType from './helpers/getCollectionFromModelType.js';
 import { Model } from '../models/Model.js';
@@ -31,7 +32,7 @@ const deleteFunc = async <T extends Model = Model>(
   }
 
   const obj = await collection
-    .find({
+    .findOne({
       selector: {
         id: {
           $eq: id,
@@ -40,12 +41,30 @@ const deleteFunc = async <T extends Model = Model>(
     })
     .exec();
 
-  if (obj.length !== 1) {
+  if (!obj) {
     result.error = 'not-found';
     return result;
   }
 
-  await obj[0].remove();
+  try {
+    await obj.remove();
+  } catch (error) {
+    // see: https://rxdb.info/rx-document.html#prevent-conflicts-with-the-incremental-methods
+    console.error('Failed to remove object from collection', { id, modelType, error });
+    try {
+      await obj.incrementalRemove();
+    } catch (error2) {
+      // fallback to incremental remove if the first remove fails
+      console.error('Failed to incrementally remove object from collection',
+        { id, modelType, error: error2 });
+      result.error = 'remove-failed';
+      return result;
+    }
+  }
+
+  if (modelType === ModelType.MyUser) {
+    await cleanup(ModelType.MyUser);
+  }
 
   if (modelType === ModelType.Channel) {
     const channelMessagesCollection = getCollectionFromModelType(

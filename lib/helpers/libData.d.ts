@@ -8,8 +8,10 @@ declare const libData: {
     close: () => void;
     enableMockMode: () => boolean;
     isInitialized: () => boolean;
+    isInMockMode: () => boolean;
     setConfig: (config: BgNodeClientConfig) => void;
     setClientInfoStore: (clientInfoStore: ClientInfoStore) => void;
+    setEnableMockMode: (enable: boolean) => void;
     setInitialized: (isInitialized: boolean) => void;
     allowNetwork: () => boolean;
     isOffline: () => boolean;

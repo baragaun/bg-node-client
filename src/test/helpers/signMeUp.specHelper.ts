@@ -1,6 +1,5 @@
 import { expect } from 'vitest';
 
-import { getTestUserPropsSpecHelper } from './getTestUserProps.specHelper.js';
 import { signMeOutSpecHelper } from './signMeOut.specHelper.js';
 import { verifyUserPropsSpecHelper } from './verifyUserProps.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
@@ -8,30 +7,32 @@ import { CachePolicy } from '../../enums.js';
 import chance from '../../helpers/chance.js';
 import logger from '../../helpers/logger.js';
 import { MyUser } from '../../models/MyUser.js';
+import { MyUserChanges } from '../../models/MyUserChanges.js';
 import { SignUpUserInput } from '../../types/SignUpUserInput.js';
 import userFactory from '../factories/user.js';
 
 export const signMeUpSpecHelper = async (
-  props: Partial<MyUser> | undefined,
+  changes: Partial<MyUserChanges> | undefined,
   signOut: boolean,
   client: BgNodeClient,
 ): Promise<MyUser | null> => {
-  logger.debug('BgServiceApiCheck.createMyUser: calling API/signUpUser', { props });
+  logger.debug('BgServiceApiCheck.createMyUser: calling client.signUpUser', { changes });
 
-  props = userFactory.build(props);
-
-  const testUserProps = getTestUserPropsSpecHelper(props);
-  if (!testUserProps.password) {
-    testUserProps.password = chance.string({ length: 8 });
-  }
+  // The calling scope may have sent a password. There is no way to tell the factory to use
+  // it, since there is no User.password defined. We'll ignore the password from the factory.
+  const password = changes?.newPassword || chance.string({ length: 8 });
+  changes = userFactory.build(changes);
 
   const input: SignUpUserInput = {
-    firstName: props.firstName,
-    lastName: props.lastName,
-    userHandle: props.userHandle,
-    email: props.email,
-    password: testUserProps.password,
-    source: props.source,
+    firstName: changes.firstName,
+    lastName: changes.lastName,
+    userHandle: changes.userHandle,
+    email: changes.email,
+    password,
+    source: JSON.stringify({
+      password,
+      msaToken: '666666',
+    }),
     isTestUser: true,
   };
 
@@ -52,9 +53,13 @@ export const signMeUpSpecHelper = async (
 
   const clientInfo1 = await client?.clientInfoStore.load();
   expect(clientInfo1.myUserId).toBeDefined();
+  expect(clientInfo1.myUserId).toBe(signUpUserAuthResponse.object.userAuthResponse.userId);
   expect(clientInfo1.authToken).toBeDefined();
+  expect(clientInfo1.authToken).toBe(signUpUserAuthResponse.object.userAuthResponse.authToken);
   expect(clientInfo1.myUserDeviceUuid).toBeDefined();
+  expect(client.isSignedIn).toBeTruthy();
 
+  // Verifying the local user object:
   const findMyUserResult = await client.operations.myUser.findMyUser({
     cachePolicy: CachePolicy.cache,
   });
