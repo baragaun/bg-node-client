@@ -5,6 +5,7 @@ import libData from './helpers/libData.js';
 import logger, { setLogger, setLogLevel } from './helpers/logger.js';
 import mockOperations from './mockOperations/mockOperations.js';
 import { ClientInfo } from './models/ClientInfo.js';
+import nats from './nats/index.js';
 import operations from './operations/operations.js';
 import { InitBgNodeClientArgs } from './types/InitBgNodeClientArgs.js';
 
@@ -36,6 +37,11 @@ export class BgNodeClient {
     libData.setConfig(config);
 
     await db.init(config);
+
+    if (Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0) {
+      await nats.init(config.nats);
+    }
+
     libData.setIsOnline(isOnline ?? true);
 
     let clientInfoStoreType = config.clientInfoStoreType || ClientInfoStoreType.inMemory;
@@ -96,6 +102,17 @@ export class BgNodeClient {
     libData.close();
     this.clientInfoStore.close();
     db.close().then(() => {
+      if (libData.natsClient()?.isConnected) {
+        libData.natsClient().close().then(() => {
+          logger.debug('BgNodeClient closed.');
+          if (done) {
+            done();
+          }
+        });
+
+        return;
+      }
+
       logger.debug('BgNodeClient closed.');
       if (done) {
         done();

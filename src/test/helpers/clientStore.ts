@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto';
+
 import apiUrl from './apiUrl.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { ClientInfoStore } from '../../ClientInfoStore.js';
@@ -29,6 +31,15 @@ const getTestClient = async (
         headers: {
           [HttpHeaderName.consumer]: 'test',
         },
+      },
+      nats: {
+        name: `nats-test-client-${randomUUID()}`,
+        servers: ['nats://localhost:4222'],
+        timeout: 5000,
+        reconnect: true,
+        maxReconnectAttempts: 3,
+        reconnectTimeWait: 1000,
+        pingInterval: 1000,
       },
       logLevel: 'debug',
       enableMockMode,
