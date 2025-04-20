@@ -22,6 +22,7 @@ import deleteChannelParticipant from './channelParticipant/deleteChannelParticip
 import findChannelParticipants from './channelParticipant/findChannelParticipants.js';
 import updateChannelParticipant from './channelParticipant/updateChannelParticipant.js';
 import count from './count.js';
+import deleteFnc from './delete.js';
 import find from './find.js';
 import findById from './findById.js';
 import findByMatch from './findByMatch.js';
@@ -59,7 +60,6 @@ import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import verifyMyPassword from './myUser/verifyMyPassword.js';
 import update from './update.js';
-import deleteFnc from './delete.js';
 
 const operations: Operations = {
   delete: deleteFnc,

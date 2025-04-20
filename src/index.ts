@@ -51,6 +51,7 @@ export * from './types/MultiStepActionError.js';
 export * from './types/MultiStepActionListener.js';
 export * from './types/MultiStepActionProgressResult.js';
 export * from './types/MyUserListener.js';
+export * from './types/NatsOptions.js';
 export * from './types/Operations.js';
 export * from './types/QueryOptions.js';
 export * from './types/QueryResult.js';

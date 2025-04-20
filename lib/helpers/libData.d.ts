@@ -1,5 +1,6 @@
 import { ClientInfoStore } from '../ClientInfoStore.js';
 import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
+import { NatsClient } from '../nats/NatsClient.js';
 import { BgBaseListener } from '../types/BgBaseListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 declare const libData: {
@@ -9,6 +10,9 @@ declare const libData: {
     enableMockMode: () => boolean;
     isInitialized: () => boolean;
     isInMockMode: () => boolean;
+    natsClient: () => NatsClient | undefined;
+    setNatsClient: (natsClient: NatsClient | undefined) => void;
+    getConfig: () => BgNodeClientConfig;
     setConfig: (config: BgNodeClientConfig) => void;
     setClientInfoStore: (clientInfoStore: ClientInfoStore) => void;
     setEnableMockMode: (enable: boolean) => void;

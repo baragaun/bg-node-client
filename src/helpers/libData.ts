@@ -1,6 +1,9 @@
+// import * as nats from '@nats-io/nats-core';
+
 import { ClientInfoStore } from '../ClientInfoStore.js';
 import logger from './logger.js';
 import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
+import { NatsClient } from '../nats/NatsClient.js';
 import { BgBaseListener } from '../types/BgBaseListener.js';
 import { BgNodeClientConfig } from '../types/BgNodeClientConfig.js';
 import { MyUserListener } from '../types/MyUserListener.js';
@@ -11,6 +14,8 @@ let _config: BgNodeClientConfig;
 let _clientInfoStore: ClientInfoStore;
 let _listeners: BgBaseListener[] = [];
 const _multiStepActionRuns = new Map<string, MultiStepActionRun>();
+let _natsClient: NatsClient | undefined;
+// let _natsConnection: nats.NatsConnection;
 
 const libData = {
   config: (): BgNodeClientConfig => _config,
@@ -34,6 +39,17 @@ const libData = {
     return _config.enableMockMode;
   },
 
+  natsClient: (): NatsClient | undefined => _natsClient,
+  setNatsClient: (natsClient: NatsClient | undefined): void => {
+    _natsClient = natsClient;
+  },
+
+  // natsConnection: (): nats.NatsConnection => _natsConnection,
+  // setNatsConnection: (natsConnection: nats.NatsConnection): void => {
+  //   _natsConnection = natsConnection;
+  // },
+
+  getConfig: (): BgNodeClientConfig => _config,
   setConfig: (config: BgNodeClientConfig): void => {
     _config = config;
   },

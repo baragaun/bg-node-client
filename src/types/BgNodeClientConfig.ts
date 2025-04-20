@@ -1,6 +1,7 @@
 import { ClientInfoStore } from '../ClientInfoStore.js';
 import { AppEnvironment, ClientInfoStoreType } from '../enums.js';
 import { HttpHeaders } from './HttpHeaders.js';
+import { NatsOptions } from './NatsOptions.js';
 
 /**
  * Configuration for BgNodeClient.
@@ -72,4 +73,15 @@ export interface BgNodeClientConfig {
    * The prefix for email addresses used for testing.
    */
   testEmailPrefix?: string;
+
+  /**
+   * NATS configuration
+   * Here is a sample config:
+   *   {
+   *     servers: ['nats://localhost:4222'],
+   *     timeout: 5000,
+   *     reconnectTimeWait: 1000,
+   *   }
+   */
+  nats?: NatsOptions;
 }
