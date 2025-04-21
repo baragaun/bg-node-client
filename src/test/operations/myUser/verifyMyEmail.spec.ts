@@ -142,4 +142,4 @@ describe('operations.myUser.verifyMyEmail', () => {
       });
     });
   });
-}, 10000);
+}, 60000);

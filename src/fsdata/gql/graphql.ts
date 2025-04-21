@@ -1,4 +1,4 @@
- 
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -3006,7 +3006,6 @@ export type Mutation = {
   deleteWalletItem: ServiceRequest;
   deleteWalletItemTransfer: ServiceRequest;
   dismissChannelInvitationFromInbox: Scalars['String']['output'];
-  dismissChannelInvitationFromInboxV2: ServiceRequest;
   /** @deprecated Use endMySessionV2 */
   endMySession: Scalars['String']['output'];
   /** @deprecated Use endMySessionV3 */
@@ -3309,15 +3308,15 @@ export type MutationDeleteBusinessExperienceArgs = {
 
 
 export type MutationDeleteChannelArgs = {
-  anonymizePersonalData: Scalars['Boolean']['input'];
+  anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
   channelId: Scalars['String']['input'];
-  deletePhysically: Scalars['Boolean']['input'];
+  deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
 export type MutationDeleteChannelInvitationArgs = {
   channelInvitationId: Scalars['String']['input'];
-  deletePhysically: Scalars['Boolean']['input'];
+  deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -3330,7 +3329,7 @@ export type MutationDeleteChannelInvitationV2Args = {
 
 export type MutationDeleteChannelMessageArgs = {
   channelMessageId: Scalars['String']['input'];
-  deletePhysically: Scalars['Boolean']['input'];
+  deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -3471,11 +3470,6 @@ export type MutationDeleteWalletItemTransferArgs = {
 
 export type MutationDismissChannelInvitationFromInboxArgs = {
   channelInvitationId: Scalars['String']['input'];
-};
-
-
-export type MutationDismissChannelInvitationFromInboxV2Args = {
-  id: Scalars['String']['input'];
 };
 
 

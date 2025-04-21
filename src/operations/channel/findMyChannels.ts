@@ -7,6 +7,7 @@ import logger from '../../helpers/logger.js';
 import buildQuery from '../../helpers/objectQuery/buildQuery.js';
 import { Channel } from '../../models/Channel.js';
 import { ChannelListFilter } from '../../models/ChannelListFilter.js';
+import natsService from '../../nats/index.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
 import { ChannelParticipant } from '../../models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from '../../models/ChannelParticipantListFilter.js';
@@ -150,6 +151,11 @@ const findMyChannels = async (
             });
           }
         }
+        natsService.addChannelSubscriptions(channel.id);
+        natsService.subscribeToChannel(channel.id);
+        natsService.subscribeToChannelMessages(channel.id);
+        natsService.addChannelSubscriptions(channel.id);
+        natsService.subscribeToChannelMessages(channel.id);
       }
     }
 

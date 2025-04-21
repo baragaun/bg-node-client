@@ -38,9 +38,9 @@ export class BgNodeClient {
 
     await db.init(config);
 
-    if (Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0) {
-      await nats.init(config.nats);
-    }
+    // if (Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0) {
+    //   await nats.init(config.nats);
+    // }
 
     libData.setIsOnline(isOnline ?? true);
 
@@ -97,6 +97,17 @@ export class BgNodeClient {
   public setConfig = libData.setConfig;
   public config = libData.config;
   public clientInfoStore: ClientInfoStore;
+
+  public initNatsClient = async (): Promise<void> => {
+    if (!this.config().nats) {
+      logger.warn('initNatsClient: no NATS config.');
+      return;
+    }
+    logger.debug('initNatsClient: initializing NATS.', this.config().nats);
+
+    libData.setConfig(this.config());
+    await nats.init(this.config().nats);
+  };
 
   public close = (done?: () => void): void => {
     libData.close();

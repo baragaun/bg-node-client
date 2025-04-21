@@ -1,0 +1,1 @@
+{"version":3,"file":"streamNames.js","sourceRoot":"","sources":["../../src/nats/streamNames.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,GAAG,CAAC,YAAoB,GAAG,EAAgD,EAAE,CAAC,CAAC;IAC9F,OAAO,EAAE,2BAA2B,SAAS,EAAE;IAC/C,eAAe,EAAE,2BAA2B,SAAS,WAAW;CACjE,CAAC,CAAC;AAEH,eAAe,WAAW,CAAC"}

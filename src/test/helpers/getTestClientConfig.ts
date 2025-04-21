@@ -39,7 +39,17 @@ const consumerConfig = {
     customizations: {
       enableChannels: false,
       enableGroupChannels: false,
-      enableNats: false,
+      enableNats: true,
+      enableMarketplace: true,
+    },
+  },
+  test: {
+    consumer: 'test',
+    apiUrl: 'http://localhost:8092/fsdata/api/graphql',
+    customizations: {
+      enableChannels: true,
+      enableGroupChannels: false,
+      enableNats: true,
       enableMarketplace: true,
     },
   },
@@ -59,15 +69,15 @@ export const getTestClientConfig = (
         [HttpHeaderName.consumer]: 'test',
       },
     },
-    // nats: {
-    //   name: `nats-test-client-${crypto.randomUUID()}`,
-    //   servers: ['nats://localhost:4222'],
-    //   timeout: 5000,
-    //   reconnect: true,
-    //   maxReconnectAttempts: 3,
-    //   reconnectTimeWait: 1000,
-    //   pingInterval: 1000,
-    // },
+    nats: {
+      name: `nats-test-client-${crypto.randomUUID()}`,
+      servers: ['nats://localhost:4222'],
+      timeout: 5000,
+      reconnect: true,
+      maxReconnectAttempts: 3,
+      reconnectTimeWait: 1000,
+      pingInterval: 1000,
+    },
     logLevel: 'debug',
     enableMockMode,
 
@@ -75,20 +85,20 @@ export const getTestClientConfig = (
     customizations: {
       enableChannels: false,
       enableGroupChannels: false,
-      enableNats: false,
-      enableMarketplace: false,
+      enableNats: true,
+      enableMarketplace: true,
     },
   };
 
-  if (consumer && consumerConfig[consumer]) {
-    config.consumer = consumerConfig[consumer].consumer;
+  if (consumer && consumerConfig[config.consumer]) {
+    config.consumer = consumerConfig[config.consumer].consumer;
 
-    if (consumerConfig[consumer].apiUrl) {
-      config.fsdata.url = consumerConfig[consumer].apiUrl;
+    if (consumerConfig[config.consumer].apiUrl) {
+      config.fsdata.url = consumerConfig[config.consumer].apiUrl;
     }
 
-    if (consumerConfig[consumer].customizations) {
-      Object.assign(config.customizations, consumerConfig[consumer].customizations);
+    if (consumerConfig[config.consumer].customizations) {
+      Object.assign(config.customizations, consumerConfig[config.consumer].customizations);
     }
   }
 

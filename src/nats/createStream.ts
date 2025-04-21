@@ -45,6 +45,7 @@ export const createStream = async (
     } catch (error) {
       logger.error('nats.createStream: failed to update existing stream.', { config, error });
 
+      // Delete the existing stream and recreate it
       await jsm.streams.delete(config.name);
       return createStream(config, false, true);
     }
