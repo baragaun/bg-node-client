@@ -192,12 +192,14 @@ export class ClientInfoStore {
         ModelType.ClientInfo,
       );
 
-      if (
-        queryResult.error ||
-        !queryResult ||
-        !queryResult.object
-      ) {
+      if (queryResult.error || !queryResult) {
         logger.error('loadClientInfo: invalid ClientInfo object in DB', { queryResult });
+        return this.clientInfo;
+      }
+
+      if (queryResult.object) {
+        logger.debug('loadClientInfo: no ClientInfo object found in DB', { queryResult });
+        await this.save(this._clientInfo);
         return this.clientInfo;
       }
 
