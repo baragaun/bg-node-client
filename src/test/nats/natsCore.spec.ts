@@ -1,6 +1,5 @@
 import * as nats from '@nats-io/nats-core';
 import { connect, deferred } from '@nats-io/transport-node';
-import { randomUUID } from 'crypto';
 import {
   afterAll,
   afterEach,
@@ -31,7 +30,7 @@ describe('NATS connection', () => {
     try {
       nc = await connect({
         servers: [natsServer],
-        name: config?.nats?.name || `nats-test-client-${randomUUID()}`,
+        name: config?.nats?.name || `nats-test-client-${crypto.randomUUID()}`,
         timeout: 5000,
         reconnect: true,
         maxReconnectAttempts: 3,
@@ -63,7 +62,7 @@ describe('NATS connection', () => {
   });
 
   it('should subscribe and continue to listen to my invite topic', async () => {
-    const userId = randomUUID();
+    const userId = crypto.randomUUID();
     const testCompletion = deferred();
 
     const subject = `${userId}/invites`;
@@ -105,7 +104,7 @@ describe('NATS connection', () => {
   });
 
   it('should listen to my invite topic and then subscribe to a channel topic', async () => {
-    const userId = randomUUID();
+    const userId = crypto.randomUUID();
     const testCompletion = deferred();
 
     // First channel ID will come from the invite
@@ -161,7 +160,7 @@ describe('NATS connection', () => {
     });
 
     // Send an invite message with a channel ID
-    const testChannelId = randomUUID();
+    const testChannelId = crypto.randomUUID();
     nc.publish(inviteSubject, JSON.stringify({
       type: 'invite',
       channelId: testChannelId,

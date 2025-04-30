@@ -1,7 +1,6 @@
 import * as jetstream from '@nats-io/jetstream';
 import * as nats from '@nats-io/nats-core';
 import { connect, NatsConnection } from '@nats-io/transport-node';
-import { randomUUID } from 'crypto';
 
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
@@ -39,7 +38,7 @@ export class NatsClient {
     const config = libData.getConfig();
 
     if (!this.options.name) {
-      this.options.name = config?.clientInfoStore?.myUserDeviceUuid || randomUUID();
+      this.options.name = config?.clientInfoStore?.myUserDeviceUuid || crypto.randomUUID();
     }
 
     this.connection = await connect(this.options);
