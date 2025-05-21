@@ -115,17 +115,10 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
 
   myDb.waitForLeadership()
     .then(() => {
-      console.log('RxDB: waitForLeadership().then called.'); // <- runs when db becomes leader
-      // setInterval(async () => {
-      //   const temp = await fetch('https://example.com/api/temp/');
-      //   db.temperature.insert({
-      //     degrees: temp,
-      //     time: new Date().getTime()
-      //   });
-      // }, 1000 * 10);
+      logger.info('RxDB: waitForLeadership().then called.'); // <- runs when db becomes leader
     })
     .catch(error => {
-      console.error('RxDB: waitForLeadership failed:', error);
+      logger.error('RxDB: waitForLeadership failed:', error);
     });
 
   // const collections: { [key in DbCollection]: Partial<RxCollection>} = {
