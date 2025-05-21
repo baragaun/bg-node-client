@@ -17,15 +17,6 @@ export interface $MethodsSelect {
     MastercardGroupMembership: MastercardGroupMembership;
     IqlaaGroupMembership: IqlaaGroupMembership;
     StriveIndonesiaGroupMembership: StriveIndonesiaGroupMembership;
-    CompanyStage: CompanyStage;
-    CompanyType: CompanyType;
-    EducationLevel: EducationLevel;
-    Gender: Gender;
-    Pronoun: Pronoun;
-    UserInbox: UserInbox;
-    ChannelInbox: ChannelInbox;
-    ChannelInboxItemMessage: ChannelInboxItemMessage;
-    ChannelInboxItemInvitation: ChannelInboxItemInvitation;
     User: User;
     LabeledStringValue: LabeledStringValue;
     UserPreferences: UserPreferences;
@@ -36,11 +27,14 @@ export interface $MethodsSelect {
     ContactMetadata: ContactMetadata;
     ContactType: ContactType;
     Company: Company;
+    CompanyStage: CompanyStage;
+    CompanyType: CompanyType;
     AcademicExperience: AcademicExperience;
     BusinessExperience: BusinessExperience;
     UploadedAsset: UploadedAsset;
     UserProfileRoleHistoryItem: UserProfileRoleHistoryItem;
     Country: Country;
+    Gender: Gender;
     Language: Language;
     Notification: Notification;
     NotificationContext: NotificationContext;
@@ -56,12 +50,21 @@ export interface $MethodsSelect {
     ChannelParticipant: ChannelParticipant;
     BgChannelParticipantMetadata: BgChannelParticipantMetadata;
     UserListItem: UserListItem;
+    EducationLevel: EducationLevel;
     EndorsementWithTypes: EndorsementWithTypes;
     ModerationConcern: ModerationConcern;
     ContentTagType: ContentTagType;
     Group: Group;
     AppliedGroupRule: AppliedGroupRule;
     GroupRuleBaseConfig: GroupRuleBaseConfig;
+    GroupCms: GroupCms;
+    GroupCmsOnboarding: GroupCmsOnboarding;
+    Pronoun: Pronoun;
+    UserCms: UserCms;
+    UserInbox: UserInbox;
+    ChannelInbox: ChannelInbox;
+    ChannelInboxItemMessage: ChannelInboxItemMessage;
+    ChannelInboxItemInvitation: ChannelInboxItemInvitation;
     AdminTask: AdminTask;
     AdminTaskDef: AdminTaskDef;
     AdminTaskArgDef: AdminTaskArgDef;
@@ -145,33 +148,6 @@ export interface IqlaaGroupMembership {
 export interface StriveIndonesiaGroupMembership {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.StriveIndonesiaGroupMembership>): $SelectionSet;
 }
-export interface CompanyStage {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.CompanyStage>): $SelectionSet;
-}
-export interface CompanyType {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.CompanyType>): $SelectionSet;
-}
-export interface EducationLevel {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.EducationLevel>): $SelectionSet;
-}
-export interface Gender {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Gender>): $SelectionSet;
-}
-export interface Pronoun {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Pronoun>): $SelectionSet;
-}
-export interface UserInbox {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserInbox>): $SelectionSet;
-}
-export interface ChannelInbox {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelInbox>): $SelectionSet;
-}
-export interface ChannelInboxItemMessage {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelInboxItemMessage>): $SelectionSet;
-}
-export interface ChannelInboxItemInvitation {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelInboxItemInvitation>): $SelectionSet;
-}
 export interface User {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.User>): $SelectionSet;
 }
@@ -202,6 +178,12 @@ export interface ContactType {
 export interface Company {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Company>): $SelectionSet;
 }
+export interface CompanyStage {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.CompanyStage>): $SelectionSet;
+}
+export interface CompanyType {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.CompanyType>): $SelectionSet;
+}
 export interface AcademicExperience {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.AcademicExperience>): $SelectionSet;
 }
@@ -216,6 +198,9 @@ export interface UserProfileRoleHistoryItem {
 }
 export interface Country {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Country>): $SelectionSet;
+}
+export interface Gender {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Gender>): $SelectionSet;
 }
 export interface Language {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Language>): $SelectionSet;
@@ -262,6 +247,9 @@ export interface BgChannelParticipantMetadata {
 export interface UserListItem {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserListItem>): $SelectionSet;
 }
+export interface EducationLevel {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.EducationLevel>): $SelectionSet;
+}
 export interface EndorsementWithTypes {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.EndorsementWithTypes>): $SelectionSet;
 }
@@ -279,6 +267,30 @@ export interface AppliedGroupRule {
 }
 export interface GroupRuleBaseConfig {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GroupRuleBaseConfig>): $SelectionSet;
+}
+export interface GroupCms {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GroupCms>): $SelectionSet;
+}
+export interface GroupCmsOnboarding {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GroupCmsOnboarding>): $SelectionSet;
+}
+export interface Pronoun {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Pronoun>): $SelectionSet;
+}
+export interface UserCms {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserCms>): $SelectionSet;
+}
+export interface UserInbox {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserInbox>): $SelectionSet;
+}
+export interface ChannelInbox {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelInbox>): $SelectionSet;
+}
+export interface ChannelInboxItemMessage {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelInboxItemMessage>): $SelectionSet;
+}
+export interface ChannelInboxItemInvitation {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelInboxItemInvitation>): $SelectionSet;
 }
 export interface AdminTask {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.AdminTask>): $SelectionSet;
