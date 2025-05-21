@@ -9,6 +9,7 @@ import {
   RxStorage,
 } from 'rxdb/plugins/core';
 import { RxDBDevModePlugin, disableWarnings } from 'rxdb/plugins/dev-mode';
+import { RxDBLeaderElectionPlugin } from 'rxdb/plugins/leader-election';
 import { RxDBMigrationSchemaPlugin } from 'rxdb/plugins/migration-schema';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
 import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
@@ -65,6 +66,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
   // see: https://rxdb.info/migration-schema.html
   addRxPlugin(RxDBCleanupPlugin);
   addRxPlugin(RxDBMigrationSchemaPlugin);
+  addRxPlugin(RxDBLeaderElectionPlugin);
 
   // see: https://github.com/ajv-validator/ajv/issues/1295
   const ajv = getAjv();
@@ -110,6 +112,14 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
     // see: https://rxdb.info/rx-database.html#eventreduce:
     eventReduce: true,
   });
+
+  myDb.waitForLeadership()
+    .then(() => {
+      logger.info('RxDB: waitForLeadership().then called.'); // <- runs when db becomes leader
+    })
+    .catch(error => {
+      logger.error('RxDB: waitForLeadership failed:', error);
+    });
 
   // const collections: { [key in DbCollection]: Partial<RxCollection>} = {
   const collections = {

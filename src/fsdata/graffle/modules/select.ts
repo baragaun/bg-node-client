@@ -134,60 +134,6 @@ export namespace Select {
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['StriveIndonesiaGroupMembership']
     >;
-  export type CompanyStage<$SelectionSet extends $$SelectionSets.CompanyStage> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['CompanyStage']
-    >;
-  export type CompanyType<$SelectionSet extends $$SelectionSets.CompanyType> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['CompanyType']
-    >;
-  export type EducationLevel<$SelectionSet extends $$SelectionSets.EducationLevel> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['EducationLevel']
-    >;
-  export type Gender<$SelectionSet extends $$SelectionSets.Gender> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['Gender']
-    >;
-  export type Pronoun<$SelectionSet extends $$SelectionSets.Pronoun> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['Pronoun']
-    >;
-  export type UserInbox<$SelectionSet extends $$SelectionSets.UserInbox> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['UserInbox']
-    >;
-  export type ChannelInbox<$SelectionSet extends $$SelectionSets.ChannelInbox> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['ChannelInbox']
-    >;
-  export type ChannelInboxItemMessage<$SelectionSet extends $$SelectionSets.ChannelInboxItemMessage> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['ChannelInboxItemMessage']
-    >;
-  export type ChannelInboxItemInvitation<$SelectionSet extends $$SelectionSets.ChannelInboxItemInvitation> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['ChannelInboxItemInvitation']
-    >;
   export type User<$SelectionSet extends $$SelectionSets.User> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
       $SelectionSet,
@@ -248,6 +194,18 @@ export namespace Select {
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['Company']
     >;
+  export type CompanyStage<$SelectionSet extends $$SelectionSets.CompanyStage> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['CompanyStage']
+    >;
+  export type CompanyType<$SelectionSet extends $$SelectionSets.CompanyType> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['CompanyType']
+    >;
   export type AcademicExperience<$SelectionSet extends $$SelectionSets.AcademicExperience> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
       $SelectionSet,
@@ -277,6 +235,12 @@ export namespace Select {
       $SelectionSet,
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['Country']
+    >;
+  export type Gender<$SelectionSet extends $$SelectionSets.Gender> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['Gender']
     >;
   export type Language<$SelectionSet extends $$SelectionSets.Language> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
@@ -368,6 +332,12 @@ export namespace Select {
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['UserListItem']
     >;
+  export type EducationLevel<$SelectionSet extends $$SelectionSets.EducationLevel> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['EducationLevel']
+    >;
   export type EndorsementWithTypes<$SelectionSet extends $$SelectionSets.EndorsementWithTypes> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
       $SelectionSet,
@@ -403,6 +373,54 @@ export namespace Select {
       $SelectionSet,
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['GroupRuleBaseConfig']
+    >;
+  export type GroupCms<$SelectionSet extends $$SelectionSets.GroupCms> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['GroupCms']
+    >;
+  export type GroupCmsOnboarding<$SelectionSet extends $$SelectionSets.GroupCmsOnboarding> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['GroupCmsOnboarding']
+    >;
+  export type Pronoun<$SelectionSet extends $$SelectionSets.Pronoun> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['Pronoun']
+    >;
+  export type UserCms<$SelectionSet extends $$SelectionSets.UserCms> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['UserCms']
+    >;
+  export type UserInbox<$SelectionSet extends $$SelectionSets.UserInbox> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['UserInbox']
+    >;
+  export type ChannelInbox<$SelectionSet extends $$SelectionSets.ChannelInbox> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['ChannelInbox']
+    >;
+  export type ChannelInboxItemMessage<$SelectionSet extends $$SelectionSets.ChannelInboxItemMessage> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['ChannelInboxItemMessage']
+    >;
+  export type ChannelInboxItemInvitation<$SelectionSet extends $$SelectionSets.ChannelInboxItemInvitation> =
+    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
+      $SelectionSet,
+      $$Schema.Schema,
+      $$Schema.Schema['allTypes']['ChannelInboxItemInvitation']
     >;
   export type AdminTask<$SelectionSet extends $$SelectionSets.AdminTask> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
