@@ -123,6 +123,9 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
       //     time: new Date().getTime()
       //   });
       // }, 1000 * 10);
+    })
+    .catch(error => {
+      console.error('RxDB: waitForLeadership failed:', error);
     });
 
   // const collections: { [key in DbCollection]: Partial<RxCollection>} = {
