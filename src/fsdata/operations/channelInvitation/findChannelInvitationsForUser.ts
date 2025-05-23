@@ -43,7 +43,7 @@ const findChannelInvitationsForUser = async (
       options: options as unknown as InputMaybe<FindObjectsOptions>,
     };
 
-    const response: ResponseDataType = await client.mutation.findChannelInvitationsForUser({
+    const response: ResponseDataType = await client.query.findChannelInvitationsForUser({
       $: args,
       id: true,
       ...modelFields.channelInvitation,

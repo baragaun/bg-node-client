@@ -790,6 +790,18 @@ export namespace Schema {
           inlineType: [0];
           namedType: $$NamedTypes.$$FindObjectsOptions;
         };
+        match: {
+          kind: 'InputField';
+          name: 'match';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$ChannelInput;
+        };
+        filter: {
+          kind: 'InputField';
+          name: 'filter';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$ChannelListFilter;
+        };
       };
       inlineType: [1, [1]];
       namedType: $$NamedTypes.$$Channel;
@@ -2450,13 +2462,13 @@ export namespace Schema {
         anonymizePersonalData: {
           kind: 'InputField';
           name: 'anonymizePersonalData';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelId: {

@@ -12,6 +12,7 @@ export class BgChannel extends BaseModel {
   public channelType: ChannelType = ChannelType.unset;
   public statuses?: BgChannelStatus[] | null;
   public userIds?: string[] | null;
+  public otherUserId?: string | null;
   declare public metadata?: ChannelMetadata | null;
   public pausedAt?: string | null;
   public pausedBy?: string | null;

@@ -115,7 +115,7 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
 
   myDb.waitForLeadership()
     .then(() => {
-      logger.info('RxDB: waitForLeadership().then called.'); // <- runs when db becomes leader
+      logger.debug('RxDB: waitForLeadership().then called.'); // <- runs when db becomes leader
     })
     .catch(error => {
       logger.error('RxDB: waitForLeadership failed:', error);

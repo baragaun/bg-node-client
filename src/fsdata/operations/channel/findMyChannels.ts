@@ -3,7 +3,13 @@ import logger from '../../../helpers/logger.js';
 import { Channel } from '../../../models/Channel.js';
 import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-import { FindObjectsOptions, InputMaybe, QueryFindMyChannelsArgs } from '../../gql/graphql.js';
+import {
+  ChannelInput,
+  ChannelListFilter,
+  FindObjectsOptions,
+  InputMaybe,
+  QueryFindMyChannelsArgs,
+} from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
@@ -14,7 +20,10 @@ type ResponseDataType = {
   };
   errors?: { message: string }[];
 };
+
 const findMyChannels = async (
+  filter: ChannelListFilter | null | undefined,
+  match: Partial<Channel> | null | undefined,
   options: FindObjectsOptionsFromClient,
 ): Promise<QueryResult<Channel>> => {
   try {
@@ -25,10 +34,12 @@ const findMyChannels = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindMyChannelsArgs = {
-      options: options as unknown as InputMaybe<FindObjectsOptions>,
+      filter: filter || null,
+      match: (match as unknown as InputMaybe<ChannelInput>) || null,
+      options: (options as unknown as InputMaybe<FindObjectsOptions>) || null,
     };
 
-    const response: ResponseDataType = await client.mutation.findMyChannels({
+    const response: ResponseDataType = await client.query.findMyChannels({
       $: args,
       ...modelFields.channel,
     });

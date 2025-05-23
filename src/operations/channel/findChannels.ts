@@ -36,9 +36,7 @@ const findChannels = async (
         return db.findById<Channel>(filter.ids[0], ModelType.Channel);
       }
 
-      const localResult = await db.findAll<Channel>(
-        ModelType.Channel,
-      );
+      const localResult = await db.findAll<Channel>(ModelType.Channel);
       let list: Channel[] = localResult.objects;
 
       if (filter.userId) {

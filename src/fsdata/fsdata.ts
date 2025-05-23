@@ -6,8 +6,7 @@ import acceptChannelInvitation from './operations/channelInvitation/acceptChanne
 import createChannelInvitation from './operations/channelInvitation/createChannelInvitation.js';
 import declineChannelInvitation from './operations/channelInvitation/declineChannelInvitation.js';
 import findChannelInvitations from './operations/channelInvitation/findChannelInvitations.js';
-import findChannelInvitationsForUser
-  from './operations/channelInvitation/findChannelInvitationsForUser.js';
+import findChannelInvitationsForUser from './operations/channelInvitation/findChannelInvitationsForUser.js';
 import updateChannelInvitation from './operations/channelInvitation/updateChannelInvitation.js';
 import createChannelMessage from './operations/channelMessage/createChannelMessage.js';
 import findChannelMessages from './operations/channelMessage/findChannelMessages.js';
@@ -18,8 +17,7 @@ import findById from './operations/findById.js';
 import createMultiStepAction from './operations/multiStepAction/createMultiStepAction.js';
 import findMyActiveMultiStepActions from './operations/multiStepAction/findMyActiveMultiStepActions.js';
 import getMultiStepActionProgress from './operations/multiStepAction/getMultiStepActionProgress.js';
-import sendMultiStepActionNotification
-  from './operations/multiStepAction/sendMultiStepActionNotification.js';
+import sendMultiStepActionNotification from './operations/multiStepAction/sendMultiStepActionNotification.js';
 import verifyMultiStepActionToken from './operations/multiStepAction/verifyMultiStepActionToken.js';
 import blockUserForMe from './operations/myUser/blockUserForMe.js';
 import deleteMyUser from './operations/myUser/deleteMyUser.js';

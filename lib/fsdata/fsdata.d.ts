@@ -6,8 +6,8 @@ declare const fsdata: {
     update: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(changes: Partial<T>, modelType: import("../enums.js").ModelType, queryOptions?: import("../index.js").QueryOptions<T>) => Promise<import("../index.js").QueryResult<T>>;
     channel: {
         createChannel: (props: Partial<import("../index.js").Channel>) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
-        findChannels: (filter: import("./gql/graphql.js").ChannelListFilter | undefined, match: Partial<import("../index.js").Channel> | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
-        findMyChannels: (options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        findChannels: (filter: import("./gql/graphql.js").ChannelListFilter | null | undefined, match: Partial<import("../index.js").Channel> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        findMyChannels: (filter: import("./gql/graphql.js").ChannelListFilter | null | undefined, match: Partial<import("../index.js").Channel> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
         updateChannel: (changes: Partial<import("../index.js").Channel>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").Channel>) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
     };
     channelInvitation: {

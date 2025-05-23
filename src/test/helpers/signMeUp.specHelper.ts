@@ -40,6 +40,9 @@ export const signMeUpSpecHelper = async (
 
   logger.debug('BgServiceApiCheck.signMeUp: received signUpUser response',
     { signUpUserAuthResponse });
+  if (signUpUserAuthResponse.error) {
+    logger.error('BgServiceApiCheck.signMeUp: signUpUser error', { signUpUserAuthResponse });
+  }
 
   expect(signUpUserAuthResponse.error).toBeUndefined();
   expect(signUpUserAuthResponse.object).toBeDefined();

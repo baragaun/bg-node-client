@@ -39,7 +39,7 @@ const findChannelMessages = async (
       options: options as unknown as InputMaybe<FindObjectsOptions>,
     };
 
-    const response: ResponseDataType = await client.mutation.findChannelMessages({
+    const response: ResponseDataType = await client.query.findChannelMessages({
       $: args,
       ...modelFields.channelMessage,
     });

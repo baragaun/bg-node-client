@@ -16,6 +16,10 @@ export const createChannelSpecHelper = async (
 
     props = factories.channel.build(props);
 
+    if (!props.createdBy) {
+      props.createdBy = client.clientInfoStore.myUserId;
+    }
+
     const response = await client.operations.channel.createChannel(props);
     const channel = response.object;
 

@@ -881,6 +881,8 @@ export declare namespace Query {
     }
     interface findMyChannels$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
         options?: $NamedTypes.$FindObjectsOptions<_$Scalars> | undefined | null;
+        match?: $NamedTypes.$ChannelInput<_$Scalars> | undefined | null;
+        filter?: $NamedTypes.$ChannelListFilter<_$Scalars> | undefined | null;
     }
     /**
      * This is the "expanded" version of the `findMyChannels` type. It is identical except for the fact
@@ -2694,13 +2696,13 @@ export declare namespace Mutation {
     type deleteChannel<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteChannel$SelectionSet<_$Scalars>;
     interface deleteChannel$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `deleteChannel` field. All arguments are required so you must include this.
+         * Arguments for `deleteChannel` field. Some (1/3) arguments are required so you must include this.
          */
         $: deleteChannel$Arguments<_$Scalars>;
     }
     interface deleteChannel$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        anonymizePersonalData: boolean;
-        deletePhysically: boolean;
+        anonymizePersonalData?: boolean | undefined | null;
+        deletePhysically?: boolean | undefined | null;
         channelId: string;
     }
     /**
