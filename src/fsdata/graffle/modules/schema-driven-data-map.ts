@@ -7042,6 +7042,14 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           nt: FindObjectsOptions,
           it: [0],
         },
+        match: {
+          nt: ChannelInput,
+          it: [0],
+        },
+        filter: {
+          nt: ChannelListFilter,
+          it: [0],
+        },
       },
       // nt: Channel, <-- Assigned later to avoid potential circular dependency.
     },
@@ -7930,11 +7938,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         anonymizePersonalData: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelId: {
           nt: String,

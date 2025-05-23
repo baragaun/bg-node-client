@@ -170,6 +170,10 @@ export declare const ChannelSchema: {
                 };
             };
         };
+        otherUserId: {
+            type: string;
+            maxLength: number;
+        };
         userIds: {
             type: string;
             items: {

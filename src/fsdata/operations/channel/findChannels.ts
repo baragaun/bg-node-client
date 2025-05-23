@@ -22,8 +22,8 @@ type ResponseDataType = {
 };
 
 const findChannels = async (
-  filter: ChannelListFilter | undefined,
-  match: Partial<Channel> | undefined,
+  filter: ChannelListFilter | null | undefined,
+  match: Partial<Channel> | null | undefined,
   options: FindObjectsOptionsFromClient,
 ): Promise<QueryResult<Channel>> => {
   try {
@@ -39,7 +39,7 @@ const findChannels = async (
       options: options as unknown as InputMaybe<FindObjectsOptions>,
     };
 
-    const response: ResponseDataType = await client.mutation.findChannels({
+    const response: ResponseDataType = await client.query.findChannels({
       $: args,
       ...modelFields.channel,
     });

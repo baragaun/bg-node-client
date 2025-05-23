@@ -3711,6 +3711,8 @@ export type QueryFindMastercardBanksArgs = {
     fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 export type QueryFindMyChannelsArgs = {
+    filter?: InputMaybe<ChannelListFilter>;
+    match?: InputMaybe<ChannelInput>;
     options?: InputMaybe<FindObjectsOptions>;
 };
 export type QueryFindMyUserDevicesArgs = {

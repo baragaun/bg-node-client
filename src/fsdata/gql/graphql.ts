@@ -1,4 +1,4 @@
- 
+
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -4075,6 +4075,8 @@ export type QueryFindMastercardBanksArgs = {
 
 
 export type QueryFindMyChannelsArgs = {
+  filter?: InputMaybe<ChannelListFilter>;
+  match?: InputMaybe<ChannelInput>;
   options?: InputMaybe<FindObjectsOptions>;
 };
 

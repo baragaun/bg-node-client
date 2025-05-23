@@ -96,8 +96,8 @@ export interface Operations {
     ) => Promise<QueryResult<Channel>>;
 
     findMyChannels: (
-      filter: ChannelListFilter,
-      match: Partial<Channel>,
+      filter: ChannelListFilter | null | undefined,
+      match: Partial<Channel> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;

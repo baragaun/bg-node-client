@@ -3,5 +3,5 @@ import { ChannelListFilter } from '../../models/ChannelListFilter.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
-declare const findMyChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
+declare const findMyChannels: (filter: ChannelListFilter | null | undefined, match: Partial<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
 export default findMyChannels;

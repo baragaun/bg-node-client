@@ -11,8 +11,8 @@ import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const findMyChannels = async (
-  filter: ChannelListFilter,
-  match: Partial<Channel>,
+  filter: ChannelListFilter | null | undefined,
+  match: Partial<Channel> | null | undefined,
   options: FindObjectsOptions,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<Channel>> => {
@@ -32,16 +32,14 @@ const findMyChannels = async (
     //------------------------------------------------------------------------------------------------
     // Local cache
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
-      if (Array.isArray(filter.ids) && filter.ids.length === 1) {
+      if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
         return db.findById<Channel>(filter.ids[0], ModelType.Channel);
       }
 
-      const localResult = await db.findAll<Channel>(
-        ModelType.Channel,
-      );
+      const localResult = await db.findAll<Channel>(ModelType.Channel);
       let list: Channel[] = localResult.objects;
 
-      if (filter.userId) {
+      if (filter?.userId) {
         list = list.filter((channel) => {
           if (!Array.isArray(channel.userIds)) {
             return { error: 'channel-missing-userid' };
@@ -77,7 +75,7 @@ const findMyChannels = async (
       return { error: 'offline' };
     }
 
-    const result = await fsdata.channel.findChannels(
+    const result = await fsdata.channel.findMyChannels(
       filter,
       match,
       options,

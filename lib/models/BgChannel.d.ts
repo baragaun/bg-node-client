@@ -11,6 +11,7 @@ export declare class BgChannel extends BaseModel {
     channelType: ChannelType;
     statuses?: BgChannelStatus[] | null;
     userIds?: string[] | null;
+    otherUserId?: string | null;
     metadata?: ChannelMetadata | null;
     pausedAt?: string | null;
     pausedBy?: string | null;

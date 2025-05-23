@@ -36,7 +36,7 @@ export interface Operations {
         createChannel: (attributes: Partial<Channel>) => Promise<QueryResult<Channel>>;
         deleteChannel: (id: string) => Promise<QueryResult<void>>;
         findChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
-        findMyChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
+        findMyChannels: (filter: ChannelListFilter | null | undefined, match: Partial<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
         findMyArchivedChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
         isChannelArchivedForMe: (channel: Channel) => boolean;
         updateChannel: (changes: Partial<Channel>, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;

@@ -171,6 +171,10 @@ declare const schema: {
                     };
                 };
             };
+            otherUserId: {
+                type: string;
+                maxLength: number;
+            };
             userIds: {
                 type: string;
                 items: {

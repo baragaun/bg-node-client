@@ -31,7 +31,7 @@ const findUserById = async (
       options: options as unknown as InputMaybe<FindObjectsOptions>,
     };
 
-    const response: ResponseDataType = await client.mutation.findUserById({
+    const response: ResponseDataType = await client.query.findUserById({
       $: args,
       ...modelFields.user,
     });

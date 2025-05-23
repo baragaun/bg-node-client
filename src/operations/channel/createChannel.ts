@@ -22,6 +22,26 @@ const createChannel = async (
 
     const allowNetwork = libData.allowNetwork();
 
+    if (!props) {
+      return { error: 'missing-input', operation: MutationType.create };
+    }
+
+    if (!props.createdBy) {
+      props.createdBy = libData.clientInfoStore().myUserId;
+    }
+
+    if (!Array.isArray(props.userIds) || props.userIds.length < 1) {
+      props.userIds = [props.createdBy];
+    }
+
+    if (
+      !props.otherUserId &&
+      Array.isArray(props.userIds) &&
+      props.userIds.length > 1
+    ) {
+      props.otherUserId = props.userIds.find((id) => id !== props.createdBy);
+    }
+
     //------------------------------------------------------------------------------------------------
     // Local cache
     if (!allowNetwork) {
