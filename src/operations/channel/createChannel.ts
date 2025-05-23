@@ -36,7 +36,7 @@ const createChannel = async (
 
     if (
       !props.otherUserId &&
-      Array.isArray(props.userIds) ||
+      Array.isArray(props.userIds) &&
       props.userIds.length > 1
     ) {
       props.otherUserId = props.userIds.find((id) => id !== props.createdBy);
