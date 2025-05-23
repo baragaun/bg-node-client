@@ -47,7 +47,7 @@ describe('operations.myUser.findMyChannels', () => {
     expect(queryResult.error).toBeUndefined();
     expect(reloadedChannels.length).toBe(count);
     expect(reloadedChannelIds).toEqual(channelIds);
-    expect(reloadedChannelIds).not.include(channelIds, channel1.id);
+    expect(reloadedChannelIds).not.include(channel1.id);
 
     // Cleanup for user2:
     await Promise.all(
