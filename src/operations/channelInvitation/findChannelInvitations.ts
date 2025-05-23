@@ -4,15 +4,18 @@ import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import buildQuery from '../../helpers/objectQuery/buildQuery.js';
 import { ChannelInvitation } from '../../models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../../models/ChannelInvitationListFilter.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
+import { MangoQueryTypes } from '../../types/mangoQuery.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const findChannelInvitationsForUser = async (
   filter: ChannelInvitationListFilter,
   match: Partial<ChannelInvitation>,
+  selector: MangoQueryTypes<ChannelInvitation> | null | undefined,
   options: FindObjectsOptions,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelInvitation>> => {
@@ -32,31 +35,23 @@ const findChannelInvitationsForUser = async (
     //------------------------------------------------------------------------------------------------
     // Local cache
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
-      // todo: proper filtering
-      if (Array.isArray(filter.ids) && filter.ids.length === 1) {
+      if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
         return db.findById<ChannelInvitation>(filter.ids[0], ModelType.ChannelInvitation);
       }
 
-      const localResult = await db.findAll<ChannelInvitation>(
-        ModelType.ChannelInvitation,
+
+      const localQuery = buildQuery<ChannelInvitation, ChannelInvitationListFilter>(
+        ModelType.Channel,
+        filter,
+        match,
+        selector,
+        options,
       );
-      let list: ChannelInvitation[] = localResult.objects;
 
-      if (!match.channelId) {
-        list = list.filter((m) => m.channelId === match.channelId);
-      }
+      const localResult = await db.find<ChannelInvitation>(localQuery, ModelType.ChannelInvitation);
 
-      if (options.skip > 0 && options.limit > 0) {
-        list = list.slice(options.skip, options.skip + options.limit);
-      }
-
-      if ((!localResult.error && list) || !allowNetwork) {
-        return {
-          objects: list.sort(
-            (a, b) =>
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-          ),
-        };
+      if ((!localResult.error && localResult.objects) || !allowNetwork) {
+        return localResult;
       }
     }
 

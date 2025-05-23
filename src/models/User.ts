@@ -222,4 +222,8 @@ export class User extends BaseModel {
       }
     }
   }
+
+  static get searchFields(): string[] {
+    return ['firstName', 'lastName', 'userHandle', 'email'];
+  }
 }

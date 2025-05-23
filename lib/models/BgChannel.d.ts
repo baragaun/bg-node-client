@@ -23,4 +23,5 @@ export declare class BgChannel extends BaseModel {
     archivedBy?: string | null;
     participants?: ChannelParticipant[];
     constructor(attributes?: Partial<BgChannel>);
+    static get searchFields(): string[];
 }

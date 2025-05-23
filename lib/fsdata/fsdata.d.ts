@@ -49,7 +49,7 @@ declare const fsdata: {
         verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<import("../index.js").QueryResult<import("../index.js").SidMultiStepActionProgress>>;
     };
     user: {
-        findUserById: (userId: string, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
+        findUserById: (userId: string) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
     };
 };
 export default fsdata;

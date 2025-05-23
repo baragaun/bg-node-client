@@ -22,7 +22,7 @@ describe('operations.channel.deleteChannel', () => {
     expect(client).toBeDefined();
 
     await signMeUpSpecHelper(undefined, false, client);
-    const channel = await createChannelSpecHelper(props, client);
+    const channel = await createChannelSpecHelper(props, 0, client);
     await deleteChannelSpecHelper(channel.id, client);
   });
 
@@ -34,7 +34,7 @@ describe('operations.channel.deleteChannel', () => {
     expect(client).toBeDefined();
 
     await signMeUpSpecHelper(undefined, false, client);
-    const channel = await createChannelSpecHelper(props, client);
+    const channel = await createChannelSpecHelper(props, 0, client);
     await deleteChannelSpecHelper(channel.id, client);
   });
 });

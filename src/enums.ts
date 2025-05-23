@@ -20,7 +20,11 @@ export enum ChannelType {
 
 export enum ChannelMessageType {
   unset = 'unset',
-  test = 'test',
+  invitation = 'invitation',
+  support = 'support',
+  system = 'system',
+  // welcome message type (specific type of support channel)
+  welcome = 'welcome',
 }
 
 export enum ChannelParticipantRole {
