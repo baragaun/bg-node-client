@@ -78,4 +78,8 @@ export class BgChannel extends BaseModel {
       }
     }
   }
+
+  static get searchFields(): string[] {
+    return ['name', 'topic', 'description', 'tags'];
+  }
 }

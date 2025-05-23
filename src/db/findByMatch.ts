@@ -30,16 +30,7 @@ const findByMatch = async <T extends Model = Model>(
     return result;
   }
 
-  // todo: implement based on model
-  const records = await collection
-    .find({
-      selector: {
-        id: {
-          $eq: match.id,
-        },
-      },
-    })
-    .exec();
+  const records = await collection.find({ selector: match }).exec();
 
   return {
     objects: records.map(record => new (record.constructor as { new(data: any): T })(record.toMutableJSON())),

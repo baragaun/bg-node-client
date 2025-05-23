@@ -48,4 +48,8 @@ export class BgChannelMessage extends BaseModel {
       }
     }
   }
+
+  static get searchFields(): string[] {
+    return ['messageText'];
+  }
 }

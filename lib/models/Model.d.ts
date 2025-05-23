@@ -8,4 +8,5 @@ export declare abstract class Model {
     deletedAt?: string | null;
     deletedBy?: string | null;
     protected constructor(attributes?: Partial<Model> | null);
+    static get searchFields(): string[];
 }

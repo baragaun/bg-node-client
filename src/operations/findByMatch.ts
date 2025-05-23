@@ -13,12 +13,12 @@ const findByMatch = async <T extends Model = Model>(
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<T>> => {
   if (!libData.isInitialized()) {
-    logger.error('findOne: unavailable');
+    logger.error('findByMatch: unavailable');
     return { error: 'unavailable' };
   }
 
   if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('findOne: unauthorized');
+    logger.error('findByMatch: unauthorized');
     return { error: 'unauthorized' };
   }
 

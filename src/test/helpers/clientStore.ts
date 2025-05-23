@@ -39,6 +39,7 @@ const getTestClient = async (
         reconnectTimeWait: 1000,
         pingInterval: 1000,
       },
+      enableGroupChannels: false,
       logLevel: 'debug',
       enableMockMode,
     };

@@ -50,4 +50,5 @@ export declare class User extends BaseModel {
     seeksHelp?: boolean;
     isTestUser?: boolean;
     constructor(attributes?: Partial<User>);
+    static get searchFields(): string[];
 }

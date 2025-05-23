@@ -84,4 +84,9 @@ export interface BgNodeClientConfig {
    *   }
    */
   nats?: NatsOptions;
+
+  /**
+   * Can a channel have more than 2 participants?
+   */
+  enableGroupChannels: boolean;
 }

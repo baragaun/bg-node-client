@@ -9,6 +9,7 @@ import {
   UserIdentType,
 } from '../enums.js';
 import { FindObjectsOptions } from './FindObjectsOptions.js';
+import { MangoQueryTypes } from './mangoQuery.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
 import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
 import { QueryOptions } from './QueryOptions.js';
@@ -98,6 +99,7 @@ export interface Operations {
     findMyChannels: (
       filter: ChannelListFilter | null | undefined,
       match: Partial<Channel> | null | undefined,
+      localQuery: MangoQueryTypes<Channel> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;

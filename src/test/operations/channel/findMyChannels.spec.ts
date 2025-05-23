@@ -19,7 +19,7 @@ describe('operations.myUser.findMyChannels', () => {
     client = await clientStore.getTestClient();
   });
 
-  test('should return the channels for this user', async () => {
+  test('returns the channels for the current user', async () => {
     const count = chance.integer({ min: 2, max: 10 });
 
     // Create first user:
@@ -34,20 +34,40 @@ describe('operations.myUser.findMyChannels', () => {
         createChannelSpecHelper(undefined, client)),
     );
     const channelIds = channels.map((c) => c.id).sort();
-    const queryResult = await client.operations.channel.findMyChannels(
+
+    // Fetching channels from the network:
+    const queryResultFromNetwork = await client.operations.channel.findMyChannels(
+      undefined,
       undefined,
       undefined,
       undefined,
       { cachePolicy: CachePolicy.network },
     );
-    const reloadedChannels = queryResult.objects;
-    const reloadedChannelIds = reloadedChannels.map((c) => c.id).sort();
+    const channelsFromNetwork = queryResultFromNetwork.objects;
+    const channelIdsFromNetwork = channelsFromNetwork.map((c) => c.id).sort();
 
     expect(channels.length).toBe(count);
-    expect(queryResult.error).toBeUndefined();
-    expect(reloadedChannels.length).toBe(count);
-    expect(reloadedChannelIds).toEqual(channelIds);
-    expect(reloadedChannelIds).not.include(channel1.id);
+    expect(queryResultFromNetwork.error).toBeUndefined();
+    expect(channelsFromNetwork.length).toBe(count);
+    expect(channelIdsFromNetwork).toEqual(channelIds);
+    expect(channelIdsFromNetwork).not.include(channel1.id);
+
+    // Fetching channels from the local cache:
+    const queryResultFromLocal = await client.operations.channel.findMyChannels(
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      { cachePolicy: CachePolicy.cache },
+    );
+    const channelsFromLocal = queryResultFromLocal.objects;
+    const channelIdsFromLocal = channelsFromLocal.map((c) => c.id).sort();
+
+    expect(channels.length).toBe(count);
+    expect(queryResultFromLocal.error).toBeUndefined();
+    expect(channelsFromLocal.length).toBe(count);
+    expect(channelIdsFromLocal).toEqual(channelIds);
+    expect(channelIdsFromLocal).not.include(channel1.id);
 
     // Cleanup for user2:
     await Promise.all(
