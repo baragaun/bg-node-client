@@ -34,7 +34,7 @@ const getChannelSelectorParts = (
 
   if (Array.isArray(filter.userIds) && filter.userIds.length > 2) {
     if (enableGroupChannels) {
-      parts.push({ userIds: { $elemMatch: { $eq: filter.userIds } } });
+      parts.push({ userIds: { $in: filter.userIds } });
     } else {
       parts.push({
         $or: [
