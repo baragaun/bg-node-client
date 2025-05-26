@@ -1,4 +1,7 @@
 export declare const MyUserSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -10,7 +13,9 @@ export declare const MyUserSchema: {
         adminNotes: {
             type: string;
         };
-        metadata: {};
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;
@@ -58,8 +63,8 @@ export declare const MyUserSchema: {
             type: string;
         };
         emailSource: {
-            description: string;
             type: string;
+            description: string;
         };
         emailUpdatedAt: {
             type: string;
@@ -86,8 +91,31 @@ export declare const MyUserSchema: {
         avatarUrl: {
             type: string;
         };
-        websites: {};
-        authType: {};
+        websites: {
+            type: string;
+            items: {
+                type: string;
+            };
+            properties: {
+                label: {
+                    type: string;
+                };
+                value: {
+                    type: string;
+                };
+                tags: {
+                    type: string;
+                    items: {
+                        type: string;
+                    };
+                };
+            };
+        };
+        authType: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         inviteCode: {
             type: string;
         };
@@ -110,21 +138,53 @@ export declare const MyUserSchema: {
                 type: string;
             };
         };
-        selectedUiLanguageTextId: {};
-        fallbackUiLanguageTextId: {};
-        discoverable: {
-            description: string;
+        selectedUiLanguageTextId: {
             type: string;
+            enum: string[];
+            enumType: string;
         };
-        roles: {};
-        appFeatures: {};
+        fallbackUiLanguageTextId: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        discoverable: {
+            type: string;
+            description: string;
+        };
+        roles: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        appFeatures: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         source: {
             type: string;
         };
         timezone: {
             type: string;
         };
-        preferences: {};
+        preferences: {
+            type: string;
+            properties: {
+                shareEmail: {
+                    type: string;
+                };
+                sharePhoneNumber: {
+                    type: string;
+                };
+                showWelcomeMessage: {
+                    type: string;
+                };
+                notificationOptions: {
+                    type: string;
+                };
+            };
+        };
         trustLevel: {
             type: string;
         };
@@ -140,9 +200,143 @@ export declare const MyUserSchema: {
             type: string;
             format: string;
         };
-        userDevices: {};
-        userBlocks: {};
-        contacts: {};
+        userDevices: {
+            type: string;
+        };
+        userBlocks: {
+            type: string;
+            items: {
+                type: string;
+            };
+            properties: {
+                id: {
+                    type: string;
+                    maxLength: number;
+                };
+                adminNotes: {
+                    type: string;
+                };
+                metadata: {
+                    type: string;
+                };
+                createdAt: {
+                    type: string;
+                    format: string;
+                };
+                createdBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                updatedAt: {
+                    type: string;
+                    format: string;
+                };
+                updatedBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                deletedAt: {
+                    type: string;
+                    format: string;
+                };
+                deletedBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                userId: {
+                    type: string;
+                    maxLength: number;
+                };
+                reasonTextId: {
+                    type: string;
+                };
+                notes: {
+                    type: string;
+                };
+                syncedToAnalyticsAt: {
+                    type: string;
+                    format: string;
+                };
+                syncedWithMm2At: {
+                    type: string;
+                    description: string;
+                    format: string;
+                };
+                mm2Id: {
+                    type: string;
+                    description: string;
+                };
+            };
+        };
+        contacts: {
+            type: string;
+            items: {
+                type: string;
+            };
+            properties: {
+                id: {
+                    type: string;
+                    maxLength: number;
+                };
+                adminNotes: {
+                    type: string;
+                };
+                metadata: {
+                    type: string;
+                };
+                createdAt: {
+                    type: string;
+                    format: string;
+                };
+                createdBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                updatedAt: {
+                    type: string;
+                    format: string;
+                };
+                updatedBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                deletedAt: {
+                    type: string;
+                    format: string;
+                };
+                deletedBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                userId: {
+                    type: string;
+                    maxLength: number;
+                };
+                channelId: {
+                    type: string;
+                    maxLength: number;
+                };
+                nickname: {
+                    type: string;
+                };
+                typeTextIds: {
+                    type: string;
+                    items: {
+                        type: string;
+                    };
+                };
+                favorite: {
+                    type: string;
+                };
+                notes: {
+                    type: string;
+                };
+                archivedAt: {
+                    type: string;
+                    format: string;
+                };
+            };
+        };
         inactivatedAt: {
             type: string;
             format: string;
@@ -169,47 +363,163 @@ export declare const MyUserSchema: {
             type: string;
             maxLength: number;
         };
+        anonymizedAt: {
+            type: string;
+            format: string;
+        };
         addedToBgVaultAt: {
             type: string;
             format: string;
         };
-        isTestUser: {
+        syncedToAnalyticsAt: {
             type: string;
-        };
-        userHandleLowerCase: {
-            type: string;
-        };
-        emailLowerCase: {
-            type: string;
+            format: string;
         };
         companyIds: {
             type: string;
             items: {
                 type: string;
-                maxLength: number;
+            };
+            maxLength: number;
+        };
+        companies: {
+            type: string;
+            items: {
+                type: string;
+            };
+            properties: {
+                id: {
+                    type: string;
+                    maxLength: number;
+                };
+                adminNotes: {
+                    type: string;
+                };
+                metadata: {
+                    type: string;
+                };
+                createdAt: {
+                    type: string;
+                    format: string;
+                };
+                createdBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                updatedAt: {
+                    type: string;
+                    format: string;
+                };
+                updatedBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                deletedAt: {
+                    type: string;
+                    format: string;
+                };
+                deletedBy: {
+                    type: string;
+                    maxLength: number;
+                };
+                userIds: {
+                    type: string;
+                    items: {
+                        type: string;
+                    };
+                };
+                name: {
+                    type: string;
+                };
+                description: {
+                    type: string;
+                };
+                location: {
+                    type: string;
+                };
+                companyTypeTextId: {
+                    type: string;
+                };
+                companyStageTextId: {
+                    type: string;
+                };
+                websites: {
+                    type: string;
+                    items: {
+                        type: string;
+                    };
+                    properties: {
+                        label: {
+                            type: string;
+                        };
+                        value: {
+                            type: string;
+                        };
+                        tags: {
+                            type: string;
+                            items: {
+                                type: string;
+                            };
+                        };
+                    };
+                };
+                industries: {
+                    type: string;
+                    items: {
+                        type: string;
+                    };
+                };
+                isOperational: {
+                    type: string;
+                };
+                isFundraising: {
+                    type: string;
+                };
+                annualRevenue: {
+                    type: string;
+                };
+                employeeCount: {
+                    type: string;
+                };
+                foundedAt: {
+                    type: string;
+                    format: string;
+                };
+                mm2UserId: {
+                    type: string;
+                    description: string;
+                };
+                mm2CompanyRole: {
+                    type: string;
+                    description: string;
+                };
+                syncedWithMm2At: {
+                    type: string;
+                    description: string;
+                    format: string;
+                };
             };
         };
-        companies: {};
         groupIds: {
             type: string;
             items: {
                 type: string;
-                maxLength: number;
             };
+            maxLength: number;
         };
         parentGroupIds: {
             type: string;
             items: {
                 type: string;
-                maxLength: number;
             };
+            maxLength: number;
         };
         externalGroupIds: {
             type: string;
             items: {
                 type: string;
-                maxLength: number;
             };
+            maxLength: number;
         };
         pronounsTextIds: {
             type: string;
@@ -217,7 +527,9 @@ export declare const MyUserSchema: {
                 type: string;
             };
         };
-        groupMemberships: {};
+        groupMemberships: {
+            type: string;
+        };
         seeksHelp: {
             type: string;
         };
@@ -246,22 +558,26 @@ export declare const MyUserSchema: {
             type: string;
             items: {
                 type: string;
-                maxLength: number;
             };
+            maxLength: number;
         };
-        academicExperiences: {};
-        genderSelfDescribed: {
-            description: string;
+        academicExperiences: {
             type: string;
+        };
+        genderSelfDescribed: {
+            type: string;
+            description: string;
         };
         businessExperienceIds: {
             type: string;
             items: {
                 type: string;
-                maxLength: number;
             };
+            maxLength: number;
         };
-        businessExperiences: {};
+        businessExperiences: {
+            type: string;
+        };
         cityOfOrigin: {
             type: string;
         };
@@ -274,48 +590,54 @@ export declare const MyUserSchema: {
         isOnVacation: {
             type: string;
         };
-        avatarAsset: {};
-        profileRoleHistory: {};
+        avatarAsset: {
+            type: string;
+        };
+        profileRoleHistory: {
+            type: string;
+        };
         ssoIdp: {
             type: string;
         };
         originatedInMm2: {
-            description: string;
             type: string;
+            description: string;
         };
         syncedWithMm2At: {
-            description: string;
             type: string;
+            description: string;
             format: string;
         };
         mm2PasswordHash: {
-            description: string;
             type: string;
+            description: string;
         };
         mm2Id: {
-            description: string;
             type: string;
+            description: string;
         };
         mm2PhotoOriginal: {
-            description: string;
             type: string;
+            description: string;
         };
         mm2BasicAccountCompleted: {
-            description: string;
             type: string;
+            description: string;
         };
         hasSignedInToMm3: {
-            description: string;
             type: string;
+            description: string;
         };
         hasSignedInToMm2: {
-            description: string;
             type: string;
+            description: string;
         };
         mentor: {
+            type: string;
             description: string;
         };
         mentee: {
+            type: string;
             description: string;
         };
     };

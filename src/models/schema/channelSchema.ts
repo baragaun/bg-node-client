@@ -1,4 +1,7 @@
 export const ChannelSchema = {
+  '$schema': 'https://json-schema.org/draft/2020-12/schema',
+  '$id': 'https://firstspark.social/channel.schema.json',
+  'title': 'Channel',
   'version': 0,
   'primaryKey': 'id',
   'type': 'object',
@@ -13,21 +16,34 @@ export const ChannelSchema = {
     'metadata': {
       'type': 'object',
       'properties': {
+        'updatedAt': {
+          'type': 'string',
+          'format': 'date-time',
+        },
         'unseenMessageInfo': {
           'type': 'array',
           'items': {
             'type': 'object',
-            'properties': {
-              'userId': {
-                'type': 'string',
-                'maxLength': 32,
-              },
-              'createdAt': {
-                'type': 'string',
-                'format': 'date-time',
-              },
+          },
+          'properties': {
+            'userId': {
+              'type': 'string',
+              'maxLength': 32,
+            },
+            'createdAt': {
+              'type': 'string',
+              'format': 'date-time',
             },
           },
+        },
+        'channelInvitationAccepted': {
+          'type': 'boolean',
+        },
+        'messagesSentByCreatorCount': {
+          'type': 'integer',
+        },
+        'messagesSentByFirstParticipantCount': {
+          'type': 'integer',
         },
       },
     },
@@ -70,116 +86,43 @@ export const ChannelSchema = {
         'type': 'string',
       },
     },
-    'channelType': {},
-    'participants': {
-      'type': 'array',
-      'items': {
-        'type': 'object',
-        'properties': {
-          'id': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'adminNotes': {
-            'type': 'string',
-          },
-          'metadata': {
-            'type': 'object',
-            'properties': {
-              'userHandle': {
-                'type': 'string',
-              },
-              'firstName': {
-                'type': 'string',
-              },
-              'lastName': {
-                'type': 'string',
-              },
-              'nickname': {
-                'type': 'string',
-              },
-              'avatarUrl': {
-                'type': 'string',
-              },
-            },
-          },
-          'createdAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
-          'createdBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'updatedAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
-          'updatedBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'deletedAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
-          'deletedBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'channelId': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'userId': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'invitedBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'channelName': {
-            'type': 'string',
-          },
-          'role': {},
-          'suspendedAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
-          'suspendedBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-        },
-      },
+    'channelType': {
+      'type': 'string',
+      'enum': [
+        'unset',
+        'mentoring',
+        'support',
+        'welcome',
+      ],
+      'enumType': 'ChannelType',
     },
     'statuses': {
       'type': 'array',
       'items': {
         'type': 'object',
-        'properties': {
-          'userId': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'archivedAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
+      },
+      'properties': {
+        'userId': {
+          'type': 'string',
+          'maxLength': 32,
+        },
+        'archivedAt': {
+          'type': 'string',
+          'format': 'date-time',
         },
       },
-    },
-    'otherUserId': {
-      'type': 'string',
-      'maxLength': 32,
     },
     'userIds': {
       'type': 'array',
       'items': {
         'type': 'string',
-        'maxLength': 32,
       },
+      'maxLength': 32,
+    },
+    'otherUserId': {
+      'type': 'string',
+      'description': 'For 1:1 channels, the ID of the other user. The first user is createdBy.',
+      'maxLength': 32,
     },
     'pausedAt': {
       'type': 'string',
@@ -218,12 +161,12 @@ export const ChannelSchema = {
       'maxLength': 32,
     },
     'mm2Id': {
-      'description': 'This attribute is only used by the MM2 synchronizer.',
       'type': 'string',
+      'description': 'This attribute is only used by the MM2 synchronizer.',
     },
     'syncedWithMm2At': {
-      'description': 'This attribute is only used by the MM2 synchronizer.',
       'type': 'string',
+      'description': 'This attribute is only used by the MM2 synchronizer.',
       'format': 'date-time',
     },
   },

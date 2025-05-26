@@ -1,4 +1,7 @@
 export declare const UserInboxSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -10,7 +13,9 @@ export declare const UserInboxSchema: {
         adminNotes: {
             type: string;
         };
-        metadata: {};
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;
@@ -39,7 +44,9 @@ export declare const UserInboxSchema: {
             type: string;
             maxLength: number;
         };
-        channels: {};
+        channels: {
+            type: string;
+        };
     };
     required: string[];
 };

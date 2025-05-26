@@ -1,4 +1,7 @@
 export declare const ClientInfoSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -10,7 +13,9 @@ export declare const ClientInfoSchema: {
         adminNotes: {
             type: string;
         };
-        metadata: {};
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;

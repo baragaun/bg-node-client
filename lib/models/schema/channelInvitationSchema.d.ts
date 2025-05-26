@@ -1,4 +1,7 @@
 export declare const ChannelInvitationSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -10,7 +13,9 @@ export declare const ChannelInvitationSchema: {
         adminNotes: {
             type: string;
         };
-        metadata: {};
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;
@@ -52,6 +57,10 @@ export declare const ChannelInvitationSchema: {
         messageText: {
             type: string;
         };
+        autoAccept: {
+            type: string;
+            description: string;
+        };
         declineReasonTextId: {
             type: string;
         };
@@ -67,7 +76,11 @@ export declare const ChannelInvitationSchema: {
             type: string;
             format: string;
         };
-        status: {};
+        status: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         suspendedAt: {
             type: string;
             format: string;
@@ -84,16 +97,16 @@ export declare const ChannelInvitationSchema: {
             type: string;
         };
         mm2ConversationId: {
-            description: string;
             type: string;
+            description: string;
         };
         mm2Id: {
-            description: string;
             type: string;
+            description: string;
         };
         syncedWithMm2At: {
-            description: string;
             type: string;
+            description: string;
             format: string;
         };
     };

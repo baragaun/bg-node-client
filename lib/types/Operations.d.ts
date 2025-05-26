@@ -24,6 +24,7 @@ import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
 import { User } from '../models/User.js';
 import { UserInbox } from '../models/UserInbox.js';
+import { UserListFilter } from '../models/UserListFilter.js';
 export interface Operations {
     count: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
     delete: (id: string, modelType: ModelType) => Promise<QueryResult<void>>;
@@ -100,5 +101,6 @@ export interface Operations {
     };
     user: {
         findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>;
+        findUsers: (filter: UserListFilter | null | undefined, match: Partial<User> | null | undefined, selector: MangoQueryTypes<User> | null | undefined, options: FindObjectsOptions, queryOptions: QueryOptions) => Promise<QueryResult<User>>;
     };
 }

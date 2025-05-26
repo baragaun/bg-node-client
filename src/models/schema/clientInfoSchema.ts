@@ -1,4 +1,7 @@
 export const ClientInfoSchema = {
+  '$schema': 'https://json-schema.org/draft/2020-12/schema',
+  '$id': 'https://firstspark.social/clientInfo.schema.json',
+  'title': 'ClientInfo',
   'version': 0,
   'primaryKey': 'id',
   'type': 'object',
@@ -10,7 +13,15 @@ export const ClientInfoSchema = {
     'adminNotes': {
       'type': 'string',
     },
-    'metadata': {},
+    'metadata': {
+      'type': 'object',
+      'properties': {
+        'updatedAt': {
+          'type': 'string',
+          'format': 'date-time',
+        },
+      },
+    },
     'createdAt': {
       'type': 'string',
       'format': 'date-time',

@@ -1,4 +1,7 @@
 export declare const ChannelMessageSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -10,7 +13,9 @@ export declare const ChannelMessageSchema: {
         adminNotes: {
             type: string;
         };
-        metadata: {};
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;
@@ -43,11 +48,17 @@ export declare const ChannelMessageSchema: {
             type: string;
             maxLength: number;
         };
-        channelMessageType: {};
+        channelMessageType: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         messageText: {
             type: string;
         };
-        statuses: {};
+        statuses: {
+            type: string;
+        };
         editedAt: {
             type: string;
             format: string;
@@ -61,16 +72,16 @@ export declare const ChannelMessageSchema: {
             maxLength: number;
         };
         mm2ConversationId: {
-            description: string;
             type: string;
+            description: string;
         };
         mm2Id: {
-            description: string;
             type: string;
+            description: string;
         };
         syncedWithMm2At: {
-            description: string;
             type: string;
+            description: string;
             format: string;
         };
     };

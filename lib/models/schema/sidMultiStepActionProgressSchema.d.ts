@@ -1,4 +1,7 @@
 export declare const SidMultiStepActionProgressSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -11,10 +14,26 @@ export declare const SidMultiStepActionProgressSchema: {
             type: string;
             maxLength: number;
         };
-        actionType: {};
-        actionStatus: {};
-        notificationMethod: {};
-        result: {};
+        actionType: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        actionStatus: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        notificationMethod: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        result: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         attemptCount: {
             type: string;
         };
@@ -22,7 +41,11 @@ export declare const SidMultiStepActionProgressSchema: {
             type: string;
             format: string;
         };
-        notificationResult: {};
+        notificationResult: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         notificationId: {
             type: string;
         };
@@ -43,7 +66,9 @@ export declare const SidMultiStepActionProgressSchema: {
             type: string;
             format: string;
         };
-        errors: {};
+        errors: {
+            type: string;
+        };
         authToken: {
             type: string;
         };
@@ -81,8 +106,12 @@ export declare const SidMultiStepActionProgressSchema: {
             type: string;
             format: string;
         };
-        events: {};
-        metadata: {};
+        events: {
+            type: string;
+        };
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;

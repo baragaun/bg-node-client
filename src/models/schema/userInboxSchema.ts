@@ -1,4 +1,7 @@
 export const UserInboxSchema = {
+  '$schema': 'https://json-schema.org/draft/2020-12/schema',
+  '$id': 'https://firstspark.social/userInbox.schema.json',
+  'title': 'UserInbox',
   'version': 0,
   'primaryKey': 'id',
   'type': 'object',
@@ -10,7 +13,15 @@ export const UserInboxSchema = {
     'adminNotes': {
       'type': 'string',
     },
-    'metadata': {},
+    'metadata': {
+      'type': 'object',
+      'properties': {
+        'updatedAt': {
+          'type': 'string',
+          'format': 'date-time',
+        },
+      },
+    },
     'createdAt': {
       'type': 'string',
       'format': 'date-time',
@@ -39,7 +50,9 @@ export const UserInboxSchema = {
       'type': 'string',
       'maxLength': 32,
     },
-    'channels': {},
+    'channels': {
+      'type': 'ChannelInbox',
+    },
   },
   'required': [
     'id',

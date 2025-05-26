@@ -61,6 +61,7 @@ import verifyMyEmail from './myUser/verifyMyEmail.js';
 import verifyMyPassword from './myUser/verifyMyPassword.js';
 import update from './update.js';
 import findUserById from './user/findUserById.js';
+import findUsers from './user/findUsers.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -145,6 +146,7 @@ const operations: Operations = {
 
   user: {
     findUserById,
+    findUsers,
   },
 };
 

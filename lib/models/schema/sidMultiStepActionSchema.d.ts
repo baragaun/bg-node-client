@@ -1,4 +1,7 @@
 export declare const SidMultiStepActionSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -10,7 +13,9 @@ export declare const SidMultiStepActionSchema: {
         adminNotes: {
             type: string;
         };
-        metadata: {};
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;
@@ -54,10 +59,26 @@ export declare const SidMultiStepActionSchema: {
         deviceUuid: {
             type: string;
         };
-        actionType: {};
-        actionStatus: {};
-        notificationMethod: {};
-        result: {};
+        actionType: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        actionStatus: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        notificationMethod: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        result: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         confirmToken: {
             type: string;
         };
@@ -68,7 +89,11 @@ export declare const SidMultiStepActionSchema: {
             type: string;
             format: string;
         };
-        notificationResult: {};
+        notificationResult: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         notificationId: {
             type: string;
         };
@@ -89,7 +114,9 @@ export declare const SidMultiStepActionSchema: {
             type: string;
             format: string;
         };
-        errors: {};
+        errors: {
+            type: string;
+        };
         password: {
             type: string;
         };

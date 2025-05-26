@@ -1,4 +1,7 @@
 export declare const UserDeviceSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -10,7 +13,9 @@ export declare const UserDeviceSchema: {
         adminNotes: {
             type: string;
         };
-        metadata: {};
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;
@@ -119,9 +124,21 @@ export declare const UserDeviceSchema: {
             type: string;
             format: string;
         };
-        authType: {};
-        identityProvider: {};
-        oauthFederatedProvider: {};
+        authType: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        identityProvider: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
+        oauthFederatedProvider: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         oauthUserId: {
             type: string;
         };

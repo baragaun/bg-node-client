@@ -1,5 +1,8 @@
 declare const schema: {
     Channel: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -13,24 +16,6 @@ declare const schema: {
             };
             metadata: {
                 type: string;
-                properties: {
-                    unseenMessageInfo: {
-                        type: string;
-                        items: {
-                            type: string;
-                            properties: {
-                                userId: {
-                                    type: string;
-                                    maxLength: number;
-                                };
-                                createdAt: {
-                                    type: string;
-                                    format: string;
-                                };
-                            };
-                        };
-                    };
-                };
             };
             createdAt: {
                 type: string;
@@ -71,116 +56,38 @@ declare const schema: {
                     type: string;
                 };
             };
-            channelType: {};
-            participants: {
+            channelType: {
                 type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        adminNotes: {
-                            type: string;
-                        };
-                        metadata: {
-                            type: string;
-                            properties: {
-                                userHandle: {
-                                    type: string;
-                                };
-                                firstName: {
-                                    type: string;
-                                };
-                                lastName: {
-                                    type: string;
-                                };
-                                nickname: {
-                                    type: string;
-                                };
-                                avatarUrl: {
-                                    type: string;
-                                };
-                            };
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                        createdBy: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        updatedAt: {
-                            type: string;
-                            format: string;
-                        };
-                        updatedBy: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        deletedAt: {
-                            type: string;
-                            format: string;
-                        };
-                        deletedBy: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        channelId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        invitedBy: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        channelName: {
-                            type: string;
-                        };
-                        role: {};
-                        suspendedAt: {
-                            type: string;
-                            format: string;
-                        };
-                        suspendedBy: {
-                            type: string;
-                            maxLength: number;
-                        };
-                    };
-                };
+                enum: string[];
+                enumType: string;
             };
             statuses: {
                 type: string;
                 items: {
                     type: string;
-                    properties: {
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        archivedAt: {
-                            type: string;
-                            format: string;
-                        };
+                };
+                properties: {
+                    userId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    archivedAt: {
+                        type: string;
+                        format: string;
                     };
                 };
-            };
-            otherUserId: {
-                type: string;
-                maxLength: number;
             };
             userIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
+            };
+            otherUserId: {
+                type: string;
+                description: string;
+                maxLength: number;
             };
             pausedAt: {
                 type: string;
@@ -219,18 +126,21 @@ declare const schema: {
                 maxLength: number;
             };
             mm2Id: {
-                description: string;
                 type: string;
+                description: string;
             };
             syncedWithMm2At: {
-                description: string;
                 type: string;
+                description: string;
                 format: string;
             };
         };
         required: string[];
     };
     ChannelInvitation: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -242,7 +152,9 @@ declare const schema: {
             adminNotes: {
                 type: string;
             };
-            metadata: {};
+            metadata: {
+                type: string;
+            };
             createdAt: {
                 type: string;
                 format: string;
@@ -284,6 +196,10 @@ declare const schema: {
             messageText: {
                 type: string;
             };
+            autoAccept: {
+                type: string;
+                description: string;
+            };
             declineReasonTextId: {
                 type: string;
             };
@@ -299,7 +215,11 @@ declare const schema: {
                 type: string;
                 format: string;
             };
-            status: {};
+            status: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
             suspendedAt: {
                 type: string;
                 format: string;
@@ -316,22 +236,25 @@ declare const schema: {
                 type: string;
             };
             mm2ConversationId: {
-                description: string;
                 type: string;
+                description: string;
             };
             mm2Id: {
-                description: string;
                 type: string;
+                description: string;
             };
             syncedWithMm2At: {
-                description: string;
                 type: string;
+                description: string;
                 format: string;
             };
         };
         required: string[];
     };
     ChannelMessage: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -343,7 +266,9 @@ declare const schema: {
             adminNotes: {
                 type: string;
             };
-            metadata: {};
+            metadata: {
+                type: string;
+            };
             createdAt: {
                 type: string;
                 format: string;
@@ -376,11 +301,17 @@ declare const schema: {
                 type: string;
                 maxLength: number;
             };
-            channelMessageType: {};
+            channelMessageType: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
             messageText: {
                 type: string;
             };
-            statuses: {};
+            statuses: {
+                type: string;
+            };
             editedAt: {
                 type: string;
                 format: string;
@@ -394,22 +325,25 @@ declare const schema: {
                 maxLength: number;
             };
             mm2ConversationId: {
-                description: string;
                 type: string;
+                description: string;
             };
             mm2Id: {
-                description: string;
                 type: string;
+                description: string;
             };
             syncedWithMm2At: {
-                description: string;
                 type: string;
+                description: string;
                 format: string;
             };
         };
         required: string[];
     };
     ChannelParticipant: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -433,10 +367,16 @@ declare const schema: {
                     lastName: {
                         type: string;
                     };
-                    nickname: {
+                    avatarUrl: {
                         type: string;
                     };
-                    avatarUrl: {
+                    sentMessageCount: {
+                        type: string;
+                    };
+                    unseenMessageCount: {
+                        type: string;
+                    };
+                    unseenSystemMessageCount: {
                         type: string;
                     };
                 };
@@ -480,7 +420,11 @@ declare const schema: {
             channelName: {
                 type: string;
             };
-            role: {};
+            role: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
             suspendedAt: {
                 type: string;
                 format: string;
@@ -493,6 +437,9 @@ declare const schema: {
         required: string[];
     };
     ClientInfo: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -504,7 +451,9 @@ declare const schema: {
             adminNotes: {
                 type: string;
             };
-            metadata: {};
+            metadata: {
+                type: string;
+            };
             createdAt: {
                 type: string;
                 format: string;
@@ -581,6 +530,9 @@ declare const schema: {
         required: string[];
     };
     Contact: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -592,7 +544,9 @@ declare const schema: {
             adminNotes: {
                 type: string;
             };
-            metadata: {};
+            metadata: {
+                type: string;
+            };
             createdAt: {
                 type: string;
                 format: string;
@@ -648,6 +602,9 @@ declare const schema: {
         required: string[];
     };
     MyUser: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -659,7 +616,9 @@ declare const schema: {
             adminNotes: {
                 type: string;
             };
-            metadata: {};
+            metadata: {
+                type: string;
+            };
             createdAt: {
                 type: string;
                 format: string;
@@ -707,8 +666,8 @@ declare const schema: {
                 type: string;
             };
             emailSource: {
-                description: string;
                 type: string;
+                description: string;
             };
             emailUpdatedAt: {
                 type: string;
@@ -735,8 +694,31 @@ declare const schema: {
             avatarUrl: {
                 type: string;
             };
-            websites: {};
-            authType: {};
+            websites: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                properties: {
+                    label: {
+                        type: string;
+                    };
+                    value: {
+                        type: string;
+                    };
+                    tags: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                    };
+                };
+            };
+            authType: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
             inviteCode: {
                 type: string;
             };
@@ -759,21 +741,53 @@ declare const schema: {
                     type: string;
                 };
             };
-            selectedUiLanguageTextId: {};
-            fallbackUiLanguageTextId: {};
-            discoverable: {
-                description: string;
+            selectedUiLanguageTextId: {
                 type: string;
+                enum: string[];
+                enumType: string;
             };
-            roles: {};
-            appFeatures: {};
+            fallbackUiLanguageTextId: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
+            discoverable: {
+                type: string;
+                description: string;
+            };
+            roles: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
+            appFeatures: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
             source: {
                 type: string;
             };
             timezone: {
                 type: string;
             };
-            preferences: {};
+            preferences: {
+                type: string;
+                properties: {
+                    shareEmail: {
+                        type: string;
+                    };
+                    sharePhoneNumber: {
+                        type: string;
+                    };
+                    showWelcomeMessage: {
+                        type: string;
+                    };
+                    notificationOptions: {
+                        type: string;
+                    };
+                };
+            };
             trustLevel: {
                 type: string;
             };
@@ -789,9 +803,143 @@ declare const schema: {
                 type: string;
                 format: string;
             };
-            userDevices: {};
-            userBlocks: {};
-            contacts: {};
+            userDevices: {
+                type: string;
+            };
+            userBlocks: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                properties: {
+                    id: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    adminNotes: {
+                        type: string;
+                    };
+                    metadata: {
+                        type: string;
+                    };
+                    createdAt: {
+                        type: string;
+                        format: string;
+                    };
+                    createdBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    updatedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    deletedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    deletedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    userId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    reasonTextId: {
+                        type: string;
+                    };
+                    notes: {
+                        type: string;
+                    };
+                    syncedToAnalyticsAt: {
+                        type: string;
+                        format: string;
+                    };
+                    syncedWithMm2At: {
+                        type: string;
+                        description: string;
+                        format: string;
+                    };
+                    mm2Id: {
+                        type: string;
+                        description: string;
+                    };
+                };
+            };
+            contacts: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                properties: {
+                    id: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    adminNotes: {
+                        type: string;
+                    };
+                    metadata: {
+                        type: string;
+                    };
+                    createdAt: {
+                        type: string;
+                        format: string;
+                    };
+                    createdBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    updatedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    deletedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    deletedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    userId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    channelId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    nickname: {
+                        type: string;
+                    };
+                    typeTextIds: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                    };
+                    favorite: {
+                        type: string;
+                    };
+                    notes: {
+                        type: string;
+                    };
+                    archivedAt: {
+                        type: string;
+                        format: string;
+                    };
+                };
+            };
             inactivatedAt: {
                 type: string;
                 format: string;
@@ -818,47 +966,163 @@ declare const schema: {
                 type: string;
                 maxLength: number;
             };
+            anonymizedAt: {
+                type: string;
+                format: string;
+            };
             addedToBgVaultAt: {
                 type: string;
                 format: string;
             };
-            isTestUser: {
+            syncedToAnalyticsAt: {
                 type: string;
-            };
-            userHandleLowerCase: {
-                type: string;
-            };
-            emailLowerCase: {
-                type: string;
+                format: string;
             };
             companyIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
+                };
+                maxLength: number;
+            };
+            companies: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                properties: {
+                    id: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    adminNotes: {
+                        type: string;
+                    };
+                    metadata: {
+                        type: string;
+                    };
+                    createdAt: {
+                        type: string;
+                        format: string;
+                    };
+                    createdBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    updatedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    deletedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    deletedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    userIds: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                    };
+                    name: {
+                        type: string;
+                    };
+                    description: {
+                        type: string;
+                    };
+                    location: {
+                        type: string;
+                    };
+                    companyTypeTextId: {
+                        type: string;
+                    };
+                    companyStageTextId: {
+                        type: string;
+                    };
+                    websites: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                        properties: {
+                            label: {
+                                type: string;
+                            };
+                            value: {
+                                type: string;
+                            };
+                            tags: {
+                                type: string;
+                                items: {
+                                    type: string;
+                                };
+                            };
+                        };
+                    };
+                    industries: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                    };
+                    isOperational: {
+                        type: string;
+                    };
+                    isFundraising: {
+                        type: string;
+                    };
+                    annualRevenue: {
+                        type: string;
+                    };
+                    employeeCount: {
+                        type: string;
+                    };
+                    foundedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    mm2UserId: {
+                        type: string;
+                        description: string;
+                    };
+                    mm2CompanyRole: {
+                        type: string;
+                        description: string;
+                    };
+                    syncedWithMm2At: {
+                        type: string;
+                        description: string;
+                        format: string;
+                    };
                 };
             };
-            companies: {};
             groupIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
             parentGroupIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
             externalGroupIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
             pronounsTextIds: {
                 type: string;
@@ -866,7 +1130,9 @@ declare const schema: {
                     type: string;
                 };
             };
-            groupMemberships: {};
+            groupMemberships: {
+                type: string;
+            };
             seeksHelp: {
                 type: string;
             };
@@ -895,22 +1161,26 @@ declare const schema: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
-            academicExperiences: {};
-            genderSelfDescribed: {
-                description: string;
+            academicExperiences: {
                 type: string;
+            };
+            genderSelfDescribed: {
+                type: string;
+                description: string;
             };
             businessExperienceIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
-            businessExperiences: {};
+            businessExperiences: {
+                type: string;
+            };
             cityOfOrigin: {
                 type: string;
             };
@@ -923,54 +1193,63 @@ declare const schema: {
             isOnVacation: {
                 type: string;
             };
-            avatarAsset: {};
-            profileRoleHistory: {};
+            avatarAsset: {
+                type: string;
+            };
+            profileRoleHistory: {
+                type: string;
+            };
             ssoIdp: {
                 type: string;
             };
             originatedInMm2: {
-                description: string;
                 type: string;
+                description: string;
             };
             syncedWithMm2At: {
-                description: string;
                 type: string;
+                description: string;
                 format: string;
             };
             mm2PasswordHash: {
-                description: string;
                 type: string;
+                description: string;
             };
             mm2Id: {
-                description: string;
                 type: string;
+                description: string;
             };
             mm2PhotoOriginal: {
-                description: string;
                 type: string;
+                description: string;
             };
             mm2BasicAccountCompleted: {
-                description: string;
                 type: string;
+                description: string;
             };
             hasSignedInToMm3: {
-                description: string;
                 type: string;
+                description: string;
             };
             hasSignedInToMm2: {
-                description: string;
                 type: string;
+                description: string;
             };
             mentor: {
+                type: string;
                 description: string;
             };
             mentee: {
+                type: string;
                 description: string;
             };
         };
         required: string[];
     };
     User: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -982,7 +1261,9 @@ declare const schema: {
             adminNotes: {
                 type: string;
             };
-            metadata: {};
+            metadata: {
+                type: string;
+            };
             createdAt: {
                 type: string;
                 format: string;
@@ -1030,8 +1311,8 @@ declare const schema: {
                 type: string;
             };
             emailSource: {
-                description: string;
                 type: string;
+                description: string;
             };
             emailUpdatedAt: {
                 type: string;
@@ -1058,8 +1339,31 @@ declare const schema: {
             avatarUrl: {
                 type: string;
             };
-            websites: {};
-            authType: {};
+            websites: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                properties: {
+                    label: {
+                        type: string;
+                    };
+                    value: {
+                        type: string;
+                    };
+                    tags: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                    };
+                };
+            };
+            authType: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
             inviteCode: {
                 type: string;
             };
@@ -1082,21 +1386,53 @@ declare const schema: {
                     type: string;
                 };
             };
-            selectedUiLanguageTextId: {};
-            fallbackUiLanguageTextId: {};
-            discoverable: {
-                description: string;
+            selectedUiLanguageTextId: {
                 type: string;
+                enum: string[];
+                enumType: string;
             };
-            roles: {};
-            appFeatures: {};
+            fallbackUiLanguageTextId: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
+            discoverable: {
+                type: string;
+                description: string;
+            };
+            roles: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
+            appFeatures: {
+                type: string;
+                enum: string[];
+                enumType: string;
+            };
             source: {
                 type: string;
             };
             timezone: {
                 type: string;
             };
-            preferences: {};
+            preferences: {
+                type: string;
+                properties: {
+                    shareEmail: {
+                        type: string;
+                    };
+                    sharePhoneNumber: {
+                        type: string;
+                    };
+                    showWelcomeMessage: {
+                        type: string;
+                    };
+                    notificationOptions: {
+                        type: string;
+                    };
+                };
+            };
             trustLevel: {
                 type: string;
             };
@@ -1112,9 +1448,143 @@ declare const schema: {
                 type: string;
                 format: string;
             };
-            userDevices: {};
-            userBlocks: {};
-            contacts: {};
+            userDevices: {
+                type: string;
+            };
+            userBlocks: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                properties: {
+                    id: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    adminNotes: {
+                        type: string;
+                    };
+                    metadata: {
+                        type: string;
+                    };
+                    createdAt: {
+                        type: string;
+                        format: string;
+                    };
+                    createdBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    updatedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    deletedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    deletedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    userId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    reasonTextId: {
+                        type: string;
+                    };
+                    notes: {
+                        type: string;
+                    };
+                    syncedToAnalyticsAt: {
+                        type: string;
+                        format: string;
+                    };
+                    syncedWithMm2At: {
+                        type: string;
+                        description: string;
+                        format: string;
+                    };
+                    mm2Id: {
+                        type: string;
+                        description: string;
+                    };
+                };
+            };
+            contacts: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                properties: {
+                    id: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    adminNotes: {
+                        type: string;
+                    };
+                    metadata: {
+                        type: string;
+                    };
+                    createdAt: {
+                        type: string;
+                        format: string;
+                    };
+                    createdBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    updatedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    deletedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    deletedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    userId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    channelId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    nickname: {
+                        type: string;
+                    };
+                    typeTextIds: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                    };
+                    favorite: {
+                        type: string;
+                    };
+                    notes: {
+                        type: string;
+                    };
+                    archivedAt: {
+                        type: string;
+                        format: string;
+                    };
+                };
+            };
             inactivatedAt: {
                 type: string;
                 format: string;
@@ -1141,47 +1611,163 @@ declare const schema: {
                 type: string;
                 maxLength: number;
             };
+            anonymizedAt: {
+                type: string;
+                format: string;
+            };
             addedToBgVaultAt: {
                 type: string;
                 format: string;
             };
-            isTestUser: {
+            syncedToAnalyticsAt: {
                 type: string;
-            };
-            userHandleLowerCase: {
-                type: string;
-            };
-            emailLowerCase: {
-                type: string;
+                format: string;
             };
             companyIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
+                };
+                maxLength: number;
+            };
+            companies: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                properties: {
+                    id: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    adminNotes: {
+                        type: string;
+                    };
+                    metadata: {
+                        type: string;
+                    };
+                    createdAt: {
+                        type: string;
+                        format: string;
+                    };
+                    createdBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    updatedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    deletedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    deletedBy: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    userIds: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                    };
+                    name: {
+                        type: string;
+                    };
+                    description: {
+                        type: string;
+                    };
+                    location: {
+                        type: string;
+                    };
+                    companyTypeTextId: {
+                        type: string;
+                    };
+                    companyStageTextId: {
+                        type: string;
+                    };
+                    websites: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                        properties: {
+                            label: {
+                                type: string;
+                            };
+                            value: {
+                                type: string;
+                            };
+                            tags: {
+                                type: string;
+                                items: {
+                                    type: string;
+                                };
+                            };
+                        };
+                    };
+                    industries: {
+                        type: string;
+                        items: {
+                            type: string;
+                        };
+                    };
+                    isOperational: {
+                        type: string;
+                    };
+                    isFundraising: {
+                        type: string;
+                    };
+                    annualRevenue: {
+                        type: string;
+                    };
+                    employeeCount: {
+                        type: string;
+                    };
+                    foundedAt: {
+                        type: string;
+                        format: string;
+                    };
+                    mm2UserId: {
+                        type: string;
+                        description: string;
+                    };
+                    mm2CompanyRole: {
+                        type: string;
+                        description: string;
+                    };
+                    syncedWithMm2At: {
+                        type: string;
+                        description: string;
+                        format: string;
+                    };
                 };
             };
-            companies: {};
             groupIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
             parentGroupIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
             externalGroupIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
             pronounsTextIds: {
                 type: string;
@@ -1189,7 +1775,9 @@ declare const schema: {
                     type: string;
                 };
             };
-            groupMemberships: {};
+            groupMemberships: {
+                type: string;
+            };
             seeksHelp: {
                 type: string;
             };
@@ -1218,22 +1806,26 @@ declare const schema: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
-            academicExperiences: {};
-            genderSelfDescribed: {
-                description: string;
+            academicExperiences: {
                 type: string;
+            };
+            genderSelfDescribed: {
+                type: string;
+                description: string;
             };
             businessExperienceIds: {
                 type: string;
                 items: {
                     type: string;
-                    maxLength: number;
                 };
+                maxLength: number;
             };
-            businessExperiences: {};
+            businessExperiences: {
+                type: string;
+            };
             cityOfOrigin: {
                 type: string;
             };
@@ -1246,54 +1838,63 @@ declare const schema: {
             isOnVacation: {
                 type: string;
             };
-            avatarAsset: {};
-            profileRoleHistory: {};
+            avatarAsset: {
+                type: string;
+            };
+            profileRoleHistory: {
+                type: string;
+            };
             ssoIdp: {
                 type: string;
             };
             originatedInMm2: {
-                description: string;
                 type: string;
+                description: string;
             };
             syncedWithMm2At: {
-                description: string;
                 type: string;
+                description: string;
                 format: string;
             };
             mm2PasswordHash: {
-                description: string;
                 type: string;
+                description: string;
             };
             mm2Id: {
-                description: string;
                 type: string;
+                description: string;
             };
             mm2PhotoOriginal: {
-                description: string;
                 type: string;
+                description: string;
             };
             mm2BasicAccountCompleted: {
-                description: string;
                 type: string;
+                description: string;
             };
             hasSignedInToMm3: {
-                description: string;
                 type: string;
+                description: string;
             };
             hasSignedInToMm2: {
-                description: string;
                 type: string;
+                description: string;
             };
             mentor: {
+                type: string;
                 description: string;
             };
             mentee: {
+                type: string;
                 description: string;
             };
         };
         required: string[];
     };
     UserInbox: {
+        $schema: string;
+        $id: string;
+        title: string;
         version: number;
         primaryKey: string;
         type: string;
@@ -1305,7 +1906,9 @@ declare const schema: {
             adminNotes: {
                 type: string;
             };
-            metadata: {};
+            metadata: {
+                type: string;
+            };
             createdAt: {
                 type: string;
                 format: string;
@@ -1334,7 +1937,9 @@ declare const schema: {
                 type: string;
                 maxLength: number;
             };
-            channels: {};
+            channels: {
+                type: string;
+            };
         };
         required: string[];
     };

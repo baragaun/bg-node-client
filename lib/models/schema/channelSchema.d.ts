@@ -1,4 +1,7 @@
 export declare const ChannelSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -12,24 +15,6 @@ export declare const ChannelSchema: {
         };
         metadata: {
             type: string;
-            properties: {
-                unseenMessageInfo: {
-                    type: string;
-                    items: {
-                        type: string;
-                        properties: {
-                            userId: {
-                                type: string;
-                                maxLength: number;
-                            };
-                            createdAt: {
-                                type: string;
-                                format: string;
-                            };
-                        };
-                    };
-                };
-            };
         };
         createdAt: {
             type: string;
@@ -70,116 +55,38 @@ export declare const ChannelSchema: {
                 type: string;
             };
         };
-        channelType: {};
-        participants: {
+        channelType: {
             type: string;
-            items: {
-                type: string;
-                properties: {
-                    id: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    adminNotes: {
-                        type: string;
-                    };
-                    metadata: {
-                        type: string;
-                        properties: {
-                            userHandle: {
-                                type: string;
-                            };
-                            firstName: {
-                                type: string;
-                            };
-                            lastName: {
-                                type: string;
-                            };
-                            nickname: {
-                                type: string;
-                            };
-                            avatarUrl: {
-                                type: string;
-                            };
-                        };
-                    };
-                    createdAt: {
-                        type: string;
-                        format: string;
-                    };
-                    createdBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    updatedAt: {
-                        type: string;
-                        format: string;
-                    };
-                    updatedBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    deletedAt: {
-                        type: string;
-                        format: string;
-                    };
-                    deletedBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    channelId: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    userId: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    invitedBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    channelName: {
-                        type: string;
-                    };
-                    role: {};
-                    suspendedAt: {
-                        type: string;
-                        format: string;
-                    };
-                    suspendedBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                };
-            };
+            enum: string[];
+            enumType: string;
         };
         statuses: {
             type: string;
             items: {
                 type: string;
-                properties: {
-                    userId: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    archivedAt: {
-                        type: string;
-                        format: string;
-                    };
+            };
+            properties: {
+                userId: {
+                    type: string;
+                    maxLength: number;
+                };
+                archivedAt: {
+                    type: string;
+                    format: string;
                 };
             };
-        };
-        otherUserId: {
-            type: string;
-            maxLength: number;
         };
         userIds: {
             type: string;
             items: {
                 type: string;
-                maxLength: number;
             };
+            maxLength: number;
+        };
+        otherUserId: {
+            type: string;
+            description: string;
+            maxLength: number;
         };
         pausedAt: {
             type: string;
@@ -218,12 +125,12 @@ export declare const ChannelSchema: {
             maxLength: number;
         };
         mm2Id: {
-            description: string;
             type: string;
+            description: string;
         };
         syncedWithMm2At: {
-            description: string;
             type: string;
+            description: string;
             format: string;
         };
     };

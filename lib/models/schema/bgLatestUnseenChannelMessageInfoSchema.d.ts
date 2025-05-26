@@ -1,0 +1,19 @@
+export declare const BgLatestUnseenChannelMessageInfoSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
+    version: number;
+    primaryKey: string;
+    type: string;
+    properties: {
+        userId: {
+            type: string;
+            maxLength: number;
+        };
+        createdAt: {
+            type: string;
+            format: string;
+        };
+    };
+    required: string[];
+};

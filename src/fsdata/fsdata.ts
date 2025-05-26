@@ -38,6 +38,7 @@ import verifyMyPassword from './operations/myUser/verifyMyPassword.js';
 import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
 import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
+import findUsers from './operations/user/findUsers.js';
 
 const fsdata = {
   create,
@@ -94,6 +95,7 @@ const fsdata = {
 
   user: {
     findUserById,
+    findUsers,
   },
 };
 

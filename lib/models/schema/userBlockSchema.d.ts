@@ -1,4 +1,7 @@
 export declare const UserBlockSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -10,7 +13,9 @@ export declare const UserBlockSchema: {
         adminNotes: {
             type: string;
         };
-        metadata: {};
+        metadata: {
+            type: string;
+        };
         createdAt: {
             type: string;
             format: string;
@@ -45,14 +50,18 @@ export declare const UserBlockSchema: {
         notes: {
             type: string;
         };
-        syncedWithMm2At: {
-            description: string;
+        syncedToAnalyticsAt: {
             type: string;
             format: string;
         };
-        mm2Id: {
-            description: string;
+        syncedWithMm2At: {
             type: string;
+            description: string;
+            format: string;
+        };
+        mm2Id: {
+            type: string;
+            description: string;
         };
     };
     required: string[];

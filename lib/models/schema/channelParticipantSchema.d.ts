@@ -1,4 +1,7 @@
 export declare const ChannelParticipantSchema: {
+    $schema: string;
+    $id: string;
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -22,10 +25,16 @@ export declare const ChannelParticipantSchema: {
                 lastName: {
                     type: string;
                 };
-                nickname: {
+                avatarUrl: {
                     type: string;
                 };
-                avatarUrl: {
+                sentMessageCount: {
+                    type: string;
+                };
+                unseenMessageCount: {
+                    type: string;
+                };
+                unseenSystemMessageCount: {
                     type: string;
                 };
             };
@@ -69,7 +78,11 @@ export declare const ChannelParticipantSchema: {
         channelName: {
             type: string;
         };
-        role: {};
+        role: {
+            type: string;
+            enum: string[];
+            enumType: string;
+        };
         suspendedAt: {
             type: string;
             format: string;
