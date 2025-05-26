@@ -8,7 +8,7 @@ import { QueryResult } from '../types/QueryResult.js';
 
 let _db: RxDatabase | undefined = undefined;
 
-const findByMatch = async <T extends Model = Model>(
+const find = async <T extends Model = Model>(
   query: MangoQuery<T>,
   modelType: ModelType,
 ): Promise<QueryResult<T>> => {
@@ -38,4 +38,4 @@ const findByMatch = async <T extends Model = Model>(
   };
 };
 
-export default findByMatch;
+export default find;

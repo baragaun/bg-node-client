@@ -1,6 +1,7 @@
 import { MangoQuery } from 'rxdb';
 import { ChannelInvitationDirection, DeclineChannelInvitationReasonTextId as DeclineChannelInvitationReasonTextIdFromClient, ModelType, NotificationMethod, ReportUserReasonTextId, UserIdentType } from '../enums.js';
 import { FindObjectsOptions } from './FindObjectsOptions.js';
+import { MangoQueryTypes } from './mangoQuery.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
 import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
 import { QueryOptions } from './QueryOptions.js';
@@ -21,6 +22,7 @@ import { MyUser } from '../models/MyUser.js';
 import { MyUserChanges } from '../models/MyUserChanges.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
+import { User } from '../models/User.js';
 import { UserInbox } from '../models/UserInbox.js';
 export interface Operations {
     count: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
@@ -35,8 +37,8 @@ export interface Operations {
     channel: {
         createChannel: (attributes: Partial<Channel>) => Promise<QueryResult<Channel>>;
         deleteChannel: (id: string) => Promise<QueryResult<void>>;
-        findChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
-        findMyChannels: (filter: ChannelListFilter | null | undefined, match: Partial<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
+        findChannels: (filter: ChannelListFilter, match: Partial<Channel>, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
+        findMyChannels: (filter: ChannelListFilter | null | undefined, match: Partial<Channel> | null | undefined, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
         findMyArchivedChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
         isChannelArchivedForMe: (channel: Channel) => boolean;
         updateChannel: (changes: Partial<Channel>, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
@@ -46,20 +48,20 @@ export interface Operations {
         createChannelInvitation: (attributes: Partial<ChannelInvitation>) => Promise<QueryResult<ChannelInvitation>>;
         declineChannelInvitation: (id: string, reasonTextId: DeclineChannelInvitationReasonTextIdFromClient) => Promise<QueryResult<ChannelInvitation>>;
         deleteChannelInvitation: (id: string) => Promise<QueryResult<void>>;
-        findChannelInvitations: (filter: ChannelInvitationListFilter, match: Partial<ChannelInvitation>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
+        findChannelInvitations: (filter: ChannelInvitationListFilter, match: Partial<ChannelInvitation>, selector: MangoQueryTypes<ChannelInvitation> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
         findChannelInvitationsForUser: (userId: string, onlyUnseen: boolean, onlyPending: boolean, direction: ChannelInvitationDirection, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
         updateChannelInvitation: (changes: Partial<ChannelInvitation>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
     };
     channelMessage: {
         createChannelMessage: (attributes: Partial<ChannelMessage>) => Promise<QueryResult<ChannelMessage>>;
         deleteChannelMessage: (id: string) => Promise<QueryResult<void>>;
-        findChannelMessages: (filter: ChannelMessageListFilter, match: Partial<ChannelMessage>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelMessage>>;
+        findChannelMessages: (filter: ChannelMessageListFilter, match: Partial<ChannelMessage>, selector: MangoQueryTypes<ChannelMessage> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelMessage>>;
         updateChannelMessage: (changes: Partial<ChannelMessage>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelMessage>>;
     };
     channelParticipant: {
         createChannelParticipant: (attributes: Partial<ChannelParticipant>) => Promise<QueryResult<ChannelParticipant>>;
         deleteChannelParticipant: (id: string) => Promise<QueryResult<void>>;
-        findChannelParticipants: (filter: ChannelParticipantListFilter, match: Partial<ChannelParticipant>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelParticipant>>;
+        findChannelParticipants: (filter: ChannelParticipantListFilter, match: Partial<ChannelParticipant>, selector: MangoQueryTypes<ChannelParticipant> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelParticipant>>;
         updateChannelParticipant: (changes: Partial<ChannelParticipant>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelParticipant>>;
     };
     myUser: {
@@ -95,5 +97,8 @@ export interface Operations {
         removeMultiStepActionListener: (actionId: string, id: string) => boolean;
         sendMultiStepActionNotification: (actionId: string, email: string | undefined, phoneNumber: string | undefined, notificationMethod: NotificationMethod) => Promise<QueryResult<string>>;
         verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<QueryResult<SidMultiStepActionProgress>>;
+    };
+    user: {
+        findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>;
     };
 }

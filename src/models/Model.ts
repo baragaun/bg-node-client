@@ -34,4 +34,8 @@ export abstract class Model {
       }
     }
   }
+
+  static get searchFields(): string[] {
+    return [];
+  }
 }

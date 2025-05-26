@@ -21,7 +21,7 @@ describe('operations.channel.createChannel', () => {
     expect(client).toBeDefined();
 
     await signMeUpSpecHelper(undefined, false, client);
-    await createChannelSpecHelper(props, client);
+    await createChannelSpecHelper(props, 0, client);
   });
 
   test('should create a channel with the given properties (mock mode)', async () => {
@@ -32,6 +32,6 @@ describe('operations.channel.createChannel', () => {
     expect(client).toBeDefined();
 
     await signMeUpSpecHelper(undefined, false, client);
-    await createChannelSpecHelper(props, client);
+    await createChannelSpecHelper(props, 0, client);
   });
 });

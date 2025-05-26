@@ -1,1 +1,1 @@
-{"version":3,"file":"BgChannelListFilter.js","sourceRoot":"","sources":["../../src/models/BgChannelListFilter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,qBAAqB,CAAC;AAErD,MAAM,OAAO,mBAAoB,SAAQ,cAAc;IAC9C,MAAM,CAAiB;CAC/B"}
+{"version":3,"file":"BgChannelListFilter.js","sourceRoot":"","sources":["../../src/models/BgChannelListFilter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,qBAAqB,CAAC;AAGrD,MAAM,OAAO,mBAAoB,SAAQ,cAAc;IAC9C,MAAM,CAAiB;IACvB,OAAO,CAAmB;IAC1B,gBAAgB,CAAkB;IAClC,wBAAwB,CAAkB;IAC1C,uBAAuB,CAA8B;IACrD,qBAAqB,CAA8B;CAC3D"}

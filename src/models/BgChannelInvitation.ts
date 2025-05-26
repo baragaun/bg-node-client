@@ -71,4 +71,8 @@ export class BgChannelInvitation extends BaseModel {
       }
     }
   }
+
+  static get searchFields(): string[] {
+    return ['messageText'];
+  }
 }

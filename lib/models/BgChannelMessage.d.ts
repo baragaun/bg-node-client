@@ -14,4 +14,5 @@ export declare class BgChannelMessage extends BaseModel {
     suspendedAt?: string | null;
     suspendedBy?: string | null;
     constructor(attributes?: Partial<BgChannelMessage>);
+    static get searchFields(): string[];
 }

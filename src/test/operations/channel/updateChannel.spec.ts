@@ -14,7 +14,7 @@ describe('operations.channel.updateChannel', () => {
     expect(client).toBeDefined();
 
     await signMeUpSpecHelper(undefined, false, client);
-    const channel = await createChannelSpecHelper(props, client);
+    const channel = await createChannelSpecHelper(props, 0, client);
     const updatedChannel = await updateChannelSpecHelper(
       {
         id: channel.id,

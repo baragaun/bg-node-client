@@ -67,12 +67,7 @@ describe('operations.findById', () => {
     let channel: Channel;
 
     beforeAll(async () => {
-      channel = await createChannelSpecHelper(
-        {
-          createdBy: users[0].id!,
-        },
-        client,
-      );
+      channel = await createChannelSpecHelper({ createdBy: users[0].id! }, 0, client );
     });
 
     test('should find the channel on the network', async () => {

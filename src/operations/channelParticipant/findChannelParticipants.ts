@@ -3,15 +3,18 @@ import { CachePolicy, ModelType } from '../../enums.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import buildQuery from '../../helpers/objectQuery/buildQuery.js';
 import { ChannelParticipant } from '../../models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from '../../models/ChannelParticipantListFilter.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
+import { MangoQueryTypes } from '../../types/mangoQuery.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const findChannelParticipants = async (
   filter: ChannelParticipantListFilter,
   match: Partial<ChannelParticipant>,
+  selector: MangoQueryTypes<ChannelParticipant> | null | undefined,
   options: FindObjectsOptions,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<ChannelParticipant>> => {
@@ -31,36 +34,22 @@ const findChannelParticipants = async (
     //------------------------------------------------------------------------------------------------
     // Local cache
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
-      if (Array.isArray(filter.ids) && filter.ids.length === 1) {
-        return db.findById<ChannelParticipant>(
-          filter.ids[0],
-          ModelType.ChannelParticipant,
-        );
+      if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
+        return db.findById<ChannelParticipant>(filter.ids[0], ModelType.ChannelParticipant);
       }
 
-      // todo: apply filter
-      const localResult = await db.findAll<ChannelParticipant>(
-        ModelType.ChannelParticipant,
+      const localQuery = buildQuery<ChannelParticipant, ChannelParticipantListFilter>(
+        ModelType.Channel,
+        filter,
+        match,
+        selector,
+        options,
       );
-      let list: ChannelParticipant[] = localResult.objects;
 
-      if (filter.channelId || match.channelId) {
-        list = list.filter(
-          (m) => m.channelId === filter.channelId || match.channelId,
-        );
-      }
+      const localResult = await db.find<ChannelParticipant>(localQuery, ModelType.ChannelParticipant);
 
-      if (options.skip > 0 && options.limit > 0) {
-        list = list.slice(options.skip, options.skip + options.limit);
-      }
-
-      if ((!localResult.error && list) || !allowNetwork) {
-        return {
-          objects: list.sort(
-            (a, b) =>
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-          ),
-        };
+      if ((!localResult.error && localResult.objects) || !allowNetwork) {
+        return localResult;
       }
     }
 

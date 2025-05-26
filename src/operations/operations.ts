@@ -60,6 +60,7 @@ import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import verifyMyPassword from './myUser/verifyMyPassword.js';
 import update from './update.js';
+import findUserById from './user/findUserById.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -140,6 +141,10 @@ const operations: Operations = {
     removeMultiStepActionListener,
     sendMultiStepActionNotification,
     verifyMultiStepActionToken,
+  },
+
+  user: {
+    findUserById,
   },
 };
 

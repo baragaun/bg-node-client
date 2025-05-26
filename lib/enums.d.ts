@@ -16,7 +16,10 @@ export declare enum ChannelType {
 }
 export declare enum ChannelMessageType {
     unset = "unset",
-    test = "test"
+    invitation = "invitation",
+    support = "support",
+    system = "system",
+    welcome = "welcome"
 }
 export declare enum ChannelParticipantRole {
     unset = "unset",

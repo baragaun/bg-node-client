@@ -1,0 +1,42 @@
+import { beforeAll, describe, expect, test } from 'vitest';
+
+import { BgNodeClient } from '../../../BgNodeClient.js';
+import signMeOut from '../../../operations/myUser/signMeOut.js';
+import clientStore from '../../helpers/clientStore.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
+import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
+
+describe('operations.findUserById', () => {
+  let client: BgNodeClient;
+
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
+  test('should find my user on the network', async () => {
+    const otherUser = await signMeUpSpecHelper(undefined, false, client);
+    const otherUserPassword = getTestUserPropsSpecHelper(otherUser).password;
+
+    await signMeOut();
+
+    await signMeUpSpecHelper(undefined, false, client);
+
+    const response = await client.operations.user.findUserById(otherUser.id);
+    const reloadedUser = response.object;
+
+    expect(response.error).toBeUndefined();
+    expect(response.object).toBeDefined();
+    expect(reloadedUser.id).toBe(otherUser.id);
+    expect(reloadedUser.userHandle).toBe(otherUser.userHandle);
+    expect(reloadedUser.firstName).toBe(otherUser.firstName);
+    expect(reloadedUser.lastName).toBe(otherUser.lastName);
+
+    await deleteMyUserSpecHelper(client);
+
+    // Cleanup for otherUser:
+    await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
+    await deleteMyUserSpecHelper(client);
+  });
+}, 100000);

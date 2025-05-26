@@ -16,4 +16,5 @@ export declare class BgChannelInvitation extends BaseModel {
     userSearchId?: string | null;
     searchRank?: number | null;
     constructor(attributes?: Partial<BgChannelInvitation>);
+    static get searchFields(): string[];
 }

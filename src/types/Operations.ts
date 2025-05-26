@@ -9,6 +9,7 @@ import {
   UserIdentType,
 } from '../enums.js';
 import { FindObjectsOptions } from './FindObjectsOptions.js';
+import { MangoQueryTypes } from './mangoQuery.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
 import { MultiStepActionProgressResult } from './MultiStepActionProgressResult.js';
 import { QueryOptions } from './QueryOptions.js';
@@ -29,6 +30,7 @@ import { MyUser } from '../models/MyUser.js';
 import { MyUserChanges } from '../models/MyUserChanges.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
+import { User } from '../models/User.js';
 import { UserInbox } from '../models/UserInbox.js';
 
 export interface Operations {
@@ -91,6 +93,7 @@ export interface Operations {
     findChannels: (
       filter: ChannelListFilter,
       match: Partial<Channel>,
+      selector: MangoQueryTypes<Channel> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
@@ -98,6 +101,7 @@ export interface Operations {
     findMyChannels: (
       filter: ChannelListFilter | null | undefined,
       match: Partial<Channel> | null | undefined,
+      selector: MangoQueryTypes<Channel> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
@@ -138,6 +142,7 @@ export interface Operations {
     findChannelInvitations: (
       filter: ChannelInvitationListFilter,
       match: Partial<ChannelInvitation>,
+      selector: MangoQueryTypes<ChannelInvitation> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelInvitation>>;
@@ -169,6 +174,7 @@ export interface Operations {
     findChannelMessages: (
       filter: ChannelMessageListFilter,
       match: Partial<ChannelMessage>,
+      selector: MangoQueryTypes<ChannelMessage> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelMessage>>;
@@ -191,6 +197,7 @@ export interface Operations {
     findChannelParticipants: (
       filter: ChannelParticipantListFilter,
       match: Partial<ChannelParticipant>,
+      selector: MangoQueryTypes<ChannelParticipant> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelParticipant>>;
@@ -317,5 +324,9 @@ export interface Operations {
       confirmToken: string,
       newPassword?: string,
     ) => Promise<QueryResult<SidMultiStepActionProgress>>;
+  };
+
+  user: {
+    findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>
   };
 }

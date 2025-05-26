@@ -4,15 +4,18 @@ import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import buildQuery from '../../helpers/objectQuery/buildQuery.js';
 import { Channel } from '../../models/Channel.js';
 import { ChannelListFilter } from '../../models/ChannelListFilter.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
+import { MangoQueryTypes } from '../../types/mangoQuery.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const findMyChannels = async (
   filter: ChannelListFilter | null | undefined,
   match: Partial<Channel> | null | undefined,
+  selector: MangoQueryTypes<Channel> | null | undefined,
   options: FindObjectsOptions,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<Channel>> => {
@@ -27,6 +30,12 @@ const findMyChannels = async (
       return { error: 'unauthorized' };
     }
 
+    const myUserId = libData.clientInfoStore().myUserId;
+    if (!myUserId) {
+      logger.error('findMyChannels: myUserId not set');
+      return { error: 'unauthorized' };
+    }
+
     const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
@@ -36,36 +45,26 @@ const findMyChannels = async (
         return db.findById<Channel>(filter.ids[0], ModelType.Channel);
       }
 
-      const localResult = await db.findAll<Channel>(ModelType.Channel);
-      let list: Channel[] = localResult.objects;
-
-      if (filter?.userId) {
-        list = list.filter((channel) => {
-          if (!Array.isArray(channel.userIds)) {
-            return { error: 'channel-missing-userid' };
-          }
-
-          return channel.userIds.includes(filter.userId as string);
-        });
+      if (filter) {
+        if (!filter.userId) {
+          filter.userId = myUserId;
+        }
+      } else {
+        filter = { userId: myUserId };
       }
 
-      if (match.name) {
-        list = list.filter(
-          (c) => c.name && c.name.localeCompare(match.name as string) === 0,
-        );
-      }
+      const localQuery = buildQuery<Channel, ChannelListFilter>(
+        ModelType.Channel,
+        filter,
+        match,
+        selector,
+        options,
+      );
 
-      if (options.skip > 0 && options.limit > 0) {
-        list = list.slice(options.skip, options.skip + options.limit);
-      }
+      const localResult = await db.find<Channel>(localQuery, ModelType.Channel);
 
-      if ((!localResult.error && list) || !allowNetwork) {
-        return {
-          objects: list.sort(
-            (a, b) =>
-              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-          ),
-        };
+      if ((!localResult.error && localResult.objects) || !allowNetwork) {
+        return localResult;
       }
     }
 
