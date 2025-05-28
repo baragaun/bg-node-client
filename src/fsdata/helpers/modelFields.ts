@@ -13,6 +13,16 @@ const channel = {
   tags: true,
   channelType: true,
   userIds: true,
+  metadata: {
+    updatedAt: true,
+    unseenMessageInfo: {
+      userId: true,
+      createdAt: true,
+    },
+    channelInvitationAccepted: true,
+    messagesSentByCreatorCount: true,
+    messagesSentByFirstParticipantCount: true,
+  },
   pausedAt: true,
   pausedBy: true,
   suspendedAt: true,

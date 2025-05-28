@@ -1,4 +1,5 @@
 import createChannel from './operations/channel/createChannel.js';
+import findChannelById from './operations/channel/findChannelById.js';
 import findChannels from './operations/channel/findChannels.js';
 import findMyChannels from './operations/channel/findMyChannels.js';
 import updateChannel from './operations/channel/updateChannel.js';
@@ -49,6 +50,7 @@ const fsdata = {
 
   channel: {
     createChannel,
+    findChannelById,
     findChannels,
     findMyChannels,
     updateChannel,

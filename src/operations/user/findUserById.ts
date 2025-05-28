@@ -46,7 +46,9 @@ const findUserById = async (
     if (response.error) {
       logger.error('findUserById: fsdata.findUserById failed', { error: response.error });
       return response;
-    } else if (response.object) {
+    }
+
+    if (response.object) {
       // todo: What if the object does not exist anymore. How do we delete it from the local store?
       // Update local cache:
       await db.replace<User>(response.object, ModelType.User);
