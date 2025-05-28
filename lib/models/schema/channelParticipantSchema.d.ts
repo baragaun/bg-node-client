@@ -1,6 +1,4 @@
 export declare const ChannelParticipantSchema: {
-    $schema: string;
-    $id: string;
     title: string;
     version: number;
     primaryKey: string;
@@ -12,21 +10,26 @@ export declare const ChannelParticipantSchema: {
         };
         adminNotes: {
             type: string;
+            nullable: boolean;
         };
         metadata: {
             type: string;
             properties: {
                 userHandle: {
                     type: string;
+                    nullable: boolean;
                 };
                 firstName: {
                     type: string;
+                    nullable: boolean;
                 };
                 lastName: {
                     type: string;
+                    nullable: boolean;
                 };
                 avatarUrl: {
                     type: string;
+                    nullable: boolean;
                 };
                 sentMessageCount: {
                     type: string;
@@ -38,6 +41,7 @@ export declare const ChannelParticipantSchema: {
                     type: string;
                 };
             };
+            nullable: boolean;
         };
         createdAt: {
             type: string;
@@ -46,22 +50,27 @@ export declare const ChannelParticipantSchema: {
         createdBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         updatedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         updatedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         deletedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         deletedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         channelId: {
             type: string;
@@ -74,22 +83,26 @@ export declare const ChannelParticipantSchema: {
         invitedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         channelName: {
             type: string;
+            nullable: boolean;
         };
         role: {
             type: string;
             enum: string[];
-            enumType: string;
+            nullable: boolean;
         };
         suspendedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         suspendedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
     };
     required: string[];

@@ -8,6 +8,7 @@ import {
   ReportUserReasonTextId,
   UserIdentType,
 } from '../enums.js';
+import { FindChannelOptions, FindChannelResult } from './findChannelTypes.js';
 import { FindObjectsOptions } from './FindObjectsOptions.js';
 import { MangoQueryTypes } from './mangoQuery.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
@@ -90,6 +91,12 @@ export interface Operations {
     ) => Promise<QueryResult<Channel>>;
 
     deleteChannel: (id: string) => Promise<QueryResult<void>>;
+
+    findChannelById: (
+      id: string,
+      options: FindChannelOptions,
+      queryOptions: QueryOptions,
+    ) => Promise<FindChannelResult>;
 
     findChannels: (
       filter: ChannelListFilter,

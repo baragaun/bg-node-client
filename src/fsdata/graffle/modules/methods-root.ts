@@ -626,6 +626,46 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  findChannelParticipants: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findChannelParticipants<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findChannelParticipants: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findChannelParticipants'
+      >
+    >
+  >;
+
+  findChannelParticipantsForChannel: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findChannelParticipantsForChannel<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findChannelParticipantsForChannel: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findChannelParticipantsForChannel'
+      >
+    >
+  >;
+
   findChannelParticipantById: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(

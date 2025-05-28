@@ -1090,6 +1090,10 @@ const ChannelListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
     },
     userId: {},
     userIds: {},
+    mustHaveMessages: {},
+    invitationMustBeAccepted: {},
+    includeArchivedMessages: {},
+    includeSystemMessages: {},
   },
 };
 
@@ -1191,6 +1195,66 @@ const ChannelMessageListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
     includeChannelMessageType: {},
     received: {},
     seen: {},
+  },
+};
+
+const ChannelParticipantInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'ChannelParticipantInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'suspendedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    channelId: {},
+    userId: {},
+    invitedBy: {},
+    channelName: {},
+    role: {},
+    suspendedAt: {
+      nt: DateTimeISO,
+    },
+    suspendedBy: {},
+  },
+};
+
+const ChannelParticipantListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'ChannelParticipantListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
   },
 };
 
@@ -1708,6 +1772,7 @@ const ChannelInvitationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     channelName: {},
     channelTopic: {},
     messageText: {},
+    autoAccept: {},
     declineReasonTextId: {},
     dismissedFromInboxBySenderAt: {
       nt: DateTimeISO,
@@ -1740,42 +1805,6 @@ const BgAddChannelMessageEventInput: $$Utilities.SchemaDrivenDataMap.InputObject
     messageIds: {},
     recipientId: {},
     event: {},
-  },
-};
-
-const ChannelParticipantInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'ChannelParticipantInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'suspendedAt'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    channelId: {},
-    userId: {},
-    invitedBy: {},
-    channelName: {},
-    role: {},
-    suspendedAt: {
-      nt: DateTimeISO,
-    },
-    suspendedBy: {},
   },
 };
 
@@ -3164,10 +3193,10 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     anonymizedAt: {
       nt: DateTimeISO,
     },
-    syncedToAnalyticsAt: {
+    addedToBgVaultAt: {
       nt: DateTimeISO,
     },
-    addedToBgVaultAt: {
+    syncedToAnalyticsAt: {
       nt: DateTimeISO,
     },
     companyIds: {},
@@ -4204,6 +4233,7 @@ const ChannelInvitation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     channelName: {},
     channelTopic: {},
     messageText: {},
+    autoAccept: {},
     declineReasonTextId: {},
     dismissedFromInboxBySenderAt: {
       nt: DateTimeISO,
@@ -4416,7 +4446,6 @@ const BgChannelParticipantMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject
     userHandle: {},
     firstName: {},
     lastName: {},
-    nickname: {},
     avatarUrl: {},
     sentMessageCount: {},
     unseenMessageCount: {},
@@ -5882,10 +5911,10 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     anonymizedAt: {
       nt: DateTimeISO,
     },
-    syncedToAnalyticsAt: {
+    addedToBgVaultAt: {
       nt: DateTimeISO,
     },
-    addedToBgVaultAt: {
+    syncedToAnalyticsAt: {
       nt: DateTimeISO,
     },
     companyIds: {},
@@ -7078,6 +7107,36 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
       // nt: ChannelMessage, <-- Assigned later to avoid potential circular dependency.
+    },
+    findChannelParticipants: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: ChannelParticipantInput,
+          it: [0],
+        },
+        filter: {
+          nt: ChannelParticipantListFilter,
+          it: [0],
+        },
+      },
+      // nt: ChannelParticipant, <-- Assigned later to avoid potential circular dependency.
+    },
+    findChannelParticipantsForChannel: {
+      a: {
+        match: {
+          nt: ChannelParticipantInput,
+          it: [0],
+        },
+        channelId: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ChannelParticipant, <-- Assigned later to avoid potential circular dependency.
     },
     findChannelParticipantById: {
       a: {
@@ -8629,6 +8688,8 @@ ChannelInput.f!['statuses']!.nt = BgChannelStatusInput;
 ChannelMessageInput.f!['events']!.nt = ModelEventInput;
 ChannelMessageInput.f!['metadata']!.nt = BaseModelMetadataInput;
 ChannelMessageInput.f!['statuses']!.nt = ChannelMessageStatusInput;
+ChannelParticipantInput.f!['events']!.nt = ModelEventInput;
+ChannelParticipantInput.f!['metadata']!.nt = BaseModelMetadataInput;
 GroupInput.f!['events']!.nt = ModelEventInput;
 GroupInput.f!['metadata']!.nt = BaseModelMetadataInput;
 GroupInput.f!['appliedGroupRules']!.nt = AppliedGroupRuleInput;
@@ -8647,8 +8708,6 @@ AdminTaskInput.f!['events']!.nt = ModelEventInput;
 AdminTaskInput.f!['metadata']!.nt = BaseModelMetadataInput;
 ChannelInvitationInput.f!['events']!.nt = ModelEventInput;
 ChannelInvitationInput.f!['metadata']!.nt = BaseModelMetadataInput;
-ChannelParticipantInput.f!['events']!.nt = ModelEventInput;
-ChannelParticipantInput.f!['metadata']!.nt = BaseModelMetadataInput;
 ContentTagInput.f!['events']!.nt = ModelEventInput;
 ContentTagInput.f!['metadata']!.nt = BaseModelMetadataInput;
 ContentTagInput.f!['moderationConcern']!.nt = ModerationConcernInput;
@@ -9059,6 +9118,8 @@ Query.f['find1On1Channel']!.nt = Channel;
 Query.f['findMyChannels']!.nt = Channel;
 Query.f['findChannelMessageById']!.nt = ChannelMessage;
 Query.f['findChannelMessages']!.nt = ChannelMessage;
+Query.f['findChannelParticipants']!.nt = ChannelParticipant;
+Query.f['findChannelParticipantsForChannel']!.nt = ChannelParticipant;
 Query.f['findChannelParticipantById']!.nt = ChannelParticipant;
 Query.f['findDeclineChannelInvitationReasons']!.nt = DeclineChannelInvitationReason;
 Query.f['findOptions']!.nt = Option;
@@ -9266,6 +9327,8 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ChannelMessageInput,
     ChannelMessageStatusInput,
     ChannelMessageListFilter,
+    ChannelParticipantInput,
+    ChannelParticipantListFilter,
     GroupMembershipListFilter,
     GroupInput,
     AppliedGroupRuleInput,
@@ -9284,7 +9347,6 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     AdminTaskInput,
     ChannelInvitationInput,
     BgAddChannelMessageEventInput,
-    ChannelParticipantInput,
     ContentTagInput,
     ModerationConcernInput,
     MenteesGroupMembershipInput,

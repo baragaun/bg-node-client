@@ -1,6 +1,7 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { Channel } from '../../../models/Channel.js';
+import { ChannelListFilter as ChannelListFilterFromClient } from '../../../models/ChannelListFilter.js';
 import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
@@ -22,7 +23,7 @@ type ResponseDataType = {
 };
 
 const findChannels = async (
-  filter: ChannelListFilter | null | undefined,
+  filter: ChannelListFilterFromClient | null | undefined,
   match: Partial<Channel> | null | undefined,
   options: FindObjectsOptionsFromClient,
 ): Promise<QueryResult<Channel>> => {
@@ -34,7 +35,7 @@ const findChannels = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindChannelsArgs = {
-      filter,
+      filter: (filter || null) as unknown as ChannelListFilter | null,
       match: match as unknown as InputMaybe<ChannelInput>,
       options: options as unknown as InputMaybe<FindObjectsOptions>,
     };

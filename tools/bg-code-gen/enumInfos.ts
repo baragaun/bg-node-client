@@ -228,6 +228,7 @@ export const enumInfos: EnumInfo[] = [
       "unset",
       "invitation",
       "support",
+      "system",
       "welcome"
     ]
   },

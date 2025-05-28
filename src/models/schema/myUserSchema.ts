@@ -1,6 +1,4 @@
 export const MyUserSchema = {
-  '$schema': 'https://json-schema.org/draft/2020-12/schema',
-  '$id': 'https://firstspark.social/myUser.schema.json',
   'title': 'MyUser',
   'version': 0,
   'primaryKey': 'id',
@@ -12,6 +10,7 @@ export const MyUserSchema = {
     },
     'adminNotes': {
       'type': 'string',
+      'nullable': true,
     },
     'metadata': {
       'type': 'object',
@@ -49,6 +48,7 @@ export const MyUserSchema = {
             'updatedAt': {
               'type': 'string',
               'format': 'date-time',
+              'nullable': true,
             },
             'mentoringSessionCount': {
               'type': 'integer',
@@ -64,10 +64,12 @@ export const MyUserSchema = {
             'updatedAt': {
               'type': 'string',
               'format': 'date-time',
+              'nullable': true,
             },
           },
         },
       },
+      'nullable': true,
     },
     'createdAt': {
       'type': 'string',
@@ -76,93 +78,115 @@ export const MyUserSchema = {
     'createdBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'updatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'updatedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'deletedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'deletedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'firstName': {
       'type': 'string',
+      'nullable': true,
     },
     'lastName': {
       'type': 'string',
+      'nullable': true,
     },
     'userHandle': {
       'type': 'string',
+      'nullable': true,
     },
     'phoneNumber': {
       'type': 'string',
+      'nullable': true,
     },
     'phoneNumberUpdatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'isPhoneNumberVerified': {
       'type': 'boolean',
     },
     'email': {
       'type': 'string',
+      'nullable': true,
     },
     'emailSource': {
       'type': 'string',
       'description': 'The source of the email address, e.g. "google", "facebook", etc.',
+      'nullable': true,
     },
     'emailUpdatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'isEmailVerified': {
       'type': 'boolean',
     },
     'genderTextId': {
       'type': 'string',
+      'nullable': true,
     },
     'cityOfResidence': {
       'type': 'string',
+      'nullable': true,
     },
     'regionOfResidence': {
       'type': 'string',
+      'nullable': true,
     },
     'countryOfResidenceTextId': {
       'type': 'string',
+      'nullable': true,
     },
     'postalCode': {
       'type': 'string',
+      'nullable': true,
     },
     'avatarUrl': {
       'type': 'string',
+      'nullable': true,
     },
     'websites': {
       'type': 'array',
       'items': {
         'type': 'object',
-      },
-      'properties': {
-        'label': {
-          'type': 'string',
-        },
-        'value': {
-          'type': 'string',
-        },
-        'tags': {
-          'type': 'array',
-          'items': {
+        'properties': {
+          'label': {
             'type': 'string',
+            'nullable': true,
+          },
+          'value': {
+            'type': 'string',
+          },
+          'tags': {
+            'type': 'array',
+            'items': {
+              'type': 'string',
+            },
+            'nullable': true,
           },
         },
       },
+      'nullable': true,
     },
     'authType': {
       'type': 'string',
@@ -173,23 +197,28 @@ export const MyUserSchema = {
         'hmac',
         'saml',
       ],
-      'enumType': 'AuthType',
+      'nullable': true,
     },
     'inviteCode': {
       'type': 'string',
+      'nullable': true,
     },
     'passwordHash': {
       'type': 'string',
+      'nullable': true,
     },
     'tfaBackupCodes': {
       'type': 'string',
+      'nullable': true,
     },
     'passwordUpdatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'preferredLanguageTextId': {
       'type': 'string',
+      'nullable': true,
     },
     'spokenLanguagesTextIds': {
       'type': 'array',
@@ -207,7 +236,7 @@ export const MyUserSchema = {
         'ru',
         'so',
       ],
-      'enumType': 'UiLanguage',
+      'nullable': true,
     },
     'fallbackUiLanguageTextId': {
       'type': 'string',
@@ -219,94 +248,115 @@ export const MyUserSchema = {
         'ru',
         'so',
       ],
-      'enumType': 'UiLanguage',
+      'nullable': true,
     },
     'discoverable': {
       'type': 'boolean',
       'description': 'If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.',
+      'nullable': true,
     },
     'roles': {
-      'type': 'string',
-      'enum': [
-        'admin',
-        'support',
-        'staff',
-        'qa',
-        'test',
-      ],
-      'enumType': 'UserRole',
+      'type': 'array',
+      'items': {
+        'type': 'string',
+        'enum': [
+          'admin',
+          'support',
+          'staff',
+          'qa',
+          'test',
+        ],
+      },
+    },
+    'isTestUser': {
+      'type': 'boolean',
+      'nullable': true,
     },
     'appFeatures': {
-      'type': 'string',
-      'enum': [
-        'testFeatures1',
-        'testFeatures2',
-      ],
-      'enumType': 'AppFeature',
+      'type': 'array',
+      'items': {
+        'type': 'string',
+        'enum': [
+          'testFeatures1',
+          'testFeatures2',
+        ],
+      },
+      'nullable': true,
     },
     'source': {
       'type': 'string',
+      'nullable': true,
     },
     'timezone': {
       'type': 'string',
+      'nullable': true,
     },
     'preferences': {
       'type': 'object',
       'properties': {
         'shareEmail': {
           'type': 'boolean',
+          'nullable': true,
         },
         'sharePhoneNumber': {
           'type': 'boolean',
+          'nullable': true,
         },
         'showWelcomeMessage': {
           'type': 'boolean',
+          'nullable': true,
         },
         'notificationOptions': {
           'type': 'array',
           'items': {
             'type': 'object',
+            'properties': {
+              'notificationType': {
+                'type': 'string',
+                'enum': [
+                  'accountDeletedConfirmation',
+                  'channelInvitationAccepted',
+                  'channelInvitationDeclined',
+                  'channelInvitationReceived',
+                  'channelMessageReceived',
+                  'completeProfile',
+                  'completeSignUp',
+                  'matchesRecommendations',
+                  'newPrivacyRules',
+                  'newsletter',
+                  'resetPasswordConfirmation',
+                  'resetPasswordConfirmToken',
+                  'sendFirstInvitation',
+                  'unset',
+                  'welcome',
+                ],
+              },
+              'enableEmail': {
+                'type': 'boolean',
+                'nullable': true,
+              },
+              'enableInAppMessage': {
+                'type': 'boolean',
+                'nullable': true,
+              },
+              'enablePushNotification': {
+                'type': 'boolean',
+                'nullable': true,
+              },
+              'enableSms': {
+                'type': 'boolean',
+                'nullable': true,
+              },
+              'frequency': {
+                'type': 'string',
+                'nullable': true,
+              },
+            },
           },
-          'properties': {
-            'notificationType': {
-              'type': 'string',
-              'enum': [
-                'accountDeletedConfirmation',
-                'channelInvitationAccepted',
-                'channelInvitationDeclined',
-                'channelInvitationReceived',
-                'channelMessageReceived',
-                'completeProfile',
-                'completeSignUp',
-                'matchesRecommendations',
-                'newPrivacyRules',
-                'newsletter',
-                'resetPasswordConfirmation',
-                'resetPasswordConfirmToken',
-                'sendFirstInvitation',
-                'unset',
-                'welcome',
-              ],
-              'enumType': 'NotificationType',
-            },
-            'enableEmail': {
-              'type': 'boolean',
-            },
-            'enableInAppMessage': {
-              'type': 'boolean',
-            },
-            'enablePushNotification': {
-              'type': 'boolean',
-            },
-            'enableSms': {
-              'type': 'boolean',
-            },
-            'frequency': {
-              'type': 'string',
-            },
-          },
+          'nullable': true,
         },
       },
+      'nullable': true,
     },
     'trustLevel': {
       'type': 'integer',
@@ -314,168 +364,200 @@ export const MyUserSchema = {
     'signedInAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'signedOutAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'latestActivityAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'userDevices': {
       'type': 'array',
       'items': {
         'type': 'object',
-      },
-      'properties': {
-        'id': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'adminNotes': {
-          'type': 'string',
-        },
-        'metadata': {
-          'type': 'object',
-          'properties': {
-            'updatedAt': {
-              'type': 'string',
-              'format': 'date-time',
-            },
+        'properties': {
+          'id': {
+            'type': 'string',
+            'maxLength': 32,
           },
-        },
-        'createdAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'createdBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'updatedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'updatedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'deletedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'deletedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'userId': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'deviceUuid': {
-          'type': 'string',
-        },
-        'deviceType': {
-          'type': 'string',
-        },
-        'trusted': {
-          'type': 'boolean',
-        },
-        'phoneNumber': {
-          'type': 'string',
-        },
-        'phoneNumberUpdatedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'isPhoneNumberVerified': {
-          'type': 'boolean',
-        },
-        'brand': {
-          'type': 'string',
-        },
-        'model': {
-          'type': 'string',
-        },
-        'isTablet': {
-          'type': 'boolean',
-        },
-        'screenWidth': {
-          'type': 'integer',
-        },
-        'screenHeight': {
-          'type': 'integer',
-        },
-        'os': {
-          'type': 'string',
-        },
-        'osVersion': {
-          'type': 'string',
-        },
-        'timezone': {
-          'type': 'string',
-        },
-        'ipAddress': {
-          'type': 'string',
-        },
-        'consumer': {
-          'type': 'string',
-        },
-        'consumerVersion': {
-          'type': 'string',
-        },
-        'acceptedLanguage': {
-          'type': 'string',
-        },
-        'locale': {
-          'type': 'string',
-        },
-        'countryCode': {
-          'type': 'string',
-        },
-        'appVersion': {
-          'type': 'string',
-        },
-        'signedInAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'signedOutAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'sessionStartedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'sessionEndedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'identityProvider': {
-          'type': 'string',
-          'enum': [
-            'apple',
-            'facebook',
-            'google',
-            'instagram',
-            'linkedIn',
-            'microsoft',
-            'own',
-            'sso',
-            'telegram',
-            'twitter',
-            'whatsApp',
-          ],
-          'enumType': 'IdentityProvider',
-        },
-        'oauthProfileUrl': {
-          'type': 'string',
-        },
-        'trustedAt': {
-          'type': 'string',
-          'format': 'date-time',
+          'adminNotes': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'metadata': {
+            'type': 'object',
+            'properties': {
+              'updatedAt': {
+                'type': 'string',
+                'format': 'date-time',
+                'nullable': true,
+              },
+            },
+            'nullable': true,
+          },
+          'createdAt': {
+            'type': 'string',
+            'format': 'date-time',
+          },
+          'createdBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'updatedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'updatedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'deletedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'deletedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'userId': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'deviceUuid': {
+            'type': 'string',
+          },
+          'deviceType': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'trusted': {
+            'type': 'boolean',
+          },
+          'phoneNumber': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'phoneNumberUpdatedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'isPhoneNumberVerified': {
+            'type': 'boolean',
+          },
+          'brand': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'model': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'isTablet': {
+            'type': 'boolean',
+          },
+          'screenWidth': {
+            'type': 'integer',
+          },
+          'screenHeight': {
+            'type': 'integer',
+          },
+          'os': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'osVersion': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'timezone': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'ipAddress': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'consumer': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'consumerVersion': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'acceptedLanguage': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'locale': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'countryCode': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'appVersion': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'signedInAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'signedOutAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'sessionStartedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'sessionEndedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'identityProvider': {
+            'type': 'string',
+            'enum': [
+              'apple',
+              'facebook',
+              'google',
+              'instagram',
+              'linkedIn',
+              'microsoft',
+              'own',
+              'sso',
+              'telegram',
+              'twitter',
+              'whatsApp',
+            ],
+            'nullable': true,
+          },
+          'oauthProfileUrl': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'trustedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
         },
       },
     },
@@ -483,485 +565,576 @@ export const MyUserSchema = {
       'type': 'array',
       'items': {
         'type': 'object',
-      },
-      'properties': {
-        'id': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'adminNotes': {
-          'type': 'string',
-        },
-        'metadata': {
-          'type': 'object',
-          'properties': {
-            'updatedAt': {
-              'type': 'string',
-              'format': 'date-time',
+        'properties': {
+          'id': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'adminNotes': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'metadata': {
+            'type': 'object',
+            'properties': {
+              'updatedAt': {
+                'type': 'string',
+                'format': 'date-time',
+                'nullable': true,
+              },
             },
+            'nullable': true,
+          },
+          'createdAt': {
+            'type': 'string',
+            'format': 'date-time',
+          },
+          'createdBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'updatedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'updatedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'deletedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'deletedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'userId': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'reasonTextId': {
+            'type': 'string',
+          },
+          'notes': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'syncedToAnalyticsAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'syncedWithMm2At': {
+            'type': 'string',
+            'description': 'This attribute is only used by the MM2 synchronizer.',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'mm2Id': {
+            'type': 'string',
+            'description': 'This attribute is only used by the MM2 synchronizer.',
+            'nullable': true,
           },
         },
-        'createdAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'createdBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'updatedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'updatedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'deletedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'deletedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'userId': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'reasonTextId': {
-          'type': 'string',
-        },
-        'notes': {
-          'type': 'string',
-        },
-        'syncedToAnalyticsAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'syncedWithMm2At': {
-          'type': 'string',
-          'description': 'This attribute is only used by the MM2 synchronizer.',
-          'format': 'date-time',
-        },
-        'mm2Id': {
-          'type': 'string',
-          'description': 'This attribute is only used by the MM2 synchronizer.',
-        },
       },
+      'nullable': true,
     },
     'contacts': {
       'type': 'array',
       'items': {
         'type': 'object',
+        'properties': {},
       },
-      'properties': {},
+      'nullable': true,
     },
     'inactivatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'inactivatedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'termsAndConditionsAcceptedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'optIntoNewsletter': {
       'type': 'boolean',
+      'nullable': true,
     },
     'onboardingStage': {
       'type': 'string',
+      'nullable': true,
     },
     'suspendedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'suspendedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'anonymizedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'addedToBgVaultAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'syncedToAnalyticsAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'companyIds': {
       'type': 'array',
       'items': {
         'type': 'string',
+        'maxLength': 32,
       },
-      'maxLength': 32,
+      'nullable': true,
     },
     'companies': {
       'type': 'array',
       'items': {
         'type': 'object',
-      },
-      'properties': {
-        'id': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'adminNotes': {
-          'type': 'string',
-        },
-        'createdAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'createdBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'updatedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'updatedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'deletedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'deletedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'userIds': {
-          'type': 'array',
-          'items': {
+        'properties': {
+          'id': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'adminNotes': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'createdAt': {
+            'type': 'string',
+            'format': 'date-time',
+          },
+          'createdBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'updatedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'updatedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'deletedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'deletedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'userIds': {
+            'type': 'array',
+            'items': {
+              'type': 'string',
+            },
+            'nullable': true,
+          },
+          'name': {
             'type': 'string',
           },
-        },
-        'name': {
-          'type': 'string',
-        },
-        'description': {
-          'type': 'string',
-        },
-        'location': {
-          'type': 'string',
-        },
-        'companyTypeTextId': {
-          'type': 'string',
-        },
-        'companyStageTextId': {
-          'type': 'string',
-        },
-        'websites': {
-          'type': 'array',
-          'items': {
-            'type': 'object',
+          'description': {
+            'type': 'string',
+            'nullable': true,
           },
-          'properties': {
-            'label': {
-              'type': 'string',
-            },
-            'value': {
-              'type': 'string',
-            },
-            'tags': {
-              'type': 'array',
-              'items': {
-                'type': 'string',
+          'location': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'companyTypeTextId': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'companyStageTextId': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'websites': {
+            'type': 'array',
+            'items': {
+              'type': 'object',
+              'properties': {
+                'label': {
+                  'type': 'string',
+                  'nullable': true,
+                },
+                'value': {
+                  'type': 'string',
+                },
+                'tags': {
+                  'type': 'array',
+                  'items': {
+                    'type': 'string',
+                  },
+                  'nullable': true,
+                },
               },
             },
+            'nullable': true,
           },
-        },
-        'industries': {
-          'type': 'array',
-          'items': {
+          'industries': {
+            'type': 'array',
+            'items': {
+              'type': 'string',
+            },
+            'nullable': true,
+          },
+          'isOperational': {
+            'type': 'boolean',
+            'nullable': true,
+          },
+          'isFundraising': {
+            'type': 'boolean',
+            'nullable': true,
+          },
+          'annualRevenue': {
+            'type': 'integer',
+            'nullable': true,
+          },
+          'employeeCount': {
+            'type': 'integer',
+            'nullable': true,
+          },
+          'foundedAt': {
             'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
           },
-        },
-        'isOperational': {
-          'type': 'boolean',
-        },
-        'isFundraising': {
-          'type': 'boolean',
-        },
-        'annualRevenue': {
-          'type': 'integer',
-        },
-        'employeeCount': {
-          'type': 'integer',
-        },
-        'foundedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'mm2UserId': {
-          'type': 'string',
-          'description': 'If a Company was created from the imported attributes of an MM2 Profile, mm2UserId references the MM2 user ID. This attribute is only used by the MM2 synchronizer.',
-        },
-        'mm2CompanyRole': {
-          'type': 'string',
-          'description': 'If a Company was created from the imported from MM2, mm2CompanyRole is either "mentor" or "mentee". This attribute is only used by the MM2 synchronizer.',
-        },
-        'syncedWithMm2At': {
-          'type': 'string',
-          'description': 'This attribute is only used by the MM2 synchronizer.',
-          'format': 'date-time',
+          'mm2UserId': {
+            'type': 'string',
+            'description': 'If a Company was created from the imported attributes of an MM2 Profile, mm2UserId references the MM2 user ID. This attribute is only used by the MM2 synchronizer.',
+            'nullable': true,
+          },
+          'mm2CompanyRole': {
+            'type': 'string',
+            'description': 'If a Company was created from the imported from MM2, mm2CompanyRole is either "mentor" or "mentee". This attribute is only used by the MM2 synchronizer.',
+            'nullable': true,
+          },
+          'syncedWithMm2At': {
+            'type': 'string',
+            'description': 'This attribute is only used by the MM2 synchronizer.',
+            'format': 'date-time',
+            'nullable': true,
+          },
         },
       },
+      'nullable': true,
     },
     'groupIds': {
       'type': 'array',
       'items': {
         'type': 'string',
+        'maxLength': 32,
       },
-      'maxLength': 32,
     },
     'parentGroupIds': {
       'type': 'array',
       'items': {
         'type': 'string',
+        'maxLength': 32,
       },
-      'maxLength': 32,
     },
     'externalGroupIds': {
       'type': 'array',
       'items': {
         'type': 'string',
+        'maxLength': 32,
       },
-      'maxLength': 32,
     },
     'pronounsTextIds': {
       'type': 'array',
       'items': {
         'type': 'string',
       },
+      'nullable': true,
     },
     'groupMemberships': {
       'type': 'array',
       'items': {
         'type': 'object',
-      },
-      'properties': {
-        'id': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'groupId': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'groupIdent': {
-          'type': 'string',
-        },
-        'userId': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'roles': {
-          'type': 'string',
-          'enum': [
-            'admin',
-            'coordinator',
-            'moderator',
-            'owner',
-          ],
-          'enumType': 'GroupMembershipRole',
+        'properties': {
+          'id': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'groupId': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'groupIdent': {
+            'type': 'string',
+          },
+          'userId': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'roles': {
+            'type': 'array',
+            'items': {
+              'type': 'string',
+              'enum': [
+                'admin',
+                'coordinator',
+                'moderator',
+                'owner',
+              ],
+            },
+          },
         },
       },
     },
     'seeksHelp': {
       'type': 'boolean',
+      'nullable': true,
     },
     'offersHelp': {
       'type': 'boolean',
+      'nullable': true,
     },
     'birthYear': {
       'type': 'integer',
+      'nullable': true,
     },
     'ethnicity': {
       'type': 'string',
+      'nullable': true,
     },
     'educationLevelTextId': {
       'type': 'string',
+      'nullable': true,
     },
     'personalBio': {
       'type': 'string',
+      'nullable': true,
     },
     'yearsManagementExperience': {
       'type': 'integer',
+      'nullable': true,
     },
     'yearsOwnershipExperience': {
       'type': 'integer',
+      'nullable': true,
     },
     'academicExperienceIds': {
       'type': 'array',
       'items': {
         'type': 'string',
+        'maxLength': 32,
       },
-      'maxLength': 32,
+      'nullable': true,
     },
     'academicExperiences': {
       'type': 'array',
       'items': {
         'type': 'object',
+        'properties': {
+          'id': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'adminNotes': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'createdAt': {
+            'type': 'string',
+            'format': 'date-time',
+          },
+          'createdBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'updatedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'updatedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'deletedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'deletedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'institutionName': {
+            'type': 'string',
+          },
+          'degreeType': {
+            'type': 'string',
+            'description': 'E.g. "Bachelor of Science"',
+            'nullable': true,
+          },
+          'fieldOfStudy': {
+            'type': 'string',
+            'description': 'E.g. "Computer Science"',
+            'nullable': true,
+          },
+          'startDate': {
+            'type': 'string',
+            'description': 'If no start date is provided, startDate is null.',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'endDate': {
+            'type': 'string',
+            'description': 'If the experience is ongoing, endDate is null.',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'userId': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+        },
       },
-      'properties': {
-        'id': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'adminNotes': {
-          'type': 'string',
-        },
-        'createdAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'createdBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'updatedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'updatedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'deletedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'deletedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'institutionName': {
-          'type': 'string',
-        },
-        'degreeType': {
-          'type': 'string',
-          'description': 'E.g. "Bachelor of Science"',
-        },
-        'fieldOfStudy': {
-          'type': 'string',
-          'description': 'E.g. "Computer Science"',
-        },
-        'startDate': {
-          'type': 'string',
-          'description': 'If no start date is provided, startDate is null.',
-          'format': 'date-time',
-        },
-        'endDate': {
-          'type': 'string',
-          'description': 'If the experience is ongoing, endDate is null.',
-          'format': 'date-time',
-        },
-        'userId': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-      },
+      'nullable': true,
     },
     'genderSelfDescribed': {
       'type': 'string',
       'description': 'This attribute is only used by the MM2 synchronizer.',
+      'nullable': true,
     },
     'businessExperienceIds': {
       'type': 'array',
       'items': {
         'type': 'string',
+        'maxLength': 32,
       },
-      'maxLength': 32,
+      'nullable': true,
     },
     'businessExperiences': {
       'type': 'array',
       'items': {
         'type': 'object',
+        'properties': {
+          'id': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'adminNotes': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'createdAt': {
+            'type': 'string',
+            'format': 'date-time',
+          },
+          'createdBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'updatedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'updatedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'deletedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'deletedBy': {
+            'type': 'string',
+            'maxLength': 32,
+            'nullable': true,
+          },
+          'businessName': {
+            'type': 'string',
+          },
+          'jobTitle': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'city': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'state': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'country': {
+            'type': 'string',
+            'nullable': true,
+          },
+          'startDate': {
+            'type': 'string',
+            'description': 'If no start date is provided, startDate is null.',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'endDate': {
+            'type': 'string',
+            'description': 'If the experience is ongoing, endDate is null.',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'userId': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+        },
       },
-      'properties': {
-        'id': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'adminNotes': {
-          'type': 'string',
-        },
-        'createdAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'createdBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'updatedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'updatedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'deletedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
-        'deletedBy': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-        'businessName': {
-          'type': 'string',
-        },
-        'jobTitle': {
-          'type': 'string',
-        },
-        'city': {
-          'type': 'string',
-        },
-        'state': {
-          'type': 'string',
-        },
-        'country': {
-          'type': 'string',
-        },
-        'startDate': {
-          'type': 'string',
-          'description': 'If no start date is provided, startDate is null.',
-          'format': 'date-time',
-        },
-        'endDate': {
-          'type': 'string',
-          'description': 'If the experience is ongoing, endDate is null.',
-          'format': 'date-time',
-        },
-        'userId': {
-          'type': 'string',
-          'maxLength': 32,
-        },
-      },
+      'nullable': true,
     },
     'cityOfOrigin': {
       'type': 'string',
+      'nullable': true,
     },
     'regionOfOrigin': {
       'type': 'string',
+      'nullable': true,
     },
     'countryOfOriginTextId': {
       'type': 'string',
+      'nullable': true,
     },
     'isOnVacation': {
       'type': 'boolean',
+      'nullable': true,
     },
     'avatarAsset': {
       'type': 'object',
@@ -972,6 +1145,7 @@ export const MyUserSchema = {
         },
         'adminNotes': {
           'type': 'string',
+          'nullable': true,
         },
         'createdAt': {
           'type': 'string',
@@ -980,22 +1154,27 @@ export const MyUserSchema = {
         'createdBy': {
           'type': 'string',
           'maxLength': 32,
+          'nullable': true,
         },
         'updatedAt': {
           'type': 'string',
           'format': 'date-time',
+          'nullable': true,
         },
         'updatedBy': {
           'type': 'string',
           'maxLength': 32,
+          'nullable': true,
         },
         'deletedAt': {
           'type': 'string',
           'format': 'date-time',
+          'nullable': true,
         },
         'deletedBy': {
           'type': 'string',
           'maxLength': 32,
+          'nullable': true,
         },
         'ownerId': {
           'type': 'string',
@@ -1054,7 +1233,6 @@ export const MyUserSchema = {
             'TrainingSession',
             'unset',
           ],
-          'enumType': 'ModelType',
         },
         'assetType': {
           'type': 'string',
@@ -1063,7 +1241,6 @@ export const MyUserSchema = {
             'avatar',
             'profileHeroImage',
           ],
-          'enumType': 'UploadedAssetType',
         },
         'hostingService': {
           'type': 'string',
@@ -1071,97 +1248,115 @@ export const MyUserSchema = {
             's3',
             'unset',
           ],
-          'enumType': 'AssetHostingService',
         },
         'url': {
           'type': 'string',
+          'nullable': true,
         },
         'path': {
           'type': 'string',
+          'nullable': true,
         },
         's3Bucket': {
           'type': 'string',
+          'nullable': true,
         },
         's3Key': {
           'type': 'string',
+          'nullable': true,
         },
         'mimeType': {
           'type': 'string',
+          'nullable': true,
         },
         'uploadUrl': {
           'type': 'string',
+          'nullable': true,
         },
         'uploadUrlExpiresAt': {
           'type': 'string',
           'format': 'date-time',
+          'nullable': true,
         },
         'uploadedAt': {
           'type': 'string',
           'format': 'date-time',
+          'nullable': true,
         },
         'expiresAt': {
           'type': 'string',
           'format': 'date-time',
+          'nullable': true,
         },
       },
+      'nullable': true,
     },
     'profileRoleHistory': {
       'type': 'array',
       'items': {
         'type': 'object',
-      },
-      'properties': {
-        'newRole': {
-          'type': 'string',
-          'enum': [
-            'mentee',
-            'mentor',
-            'both',
-            'none',
-          ],
-          'enumType': 'UserProfileRole',
+        'properties': {
+          'newRole': {
+            'type': 'string',
+            'enum': [
+              'mentee',
+              'mentor',
+              'both',
+              'none',
+            ],
+          },
+          'createdAt': {
+            'type': 'string',
+            'format': 'date-time',
+          },
         },
-        'createdAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
       },
+      'nullable': true,
     },
     'ssoIdp': {
       'type': 'string',
+      'nullable': true,
     },
     'originatedInMm2': {
       'type': 'boolean',
       'description': 'Records whether a user was originally created in MM2.',
+      'nullable': true,
     },
     'syncedWithMm2At': {
       'type': 'string',
       'description': 'This attribute is only used by the MM2 synchronizer.',
       'format': 'date-time',
+      'nullable': true,
     },
     'mm2PasswordHash': {
       'type': 'string',
       'description': 'This is the MM2 password hash.',
+      'nullable': true,
     },
     'mm2Id': {
       'type': 'string',
       'description': 'This attribute is only used by the MM2 synchronizer.',
+      'nullable': true,
     },
     'mm2PhotoOriginal': {
       'type': 'string',
       'description': 'This attribute is only used by the MM2 synchronizer.',
+      'nullable': true,
     },
     'mm2BasicAccountCompleted': {
       'type': 'boolean',
       'description': 'For MM2 users, this means a profile is completed.',
+      'nullable': true,
     },
     'hasSignedInToMm3': {
       'type': 'boolean',
       'description': 'Records whether a user has logged into MM3.',
+      'nullable': true,
     },
     'hasSignedInToMm2': {
       'type': 'boolean',
       'description': 'Records whether a user has logged into MM2.',
+      'nullable': true,
     },
     'mentor': {
       'type': 'object',
@@ -1173,6 +1368,7 @@ export const MyUserSchema = {
           'items': {
             'type': 'string',
           },
+          'nullable': true,
         },
         'additionalExpertisesTextIds': {
           'type': 'array',
@@ -1180,6 +1376,7 @@ export const MyUserSchema = {
           'items': {
             'type': 'string',
           },
+          'nullable': true,
         },
         'industriesTextIds': {
           'type': 'array',
@@ -1187,6 +1384,7 @@ export const MyUserSchema = {
           'items': {
             'type': 'string',
           },
+          'nullable': true,
         },
         'mm2ExpertisesTextIds': {
           'type': 'array',
@@ -1194,6 +1392,7 @@ export const MyUserSchema = {
           'items': {
             'type': 'string',
           },
+          'nullable': true,
         },
         'mm2IndustriesTextIds': {
           'type': 'array',
@@ -1201,26 +1400,34 @@ export const MyUserSchema = {
           'items': {
             'type': 'string',
           },
+          'nullable': true,
         },
         'helpICanOffer': {
           'type': 'string',
+          'nullable': true,
         },
         'expectationsForMentees': {
           'type': 'string',
+          'nullable': true,
         },
         'menteePreparationInstructions': {
           'type': 'string',
+          'nullable': true,
         },
         'endorsements': {
           'type': 'integer',
+          'nullable': true,
         },
         'reasonsForMentoring': {
           'type': 'string',
+          'nullable': true,
         },
         'howICanHelpMentees': {
           'type': 'string',
+          'nullable': true,
         },
       },
+      'nullable': true,
     },
     'mentee': {
       'type': 'object',
@@ -1232,6 +1439,7 @@ export const MyUserSchema = {
           'items': {
             'type': 'string',
           },
+          'nullable': true,
         },
         'additionalSoughtExpertisesTextIds': {
           'type': 'array',
@@ -1239,10 +1447,12 @@ export const MyUserSchema = {
           'items': {
             'type': 'string',
           },
+          'nullable': true,
         },
         'industryTextId': {
           'type': 'string',
           'description': 'Must match industry textIds.',
+          'nullable': true,
         },
         'mm2SoughtExpertisesTextIds': {
           'type': 'array',
@@ -1250,34 +1460,43 @@ export const MyUserSchema = {
           'items': {
             'type': 'string',
           },
+          'nullable': true,
         },
         'mm2IndustryTextId': {
           'type': 'string',
           'description': 'Must match mm2 industry textIds -- only used by synchronizer',
+          'nullable': true,
         },
         'actionsTaken': {
           'type': 'string',
           'description': 'From MM2, not used in MM3 (yet)',
+          'nullable': true,
         },
         'currentChallenges': {
           'type': 'string',
           'description': 'From MM2, not used in MM3 (yet)',
+          'nullable': true,
         },
         'futureGoals': {
           'type': 'string',
           'description': 'From MM2, not used in MM3 (yet)',
+          'nullable': true,
         },
         'motivationsForMentorship': {
           'type': 'string',
           'description': 'From MM2, not used in MM3 (yet)',
+          'nullable': true,
         },
         'reasonsForStartingBusiness': {
           'type': 'string',
+          'nullable': true,
         },
         'howCanMentorSupportMe': {
           'type': 'string',
+          'nullable': true,
         },
       },
+      'nullable': true,
     },
   },
   'required': [

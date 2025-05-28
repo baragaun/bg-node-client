@@ -89,7 +89,31 @@ const channelMessage = {
 };
 
 const channelParticipant = {
-
+  id: true,
+  adminNotes: true,
+  metadata: {
+    updatedAt: true,
+    userHandle: true,
+    firstName: true,
+    lastName: true,
+    avatarUrl: true,
+    sentMessageCount: true,
+    unseenMessageCount: true,
+    unseenSystemMessageCount: true,
+  },
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+  channelId: true,
+  userId: true,
+  invitedBy: true,
+  channelName: true,
+  role: true,
+  suspendedAt: true,
+  suspendedBy: true,
 };
 
 const myUser = {

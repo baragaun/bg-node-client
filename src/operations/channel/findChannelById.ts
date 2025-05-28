@@ -88,22 +88,61 @@ const findChannelById = async (
       return { error: 'offline' };
     }
 
-    const response = await fsdata.channel.findChannelById(id);
+    const channelResponse = await fsdata.channel.findChannelById(id);
 
-    if (response.error) {
-      logger.error('findChannelById: fsdata.findChannelById failed', { error: response.error });
-      result.error = response.error;
+    if (channelResponse.error) {
+      logger.error('findChannelById: fsdata.findChannelById failed', { error: channelResponse.error });
+      result.error = channelResponse.error;
 
       return result;
     }
 
-    if (response.object) {
-      // todo: What if the object does not exist anymore. How do we delete it from the local store?
-      // Update local cache:
-      await db.replace<Channel>(response.object, ModelType.Channel);
+    if (channelResponse.object) {
+      await db.replace<Channel>(channelResponse.object, ModelType.Channel);
+      result.channel = channelResponse.object;
+
+      const participantsResponse = await fsdata.channelParticipant.findChannelParticipants(
+        undefined, // no filter
+        { channelId: id },
+        { sort: [{ field: 'userHandle' }], limit: options.participantLimit || 20 },
+      );
+
+      if (participantsResponse.error) {
+        logger.error('findParticipantsById: fsdata.findParticipantsById failed', { error: participantsResponse.error });
+        result.error = participantsResponse.error;
+
+        return result;
+      }
+
+      if (participantsResponse.objects && participantsResponse.objects.length > 0) {
+        for (const participant of participantsResponse.objects) {
+          await db.replace<ChannelParticipant>(participant, ModelType.ChannelParticipant);
+        }
+        result.participants = participantsResponse.objects;
+
+        const messagesResponse = await fsdata.channelMessage.findChannelMessages(
+          undefined, // no filter
+          { channelId: id },
+          { sort: [{ field: 'createdAt' }], limit: options.messageLimit || 20 },
+        );
+
+        if (messagesResponse.error) {
+          logger.error('findMessagesById: fsdata.findMessagesById failed', { error: messagesResponse.error });
+          result.error = messagesResponse.error;
+
+          return result;
+        }
+
+        if (messagesResponse.objects && messagesResponse.objects.length > 0) {
+          for (const message of messagesResponse.objects) {
+            await db.replace<ChannelMessage>(message, ModelType.ChannelMessage);
+          }
+          result.messages = messagesResponse.objects;
+        }
+      }
     }
 
-    return response;
+    return result;
   } catch (error) {
     return { error: (error as Error).message };
   }

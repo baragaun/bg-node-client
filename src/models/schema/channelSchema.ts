@@ -1,6 +1,4 @@
 export const ChannelSchema = {
-  '$schema': 'https://json-schema.org/draft/2020-12/schema',
-  '$id': 'https://firstspark.social/channel.schema.json',
   'title': 'Channel',
   'version': 0,
   'primaryKey': 'id',
@@ -12,6 +10,7 @@ export const ChannelSchema = {
     },
     'adminNotes': {
       'type': 'string',
+      'nullable': true,
     },
     'metadata': {
       'type': 'object',
@@ -19,22 +18,24 @@ export const ChannelSchema = {
         'updatedAt': {
           'type': 'string',
           'format': 'date-time',
+          'nullable': true,
         },
         'unseenMessageInfo': {
           'type': 'array',
           'items': {
             'type': 'object',
-          },
-          'properties': {
-            'userId': {
-              'type': 'string',
-              'maxLength': 32,
+            'properties': {
+              'userId': {
+                'type': 'string',
+                'maxLength': 32,
+              },
+              'createdAt': {
+                'type': 'string',
+                'format': 'date-time',
+              },
             },
-            'createdAt': {
-              'type': 'string',
-              'format': 'date-time',
-            },
           },
+          'nullable': true,
         },
         'channelInvitationAccepted': {
           'type': 'boolean',
@@ -46,6 +47,7 @@ export const ChannelSchema = {
           'type': 'integer',
         },
       },
+      'nullable': true,
     },
     'createdAt': {
       'type': 'string',
@@ -54,37 +56,46 @@ export const ChannelSchema = {
     'createdBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'updatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'updatedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'deletedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'deletedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'name': {
       'type': 'string',
+      'nullable': true,
     },
     'topic': {
       'type': 'string',
+      'nullable': true,
     },
     'description': {
       'type': 'string',
+      'nullable': true,
     },
     'tags': {
       'type': 'array',
       'items': {
         'type': 'string',
       },
+      'nullable': true,
     },
     'channelType': {
       'type': 'string',
@@ -94,80 +105,94 @@ export const ChannelSchema = {
         'support',
         'welcome',
       ],
-      'enumType': 'ChannelType',
     },
     'statuses': {
       'type': 'array',
       'items': {
         'type': 'object',
-      },
-      'properties': {
-        'userId': {
-          'type': 'string',
-          'maxLength': 32,
+        'properties': {
+          'userId': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'archivedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
         },
-        'archivedAt': {
-          'type': 'string',
-          'format': 'date-time',
-        },
       },
+      'nullable': true,
     },
     'userIds': {
       'type': 'array',
       'items': {
         'type': 'string',
+        'maxLength': 32,
       },
-      'maxLength': 32,
+      'nullable': true,
     },
     'otherUserId': {
       'type': 'string',
       'description': 'For 1:1 channels, the ID of the other user. The first user is createdBy.',
       'maxLength': 32,
+      'nullable': true,
     },
     'pausedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'pausedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'suspendedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'suspendedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'lockedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'lockedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'archivedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'archivedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'assumedMentorId': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'mm2Id': {
       'type': 'string',
       'description': 'This attribute is only used by the MM2 synchronizer.',
+      'nullable': true,
     },
     'syncedWithMm2At': {
       'type': 'string',
       'description': 'This attribute is only used by the MM2 synchronizer.',
       'format': 'date-time',
+      'nullable': true,
     },
   },
   'required': [

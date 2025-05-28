@@ -12,6 +12,7 @@ import updateChannelInvitation from './operations/channelInvitation/updateChanne
 import createChannelMessage from './operations/channelMessage/createChannelMessage.js';
 import findChannelMessages from './operations/channelMessage/findChannelMessages.js';
 import updateChannelMessage from './operations/channelMessage/updateChannelMessage.js';
+import findChannelParticipants from './operations/channelParticipant/findChannelParticipants.js';
 import create from './operations/create.js';
 import deleteFnc from './operations/delete.js';
 import findById from './operations/findById.js';
@@ -67,6 +68,9 @@ const fsdata = {
     createChannelMessage,
     findChannelMessages,
     updateChannelMessage,
+  },
+  channelParticipant: {
+    findChannelParticipants,
   },
   myUser: {
     blockUserForMe,

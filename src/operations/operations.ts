@@ -1,6 +1,7 @@
 import { Operations } from '../types/Operations.js';
 import createChannel from './channel/createChannel.js';
 import deleteChannel from './channel/deleteChannel.js';
+import findChannelById from './channel/findChannelById.js';
 import findChannels from './channel/findChannels.js';
 import findMyArchivedChannels from './channel/findMyArchivedChannels.js';
 import findMyChannels from './channel/findMyChannels.js';
@@ -77,9 +78,10 @@ const operations: Operations = {
   channel: {
     createChannel,
     deleteChannel,
+    findChannelById,
     findChannels,
-    findMyChannels,
     findMyArchivedChannels,
+    findMyChannels,
     isChannelArchivedForMe,
     updateChannel,
   },

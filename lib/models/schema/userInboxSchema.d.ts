@@ -1,6 +1,4 @@
 export declare const UserInboxSchema: {
-    $schema: string;
-    $id: string;
     title: string;
     version: number;
     primaryKey: string;
@@ -12,9 +10,18 @@ export declare const UserInboxSchema: {
         };
         adminNotes: {
             type: string;
+            nullable: boolean;
         };
         metadata: {
             type: string;
+            properties: {
+                updatedAt: {
+                    type: string;
+                    format: string;
+                    nullable: boolean;
+                };
+            };
+            nullable: boolean;
         };
         createdAt: {
             type: string;
@@ -23,22 +30,27 @@ export declare const UserInboxSchema: {
         createdBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         updatedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         updatedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         deletedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         deletedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         userId: {
             type: string;
@@ -46,6 +58,7 @@ export declare const UserInboxSchema: {
         };
         channels: {
             type: string;
+            nullable: boolean;
         };
     };
     required: string[];
