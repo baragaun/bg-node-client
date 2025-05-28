@@ -1,4 +1,5 @@
 export const ChannelSchema = {
+  'title': 'Channel',
   'version': 0,
   'primaryKey': 'id',
   'type': 'object',
@@ -9,10 +10,16 @@ export const ChannelSchema = {
     },
     'adminNotes': {
       'type': 'string',
+      'nullable': true,
     },
     'metadata': {
       'type': 'object',
       'properties': {
+        'updatedAt': {
+          'type': 'string',
+          'format': 'date-time',
+          'nullable': true,
+        },
         'unseenMessageInfo': {
           'type': 'array',
           'items': {
@@ -28,8 +35,19 @@ export const ChannelSchema = {
               },
             },
           },
+          'nullable': true,
+        },
+        'channelInvitationAccepted': {
+          'type': 'boolean',
+        },
+        'messagesSentByCreatorCount': {
+          'type': 'integer',
+        },
+        'messagesSentByFirstParticipantCount': {
+          'type': 'integer',
         },
       },
+      'nullable': true,
     },
     'createdAt': {
       'type': 'string',
@@ -38,121 +56,55 @@ export const ChannelSchema = {
     'createdBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'updatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'updatedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'deletedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'deletedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'name': {
       'type': 'string',
+      'nullable': true,
     },
     'topic': {
       'type': 'string',
+      'nullable': true,
     },
     'description': {
       'type': 'string',
+      'nullable': true,
     },
     'tags': {
       'type': 'array',
       'items': {
         'type': 'string',
       },
+      'nullable': true,
     },
-    'channelType': {},
-    'participants': {
-      'type': 'array',
-      'items': {
-        'type': 'object',
-        'properties': {
-          'id': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'adminNotes': {
-            'type': 'string',
-          },
-          'metadata': {
-            'type': 'object',
-            'properties': {
-              'userHandle': {
-                'type': 'string',
-              },
-              'firstName': {
-                'type': 'string',
-              },
-              'lastName': {
-                'type': 'string',
-              },
-              'nickname': {
-                'type': 'string',
-              },
-              'avatarUrl': {
-                'type': 'string',
-              },
-            },
-          },
-          'createdAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
-          'createdBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'updatedAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
-          'updatedBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'deletedAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
-          'deletedBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'channelId': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'userId': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'invitedBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-          'channelName': {
-            'type': 'string',
-          },
-          'role': {},
-          'suspendedAt': {
-            'type': 'string',
-            'format': 'date-time',
-          },
-          'suspendedBy': {
-            'type': 'string',
-            'maxLength': 32,
-          },
-        },
-      },
+    'channelType': {
+      'type': 'string',
+      'enum': [
+        'unset',
+        'mentoring',
+        'support',
+        'welcome',
+      ],
     },
     'statuses': {
       'type': 'array',
@@ -166,13 +118,11 @@ export const ChannelSchema = {
           'archivedAt': {
             'type': 'string',
             'format': 'date-time',
+            'nullable': true,
           },
         },
       },
-    },
-    'otherUserId': {
-      'type': 'string',
-      'maxLength': 32,
+      'nullable': true,
     },
     'userIds': {
       'type': 'array',
@@ -180,51 +130,69 @@ export const ChannelSchema = {
         'type': 'string',
         'maxLength': 32,
       },
+      'nullable': true,
+    },
+    'otherUserId': {
+      'type': 'string',
+      'description': 'For 1:1 channels, the ID of the other user. The first user is createdBy.',
+      'maxLength': 32,
+      'nullable': true,
     },
     'pausedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'pausedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'suspendedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'suspendedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'lockedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'lockedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'archivedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'archivedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'assumedMentorId': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'mm2Id': {
-      'description': 'This attribute is only used by the MM2 synchronizer.',
       'type': 'string',
+      'description': 'This attribute is only used by the MM2 synchronizer.',
+      'nullable': true,
     },
     'syncedWithMm2At': {
-      'description': 'This attribute is only used by the MM2 synchronizer.',
       'type': 'string',
+      'description': 'This attribute is only used by the MM2 synchronizer.',
       'format': 'date-time',
+      'nullable': true,
     },
   },
   'required': [

@@ -1,4 +1,5 @@
 export const ChannelMessageSchema = {
+  'title': 'ChannelMessage',
   'version': 0,
   'primaryKey': 'id',
   'type': 'object',
@@ -9,8 +10,35 @@ export const ChannelMessageSchema = {
     },
     'adminNotes': {
       'type': 'string',
+      'nullable': true,
     },
-    'metadata': {},
+    'metadata': {
+      'type': 'object',
+      'properties': {
+        'updatedAt': {
+          'type': 'string',
+          'format': 'date-time',
+          'nullable': true,
+        },
+        'senderUserHandle': {
+          'type': 'string',
+          'nullable': true,
+        },
+        'senderFirstName': {
+          'type': 'string',
+          'nullable': true,
+        },
+        'senderLastName': {
+          'type': 'string',
+          'nullable': true,
+        },
+        'senderAvatarUrl': {
+          'type': 'string',
+          'nullable': true,
+        },
+      },
+      'nullable': true,
+    },
     'createdAt': {
       'type': 'string',
       'format': 'date-time',
@@ -18,22 +46,27 @@ export const ChannelMessageSchema = {
     'createdBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'updatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'updatedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'deletedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'deletedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'channelId': {
       'type': 'string',
@@ -42,36 +75,80 @@ export const ChannelMessageSchema = {
     'replyToMessageId': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
-    'channelMessageType': {},
+    'channelMessageType': {
+      'type': 'string',
+      'enum': [
+        'unset',
+        'invitation',
+        'support',
+        'system',
+        'welcome',
+      ],
+      'nullable': true,
+    },
     'messageText': {
       'type': 'string',
+      'nullable': true,
     },
-    'statuses': {},
+    'statuses': {
+      'type': 'array',
+      'items': {
+        'type': 'object',
+        'properties': {
+          'userId': {
+            'type': 'string',
+            'maxLength': 32,
+          },
+          'isInArchivedChannel': {
+            'type': 'boolean',
+            'nullable': true,
+          },
+          'receivedAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+          'seenAt': {
+            'type': 'string',
+            'format': 'date-time',
+            'nullable': true,
+          },
+        },
+      },
+      'nullable': true,
+    },
     'editedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'suspendedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'suspendedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'mm2ConversationId': {
-      'description': 'This attribute is only used by the MM2 synchronizer.',
       'type': 'string',
+      'description': 'This attribute is only used by the MM2 synchronizer.',
+      'nullable': true,
     },
     'mm2Id': {
-      'description': 'This attribute is only used by the MM2 synchronizer. Mm2 message ID.',
       'type': 'string',
+      'description': 'This attribute is only used by the MM2 synchronizer. Mm2 message ID.',
+      'nullable': true,
     },
     'syncedWithMm2At': {
-      'description': 'This attribute is only used by the MM2 synchronizer.',
       'type': 'string',
+      'description': 'This attribute is only used by the MM2 synchronizer.',
       'format': 'date-time',
+      'nullable': true,
     },
   },
   'required': [

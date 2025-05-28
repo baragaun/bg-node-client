@@ -1,6 +1,7 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
+import { ChannelMessageInput } from '../../fsdata/gql/graphql.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
@@ -62,7 +63,7 @@ const findChannelMessages = async (
 
     const result = await fsdata.channelMessage.findChannelMessages(
       filter,
-      match,
+      match as unknown as ChannelMessageInput,
       options,
     );
 

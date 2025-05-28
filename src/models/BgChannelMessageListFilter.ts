@@ -3,6 +3,7 @@ import { ChannelMessageType } from '../enums.js';
 
 export class BgChannelMessageListFilter extends BaseListFilter {
   public channelId?: string | null;
+  public userIds?: string[] | null;
   public receiverUserId?: string | null;
   public replyToMessageId?: string | null;
   public includeChannelMessageType?: ChannelMessageType[] | null;
@@ -15,6 +16,9 @@ export class BgChannelMessageListFilter extends BaseListFilter {
     if (attributes) {
       if (attributes.channelId) {
         this.channelId = attributes.channelId;
+      }
+      if (attributes.userIds) {
+        this.userIds = attributes.userIds;
       }
       if (attributes.receiverUserId) {
         this.receiverUserId = attributes.receiverUserId;

@@ -3,7 +3,7 @@ import createUser from './createMockUser.js';
 import chance from '../../helpers/chance.js';
 import { Channel } from '../../models/Channel.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
-import { ChannelParticipant } from '../../models/ChannelParticipant.js';
+// import { ChannelParticipant } from '../../models/ChannelParticipant.js';
 import { User } from '../../models/User.js';
 
 const createMockChannel = (
@@ -52,14 +52,14 @@ const createMockChannel = (
   }
 
   channel.userIds = users.map((user) => user.id);
-  channel.participants = users.map(
-    (user) =>
-      new ChannelParticipant({
-        id: crypto.randomUUID().replaceAll('-', ''),
-        channelId: channel.id,
-        userId: user.id,
-      }),
-  );
+  // channel.participants = users.map(
+  //   (user) =>
+  //     new ChannelParticipant({
+  //       id: crypto.randomUUID().replaceAll('-', ''),
+  //       channelId: channel.id,
+  //       userId: user.id,
+  //     }),
+  // );
 
   return {
     channel,

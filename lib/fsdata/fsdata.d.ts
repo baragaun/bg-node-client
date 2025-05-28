@@ -6,8 +6,9 @@ declare const fsdata: {
     update: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(changes: Partial<T>, modelType: import("../enums.js").ModelType, queryOptions?: import("../index.js").QueryOptions<T>) => Promise<import("../index.js").QueryResult<T>>;
     channel: {
         createChannel: (props: Partial<import("../index.js").Channel>) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
-        findChannels: (filter: import("./gql/graphql.js").ChannelListFilter | null | undefined, match: Partial<import("../index.js").Channel> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
-        findMyChannels: (filter: import("./gql/graphql.js").ChannelListFilter | null | undefined, match: Partial<import("../index.js").Channel> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        findChannelById: (channelId: string) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        findChannels: (filter: import("../index.js").ChannelListFilter | null | undefined, match: Partial<import("../index.js").Channel> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        findMyChannels: (filter: import("../index.js").ChannelListFilter | null | undefined, match: Partial<import("../index.js").Channel> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
         updateChannel: (changes: Partial<import("../index.js").Channel>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").Channel>) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
     };
     channelInvitation: {
@@ -20,8 +21,11 @@ declare const fsdata: {
     };
     channelMessage: {
         createChannelMessage: (props: Partial<import("../index.js").ChannelMessage>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
-        findChannelMessages: (filter: import("./gql/graphql.js").ChannelListFilter | undefined, match: import("./gql/graphql.js").ChannelInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
+        findChannelMessages: (filter: import("../index.js").ChannelMessageListFilter | undefined, match: import("./gql/graphql.js").ChannelMessageInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
         updateChannelMessage: (changes: Partial<import("../index.js").ChannelMessage>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelMessage>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
+    };
+    channelParticipant: {
+        findChannelParticipants: (filter: import("./gql/graphql.js").ChannelParticipantListFilter | undefined, match: import("./gql/graphql.js").ChannelParticipantInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelParticipant>>;
     };
     myUser: {
         blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
@@ -50,6 +54,7 @@ declare const fsdata: {
     };
     user: {
         findUserById: (userId: string) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
+        findUsers: (filter: import("./gql/graphql.js").UserListFilter | null | undefined, match: Partial<import("../index.js").User> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
     };
 };
 export default fsdata;

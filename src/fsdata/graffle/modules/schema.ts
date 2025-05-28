@@ -64,6 +64,8 @@ export namespace Schema {
       findMyChannels: Query.findMyChannels;
       findChannelMessageById: Query.findChannelMessageById;
       findChannelMessages: Query.findChannelMessages;
+      findChannelParticipants: Query.findChannelParticipants;
+      findChannelParticipantsForChannel: Query.findChannelParticipantsForChannel;
       findChannelParticipantById: Query.findChannelParticipantById;
       findDeclineChannelInvitationReasons: Query.findDeclineChannelInvitationReasons;
       findOptions: Query.findOptions;
@@ -847,6 +849,54 @@ export namespace Schema {
       };
       inlineType: [1, [1]];
       namedType: $$NamedTypes.$$ChannelMessage;
+    }
+
+    export interface findChannelParticipants {
+      kind: 'OutputField';
+      name: 'findChannelParticipants';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        match: {
+          kind: 'InputField';
+          name: 'match';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$ChannelParticipantInput;
+        };
+        filter: {
+          kind: 'InputField';
+          name: 'filter';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$ChannelParticipantListFilter;
+        };
+      };
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$ChannelParticipant;
+    }
+
+    export interface findChannelParticipantsForChannel {
+      kind: 'OutputField';
+      name: 'findChannelParticipantsForChannel';
+      arguments: {
+        match: {
+          kind: 'InputField';
+          name: 'match';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$ChannelParticipantInput;
+        };
+        channelId: {
+          kind: 'InputField';
+          name: 'channelId';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$ChannelParticipant;
     }
 
     export interface findChannelParticipantById {
@@ -6287,8 +6337,8 @@ export namespace Schema {
       suspendedAt: User.suspendedAt;
       suspendedBy: User.suspendedBy;
       anonymizedAt: User.anonymizedAt;
-      syncedToAnalyticsAt: User.syncedToAnalyticsAt;
       addedToBgVaultAt: User.addedToBgVaultAt;
+      syncedToAnalyticsAt: User.syncedToAnalyticsAt;
       companyIds: User.companyIds;
       companies: User.companies;
       groupIds: User.groupIds;
@@ -6817,17 +6867,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
-    export interface syncedToAnalyticsAt {
+    export interface addedToBgVaultAt {
       kind: 'OutputField';
-      name: 'syncedToAnalyticsAt';
+      name: 'addedToBgVaultAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
-    export interface addedToBgVaultAt {
+    export interface syncedToAnalyticsAt {
       kind: 'OutputField';
-      name: 'addedToBgVaultAt';
+      name: 'syncedToAnalyticsAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -12359,6 +12409,7 @@ export namespace Schema {
       channelName: ChannelInvitation.channelName;
       channelTopic: ChannelInvitation.channelTopic;
       messageText: ChannelInvitation.messageText;
+      autoAccept: ChannelInvitation.autoAccept;
       declineReasonTextId: ChannelInvitation.declineReasonTextId;
       dismissedFromInboxBySenderAt: ChannelInvitation.dismissedFromInboxBySenderAt;
       dismissedFromInboxByRecipientAt: ChannelInvitation.dismissedFromInboxByRecipientAt;
@@ -12508,6 +12559,17 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * An authorized sender (i.e. role: ["support"]) can skip the acceptance step.
+     */
+    export interface autoAccept {
+      kind: 'OutputField';
+      name: 'autoAccept';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface declineReasonTextId {
@@ -13530,7 +13592,6 @@ export namespace Schema {
       userHandle: BgChannelParticipantMetadata.userHandle;
       firstName: BgChannelParticipantMetadata.firstName;
       lastName: BgChannelParticipantMetadata.lastName;
-      nickname: BgChannelParticipantMetadata.nickname;
       avatarUrl: BgChannelParticipantMetadata.avatarUrl;
       sentMessageCount: BgChannelParticipantMetadata.sentMessageCount;
       unseenMessageCount: BgChannelParticipantMetadata.unseenMessageCount;
@@ -13577,14 +13638,6 @@ export namespace Schema {
     export interface lastName {
       kind: 'OutputField';
       name: 'lastName';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface nickname {
-      kind: 'OutputField';
-      name: 'nickname';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -21173,8 +21226,8 @@ export namespace Schema {
       suspendedAt: MyUser.suspendedAt;
       suspendedBy: MyUser.suspendedBy;
       anonymizedAt: MyUser.anonymizedAt;
-      syncedToAnalyticsAt: MyUser.syncedToAnalyticsAt;
       addedToBgVaultAt: MyUser.addedToBgVaultAt;
+      syncedToAnalyticsAt: MyUser.syncedToAnalyticsAt;
       companyIds: MyUser.companyIds;
       companies: MyUser.companies;
       groupIds: MyUser.groupIds;
@@ -21703,17 +21756,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
-    export interface syncedToAnalyticsAt {
+    export interface addedToBgVaultAt {
       kind: 'OutputField';
-      name: 'syncedToAnalyticsAt';
+      name: 'addedToBgVaultAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
-    export interface addedToBgVaultAt {
+    export interface syncedToAnalyticsAt {
       kind: 'OutputField';
-      name: 'addedToBgVaultAt';
+      name: 'syncedToAnalyticsAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -28856,6 +28909,10 @@ export namespace Schema {
       updatedAtUntil: ChannelListFilter.updatedAtUntil;
       userId: ChannelListFilter.userId;
       userIds: ChannelListFilter.userIds;
+      mustHaveMessages: ChannelListFilter.mustHaveMessages;
+      invitationMustBeAccepted: ChannelListFilter.invitationMustBeAccepted;
+      includeArchivedMessages: ChannelListFilter.includeArchivedMessages;
+      includeSystemMessages: ChannelListFilter.includeSystemMessages;
     };
   }
 
@@ -28935,6 +28992,34 @@ export namespace Schema {
       name: 'userIds';
       inlineType: [0, [1]];
       namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface mustHaveMessages {
+      kind: 'InputField';
+      name: 'mustHaveMessages';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface invitationMustBeAccepted {
+      kind: 'InputField';
+      name: 'invitationMustBeAccepted';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface includeArchivedMessages {
+      kind: 'InputField';
+      name: 'includeArchivedMessages';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$IncludeFilterOption;
+    }
+
+    export interface includeSystemMessages {
+      kind: 'InputField';
+      name: 'includeSystemMessages';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$IncludeFilterOption;
     }
   }
 
@@ -29306,6 +29391,242 @@ export namespace Schema {
       name: 'seen';
       inlineType: [0];
       namedType: $$NamedTypes.$$Boolean;
+    }
+  }
+
+  //                                      ChannelParticipantInput
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface ChannelParticipantInput {
+    kind: 'InputObject';
+    name: 'ChannelParticipantInput';
+    isAllFieldsNullable: true;
+    fields: {
+      id: ChannelParticipantInput.id;
+      adminNotes: ChannelParticipantInput.adminNotes;
+      events: ChannelParticipantInput.events;
+      metadata: ChannelParticipantInput.metadata;
+      createdAt: ChannelParticipantInput.createdAt;
+      createdBy: ChannelParticipantInput.createdBy;
+      updatedAt: ChannelParticipantInput.updatedAt;
+      updatedBy: ChannelParticipantInput.updatedBy;
+      deletedAt: ChannelParticipantInput.deletedAt;
+      deletedBy: ChannelParticipantInput.deletedBy;
+      channelId: ChannelParticipantInput.channelId;
+      userId: ChannelParticipantInput.userId;
+      invitedBy: ChannelParticipantInput.invitedBy;
+      channelName: ChannelParticipantInput.channelName;
+      role: ChannelParticipantInput.role;
+      suspendedAt: ChannelParticipantInput.suspendedAt;
+      suspendedBy: ChannelParticipantInput.suspendedBy;
+    };
+  }
+
+  export namespace ChannelParticipantInput {
+    export interface id {
+      kind: 'InputField';
+      name: 'id';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'InputField';
+      name: 'adminNotes';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'InputField';
+      name: 'events';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEventInput;
+    }
+
+    export interface metadata {
+      kind: 'InputField';
+      name: 'metadata';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadataInput;
+    }
+
+    export interface createdAt {
+      kind: 'InputField';
+      name: 'createdAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'InputField';
+      name: 'createdBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'InputField';
+      name: 'updatedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'InputField';
+      name: 'updatedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'InputField';
+      name: 'deletedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'InputField';
+      name: 'deletedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface channelId {
+      kind: 'InputField';
+      name: 'channelId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface userId {
+      kind: 'InputField';
+      name: 'userId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface invitedBy {
+      kind: 'InputField';
+      name: 'invitedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface channelName {
+      kind: 'InputField';
+      name: 'channelName';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface role {
+      kind: 'InputField';
+      name: 'role';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ChannelParticipantRole;
+    }
+
+    export interface suspendedAt {
+      kind: 'InputField';
+      name: 'suspendedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface suspendedBy {
+      kind: 'InputField';
+      name: 'suspendedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+  }
+
+  //                                    ChannelParticipantListFilter
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface ChannelParticipantListFilter {
+    kind: 'InputObject';
+    name: 'ChannelParticipantListFilter';
+    isAllFieldsNullable: true;
+    fields: {
+      ids: ChannelParticipantListFilter.ids;
+      excludeIds: ChannelParticipantListFilter.excludeIds;
+      searchText: ChannelParticipantListFilter.searchText;
+      caseSensitive: ChannelParticipantListFilter.caseSensitive;
+      textSearchFields: ChannelParticipantListFilter.textSearchFields;
+      createdAtFrom: ChannelParticipantListFilter.createdAtFrom;
+      createdAtUntil: ChannelParticipantListFilter.createdAtUntil;
+      updatedAtFrom: ChannelParticipantListFilter.updatedAtFrom;
+      updatedAtUntil: ChannelParticipantListFilter.updatedAtUntil;
+    };
+  }
+
+  export namespace ChannelParticipantListFilter {
+    export interface ids {
+      kind: 'InputField';
+      name: 'ids';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface excludeIds {
+      kind: 'InputField';
+      name: 'excludeIds';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface searchText {
+      kind: 'InputField';
+      name: 'searchText';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface caseSensitive {
+      kind: 'InputField';
+      name: 'caseSensitive';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface textSearchFields {
+      kind: 'InputField';
+      name: 'textSearchFields';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface createdAtFrom {
+      kind: 'InputField';
+      name: 'createdAtFrom';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdAtUntil {
+      kind: 'InputField';
+      name: 'createdAtUntil';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedAtFrom {
+      kind: 'InputField';
+      name: 'updatedAtFrom';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedAtUntil {
+      kind: 'InputField';
+      name: 'updatedAtUntil';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
     }
   }
 
@@ -31482,6 +31803,7 @@ export namespace Schema {
       channelName: ChannelInvitationInput.channelName;
       channelTopic: ChannelInvitationInput.channelTopic;
       messageText: ChannelInvitationInput.messageText;
+      autoAccept: ChannelInvitationInput.autoAccept;
       declineReasonTextId: ChannelInvitationInput.declineReasonTextId;
       dismissedFromInboxBySenderAt: ChannelInvitationInput.dismissedFromInboxBySenderAt;
       dismissedFromInboxByRecipientAt: ChannelInvitationInput.dismissedFromInboxByRecipientAt;
@@ -31601,6 +31923,16 @@ export namespace Schema {
       name: 'messageText';
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * An authorized sender (i.e. role: ["support"]) can skip the acceptance step.
+     */
+    export interface autoAccept {
+      kind: 'InputField';
+      name: 'autoAccept';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface declineReasonTextId {
@@ -31740,156 +32072,6 @@ export namespace Schema {
       name: 'event';
       inlineType: [1];
       namedType: $$NamedTypes.$$ChannelMessageEvent;
-    }
-  }
-
-  //                                      ChannelParticipantInput
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface ChannelParticipantInput {
-    kind: 'InputObject';
-    name: 'ChannelParticipantInput';
-    isAllFieldsNullable: true;
-    fields: {
-      id: ChannelParticipantInput.id;
-      adminNotes: ChannelParticipantInput.adminNotes;
-      events: ChannelParticipantInput.events;
-      metadata: ChannelParticipantInput.metadata;
-      createdAt: ChannelParticipantInput.createdAt;
-      createdBy: ChannelParticipantInput.createdBy;
-      updatedAt: ChannelParticipantInput.updatedAt;
-      updatedBy: ChannelParticipantInput.updatedBy;
-      deletedAt: ChannelParticipantInput.deletedAt;
-      deletedBy: ChannelParticipantInput.deletedBy;
-      channelId: ChannelParticipantInput.channelId;
-      userId: ChannelParticipantInput.userId;
-      invitedBy: ChannelParticipantInput.invitedBy;
-      channelName: ChannelParticipantInput.channelName;
-      role: ChannelParticipantInput.role;
-      suspendedAt: ChannelParticipantInput.suspendedAt;
-      suspendedBy: ChannelParticipantInput.suspendedBy;
-    };
-  }
-
-  export namespace ChannelParticipantInput {
-    export interface id {
-      kind: 'InputField';
-      name: 'id';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'InputField';
-      name: 'adminNotes';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'InputField';
-      name: 'events';
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEventInput;
-    }
-
-    export interface metadata {
-      kind: 'InputField';
-      name: 'metadata';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BaseModelMetadataInput;
-    }
-
-    export interface createdAt {
-      kind: 'InputField';
-      name: 'createdAt';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'InputField';
-      name: 'createdBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'InputField';
-      name: 'updatedAt';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'InputField';
-      name: 'updatedBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'InputField';
-      name: 'deletedAt';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'InputField';
-      name: 'deletedBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface channelId {
-      kind: 'InputField';
-      name: 'channelId';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface userId {
-      kind: 'InputField';
-      name: 'userId';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface invitedBy {
-      kind: 'InputField';
-      name: 'invitedBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface channelName {
-      kind: 'InputField';
-      name: 'channelName';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface role {
-      kind: 'InputField';
-      name: 'role';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ChannelParticipantRole;
-    }
-
-    export interface suspendedAt {
-      kind: 'InputField';
-      name: 'suspendedAt';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface suspendedBy {
-      kind: 'InputField';
-      name: 'suspendedBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
     }
   }
 
@@ -36588,6 +36770,7 @@ export namespace Schema {
       'graphQlQueryFindChannelMessageById',
       'graphQlQueryFindChannelMessages',
       'graphQlQueryFindChannelParticipantById',
+      'graphQlQueryFindChannelParticipants',
       'graphQlQueryFindChannels',
       'graphQlQueryFindChannelsForUser',
       'graphQlQueryFindMyChannels',
@@ -36768,6 +36951,7 @@ export namespace Schema {
       | 'graphQlQueryFindChannelMessageById'
       | 'graphQlQueryFindChannelMessages'
       | 'graphQlQueryFindChannelParticipantById'
+      | 'graphQlQueryFindChannelParticipants'
       | 'graphQlQueryFindChannels'
       | 'graphQlQueryFindChannelsForUser'
       | 'graphQlQueryFindMyChannels'
@@ -37656,6 +37840,8 @@ export namespace Schema {
     export type $$ChannelMessageInput = ChannelMessageInput;
     export type $$ChannelMessageStatusInput = ChannelMessageStatusInput;
     export type $$ChannelMessageListFilter = ChannelMessageListFilter;
+    export type $$ChannelParticipantInput = ChannelParticipantInput;
+    export type $$ChannelParticipantListFilter = ChannelParticipantListFilter;
     export type $$GroupMembershipListFilter = GroupMembershipListFilter;
     export type $$GroupInput = GroupInput;
     export type $$AppliedGroupRuleInput = AppliedGroupRuleInput;
@@ -37674,7 +37860,6 @@ export namespace Schema {
     export type $$AdminTaskInput = AdminTaskInput;
     export type $$ChannelInvitationInput = ChannelInvitationInput;
     export type $$BgAddChannelMessageEventInput = BgAddChannelMessageEventInput;
-    export type $$ChannelParticipantInput = ChannelParticipantInput;
     export type $$ContentTagInput = ContentTagInput;
     export type $$ModerationConcernInput = ModerationConcernInput;
     export type $$MenteesGroupMembershipInput = MenteesGroupMembershipInput;

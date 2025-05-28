@@ -14,6 +14,16 @@ declare const modelFields: {
         tags: boolean;
         channelType: boolean;
         userIds: boolean;
+        metadata: {
+            updatedAt: boolean;
+            unseenMessageInfo: {
+                userId: boolean;
+                createdAt: boolean;
+            };
+            channelInvitationAccepted: boolean;
+            messagesSentByCreatorCount: boolean;
+            messagesSentByFirstParticipantCount: boolean;
+        };
         pausedAt: boolean;
         pausedBy: boolean;
         suspendedAt: boolean;
@@ -76,7 +86,33 @@ declare const modelFields: {
         mm2Id: boolean;
         syncedWithMm2At: boolean;
     };
-    channelParticipant: {};
+    channelParticipant: {
+        id: boolean;
+        adminNotes: boolean;
+        metadata: {
+            updatedAt: boolean;
+            userHandle: boolean;
+            firstName: boolean;
+            lastName: boolean;
+            avatarUrl: boolean;
+            sentMessageCount: boolean;
+            unseenMessageCount: boolean;
+            unseenSystemMessageCount: boolean;
+        };
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+        channelId: boolean;
+        userId: boolean;
+        invitedBy: boolean;
+        channelName: boolean;
+        role: boolean;
+        suspendedAt: boolean;
+        suspendedBy: boolean;
+    };
     sidMultiStepAction: {
         actionStatus: boolean;
         actionType: boolean;

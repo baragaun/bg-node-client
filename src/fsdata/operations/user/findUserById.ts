@@ -42,7 +42,7 @@ const findUserById = async (
         : undefined,
     };
   } catch (error) {
-    logger.error('fsdata.findMyUser: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.findUserById: error', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

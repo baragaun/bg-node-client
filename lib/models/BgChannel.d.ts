@@ -1,7 +1,6 @@
 import { BaseModel } from './BaseModel.js';
 import { BgChannelStatus } from './BgChannelStatus.js';
 import { ChannelMetadata } from './ChannelMetadata.js';
-import { ChannelParticipant } from './ChannelParticipant.js';
 import { ChannelType } from '../enums.js';
 export declare class BgChannel extends BaseModel {
     name?: string | null;
@@ -21,7 +20,6 @@ export declare class BgChannel extends BaseModel {
     lockedBy?: string | null;
     archivedAt?: string | null;
     archivedBy?: string | null;
-    participants?: ChannelParticipant[];
     constructor(attributes?: Partial<BgChannel>);
     static get searchFields(): string[];
 }

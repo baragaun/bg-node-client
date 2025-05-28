@@ -8,6 +8,7 @@ import {
   ReportUserReasonTextId,
   UserIdentType,
 } from '../enums.js';
+import { FindChannelOptions, FindChannelResult } from './findChannelTypes.js';
 import { FindObjectsOptions } from './FindObjectsOptions.js';
 import { MangoQueryTypes } from './mangoQuery.js';
 import { MultiStepActionListener } from './MultiStepActionListener.js';
@@ -32,6 +33,7 @@ import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
 import { User } from '../models/User.js';
 import { UserInbox } from '../models/UserInbox.js';
+import { UserListFilter } from '../models/UserListFilter.js';
 
 export interface Operations {
   count: <T extends Model = Model>(
@@ -89,6 +91,12 @@ export interface Operations {
     ) => Promise<QueryResult<Channel>>;
 
     deleteChannel: (id: string) => Promise<QueryResult<void>>;
+
+    findChannelById: (
+      id: string,
+      options: FindChannelOptions,
+      queryOptions: QueryOptions,
+    ) => Promise<FindChannelResult>;
 
     findChannels: (
       filter: ChannelListFilter,
@@ -328,5 +336,13 @@ export interface Operations {
 
   user: {
     findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>
+
+    findUsers: (
+      filter: UserListFilter | null | undefined,
+      match: Partial<User> | null | undefined,
+      selector: MangoQueryTypes<User> | null | undefined,
+      options: FindObjectsOptions,
+      queryOptions: QueryOptions,
+    ) => Promise<QueryResult<User>>
   };
 }

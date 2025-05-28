@@ -1,4 +1,5 @@
 export const ChannelParticipantSchema = {
+  'title': 'ChannelParticipant',
   'version': 0,
   'primaryKey': 'id',
   'type': 'object',
@@ -9,26 +10,38 @@ export const ChannelParticipantSchema = {
     },
     'adminNotes': {
       'type': 'string',
+      'nullable': true,
     },
     'metadata': {
       'type': 'object',
       'properties': {
         'userHandle': {
           'type': 'string',
+          'nullable': true,
         },
         'firstName': {
           'type': 'string',
+          'nullable': true,
         },
         'lastName': {
           'type': 'string',
-        },
-        'nickname': {
-          'type': 'string',
+          'nullable': true,
         },
         'avatarUrl': {
           'type': 'string',
+          'nullable': true,
+        },
+        'sentMessageCount': {
+          'type': 'integer',
+        },
+        'unseenMessageCount': {
+          'type': 'integer',
+        },
+        'unseenSystemMessageCount': {
+          'type': 'integer',
         },
       },
+      'nullable': true,
     },
     'createdAt': {
       'type': 'string',
@@ -37,22 +50,27 @@ export const ChannelParticipantSchema = {
     'createdBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'updatedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'updatedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'deletedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'deletedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'channelId': {
       'type': 'string',
@@ -65,18 +83,31 @@ export const ChannelParticipantSchema = {
     'invitedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
     'channelName': {
       'type': 'string',
+      'nullable': true,
     },
-    'role': {},
+    'role': {
+      'type': 'string',
+      'enum': [
+        'admin',
+        'moderator',
+        'owner',
+        'unset',
+      ],
+      'nullable': true,
+    },
     'suspendedAt': {
       'type': 'string',
       'format': 'date-time',
+      'nullable': true,
     },
     'suspendedBy': {
       'type': 'string',
       'maxLength': 32,
+      'nullable': true,
     },
   },
   'required': [

@@ -1,4 +1,5 @@
 export declare const ChannelSchema: {
+    title: string;
     version: number;
     primaryKey: string;
     type: string;
@@ -9,10 +10,16 @@ export declare const ChannelSchema: {
         };
         adminNotes: {
             type: string;
+            nullable: boolean;
         };
         metadata: {
             type: string;
             properties: {
+                updatedAt: {
+                    type: string;
+                    format: string;
+                    nullable: boolean;
+                };
                 unseenMessageInfo: {
                     type: string;
                     items: {
@@ -28,8 +35,19 @@ export declare const ChannelSchema: {
                             };
                         };
                     };
+                    nullable: boolean;
+                };
+                channelInvitationAccepted: {
+                    type: string;
+                };
+                messagesSentByCreatorCount: {
+                    type: string;
+                };
+                messagesSentByFirstParticipantCount: {
+                    type: string;
                 };
             };
+            nullable: boolean;
         };
         createdAt: {
             type: string;
@@ -38,121 +56,50 @@ export declare const ChannelSchema: {
         createdBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         updatedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         updatedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         deletedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         deletedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         name: {
             type: string;
+            nullable: boolean;
         };
         topic: {
             type: string;
+            nullable: boolean;
         };
         description: {
             type: string;
+            nullable: boolean;
         };
         tags: {
             type: string;
             items: {
                 type: string;
             };
+            nullable: boolean;
         };
-        channelType: {};
-        participants: {
+        channelType: {
             type: string;
-            items: {
-                type: string;
-                properties: {
-                    id: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    adminNotes: {
-                        type: string;
-                    };
-                    metadata: {
-                        type: string;
-                        properties: {
-                            userHandle: {
-                                type: string;
-                            };
-                            firstName: {
-                                type: string;
-                            };
-                            lastName: {
-                                type: string;
-                            };
-                            nickname: {
-                                type: string;
-                            };
-                            avatarUrl: {
-                                type: string;
-                            };
-                        };
-                    };
-                    createdAt: {
-                        type: string;
-                        format: string;
-                    };
-                    createdBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    updatedAt: {
-                        type: string;
-                        format: string;
-                    };
-                    updatedBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    deletedAt: {
-                        type: string;
-                        format: string;
-                    };
-                    deletedBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    channelId: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    userId: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    invitedBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                    channelName: {
-                        type: string;
-                    };
-                    role: {};
-                    suspendedAt: {
-                        type: string;
-                        format: string;
-                    };
-                    suspendedBy: {
-                        type: string;
-                        maxLength: number;
-                    };
-                };
-            };
+            enum: string[];
         };
         statuses: {
             type: string;
@@ -166,13 +113,11 @@ export declare const ChannelSchema: {
                     archivedAt: {
                         type: string;
                         format: string;
+                        nullable: boolean;
                     };
                 };
             };
-        };
-        otherUserId: {
-            type: string;
-            maxLength: number;
+            nullable: boolean;
         };
         userIds: {
             type: string;
@@ -180,51 +125,69 @@ export declare const ChannelSchema: {
                 type: string;
                 maxLength: number;
             };
+            nullable: boolean;
+        };
+        otherUserId: {
+            type: string;
+            description: string;
+            maxLength: number;
+            nullable: boolean;
         };
         pausedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         pausedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         suspendedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         suspendedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         lockedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         lockedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         archivedAt: {
             type: string;
             format: string;
+            nullable: boolean;
         };
         archivedBy: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         assumedMentorId: {
             type: string;
             maxLength: number;
+            nullable: boolean;
         };
         mm2Id: {
-            description: string;
             type: string;
+            description: string;
+            nullable: boolean;
         };
         syncedWithMm2At: {
-            description: string;
             type: string;
+            description: string;
             format: string;
+            nullable: boolean;
         };
     };
     required: string[];

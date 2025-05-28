@@ -1,0 +1,1069 @@
+// This file is auto-generated. Do not edit manually.
+// Generated on: 2025-04-07T22:46:39.031Z
+
+export interface EnumInfo {
+  name: string;
+  values: string[];
+  description?: string;
+}
+
+/**
+ * Contains all enum information from the application
+ */
+export const enumInfos: EnumInfo[] = [
+  {
+    "name": "AppAction",
+    "values": [
+      "editProfile",
+      "updateApp",
+      "unset"
+    ]
+  },
+  {
+    "name": "AppFeature",
+    "values": [
+      "testFeatures1",
+      "testFeatures2"
+    ]
+  },
+  {
+    "name": "CompanyStageTextId",
+    "values": [
+      "idea",
+      "operational",
+      "earning",
+      "profitable"
+    ]
+  },
+  {
+    "name": "CompanyTypeTextId",
+    "values": [
+      "forProfit",
+      "nonProfit",
+      "socialEnterprise",
+      "unsure"
+    ]
+  },
+  {
+    "name": "EducationLevelTextId",
+    "values": [
+      "doctorate",
+      "postgraduate",
+      "undergraduate",
+      "postSecondary",
+      "highSchool",
+      "middleSchool",
+      "primary"
+    ]
+  },
+  {
+    "name": "ExpertiseTextId",
+    "values": [
+      "accountingAndFinance",
+      "advertisingAndPromotion",
+      "brandingAndIdentity",
+      "businessDevelopment",
+      "businessPlanning",
+      "eCommerce",
+      "financialPlanning",
+      "humanResources",
+      "internationalTrade",
+      "lawAndLegal",
+      "loansAndFinancing",
+      "management",
+      "marketing",
+      "operations",
+      "planningAndGoalSetting",
+      "projectManagement",
+      "sales",
+      "retail",
+      "wholesale",
+      "socialMedia",
+      "startingUp",
+      "sustainability",
+      "technologyAndCybersecurity",
+      "workLifeBalance"
+    ]
+  },
+  {
+    "name": "GenderTextId",
+    "values": [
+      "m",
+      "f",
+      "x",
+      "notShared"
+    ]
+  },
+  {
+    "name": "PronounTextId",
+    "values": [
+      "m",
+      "f",
+      "x"
+    ]
+  },
+  {
+    "name": "UserProfileRole",
+    "values": [
+      "mentee",
+      "mentor",
+      "both",
+      "none"
+    ]
+  },
+  {
+    "name": "AdminTaskType",
+    "values": [
+      "addAppFeature",
+      "deleteUser",
+      "formatPhoneNumbers",
+      "mergeUsers",
+      "refreshAllEmbeddedCompanies",
+      "refreshAllUserInboxes",
+      "removeAppFeature",
+      "resetUserPassword",
+      "setUserPassword",
+      "suspendUser",
+      "verifyUserPassword",
+      "decryptString",
+      "unset",
+      "updateChannelMetadata",
+      "runDataGenerator",
+      "loadDbCache",
+      "queryDbVersion",
+      "recreateDbIndexes",
+      "updateGroupIdentsInAllGroupMemberships",
+      "addLanguageText",
+      "recreateDefaultMatchingEngine",
+      "refreshAllMatchProfiles",
+      "clearBusMessages",
+      "removeBusMessage",
+      "sendPushNotification",
+      "compareMm2Object",
+      "compareMm2ObjectIdsOfModel",
+      "fixAllSyncedChannelInvitationInitialMessages",
+      "mergeAllDuplicateMm3ChatObjects",
+      "mergeAllDuplicateMm2Users",
+      "pauseMm2Synchronization",
+      "runMm2Synchronization",
+      "syncAllUsersWhoSignedUpInMm3",
+      "syncDocsWithoutMm2Ids",
+      "syncUsersWithLanguageMismatch",
+      "triggerRandomSynchronizations",
+      "addOrRemoveAppFeature",
+      "createApiAuthInfo",
+      "removeAllInvalidUserBlocks",
+      "doDataMaintenance",
+      "sendPendingTrackingEvents"
+    ]
+  },
+  {
+    "name": "AdminTaskResult",
+    "values": [
+      "ok",
+      "error"
+    ]
+  },
+  {
+    "name": "AssetHostingService",
+    "values": [
+      "s3",
+      "unset"
+    ]
+  },
+  {
+    "name": "UploadedAssetType",
+    "values": [
+      "unset",
+      "avatar",
+      "profileHeroImage"
+    ]
+  },
+  {
+    "name": "ChannelChangedEventType",
+    "values": [
+      "channelDeleted",
+      "channelUpdated",
+      "invitationAccepted",
+      "invitationCreated",
+      "invitationDeclined",
+      "invitationDeleted",
+      "invitationUpdated",
+      "messageCreated",
+      "messageDeleted",
+      "messageStatusChanged",
+      "messageUpdated",
+      "participantCreated",
+      "participantDeleted",
+      "participantUpdated"
+    ]
+  },
+  {
+    "name": "ChannelInvitationDirection",
+    "values": [
+      "sent",
+      "received"
+    ]
+  },
+  {
+    "name": "ChannelInvitationStatus",
+    "values": [
+      "created",
+      "accepted",
+      "declined",
+      "unset"
+    ]
+  },
+  {
+    "name": "ChannelMessageEvent",
+    "values": [
+      "received",
+      "seen",
+      "unset"
+    ]
+  },
+  {
+    "name": "ChannelMessageType",
+    "values": [
+      "unset",
+      "invitation",
+      "support",
+      "system",
+      "welcome"
+    ]
+  },
+  {
+    "name": "ChannelParticipantRole",
+    "values": [
+      "admin",
+      "moderator",
+      "owner",
+      "unset"
+    ]
+  },
+  {
+    "name": "ChannelType",
+    "values": [
+      "unset",
+      "mentoring",
+      "support",
+      "welcome"
+    ]
+  },
+  {
+    "name": "DeclineChannelInvitationReasonTextId",
+    "values": [
+      "notGoodFit",
+      "tooBusy",
+      "noReason",
+      "fakeProfile",
+      "inappropriate"
+    ]
+  },
+  {
+    "name": "UiLanguage",
+    "values": [
+      "ar",
+      "en",
+      "es",
+      "id",
+      "ru",
+      "so"
+    ]
+  },
+  {
+    "name": "OptionType",
+    "values": [
+      "errorCode",
+      "companyStage",
+      "companyType",
+      "educationLevel",
+      "ethnicity",
+      "expertise",
+      "gender",
+      "pronoun",
+      "userRelationshipType",
+      "declineChannelInvitationReason",
+      "country",
+      "industry",
+      "language",
+      "unset",
+      "contentTagType",
+      "indonesianCity",
+      "indonesianProvince",
+      "iqlaaJordanianDistrict",
+      "iqlaaJordanianGovernorate",
+      "mm2Expertise",
+      "mm2Industry",
+      "blockUserReason",
+      "notificationTypeOption",
+      "reportUserReason"
+    ]
+  },
+  {
+    "name": "ContentTagTypeTextId",
+    "values": [
+      "concern",
+      "bookmark",
+      "highlight",
+      "moderatorWarning1",
+      "moderatorWarning2",
+      "moderatorWarning3",
+      "commendation",
+      "endorsement",
+      "knowPersonally",
+      "recommendation",
+      "thankYou",
+      "voteOfTrust",
+      "unset"
+    ]
+  },
+  {
+    "name": "ChildContentTagTypeTextId",
+    "values": [
+      "duplicate",
+      "mm2ModerationKeywords",
+      "offTopic",
+      "badActor",
+      "fakePerson",
+      "harasses",
+      "harassment",
+      "hate",
+      "impersonator",
+      "inappropriate",
+      "objectionableLanguage",
+      "promotesHate",
+      "sharesObjectionableContent",
+      "spam",
+      "spammer",
+      "unresponsive",
+      "usesObjectionableLanguage",
+      "violatesRules",
+      "unset"
+    ]
+  },
+  {
+    "name": "IncludeFilterOption",
+    "values": [
+      "include",
+      "exclude",
+      "only"
+    ]
+  },
+  {
+    "name": "SortDirection",
+    "values": [
+      "asc",
+      "desc"
+    ]
+  },
+  {
+    "name": "GroupMembershipRole",
+    "values": [
+      "admin",
+      "coordinator",
+      "moderator",
+      "owner"
+    ]
+  },
+  {
+    "name": "GroupRuleEventType",
+    "values": [
+      "enterGroup",
+      "exitGroup",
+      "signUp",
+      "sendMessage",
+      "userSearch",
+      "updateUser",
+      "unknown"
+    ]
+  },
+  {
+    "name": "MastercardCardType",
+    "values": [
+      "credit",
+      "debit",
+      "prepaid",
+      "none",
+      "notProvided"
+    ]
+  },
+  {
+    "name": "MatchingEngineRuleName",
+    "values": [
+      "cityOfResidence",
+      "countryOfResidence",
+      "expertise",
+      "gender",
+      "groupMembership",
+      "latestActivity",
+      "menteeIndustry",
+      "mentorIndustries",
+      "newUserRule",
+      "offersHelp",
+      "preferredLanguage",
+      "regionOfResidence",
+      "seeksHelp",
+      "unknown",
+      "unreadChannelMessages",
+      "unrespondedChannelMessages"
+    ]
+  },
+  {
+    "name": "UserSearchFieldOption",
+    "values": [
+      "isTrue",
+      "isFalse",
+      "any",
+      "match"
+    ]
+  },
+  {
+    "name": "UserSearchSubscriptionType",
+    "values": [
+      "none",
+      "daily",
+      "weekly",
+      "monthly"
+    ]
+  },
+  {
+    "name": "UserSearchType",
+    "values": [
+      "search",
+      "mentorRecommendation",
+      "menteeRecommendation"
+    ]
+  },
+  {
+    "name": "NotificationTemplateName",
+    "values": [
+      "accountDeletedConfirmation",
+      "channelInvitationAcceptedForMentee",
+      "channelInvitationAcceptedForMentor",
+      "channelInvitationDeclinedForMentee",
+      "channelInvitationDeclinedForMentor",
+      "channelInvitationReceivedForMentee",
+      "channelInvitationReceivedForMentor",
+      "channelMessageReceivedForMentee",
+      "channelMessageReceivedForMentor",
+      "completeProfileForMentee",
+      "completeProfileForMentor",
+      "completeSignUpForMentee",
+      "completeSignUpForMentor",
+      "matchesRecommendationsForMentee",
+      "matchesRecommendationsForMentor",
+      "newPrivacyRules",
+      "newsletter",
+      "resetPasswordConfirmation",
+      "resetPasswordConfirmToken",
+      "sendFirstInvitationForMentee",
+      "sendFirstInvitationForMentor",
+      "unset",
+      "welcomeForMentee",
+      "welcomeForMentor"
+    ]
+  },
+  {
+    "name": "NotificationMethod",
+    "values": [
+      "off",
+      "auto",
+      "email",
+      "sms",
+      "pushNotification",
+      "inAppNotification"
+    ]
+  },
+  {
+    "name": "NotificationType",
+    "values": [
+      "accountDeletedConfirmation",
+      "channelInvitationAccepted",
+      "channelInvitationDeclined",
+      "channelInvitationReceived",
+      "channelMessageReceived",
+      "completeProfile",
+      "completeSignUp",
+      "matchesRecommendations",
+      "newPrivacyRules",
+      "newsletter",
+      "resetPasswordConfirmation",
+      "resetPasswordConfirmToken",
+      "sendFirstInvitation",
+      "unset",
+      "welcome"
+    ]
+  },
+  {
+    "name": "ErrorCode",
+    "values": [
+      "academicExperienceNameMissing",
+      "academicExperienceUserIdMissing",
+      "businessExperienceNameMissing",
+      "businessExperienceUserIdMissing",
+      "companyNameMissing",
+      "companyNameTaken",
+      "contentTagAlreadyExist",
+      "contentTagModelTypeMissing",
+      "contentTagObjectIdMissing",
+      "contentTagTypeMissing",
+      "failedToConnect",
+      "failedToUpdate",
+      "unknown",
+      "alreadyGroupMember",
+      "groupLevelTooDeep",
+      "groupNameMissing",
+      "groupNameTaken",
+      "groupNotActive",
+      "groupRuleFailed",
+      "groupSlugMissing",
+      "groupSlugTaken",
+      "notAGroupMember",
+      "parentGroupNotFound",
+      "matchingEngineNameMissing",
+      "matchingEngineNameTaken",
+      "expertiseBidirectionalMappingError",
+      "expertiseTextIdDNE",
+      "alreadyExists",
+      "alreadyInitialized",
+      "dataValidationFailed",
+      "exceedsLimit",
+      "invalidInput",
+      "noLiveWebsocketConnectionAvailable",
+      "noNotificationMethodAvailable",
+      "notAllowed",
+      "notFound",
+      "notImplemented",
+      "notInitialized",
+      "notSupported",
+      "serviceNotAvailable",
+      "systemError",
+      "timeout",
+      "tooManyRequests",
+      "authTokenNoMatch",
+      "currentPasswordIncorrect",
+      "currentPasswordMissing",
+      "deviceUuidMissing",
+      "emailInvalid",
+      "emailMissing",
+      "failedToCreateAccount",
+      "failedToSignin",
+      "invalidPushNotificationToken",
+      "passwordMissing",
+      "passwordNoMatch",
+      "phoneNumberInvalid",
+      "phoneNumberMissing",
+      "phoneNumberNotSupported",
+      "unauthorized",
+      "userAlreadyExists",
+      "userDeviceNotFound",
+      "userNotActive",
+      "userNotFound",
+      "trackingInvalidTrackId",
+      "trainingCannotUpdateFields",
+      "trainingContentPageCannotUpdateFields",
+      "trainingContentPageMm2IdMissing",
+      "trainingContentPageMm2IdTaken",
+      "trainingMm2IdMissing",
+      "trainingMm2IdTaken",
+      "trainingSessionCannotUpdateFields",
+      "trainingSessionMm2IdMissing",
+      "trainingSessionMm2IdTaken",
+      "trainingSessionProgressInvalid",
+      "trainingSessionTrainingMissing",
+      "trainingSessionUserIdMissing"
+    ]
+  },
+  {
+    "name": "ModelEventType",
+    "values": [
+      "error",
+      "warning",
+      "info"
+    ]
+  },
+  {
+    "name": "ModelPermissionScope",
+    "values": [
+      "owner",
+      "admin",
+      "list",
+      "detail"
+    ]
+  },
+  {
+    "name": "ModelType",
+    "values": [
+      "AcademicExperience",
+      "BusinessExperience",
+      "Company",
+      "DataDeletion",
+      "MentorBoard",
+      "MentoringSession",
+      "UserInbox",
+      "UserMetadata",
+      "UserPreferences",
+      "AdminTask",
+      "UploadedAsset",
+      "Channel",
+      "ChannelInbox",
+      "ChannelInvitation",
+      "ChannelMessage",
+      "ChannelParticipant",
+      "ContentStatus",
+      "Option",
+      "ContentTag",
+      "AppliedGroupRule",
+      "Group",
+      "GroupMembership",
+      "GroupRule",
+      "GroupRuleConfig",
+      "MastercardBank",
+      "SupportChannelConfig",
+      "Match",
+      "MatchProfile",
+      "MatchingEngine",
+      "UserSearch",
+      "Notification",
+      "NotificationTemplate",
+      "Mm2Integration",
+      "Mm2Synchronization",
+      "Mm2SynchronizationResultItem",
+      "ModerationConcern",
+      "ApiAuthInfo",
+      "MultiStepAction",
+      "MyUser",
+      "ServiceRequest",
+      "User",
+      "UserDevice",
+      "UserRelationship",
+      "TrackingEvent",
+      "UserTracking",
+      "Training",
+      "TrainingContentPage",
+      "TrainingSession",
+      "unset"
+    ]
+  },
+  {
+    "name": "ObjectChangedEventType",
+    "values": [
+      "created",
+      "updated",
+      "deleted"
+    ]
+  },
+  {
+    "name": "ServiceRequestMessageId",
+    "values": [
+      "systemError",
+      "invalidInput",
+      "groupRuleFailed",
+      "unknown"
+    ]
+  },
+  {
+    "name": "ServiceRequestResult",
+    "values": [
+      "ok",
+      "error",
+      "unset"
+    ]
+  },
+  {
+    "name": "ServiceRequestSource",
+    "values": [
+      "graphqlApi",
+      "restApi",
+      "httpRoute",
+      "system",
+      "admin",
+      "vts",
+      "mm2"
+    ]
+  },
+  {
+    "name": "ServiceRequestType",
+    "values": [
+      "graphQlMutationCreateAcademicExperience",
+      "graphQlMutationDeleteAcademicExperience",
+      "graphQlMutationUpdateAcademicExperience",
+      "graphQlMutationCreateBusinessExperience",
+      "graphQlMutationDeleteBusinessExperience",
+      "graphQlMutationUpdateBusinessExperience",
+      "graphQlMutationCreateCompany",
+      "graphQlMutationDeleteCompany",
+      "graphQlMutationUpdateCompany",
+      "graphQlQueryFindAndUpdateAllMm2Users",
+      "graphQlQueryUserInboxUser",
+      "graphQlMutationCreateAdminTask",
+      "graphQlMutationFindAdminTaskById",
+      "graphQlMutationDeleteAdminTask",
+      "graphQlMutationUpdateAdminTask",
+      "graphQlQueryFindAdminTask",
+      "graphQlQueryAdminTaskDefinitions",
+      "graphQlMutationCreateUploadedAsset",
+      "graphQlMutationDeleteUploadedAsset",
+      "graphQlMutationFindUploadedAssetById",
+      "graphQlMutationFindUploadedAssetForUser",
+      "graphQlMutationInitAssetUpload",
+      "graphQlMutationUpdateUploadedAsset",
+      "graphQlQueryFindUploadedAssetById",
+      "graphQlQueryFindUploadedAssets",
+      "graphQlQueryFindUploadedAssetsForUser",
+      "graphQlMutationAddChannelMessageEvent",
+      "graphQlMutationArchiveChannelForUserByMe",
+      "graphQlMutationCreateChannel",
+      "graphQlMutationCreateChannelInvitation",
+      "graphQlMutationCreateChannelMessage",
+      "graphQlMutationCreateChannelParticipant",
+      "graphQlMutationDeleteChannel",
+      "graphQlMutationDeleteChannelInvitation",
+      "graphQlMutationDeleteChannelMessage",
+      "graphQlMutationDeleteChannelParticipant",
+      "graphQlMutationDeleteGroup",
+      "graphQlMutationDeleteGroupMembership",
+      "graphQlMutationMarkChannelMessagesAsSeenByMe",
+      "graphQlMutationUpdateChannel",
+      "graphQlMutationUpdateChannelInvitation",
+      "graphQlMutationUpdateChannelMessage",
+      "graphQlMutationUpdateChannelParticipant",
+      "graphQlQueryChannelInvitations",
+      "graphQlQueryChannelMessageChannel",
+      "graphQlQueryChannelParticipants",
+      "graphQlQueryFindChannelById",
+      "graphQlQueryFindChannelInvitationById",
+      "graphQlQueryFindChannelInvitationsBetweenUsers",
+      "graphQlQueryFindChannelInvitationsForUser",
+      "graphQlQueryFindChannelMessageById",
+      "graphQlQueryFindChannelMessages",
+      "graphQlQueryFindChannelParticipantById",
+      "graphQlQueryFindChannels",
+      "graphQlQueryFindChannelsForUser",
+      "graphQlQueryFindMyChannels",
+      "graphQlQueryFindPendingChannelInvitationsForUser",
+      "graphQlQueryMyInbox",
+      "graphQlQueryUserChannels",
+      "graphQlQueryUserCompanies",
+      "graphQlQueryUserGroupMembers",
+      "graphQlQueryUserGroups",
+      "graphQlQueryFindCountries",
+      "graphQlQueryFindExpertises",
+      "graphQlQueryFindIndustries",
+      "graphQlQueryFindOptions",
+      "unset",
+      "graphQlQueryContentTag",
+      "graphQlMutationCreateContentTag",
+      "graphQlMutationDeleteContentTag",
+      "graphQlMutationUpdateContentTag",
+      "graphQlMutationRunDataGenerator",
+      "graphQlQueryNotificationTemplate",
+      "graphQlQueryAvailableUserHandle",
+      "graphQlQueryUser",
+      "graphQlMutationAddUserToGroup",
+      "graphQlMutationCreateGroup",
+      "graphQlMutationCreateGroupMembership",
+      "graphQlMutationCreateSupportChannelConfig",
+      "graphQlMutationDeleteSupportChannelConfig",
+      "graphQlMutationRemoveUserFromAllGroups",
+      "graphQlMutationRemoveUserFromGroup",
+      "graphQlMutationUpdateGroup",
+      "graphQlMutationUpdateGroupMembership",
+      "graphQlMutationUpdateSupportChannelConfig",
+      "graphQlQueryFindGroupById",
+      "graphQlQueryFindGroupByIdent",
+      "graphQlQueryFindGroupMembershipByIdField",
+      "graphQlQueryFindGroupMemberships",
+      "graphQlQueryFindGroupsField",
+      "graphQlQueryMyGroupMemberships",
+      "graphQlMutationCreateUserSearch",
+      "graphQlMutationDeleteUserSearch",
+      "graphQlMutationUpdateUserSearch",
+      "graphQlQueryFindUserSearchById",
+      "graphQlQueryFindUserSearchResults",
+      "graphQlQueryUserSearchFoundUsers",
+      "graphQlMutationCreateNotification",
+      "graphQlMutationCreateNotificationTemplate",
+      "graphQlMutationDeleteNotification",
+      "graphQlMutationDeleteNotificationTemplate",
+      "graphQlMutationMarkInAppMessageReceived",
+      "graphQlMutationSendMultiStepActionNotification",
+      "graphQlMutationUpdateNotification",
+      "graphQlMutationUpdateNotificationTemplate",
+      "graphQlMutationClearAllSyncInfo",
+      "graphQlMutationCreateMm2Synchronization",
+      "graphQlMutationDeleteAllMm2DataInMm3",
+      "graphQlMutationDeleteMm2Synchronization",
+      "graphQlMutationRunMm2Synchronization",
+      "graphQlQueryFindMm2SynchronizationById",
+      "graphQlQueryGetMm2Integration",
+      "graphQlMutationNlpLabelMessage",
+      "graphQlMutationUpdateNlpConversation",
+      "graphQlMutationUpdateNlpMessage",
+      "graphQlQueryFindNlpConversation",
+      "graphQlMutationAddFeatureToUser",
+      "graphQlMutationBlockUser",
+      "graphQlMutationCreateMultiStepAction",
+      "graphQlMutationCreateUserDevice",
+      "graphQlMutationCreateUserRelationship",
+      "graphQlMutationDeleteMyUser",
+      "graphQlMutationDeleteUser",
+      "graphQlMutationEndMySession",
+      "graphQlMutationRemoveFeatureFromUser",
+      "graphQlMutationReportUser",
+      "graphQlMutationSignInUser",
+      "graphQlMutationSignMeOut",
+      "graphQlMutationSignUpOauthUser",
+      "graphQlMutationSignUpUser",
+      "graphQlMutationStartMySession",
+      "graphQlMutationUnblockUser",
+      "graphQlMutationUpdateMyUser",
+      "graphQlMutationUpdateUser",
+      "graphQlMutationUpdateUserDevice",
+      "graphQlMutationUpdateUserRelationship",
+      "graphQlMutationUpsertBackgroundTask",
+      "graphQlMutationVerifyMultiStepActionToken",
+      "graphQlQueryBackgroundTask",
+      "graphQlQueryFindAvailableUserHandle",
+      "graphQlQueryFindMyBlockedUsers",
+      "graphQlQueryFindMyUser",
+      "graphQlQueryFindMyUserDevices",
+      "graphQlQueryFindUserById",
+      "graphQlQueryFindUserByIdent",
+      "graphQlQueryFindUserDeviceById",
+      "graphQlQueryFindUserDevices",
+      "graphQlQueryFindUserRelationshipById",
+      "graphQlQueryFindUsers",
+      "graphQlQueryGetMultiStepActionProgress",
+      "graphQlQueryLatestUserDevice",
+      "graphQlQueryUnreadInAppMessages",
+      "graphQlQueryUserUserRelationships",
+      "graphQlMutationCreateUserTracking",
+      "graphQlMutationUpdateUserTracking",
+      "findTrainingById",
+      "findTrainingsForMe",
+      "findTrainingsForUser",
+      "findTrainingSessionById",
+      "findTrainingSessionsByTrainingId",
+      "findTrainingSessionsForMe"
+    ]
+  },
+  {
+    "name": "ModerationConcernType",
+    "values": [
+      "phrase",
+      "unknown"
+    ]
+  },
+  {
+    "name": "AppFeature",
+    "values": [
+      "testFeatures1",
+      "testFeatures2"
+    ]
+  },
+  {
+    "name": "AuthType",
+    "values": [
+      "none",
+      "oauth",
+      "token",
+      "hmac",
+      "saml"
+    ]
+  },
+  {
+    "name": "BlockUserReasonTextId",
+    "values": [
+      "spam",
+      "harassment",
+      "language",
+      "other"
+    ]
+  },
+  {
+    "name": "FederatedIdentityProvider",
+    "values": [
+      "none",
+      "firebase"
+    ]
+  },
+  {
+    "name": "IdentityProvider",
+    "values": [
+      "apple",
+      "facebook",
+      "google",
+      "instagram",
+      "linkedIn",
+      "microsoft",
+      "own",
+      "sso",
+      "telegram",
+      "twitter",
+      "whatsApp"
+    ]
+  },
+  {
+    "name": "MultiStepActionResult",
+    "values": [
+      "confirmTokenMismatch",
+      "dataValidationFailed",
+      "deviceNotFound",
+      "emailMismatch",
+      "emailNotVerified",
+      "error",
+      "expired",
+      "invalidEmail",
+      "phoneNumberInvalid",
+      "missingEmail",
+      "missingPhoneNumber",
+      "notFound",
+      "ok",
+      "passed",
+      "passwordMismatch",
+      "passwordUpdated",
+      "phoneNumberMismatch",
+      "phoneNumberNotVerified",
+      "systemError",
+      "unset",
+      "userFailedValidation",
+      "userNotFound",
+      "userNotSignedIn"
+    ]
+  },
+  {
+    "name": "MultiStepActionSendNotificationResult",
+    "values": [
+      "ok",
+      "failed",
+      "phoneNumberInvalid"
+    ]
+  },
+  {
+    "name": "MultiStepActionStatus",
+    "values": [
+      "created",
+      "started",
+      "finished"
+    ]
+  },
+  {
+    "name": "MultiStepActionType",
+    "values": [
+      "resetPassword",
+      "tokenSignIn",
+      "unset",
+      "updateEmail",
+      "updatePassword",
+      "updatePhoneNumber",
+      "verifyEmail",
+      "verifyPhoneNumber",
+      "verifyPhoneSignupOnSignup"
+    ]
+  },
+  {
+    "name": "ReportUserReasonTextId",
+    "values": [
+      "notSet",
+      "badActor",
+      "fakePerson",
+      "harasses",
+      "impersonator",
+      "inappropriate",
+      "objectionableLanguage",
+      "promotesHate",
+      "sharesObjectionableContent",
+      "spammer",
+      "usesObjectionableLanguage",
+      "violatesRules"
+    ]
+  },
+  {
+    "name": "UiLanguage",
+    "values": [
+      "ar",
+      "en",
+      "es",
+      "id",
+      "ru",
+      "so"
+    ]
+  },
+  {
+    "name": "UserIdentType",
+    "values": [
+      "any",
+      "email",
+      "id",
+      "oauthProfileUrl",
+      "oauthUserId",
+      "phoneNumber",
+      "userHandle"
+    ]
+  },
+  {
+    "name": "UserRole",
+    "values": [
+      "admin",
+      "support",
+      "staff",
+      "qa",
+      "test"
+    ]
+  },
+  {
+    "name": "CookieChoiceTextId",
+    "values": [
+      "acceptAll",
+      "rejectAll",
+      "acceptEssentials"
+    ]
+  },
+  {
+    "name": "TrackingEventNotSentReason",
+    "values": [
+      "userAskedToNotTrack",
+      "userIsDeleted",
+      "userIsStaff",
+      "userIsSuspended",
+      "userNotFound",
+      "userTrackingNotFound"
+    ]
+  },
+  {
+    "name": "TrackingEventType",
+    "values": [
+      "unset",
+      "userDeletedAccount",
+      "userSentInvitation",
+      "userSentMessage",
+      "userAcceptedInvitation",
+      "userDeclinedInvitation",
+      "userStartedSignUp",
+      "userFinishedSignUp",
+      "userStartedTraining",
+      "userFinishedTraining"
+    ]
+  }
+];
+
+/**
+ * Get enum values by name
+ * @param name The name of the enum to retrieve
+ * @returns Array of enum values or undefined if not found
+ */
+export const getEnumValuesByName = (name: string): string[] | undefined => {
+  const enumInfo = enumInfos.find(e => e.name === name);
+  return enumInfo?.values;
+}
+
+/**
+ * Get enum info by name
+ * @param name The name of the enum to retrieve
+ * @returns EnumInfo object or undefined if not found
+ */
+export const getEnumInfoByName = (name: string): EnumInfo | undefined => {
+  return enumInfos.find(e => e.name === name);
+}

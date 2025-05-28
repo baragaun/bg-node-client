@@ -253,6 +253,18 @@ export interface Query<
     | Query.findChannelMessages$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findChannelMessages<_$Scalars>>;
   /**
+   * Select the `findChannelParticipants` field on the `Query` object. Its type is `ChannelParticipant` (a `OutputObject` kind of type).
+   */
+  findChannelParticipants?:
+    | Query.findChannelParticipants$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findChannelParticipants<_$Scalars>>;
+  /**
+   * Select the `findChannelParticipantsForChannel` field on the `Query` object. Its type is `ChannelParticipant` (a `OutputObject` kind of type).
+   */
+  findChannelParticipantsForChannel?:
+    | Query.findChannelParticipantsForChannel<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findChannelParticipantsForChannel<_$Scalars>>;
+  /**
    * Select the `findChannelParticipantById` field on the `Query` object. Its type is `ChannelParticipant` (a `OutputObject` kind of type).
    */
   findChannelParticipantById?:
@@ -1749,6 +1761,77 @@ export namespace Query {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     findChannelMessages$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type findChannelParticipants<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = findChannelParticipants$SelectionSet<_$Scalars>;
+
+  export interface findChannelParticipants$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ChannelParticipant<_$Scalars> {
+    /**
+     * Arguments for `findChannelParticipants` field. No arguments are required so you may omit this.
+     */
+    $?: findChannelParticipants$Arguments<_$Scalars>;
+  }
+
+  export interface findChannelParticipants$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    options?: $NamedTypes.$FindObjectsOptions<_$Scalars> | undefined | null;
+    match?: $NamedTypes.$ChannelParticipantInput<_$Scalars> | undefined | null;
+    filter?: $NamedTypes.$ChannelParticipantListFilter<_$Scalars> | undefined | null;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `findChannelParticipants` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type findChannelParticipants$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    findChannelParticipants$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type findChannelParticipantsForChannel<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = findChannelParticipantsForChannel$SelectionSet<_$Scalars>;
+
+  export interface findChannelParticipantsForChannel$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ChannelParticipant<_$Scalars> {
+    /**
+     * Arguments for `findChannelParticipantsForChannel` field. Some (1/2) arguments are required so you must include this.
+     */
+    $: findChannelParticipantsForChannel$Arguments<_$Scalars>;
+  }
+
+  export interface findChannelParticipantsForChannel$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    match?: $NamedTypes.$ChannelParticipantInput<_$Scalars> | undefined | null;
+    channelId: string;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `findChannelParticipantsForChannel` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type findChannelParticipantsForChannel$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    findChannelParticipantsForChannel$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -7838,6 +7921,7 @@ export type ServiceRequestType =
   | 'graphQlQueryFindChannelMessageById'
   | 'graphQlQueryFindChannelMessages'
   | 'graphQlQueryFindChannelParticipantById'
+  | 'graphQlQueryFindChannelParticipants'
   | 'graphQlQueryFindChannels'
   | 'graphQlQueryFindChannelsForUser'
   | 'graphQlQueryFindMyChannels'
@@ -9113,6 +9197,10 @@ export interface ChannelListFilter<
     | null;
   userId?: string | undefined | null;
   userIds?: Array<string | undefined | null> | undefined | null;
+  mustHaveMessages?: boolean | undefined | null;
+  invitationMustBeAccepted?: boolean | undefined | null;
+  $includeArchivedMessages?: $NamedTypes.$IncludeFilterOption | undefined | null;
+  $includeSystemMessages?: $NamedTypes.$IncludeFilterOption | undefined | null;
 }
 
 export interface ChannelMessageInput<
@@ -9237,6 +9325,82 @@ export interface ChannelMessageListFilter<
   $includeChannelMessageType?: Array<$NamedTypes.$ChannelMessageType | undefined | null> | undefined | null;
   received?: boolean | undefined | null;
   seen?: boolean | undefined | null;
+}
+
+export interface ChannelParticipantInput<
+  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+> {
+  id?: string | undefined | null;
+  adminNotes?: string | undefined | null;
+  events?: Array<$NamedTypes.$ModelEventInput<_$Scalars> | undefined | null> | undefined | null;
+  metadata?: $NamedTypes.$BaseModelMetadataInput<_$Scalars> | undefined | null;
+  createdAt?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  createdBy?: string | undefined | null;
+  updatedAt?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  updatedBy?: string | undefined | null;
+  deletedAt?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  deletedBy?: string | undefined | null;
+  channelId?: string | undefined | null;
+  userId?: string | undefined | null;
+  invitedBy?: string | undefined | null;
+  channelName?: string | undefined | null;
+  $role?: $NamedTypes.$ChannelParticipantRole | undefined | null;
+  suspendedAt?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  suspendedBy?: string | undefined | null;
+}
+
+export interface ChannelParticipantListFilter<
+  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+> {
+  ids?: Array<string | undefined | null> | undefined | null;
+  excludeIds?: Array<string | undefined | null> | undefined | null;
+  searchText?: string | undefined | null;
+  caseSensitive?: boolean | undefined | null;
+  textSearchFields?: Array<string | undefined | null> | undefined | null;
+  createdAtFrom?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  createdAtUntil?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  updatedAtFrom?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  updatedAtUntil?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
 }
 
 export interface GroupMembershipListFilter<
@@ -9877,6 +10041,10 @@ export interface ChannelInvitationInput<
   channelName?: string | undefined | null;
   channelTopic?: string | undefined | null;
   messageText?: string | undefined | null;
+  /**
+   * An authorized sender (i.e. role: ["support"]) can skip the acceptance step.
+   */
+  autoAccept?: boolean | undefined | null;
   declineReasonTextId?: string | undefined | null;
   dismissedFromInboxBySenderAt?:
     | $$Utilities.Schema.Scalar.GetDecoded<
@@ -9932,48 +10100,6 @@ export interface BgAddChannelMessageEventInput<
   messageIds: Array<string | undefined | null>;
   recipientId: string;
   $event: $NamedTypes.$ChannelMessageEvent;
-}
-
-export interface ChannelParticipantInput<
-  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-> {
-  id?: string | undefined | null;
-  adminNotes?: string | undefined | null;
-  events?: Array<$NamedTypes.$ModelEventInput<_$Scalars> | undefined | null> | undefined | null;
-  metadata?: $NamedTypes.$BaseModelMetadataInput<_$Scalars> | undefined | null;
-  createdAt?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  createdBy?: string | undefined | null;
-  updatedAt?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  updatedBy?: string | undefined | null;
-  deletedAt?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  deletedBy?: string | undefined | null;
-  channelId?: string | undefined | null;
-  userId?: string | undefined | null;
-  invitedBy?: string | undefined | null;
-  channelName?: string | undefined | null;
-  $role?: $NamedTypes.$ChannelParticipantRole | undefined | null;
-  suspendedAt?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  suspendedBy?: string | undefined | null;
 }
 
 export interface ContentTagInput<
@@ -19301,17 +19427,17 @@ export interface User<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$U
     | User.anonymizedAt$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<User.anonymizedAt<_$Scalars>>;
   /**
-   * Select the `syncedToAnalyticsAt` field on the `User` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-   */
-  syncedToAnalyticsAt?:
-    | User.syncedToAnalyticsAt$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<User.syncedToAnalyticsAt<_$Scalars>>;
-  /**
    * Select the `addedToBgVaultAt` field on the `User` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
    */
   addedToBgVaultAt?:
     | User.addedToBgVaultAt$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<User.addedToBgVaultAt<_$Scalars>>;
+  /**
+   * Select the `syncedToAnalyticsAt` field on the `User` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+   */
+  syncedToAnalyticsAt?:
+    | User.syncedToAnalyticsAt$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<User.syncedToAnalyticsAt<_$Scalars>>;
   /**
    * Select the `companyIds` field on the `User` object. Its type is `ID` (a `ScalarStandard` kind of type).
    */
@@ -21125,32 +21251,6 @@ export namespace User {
 
   // --------------------------------------------------------------------------------------------------
 
-  export type syncedToAnalyticsAt<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | syncedToAnalyticsAt$SelectionSet<_$Scalars>;
-
-  export interface syncedToAnalyticsAt$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `syncedToAnalyticsAt` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type syncedToAnalyticsAt$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | syncedToAnalyticsAt$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
   export type addedToBgVaultAt<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > =
@@ -21173,6 +21273,32 @@ export namespace User {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | addedToBgVaultAt$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type syncedToAnalyticsAt<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | syncedToAnalyticsAt$SelectionSet<_$Scalars>;
+
+  export interface syncedToAnalyticsAt$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `syncedToAnalyticsAt` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type syncedToAnalyticsAt$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | syncedToAnalyticsAt$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -38398,6 +38524,12 @@ export interface ChannelInvitation<
     | ChannelInvitation.messageText$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelInvitation.messageText<_$Scalars>>;
   /**
+   * Select the `autoAccept` field on the `ChannelInvitation` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
+   */
+  autoAccept?:
+    | ChannelInvitation.autoAccept$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelInvitation.autoAccept<_$Scalars>>;
+  /**
    * Select the `declineReasonTextId` field on the `ChannelInvitation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   declineReasonTextId?:
@@ -38907,6 +39039,32 @@ export namespace ChannelInvitation {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | messageText$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type autoAccept<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | autoAccept$SelectionSet<_$Scalars>;
+
+  export interface autoAccept$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `autoAccept` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type autoAccept$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | autoAccept$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -42058,12 +42216,6 @@ export interface BgChannelParticipantMetadata<
     | BgChannelParticipantMetadata.lastName$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.lastName<_$Scalars>>;
   /**
-   * Select the `nickname` field on the `BgChannelParticipantMetadata` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  nickname?:
-    | BgChannelParticipantMetadata.nickname$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.nickname<_$Scalars>>;
-  /**
    * Select the `avatarUrl` field on the `BgChannelParticipantMetadata` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   avatarUrl?:
@@ -42229,32 +42381,6 @@ export namespace BgChannelParticipantMetadata {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | lastName$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type nickname<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | nickname$SelectionSet<_$Scalars>;
-
-  export interface nickname$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `nickname` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type nickname$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | nickname$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -66233,17 +66359,17 @@ export interface MyUser<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $
     | MyUser.anonymizedAt$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<MyUser.anonymizedAt<_$Scalars>>;
   /**
-   * Select the `syncedToAnalyticsAt` field on the `MyUser` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-   */
-  syncedToAnalyticsAt?:
-    | MyUser.syncedToAnalyticsAt$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<MyUser.syncedToAnalyticsAt<_$Scalars>>;
-  /**
    * Select the `addedToBgVaultAt` field on the `MyUser` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
    */
   addedToBgVaultAt?:
     | MyUser.addedToBgVaultAt$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<MyUser.addedToBgVaultAt<_$Scalars>>;
+  /**
+   * Select the `syncedToAnalyticsAt` field on the `MyUser` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+   */
+  syncedToAnalyticsAt?:
+    | MyUser.syncedToAnalyticsAt$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<MyUser.syncedToAnalyticsAt<_$Scalars>>;
   /**
    * Select the `companyIds` field on the `MyUser` object. Its type is `ID` (a `ScalarStandard` kind of type).
    */
@@ -68057,32 +68183,6 @@ export namespace MyUser {
 
   // --------------------------------------------------------------------------------------------------
 
-  export type syncedToAnalyticsAt<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | syncedToAnalyticsAt$SelectionSet<_$Scalars>;
-
-  export interface syncedToAnalyticsAt$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `syncedToAnalyticsAt` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type syncedToAnalyticsAt$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | syncedToAnalyticsAt$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
   export type addedToBgVaultAt<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > =
@@ -68105,6 +68205,32 @@ export namespace MyUser {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | addedToBgVaultAt$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type syncedToAnalyticsAt<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | syncedToAnalyticsAt$SelectionSet<_$Scalars>;
+
+  export interface syncedToAnalyticsAt$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `syncedToAnalyticsAt` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type syncedToAnalyticsAt$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | syncedToAnalyticsAt$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -81043,6 +81169,12 @@ export namespace $NamedTypes {
   export type $ChannelMessageListFilter<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = ChannelMessageListFilter<_$Scalars>;
+  export type $ChannelParticipantInput<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = ChannelParticipantInput<_$Scalars>;
+  export type $ChannelParticipantListFilter<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = ChannelParticipantListFilter<_$Scalars>;
   export type $GroupMembershipListFilter<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = GroupMembershipListFilter<_$Scalars>;
@@ -81097,9 +81229,6 @@ export namespace $NamedTypes {
   export type $BgAddChannelMessageEventInput<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = BgAddChannelMessageEventInput<_$Scalars>;
-  export type $ChannelParticipantInput<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = ChannelParticipantInput<_$Scalars>;
   export type $ContentTagInput<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = ContentTagInput<_$Scalars>;
