@@ -12,22 +12,22 @@ import { SignUpUserInput } from '../../types/SignUpUserInput.js';
 import userFactory from '../factories/user.js';
 
 export const signMeUpSpecHelper = async (
-  changes: Partial<MyUserChanges> | undefined,
+  props: Partial<MyUserChanges> | undefined,
   signOut: boolean,
   client: BgNodeClient,
 ): Promise<MyUser | null> => {
-  logger.debug('BgServiceApiCheck.createMyUser: calling client.signUpUser', { changes });
+  logger.debug('BgServiceApiCheck.createMyUser: calling client.signUpUser', { props });
 
   // The calling scope may have sent a password. There is no way to tell the factory to use
   // it, since there is no User.password defined. We'll ignore the password from the factory.
-  const password = changes?.newPassword || chance.string({ length: 8 });
-  changes = userFactory.build(changes);
+  const password = props?.newPassword || chance.string({ length: 8 });
+  props = userFactory.build(props);
 
   const input: SignUpUserInput = {
-    firstName: changes.firstName,
-    lastName: changes.lastName,
-    userHandle: changes.userHandle,
-    email: changes.email,
+    firstName: props.firstName,
+    lastName: props.lastName,
+    userHandle: props.userHandle,
+    email: props.email,
     password,
     source: JSON.stringify({
       password,

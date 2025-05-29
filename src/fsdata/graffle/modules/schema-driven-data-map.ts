@@ -1550,6 +1550,8 @@ const SignInUserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     pushNotificationToken: {},
     cookieConsentChoice: {},
     allowToTrack: {},
+    captchaService: {},
+    captchaToken: {},
   },
 };
 
@@ -1637,9 +1639,11 @@ const SignUpUserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     timezone: {},
     optIntoNewsletter: {},
     pushNotificationToken: {},
-    trackId: {},
     cookieConsentChoice: {},
     allowToTrack: {},
+    trackId: {},
+    captchaService: {},
+    captchaToken: {},
     checkAvailable: {},
     isTestUser: {},
     offersHelp: {},
@@ -4469,25 +4473,23 @@ const UserListItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     firstName: {},
     lastName: {},
     avatarUrl: {},
-    timezone: {},
-    discoverable: {},
-    trustLevel: {},
-    latestActivityAt: {
-      nt: DateTimeISO,
+    genderTextId: {},
+    websites: {
+      // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
+    preferredLanguageTextId: {},
+    spokenLanguagesTextIds: {},
+    countryOfResidenceTextId: {},
+    regionOfResidence: {},
+    cityOfResidence: {},
+    timezone: {},
+    roles: {},
+    trustLevel: {},
     userBlocks: {
       // nt: UserBlock, <-- Assigned later to avoid potential circular dependency.
     },
-    inactivatedAt: {
+    latestActivityAt: {
       nt: DateTimeISO,
-    },
-    suspendedAt: {
-      nt: DateTimeISO,
-    },
-    cityOfResidence: {},
-    regionOfResidence: {},
-    websites: {
-      // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
     seeksHelp: {},
     offersHelp: {},
@@ -5498,25 +5500,23 @@ const UserWithScore: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     firstName: {},
     lastName: {},
     avatarUrl: {},
-    timezone: {},
-    discoverable: {},
-    trustLevel: {},
-    latestActivityAt: {
-      nt: DateTimeISO,
+    genderTextId: {},
+    websites: {
+      // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
+    preferredLanguageTextId: {},
+    spokenLanguagesTextIds: {},
+    countryOfResidenceTextId: {},
+    regionOfResidence: {},
+    cityOfResidence: {},
+    timezone: {},
+    roles: {},
+    trustLevel: {},
     userBlocks: {
       // nt: UserBlock, <-- Assigned later to avoid potential circular dependency.
     },
-    inactivatedAt: {
+    latestActivityAt: {
       nt: DateTimeISO,
-    },
-    suspendedAt: {
-      nt: DateTimeISO,
-    },
-    cityOfResidence: {},
-    regionOfResidence: {},
-    websites: {
-      // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
     seeksHelp: {},
     offersHelp: {},
@@ -8909,8 +8909,8 @@ ChannelParticipant.f['metadata']!.nt = BgChannelParticipantMetadata;
 ChannelParticipant.f['channel']!.nt = Channel;
 ChannelParticipant.f['myContact']!.nt = Contact;
 ChannelParticipant.f['user']!.nt = UserListItem;
-UserListItem.f['userBlocks']!.nt = UserBlock;
 UserListItem.f['websites']!.nt = LabeledStringValue;
+UserListItem.f['userBlocks']!.nt = UserBlock;
 UserListItem.f['academicExperiences']!.nt = AcademicExperience;
 UserListItem.f['businessExperiences']!.nt = BusinessExperience;
 UserListItem.f['mentor']!.nt = MentorsGroupMembership;
@@ -8996,8 +8996,8 @@ UserSearch.f['metadata']!.nt = BaseModelMetadata;
 UserSearch.f['filter']!.nt = UserSearchFilter;
 UserSearch.f['runInfos']!.nt = UserSearchRunInfo;
 UserSearch.f['topFoundUsers']!.nt = UserListItem;
-UserWithScore.f['userBlocks']!.nt = UserBlock;
 UserWithScore.f['websites']!.nt = LabeledStringValue;
+UserWithScore.f['userBlocks']!.nt = UserBlock;
 UserWithScore.f['academicExperiences']!.nt = AcademicExperience;
 UserWithScore.f['businessExperiences']!.nt = BusinessExperience;
 UserWithScore.f['mentor']!.nt = MentorsGroupMembership;

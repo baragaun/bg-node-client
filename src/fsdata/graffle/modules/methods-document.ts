@@ -15,6 +15,7 @@ export interface Document<$Context> {
   ): $$Utilities.DocumentBuilder.DocumentRunner<
     $Context,
     $$Schema.Schema,
+    // @ts-expect-error We use Exact instead of constraint on this function. TypeScript does not see that as
     // Satisfying the constraint on the DocumentRunner type.
     $Document
   >;

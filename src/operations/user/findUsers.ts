@@ -7,6 +7,7 @@ import logger from '../../helpers/logger.js';
 import buildQuery from '../../helpers/objectQuery/buildQuery.js';
 import { User } from '../../models/User.js';
 import { UserListFilter } from '../../models/UserListFilter.js';
+import { UserListItem } from '../../models/UserListItem.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
 import { MangoQueryTypes } from '../../types/mangoQuery.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
@@ -18,7 +19,7 @@ const findUsers = async (
   selector: MangoQueryTypes<User> | null | undefined,
   options: FindObjectsOptions,
   queryOptions: QueryOptions = defaultQueryOptions,
-): Promise<QueryResult<User>> => {
+): Promise<QueryResult<UserListItem>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('findUsers: unavailable');

@@ -1,6 +1,7 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { User } from '../../../models/User.js';
+import { UserListItem } from '../../../models/UserListItem.js';
 import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
@@ -16,7 +17,7 @@ import modelFields from '../../helpers/modelFields.js';
 
 type ResponseDataType = {
   data: {
-    findUsers: User[] | null;
+    findUsers: UserListItem[] | null;
   };
   errors?: { message: string }[];
 };
@@ -25,7 +26,7 @@ const findUsers = async (
   filter: UserListFilter | null | undefined,
   match: Partial<User> | null | undefined,
   options: FindObjectsOptionsFromClient,
-): Promise<QueryResult<User>> => {
+): Promise<QueryResult<UserListItem>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('fsdata.findUsers: unavailable');
@@ -41,14 +42,14 @@ const findUsers = async (
 
     const response: ResponseDataType = await client.query.findUsers({
       $: args,
-      ...modelFields.user,
+      ...modelFields.userListItem,
     });
 
     logger.debug('fsdata.findUsers response:', { response });
 
     return {
       objects: response.data.findUsers
-        ? response.data.findUsers.map((user) => new User(user))
+        ? response.data.findUsers.map((user) => new UserListItem(user))
         : null,
     };
   } catch (error) {

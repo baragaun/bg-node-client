@@ -747,9 +747,9 @@ export enum ChannelMessageType {
 
 export type ChannelMetadata = {
   __typename?: 'ChannelMetadata';
-  channelInvitationAccepted: Scalars['Boolean']['output'];
-  messagesSentByCreatorCount: Scalars['Int']['output'];
-  messagesSentByFirstParticipantCount: Scalars['Int']['output'];
+  channelInvitationAccepted?: Maybe<Scalars['Boolean']['output']>;
+  messagesSentByCreatorCount?: Maybe<Scalars['Int']['output']>;
+  messagesSentByFirstParticipantCount?: Maybe<Scalars['Int']['output']>;
   unseenMessageInfo?: Maybe<Array<BgLatestUnseenChannelMessageInfo>>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
 };
@@ -4912,6 +4912,8 @@ export type SignInOauthUserInput = {
 export type SignInUserInput = {
   allowToTrack?: InputMaybe<Scalars['Boolean']['input']>;
   authType?: AuthType;
+  captchaService?: InputMaybe<Scalars['String']['input']>;
+  captchaToken?: InputMaybe<Scalars['String']['input']>;
   cookieConsentChoice?: InputMaybe<CookieChoiceTextId>;
   ident?: InputMaybe<Scalars['String']['input']>;
   identType?: InputMaybe<UserIdentType>;
@@ -4925,6 +4927,8 @@ export type SignUpUserInput = {
   allowToTrack?: InputMaybe<Scalars['Boolean']['input']>;
   authType?: AuthType;
   avatarUrl?: InputMaybe<Scalars['String']['input']>;
+  captchaService?: InputMaybe<Scalars['String']['input']>;
+  captchaToken?: InputMaybe<Scalars['String']['input']>;
   checkAvailable?: Scalars['Boolean']['input'];
   cookieConsentChoice?: InputMaybe<CookieChoiceTextId>;
   createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -5800,17 +5804,16 @@ export type UserListItem = {
   companies: Array<Company>;
   countryOfOrigin?: Maybe<Country>;
   countryOfResidence?: Maybe<Country>;
+  countryOfResidenceTextId?: Maybe<Scalars['String']['output']>;
   createdAt: Scalars['DateTimeISO']['output'];
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
-  /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
-  discoverable?: Maybe<Scalars['Boolean']['output']>;
   educationLevel?: Maybe<EducationLevel>;
   endorsements?: Maybe<Array<EndorsementWithTypes>>;
   firstName?: Maybe<Scalars['String']['output']>;
+  genderTextId?: Maybe<Scalars['String']['output']>;
   groupMemberships: Array<IGroupMembership>;
   groups: Array<Group>;
   id: Scalars['ID']['output'];
-  inactivatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   isOnVacation?: Maybe<Scalars['Boolean']['output']>;
   lastName?: Maybe<Scalars['String']['output']>;
   latestActivityAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -5819,13 +5822,15 @@ export type UserListItem = {
   /** This attribute is a copy of the mentor group membership. */
   mentor?: Maybe<MentorsGroupMembership>;
   offersHelp?: Maybe<Scalars['Boolean']['output']>;
+  preferredLanguageTextId?: Maybe<Scalars['String']['output']>;
   profileCompletionPercentage: Scalars['Int']['output'];
   profileRole: UserProfileRole;
   pronouns: Array<Pronoun>;
   pronounsDisplay: Scalars['String']['output'];
   regionOfResidence?: Maybe<Scalars['String']['output']>;
+  roles: Array<UserRole>;
   seeksHelp?: Maybe<Scalars['Boolean']['output']>;
-  suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  spokenLanguagesTextIds: Array<Scalars['String']['output']>;
   timezone?: Maybe<Scalars['String']['output']>;
   trustLevel: Scalars['Int']['output'];
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -6068,17 +6073,16 @@ export type UserWithScore = {
   companies: Array<Company>;
   countryOfOrigin?: Maybe<Country>;
   countryOfResidence?: Maybe<Country>;
+  countryOfResidenceTextId?: Maybe<Scalars['String']['output']>;
   createdAt: Scalars['DateTimeISO']['output'];
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
-  /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
-  discoverable?: Maybe<Scalars['Boolean']['output']>;
   educationLevel?: Maybe<EducationLevel>;
   endorsements?: Maybe<Array<EndorsementWithTypes>>;
   firstName?: Maybe<Scalars['String']['output']>;
+  genderTextId?: Maybe<Scalars['String']['output']>;
   groupMemberships: Array<IGroupMembership>;
   groups: Array<Group>;
   id: Scalars['ID']['output'];
-  inactivatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   isOnVacation?: Maybe<Scalars['Boolean']['output']>;
   lastName?: Maybe<Scalars['String']['output']>;
   latestActivityAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -6087,15 +6091,17 @@ export type UserWithScore = {
   /** This attribute is a copy of the mentor group membership. */
   mentor?: Maybe<MentorsGroupMembership>;
   offersHelp?: Maybe<Scalars['Boolean']['output']>;
+  preferredLanguageTextId?: Maybe<Scalars['String']['output']>;
   profileCompletionPercentage: Scalars['Int']['output'];
   profileRole: UserProfileRole;
   pronouns: Array<Pronoun>;
   pronounsDisplay: Scalars['String']['output'];
   regionOfResidence?: Maybe<Scalars['String']['output']>;
+  roles: Array<UserRole>;
   /** The score value that the matching engine assigned to this user. */
   score?: Maybe<Scalars['Float']['output']>;
   seeksHelp?: Maybe<Scalars['Boolean']['output']>;
-  suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  spokenLanguagesTextIds: Array<Scalars['String']['output']>;
   timezone?: Maybe<Scalars['String']['output']>;
   trustLevel: Scalars['Int']['output'];
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;

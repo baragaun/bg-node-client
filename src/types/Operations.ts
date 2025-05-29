@@ -34,6 +34,7 @@ import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress
 import { User } from '../models/User.js';
 import { UserInbox } from '../models/UserInbox.js';
 import { UserListFilter } from '../models/UserListFilter.js';
+import { UserListItem } from '../models/UserListItem.js';
 
 export interface Operations {
   count: <T extends Model = Model>(
@@ -343,6 +344,6 @@ export interface Operations {
       selector: MangoQueryTypes<User> | null | undefined,
       options: FindObjectsOptions,
       queryOptions: QueryOptions,
-    ) => Promise<QueryResult<User>>
+    ) => Promise<QueryResult<UserListItem>>
   };
 }
