@@ -1,12 +1,22 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.endMySession', () => {
+  let client: BgNodeClient;
+
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
+  });
+
   test('should end the app session and save sessionEndedAt', async () => {
-    const client = await clientStore.getTestClient();
     const userHandle = uniqueUserHandle();
     const email = uniqueEmail();
 
@@ -28,7 +38,5 @@ describe('operations.myUser.endMySession', () => {
     expect(clientInfo2.sessionStartedAt).toBeUndefined();
     expect(clientInfo2.sessionEndedAt).toBeGreaterThan(Date.now() - 1000);
     expect(client.operations.myUser.isSessionActive()).toBeFalsy();
-
-    await deleteMyUserSpecHelper(client);
   });
 });

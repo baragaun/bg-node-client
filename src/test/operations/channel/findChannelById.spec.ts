@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy } from '../../../enums.js';
@@ -17,6 +17,10 @@ describe('operations.channel.findChannelById', () => {
 
   beforeAll(async () => {
     client = await clientStore.getTestClient();
+  });
+
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
   });
 
   test('returns a channel', async () => {
@@ -83,6 +87,5 @@ describe('operations.channel.findChannelById', () => {
 
     // Cleanup for user1:
     await signMeInSpecHelper(user1.email, user1Password, client);
-    await deleteMyUserSpecHelper(client);
   });
 }, { timeout: 60000 });

@@ -39,12 +39,15 @@ export declare const ChannelSchema: {
                 };
                 channelInvitationAccepted: {
                     type: string;
+                    nullable: boolean;
                 };
                 messagesSentByCreatorCount: {
                     type: string;
+                    nullable: boolean;
                 };
                 messagesSentByFirstParticipantCount: {
                     type: string;
+                    nullable: boolean;
                 };
             };
             nullable: boolean;

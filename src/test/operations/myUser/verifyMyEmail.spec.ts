@@ -1,5 +1,6 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import {
   CachePolicy,
   MultiStepActionEventType,
@@ -12,6 +13,16 @@ import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specH
 import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 
 describe('operations.myUser.verifyMyEmail', () => {
+  let client: BgNodeClient;
+
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
+  });
+
   test('should verify a correct token', async () => {
     const client = await clientStore.getTestClient();
 
@@ -124,9 +135,6 @@ describe('operations.myUser.verifyMyEmail', () => {
             expect(myUserFromCache.lastName).toBe(myUser.lastName);
             expect(myUserFromCache.email).toBe(myUser.email);
             expect(myUserFromCache.isEmailVerified).toBeTruthy();
-
-            // Deleting the user again:
-            await deleteMyUserSpecHelper(client);
 
             resolve(true);
           }

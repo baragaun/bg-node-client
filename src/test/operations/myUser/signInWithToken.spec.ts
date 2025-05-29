@@ -1,5 +1,6 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import {
   MultiStepActionEventType,
   MultiStepActionResult,
@@ -13,9 +14,17 @@ import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specH
 import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 
 describe('operations.myUser.signInWithToken', () => {
-  test('should verify using email and token', async () => {
-    const client = await clientStore.getTestClient();
+  let client: BgNodeClient;
 
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
+  });
+
+  test('should verify using email and token', async () => {
     const myUser = await signMeUpSpecHelper(undefined, true, client);
 
     // Start sign in process
@@ -108,8 +117,6 @@ describe('operations.myUser.signInWithToken', () => {
             expect(clientInfo1.myUserId).toBe(myUser.id);
             expect(clientInfo1.authToken).toBe(action.authToken);
             expect(client.isSignedIn).toBeTruthy();
-
-            await deleteMyUserSpecHelper(client);
 
             resolve(true);
           }

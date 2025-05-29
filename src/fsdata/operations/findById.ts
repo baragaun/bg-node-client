@@ -76,7 +76,7 @@ const findById = async <T extends Model = Model>(
     });
 
     logger.debug('fsdata.findById: response received.',
-      { response, object: response.data[fieldDef.field] });
+      { response, object: JSON.stringify(response.data[fieldDef.field]) });
 
     if (response.errors) {
       logger.error('fsdata.findById: failed with error', { error: response.errors });

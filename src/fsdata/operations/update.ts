@@ -18,15 +18,15 @@ const _fieldDef = {
     selections: modelFields.channel,
   },
   [ModelType.ChannelInvitation]: {
-    field: 'updateInvitation',
+    field: 'updateChannelInvitation',
     selections: modelFields.channelInvitation,
   },
   [ModelType.ChannelMessage]: {
-    field: 'updateMessage',
+    field: 'updateChannelMessage',
     selections: modelFields.channelMessage,
   },
   [ModelType.ChannelParticipant]: {
-    field: 'updateParticipant',
+    field: 'updateChannelParticipant',
     selections: modelFields.channelParticipant,
   },
   [ModelType.SidMultiStepAction]: {

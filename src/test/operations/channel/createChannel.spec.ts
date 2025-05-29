@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import factories from '../../factories/factories.js';
@@ -10,12 +10,15 @@ import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 describe('operations.channel.createChannel', () => {
   let client: BgNodeClient;
 
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
   afterEach(async () => {
     await deleteMyUserSpecHelper(client);
   });
 
   test('should create a channel with the given properties', async () => {
-    client = await clientStore.getTestClient();
     const props = factories.channel.build({});
 
     expect(client).toBeDefined();
@@ -25,7 +28,6 @@ describe('operations.channel.createChannel', () => {
   });
 
   test('should create a channel with the given properties (mock mode)', async () => {
-    client = await clientStore.getTestClient();
     client.enableMockMode = true;
     const props = factories.channel.build({});
 

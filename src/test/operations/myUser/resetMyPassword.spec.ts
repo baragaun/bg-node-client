@@ -1,5 +1,6 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import {
   CachePolicy,
   MultiStepActionEventType,
@@ -15,9 +16,16 @@ import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 
 describe('operations.myUser.resetMyPassword', () => {
-  test('should verify a correct token', async () => {
-    const client = await clientStore.getTestClient();
+  let client: BgNodeClient;
 
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
+  });
+  test('should verify a correct token', async () => {
     const myUser = await signMeUpSpecHelper(undefined, true, client);
     const myUserId = myUser.id;
     const { msaToken } = getTestUserPropsSpecHelper(myUser);
@@ -142,8 +150,6 @@ describe('operations.myUser.resetMyPassword', () => {
 
             // Signing in with the new password:
             await signMeInSpecHelper(myUser.email, newPassword, client);
-
-            await deleteMyUserSpecHelper(client);
 
             resolve(true);
           }
