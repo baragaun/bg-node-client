@@ -16,10 +16,7 @@ export const updateChannelSpecHelper = async (
     expect(error).toBeUndefined();
 
     const response = await client.operations.channel.updateChannel(
-      {
-        id: changes.id,
-        name: 'newname',
-      },
+      changes,
       { polling: { enabled: true } },
     );
     const updatedRemoteChannel = response.object;

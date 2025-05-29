@@ -1,5 +1,6 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy } from '../../../enums.js';
 import chance, {
   uniqueEmail,
@@ -9,8 +10,17 @@ import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.updateMyUser', () => {
+  let client: BgNodeClient;
+
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
+  });
+
   test('should update the user', async () => {
-    const client = await clientStore.getTestClient();
     const firstName = chance.first();
     const lastName = chance.last();
     const newLastName = chance.last();
@@ -82,8 +92,5 @@ describe('operations.myUser.updateMyUser', () => {
     expect(myUserFromCache2.firstName).toBe(firstName);
     expect(myUserFromCache2.lastName).toBe(newLastName);
     expect(myUserFromCache2.email).toBe(email);
-
-    // Deleting the user again:
-    await deleteMyUserSpecHelper(client);
   });
 }, 60000);

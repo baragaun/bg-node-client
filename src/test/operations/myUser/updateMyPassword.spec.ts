@@ -1,5 +1,6 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, UserIdentType } from '../../../enums.js';
 import chance, {
   uniqueEmail,
@@ -9,8 +10,17 @@ import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.updateMyPassword', () => {
+  let client: BgNodeClient;
+
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
+  });
+
   test('should update the password', async () => {
-    const client = await clientStore.getTestClient();
     const firstName = chance.first();
     const lastName = chance.last();
     const userHandle = uniqueUserHandle();
@@ -57,7 +67,5 @@ describe('operations.myUser.updateMyPassword', () => {
     expect(signInUserResponse.object.userAuthResponse.authToken.length).toBeGreaterThan(10);
     expect(signInUserResponse.object.myUser).toBeDefined();
     expect(signInUserResponse.object.myUser.id).toBeDefined();
-
-    await deleteMyUserSpecHelper(client);
   });
 });

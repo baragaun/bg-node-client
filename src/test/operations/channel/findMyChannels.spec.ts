@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy } from '../../../enums.js';
@@ -19,13 +19,16 @@ describe('operations.channel.findMyChannels', () => {
     client = await clientStore.getTestClient();
   });
 
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
+  });
+
   test('returns the channels for the current user', async () => {
     const count = chance.integer({ min: 2, max: 10 });
 
-    // Create first user:
-    const user1 = await signMeUpSpecHelper(undefined, false, client);
-    const user1Password = getTestUserPropsSpecHelper(user1).password;
-    const channel1 = await createChannelSpecHelper({ createdBy: user1.id }, 0, client);
+    const otherUser = await signMeUpSpecHelper(undefined, false, client);
+    const otherUserPassword = getTestUserPropsSpecHelper(otherUser).password;
+    const channelOfOtherUser = await createChannelSpecHelper({ createdBy: otherUser.id }, 0, client);
     await signMeOut();
 
     await signMeUpSpecHelper(undefined, false, client);
@@ -50,7 +53,7 @@ describe('operations.channel.findMyChannels', () => {
     expect(queryResultFromNetwork.error).toBeUndefined();
     expect(channelsFromNetwork.length).toBe(count);
     expect(channelIdsFromNetwork).toEqual(channelIds);
-    expect(channelIdsFromNetwork).not.include(channel1.id);
+    expect(channelIdsFromNetwork).not.include(channelOfOtherUser.id);
 
     // Fetching channels from the local cache:
     const queryResultFromLocal = await client.operations.channel.findMyChannels(
@@ -67,17 +70,16 @@ describe('operations.channel.findMyChannels', () => {
     expect(queryResultFromLocal.error).toBeUndefined();
     expect(channelsFromLocal.length).toBe(count);
     expect(channelIdsFromLocal).toEqual(channelIds);
-    expect(channelIdsFromLocal).not.include(channel1.id);
+    expect(channelIdsFromLocal).not.include(channelOfOtherUser.id);
 
-    // Cleanup for user2:
+    // Cleanup for user:
     await Promise.all(
       channels.map((channel) => deleteChannelSpecHelper(channel.id, client)),
     );
     await deleteMyUserSpecHelper(client);
 
-    // Cleanup for user1:
-    await signMeInSpecHelper(user1.email, user1Password, client);
-    await deleteChannelSpecHelper(channel1.id, client);
-    await deleteMyUserSpecHelper(client);
+    // Cleanup for otherUser:
+    await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
+    await deleteChannelSpecHelper(channelOfOtherUser.id, client);
   });
 });

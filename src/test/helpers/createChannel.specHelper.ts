@@ -3,8 +3,11 @@ import { expect } from 'vitest';
 import { createChannelMessageSpecHelper } from './createChannelMessage.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../enums.js';
+import chance from '../../helpers/chance.js';
 import logger from '../../helpers/logger.js';
+import randomDate from '../../helpers/randomDate.js';
 import { Channel, ChannelWithMessages } from '../../models/Channel.js';
+import { ChannelMessage } from '../../models/ChannelMessage.js';
 import findById from '../../operations/findById.js';
 import factories from '../factories/factories.js';
 
@@ -62,19 +65,36 @@ export const createChannelSpecHelper = async (
     expect(channelFromNetwork.channelType).toBe(props.channelType);
   }
 
+  const timestamps = Array.from({ length: messageCount }).map(() => randomDate())
+    .sort((a, b) => new Date(a).getTime() - new Date(b).getTime());
+
   if (messageCount && messageCount > 0) {
-    channel.messages = await Promise.all(
-      Array.from({ length: messageCount }, () =>
-        createChannelMessageSpecHelper({
-          channelId: channel.id,
-          createdBy: channel.createdBy,
-        }, client)),
-    );
+    const propsList: Partial<ChannelMessage>[] = Array.from({ length: messageCount - 1 }).map((_, index) => ({
+      channelId: channel.id,
+      createdBy: chance.pickone(channel.userIds),
+      adminNotes: (index + 1).toString(),
+      createdAt: timestamps[index + 1],
+    }));
+
+    // The first message is (usually) sent out by the creator of the channel:
+    propsList.unshift({
+      channelId: channel.id,
+      createdBy: channel.createdBy,
+      adminNotes: '0',
+      createdAt: timestamps[0],
+    });
+
+    channel.messages = [];
+    for (const props of propsList) {
+      const message = await createChannelMessageSpecHelper(props, client);
+      channel.messages.push(message);
+    }
 
     expect(channel.messages.length).toBe(messageCount);
-    channel.messages.forEach((message) => {
+    channel.messages.forEach((message, index) => {
       expect(message).toBeDefined();
       expect(message.channelId).toBe(channel.id);
+      expect(message.adminNotes).toBe(index.toString());
     });
   }
 

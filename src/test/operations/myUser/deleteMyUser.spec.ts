@@ -1,12 +1,18 @@
-import { describe, expect, test } from 'vitest';
+import { beforeAll, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.deleteMyUser', () => {
+  let client: BgNodeClient;
+
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
   test('should delete the user and reset the client', async () => {
-    const client = await clientStore.getTestClient();
     const userHandle = uniqueUserHandle();
     const email = uniqueEmail();
 

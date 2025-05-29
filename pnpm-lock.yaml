@@ -44,9 +44,6 @@ importers:
       graphql:
         specifier: ^16.10.0
         version: 16.10.0
-      leader-election:
-        specifier: link:rxdb/plugins/leader-election
-        version: link:rxdb/plugins/leader-election
       rxdb:
         specifier: ^16.8.1
         version: 16.11.0(rxjs@7.8.2)

@@ -1,19 +1,27 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
+import { BgNodeClient } from '../../../BgNodeClient.js';
 import factories from '../../factories/factories.js';
 import clientStore from '../../helpers/clientStore.js';
 import { createChannelSpecHelper } from '../../helpers/createChannel.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 import { updateChannelSpecHelper } from '../../helpers/updateChannel.specHelper.js';
 
 describe('operations.channel.updateChannel', () => {
+  let client: BgNodeClient;
+
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
+  afterEach(async () => {
+    await deleteMyUserSpecHelper(client);
+  });
+
   test('should update channel properties', async () => {
-    const client = await clientStore.getTestClient();
-    const props = await factories.channel.build({});
-
-    expect(client).toBeDefined();
-
     await signMeUpSpecHelper(undefined, false, client);
+    const props = await factories.channel.build({});
     const channel = await createChannelSpecHelper(props, 0, client);
     const updatedChannel = await updateChannelSpecHelper(
       {

@@ -1,4 +1,4 @@
-import { afterEach, describe, test } from 'vitest';
+import { afterEach, beforeAll, describe, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import chance from '../../../helpers/chance.js';
@@ -13,12 +13,15 @@ import { unblockUserForMeSpecHelper } from '../../helpers/unblockUserForMe.specH
 describe('operations.myUser.unblockUserForMe', () => {
   let client: BgNodeClient;
 
+  beforeAll(async () => {
+    client = await clientStore.getTestClient();
+  });
+
   afterEach(async () => {
     await deleteMyUserSpecHelper(client);
   });
 
   test('should remove a UserBlock object from myUser', async () => {
-    client = await clientStore.getTestClient(true);
     const notes = chance.sentence();
     const reasonTextId = chance.word();
 
@@ -30,7 +33,6 @@ describe('operations.myUser.unblockUserForMe', () => {
   });
 
   test('should remove a UserBlock object from myUser (mock mode)', async () => {
-    client = await clientStore.getTestClient();
     client.enableMockMode = true;
     const notes = chance.sentence();
     const reasonTextId = chance.word();
