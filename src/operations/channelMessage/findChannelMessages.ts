@@ -1,7 +1,6 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import { ChannelMessageInput } from '../../fsdata/gql/graphql.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
@@ -37,7 +36,12 @@ const findChannelMessages = async (
     // Local cache
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
-        return db.findById<ChannelMessage>(filter.ids[0], ModelType.ChannelMessage);
+        const singleObjectResult = await db.findById<ChannelMessage>(filter.ids[0], ModelType.ChannelMessage);
+        if (singleObjectResult.error) {
+          logger.error('findChannelMessages: did not find ChannelMessage by ID', { id: filter.ids[0] });
+          return { error: singleObjectResult.error };
+        }
+        return { objects: [singleObjectResult.object as unknown as ChannelMessage] };
       }
 
       const localQuery = buildQuery<ChannelMessage, ChannelMessageListFilter>(
@@ -63,7 +67,7 @@ const findChannelMessages = async (
 
     const result = await fsdata.channelMessage.findChannelMessages(
       filter,
-      match as unknown as ChannelMessageInput,
+      match,
       options,
     );
 

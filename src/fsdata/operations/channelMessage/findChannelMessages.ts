@@ -24,7 +24,7 @@ type ResponseDataType = {
 
 const findChannelMessages = async (
   filter: ChannelMessageListFilterFromClient | undefined,
-  match: ChannelMessageInput | undefined,
+  match: Partial<ChannelMessage> | undefined,
   options: FindObjectsOptionsFromClient,
 ): Promise<QueryResult<ChannelMessage>> => {
   try {
@@ -36,7 +36,7 @@ const findChannelMessages = async (
     const client = graffleClientStore.get();
     const args: QueryFindChannelMessagesArgs = {
       filter: filter as unknown as ChannelMessageListFilter,
-      match,
+      match: match as unknown as ChannelMessageInput,
       options: options as unknown as InputMaybe<FindObjectsOptions>,
     };
 

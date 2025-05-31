@@ -21,6 +21,7 @@ import * as $$SelectionSets from './selection-sets.js';
 //
 //
 //
+// eslint-disable-next-line import/export
 export const Select = createSelect($$Data.Name);
 
 //
@@ -38,7 +39,7 @@ export const Select = createSelect($$Data.Name);
 //
 //
 //
-
+// eslint-disable-next-line import/export
 export namespace Select {
   //                                                Root
   // --------------------------------------------------------------------------------------------------

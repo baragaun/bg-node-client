@@ -37,7 +37,12 @@ const findUsers = async (
     // Local cache
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
-        return db.findById<User>(filter.ids[0], ModelType.User);
+        const singleObjectResult = await db.findById<User>(filter.ids[0], ModelType.User);
+        if (singleObjectResult.error) {
+          logger.error('findUsers: did not find user by ID', { id: filter.ids[0] });
+          return { error: singleObjectResult.error };
+        }
+        return { objects: [singleObjectResult.object as unknown as UserListItem] };
       }
 
       const localQuery = buildQuery<User, UserListFilter>(
@@ -51,7 +56,7 @@ const findUsers = async (
       const localResult = await db.find<User>(localQuery, ModelType.User);
 
       if ((!localResult.error && localResult.objects) || !allowNetwork) {
-        return localResult;
+        return localResult as unknown as QueryResult<UserListItem>;
       }
     }
 
@@ -69,7 +74,7 @@ const findUsers = async (
 
     if (Array.isArray(result.objects) && result.objects.length > 0) {
       for (const user of result.objects) {
-        await db.upsert<User>(user, ModelType.User);
+        await db.upsert<User>(user as unknown as User, ModelType.User);
       }
     }
 

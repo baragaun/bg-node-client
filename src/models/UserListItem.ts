@@ -2,6 +2,7 @@ import { BaseModel } from './BaseModel.js';
 import { LabeledStringValue } from './LabeledStringValue.js';
 import { UserBlock } from './UserBlock.js';
 import { UserRole } from '../enums.js';
+import { IGroupMembership } from '../types/IGroupMembership.js';
 
 export class UserListItem extends BaseModel {
   public firstName?: string | null;
@@ -35,18 +36,10 @@ export class UserListItem extends BaseModel {
         this.id = attributes.id;
       }
       if (attributes.createdAt) {
-        if (attributes.createdAt instanceof Date) {
-          this.createdAt = attributes.createdAt;
-        } else {
-          this.createdAt = new Date(attributes.createdAt);
-        }
+        this.createdAt = attributes.createdAt;
       }
       if (attributes.updatedAt) {
-        if (attributes.updatedAt instanceof Date) {
-          this.updatedAt = attributes.updatedAt;
-        } else {
-          this.updatedAt = new Date(attributes.updatedAt);
-        }
+        this.updatedAt = attributes.updatedAt;
       }
       if (attributes.userHandle) {
         this.userHandle = attributes.userHandle;

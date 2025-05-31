@@ -136,6 +136,13 @@ export enum AuthType {
   saml = 'saml',
 }
 
+export enum GroupMembershipRole {
+  admin = 'admin',
+  coordinator = 'coordinator',
+  moderator = 'moderator',
+  owner = 'owner',
+}
+
 export enum UiLanguage {
   ar = 'ar', // Arabic
   de = 'de', // German
