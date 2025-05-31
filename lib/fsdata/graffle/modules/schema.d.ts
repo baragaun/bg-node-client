@@ -11008,21 +11008,21 @@ export declare namespace Schema {
             kind: 'OutputField';
             name: 'channelInvitationAccepted';
             arguments: {};
-            inlineType: [1];
+            inlineType: [0];
             namedType: $$NamedTypes.$$Boolean;
         }
         interface messagesSentByCreatorCount {
             kind: 'OutputField';
             name: 'messagesSentByCreatorCount';
             arguments: {};
-            inlineType: [1];
+            inlineType: [0];
             namedType: $$NamedTypes.$$Int;
         }
         interface messagesSentByFirstParticipantCount {
             kind: 'OutputField';
             name: 'messagesSentByFirstParticipantCount';
             arguments: {};
-            inlineType: [1];
+            inlineType: [0];
             namedType: $$NamedTypes.$$Int;
         }
     }
@@ -12238,16 +12238,18 @@ export declare namespace Schema {
             firstName: UserListItem.firstName;
             lastName: UserListItem.lastName;
             avatarUrl: UserListItem.avatarUrl;
-            timezone: UserListItem.timezone;
-            discoverable: UserListItem.discoverable;
-            trustLevel: UserListItem.trustLevel;
-            latestActivityAt: UserListItem.latestActivityAt;
-            userBlocks: UserListItem.userBlocks;
-            inactivatedAt: UserListItem.inactivatedAt;
-            suspendedAt: UserListItem.suspendedAt;
-            cityOfResidence: UserListItem.cityOfResidence;
-            regionOfResidence: UserListItem.regionOfResidence;
+            genderTextId: UserListItem.genderTextId;
             websites: UserListItem.websites;
+            preferredLanguageTextId: UserListItem.preferredLanguageTextId;
+            spokenLanguagesTextIds: UserListItem.spokenLanguagesTextIds;
+            countryOfResidenceTextId: UserListItem.countryOfResidenceTextId;
+            regionOfResidence: UserListItem.regionOfResidence;
+            cityOfResidence: UserListItem.cityOfResidence;
+            timezone: UserListItem.timezone;
+            roles: UserListItem.roles;
+            trustLevel: UserListItem.trustLevel;
+            userBlocks: UserListItem.userBlocks;
+            latestActivityAt: UserListItem.latestActivityAt;
             seeksHelp: UserListItem.seeksHelp;
             offersHelp: UserListItem.offersHelp;
             yearsManagementExperience: UserListItem.yearsManagementExperience;
@@ -12337,61 +12339,37 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
-        interface timezone {
+        interface genderTextId {
             kind: 'OutputField';
-            name: 'timezone';
+            name: 'genderTextId';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
-        /**
-         * If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.
-         */
-        interface discoverable {
+        interface websites {
             kind: 'OutputField';
-            name: 'discoverable';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface trustLevel {
-            kind: 'OutputField';
-            name: 'trustLevel';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface latestActivityAt {
-            kind: 'OutputField';
-            name: 'latestActivityAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface userBlocks {
-            kind: 'OutputField';
-            name: 'userBlocks';
+            name: 'websites';
             arguments: {};
             inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$UserBlock;
+            namedType: $$NamedTypes.$$LabeledStringValue;
         }
-        interface inactivatedAt {
+        interface preferredLanguageTextId {
             kind: 'OutputField';
-            name: 'inactivatedAt';
+            name: 'preferredLanguageTextId';
             arguments: {};
             inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
+            namedType: $$NamedTypes.$$String;
         }
-        interface suspendedAt {
+        interface spokenLanguagesTextIds {
             kind: 'OutputField';
-            name: 'suspendedAt';
+            name: 'spokenLanguagesTextIds';
             arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$String;
         }
-        interface cityOfResidence {
+        interface countryOfResidenceTextId {
             kind: 'OutputField';
-            name: 'cityOfResidence';
+            name: 'countryOfResidenceTextId';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
@@ -12403,12 +12381,47 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
-        interface websites {
+        interface cityOfResidence {
             kind: 'OutputField';
-            name: 'websites';
+            name: 'cityOfResidence';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface timezone {
+            kind: 'OutputField';
+            name: 'timezone';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface roles {
+            kind: 'OutputField';
+            name: 'roles';
+            arguments: {};
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$UserRole;
+        }
+        interface trustLevel {
+            kind: 'OutputField';
+            name: 'trustLevel';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface userBlocks {
+            kind: 'OutputField';
+            name: 'userBlocks';
             arguments: {};
             inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$LabeledStringValue;
+            namedType: $$NamedTypes.$$UserBlock;
+        }
+        interface latestActivityAt {
+            kind: 'OutputField';
+            name: 'latestActivityAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
         }
         interface seeksHelp {
             kind: 'OutputField';
@@ -17365,16 +17378,18 @@ export declare namespace Schema {
             firstName: UserWithScore.firstName;
             lastName: UserWithScore.lastName;
             avatarUrl: UserWithScore.avatarUrl;
-            timezone: UserWithScore.timezone;
-            discoverable: UserWithScore.discoverable;
-            trustLevel: UserWithScore.trustLevel;
-            latestActivityAt: UserWithScore.latestActivityAt;
-            userBlocks: UserWithScore.userBlocks;
-            inactivatedAt: UserWithScore.inactivatedAt;
-            suspendedAt: UserWithScore.suspendedAt;
-            cityOfResidence: UserWithScore.cityOfResidence;
-            regionOfResidence: UserWithScore.regionOfResidence;
+            genderTextId: UserWithScore.genderTextId;
             websites: UserWithScore.websites;
+            preferredLanguageTextId: UserWithScore.preferredLanguageTextId;
+            spokenLanguagesTextIds: UserWithScore.spokenLanguagesTextIds;
+            countryOfResidenceTextId: UserWithScore.countryOfResidenceTextId;
+            regionOfResidence: UserWithScore.regionOfResidence;
+            cityOfResidence: UserWithScore.cityOfResidence;
+            timezone: UserWithScore.timezone;
+            roles: UserWithScore.roles;
+            trustLevel: UserWithScore.trustLevel;
+            userBlocks: UserWithScore.userBlocks;
+            latestActivityAt: UserWithScore.latestActivityAt;
             seeksHelp: UserWithScore.seeksHelp;
             offersHelp: UserWithScore.offersHelp;
             yearsManagementExperience: UserWithScore.yearsManagementExperience;
@@ -17465,61 +17480,37 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
-        interface timezone {
+        interface genderTextId {
             kind: 'OutputField';
-            name: 'timezone';
+            name: 'genderTextId';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
-        /**
-         * If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.
-         */
-        interface discoverable {
+        interface websites {
             kind: 'OutputField';
-            name: 'discoverable';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface trustLevel {
-            kind: 'OutputField';
-            name: 'trustLevel';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface latestActivityAt {
-            kind: 'OutputField';
-            name: 'latestActivityAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface userBlocks {
-            kind: 'OutputField';
-            name: 'userBlocks';
+            name: 'websites';
             arguments: {};
             inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$UserBlock;
+            namedType: $$NamedTypes.$$LabeledStringValue;
         }
-        interface inactivatedAt {
+        interface preferredLanguageTextId {
             kind: 'OutputField';
-            name: 'inactivatedAt';
+            name: 'preferredLanguageTextId';
             arguments: {};
             inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
+            namedType: $$NamedTypes.$$String;
         }
-        interface suspendedAt {
+        interface spokenLanguagesTextIds {
             kind: 'OutputField';
-            name: 'suspendedAt';
+            name: 'spokenLanguagesTextIds';
             arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$String;
         }
-        interface cityOfResidence {
+        interface countryOfResidenceTextId {
             kind: 'OutputField';
-            name: 'cityOfResidence';
+            name: 'countryOfResidenceTextId';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
@@ -17531,12 +17522,47 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
-        interface websites {
+        interface cityOfResidence {
             kind: 'OutputField';
-            name: 'websites';
+            name: 'cityOfResidence';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface timezone {
+            kind: 'OutputField';
+            name: 'timezone';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface roles {
+            kind: 'OutputField';
+            name: 'roles';
+            arguments: {};
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$UserRole;
+        }
+        interface trustLevel {
+            kind: 'OutputField';
+            name: 'trustLevel';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface userBlocks {
+            kind: 'OutputField';
+            name: 'userBlocks';
             arguments: {};
             inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$LabeledStringValue;
+            namedType: $$NamedTypes.$$UserBlock;
+        }
+        interface latestActivityAt {
+            kind: 'OutputField';
+            name: 'latestActivityAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
         }
         interface seeksHelp {
             kind: 'OutputField';
@@ -27171,6 +27197,8 @@ export declare namespace Schema {
             pushNotificationToken: SignInUserInput.pushNotificationToken;
             cookieConsentChoice: SignInUserInput.cookieConsentChoice;
             allowToTrack: SignInUserInput.allowToTrack;
+            captchaService: SignInUserInput.captchaService;
+            captchaToken: SignInUserInput.captchaToken;
         };
     }
     export namespace SignInUserInput {
@@ -27215,6 +27243,18 @@ export declare namespace Schema {
             name: 'allowToTrack';
             inlineType: [0];
             namedType: $$NamedTypes.$$Boolean;
+        }
+        interface captchaService {
+            kind: 'InputField';
+            name: 'captchaService';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface captchaToken {
+            kind: 'InputField';
+            name: 'captchaToken';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
         }
     }
     /**
@@ -27464,9 +27504,11 @@ export declare namespace Schema {
             timezone: SignUpUserInput.timezone;
             optIntoNewsletter: SignUpUserInput.optIntoNewsletter;
             pushNotificationToken: SignUpUserInput.pushNotificationToken;
-            trackId: SignUpUserInput.trackId;
             cookieConsentChoice: SignUpUserInput.cookieConsentChoice;
             allowToTrack: SignUpUserInput.allowToTrack;
+            trackId: SignUpUserInput.trackId;
+            captchaService: SignUpUserInput.captchaService;
+            captchaToken: SignUpUserInput.captchaToken;
             checkAvailable: SignUpUserInput.checkAvailable;
             isTestUser: SignUpUserInput.isTestUser;
             offersHelp: SignUpUserInput.offersHelp;
@@ -27618,12 +27660,6 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
-        interface trackId {
-            kind: 'InputField';
-            name: 'trackId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
         interface cookieConsentChoice {
             kind: 'InputField';
             name: 'cookieConsentChoice';
@@ -27635,6 +27671,24 @@ export declare namespace Schema {
             name: 'allowToTrack';
             inlineType: [0];
             namedType: $$NamedTypes.$$Boolean;
+        }
+        interface trackId {
+            kind: 'InputField';
+            name: 'trackId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface captchaService {
+            kind: 'InputField';
+            name: 'captchaService';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface captchaToken {
+            kind: 'InputField';
+            name: 'captchaToken';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
         }
         interface checkAvailable {
             kind: 'InputField';

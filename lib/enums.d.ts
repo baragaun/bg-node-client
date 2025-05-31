@@ -113,6 +113,12 @@ export declare enum AuthType {
     hmac = "hmac",
     saml = "saml"
 }
+export declare enum GroupMembershipRole {
+    admin = "admin",
+    coordinator = "coordinator",
+    moderator = "moderator",
+    owner = "owner"
+}
 export declare enum UiLanguage {
     ar = "ar",// Arabic
     de = "de",// German

@@ -29,4 +29,6 @@ export type SignUpUserInput = {
     updatedAt?: string;
     updatedBy?: string;
     userHandle?: string;
+    captchaService?: string;
+    captchaToken?: string;
 };

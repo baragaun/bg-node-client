@@ -7,4 +7,6 @@ export type SignInUserInput = {
     identType?: UserIdentType;
     password?: string;
     pushNotificationToken?: string;
+    captchaService?: string;
+    captchaToken?: string;
 };

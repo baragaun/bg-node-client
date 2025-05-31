@@ -21,7 +21,7 @@ declare const fsdata: {
     };
     channelMessage: {
         createChannelMessage: (props: Partial<import("../index.js").ChannelMessage>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
-        findChannelMessages: (filter: import("../index.js").ChannelMessageListFilter | undefined, match: import("./gql/graphql.js").ChannelMessageInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
+        findChannelMessages: (filter: import("../index.js").ChannelMessageListFilter | undefined, match: Partial<import("../index.js").ChannelMessage> | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
         updateChannelMessage: (changes: Partial<import("../index.js").ChannelMessage>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelMessage>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
     };
     channelParticipant: {
@@ -54,7 +54,7 @@ declare const fsdata: {
     };
     user: {
         findUserById: (userId: string) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
-        findUsers: (filter: import("./gql/graphql.js").UserListFilter | null | undefined, match: Partial<import("../index.js").User> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
+        findUsers: (filter: import("./gql/graphql.js").UserListFilter | null | undefined, match: Partial<import("../index.js").User> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../models/UserListItem.js").UserListItem>>;
     };
 };
 export default fsdata;
