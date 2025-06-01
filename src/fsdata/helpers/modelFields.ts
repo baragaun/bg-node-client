@@ -14,14 +14,10 @@ const channel = {
   channelType: true,
   userIds: true,
   metadata: {
-    updatedAt: true,
-    unseenMessageInfo: {
-      userId: true,
-      createdAt: true,
-    },
     channelInvitationAccepted: true,
     messagesSentByCreatorCount: true,
     messagesSentByFirstParticipantCount: true,
+    updatedAt: true,
   },
   pausedAt: true,
   pausedBy: true,
@@ -90,30 +86,25 @@ const channelMessage = {
 
 const channelParticipant = {
   id: true,
-  adminNotes: true,
-  metadata: {
-    updatedAt: true,
+  userId: true,
+  channelId: true,
+  channelName: true,
+  role: true,
+  userInfo: {
     userHandle: true,
     firstName: true,
     lastName: true,
     avatarUrl: true,
-    sentMessageCount: true,
-    unseenMessageCount: true,
-    unseenSystemMessageCount: true,
   },
+  suspendedAt: true,
+  suspendedBy: true,
   createdAt: true,
   createdBy: true,
   updatedAt: true,
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-  channelId: true,
-  userId: true,
   invitedBy: true,
-  channelName: true,
-  role: true,
-  suspendedAt: true,
-  suspendedBy: true,
 };
 
 const myUser = {

@@ -3,7 +3,6 @@ import { expect } from 'vitest';
 import { createChannelMessageSpecHelper } from './createChannelMessage.specHelper.js';
 import { BgNodeClient } from '../../BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../enums.js';
-import chance from '../../helpers/chance.js';
 import logger from '../../helpers/logger.js';
 import randomDate from '../../helpers/randomDate.js';
 import { Channel, ChannelWithMessages } from '../../models/Channel.js';
@@ -71,7 +70,9 @@ export const createChannelSpecHelper = async (
   if (messageCount && messageCount > 0) {
     const propsList: Partial<ChannelMessage>[] = Array.from({ length: messageCount - 1 }).map((_, index) => ({
       channelId: channel.id,
-      createdBy: chance.pickone(channel.userIds),
+      // We cannot use any other user than the one that is currently logged in:
+      // createdBy: chance.pickone(channel.userIds),
+      createdBy: client.clientInfoStore.myUserId,
       adminNotes: (index + 1).toString(),
       createdAt: timestamps[index + 1],
     }));

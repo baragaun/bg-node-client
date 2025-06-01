@@ -298,9 +298,7 @@ export interface Operations {
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<MultiStepActionProgressResult>>;
 
-    verifyMyPassword: (
-      password: string,
-    ) => Promise<QueryResult<boolean>>;
+    verifyMyPassword: (password: string) => Promise<QueryResult<string>>;
   };
 
   multiStepAction: {

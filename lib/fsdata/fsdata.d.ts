@@ -43,7 +43,7 @@ declare const fsdata: {
         startMySessionV2: (pushNotificationToken: string | null | undefined, returnContentStatus: boolean) => Promise<import("../index.js").QueryResult<import("../index.js").ContentStatus>>;
         unblockUserForMe: (userId: string, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
         updateMyUser: (changes: Partial<import("../index.js").MyUserChanges>, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
-        verifyMyPassword: (password: string) => Promise<import("../index.js").QueryResult<boolean>>;
+        verifyMyPassword: (password: string) => Promise<import("../index.js").QueryResult<string>>;
     };
     multiStepAction: {
         createMultiStepAction: (input: import("./gql/graphql.js").SidMultiStepActionInput) => Promise<import("../index.js").QueryResult<import("../index.js").SidMultiStepActionProgress>>;

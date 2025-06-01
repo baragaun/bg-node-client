@@ -45,8 +45,8 @@ describe('operations.channel.findChannelById', () => {
       {
         includeMessages: true,
         includeParticipants: true,
-        messageLimit: 5, // set low, to test pagination
-        participantLimit: 5, // set low, to test pagination
+        messageLimit: 10,
+        participantLimit: 10,
       },
       { cachePolicy: CachePolicy.network },
     );
@@ -66,8 +66,8 @@ describe('operations.channel.findChannelById', () => {
       {
         includeMessages: true,
         includeParticipants: true,
-        messageLimit: 5, // set low, to test pagination
-        participantLimit: 5, // set low, to test pagination
+        messageLimit: 10,
+        participantLimit: 10,
       },
       { cachePolicy: CachePolicy.cache },
     );

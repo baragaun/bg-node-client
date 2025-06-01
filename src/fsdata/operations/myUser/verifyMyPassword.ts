@@ -4,11 +4,11 @@ import { QueryResult } from '../../../types/QueryResult.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-type ResponseDataType = { data: { verifyMyPassword: boolean }, errors?: { message: string }[] };
+type ResponseDataType = { data: { verifyMyPassword: string }, errors?: { message: string }[] };
 
 const verifyMyPassword = async (
   password: string,
-): Promise<QueryResult<boolean>> => {
+): Promise<QueryResult<string>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('fsdata.verifyMyPassword: unavailable');

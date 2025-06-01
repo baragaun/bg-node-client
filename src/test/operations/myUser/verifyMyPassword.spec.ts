@@ -26,9 +26,7 @@ describe('operations.myUser.verifyMyPassword', () => {
 
     expect(response).toBeDefined();
     expect(response.error).toBeUndefined();
-    expect(response.object).toBeTruthy();
-
-    await deleteMyUserSpecHelper(client);
+    expect(response.object).toBe('true');
   });
 
   test('returns false for the incorrect password', async () => {
@@ -41,6 +39,6 @@ describe('operations.myUser.verifyMyPassword', () => {
 
     expect(response).toBeDefined();
     expect(response.error).toBeUndefined();
-    expect(response.object).toBeTruthy();
+    expect(response.object).toBe('false');
   });
 });

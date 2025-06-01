@@ -58,7 +58,6 @@ export interface $MethodsSelect {
   NotificationContext: NotificationContext;
   Channel: Channel;
   ChannelMetadata: ChannelMetadata;
-  BgLatestUnseenChannelMessageInfo: BgLatestUnseenChannelMessageInfo;
   BgChannelStatus: BgChannelStatus;
   ChannelInvitation: ChannelInvitation;
   DeclineChannelInvitationReason: DeclineChannelInvitationReason;
@@ -66,7 +65,7 @@ export interface $MethodsSelect {
   ChannelMessageMetadata: ChannelMessageMetadata;
   ChannelMessageStatus: ChannelMessageStatus;
   ChannelParticipant: ChannelParticipant;
-  BgChannelParticipantMetadata: BgChannelParticipantMetadata;
+  BgChannelParticipantUserInfo: BgChannelParticipantUserInfo;
   UserListItem: UserListItem;
   EducationLevel: EducationLevel;
   EndorsementWithTypes: EndorsementWithTypes;
@@ -317,12 +316,6 @@ export interface ChannelMetadata {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMetadata>): $SelectionSet;
 }
 
-export interface BgLatestUnseenChannelMessageInfo {
-  <$SelectionSet>(
-    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgLatestUnseenChannelMessageInfo>,
-  ): $SelectionSet;
-}
-
 export interface BgChannelStatus {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelStatus>): $SelectionSet;
 }
@@ -355,9 +348,9 @@ export interface ChannelParticipant {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelParticipant>): $SelectionSet;
 }
 
-export interface BgChannelParticipantMetadata {
+export interface BgChannelParticipantUserInfo {
   <$SelectionSet>(
-    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelParticipantMetadata>,
+    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelParticipantUserInfo>,
   ): $SelectionSet;
 }
 

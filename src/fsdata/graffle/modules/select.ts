@@ -272,12 +272,6 @@ export namespace Select {
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['ChannelMetadata']
     >;
-  export type BgLatestUnseenChannelMessageInfo<$SelectionSet extends $$SelectionSets.BgLatestUnseenChannelMessageInfo> =
-    $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
-      $SelectionSet,
-      $$Schema.Schema,
-      $$Schema.Schema['allTypes']['BgLatestUnseenChannelMessageInfo']
-    >;
   export type BgChannelStatus<$SelectionSet extends $$SelectionSets.BgChannelStatus> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
       $SelectionSet,
@@ -320,11 +314,11 @@ export namespace Select {
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['ChannelParticipant']
     >;
-  export type BgChannelParticipantMetadata<$SelectionSet extends $$SelectionSets.BgChannelParticipantMetadata> =
+  export type BgChannelParticipantUserInfo<$SelectionSet extends $$SelectionSets.BgChannelParticipantUserInfo> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
       $SelectionSet,
       $$Schema.Schema,
-      $$Schema.Schema['allTypes']['BgChannelParticipantMetadata']
+      $$Schema.Schema['allTypes']['BgChannelParticipantUserInfo']
     >;
   export type UserListItem<$SelectionSet extends $$SelectionSets.UserListItem> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<

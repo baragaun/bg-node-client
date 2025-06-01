@@ -7,7 +7,7 @@ import { QueryResult } from '../../types/QueryResult.js';
 
 const verifyMyPasswordMock = async (
   password: string,
-): Promise<QueryResult<boolean>> => {
+): Promise<QueryResult<string>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('verifyMyPasswordMock: unavailable');
@@ -28,7 +28,7 @@ const verifyMyPasswordMock = async (
       return { error: 'not-found' };
     }
 
-    return { object: result.object?.passwordHash === password }; // Mock password check
+    return { object: result.object?.passwordHash === password ? 'true' : 'false' }; // Mock password check
   } catch (error) {
     logger.error('verifyMyPasswordMock: verifyMyPasswordMock failed', error);
     return { error: 'system-error' };
