@@ -13,6 +13,6 @@ export interface MockOperations {
         signMeOut: () => Promise<QueryResult<void>>;
         signUpUser: (input: SignUpUserInput) => Promise<QueryResult<SignInSignUpResponse>>;
         unblockUserForMe: (userId: string) => Promise<QueryResult<MyUser>>;
-        verifyMyPassword: (password: string) => Promise<QueryResult<boolean>>;
+        verifyMyPassword: (password: string) => Promise<QueryResult<string>>;
     };
 }

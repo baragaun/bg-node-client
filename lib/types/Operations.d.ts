@@ -91,7 +91,7 @@ export interface Operations {
         updateMyUser: (myUser: Partial<MyUserChanges>, queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
         updateMyPassword: (oldPassword: string, newPassword: string, queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
         verifyMyEmail: (email: string, queryOptions?: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
-        verifyMyPassword: (password: string) => Promise<QueryResult<boolean>>;
+        verifyMyPassword: (password: string) => Promise<QueryResult<string>>;
     };
     multiStepAction: {
         abortMultiStepAction: (actionId: string) => boolean;

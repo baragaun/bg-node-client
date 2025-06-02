@@ -12239,7 +12239,6 @@ export namespace Schema {
     fields: {
       __typename: ChannelMetadata.__typename;
       updatedAt: ChannelMetadata.updatedAt;
-      unseenMessageInfo: ChannelMetadata.unseenMessageInfo;
       channelInvitationAccepted: ChannelMetadata.channelInvitationAccepted;
       messagesSentByCreatorCount: ChannelMetadata.messagesSentByCreatorCount;
       messagesSentByFirstParticipantCount: ChannelMetadata.messagesSentByFirstParticipantCount;
@@ -12266,14 +12265,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
-    export interface unseenMessageInfo {
-      kind: 'OutputField';
-      name: 'unseenMessageInfo';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$BgLatestUnseenChannelMessageInfo;
-    }
-
     export interface channelInvitationAccepted {
       kind: 'OutputField';
       name: 'channelInvitationAccepted';
@@ -12296,49 +12287,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$Int;
-    }
-  }
-
-  //                                  BgLatestUnseenChannelMessageInfo
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface BgLatestUnseenChannelMessageInfo {
-    kind: 'Object';
-    name: 'BgLatestUnseenChannelMessageInfo';
-    fields: {
-      __typename: BgLatestUnseenChannelMessageInfo.__typename;
-      userId: BgLatestUnseenChannelMessageInfo.userId;
-      createdAt: BgLatestUnseenChannelMessageInfo.createdAt;
-    };
-  }
-
-  export namespace BgLatestUnseenChannelMessageInfo {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'BgLatestUnseenChannelMessageInfo';
-      };
-    }
-
-    export interface userId {
-      kind: 'OutputField';
-      name: 'userId';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
     }
   }
 
@@ -13395,6 +13343,7 @@ export namespace Schema {
       deletedBy: ChannelParticipant.deletedBy;
       channelId: ChannelParticipant.channelId;
       userId: ChannelParticipant.userId;
+      userInfo: ChannelParticipant.userInfo;
       invitedBy: ChannelParticipant.invitedBy;
       channelName: ChannelParticipant.channelName;
       role: ChannelParticipant.role;
@@ -13447,7 +13396,7 @@ export namespace Schema {
       name: 'metadata';
       arguments: {};
       inlineType: [0];
-      namedType: $$NamedTypes.$$BgChannelParticipantMetadata;
+      namedType: $$NamedTypes.$$BaseModelMetadata;
     }
 
     export interface createdAt {
@@ -13512,6 +13461,14 @@ export namespace Schema {
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface userInfo {
+      kind: 'OutputField';
+      name: 'userInfo';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BgChannelParticipantUserInfo;
     }
 
     export interface invitedBy {
@@ -13579,27 +13536,24 @@ export namespace Schema {
     }
   }
 
-  //                                    BgChannelParticipantMetadata
+  //                                    BgChannelParticipantUserInfo
   // --------------------------------------------------------------------------------------------------
   //
 
-  export interface BgChannelParticipantMetadata {
+  export interface BgChannelParticipantUserInfo {
     kind: 'Object';
-    name: 'BgChannelParticipantMetadata';
+    name: 'BgChannelParticipantUserInfo';
     fields: {
-      __typename: BgChannelParticipantMetadata.__typename;
-      updatedAt: BgChannelParticipantMetadata.updatedAt;
-      userHandle: BgChannelParticipantMetadata.userHandle;
-      firstName: BgChannelParticipantMetadata.firstName;
-      lastName: BgChannelParticipantMetadata.lastName;
-      avatarUrl: BgChannelParticipantMetadata.avatarUrl;
-      sentMessageCount: BgChannelParticipantMetadata.sentMessageCount;
-      unseenMessageCount: BgChannelParticipantMetadata.unseenMessageCount;
-      unseenSystemMessageCount: BgChannelParticipantMetadata.unseenSystemMessageCount;
+      __typename: BgChannelParticipantUserInfo.__typename;
+      updatedAt: BgChannelParticipantUserInfo.updatedAt;
+      userHandle: BgChannelParticipantUserInfo.userHandle;
+      firstName: BgChannelParticipantUserInfo.firstName;
+      lastName: BgChannelParticipantUserInfo.lastName;
+      avatarUrl: BgChannelParticipantUserInfo.avatarUrl;
     };
   }
 
-  export namespace BgChannelParticipantMetadata {
+  export namespace BgChannelParticipantUserInfo {
     export interface __typename {
       kind: 'OutputField';
       name: '__typename';
@@ -13607,7 +13561,7 @@ export namespace Schema {
       inlineType: [1];
       namedType: {
         kind: '__typename';
-        value: 'BgChannelParticipantMetadata';
+        value: 'BgChannelParticipantUserInfo';
       };
     }
 
@@ -13649,30 +13603,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
-    }
-
-    export interface sentMessageCount {
-      kind: 'OutputField';
-      name: 'sentMessageCount';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface unseenMessageCount {
-      kind: 'OutputField';
-      name: 'unseenMessageCount';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface unseenSystemMessageCount {
-      kind: 'OutputField';
-      name: 'unseenSystemMessageCount';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Int;
     }
   }
 
@@ -37820,7 +37750,6 @@ export namespace Schema {
     export type $$NotificationContext = NotificationContext;
     export type $$Channel = Channel;
     export type $$ChannelMetadata = ChannelMetadata;
-    export type $$BgLatestUnseenChannelMessageInfo = BgLatestUnseenChannelMessageInfo;
     export type $$BgChannelStatus = BgChannelStatus;
     export type $$ChannelInvitation = ChannelInvitation;
     export type $$DeclineChannelInvitationReason = DeclineChannelInvitationReason;
@@ -37828,7 +37757,7 @@ export namespace Schema {
     export type $$ChannelMessageMetadata = ChannelMessageMetadata;
     export type $$ChannelMessageStatus = ChannelMessageStatus;
     export type $$ChannelParticipant = ChannelParticipant;
-    export type $$BgChannelParticipantMetadata = BgChannelParticipantMetadata;
+    export type $$BgChannelParticipantUserInfo = BgChannelParticipantUserInfo;
     export type $$UserListItem = UserListItem;
     export type $$EducationLevel = EducationLevel;
     export type $$EndorsementWithTypes = EndorsementWithTypes;
@@ -38114,7 +38043,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     NotificationContext: Schema.NotificationContext;
     Channel: Schema.Channel;
     ChannelMetadata: Schema.ChannelMetadata;
-    BgLatestUnseenChannelMessageInfo: Schema.BgLatestUnseenChannelMessageInfo;
     BgChannelStatus: Schema.BgChannelStatus;
     ChannelInvitation: Schema.ChannelInvitation;
     DeclineChannelInvitationReason: Schema.DeclineChannelInvitationReason;
@@ -38122,7 +38050,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     ChannelMessageMetadata: Schema.ChannelMessageMetadata;
     ChannelMessageStatus: Schema.ChannelMessageStatus;
     ChannelParticipant: Schema.ChannelParticipant;
-    BgChannelParticipantMetadata: Schema.BgChannelParticipantMetadata;
+    BgChannelParticipantUserInfo: Schema.BgChannelParticipantUserInfo;
     UserListItem: Schema.UserListItem;
     EducationLevel: Schema.EducationLevel;
     EndorsementWithTypes: Schema.EndorsementWithTypes;
@@ -38211,7 +38139,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     NotificationContext: Schema.NotificationContext;
     Channel: Schema.Channel;
     ChannelMetadata: Schema.ChannelMetadata;
-    BgLatestUnseenChannelMessageInfo: Schema.BgLatestUnseenChannelMessageInfo;
     BgChannelStatus: Schema.BgChannelStatus;
     ChannelInvitation: Schema.ChannelInvitation;
     DeclineChannelInvitationReason: Schema.DeclineChannelInvitationReason;
@@ -38219,7 +38146,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     ChannelMessageMetadata: Schema.ChannelMessageMetadata;
     ChannelMessageStatus: Schema.ChannelMessageStatus;
     ChannelParticipant: Schema.ChannelParticipant;
-    BgChannelParticipantMetadata: Schema.BgChannelParticipantMetadata;
+    BgChannelParticipantUserInfo: Schema.BgChannelParticipantUserInfo;
     UserListItem: Schema.UserListItem;
     EducationLevel: Schema.EducationLevel;
     EndorsementWithTypes: Schema.EndorsementWithTypes;

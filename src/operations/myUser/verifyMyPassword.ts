@@ -6,7 +6,7 @@ import { QueryResult } from '../../types/QueryResult.js';
 
 const verifyMyPassword = async (
   password: string,
-): Promise<QueryResult<boolean>> => {
+): Promise<QueryResult<string>> => {
   try {
     if (libData.config().enableMockMode) {
       return verifyMyPasswordMock(password);

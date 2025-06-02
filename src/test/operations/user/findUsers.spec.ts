@@ -11,7 +11,7 @@ import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specH
 import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
 
-describe('operations.channel.findUsers', () => {
+describe('operations.user.findUsers', () => {
   let client: BgNodeClient;
   let count: number;
   const users: User[] = [];
@@ -34,7 +34,7 @@ describe('operations.channel.findUsers', () => {
     const propsList = [
       { firstName: chance.first(), lastName: chance.last() },
       { firstName: chance.first(), lastName: 'Lidlehupf' },
-      { firstName: chance.first(), lastName: 'Ritzlipfumfp' },
+      { firstName: chance.first(), lastName: 'Ritzlipfumfpo' },
     ];
 
     for (let i = 0; i < count; i++) {
@@ -48,7 +48,7 @@ describe('operations.channel.findUsers', () => {
 
     // 1. Fetching users from the network:
     const queryResultFromNetwork = await client.operations.user.findUsers(
-      { searchText: 'lipfumfp'},
+      { searchText: 'lipfumfpo'},
       undefined,
       undefined,
       undefined,

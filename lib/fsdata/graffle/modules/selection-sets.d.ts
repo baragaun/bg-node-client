@@ -16700,10 +16700,6 @@ export interface ChannelMetadata<_$Scalars extends $$Utilities.Schema.Scalar.Reg
      */
     updatedAt?: ChannelMetadata.updatedAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelMetadata.updatedAt<_$Scalars>>;
     /**
-     * Select the `unseenMessageInfo` field on the `ChannelMetadata` object. Its type is `BgLatestUnseenChannelMessageInfo` (a `OutputObject` kind of type).
-     */
-    unseenMessageInfo?: ChannelMetadata.unseenMessageInfo$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelMetadata.unseenMessageInfo<_$Scalars>>;
-    /**
      * Select the `channelInvitationAccepted` field on the `ChannelMetadata` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
      */
     channelInvitationAccepted?: ChannelMetadata.channelInvitationAccepted$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelMetadata.channelInvitationAccepted<_$Scalars>>;
@@ -16743,15 +16739,6 @@ export declare namespace ChannelMetadata {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type updatedAt$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | updatedAt$SelectionSet<_$Scalars>>;
-    type unseenMessageInfo<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = unseenMessageInfo$SelectionSet<_$Scalars>;
-    interface unseenMessageInfo$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$BgLatestUnseenChannelMessageInfo<_$Scalars> {
-    }
-    /**
-     * This is the "expanded" version of the `unseenMessageInfo` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type unseenMessageInfo$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<unseenMessageInfo$SelectionSet<_$Scalars>>;
     type channelInvitationAccepted<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | channelInvitationAccepted$SelectionSet<_$Scalars>;
     interface channelInvitationAccepted$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -16779,53 +16766,6 @@ export declare namespace ChannelMetadata {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type messagesSentByFirstParticipantCount$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | messagesSentByFirstParticipantCount$SelectionSet<_$Scalars>>;
-}
-export interface BgLatestUnseenChannelMessageInfo<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
-    /**
-     * Select the `userId` field on the `BgLatestUnseenChannelMessageInfo` object. Its type is `ID` (a `ScalarStandard` kind of type).
-     */
-    userId?: BgLatestUnseenChannelMessageInfo.userId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgLatestUnseenChannelMessageInfo.userId<_$Scalars>>;
-    /**
-     * Select the `createdAt` field on the `BgLatestUnseenChannelMessageInfo` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-     */
-    createdAt?: BgLatestUnseenChannelMessageInfo.createdAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgLatestUnseenChannelMessageInfo.createdAt<_$Scalars>>;
-    /**
-     * Inline fragments for field groups.
-     *
-     * Generally a niche feature. This can be useful for example to apply an `@include` directive to a subset of the
-     * selection set in turn allowing you to pass a variable to opt in/out of that selection during execution on the server.
-     *
-     * @see https://spec.graphql.org/draft/#sec-Inline-Fragments
-     */
-    ___?: BgLatestUnseenChannelMessageInfo$FragmentInline<_$Scalars> | BgLatestUnseenChannelMessageInfo$FragmentInline<_$Scalars>[];
-    /**
-     * A meta field. Is the name of the type being selected.
-     *
-     * @see https://graphql.org/learn/queries/#meta-fields
-     */
-    __typename?: $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator$Expanded | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator>;
-}
-export interface BgLatestUnseenChannelMessageInfo$FragmentInline<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends BgLatestUnseenChannelMessageInfo<_$Scalars>, $$Utilities.DocumentBuilder.Select.Directive.$Groups.InlineFragment.Fields {
-}
-export declare namespace BgLatestUnseenChannelMessageInfo {
-    type userId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | userId$SelectionSet<_$Scalars>;
-    interface userId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `userId` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type userId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | userId$SelectionSet<_$Scalars>>;
-    type createdAt<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | createdAt$SelectionSet<_$Scalars>;
-    interface createdAt$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `createdAt` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type createdAt$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | createdAt$SelectionSet<_$Scalars>>;
 }
 export interface BgChannelStatus<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
     /**
@@ -18189,7 +18129,7 @@ export interface ChannelParticipant<_$Scalars extends $$Utilities.Schema.Scalar.
      */
     events?: ChannelParticipant.events$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelParticipant.events<_$Scalars>>;
     /**
-     * Select the `metadata` field on the `ChannelParticipant` object. Its type is `BgChannelParticipantMetadata` (a `OutputObject` kind of type).
+     * Select the `metadata` field on the `ChannelParticipant` object. Its type is `BaseModelMetadata` (a `Interface` kind of type).
      */
     metadata?: ChannelParticipant.metadata$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelParticipant.metadata<_$Scalars>>;
     /**
@@ -18224,6 +18164,10 @@ export interface ChannelParticipant<_$Scalars extends $$Utilities.Schema.Scalar.
      * Select the `userId` field on the `ChannelParticipant` object. Its type is `ID` (a `ScalarStandard` kind of type).
      */
     userId?: ChannelParticipant.userId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelParticipant.userId<_$Scalars>>;
+    /**
+     * Select the `userInfo` field on the `ChannelParticipant` object. Its type is `BgChannelParticipantUserInfo` (a `OutputObject` kind of type).
+     */
+    userInfo?: ChannelParticipant.userInfo$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ChannelParticipant.userInfo<_$Scalars>>;
     /**
      * Select the `invitedBy` field on the `ChannelParticipant` object. Its type is `ID` (a `ScalarStandard` kind of type).
      */
@@ -18303,7 +18247,7 @@ export declare namespace ChannelParticipant {
      */
     type events$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<events$SelectionSet<_$Scalars>>;
     type metadata<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = metadata$SelectionSet<_$Scalars>;
-    interface metadata$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$BgChannelParticipantMetadata<_$Scalars> {
+    interface metadata$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$BaseModelMetadata<_$Scalars> {
     }
     /**
      * This is the "expanded" version of the `metadata` type. It is identical except for the fact
@@ -18383,6 +18327,15 @@ export declare namespace ChannelParticipant {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type userId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | userId$SelectionSet<_$Scalars>>;
+    type userInfo<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = userInfo$SelectionSet<_$Scalars>;
+    interface userInfo$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$BgChannelParticipantUserInfo<_$Scalars> {
+    }
+    /**
+     * This is the "expanded" version of the `userInfo` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type userInfo$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<userInfo$SelectionSet<_$Scalars>>;
     type invitedBy<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | invitedBy$SelectionSet<_$Scalars>;
     interface invitedBy$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -18456,39 +18409,27 @@ export declare namespace ChannelParticipant {
      */
     type user$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<user$SelectionSet<_$Scalars>>;
 }
-export interface BgChannelParticipantMetadata<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
+export interface BgChannelParticipantUserInfo<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
     /**
-     * Select the `updatedAt` field on the `BgChannelParticipantMetadata` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+     * Select the `updatedAt` field on the `BgChannelParticipantUserInfo` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
      */
-    updatedAt?: BgChannelParticipantMetadata.updatedAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.updatedAt<_$Scalars>>;
+    updatedAt?: BgChannelParticipantUserInfo.updatedAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantUserInfo.updatedAt<_$Scalars>>;
     /**
-     * Select the `userHandle` field on the `BgChannelParticipantMetadata` object. Its type is `String` (a `ScalarStandard` kind of type).
+     * Select the `userHandle` field on the `BgChannelParticipantUserInfo` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
-    userHandle?: BgChannelParticipantMetadata.userHandle$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.userHandle<_$Scalars>>;
+    userHandle?: BgChannelParticipantUserInfo.userHandle$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantUserInfo.userHandle<_$Scalars>>;
     /**
-     * Select the `firstName` field on the `BgChannelParticipantMetadata` object. Its type is `String` (a `ScalarStandard` kind of type).
+     * Select the `firstName` field on the `BgChannelParticipantUserInfo` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
-    firstName?: BgChannelParticipantMetadata.firstName$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.firstName<_$Scalars>>;
+    firstName?: BgChannelParticipantUserInfo.firstName$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantUserInfo.firstName<_$Scalars>>;
     /**
-     * Select the `lastName` field on the `BgChannelParticipantMetadata` object. Its type is `String` (a `ScalarStandard` kind of type).
+     * Select the `lastName` field on the `BgChannelParticipantUserInfo` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
-    lastName?: BgChannelParticipantMetadata.lastName$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.lastName<_$Scalars>>;
+    lastName?: BgChannelParticipantUserInfo.lastName$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantUserInfo.lastName<_$Scalars>>;
     /**
-     * Select the `avatarUrl` field on the `BgChannelParticipantMetadata` object. Its type is `String` (a `ScalarStandard` kind of type).
+     * Select the `avatarUrl` field on the `BgChannelParticipantUserInfo` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
-    avatarUrl?: BgChannelParticipantMetadata.avatarUrl$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.avatarUrl<_$Scalars>>;
-    /**
-     * Select the `sentMessageCount` field on the `BgChannelParticipantMetadata` object. Its type is `Int` (a `ScalarStandard` kind of type).
-     */
-    sentMessageCount?: BgChannelParticipantMetadata.sentMessageCount$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.sentMessageCount<_$Scalars>>;
-    /**
-     * Select the `unseenMessageCount` field on the `BgChannelParticipantMetadata` object. Its type is `Int` (a `ScalarStandard` kind of type).
-     */
-    unseenMessageCount?: BgChannelParticipantMetadata.unseenMessageCount$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.unseenMessageCount<_$Scalars>>;
-    /**
-     * Select the `unseenSystemMessageCount` field on the `BgChannelParticipantMetadata` object. Its type is `Int` (a `ScalarStandard` kind of type).
-     */
-    unseenSystemMessageCount?: BgChannelParticipantMetadata.unseenSystemMessageCount$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantMetadata.unseenSystemMessageCount<_$Scalars>>;
+    avatarUrl?: BgChannelParticipantUserInfo.avatarUrl$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<BgChannelParticipantUserInfo.avatarUrl<_$Scalars>>;
     /**
      * Inline fragments for field groups.
      *
@@ -18497,7 +18438,7 @@ export interface BgChannelParticipantMetadata<_$Scalars extends $$Utilities.Sche
      *
      * @see https://spec.graphql.org/draft/#sec-Inline-Fragments
      */
-    ___?: BgChannelParticipantMetadata$FragmentInline<_$Scalars> | BgChannelParticipantMetadata$FragmentInline<_$Scalars>[];
+    ___?: BgChannelParticipantUserInfo$FragmentInline<_$Scalars> | BgChannelParticipantUserInfo$FragmentInline<_$Scalars>[];
     /**
      * A meta field. Is the name of the type being selected.
      *
@@ -18505,9 +18446,9 @@ export interface BgChannelParticipantMetadata<_$Scalars extends $$Utilities.Sche
      */
     __typename?: $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator$Expanded | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator>;
 }
-export interface BgChannelParticipantMetadata$FragmentInline<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends BgChannelParticipantMetadata<_$Scalars>, $$Utilities.DocumentBuilder.Select.Directive.$Groups.InlineFragment.Fields {
+export interface BgChannelParticipantUserInfo$FragmentInline<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends BgChannelParticipantUserInfo<_$Scalars>, $$Utilities.DocumentBuilder.Select.Directive.$Groups.InlineFragment.Fields {
 }
-export declare namespace BgChannelParticipantMetadata {
+export declare namespace BgChannelParticipantUserInfo {
     type updatedAt<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | updatedAt$SelectionSet<_$Scalars>;
     interface updatedAt$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -18553,33 +18494,6 @@ export declare namespace BgChannelParticipantMetadata {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type avatarUrl$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | avatarUrl$SelectionSet<_$Scalars>>;
-    type sentMessageCount<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sentMessageCount$SelectionSet<_$Scalars>;
-    interface sentMessageCount$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `sentMessageCount` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type sentMessageCount$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sentMessageCount$SelectionSet<_$Scalars>>;
-    type unseenMessageCount<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | unseenMessageCount$SelectionSet<_$Scalars>;
-    interface unseenMessageCount$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `unseenMessageCount` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type unseenMessageCount$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | unseenMessageCount$SelectionSet<_$Scalars>>;
-    type unseenSystemMessageCount<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | unseenSystemMessageCount$SelectionSet<_$Scalars>;
-    interface unseenSystemMessageCount$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `unseenSystemMessageCount` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type unseenSystemMessageCount$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | unseenSystemMessageCount$SelectionSet<_$Scalars>>;
 }
 export interface UserListItem<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
     /**
@@ -35035,7 +34949,6 @@ export declare namespace $NamedTypes {
     type $NotificationContext<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = NotificationContext<_$Scalars>;
     type $Channel<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = Channel<_$Scalars>;
     type $ChannelMetadata<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = ChannelMetadata<_$Scalars>;
-    type $BgLatestUnseenChannelMessageInfo<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = BgLatestUnseenChannelMessageInfo<_$Scalars>;
     type $BgChannelStatus<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = BgChannelStatus<_$Scalars>;
     type $ChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = ChannelInvitation<_$Scalars>;
     type $DeclineChannelInvitationReason<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = DeclineChannelInvitationReason<_$Scalars>;
@@ -35043,7 +34956,7 @@ export declare namespace $NamedTypes {
     type $ChannelMessageMetadata<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = ChannelMessageMetadata<_$Scalars>;
     type $ChannelMessageStatus<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = ChannelMessageStatus<_$Scalars>;
     type $ChannelParticipant<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = ChannelParticipant<_$Scalars>;
-    type $BgChannelParticipantMetadata<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = BgChannelParticipantMetadata<_$Scalars>;
+    type $BgChannelParticipantUserInfo<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = BgChannelParticipantUserInfo<_$Scalars>;
     type $UserListItem<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = UserListItem<_$Scalars>;
     type $EducationLevel<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = EducationLevel<_$Scalars>;
     type $EndorsementWithTypes<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = EndorsementWithTypes<_$Scalars>;

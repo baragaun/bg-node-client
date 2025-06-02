@@ -4183,21 +4183,9 @@ const ChannelMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     updatedAt: {
       nt: DateTimeISO,
     },
-    unseenMessageInfo: {
-      // nt: BgLatestUnseenChannelMessageInfo, <-- Assigned later to avoid potential circular dependency.
-    },
     channelInvitationAccepted: {},
     messagesSentByCreatorCount: {},
     messagesSentByFirstParticipantCount: {},
-  },
-};
-
-const BgLatestUnseenChannelMessageInfo: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    userId: {},
-    createdAt: {
-      nt: DateTimeISO,
-    },
   },
 };
 
@@ -4407,7 +4395,7 @@ const ChannelParticipant: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
     },
     metadata: {
-      // nt: BgChannelParticipantMetadata, <-- Assigned later to avoid potential circular dependency.
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
     },
     createdAt: {
       nt: DateTimeISO,
@@ -4423,6 +4411,9 @@ const ChannelParticipant: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     deletedBy: {},
     channelId: {},
     userId: {},
+    userInfo: {
+      // nt: BgChannelParticipantUserInfo, <-- Assigned later to avoid potential circular dependency.
+    },
     invitedBy: {},
     channelName: {},
     role: {},
@@ -4442,7 +4433,7 @@ const ChannelParticipant: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
-const BgChannelParticipantMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+const BgChannelParticipantUserInfo: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     updatedAt: {
       nt: DateTimeISO,
@@ -4451,9 +4442,6 @@ const BgChannelParticipantMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject
     firstName: {},
     lastName: {},
     avatarUrl: {},
-    sentMessageCount: {},
-    unseenMessageCount: {},
-    unseenSystemMessageCount: {},
   },
 };
 
@@ -8888,7 +8876,6 @@ Channel.f['messages']!.nt = ChannelMessage;
 Channel.f['myContacts']!.nt = Contact;
 Channel.f['participants']!.nt = ChannelParticipant;
 Channel.f['pendingInvitations']!.nt = ChannelInvitation;
-ChannelMetadata.f['unseenMessageInfo']!.nt = BgLatestUnseenChannelMessageInfo;
 ChannelInvitation.f['events']!.nt = ModelEvent;
 ChannelInvitation.f['metadata']!.nt = BaseModelMetadata;
 ChannelInvitation.f['channel']!.nt = Channel;
@@ -8905,7 +8892,8 @@ ChannelMessage.f['statuses']!.nt = ChannelMessageStatus;
 ChannelMessage.f['channel']!.nt = Channel;
 ChannelMessage.f['sender']!.nt = User;
 ChannelParticipant.f['events']!.nt = ModelEvent;
-ChannelParticipant.f['metadata']!.nt = BgChannelParticipantMetadata;
+ChannelParticipant.f['metadata']!.nt = BaseModelMetadata;
+ChannelParticipant.f['userInfo']!.nt = BgChannelParticipantUserInfo;
 ChannelParticipant.f['channel']!.nt = Channel;
 ChannelParticipant.f['myContact']!.nt = Contact;
 ChannelParticipant.f['user']!.nt = UserListItem;
@@ -9399,7 +9387,6 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     NotificationContext,
     Channel,
     ChannelMetadata,
-    BgLatestUnseenChannelMessageInfo,
     BgChannelStatus,
     ChannelInvitation,
     DeclineChannelInvitationReason,
@@ -9407,7 +9394,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ChannelMessageMetadata,
     ChannelMessageStatus,
     ChannelParticipant,
-    BgChannelParticipantMetadata,
+    BgChannelParticipantUserInfo,
     UserListItem,
     EducationLevel,
     EndorsementWithTypes,

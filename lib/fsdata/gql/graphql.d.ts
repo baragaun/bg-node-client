@@ -320,14 +320,11 @@ export type BgChannelChangedEvent = {
     requestId?: Maybe<Scalars['ID']['output']>;
     serviceRequest: ServiceRequest;
 };
-export type BgChannelParticipantMetadata = {
-    __typename?: 'BgChannelParticipantMetadata';
+export type BgChannelParticipantUserInfo = {
+    __typename?: 'BgChannelParticipantUserInfo';
     avatarUrl?: Maybe<Scalars['String']['output']>;
     firstName?: Maybe<Scalars['String']['output']>;
     lastName?: Maybe<Scalars['String']['output']>;
-    sentMessageCount: Scalars['Int']['output'];
-    unseenMessageCount: Scalars['Int']['output'];
-    unseenSystemMessageCount: Scalars['Int']['output'];
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     userHandle?: Maybe<Scalars['String']['output']>;
 };
@@ -339,11 +336,6 @@ export type BgChannelStatus = {
 export type BgChannelStatusInput = {
     archivedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     userId?: InputMaybe<Scalars['ID']['input']>;
-};
-export type BgLatestUnseenChannelMessageInfo = {
-    __typename?: 'BgLatestUnseenChannelMessageInfo';
-    createdAt: Scalars['DateTimeISO']['output'];
-    userId: Scalars['ID']['output'];
 };
 export type BusinessExperience = {
     __typename?: 'BusinessExperience';
@@ -739,7 +731,6 @@ export type ChannelMetadata = {
     channelInvitationAccepted?: Maybe<Scalars['Boolean']['output']>;
     messagesSentByCreatorCount?: Maybe<Scalars['Int']['output']>;
     messagesSentByFirstParticipantCount?: Maybe<Scalars['Int']['output']>;
-    unseenMessageInfo?: Maybe<Array<BgLatestUnseenChannelMessageInfo>>;
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
 };
 export type ChannelParticipant = {
@@ -755,7 +746,7 @@ export type ChannelParticipant = {
     events?: Maybe<Array<ModelEvent>>;
     id: Scalars['ID']['output'];
     invitedBy?: Maybe<Scalars['ID']['output']>;
-    metadata?: Maybe<BgChannelParticipantMetadata>;
+    metadata?: Maybe<BaseModelMetadata>;
     myContact: Contact;
     role?: Maybe<ChannelParticipantRole>;
     suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -764,6 +755,7 @@ export type ChannelParticipant = {
     updatedBy?: Maybe<Scalars['ID']['output']>;
     user: UserListItem;
     userId: Scalars['ID']['output'];
+    userInfo?: Maybe<BgChannelParticipantUserInfo>;
 };
 export type ChannelParticipantInput = {
     adminNotes?: InputMaybe<Scalars['String']['input']>;
