@@ -15,14 +15,10 @@ declare const modelFields: {
         channelType: boolean;
         userIds: boolean;
         metadata: {
-            updatedAt: boolean;
-            unseenMessageInfo: {
-                userId: boolean;
-                createdAt: boolean;
-            };
             channelInvitationAccepted: boolean;
             messagesSentByCreatorCount: boolean;
             messagesSentByFirstParticipantCount: boolean;
+            updatedAt: boolean;
         };
         pausedAt: boolean;
         pausedBy: boolean;
@@ -36,6 +32,72 @@ declare const modelFields: {
         mm2Id: boolean;
         syncedWithMm2At: boolean;
         isArchivedForMe: boolean;
+    };
+    channelListItem: {
+        id: boolean;
+        adminNotes: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+        name: boolean;
+        topic: boolean;
+        description: boolean;
+        tags: boolean;
+        channelType: boolean;
+        userIds: boolean;
+        metadata: {
+            channelInvitationAccepted: boolean;
+            messagesSentByCreatorCount: boolean;
+            messagesSentByFirstParticipantCount: boolean;
+            updatedAt: boolean;
+        };
+        pausedAt: boolean;
+        pausedBy: boolean;
+        suspendedAt: boolean;
+        suspendedBy: boolean;
+        lockedAt: boolean;
+        lockedBy: boolean;
+        archivedAt: boolean;
+        archivedBy: boolean;
+        assumedMentorId: boolean;
+        mm2Id: boolean;
+        syncedWithMm2At: boolean;
+        isArchivedForMe: boolean;
+        participants: {
+            id: boolean;
+            userId: boolean;
+            userInfo: {
+                userHandle: boolean;
+                firstName: boolean;
+                lastName: boolean;
+                avatarUrl: boolean;
+            };
+        };
+        latestMessage: {
+            id: boolean;
+            adminNotes: boolean;
+            createdAt: boolean;
+            createdBy: boolean;
+            updatedAt: boolean;
+            updatedBy: boolean;
+            deletedAt: boolean;
+            deletedBy: boolean;
+            channelId: boolean;
+            replyToMessageId: boolean;
+            channelMessageType: boolean;
+            messageText: boolean;
+            statuses: {
+                userId: boolean;
+                receivedAt: boolean;
+                seenAt: boolean;
+            };
+            editedAt: boolean;
+            suspendedAt: boolean;
+            suspendedBy: boolean;
+        };
     };
     channelInvitation: {
         id: boolean;
@@ -63,7 +125,6 @@ declare const modelFields: {
     };
     channelMessage: {
         id: boolean;
-        adminNotes: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
@@ -82,36 +143,28 @@ declare const modelFields: {
         editedAt: boolean;
         suspendedAt: boolean;
         suspendedBy: boolean;
-        mm2ConversationId: boolean;
-        mm2Id: boolean;
-        syncedWithMm2At: boolean;
     };
     channelParticipant: {
         id: boolean;
-        adminNotes: boolean;
-        metadata: {
-            updatedAt: boolean;
+        userId: boolean;
+        channelId: boolean;
+        channelName: boolean;
+        role: boolean;
+        userInfo: {
             userHandle: boolean;
             firstName: boolean;
             lastName: boolean;
             avatarUrl: boolean;
-            sentMessageCount: boolean;
-            unseenMessageCount: boolean;
-            unseenSystemMessageCount: boolean;
         };
+        suspendedAt: boolean;
+        suspendedBy: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        channelId: boolean;
-        userId: boolean;
         invitedBy: boolean;
-        channelName: boolean;
-        role: boolean;
-        suspendedAt: boolean;
-        suspendedBy: boolean;
     };
     sidMultiStepAction: {
         actionStatus: boolean;

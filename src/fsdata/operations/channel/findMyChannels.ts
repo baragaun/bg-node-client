@@ -1,12 +1,9 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { Channel } from '../../../models/Channel.js';
-import { ChannelListFilter as ChannelListFilterFromClient } from '../../../models/ChannelListFilter.js';
+import { ChannelListItem } from '../../../types/ChannelListItem.js';
 import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
-  ChannelInput,
-  ChannelListFilter,
   FindObjectsOptions,
   InputMaybe,
   QueryFindMyChannelsArgs,
@@ -17,16 +14,16 @@ import modelFields from '../../helpers/modelFields.js';
 
 type ResponseDataType = {
   data: {
-    findMyChannels: Channel[] | null;
+    findMyChannels: ChannelListItem[];
   };
   errors?: { message: string }[];
 };
 
 const findMyChannels = async (
-  filter: ChannelListFilterFromClient | null | undefined,
-  match: Partial<Channel> | null | undefined,
+  participantLimit: number | undefined,
+  addLatestMessage: boolean | undefined,
   options: FindObjectsOptionsFromClient,
-): Promise<QueryResult<Channel>> => {
+): Promise<QueryResult<ChannelListItem>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('fsdata.findMyChannels: unavailable');
@@ -35,22 +32,20 @@ const findMyChannels = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindMyChannelsArgs = {
-      filter: (filter || null) as unknown as ChannelListFilter | null,
-      match: (match as unknown as InputMaybe<ChannelInput>) || null,
+      participantLimit,
+      addLatestMessage,
       options: (options as unknown as InputMaybe<FindObjectsOptions>) || null,
     };
 
     const response: ResponseDataType = await client.query.findMyChannels({
       $: args,
-      ...modelFields.channel,
+      ...modelFields.channelListItem,
     });
 
     logger.debug('fsdata.findMyChannels response:', { response });
 
     return {
-      objects: response.data.findMyChannels
-        ? response.data.findMyChannels.map((channel) => new Channel(channel))
-        : null,
+      objects: response.data.findMyChannels,
     };
   } catch (error) {
     logger.error('fsdata.findMyChannels: error', { error, headers: helpers.headers() });

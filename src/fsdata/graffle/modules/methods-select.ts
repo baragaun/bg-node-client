@@ -85,6 +85,7 @@ export interface $MethodsSelect {
   AdminTask: AdminTask;
   AdminTaskDef: AdminTaskDef;
   AdminTaskArgDef: AdminTaskArgDef;
+  ChannelListItem: ChannelListItem;
   ErrorCodeOption: ErrorCodeOption;
   IndonesianCity: IndonesianCity;
   IndonesianProvince: IndonesianProvince;
@@ -432,6 +433,10 @@ export interface AdminTaskDef {
 
 export interface AdminTaskArgDef {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.AdminTaskArgDef>): $SelectionSet;
+}
+
+export interface ChannelListItem {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelListItem>): $SelectionSet;
 }
 
 export interface ErrorCodeOption {
