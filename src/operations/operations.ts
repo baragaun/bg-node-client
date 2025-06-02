@@ -29,6 +29,7 @@ import findById from './findById.js';
 import findByMatch from './findByMatch.js';
 import findOne from './findOne.js';
 import findOneByMatch from './findOneByMatch.js';
+import findGiftCardProducts from './giftCardProduct/findGiftCardProducts.js';
 import insertOne from './insertOne.js';
 import abortMultiStepAction from './multiStepAction/abortMultiStepAction.js';
 import addMultiStepActionListener from './multiStepAction/addMultiStepActionListener.js';
@@ -63,6 +64,7 @@ import verifyMyPassword from './myUser/verifyMyPassword.js';
 import update from './update.js';
 import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
+import findVendors from './vendor/findVendors.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -110,6 +112,10 @@ const operations: Operations = {
     updateChannelParticipant,
   },
 
+  giftCardProduct: {
+    findGiftCardProducts,
+  },
+
   myUser: {
     blockUserForMe,
     deleteMyUser,
@@ -149,6 +155,10 @@ const operations: Operations = {
   user: {
     findUserById,
     findUsers,
+  },
+
+  vendor: {
+    findVendors,
   },
 };
 

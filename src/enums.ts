@@ -165,12 +165,14 @@ export enum ModelType {
   ChannelInvitation = 'ChannelInvitation',
   ChannelMessage = 'ChannelMessage',
   ChannelParticipant = 'ChannelParticipant',
+  ClientInfo = 'ClientInfo',
+  GiftCard = 'GiftCard',
   MyUser = 'MyUser',
   SidMultiStepAction = 'SidMultiStepAction',
   SidMultiStepActionProgress = 'SidMultiStepActionProgress',
   User = 'User',
   UserInbox = 'UserInbox',
-  ClientInfo = 'ClientInfo',
+  Vendor = 'Vendor',
 }
 
 export enum NotificationMethod {

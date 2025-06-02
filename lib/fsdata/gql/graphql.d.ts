@@ -198,6 +198,7 @@ export declare enum AdminTaskType {
     DoDataMaintenance = "doDataMaintenance",
     FixAllSyncedChannelInvitationInitialMessages = "fixAllSyncedChannelInvitationInitialMessages",
     FormatPhoneNumbers = "formatPhoneNumbers",
+    ImportMarketplaceData = "importMarketplaceData",
     LoadDbCache = "loadDbCache",
     MergeAllDuplicateMm3ChatObjects = "mergeAllDuplicateMm3ChatObjects",
     MergeAllDuplicateMm3Users = "mergeAllDuplicateMm3Users",
@@ -1569,6 +1570,67 @@ export type Gender = {
     updatedBy?: Maybe<Scalars['ID']['output']>;
     value: Scalars['String']['output'];
 };
+export type GiftCardDenomination = {
+    __typename?: 'GiftCardDenomination';
+    amount: Scalars['Int']['output'];
+    enabled: Scalars['Boolean']['output'];
+};
+export type GiftCardProduct = {
+    __typename?: 'GiftCardProduct';
+    adminNotes?: Maybe<Scalars['String']['output']>;
+    barcodeFormat?: Maybe<Scalars['String']['output']>;
+    createdAt: Scalars['DateTimeISO']['output'];
+    createdBy?: Maybe<Scalars['ID']['output']>;
+    deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    deletedBy?: Maybe<Scalars['ID']['output']>;
+    denominations?: Maybe<Array<GiftCardDenomination>>;
+    events?: Maybe<Array<ModelEvent>>;
+    genericGiftCardId?: Maybe<Scalars['ID']['output']>;
+    hasBarcode?: Maybe<Scalars['Boolean']['output']>;
+    hasPin?: Maybe<Scalars['Boolean']['output']>;
+    id: Scalars['ID']['output'];
+    imageSourceBack?: Maybe<Scalars['String']['output']>;
+    imageSourceFront?: Maybe<Scalars['String']['output']>;
+    importId: Scalars['String']['output'];
+    instructionsEn?: Maybe<Scalars['String']['output']>;
+    instructionsUrl?: Maybe<Scalars['String']['output']>;
+    isGeneric?: Maybe<Scalars['Boolean']['output']>;
+    metadata?: Maybe<BaseModelMetadata>;
+    termsEn?: Maybe<Scalars['String']['output']>;
+    termsUrl?: Maybe<Scalars['String']['output']>;
+    updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    updatedBy?: Maybe<Scalars['ID']['output']>;
+    vendorId: Scalars['ID']['output'];
+    vendorImportId?: Maybe<Scalars['String']['output']>;
+};
+export type GiftCardProductInput = {
+    adminNotes?: InputMaybe<Scalars['String']['input']>;
+    createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    createdBy?: InputMaybe<Scalars['ID']['input']>;
+    deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    deletedBy?: InputMaybe<Scalars['ID']['input']>;
+    events?: InputMaybe<Array<ModelEventInput>>;
+    id?: InputMaybe<Scalars['ID']['input']>;
+    logoUrl?: InputMaybe<Scalars['String']['input']>;
+    metadata?: InputMaybe<BaseModelMetadataInput>;
+    name?: InputMaybe<Scalars['String']['input']>;
+    slug?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    updatedBy?: InputMaybe<Scalars['ID']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+    vendorId?: InputMaybe<Scalars['ID']['input']>;
+};
+export type GiftCardProductListFilter = {
+    caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
+    createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+    ids?: InputMaybe<Array<Scalars['String']['input']>>;
+    searchText?: InputMaybe<Scalars['String']['input']>;
+    textSearchFields?: InputMaybe<Array<Scalars['String']['input']>>;
+    updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+};
 export type Group = {
     __typename?: 'Group';
     adminNotes?: Maybe<Scalars['String']['output']>;
@@ -2107,6 +2169,20 @@ export type Language = {
     updatedBy?: Maybe<Scalars['ID']['output']>;
     value: Scalars['String']['output'];
 };
+export type MarketplaceServiceRecord = {
+    __typename?: 'MarketplaceServiceRecord';
+    adminNotes?: Maybe<Scalars['String']['output']>;
+    createdAt: Scalars['DateTimeISO']['output'];
+    createdBy?: Maybe<Scalars['ID']['output']>;
+    deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    deletedBy?: Maybe<Scalars['ID']['output']>;
+    events?: Maybe<Array<ModelEvent>>;
+    id: Scalars['ID']['output'];
+    metadata?: Maybe<BaseModelMetadata>;
+    serviceName: ServiceName;
+    updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    updatedBy?: Maybe<Scalars['ID']['output']>;
+};
 export type MastercardBank = {
     __typename?: 'MastercardBank';
     adminNotes?: Maybe<Scalars['String']['output']>;
@@ -2385,11 +2461,13 @@ export declare enum ModelType {
     ContentStatus = "ContentStatus",
     ContentTag = "ContentTag",
     DataDeletion = "DataDeletion",
+    GiftCardProduct = "GiftCardProduct",
     Group = "Group",
     GroupCms = "GroupCms",
     GroupMembership = "GroupMembership",
     GroupRule = "GroupRule",
     GroupRuleConfig = "GroupRuleConfig",
+    MarketplaceServiceRecord = "MarketplaceServiceRecord",
     MastercardBank = "MastercardBank",
     Match = "Match",
     MatchProfile = "MatchProfile",
@@ -2406,6 +2484,7 @@ export declare enum ModelType {
     Notification = "Notification",
     NotificationTemplate = "NotificationTemplate",
     Option = "Option",
+    Product = "Product",
     ServiceRecord = "ServiceRecord",
     ServiceRequest = "ServiceRequest",
     SupportChannelConfig = "SupportChannelConfig",
@@ -2421,6 +2500,7 @@ export declare enum ModelType {
     UserPreferences = "UserPreferences",
     UserSearch = "UserSearch",
     UserTracking = "UserTracking",
+    Vendor = "Vendor",
     Unset = "unset"
 }
 export type ModerationConcern = {
@@ -3676,6 +3756,7 @@ export type Query = {
     findErrorCodes: Array<ErrorCodeOption>;
     findExpertises: Array<Expertise>;
     findGenders: Array<Gender>;
+    findGiftCardProducts: Array<GiftCardProduct>;
     findGroupById?: Maybe<Group>;
     findGroupByIdent?: Maybe<Group>;
     findGroupCmsByGroupId?: Maybe<GroupCms>;
@@ -3691,6 +3772,7 @@ export type Query = {
     findIqlaaJordanianGovernorates: Array<IqlaaJordanianGovernorate>;
     findLanguages: Array<Language>;
     findLatestTrainingSessionForMe?: Maybe<TrainingSession>;
+    findMarketplaceServiceRecord: MarketplaceServiceRecord;
     findMastercardBanks: Array<MastercardBank>;
     /** @deprecated Use findMyActiveMultiStepActions instead */
     findMyActiveMultiStepAction: Array<SidMultiStepAction>;
@@ -3724,6 +3806,7 @@ export type Query = {
     findUserSearchResults: Array<UserWithScore>;
     findUserSearches: Array<UserSearch>;
     findUsers: Array<UserListItem>;
+    findVendors: Array<Vendor>;
     getMultiStepActionProgress: SidMultiStepActionProgress;
     /** @deprecated Use findMyBlockedUsers */
     getMyBlockedUsers: Array<User>;
@@ -3838,6 +3921,11 @@ export type QueryFindExpertisesArgs = {
 };
 export type QueryFindGendersArgs = {
     fallbackUiLanguage?: InputMaybe<UiLanguage>;
+};
+export type QueryFindGiftCardProductsArgs = {
+    filter?: InputMaybe<GiftCardProductListFilter>;
+    match?: InputMaybe<GiftCardProductInput>;
+    options?: InputMaybe<FindObjectsOptions>;
 };
 export type QueryFindGroupByIdArgs = {
     id: Scalars['String']['input'];
@@ -4000,6 +4088,11 @@ export type QueryFindUsersArgs = {
     match?: InputMaybe<UserInput>;
     options?: InputMaybe<FindObjectsOptions>;
 };
+export type QueryFindVendorsArgs = {
+    filter?: InputMaybe<VendorListFilter>;
+    match?: InputMaybe<VendorInput>;
+    options?: InputMaybe<FindObjectsOptions>;
+};
 export type QueryGetMultiStepActionProgressArgs = {
     actionId: Scalars['String']['input'];
     confirmToken?: InputMaybe<Scalars['String']['input']>;
@@ -4087,6 +4180,45 @@ export type SendMultiStepActionNotificationInput = {
     /** Only allowed for certain flows, i.e. during sign-up with only an email or phone number. */
     phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
+export declare enum ServiceName {
+    Accounts = "accounts",
+    Admin = "admin",
+    AdminJs = "adminJs",
+    Analytics = "analytics",
+    AppEvents = "appEvents",
+    Assets = "assets",
+    Aws = "aws",
+    BgChannels = "bgChannels",
+    BullBoard = "bullBoard",
+    Channels = "channels",
+    Content = "content",
+    ContentTags = "contentTags",
+    DataGenerator = "dataGenerator",
+    Db = "db",
+    Firebase = "firebase",
+    GraphqlApi = "graphqlApi",
+    Groups = "groups",
+    Http = "http",
+    I18N = "i18N",
+    Logger = "logger",
+    Marketplace = "marketplace",
+    Matching = "matching",
+    MessageBus = "messageBus",
+    Messaging = "messaging",
+    Mm2 = "mm2",
+    Models = "models",
+    Moderation = "moderation",
+    Nats = "nats",
+    Nlp = "nlp",
+    Redis = "redis",
+    RestApi = "restApi",
+    SecureId = "secureId",
+    Slack = "slack",
+    System = "system",
+    Tracking = "tracking",
+    Unset = "unset",
+    Vts = "vts"
+}
 export type ServiceRequest = {
     __typename?: 'ServiceRequest';
     createdAt: Scalars['DateTimeISO']['output'];
@@ -4262,6 +4394,7 @@ export declare enum ServiceRequestType {
     GraphQlQueryFindContacts = "graphQlQueryFindContacts",
     GraphQlQueryFindCountries = "graphQlQueryFindCountries",
     GraphQlQueryFindExpertises = "graphQlQueryFindExpertises",
+    GraphQlQueryFindGiftCardProducts = "graphQlQueryFindGiftCardProducts",
     GraphQlQueryFindGroupById = "graphQlQueryFindGroupById",
     GraphQlQueryFindGroupByIdent = "graphQlQueryFindGroupByIdent",
     GraphQlQueryFindGroupCmsByGroupId = "graphQlQueryFindGroupCmsByGroupId",
@@ -4271,6 +4404,7 @@ export declare enum ServiceRequestType {
     GraphQlQueryFindGroupMemberships = "graphQlQueryFindGroupMemberships",
     GraphQlQueryFindGroupsField = "graphQlQueryFindGroupsField",
     GraphQlQueryFindIndustries = "graphQlQueryFindIndustries",
+    GraphQlQueryFindMarketplaceServiceRecord = "graphQlQueryFindMarketplaceServiceRecord",
     GraphQlQueryFindMm2SynchronizationById = "graphQlQueryFindMm2SynchronizationById",
     GraphQlQueryFindMyBlockedUsers = "graphQlQueryFindMyBlockedUsers",
     GraphQlQueryFindMyChannels = "graphQlQueryFindMyChannels",
@@ -4295,6 +4429,7 @@ export declare enum ServiceRequestType {
     GraphQlQueryFindUserSearchById = "graphQlQueryFindUserSearchById",
     GraphQlQueryFindUserSearchResults = "graphQlQueryFindUserSearchResults",
     GraphQlQueryFindUsers = "graphQlQueryFindUsers",
+    GraphQlQueryFindVendors = "graphQlQueryFindVendors",
     GraphQlQueryGetMm2Integration = "graphQlQueryGetMm2Integration",
     GraphQlQueryGetMultiStepActionProgress = "graphQlQueryGetMultiStepActionProgress",
     GraphQlQueryLatestUserDevice = "graphQlQueryLatestUserDevice",
@@ -5630,6 +5765,66 @@ export type UserWithScore = {
     websites?: Maybe<Array<LabeledStringValue>>;
     yearsManagementExperience?: Maybe<Scalars['Int']['output']>;
     yearsOwnershipExperience?: Maybe<Scalars['Int']['output']>;
+};
+export type Vendor = {
+    __typename?: 'Vendor';
+    adminNotes?: Maybe<Scalars['String']['output']>;
+    alias1?: Maybe<Scalars['String']['output']>;
+    alias2?: Maybe<Scalars['String']['output']>;
+    alias3?: Maybe<Scalars['String']['output']>;
+    balanceLookupUri?: Maybe<Scalars['String']['output']>;
+    createdAt: Scalars['DateTimeISO']['output'];
+    createdBy?: Maybe<Scalars['ID']['output']>;
+    deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    deletedBy?: Maybe<Scalars['ID']['output']>;
+    description?: Maybe<Scalars['String']['output']>;
+    events?: Maybe<Array<ModelEvent>>;
+    id: Scalars['ID']['output'];
+    imageSource?: Maybe<Scalars['String']['output']>;
+    importId: Scalars['String']['output'];
+    listed?: Maybe<Scalars['Boolean']['output']>;
+    logoImageSource?: Maybe<Scalars['String']['output']>;
+    metadata?: Maybe<BaseModelMetadata>;
+    name: Scalars['String']['output'];
+    slug?: Maybe<Scalars['String']['output']>;
+    updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    updatedBy?: Maybe<Scalars['ID']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
+};
+export type VendorInput = {
+    adminNotes?: InputMaybe<Scalars['String']['input']>;
+    alias1?: InputMaybe<Scalars['String']['input']>;
+    alias2?: InputMaybe<Scalars['String']['input']>;
+    alias3?: InputMaybe<Scalars['String']['input']>;
+    balanceLookupUri?: InputMaybe<Scalars['String']['input']>;
+    createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    createdBy?: InputMaybe<Scalars['ID']['input']>;
+    deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    deletedBy?: InputMaybe<Scalars['ID']['input']>;
+    description?: InputMaybe<Scalars['String']['input']>;
+    events?: InputMaybe<Array<ModelEventInput>>;
+    id?: InputMaybe<Scalars['ID']['input']>;
+    imageSource?: InputMaybe<Scalars['String']['input']>;
+    importId?: InputMaybe<Scalars['String']['input']>;
+    listed?: InputMaybe<Scalars['Boolean']['input']>;
+    logoUrl?: InputMaybe<Scalars['String']['input']>;
+    metadata?: InputMaybe<BaseModelMetadataInput>;
+    name?: InputMaybe<Scalars['String']['input']>;
+    slug?: InputMaybe<Scalars['String']['input']>;
+    updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    updatedBy?: InputMaybe<Scalars['ID']['input']>;
+    url?: InputMaybe<Scalars['String']['input']>;
+};
+export type VendorListFilter = {
+    caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
+    createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+    ids?: InputMaybe<Array<Scalars['String']['input']>>;
+    searchText?: InputMaybe<Scalars['String']['input']>;
+    textSearchFields?: InputMaybe<Array<Scalars['String']['input']>>;
+    updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
 };
 export type VerifyMultiStepActionTokenInput = {
     actionId?: Scalars['String']['input'];
