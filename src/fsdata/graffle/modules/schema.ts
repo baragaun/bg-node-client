@@ -792,21 +792,21 @@ export namespace Schema {
           inlineType: [0];
           namedType: $$NamedTypes.$$FindObjectsOptions;
         };
-        match: {
+        addLatestMessage: {
           kind: 'InputField';
-          name: 'match';
+          name: 'addLatestMessage';
           inlineType: [0];
-          namedType: $$NamedTypes.$$ChannelInput;
+          namedType: $$NamedTypes.$$Boolean;
         };
-        filter: {
+        participantLimit: {
           kind: 'InputField';
-          name: 'filter';
+          name: 'participantLimit';
           inlineType: [0];
-          namedType: $$NamedTypes.$$ChannelListFilter;
+          namedType: $$NamedTypes.$$Int;
         };
       };
       inlineType: [1, [1]];
-      namedType: $$NamedTypes.$$Channel;
+      namedType: $$NamedTypes.$$ChannelListItem;
     }
 
     export interface findChannelMessageById {
@@ -17341,6 +17341,382 @@ export namespace Schema {
     }
   }
 
+  //                                          ChannelListItem
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface ChannelListItem {
+    kind: 'Object';
+    name: 'ChannelListItem';
+    fields: {
+      __typename: ChannelListItem.__typename;
+      id: ChannelListItem.id;
+      adminNotes: ChannelListItem.adminNotes;
+      events: ChannelListItem.events;
+      metadata: ChannelListItem.metadata;
+      createdAt: ChannelListItem.createdAt;
+      createdBy: ChannelListItem.createdBy;
+      updatedAt: ChannelListItem.updatedAt;
+      updatedBy: ChannelListItem.updatedBy;
+      deletedAt: ChannelListItem.deletedAt;
+      deletedBy: ChannelListItem.deletedBy;
+      name: ChannelListItem.name;
+      topic: ChannelListItem.topic;
+      description: ChannelListItem.description;
+      tags: ChannelListItem.tags;
+      channelType: ChannelListItem.channelType;
+      statuses: ChannelListItem.statuses;
+      userIds: ChannelListItem.userIds;
+      otherUserId: ChannelListItem.otherUserId;
+      pausedAt: ChannelListItem.pausedAt;
+      pausedBy: ChannelListItem.pausedBy;
+      suspendedAt: ChannelListItem.suspendedAt;
+      suspendedBy: ChannelListItem.suspendedBy;
+      lockedAt: ChannelListItem.lockedAt;
+      lockedBy: ChannelListItem.lockedBy;
+      archivedAt: ChannelListItem.archivedAt;
+      archivedBy: ChannelListItem.archivedBy;
+      assumedMentorId: ChannelListItem.assumedMentorId;
+      mm2Id: ChannelListItem.mm2Id;
+      syncedWithMm2At: ChannelListItem.syncedWithMm2At;
+      creator: ChannelListItem.creator;
+      status: ChannelListItem.status;
+      invitations: ChannelListItem.invitations;
+      isArchivedForMe: ChannelListItem.isArchivedForMe;
+      latestMessage: ChannelListItem.latestMessage;
+      messages: ChannelListItem.messages;
+      myContacts: ChannelListItem.myContacts;
+      participants: ChannelListItem.participants;
+      pendingInvitations: ChannelListItem.pendingInvitations;
+    };
+  }
+
+  export namespace ChannelListItem {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'ChannelListItem';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ChannelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface name {
+      kind: 'OutputField';
+      name: 'name';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface topic {
+      kind: 'OutputField';
+      name: 'topic';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface description {
+      kind: 'OutputField';
+      name: 'description';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface tags {
+      kind: 'OutputField';
+      name: 'tags';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface channelType {
+      kind: 'OutputField';
+      name: 'channelType';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ChannelType;
+    }
+
+    export interface statuses {
+      kind: 'OutputField';
+      name: 'statuses';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$BgChannelStatus;
+    }
+
+    export interface userIds {
+      kind: 'OutputField';
+      name: 'userIds';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    /**
+     * For 1:1 channels, the ID of the other user. The first user is createdBy.
+     */
+    export interface otherUserId {
+      kind: 'OutputField';
+      name: 'otherUserId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface pausedAt {
+      kind: 'OutputField';
+      name: 'pausedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface pausedBy {
+      kind: 'OutputField';
+      name: 'pausedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface suspendedAt {
+      kind: 'OutputField';
+      name: 'suspendedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface suspendedBy {
+      kind: 'OutputField';
+      name: 'suspendedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface lockedAt {
+      kind: 'OutputField';
+      name: 'lockedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface lockedBy {
+      kind: 'OutputField';
+      name: 'lockedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface archivedAt {
+      kind: 'OutputField';
+      name: 'archivedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface archivedBy {
+      kind: 'OutputField';
+      name: 'archivedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface assumedMentorId {
+      kind: 'OutputField';
+      name: 'assumedMentorId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    /**
+     * This attribute is only used by the MM2 synchronizer.
+     */
+    export interface mm2Id {
+      kind: 'OutputField';
+      name: 'mm2Id';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * This attribute is only used by the MM2 synchronizer.
+     */
+    export interface syncedWithMm2At {
+      kind: 'OutputField';
+      name: 'syncedWithMm2At';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface creator {
+      kind: 'OutputField';
+      name: 'creator';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$User;
+    }
+
+    export interface status {
+      kind: 'OutputField';
+      name: 'status';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BgChannelStatus;
+    }
+
+    export interface invitations {
+      kind: 'OutputField';
+      name: 'invitations';
+      arguments: {};
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$ChannelInvitation;
+    }
+
+    export interface isArchivedForMe {
+      kind: 'OutputField';
+      name: 'isArchivedForMe';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface latestMessage {
+      kind: 'OutputField';
+      name: 'latestMessage';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ChannelMessage;
+    }
+
+    export interface messages {
+      kind: 'OutputField';
+      name: 'messages';
+      arguments: {};
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$ChannelMessage;
+    }
+
+    export interface myContacts {
+      kind: 'OutputField';
+      name: 'myContacts';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$Contact;
+    }
+
+    export interface participants {
+      kind: 'OutputField';
+      name: 'participants';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ChannelParticipant;
+    }
+
+    export interface pendingInvitations {
+      kind: 'OutputField';
+      name: 'pendingInvitations';
+      arguments: {};
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$ChannelInvitation;
+    }
+  }
+
   //                                          ErrorCodeOption
   // --------------------------------------------------------------------------------------------------
   //
@@ -29522,6 +29898,7 @@ export namespace Schema {
       createdAtUntil: ChannelParticipantListFilter.createdAtUntil;
       updatedAtFrom: ChannelParticipantListFilter.updatedAtFrom;
       updatedAtUntil: ChannelParticipantListFilter.updatedAtUntil;
+      channelIds: ChannelParticipantListFilter.channelIds;
     };
   }
 
@@ -29587,6 +29964,13 @@ export namespace Schema {
       name: 'updatedAtUntil';
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface channelIds {
+      kind: 'InputField';
+      name: 'channelIds';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ID;
     }
   }
 
@@ -37777,6 +38161,7 @@ export namespace Schema {
     export type $$AdminTask = AdminTask;
     export type $$AdminTaskDef = AdminTaskDef;
     export type $$AdminTaskArgDef = AdminTaskArgDef;
+    export type $$ChannelListItem = ChannelListItem;
     export type $$ErrorCodeOption = ErrorCodeOption;
     export type $$IndonesianCity = IndonesianCity;
     export type $$IndonesianProvince = IndonesianProvince;
@@ -38070,6 +38455,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     AdminTask: Schema.AdminTask;
     AdminTaskDef: Schema.AdminTaskDef;
     AdminTaskArgDef: Schema.AdminTaskArgDef;
+    ChannelListItem: Schema.ChannelListItem;
     ErrorCodeOption: Schema.ErrorCodeOption;
     IndonesianCity: Schema.IndonesianCity;
     IndonesianProvince: Schema.IndonesianProvince;
@@ -38166,6 +38552,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     AdminTask: Schema.AdminTask;
     AdminTaskDef: Schema.AdminTaskDef;
     AdminTaskArgDef: Schema.AdminTaskArgDef;
+    ChannelListItem: Schema.ChannelListItem;
     ErrorCodeOption: Schema.ErrorCodeOption;
     IndonesianCity: Schema.IndonesianCity;
     IndonesianProvince: Schema.IndonesianProvince;

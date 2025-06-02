@@ -1,9 +1,15 @@
 import { BaseListFilter } from './BaseListFilter.js';
 
 export class BgChannelParticipantListFilter extends BaseListFilter {
-  public channelId?: string;
+  public channelIds?: string[] | null;
 
   constructor(attributes?: Partial<BgChannelParticipantListFilter>) {
     super(attributes);
+
+    if (attributes) {
+      if (attributes.channelIds) {
+        this.channelIds = attributes.channelIds;
+      }
+    }
   }
 }

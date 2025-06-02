@@ -40,9 +40,8 @@ describe('operations.channel.findMyChannels', () => {
 
     // Fetching channels from the network:
     const queryResultFromNetwork = await client.operations.channel.findMyChannels(
-      undefined,
-      undefined,
-      undefined,
+      4,
+      true,
       undefined,
       { cachePolicy: CachePolicy.network },
     );
@@ -57,9 +56,8 @@ describe('operations.channel.findMyChannels', () => {
 
     // Fetching channels from the local cache:
     const queryResultFromLocal = await client.operations.channel.findMyChannels(
-      undefined,
-      undefined,
-      undefined,
+      4,
+      true,
       undefined,
       { cachePolicy: CachePolicy.cache },
     );

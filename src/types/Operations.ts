@@ -8,6 +8,7 @@ import {
   ReportUserReasonTextId,
   UserIdentType,
 } from '../enums.js';
+import { ChannelListItem } from './ChannelListItem.js';
 import { FindChannelOptions, FindChannelResult } from './findChannelTypes.js';
 import { FindObjectsOptions } from './FindObjectsOptions.js';
 import { MangoQueryTypes } from './mangoQuery.js';
@@ -108,12 +109,11 @@ export interface Operations {
     ) => Promise<QueryResult<Channel>>;
 
     findMyChannels: (
-      filter: ChannelListFilter | null | undefined,
-      match: Partial<Channel> | null | undefined,
-      selector: MangoQueryTypes<Channel> | null | undefined,
+      participantLimit: number | undefined,
+      addLatestMessage: boolean | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
-    ) => Promise<QueryResult<Channel>>;
+    ) => Promise<QueryResult<ChannelListItem>>;
 
     findMyArchivedChannels: (
       filter: ChannelListFilter,

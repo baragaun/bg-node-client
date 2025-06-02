@@ -1,6 +1,5 @@
-import { Channel } from '../../../models/Channel.js';
-import { ChannelListFilter as ChannelListFilterFromClient } from '../../../models/ChannelListFilter.js';
+import { ChannelListItem } from '../../../types/ChannelListItem.js';
 import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-declare const findMyChannels: (filter: ChannelListFilterFromClient | null | undefined, match: Partial<Channel> | null | undefined, options: FindObjectsOptionsFromClient) => Promise<QueryResult<Channel>>;
+declare const findMyChannels: (participantLimit: number | undefined, addLatestMessage: boolean | undefined, options: FindObjectsOptionsFromClient) => Promise<QueryResult<ChannelListItem>>;
 export default findMyChannels;

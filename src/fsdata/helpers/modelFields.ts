@@ -33,6 +33,73 @@ const channel = {
   isArchivedForMe: false,
 };
 
+const channelListItem = {
+  id: true,
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+  name: true,
+  topic: true,
+  description: true,
+  tags: true,
+  channelType: true,
+  userIds: true,
+  metadata: {
+    channelInvitationAccepted: true,
+    messagesSentByCreatorCount: true,
+    messagesSentByFirstParticipantCount: true,
+    updatedAt: true,
+  },
+  pausedAt: true,
+  pausedBy: true,
+  suspendedAt: true,
+  suspendedBy: true,
+  lockedAt: true,
+  lockedBy: true,
+  archivedAt: true,
+  archivedBy: true,
+  assumedMentorId: true,
+  mm2Id: true,
+  syncedWithMm2At: true,
+  isArchivedForMe: false,
+  participants: {
+    id: true,
+    userId: true,
+    userInfo: {
+      userHandle: true,
+      firstName: true,
+      lastName: true,
+      avatarUrl: true,
+    },
+  },
+  latestMessage: {
+    id: true,
+    adminNotes: true,
+    createdAt: true,
+    createdBy: true,
+    updatedAt: true,
+    updatedBy: true,
+    deletedAt: true,
+    deletedBy: true,
+    channelId: true,
+    replyToMessageId: true,
+    channelMessageType: true,
+    messageText: true,
+    statuses: {
+      userId: true,
+      receivedAt: true,
+      seenAt: true,
+    },
+    editedAt: true,
+    suspendedAt: true,
+    suspendedBy: true,
+  },
+};
+
 const channelInvitation = {
   id: true,
   adminNotes: true,
@@ -60,7 +127,6 @@ const channelInvitation = {
 
 const channelMessage = {
   id: true,
-  adminNotes: true,
   createdAt: true,
   createdBy: true,
   updatedAt: true,
@@ -79,9 +145,6 @@ const channelMessage = {
   editedAt: true,
   suspendedAt: true,
   suspendedBy: true,
-  mm2ConversationId: true,
-  mm2Id: true,
-  syncedWithMm2At: true,
 };
 
 const channelParticipant = {
@@ -590,6 +653,7 @@ const userInbox = {
 
 const modelFields = {
   channel,
+  channelListItem,
   channelInvitation,
   channelMessage,
   channelParticipant,

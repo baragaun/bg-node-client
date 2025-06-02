@@ -623,6 +623,51 @@ export type ChannelListFilter = {
   userIds?: InputMaybe<Array<Scalars['ID']['input']>>;
 };
 
+export type ChannelListItem = {
+  __typename?: 'ChannelListItem';
+  adminNotes?: Maybe<Scalars['String']['output']>;
+  archivedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  archivedBy?: Maybe<Scalars['ID']['output']>;
+  assumedMentorId?: Maybe<Scalars['ID']['output']>;
+  channelType: ChannelType;
+  createdAt: Scalars['DateTimeISO']['output'];
+  createdBy?: Maybe<Scalars['ID']['output']>;
+  creator: User;
+  deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  deletedBy?: Maybe<Scalars['ID']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  events?: Maybe<Array<ModelEvent>>;
+  id: Scalars['ID']['output'];
+  invitations: Array<ChannelInvitation>;
+  isArchivedForMe: Scalars['Boolean']['output'];
+  latestMessage?: Maybe<ChannelMessage>;
+  lockedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  lockedBy?: Maybe<Scalars['ID']['output']>;
+  messages: Array<ChannelMessage>;
+  metadata?: Maybe<ChannelMetadata>;
+  /** This attribute is only used by the MM2 synchronizer. */
+  mm2Id?: Maybe<Scalars['String']['output']>;
+  myContacts?: Maybe<Array<Contact>>;
+  name?: Maybe<Scalars['String']['output']>;
+  /** For 1:1 channels, the ID of the other user. The first user is createdBy. */
+  otherUserId?: Maybe<Scalars['ID']['output']>;
+  participants?: Maybe<Array<ChannelParticipant>>;
+  pausedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  pausedBy?: Maybe<Scalars['ID']['output']>;
+  pendingInvitations: Array<ChannelInvitation>;
+  status?: Maybe<BgChannelStatus>;
+  statuses?: Maybe<Array<BgChannelStatus>>;
+  suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  suspendedBy?: Maybe<Scalars['ID']['output']>;
+  /** This attribute is only used by the MM2 synchronizer. */
+  syncedWithMm2At?: Maybe<Scalars['DateTimeISO']['output']>;
+  tags?: Maybe<Array<Scalars['String']['output']>>;
+  topic?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<Scalars['ID']['output']>;
+  userIds?: Maybe<Array<Scalars['ID']['output']>>;
+};
+
 export type ChannelMessage = {
   __typename?: 'ChannelMessage';
   adminNotes?: Maybe<Scalars['String']['output']>;
@@ -791,6 +836,7 @@ export type ChannelParticipantInput = {
 
 export type ChannelParticipantListFilter = {
   caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
+  channelIds?: InputMaybe<Array<Scalars['ID']['input']>>;
   createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
   createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
   excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
@@ -3951,7 +3997,7 @@ export type Query = {
   findMyActiveMultiStepAction: Array<SidMultiStepAction>;
   findMyActiveMultiStepActions: Array<SidMultiStepAction>;
   findMyBlockedUsers: Array<User>;
-  findMyChannels: Array<Channel>;
+  findMyChannels: Array<ChannelListItem>;
   findMyInbox: UserInbox;
   findMyUser: MyUser;
   findMyUserDevices: Array<UserDeviceWithoutAuth>;
@@ -4234,9 +4280,9 @@ export type QueryFindMastercardBanksArgs = {
 
 
 export type QueryFindMyChannelsArgs = {
-  filter?: InputMaybe<ChannelListFilter>;
-  match?: InputMaybe<ChannelInput>;
+  addLatestMessage?: InputMaybe<Scalars['Boolean']['input']>;
   options?: InputMaybe<FindObjectsOptions>;
+  participantLimit?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
