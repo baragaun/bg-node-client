@@ -49,7 +49,7 @@ const findProductCategories = async (
 
     return {
       objects: response.data.findProductCategories
-        ? response.data.findProductCategories.map((giftCard) => new ProductCategory(giftCard))
+        ? response.data.findProductCategories.map((categoryData) => new ProductCategory(categoryData))
         : null,
     };
   } catch (error) {
