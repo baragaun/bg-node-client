@@ -1629,7 +1629,7 @@ export type GiftCardProduct = {
   __typename?: 'GiftCardProduct';
   adminNotes?: Maybe<Scalars['String']['output']>;
   barcodeFormat?: Maybe<Scalars['String']['output']>;
-  categories?: Maybe<Array<ProductCategory>>;
+  categories?: Maybe<Array<Scalars['ID']['output']>>;
   createdAt: Scalars['DateTimeISO']['output'];
   createdBy?: Maybe<Scalars['ID']['output']>;
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -1662,7 +1662,7 @@ export type GiftCardProduct = {
 export type GiftCardProductInput = {
   adminNotes?: InputMaybe<Scalars['String']['input']>;
   barcodeFormat?: InputMaybe<Scalars['String']['input']>;
-  categories?: InputMaybe<Array<ProductCategoryInput>>;
+  categories?: InputMaybe<Array<Scalars['ID']['input']>>;
   createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   createdBy?: InputMaybe<Scalars['ID']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -2596,6 +2596,7 @@ export enum ModelType {
   NotificationTemplate = 'NotificationTemplate',
   Option = 'Option',
   Product = 'Product',
+  ProductCategory = 'ProductCategory',
   ServiceRecord = 'ServiceRecord',
   ServiceRequest = 'ServiceRequest',
   SupportChannelConfig = 'SupportChannelConfig',
@@ -3474,6 +3475,7 @@ export type MyUser = {
   isEmailVerified: Scalars['Boolean']['output'];
   isOnVacation?: Maybe<Scalars['Boolean']['output']>;
   isPhoneNumberVerified: Scalars['Boolean']['output'];
+  isTestUser?: Maybe<Scalars['Boolean']['output']>;
   lastName?: Maybe<Scalars['String']['output']>;
   latestActivityAt?: Maybe<Scalars['DateTimeISO']['output']>;
   latestUserDevice: UserDeviceWithoutAuth;
@@ -3600,6 +3602,7 @@ export type MyUserInput = {
   isEmailVerified?: InputMaybe<Scalars['Boolean']['input']>;
   isOnVacation?: InputMaybe<Scalars['Boolean']['input']>;
   isPhoneNumberVerified?: InputMaybe<Scalars['Boolean']['input']>;
+  isTestUser?: InputMaybe<Scalars['Boolean']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
   latestActivityAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   metadata?: InputMaybe<BaseModelMetadataInput>;
@@ -4022,15 +4025,48 @@ export enum OptionType {
 
 export type ProductCategory = {
   __typename?: 'ProductCategory';
+  adminNotes?: Maybe<Scalars['String']['output']>;
+  createdAt: Scalars['DateTimeISO']['output'];
+  createdBy?: Maybe<Scalars['ID']['output']>;
+  deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  deletedBy?: Maybe<Scalars['ID']['output']>;
+  events?: Maybe<Array<ModelEvent>>;
+  id: Scalars['ID']['output'];
+  importId: Scalars['String']['output'];
   labelEn: Scalars['String']['output'];
+  metadata?: Maybe<BaseModelMetadata>;
   name: Scalars['String']['output'];
-  priority: Scalars['Int']['output'];
+  sortIndex: Scalars['Int']['output'];
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<Scalars['ID']['output']>;
 };
 
 export type ProductCategoryInput = {
+  adminNotes?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdBy?: InputMaybe<Scalars['ID']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  deletedBy?: InputMaybe<Scalars['ID']['input']>;
+  events?: InputMaybe<Array<ModelEventInput>>;
+  id?: InputMaybe<Scalars['ID']['input']>;
   labelEn?: InputMaybe<Scalars['String']['input']>;
+  metadata?: InputMaybe<BaseModelMetadataInput>;
   name?: InputMaybe<Scalars['String']['input']>;
-  priority?: Scalars['Int']['input'];
+  sortIndex?: InputMaybe<Scalars['Int']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedBy?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ProductCategoryListFilter = {
+  caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+  ids?: InputMaybe<Array<Scalars['String']['input']>>;
+  searchText?: InputMaybe<Scalars['String']['input']>;
+  textSearchFields?: InputMaybe<Array<Scalars['String']['input']>>;
+  updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
 };
 
 export type Pronoun = {
@@ -4128,6 +4164,7 @@ export type Query = {
   findMyUserDevices: Array<UserDeviceWithoutAuth>;
   findOptions: Array<Option>;
   findPendingChannelInvitationsForUser: Array<ChannelInvitation>;
+  findProductCategories: Array<ProductCategory>;
   findPronouns: Array<Pronoun>;
   findReportUserReasons: Array<ReportUserReason>;
   findServiceRequestById: ServiceRequest;
@@ -4440,6 +4477,13 @@ export type QueryFindOptionsArgs = {
 export type QueryFindPendingChannelInvitationsForUserArgs = {
   options?: InputMaybe<FindObjectsOptions>;
   userId: Scalars['String']['input'];
+};
+
+
+export type QueryFindProductCategoriesArgs = {
+  filter?: InputMaybe<ProductCategoryListFilter>;
+  match?: InputMaybe<ProductCategoryInput>;
+  options?: InputMaybe<FindObjectsOptions>;
 };
 
 
@@ -4919,6 +4963,7 @@ export enum ServiceRequestType {
   GraphQlQueryFindNlpConversation = 'graphQlQueryFindNlpConversation',
   GraphQlQueryFindOptions = 'graphQlQueryFindOptions',
   GraphQlQueryFindPendingChannelInvitationsForUser = 'graphQlQueryFindPendingChannelInvitationsForUser',
+  GraphQlQueryFindProductCategories = 'graphQlQueryFindProductCategories',
   GraphQlQueryFindTrainingById = 'graphQlQueryFindTrainingById',
   GraphQlQueryFindTrainingSessionById = 'graphQlQueryFindTrainingSessionById',
   GraphQlQueryFindTrainingSessionsByTrainingId = 'graphQlQueryFindTrainingSessionsByTrainingId',
@@ -5643,6 +5688,7 @@ export type User = {
   isEmailVerified: Scalars['Boolean']['output'];
   isOnVacation?: Maybe<Scalars['Boolean']['output']>;
   isPhoneNumberVerified: Scalars['Boolean']['output'];
+  isTestUser?: Maybe<Scalars['Boolean']['output']>;
   lastName?: Maybe<Scalars['String']['output']>;
   latestActivityAt?: Maybe<Scalars['DateTimeISO']['output']>;
   latestUserDevice: UserDeviceWithoutAuth;
@@ -5950,6 +5996,7 @@ export type UserInput = {
   isEmailVerified?: InputMaybe<Scalars['Boolean']['input']>;
   isOnVacation?: InputMaybe<Scalars['Boolean']['input']>;
   isPhoneNumberVerified?: InputMaybe<Scalars['Boolean']['input']>;
+  isTestUser?: InputMaybe<Scalars['Boolean']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
   latestActivityAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   metadata?: InputMaybe<BaseModelMetadataInput>;

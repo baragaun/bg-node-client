@@ -185,11 +185,7 @@ const giftCardProduct = {
   vendorId: true,
   name: true,
   description: true,
-  categories: {
-    name: true,
-    labelEn: true,
-    priority: true,
-  },
+  categories: true,
   slug: true,
   url: true,
   imageSourceFront: true,
@@ -343,6 +339,21 @@ const myUser = {
   },
   fallbackUiLanguageTextId: true,
 };
+
+const productCategory = {
+    id: true,
+    adminNotes: true,
+    createdAt: true,
+    createdBy: true,
+    updatedAt: true,
+    updatedBy: true,
+    deletedAt: true,
+    deletedBy: true,
+    importId: true,
+    name: true,
+    labelEn: true,
+    sortIndex: true,
+  };
 
 const sidMultiStepAction = {
   actionStatus: true,
@@ -721,6 +732,7 @@ const modelFields = {
   channelParticipant,
   giftCardProduct,
   myUser,
+  productCategory,
   sidMultiStepAction,
   sidMultiStepActionProgress,
   user,

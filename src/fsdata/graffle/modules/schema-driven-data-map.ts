@@ -375,11 +375,11 @@ const UserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     'phoneNumberUpdatedAt',
     'emailUpdatedAt',
     'preferences',
+    'termsAndConditionsAcceptedAt',
     'signedInAt',
     'signedOutAt',
     'latestActivityAt',
     'inactivatedAt',
-    'termsAndConditionsAcceptedAt',
     'suspendedAt',
     'syncedToAnalyticsAt',
     'companies',
@@ -449,6 +449,12 @@ const UserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
       // nt: UserPreferencesInput, <-- Assigned later to avoid potential circular dependency.
     },
     trustLevel: {},
+    termsAndConditionsAcceptedAt: {
+      nt: DateTimeISO,
+    },
+    optIntoNewsletter: {},
+    onboardingStage: {},
+    isTestUser: {},
     signedInAt: {
       nt: DateTimeISO,
     },
@@ -462,11 +468,6 @@ const UserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
       nt: DateTimeISO,
     },
     inactivatedBy: {},
-    termsAndConditionsAcceptedAt: {
-      nt: DateTimeISO,
-    },
-    optIntoNewsletter: {},
-    onboardingStage: {},
     suspendedAt: {
       nt: DateTimeISO,
     },
@@ -1445,15 +1446,6 @@ const GiftCardProductInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   },
 };
 
-const ProductCategoryInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'ProductCategoryInput',
-  f: {
-    name: {},
-    labelEn: {},
-    priority: {},
-  },
-};
-
 const GiftCardDenominationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'GiftCardDenominationInput',
   f: {
@@ -1464,6 +1456,60 @@ const GiftCardDenominationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
 
 const GiftCardProductListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'GiftCardProductListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const ProductCategoryInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'ProductCategoryInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    name: {},
+    labelEn: {},
+    sortIndex: {},
+  },
+};
+
+const ProductCategoryListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'ProductCategoryListFilter',
   fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
   f: {
     ids: {},
@@ -2582,11 +2628,11 @@ const MyUserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     'phoneNumberUpdatedAt',
     'emailUpdatedAt',
     'preferences',
+    'termsAndConditionsAcceptedAt',
     'signedInAt',
     'signedOutAt',
     'latestActivityAt',
     'inactivatedAt',
-    'termsAndConditionsAcceptedAt',
     'suspendedAt',
     'syncedToAnalyticsAt',
     'companies',
@@ -2656,6 +2702,12 @@ const MyUserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
       // nt: UserPreferencesInput, <-- Assigned later to avoid potential circular dependency.
     },
     trustLevel: {},
+    termsAndConditionsAcceptedAt: {
+      nt: DateTimeISO,
+    },
+    optIntoNewsletter: {},
+    onboardingStage: {},
+    isTestUser: {},
     signedInAt: {
       nt: DateTimeISO,
     },
@@ -2669,11 +2721,6 @@ const MyUserInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
       nt: DateTimeISO,
     },
     inactivatedBy: {},
-    termsAndConditionsAcceptedAt: {
-      nt: DateTimeISO,
-    },
-    optIntoNewsletter: {},
-    onboardingStage: {},
     suspendedAt: {
       nt: DateTimeISO,
     },
@@ -3320,15 +3367,6 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: UserPreferences, <-- Assigned later to avoid potential circular dependency.
     },
     trustLevel: {},
-    signedInAt: {
-      nt: DateTimeISO,
-    },
-    signedOutAt: {
-      nt: DateTimeISO,
-    },
-    latestActivityAt: {
-      nt: DateTimeISO,
-    },
     userDevices: {
       // nt: UserDeviceWithoutAuth, <-- Assigned later to avoid potential circular dependency.
     },
@@ -3338,15 +3376,25 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     contacts: {
       // nt: Contact, <-- Assigned later to avoid potential circular dependency.
     },
-    inactivatedAt: {
-      nt: DateTimeISO,
-    },
-    inactivatedBy: {},
     termsAndConditionsAcceptedAt: {
       nt: DateTimeISO,
     },
     optIntoNewsletter: {},
     onboardingStage: {},
+    isTestUser: {},
+    signedInAt: {
+      nt: DateTimeISO,
+    },
+    signedOutAt: {
+      nt: DateTimeISO,
+    },
+    latestActivityAt: {
+      nt: DateTimeISO,
+    },
+    inactivatedAt: {
+      nt: DateTimeISO,
+    },
+    inactivatedBy: {},
     suspendedAt: {
       nt: DateTimeISO,
     },
@@ -5652,9 +5700,7 @@ const GiftCardProduct: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     vendorImportId: {},
     name: {},
     description: {},
-    categories: {
-      // nt: ProductCategory, <-- Assigned later to avoid potential circular dependency.
-    },
+    categories: {},
     slug: {},
     url: {},
     imageSourceFront: {},
@@ -5671,14 +5717,6 @@ const GiftCardProduct: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     denominations: {
       // nt: GiftCardDenomination, <-- Assigned later to avoid potential circular dependency.
     },
-  },
-};
-
-const ProductCategory: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    name: {},
-    labelEn: {},
-    priority: {},
   },
 };
 
@@ -5712,6 +5750,35 @@ const MarketplaceServiceRecord: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     deletedBy: {},
     serviceName: {},
+  },
+};
+
+const ProductCategory: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    importId: {},
+    name: {},
+    labelEn: {},
+    sortIndex: {},
   },
 };
 
@@ -6230,15 +6297,6 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: UserPreferences, <-- Assigned later to avoid potential circular dependency.
     },
     trustLevel: {},
-    signedInAt: {
-      nt: DateTimeISO,
-    },
-    signedOutAt: {
-      nt: DateTimeISO,
-    },
-    latestActivityAt: {
-      nt: DateTimeISO,
-    },
     userDevices: {
       // nt: UserDeviceWithoutAuth, <-- Assigned later to avoid potential circular dependency.
     },
@@ -6248,15 +6306,25 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     contacts: {
       // nt: Contact, <-- Assigned later to avoid potential circular dependency.
     },
-    inactivatedAt: {
-      nt: DateTimeISO,
-    },
-    inactivatedBy: {},
     termsAndConditionsAcceptedAt: {
       nt: DateTimeISO,
     },
     optIntoNewsletter: {},
     onboardingStage: {},
+    isTestUser: {},
+    signedInAt: {
+      nt: DateTimeISO,
+    },
+    signedOutAt: {
+      nt: DateTimeISO,
+    },
+    latestActivityAt: {
+      nt: DateTimeISO,
+    },
+    inactivatedAt: {
+      nt: DateTimeISO,
+    },
+    inactivatedBy: {},
     suspendedAt: {
       nt: DateTimeISO,
     },
@@ -7731,6 +7799,23 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     findMarketplaceServiceRecord: {
       // nt: MarketplaceServiceRecord, <-- Assigned later to avoid potential circular dependency.
     },
+    findProductCategories: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: ProductCategoryInput,
+          it: [0],
+        },
+        filter: {
+          nt: ProductCategoryListFilter,
+          it: [0],
+        },
+      },
+      // nt: ProductCategory, <-- Assigned later to avoid potential circular dependency.
+    },
     findVendors: {
       a: {
         options: {
@@ -9087,6 +9172,8 @@ AppliedGroupRuleInput.f!['events']!.nt = ModelEventInput;
 AppliedGroupRuleInput.f!['metadata']!.nt = BaseModelMetadataInput;
 GiftCardProductInput.f!['events']!.nt = ModelEventInput;
 GiftCardProductInput.f!['metadata']!.nt = BaseModelMetadataInput;
+ProductCategoryInput.f!['events']!.nt = ModelEventInput;
+ProductCategoryInput.f!['metadata']!.nt = BaseModelMetadataInput;
 VendorInput.f!['events']!.nt = ModelEventInput;
 VendorInput.f!['metadata']!.nt = BaseModelMetadataInput;
 UserSearchInput.f!['events']!.nt = ModelEventInput;
@@ -9398,10 +9485,11 @@ MastercardBank.f['events']!.nt = ModelEvent;
 MastercardBank.f['metadata']!.nt = BaseModelMetadata;
 GiftCardProduct.f['events']!.nt = ModelEvent;
 GiftCardProduct.f['metadata']!.nt = BaseModelMetadata;
-GiftCardProduct.f['categories']!.nt = ProductCategory;
 GiftCardProduct.f['denominations']!.nt = GiftCardDenomination;
 MarketplaceServiceRecord.f['events']!.nt = ModelEvent;
 MarketplaceServiceRecord.f['metadata']!.nt = BaseModelMetadata;
+ProductCategory.f['events']!.nt = ModelEvent;
+ProductCategory.f['metadata']!.nt = BaseModelMetadata;
 Vendor.f['events']!.nt = ModelEvent;
 Vendor.f['metadata']!.nt = BaseModelMetadata;
 UserSearch.f['events']!.nt = ModelEvent;
@@ -9556,6 +9644,7 @@ Query.f['findIqlaaJordanianGovernorates']!.nt = IqlaaJordanianGovernorate;
 Query.f['findMastercardBanks']!.nt = MastercardBank;
 Query.f['findGiftCardProducts']!.nt = GiftCardProduct;
 Query.f['findMarketplaceServiceRecord']!.nt = MarketplaceServiceRecord;
+Query.f['findProductCategories']!.nt = ProductCategory;
 Query.f['findVendors']!.nt = Vendor;
 Query.f['findUserSearchById']!.nt = UserSearch;
 Query.f['findUserSearches']!.nt = UserSearch;
@@ -9752,9 +9841,10 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     GroupRuleBaseConfigInput,
     GroupListFilter,
     GiftCardProductInput,
-    ProductCategoryInput,
     GiftCardDenominationInput,
     GiftCardProductListFilter,
+    ProductCategoryInput,
+    ProductCategoryListFilter,
     VendorInput,
     VendorListFilter,
     UserSearchInput,
@@ -9857,9 +9947,9 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     IqlaaJordanianGovernorate,
     MastercardBank,
     GiftCardProduct,
-    ProductCategory,
     GiftCardDenomination,
     MarketplaceServiceRecord,
+    ProductCategory,
     Vendor,
     UserSearch,
     UserSearchFilter,

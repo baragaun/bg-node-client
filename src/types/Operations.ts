@@ -32,6 +32,8 @@ import { GiftCardProductListFilter } from '../models/GiftCardProductListFilter.j
 import { Model } from '../models/Model.js';
 import { MyUser } from '../models/MyUser.js';
 import { MyUserChanges } from '../models/MyUserChanges.js';
+import { ProductCategory } from '../models/ProductCategory.js';
+import { ProductCategoryListFilter } from '../models/ProductCategoryListFilter.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
 import { User } from '../models/User.js';
@@ -346,6 +348,16 @@ export interface Operations {
       newPassword?: string,
     ) => Promise<QueryResult<SidMultiStepActionProgress>>;
   };
+
+  productCategory: {
+    findProductCategories: (
+      filter: ProductCategoryListFilter | null | undefined,
+      match: Partial<ProductCategory> | null | undefined,
+      selector: MangoQueryTypes<ProductCategory> | null | undefined,
+      options: FindObjectsOptions,
+      queryOptions: QueryOptions,
+    ) => Promise<QueryResult<ProductCategory>>
+  }
 
   user: {
     findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>

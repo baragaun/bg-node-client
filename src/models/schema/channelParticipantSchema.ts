@@ -15,30 +15,10 @@ export const ChannelParticipantSchema = {
     'metadata': {
       'type': 'object',
       'properties': {
-        'userHandle': {
+        'updatedAt': {
           'type': 'string',
+          'format': 'date-time',
           'nullable': true,
-        },
-        'firstName': {
-          'type': 'string',
-          'nullable': true,
-        },
-        'lastName': {
-          'type': 'string',
-          'nullable': true,
-        },
-        'avatarUrl': {
-          'type': 'string',
-          'nullable': true,
-        },
-        'sentMessageCount': {
-          'type': 'integer',
-        },
-        'unseenMessageCount': {
-          'type': 'integer',
-        },
-        'unseenSystemMessageCount': {
-          'type': 'integer',
         },
       },
       'nullable': true,
@@ -79,6 +59,28 @@ export const ChannelParticipantSchema = {
     'userId': {
       'type': 'string',
       'maxLength': 32,
+    },
+    'userInfo': {
+      'type': 'object',
+      'properties': {
+        'userHandle': {
+          'type': 'string',
+          'nullable': true,
+        },
+        'firstName': {
+          'type': 'string',
+          'nullable': true,
+        },
+        'lastName': {
+          'type': 'string',
+          'nullable': true,
+        },
+        'avatarUrl': {
+          'type': 'string',
+          'nullable': true,
+        },
+      },
+      'nullable': true,
     },
     'invitedBy': {
       'type': 'string',

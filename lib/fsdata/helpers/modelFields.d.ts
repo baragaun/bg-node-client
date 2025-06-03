@@ -179,11 +179,7 @@ declare const modelFields: {
         vendorId: boolean;
         name: boolean;
         description: boolean;
-        categories: {
-            name: boolean;
-            labelEn: boolean;
-            priority: boolean;
-        };
+        categories: boolean;
         slug: boolean;
         url: boolean;
         imageSourceFront: boolean;
@@ -335,6 +331,20 @@ declare const modelFields: {
             expiresAt: boolean;
         };
         fallbackUiLanguageTextId: boolean;
+    };
+    productCategory: {
+        id: boolean;
+        adminNotes: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+        importId: boolean;
+        name: boolean;
+        labelEn: boolean;
+        sortIndex: boolean;
     };
     sidMultiStepAction: {
         actionStatus: boolean;

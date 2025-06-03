@@ -242,10 +242,6 @@ export declare const UserSchema: {
                 enum: string[];
             };
         };
-        isTestUser: {
-            type: string;
-            nullable: boolean;
-        };
         appFeatures: {
             type: string;
             items: {
@@ -315,21 +311,6 @@ export declare const UserSchema: {
         };
         trustLevel: {
             type: string;
-        };
-        signedInAt: {
-            type: string;
-            format: string;
-            nullable: boolean;
-        };
-        signedOutAt: {
-            type: string;
-            format: string;
-            nullable: boolean;
-        };
-        latestActivityAt: {
-            type: string;
-            format: string;
-            nullable: boolean;
         };
         userDevices: {
             type: string;
@@ -596,16 +577,6 @@ export declare const UserSchema: {
             };
             nullable: boolean;
         };
-        inactivatedAt: {
-            type: string;
-            format: string;
-            nullable: boolean;
-        };
-        inactivatedBy: {
-            type: string;
-            maxLength: number;
-            nullable: boolean;
-        };
         termsAndConditionsAcceptedAt: {
             type: string;
             format: string;
@@ -617,6 +588,35 @@ export declare const UserSchema: {
         };
         onboardingStage: {
             type: string;
+            nullable: boolean;
+        };
+        isTestUser: {
+            type: string;
+            nullable: boolean;
+        };
+        signedInAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
+        signedOutAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
+        latestActivityAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
+        inactivatedAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
+        inactivatedBy: {
+            type: string;
+            maxLength: number;
             nullable: boolean;
         };
         suspendedAt: {

@@ -61,6 +61,7 @@ import updateMyPassword from './myUser/updateMyPassword.js';
 import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import verifyMyPassword from './myUser/verifyMyPassword.js';
+import findProductCategories from './productCategory/findProductCategories.js';
 import update from './update.js';
 import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
@@ -150,6 +151,10 @@ const operations: Operations = {
     removeMultiStepActionListener,
     sendMultiStepActionNotification,
     verifyMultiStepActionToken,
+  },
+
+  productCategory: {
+    findProductCategories,
   },
 
   user: {

@@ -20,23 +20,6 @@ export declare const ChannelSchema: {
                     format: string;
                     nullable: boolean;
                 };
-                unseenMessageInfo: {
-                    type: string;
-                    items: {
-                        type: string;
-                        properties: {
-                            userId: {
-                                type: string;
-                                maxLength: number;
-                            };
-                            createdAt: {
-                                type: string;
-                                format: string;
-                            };
-                        };
-                    };
-                    nullable: boolean;
-                };
                 channelInvitationAccepted: {
                     type: string;
                     nullable: boolean;

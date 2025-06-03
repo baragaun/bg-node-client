@@ -47,7 +47,7 @@ const findMyChannels = async (
         ModelType.Channel,
         undefined,
         undefined,
-        undefined,
+        { userIds: { $in: [myUserId] } },
         options,
       );
 

@@ -31,10 +31,11 @@ describe('operations.user.findUsers', () => {
 
   test('returns users', async () => {
     count = 3;
+    const name = new Date().getTime().toString();
     const propsList = [
       { firstName: chance.first(), lastName: chance.last() },
       { firstName: chance.first(), lastName: 'Lidlehupf' },
-      { firstName: chance.first(), lastName: 'Ritzlipfumfpo' },
+      { firstName: chance.first(), lastName: 'abcd' + name + 'efg' },
     ];
 
     for (let i = 0; i < count; i++) {
@@ -48,7 +49,7 @@ describe('operations.user.findUsers', () => {
 
     // 1. Fetching users from the network:
     const queryResultFromNetwork = await client.operations.user.findUsers(
-      { searchText: 'lipfumfpo'},
+      { searchText: name},
       undefined,
       undefined,
       undefined,
