@@ -127,12 +127,6 @@ const channelInvitation = {
 
 const channelMessage = {
   id: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
   channelId: true,
   replyToMessageId: true,
   channelMessageType: true,
@@ -143,6 +137,15 @@ const channelMessage = {
     seenAt: true,
   },
   editedAt: true,
+  adminNotes: true,
+
+  // Timestamps:
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
   suspendedAt: true,
   suspendedBy: true,
 };

@@ -125,12 +125,6 @@ declare const modelFields: {
     };
     channelMessage: {
         id: boolean;
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
         channelId: boolean;
         replyToMessageId: boolean;
         channelMessageType: boolean;
@@ -141,6 +135,13 @@ declare const modelFields: {
             seenAt: boolean;
         };
         editedAt: boolean;
+        adminNotes: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
         suspendedAt: boolean;
         suspendedBy: boolean;
     };

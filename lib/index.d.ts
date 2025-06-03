@@ -3,6 +3,7 @@ export { ErrorCode } from './fsdata/gql/graphql.js';
 export * from './BgNodeClient.js';
 export * from './models/BaseModel.js';
 export * from './models/BaseModelMetadata.js';
+export * from './models/BgChannelParticipantUserInfo.js';
 export * from './models/BgChannelStatus.js';
 export * from './models/BgLatestUnseenChannelMessageInfo.js';
 export * from './models/Channel.js';

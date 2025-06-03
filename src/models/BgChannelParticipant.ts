@@ -1,14 +1,15 @@
-/** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 import { BaseModel } from './BaseModel.js';
+import { BgChannelParticipantUserInfo } from './BgChannelParticipantUserInfo.js';
 import { ChannelParticipantRole } from '../enums.js';
 
 export class BgChannelParticipant extends BaseModel {
   public channelId = '';
   public userId = '';
+  public userInfo?: BgChannelParticipantUserInfo | null;
   public invitedBy?: string | null;
   public channelName?: string | null;
   public role?: ChannelParticipantRole | null;
-  public suspendedAt?: string | null;
+  public suspendedAt?: Date | null;
   public suspendedBy?: string | null;
 
   constructor(attributes?: Partial<BgChannelParticipant>) {
@@ -21,6 +22,9 @@ export class BgChannelParticipant extends BaseModel {
       if (attributes.userId) {
         this.userId = attributes.userId;
       }
+      if (attributes.userInfo) {
+        this.userInfo = attributes.userInfo;
+      }
       if (attributes.invitedBy) {
         this.invitedBy = attributes.invitedBy;
       }
@@ -31,7 +35,11 @@ export class BgChannelParticipant extends BaseModel {
         this.role = attributes.role;
       }
       if (attributes.suspendedAt) {
-        this.suspendedAt = attributes.suspendedAt;
+        if (attributes.suspendedAt instanceof Date) {
+          this.suspendedAt = attributes.suspendedAt;
+        } else {
+          this.suspendedAt = new Date(attributes.suspendedAt);
+        }
       }
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy;
