@@ -125,6 +125,7 @@ const findMyChannels = async (
     if (Array.isArray(result.objects) && result.objects.length > 0) {
       for (const channelListItem of result.objects) {
         const channel = { ...channelListItem };
+        // const channel = structuredClone(channelListItem);
         delete (channel as unknown as ChannelListItem).participants;
         delete (channel as unknown as ChannelListItem).latestMessage;
         await db.upsert<Channel>(channel, ModelType.Channel);

@@ -23,7 +23,7 @@ export class BgChannelParticipant extends BaseModel {
         this.userId = attributes.userId;
       }
       if (attributes.userInfo) {
-        this.userInfo = attributes.userInfo;
+        this.userInfo = new BgChannelParticipantUserInfo(attributes.userInfo);
       }
       if (attributes.invitedBy) {
         this.invitedBy = attributes.invitedBy;
