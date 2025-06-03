@@ -2,6 +2,7 @@ import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { Channel } from '../../../models/Channel.js';
 import { ChannelListFilter as ChannelListFilterFromClient } from '../../../models/ChannelListFilter.js';
+import { ChannelListItem } from '../../../types/ChannelListItem.js';
 import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
@@ -49,7 +50,7 @@ const findChannels = async (
 
     return {
       objects: response.data.findChannels
-        ? response.data.findChannels.map((channel) => new Channel(channel))
+        ? response.data.findChannels.map((channel) => new ChannelListItem(channel))
         : null,
     };
   } catch (error) {
