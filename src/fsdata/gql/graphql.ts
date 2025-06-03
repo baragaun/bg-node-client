@@ -1635,7 +1635,7 @@ export type GiftCardProduct = {
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   deletedBy?: Maybe<Scalars['ID']['output']>;
   denominations?: Maybe<Array<GiftCardDenomination>>;
-  description: Scalars['String']['output'];
+  description?: Maybe<Scalars['String']['output']>;
   events?: Maybe<Array<ModelEvent>>;
   genericGiftCardId?: Maybe<Scalars['ID']['output']>;
   hasBarcode?: Maybe<Scalars['Boolean']['output']>;
@@ -1654,7 +1654,7 @@ export type GiftCardProduct = {
   termsUrl?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
-  url: Scalars['String']['output'];
+  url?: Maybe<Scalars['String']['output']>;
   vendorId: Scalars['ID']['output'];
   vendorImportId?: Maybe<Scalars['String']['output']>;
 };

@@ -176,15 +176,22 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        importId: boolean;
         vendorId: boolean;
-        genericGiftCardId: boolean;
-        vendorImportId: boolean;
-        isGeneric: boolean;
+        name: boolean;
+        description: boolean;
+        categories: {
+            name: boolean;
+            labelEn: boolean;
+            priority: boolean;
+        };
+        slug: boolean;
+        url: boolean;
         imageSourceFront: boolean;
         imageSourceBack: boolean;
         hasBarcode: boolean;
         barcodeFormat: boolean;
+        genericGiftCardId: boolean;
+        isGeneric: boolean;
         hasPin: boolean;
         termsEn: boolean;
         termsUrl: boolean;

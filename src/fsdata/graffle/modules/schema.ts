@@ -19593,7 +19593,7 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'description';
       arguments: {};
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$String;
     }
 
@@ -19617,7 +19617,7 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'url';
       arguments: {};
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$String;
     }
 
