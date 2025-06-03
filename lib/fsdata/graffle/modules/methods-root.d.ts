@@ -192,6 +192,9 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     findMarketplaceServiceRecord: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMarketplaceServiceRecord<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findMarketplaceServiceRecord: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findMarketplaceServiceRecord'>>>;
+    findProductCategories: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findProductCategories<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
+        findProductCategories: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'findProductCategories'>>>;
     findVendors: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findVendors<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findVendors: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findVendors'>>>;

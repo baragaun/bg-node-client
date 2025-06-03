@@ -15,30 +15,10 @@ export declare const ChannelParticipantSchema: {
         metadata: {
             type: string;
             properties: {
-                userHandle: {
+                updatedAt: {
                     type: string;
+                    format: string;
                     nullable: boolean;
-                };
-                firstName: {
-                    type: string;
-                    nullable: boolean;
-                };
-                lastName: {
-                    type: string;
-                    nullable: boolean;
-                };
-                avatarUrl: {
-                    type: string;
-                    nullable: boolean;
-                };
-                sentMessageCount: {
-                    type: string;
-                };
-                unseenMessageCount: {
-                    type: string;
-                };
-                unseenSystemMessageCount: {
-                    type: string;
                 };
             };
             nullable: boolean;
@@ -79,6 +59,28 @@ export declare const ChannelParticipantSchema: {
         userId: {
             type: string;
             maxLength: number;
+        };
+        userInfo: {
+            type: string;
+            properties: {
+                userHandle: {
+                    type: string;
+                    nullable: boolean;
+                };
+                firstName: {
+                    type: string;
+                    nullable: boolean;
+                };
+                lastName: {
+                    type: string;
+                    nullable: boolean;
+                };
+                avatarUrl: {
+                    type: string;
+                    nullable: boolean;
+                };
+            };
+            nullable: boolean;
         };
         invitedBy: {
             type: string;

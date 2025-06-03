@@ -1118,6 +1118,23 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  findProductCategories: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findProductCategories<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findProductCategories: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findProductCategories'
+      >
+    >
+  >;
+
   findVendors: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(

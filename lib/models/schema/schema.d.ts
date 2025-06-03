@@ -21,23 +21,6 @@ declare const schema: {
                         format: string;
                         nullable: boolean;
                     };
-                    unseenMessageInfo: {
-                        type: string;
-                        items: {
-                            type: string;
-                            properties: {
-                                userId: {
-                                    type: string;
-                                    maxLength: number;
-                                };
-                                createdAt: {
-                                    type: string;
-                                    format: string;
-                                };
-                            };
-                        };
-                        nullable: boolean;
-                    };
                     channelInvitationAccepted: {
                         type: string;
                         nullable: boolean;
@@ -503,30 +486,10 @@ declare const schema: {
             metadata: {
                 type: string;
                 properties: {
-                    userHandle: {
+                    updatedAt: {
                         type: string;
+                        format: string;
                         nullable: boolean;
-                    };
-                    firstName: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    lastName: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    avatarUrl: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    sentMessageCount: {
-                        type: string;
-                    };
-                    unseenMessageCount: {
-                        type: string;
-                    };
-                    unseenSystemMessageCount: {
-                        type: string;
                     };
                 };
                 nullable: boolean;
@@ -567,6 +530,28 @@ declare const schema: {
             userId: {
                 type: string;
                 maxLength: number;
+            };
+            userInfo: {
+                type: string;
+                properties: {
+                    userHandle: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    firstName: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    lastName: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    avatarUrl: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                };
+                nullable: boolean;
             };
             invitedBy: {
                 type: string;
@@ -966,10 +951,6 @@ declare const schema: {
                     enum: string[];
                 };
             };
-            isTestUser: {
-                type: string;
-                nullable: boolean;
-            };
             appFeatures: {
                 type: string;
                 items: {
@@ -1039,21 +1020,6 @@ declare const schema: {
             };
             trustLevel: {
                 type: string;
-            };
-            signedInAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
-            signedOutAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
-            latestActivityAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
             };
             userDevices: {
                 type: string;
@@ -1320,16 +1286,6 @@ declare const schema: {
                 };
                 nullable: boolean;
             };
-            inactivatedAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
-            inactivatedBy: {
-                type: string;
-                maxLength: number;
-                nullable: boolean;
-            };
             termsAndConditionsAcceptedAt: {
                 type: string;
                 format: string;
@@ -1341,6 +1297,35 @@ declare const schema: {
             };
             onboardingStage: {
                 type: string;
+                nullable: boolean;
+            };
+            isTestUser: {
+                type: string;
+                nullable: boolean;
+            };
+            signedInAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            signedOutAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            latestActivityAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            inactivatedAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            inactivatedBy: {
+                type: string;
+                maxLength: number;
                 nullable: boolean;
             };
             suspendedAt: {
@@ -2345,10 +2330,6 @@ declare const schema: {
                     enum: string[];
                 };
             };
-            isTestUser: {
-                type: string;
-                nullable: boolean;
-            };
             appFeatures: {
                 type: string;
                 items: {
@@ -2418,21 +2399,6 @@ declare const schema: {
             };
             trustLevel: {
                 type: string;
-            };
-            signedInAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
-            signedOutAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
-            latestActivityAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
             };
             userDevices: {
                 type: string;
@@ -2699,16 +2665,6 @@ declare const schema: {
                 };
                 nullable: boolean;
             };
-            inactivatedAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
-            inactivatedBy: {
-                type: string;
-                maxLength: number;
-                nullable: boolean;
-            };
             termsAndConditionsAcceptedAt: {
                 type: string;
                 format: string;
@@ -2720,6 +2676,35 @@ declare const schema: {
             };
             onboardingStage: {
                 type: string;
+                nullable: boolean;
+            };
+            isTestUser: {
+                type: string;
+                nullable: boolean;
+            };
+            signedInAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            signedOutAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            latestActivityAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            inactivatedAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            inactivatedBy: {
+                type: string;
+                maxLength: number;
                 nullable: boolean;
             };
             suspendedAt: {

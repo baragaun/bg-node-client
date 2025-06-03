@@ -20,23 +20,6 @@ export const ChannelSchema = {
           'format': 'date-time',
           'nullable': true,
         },
-        'unseenMessageInfo': {
-          'type': 'array',
-          'items': {
-            'type': 'object',
-            'properties': {
-              'userId': {
-                'type': 'string',
-                'maxLength': 32,
-              },
-              'createdAt': {
-                'type': 'string',
-                'format': 'date-time',
-              },
-            },
-          },
-          'nullable': true,
-        },
         'channelInvitationAccepted': {
           'type': 'boolean',
           'nullable': true,

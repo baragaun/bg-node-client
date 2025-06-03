@@ -1,6 +1,6 @@
 export declare class ProductCategory {
     name: string;
     labelEn: string;
-    priority: number;
+    sortIndex: number;
     constructor(attributes?: Partial<ProductCategory>);
 }

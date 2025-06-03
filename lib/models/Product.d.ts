@@ -1,12 +1,11 @@
 import { BaseModel } from './BaseModel.js';
-import { ProductCategory } from './ProductCategory.js';
 export declare class Product extends BaseModel {
     importId: string;
     vendorId: string;
     vendorImportId?: string | null;
     name: string;
     description: string;
-    categories?: ProductCategory[] | null;
+    categories?: string[] | null;
     slug?: string | null;
     url: string;
     imageSourceFront?: string | null;

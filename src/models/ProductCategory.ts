@@ -1,7 +1,7 @@
 export class ProductCategory {
   public name = '';
   public labelEn = '';
-  public priority = 0;
+  public sortIndex = 0;
 
   constructor(attributes?: Partial<ProductCategory>) {
     if (attributes) {
@@ -12,13 +12,13 @@ export class ProductCategory {
         this.labelEn = attributes.labelEn;
       }
       if (
-        attributes.priority === 0 ||
+        attributes.sortIndex === 0 ||
         (
-          attributes.priority &&
-          !isNaN(attributes.priority)
+          attributes.sortIndex &&
+          !isNaN(attributes.sortIndex)
         )
       ) {
-        this.priority = attributes.priority;
+        this.sortIndex = attributes.sortIndex;
       }
     }
   }

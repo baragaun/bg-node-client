@@ -268,10 +268,6 @@ export const MyUserSchema = {
         ],
       },
     },
-    'isTestUser': {
-      'type': 'boolean',
-      'nullable': true,
-    },
     'appFeatures': {
       'type': 'array',
       'items': {
@@ -360,21 +356,6 @@ export const MyUserSchema = {
     },
     'trustLevel': {
       'type': 'integer',
-    },
-    'signedInAt': {
-      'type': 'string',
-      'format': 'date-time',
-      'nullable': true,
-    },
-    'signedOutAt': {
-      'type': 'string',
-      'format': 'date-time',
-      'nullable': true,
-    },
-    'latestActivityAt': {
-      'type': 'string',
-      'format': 'date-time',
-      'nullable': true,
     },
     'userDevices': {
       'type': 'array',
@@ -653,16 +634,6 @@ export const MyUserSchema = {
       },
       'nullable': true,
     },
-    'inactivatedAt': {
-      'type': 'string',
-      'format': 'date-time',
-      'nullable': true,
-    },
-    'inactivatedBy': {
-      'type': 'string',
-      'maxLength': 32,
-      'nullable': true,
-    },
     'termsAndConditionsAcceptedAt': {
       'type': 'string',
       'format': 'date-time',
@@ -674,6 +645,35 @@ export const MyUserSchema = {
     },
     'onboardingStage': {
       'type': 'string',
+      'nullable': true,
+    },
+    'isTestUser': {
+      'type': 'boolean',
+      'nullable': true,
+    },
+    'signedInAt': {
+      'type': 'string',
+      'format': 'date-time',
+      'nullable': true,
+    },
+    'signedOutAt': {
+      'type': 'string',
+      'format': 'date-time',
+      'nullable': true,
+    },
+    'latestActivityAt': {
+      'type': 'string',
+      'format': 'date-time',
+      'nullable': true,
+    },
+    'inactivatedAt': {
+      'type': 'string',
+      'format': 'date-time',
+      'nullable': true,
+    },
+    'inactivatedBy': {
+      'type': 'string',
+      'maxLength': 32,
       'nullable': true,
     },
     'suspendedAt': {

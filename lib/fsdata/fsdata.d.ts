@@ -55,6 +55,9 @@ declare const fsdata: {
         sendMultiStepActionNotification: (actionId: string, email: string | undefined, phoneNumber: string | undefined, notificationMethod: import("../enums.js").NotificationMethod) => Promise<import("../index.js").QueryResult<string>>;
         verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<import("../index.js").QueryResult<import("../index.js").SidMultiStepActionProgress>>;
     };
+    productCategory: {
+        findProductCategories: (filter: import("../index.js").ProductCategoryListFilter | null | undefined, match: Partial<import("../index.js").ProductCategory> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ProductCategory>>;
+    };
     user: {
         findUserById: (userId: string) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
         findUsers: (filter: import("./gql/graphql.js").UserListFilter | null | undefined, match: Partial<import("../index.js").User> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../models/UserListItem.js").UserListItem>>;

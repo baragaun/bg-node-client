@@ -1,5 +1,4 @@
 import { BaseModel } from './BaseModel.js';
-import { ProductCategory } from './ProductCategory.js';
 
 export class Product extends BaseModel {
   public importId = '';
@@ -7,7 +6,7 @@ export class Product extends BaseModel {
   public vendorImportId?: string | null;
   public name = '';
   public description = '';
-  public categories?: ProductCategory[] | null;
+  public categories?: string[] | null;
   public slug?: string | null;
   public url = '';
   public imageSourceFront?: string | null;
