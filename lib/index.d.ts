@@ -39,6 +39,8 @@ export * from './models/SidMultiStepAction.js';
 export * from './models/SidMultiStepActionProgress.js';
 export * from './models/User.js';
 export * from './models/UserBlock.js';
+export * from './models/UserListFilter.js';
+export * from './models/UserListItem.js';
 export * from './models/UserPreferences.js';
 export * from './models/Vendor.js';
 export * from './models/VendorListFilter.js';
