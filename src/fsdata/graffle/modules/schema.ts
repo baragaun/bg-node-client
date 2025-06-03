@@ -19444,13 +19444,18 @@ export namespace Schema {
       deletedBy: GiftCardProduct.deletedBy;
       importId: GiftCardProduct.importId;
       vendorId: GiftCardProduct.vendorId;
-      genericGiftCardId: GiftCardProduct.genericGiftCardId;
       vendorImportId: GiftCardProduct.vendorImportId;
-      isGeneric: GiftCardProduct.isGeneric;
+      name: GiftCardProduct.name;
+      description: GiftCardProduct.description;
+      categories: GiftCardProduct.categories;
+      slug: GiftCardProduct.slug;
+      url: GiftCardProduct.url;
       imageSourceFront: GiftCardProduct.imageSourceFront;
       imageSourceBack: GiftCardProduct.imageSourceBack;
       hasBarcode: GiftCardProduct.hasBarcode;
       barcodeFormat: GiftCardProduct.barcodeFormat;
+      genericGiftCardId: GiftCardProduct.genericGiftCardId;
+      isGeneric: GiftCardProduct.isGeneric;
       hasPin: GiftCardProduct.hasPin;
       termsEn: GiftCardProduct.termsEn;
       termsUrl: GiftCardProduct.termsUrl;
@@ -19568,14 +19573,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface genericGiftCardId {
-      kind: 'OutputField';
-      name: 'genericGiftCardId';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
     export interface vendorImportId {
       kind: 'OutputField';
       name: 'vendorImportId';
@@ -19584,12 +19581,44 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface isGeneric {
+    export interface name {
       kind: 'OutputField';
-      name: 'isGeneric';
+      name: 'name';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface description {
+      kind: 'OutputField';
+      name: 'description';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface categories {
+      kind: 'OutputField';
+      name: 'categories';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ProductCategory;
+    }
+
+    export interface slug {
+      kind: 'OutputField';
+      name: 'slug';
       arguments: {};
       inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface url {
+      kind: 'OutputField';
+      name: 'url';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
     }
 
     export interface imageSourceFront {
@@ -19622,6 +19651,22 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
+    }
+
+    export interface genericGiftCardId {
+      kind: 'OutputField';
+      name: 'genericGiftCardId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface isGeneric {
+      kind: 'OutputField';
+      name: 'isGeneric';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface hasPin {
@@ -19670,6 +19715,58 @@ export namespace Schema {
       arguments: {};
       inlineType: [0, [1]];
       namedType: $$NamedTypes.$$GiftCardDenomination;
+    }
+  }
+
+  //                                          ProductCategory
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface ProductCategory {
+    kind: 'Object';
+    name: 'ProductCategory';
+    fields: {
+      __typename: ProductCategory.__typename;
+      name: ProductCategory.name;
+      labelEn: ProductCategory.labelEn;
+      priority: ProductCategory.priority;
+    };
+  }
+
+  export namespace ProductCategory {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'ProductCategory';
+      };
+    }
+
+    export interface name {
+      kind: 'OutputField';
+      name: 'name';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface labelEn {
+      kind: 'OutputField';
+      name: 'labelEn';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface priority {
+      kind: 'OutputField';
+      name: 'priority';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
     }
   }
 
@@ -31270,11 +31367,26 @@ export namespace Schema {
       updatedBy: GiftCardProductInput.updatedBy;
       deletedAt: GiftCardProductInput.deletedAt;
       deletedBy: GiftCardProductInput.deletedBy;
+      importId: GiftCardProductInput.importId;
       vendorId: GiftCardProductInput.vendorId;
+      vendorImportId: GiftCardProductInput.vendorImportId;
       name: GiftCardProductInput.name;
+      description: GiftCardProductInput.description;
+      categories: GiftCardProductInput.categories;
       slug: GiftCardProductInput.slug;
       url: GiftCardProductInput.url;
-      logoUrl: GiftCardProductInput.logoUrl;
+      imageSourceFront: GiftCardProductInput.imageSourceFront;
+      imageSourceBack: GiftCardProductInput.imageSourceBack;
+      hasBarcode: GiftCardProductInput.hasBarcode;
+      barcodeFormat: GiftCardProductInput.barcodeFormat;
+      genericGiftCardId: GiftCardProductInput.genericGiftCardId;
+      isGeneric: GiftCardProductInput.isGeneric;
+      hasPin: GiftCardProductInput.hasPin;
+      termsEn: GiftCardProductInput.termsEn;
+      termsUrl: GiftCardProductInput.termsUrl;
+      instructionsEn: GiftCardProductInput.instructionsEn;
+      instructionsUrl: GiftCardProductInput.instructionsUrl;
+      denominations: GiftCardProductInput.denominations;
     };
   }
 
@@ -31349,6 +31461,13 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
+    export interface importId {
+      kind: 'InputField';
+      name: 'importId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
     export interface vendorId {
       kind: 'InputField';
       name: 'vendorId';
@@ -31356,11 +31475,32 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
+    export interface vendorImportId {
+      kind: 'InputField';
+      name: 'vendorImportId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
     export interface name {
       kind: 'InputField';
       name: 'name';
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
+    }
+
+    export interface description {
+      kind: 'InputField';
+      name: 'description';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface categories {
+      kind: 'InputField';
+      name: 'categories';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ProductCategoryInput;
     }
 
     export interface slug {
@@ -31377,11 +31517,156 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface logoUrl {
+    export interface imageSourceFront {
       kind: 'InputField';
-      name: 'logoUrl';
+      name: 'imageSourceFront';
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
+    }
+
+    export interface imageSourceBack {
+      kind: 'InputField';
+      name: 'imageSourceBack';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface hasBarcode {
+      kind: 'InputField';
+      name: 'hasBarcode';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface barcodeFormat {
+      kind: 'InputField';
+      name: 'barcodeFormat';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface genericGiftCardId {
+      kind: 'InputField';
+      name: 'genericGiftCardId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface isGeneric {
+      kind: 'InputField';
+      name: 'isGeneric';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface hasPin {
+      kind: 'InputField';
+      name: 'hasPin';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface termsEn {
+      kind: 'InputField';
+      name: 'termsEn';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface termsUrl {
+      kind: 'InputField';
+      name: 'termsUrl';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface instructionsEn {
+      kind: 'InputField';
+      name: 'instructionsEn';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface instructionsUrl {
+      kind: 'InputField';
+      name: 'instructionsUrl';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface denominations {
+      kind: 'InputField';
+      name: 'denominations';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$GiftCardDenominationInput;
+    }
+  }
+
+  //                                        ProductCategoryInput
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface ProductCategoryInput {
+    kind: 'InputObject';
+    name: 'ProductCategoryInput';
+    isAllFieldsNullable: true;
+    fields: {
+      name: ProductCategoryInput.name;
+      labelEn: ProductCategoryInput.labelEn;
+      priority: ProductCategoryInput.priority;
+    };
+  }
+
+  export namespace ProductCategoryInput {
+    export interface name {
+      kind: 'InputField';
+      name: 'name';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface labelEn {
+      kind: 'InputField';
+      name: 'labelEn';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface priority {
+      kind: 'InputField';
+      name: 'priority';
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+  }
+
+  //                                     GiftCardDenominationInput
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface GiftCardDenominationInput {
+    kind: 'InputObject';
+    name: 'GiftCardDenominationInput';
+    isAllFieldsNullable: false;
+    fields: {
+      amount: GiftCardDenominationInput.amount;
+      enabled: GiftCardDenominationInput.enabled;
+    };
+  }
+
+  export namespace GiftCardDenominationInput {
+    export interface amount {
+      kind: 'InputField';
+      name: 'amount';
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface enabled {
+      kind: 'InputField';
+      name: 'enabled';
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
     }
   }
 
@@ -39472,6 +39757,7 @@ export namespace Schema {
     export type $$IqlaaJordanianGovernorate = IqlaaJordanianGovernorate;
     export type $$MastercardBank = MastercardBank;
     export type $$GiftCardProduct = GiftCardProduct;
+    export type $$ProductCategory = ProductCategory;
     export type $$GiftCardDenomination = GiftCardDenomination;
     export type $$MarketplaceServiceRecord = MarketplaceServiceRecord;
     export type $$Vendor = Vendor;
@@ -39531,6 +39817,8 @@ export namespace Schema {
     export type $$GroupRuleBaseConfigInput = GroupRuleBaseConfigInput;
     export type $$GroupListFilter = GroupListFilter;
     export type $$GiftCardProductInput = GiftCardProductInput;
+    export type $$ProductCategoryInput = ProductCategoryInput;
+    export type $$GiftCardDenominationInput = GiftCardDenominationInput;
     export type $$GiftCardProductListFilter = GiftCardProductListFilter;
     export type $$VendorInput = VendorInput;
     export type $$VendorListFilter = VendorListFilter;
@@ -39776,6 +40064,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate;
     MastercardBank: Schema.MastercardBank;
     GiftCardProduct: Schema.GiftCardProduct;
+    ProductCategory: Schema.ProductCategory;
     GiftCardDenomination: Schema.GiftCardDenomination;
     MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
     Vendor: Schema.Vendor;
@@ -39877,6 +40166,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate;
     MastercardBank: Schema.MastercardBank;
     GiftCardProduct: Schema.GiftCardProduct;
+    ProductCategory: Schema.ProductCategory;
     GiftCardDenomination: Schema.GiftCardDenomination;
     MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
     Vendor: Schema.Vendor;

@@ -1,5 +1,5 @@
-import { ProductCategory } from './ProductCategory.js';
 import { BaseModel } from './BaseModel.js';
+import { ProductCategory } from './ProductCategory.js';
 
 export class Product extends BaseModel {
   public importId = '';

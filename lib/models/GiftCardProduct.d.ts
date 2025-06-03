@@ -1,6 +1,6 @@
-import { BaseModel } from './BaseModel.js';
 import { GiftCardDenomination } from './GiftCardDenomination.js';
-export declare class GiftCardProduct extends BaseModel {
+import { Product } from './Product.js';
+export declare class GiftCardProduct extends Product {
     genericGiftCardId?: string | null;
     isGeneric?: boolean | null;
     hasPin?: boolean | null;

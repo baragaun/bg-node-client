@@ -1422,11 +1422,43 @@ const GiftCardProductInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
+    importId: {},
     vendorId: {},
+    vendorImportId: {},
     name: {},
+    description: {},
+    categories: {},
     slug: {},
     url: {},
-    logoUrl: {},
+    imageSourceFront: {},
+    imageSourceBack: {},
+    hasBarcode: {},
+    barcodeFormat: {},
+    genericGiftCardId: {},
+    isGeneric: {},
+    hasPin: {},
+    termsEn: {},
+    termsUrl: {},
+    instructionsEn: {},
+    instructionsUrl: {},
+    denominations: {},
+  },
+};
+
+const ProductCategoryInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'ProductCategoryInput',
+  f: {
+    name: {},
+    labelEn: {},
+    priority: {},
+  },
+};
+
+const GiftCardDenominationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'GiftCardDenominationInput',
+  f: {
+    amount: {},
+    enabled: {},
   },
 };
 
@@ -5617,13 +5649,20 @@ const GiftCardProduct: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     deletedBy: {},
     importId: {},
     vendorId: {},
-    genericGiftCardId: {},
     vendorImportId: {},
-    isGeneric: {},
+    name: {},
+    description: {},
+    categories: {
+      // nt: ProductCategory, <-- Assigned later to avoid potential circular dependency.
+    },
+    slug: {},
+    url: {},
     imageSourceFront: {},
     imageSourceBack: {},
     hasBarcode: {},
     barcodeFormat: {},
+    genericGiftCardId: {},
+    isGeneric: {},
     hasPin: {},
     termsEn: {},
     termsUrl: {},
@@ -5632,6 +5671,14 @@ const GiftCardProduct: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     denominations: {
       // nt: GiftCardDenomination, <-- Assigned later to avoid potential circular dependency.
     },
+  },
+};
+
+const ProductCategory: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    name: {},
+    labelEn: {},
+    priority: {},
   },
 };
 
@@ -9351,6 +9398,7 @@ MastercardBank.f['events']!.nt = ModelEvent;
 MastercardBank.f['metadata']!.nt = BaseModelMetadata;
 GiftCardProduct.f['events']!.nt = ModelEvent;
 GiftCardProduct.f['metadata']!.nt = BaseModelMetadata;
+GiftCardProduct.f['categories']!.nt = ProductCategory;
 GiftCardProduct.f['denominations']!.nt = GiftCardDenomination;
 MarketplaceServiceRecord.f['events']!.nt = ModelEvent;
 MarketplaceServiceRecord.f['metadata']!.nt = BaseModelMetadata;
@@ -9704,6 +9752,8 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     GroupRuleBaseConfigInput,
     GroupListFilter,
     GiftCardProductInput,
+    ProductCategoryInput,
+    GiftCardDenominationInput,
     GiftCardProductListFilter,
     VendorInput,
     VendorListFilter,
@@ -9807,6 +9857,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     IqlaaJordanianGovernorate,
     MastercardBank,
     GiftCardProduct,
+    ProductCategory,
     GiftCardDenomination,
     MarketplaceServiceRecord,
     Vendor,

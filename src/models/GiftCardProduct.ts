@@ -1,4 +1,3 @@
-import { BaseModel } from './BaseModel.js';
 import { GiftCardDenomination } from './GiftCardDenomination.js';
 import { Product } from './Product.js';
 

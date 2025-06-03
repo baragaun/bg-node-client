@@ -1,5 +1,5 @@
-import { ProductCategory } from './ProductCategory.js';
 import { BaseModel } from './BaseModel.js';
+import { ProductCategory } from './ProductCategory.js';
 export declare class Product extends BaseModel {
     importId: string;
     vendorId: string;
