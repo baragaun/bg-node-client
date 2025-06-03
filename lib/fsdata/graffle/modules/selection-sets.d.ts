@@ -4505,11 +4505,35 @@ export interface GiftCardProductInput<_$Scalars extends $$Utilities.Schema.Scala
     updatedBy?: string | undefined | null;
     deletedAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
     deletedBy?: string | undefined | null;
+    importId?: string | undefined | null;
     vendorId?: string | undefined | null;
+    vendorImportId?: string | undefined | null;
     name?: string | undefined | null;
+    description?: string | undefined | null;
+    categories?: Array<$NamedTypes.$ProductCategoryInput<_$Scalars> | undefined | null> | undefined | null;
     slug?: string | undefined | null;
     url?: string | undefined | null;
-    logoUrl?: string | undefined | null;
+    imageSourceFront?: string | undefined | null;
+    imageSourceBack?: string | undefined | null;
+    hasBarcode?: boolean | undefined | null;
+    barcodeFormat?: string | undefined | null;
+    genericGiftCardId?: string | undefined | null;
+    isGeneric?: boolean | undefined | null;
+    hasPin?: boolean | undefined | null;
+    termsEn?: string | undefined | null;
+    termsUrl?: string | undefined | null;
+    instructionsEn?: string | undefined | null;
+    instructionsUrl?: string | undefined | null;
+    denominations?: Array<$NamedTypes.$GiftCardDenominationInput<_$Scalars> | undefined | null> | undefined | null;
+}
+export interface ProductCategoryInput<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+    name?: string | undefined | null;
+    labelEn?: string | undefined | null;
+    priority: number;
+}
+export interface GiftCardDenominationInput<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+    amount: number;
+    enabled: boolean;
 }
 export interface GiftCardProductListFilter<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
     ids?: Array<string | undefined | null> | undefined | null;
@@ -26220,17 +26244,29 @@ export interface GiftCardProduct<_$Scalars extends $$Utilities.Schema.Scalar.Reg
      */
     vendorId?: GiftCardProduct.vendorId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.vendorId<_$Scalars>>;
     /**
-     * Select the `genericGiftCardId` field on the `GiftCardProduct` object. Its type is `ID` (a `ScalarStandard` kind of type).
-     */
-    genericGiftCardId?: GiftCardProduct.genericGiftCardId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.genericGiftCardId<_$Scalars>>;
-    /**
      * Select the `vendorImportId` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     vendorImportId?: GiftCardProduct.vendorImportId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.vendorImportId<_$Scalars>>;
     /**
-     * Select the `isGeneric` field on the `GiftCardProduct` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
+     * Select the `name` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
-    isGeneric?: GiftCardProduct.isGeneric$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.isGeneric<_$Scalars>>;
+    name?: GiftCardProduct.name$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.name<_$Scalars>>;
+    /**
+     * Select the `description` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    description?: GiftCardProduct.description$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.description<_$Scalars>>;
+    /**
+     * Select the `categories` field on the `GiftCardProduct` object. Its type is `ProductCategory` (a `OutputObject` kind of type).
+     */
+    categories?: GiftCardProduct.categories$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.categories<_$Scalars>>;
+    /**
+     * Select the `slug` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    slug?: GiftCardProduct.slug$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.slug<_$Scalars>>;
+    /**
+     * Select the `url` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    url?: GiftCardProduct.url$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.url<_$Scalars>>;
     /**
      * Select the `imageSourceFront` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
@@ -26247,6 +26283,14 @@ export interface GiftCardProduct<_$Scalars extends $$Utilities.Schema.Scalar.Reg
      * Select the `barcodeFormat` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     barcodeFormat?: GiftCardProduct.barcodeFormat$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.barcodeFormat<_$Scalars>>;
+    /**
+     * Select the `genericGiftCardId` field on the `GiftCardProduct` object. Its type is `ID` (a `ScalarStandard` kind of type).
+     */
+    genericGiftCardId?: GiftCardProduct.genericGiftCardId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.genericGiftCardId<_$Scalars>>;
+    /**
+     * Select the `isGeneric` field on the `GiftCardProduct` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
+     */
+    isGeneric?: GiftCardProduct.isGeneric$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.isGeneric<_$Scalars>>;
     /**
      * Select the `hasPin` field on the `GiftCardProduct` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
      */
@@ -26398,15 +26442,6 @@ export declare namespace GiftCardProduct {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type vendorId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | vendorId$SelectionSet<_$Scalars>>;
-    type genericGiftCardId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | genericGiftCardId$SelectionSet<_$Scalars>;
-    interface genericGiftCardId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `genericGiftCardId` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type genericGiftCardId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | genericGiftCardId$SelectionSet<_$Scalars>>;
     type vendorImportId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | vendorImportId$SelectionSet<_$Scalars>;
     interface vendorImportId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -26416,15 +26451,51 @@ export declare namespace GiftCardProduct {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type vendorImportId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | vendorImportId$SelectionSet<_$Scalars>>;
-    type isGeneric<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | isGeneric$SelectionSet<_$Scalars>;
-    interface isGeneric$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    type name<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | name$SelectionSet<_$Scalars>;
+    interface name$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
     /**
-     * This is the "expanded" version of the `isGeneric` type. It is identical except for the fact
+     * This is the "expanded" version of the `name` type. It is identical except for the fact
      * that IDEs will display its contents (a union type) directly, rather than the name of this type.
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
-    type isGeneric$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | isGeneric$SelectionSet<_$Scalars>>;
+    type name$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | name$SelectionSet<_$Scalars>>;
+    type description<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | description$SelectionSet<_$Scalars>;
+    interface description$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `description` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type description$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | description$SelectionSet<_$Scalars>>;
+    type categories<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = categories$SelectionSet<_$Scalars>;
+    interface categories$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ProductCategory<_$Scalars> {
+    }
+    /**
+     * This is the "expanded" version of the `categories` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type categories$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<categories$SelectionSet<_$Scalars>>;
+    type slug<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | slug$SelectionSet<_$Scalars>;
+    interface slug$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `slug` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type slug$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | slug$SelectionSet<_$Scalars>>;
+    type url<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | url$SelectionSet<_$Scalars>;
+    interface url$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `url` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type url$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | url$SelectionSet<_$Scalars>>;
     type imageSourceFront<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | imageSourceFront$SelectionSet<_$Scalars>;
     interface imageSourceFront$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -26461,6 +26532,24 @@ export declare namespace GiftCardProduct {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type barcodeFormat$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | barcodeFormat$SelectionSet<_$Scalars>>;
+    type genericGiftCardId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | genericGiftCardId$SelectionSet<_$Scalars>;
+    interface genericGiftCardId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `genericGiftCardId` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type genericGiftCardId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | genericGiftCardId$SelectionSet<_$Scalars>>;
+    type isGeneric<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | isGeneric$SelectionSet<_$Scalars>;
+    interface isGeneric$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `isGeneric` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type isGeneric$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | isGeneric$SelectionSet<_$Scalars>>;
     type hasPin<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | hasPin$SelectionSet<_$Scalars>;
     interface hasPin$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -26515,6 +26604,66 @@ export declare namespace GiftCardProduct {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type denominations$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<denominations$SelectionSet<_$Scalars>>;
+}
+export interface ProductCategory<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
+    /**
+     * Select the `name` field on the `ProductCategory` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    name?: ProductCategory.name$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ProductCategory.name<_$Scalars>>;
+    /**
+     * Select the `labelEn` field on the `ProductCategory` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    labelEn?: ProductCategory.labelEn$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ProductCategory.labelEn<_$Scalars>>;
+    /**
+     * Select the `priority` field on the `ProductCategory` object. Its type is `Int` (a `ScalarStandard` kind of type).
+     */
+    priority?: ProductCategory.priority$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ProductCategory.priority<_$Scalars>>;
+    /**
+     * Inline fragments for field groups.
+     *
+     * Generally a niche feature. This can be useful for example to apply an `@include` directive to a subset of the
+     * selection set in turn allowing you to pass a variable to opt in/out of that selection during execution on the server.
+     *
+     * @see https://spec.graphql.org/draft/#sec-Inline-Fragments
+     */
+    ___?: ProductCategory$FragmentInline<_$Scalars> | ProductCategory$FragmentInline<_$Scalars>[];
+    /**
+     * A meta field. Is the name of the type being selected.
+     *
+     * @see https://graphql.org/learn/queries/#meta-fields
+     */
+    __typename?: $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator$Expanded | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator>;
+}
+export interface ProductCategory$FragmentInline<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends ProductCategory<_$Scalars>, $$Utilities.DocumentBuilder.Select.Directive.$Groups.InlineFragment.Fields {
+}
+export declare namespace ProductCategory {
+    type name<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | name$SelectionSet<_$Scalars>;
+    interface name$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `name` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type name$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | name$SelectionSet<_$Scalars>>;
+    type labelEn<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | labelEn$SelectionSet<_$Scalars>;
+    interface labelEn$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `labelEn` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type labelEn$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | labelEn$SelectionSet<_$Scalars>>;
+    type priority<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | priority$SelectionSet<_$Scalars>;
+    interface priority$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `priority` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type priority$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | priority$SelectionSet<_$Scalars>>;
 }
 export interface GiftCardDenomination<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
     /**
@@ -36387,6 +36536,8 @@ export declare namespace $NamedTypes {
     type $GroupRuleBaseConfigInput<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = GroupRuleBaseConfigInput<_$Scalars>;
     type $GroupListFilter<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = GroupListFilter<_$Scalars>;
     type $GiftCardProductInput<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = GiftCardProductInput<_$Scalars>;
+    type $ProductCategoryInput<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = ProductCategoryInput<_$Scalars>;
+    type $GiftCardDenominationInput<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = GiftCardDenominationInput<_$Scalars>;
     type $GiftCardProductListFilter<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = GiftCardProductListFilter<_$Scalars>;
     type $VendorInput<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = VendorInput<_$Scalars>;
     type $VendorListFilter<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = VendorListFilter<_$Scalars>;
@@ -36490,6 +36641,7 @@ export declare namespace $NamedTypes {
     type $IqlaaJordanianGovernorate<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = IqlaaJordanianGovernorate<_$Scalars>;
     type $MastercardBank<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = MastercardBank<_$Scalars>;
     type $GiftCardProduct<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = GiftCardProduct<_$Scalars>;
+    type $ProductCategory<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = ProductCategory<_$Scalars>;
     type $GiftCardDenomination<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = GiftCardDenomination<_$Scalars>;
     type $MarketplaceServiceRecord<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = MarketplaceServiceRecord<_$Scalars>;
     type $Vendor<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = Vendor<_$Scalars>;

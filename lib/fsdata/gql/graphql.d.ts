@@ -1575,15 +1575,21 @@ export type GiftCardDenomination = {
     amount: Scalars['Int']['output'];
     enabled: Scalars['Boolean']['output'];
 };
+export type GiftCardDenominationInput = {
+    amount?: Scalars['Int']['input'];
+    enabled?: Scalars['Boolean']['input'];
+};
 export type GiftCardProduct = {
     __typename?: 'GiftCardProduct';
     adminNotes?: Maybe<Scalars['String']['output']>;
     barcodeFormat?: Maybe<Scalars['String']['output']>;
+    categories?: Maybe<Array<ProductCategory>>;
     createdAt: Scalars['DateTimeISO']['output'];
     createdBy?: Maybe<Scalars['ID']['output']>;
     deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     deletedBy?: Maybe<Scalars['ID']['output']>;
     denominations?: Maybe<Array<GiftCardDenomination>>;
+    description?: Maybe<Scalars['String']['output']>;
     events?: Maybe<Array<ModelEvent>>;
     genericGiftCardId?: Maybe<Scalars['ID']['output']>;
     hasBarcode?: Maybe<Scalars['Boolean']['output']>;
@@ -1596,29 +1602,47 @@ export type GiftCardProduct = {
     instructionsUrl?: Maybe<Scalars['String']['output']>;
     isGeneric?: Maybe<Scalars['Boolean']['output']>;
     metadata?: Maybe<BaseModelMetadata>;
+    name: Scalars['String']['output'];
+    slug?: Maybe<Scalars['String']['output']>;
     termsEn?: Maybe<Scalars['String']['output']>;
     termsUrl?: Maybe<Scalars['String']['output']>;
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     updatedBy?: Maybe<Scalars['ID']['output']>;
+    url?: Maybe<Scalars['String']['output']>;
     vendorId: Scalars['ID']['output'];
     vendorImportId?: Maybe<Scalars['String']['output']>;
 };
 export type GiftCardProductInput = {
     adminNotes?: InputMaybe<Scalars['String']['input']>;
+    barcodeFormat?: InputMaybe<Scalars['String']['input']>;
+    categories?: InputMaybe<Array<ProductCategoryInput>>;
     createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     createdBy?: InputMaybe<Scalars['ID']['input']>;
     deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     deletedBy?: InputMaybe<Scalars['ID']['input']>;
+    denominations?: InputMaybe<Array<GiftCardDenominationInput>>;
+    description?: InputMaybe<Scalars['String']['input']>;
     events?: InputMaybe<Array<ModelEventInput>>;
+    genericGiftCardId?: InputMaybe<Scalars['ID']['input']>;
+    hasBarcode?: InputMaybe<Scalars['Boolean']['input']>;
+    hasPin?: InputMaybe<Scalars['Boolean']['input']>;
     id?: InputMaybe<Scalars['ID']['input']>;
-    logoUrl?: InputMaybe<Scalars['String']['input']>;
+    imageSourceBack?: InputMaybe<Scalars['String']['input']>;
+    imageSourceFront?: InputMaybe<Scalars['String']['input']>;
+    importId?: InputMaybe<Scalars['String']['input']>;
+    instructionsEn?: InputMaybe<Scalars['String']['input']>;
+    instructionsUrl?: InputMaybe<Scalars['String']['input']>;
+    isGeneric?: InputMaybe<Scalars['Boolean']['input']>;
     metadata?: InputMaybe<BaseModelMetadataInput>;
     name?: InputMaybe<Scalars['String']['input']>;
     slug?: InputMaybe<Scalars['String']['input']>;
+    termsEn?: InputMaybe<Scalars['String']['input']>;
+    termsUrl?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     updatedBy?: InputMaybe<Scalars['ID']['input']>;
     url?: InputMaybe<Scalars['String']['input']>;
     vendorId?: InputMaybe<Scalars['ID']['input']>;
+    vendorImportId?: InputMaybe<Scalars['String']['input']>;
 };
 export type GiftCardProductListFilter = {
     caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3690,6 +3714,17 @@ export declare enum OptionType {
     ReportUserReason = "reportUserReason",
     Unset = "unset"
 }
+export type ProductCategory = {
+    __typename?: 'ProductCategory';
+    labelEn: Scalars['String']['output'];
+    name: Scalars['String']['output'];
+    priority: Scalars['Int']['output'];
+};
+export type ProductCategoryInput = {
+    labelEn?: InputMaybe<Scalars['String']['input']>;
+    name?: InputMaybe<Scalars['String']['input']>;
+    priority?: Scalars['Int']['input'];
+};
 export type Pronoun = {
     __typename?: 'Pronoun';
     adminNotes?: Maybe<Scalars['String']['output']>;

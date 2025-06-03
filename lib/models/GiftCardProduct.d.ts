@@ -1,15 +1,8 @@
-import { BaseModel } from './BaseModel.js';
 import { GiftCardDenomination } from './GiftCardDenomination.js';
-export declare class GiftCardProduct extends BaseModel {
-    importId: string;
-    vendorId: string;
-    genericGiftCardId: string;
-    vendorImportId: string;
+import { Product } from './Product.js';
+export declare class GiftCardProduct extends Product {
+    genericGiftCardId?: string | null;
     isGeneric?: boolean | null;
-    imageSourceFront?: string | null;
-    imageSourceBack?: string | null;
-    hasBarcode?: boolean | null;
-    barcodeFormat?: string | null;
     hasPin?: boolean | null;
     termsEn?: string | null;
     termsUrl?: string | null;
