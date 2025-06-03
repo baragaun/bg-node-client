@@ -25,8 +25,6 @@ export class UserListItem extends BaseModel {
   public offersHelp?: boolean | null;
   public groupMemberships: IGroupMembership[] = [];
 
-  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
-
   constructor(attributes?: Partial<UserListItem>) {
     super(attributes);
 

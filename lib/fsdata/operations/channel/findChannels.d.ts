@@ -4,3 +4,4 @@ import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../typ
 import { QueryResult } from '../../../types/QueryResult.js';
 declare const findChannels: (filter: ChannelListFilterFromClient | null | undefined, match: Partial<Channel> | null | undefined, options: FindObjectsOptionsFromClient) => Promise<QueryResult<Channel>>;
 export default findChannels;
+export default findChannels;

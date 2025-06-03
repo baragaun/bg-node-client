@@ -35,6 +35,8 @@ export * from './models/MultiStepActionRun.js';
 export * from './models/MyUser.js';
 export * from './models/MyUserChanges.js';
 export * from './models/NotificationOptions.js';
+export * from './models/Product.js';
+export * from './models/ProductCategory.js';
 export * from './models/SidMultiStepAction.js';
 export * from './models/SidMultiStepActionProgress.js';
 export * from './models/User.js';
