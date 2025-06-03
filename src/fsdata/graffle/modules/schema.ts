@@ -89,6 +89,9 @@ export namespace Schema {
       findIqlaaJordanianGovernorates: Query.findIqlaaJordanianGovernorates;
       findMastercardBanks: Query.findMastercardBanks;
       userWillReceiveWelcomeMessage: Query.userWillReceiveWelcomeMessage;
+      findGiftCardProducts: Query.findGiftCardProducts;
+      findMarketplaceServiceRecord: Query.findMarketplaceServiceRecord;
+      findVendors: Query.findVendors;
       findUserSearchById: Query.findUserSearchById;
       findUserSearches: Query.findUserSearches;
       findUserSearchResults: Query.findUserSearchResults;
@@ -1270,6 +1273,68 @@ export namespace Schema {
       };
       inlineType: [1];
       namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface findGiftCardProducts {
+      kind: 'OutputField';
+      name: 'findGiftCardProducts';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        match: {
+          kind: 'InputField';
+          name: 'match';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$GiftCardProductInput;
+        };
+        filter: {
+          kind: 'InputField';
+          name: 'filter';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$GiftCardProductListFilter;
+        };
+      };
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$GiftCardProduct;
+    }
+
+    export interface findMarketplaceServiceRecord {
+      kind: 'OutputField';
+      name: 'findMarketplaceServiceRecord';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$MarketplaceServiceRecord;
+    }
+
+    export interface findVendors {
+      kind: 'OutputField';
+      name: 'findVendors';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        match: {
+          kind: 'InputField';
+          name: 'match';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$VendorInput;
+        };
+        filter: {
+          kind: 'InputField';
+          name: 'filter';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$VendorListFilter;
+        };
+      };
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$Vendor;
     }
 
     export interface findUserSearchById {
@@ -19358,6 +19423,646 @@ export namespace Schema {
     }
   }
 
+  //                                          GiftCardProduct
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface GiftCardProduct {
+    kind: 'Object';
+    name: 'GiftCardProduct';
+    fields: {
+      __typename: GiftCardProduct.__typename;
+      id: GiftCardProduct.id;
+      adminNotes: GiftCardProduct.adminNotes;
+      events: GiftCardProduct.events;
+      metadata: GiftCardProduct.metadata;
+      createdAt: GiftCardProduct.createdAt;
+      createdBy: GiftCardProduct.createdBy;
+      updatedAt: GiftCardProduct.updatedAt;
+      updatedBy: GiftCardProduct.updatedBy;
+      deletedAt: GiftCardProduct.deletedAt;
+      deletedBy: GiftCardProduct.deletedBy;
+      importId: GiftCardProduct.importId;
+      vendorId: GiftCardProduct.vendorId;
+      genericGiftCardId: GiftCardProduct.genericGiftCardId;
+      vendorImportId: GiftCardProduct.vendorImportId;
+      isGeneric: GiftCardProduct.isGeneric;
+      imageSourceFront: GiftCardProduct.imageSourceFront;
+      imageSourceBack: GiftCardProduct.imageSourceBack;
+      hasBarcode: GiftCardProduct.hasBarcode;
+      barcodeFormat: GiftCardProduct.barcodeFormat;
+      hasPin: GiftCardProduct.hasPin;
+      termsEn: GiftCardProduct.termsEn;
+      termsUrl: GiftCardProduct.termsUrl;
+      instructionsEn: GiftCardProduct.instructionsEn;
+      instructionsUrl: GiftCardProduct.instructionsUrl;
+      denominations: GiftCardProduct.denominations;
+    };
+  }
+
+  export namespace GiftCardProduct {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'GiftCardProduct';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface importId {
+      kind: 'OutputField';
+      name: 'importId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface vendorId {
+      kind: 'OutputField';
+      name: 'vendorId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface genericGiftCardId {
+      kind: 'OutputField';
+      name: 'genericGiftCardId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface vendorImportId {
+      kind: 'OutputField';
+      name: 'vendorImportId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface isGeneric {
+      kind: 'OutputField';
+      name: 'isGeneric';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface imageSourceFront {
+      kind: 'OutputField';
+      name: 'imageSourceFront';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface imageSourceBack {
+      kind: 'OutputField';
+      name: 'imageSourceBack';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface hasBarcode {
+      kind: 'OutputField';
+      name: 'hasBarcode';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface barcodeFormat {
+      kind: 'OutputField';
+      name: 'barcodeFormat';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface hasPin {
+      kind: 'OutputField';
+      name: 'hasPin';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface termsEn {
+      kind: 'OutputField';
+      name: 'termsEn';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface termsUrl {
+      kind: 'OutputField';
+      name: 'termsUrl';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface instructionsEn {
+      kind: 'OutputField';
+      name: 'instructionsEn';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface instructionsUrl {
+      kind: 'OutputField';
+      name: 'instructionsUrl';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface denominations {
+      kind: 'OutputField';
+      name: 'denominations';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$GiftCardDenomination;
+    }
+  }
+
+  //                                        GiftCardDenomination
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface GiftCardDenomination {
+    kind: 'Object';
+    name: 'GiftCardDenomination';
+    fields: {
+      __typename: GiftCardDenomination.__typename;
+      amount: GiftCardDenomination.amount;
+      enabled: GiftCardDenomination.enabled;
+    };
+  }
+
+  export namespace GiftCardDenomination {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'GiftCardDenomination';
+      };
+    }
+
+    export interface amount {
+      kind: 'OutputField';
+      name: 'amount';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface enabled {
+      kind: 'OutputField';
+      name: 'enabled';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+  }
+
+  //                                      MarketplaceServiceRecord
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface MarketplaceServiceRecord {
+    kind: 'Object';
+    name: 'MarketplaceServiceRecord';
+    fields: {
+      __typename: MarketplaceServiceRecord.__typename;
+      id: MarketplaceServiceRecord.id;
+      adminNotes: MarketplaceServiceRecord.adminNotes;
+      events: MarketplaceServiceRecord.events;
+      metadata: MarketplaceServiceRecord.metadata;
+      createdAt: MarketplaceServiceRecord.createdAt;
+      createdBy: MarketplaceServiceRecord.createdBy;
+      updatedAt: MarketplaceServiceRecord.updatedAt;
+      updatedBy: MarketplaceServiceRecord.updatedBy;
+      deletedAt: MarketplaceServiceRecord.deletedAt;
+      deletedBy: MarketplaceServiceRecord.deletedBy;
+      serviceName: MarketplaceServiceRecord.serviceName;
+    };
+  }
+
+  export namespace MarketplaceServiceRecord {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'MarketplaceServiceRecord';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface serviceName {
+      kind: 'OutputField';
+      name: 'serviceName';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceName;
+    }
+  }
+
+  //                                               Vendor
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface Vendor {
+    kind: 'Object';
+    name: 'Vendor';
+    fields: {
+      __typename: Vendor.__typename;
+      id: Vendor.id;
+      adminNotes: Vendor.adminNotes;
+      events: Vendor.events;
+      metadata: Vendor.metadata;
+      createdAt: Vendor.createdAt;
+      createdBy: Vendor.createdBy;
+      updatedAt: Vendor.updatedAt;
+      updatedBy: Vendor.updatedBy;
+      deletedAt: Vendor.deletedAt;
+      deletedBy: Vendor.deletedBy;
+      name: Vendor.name;
+      importId: Vendor.importId;
+      imageSource: Vendor.imageSource;
+      slug: Vendor.slug;
+      url: Vendor.url;
+      balanceLookupUri: Vendor.balanceLookupUri;
+      listed: Vendor.listed;
+      logoImageSource: Vendor.logoImageSource;
+      description: Vendor.description;
+      alias1: Vendor.alias1;
+      alias2: Vendor.alias2;
+      alias3: Vendor.alias3;
+    };
+  }
+
+  export namespace Vendor {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'Vendor';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface name {
+      kind: 'OutputField';
+      name: 'name';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface importId {
+      kind: 'OutputField';
+      name: 'importId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface imageSource {
+      kind: 'OutputField';
+      name: 'imageSource';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface slug {
+      kind: 'OutputField';
+      name: 'slug';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface url {
+      kind: 'OutputField';
+      name: 'url';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface balanceLookupUri {
+      kind: 'OutputField';
+      name: 'balanceLookupUri';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface listed {
+      kind: 'OutputField';
+      name: 'listed';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface logoImageSource {
+      kind: 'OutputField';
+      name: 'logoImageSource';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface description {
+      kind: 'OutputField';
+      name: 'description';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias1 {
+      kind: 'OutputField';
+      name: 'alias1';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias2 {
+      kind: 'OutputField';
+      name: 'alias2';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias3 {
+      kind: 'OutputField';
+      name: 'alias3';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+  }
+
   //                                             UserSearch
   // --------------------------------------------------------------------------------------------------
   //
@@ -30546,6 +31251,502 @@ export namespace Schema {
     }
   }
 
+  //                                        GiftCardProductInput
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface GiftCardProductInput {
+    kind: 'InputObject';
+    name: 'GiftCardProductInput';
+    isAllFieldsNullable: true;
+    fields: {
+      id: GiftCardProductInput.id;
+      adminNotes: GiftCardProductInput.adminNotes;
+      events: GiftCardProductInput.events;
+      metadata: GiftCardProductInput.metadata;
+      createdAt: GiftCardProductInput.createdAt;
+      createdBy: GiftCardProductInput.createdBy;
+      updatedAt: GiftCardProductInput.updatedAt;
+      updatedBy: GiftCardProductInput.updatedBy;
+      deletedAt: GiftCardProductInput.deletedAt;
+      deletedBy: GiftCardProductInput.deletedBy;
+      vendorId: GiftCardProductInput.vendorId;
+      name: GiftCardProductInput.name;
+      slug: GiftCardProductInput.slug;
+      url: GiftCardProductInput.url;
+      logoUrl: GiftCardProductInput.logoUrl;
+    };
+  }
+
+  export namespace GiftCardProductInput {
+    export interface id {
+      kind: 'InputField';
+      name: 'id';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'InputField';
+      name: 'adminNotes';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'InputField';
+      name: 'events';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEventInput;
+    }
+
+    export interface metadata {
+      kind: 'InputField';
+      name: 'metadata';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadataInput;
+    }
+
+    export interface createdAt {
+      kind: 'InputField';
+      name: 'createdAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'InputField';
+      name: 'createdBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'InputField';
+      name: 'updatedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'InputField';
+      name: 'updatedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'InputField';
+      name: 'deletedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'InputField';
+      name: 'deletedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface vendorId {
+      kind: 'InputField';
+      name: 'vendorId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface name {
+      kind: 'InputField';
+      name: 'name';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface slug {
+      kind: 'InputField';
+      name: 'slug';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface url {
+      kind: 'InputField';
+      name: 'url';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface logoUrl {
+      kind: 'InputField';
+      name: 'logoUrl';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+  }
+
+  //                                     GiftCardProductListFilter
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface GiftCardProductListFilter {
+    kind: 'InputObject';
+    name: 'GiftCardProductListFilter';
+    isAllFieldsNullable: true;
+    fields: {
+      ids: GiftCardProductListFilter.ids;
+      excludeIds: GiftCardProductListFilter.excludeIds;
+      searchText: GiftCardProductListFilter.searchText;
+      caseSensitive: GiftCardProductListFilter.caseSensitive;
+      textSearchFields: GiftCardProductListFilter.textSearchFields;
+      createdAtFrom: GiftCardProductListFilter.createdAtFrom;
+      createdAtUntil: GiftCardProductListFilter.createdAtUntil;
+      updatedAtFrom: GiftCardProductListFilter.updatedAtFrom;
+      updatedAtUntil: GiftCardProductListFilter.updatedAtUntil;
+    };
+  }
+
+  export namespace GiftCardProductListFilter {
+    export interface ids {
+      kind: 'InputField';
+      name: 'ids';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface excludeIds {
+      kind: 'InputField';
+      name: 'excludeIds';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface searchText {
+      kind: 'InputField';
+      name: 'searchText';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface caseSensitive {
+      kind: 'InputField';
+      name: 'caseSensitive';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface textSearchFields {
+      kind: 'InputField';
+      name: 'textSearchFields';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface createdAtFrom {
+      kind: 'InputField';
+      name: 'createdAtFrom';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdAtUntil {
+      kind: 'InputField';
+      name: 'createdAtUntil';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedAtFrom {
+      kind: 'InputField';
+      name: 'updatedAtFrom';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedAtUntil {
+      kind: 'InputField';
+      name: 'updatedAtUntil';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+  }
+
+  //                                            VendorInput
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface VendorInput {
+    kind: 'InputObject';
+    name: 'VendorInput';
+    isAllFieldsNullable: true;
+    fields: {
+      id: VendorInput.id;
+      adminNotes: VendorInput.adminNotes;
+      events: VendorInput.events;
+      metadata: VendorInput.metadata;
+      createdAt: VendorInput.createdAt;
+      createdBy: VendorInput.createdBy;
+      updatedAt: VendorInput.updatedAt;
+      updatedBy: VendorInput.updatedBy;
+      deletedAt: VendorInput.deletedAt;
+      deletedBy: VendorInput.deletedBy;
+      name: VendorInput.name;
+      importId: VendorInput.importId;
+      imageSource: VendorInput.imageSource;
+      slug: VendorInput.slug;
+      url: VendorInput.url;
+      balanceLookupUri: VendorInput.balanceLookupUri;
+      listed: VendorInput.listed;
+      logoUrl: VendorInput.logoUrl;
+      description: VendorInput.description;
+      alias1: VendorInput.alias1;
+      alias2: VendorInput.alias2;
+      alias3: VendorInput.alias3;
+    };
+  }
+
+  export namespace VendorInput {
+    export interface id {
+      kind: 'InputField';
+      name: 'id';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'InputField';
+      name: 'adminNotes';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'InputField';
+      name: 'events';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEventInput;
+    }
+
+    export interface metadata {
+      kind: 'InputField';
+      name: 'metadata';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadataInput;
+    }
+
+    export interface createdAt {
+      kind: 'InputField';
+      name: 'createdAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'InputField';
+      name: 'createdBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'InputField';
+      name: 'updatedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'InputField';
+      name: 'updatedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'InputField';
+      name: 'deletedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'InputField';
+      name: 'deletedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface name {
+      kind: 'InputField';
+      name: 'name';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface importId {
+      kind: 'InputField';
+      name: 'importId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface imageSource {
+      kind: 'InputField';
+      name: 'imageSource';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface slug {
+      kind: 'InputField';
+      name: 'slug';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface url {
+      kind: 'InputField';
+      name: 'url';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface balanceLookupUri {
+      kind: 'InputField';
+      name: 'balanceLookupUri';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface listed {
+      kind: 'InputField';
+      name: 'listed';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface logoUrl {
+      kind: 'InputField';
+      name: 'logoUrl';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface description {
+      kind: 'InputField';
+      name: 'description';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias1 {
+      kind: 'InputField';
+      name: 'alias1';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias2 {
+      kind: 'InputField';
+      name: 'alias2';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias3 {
+      kind: 'InputField';
+      name: 'alias3';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+  }
+
+  //                                          VendorListFilter
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface VendorListFilter {
+    kind: 'InputObject';
+    name: 'VendorListFilter';
+    isAllFieldsNullable: true;
+    fields: {
+      ids: VendorListFilter.ids;
+      excludeIds: VendorListFilter.excludeIds;
+      searchText: VendorListFilter.searchText;
+      caseSensitive: VendorListFilter.caseSensitive;
+      textSearchFields: VendorListFilter.textSearchFields;
+      createdAtFrom: VendorListFilter.createdAtFrom;
+      createdAtUntil: VendorListFilter.createdAtUntil;
+      updatedAtFrom: VendorListFilter.updatedAtFrom;
+      updatedAtUntil: VendorListFilter.updatedAtUntil;
+    };
+  }
+
+  export namespace VendorListFilter {
+    export interface ids {
+      kind: 'InputField';
+      name: 'ids';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface excludeIds {
+      kind: 'InputField';
+      name: 'excludeIds';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface searchText {
+      kind: 'InputField';
+      name: 'searchText';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface caseSensitive {
+      kind: 'InputField';
+      name: 'caseSensitive';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface textSearchFields {
+      kind: 'InputField';
+      name: 'textSearchFields';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface createdAtFrom {
+      kind: 'InputField';
+      name: 'createdAtFrom';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdAtUntil {
+      kind: 'InputField';
+      name: 'createdAtUntil';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedAtFrom {
+      kind: 'InputField';
+      name: 'updatedAtFrom';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedAtUntil {
+      kind: 'InputField';
+      name: 'updatedAtUntil';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+  }
+
   //                                          UserSearchInput
   // --------------------------------------------------------------------------------------------------
   //
@@ -36633,6 +37834,10 @@ export namespace Schema {
       'GroupRuleConfig',
       'MastercardBank',
       'SupportChannelConfig',
+      'GiftCardProduct',
+      'MarketplaceServiceRecord',
+      'Product',
+      'Vendor',
       'Match',
       'MatchProfile',
       'MatchingEngine',
@@ -36689,6 +37894,10 @@ export namespace Schema {
       | 'GroupRuleConfig'
       | 'MastercardBank'
       | 'SupportChannelConfig'
+      | 'GiftCardProduct'
+      | 'MarketplaceServiceRecord'
+      | 'Product'
+      | 'Vendor'
       | 'Match'
       | 'MatchProfile'
       | 'MatchingEngine'
@@ -36936,6 +38145,7 @@ export namespace Schema {
       'recreateDbIndexes',
       'updateGroupIdentsInAllGroupMemberships',
       'addLanguageText',
+      'importMarketplaceData',
       'recreateDefaultMatchingEngine',
       'refreshAllMatchProfiles',
       'clearBusMessages',
@@ -36984,6 +38194,7 @@ export namespace Schema {
       | 'recreateDbIndexes'
       | 'updateGroupIdentsInAllGroupMemberships'
       | 'addLanguageText'
+      | 'importMarketplaceData'
       | 'recreateDefaultMatchingEngine'
       | 'refreshAllMatchProfiles'
       | 'clearBusMessages'
@@ -37032,6 +38243,92 @@ export namespace Schema {
     membersUnion:
       | 'sent'
       | 'received';
+  }
+
+  //                                            ServiceName
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface ServiceName {
+    kind: 'Enum';
+    name: 'ServiceName';
+    members: [
+      'accounts',
+      'admin',
+      'adminJs',
+      'analytics',
+      'appEvents',
+      'assets',
+      'aws',
+      'bgChannels',
+      'bullBoard',
+      'channels',
+      'content',
+      'contentTags',
+      'dataGenerator',
+      'db',
+      'firebase',
+      'graphqlApi',
+      'groups',
+      'http',
+      'i18N',
+      'logger',
+      'marketplace',
+      'matching',
+      'messageBus',
+      'messaging',
+      'mm2',
+      'models',
+      'moderation',
+      'nats',
+      'nlp',
+      'redis',
+      'restApi',
+      'secureId',
+      'slack',
+      'system',
+      'tracking',
+      'unset',
+      'vts',
+    ];
+    membersUnion:
+      | 'accounts'
+      | 'admin'
+      | 'adminJs'
+      | 'analytics'
+      | 'appEvents'
+      | 'assets'
+      | 'aws'
+      | 'bgChannels'
+      | 'bullBoard'
+      | 'channels'
+      | 'content'
+      | 'contentTags'
+      | 'dataGenerator'
+      | 'db'
+      | 'firebase'
+      | 'graphqlApi'
+      | 'groups'
+      | 'http'
+      | 'i18N'
+      | 'logger'
+      | 'marketplace'
+      | 'matching'
+      | 'messageBus'
+      | 'messaging'
+      | 'mm2'
+      | 'models'
+      | 'moderation'
+      | 'nats'
+      | 'nlp'
+      | 'redis'
+      | 'restApi'
+      | 'secureId'
+      | 'slack'
+      | 'system'
+      | 'tracking'
+      | 'unset'
+      | 'vts';
   }
 
   //                                           UserSearchType
@@ -37190,6 +38487,9 @@ export namespace Schema {
       'graphQlQueryFindGroupMemberships',
       'graphQlQueryFindGroupsField',
       'graphQlQueryMyGroupMemberships',
+      'graphQlQueryFindGiftCardProducts',
+      'graphQlQueryFindVendors',
+      'graphQlQueryFindMarketplaceServiceRecord',
       'graphQlMutationCreateUserSearch',
       'graphQlMutationDeleteUserSearch',
       'graphQlMutationUpdateUserSearch',
@@ -37371,6 +38671,9 @@ export namespace Schema {
       | 'graphQlQueryFindGroupMemberships'
       | 'graphQlQueryFindGroupsField'
       | 'graphQlQueryMyGroupMemberships'
+      | 'graphQlQueryFindGiftCardProducts'
+      | 'graphQlQueryFindVendors'
+      | 'graphQlQueryFindMarketplaceServiceRecord'
       | 'graphQlMutationCreateUserSearch'
       | 'graphQlMutationDeleteUserSearch'
       | 'graphQlMutationUpdateUserSearch'
@@ -38168,6 +39471,10 @@ export namespace Schema {
     export type $$IqlaaJordanianDistrict = IqlaaJordanianDistrict;
     export type $$IqlaaJordanianGovernorate = IqlaaJordanianGovernorate;
     export type $$MastercardBank = MastercardBank;
+    export type $$GiftCardProduct = GiftCardProduct;
+    export type $$GiftCardDenomination = GiftCardDenomination;
+    export type $$MarketplaceServiceRecord = MarketplaceServiceRecord;
+    export type $$Vendor = Vendor;
     export type $$UserSearch = UserSearch;
     export type $$UserSearchFilter = UserSearchFilter;
     export type $$UserSearchRunInfo = UserSearchRunInfo;
@@ -38223,6 +39530,10 @@ export namespace Schema {
     export type $$AppliedGroupRuleInput = AppliedGroupRuleInput;
     export type $$GroupRuleBaseConfigInput = GroupRuleBaseConfigInput;
     export type $$GroupListFilter = GroupListFilter;
+    export type $$GiftCardProductInput = GiftCardProductInput;
+    export type $$GiftCardProductListFilter = GiftCardProductListFilter;
+    export type $$VendorInput = VendorInput;
+    export type $$VendorListFilter = VendorListFilter;
     export type $$UserSearchInput = UserSearchInput;
     export type $$UserSearchFilterInput = UserSearchFilterInput;
     export type $$UserSearchListFilter = UserSearchListFilter;
@@ -38282,6 +39593,7 @@ export namespace Schema {
     export type $$AdminTaskType = AdminTaskType;
     export type $$AdminTaskResult = AdminTaskResult;
     export type $$ChannelInvitationDirection = ChannelInvitationDirection;
+    export type $$ServiceName = ServiceName;
     export type $$UserSearchType = UserSearchType;
     export type $$UserSearchFieldOption = UserSearchFieldOption;
     export type $$UserSearchSubscriptionType = UserSearchSubscriptionType;
@@ -38372,6 +39684,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     AdminTaskType: Schema.AdminTaskType;
     AdminTaskResult: Schema.AdminTaskResult;
     ChannelInvitationDirection: Schema.ChannelInvitationDirection;
+    ServiceName: Schema.ServiceName;
     UserSearchType: Schema.UserSearchType;
     UserSearchFieldOption: Schema.UserSearchFieldOption;
     UserSearchSubscriptionType: Schema.UserSearchSubscriptionType;
@@ -38462,6 +39775,10 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     IqlaaJordanianDistrict: Schema.IqlaaJordanianDistrict;
     IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate;
     MastercardBank: Schema.MastercardBank;
+    GiftCardProduct: Schema.GiftCardProduct;
+    GiftCardDenomination: Schema.GiftCardDenomination;
+    MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
+    Vendor: Schema.Vendor;
     UserSearch: Schema.UserSearch;
     UserSearchFilter: Schema.UserSearchFilter;
     UserSearchRunInfo: Schema.UserSearchRunInfo;
@@ -38559,6 +39876,10 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     IqlaaJordanianDistrict: Schema.IqlaaJordanianDistrict;
     IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate;
     MastercardBank: Schema.MastercardBank;
+    GiftCardProduct: Schema.GiftCardProduct;
+    GiftCardDenomination: Schema.GiftCardDenomination;
+    MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
+    Vendor: Schema.Vendor;
     UserSearch: Schema.UserSearch;
     UserSearchFilter: Schema.UserSearchFilter;
     UserSearchRunInfo: Schema.UserSearchRunInfo;

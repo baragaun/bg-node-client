@@ -203,6 +203,11 @@ const ChannelInvitationDirection: $$Utilities.SchemaDrivenDataMap.Enum = {
   n: 'ChannelInvitationDirection',
 };
 
+const ServiceName: $$Utilities.SchemaDrivenDataMap.Enum = {
+  k: 'enum',
+  n: 'ServiceName',
+};
+
 const UserSearchType: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'UserSearchType',
@@ -1390,6 +1395,125 @@ const GroupListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
     },
     embedded: {},
     syncedWithMm2: {},
+  },
+};
+
+const GiftCardProductInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'GiftCardProductInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    vendorId: {},
+    name: {},
+    slug: {},
+    url: {},
+    logoUrl: {},
+  },
+};
+
+const GiftCardProductListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'GiftCardProductListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const VendorInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'VendorInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    name: {},
+    importId: {},
+    imageSource: {},
+    slug: {},
+    url: {},
+    balanceLookupUri: {},
+    listed: {},
+    logoUrl: {},
+    description: {},
+    alias1: {},
+    alias2: {},
+    alias3: {},
+  },
+};
+
+const VendorListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'VendorListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
   },
 };
 
@@ -5469,6 +5593,118 @@ const MastercardBank: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
+const GiftCardProduct: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    importId: {},
+    vendorId: {},
+    genericGiftCardId: {},
+    vendorImportId: {},
+    isGeneric: {},
+    imageSourceFront: {},
+    imageSourceBack: {},
+    hasBarcode: {},
+    barcodeFormat: {},
+    hasPin: {},
+    termsEn: {},
+    termsUrl: {},
+    instructionsEn: {},
+    instructionsUrl: {},
+    denominations: {
+      // nt: GiftCardDenomination, <-- Assigned later to avoid potential circular dependency.
+    },
+  },
+};
+
+const GiftCardDenomination: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    amount: {},
+    enabled: {},
+  },
+};
+
+const MarketplaceServiceRecord: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    serviceName: {},
+  },
+};
+
+const Vendor: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    name: {},
+    importId: {},
+    imageSource: {},
+    slug: {},
+    url: {},
+    balanceLookupUri: {},
+    listed: {},
+    logoImageSource: {},
+    description: {},
+    alias1: {},
+    alias2: {},
+    alias3: {},
+  },
+};
+
 const UserSearch: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     id: {},
@@ -7428,6 +7664,43 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
+    findGiftCardProducts: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: GiftCardProductInput,
+          it: [0],
+        },
+        filter: {
+          nt: GiftCardProductListFilter,
+          it: [0],
+        },
+      },
+      // nt: GiftCardProduct, <-- Assigned later to avoid potential circular dependency.
+    },
+    findMarketplaceServiceRecord: {
+      // nt: MarketplaceServiceRecord, <-- Assigned later to avoid potential circular dependency.
+    },
+    findVendors: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: VendorInput,
+          it: [0],
+        },
+        filter: {
+          nt: VendorListFilter,
+          it: [0],
+        },
+      },
+      // nt: Vendor, <-- Assigned later to avoid potential circular dependency.
+    },
     findUserSearchById: {
       a: {
         options: {
@@ -8765,6 +9038,10 @@ GroupInput.f!['metadata']!.nt = BaseModelMetadataInput;
 GroupInput.f!['appliedGroupRules']!.nt = AppliedGroupRuleInput;
 AppliedGroupRuleInput.f!['events']!.nt = ModelEventInput;
 AppliedGroupRuleInput.f!['metadata']!.nt = BaseModelMetadataInput;
+GiftCardProductInput.f!['events']!.nt = ModelEventInput;
+GiftCardProductInput.f!['metadata']!.nt = BaseModelMetadataInput;
+VendorInput.f!['events']!.nt = ModelEventInput;
+VendorInput.f!['metadata']!.nt = BaseModelMetadataInput;
 UserSearchInput.f!['events']!.nt = ModelEventInput;
 UserSearchInput.f!['metadata']!.nt = BaseModelMetadataInput;
 UserSearchInput.f!['filter']!.nt = UserSearchFilterInput;
@@ -9072,6 +9349,13 @@ IqlaaJordanianGovernorate.f['childOptions']!.nt = Option;
 IqlaaJordanianGovernorate.f['parentOption']!.nt = Option;
 MastercardBank.f['events']!.nt = ModelEvent;
 MastercardBank.f['metadata']!.nt = BaseModelMetadata;
+GiftCardProduct.f['events']!.nt = ModelEvent;
+GiftCardProduct.f['metadata']!.nt = BaseModelMetadata;
+GiftCardProduct.f['denominations']!.nt = GiftCardDenomination;
+MarketplaceServiceRecord.f['events']!.nt = ModelEvent;
+MarketplaceServiceRecord.f['metadata']!.nt = BaseModelMetadata;
+Vendor.f['events']!.nt = ModelEvent;
+Vendor.f['metadata']!.nt = BaseModelMetadata;
 UserSearch.f['events']!.nt = ModelEvent;
 UserSearch.f['metadata']!.nt = BaseModelMetadata;
 UserSearch.f['filter']!.nt = UserSearchFilter;
@@ -9222,6 +9506,9 @@ Query.f['findIndonesianProvinces']!.nt = IndonesianProvince;
 Query.f['findIqlaaJordanianDistricts']!.nt = IqlaaJordanianDistrict;
 Query.f['findIqlaaJordanianGovernorates']!.nt = IqlaaJordanianGovernorate;
 Query.f['findMastercardBanks']!.nt = MastercardBank;
+Query.f['findGiftCardProducts']!.nt = GiftCardProduct;
+Query.f['findMarketplaceServiceRecord']!.nt = MarketplaceServiceRecord;
+Query.f['findVendors']!.nt = Vendor;
 Query.f['findUserSearchById']!.nt = UserSearch;
 Query.f['findUserSearches']!.nt = UserSearch;
 Query.f['findUserSearchResults']!.nt = UserWithScore;
@@ -9363,6 +9650,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     AdminTaskType,
     AdminTaskResult,
     ChannelInvitationDirection,
+    ServiceName,
     UserSearchType,
     UserSearchFieldOption,
     UserSearchSubscriptionType,
@@ -9415,6 +9703,10 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     AppliedGroupRuleInput,
     GroupRuleBaseConfigInput,
     GroupListFilter,
+    GiftCardProductInput,
+    GiftCardProductListFilter,
+    VendorInput,
+    VendorListFilter,
     UserSearchInput,
     UserSearchFilterInput,
     UserSearchListFilter,
@@ -9514,6 +9806,10 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     IqlaaJordanianDistrict,
     IqlaaJordanianGovernorate,
     MastercardBank,
+    GiftCardProduct,
+    GiftCardDenomination,
+    MarketplaceServiceRecord,
+    Vendor,
     UserSearch,
     UserSearchFilter,
     UserSearchRunInfo,

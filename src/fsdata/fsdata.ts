@@ -16,6 +16,7 @@ import findChannelParticipants from './operations/channelParticipant/findChannel
 import create from './operations/create.js';
 import deleteFnc from './operations/delete.js';
 import findById from './operations/findById.js';
+import findGiftCardProducts from './operations/giftCardProduct/findGiftCardProducts.js';
 import createMultiStepAction from './operations/multiStepAction/createMultiStepAction.js';
 import findMyActiveMultiStepActions from './operations/multiStepAction/findMyActiveMultiStepActions.js';
 import getMultiStepActionProgress from './operations/multiStepAction/getMultiStepActionProgress.js';
@@ -41,6 +42,7 @@ import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
 import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
 import findUsers from './operations/user/findUsers.js';
+import findVendors from './operations/vendor/findVendors.js';
 
 const fsdata = {
   create,
@@ -56,6 +58,7 @@ const fsdata = {
     findMyChannels,
     updateChannel,
   },
+
   channelInvitation: {
     acceptChannelInvitation,
     createChannelInvitation,
@@ -64,14 +67,21 @@ const fsdata = {
     findChannelInvitationsForUser,
     updateChannelInvitation,
   },
+
   channelMessage: {
     createChannelMessage,
     findChannelMessages,
     updateChannelMessage,
   },
+
   channelParticipant: {
     findChannelParticipants,
   },
+
+  giftCardProduct: {
+    findGiftCardProducts,
+  },
+
   myUser: {
     blockUserForMe,
     deleteMyUser,
@@ -102,6 +112,10 @@ const fsdata = {
   user: {
     findUserById,
     findUsers,
+  },
+
+  vendor: {
+    findVendors,
   },
 };
 

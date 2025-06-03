@@ -1081,6 +1081,60 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  findGiftCardProducts: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findGiftCardProducts<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findGiftCardProducts: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findGiftCardProducts'
+      >
+    >
+  >;
+
+  findMarketplaceServiceRecord: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findMarketplaceServiceRecord<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findMarketplaceServiceRecord: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findMarketplaceServiceRecord'
+      >
+    >
+  >;
+
+  findVendors: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findVendors<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findVendors: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findVendors'
+      >
+    >
+  >;
+
   findUserSearchById: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(

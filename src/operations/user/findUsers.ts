@@ -73,9 +73,9 @@ const findUsers = async (
     );
 
     if (Array.isArray(result.objects) && result.objects.length > 0) {
-      for (const user of result.objects) {
-        await db.upsert<User>(user as unknown as User, ModelType.User);
-      }
+      // for (const user of result.objects) {
+      //   await db.upsert<User>(user as unknown as User, ModelType.User);
+      // }
     }
 
     return result;

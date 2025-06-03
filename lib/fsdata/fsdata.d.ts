@@ -27,6 +27,9 @@ declare const fsdata: {
     channelParticipant: {
         findChannelParticipants: (filter: import("./gql/graphql.js").ChannelParticipantListFilter | undefined, match: import("./gql/graphql.js").ChannelParticipantInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelParticipant>>;
     };
+    giftCardProduct: {
+        findGiftCardProducts: (filter: import("../index.js").GiftCardProductListFilter | null | undefined, match: Partial<import("../index.js").GiftCardProduct> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").GiftCardProduct>>;
+    };
     myUser: {
         blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<import("../index.js").QueryResult<void>>;
@@ -55,6 +58,9 @@ declare const fsdata: {
     user: {
         findUserById: (userId: string) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
         findUsers: (filter: import("./gql/graphql.js").UserListFilter | null | undefined, match: Partial<import("../index.js").User> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../models/UserListItem.js").UserListItem>>;
+    };
+    vendor: {
+        findVendors: (filter: import("../index.js").VendorListFilter | null | undefined, match: Partial<import("../index.js").Vendor> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Vendor>>;
     };
 };
 export default fsdata;

@@ -92,6 +92,10 @@ export interface $MethodsSelect {
   IqlaaJordanianDistrict: IqlaaJordanianDistrict;
   IqlaaJordanianGovernorate: IqlaaJordanianGovernorate;
   MastercardBank: MastercardBank;
+  GiftCardProduct: GiftCardProduct;
+  GiftCardDenomination: GiftCardDenomination;
+  MarketplaceServiceRecord: MarketplaceServiceRecord;
+  Vendor: Vendor;
   UserSearch: UserSearch;
   UserSearchFilter: UserSearchFilter;
   UserSearchRunInfo: UserSearchRunInfo;
@@ -465,6 +469,24 @@ export interface IqlaaJordanianGovernorate {
 
 export interface MastercardBank {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.MastercardBank>): $SelectionSet;
+}
+
+export interface GiftCardProduct {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GiftCardProduct>): $SelectionSet;
+}
+
+export interface GiftCardDenomination {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GiftCardDenomination>): $SelectionSet;
+}
+
+export interface MarketplaceServiceRecord {
+  <$SelectionSet>(
+    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.MarketplaceServiceRecord>,
+  ): $SelectionSet;
+}
+
+export interface Vendor {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Vendor>): $SelectionSet;
 }
 
 export interface UserSearch {

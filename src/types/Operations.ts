@@ -27,6 +27,8 @@ import { ChannelMessage } from '../models/ChannelMessage.js';
 import { ChannelMessageListFilter } from '../models/ChannelMessageListFilter.js';
 import { ChannelParticipant } from '../models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from '../models/ChannelParticipantListFilter.js';
+import { GiftCardProduct } from '../models/GiftCardProduct.js';
+import { GiftCardProductListFilter } from '../models/GiftCardProductListFilter.js';
 import { Model } from '../models/Model.js';
 import { MyUser } from '../models/MyUser.js';
 import { MyUserChanges } from '../models/MyUserChanges.js';
@@ -36,6 +38,8 @@ import { User } from '../models/User.js';
 import { UserInbox } from '../models/UserInbox.js';
 import { UserListFilter } from '../models/UserListFilter.js';
 import { UserListItem } from '../models/UserListItem.js';
+import { Vendor } from '../models/Vendor.js';
+import { VendorListFilter } from '../models/VendorListFilter.js';
 
 export interface Operations {
   count: <T extends Model = Model>(
@@ -217,6 +221,16 @@ export interface Operations {
     ) => Promise<QueryResult<ChannelParticipant>>;
   };
 
+  giftCardProduct: {
+    findGiftCardProducts: (
+      filter: GiftCardProductListFilter | null | undefined,
+      match: Partial<GiftCardProduct> | null | undefined,
+      selector: MangoQueryTypes<GiftCardProduct> | null | undefined,
+      options: FindObjectsOptions,
+      queryOptions: QueryOptions,
+    ) => Promise<QueryResult<GiftCardProduct>>;
+  };
+
   myUser: {
     blockUserForMe: (
       userId: string,
@@ -343,5 +357,15 @@ export interface Operations {
       options: FindObjectsOptions,
       queryOptions: QueryOptions,
     ) => Promise<QueryResult<UserListItem>>
+  };
+
+  vendor: {
+    findVendors: (
+      filter: VendorListFilter | null | undefined,
+      match: Partial<Vendor> | null | undefined,
+      selector: MangoQueryTypes<Vendor> | null | undefined,
+      options: FindObjectsOptions,
+      queryOptions: QueryOptions,
+    ) => Promise<QueryResult<Vendor>>;
   };
 }
