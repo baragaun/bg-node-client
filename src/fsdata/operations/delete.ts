@@ -70,7 +70,7 @@ const deleteFnc = async (
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
-    if (response.data[fieldDef.field] !== id) {
+    if (!response.data[fieldDef.field]) {
       logger.error('fsdata.delete: invalid response.');
       return { error: 'system-error' };
     }

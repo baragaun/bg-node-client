@@ -1,153 +1,151 @@
 export const GiftCardProductSchema = {
-  'title': 'GiftCardProduct',
-  'version': 0,
-  'primaryKey': 'id',
-  'type': 'object',
-  'properties': {
-    'id': {
-      'type': 'string',
-      'maxLength': 32,
+  title: 'GiftCardProduct',
+  version: 0,
+  primaryKey: 'id',
+  type: 'object',
+  properties: {
+    id: {
+      type: 'string',
+      maxLength: 32,
     },
-    'adminNotes': {
-      'type': 'string',
-      'nullable': true,
+    adminNotes: {
+      type: 'string',
+      nullable: true,
     },
-    'metadata': {
-      'type': 'object',
-      'properties': {
-        'updatedAt': {
-          'type': 'string',
-          'format': 'date-time',
-          'nullable': true,
+    metadata: {
+      type: 'object',
+      properties: {
+        updatedAt: {
+          type: 'string',
+          format: 'date-time',
+          nullable: true,
         },
       },
-      'nullable': true,
+      nullable: true,
     },
-    'createdAt': {
-      'type': 'string',
-      'format': 'date-time',
+    createdAt: {
+      type: 'string',
+      format: 'date-time',
     },
-    'createdBy': {
-      'type': 'string',
-      'maxLength': 32,
-      'nullable': true,
+    createdBy: {
+      type: 'string',
+      maxLength: 32,
+      nullable: true,
     },
-    'updatedAt': {
-      'type': 'string',
-      'format': 'date-time',
-      'nullable': true,
+    updatedAt: {
+      type: 'string',
+      format: 'date-time',
+      nullable: true,
     },
-    'updatedBy': {
-      'type': 'string',
-      'maxLength': 32,
-      'nullable': true,
+    updatedBy: {
+      type: 'string',
+      maxLength: 32,
+      nullable: true,
     },
-    'deletedAt': {
-      'type': 'string',
-      'format': 'date-time',
-      'nullable': true,
+    deletedAt: {
+      type: 'string',
+      format: 'date-time',
+      nullable: true,
     },
-    'deletedBy': {
-      'type': 'string',
-      'maxLength': 32,
-      'nullable': true,
+    deletedBy: {
+      type: 'string',
+      maxLength: 32,
+      nullable: true,
     },
-    'importId': {
-      'type': 'string',
+    importId: {
+      type: 'string',
     },
-    'vendorId': {
-      'type': 'string',
-      'maxLength': 32,
+    vendorId: {
+      type: 'string',
+      maxLength: 32,
     },
-    'vendorImportId': {
-      'type': 'string',
-      'nullable': true,
+    vendorImportId: {
+      type: 'string',
+      nullable: true,
     },
-    'name': {
-      'type': 'string',
+    name: {
+      type: 'string',
     },
-    'description': {
-      'type': 'string',
-      'nullable': true,
+    description: {
+      type: 'string',
+      nullable: true,
     },
-    'categories': {
-      'type': 'array',
-      'items': {
-        'type': 'string',
-        'maxLength': 32,
+    categories: {
+      type: 'array',
+      items: {
+        type: 'string',
+        maxLength: 32,
       },
-      'nullable': true,
+      nullable: true,
     },
-    'slug': {
-      'type': 'string',
-      'nullable': true,
+    slug: {
+      type: 'string',
+      nullable: true,
     },
-    'url': {
-      'type': 'string',
-      'nullable': true,
+    url: {
+      type: 'string',
+      nullable: true,
     },
-    'imageSourceFront': {
-      'type': 'string',
-      'nullable': true,
+    imageSourceFront: {
+      type: 'string',
+      nullable: true,
     },
-    'imageSourceBack': {
-      'type': 'string',
-      'nullable': true,
+    imageSourceBack: {
+      type: 'string',
+      nullable: true,
     },
-    'hasBarcode': {
-      'type': 'boolean',
-      'nullable': true,
+    hasBarcode: {
+      type: 'boolean',
+      nullable: true,
     },
-    'barcodeFormat': {
-      'type': 'string',
-      'nullable': true,
+    barcodeFormat: {
+      type: 'string',
+      nullable: true,
     },
-    'genericGiftCardId': {
-      'type': 'string',
-      'maxLength': 32,
-      'nullable': true,
+    genericGiftCardId: {
+      type: 'string',
+      maxLength: 32,
+      nullable: true,
     },
-    'isGeneric': {
-      'type': 'boolean',
-      'nullable': true,
+    isGeneric: {
+      type: 'boolean',
+      nullable: true,
     },
-    'hasPin': {
-      'type': 'boolean',
-      'nullable': true,
+    hasPin: {
+      type: 'boolean',
+      nullable: true,
     },
-    'termsEn': {
-      'type': 'string',
-      'nullable': true,
+    termsEn: {
+      type: 'string',
+      nullable: true,
     },
-    'termsUrl': {
-      'type': 'string',
-      'nullable': true,
+    termsUrl: {
+      type: 'string',
+      nullable: true,
     },
-    'instructionsEn': {
-      'type': 'string',
-      'nullable': true,
+    instructionsEn: {
+      type: 'string',
+      nullable: true,
     },
-    'instructionsUrl': {
-      'type': 'string',
-      'nullable': true,
+    instructionsUrl: {
+      type: 'string',
+      nullable: true,
     },
-    'denominations': {
-      'type': 'array',
-      'items': {
-        'type': 'object',
-        'properties': {
-          'amount': {
-            'type': 'integer',
+    denominations: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          amount: {
+            type: 'integer',
           },
-          'enabled': {
-            'type': 'boolean',
+          enabled: {
+            type: 'boolean',
           },
         },
       },
-      'nullable': true,
+      nullable: true,
     },
   },
-  'required': [
-    'id',
-  ],
+  required: ['id'],
 };
