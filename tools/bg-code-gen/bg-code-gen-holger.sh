@@ -19,5 +19,3 @@ cd $BG_CODE_GEN_ROOT || exit
 node --loader ts-node/esm ./src/projects/bg-node-client/index.ts
 
 cd $CUR_DIR || exit
-
-pnpm run lint --fix
