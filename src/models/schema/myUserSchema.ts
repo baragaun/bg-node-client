@@ -275,6 +275,7 @@ export const MyUserSchema = {
         'enum': [
           'testFeatures1',
           'testFeatures2',
+          null,
         ],
       },
       'nullable': true,

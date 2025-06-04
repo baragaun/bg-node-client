@@ -90,6 +90,7 @@ export const ChannelSchema = {
         'mentoring',
         'support',
         'welcome',
+        null,
       ],
     },
     'statuses': {
