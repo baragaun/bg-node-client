@@ -1,10 +1,14 @@
 export class ProductCategory {
+  public id = '';
   public name = '';
   public labelEn = '';
   public sortIndex = 0;
 
   constructor(attributes?: Partial<ProductCategory>) {
     if (attributes) {
+      if (attributes.id) {
+        this.id = attributes.id;
+      }
       if (attributes.name) {
         this.name = attributes.name;
       }
