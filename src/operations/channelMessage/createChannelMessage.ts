@@ -1,9 +1,10 @@
 import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
+import { BgListenerTopic, ModelType, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
+import { BgChannelDataListener } from '../../types/BgChannelListener.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannelMessage = async (
@@ -49,6 +50,21 @@ const createChannelMessage = async (
 
     if (!result.error || result.object) {
       await db.insert<ChannelMessage>(result.object, ModelType.ChannelMessage);
+    }
+
+    for (const listener of libData.listeners()) {
+      if (
+        listener.topic === BgListenerTopic.channel &&
+        typeof (listener as BgChannelDataListener).onChannelMessageCreated === 'function'
+      ) {
+        logger.debug('createChannelMessage: notifying listener', { id: listener.id });
+        const listenerResponse = (listener as BgChannelDataListener).onChannelMessageCreated(result);
+        if (listenerResponse && typeof listenerResponse.then === 'function') {
+          listenerResponse.catch((error) => {
+            logger.error('createChannelMessage: listener onChannelMessageCreated failed.', { error });
+          });
+        }
+      }
     }
 
     return result;

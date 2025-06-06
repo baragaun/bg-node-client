@@ -19,9 +19,9 @@ export interface BgChannelDataListener extends BgBaseListener {
   onChannelInvitationUpdated?: (result: QueryResult<ChannelInvitation>) => void;
   onChannelInvitationDeleted?: (result: QueryResult<ChannelInvitation>) => void;
 
-  onChannelMessageCreated?: (result: QueryResult<ChannelMessage>) => void;
-  onChannelMessageUpdated?: (result: QueryResult<ChannelMessage>) => void;
-  onChannelMessageDeleted?: (result: QueryResult<ChannelMessage>) => void;
+  onChannelMessageCreated?: (result: QueryResult<ChannelMessage>) => void | Promise<void>;
+  onChannelMessageUpdated?: (result: QueryResult<ChannelMessage>) => void | Promise<void>;
+  onChannelMessageDeleted?: (result: QueryResult<ChannelMessage>) => void | Promise<void>;
 
   onChannelParticipantCreated?: (result: QueryResult<ChannelMessage>) => void;
   onChannelParticipantUpdated?: (result: QueryResult<ChannelMessage>) => void;
