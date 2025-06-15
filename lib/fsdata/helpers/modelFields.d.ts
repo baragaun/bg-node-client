@@ -346,6 +346,39 @@ declare const modelFields: {
         labelEn: boolean;
         sortIndex: boolean;
     };
+    shoppingCart: {
+        id: boolean;
+        sumItemPrice: boolean;
+        totalPrice: boolean;
+        vat: boolean;
+        items: {
+            productId: boolean;
+            count: boolean;
+            price: boolean;
+            totalPrice: boolean;
+        };
+        adminNotes: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+    };
+    shoppingCartItem: {
+        id: boolean;
+        productId: boolean;
+        count: boolean;
+        price: boolean;
+        totalPrice: boolean;
+        adminNotes: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+    };
     sidMultiStepAction: {
         actionStatus: boolean;
         actionType: boolean;

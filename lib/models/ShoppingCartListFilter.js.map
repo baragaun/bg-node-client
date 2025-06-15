@@ -1,0 +1,1 @@
+{"version":3,"file":"ShoppingCartListFilter.js","sourceRoot":"","sources":["../../src/models/ShoppingCartListFilter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,qBAAqB,CAAC;AAErD,MAAM,OAAO,sBAAuB,SAAQ,cAAc;IAExD,YAAY,UAA4C;QACtD,KAAK,CAAC,UAAU,CAAC,CAAC;IACpB,CAAC;CACF"}

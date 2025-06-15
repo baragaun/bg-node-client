@@ -18,7 +18,6 @@ export class Vendor extends BaseModel {
     super(attributes);
 
     if (attributes) {
-      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.name) {
         this.name = attributes.name;
       }

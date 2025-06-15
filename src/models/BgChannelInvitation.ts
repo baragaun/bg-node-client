@@ -21,7 +21,6 @@ export class BgChannelInvitation extends BaseModel {
     super(attributes);
 
     if (attributes) {
-      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.channelId) {
         this.channelId = attributes.channelId;
       }

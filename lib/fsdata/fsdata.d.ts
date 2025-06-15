@@ -58,6 +58,14 @@ declare const fsdata: {
     productCategory: {
         findProductCategories: (filter: import("../index.js").ProductCategoryListFilter | null | undefined, match: Partial<import("../index.js").ProductCategory> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ProductCategory>>;
     };
+    shoppingCart: {
+        findMyShoppingCart: () => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCart>>;
+        emptyMyShoppingCart: () => Promise<import("../index.js").QueryResult<void>>;
+    };
+    shoppingCartItem: {
+        createShoppingCartItem: (props: Partial<import("../index.js").ShoppingCartItem>) => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCartItem>>;
+        deleteShoppingCartItem: (id: string) => Promise<import("../index.js").QueryResult<void>>;
+    };
     user: {
         findUserById: (userId: string) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
         findUsers: (filter: import("./gql/graphql.js").UserListFilter | null | undefined, match: Partial<import("../index.js").User> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").UserListItem>>;

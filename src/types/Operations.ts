@@ -34,6 +34,8 @@ import { MyUser } from '../models/MyUser.js';
 import { MyUserChanges } from '../models/MyUserChanges.js';
 import { ProductCategory } from '../models/ProductCategory.js';
 import { ProductCategoryListFilter } from '../models/ProductCategoryListFilter.js';
+import { ShoppingCart } from '../models/ShoppingCart.js';
+import { ShoppingCartItem } from '../models/ShoppingCartItem.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
 import { User } from '../models/User.js';
@@ -358,6 +360,16 @@ export interface Operations {
       queryOptions: QueryOptions,
     ) => Promise<QueryResult<ProductCategory>>
   }
+
+  shoppingCart: {
+    findMyShoppingCart: (queryOptions?: QueryOptions) => Promise<QueryResult<ShoppingCart>>;
+    emptyMyShoppingCart: (queryOptions?: QueryOptions) => Promise<QueryResult<void>>;
+  };
+
+  shoppingCartItem: {
+    createShoppingCartItem: (props: Partial<ShoppingCartItem>) => Promise<QueryResult<ShoppingCartItem>>;
+    deleteShoppingCartItem: (id: string) => Promise<QueryResult<void>>;
+  };
 
   user: {
     findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>
