@@ -18,7 +18,6 @@ export class Product extends BaseModel {
     super(attributes);
 
     if (attributes) {
-      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.importId) {
         this.importId = attributes.importId;
       }
@@ -55,7 +54,6 @@ export class Product extends BaseModel {
       if (attributes.barcodeFormat) {
         this.barcodeFormat = attributes.barcodeFormat;
       }
-      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

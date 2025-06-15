@@ -1608,6 +1608,111 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
       >
     >
   >;
+
+  findPurchaseOrderItems: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findPurchaseOrderItems<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findPurchaseOrderItems: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findPurchaseOrderItems'
+      >
+    >
+  >;
+
+  findPurchaseOrders: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findPurchaseOrders<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findPurchaseOrders: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findPurchaseOrders'
+      >
+    >
+  >;
+
+  findShoppingCarts: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findShoppingCarts<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findShoppingCarts: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findShoppingCarts'
+      >
+    >
+  >;
+
+  findMyShoppingCart: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyShoppingCart<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findMyShoppingCart: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findMyShoppingCart'
+      >
+    >
+  >;
+
+  findShoppingCartItems: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findShoppingCartItems<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findShoppingCartItems: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findShoppingCartItems'
+      >
+    >
+  >;
+
+  findWalletServiceRecord: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findWalletServiceRecord<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findWalletServiceRecord: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findWalletServiceRecord'
+      >
+    >
+  >;
 }
 
 export interface MutationMethods<$Context extends $$Utilities.Context> {
@@ -3460,6 +3565,83 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'createUserTracking'
+      >
+    >
+  >;
+
+  emptyMyShoppingCart: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet?: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.emptyMyShoppingCart<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { emptyMyShoppingCart: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'emptyMyShoppingCart'
+      >
+    >
+  >;
+
+  emptyShoppingCart: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.emptyShoppingCart<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { emptyShoppingCart: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'emptyShoppingCart'
+      >
+    >
+  >;
+
+  createShoppingCartItem: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.createShoppingCartItem<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createShoppingCartItem: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createShoppingCartItem'
+      >
+    >
+  >;
+
+  deleteShoppingCartItem: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.deleteShoppingCartItem<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteShoppingCartItem: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteShoppingCartItem'
       >
     >
   >;

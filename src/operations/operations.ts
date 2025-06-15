@@ -62,6 +62,10 @@ import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import verifyMyPassword from './myUser/verifyMyPassword.js';
 import findProductCategories from './productCategory/findProductCategories.js';
+import emptyMyShoppingCart from './shoppingCart/emptyMyShoppingCart.js';
+import findMyShoppingCart from './shoppingCart/findMyShoppingCart.js';
+import createShoppingCartItem from './shoppingCartItem/createShoppingCartItem.js';
+import deleteShoppingCartItem from './shoppingCartItem/deleteShoppingCartItem.js';
 import update from './update.js';
 import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
@@ -155,6 +159,16 @@ const operations: Operations = {
 
   productCategory: {
     findProductCategories,
+  },
+
+  shoppingCart: {
+    emptyMyShoppingCart,
+    findMyShoppingCart,
+  },
+
+  shoppingCartItem: {
+    createShoppingCartItem,
+    deleteShoppingCartItem,
   },
 
   user: {

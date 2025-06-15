@@ -41,7 +41,6 @@ export class SidMultiStepActionProgress extends BaseModel {
     super(attributes);
 
     if (attributes) {
-      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.actionId) {
         this.actionId = attributes.actionId;
       }
@@ -129,7 +128,6 @@ export class SidMultiStepActionProgress extends BaseModel {
       if (attributes.expiresAt) {
         this.expiresAt = attributes.expiresAt;
       }
-      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

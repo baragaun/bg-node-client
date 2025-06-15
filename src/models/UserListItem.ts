@@ -29,7 +29,6 @@ export class UserListItem extends BaseModel {
     super(attributes);
 
     if (attributes) {
-      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.id) {
         this.id = attributes.id;
       }
@@ -103,7 +102,6 @@ export class UserListItem extends BaseModel {
       if (attributes.offersHelp !== undefined) {
         this.offersHelp = attributes.offersHelp;
       }
-      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 

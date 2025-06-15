@@ -341,19 +341,54 @@ const myUser = {
 };
 
 const productCategory = {
-    id: true,
-    adminNotes: true,
-    createdAt: true,
-    createdBy: true,
-    updatedAt: true,
-    updatedBy: true,
-    deletedAt: true,
-    deletedBy: true,
-    importId: true,
-    name: true,
-    labelEn: true,
-    sortIndex: true,
-  };
+  id: true,
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+  importId: true,
+  name: true,
+  labelEn: true,
+  sortIndex: true,
+};
+
+const shoppingCart = {
+  id: true,
+  sumItemPrice: true,
+  totalPrice: true,
+  vat: true,
+  items: {
+    productId: true,
+    count: true,
+    price: true,
+    totalPrice: true,
+  },
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+};
+
+const shoppingCartItem = {
+  id: true,
+  productId: true,
+  count: true,
+  price: true,
+  totalPrice: true,
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+};
 
 const sidMultiStepAction = {
   actionStatus: true,
@@ -733,6 +768,8 @@ const modelFields = {
   giftCardProduct,
   myUser,
   productCategory,
+  shoppingCart,
+  shoppingCartItem,
   sidMultiStepAction,
   sidMultiStepActionProgress,
   user,

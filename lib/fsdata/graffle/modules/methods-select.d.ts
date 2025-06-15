@@ -94,6 +94,11 @@ export interface $MethodsSelect {
     TrainingContentPage: TrainingContentPage;
     TrainingSession: TrainingSession;
     TrainingSessionCompletionInfo: TrainingSessionCompletionInfo;
+    PurchaseOrderItem: PurchaseOrderItem;
+    PurchaseOrder: PurchaseOrder;
+    ShoppingCart: ShoppingCart;
+    ShoppingCartItem: ShoppingCartItem;
+    WalletServiceRecord: WalletServiceRecord;
     UserAuthResponse: UserAuthResponse;
     ContentTag: ContentTag;
     SupportChannelConfig: SupportChannelConfig;
@@ -383,6 +388,21 @@ export interface TrainingSession {
 }
 export interface TrainingSessionCompletionInfo {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.TrainingSessionCompletionInfo>): $SelectionSet;
+}
+export interface PurchaseOrderItem {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.PurchaseOrderItem>): $SelectionSet;
+}
+export interface PurchaseOrder {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.PurchaseOrder>): $SelectionSet;
+}
+export interface ShoppingCart {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ShoppingCart>): $SelectionSet;
+}
+export interface ShoppingCartItem {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ShoppingCartItem>): $SelectionSet;
+}
+export interface WalletServiceRecord {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletServiceRecord>): $SelectionSet;
 }
 export interface UserAuthResponse {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserAuthResponse>): $SelectionSet;
