@@ -144,7 +144,9 @@ export declare enum ModelType {
     SidMultiStepActionProgress = "SidMultiStepActionProgress",
     User = "User",
     UserInbox = "UserInbox",
-    Vendor = "Vendor"
+    Vendor = "Vendor",
+    Wallet = "Wallet",
+    WalletItem = "WalletItem"
 }
 export declare enum NotificationMethod {
     auto = "auto",

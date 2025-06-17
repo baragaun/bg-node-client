@@ -4,36 +4,7 @@ import logger from '../../helpers/logger.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
-
-const _fieldDef = {
-  [ModelType.Channel]: {
-    field: 'deleteChannel',
-    keyFieldName: 'channelId',
-  },
-  [ModelType.ChannelInvitation]: {
-    field: 'deleteChannelInvitation',
-    keyFieldName: 'channelInvitationId',
-  },
-  [ModelType.ChannelMessage]: {
-    field: 'deleteChannelMessage',
-    keyFieldName: 'channelMessageId',
-  },
-  [ModelType.ChannelParticipant]: {
-    field: 'deleteChannelParticipant',
-    keyFieldName: 'channelParticipantId',
-  },
-  [ModelType.SidMultiStepAction]: {
-    field: '',
-  },
-  [ModelType.MyUser]: {
-    field: 'deleteMyUser',
-    keyFieldName: '',
-  },
-  [ModelType.User]: {
-    field: 'deleteUser',
-    keyFieldName: 'userId',
-  },
-};
+import { modelCrudOperations } from '../helpers/modelCrudOperations.js';
 
 const deleteFnc = async (
   id: string,
@@ -46,7 +17,7 @@ const deleteFnc = async (
     }
 
     const client = graffleClientStore.get();
-    const fieldDef = _fieldDef[modelType];
+    const fieldDef = modelCrudOperations[modelType];
 
     if (!fieldDef) {
       logger.error('fsdata.delete: invalid modelType provided', { modelType });
@@ -61,7 +32,7 @@ const deleteFnc = async (
 
     logger.debug('fsdata.delete: sending.', { args });
 
-    const response = await client.mutation[fieldDef.field](args);
+    const response = await client.mutation[fieldDef.deleteField](args);
 
     logger.debug('fsdata.delete: response received.', { response });
 
@@ -70,7 +41,7 @@ const deleteFnc = async (
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
-    if (!response.data[fieldDef.field]) {
+    if (!response.data[fieldDef.deleteField]) {
       logger.error('fsdata.delete: invalid response.');
       return { error: 'system-error' };
     }

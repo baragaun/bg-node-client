@@ -6,5 +6,6 @@ export declare enum DbCollection {
     channels = "channels",
     clientInfo = "client-info",
     myUser = "my-user",
-    users = "users"
+    users = "users",
+    wallet = "wallet"
 }

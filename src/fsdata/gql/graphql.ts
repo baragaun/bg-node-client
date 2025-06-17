@@ -2616,6 +2616,8 @@ export enum ModelType {
   UserSearch = 'UserSearch',
   UserTracking = 'UserTracking',
   Vendor = 'Vendor',
+  Wallet = 'Wallet',
+  WalletItem = 'WalletItem',
   WalletServiceRecord = 'WalletServiceRecord',
   Unset = 'unset'
 }
@@ -2837,7 +2839,7 @@ export type Mutation = {
   deleteMyUser: Scalars['String']['output'];
   deleteNotification: Scalars['String']['output'];
   deleteNotificationTemplate: Scalars['String']['output'];
-  deleteShoppingCartItem: ShoppingCartItem;
+  deleteShoppingCartItem: Scalars['String']['output'];
   deleteSupportChannelConfig: ServiceRequest;
   deleteUploadedAsset: UploadedAsset;
   deleteUser: Scalars['String']['output'];
@@ -2895,6 +2897,7 @@ export type Mutation = {
   updateUser: Scalars['String']['output'];
   updateUserDevice: Scalars['String']['output'];
   updateUserSearch: ServiceRequest;
+  updateWalletItem: ServiceRequest;
   verifyMultiStepActionToken: SidMultiStepActionProgress;
   verifyOneTimeAuthToken: Scalars['Boolean']['output'];
 };
@@ -3421,6 +3424,11 @@ export type MutationUpdateUserDeviceArgs = {
 
 export type MutationUpdateUserSearchArgs = {
   input: UserSearchInput;
+};
+
+
+export type MutationUpdateWalletItemArgs = {
+  input: WalletItemInput;
 };
 
 
@@ -4139,6 +4147,7 @@ export type PurchaseOrder = {
   deletedBy?: Maybe<Scalars['ID']['output']>;
   events?: Maybe<Array<ModelEvent>>;
   id: Scalars['ID']['output'];
+  items: Array<PurchaseOrderItem>;
   metadata?: Maybe<BaseModelMetadata>;
   paidAt?: Maybe<Scalars['DateTimeISO']['output']>;
   refundedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -4173,7 +4182,6 @@ export type PurchaseOrderInput = {
 export type PurchaseOrderItem = {
   __typename?: 'PurchaseOrderItem';
   adminNotes?: Maybe<Scalars['String']['output']>;
-  count: Scalars['Int']['output'];
   createdAt: Scalars['DateTimeISO']['output'];
   createdBy?: Maybe<Scalars['ID']['output']>;
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -4184,6 +4192,7 @@ export type PurchaseOrderItem = {
   orderId: Scalars['ID']['output'];
   price: Scalars['Int']['output'];
   productId: Scalars['ID']['output'];
+  quantity: Scalars['Int']['output'];
   totalPrice: Scalars['Int']['output'];
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
@@ -4191,7 +4200,6 @@ export type PurchaseOrderItem = {
 
 export type PurchaseOrderItemInput = {
   adminNotes?: InputMaybe<Scalars['String']['input']>;
-  count?: InputMaybe<Scalars['Int']['input']>;
   createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   createdBy?: InputMaybe<Scalars['ID']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -4202,6 +4210,7 @@ export type PurchaseOrderItemInput = {
   orderId?: InputMaybe<Scalars['ID']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
   productId?: InputMaybe<Scalars['ID']['input']>;
+  quantity?: InputMaybe<Scalars['Int']['input']>;
   totalPrice?: InputMaybe<Scalars['Int']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedBy?: InputMaybe<Scalars['ID']['input']>;
@@ -4285,9 +4294,10 @@ export type Query = {
   findMyBlockedUsers: Array<User>;
   findMyChannels: Array<ChannelListItem>;
   findMyInbox: UserInbox;
-  findMyShoppingCart: Array<ShoppingCart>;
+  findMyShoppingCart: ShoppingCart;
   findMyUser: MyUser;
   findMyUserDevices: Array<UserDeviceWithoutAuth>;
+  findMyWallet: Wallet;
   findOptions: Array<Option>;
   findPendingChannelInvitationsForUser: Array<ChannelInvitation>;
   findProductCategories: Array<ProductCategory>;
@@ -4296,6 +4306,7 @@ export type Query = {
   findPurchaseOrders: Array<PurchaseOrder>;
   findReportUserReasons: Array<ReportUserReason>;
   findServiceRequestById: ServiceRequest;
+  findShoppingCartItemById?: Maybe<ShoppingCartItem>;
   findShoppingCartItems: Array<ShoppingCartItem>;
   findShoppingCarts: Array<ShoppingCart>;
   findTrainingById: Training;
@@ -4318,7 +4329,10 @@ export type Query = {
   findUserSearches: Array<UserSearch>;
   findUsers: Array<UserListItem>;
   findVendors: Array<Vendor>;
+  findWalletItemById?: Maybe<WalletItem>;
+  findWalletItems: Array<WalletItem>;
   findWalletServiceRecord: WalletServiceRecord;
+  findWallets: Array<Wallet>;
   getMultiStepActionProgress: SidMultiStepActionProgress;
   /** @deprecated Use findMyBlockedUsers */
   getMyBlockedUsers: Array<User>;
@@ -4647,6 +4661,12 @@ export type QueryFindServiceRequestByIdArgs = {
 };
 
 
+export type QueryFindShoppingCartItemByIdArgs = {
+  id: Scalars['String']['input'];
+  options?: InputMaybe<FindObjectsOptions>;
+};
+
+
 export type QueryFindShoppingCartItemsArgs = {
   filter?: InputMaybe<ShoppingCartItemListFilter>;
   match?: InputMaybe<ShoppingCartItemInput>;
@@ -4778,6 +4798,26 @@ export type QueryFindUsersArgs = {
 export type QueryFindVendorsArgs = {
   filter?: InputMaybe<VendorListFilter>;
   match?: InputMaybe<VendorInput>;
+  options?: InputMaybe<FindObjectsOptions>;
+};
+
+
+export type QueryFindWalletItemByIdArgs = {
+  id: Scalars['String']['input'];
+  options?: InputMaybe<FindObjectsOptions>;
+};
+
+
+export type QueryFindWalletItemsArgs = {
+  filter?: InputMaybe<WalletItemListFilter>;
+  match?: InputMaybe<WalletItemInput>;
+  options?: InputMaybe<FindObjectsOptions>;
+};
+
+
+export type QueryFindWalletsArgs = {
+  filter?: InputMaybe<WalletListFilter>;
+  match?: InputMaybe<WalletInput>;
   options?: InputMaybe<FindObjectsOptions>;
 };
 
@@ -5075,6 +5115,7 @@ export enum ServiceRequestType {
   GraphQlMutationUpdateUserDevice = 'graphQlMutationUpdateUserDevice',
   GraphQlMutationUpdateUserSearch = 'graphQlMutationUpdateUserSearch',
   GraphQlMutationUpdateUserTracking = 'graphQlMutationUpdateUserTracking',
+  GraphQlMutationUpdateWalletItem = 'graphQlMutationUpdateWalletItem',
   GraphQlMutationUpsertBackgroundTask = 'graphQlMutationUpsertBackgroundTask',
   GraphQlMutationVerifyMultiStepActionToken = 'graphQlMutationVerifyMultiStepActionToken',
   GraphQlQueryAdminTaskDefinitions = 'graphQlQueryAdminTaskDefinitions',
@@ -5126,6 +5167,7 @@ export enum ServiceRequestType {
   GraphQlQueryFindMyShoppingCart = 'graphQlQueryFindMyShoppingCart',
   GraphQlQueryFindMyUser = 'graphQlQueryFindMyUser',
   GraphQlQueryFindMyUserDevices = 'graphQlQueryFindMyUserDevices',
+  GraphQlQueryFindMyWallet = 'graphQlQueryFindMyWallet',
   GraphQlQueryFindNlpConversation = 'graphQlQueryFindNlpConversation',
   GraphQlQueryFindOptions = 'graphQlQueryFindOptions',
   GraphQlQueryFindPendingChannelInvitationsForUser = 'graphQlQueryFindPendingChannelInvitationsForUser',
@@ -5151,7 +5193,10 @@ export enum ServiceRequestType {
   GraphQlQueryFindUserSearchResults = 'graphQlQueryFindUserSearchResults',
   GraphQlQueryFindUsers = 'graphQlQueryFindUsers',
   GraphQlQueryFindVendors = 'graphQlQueryFindVendors',
+  GraphQlQueryFindWalletItemById = 'graphQlQueryFindWalletItemById',
+  GraphQlQueryFindWalletItems = 'graphQlQueryFindWalletItems',
   GraphQlQueryFindWalletServiceRecord = 'graphQlQueryFindWalletServiceRecord',
+  GraphQlQueryFindWallets = 'graphQlQueryFindWallets',
   GraphQlQueryGetMm2Integration = 'graphQlQueryGetMm2Integration',
   GraphQlQueryGetMultiStepActionProgress = 'graphQlQueryGetMultiStepActionProgress',
   GraphQlQueryLatestUserDevice = 'graphQlQueryLatestUserDevice',
@@ -5181,7 +5226,7 @@ export type ShoppingCart = {
   deletedBy?: Maybe<Scalars['ID']['output']>;
   events?: Maybe<Array<ModelEvent>>;
   id: Scalars['ID']['output'];
-  items?: Maybe<Array<ShoppingCartItem>>;
+  items: Array<ShoppingCartItem>;
   metadata?: Maybe<BaseModelMetadata>;
   sumItemPrice: Scalars['Int']['output'];
   totalPrice: Scalars['Int']['output'];
@@ -5203,14 +5248,12 @@ export type ShoppingCartInput = {
   totalPrice?: InputMaybe<Scalars['Int']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedBy?: InputMaybe<Scalars['ID']['input']>;
-  userId?: InputMaybe<Scalars['ID']['input']>;
   vat?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ShoppingCartItem = {
   __typename?: 'ShoppingCartItem';
   adminNotes?: Maybe<Scalars['String']['output']>;
-  count: Scalars['Int']['output'];
   createdAt: Scalars['DateTimeISO']['output'];
   createdBy?: Maybe<Scalars['ID']['output']>;
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -5220,6 +5263,7 @@ export type ShoppingCartItem = {
   metadata?: Maybe<BaseModelMetadata>;
   price: Scalars['Int']['output'];
   productId: Scalars['ID']['output'];
+  quantity: Scalars['Int']['output'];
   shoppingCartId: Scalars['ID']['output'];
   totalPrice: Scalars['Int']['output'];
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -5228,7 +5272,6 @@ export type ShoppingCartItem = {
 
 export type ShoppingCartItemInput = {
   adminNotes?: InputMaybe<Scalars['String']['input']>;
-  count?: InputMaybe<Scalars['Int']['input']>;
   createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   createdBy?: InputMaybe<Scalars['ID']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -5238,6 +5281,7 @@ export type ShoppingCartItemInput = {
   metadata?: InputMaybe<BaseModelMetadataInput>;
   price?: InputMaybe<Scalars['Int']['input']>;
   productId?: InputMaybe<Scalars['ID']['input']>;
+  quantity?: InputMaybe<Scalars['Int']['input']>;
   shoppingCartId?: InputMaybe<Scalars['ID']['input']>;
   totalPrice?: InputMaybe<Scalars['Int']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -6731,6 +6775,119 @@ export type VerifyOneTimeAuthTokenInput = {
   updatedBy?: InputMaybe<Scalars['ID']['input']>;
   userIdent?: Scalars['String']['input'];
   userIdentType?: InputMaybe<UserIdentType>;
+};
+
+export type Wallet = {
+  __typename?: 'Wallet';
+  adminNotes?: Maybe<Scalars['String']['output']>;
+  createdAt: Scalars['DateTimeISO']['output'];
+  createdBy?: Maybe<Scalars['ID']['output']>;
+  deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  deletedBy?: Maybe<Scalars['ID']['output']>;
+  events?: Maybe<Array<ModelEvent>>;
+  id: Scalars['ID']['output'];
+  items: Array<WalletItem>;
+  metadata?: Maybe<BaseModelMetadata>;
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<Scalars['ID']['output']>;
+};
+
+export type WalletInput = {
+  adminNotes?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdBy?: InputMaybe<Scalars['ID']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  deletedBy?: InputMaybe<Scalars['ID']['input']>;
+  events?: InputMaybe<Array<ModelEventInput>>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  metadata?: InputMaybe<BaseModelMetadataInput>;
+  updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedBy?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type WalletItem = {
+  __typename?: 'WalletItem';
+  adminNotes?: Maybe<Scalars['String']['output']>;
+  archivedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  balance: Scalars['Int']['output'];
+  barcodeFormat?: Maybe<Scalars['String']['output']>;
+  createdAt: Scalars['DateTimeISO']['output'];
+  createdBy?: Maybe<Scalars['ID']['output']>;
+  deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  deletedBy?: Maybe<Scalars['ID']['output']>;
+  events?: Maybe<Array<ModelEvent>>;
+  hasBarcode?: Maybe<Scalars['Boolean']['output']>;
+  id: Scalars['ID']['output'];
+  imageSourceBack?: Maybe<Scalars['String']['output']>;
+  imageSourceFront?: Maybe<Scalars['String']['output']>;
+  instructionsEn?: Maybe<Scalars['String']['output']>;
+  instructionsUrl?: Maybe<Scalars['String']['output']>;
+  metadata?: Maybe<BaseModelMetadata>;
+  name: Scalars['String']['output'];
+  orderItemId: Scalars['ID']['output'];
+  price: Scalars['Int']['output'];
+  productId: Scalars['ID']['output'];
+  sortIndex: Scalars['Int']['output'];
+  termsEn?: Maybe<Scalars['String']['output']>;
+  termsUrl?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<Scalars['ID']['output']>;
+  vendorId: Scalars['ID']['output'];
+  walletId: Scalars['ID']['output'];
+};
+
+export type WalletItemInput = {
+  adminNotes?: InputMaybe<Scalars['String']['input']>;
+  archivedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  balance?: InputMaybe<Scalars['Int']['input']>;
+  barcodeFormat?: InputMaybe<Scalars['String']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdBy?: InputMaybe<Scalars['ID']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  deletedBy?: InputMaybe<Scalars['ID']['input']>;
+  events?: InputMaybe<Array<ModelEventInput>>;
+  hasBarcode?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  imageSourceBack?: InputMaybe<Scalars['String']['input']>;
+  imageSourceFront?: InputMaybe<Scalars['String']['input']>;
+  instructionsEn?: InputMaybe<Scalars['String']['input']>;
+  instructionsUrl?: InputMaybe<Scalars['String']['input']>;
+  metadata?: InputMaybe<BaseModelMetadataInput>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  orderItemId?: InputMaybe<Scalars['ID']['input']>;
+  price?: InputMaybe<Scalars['Int']['input']>;
+  productId?: InputMaybe<Scalars['ID']['input']>;
+  sortIndex?: InputMaybe<Scalars['Int']['input']>;
+  termsEn?: InputMaybe<Scalars['String']['input']>;
+  termsUrl?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedBy?: InputMaybe<Scalars['ID']['input']>;
+  vendorId?: InputMaybe<Scalars['ID']['input']>;
+  walletId?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type WalletItemListFilter = {
+  caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+  ids?: InputMaybe<Array<Scalars['String']['input']>>;
+  searchText?: InputMaybe<Scalars['String']['input']>;
+  textSearchFields?: InputMaybe<Array<Scalars['String']['input']>>;
+  updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+};
+
+export type WalletListFilter = {
+  caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+  ids?: InputMaybe<Array<Scalars['String']['input']>>;
+  searchText?: InputMaybe<Scalars['String']['input']>;
+  textSearchFields?: InputMaybe<Array<Scalars['String']['input']>>;
+  updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
 };
 
 export type WalletServiceRecord = {

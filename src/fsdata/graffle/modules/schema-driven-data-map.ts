@@ -1769,7 +1769,7 @@ const PurchaseOrderItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     deletedBy: {},
     orderId: {},
     productId: {},
-    count: {},
+    quantity: {},
     price: {},
     totalPrice: {},
   },
@@ -1863,6 +1863,62 @@ const PurchaseOrderListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
   },
 };
 
+const ShoppingCartItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'ShoppingCartItemInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    shoppingCartId: {},
+    productId: {},
+    quantity: {},
+    price: {},
+    totalPrice: {},
+  },
+};
+
+const ShoppingCartItemListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'ShoppingCartItemListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
 const ShoppingCartInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'ShoppingCartInput',
   fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
@@ -1887,7 +1943,6 @@ const ShoppingCartInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
-    userId: {},
     sumItemPrice: {},
     totalPrice: {},
     vat: {},
@@ -1918,8 +1973,78 @@ const ShoppingCartListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
   },
 };
 
-const ShoppingCartItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'ShoppingCartItemInput',
+const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'WalletItemInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'archivedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    walletId: {},
+    productId: {},
+    orderItemId: {},
+    vendorId: {},
+    name: {},
+    price: {},
+    balance: {},
+    imageSourceFront: {},
+    imageSourceBack: {},
+    hasBarcode: {},
+    barcodeFormat: {},
+    termsEn: {},
+    termsUrl: {},
+    instructionsEn: {},
+    instructionsUrl: {},
+    sortIndex: {},
+    archivedAt: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const WalletItemListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'WalletItemListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const WalletInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'WalletInput',
   fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
   f: {
     id: {},
@@ -1942,16 +2067,11 @@ const ShoppingCartItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
-    shoppingCartId: {},
-    productId: {},
-    count: {},
-    price: {},
-    totalPrice: {},
   },
 };
 
-const ShoppingCartItemListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'ShoppingCartItemListFilter',
+const WalletListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'WalletListFilter',
   fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
   f: {
     ids: {},
@@ -7012,7 +7132,7 @@ const PurchaseOrderItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     deletedBy: {},
     orderId: {},
     productId: {},
-    count: {},
+    quantity: {},
     price: {},
     totalPrice: {},
   },
@@ -7053,6 +7173,39 @@ const PurchaseOrder: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     refundedAt: {
       nt: DateTimeISO,
     },
+    items: {
+      // nt: PurchaseOrderItem, <-- Assigned later to avoid potential circular dependency.
+    },
+  },
+};
+
+const ShoppingCartItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    shoppingCartId: {},
+    productId: {},
+    quantity: {},
+    price: {},
+    totalPrice: {},
   },
 };
 
@@ -7087,7 +7240,7 @@ const ShoppingCart: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
-const ShoppingCartItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     id: {},
     adminNotes: {},
@@ -7109,11 +7262,53 @@ const ShoppingCartItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
-    shoppingCartId: {},
+    walletId: {},
     productId: {},
-    count: {},
+    orderItemId: {},
+    vendorId: {},
+    name: {},
     price: {},
-    totalPrice: {},
+    balance: {},
+    imageSourceFront: {},
+    imageSourceBack: {},
+    hasBarcode: {},
+    barcodeFormat: {},
+    termsEn: {},
+    termsUrl: {},
+    instructionsEn: {},
+    instructionsUrl: {},
+    sortIndex: {},
+    archivedAt: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const Wallet: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    items: {
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
   },
 };
 
@@ -8499,6 +8694,36 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: PurchaseOrder, <-- Assigned later to avoid potential circular dependency.
     },
+    findShoppingCartItemById: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ShoppingCartItem, <-- Assigned later to avoid potential circular dependency.
+    },
+    findShoppingCartItems: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: ShoppingCartItemInput,
+          it: [0],
+        },
+        filter: {
+          nt: ShoppingCartItemListFilter,
+          it: [0],
+        },
+      },
+      // nt: ShoppingCartItem, <-- Assigned later to avoid potential circular dependency.
+    },
     findShoppingCarts: {
       a: {
         options: {
@@ -8519,22 +8744,55 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     findMyShoppingCart: {
       // nt: ShoppingCart, <-- Assigned later to avoid potential circular dependency.
     },
-    findShoppingCartItems: {
+    findWalletItemById: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
+    findWalletItems: {
       a: {
         options: {
           nt: FindObjectsOptions,
           it: [0],
         },
         match: {
-          nt: ShoppingCartItemInput,
+          nt: WalletItemInput,
           it: [0],
         },
         filter: {
-          nt: ShoppingCartItemListFilter,
+          nt: WalletItemListFilter,
           it: [0],
         },
       },
-      // nt: ShoppingCartItem, <-- Assigned later to avoid potential circular dependency.
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
+    findWallets: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: WalletInput,
+          it: [0],
+        },
+        filter: {
+          nt: WalletListFilter,
+          it: [0],
+        },
+      },
+      // nt: Wallet, <-- Assigned later to avoid potential circular dependency.
+    },
+    findMyWallet: {
+      // nt: Wallet, <-- Assigned later to avoid potential circular dependency.
     },
     findWalletServiceRecord: {
       // nt: WalletServiceRecord, <-- Assigned later to avoid potential circular dependency.
@@ -9540,15 +9798,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    emptyMyShoppingCart: {},
-    emptyShoppingCart: {
-      a: {
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-    },
     createShoppingCartItem: {
       a: {
         input: {
@@ -9565,7 +9814,24 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [1],
         },
       },
-      // nt: ShoppingCartItem, <-- Assigned later to avoid potential circular dependency.
+    },
+    emptyMyShoppingCart: {},
+    emptyShoppingCart: {
+      a: {
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+    },
+    updateWalletItem: {
+      a: {
+        input: {
+          nt: WalletItemInput,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
   },
 };
@@ -9669,10 +9935,14 @@ PurchaseOrderItemInput.f!['events']!.nt = ModelEventInput;
 PurchaseOrderItemInput.f!['metadata']!.nt = BaseModelMetadataInput;
 PurchaseOrderInput.f!['events']!.nt = ModelEventInput;
 PurchaseOrderInput.f!['metadata']!.nt = BaseModelMetadataInput;
-ShoppingCartInput.f!['events']!.nt = ModelEventInput;
-ShoppingCartInput.f!['metadata']!.nt = BaseModelMetadataInput;
 ShoppingCartItemInput.f!['events']!.nt = ModelEventInput;
 ShoppingCartItemInput.f!['metadata']!.nt = BaseModelMetadataInput;
+ShoppingCartInput.f!['events']!.nt = ModelEventInput;
+ShoppingCartInput.f!['metadata']!.nt = BaseModelMetadataInput;
+WalletItemInput.f!['events']!.nt = ModelEventInput;
+WalletItemInput.f!['metadata']!.nt = BaseModelMetadataInput;
+WalletInput.f!['events']!.nt = ModelEventInput;
+WalletInput.f!['metadata']!.nt = BaseModelMetadataInput;
 SignUpUserInput.f!['events']!.nt = ModelEventInput;
 SignUpUserInput.f!['metadata']!.nt = BaseModelMetadataInput;
 VerifyOneTimeAuthTokenInput.f!['events']!.nt = ModelEventInput;
@@ -10066,11 +10336,17 @@ PurchaseOrderItem.f['events']!.nt = ModelEvent;
 PurchaseOrderItem.f['metadata']!.nt = BaseModelMetadata;
 PurchaseOrder.f['events']!.nt = ModelEvent;
 PurchaseOrder.f['metadata']!.nt = BaseModelMetadata;
+PurchaseOrder.f['items']!.nt = PurchaseOrderItem;
+ShoppingCartItem.f['events']!.nt = ModelEvent;
+ShoppingCartItem.f['metadata']!.nt = BaseModelMetadata;
 ShoppingCart.f['events']!.nt = ModelEvent;
 ShoppingCart.f['metadata']!.nt = BaseModelMetadata;
 ShoppingCart.f['items']!.nt = ShoppingCartItem;
-ShoppingCartItem.f['events']!.nt = ModelEvent;
-ShoppingCartItem.f['metadata']!.nt = BaseModelMetadata;
+WalletItem.f['events']!.nt = ModelEvent;
+WalletItem.f['metadata']!.nt = BaseModelMetadata;
+Wallet.f['events']!.nt = ModelEvent;
+Wallet.f['metadata']!.nt = BaseModelMetadata;
+Wallet.f['items']!.nt = WalletItem;
 WalletServiceRecord.f['events']!.nt = ModelEvent;
 WalletServiceRecord.f['metadata']!.nt = BaseModelMetadata;
 ContentTag.f['events']!.nt = ModelEvent;
@@ -10174,9 +10450,14 @@ Query.f['findTrainingSessionsByTrainingId']!.nt = TrainingSession;
 Query.f['findLatestTrainingSessionForMe']!.nt = TrainingSession;
 Query.f['findPurchaseOrderItems']!.nt = PurchaseOrderItem;
 Query.f['findPurchaseOrders']!.nt = PurchaseOrder;
+Query.f['findShoppingCartItemById']!.nt = ShoppingCartItem;
+Query.f['findShoppingCartItems']!.nt = ShoppingCartItem;
 Query.f['findShoppingCarts']!.nt = ShoppingCart;
 Query.f['findMyShoppingCart']!.nt = ShoppingCart;
-Query.f['findShoppingCartItems']!.nt = ShoppingCartItem;
+Query.f['findWalletItemById']!.nt = WalletItem;
+Query.f['findWalletItems']!.nt = WalletItem;
+Query.f['findWallets']!.nt = Wallet;
+Query.f['findMyWallet']!.nt = Wallet;
 Query.f['findWalletServiceRecord']!.nt = WalletServiceRecord;
 Mutation.f['signInUser']!.nt = UserAuthResponse;
 Mutation.f['signInOauthUser']!.nt = UserAuthResponse;
@@ -10235,7 +10516,7 @@ Mutation.f['blockUserForMeV2']!.nt = ServiceRequest;
 Mutation.f['startMySessionV2']!.nt = ContentStatus;
 Mutation.f['unblockUserForMeV2']!.nt = ServiceRequest;
 Mutation.f['createShoppingCartItem']!.nt = ShoppingCartItem;
-Mutation.f['deleteShoppingCartItem']!.nt = ShoppingCartItem;
+Mutation.f['updateWalletItem']!.nt = ServiceRequest;
 Subscription.f['channelChanged']!.nt = BgChannelChangedEvent;
 Subscription.f['objectChanged']!.nt = ObjectChangedEvent;
 
@@ -10367,10 +10648,14 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     PurchaseOrderItemListFilter,
     PurchaseOrderInput,
     PurchaseOrderListFilter,
-    ShoppingCartInput,
-    ShoppingCartListFilter,
     ShoppingCartItemInput,
     ShoppingCartItemListFilter,
+    ShoppingCartInput,
+    ShoppingCartListFilter,
+    WalletItemInput,
+    WalletItemListFilter,
+    WalletInput,
+    WalletListFilter,
     SignInUserInput,
     SignInOauthUserInput,
     SignUpUserInput,
@@ -10487,8 +10772,10 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     TrainingSessionCompletionInfo,
     PurchaseOrderItem,
     PurchaseOrder,
-    ShoppingCart,
     ShoppingCartItem,
+    ShoppingCart,
+    WalletItem,
+    Wallet,
     WalletServiceRecord,
     UserAuthResponse,
     ContentTag,

@@ -2,13 +2,9 @@ import { BaseModel } from './BaseModel.js';
 
 export class PurchaseOrderItem extends BaseModel {
   public orderId = '';
-
   public productId = '';
-
-  public count = 0;
-
+  public quantity = 0;
   public price = 0;
-
   public totalPrice = 0;
 
   constructor(attributes?: Partial<PurchaseOrderItem>) {
@@ -22,13 +18,13 @@ export class PurchaseOrderItem extends BaseModel {
         this.productId = attributes.productId;
       }
       if (
-        attributes.count === 0 ||
+        attributes.quantity === 0 ||
         (
-          attributes.count &&
-          !isNaN(attributes.count)
+          attributes.quantity &&
+          !isNaN(attributes.quantity)
         )
       ) {
-        this.count = attributes.count;
+        this.quantity = attributes.quantity;
       }
       if (
         attributes.price === 0 ||

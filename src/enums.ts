@@ -177,6 +177,8 @@ export enum ModelType {
   User = 'User',
   UserInbox = 'UserInbox',
   Vendor = 'Vendor',
+  Wallet = 'Wallet',
+  WalletItem = 'WalletItem',
 }
 
 export enum NotificationMethod {

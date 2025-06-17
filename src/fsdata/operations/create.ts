@@ -6,43 +6,7 @@ import modelFactory from '../../models/modelFactory.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
-import modelFields from '../helpers/modelFields.js';
-
-const _fieldDef = {
-  [ModelType.Channel]: {
-    field: 'createChannel',
-    selections: modelFields.channel,
-  },
-  [ModelType.ChannelInvitation]: {
-    field: 'createChannelInvitation',
-    selections: modelFields.channelInvitation,
-  },
-  [ModelType.ChannelMessage]: {
-    field: 'createChannelMessage',
-    selections: modelFields.channelMessage,
-  },
-  [ModelType.ChannelParticipant]: {
-    field: 'createChannelParticipant',
-    selections: modelFields.channelParticipant,
-  },
-  [ModelType.SidMultiStepAction]: {
-    field: 'createChannelParticipant',
-    selections: modelFields.sidMultiStepAction,
-  },
-  [ModelType.SidMultiStepActionProgress]: {
-    field: 'createChannelParticipant',
-    selections: modelFields.sidMultiStepActionProgress,
-  },
-  [ModelType.MyUser]: {
-    field: 'createMy',
-    selections: modelFields.myUser,
-    skipVars: true,
-  },
-  [ModelType.User]: {
-    field: 'createUser',
-    selections: modelFields.user,
-  },
-};
+import { modelCrudOperations } from '../helpers/modelCrudOperations.js';
 
 const create = async <T extends BaseModel = BaseModel>(
   props: Partial<T>,
@@ -55,7 +19,7 @@ const create = async <T extends BaseModel = BaseModel>(
     }
 
     const client = graffleClientStore.get();
-    const fieldDef = _fieldDef[modelType];
+    const fieldDef = modelCrudOperations[modelType];
     const args = { input: props };
 
     if (!fieldDef) {
@@ -69,7 +33,7 @@ const create = async <T extends BaseModel = BaseModel>(
 
     return {
       object: response.data.create
-        ? modelFactory<T>(response.data[fieldDef.field], modelType)
+        ? modelFactory<T>(response.data[fieldDef.createField], modelType)
         : null,
     };
   } catch (error) {

@@ -156,6 +156,10 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
       schema: modelsSchema.UserInbox,
       autoMigrate: true,
     },
+    [DbCollection.wallet]: {
+      schema: modelsSchema.Wallet,
+      autoMigrate: true,
+    },
   };
 
   // if (config.libSignal?.enable) {

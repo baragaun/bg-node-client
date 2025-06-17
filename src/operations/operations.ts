@@ -62,6 +62,7 @@ import updateMyUser from './myUser/updateMyUser.js';
 import verifyMyEmail from './myUser/verifyMyEmail.js';
 import verifyMyPassword from './myUser/verifyMyPassword.js';
 import findProductCategories from './productCategory/findProductCategories.js';
+import findPurchaseOrders from './purchaseOrder/findPurchaseOrders.js';
 import emptyMyShoppingCart from './shoppingCart/emptyMyShoppingCart.js';
 import findMyShoppingCart from './shoppingCart/findMyShoppingCart.js';
 import createShoppingCartItem from './shoppingCartItem/createShoppingCartItem.js';
@@ -70,6 +71,7 @@ import update from './update.js';
 import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
 import findVendors from './vendor/findVendors.js';
+import findMyWallet from './wallet/findMyWallet.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -161,6 +163,10 @@ const operations: Operations = {
     findProductCategories,
   },
 
+  purchaseOrder: {
+    findPurchaseOrders,
+  },
+
   shoppingCart: {
     emptyMyShoppingCart,
     findMyShoppingCart,
@@ -178,6 +184,10 @@ const operations: Operations = {
 
   vendor: {
     findVendors,
+  },
+
+  wallet: {
+    findMyWallet,
   },
 };
 

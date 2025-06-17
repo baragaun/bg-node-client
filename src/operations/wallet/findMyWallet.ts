@@ -1,0 +1,70 @@
+import db from '../../db/db.js';
+import { CachePolicy, ModelType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
+import { defaultQueryOptions } from '../../helpers/defaults.js';
+import libData from '../../helpers/libData.js';
+import logger from '../../helpers/logger.js';
+import { Wallet } from '../../models/Wallet.js';
+import { QueryOptions } from '../../types/QueryOptions.js';
+import { QueryResult } from '../../types/QueryResult.js';
+
+const findMyWallet = async (
+  queryOptions: QueryOptions = defaultQueryOptions,
+): Promise<QueryResult<Wallet>> => {
+  try {
+    if (!libData.isInitialized()) {
+      logger.error('findMyWallet: unavailable');
+      return { error: 'unavailable' };
+    }
+
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('findMyWallet: unauthorized');
+      return { error: 'unauthorized' };
+    }
+
+    const myUserId = libData.clientInfoStore().myUserId;
+    if (!myUserId) {
+      logger.error('findMyWallet: myUserId not set');
+      return { error: 'unauthorized' };
+    }
+
+    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
+
+    //------------------------------------------------------------------------------------------------
+    // Local cache
+    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
+      const localResult = await db.findById<Wallet>(
+        myUserId,
+        ModelType.Wallet,
+      );
+
+      if (!localResult.error && localResult.object) {
+        return localResult;
+      }
+    }
+
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
+
+    const result = await fsdata.wallet.findMyWallet();
+
+    if (result.error) {
+      logger.error('findMyWallet: error from fsdata', { error: result.error });
+      return { error: result.error };
+    }
+
+    if (result.object) {
+      const wallet = { ...result.object };
+      await db.upsert<Wallet>(wallet, ModelType.Wallet);
+    }
+
+    return result;
+  } catch (error) {
+    return { error: (error as Error).message };
+  }
+};
+
+export default findMyWallet;
