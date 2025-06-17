@@ -355,17 +355,48 @@ const productCategory = {
   sortIndex: true,
 };
 
-const shoppingCart = {
+const purchaseOrderItem = {
   id: true,
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+  orderId: true,
+  productId: true,
+  quantity: true,
+  price: true,
+  totalPrice: true,
+};
+
+const purchaseOrder = {
+  id: true,
+  items: { ...purchaseOrderItem },
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+  userId: true,
   sumItemPrice: true,
   totalPrice: true,
   vat: true,
-  items: {
-    productId: true,
-    count: true,
-    price: true,
-    totalPrice: true,
-  },
+  paidAt: true,
+  canceledAt: true,
+  refundedAt: true,
+};
+
+const shoppingCartItem = {
+  id: true,
+  shoppingCartId: true,
+  productId: true,
+  quantity: true,
+  price: true,
+  totalPrice: true,
   adminNotes: true,
   createdAt: true,
   createdBy: true,
@@ -375,12 +406,12 @@ const shoppingCart = {
   deletedBy: true,
 };
 
-const shoppingCartItem = {
+const shoppingCart = {
   id: true,
-  productId: true,
-  count: true,
-  price: true,
+  sumItemPrice: true,
   totalPrice: true,
+  vat: true,
+  items: { ...shoppingCartItem },
   adminNotes: true,
   createdAt: true,
   createdBy: true,
@@ -759,6 +790,47 @@ const vendor = {
   alias3: true,
 };
 
+const walletItem = {
+  id: true,
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+
+  walletId: true,
+  productId: true,
+  orderItemId: true,
+  vendorId: true,
+  name: true,
+  price: true,
+  balance: true,
+  imageSourceFront: true,
+  imageSourceBack: true,
+  hasBarcode: true,
+  barcodeFormat: true,
+  termsEn: true,
+  termsUrl: true,
+  instructionsEn: true,
+  instructionsUrl: true,
+  sortIndex: true,
+  archivedAt: true,
+};
+
+const wallet = {
+  id: true,
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+  // items: { ...walletItem },
+};
+
 const modelFields = {
   channel,
   channelInvitation,
@@ -768,6 +840,8 @@ const modelFields = {
   giftCardProduct,
   myUser,
   productCategory,
+  purchaseOrder,
+  purchaseOrderItem,
   shoppingCart,
   shoppingCartItem,
   sidMultiStepAction,
@@ -776,6 +850,8 @@ const modelFields = {
   userInbox,
   userListItem,
   vendor,
+  wallet,
+  walletItem,
 };
 
 export default modelFields;

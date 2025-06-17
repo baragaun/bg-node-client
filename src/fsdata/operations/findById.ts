@@ -6,44 +6,7 @@ import modelFactory from '../../models/modelFactory.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
-import modelFields from '../helpers/modelFields.js';
-
-const _fieldDef = {
-  [ModelType.Channel]: {
-    field: 'findChannelById',
-    selections: modelFields.channel,
-  },
-  [ModelType.ChannelInvitation]: {
-    field: 'findChannelInvitationById',
-    selections: modelFields.channelInvitation,
-  },
-  [ModelType.ChannelMessage]: {
-    field: 'findChannelMessageById',
-    selections: modelFields.channelMessage,
-  },
-  [ModelType.ChannelParticipant]: {
-    field: 'findChannelParticipantById',
-    selections: modelFields.channelParticipant,
-  },
-  [ModelType.SidMultiStepAction]: {
-    field: '', // todo
-    selections: modelFields.sidMultiStepAction,
-  },
-  [ModelType.SidMultiStepActionProgress]: {
-    field: 'getMultiStepActionProgress',
-    keyFieldName: 'actionId',
-    selections: modelFields.sidMultiStepActionProgress,
-  },
-  [ModelType.MyUser]: {
-    field: 'findMyUser',
-    selections: modelFields.myUser,
-    skipVars: true,
-  },
-  [ModelType.User]: {
-    field: 'findUserById',
-    selections: modelFields.user,
-  },
-};
+import { modelCrudOperations } from '../helpers/modelCrudOperations.js';
 
 const findById = async <T extends Model = Model>(
   id: string,
@@ -57,7 +20,7 @@ const findById = async <T extends Model = Model>(
     }
 
     const client = graffleClientStore.get();
-    const fieldDef = _fieldDef[modelType];
+    const fieldDef = modelCrudOperations[modelType];
 
     if (!fieldDef) {
       logger.error('fsdata.findById: invalid modelType provided', { modelType });
@@ -70,25 +33,25 @@ const findById = async <T extends Model = Model>(
 
     logger.debug('fsdata.findById: sending.', { args });
 
-    const response = await client.query[fieldDef.field]({
+    const response = await client.query[fieldDef.findByIdField]({
       ...args,
       ...(selections || fieldDef.selections),
     });
 
     logger.debug('fsdata.findById: response received.',
-      { response, object: JSON.stringify(response.data[fieldDef.field]) });
+      { response, object: JSON.stringify(response.data[fieldDef.findByIdField]) });
 
     if (response.errors) {
       logger.error('fsdata.findById: failed with error', { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
-    if (!response.data[fieldDef.field]) {
+    if (!response.data[fieldDef.findByIdField]) {
       logger.error('fsdata.findById: not found.');
       return { error: 'not-found' };
     }
 
-    return { object: modelFactory<T>(response.data[fieldDef.field], modelType) };
+    return { object: modelFactory<T>(response.data[fieldDef.findByIdField], modelType) };
   } catch (error) {
     logger.error('findById: error', { error, headers: helpers.headers() });
     return null;

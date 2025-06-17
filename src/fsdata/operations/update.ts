@@ -10,39 +10,7 @@ import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
-import modelFields from '../helpers/modelFields.js';
-
-const _fieldDef = {
-  [ModelType.Channel]: {
-    field: 'updateChannel',
-    selections: modelFields.channel,
-  },
-  [ModelType.ChannelInvitation]: {
-    field: 'updateChannelInvitation',
-    selections: modelFields.channelInvitation,
-  },
-  [ModelType.ChannelMessage]: {
-    field: 'updateChannelMessage',
-    selections: modelFields.channelMessage,
-  },
-  [ModelType.ChannelParticipant]: {
-    field: 'updateChannelParticipant',
-    selections: modelFields.channelParticipant,
-  },
-  [ModelType.SidMultiStepAction]: {
-    field: 'updateMultiStepAction',
-    selections: modelFields.sidMultiStepAction,
-  },
-  [ModelType.MyUser]: {
-    field: 'updateMyUser',
-    selections: modelFields.myUser,
-    skipVars: true,
-  },
-  [ModelType.User]: {
-    field: 'updateUser',
-    selections: modelFields.user,
-  },
-};
+import { modelCrudOperations } from '../helpers/modelCrudOperations.js';
 
 /**
  * Updates an object through the GraphQL API. It performs the following steps:
@@ -63,7 +31,7 @@ const update = async <T extends Model = Model>(
     }
 
     const client = graffleClientStore.get();
-    const fieldDef = _fieldDef[modelType];
+    const fieldDef = modelCrudOperations[modelType];
 
     if (!queryOptions) {
       queryOptions = defaultQueryOptionsForMutations;
@@ -110,7 +78,7 @@ const update = async <T extends Model = Model>(
     const args = { input: changes };
     logger.debug('fsdata.update: sending.', { args });
 
-    const updateResponse = await client.mutation[fieldDef.field]({ $: args });
+    const updateResponse = await client.mutation[fieldDef.updateField]({ $: args });
 
     logger.debug('fsdata.update response:', { response: updateResponse });
 
@@ -119,7 +87,7 @@ const update = async <T extends Model = Model>(
       return { error: updateResponse.errors.map(e => e.message).join(', ')};
     }
 
-    if (!updateResponse.data[fieldDef.field]) {
+    if (!updateResponse.data[fieldDef.updateField]) {
       logger.error('fsdata.update: mutation did not return a valid response.');
       return { error: 'system-error' };
     }

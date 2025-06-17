@@ -58,6 +58,9 @@ declare const fsdata: {
     productCategory: {
         findProductCategories: (filter: import("../index.js").ProductCategoryListFilter | null | undefined, match: Partial<import("../index.js").ProductCategory> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ProductCategory>>;
     };
+    purchaseOrder: {
+        findPurchaseOrders: (filter: import("../index.js").PurchaseOrderListFilter | null | undefined, match: Partial<import("../index.js").PurchaseOrder> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").PurchaseOrder>>;
+    };
     shoppingCart: {
         findMyShoppingCart: () => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCart>>;
         emptyMyShoppingCart: () => Promise<import("../index.js").QueryResult<void>>;
@@ -72,6 +75,12 @@ declare const fsdata: {
     };
     vendor: {
         findVendors: (filter: import("../index.js").VendorListFilter | null | undefined, match: Partial<import("../index.js").Vendor> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Vendor>>;
+    };
+    wallet: {
+        findMyWallet: () => Promise<import("../index.js").QueryResult<import("../index.js").Wallet>>;
+    };
+    walletItem: {
+        findWalletItems: (filter: import("../index.js").WalletItemListFilter, match: Partial<import("../index.js").WalletItem>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItem>>;
     };
 };
 export default fsdata;

@@ -7,6 +7,7 @@ export enum DbCollection {
   clientInfo = 'client-info',
   myUser = 'my-user',
   users = 'users',
+  wallet = 'wallet',
   // libSignalIdentityKeys = 'libsignal_identity_keys',
   // libSignalRegistration = 'libsignal_registration',
   // libSignalKyberPreKeys = 'libsignal_kyber_pre_keys',

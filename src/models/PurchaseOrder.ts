@@ -1,19 +1,15 @@
 import { BaseModel } from './BaseModel.js';
+import { PurchaseOrderItem } from './PurchaseOrderItem.js';
 
 export class PurchaseOrder extends BaseModel {
   public userId = '';
-
   public sumItemPrice = 0;
-
   public totalPrice = 0;
-
   public vat = 0;
-
   public paidAt?: Date | null;
-
   public canceledAt?: Date | null;
-
   public refundedAt?: Date | null;
+  public items: PurchaseOrderItem[] = [];
 
   constructor(attributes?: Partial<PurchaseOrder>) {
     super(attributes);
@@ -69,6 +65,9 @@ export class PurchaseOrder extends BaseModel {
         } else {
           this.refundedAt = new Date(attributes.refundedAt);
         }
+      }
+      if (attributes.items) {
+        this.items = attributes.items;
       }
     }
   }

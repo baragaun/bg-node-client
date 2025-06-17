@@ -48,6 +48,10 @@ export * from './models/UserPreferences.js';
 export * from './models/Vendor.js';
 export * from './models/VendorListFilter.js';
 export * from './models/VerifyMultiStepActionTokenInput.js';
+export * from './models/Wallet.js';
+export * from './models/WalletItem.js';
+export * from './models/WalletItemListFilter.js';
+export * from './models/WalletListFilter.js';
 
 // Wallet:
 export * from './models/PurchaseOrder.js';

@@ -1,0 +1,127 @@
+import { ModelType } from '../../enums.js';
+import modelFields from '../helpers/modelFields.js';
+
+export interface ModelCrudOperationDef {
+  createField?: string;
+  deleteField?: string;
+  findByIdField?: string;
+  updateField?: string;
+  selections: any;
+  skipVars?: boolean;
+  keyFieldName?: string;
+}
+
+export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDef>> = {
+  [ModelType.Channel]: {
+    createField: 'createChannel',
+    deleteField: 'deleteChannel',
+    findByIdField: 'findChannelById',
+    updateField: 'updateChannel',
+    selections: modelFields.channel,
+    keyFieldName: 'channelId',
+  },
+  [ModelType.ChannelInvitation]: {
+    createField: 'createChannelInvitation',
+    deleteField: 'deleteChannelInvitation',
+    findByIdField: 'findChannelInvitationById',
+    updateField: 'updateChannelInvitation',
+    selections: modelFields.channelInvitation,
+    keyFieldName: 'channelInvitationId',
+  },
+  [ModelType.ChannelMessage]: {
+    createField: 'createChannelMessage',
+    deleteField: 'deleteChannelMessage',
+    findByIdField: 'findChannelMessageById',
+    updateField: 'updateChannelMessage',
+    selections: modelFields.channelMessage,
+    keyFieldName: 'channelMessageId',
+  },
+  [ModelType.ChannelParticipant]: {
+    createField: 'createChannelParticipant',
+    deleteField: 'deleteChannelParticipant',
+    findByIdField: 'findChannelParticipantById',
+    updateField: 'updateChannelParticipant',
+    selections: modelFields.channelParticipant,
+    keyFieldName: 'channelParticipantId',
+  },
+  [ModelType.MyUser]: {
+    createField: 'createMyUser',
+    deleteField: 'deleteMyUser',
+    findByIdField: 'findMyUserById',
+    updateField: 'updateMyUser',
+    selections: modelFields.myUser,
+    skipVars: true,
+  },
+  [ModelType.PurchaseOrder]: {
+    createField: 'createPurchaseOrder',
+    deleteField: 'deletePurchaseOrder',
+    findByIdField: 'findPurchaseOrderById',
+    updateField: 'updatePurchaseOrder',
+    selections: modelFields.purchaseOrder,
+  },
+  [ModelType.PurchaseOrderItem]: {
+    createField: 'createPurchaseOrderItem',
+    deleteField: 'deletePurchaseOrderItem',
+    findByIdField: 'findPurchaseOrderItemById',
+    updateField: 'updatePurchaseOrderItem',
+    selections: modelFields.purchaseOrderItem,
+  },
+  [ModelType.ShoppingCart]: {
+    createField: 'createShoppingCart',
+    deleteField: 'deleteShoppingCart',
+    findByIdField: 'findShoppingCartById',
+    updateField: 'updateShoppingCart',
+    selections: modelFields.shoppingCart,
+  },
+  [ModelType.ShoppingCartItem]: {
+    createField: 'createShoppingCartItem',
+    deleteField: 'deleteShoppingCartItem',
+    findByIdField: 'findShoppingCartItemById',
+    updateField: 'updateShoppingCartItem',
+    selections: modelFields.shoppingCartItem,
+  },
+  [ModelType.SidMultiStepAction]: {
+    createField: 'createMultiStepAction',
+    deleteField: 'deleteMultiStepAction',
+    findByIdField: 'findMultiStepActionById',
+    updateField: 'updateMultiStepAction',
+    selections: modelFields.sidMultiStepAction,
+  },
+  [ModelType.SidMultiStepActionProgress]: {
+    createField: 'createUser',
+    // deleteField: 'deleteUser',
+    findByIdField: 'getMultiStepActionProgress',
+    // updateField: 'updateUser',
+    selections: modelFields.sidMultiStepActionProgress,
+    keyFieldName: 'actionId',
+  },
+  [ModelType.User]: {
+    createField: 'createUser',
+    deleteField: 'deleteUser',
+    findByIdField: 'findUserById',
+    updateField: 'updateUser',
+    selections: modelFields.user,
+    keyFieldName: 'userId',
+  },
+  [ModelType.Vendor]: {
+    createField: 'createVendor',
+    deleteField: 'deleteVendor',
+    findByIdField: 'findVendorById',
+    updateField: 'updateVendor',
+    selections: modelFields.vendor,
+  },
+  [ModelType.Wallet]: {
+    createField: 'createWallet',
+    deleteField: 'deleteWallet',
+    findByIdField: 'findWalletById',
+    updateField: 'updateWallet',
+    selections: modelFields.wallet,
+  },
+  [ModelType.WalletItem]: {
+    createField: 'createWalletItem',
+    deleteField: 'deleteWalletItem',
+    findByIdField: 'findWalletItemById',
+    updateField: 'updateWalletItem',
+    selections: modelFields.walletItem,
+  },
+};

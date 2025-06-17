@@ -1,4 +1,5 @@
 import { BaseModel } from './BaseModel.js';
+import { PurchaseOrderItem } from './PurchaseOrderItem.js';
 export declare class PurchaseOrder extends BaseModel {
     userId: string;
     sumItemPrice: number;
@@ -7,5 +8,6 @@ export declare class PurchaseOrder extends BaseModel {
     paidAt?: Date | null;
     canceledAt?: Date | null;
     refundedAt?: Date | null;
+    items: PurchaseOrderItem[];
     constructor(attributes?: Partial<PurchaseOrder>);
 }

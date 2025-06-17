@@ -32,16 +32,16 @@ const findMyShoppingCart = async (
 
     //------------------------------------------------------------------------------------------------
     // Local cache
-    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
-      const localResult = await db.findById<ShoppingCart>(
-        myUserId,
-        ModelType.ShoppingCart,
-      );
-
-      if (!localResult.error && localResult.object) {
-        return localResult;
-      }
-    }
+    // if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
+    //   const localResult = await db.findById<ShoppingCart>(
+    //     myUserId,
+    //     ModelType.ShoppingCart,
+    //   );
+    //
+    //   if (!localResult.error && localResult.object) {
+    //     return localResult;
+    //   }
+    // }
 
     //------------------------------------------------------------------------------------------------
     // Network

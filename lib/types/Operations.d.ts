@@ -26,6 +26,8 @@ import { MyUser } from '../models/MyUser.js';
 import { MyUserChanges } from '../models/MyUserChanges.js';
 import { ProductCategory } from '../models/ProductCategory.js';
 import { ProductCategoryListFilter } from '../models/ProductCategoryListFilter.js';
+import { PurchaseOrder } from '../models/PurchaseOrder.js';
+import { PurchaseOrderListFilter } from '../models/PurchaseOrderListFilter.js';
 import { ShoppingCart } from '../models/ShoppingCart.js';
 import { ShoppingCartItem } from '../models/ShoppingCartItem.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
@@ -36,6 +38,7 @@ import { UserListFilter } from '../models/UserListFilter.js';
 import { UserListItem } from '../models/UserListItem.js';
 import { Vendor } from '../models/Vendor.js';
 import { VendorListFilter } from '../models/VendorListFilter.js';
+import { Wallet } from '../models/Wallet.js';
 export interface Operations {
     count: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
     delete: (id: string, modelType: ModelType) => Promise<QueryResult<void>>;
@@ -117,6 +120,9 @@ export interface Operations {
     productCategory: {
         findProductCategories: (filter: ProductCategoryListFilter | null | undefined, match: Partial<ProductCategory> | null | undefined, selector: MangoQueryTypes<ProductCategory> | null | undefined, options: FindObjectsOptions, queryOptions: QueryOptions) => Promise<QueryResult<ProductCategory>>;
     };
+    purchaseOrder: {
+        findPurchaseOrders: (filter: PurchaseOrderListFilter | null | undefined, match: Partial<PurchaseOrder> | null | undefined, selector: MangoQueryTypes<PurchaseOrder> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<PurchaseOrder>>;
+    };
     shoppingCart: {
         findMyShoppingCart: (queryOptions?: QueryOptions) => Promise<QueryResult<ShoppingCart>>;
         emptyMyShoppingCart: (queryOptions?: QueryOptions) => Promise<QueryResult<void>>;
@@ -131,5 +137,8 @@ export interface Operations {
     };
     vendor: {
         findVendors: (filter: VendorListFilter | null | undefined, match: Partial<Vendor> | null | undefined, selector: MangoQueryTypes<Vendor> | null | undefined, options: FindObjectsOptions, queryOptions: QueryOptions) => Promise<QueryResult<Vendor>>;
+    };
+    wallet: {
+        findMyWallet: (queryOptions?: QueryOptions) => Promise<QueryResult<Wallet>>;
     };
 }

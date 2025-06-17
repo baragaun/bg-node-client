@@ -40,6 +40,7 @@ import updateMyUser from './operations/myUser/updateMyUser.js';
 import verifyMyPassword from './operations/myUser/verifyMyPassword.js';
 import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
 import findProductCategories from './operations/productCategory/findProductCategories.js';
+import findPurchaseOrders from './operations/purchaseOrder/findPurchaseOrders.js';
 import emptyMyShoppingCart from './operations/shoppingCart/emptyMyShoppingCart.js';
 import findMyShoppingCart from './operations/shoppingCart/findMyShoppingCart.js';
 import createShoppingCartItem from './operations/shoppingCartItem/createShoppingCartItem.js';
@@ -48,6 +49,8 @@ import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
 import findUsers from './operations/user/findUsers.js';
 import findVendors from './operations/vendor/findVendors.js';
+import findMyWallet from './operations/wallet/findMyWallet.js';
+import findWalletItems from './operations/walletItem/findWalletItems.js';
 
 const fsdata = {
   create,
@@ -118,6 +121,10 @@ const fsdata = {
     findProductCategories,
   },
 
+  purchaseOrder: {
+    findPurchaseOrders,
+  },
+
   shoppingCart: {
     findMyShoppingCart,
     emptyMyShoppingCart,
@@ -135,6 +142,14 @@ const fsdata = {
 
   vendor: {
     findVendors,
+  },
+
+  wallet: {
+    findMyWallet,
+  },
+
+  walletItem: {
+    findWalletItems,
   },
 };
 
