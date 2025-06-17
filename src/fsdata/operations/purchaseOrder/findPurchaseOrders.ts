@@ -1,13 +1,13 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { PurchaseOrder } from '../../../models/PurchaseOrder.js';
-import { PurchaseOrderListFilter as PurchaseOrderListFilterFromClient } from '../../../models/PurchaseOrderListFilter.js';
-import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
+import { PurchaseOrderListFilter } from '../../../models/PurchaseOrderListFilter.js';
+import { FindObjectsOptions } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
   PurchaseOrderInput,
-  PurchaseOrderListFilter,
-  FindObjectsOptions,
+  PurchaseOrderListFilter as PurchaseOrderListFilterFromRemote,
+  FindObjectsOptions as FindObjectsOptionsFromRemote,
   InputMaybe,
   QueryFindPurchaseOrdersArgs,
 } from '../../gql/graphql.js';
@@ -23,9 +23,9 @@ type ResponseDataType = {
 };
 
 const findPurchaseOrders = async (
-  filter: PurchaseOrderListFilterFromClient | null | undefined,
+  filter: PurchaseOrderListFilter | null | undefined,
   match: Partial<PurchaseOrder> | null | undefined,
-  options: FindObjectsOptionsFromClient,
+  options: FindObjectsOptions,
 ): Promise<QueryResult<PurchaseOrder>> => {
   try {
     if (!libData.isInitialized()) {
@@ -35,9 +35,9 @@ const findPurchaseOrders = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindPurchaseOrdersArgs = {
-      filter: (filter || null) as unknown as PurchaseOrderListFilter | null,
+      filter: (filter || null) as unknown as PurchaseOrderListFilterFromRemote | null,
       match: match as unknown as InputMaybe<PurchaseOrderInput>,
-      options: options as unknown as InputMaybe<FindObjectsOptions>,
+      options: options as unknown as InputMaybe<FindObjectsOptionsFromRemote>,
     };
 
     const response: ResponseDataType = await client.query.findPurchaseOrders({
