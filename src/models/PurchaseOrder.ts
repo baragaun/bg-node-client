@@ -3,6 +3,7 @@ import { PurchaseOrderItem } from './PurchaseOrderItem.js';
 
 export class PurchaseOrder extends BaseModel {
   public userId = '';
+  public shoppingCartId = '';
   public sumItemPrice = 0;
   public totalPrice = 0;
   public vat = 0;
@@ -17,6 +18,9 @@ export class PurchaseOrder extends BaseModel {
     if (attributes) {
       if (attributes.userId) {
         this.userId = attributes.userId;
+      }
+      if (attributes.shoppingCartId) {
+        this.shoppingCartId = attributes.shoppingCartId;
       }
       if (
         attributes.sumItemPrice === 0 ||

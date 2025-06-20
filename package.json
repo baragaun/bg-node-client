@@ -1,6 +1,6 @@
 {
   "name": "@baragaun/bg-node-client",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "description": "Node client for Baragaun backend services",
   "type": "module",
   "engines": {
