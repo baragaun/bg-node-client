@@ -18,12 +18,12 @@ const update = async <T extends Model = Model>(
 ): Promise<QueryResult<T>> => {
   try {
     if (!libData.isInitialized()) {
-      logger.error('update: unavailable.');
+      logger.error('operations.update: unavailable.');
       return { error: 'unavailable' };
     }
 
     if (!libData.clientInfoStore().isSignedIn) {
-      logger.error('update: unauthorized.');
+      logger.error('operations.update: unauthorized.');
       return { error: 'unauthorized' };
     }
 
@@ -40,14 +40,17 @@ const update = async <T extends Model = Model>(
       }
 
       if (!changes.id) {
-        logger.error('update: missing changes.id.');
+        logger.error('operations.update: missing changes.id.');
         return { error: 'invalid-input' };
       }
     }
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
-    if (!allowNetwork || queryOptions.cachePolicy === CachePolicy.cache) {
+    // Local DB
+    if (
+      (!allowNetwork || queryOptions.cachePolicy === CachePolicy.cache) &&
+      db.isModelTypeSupported(modelType)
+    ) {
       let cleanChanges = changes;
 
       if (modelType === ModelType.MyUser) {
@@ -83,7 +86,7 @@ const update = async <T extends Model = Model>(
 
     return updateResult;
   } catch (error) {
-    logger.error('update: error.', { error });
+    logger.error('operations.update: error.', { error });
     return {
       operation: MutationType.update,
       error: (error as Error).message,

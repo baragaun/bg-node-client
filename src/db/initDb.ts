@@ -140,6 +140,10 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
       schema: modelsSchema.ChannelParticipant,
       autoMigrate: true,
     },
+    [DbCollection.myUser]: {
+      schema: modelsSchema.MyUser,
+      autoMigrate: true,
+    },
     [DbCollection.users]: {
       schema: modelsSchema.User,
       autoMigrate: true,
@@ -148,15 +152,11 @@ const initDb = async (config: BgNodeClientConfig): Promise<MyUser | null> => {
       schema: modelsSchema.ClientInfo,
       autoMigrate: true,
     },
-    [DbCollection.myUser]: {
-      schema: modelsSchema.MyUser,
-      autoMigrate: true,
-    },
     [DbCollection.userInbox]: {
       schema: modelsSchema.UserInbox,
       autoMigrate: true,
     },
-    [DbCollection.wallet]: {
+    [DbCollection.wallets]: {
       schema: modelsSchema.Wallet,
       autoMigrate: true,
     },

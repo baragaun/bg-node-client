@@ -7,5 +7,5 @@ export declare enum DbCollection {
     clientInfo = "client-info",
     myUser = "my-user",
     users = "users",
-    wallet = "wallet"
+    wallets = "wallets"
 }

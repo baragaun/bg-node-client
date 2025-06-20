@@ -38,7 +38,7 @@ const declineChannelInvitation = async (
 
     const client = graffleClientStore.get();
     const args: MutationDeclineChannelInvitationArgs = {
-      channelInvitationId,
+      id: channelInvitationId,
       reasonTextId: reasonTextId as unknown as DeclineChannelInvitationReasonTextId,
     };
 

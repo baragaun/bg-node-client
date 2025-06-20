@@ -34,7 +34,7 @@ const findChannelById = async (
     const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     let loadFromLocal = queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork;
 
     if (loadFromLocal) {

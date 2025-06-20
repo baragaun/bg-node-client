@@ -29,4 +29,4 @@ describe('operations.vendor.findVendors', () => {
     expect(vendorResponse.error).toBeUndefined();
     expect(vendorResponse.objects.length).toBeGreaterThan(10);
   });
-}, { timeout: 60000 });
+});

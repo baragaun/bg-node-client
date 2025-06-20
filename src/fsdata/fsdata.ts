@@ -40,11 +40,13 @@ import updateMyUser from './operations/myUser/updateMyUser.js';
 import verifyMyPassword from './operations/myUser/verifyMyPassword.js';
 import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
 import findProductCategories from './operations/productCategory/findProductCategories.js';
+import createPurchaseOrder from './operations/purchaseOrder/createPurchaseOrder.js';
 import findPurchaseOrders from './operations/purchaseOrder/findPurchaseOrders.js';
 import emptyMyShoppingCart from './operations/shoppingCart/emptyMyShoppingCart.js';
 import findMyShoppingCart from './operations/shoppingCart/findMyShoppingCart.js';
 import createShoppingCartItem from './operations/shoppingCartItem/createShoppingCartItem.js';
 import deleteShoppingCartItem from './operations/shoppingCartItem/deleteShoppingCartItem.js';
+import updateShoppingCartItem from './operations/shoppingCartItem/updateShoppingCartItem.js';
 import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
 import findUsers from './operations/user/findUsers.js';
@@ -122,6 +124,7 @@ const fsdata = {
   },
 
   purchaseOrder: {
+    createPurchaseOrder,
     findPurchaseOrders,
   },
 
@@ -133,6 +136,7 @@ const fsdata = {
   shoppingCartItem: {
     createShoppingCartItem,
     deleteShoppingCartItem,
+    updateShoppingCartItem,
   },
 
   user: {

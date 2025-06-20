@@ -388,3 +388,26 @@ export enum ReportUserReasonTextId {
   usesObjectionableLanguage = 'usesObjectionableLanguage',
   violatesRules = 'violatesRules'
 }
+
+// see: https://www.plascards.com/help-center/barcodes.php
+export enum BarcodeType {
+  TYPE_39 = 'TYPE_39',
+  TYPE_128 = 'TYPE_128',
+  CODE_25 = 'CODE_25',
+  ITF = 'ITF', // Interleaved 2 OF 5
+  I125 = 'I125',
+  UPC_A = 'UPC_A',
+  UPC_E = 'UPC_E',
+  EAN_13 = 'EAN_13',
+  EAN_8 = 'EAN_8',
+  QR_CODE = 'QR_CODE',
+  PDF417 = 'PDF417',
+  DATA_MATRIX = 'DATA_MATRIX',
+}
+
+export enum WalletItemSource {
+  user = 'user',
+  purchased = 'purchased',
+  gifted = 'gifted',
+}
+

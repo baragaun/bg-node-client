@@ -2391,7 +2391,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   acceptChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
+      selectionSet?: $$Utilities.Exact<
         $SelectionSet,
         $$SelectionSets.Mutation.acceptChannelInvitation<$Context['scalars']>
       >,
@@ -2471,7 +2471,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   dismissChannelInvitationFromInbox: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
+      selectionSet?: $$Utilities.Exact<
         $SelectionSet,
         $$SelectionSets.Mutation.dismissChannelInvitationFromInbox<$Context['scalars']>
       >,
@@ -2511,7 +2511,10 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   archiveChannelForMe: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.archiveChannelForMe<$Context['scalars']>>,
+      selectionSet?: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.archiveChannelForMe<$Context['scalars']>
+      >,
     ) => Promise<
       & (null | {})
       & $$Utilities.HandleOutputDocumentBuilderRootField<
@@ -2545,7 +2548,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   deleteChannel: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteChannel<$Context['scalars']>>,
+      selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteChannel<$Context['scalars']>>,
     ) => Promise<
       & (null | {})
       & $$Utilities.HandleOutputDocumentBuilderRootField<
@@ -2599,7 +2602,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   unarchiveChannelForMe: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
+      selectionSet?: $$Utilities.Exact<
         $SelectionSet,
         $$SelectionSets.Mutation.unarchiveChannelForMe<$Context['scalars']>
       >,
@@ -3657,6 +3660,23 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  createPurchaseOrder: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createPurchaseOrder<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createPurchaseOrder: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createPurchaseOrder'
+      >
+    >
+  >;
+
   createShoppingCartItem: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -3693,6 +3713,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'deleteShoppingCartItem'
+      >
+    >
+  >;
+
+  updateShoppingCartItem: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.updateShoppingCartItem<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateShoppingCartItem: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateShoppingCartItem'
       >
     >
   >;

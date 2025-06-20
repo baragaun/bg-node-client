@@ -26,7 +26,7 @@ const findUserById = async (
     const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       const result = await db.findById<User>(id, ModelType.User);
 

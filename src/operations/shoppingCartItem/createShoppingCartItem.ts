@@ -31,7 +31,7 @@ const createShoppingCartItem = async (
     }
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (!allowNetwork) {
       // todo: instead of using a separate collection, add it to the shopping_cart collection
       const response = await db.insert<ShoppingCartItem>(props, ModelType.ShoppingCartItem);

@@ -24,14 +24,14 @@ const findMyWallet = async (
 
     const myUserId = libData.clientInfoStore().myUserId;
     if (!myUserId) {
-      logger.error('findMyWallet: myUserId not set');
+      logger.error('operations.findMyWallet: myUserId not set');
       return { error: 'unauthorized' };
     }
 
     const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       const localResult = await db.findById<Wallet>(
         myUserId,
@@ -46,13 +46,25 @@ const findMyWallet = async (
     //------------------------------------------------------------------------------------------------
     // Network
     if (!allowNetwork) {
-      return { error: 'offline' };
+      const wallet = new Wallet({ id: myUserId, createdBy: myUserId });
+      const insertResult = await db.insert<Wallet>(
+        wallet,
+        ModelType.Wallet,
+      );
+
+      if (insertResult.error || !insertResult.object) {
+        logger.error('operations.findMyWallet: error inserting wallet',
+          { error: insertResult.error });
+        return insertResult;
+      }
+
+      return insertResult;
     }
 
     const result = await fsdata.wallet.findMyWallet();
 
     if (result.error) {
-      logger.error('findMyWallet: error from fsdata', { error: result.error });
+      logger.error('operations.findMyWallet: error from fsdata', { error: result.error });
       return { error: result.error };
     }
 

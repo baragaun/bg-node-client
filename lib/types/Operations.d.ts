@@ -40,14 +40,14 @@ import { Vendor } from '../models/Vendor.js';
 import { VendorListFilter } from '../models/VendorListFilter.js';
 import { Wallet } from '../models/Wallet.js';
 export interface Operations {
-    count: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
+    count: <T extends Model = Model>(query: MangoQuery<T> | null | undefined, match: Partial<T> | null | undefined, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
     delete: (id: string, modelType: ModelType) => Promise<QueryResult<void>>;
     find: <T extends Model = Model>(query: MangoQuery<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findByMatch: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findById: <T extends Model = Model>(id: string, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findOne: <T extends Model = Model>(query: MangoQuery<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findOneByMatch: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
-    insertOne: <T extends Model = Model>(object: T) => Promise<QueryResult<T>>;
+    insertOne: <T extends Model = Model>(object: T, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     update: <T extends Model = Model>(changes: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     channel: {
         createChannel: (attributes: Partial<Channel>) => Promise<QueryResult<Channel>>;
@@ -121,6 +121,7 @@ export interface Operations {
         findProductCategories: (filter: ProductCategoryListFilter | null | undefined, match: Partial<ProductCategory> | null | undefined, selector: MangoQueryTypes<ProductCategory> | null | undefined, options: FindObjectsOptions, queryOptions: QueryOptions) => Promise<QueryResult<ProductCategory>>;
     };
     purchaseOrder: {
+        createPurchaseOrder: (props: Partial<PurchaseOrder>) => Promise<QueryResult<PurchaseOrder>>;
         findPurchaseOrders: (filter: PurchaseOrderListFilter | null | undefined, match: Partial<PurchaseOrder> | null | undefined, selector: MangoQueryTypes<PurchaseOrder> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<PurchaseOrder>>;
     };
     shoppingCart: {
@@ -130,6 +131,7 @@ export interface Operations {
     shoppingCartItem: {
         createShoppingCartItem: (props: Partial<ShoppingCartItem>) => Promise<QueryResult<ShoppingCartItem>>;
         deleteShoppingCartItem: (id: string) => Promise<QueryResult<void>>;
+        updateShoppingCartItem: (changes: Partial<ShoppingCartItem>, queryOptions?: QueryOptions) => Promise<QueryResult<ShoppingCartItem>>;
     };
     user: {
         findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>;

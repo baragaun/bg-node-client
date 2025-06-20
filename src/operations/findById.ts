@@ -24,11 +24,18 @@ const findById = async <T extends Model = Model>(
       return { error: 'unauthorized' };
     }
 
-    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
+    const isOnline = libData.isOnline();
+    const allowNetwork = isOnline && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
-    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
+    // Local DB
+    if (
+      (
+        queryOptions.cachePolicy === CachePolicy.cacheFirst ||
+        !allowNetwork
+      ) &&
+      db.isModelTypeSupported(modelType)
+    ) {
       const result = await db.findById<T>(id, modelType);
 
       if ((result.object && !result.error) || !allowNetwork) {
@@ -53,7 +60,7 @@ const findById = async <T extends Model = Model>(
       await db.replace<T>(response.object, modelType);
     }
 
-  return response;
+    return response;
   } catch (error) {
     return { error: (error as Error).message };
   }

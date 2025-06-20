@@ -61,4 +61,4 @@ describe('operations.user.findUsers', () => {
 
     await signMeOut();
   });
-}, { timeout: 30000 });
+});

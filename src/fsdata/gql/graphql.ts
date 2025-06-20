@@ -267,6 +267,21 @@ export enum AuthType {
   Token = 'token'
 }
 
+export enum BarcodeType {
+  Code_25 = 'CODE_25',
+  DataMatrix = 'DATA_MATRIX',
+  Ean_8 = 'EAN_8',
+  Ean_13 = 'EAN_13',
+  I125 = 'I125',
+  Itf = 'ITF',
+  Pdf417 = 'PDF417',
+  QrCode = 'QR_CODE',
+  Type_39 = 'TYPE_39',
+  Type_128 = 'TYPE_128',
+  UpcA = 'UPC_A',
+  UpcE = 'UPC_E'
+}
+
 export type BaseModel = {
   __typename?: 'BaseModel';
   adminNotes?: Maybe<Scalars['String']['output']>;
@@ -2818,6 +2833,7 @@ export type Mutation = {
   createNotification: Notification;
   createNotificationTemplate: NotificationTemplate;
   createOneTimeAuthTokenForMe: Scalars['String']['output'];
+  createPurchaseOrder: ServiceRequest;
   createShoppingCartItem: ShoppingCartItem;
   createSupportChannelConfig: SupportChannelConfig;
   createUploadedAsset: UploadedAsset;
@@ -2892,6 +2908,7 @@ export type Mutation = {
   updateMyUser: Scalars['String']['output'];
   updateNotification: Scalars['String']['output'];
   updateNotificationTemplate: Scalars['String']['output'];
+  updateShoppingCartItem: Scalars['String']['output'];
   updateSupportChannelConfig: ServiceRequest;
   updateUploadedAsset: Scalars['String']['output'];
   updateUser: Scalars['String']['output'];
@@ -2904,7 +2921,7 @@ export type Mutation = {
 
 
 export type MutationAcceptChannelInvitationArgs = {
-  channelInvitationId: Scalars['String']['input'];
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -2930,7 +2947,7 @@ export type MutationAddUserToGroupArgs = {
 
 
 export type MutationArchiveChannelForMeArgs = {
-  channelId: Scalars['String']['input'];
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -3033,6 +3050,11 @@ export type MutationCreateNotificationTemplateArgs = {
 };
 
 
+export type MutationCreatePurchaseOrderArgs = {
+  input: PurchaseOrderInput;
+};
+
+
 export type MutationCreateShoppingCartItemArgs = {
   input: ShoppingCartItemInput;
 };
@@ -3064,7 +3086,7 @@ export type MutationCreateUserTrackingArgs = {
 
 
 export type MutationDeclineChannelInvitationArgs = {
-  channelInvitationId: Scalars['String']['input'];
+  id?: InputMaybe<Scalars['String']['input']>;
   reasonTextId: DeclineChannelInvitationReasonTextId;
 };
 
@@ -3088,26 +3110,26 @@ export type MutationDeleteBusinessExperienceArgs = {
 
 export type MutationDeleteChannelArgs = {
   anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
-  channelId: Scalars['String']['input'];
   deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 export type MutationDeleteChannelInvitationArgs = {
-  channelInvitationId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 export type MutationDeleteChannelMessageArgs = {
-  channelMessageId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
 export type MutationDeleteChannelParticipantArgs = {
-  channelParticipantId: Scalars['String']['input'];
   deletePhysically: Scalars['Boolean']['input'];
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -3189,7 +3211,7 @@ export type MutationDeleteUserSearchArgs = {
 
 
 export type MutationDismissChannelInvitationFromInboxArgs = {
-  channelInvitationId: Scalars['String']['input'];
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -3293,7 +3315,7 @@ export type MutationStartVerifyPhoneNumberArgs = {
 
 
 export type MutationUnarchiveChannelForMeArgs = {
-  channelId: Scalars['String']['input'];
+  id?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -3399,6 +3421,12 @@ export type MutationUpdateNotificationArgs = {
 
 export type MutationUpdateNotificationTemplateArgs = {
   notificationTemplateInput: NotificationTemplateInput;
+};
+
+
+export type MutationUpdateShoppingCartItemArgs = {
+  input: ShoppingCartItemInput;
+  options?: InputMaybe<UpdateObjectOptions>;
 };
 
 
@@ -4151,6 +4179,7 @@ export type PurchaseOrder = {
   metadata?: Maybe<BaseModelMetadata>;
   paidAt?: Maybe<Scalars['DateTimeISO']['output']>;
   refundedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  shoppingCartId: Scalars['ID']['output'];
   sumItemPrice: Scalars['Int']['output'];
   totalPrice: Scalars['Int']['output'];
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -4171,6 +4200,7 @@ export type PurchaseOrderInput = {
   metadata?: InputMaybe<BaseModelMetadataInput>;
   paidAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   refundedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  shoppingCartId?: InputMaybe<Scalars['ID']['input']>;
   sumItemPrice?: InputMaybe<Scalars['Int']['input']>;
   totalPrice?: InputMaybe<Scalars['Int']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -4182,38 +4212,52 @@ export type PurchaseOrderInput = {
 export type PurchaseOrderItem = {
   __typename?: 'PurchaseOrderItem';
   adminNotes?: Maybe<Scalars['String']['output']>;
+  balance: Scalars['Int']['output'];
+  barcodeFormat?: Maybe<BarcodeType>;
+  code?: Maybe<Scalars['String']['output']>;
   createdAt: Scalars['DateTimeISO']['output'];
   createdBy?: Maybe<Scalars['ID']['output']>;
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   deletedBy?: Maybe<Scalars['ID']['output']>;
   events?: Maybe<Array<ModelEvent>>;
+  hasBarcode?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['ID']['output'];
   metadata?: Maybe<BaseModelMetadata>;
-  orderId: Scalars['ID']['output'];
+  pin?: Maybe<Scalars['String']['output']>;
   price: Scalars['Int']['output'];
   productId: Scalars['ID']['output'];
+  purchaseOrderId: Scalars['ID']['output'];
   quantity: Scalars['Int']['output'];
+  shoppingCartItemId: Scalars['ID']['output'];
   totalPrice: Scalars['Int']['output'];
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
+  vendorId: Scalars['ID']['output'];
 };
 
 export type PurchaseOrderItemInput = {
   adminNotes?: InputMaybe<Scalars['String']['input']>;
+  balance?: InputMaybe<Scalars['Int']['input']>;
+  barcodeFormat?: InputMaybe<BarcodeType>;
+  code?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   createdBy?: InputMaybe<Scalars['ID']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   deletedBy?: InputMaybe<Scalars['ID']['input']>;
   events?: InputMaybe<Array<ModelEventInput>>;
+  hasBarcode?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   metadata?: InputMaybe<BaseModelMetadataInput>;
-  orderId?: InputMaybe<Scalars['ID']['input']>;
+  pin?: InputMaybe<Scalars['String']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
   productId?: InputMaybe<Scalars['ID']['input']>;
+  purchaseOrderId?: InputMaybe<Scalars['ID']['input']>;
   quantity?: InputMaybe<Scalars['Int']['input']>;
+  shoppingCartItemId?: InputMaybe<Scalars['ID']['input']>;
   totalPrice?: InputMaybe<Scalars['Int']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedBy?: InputMaybe<Scalars['ID']['input']>;
+  vendorId?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type PurchaseOrderItemListFilter = {
@@ -5042,6 +5086,7 @@ export enum ServiceRequestType {
   GraphQlMutationCreateNatsMessage = 'graphQlMutationCreateNatsMessage',
   GraphQlMutationCreateNotification = 'graphQlMutationCreateNotification',
   GraphQlMutationCreateNotificationTemplate = 'graphQlMutationCreateNotificationTemplate',
+  GraphQlMutationCreatePurchaseOrderField = 'graphQlMutationCreatePurchaseOrderField',
   GraphQlMutationCreateSupportChannelConfig = 'graphQlMutationCreateSupportChannelConfig',
   GraphQlMutationCreateUploadedAsset = 'graphQlMutationCreateUploadedAsset',
   GraphQlMutationCreateUserDevice = 'graphQlMutationCreateUserDevice',
@@ -5204,7 +5249,6 @@ export enum ServiceRequestType {
   GraphQlQueryMyGroupMemberships = 'graphQlQueryMyGroupMemberships',
   GraphQlQueryMyInbox = 'graphQlQueryMyInbox',
   GraphQlQueryNotificationTemplate = 'graphQlQueryNotificationTemplate',
-  GraphQlQueryPurchaseShoppingCart = 'graphQlQueryPurchaseShoppingCart',
   GraphQlQueryUnreadInAppMessages = 'graphQlQueryUnreadInAppMessages',
   GraphQlQueryUser = 'graphQlQueryUser',
   GraphQlQueryUserChannels = 'graphQlQueryUserChannels',
@@ -5863,6 +5907,12 @@ export enum UiLanguage {
   Ru = 'ru',
   So = 'so'
 }
+
+export type UpdateObjectOptions = {
+  replace?: InputMaybe<Scalars['Boolean']['input']>;
+  returnReloadedObject?: InputMaybe<Scalars['Boolean']['input']>;
+  upsert?: InputMaybe<Scalars['Boolean']['input']>;
+};
 
 export type UploadedAsset = {
   __typename?: 'UploadedAsset';
@@ -6810,24 +6860,32 @@ export type WalletItem = {
   adminNotes?: Maybe<Scalars['String']['output']>;
   archivedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   balance: Scalars['Int']['output'];
-  barcodeFormat?: Maybe<Scalars['String']['output']>;
+  balanceUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  barcodeFormat?: Maybe<BarcodeType>;
+  code?: Maybe<Scalars['String']['output']>;
   createdAt: Scalars['DateTimeISO']['output'];
   createdBy?: Maybe<Scalars['ID']['output']>;
   deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   deletedBy?: Maybe<Scalars['ID']['output']>;
   events?: Maybe<Array<ModelEvent>>;
+  expiresAt?: Maybe<Scalars['DateTimeISO']['output']>;
   hasBarcode?: Maybe<Scalars['Boolean']['output']>;
   id: Scalars['ID']['output'];
   imageSourceBack?: Maybe<Scalars['String']['output']>;
   imageSourceFront?: Maybe<Scalars['String']['output']>;
+  initialBalance: Scalars['Int']['output'];
   instructionsEn?: Maybe<Scalars['String']['output']>;
   instructionsUrl?: Maybe<Scalars['String']['output']>;
+  issuedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   metadata?: Maybe<BaseModelMetadata>;
   name: Scalars['String']['output'];
-  orderItemId: Scalars['ID']['output'];
+  pin?: Maybe<Scalars['String']['output']>;
   price: Scalars['Int']['output'];
   productId: Scalars['ID']['output'];
+  purchaseOrderItemId: Scalars['ID']['output'];
+  referenceUrl?: Maybe<Scalars['String']['output']>;
   sortIndex: Scalars['Int']['output'];
+  source?: Maybe<WalletItemSource>;
   termsEn?: Maybe<Scalars['String']['output']>;
   termsUrl?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -6840,24 +6898,32 @@ export type WalletItemInput = {
   adminNotes?: InputMaybe<Scalars['String']['input']>;
   archivedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   balance?: InputMaybe<Scalars['Int']['input']>;
-  barcodeFormat?: InputMaybe<Scalars['String']['input']>;
+  balanceUpdatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  barcodeFormat?: InputMaybe<BarcodeType>;
+  code?: InputMaybe<Scalars['String']['input']>;
   createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   createdBy?: InputMaybe<Scalars['ID']['input']>;
   deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   deletedBy?: InputMaybe<Scalars['ID']['input']>;
   events?: InputMaybe<Array<ModelEventInput>>;
+  expiresAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   hasBarcode?: InputMaybe<Scalars['Boolean']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
   imageSourceBack?: InputMaybe<Scalars['String']['input']>;
   imageSourceFront?: InputMaybe<Scalars['String']['input']>;
+  initialBalance?: InputMaybe<Scalars['Int']['input']>;
   instructionsEn?: InputMaybe<Scalars['String']['input']>;
   instructionsUrl?: InputMaybe<Scalars['String']['input']>;
+  issuedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   metadata?: InputMaybe<BaseModelMetadataInput>;
   name?: InputMaybe<Scalars['String']['input']>;
-  orderItemId?: InputMaybe<Scalars['ID']['input']>;
+  pin?: InputMaybe<Scalars['String']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
   productId?: InputMaybe<Scalars['ID']['input']>;
+  purchaseOrderItemId?: InputMaybe<Scalars['ID']['input']>;
+  referenceUrl?: InputMaybe<Scalars['String']['input']>;
   sortIndex?: InputMaybe<Scalars['Int']['input']>;
+  source?: InputMaybe<WalletItemSource>;
   termsEn?: InputMaybe<Scalars['String']['input']>;
   termsUrl?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -6877,6 +6943,12 @@ export type WalletItemListFilter = {
   updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
 };
+
+export enum WalletItemSource {
+  Gifted = 'gifted',
+  Purchased = 'purchased',
+  User = 'user'
+}
 
 export type WalletListFilter = {
   caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
