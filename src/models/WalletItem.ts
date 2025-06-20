@@ -1,10 +1,10 @@
-import { BarcodeType, WalletItemSource } from '../enums.js';
 import { BaseModel } from './BaseModel.js';
+import { BarcodeType, WalletItemSource } from '../enums.js';
 
 export class WalletItem extends BaseModel {
   public walletId = '';
   public productId = '';
-  public orderItemId = '';
+  public purchaseOrderItemId = '';
   public vendorId = '';
   public name = '';
   public price = 0;
@@ -38,8 +38,8 @@ export class WalletItem extends BaseModel {
       if (attributes.productId) {
         this.productId = attributes.productId;
       }
-      if (attributes.orderItemId) {
-        this.orderItemId = attributes.orderItemId;
+      if (attributes.purchaseOrderItemId) {
+        this.purchaseOrderItemId = attributes.purchaseOrderItemId;
       }
       if (attributes.vendorId) {
         this.vendorId = attributes.vendorId;
