@@ -1,7 +1,7 @@
 import { MangoQuery } from 'rxdb';
 
 import db from '../db/db.js';
-import { CachePolicy, ModelType } from '../enums.js';
+import { CachePolicy, ModelType, MutationType } from '../enums.js';
 import { defaultQueryOptions } from '../helpers/defaults.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
@@ -14,22 +14,30 @@ const find = async <T extends Model = Model>(
   modelType: ModelType,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<T>> => {
-  if (!libData.isInitialized()) {
-    logger.error('findOne: unavailable');
-    return { error: 'unavailable' };
-  }
+  try {
+    if (!libData.isInitialized()) {
+      logger.error('find: unavailable');
+      return { error: 'unavailable' };
+    }
 
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('findOne: unauthorized');
-    return { error: 'unauthorized' };
-  }
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('find: unauthorized');
+      return { error: 'unauthorized' };
+    }
 
-  if (
-    queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst ||
-    libData.isOffline()
-  ) {
-    try {
+    const isOnline = libData.isOnline();
+    const allowNetwork = isOnline && queryOptions.cachePolicy !== CachePolicy.cache;
+
+    //------------------------------------------------------------------------------------------------
+    // Local DB
+    if (
+      (
+        queryOptions.cachePolicy === CachePolicy.cache ||
+        queryOptions.cachePolicy === CachePolicy.cacheFirst ||
+        libData.isOffline()
+      ) &&
+      db.isModelTypeSupported(modelType)
+    ) {
       const result = await db.find<T>(query, modelType);
 
       if (
@@ -39,12 +47,20 @@ const find = async <T extends Model = Model>(
       ) {
         return result;
       }
-    } catch (error) {
-      return { error: (error as Error).message };
     }
-  }
 
-  return { object: null };
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
+
+    // todo: get it from the network
+
+    return { object: null };
+  } catch (error) {
+    return { operation: MutationType.delete, error: (error as Error).message };
+  }
 };
 
 export default find;

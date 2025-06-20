@@ -29,4 +29,4 @@ describe('operations.giftCardProduct.findGiftCardProducts', () => {
     expect(giftCardResponse.error).toBeUndefined();
     expect(giftCardResponse.objects.length).toBeGreaterThan(10);
   });
-}, { timeout: 60000 });
+});

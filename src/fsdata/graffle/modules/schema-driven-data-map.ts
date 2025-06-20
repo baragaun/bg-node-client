@@ -273,6 +273,16 @@ const MultiStepActionSendNotificationResult: $$Utilities.SchemaDrivenDataMap.Enu
   n: 'MultiStepActionSendNotificationResult',
 };
 
+const BarcodeType: $$Utilities.SchemaDrivenDataMap.Enum = {
+  k: 'enum',
+  n: 'BarcodeType',
+};
+
+const WalletItemSource: $$Utilities.SchemaDrivenDataMap.Enum = {
+  k: 'enum',
+  n: 'WalletItemSource',
+};
+
 const CookieChoiceTextId: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'CookieChoiceTextId',
@@ -1767,11 +1777,18 @@ const PurchaseOrderItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
-    orderId: {},
+    purchaseOrderId: {},
+    shoppingCartItemId: {},
     productId: {},
+    vendorId: {},
     quantity: {},
     price: {},
     totalPrice: {},
+    balance: {},
+    code: {},
+    hasBarcode: {},
+    barcodeFormat: {},
+    pin: {},
   },
 };
 
@@ -1824,6 +1841,7 @@ const PurchaseOrderInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     },
     deletedBy: {},
     userId: {},
+    shoppingCartId: {},
     sumItemPrice: {},
     totalPrice: {},
     vat: {},
@@ -1975,7 +1993,17 @@ const ShoppingCartListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
 
 const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'WalletItemInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'archivedAt'],
+  fcs: [
+    'events',
+    'metadata',
+    'createdAt',
+    'updatedAt',
+    'deletedAt',
+    'issuedAt',
+    'expiresAt',
+    'balanceUpdatedAt',
+    'archivedAt',
+  ],
   f: {
     id: {},
     adminNotes: {},
@@ -1999,20 +2027,34 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     deletedBy: {},
     walletId: {},
     productId: {},
-    orderItemId: {},
+    purchaseOrderItemId: {},
     vendorId: {},
     name: {},
     price: {},
+    initialBalance: {},
     balance: {},
-    imageSourceFront: {},
-    imageSourceBack: {},
+    code: {},
     hasBarcode: {},
     barcodeFormat: {},
+    pin: {},
+    source: {},
+    imageSourceFront: {},
+    imageSourceBack: {},
+    referenceUrl: {},
     termsEn: {},
     termsUrl: {},
     instructionsEn: {},
     instructionsUrl: {},
     sortIndex: {},
+    issuedAt: {
+      nt: DateTimeISO,
+    },
+    expiresAt: {
+      nt: DateTimeISO,
+    },
+    balanceUpdatedAt: {
+      nt: DateTimeISO,
+    },
     archivedAt: {
       nt: DateTimeISO,
     },
@@ -3158,6 +3200,15 @@ const UserTrackingInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     syncedToAnalyticsAt: {
       nt: DateTimeISO,
     },
+  },
+};
+
+const UpdateObjectOptions: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'UpdateObjectOptions',
+  f: {
+    replace: {},
+    upsert: {},
+    returnReloadedObject: {},
   },
 };
 
@@ -7130,11 +7181,18 @@ const PurchaseOrderItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
-    orderId: {},
+    purchaseOrderId: {},
+    shoppingCartItemId: {},
     productId: {},
+    vendorId: {},
     quantity: {},
     price: {},
     totalPrice: {},
+    balance: {},
+    code: {},
+    hasBarcode: {},
+    barcodeFormat: {},
+    pin: {},
   },
 };
 
@@ -7161,6 +7219,7 @@ const PurchaseOrder: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     deletedBy: {},
     userId: {},
+    shoppingCartId: {},
     sumItemPrice: {},
     totalPrice: {},
     vat: {},
@@ -7264,20 +7323,34 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     deletedBy: {},
     walletId: {},
     productId: {},
-    orderItemId: {},
+    purchaseOrderItemId: {},
     vendorId: {},
     name: {},
     price: {},
+    initialBalance: {},
     balance: {},
-    imageSourceFront: {},
-    imageSourceBack: {},
+    code: {},
     hasBarcode: {},
     barcodeFormat: {},
+    pin: {},
+    source: {},
+    imageSourceFront: {},
+    imageSourceBack: {},
+    referenceUrl: {},
     termsEn: {},
     termsUrl: {},
     instructionsEn: {},
     instructionsUrl: {},
     sortIndex: {},
+    issuedAt: {
+      nt: DateTimeISO,
+    },
+    expiresAt: {
+      nt: DateTimeISO,
+    },
+    balanceUpdatedAt: {
+      nt: DateTimeISO,
+    },
     archivedAt: {
       nt: DateTimeISO,
     },
@@ -9113,7 +9186,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelInvitationId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9134,7 +9211,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelInvitationId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9146,7 +9227,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelInvitationId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9154,7 +9239,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelInvitationId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9170,7 +9259,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9195,7 +9288,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9219,7 +9316,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9248,7 +9349,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelMessageId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9277,7 +9382,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelParticipantId: {
           nt: String,
-          it: [1],
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [0],
         },
       },
     },
@@ -9798,6 +9907,15 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
+    createPurchaseOrder: {
+      a: {
+        input: {
+          nt: PurchaseOrderInput,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     createShoppingCartItem: {
       a: {
         input: {
@@ -9811,6 +9929,18 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         id: {
           nt: String,
+          it: [1],
+        },
+      },
+    },
+    updateShoppingCartItem: {
+      a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
+        input: {
+          nt: ShoppingCartItemInput,
           it: [1],
         },
       },
@@ -10515,6 +10645,7 @@ Mutation.f['verifyMultiStepActionToken']!.nt = SidMultiStepActionProgress;
 Mutation.f['blockUserForMeV2']!.nt = ServiceRequest;
 Mutation.f['startMySessionV2']!.nt = ContentStatus;
 Mutation.f['unblockUserForMeV2']!.nt = ServiceRequest;
+Mutation.f['createPurchaseOrder']!.nt = ServiceRequest;
 Mutation.f['createShoppingCartItem']!.nt = ShoppingCartItem;
 Mutation.f['updateWalletItem']!.nt = ServiceRequest;
 Subscription.f['channelChanged']!.nt = BgChannelChangedEvent;
@@ -10593,6 +10724,8 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     NotificationMethod,
     MultiStepActionResult,
     MultiStepActionSendNotificationResult,
+    BarcodeType,
+    WalletItemSource,
     CookieChoiceTextId,
     ReportUserReasonTextId,
     DeclineChannelInvitationReasonTextId,
@@ -10680,6 +10813,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     VerifyMultiStepActionTokenInput,
     MyUserInput,
     UserTrackingInput,
+    UpdateObjectOptions,
     UserMetadata,
     ChannelsUserMetadata,
     GroupsUserMetadata,

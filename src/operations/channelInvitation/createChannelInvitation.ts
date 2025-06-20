@@ -23,7 +23,7 @@ const createChannelInvitation = async (
     const allowNetwork = libData.allowNetwork();
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (!allowNetwork) {
       const response = await db.insert<ChannelInvitation>(props, ModelType.ChannelInvitation);
 

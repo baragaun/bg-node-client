@@ -23,7 +23,7 @@ const acceptChannelInvitation = async (
     const allowNetwork = libData.allowNetwork();
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (!allowNetwork) {
       const changes: Partial<ChannelInvitation> = {
         id,

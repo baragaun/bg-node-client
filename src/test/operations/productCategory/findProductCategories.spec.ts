@@ -29,4 +29,4 @@ describe('operations.productCategory.findProductCategories', () => {
     expect(categories.error).toBeUndefined();
     expect(categories.objects.length).toBeGreaterThan(10);
   });
-}, { timeout: 60000 });
+});

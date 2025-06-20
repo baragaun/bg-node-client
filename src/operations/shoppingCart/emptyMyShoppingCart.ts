@@ -31,7 +31,7 @@ const emptyMyShoppingCart = async (
     const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       const localResult = await db.findById<ShoppingCart>(
         myUserId,

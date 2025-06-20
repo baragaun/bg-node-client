@@ -60,7 +60,7 @@ export declare const WalletItemSchema: {
             type: string;
             maxLength: number;
         };
-        orderItemId: {
+        purchaseOrderItemId: {
             type: string;
             maxLength: number;
         };
@@ -74,8 +74,33 @@ export declare const WalletItemSchema: {
         price: {
             type: string;
         };
+        initialBalance: {
+            type: string;
+        };
         balance: {
             type: string;
+        };
+        code: {
+            type: string;
+            nullable: boolean;
+        };
+        hasBarcode: {
+            type: string;
+            nullable: boolean;
+        };
+        barcodeFormat: {
+            type: string;
+            enum: string[];
+            nullable: boolean;
+        };
+        pin: {
+            type: string;
+            nullable: boolean;
+        };
+        source: {
+            type: string;
+            enum: string[];
+            nullable: boolean;
         };
         imageSourceFront: {
             type: string;
@@ -85,11 +110,7 @@ export declare const WalletItemSchema: {
             type: string;
             nullable: boolean;
         };
-        hasBarcode: {
-            type: string;
-            nullable: boolean;
-        };
-        barcodeFormat: {
+        referenceUrl: {
             type: string;
             nullable: boolean;
         };
@@ -111,6 +132,21 @@ export declare const WalletItemSchema: {
         };
         sortIndex: {
             type: string;
+        };
+        issuedAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
+        expiresAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
+        balanceUpdatedAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
         };
         archivedAt: {
             type: string;

@@ -1,3 +1,4 @@
+import { BarcodeType, WalletItemSource } from '../enums.js';
 import { BaseModel } from './BaseModel.js';
 export declare class WalletItem extends BaseModel {
     walletId: string;
@@ -6,16 +7,24 @@ export declare class WalletItem extends BaseModel {
     vendorId: string;
     name: string;
     price: number;
+    initialBalance: number;
     balance: number;
+    code?: string | null;
+    hasBarcode?: boolean | null;
+    barcodeFormat?: BarcodeType | null;
+    pin?: string | null;
+    source?: WalletItemSource | null;
     imageSourceFront?: string | null;
     imageSourceBack?: string | null;
-    hasBarcode?: boolean | null;
-    barcodeFormat?: string | null;
+    referenceUrl?: string | null;
     termsEn?: string | null;
     termsUrl?: string | null;
     instructionsEn?: string | null;
     instructionsUrl?: string | null;
     sortIndex: number;
+    issuedAt?: Date | null;
+    expiresAt?: Date | null;
+    balanceUpdatedAt?: Date | null;
     archivedAt?: Date | null;
     constructor(attributes?: Partial<WalletItem>);
 }

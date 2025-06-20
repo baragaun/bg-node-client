@@ -71,10 +71,21 @@ export interface UserInboxFactory extends rosie.IFactory<UserInbox> {
   delete: (userInbox: UserInbox) => Promise<UserInbox>;
 }
 
+export interface WalletFactory extends rosie.IFactory<Wallet> {
+  create: (
+    props: Partial<Wallet | Wallet[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<Wallet | Wallet[]>;
+  save: (wallet: Wallet) => Promise<Wallet>;
+  delete: (wallet: Wallet) => Promise<Wallet>;
+}
+
 export type ModelFactory =
   | ChannelFactory
   | ChannelInvitationFactory
   | ChannelMessageFactory
   | ChannelParticipantFactory
   | UserFactory
-  | UserInboxFactory;
+  | UserInboxFactory
+  | WalletFactory;

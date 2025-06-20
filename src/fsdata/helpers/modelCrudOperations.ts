@@ -18,7 +18,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     findByIdField: 'findChannelById',
     updateField: 'updateChannel',
     selections: modelFields.channel,
-    keyFieldName: 'channelId',
+    keyFieldName: 'id',
   },
   [ModelType.ChannelInvitation]: {
     createField: 'createChannelInvitation',
@@ -26,7 +26,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     findByIdField: 'findChannelInvitationById',
     updateField: 'updateChannelInvitation',
     selections: modelFields.channelInvitation,
-    keyFieldName: 'channelInvitationId',
+    keyFieldName: 'id',
   },
   [ModelType.ChannelMessage]: {
     createField: 'createChannelMessage',
@@ -34,7 +34,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     findByIdField: 'findChannelMessageById',
     updateField: 'updateChannelMessage',
     selections: modelFields.channelMessage,
-    keyFieldName: 'channelMessageId',
+    keyFieldName: 'id',
   },
   [ModelType.ChannelParticipant]: {
     createField: 'createChannelParticipant',
@@ -47,7 +47,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
   [ModelType.MyUser]: {
     createField: 'createMyUser',
     deleteField: 'deleteMyUser',
-    findByIdField: 'findMyUserById',
+    findByIdField: 'findMyUser',
     updateField: 'updateMyUser',
     selections: modelFields.myUser,
     skipVars: true,

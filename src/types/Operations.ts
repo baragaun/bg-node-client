@@ -50,7 +50,8 @@ import { Wallet } from '../models/Wallet.js';
 
 export interface Operations {
   count: <T extends Model = Model>(
-    match: Partial<T>,
+    query: MangoQuery<T> | null | undefined,
+    match: Partial<T> | null | undefined,
     modelType: ModelType,
     queryOptions?: QueryOptions,
   ) => Promise<QueryResult<number>>
@@ -90,7 +91,11 @@ export interface Operations {
     queryOptions?: QueryOptions,
   ) => Promise<QueryResult<T>>;
 
-  insertOne: <T extends Model = Model>(object: T) => Promise<QueryResult<T>>;
+  insertOne: <T extends Model = Model>(
+    object: T,
+    modelType: ModelType,
+    queryOptions?: QueryOptions,
+  ) => Promise<QueryResult<T>>;
 
   update: <T extends Model = Model>(
     changes: Partial<T>,
@@ -365,6 +370,7 @@ export interface Operations {
   }
 
   purchaseOrder: {
+    createPurchaseOrder: (props: Partial<PurchaseOrder>) => Promise<QueryResult<PurchaseOrder>>
     findPurchaseOrders: (
       filter: PurchaseOrderListFilter | null | undefined,
       match: Partial<PurchaseOrder> | null | undefined,
@@ -382,6 +388,10 @@ export interface Operations {
   shoppingCartItem: {
     createShoppingCartItem: (props: Partial<ShoppingCartItem>) => Promise<QueryResult<ShoppingCartItem>>;
     deleteShoppingCartItem: (id: string) => Promise<QueryResult<void>>;
+    updateShoppingCartItem: (
+      changes: Partial<ShoppingCartItem>,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<ShoppingCartItem>>
   };
 
   user: {

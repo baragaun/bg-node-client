@@ -13,6 +13,7 @@ import findUpdatedAt from './findUpdatedAt.js';
 import init from './initDb.js';
 import insert from './insert.js';
 import isConnected from './isConnected.js';
+import isModelTypeSupported from './isModelTypeSupported.js';
 import replace from './replace.js';
 import update from './update.js';
 import upsert from './upsert.js';
@@ -33,6 +34,7 @@ const db: Db = {
   init,
   insert,
   isConnected,
+  isModelTypeSupported,
   // libSignalStores: db.getLibSignalStores,
   replace,
   update,

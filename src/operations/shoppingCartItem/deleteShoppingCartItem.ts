@@ -26,7 +26,7 @@ const deleteShoppingCartItem = async (
     }
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (!allowNetwork) {
       // todo: remove from ShoppingCart.items
       // const response = await db.insert<ShoppingCartItem>(props, ModelType.ShoppingCartItem);

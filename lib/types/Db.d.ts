@@ -22,4 +22,5 @@ export interface Db {
     replace: <T extends Model = Model>(obj: T, modelType?: ModelType) => Promise<QueryResult<T>>;
     update: <T extends Model = Model>(changes: Partial<T>, modelType?: ModelType) => Promise<QueryResult<T>>;
     upsert: <T extends Model = Model>(changes: Partial<T>, modelType?: ModelType) => Promise<QueryResult<T>>;
+    isModelTypeSupported: (modelType: ModelType) => boolean;
 }

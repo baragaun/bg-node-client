@@ -35,7 +35,7 @@ const findChannelInvitationsForUser = async (
     const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       // todo: proper filtering
       const localResult = await db.findAll<ChannelInvitation>(

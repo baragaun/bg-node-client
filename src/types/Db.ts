@@ -79,4 +79,6 @@ export interface Db {
     changes: Partial<T>,
     modelType?: ModelType,
   ) => Promise<QueryResult<T>>;
+
+  isModelTypeSupported: (modelType: ModelType) => boolean;
 }

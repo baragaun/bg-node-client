@@ -32,7 +32,7 @@ const findProductCategories = async (
     // const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     // if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
     //   if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
     //     return db.findById<GiftCard>(filter.ids[0], ModelType.GiftCard);

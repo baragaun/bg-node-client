@@ -43,7 +43,7 @@ const createChannel = async (
     }
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (!allowNetwork) {
       const response = await db.insert<Channel>(props, ModelType.Channel);
 

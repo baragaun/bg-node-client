@@ -12,22 +12,30 @@ const findOneByMatch = async <T extends Model = Model>(
   modelType: ModelType,
   queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<T>> => {
-  if (!libData.isInitialized()) {
-    logger.error('findOneByMatch: unavailable');
-    return { error: 'unavailable' };
-  }
+  try {
+    if (!libData.isInitialized()) {
+      logger.error('findOneByMatch: unavailable');
+      return { error: 'unavailable' };
+    }
 
-  if (!libData.clientInfoStore().isSignedIn) {
-    logger.error('findOneByMatch: unauthorized');
-    return { error: 'unauthorized' };
-  }
+    if (!libData.clientInfoStore().isSignedIn) {
+      logger.error('findOneByMatch: unauthorized');
+      return { error: 'unauthorized' };
+    }
 
-  if (
-    queryOptions.cachePolicy === CachePolicy.cache ||
-    queryOptions.cachePolicy === CachePolicy.cacheFirst ||
-    libData.isOffline()
-  ) {
-    try {
+    const isOnline = libData.isOnline();
+    const allowNetwork = isOnline && queryOptions.cachePolicy !== CachePolicy.cache;
+
+    //------------------------------------------------------------------------------------------------
+    // Local DB
+    if (
+      (
+        queryOptions.cachePolicy === CachePolicy.cache ||
+        queryOptions.cachePolicy === CachePolicy.cacheFirst ||
+        libData.isOffline()
+      ) &&
+      db.isModelTypeSupported(modelType)
+    ) {
       const result = await db.findOneByMatch<T>(match, modelType);
 
       if (
@@ -37,12 +45,20 @@ const findOneByMatch = async <T extends Model = Model>(
       ) {
         return result;
       }
-    } catch (error) {
-      return { error: (error as Error).message };
     }
-  }
 
-  return { object: null };
+    //------------------------------------------------------------------------------------------------
+    // Network
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
+
+    // todo: get it from the network
+
+    return { object: null };
+  } catch (error) {
+    return { error: (error as Error).message };
+  }
 };
 
 export default findOneByMatch;

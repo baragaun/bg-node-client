@@ -60,7 +60,7 @@ export const WalletItemSchema = {
       type: 'string',
       maxLength: 32,
     },
-    orderItemId: {
+    purchaseOrderItemId: {
       type: 'string',
       maxLength: 32,
     },
@@ -74,8 +74,47 @@ export const WalletItemSchema = {
     price: {
       type: 'integer',
     },
+    initialBalance: {
+      type: 'integer',
+    },
     balance: {
       type: 'integer',
+    },
+    code: {
+      type: 'string',
+      nullable: true,
+    },
+    hasBarcode: {
+      type: 'boolean',
+      nullable: true,
+    },
+    barcodeFormat: {
+      type: 'string',
+      enum: [
+        'TYPE_39',
+        'TYPE_128',
+        'CODE_25',
+        'ITF',
+        'I125',
+        'UPC_A',
+        'UPC_E',
+        'EAN_13',
+        'EAN_8',
+        'QR_CODE',
+        'PDF417',
+        'DATA_MATRIX',
+        null,
+      ],
+      nullable: true,
+    },
+    pin: {
+      type: 'string',
+      nullable: true,
+    },
+    source: {
+      type: 'string',
+      enum: ['user', 'purchased', 'gifted', null],
+      nullable: true,
     },
     imageSourceFront: {
       type: 'string',
@@ -85,11 +124,7 @@ export const WalletItemSchema = {
       type: 'string',
       nullable: true,
     },
-    hasBarcode: {
-      type: 'boolean',
-      nullable: true,
-    },
-    barcodeFormat: {
+    referenceUrl: {
       type: 'string',
       nullable: true,
     },
@@ -111,6 +146,21 @@ export const WalletItemSchema = {
     },
     sortIndex: {
       type: 'integer',
+    },
+    issuedAt: {
+      type: 'string',
+      format: 'date-time',
+      nullable: true,
+    },
+    expiresAt: {
+      type: 'string',
+      format: 'date-time',
+      nullable: true,
+    },
+    balanceUpdatedAt: {
+      type: 'string',
+      format: 'date-time',
+      nullable: true,
     },
     archivedAt: {
       type: 'string',

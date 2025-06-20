@@ -56,6 +56,10 @@ export declare const PurchaseOrderSchema: {
             type: string;
             maxLength: number;
         };
+        shoppingCartId: {
+            type: string;
+            maxLength: number;
+        };
         sumItemPrice: {
             type: string;
         };
@@ -133,11 +137,19 @@ export declare const PurchaseOrderSchema: {
                         maxLength: number;
                         nullable: boolean;
                     };
-                    orderId: {
+                    purchaseOrderId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    shoppingCartItemId: {
                         type: string;
                         maxLength: number;
                     };
                     productId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    vendorId: {
                         type: string;
                         maxLength: number;
                     };
@@ -149,6 +161,26 @@ export declare const PurchaseOrderSchema: {
                     };
                     totalPrice: {
                         type: string;
+                    };
+                    balance: {
+                        type: string;
+                    };
+                    code: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    hasBarcode: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    barcodeFormat: {
+                        type: string;
+                        enum: string[];
+                        nullable: boolean;
+                    };
+                    pin: {
+                        type: string;
+                        nullable: boolean;
                     };
                 };
             };

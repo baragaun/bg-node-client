@@ -33,7 +33,7 @@ const findChannelMessages = async (
     const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local cache
+    // Local DB
     if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
       if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
         const singleObjectResult = await db.findById<ChannelMessage>(filter.ids[0], ModelType.ChannelMessage);

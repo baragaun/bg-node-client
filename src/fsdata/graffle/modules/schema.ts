@@ -2156,8 +2156,10 @@ export namespace Schema {
       unblockUserForMeV2: Mutation.unblockUserForMeV2;
       updateMyUser: Mutation.updateMyUser;
       createUserTracking: Mutation.createUserTracking;
+      createPurchaseOrder: Mutation.createPurchaseOrder;
       createShoppingCartItem: Mutation.createShoppingCartItem;
       deleteShoppingCartItem: Mutation.deleteShoppingCartItem;
+      updateShoppingCartItem: Mutation.updateShoppingCartItem;
       emptyMyShoppingCart: Mutation.emptyMyShoppingCart;
       emptyShoppingCart: Mutation.emptyShoppingCart;
       updateWalletItem: Mutation.updateWalletItem;
@@ -2714,10 +2716,19 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'acceptChannelInvitation';
       arguments: {
+        /**
+         * @deprecated use id instead
+         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2750,10 +2761,19 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$DeclineChannelInvitationReasonTextId;
         };
+        /**
+         * @deprecated use id instead
+         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2771,10 +2791,19 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
+        /**
+         * @deprecated use id instead
+         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2786,10 +2815,19 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'dismissChannelInvitationFromInbox';
       arguments: {
+        /**
+         * @deprecated use id instead
+         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2816,10 +2854,19 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'archiveChannelForMe';
       arguments: {
+        /**
+         * @deprecated use id instead
+         */
         channelId: {
           kind: 'InputField';
           name: 'channelId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2858,10 +2905,19 @@ export namespace Schema {
           inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
+        /**
+         * @deprecated use id instead
+         */
         channelId: {
           kind: 'InputField';
           name: 'channelId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2903,10 +2959,19 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'unarchiveChannelForMe';
       arguments: {
+        /**
+         * @deprecated use id instead
+         */
         channelId: {
           kind: 'InputField';
           name: 'channelId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2954,10 +3019,19 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
+        /**
+         * @deprecated use id instead
+         */
         channelMessageId: {
           kind: 'InputField';
           name: 'channelMessageId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -3005,10 +3079,19 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
+        /**
+         * @deprecated use id instead
+         */
         channelParticipantId: {
           kind: 'InputField';
           name: 'channelParticipantId';
-          inlineType: [1];
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -3909,6 +3992,21 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface createPurchaseOrder {
+      kind: 'OutputField';
+      name: 'createPurchaseOrder';
+      arguments: {
+        input: {
+          kind: 'InputField';
+          name: 'input';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$PurchaseOrderInput;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
     export interface createShoppingCartItem {
       kind: 'OutputField';
       name: 'createShoppingCartItem';
@@ -3933,6 +4031,27 @@ export namespace Schema {
           name: 'id';
           inlineType: [1];
           namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface updateShoppingCartItem {
+      kind: 'OutputField';
+      name: 'updateShoppingCartItem';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$UpdateObjectOptions;
+        };
+        input: {
+          kind: 'InputField';
+          name: 'input';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$ShoppingCartItemInput;
         };
       };
       inlineType: [1];
@@ -25893,11 +26012,18 @@ export namespace Schema {
       updatedBy: PurchaseOrderItem.updatedBy;
       deletedAt: PurchaseOrderItem.deletedAt;
       deletedBy: PurchaseOrderItem.deletedBy;
-      orderId: PurchaseOrderItem.orderId;
+      purchaseOrderId: PurchaseOrderItem.purchaseOrderId;
+      shoppingCartItemId: PurchaseOrderItem.shoppingCartItemId;
       productId: PurchaseOrderItem.productId;
+      vendorId: PurchaseOrderItem.vendorId;
       quantity: PurchaseOrderItem.quantity;
       price: PurchaseOrderItem.price;
       totalPrice: PurchaseOrderItem.totalPrice;
+      balance: PurchaseOrderItem.balance;
+      code: PurchaseOrderItem.code;
+      hasBarcode: PurchaseOrderItem.hasBarcode;
+      barcodeFormat: PurchaseOrderItem.barcodeFormat;
+      pin: PurchaseOrderItem.pin;
     };
   }
 
@@ -25993,9 +26119,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface orderId {
+    export interface purchaseOrderId {
       kind: 'OutputField';
-      name: 'orderId';
+      name: 'purchaseOrderId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface shoppingCartItemId {
+      kind: 'OutputField';
+      name: 'shoppingCartItemId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
@@ -26004,6 +26138,14 @@ export namespace Schema {
     export interface productId {
       kind: 'OutputField';
       name: 'productId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface vendorId {
+      kind: 'OutputField';
+      name: 'vendorId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
@@ -26032,6 +26174,46 @@ export namespace Schema {
       inlineType: [1];
       namedType: $$NamedTypes.$$Int;
     }
+
+    export interface balance {
+      kind: 'OutputField';
+      name: 'balance';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface code {
+      kind: 'OutputField';
+      name: 'code';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface hasBarcode {
+      kind: 'OutputField';
+      name: 'hasBarcode';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface barcodeFormat {
+      kind: 'OutputField';
+      name: 'barcodeFormat';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BarcodeType;
+    }
+
+    export interface pin {
+      kind: 'OutputField';
+      name: 'pin';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
   }
 
   //                                           PurchaseOrder
@@ -26054,6 +26236,7 @@ export namespace Schema {
       deletedAt: PurchaseOrder.deletedAt;
       deletedBy: PurchaseOrder.deletedBy;
       userId: PurchaseOrder.userId;
+      shoppingCartId: PurchaseOrder.shoppingCartId;
       sumItemPrice: PurchaseOrder.sumItemPrice;
       totalPrice: PurchaseOrder.totalPrice;
       vat: PurchaseOrder.vat;
@@ -26159,6 +26342,14 @@ export namespace Schema {
     export interface userId {
       kind: 'OutputField';
       name: 'userId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface shoppingCartId {
+      kind: 'OutputField';
+      name: 'shoppingCartId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
@@ -26553,20 +26744,28 @@ export namespace Schema {
       deletedBy: WalletItem.deletedBy;
       walletId: WalletItem.walletId;
       productId: WalletItem.productId;
-      orderItemId: WalletItem.orderItemId;
+      purchaseOrderItemId: WalletItem.purchaseOrderItemId;
       vendorId: WalletItem.vendorId;
       name: WalletItem.name;
       price: WalletItem.price;
+      initialBalance: WalletItem.initialBalance;
       balance: WalletItem.balance;
-      imageSourceFront: WalletItem.imageSourceFront;
-      imageSourceBack: WalletItem.imageSourceBack;
+      code: WalletItem.code;
       hasBarcode: WalletItem.hasBarcode;
       barcodeFormat: WalletItem.barcodeFormat;
+      pin: WalletItem.pin;
+      source: WalletItem.source;
+      imageSourceFront: WalletItem.imageSourceFront;
+      imageSourceBack: WalletItem.imageSourceBack;
+      referenceUrl: WalletItem.referenceUrl;
       termsEn: WalletItem.termsEn;
       termsUrl: WalletItem.termsUrl;
       instructionsEn: WalletItem.instructionsEn;
       instructionsUrl: WalletItem.instructionsUrl;
       sortIndex: WalletItem.sortIndex;
+      issuedAt: WalletItem.issuedAt;
+      expiresAt: WalletItem.expiresAt;
+      balanceUpdatedAt: WalletItem.balanceUpdatedAt;
       archivedAt: WalletItem.archivedAt;
     };
   }
@@ -26679,9 +26878,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface orderItemId {
+    export interface purchaseOrderItemId {
       kind: 'OutputField';
-      name: 'orderItemId';
+      name: 'purchaseOrderItemId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
@@ -26711,12 +26910,60 @@ export namespace Schema {
       namedType: $$NamedTypes.$$Int;
     }
 
+    export interface initialBalance {
+      kind: 'OutputField';
+      name: 'initialBalance';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+
     export interface balance {
       kind: 'OutputField';
       name: 'balance';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface code {
+      kind: 'OutputField';
+      name: 'code';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface hasBarcode {
+      kind: 'OutputField';
+      name: 'hasBarcode';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface barcodeFormat {
+      kind: 'OutputField';
+      name: 'barcodeFormat';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BarcodeType;
+    }
+
+    export interface pin {
+      kind: 'OutputField';
+      name: 'pin';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface source {
+      kind: 'OutputField';
+      name: 'source';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$WalletItemSource;
     }
 
     export interface imageSourceFront {
@@ -26735,17 +26982,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface hasBarcode {
+    export interface referenceUrl {
       kind: 'OutputField';
-      name: 'hasBarcode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface barcodeFormat {
-      kind: 'OutputField';
-      name: 'barcodeFormat';
+      name: 'referenceUrl';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -26789,6 +27028,30 @@ export namespace Schema {
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface issuedAt {
+      kind: 'OutputField';
+      name: 'issuedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface expiresAt {
+      kind: 'OutputField';
+      name: 'expiresAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface balanceUpdatedAt {
+      kind: 'OutputField';
+      name: 'balanceUpdatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
     }
 
     export interface archivedAt {
@@ -34459,11 +34722,18 @@ export namespace Schema {
       updatedBy: PurchaseOrderItemInput.updatedBy;
       deletedAt: PurchaseOrderItemInput.deletedAt;
       deletedBy: PurchaseOrderItemInput.deletedBy;
-      orderId: PurchaseOrderItemInput.orderId;
+      purchaseOrderId: PurchaseOrderItemInput.purchaseOrderId;
+      shoppingCartItemId: PurchaseOrderItemInput.shoppingCartItemId;
       productId: PurchaseOrderItemInput.productId;
+      vendorId: PurchaseOrderItemInput.vendorId;
       quantity: PurchaseOrderItemInput.quantity;
       price: PurchaseOrderItemInput.price;
       totalPrice: PurchaseOrderItemInput.totalPrice;
+      balance: PurchaseOrderItemInput.balance;
+      code: PurchaseOrderItemInput.code;
+      hasBarcode: PurchaseOrderItemInput.hasBarcode;
+      barcodeFormat: PurchaseOrderItemInput.barcodeFormat;
+      pin: PurchaseOrderItemInput.pin;
     };
   }
 
@@ -34538,9 +34808,16 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface orderId {
+    export interface purchaseOrderId {
       kind: 'InputField';
-      name: 'orderId';
+      name: 'purchaseOrderId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface shoppingCartItemId {
+      kind: 'InputField';
+      name: 'shoppingCartItemId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
@@ -34548,6 +34825,13 @@ export namespace Schema {
     export interface productId {
       kind: 'InputField';
       name: 'productId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface vendorId {
+      kind: 'InputField';
+      name: 'vendorId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
@@ -34571,6 +34855,41 @@ export namespace Schema {
       name: 'totalPrice';
       inlineType: [0];
       namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface balance {
+      kind: 'InputField';
+      name: 'balance';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface code {
+      kind: 'InputField';
+      name: 'code';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface hasBarcode {
+      kind: 'InputField';
+      name: 'hasBarcode';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface barcodeFormat {
+      kind: 'InputField';
+      name: 'barcodeFormat';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BarcodeType;
+    }
+
+    export interface pin {
+      kind: 'InputField';
+      name: 'pin';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
     }
   }
 
@@ -34680,6 +34999,7 @@ export namespace Schema {
       deletedAt: PurchaseOrderInput.deletedAt;
       deletedBy: PurchaseOrderInput.deletedBy;
       userId: PurchaseOrderInput.userId;
+      shoppingCartId: PurchaseOrderInput.shoppingCartId;
       sumItemPrice: PurchaseOrderInput.sumItemPrice;
       totalPrice: PurchaseOrderInput.totalPrice;
       vat: PurchaseOrderInput.vat;
@@ -34763,6 +35083,13 @@ export namespace Schema {
     export interface userId {
       kind: 'InputField';
       name: 'userId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface shoppingCartId {
+      kind: 'InputField';
+      name: 'shoppingCartId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
@@ -35341,20 +35668,28 @@ export namespace Schema {
       deletedBy: WalletItemInput.deletedBy;
       walletId: WalletItemInput.walletId;
       productId: WalletItemInput.productId;
-      orderItemId: WalletItemInput.orderItemId;
+      purchaseOrderItemId: WalletItemInput.purchaseOrderItemId;
       vendorId: WalletItemInput.vendorId;
       name: WalletItemInput.name;
       price: WalletItemInput.price;
+      initialBalance: WalletItemInput.initialBalance;
       balance: WalletItemInput.balance;
-      imageSourceFront: WalletItemInput.imageSourceFront;
-      imageSourceBack: WalletItemInput.imageSourceBack;
+      code: WalletItemInput.code;
       hasBarcode: WalletItemInput.hasBarcode;
       barcodeFormat: WalletItemInput.barcodeFormat;
+      pin: WalletItemInput.pin;
+      source: WalletItemInput.source;
+      imageSourceFront: WalletItemInput.imageSourceFront;
+      imageSourceBack: WalletItemInput.imageSourceBack;
+      referenceUrl: WalletItemInput.referenceUrl;
       termsEn: WalletItemInput.termsEn;
       termsUrl: WalletItemInput.termsUrl;
       instructionsEn: WalletItemInput.instructionsEn;
       instructionsUrl: WalletItemInput.instructionsUrl;
       sortIndex: WalletItemInput.sortIndex;
+      issuedAt: WalletItemInput.issuedAt;
+      expiresAt: WalletItemInput.expiresAt;
+      balanceUpdatedAt: WalletItemInput.balanceUpdatedAt;
       archivedAt: WalletItemInput.archivedAt;
     };
   }
@@ -35444,9 +35779,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface orderItemId {
+    export interface purchaseOrderItemId {
       kind: 'InputField';
-      name: 'orderItemId';
+      name: 'purchaseOrderItemId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
@@ -35472,11 +35807,53 @@ export namespace Schema {
       namedType: $$NamedTypes.$$Int;
     }
 
+    export interface initialBalance {
+      kind: 'InputField';
+      name: 'initialBalance';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Int;
+    }
+
     export interface balance {
       kind: 'InputField';
       name: 'balance';
       inlineType: [0];
       namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface code {
+      kind: 'InputField';
+      name: 'code';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface hasBarcode {
+      kind: 'InputField';
+      name: 'hasBarcode';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface barcodeFormat {
+      kind: 'InputField';
+      name: 'barcodeFormat';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BarcodeType;
+    }
+
+    export interface pin {
+      kind: 'InputField';
+      name: 'pin';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface source {
+      kind: 'InputField';
+      name: 'source';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$WalletItemSource;
     }
 
     export interface imageSourceFront {
@@ -35493,16 +35870,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface hasBarcode {
+    export interface referenceUrl {
       kind: 'InputField';
-      name: 'hasBarcode';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface barcodeFormat {
-      kind: 'InputField';
-      name: 'barcodeFormat';
+      name: 'referenceUrl';
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
     }
@@ -35540,6 +35910,27 @@ export namespace Schema {
       name: 'sortIndex';
       inlineType: [0];
       namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface issuedAt {
+      kind: 'InputField';
+      name: 'issuedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface expiresAt {
+      kind: 'InputField';
+      name: 'expiresAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface balanceUpdatedAt {
+      kind: 'InputField';
+      name: 'balanceUpdatedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
     }
 
     export interface archivedAt {
@@ -40822,6 +41213,44 @@ export namespace Schema {
     }
   }
 
+  //                                        UpdateObjectOptions
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface UpdateObjectOptions {
+    kind: 'InputObject';
+    name: 'UpdateObjectOptions';
+    isAllFieldsNullable: true;
+    fields: {
+      replace: UpdateObjectOptions.replace;
+      upsert: UpdateObjectOptions.upsert;
+      returnReloadedObject: UpdateObjectOptions.returnReloadedObject;
+    };
+  }
+
+  export namespace UpdateObjectOptions {
+    export interface replace {
+      kind: 'InputField';
+      name: 'replace';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface upsert {
+      kind: 'InputField';
+      name: 'upsert';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface returnReloadedObject {
+      kind: 'InputField';
+      name: 'returnReloadedObject';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+  }
+
   //
   //
   //
@@ -42049,6 +42478,7 @@ export namespace Schema {
       'graphQlQueryFindTrainingSessionById',
       'graphQlQueryFindTrainingSessionsByTrainingId',
       'graphQlQueryFindTrainingSessionsForMe',
+      'graphQlMutationCreatePurchaseOrderField',
       'graphQlMutationUpdateWalletItem',
       'graphQlQueryCreateShoppingCartItem',
       'graphQlQueryDeleteShoppingCartItem',
@@ -42063,7 +42493,6 @@ export namespace Schema {
       'graphQlQueryFindWalletItems',
       'graphQlQueryFindWallets',
       'graphQlQueryFindWalletServiceRecord',
-      'graphQlQueryPurchaseShoppingCart',
     ];
     membersUnion:
       | 'graphQlMutationCreateAcademicExperience'
@@ -42249,6 +42678,7 @@ export namespace Schema {
       | 'graphQlQueryFindTrainingSessionById'
       | 'graphQlQueryFindTrainingSessionsByTrainingId'
       | 'graphQlQueryFindTrainingSessionsForMe'
+      | 'graphQlMutationCreatePurchaseOrderField'
       | 'graphQlMutationUpdateWalletItem'
       | 'graphQlQueryCreateShoppingCartItem'
       | 'graphQlQueryDeleteShoppingCartItem'
@@ -42262,8 +42692,7 @@ export namespace Schema {
       | 'graphQlQueryFindWalletItemById'
       | 'graphQlQueryFindWalletItems'
       | 'graphQlQueryFindWallets'
-      | 'graphQlQueryFindWalletServiceRecord'
-      | 'graphQlQueryPurchaseShoppingCart';
+      | 'graphQlQueryFindWalletServiceRecord';
   }
 
   //                                        ServiceRequestResult
@@ -42619,6 +43048,56 @@ export namespace Schema {
       | 'ok'
       | 'failed'
       | 'phoneNumberInvalid';
+  }
+
+  //                                            BarcodeType
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface BarcodeType {
+    kind: 'Enum';
+    name: 'BarcodeType';
+    members: [
+      'TYPE_39',
+      'TYPE_128',
+      'CODE_25',
+      'ITF',
+      'I125',
+      'UPC_A',
+      'UPC_E',
+      'EAN_13',
+      'EAN_8',
+      'QR_CODE',
+      'PDF417',
+      'DATA_MATRIX',
+    ];
+    membersUnion:
+      | 'TYPE_39'
+      | 'TYPE_128'
+      | 'CODE_25'
+      | 'ITF'
+      | 'I125'
+      | 'UPC_A'
+      | 'UPC_E'
+      | 'EAN_13'
+      | 'EAN_8'
+      | 'QR_CODE'
+      | 'PDF417'
+      | 'DATA_MATRIX';
+  }
+
+  //                                          WalletItemSource
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface WalletItemSource {
+    kind: 'Enum';
+    name: 'WalletItemSource';
+    members: ['user', 'purchased', 'gifted'];
+    membersUnion:
+      | 'user'
+      | 'purchased'
+      | 'gifted';
   }
 
   //                                         CookieChoiceTextId
@@ -43103,6 +43582,7 @@ export namespace Schema {
     export type $$VerifyMultiStepActionTokenInput = VerifyMultiStepActionTokenInput;
     export type $$MyUserInput = MyUserInput;
     export type $$UserTrackingInput = UserTrackingInput;
+    export type $$UpdateObjectOptions = UpdateObjectOptions;
     export type $$BaseModelMetadata = BaseModelMetadata;
     export type $$IGroupMembership = IGroupMembership;
     export type $$GroupMembershipRole = GroupMembershipRole;
@@ -43147,6 +43627,8 @@ export namespace Schema {
     export type $$NotificationMethod = NotificationMethod;
     export type $$MultiStepActionResult = MultiStepActionResult;
     export type $$MultiStepActionSendNotificationResult = MultiStepActionSendNotificationResult;
+    export type $$BarcodeType = BarcodeType;
+    export type $$WalletItemSource = WalletItemSource;
     export type $$CookieChoiceTextId = CookieChoiceTextId;
     export type $$ReportUserReasonTextId = ReportUserReasonTextId;
     export type $$DeclineChannelInvitationReasonTextId = DeclineChannelInvitationReasonTextId;
@@ -43238,6 +43720,8 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     NotificationMethod: Schema.NotificationMethod;
     MultiStepActionResult: Schema.MultiStepActionResult;
     MultiStepActionSendNotificationResult: Schema.MultiStepActionSendNotificationResult;
+    BarcodeType: Schema.BarcodeType;
+    WalletItemSource: Schema.WalletItemSource;
     CookieChoiceTextId: Schema.CookieChoiceTextId;
     ReportUserReasonTextId: Schema.ReportUserReasonTextId;
     DeclineChannelInvitationReasonTextId: Schema.DeclineChannelInvitationReasonTextId;
