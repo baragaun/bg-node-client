@@ -1,12 +1,16 @@
-import { BaseModel } from './BaseModel.js';
 import { LabeledStringValue } from './LabeledStringValue.js';
 import { UserBlock } from './UserBlock.js';
 import { UserRole } from '../enums.js';
+import { AcademicExperience, BusinessExperience, MenteesGroupMembership, MentorsGroupMembership } from '../fsdata/gql/graphql.js';
 import { IGroupMembership } from '../types/IGroupMembership.js';
-export declare class UserListItem extends BaseModel {
+export declare class UserListItem {
+    id: string;
+    createdAt: string;
+    updatedAt?: string | null;
+    deletedAt?: string | null;
+    userHandle?: string | null;
     firstName?: string | null;
     lastName?: string | null;
-    userHandle?: string | null;
     avatarUrl?: string | null;
     genderTextId?: string | null;
     websites?: LabeledStringValue[] | null;
@@ -17,11 +21,21 @@ export declare class UserListItem extends BaseModel {
     cityOfResidence?: string | null;
     timezone?: string | null;
     roles: UserRole[];
+    discoverable?: boolean | null;
     trustLevel: number;
     userBlocks?: UserBlock[] | null;
-    latestActivityAt?: Date | null;
+    latestActivityAt?: string | null;
+    inactivatedAt?: string | null;
+    suspendedAt?: string | null;
     seeksHelp?: boolean | null;
     offersHelp?: boolean | null;
+    yearsManagementExperience?: number | null;
+    yearsOwnershipExperience?: number | null;
+    academicExperiences?: AcademicExperience[] | null;
+    businessExperiences?: BusinessExperience[] | null;
+    isOnVacation?: boolean | null;
+    mentor?: MentorsGroupMembership | null;
+    mentee?: MenteesGroupMembership | null;
     groupMemberships: IGroupMembership[];
     constructor(attributes?: Partial<UserListItem>);
     static get searchFields(): string[];

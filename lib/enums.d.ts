@@ -1,18 +1,81 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
+export declare enum AppFeature {
+    testFeatures1 = "testFeatures1",
+    testFeatures2 = "testFeatures2"
+}
+export declare enum AppEnvironment {
+    test = "test",
+    development = "development",
+    staging = "staging",
+    production = "production"
+}
+export declare enum AssetHostingService {
+    s3 = "s3",
+    unset = "unset"
+}
+export declare enum AuthType {
+    none = "none",
+    oauth = "oauth",
+    token = "token",
+    hmac = "hmac",
+    saml = "saml"
+}
+export declare enum BarcodeType {
+    TYPE_39 = "TYPE_39",
+    TYPE_128 = "TYPE_128",
+    CODE_25 = "CODE_25",
+    ITF = "ITF",// Interleaved 2 OF 5
+    I125 = "I125",
+    UPC_A = "UPC_A",
+    UPC_E = "UPC_E",
+    EAN_13 = "EAN_13",
+    EAN_8 = "EAN_8",
+    QR_CODE = "QR_CODE",
+    PDF417 = "PDF417",
+    DATA_MATRIX = "DATA_MATRIX"
+}
 export declare enum BgListenerTopic {
     channel = "channel",
     myUser = "myUser"
 }
-export declare enum ModelEventType {
-    error = "error",
-    warning = "warning",
-    info = "info"
+export declare enum BgNodeClientUiErrorCode {
+    invalidInput = "invalidInput",
+    notFound = "notFound",
+    unauthorized = "unauthorized"
+}
+export declare enum CachePolicy {
+    /**
+     * Ignore cache, retrieve data from network.
+     */
+    network = "network",
+    /**
+     * Retrieve data from network, if the network is available.
+     */
+    networkFirst = "network-first",
+    /**
+     * Retrieve data from cache only.
+     */
+    cache = "cache",
+    /**
+     * Retrieve data from cache, if it is available there and not stale.
+     */
+    cacheFirst = "cache-first"
+}
+export declare enum ChannelInvitationStatus {
+    created = "created",
+    accepted = "accepted",
+    declined = "declined",
+    unset = "unset"
 }
 export declare enum ChannelType {
     unset = "unset",
     mentoring = "mentoring",
     support = "support",
     welcome = "welcome"
+}
+export declare enum ChannelInvitationDirection {
+    received = "received",
+    sent = "sent"
 }
 export declare enum ChannelMessageType {
     unset = "unset",
@@ -72,106 +135,28 @@ export declare enum ChannelEventType {
      */
     reactionToMessageDeleted = "reactionToMessageDeleted"
 }
-export declare enum MutationType {
-    create = "create",
-    update = "update",
-    delete = "delete",
-    replace = "replace"
-}
-export declare enum AppEnvironment {
-    test = "test",
-    development = "development",
-    staging = "staging",
-    production = "production"
-}
-export declare enum ChannelInvitationStatus {
-    created = "created",
-    accepted = "accepted",
-    declined = "declined",
-    unset = "unset"
-}
 export declare enum ClientInfoStoreType {
     localStorage = "localStorage",
     db = "db",
     inMemory = "inMemory"
 }
-export declare enum UserRole {
-    admin = "admin",
-    support = "support",
-    staff = "staff",
-    qa = "qa",// person is a staff member working in QA
-    test = "test"
+export declare enum DeclineChannelInvitationReasonTextId {
+    fakeProfile = "fakeProfile",
+    inappropriate = "inappropriate",
+    noReason = "noReason",
+    notGoodFit = "notGoodFit",
+    tooBusy = "tooBusy"
 }
-export declare enum AppFeature {
-    testFeatures1 = "testFeatures1",
-    testFeatures2 = "testFeatures2"
-}
-export declare enum AuthType {
-    none = "none",
-    oauth = "oauth",
-    token = "token",
-    hmac = "hmac",
-    saml = "saml"
+export declare enum CookieChoiceTextId {
+    acceptAll = "acceptAll",
+    acceptEssentials = "acceptEssentials",
+    rejectAll = "rejectAll"
 }
 export declare enum GroupMembershipRole {
     admin = "admin",
     coordinator = "coordinator",
     moderator = "moderator",
     owner = "owner"
-}
-export declare enum UiLanguage {
-    ar = "ar",// Arabic
-    de = "de",// German
-    en = "en",// English
-    es = "es",// Spanish
-    id = "id",// Indonesian
-    ru = "ru",// Russian
-    so = "so"
-}
-export declare enum ModelType {
-    Channel = "Channel",
-    ChannelInvitation = "ChannelInvitation",
-    ChannelMessage = "ChannelMessage",
-    ChannelParticipant = "ChannelParticipant",
-    ClientInfo = "ClientInfo",
-    GiftCard = "GiftCard",
-    MyUser = "MyUser",
-    PurchaseOrder = "PurchaseOrder",
-    PurchaseOrderItem = "PurchaseOrderItem",
-    ShoppingCart = "ShoppingCart",
-    ShoppingCartItem = "ShoppingCartItem",
-    SidMultiStepAction = "SidMultiStepAction",
-    SidMultiStepActionProgress = "SidMultiStepActionProgress",
-    User = "User",
-    UserInbox = "UserInbox",
-    Vendor = "Vendor",
-    Wallet = "Wallet",
-    WalletItem = "WalletItem"
-}
-export declare enum NotificationMethod {
-    auto = "auto",
-    email = "email",
-    inAppNotification = "inAppNotification",
-    off = "off",
-    pushNotification = "pushNotification",
-    sms = "sms"
-}
-export declare enum NotificationType {
-    accountDeletedConfirmation = "accountDeletedConfirmation",
-    channelInvitationAccepted = "channelInvitationAccepted",
-    channelInvitationDeclined = "channelInvitationDeclined",
-    channelInvitationReceived = "channelInvitationReceived",
-    channelMessageReceived = "channelMessageReceived",
-    completeProfile = "completeProfile",
-    completeSignUp = "completeSignUp",
-    matchesRecommendations = "matchesRecommendations",
-    newPrivacyRules = "newPrivacyRules",
-    newsletter = "newsletter",
-    resetPasswordConfirmation = "resetPasswordConfirmation",
-    resetPasswordConfirmToken = "resetPasswordConfirmToken",
-    sendFirstInvitation = "sendFirstInvitation",
-    unset = "unset",
-    welcome = "welcome"
 }
 export declare enum HttpHeaderName {
     authorization = "Authorization",
@@ -191,38 +176,42 @@ export declare enum HttpHeaderName {
     timezone = "x-timezone",
     userId = "x-user-id"
 }
-export declare enum CachePolicy {
-    /**
-     * Ignore cache, retrieve data from network.
-     */
-    network = "network",
-    /**
-     * Retrieve data from network, if the network is available.
-     */
-    networkFirst = "network-first",
-    /**
-     * Retrieve data from cache only.
-     */
-    cache = "cache",
-    /**
-     * Retrieve data from cache, if it is available there and not stale.
-     */
-    cacheFirst = "cache-first"
+export declare enum IncludeFilterOption {
+    include = "include",
+    exclude = "exclude",
+    only = "only"
 }
-export declare enum UserIdentType {
-    any = "any",
-    email = "email",
-    id = "id",
-    inviteCode = "inviteCode",
-    oauthProfileUrl = "oauthProfileUrl",
-    oauthUserId = "oauthUserId",
-    phoneNumber = "phoneNumber",
-    userHandle = "userHandle"
+export declare enum ModelEventType {
+    error = "error",
+    warning = "warning",
+    info = "info"
 }
-export declare enum CookieChoiceTextId {
-    acceptAll = "acceptAll",
-    acceptEssentials = "acceptEssentials",
-    rejectAll = "rejectAll"
+export declare enum ModelType {
+    Channel = "Channel",
+    ChannelInvitation = "ChannelInvitation",
+    ChannelMessage = "ChannelMessage",
+    ChannelParticipant = "ChannelParticipant",
+    ClientInfo = "ClientInfo",
+    GiftCard = "GiftCard",
+    MyUser = "MyUser",
+    PurchaseOrder = "PurchaseOrder",
+    PurchaseOrderItem = "PurchaseOrderItem",
+    ShoppingCart = "ShoppingCart",
+    ShoppingCartItem = "ShoppingCartItem",
+    SidMultiStepAction = "SidMultiStepAction",
+    SidMultiStepActionProgress = "SidMultiStepActionProgress",
+    unset = "unset",
+    User = "User",
+    UserInbox = "UserInbox",
+    Vendor = "Vendor",
+    Wallet = "Wallet",
+    WalletItem = "WalletItem"
+}
+export declare enum MutationType {
+    create = "create",
+    update = "update",
+    delete = "delete",
+    replace = "replace"
 }
 export declare enum MultiStepActionType {
     resetPassword = "resetPassword",
@@ -290,30 +279,30 @@ export declare enum MultiStepActionResult {
     userNotFound = "userNotFound",
     userNotSignedIn = "userNotSignedIn"
 }
-export declare enum BgNodeClientUiErrorCode {
-    invalidInput = "invalidInput",
-    notFound = "notFound",
-    unauthorized = "unauthorized"
+export declare enum NotificationMethod {
+    auto = "auto",
+    email = "email",
+    inAppNotification = "inAppNotification",
+    off = "off",
+    pushNotification = "pushNotification",
+    sms = "sms"
 }
-export declare enum IncludeFilterOption {
-    include = "include",
-    exclude = "exclude",
-    only = "only"
-}
-export declare enum SortDirection {
-    asc = "asc",
-    desc = "desc"
-}
-export declare enum ChannelInvitationDirection {
-    received = "received",
-    sent = "sent"
-}
-export declare enum DeclineChannelInvitationReasonTextId {
-    fakeProfile = "fakeProfile",
-    inappropriate = "inappropriate",
-    noReason = "noReason",
-    notGoodFit = "notGoodFit",
-    tooBusy = "tooBusy"
+export declare enum NotificationType {
+    accountDeletedConfirmation = "accountDeletedConfirmation",
+    channelInvitationAccepted = "channelInvitationAccepted",
+    channelInvitationDeclined = "channelInvitationDeclined",
+    channelInvitationReceived = "channelInvitationReceived",
+    channelMessageReceived = "channelMessageReceived",
+    completeProfile = "completeProfile",
+    completeSignUp = "completeSignUp",
+    matchesRecommendations = "matchesRecommendations",
+    newPrivacyRules = "newPrivacyRules",
+    newsletter = "newsletter",
+    resetPasswordConfirmation = "resetPasswordConfirmation",
+    resetPasswordConfirmToken = "resetPasswordConfirmToken",
+    sendFirstInvitation = "sendFirstInvitation",
+    unset = "unset",
+    welcome = "welcome"
 }
 export declare enum ReportUserReasonTextId {
     badActor = "badActor",
@@ -329,19 +318,40 @@ export declare enum ReportUserReasonTextId {
     usesObjectionableLanguage = "usesObjectionableLanguage",
     violatesRules = "violatesRules"
 }
-export declare enum BarcodeType {
-    TYPE_39 = "TYPE_39",
-    TYPE_128 = "TYPE_128",
-    CODE_25 = "CODE_25",
-    ITF = "ITF",// Interleaved 2 OF 5
-    I125 = "I125",
-    UPC_A = "UPC_A",
-    UPC_E = "UPC_E",
-    EAN_13 = "EAN_13",
-    EAN_8 = "EAN_8",
-    QR_CODE = "QR_CODE",
-    PDF417 = "PDF417",
-    DATA_MATRIX = "DATA_MATRIX"
+export declare enum SortDirection {
+    asc = "asc",
+    desc = "desc"
+}
+export declare enum UiLanguage {
+    ar = "ar",// Arabic
+    de = "de",// German
+    en = "en",// English
+    es = "es",// Spanish
+    id = "id",// Indonesian
+    ru = "ru",// Russian
+    so = "so"
+}
+export declare enum UserRole {
+    admin = "admin",
+    support = "support",
+    staff = "staff",
+    qa = "qa",// person is a staff member working in QA
+    test = "test"
+}
+export declare enum UserIdentType {
+    any = "any",
+    email = "email",
+    id = "id",
+    inviteCode = "inviteCode",
+    oauthProfileUrl = "oauthProfileUrl",
+    oauthUserId = "oauthUserId",
+    phoneNumber = "phoneNumber",
+    userHandle = "userHandle"
+}
+export declare enum UploadedAssetType {
+    avatar = "avatar",
+    profileHeroImage = "profileHeroImage",
+    unset = "unset"
 }
 export declare enum WalletItemSource {
     user = "user",

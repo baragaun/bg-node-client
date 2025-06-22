@@ -93,11 +93,6 @@ const UserIdentType: $$Utilities.SchemaDrivenDataMap.Enum = {
   n: 'UserIdentType',
 };
 
-const AuthType: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'AuthType',
-};
-
 const UserRole: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'UserRole',
@@ -111,11 +106,6 @@ const AppFeature: $$Utilities.SchemaDrivenDataMap.Enum = {
 const NotificationType: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'NotificationType',
-};
-
-const IdentityProvider: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'IdentityProvider',
 };
 
 const ModelType: $$Utilities.SchemaDrivenDataMap.Enum = {
@@ -136,6 +126,11 @@ const AssetHostingService: $$Utilities.SchemaDrivenDataMap.Enum = {
 const UserProfileRole: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'UserProfileRole',
+};
+
+const IdentityProvider: $$Utilities.SchemaDrivenDataMap.Enum = {
+  k: 'enum',
+  n: 'IdentityProvider',
 };
 
 const AppAction: $$Utilities.SchemaDrivenDataMap.Enum = {
@@ -181,6 +176,11 @@ const SortDirection: $$Utilities.SchemaDrivenDataMap.Enum = {
 const IncludeFilterOption: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'IncludeFilterOption',
+};
+
+const AuthType: $$Utilities.SchemaDrivenDataMap.Enum = {
+  k: 'enum',
+  n: 'AuthType',
 };
 
 const FederatedIdentityProvider: $$Utilities.SchemaDrivenDataMap.Enum = {
@@ -1749,7 +1749,6 @@ const SidContactListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
       nt: DateTimeISO,
     },
     userIdIn: {},
-    createdBy: {},
   },
 };
 
@@ -1784,11 +1783,6 @@ const PurchaseOrderItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     quantity: {},
     price: {},
     totalPrice: {},
-    balance: {},
-    code: {},
-    hasBarcode: {},
-    barcodeFormat: {},
-    pin: {},
   },
 };
 
@@ -3750,8 +3744,8 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     websites: {
       // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
-    authType: {},
     inviteCode: {},
+    passwordHash: {},
     tfaBackupCodes: {},
     passwordUpdatedAt: {
       nt: DateTimeISO,
@@ -3769,14 +3763,8 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: UserPreferences, <-- Assigned later to avoid potential circular dependency.
     },
     trustLevel: {},
-    userDevices: {
-      // nt: UserDeviceWithoutAuth, <-- Assigned later to avoid potential circular dependency.
-    },
     userBlocks: {
       // nt: UserBlock, <-- Assigned later to avoid potential circular dependency.
-    },
-    contacts: {
-      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
     },
     termsAndConditionsAcceptedAt: {
       nt: DateTimeISO,
@@ -3817,10 +3805,16 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     groupIds: {},
     parentGroupIds: {},
     externalGroupIds: {},
-    pronounsTextIds: {},
     groupMemberships: {
       // nt: IGroupMembership, <-- Assigned later to avoid potential circular dependency.
     },
+    mentor: {
+      // nt: MentorsGroupMembership, <-- Assigned later to avoid potential circular dependency.
+    },
+    mentee: {
+      // nt: MenteesGroupMembership, <-- Assigned later to avoid potential circular dependency.
+    },
+    pronounsTextIds: {},
     seeksHelp: {},
     offersHelp: {},
     birthYear: {},
@@ -3855,16 +3849,11 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     mm2PasswordHash: {},
     mm2Id: {},
+    mm2ProfileId: {},
     mm2PhotoOriginal: {},
     mm2BasicAccountCompleted: {},
     hasSignedInToMm3: {},
     hasSignedInToMm2: {},
-    mentor: {
-      // nt: MentorsGroupMembership, <-- Assigned later to avoid potential circular dependency.
-    },
-    mentee: {
-      // nt: MenteesGroupMembership, <-- Assigned later to avoid potential circular dependency.
-    },
     countryOfResidence: {
       // nt: Country, <-- Assigned later to avoid potential circular dependency.
     },
@@ -3990,81 +3979,12 @@ const NotificationOptions: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
-const UserDeviceWithoutAuth: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    userId: {},
-    deviceUuid: {},
-    deviceType: {},
-    trusted: {},
-    phoneNumber: {},
-    phoneNumberUpdatedAt: {
-      nt: DateTimeISO,
-    },
-    isPhoneNumberVerified: {},
-    brand: {},
-    model: {},
-    isTablet: {},
-    screenWidth: {},
-    screenHeight: {},
-    os: {},
-    osVersion: {},
-    timezone: {},
-    ipAddress: {},
-    consumer: {},
-    consumerVersion: {},
-    acceptedLanguage: {},
-    locale: {},
-    countryCode: {},
-    appVersion: {},
-    signedInAt: {
-      nt: DateTimeISO,
-    },
-    signedOutAt: {
-      nt: DateTimeISO,
-    },
-    sessionStartedAt: {
-      nt: DateTimeISO,
-    },
-    sessionEndedAt: {
-      nt: DateTimeISO,
-    },
-    identityProvider: {},
-    oauthProfileUrl: {},
-    trustedAt: {
-      nt: DateTimeISO,
-    },
-  },
-};
-
 const UserBlock: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     userId: {},
     reasonTextId: {},
     notes: {},
     adminNotes: {},
-    syncedToAnalyticsAt: {
-      nt: DateTimeISO,
-    },
     createdAt: {
       nt: DateTimeISO,
     },
@@ -4072,107 +3992,6 @@ const UserBlock: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       nt: DateTimeISO,
     },
     mm2Id: {},
-  },
-};
-
-const Contact: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: ContactMetadata, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    userId: {},
-    channelId: {},
-    nickname: {},
-    typeTextIds: {},
-    favorite: {},
-    notes: {},
-    archivedAt: {
-      nt: DateTimeISO,
-    },
-    user: {
-      // nt: User, <-- Assigned later to avoid potential circular dependency.
-    },
-    contactTypes: {
-      // nt: ContactType, <-- Assigned later to avoid potential circular dependency.
-    },
-  },
-};
-
-const ContactMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    firstName: {},
-    lastName: {},
-    userHandle: {},
-    avatarUrl: {},
-  },
-};
-
-const ContactType: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    textId: {},
-    parentTextId: {},
-    isParent: {},
-    optionType: {},
-    value: {},
-    translatedValue: {},
-    supportedLanguages: {},
-    materialIconName: {},
-    description: {},
-    translatedDescription: {},
-    language: {},
-    mm2Id: {},
-    mm2Value: {},
-    syncedWithMm2At: {
-      nt: DateTimeISO,
-    },
-    mm2TextId: {},
-    mm3TextId: {},
-    childOptions: {
-      // nt: Option, <-- Assigned later to avoid potential circular dependency.
-    },
-    parentOption: {
-      // nt: Option, <-- Assigned later to avoid potential circular dependency.
-    },
   },
 };
 
@@ -4549,6 +4368,72 @@ const Gender: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     parentOption: {
       // nt: Option, <-- Assigned later to avoid potential circular dependency.
+    },
+  },
+};
+
+const UserDeviceWithoutAuth: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    userId: {},
+    deviceUuid: {},
+    deviceType: {},
+    trusted: {},
+    phoneNumber: {},
+    phoneNumberUpdatedAt: {
+      nt: DateTimeISO,
+    },
+    isPhoneNumberVerified: {},
+    brand: {},
+    model: {},
+    isTablet: {},
+    screenWidth: {},
+    screenHeight: {},
+    os: {},
+    osVersion: {},
+    timezone: {},
+    ipAddress: {},
+    consumer: {},
+    consumerVersion: {},
+    acceptedLanguage: {},
+    locale: {},
+    countryCode: {},
+    appVersion: {},
+    signedInAt: {
+      nt: DateTimeISO,
+    },
+    signedOutAt: {
+      nt: DateTimeISO,
+    },
+    sessionStartedAt: {
+      nt: DateTimeISO,
+    },
+    sessionEndedAt: {
+      nt: DateTimeISO,
+    },
+    identityProvider: {},
+    oauthProfileUrl: {},
+    trustedAt: {
+      nt: DateTimeISO,
     },
   },
 };
@@ -4994,6 +4879,107 @@ const ChannelMessageStatus: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
+const Contact: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: ContactMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    userId: {},
+    channelId: {},
+    nickname: {},
+    typeTextIds: {},
+    favorite: {},
+    notes: {},
+    archivedAt: {
+      nt: DateTimeISO,
+    },
+    user: {
+      // nt: User, <-- Assigned later to avoid potential circular dependency.
+    },
+    contactTypes: {
+      // nt: ContactType, <-- Assigned later to avoid potential circular dependency.
+    },
+  },
+};
+
+const ContactMetadata: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    firstName: {},
+    lastName: {},
+    userHandle: {},
+    avatarUrl: {},
+  },
+};
+
+const ContactType: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    textId: {},
+    parentTextId: {},
+    isParent: {},
+    optionType: {},
+    value: {},
+    translatedValue: {},
+    supportedLanguages: {},
+    materialIconName: {},
+    description: {},
+    translatedDescription: {},
+    language: {},
+    mm2Id: {},
+    mm2Value: {},
+    syncedWithMm2At: {
+      nt: DateTimeISO,
+    },
+    mm2TextId: {},
+    mm3TextId: {},
+    childOptions: {
+      // nt: Option, <-- Assigned later to avoid potential circular dependency.
+    },
+    parentOption: {
+      // nt: Option, <-- Assigned later to avoid potential circular dependency.
+    },
+  },
+};
+
 const ChannelParticipant: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     id: {},
@@ -5076,11 +5062,18 @@ const UserListItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     cityOfResidence: {},
     timezone: {},
     roles: {},
+    discoverable: {},
     trustLevel: {},
     userBlocks: {
       // nt: UserBlock, <-- Assigned later to avoid potential circular dependency.
     },
     latestActivityAt: {
+      nt: DateTimeISO,
+    },
+    inactivatedAt: {
+      nt: DateTimeISO,
+    },
+    suspendedAt: {
       nt: DateTimeISO,
     },
     seeksHelp: {},
@@ -6330,11 +6323,18 @@ const UserWithScore: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     cityOfResidence: {},
     timezone: {},
     roles: {},
+    discoverable: {},
     trustLevel: {},
     userBlocks: {
       // nt: UserBlock, <-- Assigned later to avoid potential circular dependency.
     },
     latestActivityAt: {
+      nt: DateTimeISO,
+    },
+    inactivatedAt: {
+      nt: DateTimeISO,
+    },
+    suspendedAt: {
       nt: DateTimeISO,
     },
     seeksHelp: {},
@@ -6677,8 +6677,8 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     websites: {
       // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
-    authType: {},
     inviteCode: {},
+    passwordHash: {},
     tfaBackupCodes: {},
     passwordUpdatedAt: {
       nt: DateTimeISO,
@@ -6696,14 +6696,8 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: UserPreferences, <-- Assigned later to avoid potential circular dependency.
     },
     trustLevel: {},
-    userDevices: {
-      // nt: UserDeviceWithoutAuth, <-- Assigned later to avoid potential circular dependency.
-    },
     userBlocks: {
       // nt: UserBlock, <-- Assigned later to avoid potential circular dependency.
-    },
-    contacts: {
-      // nt: Contact, <-- Assigned later to avoid potential circular dependency.
     },
     termsAndConditionsAcceptedAt: {
       nt: DateTimeISO,
@@ -6744,10 +6738,16 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     groupIds: {},
     parentGroupIds: {},
     externalGroupIds: {},
-    pronounsTextIds: {},
     groupMemberships: {
       // nt: IGroupMembership, <-- Assigned later to avoid potential circular dependency.
     },
+    mentor: {
+      // nt: MentorsGroupMembership, <-- Assigned later to avoid potential circular dependency.
+    },
+    mentee: {
+      // nt: MenteesGroupMembership, <-- Assigned later to avoid potential circular dependency.
+    },
+    pronounsTextIds: {},
     seeksHelp: {},
     offersHelp: {},
     birthYear: {},
@@ -6782,16 +6782,11 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     mm2PasswordHash: {},
     mm2Id: {},
+    mm2ProfileId: {},
     mm2PhotoOriginal: {},
     mm2BasicAccountCompleted: {},
     hasSignedInToMm3: {},
     hasSignedInToMm2: {},
-    mentor: {
-      // nt: MentorsGroupMembership, <-- Assigned later to avoid potential circular dependency.
-    },
-    mentee: {
-      // nt: MenteesGroupMembership, <-- Assigned later to avoid potential circular dependency.
-    },
     countryOfResidence: {
       // nt: Country, <-- Assigned later to avoid potential circular dependency.
     },
@@ -7188,11 +7183,6 @@ const PurchaseOrderItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     quantity: {},
     price: {},
     totalPrice: {},
-    balance: {},
-    code: {},
-    hasBarcode: {},
-    barcodeFormat: {},
-    pin: {},
   },
 };
 
@@ -10174,17 +10164,15 @@ User.f['events']!.nt = ModelEvent;
 User.f['metadata']!.nt = UserMetadata;
 User.f['websites']!.nt = LabeledStringValue;
 User.f['preferences']!.nt = UserPreferences;
-User.f['userDevices']!.nt = UserDeviceWithoutAuth;
 User.f['userBlocks']!.nt = UserBlock;
-User.f['contacts']!.nt = Contact;
 User.f['companies']!.nt = Company;
 User.f['groupMemberships']!.nt = IGroupMembership;
+User.f['mentor']!.nt = MentorsGroupMembership;
+User.f['mentee']!.nt = MenteesGroupMembership;
 User.f['academicExperiences']!.nt = AcademicExperience;
 User.f['businessExperiences']!.nt = BusinessExperience;
 User.f['avatarAsset']!.nt = UploadedAsset;
 User.f['profileRoleHistory']!.nt = UserProfileRoleHistoryItem;
-User.f['mentor']!.nt = MentorsGroupMembership;
-User.f['mentee']!.nt = MenteesGroupMembership;
 User.f['countryOfResidence']!.nt = Country;
 User.f['gender']!.nt = Gender;
 User.f['latestUserDevice']!.nt = UserDeviceWithoutAuth;
@@ -10206,16 +10194,6 @@ User.f['uploadedAssets']!.nt = UploadedAsset;
 UserPreferences.f['events']!.nt = ModelEvent;
 UserPreferences.f['metadata']!.nt = BaseModelMetadata;
 UserPreferences.f['notificationOptions']!.nt = NotificationOptions;
-UserDeviceWithoutAuth.f['events']!.nt = ModelEvent;
-UserDeviceWithoutAuth.f['metadata']!.nt = BaseModelMetadata;
-Contact.f['events']!.nt = ModelEvent;
-Contact.f['metadata']!.nt = ContactMetadata;
-Contact.f['user']!.nt = User;
-Contact.f['contactTypes']!.nt = ContactType;
-ContactType.f['events']!.nt = ModelEvent;
-ContactType.f['metadata']!.nt = BaseModelMetadata;
-ContactType.f['childOptions']!.nt = Option;
-ContactType.f['parentOption']!.nt = Option;
 Company.f['events']!.nt = ModelEvent;
 Company.f['metadata']!.nt = BaseModelMetadata;
 Company.f['websites']!.nt = LabeledStringValue;
@@ -10243,6 +10221,8 @@ Gender.f['events']!.nt = ModelEvent;
 Gender.f['metadata']!.nt = BaseModelMetadata;
 Gender.f['childOptions']!.nt = Option;
 Gender.f['parentOption']!.nt = Option;
+UserDeviceWithoutAuth.f['events']!.nt = ModelEvent;
+UserDeviceWithoutAuth.f['metadata']!.nt = BaseModelMetadata;
 Language.f['events']!.nt = ModelEvent;
 Language.f['metadata']!.nt = BaseModelMetadata;
 Language.f['childOptions']!.nt = Option;
@@ -10276,6 +10256,14 @@ ChannelMessage.f['metadata']!.nt = ChannelMessageMetadata;
 ChannelMessage.f['statuses']!.nt = ChannelMessageStatus;
 ChannelMessage.f['channel']!.nt = Channel;
 ChannelMessage.f['sender']!.nt = User;
+Contact.f['events']!.nt = ModelEvent;
+Contact.f['metadata']!.nt = ContactMetadata;
+Contact.f['user']!.nt = User;
+Contact.f['contactTypes']!.nt = ContactType;
+ContactType.f['events']!.nt = ModelEvent;
+ContactType.f['metadata']!.nt = BaseModelMetadata;
+ContactType.f['childOptions']!.nt = Option;
+ContactType.f['parentOption']!.nt = Option;
 ChannelParticipant.f['events']!.nt = ModelEvent;
 ChannelParticipant.f['metadata']!.nt = BaseModelMetadata;
 ChannelParticipant.f['userInfo']!.nt = BgChannelParticipantUserInfo;
@@ -10418,17 +10406,15 @@ MyUser.f['events']!.nt = ModelEvent;
 MyUser.f['metadata']!.nt = UserMetadata;
 MyUser.f['websites']!.nt = LabeledStringValue;
 MyUser.f['preferences']!.nt = UserPreferences;
-MyUser.f['userDevices']!.nt = UserDeviceWithoutAuth;
 MyUser.f['userBlocks']!.nt = UserBlock;
-MyUser.f['contacts']!.nt = Contact;
 MyUser.f['companies']!.nt = Company;
 MyUser.f['groupMemberships']!.nt = IGroupMembership;
+MyUser.f['mentor']!.nt = MentorsGroupMembership;
+MyUser.f['mentee']!.nt = MenteesGroupMembership;
 MyUser.f['academicExperiences']!.nt = AcademicExperience;
 MyUser.f['businessExperiences']!.nt = BusinessExperience;
 MyUser.f['avatarAsset']!.nt = UploadedAsset;
 MyUser.f['profileRoleHistory']!.nt = UserProfileRoleHistoryItem;
-MyUser.f['mentor']!.nt = MentorsGroupMembership;
-MyUser.f['mentee']!.nt = MenteesGroupMembership;
 MyUser.f['countryOfResidence']!.nt = Country;
 MyUser.f['gender']!.nt = Gender;
 MyUser.f['latestUserDevice']!.nt = UserDeviceWithoutAuth;
@@ -10688,15 +10674,14 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     UiLanguage,
     MastercardCardType,
     UserIdentType,
-    AuthType,
     UserRole,
     AppFeature,
     NotificationType,
-    IdentityProvider,
     ModelType,
     UploadedAssetType,
     AssetHostingService,
     UserProfileRole,
+    IdentityProvider,
     AppAction,
     ChannelType,
     ChannelInvitationStatus,
@@ -10706,6 +10691,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     GroupRuleEventType,
     SortDirection,
     IncludeFilterOption,
+    AuthType,
     FederatedIdentityProvider,
     AdminTaskType,
     AdminTaskResult,
@@ -10831,11 +10817,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     LabeledStringValue,
     UserPreferences,
     NotificationOptions,
-    UserDeviceWithoutAuth,
     UserBlock,
-    Contact,
-    ContactMetadata,
-    ContactType,
     Company,
     CompanyStage,
     CompanyType,
@@ -10845,6 +10827,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     UserProfileRoleHistoryItem,
     Country,
     Gender,
+    UserDeviceWithoutAuth,
     Language,
     Notification,
     NotificationContext,
@@ -10856,6 +10839,9 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ChannelMessage,
     ChannelMessageMetadata,
     ChannelMessageStatus,
+    Contact,
+    ContactMetadata,
+    ContactType,
     ChannelParticipant,
     BgChannelParticipantUserInfo,
     UserListItem,

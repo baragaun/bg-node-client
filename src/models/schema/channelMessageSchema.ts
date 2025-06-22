@@ -128,22 +128,6 @@ export const ChannelMessageSchema = {
       maxLength: 32,
       nullable: true,
     },
-    mm2ConversationId: {
-      type: 'string',
-      description: 'This attribute is only used by the MM2 synchronizer.',
-      nullable: true,
-    },
-    mm2Id: {
-      type: 'string',
-      description: 'This attribute is only used by the MM2 synchronizer. Mm2 message ID.',
-      nullable: true,
-    },
-    syncedWithMm2At: {
-      type: 'string',
-      description: 'This attribute is only used by the MM2 synchronizer.',
-      format: 'date-time',
-      nullable: true,
-    },
   },
   required: ['id'],
 };

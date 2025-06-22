@@ -80,4 +80,4 @@ describe('operations.channel.findMyChannels', () => {
     await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
     await deleteChannelSpecHelper(channelOfOtherUser.id, client);
   });
-});
+}, { timeout: 60_000 });

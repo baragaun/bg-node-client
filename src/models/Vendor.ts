@@ -1,6 +1,7 @@
 import { BaseModel } from './BaseModel.js';
 
 export class Vendor extends BaseModel {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public name = '';
   public importId = '';
   public imageSource?: string | null;
@@ -13,47 +14,50 @@ export class Vendor extends BaseModel {
   public alias1?: string | null;
   public alias2?: string | null;
   public alias3?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<Vendor>) {
     super(attributes);
 
     if (attributes) {
-      if (attributes.name) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
+      if (attributes.name !== undefined) {
         this.name = attributes.name;
       }
-      if (attributes.importId) {
+      if (attributes.importId !== undefined) {
         this.importId = attributes.importId;
       }
-      if (attributes.imageSource) {
+      if (attributes.imageSource !== undefined) {
         this.imageSource = attributes.imageSource;
       }
-      if (attributes.slug) {
+      if (attributes.slug !== undefined) {
         this.slug = attributes.slug;
       }
-      if (attributes.url) {
+      if (attributes.url !== undefined) {
         this.url = attributes.url;
       }
-      if (attributes.balanceLookupUri) {
+      if (attributes.balanceLookupUri !== undefined) {
         this.balanceLookupUri = attributes.balanceLookupUri;
       }
       if (attributes.listed !== undefined) {
         this.listed = attributes.listed;
       }
-      if (attributes.logoImageSource) {
+      if (attributes.logoImageSource !== undefined) {
         this.logoImageSource = attributes.logoImageSource;
       }
-      if (attributes.description) {
+      if (attributes.description !== undefined) {
         this.description = attributes.description;
       }
-      if (attributes.alias1) {
+      if (attributes.alias1 !== undefined) {
         this.alias1 = attributes.alias1;
       }
-      if (attributes.alias2) {
+      if (attributes.alias2 !== undefined) {
         this.alias2 = attributes.alias2;
       }
-      if (attributes.alias3) {
+      if (attributes.alias3 !== undefined) {
         this.alias3 = attributes.alias3;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

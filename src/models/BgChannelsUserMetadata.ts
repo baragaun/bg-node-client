@@ -1,6 +1,7 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 
 export class BgChannelsUserMetadata {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public channelCount = 0;
   public messagesSentCount = 0;
   public unseenMessageCount = 0;
@@ -11,9 +12,11 @@ export class BgChannelsUserMetadata {
   public acceptedInvitationCount = 0;
   public pendingInvitationCount = 0;
   public updatedAt?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelsUserMetadata>) {
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (
         attributes.channelCount === 0 ||
         (attributes.channelCount && !isNaN(attributes.channelCount))
@@ -77,6 +80,7 @@ export class BgChannelsUserMetadata {
       if (attributes.updatedAt) {
         this.updatedAt = attributes.updatedAt;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

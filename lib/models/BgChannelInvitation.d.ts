@@ -6,6 +6,7 @@ export declare class BgChannelInvitation extends BaseModel {
     channelName?: string | null;
     channelTopic?: string | null;
     messageText?: string | null;
+    autoAccept?: boolean | null;
     declineReasonTextId?: string | null;
     dismissedFromInboxBySenderAt?: string | null;
     dismissedFromInboxByRecipientAt?: string | null;

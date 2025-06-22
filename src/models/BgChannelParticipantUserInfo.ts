@@ -1,11 +1,14 @@
 export class BgChannelParticipantUserInfo {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public userHandle?: string | null;
   public firstName?: string | null;
   public lastName?: string | null;
   public avatarUrl?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelParticipantUserInfo>) {
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.userHandle !== undefined) {
         this.userHandle = attributes.userHandle;
       }
@@ -18,6 +21,7 @@ export class BgChannelParticipantUserInfo {
       if (attributes.avatarUrl !== undefined) {
         this.avatarUrl = attributes.avatarUrl;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

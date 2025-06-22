@@ -6,9 +6,9 @@ export declare class PurchaseOrder extends BaseModel {
     sumItemPrice: number;
     totalPrice: number;
     vat: number;
-    paidAt?: Date | null;
-    canceledAt?: Date | null;
-    refundedAt?: Date | null;
+    paidAt?: string | null;
+    canceledAt?: string | null;
+    refundedAt?: string | null;
     items: PurchaseOrderItem[];
     constructor(attributes?: Partial<PurchaseOrder>);
 }

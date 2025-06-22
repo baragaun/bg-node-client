@@ -15,11 +15,6 @@ export declare const ChannelSchema: {
         metadata: {
             type: string;
             properties: {
-                updatedAt: {
-                    type: string;
-                    format: string;
-                    nullable: boolean;
-                };
                 channelInvitationAccepted: {
                     type: string;
                     nullable: boolean;
@@ -157,22 +152,6 @@ export declare const ChannelSchema: {
         archivedBy: {
             type: string;
             maxLength: number;
-            nullable: boolean;
-        };
-        assumedMentorId: {
-            type: string;
-            maxLength: number;
-            nullable: boolean;
-        };
-        mm2Id: {
-            type: string;
-            description: string;
-            nullable: boolean;
-        };
-        syncedWithMm2At: {
-            type: string;
-            description: string;
-            format: string;
             nullable: boolean;
         };
     };

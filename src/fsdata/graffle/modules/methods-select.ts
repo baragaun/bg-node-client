@@ -39,11 +39,7 @@ export interface $MethodsSelect {
   LabeledStringValue: LabeledStringValue;
   UserPreferences: UserPreferences;
   NotificationOptions: NotificationOptions;
-  UserDeviceWithoutAuth: UserDeviceWithoutAuth;
   UserBlock: UserBlock;
-  Contact: Contact;
-  ContactMetadata: ContactMetadata;
-  ContactType: ContactType;
   Company: Company;
   CompanyStage: CompanyStage;
   CompanyType: CompanyType;
@@ -53,6 +49,7 @@ export interface $MethodsSelect {
   UserProfileRoleHistoryItem: UserProfileRoleHistoryItem;
   Country: Country;
   Gender: Gender;
+  UserDeviceWithoutAuth: UserDeviceWithoutAuth;
   Language: Language;
   Notification: Notification;
   NotificationContext: NotificationContext;
@@ -64,6 +61,9 @@ export interface $MethodsSelect {
   ChannelMessage: ChannelMessage;
   ChannelMessageMetadata: ChannelMessageMetadata;
   ChannelMessageStatus: ChannelMessageStatus;
+  Contact: Contact;
+  ContactMetadata: ContactMetadata;
+  ContactType: ContactType;
   ChannelParticipant: ChannelParticipant;
   BgChannelParticipantUserInfo: BgChannelParticipantUserInfo;
   UserListItem: UserListItem;
@@ -251,24 +251,8 @@ export interface NotificationOptions {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.NotificationOptions>): $SelectionSet;
 }
 
-export interface UserDeviceWithoutAuth {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserDeviceWithoutAuth>): $SelectionSet;
-}
-
 export interface UserBlock {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserBlock>): $SelectionSet;
-}
-
-export interface Contact {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Contact>): $SelectionSet;
-}
-
-export interface ContactMetadata {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContactMetadata>): $SelectionSet;
-}
-
-export interface ContactType {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContactType>): $SelectionSet;
 }
 
 export interface Company {
@@ -307,6 +291,10 @@ export interface Country {
 
 export interface Gender {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Gender>): $SelectionSet;
+}
+
+export interface UserDeviceWithoutAuth {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserDeviceWithoutAuth>): $SelectionSet;
 }
 
 export interface Language {
@@ -355,6 +343,18 @@ export interface ChannelMessageMetadata {
 
 export interface ChannelMessageStatus {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMessageStatus>): $SelectionSet;
+}
+
+export interface Contact {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Contact>): $SelectionSet;
+}
+
+export interface ContactMetadata {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContactMetadata>): $SelectionSet;
+}
+
+export interface ContactType {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContactType>): $SelectionSet;
 }
 
 export interface ChannelParticipant {

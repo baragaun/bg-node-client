@@ -1,5 +1,6 @@
 import { BaseModel } from './BaseModel.js';
-import { MultiStepActionError, MultiStepActionResult, MultiStepActionSendNotificationResult, MultiStepActionStatus, MultiStepActionType, NotificationMethod } from '../fsdata/gql/graphql.js';
+import { MultiStepActionResult, MultiStepActionSendNotificationResult, MultiStepActionStatus, MultiStepActionType, NotificationMethod } from '../enums.js';
+import { MultiStepActionError } from '../types/MultiStepActionError.js';
 export declare class SidMultiStepAction extends BaseModel {
     userId: string;
     userIdent?: string | null;
@@ -13,24 +14,24 @@ export declare class SidMultiStepAction extends BaseModel {
     result: MultiStepActionResult;
     confirmToken?: string | null;
     attemptCount: number;
-    notificationSentAt?: Date | null;
+    notificationSentAt?: string | null;
     notificationResult?: MultiStepActionSendNotificationResult | null;
     notificationId?: string | null;
     textData?: string | null;
     report?: string | null;
     emailPassed?: boolean | null;
-    emailUpdatedAt?: Date | null;
-    emailVerifiedAt?: Date | null;
+    emailUpdatedAt?: string | null;
+    emailVerifiedAt?: string | null;
     errors?: MultiStepActionError[] | null;
     password?: string | null;
     passwordPassed?: boolean | null;
-    passwordResettedAt?: Date | null;
-    passwordUpdatedAt?: Date | null;
+    passwordResettedAt?: string | null;
+    passwordUpdatedAt?: string | null;
     phoneNumberPassed?: boolean | null;
-    phoneNumberUpdatedAt?: Date | null;
-    phoneNumberVerifiedAt?: Date | null;
-    signedInAt?: Date | null;
+    phoneNumberUpdatedAt?: string | null;
+    phoneNumberVerifiedAt?: string | null;
+    signedInAt?: string | null;
     tfaBackupCodes?: string | null;
-    expiresAt?: Date | null;
+    expiresAt?: string | null;
     constructor(attributes?: Partial<SidMultiStepAction>);
 }

@@ -28,9 +28,6 @@ declare const modelFields: {
         lockedBy: boolean;
         archivedAt: boolean;
         archivedBy: boolean;
-        assumedMentorId: boolean;
-        mm2Id: boolean;
-        syncedWithMm2At: boolean;
         isArchivedForMe: boolean;
     };
     channelInvitation: {
@@ -86,9 +83,6 @@ declare const modelFields: {
         lockedBy: boolean;
         archivedAt: boolean;
         archivedBy: boolean;
-        assumedMentorId: boolean;
-        mm2Id: boolean;
-        syncedWithMm2At: boolean;
         isArchivedForMe: boolean;
         participants: {
             id: boolean;
@@ -238,9 +232,6 @@ declare const modelFields: {
             value: boolean;
             tags: boolean;
         };
-        authType: boolean;
-        tfaBackupCodes: boolean;
-        passwordUpdatedAt: boolean;
         preferredLanguageTextId: boolean;
         spokenLanguagesTextIds: boolean;
         selectedUiLanguageTextId: boolean;
@@ -279,8 +270,6 @@ declare const modelFields: {
             notes: boolean;
             adminNotes: boolean;
             createdAt: boolean;
-            syncedWithMm2At: boolean;
-            mm2Id: boolean;
         };
         inactivatedAt: boolean;
         inactivatedBy: boolean;
@@ -489,7 +478,6 @@ declare const modelFields: {
         result: boolean;
         signedInAt: boolean;
         textData: boolean;
-        tfaBackupCodes: boolean;
         updatedAt: boolean;
         updatedBy: boolean;
         userHandle: boolean;

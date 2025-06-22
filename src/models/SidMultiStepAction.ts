@@ -1,190 +1,153 @@
 import { BaseModel } from './BaseModel.js';
 import {
-  MultiStepActionError,
-  MultiStepActionResult,
-  MultiStepActionSendNotificationResult,
+  MultiStepActionResult, MultiStepActionSendNotificationResult,
   MultiStepActionStatus,
   MultiStepActionType,
   NotificationMethod,
-} from '../fsdata/gql/graphql.js';
+} from '../enums.js';
+import { MultiStepActionError } from '../types/MultiStepActionError.js';
 
 export class SidMultiStepAction extends BaseModel {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public userId = '';
   public userIdent?: string | null;
   public userHandle?: string | null;
   public email?: string | null;
   public phoneNumber?: string | null;
   public deviceUuid?: string | null;
-  public actionType: MultiStepActionType = MultiStepActionType.Unset;
-  public actionStatus: MultiStepActionStatus = MultiStepActionStatus.Created;
-  public notificationMethod: NotificationMethod = NotificationMethod.Auto;
-  public result: MultiStepActionResult = MultiStepActionResult.Unset;
+  public actionType: MultiStepActionType = MultiStepActionType.unset;
+  public actionStatus: MultiStepActionStatus = MultiStepActionStatus.created;
+  public notificationMethod: NotificationMethod = NotificationMethod.auto;
+  public result: MultiStepActionResult = MultiStepActionResult.unset;
   public confirmToken?: string | null;
   public attemptCount = 0;
-  public notificationSentAt?: Date | null;
+  public notificationSentAt?: string | null;
   public notificationResult?: MultiStepActionSendNotificationResult | null;
   public notificationId?: string | null;
   public textData?: string | null;
   public report?: string | null;
   public emailPassed?: boolean | null;
-  public emailUpdatedAt?: Date | null;
-  public emailVerifiedAt?: Date | null;
+  public emailUpdatedAt?: string | null;
+  public emailVerifiedAt?: string | null;
   public errors?: MultiStepActionError[] | null;
   public password?: string | null;
   public passwordPassed?: boolean | null;
-  public passwordResettedAt?: Date | null;
-  public passwordUpdatedAt?: Date | null;
+  public passwordResettedAt?: string | null;
+  public passwordUpdatedAt?: string | null;
   public phoneNumberPassed?: boolean | null;
-  public phoneNumberUpdatedAt?: Date | null;
-  public phoneNumberVerifiedAt?: Date | null;
-  public signedInAt?: Date | null;
+  public phoneNumberUpdatedAt?: string | null;
+  public phoneNumberVerifiedAt?: string | null;
+  public signedInAt?: string | null;
   public tfaBackupCodes?: string | null;
-  public expiresAt?: Date | null;
+  public expiresAt?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<SidMultiStepAction>) {
     super(attributes);
 
     if (attributes) {
-      if (attributes.userId) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
+      if (attributes.userId !== undefined) {
         this.userId = attributes.userId;
       }
-      if (attributes.userIdent) {
+      if (attributes.userIdent !== undefined) {
         this.userIdent = attributes.userIdent;
       }
-      if (attributes.userHandle) {
+      if (attributes.userHandle !== undefined) {
         this.userHandle = attributes.userHandle;
       }
-      if (attributes.email) {
+      if (attributes.email !== undefined) {
         this.email = attributes.email;
       }
-      if (attributes.phoneNumber) {
+      if (attributes.phoneNumber !== undefined) {
         this.phoneNumber = attributes.phoneNumber;
       }
-      if (attributes.deviceUuid) {
+      if (attributes.deviceUuid !== undefined) {
         this.deviceUuid = attributes.deviceUuid;
       }
-      if (attributes.actionType) {
+      if (attributes.actionType !== undefined) {
         this.actionType = attributes.actionType;
       }
-      if (attributes.actionStatus) {
+      if (attributes.actionStatus !== undefined) {
         this.actionStatus = attributes.actionStatus;
       }
-      if (attributes.notificationMethod) {
+      if (attributes.notificationMethod !== undefined) {
         this.notificationMethod = attributes.notificationMethod;
       }
-      if (attributes.result) {
+      if (attributes.result !== undefined) {
         this.result = attributes.result;
       }
-      if (attributes.confirmToken) {
+      if (attributes.confirmToken !== undefined) {
         this.confirmToken = attributes.confirmToken;
       }
       if (
+        attributes.attemptCount === null ||
         attributes.attemptCount === 0 ||
-        (attributes.attemptCount && !isNaN(attributes.attemptCount))
+        (
+          attributes.attemptCount &&
+          !isNaN(attributes.attemptCount)
+        )
       ) {
         this.attemptCount = attributes.attemptCount;
       }
-      if (attributes.notificationSentAt) {
-        if (attributes.notificationSentAt instanceof Date) {
-          this.notificationSentAt = attributes.notificationSentAt;
-        } else {
-          this.notificationSentAt = new Date(attributes.notificationSentAt);
-        }
+      if (attributes.notificationSentAt !== undefined && attributes.notificationSentAt !== '') {
+        this.notificationSentAt = attributes.notificationSentAt;
       }
-      if (attributes.notificationResult) {
+      if (attributes.notificationResult !== undefined) {
         this.notificationResult = attributes.notificationResult;
       }
-      if (attributes.notificationId) {
+      if (attributes.notificationId !== undefined) {
         this.notificationId = attributes.notificationId;
       }
-      if (attributes.textData) {
+      if (attributes.textData !== undefined) {
         this.textData = attributes.textData;
       }
-      if (attributes.report) {
+      if (attributes.report !== undefined) {
         this.report = attributes.report;
       }
-      if (attributes.emailPassed === true || attributes.emailPassed === false) {
+      if (attributes.emailPassed !== undefined) {
         this.emailPassed = attributes.emailPassed;
       }
-      if (attributes.emailUpdatedAt) {
-        if (attributes.emailUpdatedAt instanceof Date) {
-          this.emailUpdatedAt = attributes.emailUpdatedAt;
-        } else {
-          this.emailUpdatedAt = new Date(attributes.emailUpdatedAt);
-        }
+      if (attributes.emailUpdatedAt !== undefined && attributes.emailUpdatedAt !== '') {
+        this.emailUpdatedAt = attributes.emailUpdatedAt;
       }
-      if (attributes.emailVerifiedAt) {
-        if (attributes.emailVerifiedAt instanceof Date) {
-          this.emailVerifiedAt = attributes.emailVerifiedAt;
-        } else {
-          this.emailVerifiedAt = new Date(attributes.emailVerifiedAt);
-        }
+      if (attributes.emailVerifiedAt !== undefined && attributes.emailVerifiedAt !== '') {
+        this.emailVerifiedAt = attributes.emailVerifiedAt;
       }
-      if (attributes.errors) {
+      if (attributes.errors !== undefined) {
         this.errors = attributes.errors;
       }
-      if (attributes.password) {
+      if (attributes.password !== undefined) {
         this.password = attributes.password;
       }
-      if (
-        attributes.passwordPassed === true ||
-        attributes.passwordPassed === false
-      ) {
+      if (attributes.passwordPassed !== undefined) {
         this.passwordPassed = attributes.passwordPassed;
       }
-      if (attributes.passwordResettedAt) {
-        if (attributes.passwordResettedAt instanceof Date) {
-          this.passwordResettedAt = attributes.passwordResettedAt;
-        } else {
-          this.passwordResettedAt = new Date(attributes.passwordResettedAt);
-        }
+      if (attributes.passwordResettedAt !== undefined && attributes.passwordResettedAt !== '') {
+        this.passwordResettedAt = attributes.passwordResettedAt;
       }
-      if (attributes.passwordUpdatedAt) {
-        if (attributes.passwordUpdatedAt instanceof Date) {
-          this.passwordUpdatedAt = attributes.passwordUpdatedAt;
-        } else {
-          this.passwordUpdatedAt = new Date(attributes.passwordUpdatedAt);
-        }
+      if (attributes.passwordUpdatedAt !== undefined && attributes.passwordUpdatedAt !== '') {
+        this.passwordUpdatedAt = attributes.passwordUpdatedAt;
       }
-      if (
-        attributes.phoneNumberPassed === true ||
-        attributes.phoneNumberPassed === false
-      ) {
+      if (attributes.phoneNumberPassed !== undefined) {
         this.phoneNumberPassed = attributes.phoneNumberPassed;
       }
-      if (attributes.phoneNumberUpdatedAt) {
-        if (attributes.phoneNumberUpdatedAt instanceof Date) {
-          this.phoneNumberUpdatedAt = attributes.phoneNumberUpdatedAt;
-        } else {
-          this.phoneNumberUpdatedAt = new Date(attributes.phoneNumberUpdatedAt);
-        }
+      if (attributes.phoneNumberUpdatedAt !== undefined && attributes.phoneNumberUpdatedAt !== '') {
+        this.phoneNumberUpdatedAt = attributes.phoneNumberUpdatedAt;
       }
-      if (attributes.phoneNumberVerifiedAt) {
-        if (attributes.phoneNumberVerifiedAt instanceof Date) {
-          this.phoneNumberVerifiedAt = attributes.phoneNumberVerifiedAt;
-        } else {
-          this.phoneNumberVerifiedAt = new Date(
-            attributes.phoneNumberVerifiedAt,
-          );
-        }
+      if (attributes.phoneNumberVerifiedAt !== undefined && attributes.phoneNumberVerifiedAt !== '') {
+        this.phoneNumberVerifiedAt = attributes.phoneNumberVerifiedAt;
       }
-      if (attributes.signedInAt) {
-        if (attributes.signedInAt instanceof Date) {
-          this.signedInAt = attributes.signedInAt;
-        } else {
-          this.signedInAt = new Date(attributes.signedInAt);
-        }
+      if (attributes.signedInAt !== undefined && attributes.signedInAt !== '') {
+        this.signedInAt = attributes.signedInAt;
       }
-      if (attributes.tfaBackupCodes) {
+      if (attributes.tfaBackupCodes !== undefined) {
         this.tfaBackupCodes = attributes.tfaBackupCodes;
       }
-      if (attributes.expiresAt) {
-        if (attributes.expiresAt instanceof Date) {
-          this.expiresAt = attributes.expiresAt;
-        } else {
-          this.expiresAt = new Date(attributes.expiresAt);
-        }
+      if (attributes.expiresAt !== undefined && attributes.expiresAt !== '') {
+        this.expiresAt = attributes.expiresAt;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

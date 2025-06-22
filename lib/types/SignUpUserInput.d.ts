@@ -31,4 +31,6 @@ export type SignUpUserInput = {
     userHandle?: string;
     captchaService?: string;
     captchaToken?: string;
+    passwordHash?: string;
+    passwordUpdatedAt?: string;
 };

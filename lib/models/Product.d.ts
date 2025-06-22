@@ -4,10 +4,10 @@ export declare class Product extends BaseModel {
     vendorId: string;
     vendorImportId?: string | null;
     name: string;
-    description: string;
+    description?: string | null;
     categories?: string[] | null;
     slug?: string | null;
-    url: string;
+    url?: string | null;
     imageSourceFront?: string | null;
     imageSourceBack?: string | null;
     hasBarcode?: boolean | null;

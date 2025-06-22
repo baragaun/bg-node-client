@@ -2,6 +2,7 @@ import { BaseModel } from './BaseModel.js';
 import { BarcodeType, WalletItemSource } from '../enums.js';
 
 export class WalletItem extends BaseModel {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public walletId = '';
   public productId = '';
   public purchaseOrderItemId = '';
@@ -23,31 +24,34 @@ export class WalletItem extends BaseModel {
   public instructionsEn?: string | null;
   public instructionsUrl?: string | null;
   public sortIndex = 0;
-  public issuedAt?: Date | null;
-  public expiresAt?: Date | null;
-  public balanceUpdatedAt?: Date | null;
-  public archivedAt?: Date | null;
+  public issuedAt?: string | null;
+  public expiresAt?: string | null;
+  public balanceUpdatedAt?: string | null;
+  public archivedAt?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<WalletItem>) {
     super(attributes);
 
     if (attributes) {
-      if (attributes.walletId) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
+      if (attributes.walletId !== undefined) {
         this.walletId = attributes.walletId;
       }
-      if (attributes.productId) {
+      if (attributes.productId !== undefined) {
         this.productId = attributes.productId;
       }
-      if (attributes.purchaseOrderItemId) {
+      if (attributes.purchaseOrderItemId !== undefined) {
         this.purchaseOrderItemId = attributes.purchaseOrderItemId;
       }
-      if (attributes.vendorId) {
+      if (attributes.vendorId !== undefined) {
         this.vendorId = attributes.vendorId;
       }
-      if (attributes.name) {
+      if (attributes.name !== undefined) {
         this.name = attributes.name;
       }
       if (
+        attributes.price === null ||
         attributes.price === 0 ||
         (
           attributes.price &&
@@ -57,6 +61,7 @@ export class WalletItem extends BaseModel {
         this.price = attributes.price;
       }
       if (
+        attributes.initialBalance === null ||
         attributes.initialBalance === 0 ||
         (
           attributes.initialBalance &&
@@ -66,6 +71,7 @@ export class WalletItem extends BaseModel {
         this.initialBalance = attributes.initialBalance;
       }
       if (
+        attributes.balance === null ||
         attributes.balance === 0 ||
         (
           attributes.balance &&
@@ -74,43 +80,44 @@ export class WalletItem extends BaseModel {
       ) {
         this.balance = attributes.balance;
       }
-      if (attributes.code) {
+      if (attributes.code !== undefined) {
         this.code = attributes.code;
       }
       if (attributes.hasBarcode !== undefined) {
         this.hasBarcode = attributes.hasBarcode;
       }
-      if (attributes.barcodeFormat) {
+      if (attributes.barcodeFormat !== undefined) {
         this.barcodeFormat = attributes.barcodeFormat;
       }
-      if (attributes.pin) {
+      if (attributes.pin !== undefined) {
         this.pin = attributes.pin;
       }
-      if (attributes.source) {
+      if (attributes.source !== undefined) {
         this.source = attributes.source;
       }
-      if (attributes.imageSourceFront) {
+      if (attributes.imageSourceFront !== undefined) {
         this.imageSourceFront = attributes.imageSourceFront;
       }
-      if (attributes.imageSourceBack) {
+      if (attributes.imageSourceBack !== undefined) {
         this.imageSourceBack = attributes.imageSourceBack;
       }
-      if (attributes.referenceUrl) {
+      if (attributes.referenceUrl !== undefined) {
         this.referenceUrl = attributes.referenceUrl;
       }
-      if (attributes.termsEn) {
+      if (attributes.termsEn !== undefined) {
         this.termsEn = attributes.termsEn;
       }
-      if (attributes.termsUrl) {
+      if (attributes.termsUrl !== undefined) {
         this.termsUrl = attributes.termsUrl;
       }
-      if (attributes.instructionsEn) {
+      if (attributes.instructionsEn !== undefined) {
         this.instructionsEn = attributes.instructionsEn;
       }
-      if (attributes.instructionsUrl) {
+      if (attributes.instructionsUrl !== undefined) {
         this.instructionsUrl = attributes.instructionsUrl;
       }
       if (
+        attributes.sortIndex === null ||
         attributes.sortIndex === 0 ||
         (
           attributes.sortIndex &&
@@ -119,34 +126,19 @@ export class WalletItem extends BaseModel {
       ) {
         this.sortIndex = attributes.sortIndex;
       }
-      if (attributes.issuedAt) {
-        if (attributes.issuedAt instanceof Date) {
-          this.issuedAt = attributes.issuedAt;
-        } else {
-          this.issuedAt = new Date(attributes.issuedAt);
-        }
+      if (attributes.issuedAt !== undefined && attributes.issuedAt !== '') {
+        this.issuedAt = attributes.issuedAt;
       }
-      if (attributes.expiresAt) {
-        if (attributes.expiresAt instanceof Date) {
-          this.expiresAt = attributes.expiresAt;
-        } else {
-          this.expiresAt = new Date(attributes.expiresAt);
-        }
+      if (attributes.expiresAt !== undefined && attributes.expiresAt !== '') {
+        this.expiresAt = attributes.expiresAt;
       }
-      if (attributes.balanceUpdatedAt) {
-        if (attributes.balanceUpdatedAt instanceof Date) {
-          this.balanceUpdatedAt = attributes.balanceUpdatedAt;
-        } else {
-          this.balanceUpdatedAt = new Date(attributes.balanceUpdatedAt);
-        }
+      if (attributes.balanceUpdatedAt !== undefined && attributes.balanceUpdatedAt !== '') {
+        this.balanceUpdatedAt = attributes.balanceUpdatedAt;
       }
-      if (attributes.archivedAt) {
-        if (attributes.archivedAt instanceof Date) {
-          this.archivedAt = attributes.archivedAt;
-        } else {
-          this.archivedAt = new Date(attributes.archivedAt);
-        }
+      if (attributes.archivedAt !== undefined && attributes.archivedAt !== '') {
+        this.archivedAt = attributes.archivedAt;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

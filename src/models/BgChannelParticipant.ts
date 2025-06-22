@@ -3,6 +3,7 @@ import { BgChannelParticipantUserInfo } from './BgChannelParticipantUserInfo.js'
 import { ChannelParticipantRole } from '../enums.js';
 
 export class BgChannelParticipant extends BaseModel {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public channelId = '';
   public userId = '';
   public userInfo?: BgChannelParticipantUserInfo | null;
@@ -11,11 +12,13 @@ export class BgChannelParticipant extends BaseModel {
   public role?: ChannelParticipantRole | null;
   public suspendedAt?: Date | null;
   public suspendedBy?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelParticipant>) {
     super(attributes);
 
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.channelId) {
         this.channelId = attributes.channelId;
       }
@@ -44,6 +47,7 @@ export class BgChannelParticipant extends BaseModel {
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

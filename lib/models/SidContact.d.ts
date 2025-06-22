@@ -6,6 +6,6 @@ export declare abstract class SidContact extends BaseModel {
     typeTextIds: string[];
     favorite?: boolean | null;
     notes?: string | null;
-    archivedAt?: Date | null;
+    archivedAt?: string | null;
     protected constructor(attributes?: Partial<SidContact>);
 }

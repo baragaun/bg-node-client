@@ -7,4 +7,5 @@ export declare class BgChannelListFilter extends BaseListFilter {
     invitationMustBeAccepted?: boolean | null;
     includeArchivedMessages?: IncludeFilterOption | null;
     includeSystemMessages?: IncludeFilterOption | null;
+    constructor(attributes?: Partial<BgChannelListFilter>);
 }

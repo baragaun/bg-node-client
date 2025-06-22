@@ -1,8 +1,9 @@
-import { Model } from '../models/Model.js';
 import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
 import { SidMultiStepActionProgress } from '../models/SidMultiStepActionProgress.js';
-export interface MultiStepActionProgressResult extends Model {
+export interface MultiStepActionProgressResult {
+    id?: string;
     run?: MultiStepActionRun;
     actionProgress?: SidMultiStepActionProgress;
     error?: string;
+    createdAt?: string;
 }

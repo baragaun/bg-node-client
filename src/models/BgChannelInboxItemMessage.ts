@@ -1,6 +1,7 @@
 import { ChannelMessageType } from '../enums.js';
 
 export class BgChannelInboxItemMessage {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public id = '';
   public channelId = '';
   public replyToMessageId?: string | null;
@@ -17,9 +18,11 @@ export class BgChannelInboxItemMessage {
   public updatedAt?: string | null;
   public updatedBy?: string | null;
   public userIds?: string[] | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelInboxItemMessage>) {
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.id) {
         this.id = attributes.id;
       }
@@ -68,6 +71,7 @@ export class BgChannelInboxItemMessage {
       if (attributes.userIds) {
         this.userIds = attributes.userIds;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

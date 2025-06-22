@@ -1,1 +1,1 @@
-{"version":3,"file":"UserListFilter.js","sourceRoot":"","sources":["../../src/models/UserListFilter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,qBAAqB,CAAC;AAErD,MAAM,OAAO,cAAe,SAAQ,cAAc;IAChD,YAAY,UAAoC;QAC9C,KAAK,CAAC,UAAU,CAAC,CAAC;IACpB,CAAC;CACF"}
+{"version":3,"file":"UserListFilter.js","sourceRoot":"","sources":["../../src/models/UserListFilter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,qBAAqB,CAAC;AAErD,MAAM,OAAO,cAAe,SAAQ,cAAc;IAChD,2EAA2E;IAC3E,4EAA4E;IAE5E,YAAY,UAAoC;QAC9C,KAAK,CAAC,UAAU,CAAC,CAAC;IACpB,CAAC;CACF"}

@@ -2471,7 +2471,7 @@ export type ModelEvent = {
     time: Scalars['DateTimeISO']['output'];
 };
 export type ModelEventInput = {
-    message?: Scalars['String']['input'];
+    message?: InputMaybe<Scalars['String']['input']>;
     modelEventType?: ModelEventType;
     time?: Scalars['DateTimeISO']['input'];
 };
@@ -3176,7 +3176,6 @@ export type MyUser = {
     adminNotes?: Maybe<Scalars['String']['output']>;
     anonymizedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     appFeatures?: Maybe<Array<AppFeature>>;
-    authType?: Maybe<AuthType>;
     avatarAsset?: Maybe<UploadedAsset>;
     avatarUrl?: Maybe<Scalars['String']['output']>;
     birthYear?: Maybe<Scalars['Int']['output']>;
@@ -3189,7 +3188,6 @@ export type MyUser = {
     cityOfResidence?: Maybe<Scalars['String']['output']>;
     companies?: Maybe<Array<Company>>;
     companyIds?: Maybe<Array<Scalars['ID']['output']>>;
-    contacts?: Maybe<Array<Contact>>;
     countryOfOrigin?: Maybe<Country>;
     countryOfOriginTextId?: Maybe<Scalars['String']['output']>;
     countryOfResidence?: Maybe<Country>;
@@ -3250,12 +3248,15 @@ export type MyUser = {
     mm2PasswordHash?: Maybe<Scalars['String']['output']>;
     /** This attribute is only used by the MM2 synchronizer. */
     mm2PhotoOriginal?: Maybe<Scalars['String']['output']>;
+    /** This attribute is only used by the MM2 synchronizer. */
+    mm2ProfileId?: Maybe<Scalars['String']['output']>;
     offersHelp?: Maybe<Scalars['Boolean']['output']>;
     onboardingStage?: Maybe<Scalars['String']['output']>;
     optIntoNewsletter?: Maybe<Scalars['Boolean']['output']>;
     /** Records whether a user was originally created in MM2. */
     originatedInMm2?: Maybe<Scalars['Boolean']['output']>;
     parentGroupIds: Array<Scalars['ID']['output']>;
+    passwordHash?: Maybe<Scalars['String']['output']>;
     passwordUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     personalBio?: Maybe<Scalars['String']['output']>;
     phoneNumber?: Maybe<Scalars['String']['output']>;
@@ -3296,7 +3297,6 @@ export type MyUser = {
     updatedBy?: Maybe<Scalars['ID']['output']>;
     uploadedAssets: Array<UploadedAsset>;
     userBlocks?: Maybe<Array<UserBlock>>;
-    userDevices: Array<UserDeviceWithoutAuth>;
     userHandle?: Maybe<Scalars['String']['output']>;
     websites?: Maybe<Array<LabeledStringValue>>;
     yearsManagementExperience?: Maybe<Scalars['Int']['output']>;
@@ -3887,18 +3887,13 @@ export type PurchaseOrderInput = {
 export type PurchaseOrderItem = {
     __typename?: 'PurchaseOrderItem';
     adminNotes?: Maybe<Scalars['String']['output']>;
-    balance: Scalars['Int']['output'];
-    barcodeFormat?: Maybe<BarcodeType>;
-    code?: Maybe<Scalars['String']['output']>;
     createdAt: Scalars['DateTimeISO']['output'];
     createdBy?: Maybe<Scalars['ID']['output']>;
     deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     deletedBy?: Maybe<Scalars['ID']['output']>;
     events?: Maybe<Array<ModelEvent>>;
-    hasBarcode?: Maybe<Scalars['Boolean']['output']>;
     id: Scalars['ID']['output'];
     metadata?: Maybe<BaseModelMetadata>;
-    pin?: Maybe<Scalars['String']['output']>;
     price: Scalars['Int']['output'];
     productId: Scalars['ID']['output'];
     purchaseOrderId: Scalars['ID']['output'];
@@ -3911,18 +3906,13 @@ export type PurchaseOrderItem = {
 };
 export type PurchaseOrderItemInput = {
     adminNotes?: InputMaybe<Scalars['String']['input']>;
-    balance?: InputMaybe<Scalars['Int']['input']>;
-    barcodeFormat?: InputMaybe<BarcodeType>;
-    code?: InputMaybe<Scalars['String']['input']>;
     createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     createdBy?: InputMaybe<Scalars['ID']['input']>;
     deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     deletedBy?: InputMaybe<Scalars['ID']['input']>;
     events?: InputMaybe<Array<ModelEventInput>>;
-    hasBarcode?: InputMaybe<Scalars['Boolean']['input']>;
     id?: InputMaybe<Scalars['ID']['input']>;
     metadata?: InputMaybe<BaseModelMetadataInput>;
-    pin?: InputMaybe<Scalars['String']['input']>;
     price?: InputMaybe<Scalars['Int']['input']>;
     productId?: InputMaybe<Scalars['ID']['input']>;
     purchaseOrderId?: InputMaybe<Scalars['ID']['input']>;
@@ -4578,6 +4568,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationCreateNotification = "graphQlMutationCreateNotification",
     GraphQlMutationCreateNotificationTemplate = "graphQlMutationCreateNotificationTemplate",
     GraphQlMutationCreatePurchaseOrderField = "graphQlMutationCreatePurchaseOrderField",
+    GraphQlMutationCreateShoppingCartItem = "graphQlMutationCreateShoppingCartItem",
     GraphQlMutationCreateSupportChannelConfig = "graphQlMutationCreateSupportChannelConfig",
     GraphQlMutationCreateUploadedAsset = "graphQlMutationCreateUploadedAsset",
     GraphQlMutationCreateUserDevice = "graphQlMutationCreateUserDevice",
@@ -4601,10 +4592,12 @@ export declare enum ServiceRequestType {
     GraphQlMutationDeleteMyUser = "graphQlMutationDeleteMyUser",
     GraphQlMutationDeleteNotification = "graphQlMutationDeleteNotification",
     GraphQlMutationDeleteNotificationTemplate = "graphQlMutationDeleteNotificationTemplate",
+    GraphQlMutationDeleteShoppingCartItem = "graphQlMutationDeleteShoppingCartItem",
     GraphQlMutationDeleteSupportChannelConfig = "graphQlMutationDeleteSupportChannelConfig",
     GraphQlMutationDeleteUploadedAsset = "graphQlMutationDeleteUploadedAsset",
     GraphQlMutationDeleteUser = "graphQlMutationDeleteUser",
     GraphQlMutationDeleteUserSearch = "graphQlMutationDeleteUserSearch",
+    GraphQlMutationEmptyShoppingCart = "graphQlMutationEmptyShoppingCart",
     GraphQlMutationEndMySession = "graphQlMutationEndMySession",
     GraphQlMutationFindAdminTaskById = "graphQlMutationFindAdminTaskById",
     GraphQlMutationFindUploadedAssetById = "graphQlMutationFindUploadedAssetById",
@@ -4645,6 +4638,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationUpdateNlpMessage = "graphQlMutationUpdateNlpMessage",
     GraphQlMutationUpdateNotification = "graphQlMutationUpdateNotification",
     GraphQlMutationUpdateNotificationTemplate = "graphQlMutationUpdateNotificationTemplate",
+    GraphQlMutationUpdateShoppingCartItem = "graphQlMutationUpdateShoppingCartItem",
     GraphQlMutationUpdateSupportChannelConfig = "graphQlMutationUpdateSupportChannelConfig",
     GraphQlMutationUpdateUploadedAsset = "graphQlMutationUpdateUploadedAsset",
     GraphQlMutationUpdateUser = "graphQlMutationUpdateUser",
@@ -4663,9 +4657,6 @@ export declare enum ServiceRequestType {
     GraphQlQueryContactTypes = "graphQlQueryContactTypes",
     GraphQlQueryContacts = "graphQlQueryContacts",
     GraphQlQueryContentTag = "graphQlQueryContentTag",
-    GraphQlQueryCreateShoppingCartItem = "graphQlQueryCreateShoppingCartItem",
-    GraphQlQueryDeleteShoppingCartItem = "graphQlQueryDeleteShoppingCartItem",
-    GraphQlQueryEmptyShoppingCart = "graphQlQueryEmptyShoppingCart",
     GraphQlQueryFindAdminTask = "graphQlQueryFindAdminTask",
     GraphQlQueryFindAnalyticsServiceRecord = "graphQlQueryFindAnalyticsServiceRecord",
     GraphQlQueryFindAnalyticsSynchronizationById = "graphQlQueryFindAnalyticsSynchronizationById",
@@ -4844,7 +4835,6 @@ export type SidContactListFilter = {
     caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
     createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
     createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
-    createdBy?: InputMaybe<Scalars['ID']['input']>;
     excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
     ids?: InputMaybe<Array<Scalars['String']['input']>>;
     searchText?: InputMaybe<Scalars['String']['input']>;
@@ -5450,7 +5440,6 @@ export type User = {
     adminNotes?: Maybe<Scalars['String']['output']>;
     anonymizedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     appFeatures?: Maybe<Array<AppFeature>>;
-    authType?: Maybe<AuthType>;
     avatarAsset?: Maybe<UploadedAsset>;
     avatarUrl?: Maybe<Scalars['String']['output']>;
     birthYear?: Maybe<Scalars['Int']['output']>;
@@ -5463,7 +5452,6 @@ export type User = {
     cityOfResidence?: Maybe<Scalars['String']['output']>;
     companies?: Maybe<Array<Company>>;
     companyIds?: Maybe<Array<Scalars['ID']['output']>>;
-    contacts?: Maybe<Array<Contact>>;
     countryOfOrigin?: Maybe<Country>;
     countryOfOriginTextId?: Maybe<Scalars['String']['output']>;
     countryOfResidence?: Maybe<Country>;
@@ -5524,12 +5512,15 @@ export type User = {
     mm2PasswordHash?: Maybe<Scalars['String']['output']>;
     /** This attribute is only used by the MM2 synchronizer. */
     mm2PhotoOriginal?: Maybe<Scalars['String']['output']>;
+    /** This attribute is only used by the MM2 synchronizer. */
+    mm2ProfileId?: Maybe<Scalars['String']['output']>;
     offersHelp?: Maybe<Scalars['Boolean']['output']>;
     onboardingStage?: Maybe<Scalars['String']['output']>;
     optIntoNewsletter?: Maybe<Scalars['Boolean']['output']>;
     /** Records whether a user was originally created in MM2. */
     originatedInMm2?: Maybe<Scalars['Boolean']['output']>;
     parentGroupIds: Array<Scalars['ID']['output']>;
+    passwordHash?: Maybe<Scalars['String']['output']>;
     passwordUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     personalBio?: Maybe<Scalars['String']['output']>;
     phoneNumber?: Maybe<Scalars['String']['output']>;
@@ -5570,7 +5561,6 @@ export type User = {
     updatedBy?: Maybe<Scalars['ID']['output']>;
     uploadedAssets: Array<UploadedAsset>;
     userBlocks?: Maybe<Array<UserBlock>>;
-    userDevices: Array<UserDeviceWithoutAuth>;
     userHandle?: Maybe<Scalars['String']['output']>;
     websites?: Maybe<Array<LabeledStringValue>>;
     yearsManagementExperience?: Maybe<Scalars['Int']['output']>;
@@ -5605,7 +5595,6 @@ export type UserBlock = {
     mm2Id?: Maybe<Scalars['String']['output']>;
     notes?: Maybe<Scalars['String']['output']>;
     reasonTextId: Scalars['String']['output'];
-    syncedToAnalyticsAt?: Maybe<Scalars['DateTimeISO']['output']>;
     /** This attribute is only used by the MM2 synchronizer. */
     syncedWithMm2At?: Maybe<Scalars['DateTimeISO']['output']>;
     userId: Scalars['ID']['output'];
@@ -5879,6 +5868,8 @@ export type UserListItem = {
     countryOfResidenceTextId?: Maybe<Scalars['String']['output']>;
     createdAt: Scalars['DateTimeISO']['output'];
     deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
+    discoverable?: Maybe<Scalars['Boolean']['output']>;
     educationLevel?: Maybe<EducationLevel>;
     endorsements?: Maybe<Array<EndorsementWithTypes>>;
     firstName?: Maybe<Scalars['String']['output']>;
@@ -5886,6 +5877,7 @@ export type UserListItem = {
     groupMemberships: Array<IGroupMembership>;
     groups: Array<Group>;
     id: Scalars['ID']['output'];
+    inactivatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     isOnVacation?: Maybe<Scalars['Boolean']['output']>;
     lastName?: Maybe<Scalars['String']['output']>;
     latestActivityAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -5903,6 +5895,7 @@ export type UserListItem = {
     roles: Array<UserRole>;
     seeksHelp?: Maybe<Scalars['Boolean']['output']>;
     spokenLanguagesTextIds: Array<Scalars['String']['output']>;
+    suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     timezone?: Maybe<Scalars['String']['output']>;
     trustLevel: Scalars['Int']['output'];
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -6130,6 +6123,8 @@ export type UserWithScore = {
     countryOfResidenceTextId?: Maybe<Scalars['String']['output']>;
     createdAt: Scalars['DateTimeISO']['output'];
     deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    /** If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally. */
+    discoverable?: Maybe<Scalars['Boolean']['output']>;
     educationLevel?: Maybe<EducationLevel>;
     endorsements?: Maybe<Array<EndorsementWithTypes>>;
     firstName?: Maybe<Scalars['String']['output']>;
@@ -6137,6 +6132,7 @@ export type UserWithScore = {
     groupMemberships: Array<IGroupMembership>;
     groups: Array<Group>;
     id: Scalars['ID']['output'];
+    inactivatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     isOnVacation?: Maybe<Scalars['Boolean']['output']>;
     lastName?: Maybe<Scalars['String']['output']>;
     latestActivityAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -6156,6 +6152,7 @@ export type UserWithScore = {
     score?: Maybe<Scalars['Float']['output']>;
     seeksHelp?: Maybe<Scalars['Boolean']['output']>;
     spokenLanguagesTextIds: Array<Scalars['String']['output']>;
+    suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     timezone?: Maybe<Scalars['String']['output']>;
     trustLevel: Scalars['Int']['output'];
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;

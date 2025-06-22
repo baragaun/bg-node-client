@@ -5,6 +5,7 @@ import { ChannelMessageStatus } from './ChannelMessageStatus.js';
 import { ChannelMessageType } from '../enums.js';
 
 export class BgChannelMessage extends BaseModel {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public channelId = '';
   public replyToMessageId?: string | null;
   public channelMessageType?: ChannelMessageType | null;
@@ -14,11 +15,13 @@ export class BgChannelMessage extends BaseModel {
   public editedAt?: string | null;
   public suspendedAt?: string | null;
   public suspendedBy?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelMessage>) {
     super(attributes);
 
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.channelId) {
         this.channelId = attributes.channelId;
       }
@@ -46,6 +49,7 @@ export class BgChannelMessage extends BaseModel {
       if (attributes.suspendedBy) {
         this.suspendedBy = attributes.suspendedBy;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 

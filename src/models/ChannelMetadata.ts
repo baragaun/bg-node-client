@@ -3,14 +3,17 @@
 import { BgChannelMetadata } from './BgChannelMetadata.js';
 
 export class ChannelMetadata extends BgChannelMetadata {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public channelInvitationAccepted = false;
   public messagesSentByCreatorCount = 0;
   public messagesSentByFirstParticipantCount = 0;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<ChannelMetadata>) {
     super(attributes);
 
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (
         attributes.channelInvitationAccepted === true ||
         attributes.channelInvitationAccepted === false
@@ -32,6 +35,7 @@ export class ChannelMetadata extends BgChannelMetadata {
         this.messagesSentByFirstParticipantCount =
           attributes.messagesSentByFirstParticipantCount;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

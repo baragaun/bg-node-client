@@ -2,27 +2,31 @@ import { BaseModel } from './BaseModel.js';
 import { PurchaseOrderItem } from './PurchaseOrderItem.js';
 
 export class PurchaseOrder extends BaseModel {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public userId = '';
   public shoppingCartId = '';
   public sumItemPrice = 0;
   public totalPrice = 0;
   public vat = 0;
-  public paidAt?: Date | null;
-  public canceledAt?: Date | null;
-  public refundedAt?: Date | null;
+  public paidAt?: string | null;
+  public canceledAt?: string | null;
+  public refundedAt?: string | null;
   public items: PurchaseOrderItem[] = [];
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<PurchaseOrder>) {
     super(attributes);
 
     if (attributes) {
-      if (attributes.userId) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
+      if (attributes.userId !== undefined) {
         this.userId = attributes.userId;
       }
-      if (attributes.shoppingCartId) {
+      if (attributes.shoppingCartId !== undefined) {
         this.shoppingCartId = attributes.shoppingCartId;
       }
       if (
+        attributes.sumItemPrice === null ||
         attributes.sumItemPrice === 0 ||
         (
           attributes.sumItemPrice &&
@@ -32,6 +36,7 @@ export class PurchaseOrder extends BaseModel {
         this.sumItemPrice = attributes.sumItemPrice;
       }
       if (
+        attributes.totalPrice === null ||
         attributes.totalPrice === 0 ||
         (
           attributes.totalPrice &&
@@ -41,6 +46,7 @@ export class PurchaseOrder extends BaseModel {
         this.totalPrice = attributes.totalPrice;
       }
       if (
+        attributes.vat === null ||
         attributes.vat === 0 ||
         (
           attributes.vat &&
@@ -49,30 +55,19 @@ export class PurchaseOrder extends BaseModel {
       ) {
         this.vat = attributes.vat;
       }
-      if (attributes.paidAt) {
-        if (attributes.paidAt instanceof Date) {
-          this.paidAt = attributes.paidAt;
-        } else {
-          this.paidAt = new Date(attributes.paidAt);
-        }
+      if (attributes.paidAt !== undefined && attributes.paidAt !== '') {
+        this.paidAt = attributes.paidAt;
       }
-      if (attributes.canceledAt) {
-        if (attributes.canceledAt instanceof Date) {
-          this.canceledAt = attributes.canceledAt;
-        } else {
-          this.canceledAt = new Date(attributes.canceledAt);
-        }
+      if (attributes.canceledAt !== undefined && attributes.canceledAt !== '') {
+        this.canceledAt = attributes.canceledAt;
       }
-      if (attributes.refundedAt) {
-        if (attributes.refundedAt instanceof Date) {
-          this.refundedAt = attributes.refundedAt;
-        } else {
-          this.refundedAt = new Date(attributes.refundedAt);
-        }
+      if (attributes.refundedAt !== undefined && attributes.refundedAt !== '') {
+        this.refundedAt = attributes.refundedAt;
       }
-      if (attributes.items) {
+      if (attributes.items !== undefined) {
         this.items = attributes.items;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }
