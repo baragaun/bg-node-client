@@ -143,7 +143,6 @@ export declare const WalletSchema: {
                     };
                     barcodeFormat: {
                         type: string;
-                        enum: string[];
                         nullable: boolean;
                     };
                     pin: {
@@ -152,7 +151,6 @@ export declare const WalletSchema: {
                     };
                     source: {
                         type: string;
-                        enum: string[];
                         nullable: boolean;
                     };
                     imageSourceFront: {

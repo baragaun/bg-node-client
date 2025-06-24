@@ -38,7 +38,7 @@ const verifyMyEmail = async (
 
     if (response.error || !response || !response.object.actionId) {
       logger.error('verifyMyEmail: action not found.');
-      return response;
+      return { error: response.error };
     }
 
     return getMultiStepActionProgress(

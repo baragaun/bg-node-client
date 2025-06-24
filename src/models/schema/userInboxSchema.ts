@@ -57,7 +57,81 @@ export const UserInboxSchema = {
       maxLength: 32,
     },
     channels: {
-      type: 'ChannelInbox',
+      type: 'object',
+      properties: {
+        userId: {
+          type: 'string',
+          maxLength: 32,
+        },
+        unseenMessages: {
+          type: 'array',
+          nullable: true,
+        },
+        unseenSystemMessages: {
+          type: 'array',
+          nullable: true,
+        },
+        unseenArchivedMessages: {
+          type: 'array',
+          nullable: true,
+        },
+        latestMessages: {
+          type: 'array',
+          nullable: true,
+        },
+        latestArchivedMessages: {
+          type: 'array',
+          nullable: true,
+        },
+        pendingInvitations: {
+          type: 'array',
+          nullable: true,
+        },
+        invitations: {
+          type: 'array',
+          nullable: true,
+        },
+        itemIdHash: {
+          type: 'string',
+          description:
+            'MD5 hash of all item IDs to check whether there are any new or removed items.',
+          nullable: true,
+        },
+        updatedAt: {
+          type: 'string',
+          format: 'date-time',
+          nullable: true,
+        },
+        updatedBy: {
+          type: 'string',
+          maxLength: 32,
+          nullable: true,
+        },
+        channelsExceedMaxCount: {
+          type: 'boolean',
+          nullable: true,
+        },
+        invitationsExceedMaxCount: {
+          type: 'boolean',
+          nullable: true,
+        },
+        assumedMentorId: {
+          type: 'string',
+          maxLength: 32,
+          nullable: true,
+        },
+        mm2Id: {
+          type: 'string',
+          description: 'This attribute is only used by the MM2 synchronizer.',
+          nullable: true,
+        },
+        syncedWithMm2At: {
+          type: 'string',
+          description: 'This attribute is only used by the MM2 synchronizer.',
+          format: 'date-time',
+          nullable: true,
+        },
+      },
       nullable: true,
     },
   },

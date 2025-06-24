@@ -1,6 +1,7 @@
 import { ChannelInvitationStatus } from '../enums.js';
 
 export class BgChannelInboxItemInvitation {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public id = '';
   public channelId?: string | null;
   public messageText?: string | null;
@@ -9,9 +10,11 @@ export class BgChannelInboxItemInvitation {
   public createdAt: Date = new Date();
   public createdBy?: string | null;
   public recipientId?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelInboxItemInvitation>) {
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.id) {
         this.id = attributes.id;
       }
@@ -36,6 +39,7 @@ export class BgChannelInboxItemInvitation {
       if (attributes.recipientId) {
         this.recipientId = attributes.recipientId;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

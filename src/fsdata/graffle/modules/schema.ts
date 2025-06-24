@@ -6832,8 +6832,8 @@ export namespace Schema {
       postalCode: User.postalCode;
       avatarUrl: User.avatarUrl;
       websites: User.websites;
-      authType: User.authType;
       inviteCode: User.inviteCode;
+      passwordHash: User.passwordHash;
       tfaBackupCodes: User.tfaBackupCodes;
       passwordUpdatedAt: User.passwordUpdatedAt;
       preferredLanguageTextId: User.preferredLanguageTextId;
@@ -6847,9 +6847,7 @@ export namespace Schema {
       timezone: User.timezone;
       preferences: User.preferences;
       trustLevel: User.trustLevel;
-      userDevices: User.userDevices;
       userBlocks: User.userBlocks;
-      contacts: User.contacts;
       termsAndConditionsAcceptedAt: User.termsAndConditionsAcceptedAt;
       optIntoNewsletter: User.optIntoNewsletter;
       onboardingStage: User.onboardingStage;
@@ -6869,8 +6867,10 @@ export namespace Schema {
       groupIds: User.groupIds;
       parentGroupIds: User.parentGroupIds;
       externalGroupIds: User.externalGroupIds;
-      pronounsTextIds: User.pronounsTextIds;
       groupMemberships: User.groupMemberships;
+      mentor: User.mentor;
+      mentee: User.mentee;
+      pronounsTextIds: User.pronounsTextIds;
       seeksHelp: User.seeksHelp;
       offersHelp: User.offersHelp;
       birthYear: User.birthYear;
@@ -6895,12 +6895,11 @@ export namespace Schema {
       syncedWithMm2At: User.syncedWithMm2At;
       mm2PasswordHash: User.mm2PasswordHash;
       mm2Id: User.mm2Id;
+      mm2ProfileId: User.mm2ProfileId;
       mm2PhotoOriginal: User.mm2PhotoOriginal;
       mm2BasicAccountCompleted: User.mm2BasicAccountCompleted;
       hasSignedInToMm3: User.hasSignedInToMm3;
       hasSignedInToMm2: User.hasSignedInToMm2;
-      mentor: User.mentor;
-      mentee: User.mentee;
       countryOfResidence: User.countryOfResidence;
       gender: User.gender;
       latestUserDevice: User.latestUserDevice;
@@ -7157,17 +7156,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$LabeledStringValue;
     }
 
-    export interface authType {
-      kind: 'OutputField';
-      name: 'authType';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$AuthType;
-    }
-
     export interface inviteCode {
       kind: 'OutputField';
       name: 'inviteCode';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface passwordHash {
+      kind: 'OutputField';
+      name: 'passwordHash';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -7280,28 +7279,12 @@ export namespace Schema {
       namedType: $$NamedTypes.$$Int;
     }
 
-    export interface userDevices {
-      kind: 'OutputField';
-      name: 'userDevices';
-      arguments: {};
-      inlineType: [1, [1]];
-      namedType: $$NamedTypes.$$UserDeviceWithoutAuth;
-    }
-
     export interface userBlocks {
       kind: 'OutputField';
       name: 'userBlocks';
       arguments: {};
       inlineType: [0, [1]];
       namedType: $$NamedTypes.$$UserBlock;
-    }
-
-    export interface contacts {
-      kind: 'OutputField';
-      name: 'contacts';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$Contact;
     }
 
     export interface termsAndConditionsAcceptedAt {
@@ -7456,20 +7439,42 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface pronounsTextIds {
-      kind: 'OutputField';
-      name: 'pronounsTextIds';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$String;
-    }
-
     export interface groupMemberships {
       kind: 'OutputField';
       name: 'groupMemberships';
       arguments: {};
       inlineType: [1, [1]];
       namedType: $$NamedTypes.$$IGroupMembership;
+    }
+
+    /**
+     * This attribute is a copy of the mentor group membership.
+     */
+    export interface mentor {
+      kind: 'OutputField';
+      name: 'mentor';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$MentorsGroupMembership;
+    }
+
+    /**
+     * This attribute is a copy of the mentee group membership.
+     */
+    export interface mentee {
+      kind: 'OutputField';
+      name: 'mentee';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$MenteesGroupMembership;
+    }
+
+    export interface pronounsTextIds {
+      kind: 'OutputField';
+      name: 'pronounsTextIds';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
     }
 
     export interface seeksHelp {
@@ -7682,6 +7687,17 @@ export namespace Schema {
     /**
      * This attribute is only used by the MM2 synchronizer.
      */
+    export interface mm2ProfileId {
+      kind: 'OutputField';
+      name: 'mm2ProfileId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * This attribute is only used by the MM2 synchronizer.
+     */
     export interface mm2PhotoOriginal {
       kind: 'OutputField';
       name: 'mm2PhotoOriginal';
@@ -7721,28 +7737,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$Boolean;
-    }
-
-    /**
-     * This attribute is a copy of the mentor group membership.
-     */
-    export interface mentor {
-      kind: 'OutputField';
-      name: 'mentor';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$MentorsGroupMembership;
-    }
-
-    /**
-     * This attribute is a copy of the mentee group membership.
-     */
-    export interface mentee {
-      kind: 'OutputField';
-      name: 'mentee';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$MenteesGroupMembership;
     }
 
     export interface countryOfResidence {
@@ -8232,382 +8226,6 @@ export namespace Schema {
     }
   }
 
-  //                                       UserDeviceWithoutAuth
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface UserDeviceWithoutAuth {
-    kind: 'Object';
-    name: 'UserDeviceWithoutAuth';
-    fields: {
-      __typename: UserDeviceWithoutAuth.__typename;
-      id: UserDeviceWithoutAuth.id;
-      adminNotes: UserDeviceWithoutAuth.adminNotes;
-      events: UserDeviceWithoutAuth.events;
-      metadata: UserDeviceWithoutAuth.metadata;
-      createdAt: UserDeviceWithoutAuth.createdAt;
-      createdBy: UserDeviceWithoutAuth.createdBy;
-      updatedAt: UserDeviceWithoutAuth.updatedAt;
-      updatedBy: UserDeviceWithoutAuth.updatedBy;
-      deletedAt: UserDeviceWithoutAuth.deletedAt;
-      deletedBy: UserDeviceWithoutAuth.deletedBy;
-      userId: UserDeviceWithoutAuth.userId;
-      deviceUuid: UserDeviceWithoutAuth.deviceUuid;
-      deviceType: UserDeviceWithoutAuth.deviceType;
-      trusted: UserDeviceWithoutAuth.trusted;
-      phoneNumber: UserDeviceWithoutAuth.phoneNumber;
-      phoneNumberUpdatedAt: UserDeviceWithoutAuth.phoneNumberUpdatedAt;
-      isPhoneNumberVerified: UserDeviceWithoutAuth.isPhoneNumberVerified;
-      brand: UserDeviceWithoutAuth.brand;
-      model: UserDeviceWithoutAuth.model;
-      isTablet: UserDeviceWithoutAuth.isTablet;
-      screenWidth: UserDeviceWithoutAuth.screenWidth;
-      screenHeight: UserDeviceWithoutAuth.screenHeight;
-      os: UserDeviceWithoutAuth.os;
-      osVersion: UserDeviceWithoutAuth.osVersion;
-      timezone: UserDeviceWithoutAuth.timezone;
-      ipAddress: UserDeviceWithoutAuth.ipAddress;
-      consumer: UserDeviceWithoutAuth.consumer;
-      consumerVersion: UserDeviceWithoutAuth.consumerVersion;
-      acceptedLanguage: UserDeviceWithoutAuth.acceptedLanguage;
-      locale: UserDeviceWithoutAuth.locale;
-      countryCode: UserDeviceWithoutAuth.countryCode;
-      appVersion: UserDeviceWithoutAuth.appVersion;
-      signedInAt: UserDeviceWithoutAuth.signedInAt;
-      signedOutAt: UserDeviceWithoutAuth.signedOutAt;
-      sessionStartedAt: UserDeviceWithoutAuth.sessionStartedAt;
-      sessionEndedAt: UserDeviceWithoutAuth.sessionEndedAt;
-      identityProvider: UserDeviceWithoutAuth.identityProvider;
-      oauthProfileUrl: UserDeviceWithoutAuth.oauthProfileUrl;
-      trustedAt: UserDeviceWithoutAuth.trustedAt;
-    };
-  }
-
-  export namespace UserDeviceWithoutAuth {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'UserDeviceWithoutAuth';
-      };
-    }
-
-    export interface id {
-      kind: 'OutputField';
-      name: 'id';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'OutputField';
-      name: 'adminNotes';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'OutputField';
-      name: 'events';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEvent;
-    }
-
-    export interface metadata {
-      kind: 'OutputField';
-      name: 'metadata';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BaseModelMetadata;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'OutputField';
-      name: 'createdBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'OutputField';
-      name: 'updatedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'OutputField';
-      name: 'deletedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'OutputField';
-      name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface userId {
-      kind: 'OutputField';
-      name: 'userId';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deviceUuid {
-      kind: 'OutputField';
-      name: 'deviceUuid';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface deviceType {
-      kind: 'OutputField';
-      name: 'deviceType';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface trusted {
-      kind: 'OutputField';
-      name: 'trusted';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface phoneNumber {
-      kind: 'OutputField';
-      name: 'phoneNumber';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface phoneNumberUpdatedAt {
-      kind: 'OutputField';
-      name: 'phoneNumberUpdatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface isPhoneNumberVerified {
-      kind: 'OutputField';
-      name: 'isPhoneNumberVerified';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface brand {
-      kind: 'OutputField';
-      name: 'brand';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface model {
-      kind: 'OutputField';
-      name: 'model';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface isTablet {
-      kind: 'OutputField';
-      name: 'isTablet';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface screenWidth {
-      kind: 'OutputField';
-      name: 'screenWidth';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface screenHeight {
-      kind: 'OutputField';
-      name: 'screenHeight';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface os {
-      kind: 'OutputField';
-      name: 'os';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface osVersion {
-      kind: 'OutputField';
-      name: 'osVersion';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface timezone {
-      kind: 'OutputField';
-      name: 'timezone';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface ipAddress {
-      kind: 'OutputField';
-      name: 'ipAddress';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface consumer {
-      kind: 'OutputField';
-      name: 'consumer';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface consumerVersion {
-      kind: 'OutputField';
-      name: 'consumerVersion';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface acceptedLanguage {
-      kind: 'OutputField';
-      name: 'acceptedLanguage';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface locale {
-      kind: 'OutputField';
-      name: 'locale';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface countryCode {
-      kind: 'OutputField';
-      name: 'countryCode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface appVersion {
-      kind: 'OutputField';
-      name: 'appVersion';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface signedInAt {
-      kind: 'OutputField';
-      name: 'signedInAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface signedOutAt {
-      kind: 'OutputField';
-      name: 'signedOutAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface sessionStartedAt {
-      kind: 'OutputField';
-      name: 'sessionStartedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface sessionEndedAt {
-      kind: 'OutputField';
-      name: 'sessionEndedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface identityProvider {
-      kind: 'OutputField';
-      name: 'identityProvider';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$IdentityProvider;
-    }
-
-    export interface oauthProfileUrl {
-      kind: 'OutputField';
-      name: 'oauthProfileUrl';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface trustedAt {
-      kind: 'OutputField';
-      name: 'trustedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-  }
-
   //                                             UserBlock
   // --------------------------------------------------------------------------------------------------
   //
@@ -8621,7 +8239,6 @@ export namespace Schema {
       reasonTextId: UserBlock.reasonTextId;
       notes: UserBlock.notes;
       adminNotes: UserBlock.adminNotes;
-      syncedToAnalyticsAt: UserBlock.syncedToAnalyticsAt;
       createdAt: UserBlock.createdAt;
       syncedWithMm2At: UserBlock.syncedWithMm2At;
       mm2Id: UserBlock.mm2Id;
@@ -8672,14 +8289,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface syncedToAnalyticsAt {
-      kind: 'OutputField';
-      name: 'syncedToAnalyticsAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
     export interface createdAt {
       kind: 'OutputField';
       name: 'createdAt';
@@ -8708,564 +8317,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
-    }
-  }
-
-  //                                              Contact
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface Contact {
-    kind: 'Object';
-    name: 'Contact';
-    fields: {
-      __typename: Contact.__typename;
-      id: Contact.id;
-      adminNotes: Contact.adminNotes;
-      events: Contact.events;
-      metadata: Contact.metadata;
-      createdAt: Contact.createdAt;
-      createdBy: Contact.createdBy;
-      updatedAt: Contact.updatedAt;
-      updatedBy: Contact.updatedBy;
-      deletedAt: Contact.deletedAt;
-      deletedBy: Contact.deletedBy;
-      userId: Contact.userId;
-      channelId: Contact.channelId;
-      nickname: Contact.nickname;
-      typeTextIds: Contact.typeTextIds;
-      favorite: Contact.favorite;
-      notes: Contact.notes;
-      archivedAt: Contact.archivedAt;
-      user: Contact.user;
-      contactTypes: Contact.contactTypes;
-    };
-  }
-
-  export namespace Contact {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'Contact';
-      };
-    }
-
-    export interface id {
-      kind: 'OutputField';
-      name: 'id';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'OutputField';
-      name: 'adminNotes';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'OutputField';
-      name: 'events';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEvent;
-    }
-
-    export interface metadata {
-      kind: 'OutputField';
-      name: 'metadata';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ContactMetadata;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'OutputField';
-      name: 'createdBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'OutputField';
-      name: 'updatedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'OutputField';
-      name: 'deletedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'OutputField';
-      name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface userId {
-      kind: 'OutputField';
-      name: 'userId';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface channelId {
-      kind: 'OutputField';
-      name: 'channelId';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface nickname {
-      kind: 'OutputField';
-      name: 'nickname';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface typeTextIds {
-      kind: 'OutputField';
-      name: 'typeTextIds';
-      arguments: {};
-      inlineType: [1, [1]];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface favorite {
-      kind: 'OutputField';
-      name: 'favorite';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface notes {
-      kind: 'OutputField';
-      name: 'notes';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface archivedAt {
-      kind: 'OutputField';
-      name: 'archivedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface user {
-      kind: 'OutputField';
-      name: 'user';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$User;
-    }
-
-    export interface contactTypes {
-      kind: 'OutputField';
-      name: 'contactTypes';
-      arguments: {};
-      inlineType: [1, [1]];
-      namedType: $$NamedTypes.$$ContactType;
-    }
-  }
-
-  //                                          ContactMetadata
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface ContactMetadata {
-    kind: 'Object';
-    name: 'ContactMetadata';
-    fields: {
-      __typename: ContactMetadata.__typename;
-      updatedAt: ContactMetadata.updatedAt;
-      firstName: ContactMetadata.firstName;
-      lastName: ContactMetadata.lastName;
-      userHandle: ContactMetadata.userHandle;
-      avatarUrl: ContactMetadata.avatarUrl;
-    };
-  }
-
-  export namespace ContactMetadata {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'ContactMetadata';
-      };
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface firstName {
-      kind: 'OutputField';
-      name: 'firstName';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface lastName {
-      kind: 'OutputField';
-      name: 'lastName';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface userHandle {
-      kind: 'OutputField';
-      name: 'userHandle';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface avatarUrl {
-      kind: 'OutputField';
-      name: 'avatarUrl';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-  }
-
-  //                                            ContactType
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface ContactType {
-    kind: 'Object';
-    name: 'ContactType';
-    fields: {
-      __typename: ContactType.__typename;
-      id: ContactType.id;
-      adminNotes: ContactType.adminNotes;
-      events: ContactType.events;
-      metadata: ContactType.metadata;
-      createdAt: ContactType.createdAt;
-      createdBy: ContactType.createdBy;
-      updatedAt: ContactType.updatedAt;
-      updatedBy: ContactType.updatedBy;
-      deletedAt: ContactType.deletedAt;
-      deletedBy: ContactType.deletedBy;
-      textId: ContactType.textId;
-      parentTextId: ContactType.parentTextId;
-      isParent: ContactType.isParent;
-      optionType: ContactType.optionType;
-      value: ContactType.value;
-      translatedValue: ContactType.translatedValue;
-      supportedLanguages: ContactType.supportedLanguages;
-      materialIconName: ContactType.materialIconName;
-      description: ContactType.description;
-      translatedDescription: ContactType.translatedDescription;
-      language: ContactType.language;
-      mm2Id: ContactType.mm2Id;
-      mm2Value: ContactType.mm2Value;
-      syncedWithMm2At: ContactType.syncedWithMm2At;
-      mm2TextId: ContactType.mm2TextId;
-      mm3TextId: ContactType.mm3TextId;
-      childOptions: ContactType.childOptions;
-      parentOption: ContactType.parentOption;
-    };
-  }
-
-  export namespace ContactType {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'ContactType';
-      };
-    }
-
-    export interface id {
-      kind: 'OutputField';
-      name: 'id';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'OutputField';
-      name: 'adminNotes';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'OutputField';
-      name: 'events';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEvent;
-    }
-
-    export interface metadata {
-      kind: 'OutputField';
-      name: 'metadata';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BaseModelMetadata;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'OutputField';
-      name: 'createdBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'OutputField';
-      name: 'updatedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'OutputField';
-      name: 'deletedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'OutputField';
-      name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface textId {
-      kind: 'OutputField';
-      name: 'textId';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface parentTextId {
-      kind: 'OutputField';
-      name: 'parentTextId';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface isParent {
-      kind: 'OutputField';
-      name: 'isParent';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface optionType {
-      kind: 'OutputField';
-      name: 'optionType';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$OptionType;
-    }
-
-    export interface value {
-      kind: 'OutputField';
-      name: 'value';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface translatedValue {
-      kind: 'OutputField';
-      name: 'translatedValue';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface supportedLanguages {
-      kind: 'OutputField';
-      name: 'supportedLanguages';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$UiLanguage;
-    }
-
-    /**
-     * Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
-     */
-    export interface materialIconName {
-      kind: 'OutputField';
-      name: 'materialIconName';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface description {
-      kind: 'OutputField';
-      name: 'description';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface translatedDescription {
-      kind: 'OutputField';
-      name: 'translatedDescription';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface language {
-      kind: 'OutputField';
-      name: 'language';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$UiLanguage;
-    }
-
-    /**
-     * This attribute is only used by the MM2 synchronizer.
-     */
-    export interface mm2Id {
-      kind: 'OutputField';
-      name: 'mm2Id';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface mm2Value {
-      kind: 'OutputField';
-      name: 'mm2Value';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    /**
-     * This attribute is only used by the MM2 synchronizer.
-     */
-    export interface syncedWithMm2At {
-      kind: 'OutputField';
-      name: 'syncedWithMm2At';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    /**
-     * This attribute is only used by the MM2 synchronizer.
-     */
-    export interface mm2TextId {
-      kind: 'OutputField';
-      name: 'mm2TextId';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    /**
-     * This attribute is only used by the MM2 synchronizer.
-     */
-    export interface mm3TextId {
-      kind: 'OutputField';
-      name: 'mm3TextId';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface childOptions {
-      kind: 'OutputField';
-      name: 'childOptions';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$Option;
-    }
-
-    export interface parentOption {
-      kind: 'OutputField';
-      name: 'parentOption';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$Option;
     }
   }
 
@@ -11396,6 +10447,382 @@ export namespace Schema {
       arguments: {};
       inlineType: [0, [1]];
       namedType: $$NamedTypes.$$Option;
+    }
+  }
+
+  //                                       UserDeviceWithoutAuth
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface UserDeviceWithoutAuth {
+    kind: 'Object';
+    name: 'UserDeviceWithoutAuth';
+    fields: {
+      __typename: UserDeviceWithoutAuth.__typename;
+      id: UserDeviceWithoutAuth.id;
+      adminNotes: UserDeviceWithoutAuth.adminNotes;
+      events: UserDeviceWithoutAuth.events;
+      metadata: UserDeviceWithoutAuth.metadata;
+      createdAt: UserDeviceWithoutAuth.createdAt;
+      createdBy: UserDeviceWithoutAuth.createdBy;
+      updatedAt: UserDeviceWithoutAuth.updatedAt;
+      updatedBy: UserDeviceWithoutAuth.updatedBy;
+      deletedAt: UserDeviceWithoutAuth.deletedAt;
+      deletedBy: UserDeviceWithoutAuth.deletedBy;
+      userId: UserDeviceWithoutAuth.userId;
+      deviceUuid: UserDeviceWithoutAuth.deviceUuid;
+      deviceType: UserDeviceWithoutAuth.deviceType;
+      trusted: UserDeviceWithoutAuth.trusted;
+      phoneNumber: UserDeviceWithoutAuth.phoneNumber;
+      phoneNumberUpdatedAt: UserDeviceWithoutAuth.phoneNumberUpdatedAt;
+      isPhoneNumberVerified: UserDeviceWithoutAuth.isPhoneNumberVerified;
+      brand: UserDeviceWithoutAuth.brand;
+      model: UserDeviceWithoutAuth.model;
+      isTablet: UserDeviceWithoutAuth.isTablet;
+      screenWidth: UserDeviceWithoutAuth.screenWidth;
+      screenHeight: UserDeviceWithoutAuth.screenHeight;
+      os: UserDeviceWithoutAuth.os;
+      osVersion: UserDeviceWithoutAuth.osVersion;
+      timezone: UserDeviceWithoutAuth.timezone;
+      ipAddress: UserDeviceWithoutAuth.ipAddress;
+      consumer: UserDeviceWithoutAuth.consumer;
+      consumerVersion: UserDeviceWithoutAuth.consumerVersion;
+      acceptedLanguage: UserDeviceWithoutAuth.acceptedLanguage;
+      locale: UserDeviceWithoutAuth.locale;
+      countryCode: UserDeviceWithoutAuth.countryCode;
+      appVersion: UserDeviceWithoutAuth.appVersion;
+      signedInAt: UserDeviceWithoutAuth.signedInAt;
+      signedOutAt: UserDeviceWithoutAuth.signedOutAt;
+      sessionStartedAt: UserDeviceWithoutAuth.sessionStartedAt;
+      sessionEndedAt: UserDeviceWithoutAuth.sessionEndedAt;
+      identityProvider: UserDeviceWithoutAuth.identityProvider;
+      oauthProfileUrl: UserDeviceWithoutAuth.oauthProfileUrl;
+      trustedAt: UserDeviceWithoutAuth.trustedAt;
+    };
+  }
+
+  export namespace UserDeviceWithoutAuth {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'UserDeviceWithoutAuth';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface userId {
+      kind: 'OutputField';
+      name: 'userId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deviceUuid {
+      kind: 'OutputField';
+      name: 'deviceUuid';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deviceType {
+      kind: 'OutputField';
+      name: 'deviceType';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface trusted {
+      kind: 'OutputField';
+      name: 'trusted';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface phoneNumber {
+      kind: 'OutputField';
+      name: 'phoneNumber';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface phoneNumberUpdatedAt {
+      kind: 'OutputField';
+      name: 'phoneNumberUpdatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface isPhoneNumberVerified {
+      kind: 'OutputField';
+      name: 'isPhoneNumberVerified';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface brand {
+      kind: 'OutputField';
+      name: 'brand';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface model {
+      kind: 'OutputField';
+      name: 'model';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface isTablet {
+      kind: 'OutputField';
+      name: 'isTablet';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface screenWidth {
+      kind: 'OutputField';
+      name: 'screenWidth';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface screenHeight {
+      kind: 'OutputField';
+      name: 'screenHeight';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface os {
+      kind: 'OutputField';
+      name: 'os';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface osVersion {
+      kind: 'OutputField';
+      name: 'osVersion';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface timezone {
+      kind: 'OutputField';
+      name: 'timezone';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface ipAddress {
+      kind: 'OutputField';
+      name: 'ipAddress';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface consumer {
+      kind: 'OutputField';
+      name: 'consumer';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface consumerVersion {
+      kind: 'OutputField';
+      name: 'consumerVersion';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface acceptedLanguage {
+      kind: 'OutputField';
+      name: 'acceptedLanguage';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface locale {
+      kind: 'OutputField';
+      name: 'locale';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface countryCode {
+      kind: 'OutputField';
+      name: 'countryCode';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface appVersion {
+      kind: 'OutputField';
+      name: 'appVersion';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface signedInAt {
+      kind: 'OutputField';
+      name: 'signedInAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface signedOutAt {
+      kind: 'OutputField';
+      name: 'signedOutAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface sessionStartedAt {
+      kind: 'OutputField';
+      name: 'sessionStartedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface sessionEndedAt {
+      kind: 'OutputField';
+      name: 'sessionEndedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface identityProvider {
+      kind: 'OutputField';
+      name: 'identityProvider';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$IdentityProvider;
+    }
+
+    export interface oauthProfileUrl {
+      kind: 'OutputField';
+      name: 'oauthProfileUrl';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface trustedAt {
+      kind: 'OutputField';
+      name: 'trustedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
     }
   }
 
@@ -13855,6 +13282,564 @@ export namespace Schema {
     }
   }
 
+  //                                              Contact
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface Contact {
+    kind: 'Object';
+    name: 'Contact';
+    fields: {
+      __typename: Contact.__typename;
+      id: Contact.id;
+      adminNotes: Contact.adminNotes;
+      events: Contact.events;
+      metadata: Contact.metadata;
+      createdAt: Contact.createdAt;
+      createdBy: Contact.createdBy;
+      updatedAt: Contact.updatedAt;
+      updatedBy: Contact.updatedBy;
+      deletedAt: Contact.deletedAt;
+      deletedBy: Contact.deletedBy;
+      userId: Contact.userId;
+      channelId: Contact.channelId;
+      nickname: Contact.nickname;
+      typeTextIds: Contact.typeTextIds;
+      favorite: Contact.favorite;
+      notes: Contact.notes;
+      archivedAt: Contact.archivedAt;
+      user: Contact.user;
+      contactTypes: Contact.contactTypes;
+    };
+  }
+
+  export namespace Contact {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'Contact';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ContactMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface userId {
+      kind: 'OutputField';
+      name: 'userId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface channelId {
+      kind: 'OutputField';
+      name: 'channelId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface nickname {
+      kind: 'OutputField';
+      name: 'nickname';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface typeTextIds {
+      kind: 'OutputField';
+      name: 'typeTextIds';
+      arguments: {};
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface favorite {
+      kind: 'OutputField';
+      name: 'favorite';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface notes {
+      kind: 'OutputField';
+      name: 'notes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface archivedAt {
+      kind: 'OutputField';
+      name: 'archivedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface user {
+      kind: 'OutputField';
+      name: 'user';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$User;
+    }
+
+    export interface contactTypes {
+      kind: 'OutputField';
+      name: 'contactTypes';
+      arguments: {};
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$ContactType;
+    }
+  }
+
+  //                                          ContactMetadata
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface ContactMetadata {
+    kind: 'Object';
+    name: 'ContactMetadata';
+    fields: {
+      __typename: ContactMetadata.__typename;
+      updatedAt: ContactMetadata.updatedAt;
+      firstName: ContactMetadata.firstName;
+      lastName: ContactMetadata.lastName;
+      userHandle: ContactMetadata.userHandle;
+      avatarUrl: ContactMetadata.avatarUrl;
+    };
+  }
+
+  export namespace ContactMetadata {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'ContactMetadata';
+      };
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface firstName {
+      kind: 'OutputField';
+      name: 'firstName';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface lastName {
+      kind: 'OutputField';
+      name: 'lastName';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface userHandle {
+      kind: 'OutputField';
+      name: 'userHandle';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface avatarUrl {
+      kind: 'OutputField';
+      name: 'avatarUrl';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+  }
+
+  //                                            ContactType
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface ContactType {
+    kind: 'Object';
+    name: 'ContactType';
+    fields: {
+      __typename: ContactType.__typename;
+      id: ContactType.id;
+      adminNotes: ContactType.adminNotes;
+      events: ContactType.events;
+      metadata: ContactType.metadata;
+      createdAt: ContactType.createdAt;
+      createdBy: ContactType.createdBy;
+      updatedAt: ContactType.updatedAt;
+      updatedBy: ContactType.updatedBy;
+      deletedAt: ContactType.deletedAt;
+      deletedBy: ContactType.deletedBy;
+      textId: ContactType.textId;
+      parentTextId: ContactType.parentTextId;
+      isParent: ContactType.isParent;
+      optionType: ContactType.optionType;
+      value: ContactType.value;
+      translatedValue: ContactType.translatedValue;
+      supportedLanguages: ContactType.supportedLanguages;
+      materialIconName: ContactType.materialIconName;
+      description: ContactType.description;
+      translatedDescription: ContactType.translatedDescription;
+      language: ContactType.language;
+      mm2Id: ContactType.mm2Id;
+      mm2Value: ContactType.mm2Value;
+      syncedWithMm2At: ContactType.syncedWithMm2At;
+      mm2TextId: ContactType.mm2TextId;
+      mm3TextId: ContactType.mm3TextId;
+      childOptions: ContactType.childOptions;
+      parentOption: ContactType.parentOption;
+    };
+  }
+
+  export namespace ContactType {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'ContactType';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface textId {
+      kind: 'OutputField';
+      name: 'textId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface parentTextId {
+      kind: 'OutputField';
+      name: 'parentTextId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface isParent {
+      kind: 'OutputField';
+      name: 'isParent';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface optionType {
+      kind: 'OutputField';
+      name: 'optionType';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$OptionType;
+    }
+
+    export interface value {
+      kind: 'OutputField';
+      name: 'value';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface translatedValue {
+      kind: 'OutputField';
+      name: 'translatedValue';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface supportedLanguages {
+      kind: 'OutputField';
+      name: 'supportedLanguages';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$UiLanguage;
+    }
+
+    /**
+     * Material icon name. Intended to be used by the Flutter app for the expertises and industries icons.
+     */
+    export interface materialIconName {
+      kind: 'OutputField';
+      name: 'materialIconName';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface description {
+      kind: 'OutputField';
+      name: 'description';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface translatedDescription {
+      kind: 'OutputField';
+      name: 'translatedDescription';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface language {
+      kind: 'OutputField';
+      name: 'language';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$UiLanguage;
+    }
+
+    /**
+     * This attribute is only used by the MM2 synchronizer.
+     */
+    export interface mm2Id {
+      kind: 'OutputField';
+      name: 'mm2Id';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface mm2Value {
+      kind: 'OutputField';
+      name: 'mm2Value';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * This attribute is only used by the MM2 synchronizer.
+     */
+    export interface syncedWithMm2At {
+      kind: 'OutputField';
+      name: 'syncedWithMm2At';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    /**
+     * This attribute is only used by the MM2 synchronizer.
+     */
+    export interface mm2TextId {
+      kind: 'OutputField';
+      name: 'mm2TextId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * This attribute is only used by the MM2 synchronizer.
+     */
+    export interface mm3TextId {
+      kind: 'OutputField';
+      name: 'mm3TextId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface childOptions {
+      kind: 'OutputField';
+      name: 'childOptions';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$Option;
+    }
+
+    export interface parentOption {
+      kind: 'OutputField';
+      name: 'parentOption';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$Option;
+    }
+  }
+
   //                                         ChannelParticipant
   // --------------------------------------------------------------------------------------------------
   //
@@ -14156,9 +14141,12 @@ export namespace Schema {
       cityOfResidence: UserListItem.cityOfResidence;
       timezone: UserListItem.timezone;
       roles: UserListItem.roles;
+      discoverable: UserListItem.discoverable;
       trustLevel: UserListItem.trustLevel;
       userBlocks: UserListItem.userBlocks;
       latestActivityAt: UserListItem.latestActivityAt;
+      inactivatedAt: UserListItem.inactivatedAt;
+      suspendedAt: UserListItem.suspendedAt;
       seeksHelp: UserListItem.seeksHelp;
       offersHelp: UserListItem.offersHelp;
       yearsManagementExperience: UserListItem.yearsManagementExperience;
@@ -14330,6 +14318,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$UserRole;
     }
 
+    /**
+     * If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.
+     */
+    export interface discoverable {
+      kind: 'OutputField';
+      name: 'discoverable';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
     export interface trustLevel {
       kind: 'OutputField';
       name: 'trustLevel';
@@ -14349,6 +14348,22 @@ export namespace Schema {
     export interface latestActivityAt {
       kind: 'OutputField';
       name: 'latestActivityAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface inactivatedAt {
+      kind: 'OutputField';
+      name: 'inactivatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface suspendedAt {
+      kind: 'OutputField';
+      name: 'suspendedAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -21221,9 +21236,12 @@ export namespace Schema {
       cityOfResidence: UserWithScore.cityOfResidence;
       timezone: UserWithScore.timezone;
       roles: UserWithScore.roles;
+      discoverable: UserWithScore.discoverable;
       trustLevel: UserWithScore.trustLevel;
       userBlocks: UserWithScore.userBlocks;
       latestActivityAt: UserWithScore.latestActivityAt;
+      inactivatedAt: UserWithScore.inactivatedAt;
+      suspendedAt: UserWithScore.suspendedAt;
       seeksHelp: UserWithScore.seeksHelp;
       offersHelp: UserWithScore.offersHelp;
       yearsManagementExperience: UserWithScore.yearsManagementExperience;
@@ -21396,6 +21414,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$UserRole;
     }
 
+    /**
+     * If discoverable is not true, the user will not be included in search results or recommended to other users. The system will set discoverable to null for various reasons, i.e. for a bad actor. The user can set it to false intentionally.
+     */
+    export interface discoverable {
+      kind: 'OutputField';
+      name: 'discoverable';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
     export interface trustLevel {
       kind: 'OutputField';
       name: 'trustLevel';
@@ -21415,6 +21444,22 @@ export namespace Schema {
     export interface latestActivityAt {
       kind: 'OutputField';
       name: 'latestActivityAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface inactivatedAt {
+      kind: 'OutputField';
+      name: 'inactivatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface suspendedAt {
+      kind: 'OutputField';
+      name: 'suspendedAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -22893,8 +22938,8 @@ export namespace Schema {
       postalCode: MyUser.postalCode;
       avatarUrl: MyUser.avatarUrl;
       websites: MyUser.websites;
-      authType: MyUser.authType;
       inviteCode: MyUser.inviteCode;
+      passwordHash: MyUser.passwordHash;
       tfaBackupCodes: MyUser.tfaBackupCodes;
       passwordUpdatedAt: MyUser.passwordUpdatedAt;
       preferredLanguageTextId: MyUser.preferredLanguageTextId;
@@ -22908,9 +22953,7 @@ export namespace Schema {
       timezone: MyUser.timezone;
       preferences: MyUser.preferences;
       trustLevel: MyUser.trustLevel;
-      userDevices: MyUser.userDevices;
       userBlocks: MyUser.userBlocks;
-      contacts: MyUser.contacts;
       termsAndConditionsAcceptedAt: MyUser.termsAndConditionsAcceptedAt;
       optIntoNewsletter: MyUser.optIntoNewsletter;
       onboardingStage: MyUser.onboardingStage;
@@ -22930,8 +22973,10 @@ export namespace Schema {
       groupIds: MyUser.groupIds;
       parentGroupIds: MyUser.parentGroupIds;
       externalGroupIds: MyUser.externalGroupIds;
-      pronounsTextIds: MyUser.pronounsTextIds;
       groupMemberships: MyUser.groupMemberships;
+      mentor: MyUser.mentor;
+      mentee: MyUser.mentee;
+      pronounsTextIds: MyUser.pronounsTextIds;
       seeksHelp: MyUser.seeksHelp;
       offersHelp: MyUser.offersHelp;
       birthYear: MyUser.birthYear;
@@ -22956,12 +23001,11 @@ export namespace Schema {
       syncedWithMm2At: MyUser.syncedWithMm2At;
       mm2PasswordHash: MyUser.mm2PasswordHash;
       mm2Id: MyUser.mm2Id;
+      mm2ProfileId: MyUser.mm2ProfileId;
       mm2PhotoOriginal: MyUser.mm2PhotoOriginal;
       mm2BasicAccountCompleted: MyUser.mm2BasicAccountCompleted;
       hasSignedInToMm3: MyUser.hasSignedInToMm3;
       hasSignedInToMm2: MyUser.hasSignedInToMm2;
-      mentor: MyUser.mentor;
-      mentee: MyUser.mentee;
       countryOfResidence: MyUser.countryOfResidence;
       gender: MyUser.gender;
       latestUserDevice: MyUser.latestUserDevice;
@@ -23218,17 +23262,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$LabeledStringValue;
     }
 
-    export interface authType {
-      kind: 'OutputField';
-      name: 'authType';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$AuthType;
-    }
-
     export interface inviteCode {
       kind: 'OutputField';
       name: 'inviteCode';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface passwordHash {
+      kind: 'OutputField';
+      name: 'passwordHash';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -23341,28 +23385,12 @@ export namespace Schema {
       namedType: $$NamedTypes.$$Int;
     }
 
-    export interface userDevices {
-      kind: 'OutputField';
-      name: 'userDevices';
-      arguments: {};
-      inlineType: [1, [1]];
-      namedType: $$NamedTypes.$$UserDeviceWithoutAuth;
-    }
-
     export interface userBlocks {
       kind: 'OutputField';
       name: 'userBlocks';
       arguments: {};
       inlineType: [0, [1]];
       namedType: $$NamedTypes.$$UserBlock;
-    }
-
-    export interface contacts {
-      kind: 'OutputField';
-      name: 'contacts';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$Contact;
     }
 
     export interface termsAndConditionsAcceptedAt {
@@ -23517,20 +23545,42 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface pronounsTextIds {
-      kind: 'OutputField';
-      name: 'pronounsTextIds';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$String;
-    }
-
     export interface groupMemberships {
       kind: 'OutputField';
       name: 'groupMemberships';
       arguments: {};
       inlineType: [1, [1]];
       namedType: $$NamedTypes.$$IGroupMembership;
+    }
+
+    /**
+     * This attribute is a copy of the mentor group membership.
+     */
+    export interface mentor {
+      kind: 'OutputField';
+      name: 'mentor';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$MentorsGroupMembership;
+    }
+
+    /**
+     * This attribute is a copy of the mentee group membership.
+     */
+    export interface mentee {
+      kind: 'OutputField';
+      name: 'mentee';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$MenteesGroupMembership;
+    }
+
+    export interface pronounsTextIds {
+      kind: 'OutputField';
+      name: 'pronounsTextIds';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
     }
 
     export interface seeksHelp {
@@ -23743,6 +23793,17 @@ export namespace Schema {
     /**
      * This attribute is only used by the MM2 synchronizer.
      */
+    export interface mm2ProfileId {
+      kind: 'OutputField';
+      name: 'mm2ProfileId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * This attribute is only used by the MM2 synchronizer.
+     */
     export interface mm2PhotoOriginal {
       kind: 'OutputField';
       name: 'mm2PhotoOriginal';
@@ -23782,28 +23843,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$Boolean;
-    }
-
-    /**
-     * This attribute is a copy of the mentor group membership.
-     */
-    export interface mentor {
-      kind: 'OutputField';
-      name: 'mentor';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$MentorsGroupMembership;
-    }
-
-    /**
-     * This attribute is a copy of the mentee group membership.
-     */
-    export interface mentee {
-      kind: 'OutputField';
-      name: 'mentee';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$MenteesGroupMembership;
     }
 
     export interface countryOfResidence {
@@ -26019,11 +26058,6 @@ export namespace Schema {
       quantity: PurchaseOrderItem.quantity;
       price: PurchaseOrderItem.price;
       totalPrice: PurchaseOrderItem.totalPrice;
-      balance: PurchaseOrderItem.balance;
-      code: PurchaseOrderItem.code;
-      hasBarcode: PurchaseOrderItem.hasBarcode;
-      barcodeFormat: PurchaseOrderItem.barcodeFormat;
-      pin: PurchaseOrderItem.pin;
     };
   }
 
@@ -26173,46 +26207,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface balance {
-      kind: 'OutputField';
-      name: 'balance';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface code {
-      kind: 'OutputField';
-      name: 'code';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface hasBarcode {
-      kind: 'OutputField';
-      name: 'hasBarcode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface barcodeFormat {
-      kind: 'OutputField';
-      name: 'barcodeFormat';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BarcodeType;
-    }
-
-    export interface pin {
-      kind: 'OutputField';
-      name: 'pin';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
     }
   }
 
@@ -29732,7 +29726,7 @@ export namespace Schema {
   export interface ModelEventInput {
     kind: 'InputObject';
     name: 'ModelEventInput';
-    isAllFieldsNullable: false;
+    isAllFieldsNullable: true;
     fields: {
       time: ModelEventInput.time;
       modelEventType: ModelEventInput.modelEventType;
@@ -29758,7 +29752,7 @@ export namespace Schema {
     export interface message {
       kind: 'InputField';
       name: 'message';
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$String;
     }
   }
@@ -34620,7 +34614,6 @@ export namespace Schema {
       updatedAtFrom: SidContactListFilter.updatedAtFrom;
       updatedAtUntil: SidContactListFilter.updatedAtUntil;
       userIdIn: SidContactListFilter.userIdIn;
-      createdBy: SidContactListFilter.createdBy;
     };
   }
 
@@ -34694,13 +34687,6 @@ export namespace Schema {
       inlineType: [0, [1]];
       namedType: $$NamedTypes.$$ID;
     }
-
-    export interface createdBy {
-      kind: 'InputField';
-      name: 'createdBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
   }
 
   //                                       PurchaseOrderItemInput
@@ -34729,11 +34715,6 @@ export namespace Schema {
       quantity: PurchaseOrderItemInput.quantity;
       price: PurchaseOrderItemInput.price;
       totalPrice: PurchaseOrderItemInput.totalPrice;
-      balance: PurchaseOrderItemInput.balance;
-      code: PurchaseOrderItemInput.code;
-      hasBarcode: PurchaseOrderItemInput.hasBarcode;
-      barcodeFormat: PurchaseOrderItemInput.barcodeFormat;
-      pin: PurchaseOrderItemInput.pin;
     };
   }
 
@@ -34855,41 +34836,6 @@ export namespace Schema {
       name: 'totalPrice';
       inlineType: [0];
       namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface balance {
-      kind: 'InputField';
-      name: 'balance';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface code {
-      kind: 'InputField';
-      name: 'code';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface hasBarcode {
-      kind: 'InputField';
-      name: 'hasBarcode';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface barcodeFormat {
-      kind: 'InputField';
-      name: 'barcodeFormat';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BarcodeType;
-    }
-
-    export interface pin {
-      kind: 'InputField';
-      name: 'pin';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
     }
   }
 
@@ -41570,22 +41516,6 @@ export namespace Schema {
       | 'userHandle';
   }
 
-  //                                              AuthType
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface AuthType {
-    kind: 'Enum';
-    name: 'AuthType';
-    members: ['none', 'oauth', 'token', 'hmac', 'saml'];
-    membersUnion:
-      | 'none'
-      | 'oauth'
-      | 'token'
-      | 'hmac'
-      | 'saml';
-  }
-
   //                                              UserRole
   // --------------------------------------------------------------------------------------------------
   //
@@ -41655,40 +41585,6 @@ export namespace Schema {
       | 'sendFirstInvitation'
       | 'unset'
       | 'welcome';
-  }
-
-  //                                          IdentityProvider
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface IdentityProvider {
-    kind: 'Enum';
-    name: 'IdentityProvider';
-    members: [
-      'apple',
-      'facebook',
-      'google',
-      'instagram',
-      'linkedIn',
-      'microsoft',
-      'own',
-      'sso',
-      'telegram',
-      'twitter',
-      'whatsApp',
-    ];
-    membersUnion:
-      | 'apple'
-      | 'facebook'
-      | 'google'
-      | 'instagram'
-      | 'linkedIn'
-      | 'microsoft'
-      | 'own'
-      | 'sso'
-      | 'telegram'
-      | 'twitter'
-      | 'whatsApp';
   }
 
   //                                             ModelType
@@ -41877,6 +41773,40 @@ export namespace Schema {
       | 'none';
   }
 
+  //                                          IdentityProvider
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface IdentityProvider {
+    kind: 'Enum';
+    name: 'IdentityProvider';
+    members: [
+      'apple',
+      'facebook',
+      'google',
+      'instagram',
+      'linkedIn',
+      'microsoft',
+      'own',
+      'sso',
+      'telegram',
+      'twitter',
+      'whatsApp',
+    ];
+    membersUnion:
+      | 'apple'
+      | 'facebook'
+      | 'google'
+      | 'instagram'
+      | 'linkedIn'
+      | 'microsoft'
+      | 'own'
+      | 'sso'
+      | 'telegram'
+      | 'twitter'
+      | 'whatsApp';
+  }
+
   //                                             AppAction
   // --------------------------------------------------------------------------------------------------
   //
@@ -42008,6 +41938,22 @@ export namespace Schema {
       | 'include'
       | 'exclude'
       | 'only';
+  }
+
+  //                                              AuthType
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface AuthType {
+    kind: 'Enum';
+    name: 'AuthType';
+    members: ['none', 'oauth', 'token', 'hmac', 'saml'];
+    membersUnion:
+      | 'none'
+      | 'oauth'
+      | 'token'
+      | 'hmac'
+      | 'saml';
   }
 
   //                                     FederatedIdentityProvider
@@ -42479,10 +42425,11 @@ export namespace Schema {
       'graphQlQueryFindTrainingSessionsByTrainingId',
       'graphQlQueryFindTrainingSessionsForMe',
       'graphQlMutationCreatePurchaseOrderField',
+      'graphQlMutationCreateShoppingCartItem',
+      'graphQlMutationDeleteShoppingCartItem',
+      'graphQlMutationEmptyShoppingCart',
+      'graphQlMutationUpdateShoppingCartItem',
       'graphQlMutationUpdateWalletItem',
-      'graphQlQueryCreateShoppingCartItem',
-      'graphQlQueryDeleteShoppingCartItem',
-      'graphQlQueryEmptyShoppingCart',
       'graphQlQueryFindMyShoppingCart',
       'graphQlQueryFindMyWallet',
       'graphQlQueryFindPurchaseOrderItems',
@@ -42679,10 +42626,11 @@ export namespace Schema {
       | 'graphQlQueryFindTrainingSessionsByTrainingId'
       | 'graphQlQueryFindTrainingSessionsForMe'
       | 'graphQlMutationCreatePurchaseOrderField'
+      | 'graphQlMutationCreateShoppingCartItem'
+      | 'graphQlMutationDeleteShoppingCartItem'
+      | 'graphQlMutationEmptyShoppingCart'
+      | 'graphQlMutationUpdateShoppingCartItem'
       | 'graphQlMutationUpdateWalletItem'
-      | 'graphQlQueryCreateShoppingCartItem'
-      | 'graphQlQueryDeleteShoppingCartItem'
-      | 'graphQlQueryEmptyShoppingCart'
       | 'graphQlQueryFindMyShoppingCart'
       | 'graphQlQueryFindMyWallet'
       | 'graphQlQueryFindPurchaseOrderItems'
@@ -43414,11 +43362,7 @@ export namespace Schema {
     export type $$LabeledStringValue = LabeledStringValue;
     export type $$UserPreferences = UserPreferences;
     export type $$NotificationOptions = NotificationOptions;
-    export type $$UserDeviceWithoutAuth = UserDeviceWithoutAuth;
     export type $$UserBlock = UserBlock;
-    export type $$Contact = Contact;
-    export type $$ContactMetadata = ContactMetadata;
-    export type $$ContactType = ContactType;
     export type $$Company = Company;
     export type $$CompanyStage = CompanyStage;
     export type $$CompanyType = CompanyType;
@@ -43428,6 +43372,7 @@ export namespace Schema {
     export type $$UserProfileRoleHistoryItem = UserProfileRoleHistoryItem;
     export type $$Country = Country;
     export type $$Gender = Gender;
+    export type $$UserDeviceWithoutAuth = UserDeviceWithoutAuth;
     export type $$Language = Language;
     export type $$Notification = Notification;
     export type $$NotificationContext = NotificationContext;
@@ -43439,6 +43384,9 @@ export namespace Schema {
     export type $$ChannelMessage = ChannelMessage;
     export type $$ChannelMessageMetadata = ChannelMessageMetadata;
     export type $$ChannelMessageStatus = ChannelMessageStatus;
+    export type $$Contact = Contact;
+    export type $$ContactMetadata = ContactMetadata;
+    export type $$ContactType = ContactType;
     export type $$ChannelParticipant = ChannelParticipant;
     export type $$BgChannelParticipantUserInfo = BgChannelParticipantUserInfo;
     export type $$UserListItem = UserListItem;
@@ -43591,15 +43539,14 @@ export namespace Schema {
     export type $$UiLanguage = UiLanguage;
     export type $$MastercardCardType = MastercardCardType;
     export type $$UserIdentType = UserIdentType;
-    export type $$AuthType = AuthType;
     export type $$UserRole = UserRole;
     export type $$AppFeature = AppFeature;
     export type $$NotificationType = NotificationType;
-    export type $$IdentityProvider = IdentityProvider;
     export type $$ModelType = ModelType;
     export type $$UploadedAssetType = UploadedAssetType;
     export type $$AssetHostingService = AssetHostingService;
     export type $$UserProfileRole = UserProfileRole;
+    export type $$IdentityProvider = IdentityProvider;
     export type $$AppAction = AppAction;
     export type $$ChannelType = ChannelType;
     export type $$ChannelInvitationStatus = ChannelInvitationStatus;
@@ -43609,6 +43556,7 @@ export namespace Schema {
     export type $$GroupRuleEventType = GroupRuleEventType;
     export type $$SortDirection = SortDirection;
     export type $$IncludeFilterOption = IncludeFilterOption;
+    export type $$AuthType = AuthType;
     export type $$FederatedIdentityProvider = FederatedIdentityProvider;
     export type $$AdminTaskType = AdminTaskType;
     export type $$AdminTaskResult = AdminTaskResult;
@@ -43684,15 +43632,14 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     UiLanguage: Schema.UiLanguage;
     MastercardCardType: Schema.MastercardCardType;
     UserIdentType: Schema.UserIdentType;
-    AuthType: Schema.AuthType;
     UserRole: Schema.UserRole;
     AppFeature: Schema.AppFeature;
     NotificationType: Schema.NotificationType;
-    IdentityProvider: Schema.IdentityProvider;
     ModelType: Schema.ModelType;
     UploadedAssetType: Schema.UploadedAssetType;
     AssetHostingService: Schema.AssetHostingService;
     UserProfileRole: Schema.UserProfileRole;
+    IdentityProvider: Schema.IdentityProvider;
     AppAction: Schema.AppAction;
     ChannelType: Schema.ChannelType;
     ChannelInvitationStatus: Schema.ChannelInvitationStatus;
@@ -43702,6 +43649,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     GroupRuleEventType: Schema.GroupRuleEventType;
     SortDirection: Schema.SortDirection;
     IncludeFilterOption: Schema.IncludeFilterOption;
+    AuthType: Schema.AuthType;
     FederatedIdentityProvider: Schema.FederatedIdentityProvider;
     AdminTaskType: Schema.AdminTaskType;
     AdminTaskResult: Schema.AdminTaskResult;
@@ -43746,11 +43694,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     LabeledStringValue: Schema.LabeledStringValue;
     UserPreferences: Schema.UserPreferences;
     NotificationOptions: Schema.NotificationOptions;
-    UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth;
     UserBlock: Schema.UserBlock;
-    Contact: Schema.Contact;
-    ContactMetadata: Schema.ContactMetadata;
-    ContactType: Schema.ContactType;
     Company: Schema.Company;
     CompanyStage: Schema.CompanyStage;
     CompanyType: Schema.CompanyType;
@@ -43760,6 +43704,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     UserProfileRoleHistoryItem: Schema.UserProfileRoleHistoryItem;
     Country: Schema.Country;
     Gender: Schema.Gender;
+    UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth;
     Language: Schema.Language;
     Notification: Schema.Notification;
     NotificationContext: Schema.NotificationContext;
@@ -43771,6 +43716,9 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     ChannelMessage: Schema.ChannelMessage;
     ChannelMessageMetadata: Schema.ChannelMessageMetadata;
     ChannelMessageStatus: Schema.ChannelMessageStatus;
+    Contact: Schema.Contact;
+    ContactMetadata: Schema.ContactMetadata;
+    ContactType: Schema.ContactType;
     ChannelParticipant: Schema.ChannelParticipant;
     BgChannelParticipantUserInfo: Schema.BgChannelParticipantUserInfo;
     UserListItem: Schema.UserListItem;
@@ -43855,11 +43803,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     LabeledStringValue: Schema.LabeledStringValue;
     UserPreferences: Schema.UserPreferences;
     NotificationOptions: Schema.NotificationOptions;
-    UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth;
     UserBlock: Schema.UserBlock;
-    Contact: Schema.Contact;
-    ContactMetadata: Schema.ContactMetadata;
-    ContactType: Schema.ContactType;
     Company: Schema.Company;
     CompanyStage: Schema.CompanyStage;
     CompanyType: Schema.CompanyType;
@@ -43869,6 +43813,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     UserProfileRoleHistoryItem: Schema.UserProfileRoleHistoryItem;
     Country: Schema.Country;
     Gender: Schema.Gender;
+    UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth;
     Language: Schema.Language;
     Notification: Schema.Notification;
     NotificationContext: Schema.NotificationContext;
@@ -43880,6 +43825,9 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     ChannelMessage: Schema.ChannelMessage;
     ChannelMessageMetadata: Schema.ChannelMessageMetadata;
     ChannelMessageStatus: Schema.ChannelMessageStatus;
+    Contact: Schema.Contact;
+    ContactMetadata: Schema.ContactMetadata;
+    ContactType: Schema.ContactType;
     ChannelParticipant: Schema.ChannelParticipant;
     BgChannelParticipantUserInfo: Schema.BgChannelParticipantUserInfo;
     UserListItem: Schema.UserListItem;

@@ -2,6 +2,7 @@ import { BaseListFilter } from './BaseListFilter.js';
 import { ChannelMessageType } from '../enums.js';
 
 export class BgChannelMessageListFilter extends BaseListFilter {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public channelId?: string | null;
   public userIds?: string[] | null;
   public receiverUserId?: string | null;
@@ -9,11 +10,13 @@ export class BgChannelMessageListFilter extends BaseListFilter {
   public includeChannelMessageType?: ChannelMessageType[] | null;
   public received?: boolean | null;
   public seen?: boolean | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelMessageListFilter>) {
     super(attributes);
 
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.channelId) {
         this.channelId = attributes.channelId;
       }
@@ -35,6 +38,7 @@ export class BgChannelMessageListFilter extends BaseListFilter {
       if (attributes.seen === true || attributes.seen === false) {
         this.seen = attributes.seen;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

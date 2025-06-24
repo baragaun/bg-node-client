@@ -1,5 +1,5 @@
 export declare class ProductCategory {
-    id: string;
+    importId: string;
     name: string;
     labelEn: string;
     sortIndex: number;

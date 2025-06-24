@@ -22,9 +22,9 @@ export declare class WalletItem extends BaseModel {
     instructionsEn?: string | null;
     instructionsUrl?: string | null;
     sortIndex: number;
-    issuedAt?: Date | null;
-    expiresAt?: Date | null;
-    balanceUpdatedAt?: Date | null;
-    archivedAt?: Date | null;
+    issuedAt?: string | null;
+    expiresAt?: string | null;
+    balanceUpdatedAt?: string | null;
+    archivedAt?: string | null;
     constructor(attributes?: Partial<WalletItem>);
 }

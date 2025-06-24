@@ -36,7 +36,7 @@ const signInWithToken = async (
 
     if (response.error || !response.object || !response.object.actionId) {
       logger.error('signInWithToken: action not found.', { response });
-      return response;
+      return { error: response.error };
     }
 
     return getMultiStepActionProgress(

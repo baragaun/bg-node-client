@@ -2,6 +2,7 @@ import { BgChannelInboxItemInvitation } from './BgChannelInboxItemInvitation.js'
 import { BgChannelInboxItemMessage } from './BgChannelInboxItemMessage.js';
 
 export class BgChannelInbox {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public userId = '';
   public unseenMessages?: BgChannelInboxItemMessage[] | null;
   public unseenArchivedMessages?: BgChannelInboxItemMessage[] | null;
@@ -11,9 +12,11 @@ export class BgChannelInbox {
   public invitations?: BgChannelInboxItemInvitation[] | null;
   public updatedAt?: string | null;
   public updatedBy?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelInbox>) {
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.userId) {
         this.userId = attributes.userId;
       }
@@ -41,6 +44,7 @@ export class BgChannelInbox {
       if (attributes.updatedBy) {
         this.updatedBy = attributes.updatedBy;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

@@ -1,46 +1,43 @@
 import { BaseModel } from './BaseModel.js';
 
 export abstract class SidContact extends BaseModel {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public userId = '';
   public channelId?: string | null;
   public nickname?: string | null;
   public typeTextIds: string[] = [];
   public favorite?: boolean | null;
   public notes?: string | null;
-  public archivedAt?: Date | null;
+  public archivedAt?: string | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   protected constructor(attributes?: Partial<SidContact>) {
     super(attributes);
 
     if (attributes) {
-      if (attributes.userId) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
+      if (attributes.userId !== undefined) {
         this.userId = attributes.userId;
       }
-      if (attributes.channelId) {
+      if (attributes.channelId !== undefined) {
         this.channelId = attributes.channelId;
       }
-      if (attributes.nickname) {
+      if (attributes.nickname !== undefined) {
         this.nickname = attributes.nickname;
       }
-      if (attributes.typeTextIds) {
+      if (attributes.typeTextIds !== undefined) {
         this.typeTextIds = attributes.typeTextIds;
       }
-      if (attributes.favorite === true || attributes.favorite === false) {
+      if (attributes.favorite !== undefined) {
         this.favorite = attributes.favorite;
       }
-      if (attributes.notes) {
+      if (attributes.notes !== undefined) {
         this.notes = attributes.notes;
       }
-      if (attributes.archivedAt) {
-        if (attributes.archivedAt instanceof Date) {
-          this.archivedAt = attributes.archivedAt;
-        } else {
-          this.archivedAt = new Date(attributes.archivedAt);
-        }
+      if (attributes.archivedAt !== undefined && attributes.archivedAt !== '') {
+        this.archivedAt = attributes.archivedAt;
       }
-      if (!Array.isArray(this.typeTextIds)) {
-        this.typeTextIds = [];
-      }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

@@ -1,9 +1,12 @@
 export class GiftCardDenomination {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public amount = 0;
   public enabled = true;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<GiftCardDenomination>) {
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (
         attributes.amount === 0 ||
         (
@@ -16,6 +19,7 @@ export class GiftCardDenomination {
       if (attributes.enabled !== undefined) {
         this.enabled = attributes.enabled;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

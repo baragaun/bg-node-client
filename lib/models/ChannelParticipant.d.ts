@@ -2,4 +2,5 @@
 import { BgChannelParticipant } from './BgChannelParticipant.js';
 export declare class ChannelParticipant extends BgChannelParticipant {
     constructor(attributes?: Partial<ChannelParticipant>);
+    static get searchFields(): string[];
 }

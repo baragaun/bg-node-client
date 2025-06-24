@@ -16,11 +16,6 @@ declare const schema: {
             metadata: {
                 type: string;
                 properties: {
-                    updatedAt: {
-                        type: string;
-                        format: string;
-                        nullable: boolean;
-                    };
                     channelInvitationAccepted: {
                         type: string;
                         nullable: boolean;
@@ -160,22 +155,6 @@ declare const schema: {
                 maxLength: number;
                 nullable: boolean;
             };
-            assumedMentorId: {
-                type: string;
-                maxLength: number;
-                nullable: boolean;
-            };
-            mm2Id: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            syncedWithMm2At: {
-                type: string;
-                description: string;
-                format: string;
-                nullable: boolean;
-            };
         };
         required: string[];
     };
@@ -299,22 +278,6 @@ declare const schema: {
             };
             searchRank: {
                 type: string;
-                nullable: boolean;
-            };
-            mm2ConversationId: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mm2Id: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            syncedWithMm2At: {
-                type: string;
-                description: string;
-                format: string;
                 nullable: boolean;
             };
         };
@@ -448,22 +411,6 @@ declare const schema: {
             suspendedBy: {
                 type: string;
                 maxLength: number;
-                nullable: boolean;
-            };
-            mm2ConversationId: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mm2Id: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            syncedWithMm2At: {
-                type: string;
-                description: string;
-                format: string;
                 nullable: boolean;
             };
         };
@@ -704,7 +651,104 @@ declare const schema: {
         version: number;
         primaryKey: string;
         type: string;
-        properties: {};
+        properties: {
+            id: {
+                type: string;
+                maxLength: number;
+            };
+            adminNotes: {
+                type: string;
+                nullable: boolean;
+            };
+            metadata: {
+                type: string;
+                properties: {
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                        nullable: boolean;
+                    };
+                    firstName: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    lastName: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    userHandle: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    avatarUrl: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                };
+                nullable: boolean;
+            };
+            createdAt: {
+                type: string;
+                format: string;
+            };
+            createdBy: {
+                type: string;
+                maxLength: number;
+                nullable: boolean;
+            };
+            updatedAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            updatedBy: {
+                type: string;
+                maxLength: number;
+                nullable: boolean;
+            };
+            deletedAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            deletedBy: {
+                type: string;
+                maxLength: number;
+                nullable: boolean;
+            };
+            userId: {
+                type: string;
+                maxLength: number;
+            };
+            channelId: {
+                type: string;
+                maxLength: number;
+                nullable: boolean;
+            };
+            nickname: {
+                type: string;
+                nullable: boolean;
+            };
+            typeTextIds: {
+                type: string;
+                items: {
+                    type: string;
+                };
+            };
+            favorite: {
+                type: string;
+                nullable: boolean;
+            };
+            notes: {
+                type: string;
+                nullable: boolean;
+            };
+            archivedAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+        };
         required: string[];
     };
     MyUser: {
@@ -837,11 +881,6 @@ declare const schema: {
                 type: string;
                 nullable: boolean;
             };
-            emailSource: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
             emailUpdatedAt: {
                 type: string;
                 format: string;
@@ -895,11 +934,6 @@ declare const schema: {
                         };
                     };
                 };
-                nullable: boolean;
-            };
-            authType: {
-                type: string;
-                enum: string[];
                 nullable: boolean;
             };
             inviteCode: {
@@ -1021,179 +1055,6 @@ declare const schema: {
             trustLevel: {
                 type: string;
             };
-            userDevices: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        adminNotes: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        metadata: {
-                            type: string;
-                            properties: {
-                                updatedAt: {
-                                    type: string;
-                                    format: string;
-                                    nullable: boolean;
-                                };
-                            };
-                            nullable: boolean;
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                        createdBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        updatedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        updatedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        deletedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        deletedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        deviceUuid: {
-                            type: string;
-                        };
-                        deviceType: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        trusted: {
-                            type: string;
-                        };
-                        phoneNumber: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        phoneNumberUpdatedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        isPhoneNumberVerified: {
-                            type: string;
-                        };
-                        brand: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        model: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        isTablet: {
-                            type: string;
-                        };
-                        screenWidth: {
-                            type: string;
-                        };
-                        screenHeight: {
-                            type: string;
-                        };
-                        os: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        osVersion: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        timezone: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        ipAddress: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        consumer: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        consumerVersion: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        acceptedLanguage: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        locale: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        countryCode: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        appVersion: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        signedInAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        signedOutAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        sessionStartedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        sessionEndedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        identityProvider: {
-                            type: string;
-                            enum: string[];
-                            nullable: boolean;
-                        };
-                        oauthProfileUrl: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        trustedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                    };
-                };
-            };
             userBlocks: {
                 type: string;
                 items: {
@@ -1258,31 +1119,7 @@ declare const schema: {
                             type: string;
                             nullable: boolean;
                         };
-                        syncedToAnalyticsAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        syncedWithMm2At: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        mm2Id: {
-                            type: string;
-                            description: string;
-                            nullable: boolean;
-                        };
                     };
-                };
-                nullable: boolean;
-            };
-            contacts: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {};
                 };
                 nullable: boolean;
             };
@@ -1343,11 +1180,6 @@ declare const schema: {
                 format: string;
                 nullable: boolean;
             };
-            addedToBgVaultAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
             syncedToAnalyticsAt: {
                 type: string;
                 format: string;
@@ -1372,6 +1204,17 @@ declare const schema: {
                         };
                         adminNotes: {
                             type: string;
+                            nullable: boolean;
+                        };
+                        metadata: {
+                            type: string;
+                            properties: {
+                                updatedAt: {
+                                    type: string;
+                                    format: string;
+                                    nullable: boolean;
+                                };
+                            };
                             nullable: boolean;
                         };
                         createdAt: {
@@ -1490,297 +1333,8 @@ declare const schema: {
                             description: string;
                             nullable: boolean;
                         };
-                        syncedWithMm2At: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
                     };
                 };
-                nullable: boolean;
-            };
-            groupIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-            };
-            parentGroupIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-            };
-            externalGroupIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-            };
-            pronounsTextIds: {
-                type: string;
-                items: {
-                    type: string;
-                };
-                nullable: boolean;
-            };
-            groupMemberships: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        groupId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        groupIdent: {
-                            type: string;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        roles: {
-                            type: string;
-                            items: {
-                                type: string;
-                                enum: string[];
-                            };
-                        };
-                    };
-                };
-            };
-            seeksHelp: {
-                type: string;
-                nullable: boolean;
-            };
-            offersHelp: {
-                type: string;
-                nullable: boolean;
-            };
-            birthYear: {
-                type: string;
-                nullable: boolean;
-            };
-            ethnicity: {
-                type: string;
-                nullable: boolean;
-            };
-            educationLevelTextId: {
-                type: string;
-                nullable: boolean;
-            };
-            personalBio: {
-                type: string;
-                nullable: boolean;
-            };
-            yearsManagementExperience: {
-                type: string;
-                nullable: boolean;
-            };
-            yearsOwnershipExperience: {
-                type: string;
-                nullable: boolean;
-            };
-            academicExperienceIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-                nullable: boolean;
-            };
-            academicExperiences: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        adminNotes: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                        createdBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        updatedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        updatedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        deletedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        deletedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        institutionName: {
-                            type: string;
-                        };
-                        degreeType: {
-                            type: string;
-                            description: string;
-                            nullable: boolean;
-                        };
-                        fieldOfStudy: {
-                            type: string;
-                            description: string;
-                            nullable: boolean;
-                        };
-                        startDate: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        endDate: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                    };
-                };
-                nullable: boolean;
-            };
-            genderSelfDescribed: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            businessExperienceIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-                nullable: boolean;
-            };
-            businessExperiences: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        adminNotes: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                        createdBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        updatedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        updatedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        deletedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        deletedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        businessName: {
-                            type: string;
-                        };
-                        jobTitle: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        city: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        state: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        country: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        startDate: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        endDate: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                    };
-                };
-                nullable: boolean;
-            };
-            cityOfOrigin: {
-                type: string;
-                nullable: boolean;
-            };
-            regionOfOrigin: {
-                type: string;
-                nullable: boolean;
-            };
-            countryOfOriginTextId: {
-                type: string;
-                nullable: boolean;
-            };
-            isOnVacation: {
-                type: string;
                 nullable: boolean;
             };
             avatarAsset: {
@@ -1881,206 +1435,8 @@ declare const schema: {
                 };
                 nullable: boolean;
             };
-            profileRoleHistory: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        newRole: {
-                            type: string;
-                            enum: string[];
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                    };
-                };
-                nullable: boolean;
-            };
             ssoIdp: {
                 type: string;
-                nullable: boolean;
-            };
-            originatedInMm2: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            syncedWithMm2At: {
-                type: string;
-                description: string;
-                format: string;
-                nullable: boolean;
-            };
-            mm2PasswordHash: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mm2Id: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mm2PhotoOriginal: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mm2BasicAccountCompleted: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            hasSignedInToMm3: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            hasSignedInToMm2: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mentor: {
-                type: string;
-                description: string;
-                properties: {
-                    expertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    additionalExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    industriesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    mm2ExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    mm2IndustriesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    helpICanOffer: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    expectationsForMentees: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    menteePreparationInstructions: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    endorsements: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    reasonsForMentoring: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    howICanHelpMentees: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                };
-                nullable: boolean;
-            };
-            mentee: {
-                type: string;
-                description: string;
-                properties: {
-                    soughtExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    additionalSoughtExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    industryTextId: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    mm2SoughtExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    mm2IndustryTextId: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    actionsTaken: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    currentChallenges: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    futureGoals: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    motivationsForMentorship: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    reasonsForStartingBusiness: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    howCanMentorSupportMe: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                };
                 nullable: boolean;
             };
         };
@@ -2250,26 +1606,6 @@ declare const schema: {
                         totalPrice: {
                             type: string;
                         };
-                        balance: {
-                            type: string;
-                        };
-                        code: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        hasBarcode: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        barcodeFormat: {
-                            type: string;
-                            enum: string[];
-                            nullable: boolean;
-                        };
-                        pin: {
-                            type: string;
-                            nullable: boolean;
-                        };
                     };
                 };
             };
@@ -2354,26 +1690,6 @@ declare const schema: {
             };
             totalPrice: {
                 type: string;
-            };
-            balance: {
-                type: string;
-            };
-            code: {
-                type: string;
-                nullable: boolean;
-            };
-            hasBarcode: {
-                type: string;
-                nullable: boolean;
-            };
-            barcodeFormat: {
-                type: string;
-                enum: string[];
-                nullable: boolean;
-            };
-            pin: {
-                type: string;
-                nullable: boolean;
             };
         };
         required: string[];
@@ -2721,11 +2037,6 @@ declare const schema: {
                 type: string;
                 nullable: boolean;
             };
-            emailSource: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
             emailUpdatedAt: {
                 type: string;
                 format: string;
@@ -2779,11 +2090,6 @@ declare const schema: {
                         };
                     };
                 };
-                nullable: boolean;
-            };
-            authType: {
-                type: string;
-                enum: string[];
                 nullable: boolean;
             };
             inviteCode: {
@@ -2905,179 +2211,6 @@ declare const schema: {
             trustLevel: {
                 type: string;
             };
-            userDevices: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        adminNotes: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        metadata: {
-                            type: string;
-                            properties: {
-                                updatedAt: {
-                                    type: string;
-                                    format: string;
-                                    nullable: boolean;
-                                };
-                            };
-                            nullable: boolean;
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                        createdBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        updatedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        updatedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        deletedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        deletedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        deviceUuid: {
-                            type: string;
-                        };
-                        deviceType: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        trusted: {
-                            type: string;
-                        };
-                        phoneNumber: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        phoneNumberUpdatedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        isPhoneNumberVerified: {
-                            type: string;
-                        };
-                        brand: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        model: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        isTablet: {
-                            type: string;
-                        };
-                        screenWidth: {
-                            type: string;
-                        };
-                        screenHeight: {
-                            type: string;
-                        };
-                        os: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        osVersion: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        timezone: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        ipAddress: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        consumer: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        consumerVersion: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        acceptedLanguage: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        locale: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        countryCode: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        appVersion: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        signedInAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        signedOutAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        sessionStartedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        sessionEndedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        identityProvider: {
-                            type: string;
-                            enum: string[];
-                            nullable: boolean;
-                        };
-                        oauthProfileUrl: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        trustedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                    };
-                };
-            };
             userBlocks: {
                 type: string;
                 items: {
@@ -3142,31 +2275,7 @@ declare const schema: {
                             type: string;
                             nullable: boolean;
                         };
-                        syncedToAnalyticsAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        syncedWithMm2At: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        mm2Id: {
-                            type: string;
-                            description: string;
-                            nullable: boolean;
-                        };
                     };
-                };
-                nullable: boolean;
-            };
-            contacts: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {};
                 };
                 nullable: boolean;
             };
@@ -3227,11 +2336,6 @@ declare const schema: {
                 format: string;
                 nullable: boolean;
             };
-            addedToBgVaultAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
             syncedToAnalyticsAt: {
                 type: string;
                 format: string;
@@ -3256,6 +2360,17 @@ declare const schema: {
                         };
                         adminNotes: {
                             type: string;
+                            nullable: boolean;
+                        };
+                        metadata: {
+                            type: string;
+                            properties: {
+                                updatedAt: {
+                                    type: string;
+                                    format: string;
+                                    nullable: boolean;
+                                };
+                            };
                             nullable: boolean;
                         };
                         createdAt: {
@@ -3374,297 +2489,8 @@ declare const schema: {
                             description: string;
                             nullable: boolean;
                         };
-                        syncedWithMm2At: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
                     };
                 };
-                nullable: boolean;
-            };
-            groupIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-            };
-            parentGroupIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-            };
-            externalGroupIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-            };
-            pronounsTextIds: {
-                type: string;
-                items: {
-                    type: string;
-                };
-                nullable: boolean;
-            };
-            groupMemberships: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        groupId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        groupIdent: {
-                            type: string;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        roles: {
-                            type: string;
-                            items: {
-                                type: string;
-                                enum: string[];
-                            };
-                        };
-                    };
-                };
-            };
-            seeksHelp: {
-                type: string;
-                nullable: boolean;
-            };
-            offersHelp: {
-                type: string;
-                nullable: boolean;
-            };
-            birthYear: {
-                type: string;
-                nullable: boolean;
-            };
-            ethnicity: {
-                type: string;
-                nullable: boolean;
-            };
-            educationLevelTextId: {
-                type: string;
-                nullable: boolean;
-            };
-            personalBio: {
-                type: string;
-                nullable: boolean;
-            };
-            yearsManagementExperience: {
-                type: string;
-                nullable: boolean;
-            };
-            yearsOwnershipExperience: {
-                type: string;
-                nullable: boolean;
-            };
-            academicExperienceIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-                nullable: boolean;
-            };
-            academicExperiences: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        adminNotes: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                        createdBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        updatedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        updatedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        deletedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        deletedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        institutionName: {
-                            type: string;
-                        };
-                        degreeType: {
-                            type: string;
-                            description: string;
-                            nullable: boolean;
-                        };
-                        fieldOfStudy: {
-                            type: string;
-                            description: string;
-                            nullable: boolean;
-                        };
-                        startDate: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        endDate: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                    };
-                };
-                nullable: boolean;
-            };
-            genderSelfDescribed: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            businessExperienceIds: {
-                type: string;
-                items: {
-                    type: string;
-                    maxLength: number;
-                };
-                nullable: boolean;
-            };
-            businessExperiences: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        id: {
-                            type: string;
-                            maxLength: number;
-                        };
-                        adminNotes: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                        createdBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        updatedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        updatedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        deletedAt: {
-                            type: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        deletedBy: {
-                            type: string;
-                            maxLength: number;
-                            nullable: boolean;
-                        };
-                        businessName: {
-                            type: string;
-                        };
-                        jobTitle: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        city: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        state: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        country: {
-                            type: string;
-                            nullable: boolean;
-                        };
-                        startDate: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        endDate: {
-                            type: string;
-                            description: string;
-                            format: string;
-                            nullable: boolean;
-                        };
-                        userId: {
-                            type: string;
-                            maxLength: number;
-                        };
-                    };
-                };
-                nullable: boolean;
-            };
-            cityOfOrigin: {
-                type: string;
-                nullable: boolean;
-            };
-            regionOfOrigin: {
-                type: string;
-                nullable: boolean;
-            };
-            countryOfOriginTextId: {
-                type: string;
-                nullable: boolean;
-            };
-            isOnVacation: {
-                type: string;
                 nullable: boolean;
             };
             avatarAsset: {
@@ -3765,206 +2591,8 @@ declare const schema: {
                 };
                 nullable: boolean;
             };
-            profileRoleHistory: {
-                type: string;
-                items: {
-                    type: string;
-                    properties: {
-                        newRole: {
-                            type: string;
-                            enum: string[];
-                        };
-                        createdAt: {
-                            type: string;
-                            format: string;
-                        };
-                    };
-                };
-                nullable: boolean;
-            };
             ssoIdp: {
                 type: string;
-                nullable: boolean;
-            };
-            originatedInMm2: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            syncedWithMm2At: {
-                type: string;
-                description: string;
-                format: string;
-                nullable: boolean;
-            };
-            mm2PasswordHash: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mm2Id: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mm2PhotoOriginal: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mm2BasicAccountCompleted: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            hasSignedInToMm3: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            hasSignedInToMm2: {
-                type: string;
-                description: string;
-                nullable: boolean;
-            };
-            mentor: {
-                type: string;
-                description: string;
-                properties: {
-                    expertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    additionalExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    industriesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    mm2ExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    mm2IndustriesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    helpICanOffer: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    expectationsForMentees: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    menteePreparationInstructions: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    endorsements: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    reasonsForMentoring: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    howICanHelpMentees: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                };
-                nullable: boolean;
-            };
-            mentee: {
-                type: string;
-                description: string;
-                properties: {
-                    soughtExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    additionalSoughtExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    industryTextId: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    mm2SoughtExpertisesTextIds: {
-                        type: string;
-                        description: string;
-                        items: {
-                            type: string;
-                        };
-                        nullable: boolean;
-                    };
-                    mm2IndustryTextId: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    actionsTaken: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    currentChallenges: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    futureGoals: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    motivationsForMentorship: {
-                        type: string;
-                        description: string;
-                        nullable: boolean;
-                    };
-                    reasonsForStartingBusiness: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                    howCanMentorSupportMe: {
-                        type: string;
-                        nullable: boolean;
-                    };
-                };
                 nullable: boolean;
             };
         };
@@ -4030,6 +2658,79 @@ declare const schema: {
             };
             channels: {
                 type: string;
+                properties: {
+                    userId: {
+                        type: string;
+                        maxLength: number;
+                    };
+                    unseenMessages: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    unseenSystemMessages: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    unseenArchivedMessages: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    latestMessages: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    latestArchivedMessages: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    pendingInvitations: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    invitations: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    itemIdHash: {
+                        type: string;
+                        description: string;
+                        nullable: boolean;
+                    };
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                        nullable: boolean;
+                    };
+                    updatedBy: {
+                        type: string;
+                        maxLength: number;
+                        nullable: boolean;
+                    };
+                    channelsExceedMaxCount: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    invitationsExceedMaxCount: {
+                        type: string;
+                        nullable: boolean;
+                    };
+                    assumedMentorId: {
+                        type: string;
+                        maxLength: number;
+                        nullable: boolean;
+                    };
+                    mm2Id: {
+                        type: string;
+                        description: string;
+                        nullable: boolean;
+                    };
+                    syncedWithMm2At: {
+                        type: string;
+                        description: string;
+                        format: string;
+                        nullable: boolean;
+                    };
+                };
                 nullable: boolean;
             };
         };
@@ -4180,7 +2881,6 @@ declare const schema: {
                         };
                         barcodeFormat: {
                             type: string;
-                            enum: string[];
                             nullable: boolean;
                         };
                         pin: {
@@ -4189,7 +2889,6 @@ declare const schema: {
                         };
                         source: {
                             type: string;
-                            enum: string[];
                             nullable: boolean;
                         };
                         imageSourceFront: {
@@ -4341,7 +3040,6 @@ declare const schema: {
             };
             barcodeFormat: {
                 type: string;
-                enum: string[];
                 nullable: boolean;
             };
             pin: {
@@ -4350,7 +3048,6 @@ declare const schema: {
             };
             source: {
                 type: string;
-                enum: string[];
                 nullable: boolean;
             };
             imageSourceFront: {

@@ -35,7 +35,7 @@ const resetMyPassword = async (
 
     if (response.error || !response || !response.object.actionId) {
       logger.error('resetMyPassword: action not found.', { response });
-      return response;
+      return { error: response.error };
     }
 
     return getMultiStepActionProgress(

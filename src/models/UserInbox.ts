@@ -1,20 +1,24 @@
 import { BaseModel } from './BaseModel.js';
-import { BgChannelInbox } from './BgChannelInbox.js';
+import { ChannelInbox } from './ChannelInbox.js';
 
 export class UserInbox extends BaseModel {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public userId = '';
-  public channels?: BgChannelInbox | null;
+  public channels?: ChannelInbox | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<UserInbox>) {
     super(attributes);
 
     if (attributes) {
-      if (attributes.userId) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
+      if (attributes.userId !== undefined) {
         this.userId = attributes.userId;
       }
-      if (attributes.channels) {
+      if (attributes.channels !== undefined) {
         this.channels = attributes.channels;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
   }
 }

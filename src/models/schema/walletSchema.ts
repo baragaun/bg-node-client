@@ -142,22 +142,7 @@ export const WalletSchema = {
             nullable: true,
           },
           barcodeFormat: {
-            type: 'string',
-            enum: [
-              'TYPE_39',
-              'TYPE_128',
-              'CODE_25',
-              'ITF',
-              'I125',
-              'UPC_A',
-              'UPC_E',
-              'EAN_13',
-              'EAN_8',
-              'QR_CODE',
-              'PDF417',
-              'DATA_MATRIX',
-              null,
-            ],
+            type: 'BarcodeType',
             nullable: true,
           },
           pin: {
@@ -165,8 +150,7 @@ export const WalletSchema = {
             nullable: true,
           },
           source: {
-            type: 'string',
-            enum: ['user', 'purchased', 'gifted', null],
+            type: 'WalletItemSource',
             nullable: true,
           },
           imageSourceFront: {

@@ -128,22 +128,6 @@ export declare const ChannelMessageSchema: {
             maxLength: number;
             nullable: boolean;
         };
-        mm2ConversationId: {
-            type: string;
-            description: string;
-            nullable: boolean;
-        };
-        mm2Id: {
-            type: string;
-            description: string;
-            nullable: boolean;
-        };
-        syncedWithMm2At: {
-            type: string;
-            description: string;
-            format: string;
-            nullable: boolean;
-        };
     };
     required: string[];
 };

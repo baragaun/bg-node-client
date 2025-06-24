@@ -129,24 +129,6 @@ export const CompanySchema = {
       format: 'date-time',
       nullable: true,
     },
-    mm2UserId: {
-      type: 'string',
-      description:
-        'If a Company was created from the imported attributes of an MM2 Profile, mm2UserId references the MM2 user ID. This attribute is only used by the MM2 synchronizer.',
-      nullable: true,
-    },
-    mm2CompanyRole: {
-      type: 'string',
-      description:
-        'If a Company was created from the imported from MM2, mm2CompanyRole is either "mentor" or "mentee". This attribute is only used by the MM2 synchronizer.',
-      nullable: true,
-    },
-    syncedWithMm2At: {
-      type: 'string',
-      description: 'This attribute is only used by the MM2 synchronizer.',
-      format: 'date-time',
-      nullable: true,
-    },
   },
   required: ['id'],
 };

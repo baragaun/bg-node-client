@@ -2,6 +2,7 @@ import { ContentStatus } from './ContentStatus.js';
 import { Model } from './Model.js';
 
 export class ClientInfo extends Model {
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public myUserId?: string;
   public authToken?: string;
   public myUserDeviceUuid?: string;
@@ -10,6 +11,7 @@ export class ClientInfo extends Model {
   public remoteContentStatus?: ContentStatus;
   public sessionStartedAt?: number | null;
   public sessionEndedAt?: number | null;
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   public constructor(attributes?: Partial<ClientInfo> | null) {
     super(attributes);
@@ -19,6 +21,7 @@ export class ClientInfo extends Model {
     }
 
     if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.myUserId) {
         this.myUserId = attributes.myUserId;
       }
@@ -43,6 +46,7 @@ export class ClientInfo extends Model {
       if (attributes.sessionEndedAt) {
         this.sessionEndedAt = attributes.sessionEndedAt;
       }
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }
 
     if (!this.myUserDeviceUuid) {

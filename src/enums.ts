@@ -1,14 +1,84 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 
+export enum AppFeature {
+  testFeatures1 = 'testFeatures1',
+  testFeatures2 = 'testFeatures2',
+}
+
+export enum AppEnvironment {
+  test = 'test',
+  development = 'development',
+  staging = 'staging',
+  production = 'production',
+}
+
+export enum AssetHostingService {
+  s3 = 's3',
+  unset = 'unset'
+}
+
+export enum AuthType {
+  none = 'none',
+  oauth = 'oauth',
+  token = 'token',
+  hmac = 'hmac',
+  saml = 'saml',
+}
+
+// see: https://www.plascards.com/help-center/barcodes.php
+export enum BarcodeType {
+  TYPE_39 = 'TYPE_39',
+  TYPE_128 = 'TYPE_128',
+  CODE_25 = 'CODE_25',
+  ITF = 'ITF', // Interleaved 2 OF 5
+  I125 = 'I125',
+  UPC_A = 'UPC_A',
+  UPC_E = 'UPC_E',
+  EAN_13 = 'EAN_13',
+  EAN_8 = 'EAN_8',
+  QR_CODE = 'QR_CODE',
+  PDF417 = 'PDF417',
+  DATA_MATRIX = 'DATA_MATRIX',
+}
+
 export enum BgListenerTopic {
   channel = 'channel',
   myUser = 'myUser',
 }
 
-export enum ModelEventType {
-  error = 'error',
-  warning = 'warning',
-  info = 'info',
+export enum BgNodeClientUiErrorCode {
+  invalidInput = 'invalidInput',
+  notFound = 'notFound',
+  unauthorized = 'unauthorized',
+}
+
+export enum CachePolicy {
+  /**
+   * Ignore cache, retrieve data from network.
+   */
+  network = 'network',
+
+  /**
+   * Retrieve data from network, if the network is available.
+   */
+  networkFirst = 'network-first',
+
+  /**
+   * Retrieve data from cache only.
+   */
+  cache = 'cache',
+
+  /**
+   * Retrieve data from cache, if it is available there and not stale.
+   */
+  cacheFirst = 'cache-first',
+}
+
+export enum ChannelInvitationStatus {
+  created = 'created',
+  accepted = 'accepted',
+  declined = 'declined',
+  unset = 'unset',
 }
 
 export enum ChannelType {
@@ -16,6 +86,11 @@ export enum ChannelType {
   mentoring = 'mentoring',
   support = 'support',
   welcome = 'welcome',
+}
+
+export enum ChannelInvitationDirection {
+  received = 'received',
+  sent = 'sent'
 }
 
 export enum ChannelMessageType {
@@ -88,52 +163,24 @@ export enum ChannelEventType {
   reactionToMessageDeleted = 'reactionToMessageDeleted',
 }
 
-export enum MutationType {
-  create = 'create',
-  update = 'update',
-  delete = 'delete',
-  replace = 'replace',
-}
-
-export enum AppEnvironment {
-  test = 'test',
-  development = 'development',
-  staging = 'staging',
-  production = 'production',
-}
-
-export enum ChannelInvitationStatus {
-  created = 'created',
-  accepted = 'accepted',
-  declined = 'declined',
-  unset = 'unset',
-}
-
 export enum ClientInfoStoreType {
   localStorage = 'localStorage',
   db = 'db',
   inMemory = 'inMemory',
 }
 
-export enum UserRole {
-  admin = 'admin',
-  support = 'support',
-  staff = 'staff',
-  qa = 'qa', // person is a staff member working in QA
-  test = 'test', // a test account
+export enum DeclineChannelInvitationReasonTextId {
+  fakeProfile = 'fakeProfile',
+  inappropriate = 'inappropriate',
+  noReason = 'noReason',
+  notGoodFit = 'notGoodFit',
+  tooBusy = 'tooBusy'
 }
 
-export enum AppFeature {
-  testFeatures1 = 'testFeatures1',
-  testFeatures2 = 'testFeatures2',
-}
-
-export enum AuthType {
-  none = 'none',
-  oauth = 'oauth',
-  token = 'token',
-  hmac = 'hmac',
-  saml = 'saml',
+export enum CookieChoiceTextId {
+  acceptAll = 'acceptAll',
+  acceptEssentials = 'acceptEssentials',
+  rejectAll = 'rejectAll',
 }
 
 export enum GroupMembershipRole {
@@ -141,71 +188,6 @@ export enum GroupMembershipRole {
   coordinator = 'coordinator',
   moderator = 'moderator',
   owner = 'owner',
-}
-
-export enum UiLanguage {
-  ar = 'ar', // Arabic
-  de = 'de', // German
-  en = 'en', // English
-  es = 'es', // Spanish
-  id = 'id', // Indonesian
-  ru = 'ru', // Russian
-  so = 'so', // Somali
-}
-
-// export enum UiMessageType {
-//   appErrorCode = 'appErrorCode',
-//   bgNodeClientUiErrorCode = 'bgNodeClientUiErrorCode',
-//   multiStepActionResult = 'multiStepActionResult',
-//   serverErrorCode = 'serverErrorCode',
-// }
-
-export enum ModelType {
-  Channel = 'Channel',
-  ChannelInvitation = 'ChannelInvitation',
-  ChannelMessage = 'ChannelMessage',
-  ChannelParticipant = 'ChannelParticipant',
-  ClientInfo = 'ClientInfo',
-  GiftCard = 'GiftCard',
-  MyUser = 'MyUser',
-  PurchaseOrder = 'PurchaseOrder',
-  PurchaseOrderItem = 'PurchaseOrderItem',
-  ShoppingCart = 'ShoppingCart',
-  ShoppingCartItem = 'ShoppingCartItem',
-  SidMultiStepAction = 'SidMultiStepAction',
-  SidMultiStepActionProgress = 'SidMultiStepActionProgress',
-  User = 'User',
-  UserInbox = 'UserInbox',
-  Vendor = 'Vendor',
-  Wallet = 'Wallet',
-  WalletItem = 'WalletItem',
-}
-
-export enum NotificationMethod {
-  auto = 'auto',
-  email = 'email',
-  inAppNotification = 'inAppNotification',
-  off = 'off',
-  pushNotification = 'pushNotification',
-  sms = 'sms',
-}
-
-export enum NotificationType {
-  accountDeletedConfirmation = 'accountDeletedConfirmation',
-  channelInvitationAccepted = 'channelInvitationAccepted',
-  channelInvitationDeclined = 'channelInvitationDeclined',
-  channelInvitationReceived = 'channelInvitationReceived',
-  channelMessageReceived = 'channelMessageReceived',
-  completeProfile = 'completeProfile',
-  completeSignUp = 'completeSignUp',
-  matchesRecommendations = 'matchesRecommendations',
-  newPrivacyRules = 'newPrivacyRules',
-  newsletter = 'newsletter',
-  resetPasswordConfirmation = 'resetPasswordConfirmation',
-  resetPasswordConfirmToken = 'resetPasswordConfirmToken',
-  sendFirstInvitation = 'sendFirstInvitation',
-  unset = 'unset',
-  welcome = 'welcome',
 }
 
 export enum HttpHeaderName {
@@ -227,43 +209,45 @@ export enum HttpHeaderName {
   userId = 'x-user-id',
 }
 
-export enum CachePolicy {
-  /**
-   * Ignore cache, retrieve data from network.
-   */
-  network = 'network',
-
-  /**
-   * Retrieve data from network, if the network is available.
-   */
-  networkFirst = 'network-first',
-
-  /**
-   * Retrieve data from cache only.
-   */
-  cache = 'cache',
-
-  /**
-   * Retrieve data from cache, if it is available there and not stale.
-   */
-  cacheFirst = 'cache-first',
+export enum IncludeFilterOption {
+  include = 'include',
+  exclude = 'exclude',
+  only = 'only',
 }
 
-export enum UserIdentType {
-  any = 'any',
-  email = 'email',
-  id = 'id',
-  inviteCode = 'inviteCode',
-  oauthProfileUrl = 'oauthProfileUrl',
-  oauthUserId = 'oauthUserId',
-  phoneNumber = 'phoneNumber',
-  userHandle = 'userHandle',
+export enum ModelEventType {
+  error = 'error',
+  warning = 'warning',
+  info = 'info',
 }
 
-export enum CookieChoiceTextId {
-  acceptAll = 'acceptAll',
-  acceptEssentials = 'acceptEssentials',
-  rejectAll = 'rejectAll',
+export enum ModelType {
+  Channel = 'Channel',
+  ChannelInvitation = 'ChannelInvitation',
+  ChannelMessage = 'ChannelMessage',
+  ChannelParticipant = 'ChannelParticipant',
+  ClientInfo = 'ClientInfo',
+  GiftCard = 'GiftCard',
+  MyUser = 'MyUser',
+  PurchaseOrder = 'PurchaseOrder',
+  PurchaseOrderItem = 'PurchaseOrderItem',
+  ShoppingCart = 'ShoppingCart',
+  ShoppingCartItem = 'ShoppingCartItem',
+  SidMultiStepAction = 'SidMultiStepAction',
+  SidMultiStepActionProgress = 'SidMultiStepActionProgress',
+  unset = 'unset',
+  User = 'User',
+  UserInbox = 'UserInbox',
+  Vendor = 'Vendor',
+  Wallet = 'Wallet',
+  WalletItem = 'WalletItem',
+}
+
+export enum MutationType {
+  create = 'create',
+  update = 'update',
+  delete = 'delete',
+  replace = 'replace',
 }
 
 export enum MultiStepActionType {
@@ -344,34 +328,31 @@ export enum MultiStepActionResult {
   userNotSignedIn = 'userNotSignedIn',
 }
 
-export enum BgNodeClientUiErrorCode {
-  invalidInput = 'invalidInput',
-  notFound = 'notFound',
-  unauthorized = 'unauthorized',
+export enum NotificationMethod {
+  auto = 'auto',
+  email = 'email',
+  inAppNotification = 'inAppNotification',
+  off = 'off',
+  pushNotification = 'pushNotification',
+  sms = 'sms',
 }
 
-export enum IncludeFilterOption {
-  include = 'include',
-  exclude = 'exclude',
-  only = 'only',
-}
-
-export enum SortDirection {
-  asc = 'asc',
-  desc = 'desc',
-}
-
-export enum ChannelInvitationDirection {
-  received = 'received',
-  sent = 'sent'
-}
-
-export enum DeclineChannelInvitationReasonTextId {
-  fakeProfile = 'fakeProfile',
-  inappropriate = 'inappropriate',
-  noReason = 'noReason',
-  notGoodFit = 'notGoodFit',
-  tooBusy = 'tooBusy'
+export enum NotificationType {
+  accountDeletedConfirmation = 'accountDeletedConfirmation',
+  channelInvitationAccepted = 'channelInvitationAccepted',
+  channelInvitationDeclined = 'channelInvitationDeclined',
+  channelInvitationReceived = 'channelInvitationReceived',
+  channelMessageReceived = 'channelMessageReceived',
+  completeProfile = 'completeProfile',
+  completeSignUp = 'completeSignUp',
+  matchesRecommendations = 'matchesRecommendations',
+  newPrivacyRules = 'newPrivacyRules',
+  newsletter = 'newsletter',
+  resetPasswordConfirmation = 'resetPasswordConfirmation',
+  resetPasswordConfirmToken = 'resetPasswordConfirmToken',
+  sendFirstInvitation = 'sendFirstInvitation',
+  unset = 'unset',
+  welcome = 'welcome',
 }
 
 export enum ReportUserReasonTextId {
@@ -389,20 +370,51 @@ export enum ReportUserReasonTextId {
   violatesRules = 'violatesRules'
 }
 
-// see: https://www.plascards.com/help-center/barcodes.php
-export enum BarcodeType {
-  TYPE_39 = 'TYPE_39',
-  TYPE_128 = 'TYPE_128',
-  CODE_25 = 'CODE_25',
-  ITF = 'ITF', // Interleaved 2 OF 5
-  I125 = 'I125',
-  UPC_A = 'UPC_A',
-  UPC_E = 'UPC_E',
-  EAN_13 = 'EAN_13',
-  EAN_8 = 'EAN_8',
-  QR_CODE = 'QR_CODE',
-  PDF417 = 'PDF417',
-  DATA_MATRIX = 'DATA_MATRIX',
+export enum SortDirection {
+  asc = 'asc',
+  desc = 'desc',
+}
+
+export enum UiLanguage {
+  ar = 'ar', // Arabic
+  de = 'de', // German
+  en = 'en', // English
+  es = 'es', // Spanish
+  id = 'id', // Indonesian
+  ru = 'ru', // Russian
+  so = 'so', // Somali
+}
+
+export enum UserRole {
+  admin = 'admin',
+  support = 'support',
+  staff = 'staff',
+  qa = 'qa', // person is a staff member working in QA
+  test = 'test', // a test account
+}
+
+// export enum UiMessageType {
+//   appErrorCode = 'appErrorCode',
+//   bgNodeClientUiErrorCode = 'bgNodeClientUiErrorCode',
+//   multiStepActionResult = 'multiStepActionResult',
+//   serverErrorCode = 'serverErrorCode',
+// }
+
+export enum UserIdentType {
+  any = 'any',
+  email = 'email',
+  id = 'id',
+  inviteCode = 'inviteCode',
+  oauthProfileUrl = 'oauthProfileUrl',
+  oauthUserId = 'oauthUserId',
+  phoneNumber = 'phoneNumber',
+  userHandle = 'userHandle',
+}
+
+export enum UploadedAssetType {
+  avatar = 'avatar',
+  profileHeroImage = 'profileHeroImage',
+  unset = 'unset'
 }
 
 export enum WalletItemSource {

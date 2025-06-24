@@ -1,10 +1,20 @@
+/** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
 import { BgChannelMessage } from './BgChannelMessage.js';
-import { ChannelMessageMetadata } from './ChannelMessageMetadata.js';
 
 export class ChannelMessage extends BgChannelMessage {
-  declare public metadata?: ChannelMessageMetadata | null;
+  // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
+  // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<ChannelMessage>) {
     super(attributes);
+
+    if (attributes) {
+      // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
+      // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
+    }
+  }
+
+  static get searchFields(): string[] {
+    return [];
   }
 }

@@ -77,26 +77,6 @@ export declare const PurchaseOrderItemSchema: {
         totalPrice: {
             type: string;
         };
-        balance: {
-            type: string;
-        };
-        code: {
-            type: string;
-            nullable: boolean;
-        };
-        hasBarcode: {
-            type: string;
-            nullable: boolean;
-        };
-        barcodeFormat: {
-            type: string;
-            enum: string[];
-            nullable: boolean;
-        };
-        pin: {
-            type: string;
-            nullable: boolean;
-        };
     };
     required: string[];
 };

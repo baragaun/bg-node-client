@@ -1,0 +1,36 @@
+import { MultiStepActionResult, MultiStepActionSendNotificationResult, MultiStepActionStatus, MultiStepActionType, NotificationMethod } from '../enums.js';
+import { MultiStepActionError } from '../types/MultiStepActionError.js';
+export declare class GroupsUserMetadata {
+    userId: string;
+    userIdent?: string | null;
+    userHandle?: string | null;
+    email?: string | null;
+    phoneNumber?: string | null;
+    deviceUuid?: string | null;
+    actionType: MultiStepActionType;
+    actionStatus: MultiStepActionStatus;
+    notificationMethod: NotificationMethod;
+    result: MultiStepActionResult;
+    confirmToken?: string | null;
+    attemptCount: number;
+    notificationSentAt?: string | null;
+    notificationResult?: MultiStepActionSendNotificationResult | null;
+    notificationId?: string | null;
+    textData?: string | null;
+    report?: string | null;
+    emailPassed?: boolean | null;
+    emailUpdatedAt?: string | null;
+    emailVerifiedAt?: string | null;
+    errors?: MultiStepActionError[] | null;
+    password?: string | null;
+    passwordPassed?: boolean | null;
+    passwordResettedAt?: string | null;
+    passwordUpdatedAt?: string | null;
+    phoneNumberPassed?: boolean | null;
+    phoneNumberUpdatedAt?: string | null;
+    phoneNumberVerifiedAt?: string | null;
+    signedInAt?: string | null;
+    tfaBackupCodes?: string | null;
+    expiresAt?: string | null;
+    constructor(attributes?: Partial<GroupsUserMetadata>);
+}

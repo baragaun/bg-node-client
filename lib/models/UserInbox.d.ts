@@ -1,7 +1,7 @@
 import { BaseModel } from './BaseModel.js';
-import { BgChannelInbox } from './BgChannelInbox.js';
+import { ChannelInbox } from './ChannelInbox.js';
 export declare class UserInbox extends BaseModel {
     userId: string;
-    channels?: BgChannelInbox | null;
+    channels?: ChannelInbox | null;
     constructor(attributes?: Partial<UserInbox>);
 }

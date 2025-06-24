@@ -129,22 +129,6 @@ export declare const CompanySchema: {
             format: string;
             nullable: boolean;
         };
-        mm2UserId: {
-            type: string;
-            description: string;
-            nullable: boolean;
-        };
-        mm2CompanyRole: {
-            type: string;
-            description: string;
-            nullable: boolean;
-        };
-        syncedWithMm2At: {
-            type: string;
-            description: string;
-            format: string;
-            nullable: boolean;
-        };
     };
     required: string[];
 };
