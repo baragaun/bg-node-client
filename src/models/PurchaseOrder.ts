@@ -11,7 +11,7 @@ export class PurchaseOrder extends BaseModel {
   public paidAt?: string | null;
   public canceledAt?: string | null;
   public refundedAt?: string | null;
-  public items: PurchaseOrderItem[] = [];
+  public items?: PurchaseOrderItem[] = [];
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<PurchaseOrder>) {

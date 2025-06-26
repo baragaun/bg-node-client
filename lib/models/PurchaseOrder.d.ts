@@ -9,6 +9,6 @@ export declare class PurchaseOrder extends BaseModel {
     paidAt?: string | null;
     canceledAt?: string | null;
     refundedAt?: string | null;
-    items: PurchaseOrderItem[];
+    items?: PurchaseOrderItem[];
     constructor(attributes?: Partial<PurchaseOrder>);
 }

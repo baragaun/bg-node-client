@@ -59,7 +59,7 @@ declare const fsdata: {
         findProductCategories: (filter: import("../index.js").ProductCategoryListFilter | null | undefined, match: Partial<import("../index.js").ProductCategory> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ProductCategory>>;
     };
     purchaseOrder: {
-        createPurchaseOrder: (props: Partial<import("../index.js").PurchaseOrder>) => Promise<import("../index.js").QueryResult<import("../index.js").PurchaseOrder>>;
+        createPurchaseOrder: (props: Partial<import("../index.js").PurchaseOrder>) => Promise<import("../index.js").QueryResult<import("./gql/graphql.js").ServiceRequest>>;
         findPurchaseOrders: (filter: import("../index.js").PurchaseOrderListFilter | null | undefined, match: Partial<import("../index.js").PurchaseOrder> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").PurchaseOrder>>;
     };
     shoppingCart: {

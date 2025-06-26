@@ -1,6 +1,6 @@
-import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
+import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
+import { ServiceRequest } from '../../fsdata/gql/graphql.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { PurchaseOrder } from '../../models/PurchaseOrder.js';
@@ -8,7 +8,7 @@ import { QueryResult } from '../../types/QueryResult.js';
 
 const createPurchaseOrder = async (
   props: Partial<PurchaseOrder>,
-): Promise<QueryResult<PurchaseOrder>> => {
+): Promise<QueryResult<ServiceRequest>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('createPurchaseOrder: unavailable');
@@ -35,14 +35,6 @@ const createPurchaseOrder = async (
     }
 
     const result = await fsdata.purchaseOrder.createPurchaseOrder(props);
-
-    if (result.object) {
-      result.object = new PurchaseOrder(result.object);
-    }
-
-    if (db.isModelTypeSupported(ModelType.PurchaseOrder) && !result.error && result.object) {
-      await db.insert<PurchaseOrder>(result.object, ModelType.PurchaseOrder);
-    }
 
     return result;
   } catch (error) {

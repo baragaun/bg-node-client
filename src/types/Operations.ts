@@ -19,6 +19,7 @@ import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
 import { SignUpUserInput } from './SignUpUserInput.js';
+import { ServiceRequest } from '../fsdata/gql/graphql.js';
 import { Channel } from '../models/Channel.js';
 import { ChannelInvitation } from '../models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../models/ChannelInvitationListFilter.js';
@@ -370,7 +371,7 @@ export interface Operations {
   }
 
   purchaseOrder: {
-    createPurchaseOrder: (props: Partial<PurchaseOrder>) => Promise<QueryResult<PurchaseOrder>>
+    createPurchaseOrder: (props: Partial<PurchaseOrder>) => Promise<QueryResult<ServiceRequest>>
     findPurchaseOrders: (
       filter: PurchaseOrderListFilter | null | undefined,
       match: Partial<PurchaseOrder> | null | undefined,

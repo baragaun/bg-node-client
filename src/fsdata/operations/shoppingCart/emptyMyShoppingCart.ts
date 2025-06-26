@@ -21,7 +21,7 @@ const emptyMyShoppingCart = async (
 
     const client = graffleClientStore.get();
 
-    const response: ResponseDataType = await client.query.emptyMyShoppingCart();
+    const response: ResponseDataType = await client.mutation.emptyMyShoppingCart();
 
     logger.debug('fsdata.emptyMyShoppingCart response:', { response });
 
