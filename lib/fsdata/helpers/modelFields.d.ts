@@ -346,7 +346,7 @@ declare const modelFields: {
             updatedBy: boolean;
             deletedAt: boolean;
             deletedBy: boolean;
-            orderId: boolean;
+            purchaseOrderId: boolean;
             productId: boolean;
             quantity: boolean;
             price: boolean;
@@ -376,7 +376,7 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        orderId: boolean;
+        purchaseOrderId: boolean;
         productId: boolean;
         quantity: boolean;
         price: boolean;

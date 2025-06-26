@@ -353,7 +353,7 @@ const purchaseOrderItem = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-  orderId: true,
+  purchaseOrderId: true,
   productId: true,
   quantity: true,
   price: true,
