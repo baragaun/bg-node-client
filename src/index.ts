@@ -55,9 +55,11 @@ export * from './models/WalletListFilter.js';
 
 // Wallet:
 export * from './models/PurchaseOrder.js';
+export * from './models/PurchaseOrderInput.js';
 export * from './models/PurchaseOrderListFilter.js';
 export * from './models/PurchaseOrderItem.js';
 export * from './models/PurchaseOrderItemListFilter.js';
+export * from './models/ServiceRequest.js';
 export * from './models/ShoppingCart.js';
 export * from './models/ShoppingCartListFilter.js';
 export * from './models/ShoppingCartItem.js';

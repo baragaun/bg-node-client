@@ -790,7 +790,6 @@ const walletItem = {
 
   walletId: true,
   productId: true,
-  orderItemId: true,
   vendorId: true,
   name: true,
   price: true,
@@ -816,7 +815,7 @@ const wallet = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-  // items: { ...walletItem },
+  items: { ...walletItem },
 };
 
 const modelFields = {

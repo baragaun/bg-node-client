@@ -2988,6 +2988,7 @@ export type MutationDeleteNotificationTemplateArgs = {
 };
 export type MutationDeleteShoppingCartItemArgs = {
     id: Scalars['String']['input'];
+    deletePhysically: Scalars['Boolean']['input'];
 };
 export type MutationDeleteSupportChannelConfigArgs = {
     deletePhysically: Scalars['Boolean']['input'];

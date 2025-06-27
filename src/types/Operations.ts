@@ -36,6 +36,7 @@ import { MyUserChanges } from '../models/MyUserChanges.js';
 import { ProductCategory } from '../models/ProductCategory.js';
 import { ProductCategoryListFilter } from '../models/ProductCategoryListFilter.js';
 import { PurchaseOrder } from '../models/PurchaseOrder.js';
+import { PurchaseOrderInput } from '../models/PurchaseOrderInput.js';
 import { PurchaseOrderListFilter } from '../models/PurchaseOrderListFilter.js';
 import { ShoppingCart } from '../models/ShoppingCart.js';
 import { ShoppingCartItem } from '../models/ShoppingCartItem.js';
@@ -371,11 +372,11 @@ export interface Operations {
   }
 
   purchaseOrder: {
-    createPurchaseOrder: (props: Partial<PurchaseOrder>) => Promise<QueryResult<ServiceRequest>>
+    createPurchaseOrder: (props: PurchaseOrderInput) => Promise<QueryResult<ServiceRequest>>
     findPurchaseOrders: (
       filter: PurchaseOrderListFilter | null | undefined,
-      match: Partial<PurchaseOrder> | null | undefined,
-      selector: MangoQueryTypes<PurchaseOrder> | null | undefined,
+      match: PurchaseOrderInput | null | undefined,
+      selector: MangoQueryTypes<PurchaseOrderInput> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<PurchaseOrder>>;
@@ -388,7 +389,7 @@ export interface Operations {
 
   shoppingCartItem: {
     createShoppingCartItem: (props: Partial<ShoppingCartItem>) => Promise<QueryResult<ShoppingCartItem>>;
-    deleteShoppingCartItem: (id: string) => Promise<QueryResult<void>>;
+    deleteShoppingCartItem: (id: string, deletePhysically: boolean) => Promise<QueryResult<ServiceRequest>>;
     updateShoppingCartItem: (
       changes: Partial<ShoppingCartItem>,
       queryOptions?: QueryOptions,

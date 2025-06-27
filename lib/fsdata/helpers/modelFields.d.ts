@@ -745,6 +745,32 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+        items: {
+            id: boolean;
+            adminNotes: boolean;
+            createdAt: boolean;
+            createdBy: boolean;
+            updatedAt: boolean;
+            updatedBy: boolean;
+            deletedAt: boolean;
+            deletedBy: boolean;
+            walletId: boolean;
+            productId: boolean;
+            vendorId: boolean;
+            name: boolean;
+            price: boolean;
+            balance: boolean;
+            imageSourceFront: boolean;
+            imageSourceBack: boolean;
+            hasBarcode: boolean;
+            barcodeFormat: boolean;
+            termsEn: boolean;
+            termsUrl: boolean;
+            instructionsEn: boolean;
+            instructionsUrl: boolean;
+            sortIndex: boolean;
+            archivedAt: boolean;
+        };
     };
     walletItem: {
         id: boolean;
@@ -757,7 +783,6 @@ declare const modelFields: {
         deletedBy: boolean;
         walletId: boolean;
         productId: boolean;
-        orderItemId: boolean;
         vendorId: boolean;
         name: boolean;
         price: boolean;

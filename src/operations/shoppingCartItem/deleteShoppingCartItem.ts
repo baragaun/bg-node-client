@@ -1,13 +1,15 @@
 // import db from '../../db/db.js';
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
+import { ServiceRequest } from '../../fsdata/gql/graphql.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const deleteShoppingCartItem = async (
   id: string,
-): Promise<QueryResult<void>> => {
+  deletePhysically: boolean,
+): Promise<QueryResult<ServiceRequest>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('deleteShoppingCartItem: unavailable');
@@ -45,7 +47,7 @@ const deleteShoppingCartItem = async (
       return { error: 'offline', operation: MutationType.delete };
     }
 
-    const result = await fsdata.shoppingCartItem.deleteShoppingCartItem(id);
+    const result = await fsdata.shoppingCartItem.deleteShoppingCartItem(id, deletePhysically);
 
     if (!result.error || result.object) {
       // todo: remove from ShoppingCart.items

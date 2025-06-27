@@ -3,11 +3,11 @@ import fsdata from '../../fsdata/fsdata.js';
 import { ServiceRequest } from '../../fsdata/gql/graphql.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { PurchaseOrder } from '../../models/PurchaseOrder.js';
+import { PurchaseOrderInput } from '../../models/PurchaseOrderInput.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createPurchaseOrder = async (
-  props: Partial<PurchaseOrder>,
+  props: PurchaseOrderInput,
 ): Promise<QueryResult<ServiceRequest>> => {
   try {
     if (!libData.isInitialized()) {

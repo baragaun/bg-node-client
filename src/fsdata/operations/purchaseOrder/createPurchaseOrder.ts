@@ -1,10 +1,10 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { PurchaseOrder } from '../../../models/PurchaseOrder.js';
+import { PurchaseOrderInput } from '../../../models/PurchaseOrderInput.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
   MutationCreatePurchaseOrderArgs,
-  PurchaseOrderInput,
+  PurchaseOrderInput as GraphQLPurchaseOrderInput,
   ServiceRequest,
 } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
@@ -18,7 +18,7 @@ type ResponseDataType = {
 };
 
 const createPurchaseOrder = async (
-  props: Partial<PurchaseOrder>,
+  props: Partial<PurchaseOrderInput>,
 ): Promise<QueryResult<ServiceRequest>> => {
   try {
     if (!libData.isInitialized()) {
@@ -28,7 +28,7 @@ const createPurchaseOrder = async (
 
     const client = graffleClientStore.get();
     const args: MutationCreatePurchaseOrderArgs = {
-      input: new PurchaseOrder(props) as unknown as PurchaseOrderInput,
+      input: new PurchaseOrderInput(props) as unknown as GraphQLPurchaseOrderInput,
     };
 
     const response: ResponseDataType = await client.mutation.createPurchaseOrder({
