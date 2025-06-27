@@ -59,7 +59,7 @@ declare const fsdata: {
         findProductCategories: (filter: import("../index.js").ProductCategoryListFilter | null | undefined, match: Partial<import("../index.js").ProductCategory> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ProductCategory>>;
     };
     purchaseOrder: {
-        createPurchaseOrder: (props: Partial<import("../index.js").PurchaseOrderInput>) => Promise<import("../index.js").QueryResult<import("./gql/graphql.js").ServiceRequest>>;
+        createPurchaseOrder: (props: Partial<import("../index.js").PurchaseOrderInput>) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
         findPurchaseOrders: (filter: import("../index.js").PurchaseOrderListFilter | null | undefined, match: Partial<import("../index.js").PurchaseOrderInput> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").PurchaseOrder>>;
     };
     shoppingCart: {
@@ -68,7 +68,7 @@ declare const fsdata: {
     };
     shoppingCartItem: {
         createShoppingCartItem: (props: Partial<import("../index.js").ShoppingCartItem>) => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCartItem>>;
-        deleteShoppingCartItem: (id: string, deletePhysically: boolean) => Promise<import("../index.js").QueryResult<import("./gql/graphql.js").ServiceRequest>>;
+        deleteShoppingCartItem: (id: string, deletePhysically: boolean) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
         updateShoppingCartItem: (changes: Partial<import("../index.js").ShoppingCartItem>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ShoppingCartItem>) => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCartItem>>;
     };
     user: {

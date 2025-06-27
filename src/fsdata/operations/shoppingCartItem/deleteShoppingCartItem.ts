@@ -1,8 +1,9 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
+import { ServiceRequest } from '../../../models/ServiceRequest.js';
 import { ShoppingCartItem } from '../../../models/ShoppingCartItem.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-import { MutationDeleteShoppingCartItemArgs, ServiceRequest } from '../../gql/graphql.js';
+import { MutationDeleteShoppingCartItemArgs } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 

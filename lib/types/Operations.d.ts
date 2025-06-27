@@ -11,7 +11,6 @@ import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
 import { SignUpUserInput } from './SignUpUserInput.js';
-import { ServiceRequest } from '../fsdata/gql/graphql.js';
 import { Channel } from '../models/Channel.js';
 import { ChannelInvitation } from '../models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../models/ChannelInvitationListFilter.js';
@@ -30,6 +29,7 @@ import { ProductCategoryListFilter } from '../models/ProductCategoryListFilter.j
 import { PurchaseOrder } from '../models/PurchaseOrder.js';
 import { PurchaseOrderInput } from '../models/PurchaseOrderInput.js';
 import { PurchaseOrderListFilter } from '../models/PurchaseOrderListFilter.js';
+import { ServiceRequest } from '../models/ServiceRequest.js';
 import { ShoppingCart } from '../models/ShoppingCart.js';
 import { ShoppingCartItem } from '../models/ShoppingCartItem.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
@@ -133,7 +133,7 @@ export interface Operations {
     shoppingCartItem: {
         createShoppingCartItem: (props: Partial<ShoppingCartItem>) => Promise<QueryResult<ShoppingCartItem>>;
         deleteShoppingCartItem: (id: string, deletePhysically: boolean) => Promise<QueryResult<ServiceRequest>>;
-        updateShoppingCartItem: (changes: Partial<ShoppingCartItem>, queryOptions?: QueryOptions) => Promise<QueryResult<ShoppingCartItem>>;
+        updateShoppingCartItem: (changes: Partial<ShoppingCartItem>, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
     };
     user: {
         findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>;

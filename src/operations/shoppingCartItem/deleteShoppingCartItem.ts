@@ -1,9 +1,9 @@
 // import db from '../../db/db.js';
 import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
-import { ServiceRequest } from '../../fsdata/gql/graphql.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import { ServiceRequest } from '../../models/ServiceRequest.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const deleteShoppingCartItem = async (
