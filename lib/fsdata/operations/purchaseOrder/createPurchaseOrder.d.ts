@@ -1,5 +1,4 @@
-import { PurchaseOrderInput } from '../../../models/PurchaseOrderInput.js';
-import { ServiceRequest } from '../../../models/ServiceRequest.js';
+import { PurchaseOrder } from '../../../models/PurchaseOrder.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-declare const createPurchaseOrder: (props: Partial<PurchaseOrderInput>) => Promise<QueryResult<ServiceRequest>>;
+declare const createPurchaseOrder: (props: Partial<PurchaseOrder>) => Promise<QueryResult<PurchaseOrder>>;
 export default createPurchaseOrder;

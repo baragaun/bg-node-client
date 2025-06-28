@@ -3774,6 +3774,40 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  createWalletItem: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createWalletItem<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createWalletItem: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createWalletItem'
+      >
+    >
+  >;
+
+  deleteWalletItem: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteWalletItem<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteWalletItem: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteWalletItem'
+      >
+    >
+  >;
+
   updateWalletItem: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(

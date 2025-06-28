@@ -1,6 +1,6 @@
 declare const fsdata: {
     create: <T extends import("../index.js").BaseModel = import("../index.js").BaseModel>(props: Partial<T>, modelType: import("../enums.js").ModelType) => Promise<import("../index.js").QueryResult<T>>;
-    delete: (id: string, modelType: import("../enums.js").ModelType) => Promise<import("../index.js").QueryResult<void>>;
+    delete: (id: string, modelType: import("../enums.js").ModelType, deletePhysically: boolean, _queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
     findById: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, selections?: any) => Promise<import("../index.js").QueryResult<T>>;
     pollForUpdatedObject: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, options: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<T>>;
     update: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(changes: Partial<T>, modelType: import("../enums.js").ModelType, queryOptions?: import("../index.js").QueryOptions<T>) => Promise<import("../index.js").QueryResult<T>>;
@@ -59,8 +59,8 @@ declare const fsdata: {
         findProductCategories: (filter: import("../index.js").ProductCategoryListFilter | null | undefined, match: Partial<import("../index.js").ProductCategory> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ProductCategory>>;
     };
     purchaseOrder: {
-        createPurchaseOrder: (props: Partial<import("../index.js").PurchaseOrderInput>) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
-        findPurchaseOrders: (filter: import("../index.js").PurchaseOrderListFilter | null | undefined, match: Partial<import("../index.js").PurchaseOrderInput> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").PurchaseOrder>>;
+        createPurchaseOrder: (props: Partial<import("../index.js").PurchaseOrder>) => Promise<import("../index.js").QueryResult<import("../index.js").PurchaseOrder>>;
+        findPurchaseOrders: (filter: import("../index.js").PurchaseOrderListFilter | null | undefined, match: Partial<import("../index.js").PurchaseOrder> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").PurchaseOrder>>;
     };
     shoppingCart: {
         findMyShoppingCart: () => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCart>>;

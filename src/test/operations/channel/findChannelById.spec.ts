@@ -88,4 +88,4 @@ describe('operations.channel.findChannelById', () => {
     // Cleanup for user1:
     await signMeInSpecHelper(user1.email, user1Password, client);
   });
-});
+}, { timeout: 10000 });

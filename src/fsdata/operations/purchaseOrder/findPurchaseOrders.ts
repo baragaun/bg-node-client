@@ -1,15 +1,13 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { PurchaseOrder } from '../../../models/PurchaseOrder.js';
-import { PurchaseOrderInput } from '../../../models/PurchaseOrderInput.js';
 import { PurchaseOrderListFilter } from '../../../models/PurchaseOrderListFilter.js';
 import { FindObjectsOptions } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
-  PurchaseOrderInput as GraphQLPurchaseOrderInput,
-  PurchaseOrderListFilter as PurchaseOrderListFilterFromRemote,
-  FindObjectsOptions as FindObjectsOptionsFromRemote,
+  FindObjectsOptions as FindObjectsOptionsFromGql,
   InputMaybe,
+  PurchaseOrderInput,
   QueryFindPurchaseOrdersArgs,
 } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
@@ -25,7 +23,7 @@ type ResponseDataType = {
 
 const findPurchaseOrders = async (
   filter: PurchaseOrderListFilter | null | undefined,
-  match: Partial<PurchaseOrderInput> | null | undefined,
+  match: Partial<PurchaseOrder> | null | undefined,
   options: FindObjectsOptions,
 ): Promise<QueryResult<PurchaseOrder>> => {
   try {
@@ -36,9 +34,9 @@ const findPurchaseOrders = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindPurchaseOrdersArgs = {
-      filter: (filter || null) as unknown as PurchaseOrderListFilterFromRemote | null,
-      match: match as unknown as InputMaybe<GraphQLPurchaseOrderInput>,
-      options: options as unknown as InputMaybe<FindObjectsOptionsFromRemote>,
+      filter: (filter || null) as unknown as PurchaseOrderListFilter | null,
+      match: match as unknown as InputMaybe<PurchaseOrderInput>,
+      options: options as unknown as InputMaybe<FindObjectsOptionsFromGql>,
     };
 
     const response: ResponseDataType = await client.query.findPurchaseOrders({

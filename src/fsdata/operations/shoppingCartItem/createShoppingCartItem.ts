@@ -25,7 +25,7 @@ const createShoppingCartItem = async (
 
     const client = graffleClientStore.get();
     const args: MutationCreateShoppingCartItemArgs = {
-      input: new ShoppingCartItem(props) as unknown as ShoppingCartItemInput,
+      input: props as unknown as ShoppingCartItemInput,
     };
 
     const response: ResponseDataType = await client.mutation.createShoppingCartItem({

@@ -1,2 +1,0 @@
-declare const _default: "\nmutation DeleteShoppingCartItem($deletePhysically: Boolean!, $deleteShoppingCartItemId: String!) {\n  deleteShoppingCartItem(deletePhysically: $deletePhysically, id: $deleteShoppingCartItemId) {\n    id\n    userId\n    userRoles\n    objectIds\n    modelTypes\n    result\n    messageIds\n    message\n    errorCode\n    deviceUuid\n    source\n    createdAt\n    createdBy\n    updatedAt\n    updatedBy\n    deletedAt\n    deletedBy\n    finishedAt\n    expiresAt\n  }\n}";
-export default _default;

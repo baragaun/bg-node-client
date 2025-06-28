@@ -2,13 +2,12 @@ import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { PurchaseOrderInput } from '../../models/PurchaseOrderInput.js';
-import { ServiceRequest } from '../../models/ServiceRequest.js';
+import { PurchaseOrder } from '../../models/PurchaseOrder.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createPurchaseOrder = async (
-  props: PurchaseOrderInput,
-): Promise<QueryResult<ServiceRequest>> => {
+  props: PurchaseOrder,
+): Promise<QueryResult<PurchaseOrder>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('createPurchaseOrder: unavailable');
@@ -34,9 +33,7 @@ const createPurchaseOrder = async (
       return { error: 'offline', operation: MutationType.create };
     }
 
-    const result = await fsdata.purchaseOrder.createPurchaseOrder(props);
-
-    return result;
+    return fsdata.purchaseOrder.createPurchaseOrder(props);
   } catch (error) {
     return {
       operation: MutationType.create,

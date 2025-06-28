@@ -379,6 +379,30 @@ const purchaseOrder = {
   refundedAt: true,
 };
 
+const serviceRequest = {
+  id: true,
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+
+  deviceUuid: true,
+  errorCode: true,
+  events: true,
+  expiresAt: true,
+  finishedAt: true,
+  message: true,
+  messageIds: true,
+  modelTypes: true,
+  objectIds: true,
+  result: true,
+  serviceRequestType: true,
+  source: true,
+};
+
 const shoppingCartItem = {
   id: true,
   shoppingCartId: true,
@@ -815,7 +839,6 @@ const wallet = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-  items: { ...walletItem },
 };
 
 const modelFields = {
@@ -831,6 +854,7 @@ const modelFields = {
   purchaseOrderItem,
   shoppingCart,
   shoppingCartItem,
+  serviceRequest,
   sidMultiStepAction,
   sidMultiStepActionProgress,
   user,

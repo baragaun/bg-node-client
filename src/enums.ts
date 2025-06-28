@@ -231,6 +231,7 @@ export enum ModelType {
   MyUser = 'MyUser',
   PurchaseOrder = 'PurchaseOrder',
   PurchaseOrderItem = 'PurchaseOrderItem',
+  ServiceRequest = 'ServiceRequest',
   ShoppingCart = 'ShoppingCart',
   ShoppingCartItem = 'ShoppingCartItem',
   SidMultiStepAction = 'SidMultiStepAction',
@@ -373,6 +374,12 @@ export enum ReportUserReasonTextId {
 export enum SortDirection {
   asc = 'asc',
   desc = 'desc',
+}
+
+export enum ServiceRequestResult {
+  error = 'error',
+  ok = 'ok',
+  unset = 'unset'
 }
 
 export enum UiLanguage {

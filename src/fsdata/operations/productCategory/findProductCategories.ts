@@ -1,14 +1,14 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { ProductCategory } from '../../../models/ProductCategory.js';
-import { ProductCategoryListFilter as ProduceCategoryListFilterFromClient } from '../../../models/ProductCategoryListFilter.js';
-import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
+import { ProductCategoryListFilter } from '../../../models/ProductCategoryListFilter.js';
+import { FindObjectsOptions } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
-  ProductCategoryInput,
-  ProductCategoryListFilter,
-  FindObjectsOptions,
+  FindObjectsOptions as FindObjectsOptionsFromGql,
   InputMaybe,
+  ProductCategoryInput,
+  ProductCategoryListFilter as ProductCategoryListFilterFromGql,
   QueryFindProductCategoriesArgs,
 } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
@@ -23,9 +23,9 @@ type ResponseDataType = {
 };
 
 const findProductCategories = async (
-  filter: ProduceCategoryListFilterFromClient | null | undefined,
+  filter: ProductCategoryListFilter | null | undefined,
   match: Partial<ProductCategory> | null | undefined,
-  options: FindObjectsOptionsFromClient,
+  options: FindObjectsOptions,
 ): Promise<QueryResult<ProductCategory>> => {
   try {
     if (!libData.isInitialized()) {
@@ -35,9 +35,9 @@ const findProductCategories = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindProductCategoriesArgs = {
-      filter: (filter || null) as unknown as ProductCategoryListFilter | null,
+      filter: (filter || null) as unknown as ProductCategoryListFilterFromGql | null,
       match: match as unknown as InputMaybe<ProductCategoryInput>,
-      options: options as unknown as InputMaybe<FindObjectsOptions>,
+      options: options as unknown as InputMaybe<FindObjectsOptionsFromGql>,
     };
 
     const response: ResponseDataType = await client.query.findProductCategories({

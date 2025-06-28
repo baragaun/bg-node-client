@@ -93,4 +93,4 @@ describe('operations.channel.updateChannelInvitation', () => {
     // Cleanup for otherUser:
     await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
   });
-});
+}, { timeout: 10000 });

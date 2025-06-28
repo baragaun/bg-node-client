@@ -1,2 +1,2 @@
 import { BgNodeClient } from '../../BgNodeClient.js';
-export declare const deleteChannelMessageSpecHelper: (channelMessageId: string, client: BgNodeClient) => Promise<void>;
+export declare const deleteChannelMessageSpecHelper: (id: string, client: BgNodeClient) => Promise<void>;

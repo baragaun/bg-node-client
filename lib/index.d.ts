@@ -50,7 +50,6 @@ export * from './models/WalletItem.js';
 export * from './models/WalletItemListFilter.js';
 export * from './models/WalletListFilter.js';
 export * from './models/PurchaseOrder.js';
-export * from './models/PurchaseOrderInput.js';
 export * from './models/PurchaseOrderListFilter.js';
 export * from './models/PurchaseOrderItem.js';
 export * from './models/PurchaseOrderItemListFilter.js';

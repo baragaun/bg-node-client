@@ -10,21 +10,21 @@ export const deleteChannelSpecHelper = async (
   id: string,
   client: BgNodeClient,
 ): Promise<void> => {
-  logger.debug('BgServiceApiCheck.deleteChannel: calling API/deleteChannel', { id });
+  logger.debug('deleteChannelSpecHelper: calling API/deleteChannel', { id });
 
-  const response = await client.operations.channel.deleteChannel(id);
+  const response = await client.operations.channel.deleteChannel(id, true);
 
   expect(response.error).toBeUndefined();
 
   // Verifying the local copy has been deleted:
-  const { object: channelFromCache, error: errorFromCache } = await findById<Channel>(
+  const networkResponse = await findById<Channel>(
     id,
     ModelType.Channel,
     { cachePolicy: CachePolicy.cache },
   );
 
-  expect(errorFromCache).toBeUndefined();
-  expect(channelFromCache).toBeNull();
+  expect(networkResponse.error).toBeUndefined();
+  expect(networkResponse.object).toBeNull();
 
   // The object is deleted in the backend asynchronously, so we'd have to wait for it.
   // if (!client.isInMockMode) {

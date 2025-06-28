@@ -4590,13 +4590,13 @@ export interface Mutation<
     | Mutation.createShoppingCartItem<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createShoppingCartItem<_$Scalars>>;
   /**
-   * Select the `deleteShoppingCartItem` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
+   * Select the `deleteShoppingCartItem` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
    */
   deleteShoppingCartItem?:
     | Mutation.deleteShoppingCartItem<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteShoppingCartItem<_$Scalars>>;
   /**
-   * Select the `updateShoppingCartItem` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
+   * Select the `updateShoppingCartItem` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
    */
   updateShoppingCartItem?:
     | Mutation.updateShoppingCartItem<_$Scalars>
@@ -4613,6 +4613,18 @@ export interface Mutation<
   emptyShoppingCart?:
     | Mutation.emptyShoppingCart<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.emptyShoppingCart<_$Scalars>>;
+  /**
+   * Select the `createWalletItem` field on the `Mutation` object. Its type is `WalletItem` (a `OutputObject` kind of type).
+   */
+  createWalletItem?:
+    | Mutation.createWalletItem<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createWalletItem<_$Scalars>>;
+  /**
+   * Select the `deleteWalletItem` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+   */
+  deleteWalletItem?:
+    | Mutation.deleteWalletItem<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteWalletItem<_$Scalars>>;
   /**
    * Select the `updateWalletItem` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
    */
@@ -8123,7 +8135,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ShoppingCartItem<_$Scalars> {
     /**
-     * Arguments for `createShoppingCartItem` field. All arguments are required so you must include this.
+     * Arguments for `createShoppingCartItem` field. Some (1/2) arguments are required so you must include this.
      */
     $: createShoppingCartItem$Arguments<_$Scalars>;
   }
@@ -8131,6 +8143,7 @@ export namespace Mutation {
   export interface createShoppingCartItem$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
+    options?: $NamedTypes.$UpdateObjectOptions<_$Scalars> | undefined | null;
     input: $NamedTypes.$ShoppingCartItemInput<_$Scalars>;
   }
 
@@ -8155,7 +8168,7 @@ export namespace Mutation {
 
   export interface deleteShoppingCartItem$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
      * Arguments for `deleteShoppingCartItem` field. All arguments are required so you must include this.
      */
@@ -8165,6 +8178,7 @@ export namespace Mutation {
   export interface deleteShoppingCartItem$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
+    deletePhysically: boolean;
     id: string;
   }
 
@@ -8189,7 +8203,7 @@ export namespace Mutation {
 
   export interface updateShoppingCartItem$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
      * Arguments for `updateShoppingCartItem` field. Some (1/2) arguments are required so you must include this.
      */
@@ -8278,6 +8292,76 @@ export namespace Mutation {
 
   // --------------------------------------------------------------------------------------------------
 
+  export type createWalletItem<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = createWalletItem$SelectionSet<_$Scalars>;
+
+  export interface createWalletItem$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$WalletItem<_$Scalars> {
+    /**
+     * Arguments for `createWalletItem` field. Some (1/2) arguments are required so you must include this.
+     */
+    $: createWalletItem$Arguments<_$Scalars>;
+  }
+
+  export interface createWalletItem$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    options?: $NamedTypes.$UpdateObjectOptions<_$Scalars> | undefined | null;
+    input: $NamedTypes.$WalletItemInput<_$Scalars>;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `createWalletItem` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type createWalletItem$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    createWalletItem$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deleteWalletItem<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = deleteWalletItem$SelectionSet<_$Scalars>;
+
+  export interface deleteWalletItem$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+    /**
+     * Arguments for `deleteWalletItem` field. All arguments are required so you must include this.
+     */
+    $: deleteWalletItem$Arguments<_$Scalars>;
+  }
+
+  export interface deleteWalletItem$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    deletePhysically: boolean;
+    id: string;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deleteWalletItem` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deleteWalletItem$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    deleteWalletItem$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
   export type updateWalletItem<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = updateWalletItem$SelectionSet<_$Scalars>;
@@ -8286,7 +8370,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `updateWalletItem` field. All arguments are required so you must include this.
+     * Arguments for `updateWalletItem` field. Some (1/2) arguments are required so you must include this.
      */
     $: updateWalletItem$Arguments<_$Scalars>;
   }
@@ -8294,6 +8378,7 @@ export namespace Mutation {
   export interface updateWalletItem$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
+    options?: $NamedTypes.$UpdateObjectOptions<_$Scalars> | undefined | null;
     input: $NamedTypes.$WalletItemInput<_$Scalars>;
   }
 
@@ -8999,7 +9084,9 @@ export type ServiceRequestType =
   | 'graphQlQueryFindTrainingSessionsForMe'
   | 'graphQlMutationCreatePurchaseOrderField'
   | 'graphQlMutationCreateShoppingCartItem'
+  | 'graphQlMutationCreateWalletItem'
   | 'graphQlMutationDeleteShoppingCartItem'
+  | 'graphQlMutationDeleteWalletItem'
   | 'graphQlMutationEmptyShoppingCart'
   | 'graphQlMutationUpdateShoppingCartItem'
   | 'graphQlMutationUpdateWalletItem'

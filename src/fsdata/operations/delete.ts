@@ -1,6 +1,9 @@
 import { ModelType } from '../../enums.js';
+import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import { ServiceRequest } from '../../models/ServiceRequest.js';
+import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
@@ -9,7 +12,9 @@ import { modelCrudOperations } from '../helpers/modelCrudOperations.js';
 const deleteFnc = async (
   id: string,
   modelType: ModelType,
-): Promise<QueryResult<void>> => {
+  deletePhysically: boolean,
+  _queryOptions: QueryOptions = defaultQueryOptionsForMutations,
+): Promise<QueryResult<ServiceRequest>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('fsdata.delete: unavailable');
@@ -24,7 +29,7 @@ const deleteFnc = async (
       return { error: 'invalid-model-type' };
     }
 
-    const args = { $: { deletePhysically: true } };
+    const args = { $: { deletePhysically } };
 
     if (fieldDef.keyFieldName) {
       args['$'][fieldDef.keyFieldName] = id;
@@ -46,7 +51,7 @@ const deleteFnc = async (
       return { error: 'system-error' };
     }
 
-    return {};
+    return { serviceRequest: response.data[fieldDef.deleteField] };
   } catch (error) {
     logger.error('delete: error', { error, headers: helpers.headers() });
     return null;

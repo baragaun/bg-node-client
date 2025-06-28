@@ -1,2 +1,0 @@
-declare const _default: "\nmutation M($input: ChannelMessageInput!) {\n  createChannelMessage(input: $input) {\n    id\n    adminNotes\n    createdAt\n    createdBy\n    updatedAt\n    updatedBy\n    deletedAt\n    deletedBy\n    channelId\n    replyToMessageId\n    channelMessageType\n    messageText\n    editedAt\n    suspendedAt\n    suspendedBy\n    mm2ConversationId\n    mm2Id\n    syncedWithMm2At\n  }\n}\n";
-export default _default;

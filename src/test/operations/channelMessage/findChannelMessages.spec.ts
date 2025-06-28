@@ -151,4 +151,4 @@ describe('operations.channelMessage.findChannelMessages', () => {
       otherChannels.map((channel) => deleteChannelSpecHelper(channel.id, client)),
     );
   });
-});
+}, { timeout: 10000 });

@@ -1,21 +1,21 @@
 import { BaseModel } from './BaseModel.js';
 import { ModelEvent } from './ModelEvent.js';
-import { ServiceRequestMessageId, ServiceRequestResult, ServiceRequestSource, ServiceRequestType, UserRole } from '../fsdata/gql/graphql.js';
+import { ModelType, ServiceRequestResult, UserRole } from '../enums.js';
+import { ErrorCode, ServiceRequestMessageId, ServiceRequestSource, ServiceRequestType } from '../fsdata/gql/graphql.js';
 export declare class ServiceRequest extends BaseModel {
-    createdAt: string;
-    deviceUuid?: string | null;
-    errorCode?: string | null;
-    events?: ModelEvent[] | null;
-    expiresAt?: string | null;
-    finishedAt?: string | null;
-    message?: string | null;
-    messageIds?: ServiceRequestMessageId[] | null;
-    modelTypes?: string[] | null;
-    objectIds?: string[] | null;
-    result: ServiceRequestResult;
-    serviceRequestType: ServiceRequestType;
-    source?: ServiceRequestSource | null;
     userId?: string | null;
+    serviceRequestType: ServiceRequestType;
     userRoles?: UserRole[] | null;
+    objectIds?: string[] | null;
+    modelTypes?: ModelType[] | null;
+    result: ServiceRequestResult;
+    messageIds?: ServiceRequestMessageId[] | null;
+    message?: string | null;
+    errorCode?: ErrorCode | null;
+    events?: ModelEvent[] | null;
+    deviceUuid?: string | null;
+    source?: ServiceRequestSource | null;
+    finishedAt?: string | null;
+    expiresAt?: string | null;
     constructor(attributes?: Partial<ServiceRequest>);
 }

@@ -425,6 +425,28 @@ declare const modelFields: {
         deletedAt: boolean;
         deletedBy: boolean;
     };
+    serviceRequest: {
+        id: boolean;
+        adminNotes: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+        deviceUuid: boolean;
+        errorCode: boolean;
+        events: boolean;
+        expiresAt: boolean;
+        finishedAt: boolean;
+        message: boolean;
+        messageIds: boolean;
+        modelTypes: boolean;
+        objectIds: boolean;
+        result: boolean;
+        serviceRequestType: boolean;
+        source: boolean;
+    };
     sidMultiStepAction: {
         actionStatus: boolean;
         actionType: boolean;
@@ -745,32 +767,6 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        items: {
-            id: boolean;
-            adminNotes: boolean;
-            createdAt: boolean;
-            createdBy: boolean;
-            updatedAt: boolean;
-            updatedBy: boolean;
-            deletedAt: boolean;
-            deletedBy: boolean;
-            walletId: boolean;
-            productId: boolean;
-            vendorId: boolean;
-            name: boolean;
-            price: boolean;
-            balance: boolean;
-            imageSourceFront: boolean;
-            imageSourceBack: boolean;
-            hasBarcode: boolean;
-            barcodeFormat: boolean;
-            termsEn: boolean;
-            termsUrl: boolean;
-            instructionsEn: boolean;
-            instructionsUrl: boolean;
-            sortIndex: boolean;
-            archivedAt: boolean;
-        };
     };
     walletItem: {
         id: boolean;

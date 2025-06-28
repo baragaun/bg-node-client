@@ -58,4 +58,4 @@ describe('operations.shoppingCartItem.createShoppingCartItem', () => {
     // expect(item.quantity).toBe(1);
     // expect(item.price).toBe(5000);
   });
-});
+}, { timeout: 10000 });

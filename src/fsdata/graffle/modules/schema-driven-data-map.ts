@@ -9908,6 +9908,10 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     createShoppingCartItem: {
       a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
         input: {
           nt: ShoppingCartItemInput,
           it: [1],
@@ -9917,11 +9921,16 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     deleteShoppingCartItem: {
       a: {
+        deletePhysically: {
+          nt: Boolean,
+          it: [1],
+        },
         id: {
           nt: String,
           it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     updateShoppingCartItem: {
       a: {
@@ -9934,6 +9943,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     emptyMyShoppingCart: {},
     emptyShoppingCart: {
@@ -9944,8 +9954,38 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
+    createWalletItem: {
+      a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
+        input: {
+          nt: WalletItemInput,
+          it: [1],
+        },
+      },
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
+    deleteWalletItem: {
+      a: {
+        deletePhysically: {
+          nt: Boolean,
+          it: [1],
+        },
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     updateWalletItem: {
       a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
         input: {
           nt: WalletItemInput,
           it: [1],
@@ -10633,6 +10673,10 @@ Mutation.f['startMySessionV2']!.nt = ContentStatus;
 Mutation.f['unblockUserForMeV2']!.nt = ServiceRequest;
 Mutation.f['createPurchaseOrder']!.nt = ServiceRequest;
 Mutation.f['createShoppingCartItem']!.nt = ShoppingCartItem;
+Mutation.f['deleteShoppingCartItem']!.nt = ServiceRequest;
+Mutation.f['updateShoppingCartItem']!.nt = ServiceRequest;
+Mutation.f['createWalletItem']!.nt = WalletItem;
+Mutation.f['deleteWalletItem']!.nt = ServiceRequest;
 Mutation.f['updateWalletItem']!.nt = ServiceRequest;
 Subscription.f['channelChanged']!.nt = BgChannelChangedEvent;
 Subscription.f['objectChanged']!.nt = ObjectChangedEvent;

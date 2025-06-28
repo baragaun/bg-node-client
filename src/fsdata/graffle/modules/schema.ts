@@ -2162,6 +2162,8 @@ export namespace Schema {
       updateShoppingCartItem: Mutation.updateShoppingCartItem;
       emptyMyShoppingCart: Mutation.emptyMyShoppingCart;
       emptyShoppingCart: Mutation.emptyShoppingCart;
+      createWalletItem: Mutation.createWalletItem;
+      deleteWalletItem: Mutation.deleteWalletItem;
       updateWalletItem: Mutation.updateWalletItem;
     };
   }
@@ -4011,6 +4013,12 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'createShoppingCartItem';
       arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$UpdateObjectOptions;
+        };
         input: {
           kind: 'InputField';
           name: 'input';
@@ -4026,6 +4034,12 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'deleteShoppingCartItem';
       arguments: {
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
         id: {
           kind: 'InputField';
           name: 'id';
@@ -4034,7 +4048,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$String;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface updateShoppingCartItem {
@@ -4055,7 +4069,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$String;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface emptyMyShoppingCart {
@@ -4081,10 +4095,58 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface createWalletItem {
+      kind: 'OutputField';
+      name: 'createWalletItem';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$UpdateObjectOptions;
+        };
+        input: {
+          kind: 'InputField';
+          name: 'input';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$WalletItemInput;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$WalletItem;
+    }
+
+    export interface deleteWalletItem {
+      kind: 'OutputField';
+      name: 'deleteWalletItem';
+      arguments: {
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
     export interface updateWalletItem {
       kind: 'OutputField';
       name: 'updateWalletItem';
       arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$UpdateObjectOptions;
+        };
         input: {
           kind: 'InputField';
           name: 'input';
@@ -42426,7 +42488,9 @@ export namespace Schema {
       'graphQlQueryFindTrainingSessionsForMe',
       'graphQlMutationCreatePurchaseOrderField',
       'graphQlMutationCreateShoppingCartItem',
+      'graphQlMutationCreateWalletItem',
       'graphQlMutationDeleteShoppingCartItem',
+      'graphQlMutationDeleteWalletItem',
       'graphQlMutationEmptyShoppingCart',
       'graphQlMutationUpdateShoppingCartItem',
       'graphQlMutationUpdateWalletItem',
@@ -42627,7 +42691,9 @@ export namespace Schema {
       | 'graphQlQueryFindTrainingSessionsForMe'
       | 'graphQlMutationCreatePurchaseOrderField'
       | 'graphQlMutationCreateShoppingCartItem'
+      | 'graphQlMutationCreateWalletItem'
       | 'graphQlMutationDeleteShoppingCartItem'
+      | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationEmptyShoppingCart'
       | 'graphQlMutationUpdateShoppingCartItem'
       | 'graphQlMutationUpdateWalletItem'
