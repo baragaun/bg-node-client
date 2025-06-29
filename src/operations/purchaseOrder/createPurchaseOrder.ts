@@ -25,8 +25,15 @@ const createPurchaseOrder = async (
       return { error: 'missing-input', operation: MutationType.create };
     }
 
+    const userId = libData.clientInfoStore().myUserId;
+    if (!props.shoppingCartId) {
+      props.shoppingCartId = userId;
+    }
+    if (!props.userId) {
+      props.userId = userId;
+    }
     if (!props.createdBy) {
-      props.createdBy = libData.clientInfoStore().myUserId;
+      props.createdBy = userId;
     }
 
     if (!allowNetwork) {

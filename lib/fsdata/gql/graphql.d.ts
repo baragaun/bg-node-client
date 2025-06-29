@@ -2887,7 +2887,7 @@ export type Mutation = {
     verifyOneTimeAuthToken: Scalars['Boolean']['output'];
 };
 export type MutationAcceptChannelInvitationArgs = {
-    id?: InputMaybe<Scalars['String']['input']>;
+    channelInvitationId: Scalars['String']['input'];
 };
 export type MutationAddAppFeatureToUserArgs = {
     appFeature: AppFeature;
@@ -2995,7 +2995,7 @@ export type MutationCreateWalletItemArgs = {
     options?: InputMaybe<UpdateObjectOptions>;
 };
 export type MutationDeclineChannelInvitationArgs = {
-    id?: InputMaybe<Scalars['String']['input']>;
+    channelInvitationId: Scalars['String']['input'];
     reasonTextId: DeclineChannelInvitationReasonTextId;
 };
 export type MutationDeleteAcademicExperienceArgs = {
@@ -3105,7 +3105,7 @@ export type MutationDeleteWalletItemArgs = {
     id: Scalars['String']['input'];
 };
 export type MutationDismissChannelInvitationFromInboxArgs = {
-    id?: InputMaybe<Scalars['String']['input']>;
+    channelInvitationId: Scalars['String']['input'];
 };
 export type MutationEmptyShoppingCartArgs = {
     id: Scalars['String']['input'];
@@ -3171,7 +3171,7 @@ export type MutationStartVerifyPhoneNumberArgs = {
     phoneNumber?: InputMaybe<Scalars['String']['input']>;
 };
 export type MutationUnarchiveChannelForMeArgs = {
-    id?: InputMaybe<Scalars['String']['input']>;
+    channelId: Scalars['String']['input'];
 };
 export type MutationUnblockUserForMeArgs = {
     userId: Scalars['String']['input'];

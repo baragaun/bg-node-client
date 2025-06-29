@@ -9193,11 +9193,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelInvitationId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },
@@ -9218,11 +9214,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelInvitationId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },
@@ -9259,11 +9251,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelInvitationId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },
@@ -9345,11 +9333,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },

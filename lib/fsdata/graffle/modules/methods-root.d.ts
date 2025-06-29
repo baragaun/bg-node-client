@@ -420,7 +420,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     updateUploadedAsset: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateUploadedAsset<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateUploadedAsset: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateUploadedAsset'>>>;
-    acceptChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.acceptChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+    acceptChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.acceptChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         acceptChannelInvitation: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'acceptChannelInvitation'>>>;
     createChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
@@ -435,7 +435,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     deleteChannelInvitationV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteChannelInvitationV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteChannelInvitationV2: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteChannelInvitationV2'>>>;
-    dismissChannelInvitationFromInbox: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.dismissChannelInvitationFromInbox<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+    dismissChannelInvitationFromInbox: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.dismissChannelInvitationFromInbox<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         dismissChannelInvitationFromInbox: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'dismissChannelInvitationFromInbox'>>>;
     updateChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
@@ -459,7 +459,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     updateChannel: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateChannel<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateChannel: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateChannel'>>>;
-    unarchiveChannelForMe: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.unarchiveChannelForMe<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+    unarchiveChannelForMe: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.unarchiveChannelForMe<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         unarchiveChannelForMe: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'unarchiveChannelForMe'>>>;
     addChannelMessageEvent: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.addChannelMessageEvent<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{

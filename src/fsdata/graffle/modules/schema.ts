@@ -2744,19 +2744,10 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'acceptChannelInvitation';
       arguments: {
-        /**
-         * @deprecated use id instead
-         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2789,19 +2780,10 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$DeclineChannelInvitationReasonTextId;
         };
-        /**
-         * @deprecated use id instead
-         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2861,19 +2843,10 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'dismissChannelInvitationFromInbox';
       arguments: {
-        /**
-         * @deprecated use id instead
-         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -3014,19 +2987,10 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'unarchiveChannelForMe';
       arguments: {
-        /**
-         * @deprecated use id instead
-         */
         channelId: {
           kind: 'InputField';
           name: 'channelId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };

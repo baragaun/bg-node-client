@@ -4214,7 +4214,7 @@ export interface Mutation<
    * Select the `acceptChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   acceptChannelInvitation?:
-    | Mutation.acceptChannelInvitation$Expanded<_$Scalars>
+    | Mutation.acceptChannelInvitation<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptChannelInvitation<_$Scalars>>;
   /**
    * Select the `createChannelInvitation` field on the `Mutation` object. Its type is `ChannelInvitation` (a `OutputObject` kind of type).
@@ -4244,7 +4244,7 @@ export interface Mutation<
    * Select the `dismissChannelInvitationFromInbox` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   dismissChannelInvitationFromInbox?:
-    | Mutation.dismissChannelInvitationFromInbox$Expanded<_$Scalars>
+    | Mutation.dismissChannelInvitationFromInbox<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.dismissChannelInvitationFromInbox<_$Scalars>>;
   /**
    * Select the `updateChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
@@ -4292,7 +4292,7 @@ export interface Mutation<
    * Select the `unarchiveChannelForMe` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   unarchiveChannelForMe?:
-    | Mutation.unarchiveChannelForMe$Expanded<_$Scalars>
+    | Mutation.unarchiveChannelForMe<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.unarchiveChannelForMe<_$Scalars>>;
   /**
    * Select the `addChannelMessageEvent` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
@@ -5776,27 +5776,21 @@ export namespace Mutation {
 
   export type acceptChannelInvitation<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | acceptChannelInvitation$SelectionSet<_$Scalars>;
+  > = acceptChannelInvitation$SelectionSet<_$Scalars>;
 
   export interface acceptChannelInvitation$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `acceptChannelInvitation` field. No arguments are required so you may omit this.
+     * Arguments for `acceptChannelInvitation` field. All arguments are required so you must include this.
      */
-    $?: acceptChannelInvitation$Arguments<_$Scalars>;
+    $: acceptChannelInvitation$Arguments<_$Scalars>;
   }
 
   export interface acceptChannelInvitation$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    /**
-     * @deprecated use id instead
-     */
-    channelInvitationId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelInvitationId: string;
   }
 
   // --- expanded ---
@@ -5809,8 +5803,7 @@ export namespace Mutation {
   export type acceptChannelInvitation$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | acceptChannelInvitation$SelectionSet<_$Scalars>
+    acceptChannelInvitation$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -5857,7 +5850,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `declineChannelInvitation` field. Some (1/3) arguments are required so you must include this.
+     * Arguments for `declineChannelInvitation` field. All arguments are required so you must include this.
      */
     $: declineChannelInvitation$Arguments<_$Scalars>;
   }
@@ -5866,11 +5859,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
     $reasonTextId: $NamedTypes.$DeclineChannelInvitationReasonTextId;
-    /**
-     * @deprecated use id instead
-     */
-    channelInvitationId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelInvitationId: string;
   }
 
   // --- expanded ---
@@ -5961,27 +5950,21 @@ export namespace Mutation {
 
   export type dismissChannelInvitationFromInbox<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>;
+  > = dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>;
 
   export interface dismissChannelInvitationFromInbox$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `dismissChannelInvitationFromInbox` field. No arguments are required so you may omit this.
+     * Arguments for `dismissChannelInvitationFromInbox` field. All arguments are required so you must include this.
      */
-    $?: dismissChannelInvitationFromInbox$Arguments<_$Scalars>;
+    $: dismissChannelInvitationFromInbox$Arguments<_$Scalars>;
   }
 
   export interface dismissChannelInvitationFromInbox$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    /**
-     * @deprecated use id instead
-     */
-    channelInvitationId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelInvitationId: string;
   }
 
   // --- expanded ---
@@ -5994,8 +5977,7 @@ export namespace Mutation {
   export type dismissChannelInvitationFromInbox$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>
+    dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -6244,27 +6226,21 @@ export namespace Mutation {
 
   export type unarchiveChannelForMe<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | unarchiveChannelForMe$SelectionSet<_$Scalars>;
+  > = unarchiveChannelForMe$SelectionSet<_$Scalars>;
 
   export interface unarchiveChannelForMe$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `unarchiveChannelForMe` field. No arguments are required so you may omit this.
+     * Arguments for `unarchiveChannelForMe` field. All arguments are required so you must include this.
      */
-    $?: unarchiveChannelForMe$Arguments<_$Scalars>;
+    $: unarchiveChannelForMe$Arguments<_$Scalars>;
   }
 
   export interface unarchiveChannelForMe$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    /**
-     * @deprecated use id instead
-     */
-    channelId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelId: string;
   }
 
   // --- expanded ---
@@ -6277,8 +6253,7 @@ export namespace Mutation {
   export type unarchiveChannelForMe$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | unarchiveChannelForMe$SelectionSet<_$Scalars>
+    unarchiveChannelForMe$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------

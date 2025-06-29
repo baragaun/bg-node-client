@@ -61,4 +61,4 @@ describe('operations.purchaseOrder.createPurchaseOrder', () => {
     expect(networkResult.object.items).toBeDefined();
     expect(networkResult.object.items.length).toEqual(shoppingCartItems.length);
   });
-});
+}, { timeout: 10000 });

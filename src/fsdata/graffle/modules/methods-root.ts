@@ -2408,7 +2408,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   acceptChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet?: $$Utilities.Exact<
+      selectionSet: $$Utilities.Exact<
         $SelectionSet,
         $$SelectionSets.Mutation.acceptChannelInvitation<$Context['scalars']>
       >,
@@ -2508,7 +2508,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   dismissChannelInvitationFromInbox: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet?: $$Utilities.Exact<
+      selectionSet: $$Utilities.Exact<
         $SelectionSet,
         $$SelectionSets.Mutation.dismissChannelInvitationFromInbox<$Context['scalars']>
       >,
@@ -2653,7 +2653,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   unarchiveChannelForMe: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet?: $$Utilities.Exact<
+      selectionSet: $$Utilities.Exact<
         $SelectionSet,
         $$SelectionSets.Mutation.unarchiveChannelForMe<$Context['scalars']>
       >,

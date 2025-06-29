@@ -2141,7 +2141,7 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
     /**
      * Select the `acceptChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
-    acceptChannelInvitation?: Mutation.acceptChannelInvitation$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptChannelInvitation<_$Scalars>>;
+    acceptChannelInvitation?: Mutation.acceptChannelInvitation<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptChannelInvitation<_$Scalars>>;
     /**
      * Select the `createChannelInvitation` field on the `Mutation` object. Its type is `ChannelInvitation` (a `OutputObject` kind of type).
      */
@@ -2161,7 +2161,7 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
     /**
      * Select the `dismissChannelInvitationFromInbox` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
-    dismissChannelInvitationFromInbox?: Mutation.dismissChannelInvitationFromInbox$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.dismissChannelInvitationFromInbox<_$Scalars>>;
+    dismissChannelInvitationFromInbox?: Mutation.dismissChannelInvitationFromInbox<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.dismissChannelInvitationFromInbox<_$Scalars>>;
     /**
      * Select the `updateChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
@@ -2193,7 +2193,7 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
     /**
      * Select the `unarchiveChannelForMe` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
-    unarchiveChannelForMe?: Mutation.unarchiveChannelForMe$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.unarchiveChannelForMe<_$Scalars>>;
+    unarchiveChannelForMe?: Mutation.unarchiveChannelForMe<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.unarchiveChannelForMe<_$Scalars>>;
     /**
      * Select the `addChannelMessageEvent` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
@@ -2971,26 +2971,22 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type updateUploadedAsset$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<updateUploadedAsset$SelectionSet<_$Scalars>>;
-    type acceptChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | acceptChannelInvitation$SelectionSet<_$Scalars>;
+    type acceptChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = acceptChannelInvitation$SelectionSet<_$Scalars>;
     interface acceptChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `acceptChannelInvitation` field. No arguments are required so you may omit this.
+         * Arguments for `acceptChannelInvitation` field. All arguments are required so you must include this.
          */
-        $?: acceptChannelInvitation$Arguments<_$Scalars>;
+        $: acceptChannelInvitation$Arguments<_$Scalars>;
     }
     interface acceptChannelInvitation$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        /**
-         * @deprecated use id instead
-         */
-        channelInvitationId?: string | undefined | null;
-        id?: string | undefined | null;
+        channelInvitationId: string;
     }
     /**
      * This is the "expanded" version of the `acceptChannelInvitation` type. It is identical except for the fact
      * that IDEs will display its contents (a union type) directly, rather than the name of this type.
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
-    type acceptChannelInvitation$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | acceptChannelInvitation$SelectionSet<_$Scalars>>;
+    type acceptChannelInvitation$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<acceptChannelInvitation$SelectionSet<_$Scalars>>;
     type createChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = createChannelInvitation$SelectionSet<_$Scalars>;
     interface createChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ChannelInvitation<_$Scalars> {
         /**
@@ -3010,17 +3006,13 @@ export declare namespace Mutation {
     type declineChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = declineChannelInvitation$SelectionSet<_$Scalars>;
     interface declineChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `declineChannelInvitation` field. Some (1/3) arguments are required so you must include this.
+         * Arguments for `declineChannelInvitation` field. All arguments are required so you must include this.
          */
         $: declineChannelInvitation$Arguments<_$Scalars>;
     }
     interface declineChannelInvitation$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
         $reasonTextId: $NamedTypes.$DeclineChannelInvitationReasonTextId;
-        /**
-         * @deprecated use id instead
-         */
-        channelInvitationId?: string | undefined | null;
-        id?: string | undefined | null;
+        channelInvitationId: string;
     }
     /**
      * This is the "expanded" version of the `declineChannelInvitation` type. It is identical except for the fact
@@ -3063,26 +3055,22 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type deleteChannelInvitationV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<deleteChannelInvitationV2$SelectionSet<_$Scalars>>;
-    type dismissChannelInvitationFromInbox<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>;
+    type dismissChannelInvitationFromInbox<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>;
     interface dismissChannelInvitationFromInbox$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `dismissChannelInvitationFromInbox` field. No arguments are required so you may omit this.
+         * Arguments for `dismissChannelInvitationFromInbox` field. All arguments are required so you must include this.
          */
-        $?: dismissChannelInvitationFromInbox$Arguments<_$Scalars>;
+        $: dismissChannelInvitationFromInbox$Arguments<_$Scalars>;
     }
     interface dismissChannelInvitationFromInbox$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        /**
-         * @deprecated use id instead
-         */
-        channelInvitationId?: string | undefined | null;
-        id?: string | undefined | null;
+        channelInvitationId: string;
     }
     /**
      * This is the "expanded" version of the `dismissChannelInvitationFromInbox` type. It is identical except for the fact
      * that IDEs will display its contents (a union type) directly, rather than the name of this type.
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
-    type dismissChannelInvitationFromInbox$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>>;
+    type dismissChannelInvitationFromInbox$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>>;
     type updateChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = updateChannelInvitation$SelectionSet<_$Scalars>;
     interface updateChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
@@ -3199,26 +3187,22 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type updateChannel$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<updateChannel$SelectionSet<_$Scalars>>;
-    type unarchiveChannelForMe<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | unarchiveChannelForMe$SelectionSet<_$Scalars>;
+    type unarchiveChannelForMe<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = unarchiveChannelForMe$SelectionSet<_$Scalars>;
     interface unarchiveChannelForMe$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `unarchiveChannelForMe` field. No arguments are required so you may omit this.
+         * Arguments for `unarchiveChannelForMe` field. All arguments are required so you must include this.
          */
-        $?: unarchiveChannelForMe$Arguments<_$Scalars>;
+        $: unarchiveChannelForMe$Arguments<_$Scalars>;
     }
     interface unarchiveChannelForMe$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        /**
-         * @deprecated use id instead
-         */
-        channelId?: string | undefined | null;
-        id?: string | undefined | null;
+        channelId: string;
     }
     /**
      * This is the "expanded" version of the `unarchiveChannelForMe` type. It is identical except for the fact
      * that IDEs will display its contents (a union type) directly, rather than the name of this type.
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
-    type unarchiveChannelForMe$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | unarchiveChannelForMe$SelectionSet<_$Scalars>>;
+    type unarchiveChannelForMe$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<unarchiveChannelForMe$SelectionSet<_$Scalars>>;
     type addChannelMessageEvent<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = addChannelMessageEvent$SelectionSet<_$Scalars>;
     interface addChannelMessageEvent$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**

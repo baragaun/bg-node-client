@@ -94,10 +94,21 @@ const createPurchaseOrder = async (
     const findResult = await findById<PurchaseOrder>(
       purchaseOrderId,
       ModelType.PurchaseOrder,
-      { updatedAt: true },
     );
 
-    return { ...findResult, serviceRequest };
+    if (findResult.error) {
+      logger.error('fsdata.createPurchaseOrder: error loading purchase order',
+        { error: findResult.error, purchaseOrderId });
+      return { error: findResult.error, serviceRequest };
+    }
+
+    if (!findResult.object) {
+      logger.error('fsdata.createPurchaseOrder: purchase order not found',
+        { purchaseOrderId });
+      return { error: ErrorCode.NotFound, serviceRequest };
+    }
+
+    return { object: findResult.object, serviceRequest };
   } catch (error) {
     logger.error('fsdata.createPurchaseOrder: failed', { error, headers: helpers.headers() });
     return { error: (error as Error).message };

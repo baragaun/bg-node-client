@@ -2990,7 +2990,7 @@ export type Mutation = {
 
 
 export type MutationAcceptChannelInvitationArgs = {
-  id?: InputMaybe<Scalars['String']['input']>;
+  channelInvitationId: Scalars['String']['input'];
 };
 
 
@@ -3162,7 +3162,7 @@ export type MutationCreateWalletItemArgs = {
 
 
 export type MutationDeclineChannelInvitationArgs = {
-  id?: InputMaybe<Scalars['String']['input']>;
+  channelInvitationId: Scalars['String']['input'];
   reasonTextId: DeclineChannelInvitationReasonTextId;
 };
 
@@ -3322,7 +3322,7 @@ export type MutationDeleteWalletItemArgs = {
 
 
 export type MutationDismissChannelInvitationFromInboxArgs = {
-  id?: InputMaybe<Scalars['String']['input']>;
+  channelInvitationId: Scalars['String']['input'];
 };
 
 
@@ -3426,7 +3426,7 @@ export type MutationStartVerifyPhoneNumberArgs = {
 
 
 export type MutationUnarchiveChannelForMeArgs = {
-  id?: InputMaybe<Scalars['String']['input']>;
+  channelId: Scalars['String']['input'];
 };
 
 
