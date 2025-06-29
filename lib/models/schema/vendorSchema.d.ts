@@ -1,4 +1,4 @@
-export declare const VendorSchema: {
+export declare const BrandSchema: {
     title: string;
     version: number;
     primaryKey: string;

@@ -19,6 +19,8 @@ import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
 import { SignUpUserInput } from './SignUpUserInput.js';
+import { Brand } from '../models/Brand.js';
+import { BrandListFilter } from '../models/BrandListFilter.js';
 import { Channel } from '../models/Channel.js';
 import { ChannelInvitation } from '../models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../models/ChannelInvitationListFilter.js';
@@ -45,8 +47,6 @@ import { User } from '../models/User.js';
 import { UserInbox } from '../models/UserInbox.js';
 import { UserListFilter } from '../models/UserListFilter.js';
 import { UserListItem } from '../models/UserListItem.js';
-import { Vendor } from '../models/Vendor.js';
-import { VendorListFilter } from '../models/VendorListFilter.js';
 import { Wallet } from '../models/Wallet.js';
 
 export interface Operations {
@@ -429,14 +429,14 @@ export interface Operations {
     ) => Promise<QueryResult<UserListItem>>
   };
 
-  vendor: {
-    findVendors: (
-      filter: VendorListFilter | null | undefined,
-      match: Partial<Vendor> | null | undefined,
-      selector: MangoQueryTypes<Vendor> | null | undefined,
+  brand: {
+    findBrands: (
+      filter: BrandListFilter | null | undefined,
+      match: Partial<Brand> | null | undefined,
+      selector: MangoQueryTypes<Brand> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
-    ) => Promise<QueryResult<Vendor>>;
+    ) => Promise<QueryResult<Brand>>;
   };
 
   wallet: {

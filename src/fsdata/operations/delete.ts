@@ -8,6 +8,7 @@ import { QueryResult } from '../../types/QueryResult.js';
 import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
 import { modelCrudOperations } from '../helpers/modelCrudOperations.js';
+import modelFields from '../helpers/modelFields.js';
 
 const deleteFnc = async (
   id: string,
@@ -24,20 +25,31 @@ const deleteFnc = async (
     const client = graffleClientStore.get();
     const fieldDef = modelCrudOperations[modelType];
 
-    if (!fieldDef) {
+    if (!fieldDef || !fieldDef.delete || !fieldDef.delete.field) {
       logger.error('fsdata.delete: invalid modelType provided', { modelType });
       return { error: 'invalid-model-type' };
     }
 
-    const args = { $: { deletePhysically } };
+    let args: any = {
+      $: {
+        [fieldDef.keyFieldName || 'id']: id,
+        deletePhysically,
+      },
+    };
 
-    if (fieldDef.keyFieldName) {
-      args['$'][fieldDef.keyFieldName] = id;
+    if (fieldDef.delete.returnsServiceRequest) {
+      args = { ...args, ...modelFields.serviceRequest };
     }
 
-    logger.debug('fsdata.delete: sending.', { args });
+    logger.debug('fsdata.delete: sending.', { id, modelType, fieldDef, args });
 
-    const response = await client.mutation[fieldDef.deleteField](args);
+    const response = await client.mutation[fieldDef.delete.field](args);
+
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.delete: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
 
     logger.debug('fsdata.delete: response received.', { response });
 
@@ -46,12 +58,12 @@ const deleteFnc = async (
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
-    if (!response.data[fieldDef.deleteField]) {
+    if (!response.data[fieldDef.delete.field]) {
       logger.error('fsdata.delete: invalid response.');
       return { error: 'system-error' };
     }
 
-    return { serviceRequest: response.data[fieldDef.deleteField] };
+    return { serviceRequest: response.data[fieldDef.delete.field] };
   } catch (error) {
     logger.error('delete: error', { error, headers: helpers.headers() });
     return null;

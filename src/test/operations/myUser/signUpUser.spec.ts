@@ -6,7 +6,7 @@ import chance, {
   uniqueUserHandle,
 } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 
 describe('signUpUser', () => {
   test('should sign up a user with valid input', async () => {

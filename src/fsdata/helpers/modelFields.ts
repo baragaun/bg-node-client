@@ -176,7 +176,7 @@ const giftCardProduct = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-  vendorId: true,
+  brandId: true,
   name: true,
   description: true,
   categories: true,
@@ -391,7 +391,11 @@ const serviceRequest = {
 
   deviceUuid: true,
   errorCode: true,
-  events: true,
+  events: {
+    time: true,
+    modelEventType: true,
+    message: true,
+  },
   expiresAt: true,
   finishedAt: true,
   message: true,
@@ -779,7 +783,7 @@ const userInbox = {
   },
 };
 
-const vendor = {
+const brand = {
   id: true,
   adminNotes: true,
   createdAt: true,
@@ -814,7 +818,7 @@ const walletItem = {
 
   walletId: true,
   productId: true,
-  vendorId: true,
+  brandId: true,
   name: true,
   price: true,
   balance: true,
@@ -860,7 +864,7 @@ const modelFields = {
   user,
   userInbox,
   userListItem,
-  vendor,
+  brand,
   wallet,
   walletItem,
 };

@@ -45,6 +45,12 @@ const unblockUserForMe = async (
 
     const response: ResponseDataType = await client.mutation.unblockUserForMe({ $: args });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.unblockUserForMe: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.unblockUserForMe: response received.', { response });
 
     if (response.errors) {

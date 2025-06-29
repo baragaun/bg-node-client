@@ -64,7 +64,7 @@ export declare const PurchaseOrderItemSchema: {
             type: string;
             maxLength: number;
         };
-        vendorId: {
+        brandId: {
             type: string;
             maxLength: number;
         };

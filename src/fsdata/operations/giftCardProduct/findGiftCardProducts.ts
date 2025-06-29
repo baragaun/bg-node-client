@@ -45,6 +45,12 @@ const findGiftCardProducts = async (
       ...modelFields.giftCardProduct,
     });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.findGiftCardProducts: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.findGiftCardProducts response:', { response });
 
     return {

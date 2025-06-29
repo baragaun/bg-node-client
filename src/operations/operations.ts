@@ -1,4 +1,5 @@
 import { Operations } from '../types/Operations.js';
+import findBrands from './brand/findBrands.js';
 import createChannel from './channel/createChannel.js';
 import deleteChannel from './channel/deleteChannel.js';
 import findChannelById from './channel/findChannelById.js';
@@ -72,7 +73,6 @@ import updateShoppingCartItem from './shoppingCartItem/updateShoppingCartItem.js
 import update from './update.js';
 import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
-import findVendors from './vendor/findVendors.js';
 import findMyWallet from './wallet/findMyWallet.js';
 
 const operations: Operations = {
@@ -186,8 +186,8 @@ const operations: Operations = {
     findUsers,
   },
 
-  vendor: {
-    findVendors,
+  brand: {
+    findBrands: findBrands,
   },
 
   wallet: {

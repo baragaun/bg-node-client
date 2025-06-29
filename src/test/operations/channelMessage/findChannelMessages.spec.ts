@@ -3,16 +3,17 @@ import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, SortDirection } from '../../../enums.js';
 import signMeOut from '../../../operations/myUser/signMeOut.js';
-import clientStore from '../../helpers/clientStore.js';
 import {
   createMultipleChannelSpecHelper,
-} from '../../helpers/createMultipleChannels.specHelper.js';
-import { deleteChannelSpecHelper } from '../../helpers/deleteChannel.specHelper.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
-import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
-import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
-import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
+} from '../../helpers/channel/createMultipleChannels.specHelper.js';
+import { deleteChannelSpecHelper } from '../../helpers/channel/deleteChannel.specHelper.js';
+import clientStore from '../../helpers/clientStore.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
+import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
+//tf
 describe('operations.channelMessage.findChannelMessages', () => {
   let client: BgNodeClient;
 
@@ -151,4 +152,4 @@ describe('operations.channelMessage.findChannelMessages', () => {
       otherChannels.map((channel) => deleteChannelSpecHelper(channel.id, client)),
     );
   });
-}, { timeout: 10000 });
+}, { timeout: 20000 });

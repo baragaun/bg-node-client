@@ -45,6 +45,12 @@ const createPurchaseOrder = async (
       ...modelFields.serviceRequest,
     });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.createPurchaseOrder: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.createPurchaseOrder response:', { response });
 
     const serviceRequest = response.data.createPurchaseOrder;

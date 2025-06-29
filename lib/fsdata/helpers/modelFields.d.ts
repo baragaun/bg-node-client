@@ -170,7 +170,7 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        vendorId: boolean;
+        brandId: boolean;
         name: boolean;
         description: boolean;
         categories: boolean;
@@ -436,7 +436,11 @@ declare const modelFields: {
         deletedBy: boolean;
         deviceUuid: boolean;
         errorCode: boolean;
-        events: boolean;
+        events: {
+            time: boolean;
+            modelEventType: boolean;
+            message: boolean;
+        };
         expiresAt: boolean;
         finishedAt: boolean;
         message: boolean;
@@ -736,7 +740,7 @@ declare const modelFields: {
         createdAt: boolean;
         updatedAt: boolean;
     };
-    vendor: {
+    brand: {
         id: boolean;
         adminNotes: boolean;
         createdAt: boolean;
@@ -779,7 +783,7 @@ declare const modelFields: {
         deletedBy: boolean;
         walletId: boolean;
         productId: boolean;
-        vendorId: boolean;
+        brandId: boolean;
         name: boolean;
         price: boolean;
         balance: boolean;

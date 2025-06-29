@@ -22,6 +22,12 @@ const endMySession = async (): Promise<QueryResult<void>> => {
 
     const response: ResponseDataType = await client.mutation.endMySession();
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.endMySession: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.endMySession: response received.', { response });
 
     if (response.errors) {

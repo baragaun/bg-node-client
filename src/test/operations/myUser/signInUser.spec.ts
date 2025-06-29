@@ -6,10 +6,10 @@ import chance, { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.j
 import { MyUser } from '../../../models/MyUser.js';
 import findById from '../../../operations/findById.js';
 import clientStore from '../../helpers/clientStore.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
-import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
-import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
-import { verifyUserPropsSpecHelper } from '../../helpers/verifyUserProps.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
+import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
+import { verifyUserPropsSpecHelper } from '../../helpers/user/verifyUserProps.specHelper.js';
 
 describe('operations.myUser.signInUser', () => {
   let client: BgNodeClient;

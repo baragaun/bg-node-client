@@ -82,9 +82,11 @@ const update = async <T extends Model = Model>(
 
     logger.debug('fsdata.update response:', { response: updateResponse });
 
-    if (updateResponse.errors) {
-      logger.error('fsdata.update: failed with error', { error: updateResponse.errors });
-      return { error: updateResponse.errors.map(e => e.message).join(', ')};
+
+    if (Array.isArray(updateResponse.errors) && updateResponse.errors.length > 0) {
+      logger.error('fsdata.createChannelInvitation: errors received',
+        { errorCode: (updateResponse.errors['0'] as any).extensions.code, errors: JSON.stringify(updateResponse.errors) });
+      return { error: updateResponse.errors.map(error => error.message).join(', ') };
     }
 
     if (!updateResponse.data[fieldDef.updateField]) {

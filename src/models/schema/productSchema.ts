@@ -55,11 +55,11 @@ export const ProductSchema = {
     importId: {
       type: 'string',
     },
-    vendorId: {
+    brandId: {
       type: 'string',
       maxLength: 32,
     },
-    vendorImportId: {
+    brandImportId: {
       type: 'string',
       nullable: true,
     },

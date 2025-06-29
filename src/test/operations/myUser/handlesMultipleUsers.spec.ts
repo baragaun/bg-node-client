@@ -5,10 +5,10 @@ import { CachePolicy, ModelType, UserIdentType } from '../../../enums.js';
 import { MyUser } from '../../../models/MyUser.js';
 import findById from '../../../operations/findById.js';
 import clientStore from '../../helpers/clientStore.js';
-import { createMultipleUsersSpecHelper } from '../../helpers/createMultipleUsers.specHelper.js';
-import { deleteMultipleUsersSpecHelper } from '../../helpers/deleteMultipleUsers.specHelper.js';
-import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
-import { signMeOutSpecHelper } from '../../helpers/signMeOut.specHelper.js';
+import { createMultipleUsersSpecHelper } from '../../helpers/user/createMultipleUsers.specHelper.js';
+import { deleteMultipleUsersSpecHelper } from '../../helpers/user/deleteMultipleUsers.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
+import { signMeOutSpecHelper } from '../../helpers/user/signMeOut.specHelper.js';
 
 describe('operations.myUser.signInUser', () => {
   test('handles multiple users', async () => {

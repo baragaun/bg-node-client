@@ -117,7 +117,7 @@ export declare const WalletSchema: {
                         type: string;
                         maxLength: number;
                     };
-                    vendorId: {
+                    brandId: {
                         type: string;
                         maxLength: number;
                     };

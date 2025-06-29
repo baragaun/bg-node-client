@@ -222,13 +222,15 @@ export enum ModelEventType {
 }
 
 export enum ModelType {
+  Brand = 'Brand',
   Channel = 'Channel',
   ChannelInvitation = 'ChannelInvitation',
   ChannelMessage = 'ChannelMessage',
   ChannelParticipant = 'ChannelParticipant',
   ClientInfo = 'ClientInfo',
-  GiftCard = 'GiftCard',
+  GiftCardProduct = 'GiftCardProduct',
   MyUser = 'MyUser',
+  Product = 'Product',
   PurchaseOrder = 'PurchaseOrder',
   PurchaseOrderItem = 'PurchaseOrderItem',
   ServiceRequest = 'ServiceRequest',
@@ -239,7 +241,6 @@ export enum ModelType {
   unset = 'unset',
   User = 'User',
   UserInbox = 'UserInbox',
-  Vendor = 'Vendor',
   Wallet = 'Wallet',
   WalletItem = 'WalletItem',
 }

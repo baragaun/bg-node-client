@@ -44,6 +44,12 @@ const declineChannelInvitation = async (
 
     const response: ResponseDataType = await client.mutation.declineChannelInvitation({ $: args });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.declineChannelInvitation: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.declineChannelInvitation response:', { response });
 
     if (response.errors) {

@@ -1081,6 +1081,23 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  findBrands: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findBrands<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findBrands: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findBrands'
+      >
+    >
+  >;
+
   findGiftCardProducts: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -1131,23 +1148,6 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'findProductCategories'
-      >
-    >
-  >;
-
-  findVendors: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findVendors<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findVendors: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findVendors'
       >
     >
   >;
@@ -1622,6 +1622,23 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'findPurchaseOrderItems'
+      >
+    >
+  >;
+
+  findPurchaseOrderById: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findPurchaseOrderById<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findPurchaseOrderById: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findPurchaseOrderById'
       >
     >
   >;
@@ -2468,6 +2485,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  deleteChannelInvitationV2: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.deleteChannelInvitationV2<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteChannelInvitationV2: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteChannelInvitationV2'
+      >
+    >
+  >;
+
   dismissChannelInvitationFromInbox: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -2511,10 +2548,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   archiveChannelForMe: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet?: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.archiveChannelForMe<$Context['scalars']>
-      >,
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.archiveChannelForMe<$Context['scalars']>>,
     ) => Promise<
       & (null | {})
       & $$Utilities.HandleOutputDocumentBuilderRootField<
@@ -2548,7 +2582,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   deleteChannel: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteChannel<$Context['scalars']>>,
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteChannel<$Context['scalars']>>,
     ) => Promise<
       & (null | {})
       & $$Utilities.HandleOutputDocumentBuilderRootField<
@@ -2558,6 +2592,23 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'deleteChannel'
+      >
+    >
+  >;
+
+  deleteChannelV2: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteChannelV2<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteChannelV2: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteChannelV2'
       >
     >
   >;
@@ -2679,6 +2730,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  deleteChannelMessageV2: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.deleteChannelMessageV2<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteChannelMessageV2: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteChannelMessageV2'
+      >
+    >
+  >;
+
   updateChannelMessage: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -2735,6 +2806,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'deleteChannelParticipant'
+      >
+    >
+  >;
+
+  deleteChannelParticipantV2: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.deleteChannelParticipantV2<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteChannelParticipantV2: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteChannelParticipantV2'
       >
     >
   >;
@@ -3504,7 +3595,7 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
   deleteMyUser: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUser<$Context['scalars']>>,
+      selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUser<$Context['scalars']>>,
     ) => Promise<
       & (null | {})
       & $$Utilities.HandleOutputDocumentBuilderRootField<

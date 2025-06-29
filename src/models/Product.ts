@@ -3,8 +3,8 @@ import { BaseModel } from './BaseModel.js';
 export class Product extends BaseModel {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public importId = '';
-  public vendorId = '';
-  public vendorImportId?: string | null;
+  public brandId = '';
+  public brandImportId?: string | null;
   public name = '';
   public description?: string | null;
   public categories?: string[] | null;
@@ -24,11 +24,11 @@ export class Product extends BaseModel {
       if (attributes.importId !== undefined) {
         this.importId = attributes.importId;
       }
-      if (attributes.vendorId !== undefined) {
-        this.vendorId = attributes.vendorId;
+      if (attributes.brandId !== undefined) {
+        this.brandId = attributes.brandId;
       }
-      if (attributes.vendorImportId !== undefined) {
-        this.vendorImportId = attributes.vendorImportId;
+      if (attributes.brandImportId !== undefined) {
+        this.brandImportId = attributes.brandImportId;
       }
       if (attributes.name !== undefined) {
         this.name = attributes.name;

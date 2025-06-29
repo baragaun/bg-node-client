@@ -2,9 +2,9 @@ import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import clientStore from '../../helpers/clientStore.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
-import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
-import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
 describe('operations.myUser.verifyMyPassword', () => {
   let client: BgNodeClient;

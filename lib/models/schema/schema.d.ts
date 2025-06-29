@@ -1593,7 +1593,7 @@ declare const schema: {
                             type: string;
                             maxLength: number;
                         };
-                        vendorId: {
+                        brandId: {
                             type: string;
                             maxLength: number;
                         };
@@ -1678,7 +1678,7 @@ declare const schema: {
                 type: string;
                 maxLength: number;
             };
-            vendorId: {
+            brandId: {
                 type: string;
                 maxLength: number;
             };
@@ -2855,7 +2855,7 @@ declare const schema: {
                             type: string;
                             maxLength: number;
                         };
-                        vendorId: {
+                        brandId: {
                             type: string;
                             maxLength: number;
                         };
@@ -3014,7 +3014,7 @@ declare const schema: {
                 type: string;
                 maxLength: number;
             };
-            vendorId: {
+            brandId: {
                 type: string;
                 maxLength: number;
             };

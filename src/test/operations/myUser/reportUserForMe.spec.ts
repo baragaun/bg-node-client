@@ -4,11 +4,11 @@ import { BgNodeClient } from '../../../BgNodeClient.js';
 import { ReportUserReasonTextId } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import { createMultipleUsersSpecHelper } from '../../helpers/createMultipleUsers.specHelper.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
-import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
-import { reportUserForMeSpecHelper } from '../../helpers/reportUserForMe.specHelper.js';
-import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
+import { createMultipleUsersSpecHelper } from '../../helpers/user/createMultipleUsers.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
+import { reportUserForMeSpecHelper } from '../../helpers/user/reportUserForMe.specHelper.js';
+import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 
 describe('operations.myUser.reportUserForMe', () => {
   let client: BgNodeClient;

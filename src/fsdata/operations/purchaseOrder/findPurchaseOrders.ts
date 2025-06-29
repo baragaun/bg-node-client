@@ -44,6 +44,12 @@ const findPurchaseOrders = async (
       ...modelFields.purchaseOrder,
     });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.findPurchaseOrders: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.findPurchaseOrders response:', { response });
 
     return {

@@ -31,6 +31,12 @@ const startMySession = async (
     const args: MutationStartMySessionArgs = { deviceUuid, pushNotificationToken };
     const response: ResponseDataType = await client.mutation.startMySession({ $: args });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.startMySession: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.startMySession: response received.', { response });
 
     if (response.errors) {

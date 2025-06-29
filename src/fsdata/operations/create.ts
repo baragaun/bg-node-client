@@ -29,6 +29,12 @@ const create = async <T extends BaseModel = BaseModel>(
 
     const response = await client.mutation.create({ $: args, ...fieldDef.selections });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.create: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.create response:', { response });
 
     return {
