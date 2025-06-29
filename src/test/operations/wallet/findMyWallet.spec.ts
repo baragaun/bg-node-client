@@ -5,8 +5,8 @@ import { CachePolicy } from '../../../enums.js';
 import { MyUser } from '../../../models/MyUser.js';
 // import factories from '../../factories/factories.js';
 import clientStore from '../../helpers/clientStore.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
-import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
 describe('operations.wallet.findMyWallet', () => {
   let client: BgNodeClient;

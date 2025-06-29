@@ -4,7 +4,7 @@ export declare class WalletItem extends BaseModel {
     walletId: string;
     productId: string;
     purchaseOrderItemId: string;
-    vendorId: string;
+    brandId: string;
     name: string;
     price: number;
     initialBalance: number;

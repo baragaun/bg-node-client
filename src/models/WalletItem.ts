@@ -6,7 +6,7 @@ export class WalletItem extends BaseModel {
   public walletId = '';
   public productId = '';
   public purchaseOrderItemId = '';
-  public vendorId = '';
+  public brandId = '';
   public name = '';
   public price = 0;
   public initialBalance = 0;
@@ -44,8 +44,8 @@ export class WalletItem extends BaseModel {
       if (attributes.purchaseOrderItemId !== undefined) {
         this.purchaseOrderItemId = attributes.purchaseOrderItemId;
       }
-      if (attributes.vendorId !== undefined) {
-        this.vendorId = attributes.vendorId;
+      if (attributes.brandId !== undefined) {
+        this.brandId = attributes.brandId;
       }
       if (attributes.name !== undefined) {
         this.name = attributes.name;

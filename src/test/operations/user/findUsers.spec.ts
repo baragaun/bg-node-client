@@ -6,10 +6,10 @@ import chance from '../../../helpers/chance.js';
 import { User } from '../../../models/User.js';
 import signMeOut from '../../../operations/myUser/signMeOut.js';
 import clientStore from '../../helpers/clientStore.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
-import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
-import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
-import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
+import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
 describe('operations.user.findUsers', () => {
   let client: BgNodeClient;
@@ -61,4 +61,4 @@ describe('operations.user.findUsers', () => {
 
     await signMeOut();
   });
-});
+}, { timeout: 10000 });

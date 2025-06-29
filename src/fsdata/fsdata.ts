@@ -1,3 +1,4 @@
+import findBrands from './operations/brand/findBrands.js';
 import createChannel from './operations/channel/createChannel.js';
 import findChannelById from './operations/channel/findChannelById.js';
 import findChannels from './operations/channel/findChannels.js';
@@ -50,7 +51,6 @@ import updateShoppingCartItem from './operations/shoppingCartItem/updateShopping
 import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
 import findUsers from './operations/user/findUsers.js';
-import findVendors from './operations/vendor/findVendors.js';
 import findMyWallet from './operations/wallet/findMyWallet.js';
 import findWalletItems from './operations/walletItem/findWalletItems.js';
 
@@ -144,8 +144,8 @@ const fsdata = {
     findUsers,
   },
 
-  vendor: {
-    findVendors,
+  brand: {
+    findBrands: findBrands,
   },
 
   wallet: {

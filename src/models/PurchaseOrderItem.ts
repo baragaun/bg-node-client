@@ -5,7 +5,7 @@ export class PurchaseOrderItem extends BaseModel {
   public purchaseOrderId = '';
   public shoppingCartItemId = '';
   public productId = '';
-  public vendorId = '';
+  public brandId = '';
   public quantity = 0;
   public price = 0;
   public totalPrice = 0;
@@ -25,8 +25,8 @@ export class PurchaseOrderItem extends BaseModel {
       if (attributes.productId !== undefined) {
         this.productId = attributes.productId;
       }
-      if (attributes.vendorId !== undefined) {
-        this.vendorId = attributes.vendorId;
+      if (attributes.brandId !== undefined) {
+        this.brandId = attributes.brandId;
       }
       if (
         attributes.quantity === null ||

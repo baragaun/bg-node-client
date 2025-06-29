@@ -1,8 +1,8 @@
 import { BaseModel } from './BaseModel.js';
 export declare class Product extends BaseModel {
     importId: string;
-    vendorId: string;
-    vendorImportId?: string | null;
+    brandId: string;
+    brandImportId?: string | null;
     name: string;
     description?: string | null;
     categories?: string[] | null;

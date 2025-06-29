@@ -11,6 +11,8 @@ import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
 import { SignUpUserInput } from './SignUpUserInput.js';
+import { Brand } from '../models/Brand.js';
+import { BrandListFilter } from '../models/BrandListFilter.js';
 import { Channel } from '../models/Channel.js';
 import { ChannelInvitation } from '../models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../models/ChannelInvitationListFilter.js';
@@ -28,6 +30,7 @@ import { ProductCategory } from '../models/ProductCategory.js';
 import { ProductCategoryListFilter } from '../models/ProductCategoryListFilter.js';
 import { PurchaseOrder } from '../models/PurchaseOrder.js';
 import { PurchaseOrderListFilter } from '../models/PurchaseOrderListFilter.js';
+import { ServiceRequest } from '../models/ServiceRequest.js';
 import { ShoppingCart } from '../models/ShoppingCart.js';
 import { ShoppingCartItem } from '../models/ShoppingCartItem.js';
 import { SidMultiStepAction } from '../models/SidMultiStepAction.js';
@@ -36,12 +39,10 @@ import { User } from '../models/User.js';
 import { UserInbox } from '../models/UserInbox.js';
 import { UserListFilter } from '../models/UserListFilter.js';
 import { UserListItem } from '../models/UserListItem.js';
-import { Vendor } from '../models/Vendor.js';
-import { VendorListFilter } from '../models/VendorListFilter.js';
 import { Wallet } from '../models/Wallet.js';
 export interface Operations {
     count: <T extends Model = Model>(query: MangoQuery<T> | null | undefined, match: Partial<T> | null | undefined, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
-    delete: (id: string, modelType: ModelType) => Promise<QueryResult<void>>;
+    delete: (id: string, modelType: ModelType, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
     find: <T extends Model = Model>(query: MangoQuery<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findByMatch: <T extends Model = Model>(match: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     findById: <T extends Model = Model>(id: string, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
@@ -51,8 +52,8 @@ export interface Operations {
     update: <T extends Model = Model>(changes: Partial<T>, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<T>>;
     channel: {
         createChannel: (attributes: Partial<Channel>) => Promise<QueryResult<Channel>>;
-        deleteChannel: (id: string) => Promise<QueryResult<void>>;
-        findChannelById: (id: string, options: FindChannelOptions, queryOptions: QueryOptions) => Promise<FindChannelResult>;
+        deleteChannel: (id: string, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
+        findChannelById: (id: string, options: FindChannelOptions, queryOptions?: QueryOptions) => Promise<FindChannelResult>;
         findChannels: (filter: ChannelListFilter, match: Partial<Channel>, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
         findMyChannels: (participantLimit: number | undefined, addLatestMessage: boolean | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelListItem>>;
         findMyArchivedChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
@@ -60,28 +61,28 @@ export interface Operations {
         updateChannel: (changes: Partial<Channel>, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
     };
     channelInvitation: {
-        acceptChannelInvitation: (id: string) => Promise<QueryResult<ChannelInvitation>>;
+        acceptChannelInvitation: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
         createChannelInvitation: (attributes: Partial<ChannelInvitation>) => Promise<QueryResult<ChannelInvitation>>;
         declineChannelInvitation: (id: string, reasonTextId: DeclineChannelInvitationReasonTextIdFromClient) => Promise<QueryResult<ChannelInvitation>>;
-        deleteChannelInvitation: (id: string) => Promise<QueryResult<void>>;
+        deleteChannelInvitation: (id: string, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
         findChannelInvitations: (filter: ChannelInvitationListFilter, match: Partial<ChannelInvitation>, selector: MangoQueryTypes<ChannelInvitation> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
         findChannelInvitationsForUser: (userId: string, onlyUnseen: boolean, onlyPending: boolean, direction: ChannelInvitationDirection, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
         updateChannelInvitation: (changes: Partial<ChannelInvitation>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelInvitation>>;
     };
     channelMessage: {
         createChannelMessage: (attributes: Partial<ChannelMessage>) => Promise<QueryResult<ChannelMessage>>;
-        deleteChannelMessage: (id: string) => Promise<QueryResult<void>>;
+        deleteChannelMessage: (id: string, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
         findChannelMessages: (filter: ChannelMessageListFilter, match: Partial<ChannelMessage>, selector: MangoQueryTypes<ChannelMessage> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelMessage>>;
         updateChannelMessage: (changes: Partial<ChannelMessage>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelMessage>>;
     };
     channelParticipant: {
         createChannelParticipant: (attributes: Partial<ChannelParticipant>) => Promise<QueryResult<ChannelParticipant>>;
-        deleteChannelParticipant: (id: string) => Promise<QueryResult<void>>;
+        deleteChannelParticipant: (id: string, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
         findChannelParticipants: (filter: ChannelParticipantListFilter, match: Partial<ChannelParticipant>, selector: MangoQueryTypes<ChannelParticipant> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelParticipant>>;
         updateChannelParticipant: (changes: Partial<ChannelParticipant>, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelParticipant>>;
     };
     giftCardProduct: {
-        findGiftCardProducts: (filter: GiftCardProductListFilter | null | undefined, match: Partial<GiftCardProduct> | null | undefined, selector: MangoQueryTypes<GiftCardProduct> | null | undefined, options: FindObjectsOptions, queryOptions: QueryOptions) => Promise<QueryResult<GiftCardProduct>>;
+        findGiftCardProducts: (filter: GiftCardProductListFilter | null | undefined, match: Partial<GiftCardProduct> | null | undefined, selector: MangoQueryTypes<GiftCardProduct> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<GiftCardProduct>>;
     };
     myUser: {
         blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: QueryOptions) => Promise<QueryResult<MyUser>>;
@@ -112,13 +113,13 @@ export interface Operations {
         abortMultiStepAction: (actionId: string) => boolean;
         addMultiStepActionListener: (actionId: string, listener: MultiStepActionListener) => string | null;
         findMyActiveMultiStepActions: () => Promise<QueryResult<SidMultiStepAction>>;
-        getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined, queryOptions: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
+        getMultiStepActionProgress: (actionId: string, confirmToken: string | undefined, queryOptions?: QueryOptions) => Promise<QueryResult<MultiStepActionProgressResult>>;
         removeMultiStepActionListener: (actionId: string, id: string) => boolean;
         sendMultiStepActionNotification: (actionId: string, email: string | undefined, phoneNumber: string | undefined, notificationMethod: NotificationMethod) => Promise<QueryResult<string>>;
         verifyMultiStepActionToken: (actionId: string, confirmToken: string, newPassword?: string) => Promise<QueryResult<SidMultiStepActionProgress>>;
     };
     productCategory: {
-        findProductCategories: (filter: ProductCategoryListFilter | null | undefined, match: Partial<ProductCategory> | null | undefined, selector: MangoQueryTypes<ProductCategory> | null | undefined, options: FindObjectsOptions, queryOptions: QueryOptions) => Promise<QueryResult<ProductCategory>>;
+        findProductCategories: (filter: ProductCategoryListFilter | null | undefined, match: Partial<ProductCategory> | null | undefined, selector: MangoQueryTypes<ProductCategory> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ProductCategory>>;
     };
     purchaseOrder: {
         createPurchaseOrder: (props: Partial<PurchaseOrder>) => Promise<QueryResult<PurchaseOrder>>;
@@ -130,15 +131,15 @@ export interface Operations {
     };
     shoppingCartItem: {
         createShoppingCartItem: (props: Partial<ShoppingCartItem>) => Promise<QueryResult<ShoppingCartItem>>;
-        deleteShoppingCartItem: (id: string) => Promise<QueryResult<void>>;
-        updateShoppingCartItem: (changes: Partial<ShoppingCartItem>, queryOptions?: QueryOptions) => Promise<QueryResult<ShoppingCartItem>>;
+        deleteShoppingCartItem: (id: string, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
+        updateShoppingCartItem: (changes: Partial<ShoppingCartItem>, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
     };
     user: {
         findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>;
-        findUsers: (filter: UserListFilter | null | undefined, match: Partial<User> | null | undefined, selector: MangoQueryTypes<User> | null | undefined, options: FindObjectsOptions, queryOptions: QueryOptions) => Promise<QueryResult<UserListItem>>;
+        findUsers: (filter: UserListFilter | null | undefined, match: Partial<User> | null | undefined, selector: MangoQueryTypes<User> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<UserListItem>>;
     };
-    vendor: {
-        findVendors: (filter: VendorListFilter | null | undefined, match: Partial<Vendor> | null | undefined, selector: MangoQueryTypes<Vendor> | null | undefined, options: FindObjectsOptions, queryOptions: QueryOptions) => Promise<QueryResult<Vendor>>;
+    brand: {
+        findBrands: (filter: BrandListFilter | null | undefined, match: Partial<Brand> | null | undefined, selector: MangoQueryTypes<Brand> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Brand>>;
     };
     wallet: {
         findMyWallet: (queryOptions?: QueryOptions) => Promise<QueryResult<Wallet>>;

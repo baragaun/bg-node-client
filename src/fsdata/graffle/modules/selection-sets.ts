@@ -403,6 +403,12 @@ export interface Query<
     | Query.userWillReceiveWelcomeMessage<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.userWillReceiveWelcomeMessage<_$Scalars>>;
   /**
+   * Select the `findBrands` field on the `Query` object. Its type is `Brand` (a `OutputObject` kind of type).
+   */
+  findBrands?:
+    | Query.findBrands$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findBrands<_$Scalars>>;
+  /**
    * Select the `findGiftCardProducts` field on the `Query` object. Its type is `GiftCardProduct` (a `OutputObject` kind of type).
    */
   findGiftCardProducts?:
@@ -420,12 +426,6 @@ export interface Query<
   findProductCategories?:
     | Query.findProductCategories$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findProductCategories<_$Scalars>>;
-  /**
-   * Select the `findVendors` field on the `Query` object. Its type is `Vendor` (a `OutputObject` kind of type).
-   */
-  findVendors?:
-    | Query.findVendors$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findVendors<_$Scalars>>;
   /**
    * Select the `findUserSearchById` field on the `Query` object. Its type is `UserSearch` (a `OutputObject` kind of type).
    */
@@ -582,6 +582,12 @@ export interface Query<
   findPurchaseOrderItems?:
     | Query.findPurchaseOrderItems$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findPurchaseOrderItems<_$Scalars>>;
+  /**
+   * Select the `findPurchaseOrderById` field on the `Query` object. Its type is `PurchaseOrder` (a `OutputObject` kind of type).
+   */
+  findPurchaseOrderById?:
+    | Query.findPurchaseOrderById<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findPurchaseOrderById<_$Scalars>>;
   /**
    * Select the `findPurchaseOrders` field on the `Query` object. Its type is `PurchaseOrder` (a `OutputObject` kind of type).
    */
@@ -2696,6 +2702,42 @@ export namespace Query {
 
   // --------------------------------------------------------------------------------------------------
 
+  export type findBrands<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = findBrands$SelectionSet<_$Scalars>;
+
+  export interface findBrands$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$Brand<_$Scalars> {
+    /**
+     * Arguments for `findBrands` field. No arguments are required so you may omit this.
+     */
+    $?: findBrands$Arguments<_$Scalars>;
+  }
+
+  export interface findBrands$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    options?: $NamedTypes.$FindObjectsOptions<_$Scalars> | undefined | null;
+    match?: $NamedTypes.$BrandInput<_$Scalars> | undefined | null;
+    filter?: $NamedTypes.$BrandListFilter<_$Scalars> | undefined | null;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `findBrands` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type findBrands$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    findBrands$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
   export type findGiftCardProducts<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = findGiftCardProducts$SelectionSet<_$Scalars>;
@@ -2787,42 +2829,6 @@ export namespace Query {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     findProductCategories$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type findVendors<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = findVendors$SelectionSet<_$Scalars>;
-
-  export interface findVendors$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$Vendor<_$Scalars> {
-    /**
-     * Arguments for `findVendors` field. No arguments are required so you may omit this.
-     */
-    $?: findVendors$Arguments<_$Scalars>;
-  }
-
-  export interface findVendors$Arguments<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > {
-    options?: $NamedTypes.$FindObjectsOptions<_$Scalars> | undefined | null;
-    match?: $NamedTypes.$VendorInput<_$Scalars> | undefined | null;
-    filter?: $NamedTypes.$VendorListFilter<_$Scalars> | undefined | null;
-  }
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `findVendors` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type findVendors$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    findVendors$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -3656,6 +3662,41 @@ export namespace Query {
 
   // --------------------------------------------------------------------------------------------------
 
+  export type findPurchaseOrderById<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = findPurchaseOrderById$SelectionSet<_$Scalars>;
+
+  export interface findPurchaseOrderById$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$PurchaseOrder<_$Scalars> {
+    /**
+     * Arguments for `findPurchaseOrderById` field. Some (1/2) arguments are required so you must include this.
+     */
+    $: findPurchaseOrderById$Arguments<_$Scalars>;
+  }
+
+  export interface findPurchaseOrderById$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    options?: $NamedTypes.$FindObjectsOptions<_$Scalars> | undefined | null;
+    id: string;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `findPurchaseOrderById` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type findPurchaseOrderById$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    findPurchaseOrderById$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
   export type findPurchaseOrders<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = findPurchaseOrders$SelectionSet<_$Scalars>;
@@ -4173,7 +4214,7 @@ export interface Mutation<
    * Select the `acceptChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   acceptChannelInvitation?:
-    | Mutation.acceptChannelInvitation$Expanded<_$Scalars>
+    | Mutation.acceptChannelInvitation<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptChannelInvitation<_$Scalars>>;
   /**
    * Select the `createChannelInvitation` field on the `Mutation` object. Its type is `ChannelInvitation` (a `OutputObject` kind of type).
@@ -4194,10 +4235,16 @@ export interface Mutation<
     | Mutation.deleteChannelInvitation<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteChannelInvitation<_$Scalars>>;
   /**
+   * Select the `deleteChannelInvitationV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+   */
+  deleteChannelInvitationV2?:
+    | Mutation.deleteChannelInvitationV2<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteChannelInvitationV2<_$Scalars>>;
+  /**
    * Select the `dismissChannelInvitationFromInbox` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   dismissChannelInvitationFromInbox?:
-    | Mutation.dismissChannelInvitationFromInbox$Expanded<_$Scalars>
+    | Mutation.dismissChannelInvitationFromInbox<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.dismissChannelInvitationFromInbox<_$Scalars>>;
   /**
    * Select the `updateChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
@@ -4209,7 +4256,7 @@ export interface Mutation<
    * Select the `archiveChannelForMe` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   archiveChannelForMe?:
-    | Mutation.archiveChannelForMe$Expanded<_$Scalars>
+    | Mutation.archiveChannelForMe<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.archiveChannelForMe<_$Scalars>>;
   /**
    * Select the `createChannel` field on the `Mutation` object. Its type is `Channel` (a `OutputObject` kind of type).
@@ -4221,8 +4268,14 @@ export interface Mutation<
    * Select the `deleteChannel` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   deleteChannel?:
-    | Mutation.deleteChannel$Expanded<_$Scalars>
+    | Mutation.deleteChannel<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteChannel<_$Scalars>>;
+  /**
+   * Select the `deleteChannelV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+   */
+  deleteChannelV2?:
+    | Mutation.deleteChannelV2<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteChannelV2<_$Scalars>>;
   /**
    * Select the `markChannelMessagesAsSeenByMe` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
@@ -4239,7 +4292,7 @@ export interface Mutation<
    * Select the `unarchiveChannelForMe` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   unarchiveChannelForMe?:
-    | Mutation.unarchiveChannelForMe$Expanded<_$Scalars>
+    | Mutation.unarchiveChannelForMe<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.unarchiveChannelForMe<_$Scalars>>;
   /**
    * Select the `addChannelMessageEvent` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
@@ -4260,6 +4313,12 @@ export interface Mutation<
     | Mutation.deleteChannelMessage<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteChannelMessage<_$Scalars>>;
   /**
+   * Select the `deleteChannelMessageV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+   */
+  deleteChannelMessageV2?:
+    | Mutation.deleteChannelMessageV2<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteChannelMessageV2<_$Scalars>>;
+  /**
    * Select the `updateChannelMessage` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   updateChannelMessage?:
@@ -4277,6 +4336,12 @@ export interface Mutation<
   deleteChannelParticipant?:
     | Mutation.deleteChannelParticipant<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteChannelParticipant<_$Scalars>>;
+  /**
+   * Select the `deleteChannelParticipantV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+   */
+  deleteChannelParticipantV2?:
+    | Mutation.deleteChannelParticipantV2<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteChannelParticipantV2<_$Scalars>>;
   /**
    * Select the `updateChannelParticipant` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
@@ -4527,7 +4592,7 @@ export interface Mutation<
    * Select the `deleteMyUser` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   deleteMyUser?:
-    | Mutation.deleteMyUser<_$Scalars>
+    | Mutation.deleteMyUser$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteMyUser<_$Scalars>>;
   /**
    * Select the `endMySession` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
@@ -4590,13 +4655,13 @@ export interface Mutation<
     | Mutation.createShoppingCartItem<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createShoppingCartItem<_$Scalars>>;
   /**
-   * Select the `deleteShoppingCartItem` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
+   * Select the `deleteShoppingCartItem` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
    */
   deleteShoppingCartItem?:
     | Mutation.deleteShoppingCartItem<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteShoppingCartItem<_$Scalars>>;
   /**
-   * Select the `updateShoppingCartItem` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
+   * Select the `updateShoppingCartItem` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
    */
   updateShoppingCartItem?:
     | Mutation.updateShoppingCartItem<_$Scalars>
@@ -4613,6 +4678,18 @@ export interface Mutation<
   emptyShoppingCart?:
     | Mutation.emptyShoppingCart<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.emptyShoppingCart<_$Scalars>>;
+  /**
+   * Select the `createWalletItem` field on the `Mutation` object. Its type is `WalletItem` (a `OutputObject` kind of type).
+   */
+  createWalletItem?:
+    | Mutation.createWalletItem<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createWalletItem<_$Scalars>>;
+  /**
+   * Select the `deleteWalletItem` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+   */
+  deleteWalletItem?:
+    | Mutation.deleteWalletItem<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteWalletItem<_$Scalars>>;
   /**
    * Select the `updateWalletItem` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
    */
@@ -4885,7 +4962,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteUser` field. Some (2/5) arguments are required so you must include this.
+     * Arguments for `deleteUser` field. Some (1/5) arguments are required so you must include this.
      */
     $: deleteUser$Arguments<_$Scalars>;
   }
@@ -4894,7 +4971,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
     anonymizePersonalData?: boolean | undefined | null;
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     description?: string | undefined | null;
     cause?: string | undefined | null;
     userId: string;
@@ -5130,7 +5207,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `deleteAcademicExperience` field. All arguments are required so you must include this.
+     * Arguments for `deleteAcademicExperience` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteAcademicExperience$Arguments<_$Scalars>;
   }
@@ -5138,7 +5215,7 @@ export namespace Mutation {
   export interface deleteAcademicExperience$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     academicExperienceId: string;
   }
 
@@ -5233,7 +5310,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `deleteBusinessExperience` field. All arguments are required so you must include this.
+     * Arguments for `deleteBusinessExperience` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteBusinessExperience$Arguments<_$Scalars>;
   }
@@ -5241,7 +5318,7 @@ export namespace Mutation {
   export interface deleteBusinessExperience$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     businessExperienceId: string;
   }
 
@@ -5336,7 +5413,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `deleteCompany` field. All arguments are required so you must include this.
+     * Arguments for `deleteCompany` field. Some (2/3) arguments are required so you must include this.
      */
     $: deleteCompany$Arguments<_$Scalars>;
   }
@@ -5345,7 +5422,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
     anonymizePersonalData: boolean;
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     companyId: string;
   }
 
@@ -5602,7 +5679,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$UploadedAsset<_$Scalars> {
     /**
-     * Arguments for `deleteUploadedAsset` field. All arguments are required so you must include this.
+     * Arguments for `deleteUploadedAsset` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteUploadedAsset$Arguments<_$Scalars>;
   }
@@ -5610,7 +5687,7 @@ export namespace Mutation {
   export interface deleteUploadedAsset$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     id: string;
   }
 
@@ -5699,27 +5776,21 @@ export namespace Mutation {
 
   export type acceptChannelInvitation<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | acceptChannelInvitation$SelectionSet<_$Scalars>;
+  > = acceptChannelInvitation$SelectionSet<_$Scalars>;
 
   export interface acceptChannelInvitation$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `acceptChannelInvitation` field. No arguments are required so you may omit this.
+     * Arguments for `acceptChannelInvitation` field. All arguments are required so you must include this.
      */
-    $?: acceptChannelInvitation$Arguments<_$Scalars>;
+    $: acceptChannelInvitation$Arguments<_$Scalars>;
   }
 
   export interface acceptChannelInvitation$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    /**
-     * @deprecated use id instead
-     */
-    channelInvitationId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelInvitationId: string;
   }
 
   // --- expanded ---
@@ -5732,8 +5803,7 @@ export namespace Mutation {
   export type acceptChannelInvitation$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | acceptChannelInvitation$SelectionSet<_$Scalars>
+    acceptChannelInvitation$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -5780,7 +5850,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `declineChannelInvitation` field. Some (1/3) arguments are required so you must include this.
+     * Arguments for `declineChannelInvitation` field. All arguments are required so you must include this.
      */
     $: declineChannelInvitation$Arguments<_$Scalars>;
   }
@@ -5789,11 +5859,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
     $reasonTextId: $NamedTypes.$DeclineChannelInvitationReasonTextId;
-    /**
-     * @deprecated use id instead
-     */
-    channelInvitationId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelInvitationId: string;
   }
 
   // --- expanded ---
@@ -5819,7 +5885,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteChannelInvitation` field. Some (1/3) arguments are required so you must include this.
+     * Arguments for `deleteChannelInvitation` field. All arguments are required so you must include this.
      */
     $: deleteChannelInvitation$Arguments<_$Scalars>;
   }
@@ -5828,11 +5894,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
     deletePhysically: boolean;
-    /**
-     * @deprecated use id instead
-     */
-    channelInvitationId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelInvitationId: string;
   }
 
   // --- expanded ---
@@ -5850,29 +5912,59 @@ export namespace Mutation {
 
   // --------------------------------------------------------------------------------------------------
 
+  export type deleteChannelInvitationV2<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = deleteChannelInvitationV2$SelectionSet<_$Scalars>;
+
+  export interface deleteChannelInvitationV2$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+    /**
+     * Arguments for `deleteChannelInvitationV2` field. Some (1/3) arguments are required so you must include this.
+     */
+    $: deleteChannelInvitationV2$Arguments<_$Scalars>;
+  }
+
+  export interface deleteChannelInvitationV2$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    anonymizePersonalData?: boolean | undefined | null;
+    deletePhysically?: boolean | undefined | null;
+    id: string;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deleteChannelInvitationV2` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deleteChannelInvitationV2$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    deleteChannelInvitationV2$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
   export type dismissChannelInvitationFromInbox<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>;
+  > = dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>;
 
   export interface dismissChannelInvitationFromInbox$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `dismissChannelInvitationFromInbox` field. No arguments are required so you may omit this.
+     * Arguments for `dismissChannelInvitationFromInbox` field. All arguments are required so you must include this.
      */
-    $?: dismissChannelInvitationFromInbox$Arguments<_$Scalars>;
+    $: dismissChannelInvitationFromInbox$Arguments<_$Scalars>;
   }
 
   export interface dismissChannelInvitationFromInbox$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    /**
-     * @deprecated use id instead
-     */
-    channelInvitationId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelInvitationId: string;
   }
 
   // --- expanded ---
@@ -5885,8 +5977,7 @@ export namespace Mutation {
   export type dismissChannelInvitationFromInbox$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>
+    dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -5927,27 +6018,21 @@ export namespace Mutation {
 
   export type archiveChannelForMe<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | archiveChannelForMe$SelectionSet<_$Scalars>;
+  > = archiveChannelForMe$SelectionSet<_$Scalars>;
 
   export interface archiveChannelForMe$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `archiveChannelForMe` field. No arguments are required so you may omit this.
+     * Arguments for `archiveChannelForMe` field. All arguments are required so you must include this.
      */
-    $?: archiveChannelForMe$Arguments<_$Scalars>;
+    $: archiveChannelForMe$Arguments<_$Scalars>;
   }
 
   export interface archiveChannelForMe$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    /**
-     * @deprecated use id instead
-     */
-    channelId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelId: string;
   }
 
   // --- expanded ---
@@ -5960,8 +6045,7 @@ export namespace Mutation {
   export type archiveChannelForMe$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | archiveChannelForMe$SelectionSet<_$Scalars>
+    archiveChannelForMe$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -6002,29 +6086,23 @@ export namespace Mutation {
 
   export type deleteChannel<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deleteChannel$SelectionSet<_$Scalars>;
+  > = deleteChannel$SelectionSet<_$Scalars>;
 
   export interface deleteChannel$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteChannel` field. No arguments are required so you may omit this.
+     * Arguments for `deleteChannel` field. All arguments are required so you must include this.
      */
-    $?: deleteChannel$Arguments<_$Scalars>;
+    $: deleteChannel$Arguments<_$Scalars>;
   }
 
   export interface deleteChannel$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    anonymizePersonalData?: boolean | undefined | null;
-    deletePhysically?: boolean | undefined | null;
-    /**
-     * @deprecated use id instead
-     */
-    channelId?: string | undefined | null;
-    id?: string | undefined | null;
+    anonymizePersonalData: boolean;
+    deletePhysically: boolean;
+    channelId: string;
   }
 
   // --- expanded ---
@@ -6037,8 +6115,43 @@ export namespace Mutation {
   export type deleteChannel$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deleteChannel$SelectionSet<_$Scalars>
+    deleteChannel$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deleteChannelV2<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = deleteChannelV2$SelectionSet<_$Scalars>;
+
+  export interface deleteChannelV2$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+    /**
+     * Arguments for `deleteChannelV2` field. Some (1/3) arguments are required so you must include this.
+     */
+    $: deleteChannelV2$Arguments<_$Scalars>;
+  }
+
+  export interface deleteChannelV2$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    anonymizePersonalData?: boolean | undefined | null;
+    deletePhysically?: boolean | undefined | null;
+    id: string;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deleteChannelV2` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deleteChannelV2$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    deleteChannelV2$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -6113,27 +6226,21 @@ export namespace Mutation {
 
   export type unarchiveChannelForMe<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | unarchiveChannelForMe$SelectionSet<_$Scalars>;
+  > = unarchiveChannelForMe$SelectionSet<_$Scalars>;
 
   export interface unarchiveChannelForMe$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `unarchiveChannelForMe` field. No arguments are required so you may omit this.
+     * Arguments for `unarchiveChannelForMe` field. All arguments are required so you must include this.
      */
-    $?: unarchiveChannelForMe$Arguments<_$Scalars>;
+    $: unarchiveChannelForMe$Arguments<_$Scalars>;
   }
 
   export interface unarchiveChannelForMe$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    /**
-     * @deprecated use id instead
-     */
-    channelId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelId: string;
   }
 
   // --- expanded ---
@@ -6146,8 +6253,7 @@ export namespace Mutation {
   export type unarchiveChannelForMe$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | unarchiveChannelForMe$SelectionSet<_$Scalars>
+    unarchiveChannelForMe$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -6228,7 +6334,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteChannelMessage` field. Some (1/3) arguments are required so you must include this.
+     * Arguments for `deleteChannelMessage` field. All arguments are required so you must include this.
      */
     $: deleteChannelMessage$Arguments<_$Scalars>;
   }
@@ -6237,11 +6343,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
     deletePhysically: boolean;
-    /**
-     * @deprecated use id instead
-     */
-    channelMessageId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelMessageId: string;
   }
 
   // --- expanded ---
@@ -6255,6 +6357,42 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     deleteChannelMessage$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deleteChannelMessageV2<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = deleteChannelMessageV2$SelectionSet<_$Scalars>;
+
+  export interface deleteChannelMessageV2$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+    /**
+     * Arguments for `deleteChannelMessageV2` field. Some (1/3) arguments are required so you must include this.
+     */
+    $: deleteChannelMessageV2$Arguments<_$Scalars>;
+  }
+
+  export interface deleteChannelMessageV2$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    anonymizePersonalData?: boolean | undefined | null;
+    deletePhysically?: boolean | undefined | null;
+    id: string;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deleteChannelMessageV2` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deleteChannelMessageV2$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    deleteChannelMessageV2$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -6335,7 +6473,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteChannelParticipant` field. Some (1/3) arguments are required so you must include this.
+     * Arguments for `deleteChannelParticipant` field. All arguments are required so you must include this.
      */
     $: deleteChannelParticipant$Arguments<_$Scalars>;
   }
@@ -6344,11 +6482,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
     deletePhysically: boolean;
-    /**
-     * @deprecated use id instead
-     */
-    channelParticipantId?: string | undefined | null;
-    id?: string | undefined | null;
+    channelParticipantId: string;
   }
 
   // --- expanded ---
@@ -6362,6 +6496,42 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     deleteChannelParticipant$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deleteChannelParticipantV2<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = deleteChannelParticipantV2$SelectionSet<_$Scalars>;
+
+  export interface deleteChannelParticipantV2$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+    /**
+     * Arguments for `deleteChannelParticipantV2` field. Some (1/3) arguments are required so you must include this.
+     */
+    $: deleteChannelParticipantV2$Arguments<_$Scalars>;
+  }
+
+  export interface deleteChannelParticipantV2$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    anonymizePersonalData?: boolean | undefined | null;
+    deletePhysically?: boolean | undefined | null;
+    id: string;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deleteChannelParticipantV2` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deleteChannelParticipantV2$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    deleteChannelParticipantV2$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -6442,7 +6612,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `deleteContentTag` field. All arguments are required so you must include this.
+     * Arguments for `deleteContentTag` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteContentTag$Arguments<_$Scalars>;
   }
@@ -6450,7 +6620,7 @@ export namespace Mutation {
   export interface deleteContentTag$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     contentTagId: string;
   }
 
@@ -6613,7 +6783,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteGroupMembership` field. All arguments are required so you must include this.
+     * Arguments for `deleteGroupMembership` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteGroupMembership$Arguments<_$Scalars>;
   }
@@ -6621,7 +6791,7 @@ export namespace Mutation {
   export interface deleteGroupMembership$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     groupMembershipId: string;
   }
 
@@ -6889,7 +7059,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `deleteGroup` field. All arguments are required so you must include this.
+     * Arguments for `deleteGroup` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteGroup$Arguments<_$Scalars>;
   }
@@ -6897,7 +7067,7 @@ export namespace Mutation {
   export interface deleteGroup$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     groupId: string;
   }
 
@@ -7029,7 +7199,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `deleteSupportChannelConfig` field. All arguments are required so you must include this.
+     * Arguments for `deleteSupportChannelConfig` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteSupportChannelConfig$Arguments<_$Scalars>;
   }
@@ -7037,7 +7207,7 @@ export namespace Mutation {
   export interface deleteSupportChannelConfig$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     supportChannelConfigId: string;
   }
 
@@ -7132,7 +7302,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `deleteUserSearch` field. All arguments are required so you must include this.
+     * Arguments for `deleteUserSearch` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteUserSearch$Arguments<_$Scalars>;
   }
@@ -7140,7 +7310,7 @@ export namespace Mutation {
   export interface deleteUserSearch$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     userSearchId: string;
   }
 
@@ -7235,7 +7405,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteNotification` field. All arguments are required so you must include this.
+     * Arguments for `deleteNotification` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteNotification$Arguments<_$Scalars>;
   }
@@ -7243,7 +7413,7 @@ export namespace Mutation {
   export interface deleteNotification$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     notificationId: string;
   }
 
@@ -7407,7 +7577,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteNotificationTemplate` field. All arguments are required so you must include this.
+     * Arguments for `deleteNotificationTemplate` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteNotificationTemplate$Arguments<_$Scalars>;
   }
@@ -7415,7 +7585,7 @@ export namespace Mutation {
   export interface deleteNotificationTemplate$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     notificationTemplateId: string;
   }
 
@@ -7780,22 +7950,24 @@ export namespace Mutation {
 
   export type deleteMyUser<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = deleteMyUser$SelectionSet<_$Scalars>;
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deleteMyUser$SelectionSet<_$Scalars>;
 
   export interface deleteMyUser$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     /**
-     * Arguments for `deleteMyUser` field. Some (1/4) arguments are required so you must include this.
+     * Arguments for `deleteMyUser` field. No arguments are required so you may omit this.
      */
-    $: deleteMyUser$Arguments<_$Scalars>;
+    $?: deleteMyUser$Arguments<_$Scalars>;
   }
 
   export interface deleteMyUser$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
     anonymizePersonalData?: boolean | undefined | null;
-    deletePhysically: boolean;
+    deletePhysically?: boolean | undefined | null;
     description?: string | undefined | null;
     cause?: string | undefined | null;
   }
@@ -7810,7 +7982,8 @@ export namespace Mutation {
   export type deleteMyUser$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
-    deleteMyUser$SelectionSet<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deleteMyUser$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -8123,7 +8296,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ShoppingCartItem<_$Scalars> {
     /**
-     * Arguments for `createShoppingCartItem` field. All arguments are required so you must include this.
+     * Arguments for `createShoppingCartItem` field. Some (1/2) arguments are required so you must include this.
      */
     $: createShoppingCartItem$Arguments<_$Scalars>;
   }
@@ -8131,6 +8304,7 @@ export namespace Mutation {
   export interface createShoppingCartItem$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
+    options?: $NamedTypes.$UpdateObjectOptions<_$Scalars> | undefined | null;
     input: $NamedTypes.$ShoppingCartItemInput<_$Scalars>;
   }
 
@@ -8155,9 +8329,9 @@ export namespace Mutation {
 
   export interface deleteShoppingCartItem$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `deleteShoppingCartItem` field. All arguments are required so you must include this.
+     * Arguments for `deleteShoppingCartItem` field. Some (1/2) arguments are required so you must include this.
      */
     $: deleteShoppingCartItem$Arguments<_$Scalars>;
   }
@@ -8165,6 +8339,7 @@ export namespace Mutation {
   export interface deleteShoppingCartItem$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
+    deletePhysically?: boolean | undefined | null;
     id: string;
   }
 
@@ -8189,7 +8364,7 @@ export namespace Mutation {
 
   export interface updateShoppingCartItem$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
      * Arguments for `updateShoppingCartItem` field. Some (1/2) arguments are required so you must include this.
      */
@@ -8278,6 +8453,76 @@ export namespace Mutation {
 
   // --------------------------------------------------------------------------------------------------
 
+  export type createWalletItem<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = createWalletItem$SelectionSet<_$Scalars>;
+
+  export interface createWalletItem$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$WalletItem<_$Scalars> {
+    /**
+     * Arguments for `createWalletItem` field. Some (1/2) arguments are required so you must include this.
+     */
+    $: createWalletItem$Arguments<_$Scalars>;
+  }
+
+  export interface createWalletItem$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    options?: $NamedTypes.$UpdateObjectOptions<_$Scalars> | undefined | null;
+    input: $NamedTypes.$WalletItemInput<_$Scalars>;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `createWalletItem` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type createWalletItem$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    createWalletItem$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deleteWalletItem<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = deleteWalletItem$SelectionSet<_$Scalars>;
+
+  export interface deleteWalletItem$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+    /**
+     * Arguments for `deleteWalletItem` field. Some (1/2) arguments are required so you must include this.
+     */
+    $: deleteWalletItem$Arguments<_$Scalars>;
+  }
+
+  export interface deleteWalletItem$Arguments<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > {
+    deletePhysically?: boolean | undefined | null;
+    id: string;
+  }
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deleteWalletItem` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deleteWalletItem$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    deleteWalletItem$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
   export type updateWalletItem<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = updateWalletItem$SelectionSet<_$Scalars>;
@@ -8286,7 +8531,7 @@ export namespace Mutation {
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
     /**
-     * Arguments for `updateWalletItem` field. All arguments are required so you must include this.
+     * Arguments for `updateWalletItem` field. Some (1/2) arguments are required so you must include this.
      */
     $: updateWalletItem$Arguments<_$Scalars>;
   }
@@ -8294,6 +8539,7 @@ export namespace Mutation {
   export interface updateWalletItem$Arguments<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > {
+    options?: $NamedTypes.$UpdateObjectOptions<_$Scalars> | undefined | null;
     input: $NamedTypes.$WalletItemInput<_$Scalars>;
   }
 
@@ -8574,7 +8820,7 @@ export type ModelType =
   | 'MarketplaceServiceRecord'
   | 'Product'
   | 'ProductCategory'
-  | 'Vendor'
+  | 'Brand'
   | 'Match'
   | 'MatchProfile'
   | 'MatchingEngine'
@@ -8921,7 +9167,7 @@ export type ServiceRequestType =
   | 'graphQlQueryFindGiftCardProducts'
   | 'graphQlQueryFindMarketplaceServiceRecord'
   | 'graphQlQueryFindProductCategories'
-  | 'graphQlQueryFindVendors'
+  | 'graphQlQueryFindBrands'
   | 'graphQlMutationCreateUserSearch'
   | 'graphQlMutationDeleteUserSearch'
   | 'graphQlMutationUpdateUserSearch'
@@ -8999,7 +9245,9 @@ export type ServiceRequestType =
   | 'graphQlQueryFindTrainingSessionsForMe'
   | 'graphQlMutationCreatePurchaseOrderField'
   | 'graphQlMutationCreateShoppingCartItem'
+  | 'graphQlMutationCreateWalletItem'
   | 'graphQlMutationDeleteShoppingCartItem'
+  | 'graphQlMutationDeleteWalletItem'
   | 'graphQlMutationEmptyShoppingCart'
   | 'graphQlMutationUpdateShoppingCartItem'
   | 'graphQlMutationUpdateWalletItem'
@@ -10562,6 +10810,82 @@ export interface GroupListFilter<
   syncedWithMm2?: boolean | undefined | null;
 }
 
+export interface BrandInput<
+  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+> {
+  id?: string | undefined | null;
+  adminNotes?: string | undefined | null;
+  events?: Array<$NamedTypes.$ModelEventInput<_$Scalars> | undefined | null> | undefined | null;
+  metadata?: $NamedTypes.$BaseModelMetadataInput<_$Scalars> | undefined | null;
+  createdAt?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  createdBy?: string | undefined | null;
+  updatedAt?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  updatedBy?: string | undefined | null;
+  deletedAt?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  deletedBy?: string | undefined | null;
+  name?: string | undefined | null;
+  importId?: string | undefined | null;
+  imageSource?: string | undefined | null;
+  slug?: string | undefined | null;
+  url?: string | undefined | null;
+  balanceLookupUri?: string | undefined | null;
+  listed?: boolean | undefined | null;
+  logoUrl?: string | undefined | null;
+  description?: string | undefined | null;
+  alias1?: string | undefined | null;
+  alias2?: string | undefined | null;
+  alias3?: string | undefined | null;
+}
+
+export interface BrandListFilter<
+  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+> {
+  ids?: Array<string | undefined | null> | undefined | null;
+  excludeIds?: Array<string | undefined | null> | undefined | null;
+  searchText?: string | undefined | null;
+  caseSensitive?: boolean | undefined | null;
+  textSearchFields?: Array<string | undefined | null> | undefined | null;
+  createdAtFrom?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  createdAtUntil?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  updatedAtFrom?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+  updatedAtUntil?:
+    | $$Utilities.Schema.Scalar.GetDecoded<
+      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
+    >
+    | undefined
+    | null;
+}
+
 export interface GiftCardProductInput<
   _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
 > {
@@ -10591,8 +10915,8 @@ export interface GiftCardProductInput<
     | null;
   deletedBy?: string | undefined | null;
   importId?: string | undefined | null;
-  vendorId?: string | undefined | null;
-  vendorImportId?: string | undefined | null;
+  brandId?: string | undefined | null;
+  brandImportId?: string | undefined | null;
   name?: string | undefined | null;
   description?: string | undefined | null;
   categories?: Array<string | undefined | null> | undefined | null;
@@ -10687,82 +11011,6 @@ export interface ProductCategoryInput<
 }
 
 export interface ProductCategoryListFilter<
-  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-> {
-  ids?: Array<string | undefined | null> | undefined | null;
-  excludeIds?: Array<string | undefined | null> | undefined | null;
-  searchText?: string | undefined | null;
-  caseSensitive?: boolean | undefined | null;
-  textSearchFields?: Array<string | undefined | null> | undefined | null;
-  createdAtFrom?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  createdAtUntil?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  updatedAtFrom?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  updatedAtUntil?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-}
-
-export interface VendorInput<
-  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-> {
-  id?: string | undefined | null;
-  adminNotes?: string | undefined | null;
-  events?: Array<$NamedTypes.$ModelEventInput<_$Scalars> | undefined | null> | undefined | null;
-  metadata?: $NamedTypes.$BaseModelMetadataInput<_$Scalars> | undefined | null;
-  createdAt?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  createdBy?: string | undefined | null;
-  updatedAt?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  updatedBy?: string | undefined | null;
-  deletedAt?:
-    | $$Utilities.Schema.Scalar.GetDecoded<
-      $$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>
-    >
-    | undefined
-    | null;
-  deletedBy?: string | undefined | null;
-  name?: string | undefined | null;
-  importId?: string | undefined | null;
-  imageSource?: string | undefined | null;
-  slug?: string | undefined | null;
-  url?: string | undefined | null;
-  balanceLookupUri?: string | undefined | null;
-  listed?: boolean | undefined | null;
-  logoUrl?: string | undefined | null;
-  description?: string | undefined | null;
-  alias1?: string | undefined | null;
-  alias2?: string | undefined | null;
-  alias3?: string | undefined | null;
-}
-
-export interface VendorListFilter<
   _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
 > {
   ids?: Array<string | undefined | null> | undefined | null;
@@ -11014,7 +11262,7 @@ export interface PurchaseOrderItemInput<
   purchaseOrderId?: string | undefined | null;
   shoppingCartItemId?: string | undefined | null;
   productId?: string | undefined | null;
-  vendorId?: string | undefined | null;
+  brandId?: string | undefined | null;
   quantity?: number | undefined | null;
   price?: number | undefined | null;
   totalPrice?: number | undefined | null;
@@ -11308,7 +11556,7 @@ export interface WalletItemInput<
   walletId?: string | undefined | null;
   productId?: string | undefined | null;
   purchaseOrderItemId?: string | undefined | null;
-  vendorId?: string | undefined | null;
+  brandId?: string | undefined | null;
   name?: string | undefined | null;
   price?: number | undefined | null;
   initialBalance?: number | undefined | null;
@@ -61897,6 +62145,726 @@ export namespace MastercardBank {
   >;
 }
 
+//                                               Brand
+// --------------------------------------------------------------------------------------------------
+//
+
+// ----------------------------------------| Entrypoint Interface |
+
+export interface Brand<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty>
+  extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike
+{
+  /**
+   * Select the `id` field on the `Brand` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   */
+  id?: Brand.id$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.id<_$Scalars>>;
+  /**
+   * Select the `adminNotes` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  adminNotes?:
+    | Brand.adminNotes$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.adminNotes<_$Scalars>>;
+  /**
+   * Select the `events` field on the `Brand` object. Its type is `ModelEvent` (a `OutputObject` kind of type).
+   */
+  events?:
+    | Brand.events$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.events<_$Scalars>>;
+  /**
+   * Select the `metadata` field on the `Brand` object. Its type is `BaseModelMetadata` (a `Interface` kind of type).
+   */
+  metadata?:
+    | Brand.metadata$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.metadata<_$Scalars>>;
+  /**
+   * Select the `createdAt` field on the `Brand` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+   */
+  createdAt?:
+    | Brand.createdAt$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.createdAt<_$Scalars>>;
+  /**
+   * Select the `createdBy` field on the `Brand` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   */
+  createdBy?:
+    | Brand.createdBy$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.createdBy<_$Scalars>>;
+  /**
+   * Select the `updatedAt` field on the `Brand` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+   */
+  updatedAt?:
+    | Brand.updatedAt$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.updatedAt<_$Scalars>>;
+  /**
+   * Select the `updatedBy` field on the `Brand` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   */
+  updatedBy?:
+    | Brand.updatedBy$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.updatedBy<_$Scalars>>;
+  /**
+   * Select the `deletedAt` field on the `Brand` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+   */
+  deletedAt?:
+    | Brand.deletedAt$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.deletedAt<_$Scalars>>;
+  /**
+   * Select the `deletedBy` field on the `Brand` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   */
+  deletedBy?:
+    | Brand.deletedBy$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.deletedBy<_$Scalars>>;
+  /**
+   * Select the `name` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  name?:
+    | Brand.name$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.name<_$Scalars>>;
+  /**
+   * Select the `importId` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  importId?:
+    | Brand.importId$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.importId<_$Scalars>>;
+  /**
+   * Select the `imageSource` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  imageSource?:
+    | Brand.imageSource$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.imageSource<_$Scalars>>;
+  /**
+   * Select the `slug` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  slug?:
+    | Brand.slug$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.slug<_$Scalars>>;
+  /**
+   * Select the `url` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  url?:
+    | Brand.url$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.url<_$Scalars>>;
+  /**
+   * Select the `balanceLookupUri` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  balanceLookupUri?:
+    | Brand.balanceLookupUri$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.balanceLookupUri<_$Scalars>>;
+  /**
+   * Select the `listed` field on the `Brand` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
+   */
+  listed?:
+    | Brand.listed$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.listed<_$Scalars>>;
+  /**
+   * Select the `logoImageSource` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  logoImageSource?:
+    | Brand.logoImageSource$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.logoImageSource<_$Scalars>>;
+  /**
+   * Select the `description` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  description?:
+    | Brand.description$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.description<_$Scalars>>;
+  /**
+   * Select the `alias1` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  alias1?:
+    | Brand.alias1$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.alias1<_$Scalars>>;
+  /**
+   * Select the `alias2` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  alias2?:
+    | Brand.alias2$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.alias2<_$Scalars>>;
+  /**
+   * Select the `alias3` field on the `Brand` object. Its type is `String` (a `ScalarStandard` kind of type).
+   */
+  alias3?:
+    | Brand.alias3$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Brand.alias3<_$Scalars>>;
+
+  /**
+   * Inline fragments for field groups.
+   *
+   * Generally a niche feature. This can be useful for example to apply an `@include` directive to a subset of the
+   * selection set in turn allowing you to pass a variable to opt in/out of that selection during execution on the server.
+   *
+   * @see https://spec.graphql.org/draft/#sec-Inline-Fragments
+   */
+  ___?:
+    | Brand$FragmentInline<_$Scalars>
+    | Brand$FragmentInline<_$Scalars>[];
+
+  /**
+   * A meta field. Is the name of the type being selected.
+   *
+   * @see https://graphql.org/learn/queries/#meta-fields
+   */
+  __typename?:
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator$Expanded
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<
+      $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    >;
+}
+
+export interface Brand$FragmentInline<
+  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+> extends Brand<_$Scalars>, $$Utilities.DocumentBuilder.Select.Directive.$Groups.InlineFragment.Fields {
+}
+
+// ----------------------------------------| Fields |
+
+export namespace Brand {
+  export type id<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | id$SelectionSet<_$Scalars>;
+
+  export interface id$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `id` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type id$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | id$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type adminNotes<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | adminNotes$SelectionSet<_$Scalars>;
+
+  export interface adminNotes$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `adminNotes` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type adminNotes$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | adminNotes$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type events<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    events$SelectionSet<_$Scalars>;
+
+  export interface events$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ModelEvent<_$Scalars> {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `events` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type events$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    events$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type metadata<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = metadata$SelectionSet<_$Scalars>;
+
+  export interface metadata$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$BaseModelMetadata<_$Scalars> {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `metadata` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type metadata$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    metadata$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type createdAt<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | createdAt$SelectionSet<_$Scalars>;
+
+  export interface createdAt$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `createdAt` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type createdAt$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | createdAt$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type createdBy<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | createdBy$SelectionSet<_$Scalars>;
+
+  export interface createdBy$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `createdBy` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type createdBy$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | createdBy$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type updatedAt<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | updatedAt$SelectionSet<_$Scalars>;
+
+  export interface updatedAt$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `updatedAt` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type updatedAt$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | updatedAt$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type updatedBy<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | updatedBy$SelectionSet<_$Scalars>;
+
+  export interface updatedBy$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `updatedBy` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type updatedBy$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | updatedBy$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deletedAt<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deletedAt$SelectionSet<_$Scalars>;
+
+  export interface deletedAt$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deletedAt` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deletedAt$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deletedAt$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deletedBy<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deletedBy$SelectionSet<_$Scalars>;
+
+  export interface deletedBy$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deletedBy` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deletedBy$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deletedBy$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type name<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | name$SelectionSet<_$Scalars>;
+
+  export interface name$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `name` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type name$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | name$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type importId<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | importId$SelectionSet<_$Scalars>;
+
+  export interface importId$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `importId` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type importId$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | importId$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type imageSource<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | imageSource$SelectionSet<_$Scalars>;
+
+  export interface imageSource$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `imageSource` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type imageSource$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | imageSource$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type slug<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | slug$SelectionSet<_$Scalars>;
+
+  export interface slug$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `slug` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type slug$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | slug$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type url<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | url$SelectionSet<_$Scalars>;
+
+  export interface url$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `url` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type url$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | url$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type balanceLookupUri<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | balanceLookupUri$SelectionSet<_$Scalars>;
+
+  export interface balanceLookupUri$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `balanceLookupUri` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type balanceLookupUri$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | balanceLookupUri$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type listed<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | listed$SelectionSet<_$Scalars>;
+
+  export interface listed$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `listed` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type listed$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | listed$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type logoImageSource<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | logoImageSource$SelectionSet<_$Scalars>;
+
+  export interface logoImageSource$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `logoImageSource` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type logoImageSource$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | logoImageSource$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type description<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | description$SelectionSet<_$Scalars>;
+
+  export interface description$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `description` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type description$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | description$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type alias1<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | alias1$SelectionSet<_$Scalars>;
+
+  export interface alias1$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `alias1` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type alias1$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | alias1$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type alias2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | alias2$SelectionSet<_$Scalars>;
+
+  export interface alias2$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `alias2` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type alias2$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | alias2$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type alias3<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | alias3$SelectionSet<_$Scalars>;
+
+  export interface alias3$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `alias3` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type alias3$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | alias3$SelectionSet<_$Scalars>
+  >;
+}
+
 //                                          GiftCardProduct
 // --------------------------------------------------------------------------------------------------
 //
@@ -61973,17 +62941,17 @@ export interface GiftCardProduct<
     | GiftCardProduct.importId$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.importId<_$Scalars>>;
   /**
-   * Select the `vendorId` field on the `GiftCardProduct` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   * Select the `brandId` field on the `GiftCardProduct` object. Its type is `ID` (a `ScalarStandard` kind of type).
    */
-  vendorId?:
-    | GiftCardProduct.vendorId$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.vendorId<_$Scalars>>;
+  brandId?:
+    | GiftCardProduct.brandId$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.brandId<_$Scalars>>;
   /**
-   * Select the `vendorImportId` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
+   * Select the `brandImportId` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
-  vendorImportId?:
-    | GiftCardProduct.vendorImportId$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.vendorImportId<_$Scalars>>;
+  brandImportId?:
+    | GiftCardProduct.brandImportId$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.brandImportId<_$Scalars>>;
   /**
    * Select the `name` field on the `GiftCardProduct` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
@@ -62396,54 +63364,52 @@ export namespace GiftCardProduct {
 
   // --------------------------------------------------------------------------------------------------
 
-  export type vendorId<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
+  export type brandId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | vendorId$SelectionSet<_$Scalars>;
+    | brandId$SelectionSet<_$Scalars>;
 
-  export interface vendorId$SelectionSet<
+  export interface brandId$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
 
   // --- expanded ---
 
   /**
-   * This is the "expanded" version of the `vendorId` type. It is identical except for the fact
+   * This is the "expanded" version of the `brandId` type. It is identical except for the fact
    * that IDEs will display its contents (a union type) directly, rather than the name of this type.
    * In some cases, this is a preferable DX, making the types easier to read for users.
    */
-  export type vendorId$Expanded<
+  export type brandId$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | vendorId$SelectionSet<_$Scalars>
+    | brandId$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
 
-  export type vendorImportId<
+  export type brandImportId<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > =
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | vendorImportId$SelectionSet<_$Scalars>;
+    | brandImportId$SelectionSet<_$Scalars>;
 
-  export interface vendorImportId$SelectionSet<
+  export interface brandImportId$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
 
   // --- expanded ---
 
   /**
-   * This is the "expanded" version of the `vendorImportId` type. It is identical except for the fact
+   * This is the "expanded" version of the `brandImportId` type. It is identical except for the fact
    * that IDEs will display its contents (a union type) directly, rather than the name of this type.
    * In some cases, this is a preferable DX, making the types easier to read for users.
    */
-  export type vendorImportId$Expanded<
+  export type brandImportId$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | vendorImportId$SelectionSet<_$Scalars>
+    | brandImportId$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -63837,726 +64803,6 @@ export namespace ProductCategory {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | sortIndex$SelectionSet<_$Scalars>
-  >;
-}
-
-//                                               Vendor
-// --------------------------------------------------------------------------------------------------
-//
-
-// ----------------------------------------| Entrypoint Interface |
-
-export interface Vendor<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty>
-  extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike
-{
-  /**
-   * Select the `id` field on the `Vendor` object. Its type is `ID` (a `ScalarStandard` kind of type).
-   */
-  id?: Vendor.id$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.id<_$Scalars>>;
-  /**
-   * Select the `adminNotes` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  adminNotes?:
-    | Vendor.adminNotes$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.adminNotes<_$Scalars>>;
-  /**
-   * Select the `events` field on the `Vendor` object. Its type is `ModelEvent` (a `OutputObject` kind of type).
-   */
-  events?:
-    | Vendor.events$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.events<_$Scalars>>;
-  /**
-   * Select the `metadata` field on the `Vendor` object. Its type is `BaseModelMetadata` (a `Interface` kind of type).
-   */
-  metadata?:
-    | Vendor.metadata$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.metadata<_$Scalars>>;
-  /**
-   * Select the `createdAt` field on the `Vendor` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-   */
-  createdAt?:
-    | Vendor.createdAt$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.createdAt<_$Scalars>>;
-  /**
-   * Select the `createdBy` field on the `Vendor` object. Its type is `ID` (a `ScalarStandard` kind of type).
-   */
-  createdBy?:
-    | Vendor.createdBy$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.createdBy<_$Scalars>>;
-  /**
-   * Select the `updatedAt` field on the `Vendor` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-   */
-  updatedAt?:
-    | Vendor.updatedAt$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.updatedAt<_$Scalars>>;
-  /**
-   * Select the `updatedBy` field on the `Vendor` object. Its type is `ID` (a `ScalarStandard` kind of type).
-   */
-  updatedBy?:
-    | Vendor.updatedBy$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.updatedBy<_$Scalars>>;
-  /**
-   * Select the `deletedAt` field on the `Vendor` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-   */
-  deletedAt?:
-    | Vendor.deletedAt$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.deletedAt<_$Scalars>>;
-  /**
-   * Select the `deletedBy` field on the `Vendor` object. Its type is `ID` (a `ScalarStandard` kind of type).
-   */
-  deletedBy?:
-    | Vendor.deletedBy$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.deletedBy<_$Scalars>>;
-  /**
-   * Select the `name` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  name?:
-    | Vendor.name$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.name<_$Scalars>>;
-  /**
-   * Select the `importId` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  importId?:
-    | Vendor.importId$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.importId<_$Scalars>>;
-  /**
-   * Select the `imageSource` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  imageSource?:
-    | Vendor.imageSource$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.imageSource<_$Scalars>>;
-  /**
-   * Select the `slug` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  slug?:
-    | Vendor.slug$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.slug<_$Scalars>>;
-  /**
-   * Select the `url` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  url?:
-    | Vendor.url$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.url<_$Scalars>>;
-  /**
-   * Select the `balanceLookupUri` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  balanceLookupUri?:
-    | Vendor.balanceLookupUri$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.balanceLookupUri<_$Scalars>>;
-  /**
-   * Select the `listed` field on the `Vendor` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
-   */
-  listed?:
-    | Vendor.listed$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.listed<_$Scalars>>;
-  /**
-   * Select the `logoImageSource` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  logoImageSource?:
-    | Vendor.logoImageSource$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.logoImageSource<_$Scalars>>;
-  /**
-   * Select the `description` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  description?:
-    | Vendor.description$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.description<_$Scalars>>;
-  /**
-   * Select the `alias1` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  alias1?:
-    | Vendor.alias1$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.alias1<_$Scalars>>;
-  /**
-   * Select the `alias2` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  alias2?:
-    | Vendor.alias2$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.alias2<_$Scalars>>;
-  /**
-   * Select the `alias3` field on the `Vendor` object. Its type is `String` (a `ScalarStandard` kind of type).
-   */
-  alias3?:
-    | Vendor.alias3$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Vendor.alias3<_$Scalars>>;
-
-  /**
-   * Inline fragments for field groups.
-   *
-   * Generally a niche feature. This can be useful for example to apply an `@include` directive to a subset of the
-   * selection set in turn allowing you to pass a variable to opt in/out of that selection during execution on the server.
-   *
-   * @see https://spec.graphql.org/draft/#sec-Inline-Fragments
-   */
-  ___?:
-    | Vendor$FragmentInline<_$Scalars>
-    | Vendor$FragmentInline<_$Scalars>[];
-
-  /**
-   * A meta field. Is the name of the type being selected.
-   *
-   * @see https://graphql.org/learn/queries/#meta-fields
-   */
-  __typename?:
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator$Expanded
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<
-      $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    >;
-}
-
-export interface Vendor$FragmentInline<
-  _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-> extends Vendor<_$Scalars>, $$Utilities.DocumentBuilder.Select.Directive.$Groups.InlineFragment.Fields {
-}
-
-// ----------------------------------------| Fields |
-
-export namespace Vendor {
-  export type id<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | id$SelectionSet<_$Scalars>;
-
-  export interface id$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `id` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type id$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | id$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type adminNotes<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | adminNotes$SelectionSet<_$Scalars>;
-
-  export interface adminNotes$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `adminNotes` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type adminNotes$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | adminNotes$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type events<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    events$SelectionSet<_$Scalars>;
-
-  export interface events$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ModelEvent<_$Scalars> {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `events` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type events$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    events$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type metadata<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = metadata$SelectionSet<_$Scalars>;
-
-  export interface metadata$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$BaseModelMetadata<_$Scalars> {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `metadata` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type metadata$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    metadata$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type createdAt<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | createdAt$SelectionSet<_$Scalars>;
-
-  export interface createdAt$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `createdAt` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type createdAt$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | createdAt$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type createdBy<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | createdBy$SelectionSet<_$Scalars>;
-
-  export interface createdBy$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `createdBy` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type createdBy$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | createdBy$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type updatedAt<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | updatedAt$SelectionSet<_$Scalars>;
-
-  export interface updatedAt$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `updatedAt` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type updatedAt$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | updatedAt$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type updatedBy<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | updatedBy$SelectionSet<_$Scalars>;
-
-  export interface updatedBy$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `updatedBy` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type updatedBy$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | updatedBy$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type deletedAt<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deletedAt$SelectionSet<_$Scalars>;
-
-  export interface deletedAt$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `deletedAt` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type deletedAt$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deletedAt$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type deletedBy<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deletedBy$SelectionSet<_$Scalars>;
-
-  export interface deletedBy$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `deletedBy` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type deletedBy$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deletedBy$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type name<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | name$SelectionSet<_$Scalars>;
-
-  export interface name$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `name` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type name$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | name$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type importId<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | importId$SelectionSet<_$Scalars>;
-
-  export interface importId$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `importId` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type importId$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | importId$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type imageSource<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | imageSource$SelectionSet<_$Scalars>;
-
-  export interface imageSource$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `imageSource` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type imageSource$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | imageSource$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type slug<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | slug$SelectionSet<_$Scalars>;
-
-  export interface slug$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `slug` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type slug$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | slug$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type url<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | url$SelectionSet<_$Scalars>;
-
-  export interface url$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `url` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type url$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | url$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type balanceLookupUri<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | balanceLookupUri$SelectionSet<_$Scalars>;
-
-  export interface balanceLookupUri$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `balanceLookupUri` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type balanceLookupUri$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | balanceLookupUri$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type listed<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | listed$SelectionSet<_$Scalars>;
-
-  export interface listed$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `listed` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type listed$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | listed$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type logoImageSource<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | logoImageSource$SelectionSet<_$Scalars>;
-
-  export interface logoImageSource$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `logoImageSource` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type logoImageSource$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | logoImageSource$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type description<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | description$SelectionSet<_$Scalars>;
-
-  export interface description$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `description` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type description$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | description$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type alias1<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | alias1$SelectionSet<_$Scalars>;
-
-  export interface alias1$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `alias1` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type alias1$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | alias1$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type alias2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | alias2$SelectionSet<_$Scalars>;
-
-  export interface alias2$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `alias2` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type alias2$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | alias2$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type alias3<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | alias3$SelectionSet<_$Scalars>;
-
-  export interface alias3$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `alias3` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type alias3$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | alias3$SelectionSet<_$Scalars>
   >;
 }
 
@@ -67482,17 +67728,71 @@ export interface ServiceRequest<
     | ServiceRequest.id$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.id<_$Scalars>>;
   /**
-   * Select the `serviceRequestType` field on the `ServiceRequest` object. Its type is `ServiceRequestType` (a `Enum` kind of type).
+   * Select the `adminNotes` field on the `ServiceRequest` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
-  serviceRequestType?:
-    | ServiceRequest.serviceRequestType$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.serviceRequestType<_$Scalars>>;
+  adminNotes?:
+    | ServiceRequest.adminNotes$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.adminNotes<_$Scalars>>;
+  /**
+   * Select the `events` field on the `ServiceRequest` object. Its type is `ModelEvent` (a `OutputObject` kind of type).
+   */
+  events?:
+    | ServiceRequest.events$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.events<_$Scalars>>;
+  /**
+   * Select the `metadata` field on the `ServiceRequest` object. Its type is `BaseModelMetadata` (a `Interface` kind of type).
+   */
+  metadata?:
+    | ServiceRequest.metadata$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.metadata<_$Scalars>>;
+  /**
+   * Select the `createdAt` field on the `ServiceRequest` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+   */
+  createdAt?:
+    | ServiceRequest.createdAt$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.createdAt<_$Scalars>>;
+  /**
+   * Select the `createdBy` field on the `ServiceRequest` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   */
+  createdBy?:
+    | ServiceRequest.createdBy$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.createdBy<_$Scalars>>;
+  /**
+   * Select the `updatedAt` field on the `ServiceRequest` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+   */
+  updatedAt?:
+    | ServiceRequest.updatedAt$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.updatedAt<_$Scalars>>;
+  /**
+   * Select the `updatedBy` field on the `ServiceRequest` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   */
+  updatedBy?:
+    | ServiceRequest.updatedBy$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.updatedBy<_$Scalars>>;
+  /**
+   * Select the `deletedAt` field on the `ServiceRequest` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+   */
+  deletedAt?:
+    | ServiceRequest.deletedAt$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.deletedAt<_$Scalars>>;
+  /**
+   * Select the `deletedBy` field on the `ServiceRequest` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   */
+  deletedBy?:
+    | ServiceRequest.deletedBy$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.deletedBy<_$Scalars>>;
   /**
    * Select the `userId` field on the `ServiceRequest` object. Its type is `ID` (a `ScalarStandard` kind of type).
    */
   userId?:
     | ServiceRequest.userId$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.userId<_$Scalars>>;
+  /**
+   * Select the `serviceRequestType` field on the `ServiceRequest` object. Its type is `ServiceRequestType` (a `Enum` kind of type).
+   */
+  serviceRequestType?:
+    | ServiceRequest.serviceRequestType$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.serviceRequestType<_$Scalars>>;
   /**
    * Select the `userRoles` field on the `ServiceRequest` object. Its type is `UserRole` (a `Enum` kind of type).
    */
@@ -67536,12 +67836,6 @@ export interface ServiceRequest<
     | ServiceRequest.errorCode$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.errorCode<_$Scalars>>;
   /**
-   * Select the `events` field on the `ServiceRequest` object. Its type is `ModelEvent` (a `OutputObject` kind of type).
-   */
-  events?:
-    | ServiceRequest.events$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.events<_$Scalars>>;
-  /**
    * Select the `deviceUuid` field on the `ServiceRequest` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   deviceUuid?:
@@ -67553,42 +67847,6 @@ export interface ServiceRequest<
   source?:
     | ServiceRequest.source$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.source<_$Scalars>>;
-  /**
-   * Select the `createdAt` field on the `ServiceRequest` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-   */
-  createdAt?:
-    | ServiceRequest.createdAt$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.createdAt<_$Scalars>>;
-  /**
-   * Select the `createdBy` field on the `ServiceRequest` object. Its type is `ID` (a `ScalarStandard` kind of type).
-   */
-  createdBy?:
-    | ServiceRequest.createdBy$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.createdBy<_$Scalars>>;
-  /**
-   * Select the `updatedAt` field on the `ServiceRequest` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-   */
-  updatedAt?:
-    | ServiceRequest.updatedAt$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.updatedAt<_$Scalars>>;
-  /**
-   * Select the `updatedBy` field on the `ServiceRequest` object. Its type is `ID` (a `ScalarStandard` kind of type).
-   */
-  updatedBy?:
-    | ServiceRequest.updatedBy$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.updatedBy<_$Scalars>>;
-  /**
-   * Select the `deletedAt` field on the `ServiceRequest` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
-   */
-  deletedAt?:
-    | ServiceRequest.deletedAt$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.deletedAt<_$Scalars>>;
-  /**
-   * Select the `deletedBy` field on the `ServiceRequest` object. Its type is `ID` (a `ScalarStandard` kind of type).
-   */
-  deletedBy?:
-    | ServiceRequest.deletedBy$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<ServiceRequest.deletedBy<_$Scalars>>;
   /**
    * Select the `finishedAt` field on the `ServiceRequest` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
    */
@@ -67658,28 +67916,229 @@ export namespace ServiceRequest {
 
   // --------------------------------------------------------------------------------------------------
 
-  export type serviceRequestType<
+  export type adminNotes<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > =
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | serviceRequestType$SelectionSet<_$Scalars>;
+    | adminNotes$SelectionSet<_$Scalars>;
 
-  export interface serviceRequestType$SelectionSet<
+  export interface adminNotes$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
 
   // --- expanded ---
 
   /**
-   * This is the "expanded" version of the `serviceRequestType` type. It is identical except for the fact
+   * This is the "expanded" version of the `adminNotes` type. It is identical except for the fact
    * that IDEs will display its contents (a union type) directly, rather than the name of this type.
    * In some cases, this is a preferable DX, making the types easier to read for users.
    */
-  export type serviceRequestType$Expanded<
+  export type adminNotes$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | serviceRequestType$SelectionSet<_$Scalars>
+    | adminNotes$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type events<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    events$SelectionSet<_$Scalars>;
+
+  export interface events$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ModelEvent<_$Scalars> {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `events` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type events$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    events$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type metadata<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = metadata$SelectionSet<_$Scalars>;
+
+  export interface metadata$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$BaseModelMetadata<_$Scalars> {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `metadata` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type metadata$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    metadata$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type createdAt<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | createdAt$SelectionSet<_$Scalars>;
+
+  export interface createdAt$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `createdAt` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type createdAt$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | createdAt$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type createdBy<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | createdBy$SelectionSet<_$Scalars>;
+
+  export interface createdBy$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `createdBy` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type createdBy$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | createdBy$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type updatedAt<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | updatedAt$SelectionSet<_$Scalars>;
+
+  export interface updatedAt$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `updatedAt` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type updatedAt$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | updatedAt$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type updatedBy<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | updatedBy$SelectionSet<_$Scalars>;
+
+  export interface updatedBy$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `updatedBy` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type updatedBy$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | updatedBy$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deletedAt<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deletedAt$SelectionSet<_$Scalars>;
+
+  export interface deletedAt$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deletedAt` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deletedAt$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deletedAt$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type deletedBy<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deletedBy$SelectionSet<_$Scalars>;
+
+  export interface deletedBy$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `deletedBy` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type deletedBy$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | deletedBy$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -67704,6 +68163,32 @@ export namespace ServiceRequest {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | userId$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type serviceRequestType<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | serviceRequestType$SelectionSet<_$Scalars>;
+
+  export interface serviceRequestType$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `serviceRequestType` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type serviceRequestType$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | serviceRequestType$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -67886,28 +68371,6 @@ export namespace ServiceRequest {
 
   // --------------------------------------------------------------------------------------------------
 
-  export type events<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    events$SelectionSet<_$Scalars>;
-
-  export interface events$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ModelEvent<_$Scalars> {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `events` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type events$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    events$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
   export type deviceUuid<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > =
@@ -67954,162 +68417,6 @@ export namespace ServiceRequest {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | source$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type createdAt<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | createdAt$SelectionSet<_$Scalars>;
-
-  export interface createdAt$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `createdAt` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type createdAt$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | createdAt$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type createdBy<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | createdBy$SelectionSet<_$Scalars>;
-
-  export interface createdBy$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `createdBy` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type createdBy$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | createdBy$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type updatedAt<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | updatedAt$SelectionSet<_$Scalars>;
-
-  export interface updatedAt$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `updatedAt` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type updatedAt$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | updatedAt$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type updatedBy<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | updatedBy$SelectionSet<_$Scalars>;
-
-  export interface updatedBy$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `updatedBy` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type updatedBy$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | updatedBy$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type deletedAt<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deletedAt$SelectionSet<_$Scalars>;
-
-  export interface deletedAt$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `deletedAt` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type deletedAt$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deletedAt$SelectionSet<_$Scalars>
-  >;
-
-  // --------------------------------------------------------------------------------------------------
-
-  export type deletedBy<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deletedBy$SelectionSet<_$Scalars>;
-
-  export interface deletedBy$SelectionSet<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
-
-  // --- expanded ---
-
-  /**
-   * This is the "expanded" version of the `deletedBy` type. It is identical except for the fact
-   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-   * In some cases, this is a preferable DX, making the types easier to read for users.
-   */
-  export type deletedBy$Expanded<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = $$Utilities.Simplify<
-    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | deletedBy$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -81798,11 +82105,11 @@ export interface PurchaseOrderItem<
     | PurchaseOrderItem.productId$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<PurchaseOrderItem.productId<_$Scalars>>;
   /**
-   * Select the `vendorId` field on the `PurchaseOrderItem` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   * Select the `brandId` field on the `PurchaseOrderItem` object. Its type is `ID` (a `ScalarStandard` kind of type).
    */
-  vendorId?:
-    | PurchaseOrderItem.vendorId$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<PurchaseOrderItem.vendorId<_$Scalars>>;
+  brandId?:
+    | PurchaseOrderItem.brandId$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<PurchaseOrderItem.brandId<_$Scalars>>;
   /**
    * Select the `quantity` field on the `PurchaseOrderItem` object. Its type is `Int` (a `ScalarStandard` kind of type).
    */
@@ -82183,28 +82490,26 @@ export namespace PurchaseOrderItem {
 
   // --------------------------------------------------------------------------------------------------
 
-  export type vendorId<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
+  export type brandId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | vendorId$SelectionSet<_$Scalars>;
+    | brandId$SelectionSet<_$Scalars>;
 
-  export interface vendorId$SelectionSet<
+  export interface brandId$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
 
   // --- expanded ---
 
   /**
-   * This is the "expanded" version of the `vendorId` type. It is identical except for the fact
+   * This is the "expanded" version of the `brandId` type. It is identical except for the fact
    * that IDEs will display its contents (a union type) directly, rather than the name of this type.
    * In some cases, this is a preferable DX, making the types easier to read for users.
    */
-  export type vendorId$Expanded<
+  export type brandId$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | vendorId$SelectionSet<_$Scalars>
+    | brandId$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -83986,11 +84291,11 @@ export interface WalletItem<
     | WalletItem.purchaseOrderItemId$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.purchaseOrderItemId<_$Scalars>>;
   /**
-   * Select the `vendorId` field on the `WalletItem` object. Its type is `ID` (a `ScalarStandard` kind of type).
+   * Select the `brandId` field on the `WalletItem` object. Its type is `ID` (a `ScalarStandard` kind of type).
    */
-  vendorId?:
-    | WalletItem.vendorId$Expanded<_$Scalars>
-    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.vendorId<_$Scalars>>;
+  brandId?:
+    | WalletItem.brandId$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.brandId<_$Scalars>>;
   /**
    * Select the `name` field on the `WalletItem` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
@@ -84479,28 +84784,26 @@ export namespace WalletItem {
 
   // --------------------------------------------------------------------------------------------------
 
-  export type vendorId<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > =
+  export type brandId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | vendorId$SelectionSet<_$Scalars>;
+    | brandId$SelectionSet<_$Scalars>;
 
-  export interface vendorId$SelectionSet<
+  export interface brandId$SelectionSet<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
 
   // --- expanded ---
 
   /**
-   * This is the "expanded" version of the `vendorId` type. It is identical except for the fact
+   * This is the "expanded" version of the `brandId` type. It is identical except for the fact
    * that IDEs will display its contents (a union type) directly, rather than the name of this type.
    * In some cases, this is a preferable DX, making the types easier to read for users.
    */
-  export type vendorId$Expanded<
+  export type brandId$Expanded<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
-    | vendorId$SelectionSet<_$Scalars>
+    | brandId$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -90918,6 +91221,12 @@ export namespace $NamedTypes {
   export type $GroupListFilter<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = GroupListFilter<_$Scalars>;
+  export type $BrandInput<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = BrandInput<_$Scalars>;
+  export type $BrandListFilter<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = BrandListFilter<_$Scalars>;
   export type $GiftCardProductInput<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = GiftCardProductInput<_$Scalars>;
@@ -90933,12 +91242,6 @@ export namespace $NamedTypes {
   export type $ProductCategoryListFilter<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = ProductCategoryListFilter<_$Scalars>;
-  export type $VendorInput<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = VendorInput<_$Scalars>;
-  export type $VendorListFilter<
-    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
-  > = VendorListFilter<_$Scalars>;
   export type $UserSearchInput<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = UserSearchInput<_$Scalars>;
@@ -91271,6 +91574,8 @@ export namespace $NamedTypes {
   export type $MastercardBank<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = MastercardBank<_$Scalars>;
+  export type $Brand<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
+    Brand<_$Scalars>;
   export type $GiftCardProduct<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = GiftCardProduct<_$Scalars>;
@@ -91283,8 +91588,6 @@ export namespace $NamedTypes {
   export type $ProductCategory<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = ProductCategory<_$Scalars>;
-  export type $Vendor<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> =
-    Vendor<_$Scalars>;
   export type $UserSearch<
     _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
   > = UserSearch<_$Scalars>;

@@ -1,6 +1,6 @@
 declare const fsdata: {
     create: <T extends import("../index.js").BaseModel = import("../index.js").BaseModel>(props: Partial<T>, modelType: import("../enums.js").ModelType) => Promise<import("../index.js").QueryResult<T>>;
-    delete: (id: string, modelType: import("../enums.js").ModelType) => Promise<import("../index.js").QueryResult<void>>;
+    delete: (id: string, modelType: import("../enums.js").ModelType, deletePhysically: boolean, _queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
     findById: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, selections?: any) => Promise<import("../index.js").QueryResult<T>>;
     pollForUpdatedObject: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(id: string, modelType: import("../enums.js").ModelType, options: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<T>>;
     update: <T extends import("../models/Model.js").Model = import("../models/Model.js").Model>(changes: Partial<T>, modelType: import("../enums.js").ModelType, queryOptions?: import("../index.js").QueryOptions<T>) => Promise<import("../index.js").QueryResult<T>>;
@@ -68,15 +68,15 @@ declare const fsdata: {
     };
     shoppingCartItem: {
         createShoppingCartItem: (props: Partial<import("../index.js").ShoppingCartItem>) => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCartItem>>;
-        deleteShoppingCartItem: (id: string) => Promise<import("../index.js").QueryResult<void>>;
+        deleteShoppingCartItem: (id: string, deletePhysically: boolean) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
         updateShoppingCartItem: (changes: Partial<import("../index.js").ShoppingCartItem>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ShoppingCartItem>) => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCartItem>>;
     };
     user: {
         findUserById: (userId: string) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;
         findUsers: (filter: import("./gql/graphql.js").UserListFilter | null | undefined, match: Partial<import("../index.js").User> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").UserListItem>>;
     };
-    vendor: {
-        findVendors: (filter: import("../index.js").VendorListFilter | null | undefined, match: Partial<import("../index.js").Vendor> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Vendor>>;
+    brand: {
+        findBrands: (filter: import("../index.js").BrandListFilter | null | undefined, match: Partial<import("../index.js").Brand> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Brand>>;
     };
     wallet: {
         findMyWallet: () => Promise<import("../index.js").QueryResult<import("../index.js").Wallet>>;

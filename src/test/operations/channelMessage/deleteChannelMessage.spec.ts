@@ -5,13 +5,14 @@ import { CachePolicy, ModelType } from '../../../enums.js';
 import { ChannelMessage } from '../../../models/ChannelMessage.js';
 import findById from '../../../operations/findById.js';
 import factories from '../../factories/factories.js';
+import { createChannelSpecHelper } from '../../helpers/channel/createChannel.specHelper.js';
+import { deleteChannelSpecHelper } from '../../helpers/channel/deleteChannel.specHelper.js';
+import { deleteChannelMessageSpecHelper } from '../../helpers/channelMessage/deleteChannelMessage.specHelper.js';
 import clientStore from '../../helpers/clientStore.js';
-import { createChannelSpecHelper } from '../../helpers/createChannel.specHelper.js';
-import { deleteChannelSpecHelper } from '../../helpers/deleteChannel.specHelper.js';
-import { deleteChannelMessageSpecHelper } from '../../helpers/deleteChannelMessage.specHelper.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
-import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
+//ft
 describe('operations.channel.deleteChannelMessage', () => {
   let client: BgNodeClient;
 

@@ -3,7 +3,7 @@ import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { uniqueEmail } from '../../../helpers/chance.js';
 import clientStore from '../../helpers/clientStore.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 
 describe('operations.myUser.findAvailableUserHandle', () => {
   let client: BgNodeClient;

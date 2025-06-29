@@ -222,15 +222,18 @@ export enum ModelEventType {
 }
 
 export enum ModelType {
+  Brand = 'Brand',
   Channel = 'Channel',
   ChannelInvitation = 'ChannelInvitation',
   ChannelMessage = 'ChannelMessage',
   ChannelParticipant = 'ChannelParticipant',
   ClientInfo = 'ClientInfo',
-  GiftCard = 'GiftCard',
+  GiftCardProduct = 'GiftCardProduct',
   MyUser = 'MyUser',
+  Product = 'Product',
   PurchaseOrder = 'PurchaseOrder',
   PurchaseOrderItem = 'PurchaseOrderItem',
+  ServiceRequest = 'ServiceRequest',
   ShoppingCart = 'ShoppingCart',
   ShoppingCartItem = 'ShoppingCartItem',
   SidMultiStepAction = 'SidMultiStepAction',
@@ -238,7 +241,6 @@ export enum ModelType {
   unset = 'unset',
   User = 'User',
   UserInbox = 'UserInbox',
-  Vendor = 'Vendor',
   Wallet = 'Wallet',
   WalletItem = 'WalletItem',
 }
@@ -373,6 +375,12 @@ export enum ReportUserReasonTextId {
 export enum SortDirection {
   asc = 'asc',
   desc = 'desc',
+}
+
+export enum ServiceRequestResult {
+  error = 'error',
+  ok = 'ok',
+  unset = 'unset'
 }
 
 export enum UiLanguage {

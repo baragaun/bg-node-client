@@ -5,10 +5,9 @@ import { PurchaseOrderListFilter } from '../../../models/PurchaseOrderListFilter
 import { FindObjectsOptions } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
-  PurchaseOrderInput,
-  PurchaseOrderListFilter as PurchaseOrderListFilterFromRemote,
-  FindObjectsOptions as FindObjectsOptionsFromRemote,
+  FindObjectsOptions as FindObjectsOptionsFromGql,
   InputMaybe,
+  PurchaseOrderInput,
   QueryFindPurchaseOrdersArgs,
 } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
@@ -35,15 +34,21 @@ const findPurchaseOrders = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindPurchaseOrdersArgs = {
-      filter: (filter || null) as unknown as PurchaseOrderListFilterFromRemote | null,
+      filter: (filter || null) as unknown as PurchaseOrderListFilter | null,
       match: match as unknown as InputMaybe<PurchaseOrderInput>,
-      options: options as unknown as InputMaybe<FindObjectsOptionsFromRemote>,
+      options: options as unknown as InputMaybe<FindObjectsOptionsFromGql>,
     };
 
     const response: ResponseDataType = await client.query.findPurchaseOrders({
       $: args,
       ...modelFields.purchaseOrder,
     });
+
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.findPurchaseOrders: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
 
     logger.debug('fsdata.findPurchaseOrders response:', { response });
 

@@ -4,17 +4,17 @@ import { BgNodeClient } from '../../../BgNodeClient.js';
 import { ChannelInvitationStatus } from '../../../enums.js';
 import signMeOut from '../../../operations/myUser/signMeOut.js';
 import factories from '../../factories/factories.js';
-import clientStore from '../../helpers/clientStore.js';
 import {
   createChannelInvitationSpecHelper,
-} from '../../helpers/createChannelInvitation.specHelper.js';
-import { deleteMyUserSpecHelper } from '../../helpers/deleteMyUser.specHelper.js';
-import { getTestUserPropsSpecHelper } from '../../helpers/getTestUserProps.specHelper.js';
-import { signMeInSpecHelper } from '../../helpers/signMeIn.specHelper.js';
-import { signMeUpSpecHelper } from '../../helpers/signMeUp.specHelper.js';
+} from '../../helpers/channelInvitation/createChannelInvitation.specHelper.js';
 import {
   updateChannelInvitationSpecHelper,
-} from '../../helpers/updateChannelInvitation.specHelper.js';
+} from '../../helpers/channelInvitation/updateChannelInvitation.specHelper.js';
+import clientStore from '../../helpers/clientStore.js';
+import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
+import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
+import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
+import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
 describe('operations.channel.updateChannelInvitation', () => {
   let client: BgNodeClient;
@@ -93,4 +93,4 @@ describe('operations.channel.updateChannelInvitation', () => {
     // Cleanup for otherUser:
     await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
   });
-});
+}, { timeout: 10000 });

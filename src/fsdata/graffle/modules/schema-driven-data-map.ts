@@ -1409,6 +1409,69 @@ const GroupListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
   },
 };
 
+const BrandInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'BrandInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    name: {},
+    importId: {},
+    imageSource: {},
+    slug: {},
+    url: {},
+    balanceLookupUri: {},
+    listed: {},
+    logoUrl: {},
+    description: {},
+    alias1: {},
+    alias2: {},
+    alias3: {},
+  },
+};
+
+const BrandListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'BrandListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
 const GiftCardProductInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'GiftCardProductInput',
   fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
@@ -1434,8 +1497,8 @@ const GiftCardProductInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     },
     deletedBy: {},
     importId: {},
-    vendorId: {},
-    vendorImportId: {},
+    brandId: {},
+    brandImportId: {},
     name: {},
     description: {},
     categories: {},
@@ -1520,69 +1583,6 @@ const ProductCategoryInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
 
 const ProductCategoryListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'ProductCategoryListFilter',
-  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
-  f: {
-    ids: {},
-    excludeIds: {},
-    searchText: {},
-    caseSensitive: {},
-    textSearchFields: {},
-    createdAtFrom: {
-      nt: DateTimeISO,
-    },
-    createdAtUntil: {
-      nt: DateTimeISO,
-    },
-    updatedAtFrom: {
-      nt: DateTimeISO,
-    },
-    updatedAtUntil: {
-      nt: DateTimeISO,
-    },
-  },
-};
-
-const VendorInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'VendorInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt'],
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    name: {},
-    importId: {},
-    imageSource: {},
-    slug: {},
-    url: {},
-    balanceLookupUri: {},
-    listed: {},
-    logoUrl: {},
-    description: {},
-    alias1: {},
-    alias2: {},
-    alias3: {},
-  },
-};
-
-const VendorListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
-  n: 'VendorListFilter',
   fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
   f: {
     ids: {},
@@ -1779,7 +1779,7 @@ const PurchaseOrderItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     purchaseOrderId: {},
     shoppingCartItemId: {},
     productId: {},
-    vendorId: {},
+    brandId: {},
     quantity: {},
     price: {},
     totalPrice: {},
@@ -2022,7 +2022,7 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     walletId: {},
     productId: {},
     purchaseOrderItemId: {},
-    vendorId: {},
+    brandId: {},
     name: {},
     price: {},
     initialBalance: {},
@@ -6065,6 +6065,43 @@ const MastercardBank: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
+const Brand: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    name: {},
+    importId: {},
+    imageSource: {},
+    slug: {},
+    url: {},
+    balanceLookupUri: {},
+    listed: {},
+    logoImageSource: {},
+    description: {},
+    alias1: {},
+    alias2: {},
+    alias3: {},
+  },
+};
+
 const GiftCardProduct: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     id: {},
@@ -6088,8 +6125,8 @@ const GiftCardProduct: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     deletedBy: {},
     importId: {},
-    vendorId: {},
-    vendorImportId: {},
+    brandId: {},
+    brandImportId: {},
     name: {},
     description: {},
     categories: {},
@@ -6171,43 +6208,6 @@ const ProductCategory: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     name: {},
     labelEn: {},
     sortIndex: {},
-  },
-};
-
-const Vendor: $$Utilities.SchemaDrivenDataMap.OutputObject = {
-  f: {
-    id: {},
-    adminNotes: {},
-    events: {
-      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
-    },
-    metadata: {
-      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
-    },
-    createdAt: {
-      nt: DateTimeISO,
-    },
-    createdBy: {},
-    updatedAt: {
-      nt: DateTimeISO,
-    },
-    updatedBy: {},
-    deletedAt: {
-      nt: DateTimeISO,
-    },
-    deletedBy: {},
-    name: {},
-    importId: {},
-    imageSource: {},
-    slug: {},
-    url: {},
-    balanceLookupUri: {},
-    listed: {},
-    logoImageSource: {},
-    description: {},
-    alias1: {},
-    alias2: {},
-    alias3: {},
   },
 };
 
@@ -6388,20 +6388,13 @@ const UserWithScore: $$Utilities.SchemaDrivenDataMap.OutputObject = {
 const ServiceRequest: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     id: {},
-    serviceRequestType: {},
-    userId: {},
-    userRoles: {},
-    objectIds: {},
-    modelTypes: {},
-    result: {},
-    messageIds: {},
-    message: {},
-    errorCode: {},
+    adminNotes: {},
     events: {
       // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
     },
-    deviceUuid: {},
-    source: {},
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
     createdAt: {
       nt: DateTimeISO,
     },
@@ -6414,6 +6407,17 @@ const ServiceRequest: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
+    userId: {},
+    serviceRequestType: {},
+    userRoles: {},
+    objectIds: {},
+    modelTypes: {},
+    result: {},
+    messageIds: {},
+    message: {},
+    errorCode: {},
+    deviceUuid: {},
+    source: {},
     finishedAt: {
       nt: DateTimeISO,
     },
@@ -7179,7 +7183,7 @@ const PurchaseOrderItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     purchaseOrderId: {},
     shoppingCartItemId: {},
     productId: {},
-    vendorId: {},
+    brandId: {},
     quantity: {},
     price: {},
     totalPrice: {},
@@ -7314,7 +7318,7 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     walletId: {},
     productId: {},
     purchaseOrderItemId: {},
-    vendorId: {},
+    brandId: {},
     name: {},
     price: {},
     initialBalance: {},
@@ -8420,6 +8424,23 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
+    findBrands: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: BrandInput,
+          it: [0],
+        },
+        filter: {
+          nt: BrandListFilter,
+          it: [0],
+        },
+      },
+      // nt: Brand, <-- Assigned later to avoid potential circular dependency.
+    },
     findGiftCardProducts: {
       a: {
         options: {
@@ -8456,23 +8477,6 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
       // nt: ProductCategory, <-- Assigned later to avoid potential circular dependency.
-    },
-    findVendors: {
-      a: {
-        options: {
-          nt: FindObjectsOptions,
-          it: [0],
-        },
-        match: {
-          nt: VendorInput,
-          it: [0],
-        },
-        filter: {
-          nt: VendorListFilter,
-          it: [0],
-        },
-      },
-      // nt: Vendor, <-- Assigned later to avoid potential circular dependency.
     },
     findUserSearchById: {
       a: {
@@ -8740,6 +8744,19 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: PurchaseOrderItem, <-- Assigned later to avoid potential circular dependency.
     },
+    findPurchaseOrderById: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: PurchaseOrder, <-- Assigned later to avoid potential circular dependency.
+    },
     findPurchaseOrders: {
       a: {
         options: {
@@ -8930,7 +8947,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         description: {
           nt: String,
@@ -9012,7 +9029,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         academicExperienceId: {
           nt: String,
@@ -9043,7 +9060,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         businessExperienceId: {
           nt: String,
@@ -9078,7 +9095,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         companyId: {
           nt: String,
@@ -9146,7 +9163,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         id: {
           nt: String,
@@ -9176,11 +9193,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelInvitationId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },
@@ -9201,11 +9214,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelInvitationId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },
@@ -9217,23 +9226,32 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelInvitationId: {
           nt: String,
+          it: [1],
+        },
+      },
+    },
+    deleteChannelInvitationV2: {
+      a: {
+        anonymizePersonalData: {
+          nt: Boolean,
+          it: [0],
+        },
+        deletePhysically: {
+          nt: Boolean,
           it: [0],
         },
         id: {
           nt: String,
-          it: [0],
+          it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     dismissChannelInvitationFromInbox: {
       a: {
         channelInvitationId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },
@@ -9249,11 +9267,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },
@@ -9270,21 +9284,34 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         anonymizePersonalData: {
           nt: Boolean,
+          it: [1],
+        },
+        deletePhysically: {
+          nt: Boolean,
+          it: [1],
+        },
+        channelId: {
+          nt: String,
+          it: [1],
+        },
+      },
+    },
+    deleteChannelV2: {
+      a: {
+        anonymizePersonalData: {
+          nt: Boolean,
           it: [0],
         },
         deletePhysically: {
           nt: Boolean,
           it: [0],
         },
-        channelId: {
-          nt: String,
-          it: [0],
-        },
         id: {
           nt: String,
-          it: [0],
+          it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     markChannelMessagesAsSeenByMe: {
       a: {
@@ -9306,11 +9333,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         channelId: {
           nt: String,
-          it: [0],
-        },
-        id: {
-          nt: String,
-          it: [0],
+          it: [1],
         },
       },
     },
@@ -9339,13 +9362,26 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelMessageId: {
           nt: String,
+          it: [1],
+        },
+      },
+    },
+    deleteChannelMessageV2: {
+      a: {
+        anonymizePersonalData: {
+          nt: Boolean,
+          it: [0],
+        },
+        deletePhysically: {
+          nt: Boolean,
           it: [0],
         },
         id: {
           nt: String,
-          it: [0],
+          it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     updateChannelMessage: {
       a: {
@@ -9372,13 +9408,26 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         channelParticipantId: {
           nt: String,
+          it: [1],
+        },
+      },
+    },
+    deleteChannelParticipantV2: {
+      a: {
+        anonymizePersonalData: {
+          nt: Boolean,
+          it: [0],
+        },
+        deletePhysically: {
+          nt: Boolean,
           it: [0],
         },
         id: {
           nt: String,
-          it: [0],
+          it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     updateChannelParticipant: {
       a: {
@@ -9401,7 +9450,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         contentTagId: {
           nt: String,
@@ -9450,7 +9499,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         groupMembershipId: {
           nt: String,
@@ -9537,7 +9586,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         groupId: {
           nt: String,
@@ -9588,7 +9637,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         supportChannelConfigId: {
           nt: String,
@@ -9619,7 +9668,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         userSearchId: {
           nt: String,
@@ -9650,7 +9699,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         notificationId: {
           nt: String,
@@ -9699,7 +9748,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         notificationTemplateId: {
           nt: String,
@@ -9818,7 +9867,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         description: {
           nt: String,
@@ -9908,6 +9957,10 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     createShoppingCartItem: {
       a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
         input: {
           nt: ShoppingCartItemInput,
           it: [1],
@@ -9917,11 +9970,16 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     deleteShoppingCartItem: {
       a: {
+        deletePhysically: {
+          nt: Boolean,
+          it: [0],
+        },
         id: {
           nt: String,
           it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     updateShoppingCartItem: {
       a: {
@@ -9934,6 +9992,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     emptyMyShoppingCart: {},
     emptyShoppingCart: {
@@ -9944,8 +10003,38 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
+    createWalletItem: {
+      a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
+        input: {
+          nt: WalletItemInput,
+          it: [1],
+        },
+      },
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
+    deleteWalletItem: {
+      a: {
+        deletePhysically: {
+          nt: Boolean,
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     updateWalletItem: {
       a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
         input: {
           nt: WalletItemInput,
           it: [1],
@@ -10040,12 +10129,12 @@ GroupInput.f!['metadata']!.nt = BaseModelMetadataInput;
 GroupInput.f!['appliedGroupRules']!.nt = AppliedGroupRuleInput;
 AppliedGroupRuleInput.f!['events']!.nt = ModelEventInput;
 AppliedGroupRuleInput.f!['metadata']!.nt = BaseModelMetadataInput;
+BrandInput.f!['events']!.nt = ModelEventInput;
+BrandInput.f!['metadata']!.nt = BaseModelMetadataInput;
 GiftCardProductInput.f!['events']!.nt = ModelEventInput;
 GiftCardProductInput.f!['metadata']!.nt = BaseModelMetadataInput;
 ProductCategoryInput.f!['events']!.nt = ModelEventInput;
 ProductCategoryInput.f!['metadata']!.nt = BaseModelMetadataInput;
-VendorInput.f!['events']!.nt = ModelEventInput;
-VendorInput.f!['metadata']!.nt = BaseModelMetadataInput;
 UserSearchInput.f!['events']!.nt = ModelEventInput;
 UserSearchInput.f!['metadata']!.nt = BaseModelMetadataInput;
 UserSearchInput.f!['filter']!.nt = UserSearchFilterInput;
@@ -10363,6 +10452,8 @@ IqlaaJordanianGovernorate.f['childOptions']!.nt = Option;
 IqlaaJordanianGovernorate.f['parentOption']!.nt = Option;
 MastercardBank.f['events']!.nt = ModelEvent;
 MastercardBank.f['metadata']!.nt = BaseModelMetadata;
+Brand.f['events']!.nt = ModelEvent;
+Brand.f['metadata']!.nt = BaseModelMetadata;
 GiftCardProduct.f['events']!.nt = ModelEvent;
 GiftCardProduct.f['metadata']!.nt = BaseModelMetadata;
 GiftCardProduct.f['denominations']!.nt = GiftCardDenomination;
@@ -10370,8 +10461,6 @@ MarketplaceServiceRecord.f['events']!.nt = ModelEvent;
 MarketplaceServiceRecord.f['metadata']!.nt = BaseModelMetadata;
 ProductCategory.f['events']!.nt = ModelEvent;
 ProductCategory.f['metadata']!.nt = BaseModelMetadata;
-Vendor.f['events']!.nt = ModelEvent;
-Vendor.f['metadata']!.nt = BaseModelMetadata;
 UserSearch.f['events']!.nt = ModelEvent;
 UserSearch.f['metadata']!.nt = BaseModelMetadata;
 UserSearch.f['filter']!.nt = UserSearchFilter;
@@ -10392,6 +10481,7 @@ UserWithScore.f['endorsements']!.nt = EndorsementWithTypes;
 UserWithScore.f['groups']!.nt = Group;
 UserWithScore.f['pronouns']!.nt = Pronoun;
 ServiceRequest.f['events']!.nt = ModelEvent;
+ServiceRequest.f['metadata']!.nt = BaseModelMetadata;
 ContactListItem.f['events']!.nt = ModelEvent;
 ContactListItem.f['metadata']!.nt = ContactMetadata;
 SidMultiStepAction.f['events']!.nt = ModelEvent;
@@ -10537,10 +10627,10 @@ Query.f['findIndonesianProvinces']!.nt = IndonesianProvince;
 Query.f['findIqlaaJordanianDistricts']!.nt = IqlaaJordanianDistrict;
 Query.f['findIqlaaJordanianGovernorates']!.nt = IqlaaJordanianGovernorate;
 Query.f['findMastercardBanks']!.nt = MastercardBank;
+Query.f['findBrands']!.nt = Brand;
 Query.f['findGiftCardProducts']!.nt = GiftCardProduct;
 Query.f['findMarketplaceServiceRecord']!.nt = MarketplaceServiceRecord;
 Query.f['findProductCategories']!.nt = ProductCategory;
-Query.f['findVendors']!.nt = Vendor;
 Query.f['findUserSearchById']!.nt = UserSearch;
 Query.f['findUserSearches']!.nt = UserSearch;
 Query.f['findUserSearchResults']!.nt = UserWithScore;
@@ -10565,6 +10655,7 @@ Query.f['findTrainingSessionsForMe']!.nt = TrainingSession;
 Query.f['findTrainingSessionsByTrainingId']!.nt = TrainingSession;
 Query.f['findLatestTrainingSessionForMe']!.nt = TrainingSession;
 Query.f['findPurchaseOrderItems']!.nt = PurchaseOrderItem;
+Query.f['findPurchaseOrderById']!.nt = PurchaseOrder;
 Query.f['findPurchaseOrders']!.nt = PurchaseOrder;
 Query.f['findShoppingCartItemById']!.nt = ShoppingCartItem;
 Query.f['findShoppingCartItems']!.nt = ShoppingCartItem;
@@ -10596,9 +10687,13 @@ Mutation.f['createUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['deleteUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['initAssetUpload']!.nt = UploadedAsset;
 Mutation.f['createChannelInvitation']!.nt = ChannelInvitation;
+Mutation.f['deleteChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['createChannel']!.nt = Channel;
+Mutation.f['deleteChannelV2']!.nt = ServiceRequest;
 Mutation.f['createChannelMessage']!.nt = ChannelMessage;
+Mutation.f['deleteChannelMessageV2']!.nt = ServiceRequest;
 Mutation.f['createChannelParticipant']!.nt = ChannelParticipant;
+Mutation.f['deleteChannelParticipantV2']!.nt = ServiceRequest;
 Mutation.f['createContentTag']!.nt = ContentTag;
 Mutation.f['deleteContentTag']!.nt = ServiceRequest;
 Mutation.f['updateContentTag']!.nt = ServiceRequest;
@@ -10633,6 +10728,10 @@ Mutation.f['startMySessionV2']!.nt = ContentStatus;
 Mutation.f['unblockUserForMeV2']!.nt = ServiceRequest;
 Mutation.f['createPurchaseOrder']!.nt = ServiceRequest;
 Mutation.f['createShoppingCartItem']!.nt = ShoppingCartItem;
+Mutation.f['deleteShoppingCartItem']!.nt = ServiceRequest;
+Mutation.f['updateShoppingCartItem']!.nt = ServiceRequest;
+Mutation.f['createWalletItem']!.nt = WalletItem;
+Mutation.f['deleteWalletItem']!.nt = ServiceRequest;
 Mutation.f['updateWalletItem']!.nt = ServiceRequest;
 Subscription.f['channelChanged']!.nt = BgChannelChangedEvent;
 Subscription.f['objectChanged']!.nt = ObjectChangedEvent;
@@ -10751,13 +10850,13 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     AppliedGroupRuleInput,
     GroupRuleBaseConfigInput,
     GroupListFilter,
+    BrandInput,
+    BrandListFilter,
     GiftCardProductInput,
     GiftCardDenominationInput,
     GiftCardProductListFilter,
     ProductCategoryInput,
     ProductCategoryListFilter,
-    VendorInput,
-    VendorListFilter,
     UserSearchInput,
     UserSearchFilterInput,
     UserSearchListFilter,
@@ -10870,11 +10969,11 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     IqlaaJordanianDistrict,
     IqlaaJordanianGovernorate,
     MastercardBank,
+    Brand,
     GiftCardProduct,
     GiftCardDenomination,
     MarketplaceServiceRecord,
     ProductCategory,
-    Vendor,
     UserSearch,
     UserSearchFilter,
     UserSearchRunInfo,

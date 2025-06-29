@@ -89,10 +89,10 @@ export namespace Schema {
       findIqlaaJordanianGovernorates: Query.findIqlaaJordanianGovernorates;
       findMastercardBanks: Query.findMastercardBanks;
       userWillReceiveWelcomeMessage: Query.userWillReceiveWelcomeMessage;
+      findBrands: Query.findBrands;
       findGiftCardProducts: Query.findGiftCardProducts;
       findMarketplaceServiceRecord: Query.findMarketplaceServiceRecord;
       findProductCategories: Query.findProductCategories;
-      findVendors: Query.findVendors;
       findUserSearchById: Query.findUserSearchById;
       findUserSearches: Query.findUserSearches;
       findUserSearchResults: Query.findUserSearchResults;
@@ -119,6 +119,7 @@ export namespace Schema {
       findTrainingSessionsByTrainingId: Query.findTrainingSessionsByTrainingId;
       findLatestTrainingSessionForMe: Query.findLatestTrainingSessionForMe;
       findPurchaseOrderItems: Query.findPurchaseOrderItems;
+      findPurchaseOrderById: Query.findPurchaseOrderById;
       findPurchaseOrders: Query.findPurchaseOrders;
       findShoppingCartItemById: Query.findShoppingCartItemById;
       findShoppingCartItems: Query.findShoppingCartItems;
@@ -1287,6 +1288,33 @@ export namespace Schema {
       namedType: $$NamedTypes.$$Boolean;
     }
 
+    export interface findBrands {
+      kind: 'OutputField';
+      name: 'findBrands';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        match: {
+          kind: 'InputField';
+          name: 'match';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$BrandInput;
+        };
+        filter: {
+          kind: 'InputField';
+          name: 'filter';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$BrandListFilter;
+        };
+      };
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$Brand;
+    }
+
     export interface findGiftCardProducts {
       kind: 'OutputField';
       name: 'findGiftCardProducts';
@@ -1347,33 +1375,6 @@ export namespace Schema {
       };
       inlineType: [1, [1]];
       namedType: $$NamedTypes.$$ProductCategory;
-    }
-
-    export interface findVendors {
-      kind: 'OutputField';
-      name: 'findVendors';
-      arguments: {
-        options: {
-          kind: 'InputField';
-          name: 'options';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$FindObjectsOptions;
-        };
-        match: {
-          kind: 'InputField';
-          name: 'match';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$VendorInput;
-        };
-        filter: {
-          kind: 'InputField';
-          name: 'filter';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$VendorListFilter;
-        };
-      };
-      inlineType: [1, [1]];
-      namedType: $$NamedTypes.$$Vendor;
     }
 
     export interface findUserSearchById {
@@ -1846,6 +1847,27 @@ export namespace Schema {
       namedType: $$NamedTypes.$$PurchaseOrderItem;
     }
 
+    export interface findPurchaseOrderById {
+      kind: 'OutputField';
+      name: 'findPurchaseOrderById';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [0];
+      namedType: $$NamedTypes.$$PurchaseOrder;
+    }
+
     export interface findPurchaseOrders {
       kind: 'OutputField';
       name: 'findPurchaseOrders';
@@ -2092,20 +2114,24 @@ export namespace Schema {
       createChannelInvitation: Mutation.createChannelInvitation;
       declineChannelInvitation: Mutation.declineChannelInvitation;
       deleteChannelInvitation: Mutation.deleteChannelInvitation;
+      deleteChannelInvitationV2: Mutation.deleteChannelInvitationV2;
       dismissChannelInvitationFromInbox: Mutation.dismissChannelInvitationFromInbox;
       updateChannelInvitation: Mutation.updateChannelInvitation;
       archiveChannelForMe: Mutation.archiveChannelForMe;
       createChannel: Mutation.createChannel;
       deleteChannel: Mutation.deleteChannel;
+      deleteChannelV2: Mutation.deleteChannelV2;
       markChannelMessagesAsSeenByMe: Mutation.markChannelMessagesAsSeenByMe;
       updateChannel: Mutation.updateChannel;
       unarchiveChannelForMe: Mutation.unarchiveChannelForMe;
       addChannelMessageEvent: Mutation.addChannelMessageEvent;
       createChannelMessage: Mutation.createChannelMessage;
       deleteChannelMessage: Mutation.deleteChannelMessage;
+      deleteChannelMessageV2: Mutation.deleteChannelMessageV2;
       updateChannelMessage: Mutation.updateChannelMessage;
       createChannelParticipant: Mutation.createChannelParticipant;
       deleteChannelParticipant: Mutation.deleteChannelParticipant;
+      deleteChannelParticipantV2: Mutation.deleteChannelParticipantV2;
       updateChannelParticipant: Mutation.updateChannelParticipant;
       createContentTag: Mutation.createContentTag;
       deleteContentTag: Mutation.deleteContentTag;
@@ -2162,6 +2188,8 @@ export namespace Schema {
       updateShoppingCartItem: Mutation.updateShoppingCartItem;
       emptyMyShoppingCart: Mutation.emptyMyShoppingCart;
       emptyShoppingCart: Mutation.emptyShoppingCart;
+      createWalletItem: Mutation.createWalletItem;
+      deleteWalletItem: Mutation.deleteWalletItem;
       updateWalletItem: Mutation.updateWalletItem;
     };
   }
@@ -2300,7 +2328,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         description: {
@@ -2441,7 +2469,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         academicExperienceId: {
@@ -2492,7 +2520,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         businessExperienceId: {
@@ -2549,7 +2577,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         companyId: {
@@ -2668,7 +2696,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         id: {
@@ -2716,19 +2744,10 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'acceptChannelInvitation';
       arguments: {
-        /**
-         * @deprecated use id instead
-         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2761,19 +2780,10 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$DeclineChannelInvitationReasonTextId;
         };
-        /**
-         * @deprecated use id instead
-         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2791,19 +2801,10 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
-        /**
-         * @deprecated use id instead
-         */
         channelInvitationId: {
           kind: 'InputField';
           name: 'channelInvitationId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2811,23 +2812,41 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface dismissChannelInvitationFromInbox {
+    export interface deleteChannelInvitationV2 {
       kind: 'OutputField';
-      name: 'dismissChannelInvitationFromInbox';
+      name: 'deleteChannelInvitationV2';
       arguments: {
-        /**
-         * @deprecated use id instead
-         */
-        channelInvitationId: {
+        anonymizePersonalData: {
           kind: 'InputField';
-          name: 'channelInvitationId';
+          name: 'anonymizePersonalData';
           inlineType: [0];
-          namedType: $$NamedTypes.$$String;
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
         };
         id: {
           kind: 'InputField';
           name: 'id';
-          inlineType: [0];
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
+    export interface dismissChannelInvitationFromInbox {
+      kind: 'OutputField';
+      name: 'dismissChannelInvitationFromInbox';
+      arguments: {
+        channelInvitationId: {
+          kind: 'InputField';
+          name: 'channelInvitationId';
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2854,19 +2873,10 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'archiveChannelForMe';
       arguments: {
-        /**
-         * @deprecated use id instead
-         */
         channelId: {
           kind: 'InputField';
           name: 'channelId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -2896,6 +2906,33 @@ export namespace Schema {
         anonymizePersonalData: {
           kind: 'InputField';
           name: 'anonymizePersonalData';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        channelId: {
+          kind: 'InputField';
+          name: 'channelId';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deleteChannelV2 {
+      kind: 'OutputField';
+      name: 'deleteChannelV2';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
           inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
@@ -2905,24 +2942,15 @@ export namespace Schema {
           inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
-        /**
-         * @deprecated use id instead
-         */
-        channelId: {
-          kind: 'InputField';
-          name: 'channelId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
         id: {
           kind: 'InputField';
           name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$String;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface markChannelMessagesAsSeenByMe {
@@ -2959,19 +2987,10 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'unarchiveChannelForMe';
       arguments: {
-        /**
-         * @deprecated use id instead
-         */
         channelId: {
           kind: 'InputField';
           name: 'channelId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
@@ -3019,24 +3038,42 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
-        /**
-         * @deprecated use id instead
-         */
         channelMessageId: {
           kind: 'InputField';
           name: 'channelMessageId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
       inlineType: [1];
       namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deleteChannelMessageV2 {
+      kind: 'OutputField';
+      name: 'deleteChannelMessageV2';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface updateChannelMessage {
@@ -3079,24 +3116,42 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
-        /**
-         * @deprecated use id instead
-         */
         channelParticipantId: {
           kind: 'InputField';
           name: 'channelParticipantId';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$String;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
       };
       inlineType: [1];
       namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deleteChannelParticipantV2 {
+      kind: 'OutputField';
+      name: 'deleteChannelParticipantV2';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface updateChannelParticipant {
@@ -3136,7 +3191,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         contentTagId: {
@@ -3217,7 +3272,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         groupMembershipId: {
@@ -3361,7 +3416,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         groupId: {
@@ -3445,7 +3500,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         supportChannelConfigId: {
@@ -3496,7 +3551,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         userSearchId: {
@@ -3547,7 +3602,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         notificationId: {
@@ -3634,7 +3689,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         notificationTemplateId: {
@@ -3838,7 +3893,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         description: {
@@ -4011,6 +4066,12 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'createShoppingCartItem';
       arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$UpdateObjectOptions;
+        };
         input: {
           kind: 'InputField';
           name: 'input';
@@ -4026,6 +4087,12 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'deleteShoppingCartItem';
       arguments: {
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
         id: {
           kind: 'InputField';
           name: 'id';
@@ -4034,7 +4101,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$String;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface updateShoppingCartItem {
@@ -4055,7 +4122,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$String;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface emptyMyShoppingCart {
@@ -4081,10 +4148,58 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface createWalletItem {
+      kind: 'OutputField';
+      name: 'createWalletItem';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$UpdateObjectOptions;
+        };
+        input: {
+          kind: 'InputField';
+          name: 'input';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$WalletItemInput;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$WalletItem;
+    }
+
+    export interface deleteWalletItem {
+      kind: 'OutputField';
+      name: 'deleteWalletItem';
+      arguments: {
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
     export interface updateWalletItem {
       kind: 'OutputField';
       name: 'updateWalletItem';
       arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$UpdateObjectOptions;
+        };
         input: {
           kind: 'InputField';
           name: 'input';
@@ -19897,6 +20012,229 @@ export namespace Schema {
     }
   }
 
+  //                                               Brand
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface Brand {
+    kind: 'Object';
+    name: 'Brand';
+    fields: {
+      __typename: Brand.__typename;
+      id: Brand.id;
+      adminNotes: Brand.adminNotes;
+      events: Brand.events;
+      metadata: Brand.metadata;
+      createdAt: Brand.createdAt;
+      createdBy: Brand.createdBy;
+      updatedAt: Brand.updatedAt;
+      updatedBy: Brand.updatedBy;
+      deletedAt: Brand.deletedAt;
+      deletedBy: Brand.deletedBy;
+      name: Brand.name;
+      importId: Brand.importId;
+      imageSource: Brand.imageSource;
+      slug: Brand.slug;
+      url: Brand.url;
+      balanceLookupUri: Brand.balanceLookupUri;
+      listed: Brand.listed;
+      logoImageSource: Brand.logoImageSource;
+      description: Brand.description;
+      alias1: Brand.alias1;
+      alias2: Brand.alias2;
+      alias3: Brand.alias3;
+    };
+  }
+
+  export namespace Brand {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'Brand';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface name {
+      kind: 'OutputField';
+      name: 'name';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface importId {
+      kind: 'OutputField';
+      name: 'importId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface imageSource {
+      kind: 'OutputField';
+      name: 'imageSource';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface slug {
+      kind: 'OutputField';
+      name: 'slug';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface url {
+      kind: 'OutputField';
+      name: 'url';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface balanceLookupUri {
+      kind: 'OutputField';
+      name: 'balanceLookupUri';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface listed {
+      kind: 'OutputField';
+      name: 'listed';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface logoImageSource {
+      kind: 'OutputField';
+      name: 'logoImageSource';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface description {
+      kind: 'OutputField';
+      name: 'description';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias1 {
+      kind: 'OutputField';
+      name: 'alias1';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias2 {
+      kind: 'OutputField';
+      name: 'alias2';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias3 {
+      kind: 'OutputField';
+      name: 'alias3';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+  }
+
   //                                          GiftCardProduct
   // --------------------------------------------------------------------------------------------------
   //
@@ -19917,8 +20255,8 @@ export namespace Schema {
       deletedAt: GiftCardProduct.deletedAt;
       deletedBy: GiftCardProduct.deletedBy;
       importId: GiftCardProduct.importId;
-      vendorId: GiftCardProduct.vendorId;
-      vendorImportId: GiftCardProduct.vendorImportId;
+      brandId: GiftCardProduct.brandId;
+      brandImportId: GiftCardProduct.brandImportId;
       name: GiftCardProduct.name;
       description: GiftCardProduct.description;
       categories: GiftCardProduct.categories;
@@ -20039,17 +20377,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface vendorId {
+    export interface brandId {
       kind: 'OutputField';
-      name: 'vendorId';
+      name: 'brandId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface vendorImportId {
+    export interface brandImportId {
       kind: 'OutputField';
-      name: 'vendorImportId';
+      name: 'brandImportId';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -20507,229 +20845,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$Int;
-    }
-  }
-
-  //                                               Vendor
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface Vendor {
-    kind: 'Object';
-    name: 'Vendor';
-    fields: {
-      __typename: Vendor.__typename;
-      id: Vendor.id;
-      adminNotes: Vendor.adminNotes;
-      events: Vendor.events;
-      metadata: Vendor.metadata;
-      createdAt: Vendor.createdAt;
-      createdBy: Vendor.createdBy;
-      updatedAt: Vendor.updatedAt;
-      updatedBy: Vendor.updatedBy;
-      deletedAt: Vendor.deletedAt;
-      deletedBy: Vendor.deletedBy;
-      name: Vendor.name;
-      importId: Vendor.importId;
-      imageSource: Vendor.imageSource;
-      slug: Vendor.slug;
-      url: Vendor.url;
-      balanceLookupUri: Vendor.balanceLookupUri;
-      listed: Vendor.listed;
-      logoImageSource: Vendor.logoImageSource;
-      description: Vendor.description;
-      alias1: Vendor.alias1;
-      alias2: Vendor.alias2;
-      alias3: Vendor.alias3;
-    };
-  }
-
-  export namespace Vendor {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'Vendor';
-      };
-    }
-
-    export interface id {
-      kind: 'OutputField';
-      name: 'id';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'OutputField';
-      name: 'adminNotes';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'OutputField';
-      name: 'events';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEvent;
-    }
-
-    export interface metadata {
-      kind: 'OutputField';
-      name: 'metadata';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BaseModelMetadata;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'OutputField';
-      name: 'createdBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'OutputField';
-      name: 'updatedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'OutputField';
-      name: 'deletedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'OutputField';
-      name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface name {
-      kind: 'OutputField';
-      name: 'name';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface importId {
-      kind: 'OutputField';
-      name: 'importId';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface imageSource {
-      kind: 'OutputField';
-      name: 'imageSource';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface slug {
-      kind: 'OutputField';
-      name: 'slug';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface url {
-      kind: 'OutputField';
-      name: 'url';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface balanceLookupUri {
-      kind: 'OutputField';
-      name: 'balanceLookupUri';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface listed {
-      kind: 'OutputField';
-      name: 'listed';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface logoImageSource {
-      kind: 'OutputField';
-      name: 'logoImageSource';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface description {
-      kind: 'OutputField';
-      name: 'description';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface alias1 {
-      kind: 'OutputField';
-      name: 'alias1';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface alias2 {
-      kind: 'OutputField';
-      name: 'alias2';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface alias3 {
-      kind: 'OutputField';
-      name: 'alias3';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
     }
   }
 
@@ -21653,8 +21768,17 @@ export namespace Schema {
     fields: {
       __typename: ServiceRequest.__typename;
       id: ServiceRequest.id;
-      serviceRequestType: ServiceRequest.serviceRequestType;
+      adminNotes: ServiceRequest.adminNotes;
+      events: ServiceRequest.events;
+      metadata: ServiceRequest.metadata;
+      createdAt: ServiceRequest.createdAt;
+      createdBy: ServiceRequest.createdBy;
+      updatedAt: ServiceRequest.updatedAt;
+      updatedBy: ServiceRequest.updatedBy;
+      deletedAt: ServiceRequest.deletedAt;
+      deletedBy: ServiceRequest.deletedBy;
       userId: ServiceRequest.userId;
+      serviceRequestType: ServiceRequest.serviceRequestType;
       userRoles: ServiceRequest.userRoles;
       objectIds: ServiceRequest.objectIds;
       modelTypes: ServiceRequest.modelTypes;
@@ -21662,15 +21786,8 @@ export namespace Schema {
       messageIds: ServiceRequest.messageIds;
       message: ServiceRequest.message;
       errorCode: ServiceRequest.errorCode;
-      events: ServiceRequest.events;
       deviceUuid: ServiceRequest.deviceUuid;
       source: ServiceRequest.source;
-      createdAt: ServiceRequest.createdAt;
-      createdBy: ServiceRequest.createdBy;
-      updatedAt: ServiceRequest.updatedAt;
-      updatedBy: ServiceRequest.updatedBy;
-      deletedAt: ServiceRequest.deletedAt;
-      deletedBy: ServiceRequest.deletedBy;
       finishedAt: ServiceRequest.finishedAt;
       expiresAt: ServiceRequest.expiresAt;
     };
@@ -21696,12 +21813,76 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface serviceRequestType {
+    export interface adminNotes {
       kind: 'OutputField';
-      name: 'serviceRequestType';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
       arguments: {};
       inlineType: [1];
-      namedType: $$NamedTypes.$$ServiceRequestType;
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
     }
 
     export interface userId {
@@ -21710,6 +21891,14 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface serviceRequestType {
+      kind: 'OutputField';
+      name: 'serviceRequestType';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequestType;
     }
 
     export interface userRoles {
@@ -21768,14 +21957,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ErrorCode;
     }
 
-    export interface events {
-      kind: 'OutputField';
-      name: 'events';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEvent;
-    }
-
     export interface deviceUuid {
       kind: 'OutputField';
       name: 'deviceUuid';
@@ -21790,54 +21971,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$ServiceRequestSource;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'OutputField';
-      name: 'createdBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'OutputField';
-      name: 'updatedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'OutputField';
-      name: 'deletedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'OutputField';
-      name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
     }
 
     export interface finishedAt {
@@ -26054,7 +26187,7 @@ export namespace Schema {
       purchaseOrderId: PurchaseOrderItem.purchaseOrderId;
       shoppingCartItemId: PurchaseOrderItem.shoppingCartItemId;
       productId: PurchaseOrderItem.productId;
-      vendorId: PurchaseOrderItem.vendorId;
+      brandId: PurchaseOrderItem.brandId;
       quantity: PurchaseOrderItem.quantity;
       price: PurchaseOrderItem.price;
       totalPrice: PurchaseOrderItem.totalPrice;
@@ -26177,9 +26310,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface vendorId {
+    export interface brandId {
       kind: 'OutputField';
-      name: 'vendorId';
+      name: 'brandId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
@@ -26739,7 +26872,7 @@ export namespace Schema {
       walletId: WalletItem.walletId;
       productId: WalletItem.productId;
       purchaseOrderItemId: WalletItem.purchaseOrderItemId;
-      vendorId: WalletItem.vendorId;
+      brandId: WalletItem.brandId;
       name: WalletItem.name;
       price: WalletItem.price;
       initialBalance: WalletItem.initialBalance;
@@ -26880,9 +27013,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface vendorId {
+    export interface brandId {
       kind: 'OutputField';
-      name: 'vendorId';
+      name: 'brandId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
@@ -33235,6 +33368,282 @@ export namespace Schema {
     }
   }
 
+  //                                             BrandInput
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface BrandInput {
+    kind: 'InputObject';
+    name: 'BrandInput';
+    isAllFieldsNullable: true;
+    fields: {
+      id: BrandInput.id;
+      adminNotes: BrandInput.adminNotes;
+      events: BrandInput.events;
+      metadata: BrandInput.metadata;
+      createdAt: BrandInput.createdAt;
+      createdBy: BrandInput.createdBy;
+      updatedAt: BrandInput.updatedAt;
+      updatedBy: BrandInput.updatedBy;
+      deletedAt: BrandInput.deletedAt;
+      deletedBy: BrandInput.deletedBy;
+      name: BrandInput.name;
+      importId: BrandInput.importId;
+      imageSource: BrandInput.imageSource;
+      slug: BrandInput.slug;
+      url: BrandInput.url;
+      balanceLookupUri: BrandInput.balanceLookupUri;
+      listed: BrandInput.listed;
+      logoUrl: BrandInput.logoUrl;
+      description: BrandInput.description;
+      alias1: BrandInput.alias1;
+      alias2: BrandInput.alias2;
+      alias3: BrandInput.alias3;
+    };
+  }
+
+  export namespace BrandInput {
+    export interface id {
+      kind: 'InputField';
+      name: 'id';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'InputField';
+      name: 'adminNotes';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'InputField';
+      name: 'events';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEventInput;
+    }
+
+    export interface metadata {
+      kind: 'InputField';
+      name: 'metadata';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadataInput;
+    }
+
+    export interface createdAt {
+      kind: 'InputField';
+      name: 'createdAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'InputField';
+      name: 'createdBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'InputField';
+      name: 'updatedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'InputField';
+      name: 'updatedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'InputField';
+      name: 'deletedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'InputField';
+      name: 'deletedBy';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface name {
+      kind: 'InputField';
+      name: 'name';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface importId {
+      kind: 'InputField';
+      name: 'importId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface imageSource {
+      kind: 'InputField';
+      name: 'imageSource';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface slug {
+      kind: 'InputField';
+      name: 'slug';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface url {
+      kind: 'InputField';
+      name: 'url';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface balanceLookupUri {
+      kind: 'InputField';
+      name: 'balanceLookupUri';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface listed {
+      kind: 'InputField';
+      name: 'listed';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface logoUrl {
+      kind: 'InputField';
+      name: 'logoUrl';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface description {
+      kind: 'InputField';
+      name: 'description';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias1 {
+      kind: 'InputField';
+      name: 'alias1';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias2 {
+      kind: 'InputField';
+      name: 'alias2';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface alias3 {
+      kind: 'InputField';
+      name: 'alias3';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+  }
+
+  //                                          BrandListFilter
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface BrandListFilter {
+    kind: 'InputObject';
+    name: 'BrandListFilter';
+    isAllFieldsNullable: true;
+    fields: {
+      ids: BrandListFilter.ids;
+      excludeIds: BrandListFilter.excludeIds;
+      searchText: BrandListFilter.searchText;
+      caseSensitive: BrandListFilter.caseSensitive;
+      textSearchFields: BrandListFilter.textSearchFields;
+      createdAtFrom: BrandListFilter.createdAtFrom;
+      createdAtUntil: BrandListFilter.createdAtUntil;
+      updatedAtFrom: BrandListFilter.updatedAtFrom;
+      updatedAtUntil: BrandListFilter.updatedAtUntil;
+    };
+  }
+
+  export namespace BrandListFilter {
+    export interface ids {
+      kind: 'InputField';
+      name: 'ids';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface excludeIds {
+      kind: 'InputField';
+      name: 'excludeIds';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface searchText {
+      kind: 'InputField';
+      name: 'searchText';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface caseSensitive {
+      kind: 'InputField';
+      name: 'caseSensitive';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface textSearchFields {
+      kind: 'InputField';
+      name: 'textSearchFields';
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface createdAtFrom {
+      kind: 'InputField';
+      name: 'createdAtFrom';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdAtUntil {
+      kind: 'InputField';
+      name: 'createdAtUntil';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedAtFrom {
+      kind: 'InputField';
+      name: 'updatedAtFrom';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedAtUntil {
+      kind: 'InputField';
+      name: 'updatedAtUntil';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+  }
+
   //                                        GiftCardProductInput
   // --------------------------------------------------------------------------------------------------
   //
@@ -33255,8 +33664,8 @@ export namespace Schema {
       deletedAt: GiftCardProductInput.deletedAt;
       deletedBy: GiftCardProductInput.deletedBy;
       importId: GiftCardProductInput.importId;
-      vendorId: GiftCardProductInput.vendorId;
-      vendorImportId: GiftCardProductInput.vendorImportId;
+      brandId: GiftCardProductInput.brandId;
+      brandImportId: GiftCardProductInput.brandImportId;
       name: GiftCardProductInput.name;
       description: GiftCardProductInput.description;
       categories: GiftCardProductInput.categories;
@@ -33355,16 +33764,16 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface vendorId {
+    export interface brandId {
       kind: 'InputField';
-      name: 'vendorId';
+      name: 'brandId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface vendorImportId {
+    export interface brandImportId {
       kind: 'InputField';
-      name: 'vendorImportId';
+      name: 'brandImportId';
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
     }
@@ -33745,282 +34154,6 @@ export namespace Schema {
   }
 
   export namespace ProductCategoryListFilter {
-    export interface ids {
-      kind: 'InputField';
-      name: 'ids';
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface excludeIds {
-      kind: 'InputField';
-      name: 'excludeIds';
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface searchText {
-      kind: 'InputField';
-      name: 'searchText';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface caseSensitive {
-      kind: 'InputField';
-      name: 'caseSensitive';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface textSearchFields {
-      kind: 'InputField';
-      name: 'textSearchFields';
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface createdAtFrom {
-      kind: 'InputField';
-      name: 'createdAtFrom';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdAtUntil {
-      kind: 'InputField';
-      name: 'createdAtUntil';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedAtFrom {
-      kind: 'InputField';
-      name: 'updatedAtFrom';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedAtUntil {
-      kind: 'InputField';
-      name: 'updatedAtUntil';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-  }
-
-  //                                            VendorInput
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface VendorInput {
-    kind: 'InputObject';
-    name: 'VendorInput';
-    isAllFieldsNullable: true;
-    fields: {
-      id: VendorInput.id;
-      adminNotes: VendorInput.adminNotes;
-      events: VendorInput.events;
-      metadata: VendorInput.metadata;
-      createdAt: VendorInput.createdAt;
-      createdBy: VendorInput.createdBy;
-      updatedAt: VendorInput.updatedAt;
-      updatedBy: VendorInput.updatedBy;
-      deletedAt: VendorInput.deletedAt;
-      deletedBy: VendorInput.deletedBy;
-      name: VendorInput.name;
-      importId: VendorInput.importId;
-      imageSource: VendorInput.imageSource;
-      slug: VendorInput.slug;
-      url: VendorInput.url;
-      balanceLookupUri: VendorInput.balanceLookupUri;
-      listed: VendorInput.listed;
-      logoUrl: VendorInput.logoUrl;
-      description: VendorInput.description;
-      alias1: VendorInput.alias1;
-      alias2: VendorInput.alias2;
-      alias3: VendorInput.alias3;
-    };
-  }
-
-  export namespace VendorInput {
-    export interface id {
-      kind: 'InputField';
-      name: 'id';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'InputField';
-      name: 'adminNotes';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'InputField';
-      name: 'events';
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEventInput;
-    }
-
-    export interface metadata {
-      kind: 'InputField';
-      name: 'metadata';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BaseModelMetadataInput;
-    }
-
-    export interface createdAt {
-      kind: 'InputField';
-      name: 'createdAt';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'InputField';
-      name: 'createdBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'InputField';
-      name: 'updatedAt';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'InputField';
-      name: 'updatedBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'InputField';
-      name: 'deletedAt';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'InputField';
-      name: 'deletedBy';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface name {
-      kind: 'InputField';
-      name: 'name';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface importId {
-      kind: 'InputField';
-      name: 'importId';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface imageSource {
-      kind: 'InputField';
-      name: 'imageSource';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface slug {
-      kind: 'InputField';
-      name: 'slug';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface url {
-      kind: 'InputField';
-      name: 'url';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface balanceLookupUri {
-      kind: 'InputField';
-      name: 'balanceLookupUri';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface listed {
-      kind: 'InputField';
-      name: 'listed';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface logoUrl {
-      kind: 'InputField';
-      name: 'logoUrl';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface description {
-      kind: 'InputField';
-      name: 'description';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface alias1 {
-      kind: 'InputField';
-      name: 'alias1';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface alias2 {
-      kind: 'InputField';
-      name: 'alias2';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface alias3 {
-      kind: 'InputField';
-      name: 'alias3';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-  }
-
-  //                                          VendorListFilter
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface VendorListFilter {
-    kind: 'InputObject';
-    name: 'VendorListFilter';
-    isAllFieldsNullable: true;
-    fields: {
-      ids: VendorListFilter.ids;
-      excludeIds: VendorListFilter.excludeIds;
-      searchText: VendorListFilter.searchText;
-      caseSensitive: VendorListFilter.caseSensitive;
-      textSearchFields: VendorListFilter.textSearchFields;
-      createdAtFrom: VendorListFilter.createdAtFrom;
-      createdAtUntil: VendorListFilter.createdAtUntil;
-      updatedAtFrom: VendorListFilter.updatedAtFrom;
-      updatedAtUntil: VendorListFilter.updatedAtUntil;
-    };
-  }
-
-  export namespace VendorListFilter {
     export interface ids {
       kind: 'InputField';
       name: 'ids';
@@ -34711,7 +34844,7 @@ export namespace Schema {
       purchaseOrderId: PurchaseOrderItemInput.purchaseOrderId;
       shoppingCartItemId: PurchaseOrderItemInput.shoppingCartItemId;
       productId: PurchaseOrderItemInput.productId;
-      vendorId: PurchaseOrderItemInput.vendorId;
+      brandId: PurchaseOrderItemInput.brandId;
       quantity: PurchaseOrderItemInput.quantity;
       price: PurchaseOrderItemInput.price;
       totalPrice: PurchaseOrderItemInput.totalPrice;
@@ -34810,9 +34943,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface vendorId {
+    export interface brandId {
       kind: 'InputField';
-      name: 'vendorId';
+      name: 'brandId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
@@ -35615,7 +35748,7 @@ export namespace Schema {
       walletId: WalletItemInput.walletId;
       productId: WalletItemInput.productId;
       purchaseOrderItemId: WalletItemInput.purchaseOrderItemId;
-      vendorId: WalletItemInput.vendorId;
+      brandId: WalletItemInput.brandId;
       name: WalletItemInput.name;
       price: WalletItemInput.price;
       initialBalance: WalletItemInput.initialBalance;
@@ -35732,9 +35865,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface vendorId {
+    export interface brandId {
       kind: 'InputField';
-      name: 'vendorId';
+      name: 'brandId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
@@ -41628,7 +41761,7 @@ export namespace Schema {
       'MarketplaceServiceRecord',
       'Product',
       'ProductCategory',
-      'Vendor',
+      'Brand',
       'Match',
       'MatchProfile',
       'MatchingEngine',
@@ -41696,7 +41829,7 @@ export namespace Schema {
       | 'MarketplaceServiceRecord'
       | 'Product'
       | 'ProductCategory'
-      | 'Vendor'
+      | 'Brand'
       | 'Match'
       | 'MatchProfile'
       | 'MatchingEngine'
@@ -42348,7 +42481,7 @@ export namespace Schema {
       'graphQlQueryFindGiftCardProducts',
       'graphQlQueryFindMarketplaceServiceRecord',
       'graphQlQueryFindProductCategories',
-      'graphQlQueryFindVendors',
+      'graphQlQueryFindBrands',
       'graphQlMutationCreateUserSearch',
       'graphQlMutationDeleteUserSearch',
       'graphQlMutationUpdateUserSearch',
@@ -42426,7 +42559,9 @@ export namespace Schema {
       'graphQlQueryFindTrainingSessionsForMe',
       'graphQlMutationCreatePurchaseOrderField',
       'graphQlMutationCreateShoppingCartItem',
+      'graphQlMutationCreateWalletItem',
       'graphQlMutationDeleteShoppingCartItem',
+      'graphQlMutationDeleteWalletItem',
       'graphQlMutationEmptyShoppingCart',
       'graphQlMutationUpdateShoppingCartItem',
       'graphQlMutationUpdateWalletItem',
@@ -42549,7 +42684,7 @@ export namespace Schema {
       | 'graphQlQueryFindGiftCardProducts'
       | 'graphQlQueryFindMarketplaceServiceRecord'
       | 'graphQlQueryFindProductCategories'
-      | 'graphQlQueryFindVendors'
+      | 'graphQlQueryFindBrands'
       | 'graphQlMutationCreateUserSearch'
       | 'graphQlMutationDeleteUserSearch'
       | 'graphQlMutationUpdateUserSearch'
@@ -42627,7 +42762,9 @@ export namespace Schema {
       | 'graphQlQueryFindTrainingSessionsForMe'
       | 'graphQlMutationCreatePurchaseOrderField'
       | 'graphQlMutationCreateShoppingCartItem'
+      | 'graphQlMutationCreateWalletItem'
       | 'graphQlMutationDeleteShoppingCartItem'
+      | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationEmptyShoppingCart'
       | 'graphQlMutationUpdateShoppingCartItem'
       | 'graphQlMutationUpdateWalletItem'
@@ -43415,11 +43552,11 @@ export namespace Schema {
     export type $$IqlaaJordanianDistrict = IqlaaJordanianDistrict;
     export type $$IqlaaJordanianGovernorate = IqlaaJordanianGovernorate;
     export type $$MastercardBank = MastercardBank;
+    export type $$Brand = Brand;
     export type $$GiftCardProduct = GiftCardProduct;
     export type $$GiftCardDenomination = GiftCardDenomination;
     export type $$MarketplaceServiceRecord = MarketplaceServiceRecord;
     export type $$ProductCategory = ProductCategory;
-    export type $$Vendor = Vendor;
     export type $$UserSearch = UserSearch;
     export type $$UserSearchFilter = UserSearchFilter;
     export type $$UserSearchRunInfo = UserSearchRunInfo;
@@ -43482,13 +43619,13 @@ export namespace Schema {
     export type $$AppliedGroupRuleInput = AppliedGroupRuleInput;
     export type $$GroupRuleBaseConfigInput = GroupRuleBaseConfigInput;
     export type $$GroupListFilter = GroupListFilter;
+    export type $$BrandInput = BrandInput;
+    export type $$BrandListFilter = BrandListFilter;
     export type $$GiftCardProductInput = GiftCardProductInput;
     export type $$GiftCardDenominationInput = GiftCardDenominationInput;
     export type $$GiftCardProductListFilter = GiftCardProductListFilter;
     export type $$ProductCategoryInput = ProductCategoryInput;
     export type $$ProductCategoryListFilter = ProductCategoryListFilter;
-    export type $$VendorInput = VendorInput;
-    export type $$VendorListFilter = VendorListFilter;
     export type $$UserSearchInput = UserSearchInput;
     export type $$UserSearchFilterInput = UserSearchFilterInput;
     export type $$UserSearchListFilter = UserSearchListFilter;
@@ -43747,11 +43884,11 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     IqlaaJordanianDistrict: Schema.IqlaaJordanianDistrict;
     IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate;
     MastercardBank: Schema.MastercardBank;
+    Brand: Schema.Brand;
     GiftCardProduct: Schema.GiftCardProduct;
     GiftCardDenomination: Schema.GiftCardDenomination;
     MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
     ProductCategory: Schema.ProductCategory;
-    Vendor: Schema.Vendor;
     UserSearch: Schema.UserSearch;
     UserSearchFilter: Schema.UserSearchFilter;
     UserSearchRunInfo: Schema.UserSearchRunInfo;
@@ -43856,11 +43993,11 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     IqlaaJordanianDistrict: Schema.IqlaaJordanianDistrict;
     IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate;
     MastercardBank: Schema.MastercardBank;
+    Brand: Schema.Brand;
     GiftCardProduct: Schema.GiftCardProduct;
     GiftCardDenomination: Schema.GiftCardDenomination;
     MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
     ProductCategory: Schema.ProductCategory;
-    Vendor: Schema.Vendor;
     UserSearch: Schema.UserSearch;
     UserSearchFilter: Schema.UserSearchFilter;
     UserSearchRunInfo: Schema.UserSearchRunInfo;

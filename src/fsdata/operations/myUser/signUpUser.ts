@@ -35,6 +35,12 @@ const signUpUser = async (
       authToken: true,
     });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.signUpUser: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.signUpUser response:', { response });
 
     return { object: response.data.signUpUser };

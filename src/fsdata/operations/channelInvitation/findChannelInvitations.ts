@@ -48,6 +48,12 @@ const findChannelInvitations = async (
       ...modelFields.channelInvitation,
     });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.findChannelInvitations: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.findChannelInvitations response:', { response });
 
     return {

@@ -29,8 +29,14 @@ const acceptChannelInvitation = async (
     }
 
     const client = graffleClientStore.get();
-    const args: MutationAcceptChannelInvitationArgs = { id: channelInvitationId };
+    const args: MutationAcceptChannelInvitationArgs = { channelInvitationId };
     const response: ResponseDataType = await client.mutation.acceptChannelInvitation({ $: args });
+
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.acceptChannelInvitation: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
 
     logger.debug('fsdata.acceptChannelInvitation response:', { response });
 

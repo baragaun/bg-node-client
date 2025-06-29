@@ -3,7 +3,7 @@ export declare class PurchaseOrderItem extends BaseModel {
     purchaseOrderId: string;
     shoppingCartItemId: string;
     productId: string;
-    vendorId: string;
+    brandId: string;
     quantity: number;
     price: number;
     totalPrice: number;

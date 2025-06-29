@@ -21,7 +21,13 @@ const emptyMyShoppingCart = async (
 
     const client = graffleClientStore.get();
 
-    const response: ResponseDataType = await client.query.emptyMyShoppingCart();
+    const response: ResponseDataType = await client.mutation.emptyMyShoppingCart();
+
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.emptyMyShoppingCart: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
 
     logger.debug('fsdata.emptyMyShoppingCart response:', { response });
 

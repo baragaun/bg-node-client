@@ -1,0 +1,1 @@
+{"version":3,"file":"BrandListFilter.js","sourceRoot":"","sources":["../../src/models/BrandListFilter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,qBAAqB,CAAC;AAErD,MAAM,OAAO,eAAgB,SAAQ,cAAc;IACjD,2EAA2E;IAC3E,4EAA4E;IAE5E,YAAY,UAAqC;QAC/C,KAAK,CAAC,UAAU,CAAC,CAAC;QAElB,oBAAoB;QACpB,IAAI;IACN,CAAC;CACF"}

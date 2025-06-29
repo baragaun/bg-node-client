@@ -3,12 +3,12 @@ import logger from '../../../helpers/logger.js';
 import { Channel } from '../../../models/Channel.js';
 import { ChannelListFilter as ChannelListFilterFromClient } from '../../../models/ChannelListFilter.js';
 import { ChannelListItem } from '../../../types/ChannelListItem.js';
-import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
+import { FindObjectsOptions } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
   ChannelInput,
   ChannelListFilter,
-  FindObjectsOptions,
+  FindObjectsOptions as FindObjectsOptionsFromGql,
   InputMaybe,
   QueryFindChannelsArgs,
 } from '../../gql/graphql.js';
@@ -26,7 +26,7 @@ type ResponseDataType = {
 const findChannels = async (
   filter: ChannelListFilterFromClient | null | undefined,
   match: Partial<Channel> | null | undefined,
-  options: FindObjectsOptionsFromClient,
+  options: FindObjectsOptions,
 ): Promise<QueryResult<Channel>> => {
   try {
     if (!libData.isInitialized()) {
@@ -38,13 +38,19 @@ const findChannels = async (
     const args: QueryFindChannelsArgs = {
       filter: (filter || null) as unknown as ChannelListFilter | null,
       match: match as unknown as InputMaybe<ChannelInput>,
-      options: options as unknown as InputMaybe<FindObjectsOptions>,
+      options: options as unknown as InputMaybe<FindObjectsOptionsFromGql>,
     };
 
     const response: ResponseDataType = await client.query.findChannels({
       $: args,
       ...modelFields.channel,
     });
+
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.findChannels: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
 
     logger.debug('fsdata.findChannels response:', { response });
 

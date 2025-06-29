@@ -1,7 +1,10 @@
 import { ModelType } from '../../enums.js';
 export interface ModelCrudOperationDef {
     createField?: string;
-    deleteField?: string;
+    delete?: {
+        field: string;
+        returnsServiceRequest?: boolean;
+    };
     findByIdField?: string;
     updateField?: string;
     selections: any;

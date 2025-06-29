@@ -46,6 +46,12 @@ const startMySessionV2 = async (
       myUserInboxUpdatedAt: true,
     });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.startMySessionV2: errors received',
+        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.startMySessionV2: response received.', { response });
 
     if (response.errors) {

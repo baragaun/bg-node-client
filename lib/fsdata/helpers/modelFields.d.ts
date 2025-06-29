@@ -170,7 +170,7 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        vendorId: boolean;
+        brandId: boolean;
         name: boolean;
         description: boolean;
         categories: boolean;
@@ -346,7 +346,7 @@ declare const modelFields: {
             updatedBy: boolean;
             deletedAt: boolean;
             deletedBy: boolean;
-            orderId: boolean;
+            purchaseOrderId: boolean;
             productId: boolean;
             quantity: boolean;
             price: boolean;
@@ -376,7 +376,7 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        orderId: boolean;
+        purchaseOrderId: boolean;
         productId: boolean;
         quantity: boolean;
         price: boolean;
@@ -424,6 +424,32 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+    };
+    serviceRequest: {
+        id: boolean;
+        adminNotes: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+        deviceUuid: boolean;
+        errorCode: boolean;
+        events: {
+            time: boolean;
+            modelEventType: boolean;
+            message: boolean;
+        };
+        expiresAt: boolean;
+        finishedAt: boolean;
+        message: boolean;
+        messageIds: boolean;
+        modelTypes: boolean;
+        objectIds: boolean;
+        result: boolean;
+        serviceRequestType: boolean;
+        source: boolean;
     };
     sidMultiStepAction: {
         actionStatus: boolean;
@@ -714,7 +740,7 @@ declare const modelFields: {
         createdAt: boolean;
         updatedAt: boolean;
     };
-    vendor: {
+    brand: {
         id: boolean;
         adminNotes: boolean;
         createdAt: boolean;
@@ -757,8 +783,7 @@ declare const modelFields: {
         deletedBy: boolean;
         walletId: boolean;
         productId: boolean;
-        orderItemId: boolean;
-        vendorId: boolean;
+        brandId: boolean;
         name: boolean;
         price: boolean;
         balance: boolean;

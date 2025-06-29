@@ -176,7 +176,7 @@ const giftCardProduct = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-  vendorId: true,
+  brandId: true,
   name: true,
   description: true,
   categories: true,
@@ -353,7 +353,7 @@ const purchaseOrderItem = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-  orderId: true,
+  purchaseOrderId: true,
   productId: true,
   quantity: true,
   price: true,
@@ -377,6 +377,34 @@ const purchaseOrder = {
   paidAt: true,
   canceledAt: true,
   refundedAt: true,
+};
+
+const serviceRequest = {
+  id: true,
+  adminNotes: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+
+  deviceUuid: true,
+  errorCode: true,
+  events: {
+    time: true,
+    modelEventType: true,
+    message: true,
+  },
+  expiresAt: true,
+  finishedAt: true,
+  message: true,
+  messageIds: true,
+  modelTypes: true,
+  objectIds: true,
+  result: true,
+  serviceRequestType: true,
+  source: true,
 };
 
 const shoppingCartItem = {
@@ -755,7 +783,7 @@ const userInbox = {
   },
 };
 
-const vendor = {
+const brand = {
   id: true,
   adminNotes: true,
   createdAt: true,
@@ -790,8 +818,7 @@ const walletItem = {
 
   walletId: true,
   productId: true,
-  orderItemId: true,
-  vendorId: true,
+  brandId: true,
   name: true,
   price: true,
   balance: true,
@@ -816,7 +843,6 @@ const wallet = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-  // items: { ...walletItem },
 };
 
 const modelFields = {
@@ -832,12 +858,13 @@ const modelFields = {
   purchaseOrderItem,
   shoppingCart,
   shoppingCartItem,
+  serviceRequest,
   sidMultiStepAction,
   sidMultiStepActionProgress,
   user,
   userInbox,
   userListItem,
-  vendor,
+  brand,
   wallet,
   walletItem,
 };

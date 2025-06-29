@@ -38,6 +38,16 @@ const findById = async <T extends Model = Model>(
       ...(selections || fieldDef.selections),
     });
 
+    if (Array.isArray(response.errors) && response.errors.length > 0) {
+      logger.error('fsdata.findById: errors received', {
+        id,
+        modelType,
+        errorCode: (response.errors['0'] as any).extensions.code,
+        errors: JSON.stringify(response.errors),
+      });
+      return { error: response.errors.map(error => error.message).join(', ') };
+    }
+
     logger.debug('fsdata.findById: response received.',
       { response, object: JSON.stringify(response.data[fieldDef.findByIdField]) });
 

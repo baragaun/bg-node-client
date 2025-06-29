@@ -1,41 +1,23 @@
-import libData from '../../../helpers/libData.js';
+import { ModelType } from '../../../enums.js';
 import logger from '../../../helpers/logger.js';
-import { ShoppingCartItem } from '../../../models/ShoppingCartItem.js';
+import { ServiceRequest } from '../../../models/ServiceRequest.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-import { MutationDeleteShoppingCartItemArgs } from '../../gql/graphql.js';
-import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
-import modelFields from '../../helpers/modelFields.js';
-
-type ResponseDataType = {
-  data: {
-    deleteShoppingCartItem: ShoppingCartItem;
-  };
-  errors?: { message: string }[];
-};
+import deleteFunc from '../delete.js';
 
 const deleteShoppingCartItem = async (
   id: string,
-): Promise<QueryResult<void>> => {
+  deletePhysically: boolean,
+): Promise<QueryResult<ServiceRequest>> => {
   try {
-    if (!libData.isInitialized()) {
-      logger.error('fsdata.deleteShoppingCartItem: unavailable');
-      return { error: 'unavailable' };
-    }
-
-    const client = graffleClientStore.get();
-    const args: MutationDeleteShoppingCartItemArgs = { id };
-
-    const response: ResponseDataType = await client.mutation.deleteShoppingCartItem({
-      $: args,
-      ...modelFields.shoppingCartItem,
-    });
-
-    logger.debug('fsdata.deleteShoppingCartItem response:', { response });
-
-    return {};
+    return deleteFunc(
+      id,
+      ModelType.ShoppingCartItem,
+      deletePhysically,
+    );
   } catch (error) {
-    logger.error('fsdata.deleteShoppingCartItem: failed', { error, headers: helpers.headers() });
+    logger.error('fsdata.deleteShoppingCartItem: failed with error.',
+      { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

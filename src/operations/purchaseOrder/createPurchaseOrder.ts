@@ -1,5 +1,4 @@
-import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
+import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
@@ -7,7 +6,7 @@ import { PurchaseOrder } from '../../models/PurchaseOrder.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createPurchaseOrder = async (
-  props: Partial<PurchaseOrder>,
+  props: PurchaseOrder,
 ): Promise<QueryResult<PurchaseOrder>> => {
   try {
     if (!libData.isInitialized()) {
@@ -26,25 +25,22 @@ const createPurchaseOrder = async (
       return { error: 'missing-input', operation: MutationType.create };
     }
 
+    const userId = libData.clientInfoStore().myUserId;
+    if (!props.shoppingCartId) {
+      props.shoppingCartId = userId;
+    }
+    if (!props.userId) {
+      props.userId = userId;
+    }
     if (!props.createdBy) {
-      props.createdBy = libData.clientInfoStore().myUserId;
+      props.createdBy = userId;
     }
 
     if (!allowNetwork) {
       return { error: 'offline', operation: MutationType.create };
     }
 
-    const result = await fsdata.purchaseOrder.createPurchaseOrder(props);
-
-    if (result.object) {
-      result.object = new PurchaseOrder(result.object);
-    }
-
-    if (db.isModelTypeSupported(ModelType.PurchaseOrder) && !result.error && result.object) {
-      await db.insert<PurchaseOrder>(result.object, ModelType.PurchaseOrder);
-    }
-
-    return result;
+    return fsdata.purchaseOrder.createPurchaseOrder(props);
   } catch (error) {
     return {
       operation: MutationType.create,
