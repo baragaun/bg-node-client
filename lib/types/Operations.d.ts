@@ -40,6 +40,8 @@ import { UserInbox } from '../models/UserInbox.js';
 import { UserListFilter } from '../models/UserListFilter.js';
 import { UserListItem } from '../models/UserListItem.js';
 import { Wallet } from '../models/Wallet.js';
+import { WalletItem } from '../models/WalletItem.js';
+import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
 export interface Operations {
     count: <T extends Model = Model>(query: MangoQuery<T> | null | undefined, match: Partial<T> | null | undefined, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
     delete: (id: string, modelType: ModelType, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
@@ -143,5 +145,8 @@ export interface Operations {
     };
     wallet: {
         findMyWallet: (queryOptions?: QueryOptions) => Promise<QueryResult<Wallet>>;
+    };
+    walletItem: {
+        findWalletItems: (filter: WalletItemListFilter | null | undefined, match: Partial<WalletItem> | null | undefined, selector: MangoQueryTypes<WalletItem> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
     };
 }

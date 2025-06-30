@@ -100,6 +100,7 @@ export declare const GiftCardProductSchema: {
         };
         barcodeFormat: {
             type: string;
+            enum: string[];
             nullable: boolean;
         };
         genericGiftCardId: {

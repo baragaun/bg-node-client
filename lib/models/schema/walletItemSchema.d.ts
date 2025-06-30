@@ -90,6 +90,7 @@ export declare const WalletItemSchema: {
         };
         barcodeFormat: {
             type: string;
+            enum: string[];
             nullable: boolean;
         };
         pin: {

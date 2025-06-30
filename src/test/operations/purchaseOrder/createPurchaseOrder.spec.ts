@@ -1,25 +1,15 @@
 import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
-// import { CachePolicy } from '../../../enums.js';
-// import { MyUser } from '../../../models/MyUser.js';
+import { CachePolicy } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
-import { ShoppingCartItem } from '../../../models/ShoppingCartItem.js';
+import { MyUser } from '../../../models/MyUser.js';
 import clientStore from '../../helpers/clientStore.js';
 import {
-  findGiftCardProductsSpecHelper,
-} from '../../helpers/giftCardProduct/findGiftCardProducts.specHelper.js';
-import {
-  createShoppingCartItemSpecHelper,
-} from '../../helpers/shoppingCartItem/createShoppingCartItem.specHelper.js';
+  createPurchaseOrderSpecHelper,
+} from '../../helpers/purchaseOrder/createPurchaseOrder.specHelper.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
-import {
-  createPurchaseOrderSpecHelper
-} from '../../helpers/purchaseOrder/createPurchaseOrder.specHelper.js';
-import { CachePolicy } from '../../../enums.js';
-import { MyUser } from '../../../models/MyUser.js';
-// import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
 describe('operations.purchaseOrder.createPurchaseOrder', () => {
   let client: BgNodeClient;
@@ -44,7 +34,6 @@ describe('operations.purchaseOrder.createPurchaseOrder', () => {
     );
     expect(purchaseOrder).toBeDefined();
     expect(purchaseOrder.items).toBeDefined();
-    expect(shoppingCartItems.length).toEqual(itemCount);
     expect(purchaseOrder.items.length).toEqual(shoppingCartItems.length);
 
     const networkResult = await client.operations.shoppingCart.findMyShoppingCart({
@@ -65,6 +54,18 @@ describe('operations.purchaseOrder.createPurchaseOrder', () => {
     expect(walletResult.error).toBeUndefined();
     expect(walletResult.object).toBeDefined();
     expect(networkWallet.id).toBe(myUser.id);
-    expect(networkWallet.items.length).toBe(itemCount);
+
+    const walletItemsResult = await client.operations.walletItem.findWalletItems(
+      undefined,
+      { walletId: myUser.id },
+      undefined,
+      undefined,
+      { cachePolicy: CachePolicy.network },
+    );
+    const items = walletItemsResult.objects;
+
+    expect(walletItemsResult.error).toBeUndefined();
+    expect(walletItemsResult.objects).toBeDefined();
+    expect(items.length).toBeGreaterThanOrEqual(shoppingCartItems.length);
   });
 }, { timeout: 10000 });

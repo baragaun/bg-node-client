@@ -1,4 +1,5 @@
 import { BaseModel } from './BaseModel.js';
+import { BarcodeType } from '../enums.js';
 export declare class Product extends BaseModel {
     importId: string;
     brandId: string;
@@ -11,6 +12,6 @@ export declare class Product extends BaseModel {
     imageSourceFront?: string | null;
     imageSourceBack?: string | null;
     hasBarcode?: boolean | null;
-    barcodeFormat?: string | null;
+    barcodeFormat?: BarcodeType | null;
     constructor(attributes?: Partial<Product>);
 }

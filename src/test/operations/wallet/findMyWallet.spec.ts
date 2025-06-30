@@ -40,7 +40,6 @@ describe('operations.wallet.findMyWallet', () => {
     expect(localResult.error).toBeUndefined();
     expect(localResult.object).toBeDefined();
     expect(cachedWallet.id).toBe(myUser.id);
-    expect(cachedWallet.items.length).toBe(0);
   });
 
   test('should return the wallet from the network', async () => {
@@ -52,6 +51,5 @@ describe('operations.wallet.findMyWallet', () => {
     expect(networkResult.error).toBeUndefined();
     expect(networkResult.object).toBeDefined();
     expect(wallet.id).toBe(myUser.id);
-    expect(wallet.items?.length ?? 0).toBe(0);
   });
 });
