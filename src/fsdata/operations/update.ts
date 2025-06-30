@@ -11,6 +11,7 @@ import { QueryResult } from '../../types/QueryResult.js';
 import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
 import { modelCrudOperations } from '../helpers/modelCrudOperations.js';
+import modelFields from '../helpers/modelFields.js';
 
 /**
  * Updates an object through the GraphQL API. It performs the following steps:
@@ -31,13 +32,14 @@ const update = async <T extends Model = Model>(
     }
 
     const client = graffleClientStore.get();
+    console.log('ModelType : ', modelType);
     const fieldDef = modelCrudOperations[modelType];
-
+    console.log('FieldDef : ', fieldDef);
     if (!queryOptions) {
       queryOptions = defaultQueryOptionsForMutations;
     }
 
-    if (!fieldDef) {
+    if (!fieldDef || !fieldDef.updateField || !fieldDef.updateField.field) {
       logger.error('fsdata.update: invalid modelType provided', { modelType });
       return { error: 'invalid-model-type' };
     }
@@ -75,21 +77,35 @@ const update = async <T extends Model = Model>(
       }
     }
 
-    const args = { input: changes };
+    let args: any = {
+      $: {
+        input: changes,
+      },
+    };
+
+    if (fieldDef.updateField.returnsServiceRequest) {
+      args = { ...args, ...modelFields.serviceRequest };
+    }
+
+    // const args = { input: changes };
     logger.debug('fsdata.update: sending.', { args });
 
-    const updateResponse = await client.mutation[fieldDef.updateField]({ $: args });
+    console.log('ModelType : ', {args}, fieldDef.updateField);
+
+    const updateResponse = await client.mutation[fieldDef.updateField.field](args);
+
+    console.log('ModelType : ', updateResponse);
 
     logger.debug('fsdata.update response:', { response: updateResponse });
 
 
     if (Array.isArray(updateResponse.errors) && updateResponse.errors.length > 0) {
-      logger.error('fsdata.createChannelInvitation: errors received',
+      logger.error('fsdata.update: errors received',
         { errorCode: (updateResponse.errors['0'] as any).extensions.code, errors: JSON.stringify(updateResponse.errors) });
       return { error: updateResponse.errors.map(error => error.message).join(', ') };
     }
 
-    if (!updateResponse.data[fieldDef.updateField]) {
+    if (!updateResponse.data[fieldDef.updateField.field]) {
       logger.error('fsdata.update: mutation did not return a valid response.');
       return { error: 'system-error' };
     }
