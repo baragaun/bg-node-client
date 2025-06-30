@@ -21,6 +21,10 @@ export const createPurchaseOrderSpecHelper = async (
   logger.debug('BgServiceApiCheck.createPurchaseOrder: calling API/createPurchaseOrder',
     { props });
 
+  if (!props) {
+    props = {};
+  }
+
   if (!props.shoppingCartId) {
     props.shoppingCartId = client.clientInfoStore.myUserId;
   }
