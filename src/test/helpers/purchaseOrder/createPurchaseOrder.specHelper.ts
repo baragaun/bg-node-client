@@ -14,10 +14,10 @@ import {
 
 export const createPurchaseOrderSpecHelper = async (
   props: Partial<PurchaseOrder> | undefined,
-  itemCount: number | undefined,
+  itemCount: number,
   shoppingCartItems: ShoppingCartItem[],
   client: BgNodeClient,
-): Promise<{ purchaseOrder: PurchaseOrder, shoppingCartItems: ShoppingCartItem[] } | null> => {
+): Promise<{ purchaseOrder: PurchaseOrder, shoppingCartItems: ShoppingCartItem[] }> => {
   logger.debug('BgServiceApiCheck.createPurchaseOrder: calling API/createPurchaseOrder',
     { props });
 
@@ -47,16 +47,20 @@ export const createPurchaseOrderSpecHelper = async (
     const selectedProducts = chance.pickset(productsWithDenominations, itemCount);
 
     for (const product of selectedProducts) {
-      const props: Partial<ShoppingCartItem> = {
+      const itemProps: Partial<ShoppingCartItem> = {
         shoppingCartId: client.clientInfoStore.myUserId,
         createdBy: client.clientInfoStore.myUserId,
         productId: product.id,
         quantity: chance.integer({ min: 1, max: Math.min(3, productsWithDenominations.length) }),
       };
       const denomination = chance.pickone(product.denominations);
-      props.price = denomination?.amount || 10000; // $100.00
-      props.totalPrice = props.price * (props.quantity || 1);
-      const item = await createShoppingCartItemSpecHelper(props, client);
+      itemProps.price = denomination?.amount || 10000; // $100.00
+      itemProps.totalPrice = itemProps.price * (itemProps.quantity || 1);
+      const item = await createShoppingCartItemSpecHelper(itemProps, client);
+
+      if (!item) {
+        throw new Error('Failed to create shopping cart item');
+      }
       shoppingCartItems.push(item);
     }
   }
