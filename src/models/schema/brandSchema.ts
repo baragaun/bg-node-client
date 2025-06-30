@@ -1,5 +1,5 @@
-export const WalletItemSchema = {
-  title: 'WalletItem',
+export const BrandSchema = {
+  title: 'Brand',
   version: 0,
   primaryKey: 'id',
   type: 'object',
@@ -52,118 +52,50 @@ export const WalletItemSchema = {
       maxLength: 32,
       nullable: true,
     },
-    walletId: {
-      type: 'string',
-      maxLength: 32,
-    },
-    productId: {
-      type: 'string',
-      maxLength: 32,
-    },
-    purchaseOrderItemId: {
-      type: 'string',
-      maxLength: 32,
-    },
-    brandId: {
-      type: 'string',
-      maxLength: 32,
-    },
     name: {
       type: 'string',
     },
-    price: {
-      type: 'integer',
+    importId: {
+      type: 'string',
     },
-    initialBalance: {
-      type: 'integer',
-    },
-    balance: {
-      type: 'integer',
-    },
-    code: {
+    imageSource: {
       type: 'string',
       nullable: true,
     },
-    hasBarcode: {
+    slug: {
+      type: 'string',
+      nullable: true,
+    },
+    url: {
+      type: 'string',
+      nullable: true,
+    },
+    balanceLookupUri: {
+      type: 'string',
+      nullable: true,
+    },
+    listed: {
       type: 'boolean',
       nullable: true,
     },
-    barcodeFormat: {
-      type: 'string',
-      enum: [
-        'TYPE_39',
-        'TYPE_128',
-        'CODE_25',
-        'ITF',
-        'I125',
-        'UPC_A',
-        'UPC_E',
-        'EAN_13',
-        'EAN_8',
-        'QR_CODE',
-        'PDF417',
-        'DATA_MATRIX',
-        null,
-      ],
-      nullable: true,
-    },
-    pin: {
+    logoImageSource: {
       type: 'string',
       nullable: true,
     },
-    source: {
-      type: 'WalletItemSource',
-      nullable: true,
-    },
-    imageSourceFront: {
+    description: {
       type: 'string',
       nullable: true,
     },
-    imageSourceBack: {
+    alias1: {
       type: 'string',
       nullable: true,
     },
-    referenceUrl: {
+    alias2: {
       type: 'string',
       nullable: true,
     },
-    termsEn: {
+    alias3: {
       type: 'string',
-      nullable: true,
-    },
-    termsUrl: {
-      type: 'string',
-      nullable: true,
-    },
-    instructionsEn: {
-      type: 'string',
-      nullable: true,
-    },
-    instructionsUrl: {
-      type: 'string',
-      nullable: true,
-    },
-    sortIndex: {
-      type: 'integer',
-    },
-    issuedAt: {
-      type: 'string',
-      format: 'date-time',
-      nullable: true,
-    },
-    expiresAt: {
-      type: 'string',
-      format: 'date-time',
-      nullable: true,
-    },
-    balanceUpdatedAt: {
-      type: 'string',
-      format: 'date-time',
-      nullable: true,
-    },
-    archivedAt: {
-      type: 'string',
-      format: 'date-time',
       nullable: true,
     },
   },

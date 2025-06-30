@@ -32,16 +32,16 @@ const findMyWallet = async (
 
     //------------------------------------------------------------------------------------------------
     // Local DB
-    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
-      const localResult = await db.findById<Wallet>(
-        myUserId,
-        ModelType.Wallet,
-      );
-
-      if (!localResult.error && localResult.object) {
-        return localResult;
-      }
-    }
+    // if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
+    //   const localResult = await db.findById<Wallet>(
+    //     myUserId,
+    //     ModelType.Wallet,
+    //   );
+    //
+    //   if (!localResult.error && localResult.object) {
+    //     return localResult;
+    //   }
+    // }
 
     //------------------------------------------------------------------------------------------------
     // Network

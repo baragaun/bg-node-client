@@ -1,4 +1,5 @@
 import { BaseModel } from './BaseModel.js';
+import { BarcodeType } from '../enums.js';
 
 export class Product extends BaseModel {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
@@ -13,7 +14,7 @@ export class Product extends BaseModel {
   public imageSourceFront?: string | null;
   public imageSourceBack?: string | null;
   public hasBarcode?: boolean | null;
-  public barcodeFormat?: string | null;
+  public barcodeFormat?: BarcodeType | null;
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   public constructor(attributes?: Partial<Product>) {

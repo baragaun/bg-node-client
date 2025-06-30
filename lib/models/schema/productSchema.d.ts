@@ -100,6 +100,7 @@ export declare const ProductSchema: {
         };
         barcodeFormat: {
             type: string;
+            enum: string[];
             nullable: boolean;
         };
     };

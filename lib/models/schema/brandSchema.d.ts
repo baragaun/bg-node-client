@@ -1,4 +1,4 @@
-export declare const GiftCardProductSchema: {
+export declare const BrandSchema: {
     title: string;
     version: number;
     primaryKey: string;
@@ -52,30 +52,14 @@ export declare const GiftCardProductSchema: {
             maxLength: number;
             nullable: boolean;
         };
-        importId: {
-            type: string;
-        };
-        brandId: {
-            type: string;
-            maxLength: number;
-        };
-        brandImportId: {
-            type: string;
-            nullable: boolean;
-        };
         name: {
             type: string;
         };
-        description: {
+        importId: {
             type: string;
-            nullable: boolean;
         };
-        categories: {
+        imageSource: {
             type: string;
-            items: {
-                type: string;
-                maxLength: number;
-            };
             nullable: boolean;
         };
         slug: {
@@ -86,65 +70,32 @@ export declare const GiftCardProductSchema: {
             type: string;
             nullable: boolean;
         };
-        imageSourceFront: {
+        balanceLookupUri: {
             type: string;
             nullable: boolean;
         };
-        imageSourceBack: {
+        listed: {
             type: string;
             nullable: boolean;
         };
-        hasBarcode: {
+        logoImageSource: {
             type: string;
             nullable: boolean;
         };
-        barcodeFormat: {
-            type: string;
-            enum: string[];
-            nullable: boolean;
-        };
-        genericGiftCardId: {
-            type: string;
-            maxLength: number;
-            nullable: boolean;
-        };
-        isGeneric: {
+        description: {
             type: string;
             nullable: boolean;
         };
-        hasPin: {
+        alias1: {
             type: string;
             nullable: boolean;
         };
-        termsEn: {
+        alias2: {
             type: string;
             nullable: boolean;
         };
-        termsUrl: {
+        alias3: {
             type: string;
-            nullable: boolean;
-        };
-        instructionsEn: {
-            type: string;
-            nullable: boolean;
-        };
-        instructionsUrl: {
-            type: string;
-            nullable: boolean;
-        };
-        denominations: {
-            type: string;
-            items: {
-                type: string;
-                properties: {
-                    amount: {
-                        type: string;
-                    };
-                    enabled: {
-                        type: string;
-                    };
-                };
-            };
             nullable: boolean;
         };
     };
