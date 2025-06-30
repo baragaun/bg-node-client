@@ -14,51 +14,57 @@ import {
 } from '../../helpers/shoppingCartItem/createShoppingCartItem.specHelper.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
+import {
+  createPurchaseOrderSpecHelper
+} from '../../helpers/purchaseOrder/createPurchaseOrder.specHelper.js';
+import { CachePolicy } from '../../../enums.js';
+import { MyUser } from '../../../models/MyUser.js';
 // import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
 describe('operations.purchaseOrder.createPurchaseOrder', () => {
   let client: BgNodeClient;
-  // let myUser: MyUser;
+  let myUser: MyUser;
 
   beforeAll(async () => {
     client = await clientStore.getTestClient();
-    await signMeUpSpecHelper(undefined, false, client);
+    myUser = await signMeUpSpecHelper(undefined, false, client);
   });
 
   afterAll(async () => {
     await deleteMyUserSpecHelper(client);
   });
 
-  test('should return the cached user from the local db', async () => {
-    const shoppingCartItems: ShoppingCartItem[] = [];
-    const products = await findGiftCardProductsSpecHelper(
-      undefined,
-      { limit: 20 },
+  test('should create and return the purchase order with the items', async () => {
+    const itemCount = chance.integer({ min: 3, max: 6 });
+    const { purchaseOrder, shoppingCartItems } = await createPurchaseOrderSpecHelper(
+      {},
+      itemCount,
+      [],
       client,
     );
-    const productsWithDenominations = products.filter(p => p.denominations?.length > 0);
+    expect(purchaseOrder).toBeDefined();
+    expect(purchaseOrder.items).toBeDefined();
+    expect(shoppingCartItems.length).toEqual(itemCount);
+    expect(purchaseOrder.items.length).toEqual(shoppingCartItems.length);
 
-    for (const product of productsWithDenominations) {
-      const props: Partial<ShoppingCartItem> = {
-        shoppingCartId: client.clientInfoStore.myUserId,
-        createdBy: client.clientInfoStore.myUserId,
-        productId: product.id,
-        quantity: chance.integer({ min: 1, max: Math.min(3, productsWithDenominations.length) }),
-      };
-      const denomination = chance.pickone(product.denominations);
-      props.price = denomination?.amount || 10000; // $100.00
-      props.totalPrice = props.price * (props.quantity || 1);
-      const item = await createShoppingCartItemSpecHelper(props, client);
-      shoppingCartItems.push(item);
-    }
-
-    const networkResult = await client.operations.purchaseOrder.createPurchaseOrder({
-      shoppingCartId: client.clientInfoStore.myUserId,
+    const networkResult = await client.operations.shoppingCart.findMyShoppingCart({
+      cachePolicy: CachePolicy.network,
     });
+    const shoppingCart = networkResult.object;
 
     expect(networkResult.error).toBeUndefined();
     expect(networkResult.object).toBeDefined();
-    expect(networkResult.object.items).toBeDefined();
-    expect(networkResult.object.items.length).toEqual(shoppingCartItems.length);
+    expect(shoppingCart.id).toBe(myUser.id);
+    expect(shoppingCart.items.length).toBe(0);
+
+    const walletResult = await client.operations.wallet.findMyWallet({
+      cachePolicy: CachePolicy.network,
+    });
+    const networkWallet = walletResult.object;
+
+    expect(walletResult.error).toBeUndefined();
+    expect(walletResult.object).toBeDefined();
+    expect(networkWallet.id).toBe(myUser.id);
+    expect(networkWallet.items.length).toBe(itemCount);
   });
 }, { timeout: 10000 });
