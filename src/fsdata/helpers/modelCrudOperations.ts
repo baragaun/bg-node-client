@@ -5,7 +5,7 @@ export interface ModelCrudOperationDef {
   createField?: string;
   delete?: { field: string, returnsServiceRequest?: boolean };
   findByIdField?: string;
-  updateField?: string;
+  updateField?: { field: string, returnsServiceRequest?: boolean };
   selections: any;
   skipVars?: boolean;
   keyFieldName?: string;
@@ -16,7 +16,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createChannel',
     delete: { field: 'deleteChannelV2', returnsServiceRequest: true },
     findByIdField: 'findChannelById',
-    updateField: 'updateChannel',
+    updateField: { field: 'updateChannel' },
     selections: modelFields.channel,
     keyFieldName: 'id',
   },
@@ -24,7 +24,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createChannelInvitation',
     delete: { field: 'deleteChannelInvitationV2', returnsServiceRequest: true },
     findByIdField: 'findChannelInvitationById',
-    updateField: 'updateChannelInvitation',
+    updateField: { field: 'updateChannelInvitation' },
     selections: modelFields.channelInvitation,
     keyFieldName: 'id',
   },
@@ -32,7 +32,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createChannelMessage',
     delete: { field: 'deleteChannelMessageV2', returnsServiceRequest: true },
     findByIdField: 'findChannelMessageById',
-    updateField: 'updateChannelMessage',
+    updateField: { field: 'updateChannelMessage' },
     selections: modelFields.channelMessage,
     keyFieldName: 'id',
   },
@@ -40,7 +40,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createChannelParticipant',
     delete: { field: 'deleteChannelParticipantV2', returnsServiceRequest: true },
     findByIdField: 'findChannelParticipantById',
-    updateField: 'updateChannelParticipant',
+    updateField: { field: 'updateChannelParticipant' },
     selections: modelFields.channelParticipant,
     keyFieldName: 'channelParticipantId',
   },
@@ -48,7 +48,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createMyUser',
     delete: { field: 'deleteMyUser', returnsServiceRequest: false },
     findByIdField: 'findMyUser',
-    updateField: 'updateMyUser',
+    updateField: {field: 'updateMyUser'},
     selections: modelFields.myUser,
     skipVars: true,
   },
@@ -56,14 +56,14 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createPurchaseOrder',
     delete: { field: 'deletePurchaseOrder', returnsServiceRequest: true },
     findByIdField: 'findPurchaseOrderById',
-    updateField: 'updatePurchaseOrder',
+    updateField: {field: 'updatePurchaseOrder'},
     selections: modelFields.purchaseOrder,
   },
   [ModelType.PurchaseOrderItem]: {
     createField: 'createPurchaseOrderItem',
     delete: { field: 'deletePurchaseOrderItem', returnsServiceRequest: true },
     findByIdField: 'findPurchaseOrderItemById',
-    updateField: 'updatePurchaseOrderItem',
+    updateField: {field: 'updatePurchaseOrderItem'},
     selections: modelFields.purchaseOrderItem,
   },
   [ModelType.ServiceRequest]: {
@@ -75,21 +75,21 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createShoppingCart',
     // delete: { field: 'deleteShoppingCart', returnsServiceRequest: true },
     findByIdField: 'findShoppingCartById',
-    updateField: 'updateShoppingCart',
+    updateField: {field: 'updateShoppingCart'},
     selections: modelFields.shoppingCart,
   },
   [ModelType.ShoppingCartItem]: {
     createField: 'createShoppingCartItem',
     delete: { field: 'deleteShoppingCartItem', returnsServiceRequest: true },
     findByIdField: 'findShoppingCartItemById',
-    updateField: 'updateShoppingCartItem',
+    updateField: { field: 'updateShoppingCartItem', returnsServiceRequest: true },
     selections: modelFields.shoppingCartItem,
   },
   [ModelType.SidMultiStepAction]: {
     createField: 'createMultiStepAction',
     // delete: { field: 'deleteMultiStepAction', returnsServiceRequest: false },
     findByIdField: 'findMultiStepActionById',
-    updateField: 'updateMultiStepAction',
+    updateField: {field: 'updateMultiStepAction' },
     selections: modelFields.sidMultiStepAction,
   },
   [ModelType.SidMultiStepActionProgress]: {
@@ -104,7 +104,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createUser',
     delete: { field: 'deleteUser', returnsServiceRequest: false },
     findByIdField: 'findUserById',
-    updateField: 'updateUser',
+    updateField: {field: 'updateUser'},
     selections: modelFields.user,
     keyFieldName: 'userId',
   },
@@ -112,21 +112,21 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createBrand',
     delete: { field: 'deleteBrand', returnsServiceRequest: true },
     findByIdField: 'findBrandById',
-    updateField: 'updateBrand',
+    updateField: {field: 'updateBrand'},
     selections: modelFields.brand,
   },
   [ModelType.Wallet]: {
     createField: 'createWallet',
     // delete: { field: 'deleteWallet', returnsServiceRequest: true },
     findByIdField: 'findWalletById',
-    updateField: 'updateWallet',
+    updateField: {field: 'updateWallet'},
     selections: modelFields.wallet,
   },
   [ModelType.WalletItem]: {
     createField: 'createWalletItem',
     delete: { field: 'deleteWalletItem', returnsServiceRequest: true },
     findByIdField: 'findWalletItemById',
-    updateField: 'updateWalletItem',
+    updateField: {field: 'updateWalletItem'},
     selections: modelFields.walletItem,
   },
 };

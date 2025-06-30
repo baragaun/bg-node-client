@@ -6,7 +6,10 @@ export interface ModelCrudOperationDef {
         returnsServiceRequest?: boolean;
     };
     findByIdField?: string;
-    updateField?: string;
+    updateField?: {
+        field: string;
+        returnsServiceRequest?: boolean;
+    };
     selections: any;
     skipVars?: boolean;
     keyFieldName?: string;
