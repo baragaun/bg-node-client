@@ -53,6 +53,7 @@ import findUserById from './operations/user/findUserById.js';
 import findUsers from './operations/user/findUsers.js';
 import findMyWallet from './operations/wallet/findMyWallet.js';
 import findWalletItems from './operations/walletItem/findWalletItems.js';
+import updateWalletItem from './operations/walletItem/updateWalletItem.js';
 
 const fsdata = {
   create,
@@ -154,6 +155,7 @@ const fsdata = {
 
   walletItem: {
     findWalletItems,
+    updateWalletItem,
   },
 };
 

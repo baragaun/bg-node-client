@@ -148,5 +148,6 @@ export interface Operations {
     };
     walletItem: {
         findWalletItems: (filter: WalletItemListFilter | null | undefined, match: Partial<WalletItem> | null | undefined, selector: MangoQueryTypes<WalletItem> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
+        updateWalletItem: (changes: Partial<WalletItem>, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
     };
 }

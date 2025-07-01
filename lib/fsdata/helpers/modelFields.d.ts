@@ -781,6 +781,8 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+        code: boolean;
+        pin: boolean;
         walletId: boolean;
         productId: boolean;
         brandId: boolean;

@@ -416,11 +416,11 @@ export interface Operations {
     updateShoppingCartItem: (
       changes: Partial<ShoppingCartItem>,
       queryOptions?: QueryOptions,
-    ) => Promise<QueryResult<ServiceRequest>>
+    ) => Promise<QueryResult<ServiceRequest>>;
   };
 
   user: {
-    findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>
+    findUserById: (id: string, queryOptions?: QueryOptions) => Promise<QueryResult<User>>;
 
     findUsers: (
       filter: UserListFilter | null | undefined,
@@ -428,7 +428,7 @@ export interface Operations {
       selector: MangoQueryTypes<User> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
-    ) => Promise<QueryResult<UserListItem>>
+    ) => Promise<QueryResult<UserListItem>>;
   };
 
   brand: {
@@ -442,7 +442,7 @@ export interface Operations {
   };
 
   wallet: {
-    findMyWallet: (queryOptions?: QueryOptions) => Promise<QueryResult<Wallet>>
+    findMyWallet: (queryOptions?: QueryOptions) => Promise<QueryResult<Wallet>>;
   }
 
   walletItem: {
@@ -451,6 +451,11 @@ export interface Operations {
       match: Partial<WalletItem> | null | undefined,
       selector: MangoQueryTypes<WalletItem> | null | undefined,
       options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<WalletItem>>;
+
+    updateWalletItem: (
+      changes: Partial<WalletItem>,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItem>>;
   }
