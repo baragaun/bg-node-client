@@ -32,9 +32,8 @@ const update = async <T extends Model = Model>(
     }
 
     const client = graffleClientStore.get();
-    console.log('ModelType : ', modelType);
     const fieldDef = modelCrudOperations[modelType];
-    console.log('FieldDef : ', fieldDef);
+
     if (!queryOptions) {
       queryOptions = defaultQueryOptionsForMutations;
     }
@@ -90,14 +89,9 @@ const update = async <T extends Model = Model>(
     // const args = { input: changes };
     logger.debug('fsdata.update: sending.', { args });
 
-    console.log('ModelType : ', {args}, fieldDef.updateField);
-
     const updateResponse = await client.mutation[fieldDef.updateField.field](args);
 
-    console.log('ModelType : ', updateResponse);
-
     logger.debug('fsdata.update response:', { response: updateResponse });
-
 
     if (Array.isArray(updateResponse.errors) && updateResponse.errors.length > 0) {
       logger.error('fsdata.update: errors received',
