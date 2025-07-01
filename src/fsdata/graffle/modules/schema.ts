@@ -1,4 +1,3 @@
-import type { Schema as $ } from 'graffle/utilities-for-generated';
 import type * as $$Utilities from 'graffle/utilities-for-generated';
 
 import * as $$Data from './data.js';
@@ -43421,31 +43420,31 @@ export namespace Schema {
   // --------------------------------------------------------------------------------------------------
   //
 
-  export type Int = $.StandardTypes.Int;
+  export type Int = $$Utilities.Schema.StandardTypes.Int;
 
   //                                                 ID
   // --------------------------------------------------------------------------------------------------
   //
 
-  export type ID = $.StandardTypes.ID;
+  export type ID = $$Utilities.Schema.StandardTypes.ID;
 
   //                                               String
   // --------------------------------------------------------------------------------------------------
   //
 
-  export type String = $.StandardTypes.String;
+  export type String = $$Utilities.Schema.StandardTypes.String;
 
   //                                              Boolean
   // --------------------------------------------------------------------------------------------------
   //
 
-  export type Boolean = $.StandardTypes.Boolean;
+  export type Boolean = $$Utilities.Schema.StandardTypes.Boolean;
 
   //                                               Float
   // --------------------------------------------------------------------------------------------------
   //
 
-  export type Float = $.StandardTypes.Float;
+  export type Float = $$Utilities.Schema.StandardTypes.Float;
 
   //
   //
