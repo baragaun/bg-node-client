@@ -129,7 +129,7 @@ export interface Operations {
     };
     shoppingCart: {
         findMyShoppingCart: (queryOptions?: QueryOptions) => Promise<QueryResult<ShoppingCart>>;
-        emptyMyShoppingCart: (queryOptions?: QueryOptions) => Promise<QueryResult<void>>;
+        clearMyShoppingCart: (queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
     };
     shoppingCartItem: {
         createShoppingCartItem: (props: Partial<ShoppingCartItem>) => Promise<QueryResult<ShoppingCartItem>>;

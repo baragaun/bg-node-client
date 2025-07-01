@@ -28,14 +28,21 @@ describe('operations.shoppingCart.findMyShoppingCart', () => {
     const itemCount = chance.integer({ min: 2, max: 6 });
     await createMultipleShoppingCartItemsSpecHelper(itemCount, client);
 
-    const networkResult = await client.operations.shoppingCart.findMyShoppingCart({
+    const networkResult1 = await client.operations.shoppingCart.clearMyShoppingCart({
       cachePolicy: CachePolicy.network,
     });
-    const shoppingCart = networkResult.object;
 
-    expect(networkResult.error).toBeUndefined();
-    expect(networkResult.object).toBeDefined();
+    expect(networkResult1.error).toBeUndefined();
+    expect(networkResult1.object).toBeDefined();
+
+    const networkResult2 = await client.operations.shoppingCart.findMyShoppingCart({
+      cachePolicy: CachePolicy.network,
+    });
+    const shoppingCart = networkResult2.object;
+
+    expect(networkResult2.error).toBeUndefined();
+    expect(networkResult2.object).toBeDefined();
     expect(shoppingCart.id).toBe(myUser.id);
-    expect(shoppingCart.items.length).toBe(itemCount);
+    expect(shoppingCart.items.length).toBe(0);
   });
 });

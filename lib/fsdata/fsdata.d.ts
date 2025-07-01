@@ -64,7 +64,7 @@ declare const fsdata: {
     };
     shoppingCart: {
         findMyShoppingCart: () => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCart>>;
-        emptyMyShoppingCart: () => Promise<import("../index.js").QueryResult<void>>;
+        clearMyShoppingCart: () => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
     };
     shoppingCartItem: {
         createShoppingCartItem: (props: Partial<import("../index.js").ShoppingCartItem>) => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCartItem>>;

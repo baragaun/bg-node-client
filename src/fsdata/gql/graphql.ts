@@ -1705,7 +1705,7 @@ export type GiftCardDenominationInput = {
 export type GiftCardProduct = {
   __typename?: 'GiftCardProduct';
   adminNotes?: Maybe<Scalars['String']['output']>;
-  barcodeFormat?: Maybe<Scalars['String']['output']>;
+  barcodeFormat?: Maybe<BarcodeType>;
   brandId: Scalars['ID']['output'];
   brandImportId?: Maybe<Scalars['String']['output']>;
   categories?: Maybe<Array<Scalars['ID']['output']>>;
@@ -1738,7 +1738,7 @@ export type GiftCardProduct = {
 
 export type GiftCardProductInput = {
   adminNotes?: InputMaybe<Scalars['String']['input']>;
-  barcodeFormat?: InputMaybe<Scalars['String']['input']>;
+  barcodeFormat?: InputMaybe<BarcodeType>;
   brandId?: InputMaybe<Scalars['ID']['input']>;
   brandImportId?: InputMaybe<Scalars['String']['input']>;
   categories?: InputMaybe<Array<Scalars['ID']['input']>>;
@@ -2878,6 +2878,8 @@ export type Mutation = {
   /** @deprecated Use blockUserForMeV2 */
   blockUserForMe: Scalars['String']['output'];
   blockUserForMeV2: ServiceRequest;
+  clearMyShoppingCart: ServiceRequest;
+  clearShoppingCart: ServiceRequest;
   createAcademicExperience: AcademicExperience;
   createAdminTask: AdminTask;
   createBusinessExperience: BusinessExperience;
@@ -2930,8 +2932,6 @@ export type Mutation = {
   deleteUserSearch: ServiceRequest;
   deleteWalletItem: ServiceRequest;
   dismissChannelInvitationFromInbox: Scalars['String']['output'];
-  emptyMyShoppingCart: Scalars['String']['output'];
-  emptyShoppingCart: Scalars['String']['output'];
   /** @deprecated Use endMySessionV2 */
   endMySession: Scalars['String']['output'];
   endMySessionV2: Scalars['String']['output'];
@@ -3031,6 +3031,11 @@ export type MutationBlockUserForMeV2Args = {
   notes?: InputMaybe<Scalars['String']['input']>;
   reasonTextId?: InputMaybe<Scalars['String']['input']>;
   userId: Scalars['String']['input'];
+};
+
+
+export type MutationClearShoppingCartArgs = {
+  id: Scalars['String']['input'];
 };
 
 
@@ -3323,11 +3328,6 @@ export type MutationDeleteWalletItemArgs = {
 
 export type MutationDismissChannelInvitationFromInboxArgs = {
   channelInvitationId: Scalars['String']['input'];
-};
-
-
-export type MutationEmptyShoppingCartArgs = {
-  id: Scalars['String']['input'];
 };
 
 
@@ -5179,6 +5179,8 @@ export enum ServiceRequestType {
   GraphQlMutationBlockUser = 'graphQlMutationBlockUser',
   GraphQlMutationClearAllAnalyticsSyncInfo = 'graphQlMutationClearAllAnalyticsSyncInfo',
   GraphQlMutationClearAllSyncInfo = 'graphQlMutationClearAllSyncInfo',
+  GraphQlMutationClearMyShoppingCart = 'graphQlMutationClearMyShoppingCart',
+  GraphQlMutationClearShoppingCart = 'graphQlMutationClearShoppingCart',
   GraphQlMutationCreateAcademicExperience = 'graphQlMutationCreateAcademicExperience',
   GraphQlMutationCreateAdminTask = 'graphQlMutationCreateAdminTask',
   GraphQlMutationCreateAnalyticsSynchronization = 'graphQlMutationCreateAnalyticsSynchronization',
@@ -5229,7 +5231,6 @@ export enum ServiceRequestType {
   GraphQlMutationDeleteUser = 'graphQlMutationDeleteUser',
   GraphQlMutationDeleteUserSearch = 'graphQlMutationDeleteUserSearch',
   GraphQlMutationDeleteWalletItem = 'graphQlMutationDeleteWalletItem',
-  GraphQlMutationEmptyShoppingCart = 'graphQlMutationEmptyShoppingCart',
   GraphQlMutationEndMySession = 'graphQlMutationEndMySession',
   GraphQlMutationFindAdminTaskById = 'graphQlMutationFindAdminTaskById',
   GraphQlMutationFindUploadedAssetById = 'graphQlMutationFindUploadedAssetById',
@@ -6893,7 +6894,6 @@ export type Wallet = {
   deletedBy?: Maybe<Scalars['ID']['output']>;
   events?: Maybe<Array<ModelEvent>>;
   id: Scalars['ID']['output'];
-  items: Array<WalletItem>;
   metadata?: Maybe<BaseModelMetadata>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
