@@ -86,7 +86,6 @@ const update = async <T extends Model = Model>(
       args = { ...args, ...modelFields.serviceRequest };
     }
 
-    // const args = { input: changes };
     logger.debug('fsdata.update: sending.', { args });
 
     const updateResponse = await client.mutation[fieldDef.updateField.field](args);
