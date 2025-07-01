@@ -66,7 +66,7 @@ describe('operations.walletItem.updateWalletItem', () => {
     );
 
     expect(findResult.error).toBeUndefined();
-    expect(findResult.object).toBeDefined();
+    expect(findResult.object).toBeTruthy();
     expect(findResult.object.id).toBe(itemToUpdate.id);
     expect(findResult.object.archivedAt).toBe(newArchivedAt);
   });
