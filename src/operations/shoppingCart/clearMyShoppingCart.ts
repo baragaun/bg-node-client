@@ -4,27 +4,28 @@ import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import { ServiceRequest } from '../../models/ServiceRequest.js';
 import { ShoppingCart } from '../../models/ShoppingCart.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
-const emptyMyShoppingCart = async (
+const clearMyShoppingCart = async (
   queryOptions: QueryOptions = defaultQueryOptions,
-): Promise<QueryResult<void>> => {
+): Promise<QueryResult<ServiceRequest>> => {
   try {
     if (!libData.isInitialized()) {
-      logger.error('emptyMyShoppingCart: unavailable');
+      logger.error('clearMyShoppingCart: unavailable');
       return { error: 'unavailable' };
     }
 
     if (!libData.clientInfoStore().isSignedIn) {
-      logger.error('emptyMyShoppingCart: unauthorized');
+      logger.error('clearMyShoppingCart: unauthorized');
       return { error: 'unauthorized' };
     }
 
     const myUserId = libData.clientInfoStore().myUserId;
     if (!myUserId) {
-      logger.error('emptyMyShoppingCart: myUserId not set');
+      logger.error('clearMyShoppingCart: myUserId not set');
       return { error: 'unauthorized' };
     }
 
@@ -51,10 +52,10 @@ const emptyMyShoppingCart = async (
       return { error: 'offline' };
     }
 
-    const result = await fsdata.shoppingCart.emptyMyShoppingCart();
+    const result = await fsdata.shoppingCart.clearMyShoppingCart();
 
     if (result.error) {
-      logger.error('emptyMyShoppingCart: error from fsdata', { error: result.error });
+      logger.error('clearMyShoppingCart: error from fsdata', { error: result.error });
       return { error: result.error };
     }
 
@@ -64,4 +65,4 @@ const emptyMyShoppingCart = async (
   }
 };
 
-export default emptyMyShoppingCart;
+export default clearMyShoppingCart;

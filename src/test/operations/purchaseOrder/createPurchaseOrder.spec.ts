@@ -32,6 +32,8 @@ describe('operations.purchaseOrder.createPurchaseOrder', () => {
       [],
       client,
     );
+    const walletItemCount = shoppingCartItems.reduce((sum, item) => sum + item.quantity, 0);
+
     expect(purchaseOrder).toBeDefined();
     expect(purchaseOrder.items).toBeDefined();
     expect(purchaseOrder.items.length).toEqual(shoppingCartItems.length);
@@ -66,6 +68,6 @@ describe('operations.purchaseOrder.createPurchaseOrder', () => {
 
     expect(walletItemsResult.error).toBeUndefined();
     expect(walletItemsResult.objects).toBeDefined();
-    expect(items.length).toBeGreaterThanOrEqual(shoppingCartItems.length);
+    expect(items.length).toBe(walletItemCount);
   });
 }, { timeout: 10000 });

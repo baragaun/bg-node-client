@@ -65,7 +65,7 @@ import verifyMyPassword from './myUser/verifyMyPassword.js';
 import findProductCategories from './productCategory/findProductCategories.js';
 import createPurchaseOrder from './purchaseOrder/createPurchaseOrder.js';
 import findPurchaseOrders from './purchaseOrder/findPurchaseOrders.js';
-import emptyMyShoppingCart from './shoppingCart/emptyMyShoppingCart.js';
+import clearMyShoppingCart from './shoppingCart/clearMyShoppingCart.js';
 import findMyShoppingCart from './shoppingCart/findMyShoppingCart.js';
 import createShoppingCartItem from './shoppingCartItem/createShoppingCartItem.js';
 import deleteShoppingCartItem from './shoppingCartItem/deleteShoppingCartItem.js';
@@ -172,7 +172,7 @@ const operations: Operations = {
   },
 
   shoppingCart: {
-    emptyMyShoppingCart,
+    clearMyShoppingCart,
     findMyShoppingCart,
   },
 

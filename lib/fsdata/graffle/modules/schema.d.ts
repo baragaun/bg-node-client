@@ -68,6 +68,18 @@ export declare namespace Schema {
             findMastercardBanks: Query.findMastercardBanks;
             userWillReceiveWelcomeMessage: Query.userWillReceiveWelcomeMessage;
             findBrands: Query.findBrands;
+            findPurchaseOrderItems: Query.findPurchaseOrderItems;
+            findPurchaseOrderById: Query.findPurchaseOrderById;
+            findPurchaseOrders: Query.findPurchaseOrders;
+            findShoppingCartItemById: Query.findShoppingCartItemById;
+            findShoppingCartItems: Query.findShoppingCartItems;
+            findShoppingCarts: Query.findShoppingCarts;
+            findMyShoppingCart: Query.findMyShoppingCart;
+            findWalletItemById: Query.findWalletItemById;
+            findWalletItems: Query.findWalletItems;
+            findWallets: Query.findWallets;
+            findMyWallet: Query.findMyWallet;
+            findWalletServiceRecord: Query.findWalletServiceRecord;
             findGiftCardProducts: Query.findGiftCardProducts;
             findMarketplaceServiceRecord: Query.findMarketplaceServiceRecord;
             findProductCategories: Query.findProductCategories;
@@ -96,18 +108,6 @@ export declare namespace Schema {
             findTrainingSessionsForMe: Query.findTrainingSessionsForMe;
             findTrainingSessionsByTrainingId: Query.findTrainingSessionsByTrainingId;
             findLatestTrainingSessionForMe: Query.findLatestTrainingSessionForMe;
-            findPurchaseOrderItems: Query.findPurchaseOrderItems;
-            findPurchaseOrderById: Query.findPurchaseOrderById;
-            findPurchaseOrders: Query.findPurchaseOrders;
-            findShoppingCartItemById: Query.findShoppingCartItemById;
-            findShoppingCartItems: Query.findShoppingCartItems;
-            findShoppingCarts: Query.findShoppingCarts;
-            findMyShoppingCart: Query.findMyShoppingCart;
-            findWalletItemById: Query.findWalletItemById;
-            findWalletItems: Query.findWalletItems;
-            findWallets: Query.findWallets;
-            findMyWallet: Query.findMyWallet;
-            findWalletServiceRecord: Query.findWalletServiceRecord;
         };
     }
     export namespace Query {
@@ -1231,6 +1231,243 @@ export declare namespace Schema {
             inlineType: [1, [1]];
             namedType: $$NamedTypes.$$Brand;
         }
+        interface findPurchaseOrderItems {
+            kind: 'OutputField';
+            name: 'findPurchaseOrderItems';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                match: {
+                    kind: 'InputField';
+                    name: 'match';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$PurchaseOrderItemInput;
+                };
+                filter: {
+                    kind: 'InputField';
+                    name: 'filter';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$PurchaseOrderItemListFilter;
+                };
+            };
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$PurchaseOrderItem;
+        }
+        interface findPurchaseOrderById {
+            kind: 'OutputField';
+            name: 'findPurchaseOrderById';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [0];
+            namedType: $$NamedTypes.$$PurchaseOrder;
+        }
+        interface findPurchaseOrders {
+            kind: 'OutputField';
+            name: 'findPurchaseOrders';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                match: {
+                    kind: 'InputField';
+                    name: 'match';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$PurchaseOrderInput;
+                };
+                filter: {
+                    kind: 'InputField';
+                    name: 'filter';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$PurchaseOrderListFilter;
+                };
+            };
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$PurchaseOrder;
+        }
+        interface findShoppingCartItemById {
+            kind: 'OutputField';
+            name: 'findShoppingCartItemById';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ShoppingCartItem;
+        }
+        interface findShoppingCartItems {
+            kind: 'OutputField';
+            name: 'findShoppingCartItems';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                match: {
+                    kind: 'InputField';
+                    name: 'match';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$ShoppingCartItemInput;
+                };
+                filter: {
+                    kind: 'InputField';
+                    name: 'filter';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$ShoppingCartItemListFilter;
+                };
+            };
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$ShoppingCartItem;
+        }
+        interface findShoppingCarts {
+            kind: 'OutputField';
+            name: 'findShoppingCarts';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                match: {
+                    kind: 'InputField';
+                    name: 'match';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$ShoppingCartInput;
+                };
+                filter: {
+                    kind: 'InputField';
+                    name: 'filter';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$ShoppingCartListFilter;
+                };
+            };
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$ShoppingCart;
+        }
+        interface findMyShoppingCart {
+            kind: 'OutputField';
+            name: 'findMyShoppingCart';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ShoppingCart;
+        }
+        interface findWalletItemById {
+            kind: 'OutputField';
+            name: 'findWalletItemById';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [0];
+            namedType: $$NamedTypes.$$WalletItem;
+        }
+        interface findWalletItems {
+            kind: 'OutputField';
+            name: 'findWalletItems';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                match: {
+                    kind: 'InputField';
+                    name: 'match';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$WalletItemInput;
+                };
+                filter: {
+                    kind: 'InputField';
+                    name: 'filter';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$WalletItemListFilter;
+                };
+            };
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$WalletItem;
+        }
+        interface findWallets {
+            kind: 'OutputField';
+            name: 'findWallets';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                match: {
+                    kind: 'InputField';
+                    name: 'match';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$WalletInput;
+                };
+                filter: {
+                    kind: 'InputField';
+                    name: 'filter';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$WalletListFilter;
+                };
+            };
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$Wallet;
+        }
+        interface findMyWallet {
+            kind: 'OutputField';
+            name: 'findMyWallet';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Wallet;
+        }
+        interface findWalletServiceRecord {
+            kind: 'OutputField';
+            name: 'findWalletServiceRecord';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$WalletServiceRecord;
+        }
         interface findGiftCardProducts {
             kind: 'OutputField';
             name: 'findGiftCardProducts';
@@ -1708,243 +1945,6 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$TrainingSession;
         }
-        interface findPurchaseOrderItems {
-            kind: 'OutputField';
-            name: 'findPurchaseOrderItems';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                match: {
-                    kind: 'InputField';
-                    name: 'match';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$PurchaseOrderItemInput;
-                };
-                filter: {
-                    kind: 'InputField';
-                    name: 'filter';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$PurchaseOrderItemListFilter;
-                };
-            };
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$PurchaseOrderItem;
-        }
-        interface findPurchaseOrderById {
-            kind: 'OutputField';
-            name: 'findPurchaseOrderById';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                id: {
-                    kind: 'InputField';
-                    name: 'id';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$String;
-                };
-            };
-            inlineType: [0];
-            namedType: $$NamedTypes.$$PurchaseOrder;
-        }
-        interface findPurchaseOrders {
-            kind: 'OutputField';
-            name: 'findPurchaseOrders';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                match: {
-                    kind: 'InputField';
-                    name: 'match';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$PurchaseOrderInput;
-                };
-                filter: {
-                    kind: 'InputField';
-                    name: 'filter';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$PurchaseOrderListFilter;
-                };
-            };
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$PurchaseOrder;
-        }
-        interface findShoppingCartItemById {
-            kind: 'OutputField';
-            name: 'findShoppingCartItemById';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                id: {
-                    kind: 'InputField';
-                    name: 'id';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$String;
-                };
-            };
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ShoppingCartItem;
-        }
-        interface findShoppingCartItems {
-            kind: 'OutputField';
-            name: 'findShoppingCartItems';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                match: {
-                    kind: 'InputField';
-                    name: 'match';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$ShoppingCartItemInput;
-                };
-                filter: {
-                    kind: 'InputField';
-                    name: 'filter';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$ShoppingCartItemListFilter;
-                };
-            };
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$ShoppingCartItem;
-        }
-        interface findShoppingCarts {
-            kind: 'OutputField';
-            name: 'findShoppingCarts';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                match: {
-                    kind: 'InputField';
-                    name: 'match';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$ShoppingCartInput;
-                };
-                filter: {
-                    kind: 'InputField';
-                    name: 'filter';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$ShoppingCartListFilter;
-                };
-            };
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$ShoppingCart;
-        }
-        interface findMyShoppingCart {
-            kind: 'OutputField';
-            name: 'findMyShoppingCart';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ShoppingCart;
-        }
-        interface findWalletItemById {
-            kind: 'OutputField';
-            name: 'findWalletItemById';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                id: {
-                    kind: 'InputField';
-                    name: 'id';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$String;
-                };
-            };
-            inlineType: [0];
-            namedType: $$NamedTypes.$$WalletItem;
-        }
-        interface findWalletItems {
-            kind: 'OutputField';
-            name: 'findWalletItems';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                match: {
-                    kind: 'InputField';
-                    name: 'match';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$WalletItemInput;
-                };
-                filter: {
-                    kind: 'InputField';
-                    name: 'filter';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$WalletItemListFilter;
-                };
-            };
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$WalletItem;
-        }
-        interface findWallets {
-            kind: 'OutputField';
-            name: 'findWallets';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$FindObjectsOptions;
-                };
-                match: {
-                    kind: 'InputField';
-                    name: 'match';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$WalletInput;
-                };
-                filter: {
-                    kind: 'InputField';
-                    name: 'filter';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$WalletListFilter;
-                };
-            };
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$Wallet;
-        }
-        interface findMyWallet {
-            kind: 'OutputField';
-            name: 'findMyWallet';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Wallet;
-        }
-        interface findWalletServiceRecord {
-            kind: 'OutputField';
-            name: 'findWalletServiceRecord';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$WalletServiceRecord;
-        }
     }
     export interface Mutation {
         kind: 'Object';
@@ -2025,6 +2025,15 @@ export declare namespace Schema {
             createSupportChannelConfig: Mutation.createSupportChannelConfig;
             deleteSupportChannelConfig: Mutation.deleteSupportChannelConfig;
             updateSupportChannelConfig: Mutation.updateSupportChannelConfig;
+            createPurchaseOrder: Mutation.createPurchaseOrder;
+            createShoppingCartItem: Mutation.createShoppingCartItem;
+            deleteShoppingCartItem: Mutation.deleteShoppingCartItem;
+            updateShoppingCartItem: Mutation.updateShoppingCartItem;
+            clearMyShoppingCart: Mutation.clearMyShoppingCart;
+            clearShoppingCart: Mutation.clearShoppingCart;
+            createWalletItem: Mutation.createWalletItem;
+            deleteWalletItem: Mutation.deleteWalletItem;
+            updateWalletItem: Mutation.updateWalletItem;
             createUserSearch: Mutation.createUserSearch;
             deleteUserSearch: Mutation.deleteUserSearch;
             updateUserSearch: Mutation.updateUserSearch;
@@ -2054,15 +2063,6 @@ export declare namespace Schema {
             unblockUserForMeV2: Mutation.unblockUserForMeV2;
             updateMyUser: Mutation.updateMyUser;
             createUserTracking: Mutation.createUserTracking;
-            createPurchaseOrder: Mutation.createPurchaseOrder;
-            createShoppingCartItem: Mutation.createShoppingCartItem;
-            deleteShoppingCartItem: Mutation.deleteShoppingCartItem;
-            updateShoppingCartItem: Mutation.updateShoppingCartItem;
-            emptyMyShoppingCart: Mutation.emptyMyShoppingCart;
-            emptyShoppingCart: Mutation.emptyShoppingCart;
-            createWalletItem: Mutation.createWalletItem;
-            deleteWalletItem: Mutation.deleteWalletItem;
-            updateWalletItem: Mutation.updateWalletItem;
         };
     }
     export namespace Mutation {
@@ -3325,6 +3325,161 @@ export declare namespace Schema {
             inlineType: [1];
             namedType: $$NamedTypes.$$ServiceRequest;
         }
+        interface createPurchaseOrder {
+            kind: 'OutputField';
+            name: 'createPurchaseOrder';
+            arguments: {
+                input: {
+                    kind: 'InputField';
+                    name: 'input';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$PurchaseOrderInput;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface createShoppingCartItem {
+            kind: 'OutputField';
+            name: 'createShoppingCartItem';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$UpdateObjectOptions;
+                };
+                input: {
+                    kind: 'InputField';
+                    name: 'input';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$ShoppingCartItemInput;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ShoppingCartItem;
+        }
+        interface deleteShoppingCartItem {
+            kind: 'OutputField';
+            name: 'deleteShoppingCartItem';
+            arguments: {
+                deletePhysically: {
+                    kind: 'InputField';
+                    name: 'deletePhysically';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface updateShoppingCartItem {
+            kind: 'OutputField';
+            name: 'updateShoppingCartItem';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$UpdateObjectOptions;
+                };
+                input: {
+                    kind: 'InputField';
+                    name: 'input';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$ShoppingCartItemInput;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface clearMyShoppingCart {
+            kind: 'OutputField';
+            name: 'clearMyShoppingCart';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface clearShoppingCart {
+            kind: 'OutputField';
+            name: 'clearShoppingCart';
+            arguments: {
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface createWalletItem {
+            kind: 'OutputField';
+            name: 'createWalletItem';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$UpdateObjectOptions;
+                };
+                input: {
+                    kind: 'InputField';
+                    name: 'input';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$WalletItemInput;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$WalletItem;
+        }
+        interface deleteWalletItem {
+            kind: 'OutputField';
+            name: 'deleteWalletItem';
+            arguments: {
+                deletePhysically: {
+                    kind: 'InputField';
+                    name: 'deletePhysically';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface updateWalletItem {
+            kind: 'OutputField';
+            name: 'updateWalletItem';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$UpdateObjectOptions;
+                };
+                input: {
+                    kind: 'InputField';
+                    name: 'input';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$WalletItemInput;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
         interface createUserSearch {
             kind: 'OutputField';
             name: 'createUserSearch';
@@ -3813,161 +3968,6 @@ export declare namespace Schema {
             };
             inlineType: [1];
             namedType: $$NamedTypes.$$String;
-        }
-        interface createPurchaseOrder {
-            kind: 'OutputField';
-            name: 'createPurchaseOrder';
-            arguments: {
-                input: {
-                    kind: 'InputField';
-                    name: 'input';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$PurchaseOrderInput;
-                };
-            };
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ServiceRequest;
-        }
-        interface createShoppingCartItem {
-            kind: 'OutputField';
-            name: 'createShoppingCartItem';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$UpdateObjectOptions;
-                };
-                input: {
-                    kind: 'InputField';
-                    name: 'input';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$ShoppingCartItemInput;
-                };
-            };
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ShoppingCartItem;
-        }
-        interface deleteShoppingCartItem {
-            kind: 'OutputField';
-            name: 'deleteShoppingCartItem';
-            arguments: {
-                deletePhysically: {
-                    kind: 'InputField';
-                    name: 'deletePhysically';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$Boolean;
-                };
-                id: {
-                    kind: 'InputField';
-                    name: 'id';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$String;
-                };
-            };
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ServiceRequest;
-        }
-        interface updateShoppingCartItem {
-            kind: 'OutputField';
-            name: 'updateShoppingCartItem';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$UpdateObjectOptions;
-                };
-                input: {
-                    kind: 'InputField';
-                    name: 'input';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$ShoppingCartItemInput;
-                };
-            };
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ServiceRequest;
-        }
-        interface emptyMyShoppingCart {
-            kind: 'OutputField';
-            name: 'emptyMyShoppingCart';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface emptyShoppingCart {
-            kind: 'OutputField';
-            name: 'emptyShoppingCart';
-            arguments: {
-                id: {
-                    kind: 'InputField';
-                    name: 'id';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$String;
-                };
-            };
-            inlineType: [1];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface createWalletItem {
-            kind: 'OutputField';
-            name: 'createWalletItem';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$UpdateObjectOptions;
-                };
-                input: {
-                    kind: 'InputField';
-                    name: 'input';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$WalletItemInput;
-                };
-            };
-            inlineType: [1];
-            namedType: $$NamedTypes.$$WalletItem;
-        }
-        interface deleteWalletItem {
-            kind: 'OutputField';
-            name: 'deleteWalletItem';
-            arguments: {
-                deletePhysically: {
-                    kind: 'InputField';
-                    name: 'deletePhysically';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$Boolean;
-                };
-                id: {
-                    kind: 'InputField';
-                    name: 'id';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$String;
-                };
-            };
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ServiceRequest;
-        }
-        interface updateWalletItem {
-            kind: 'OutputField';
-            name: 'updateWalletItem';
-            arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$UpdateObjectOptions;
-                };
-                input: {
-                    kind: 'InputField';
-                    name: 'input';
-                    inlineType: [1];
-                    namedType: $$NamedTypes.$$WalletItemInput;
-                };
-            };
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ServiceRequest;
         }
     }
     export interface Subscription {
@@ -18042,6 +18042,1107 @@ export declare namespace Schema {
             namedType: $$NamedTypes.$$String;
         }
     }
+    export interface PurchaseOrderItem {
+        kind: 'Object';
+        name: 'PurchaseOrderItem';
+        fields: {
+            __typename: PurchaseOrderItem.__typename;
+            id: PurchaseOrderItem.id;
+            adminNotes: PurchaseOrderItem.adminNotes;
+            events: PurchaseOrderItem.events;
+            metadata: PurchaseOrderItem.metadata;
+            createdAt: PurchaseOrderItem.createdAt;
+            createdBy: PurchaseOrderItem.createdBy;
+            updatedAt: PurchaseOrderItem.updatedAt;
+            updatedBy: PurchaseOrderItem.updatedBy;
+            deletedAt: PurchaseOrderItem.deletedAt;
+            deletedBy: PurchaseOrderItem.deletedBy;
+            purchaseOrderId: PurchaseOrderItem.purchaseOrderId;
+            shoppingCartItemId: PurchaseOrderItem.shoppingCartItemId;
+            productId: PurchaseOrderItem.productId;
+            brandId: PurchaseOrderItem.brandId;
+            quantity: PurchaseOrderItem.quantity;
+            price: PurchaseOrderItem.price;
+            totalPrice: PurchaseOrderItem.totalPrice;
+        };
+    }
+    export namespace PurchaseOrderItem {
+        interface __typename {
+            kind: 'OutputField';
+            name: '__typename';
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: '__typename';
+                value: 'PurchaseOrderItem';
+            };
+        }
+        interface id {
+            kind: 'OutputField';
+            name: 'id';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'OutputField';
+            name: 'adminNotes';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'OutputField';
+            name: 'events';
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: 'OutputField';
+            name: 'metadata';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: 'OutputField';
+            name: 'createdAt';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'OutputField';
+            name: 'createdBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'OutputField';
+            name: 'updatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'OutputField';
+            name: 'updatedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'OutputField';
+            name: 'deletedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'OutputField';
+            name: 'deletedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface purchaseOrderId {
+            kind: 'OutputField';
+            name: 'purchaseOrderId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface shoppingCartItemId {
+            kind: 'OutputField';
+            name: 'shoppingCartItemId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface productId {
+            kind: 'OutputField';
+            name: 'productId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface brandId {
+            kind: 'OutputField';
+            name: 'brandId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface quantity {
+            kind: 'OutputField';
+            name: 'quantity';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface price {
+            kind: 'OutputField';
+            name: 'price';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface totalPrice {
+            kind: 'OutputField';
+            name: 'totalPrice';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+    }
+    export interface PurchaseOrder {
+        kind: 'Object';
+        name: 'PurchaseOrder';
+        fields: {
+            __typename: PurchaseOrder.__typename;
+            id: PurchaseOrder.id;
+            adminNotes: PurchaseOrder.adminNotes;
+            events: PurchaseOrder.events;
+            metadata: PurchaseOrder.metadata;
+            createdAt: PurchaseOrder.createdAt;
+            createdBy: PurchaseOrder.createdBy;
+            updatedAt: PurchaseOrder.updatedAt;
+            updatedBy: PurchaseOrder.updatedBy;
+            deletedAt: PurchaseOrder.deletedAt;
+            deletedBy: PurchaseOrder.deletedBy;
+            userId: PurchaseOrder.userId;
+            shoppingCartId: PurchaseOrder.shoppingCartId;
+            sumItemPrice: PurchaseOrder.sumItemPrice;
+            totalPrice: PurchaseOrder.totalPrice;
+            vat: PurchaseOrder.vat;
+            paidAt: PurchaseOrder.paidAt;
+            canceledAt: PurchaseOrder.canceledAt;
+            refundedAt: PurchaseOrder.refundedAt;
+            items: PurchaseOrder.items;
+        };
+    }
+    export namespace PurchaseOrder {
+        interface __typename {
+            kind: 'OutputField';
+            name: '__typename';
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: '__typename';
+                value: 'PurchaseOrder';
+            };
+        }
+        interface id {
+            kind: 'OutputField';
+            name: 'id';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'OutputField';
+            name: 'adminNotes';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'OutputField';
+            name: 'events';
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: 'OutputField';
+            name: 'metadata';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: 'OutputField';
+            name: 'createdAt';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'OutputField';
+            name: 'createdBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'OutputField';
+            name: 'updatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'OutputField';
+            name: 'updatedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'OutputField';
+            name: 'deletedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'OutputField';
+            name: 'deletedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface userId {
+            kind: 'OutputField';
+            name: 'userId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface shoppingCartId {
+            kind: 'OutputField';
+            name: 'shoppingCartId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface sumItemPrice {
+            kind: 'OutputField';
+            name: 'sumItemPrice';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface totalPrice {
+            kind: 'OutputField';
+            name: 'totalPrice';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface vat {
+            kind: 'OutputField';
+            name: 'vat';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface paidAt {
+            kind: 'OutputField';
+            name: 'paidAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface canceledAt {
+            kind: 'OutputField';
+            name: 'canceledAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface refundedAt {
+            kind: 'OutputField';
+            name: 'refundedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface items {
+            kind: 'OutputField';
+            name: 'items';
+            arguments: {};
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$PurchaseOrderItem;
+        }
+    }
+    export interface ShoppingCartItem {
+        kind: 'Object';
+        name: 'ShoppingCartItem';
+        fields: {
+            __typename: ShoppingCartItem.__typename;
+            id: ShoppingCartItem.id;
+            adminNotes: ShoppingCartItem.adminNotes;
+            events: ShoppingCartItem.events;
+            metadata: ShoppingCartItem.metadata;
+            createdAt: ShoppingCartItem.createdAt;
+            createdBy: ShoppingCartItem.createdBy;
+            updatedAt: ShoppingCartItem.updatedAt;
+            updatedBy: ShoppingCartItem.updatedBy;
+            deletedAt: ShoppingCartItem.deletedAt;
+            deletedBy: ShoppingCartItem.deletedBy;
+            shoppingCartId: ShoppingCartItem.shoppingCartId;
+            productId: ShoppingCartItem.productId;
+            quantity: ShoppingCartItem.quantity;
+            price: ShoppingCartItem.price;
+            totalPrice: ShoppingCartItem.totalPrice;
+        };
+    }
+    export namespace ShoppingCartItem {
+        interface __typename {
+            kind: 'OutputField';
+            name: '__typename';
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: '__typename';
+                value: 'ShoppingCartItem';
+            };
+        }
+        interface id {
+            kind: 'OutputField';
+            name: 'id';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'OutputField';
+            name: 'adminNotes';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'OutputField';
+            name: 'events';
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: 'OutputField';
+            name: 'metadata';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: 'OutputField';
+            name: 'createdAt';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'OutputField';
+            name: 'createdBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'OutputField';
+            name: 'updatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'OutputField';
+            name: 'updatedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'OutputField';
+            name: 'deletedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'OutputField';
+            name: 'deletedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface shoppingCartId {
+            kind: 'OutputField';
+            name: 'shoppingCartId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface productId {
+            kind: 'OutputField';
+            name: 'productId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface quantity {
+            kind: 'OutputField';
+            name: 'quantity';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface price {
+            kind: 'OutputField';
+            name: 'price';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface totalPrice {
+            kind: 'OutputField';
+            name: 'totalPrice';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+    }
+    export interface ShoppingCart {
+        kind: 'Object';
+        name: 'ShoppingCart';
+        fields: {
+            __typename: ShoppingCart.__typename;
+            id: ShoppingCart.id;
+            adminNotes: ShoppingCart.adminNotes;
+            events: ShoppingCart.events;
+            metadata: ShoppingCart.metadata;
+            createdAt: ShoppingCart.createdAt;
+            createdBy: ShoppingCart.createdBy;
+            updatedAt: ShoppingCart.updatedAt;
+            updatedBy: ShoppingCart.updatedBy;
+            deletedAt: ShoppingCart.deletedAt;
+            deletedBy: ShoppingCart.deletedBy;
+            sumItemPrice: ShoppingCart.sumItemPrice;
+            totalPrice: ShoppingCart.totalPrice;
+            vat: ShoppingCart.vat;
+            items: ShoppingCart.items;
+        };
+    }
+    export namespace ShoppingCart {
+        interface __typename {
+            kind: 'OutputField';
+            name: '__typename';
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: '__typename';
+                value: 'ShoppingCart';
+            };
+        }
+        interface id {
+            kind: 'OutputField';
+            name: 'id';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'OutputField';
+            name: 'adminNotes';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'OutputField';
+            name: 'events';
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: 'OutputField';
+            name: 'metadata';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: 'OutputField';
+            name: 'createdAt';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'OutputField';
+            name: 'createdBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'OutputField';
+            name: 'updatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'OutputField';
+            name: 'updatedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'OutputField';
+            name: 'deletedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'OutputField';
+            name: 'deletedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface sumItemPrice {
+            kind: 'OutputField';
+            name: 'sumItemPrice';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface totalPrice {
+            kind: 'OutputField';
+            name: 'totalPrice';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface vat {
+            kind: 'OutputField';
+            name: 'vat';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface items {
+            kind: 'OutputField';
+            name: 'items';
+            arguments: {};
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$ShoppingCartItem;
+        }
+    }
+    export interface WalletItem {
+        kind: 'Object';
+        name: 'WalletItem';
+        fields: {
+            __typename: WalletItem.__typename;
+            id: WalletItem.id;
+            adminNotes: WalletItem.adminNotes;
+            events: WalletItem.events;
+            metadata: WalletItem.metadata;
+            createdAt: WalletItem.createdAt;
+            createdBy: WalletItem.createdBy;
+            updatedAt: WalletItem.updatedAt;
+            updatedBy: WalletItem.updatedBy;
+            deletedAt: WalletItem.deletedAt;
+            deletedBy: WalletItem.deletedBy;
+            walletId: WalletItem.walletId;
+            productId: WalletItem.productId;
+            purchaseOrderItemId: WalletItem.purchaseOrderItemId;
+            brandId: WalletItem.brandId;
+            name: WalletItem.name;
+            price: WalletItem.price;
+            initialBalance: WalletItem.initialBalance;
+            balance: WalletItem.balance;
+            code: WalletItem.code;
+            hasBarcode: WalletItem.hasBarcode;
+            barcodeFormat: WalletItem.barcodeFormat;
+            pin: WalletItem.pin;
+            source: WalletItem.source;
+            imageSourceFront: WalletItem.imageSourceFront;
+            imageSourceBack: WalletItem.imageSourceBack;
+            referenceUrl: WalletItem.referenceUrl;
+            termsEn: WalletItem.termsEn;
+            termsUrl: WalletItem.termsUrl;
+            instructionsEn: WalletItem.instructionsEn;
+            instructionsUrl: WalletItem.instructionsUrl;
+            sortIndex: WalletItem.sortIndex;
+            issuedAt: WalletItem.issuedAt;
+            expiresAt: WalletItem.expiresAt;
+            balanceUpdatedAt: WalletItem.balanceUpdatedAt;
+            archivedAt: WalletItem.archivedAt;
+        };
+    }
+    export namespace WalletItem {
+        interface __typename {
+            kind: 'OutputField';
+            name: '__typename';
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: '__typename';
+                value: 'WalletItem';
+            };
+        }
+        interface id {
+            kind: 'OutputField';
+            name: 'id';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'OutputField';
+            name: 'adminNotes';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'OutputField';
+            name: 'events';
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: 'OutputField';
+            name: 'metadata';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: 'OutputField';
+            name: 'createdAt';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'OutputField';
+            name: 'createdBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'OutputField';
+            name: 'updatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'OutputField';
+            name: 'updatedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'OutputField';
+            name: 'deletedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'OutputField';
+            name: 'deletedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface walletId {
+            kind: 'OutputField';
+            name: 'walletId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface productId {
+            kind: 'OutputField';
+            name: 'productId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface purchaseOrderItemId {
+            kind: 'OutputField';
+            name: 'purchaseOrderItemId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface brandId {
+            kind: 'OutputField';
+            name: 'brandId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface name {
+            kind: 'OutputField';
+            name: 'name';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface price {
+            kind: 'OutputField';
+            name: 'price';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface initialBalance {
+            kind: 'OutputField';
+            name: 'initialBalance';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface balance {
+            kind: 'OutputField';
+            name: 'balance';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface code {
+            kind: 'OutputField';
+            name: 'code';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface hasBarcode {
+            kind: 'OutputField';
+            name: 'hasBarcode';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface barcodeFormat {
+            kind: 'OutputField';
+            name: 'barcodeFormat';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BarcodeType;
+        }
+        interface pin {
+            kind: 'OutputField';
+            name: 'pin';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface source {
+            kind: 'OutputField';
+            name: 'source';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$WalletItemSource;
+        }
+        interface imageSourceFront {
+            kind: 'OutputField';
+            name: 'imageSourceFront';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface imageSourceBack {
+            kind: 'OutputField';
+            name: 'imageSourceBack';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface referenceUrl {
+            kind: 'OutputField';
+            name: 'referenceUrl';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface termsEn {
+            kind: 'OutputField';
+            name: 'termsEn';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface termsUrl {
+            kind: 'OutputField';
+            name: 'termsUrl';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface instructionsEn {
+            kind: 'OutputField';
+            name: 'instructionsEn';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface instructionsUrl {
+            kind: 'OutputField';
+            name: 'instructionsUrl';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface sortIndex {
+            kind: 'OutputField';
+            name: 'sortIndex';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface issuedAt {
+            kind: 'OutputField';
+            name: 'issuedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface expiresAt {
+            kind: 'OutputField';
+            name: 'expiresAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface balanceUpdatedAt {
+            kind: 'OutputField';
+            name: 'balanceUpdatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface archivedAt {
+            kind: 'OutputField';
+            name: 'archivedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface Wallet {
+        kind: 'Object';
+        name: 'Wallet';
+        fields: {
+            __typename: Wallet.__typename;
+            id: Wallet.id;
+            adminNotes: Wallet.adminNotes;
+            events: Wallet.events;
+            metadata: Wallet.metadata;
+            createdAt: Wallet.createdAt;
+            createdBy: Wallet.createdBy;
+            updatedAt: Wallet.updatedAt;
+            updatedBy: Wallet.updatedBy;
+            deletedAt: Wallet.deletedAt;
+            deletedBy: Wallet.deletedBy;
+        };
+    }
+    export namespace Wallet {
+        interface __typename {
+            kind: 'OutputField';
+            name: '__typename';
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: '__typename';
+                value: 'Wallet';
+            };
+        }
+        interface id {
+            kind: 'OutputField';
+            name: 'id';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'OutputField';
+            name: 'adminNotes';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'OutputField';
+            name: 'events';
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: 'OutputField';
+            name: 'metadata';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: 'OutputField';
+            name: 'createdAt';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'OutputField';
+            name: 'createdBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'OutputField';
+            name: 'updatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'OutputField';
+            name: 'updatedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'OutputField';
+            name: 'deletedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'OutputField';
+            name: 'deletedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+    }
+    export interface WalletServiceRecord {
+        kind: 'Object';
+        name: 'WalletServiceRecord';
+        fields: {
+            __typename: WalletServiceRecord.__typename;
+            id: WalletServiceRecord.id;
+            adminNotes: WalletServiceRecord.adminNotes;
+            events: WalletServiceRecord.events;
+            metadata: WalletServiceRecord.metadata;
+            createdAt: WalletServiceRecord.createdAt;
+            createdBy: WalletServiceRecord.createdBy;
+            updatedAt: WalletServiceRecord.updatedAt;
+            updatedBy: WalletServiceRecord.updatedBy;
+            deletedAt: WalletServiceRecord.deletedAt;
+            deletedBy: WalletServiceRecord.deletedBy;
+            serviceName: WalletServiceRecord.serviceName;
+        };
+    }
+    export namespace WalletServiceRecord {
+        interface __typename {
+            kind: 'OutputField';
+            name: '__typename';
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: '__typename';
+                value: 'WalletServiceRecord';
+            };
+        }
+        interface id {
+            kind: 'OutputField';
+            name: 'id';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'OutputField';
+            name: 'adminNotes';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'OutputField';
+            name: 'events';
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: 'OutputField';
+            name: 'metadata';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: 'OutputField';
+            name: 'createdAt';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'OutputField';
+            name: 'createdBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'OutputField';
+            name: 'updatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'OutputField';
+            name: 'updatedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'OutputField';
+            name: 'deletedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'OutputField';
+            name: 'deletedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface serviceName {
+            kind: 'OutputField';
+            name: 'serviceName';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceName;
+        }
+    }
     export interface GiftCardProduct {
         kind: 'Object';
         name: 'GiftCardProduct';
@@ -18242,7 +19343,7 @@ export declare namespace Schema {
             name: 'barcodeFormat';
             arguments: {};
             inlineType: [0];
-            namedType: $$NamedTypes.$$String;
+            namedType: $$NamedTypes.$$BarcodeType;
         }
         interface genericGiftCardId {
             kind: 'OutputField';
@@ -23269,1115 +24370,6 @@ export declare namespace Schema {
             arguments: {};
             inlineType: [1];
             namedType: $$NamedTypes.$$Int;
-        }
-    }
-    export interface PurchaseOrderItem {
-        kind: 'Object';
-        name: 'PurchaseOrderItem';
-        fields: {
-            __typename: PurchaseOrderItem.__typename;
-            id: PurchaseOrderItem.id;
-            adminNotes: PurchaseOrderItem.adminNotes;
-            events: PurchaseOrderItem.events;
-            metadata: PurchaseOrderItem.metadata;
-            createdAt: PurchaseOrderItem.createdAt;
-            createdBy: PurchaseOrderItem.createdBy;
-            updatedAt: PurchaseOrderItem.updatedAt;
-            updatedBy: PurchaseOrderItem.updatedBy;
-            deletedAt: PurchaseOrderItem.deletedAt;
-            deletedBy: PurchaseOrderItem.deletedBy;
-            purchaseOrderId: PurchaseOrderItem.purchaseOrderId;
-            shoppingCartItemId: PurchaseOrderItem.shoppingCartItemId;
-            productId: PurchaseOrderItem.productId;
-            brandId: PurchaseOrderItem.brandId;
-            quantity: PurchaseOrderItem.quantity;
-            price: PurchaseOrderItem.price;
-            totalPrice: PurchaseOrderItem.totalPrice;
-        };
-    }
-    export namespace PurchaseOrderItem {
-        interface __typename {
-            kind: 'OutputField';
-            name: '__typename';
-            arguments: {};
-            inlineType: [1];
-            namedType: {
-                kind: '__typename';
-                value: 'PurchaseOrderItem';
-            };
-        }
-        interface id {
-            kind: 'OutputField';
-            name: 'id';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'OutputField';
-            name: 'adminNotes';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'OutputField';
-            name: 'events';
-            arguments: {};
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEvent;
-        }
-        interface metadata {
-            kind: 'OutputField';
-            name: 'metadata';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadata;
-        }
-        interface createdAt {
-            kind: 'OutputField';
-            name: 'createdAt';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'OutputField';
-            name: 'createdBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'OutputField';
-            name: 'updatedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'OutputField';
-            name: 'updatedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'OutputField';
-            name: 'deletedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'OutputField';
-            name: 'deletedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface purchaseOrderId {
-            kind: 'OutputField';
-            name: 'purchaseOrderId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface shoppingCartItemId {
-            kind: 'OutputField';
-            name: 'shoppingCartItemId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface productId {
-            kind: 'OutputField';
-            name: 'productId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface brandId {
-            kind: 'OutputField';
-            name: 'brandId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface quantity {
-            kind: 'OutputField';
-            name: 'quantity';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface price {
-            kind: 'OutputField';
-            name: 'price';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface totalPrice {
-            kind: 'OutputField';
-            name: 'totalPrice';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-    }
-    export interface PurchaseOrder {
-        kind: 'Object';
-        name: 'PurchaseOrder';
-        fields: {
-            __typename: PurchaseOrder.__typename;
-            id: PurchaseOrder.id;
-            adminNotes: PurchaseOrder.adminNotes;
-            events: PurchaseOrder.events;
-            metadata: PurchaseOrder.metadata;
-            createdAt: PurchaseOrder.createdAt;
-            createdBy: PurchaseOrder.createdBy;
-            updatedAt: PurchaseOrder.updatedAt;
-            updatedBy: PurchaseOrder.updatedBy;
-            deletedAt: PurchaseOrder.deletedAt;
-            deletedBy: PurchaseOrder.deletedBy;
-            userId: PurchaseOrder.userId;
-            shoppingCartId: PurchaseOrder.shoppingCartId;
-            sumItemPrice: PurchaseOrder.sumItemPrice;
-            totalPrice: PurchaseOrder.totalPrice;
-            vat: PurchaseOrder.vat;
-            paidAt: PurchaseOrder.paidAt;
-            canceledAt: PurchaseOrder.canceledAt;
-            refundedAt: PurchaseOrder.refundedAt;
-            items: PurchaseOrder.items;
-        };
-    }
-    export namespace PurchaseOrder {
-        interface __typename {
-            kind: 'OutputField';
-            name: '__typename';
-            arguments: {};
-            inlineType: [1];
-            namedType: {
-                kind: '__typename';
-                value: 'PurchaseOrder';
-            };
-        }
-        interface id {
-            kind: 'OutputField';
-            name: 'id';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'OutputField';
-            name: 'adminNotes';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'OutputField';
-            name: 'events';
-            arguments: {};
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEvent;
-        }
-        interface metadata {
-            kind: 'OutputField';
-            name: 'metadata';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadata;
-        }
-        interface createdAt {
-            kind: 'OutputField';
-            name: 'createdAt';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'OutputField';
-            name: 'createdBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'OutputField';
-            name: 'updatedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'OutputField';
-            name: 'updatedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'OutputField';
-            name: 'deletedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'OutputField';
-            name: 'deletedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface userId {
-            kind: 'OutputField';
-            name: 'userId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface shoppingCartId {
-            kind: 'OutputField';
-            name: 'shoppingCartId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface sumItemPrice {
-            kind: 'OutputField';
-            name: 'sumItemPrice';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface totalPrice {
-            kind: 'OutputField';
-            name: 'totalPrice';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface vat {
-            kind: 'OutputField';
-            name: 'vat';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface paidAt {
-            kind: 'OutputField';
-            name: 'paidAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface canceledAt {
-            kind: 'OutputField';
-            name: 'canceledAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface refundedAt {
-            kind: 'OutputField';
-            name: 'refundedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface items {
-            kind: 'OutputField';
-            name: 'items';
-            arguments: {};
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$PurchaseOrderItem;
-        }
-    }
-    export interface ShoppingCartItem {
-        kind: 'Object';
-        name: 'ShoppingCartItem';
-        fields: {
-            __typename: ShoppingCartItem.__typename;
-            id: ShoppingCartItem.id;
-            adminNotes: ShoppingCartItem.adminNotes;
-            events: ShoppingCartItem.events;
-            metadata: ShoppingCartItem.metadata;
-            createdAt: ShoppingCartItem.createdAt;
-            createdBy: ShoppingCartItem.createdBy;
-            updatedAt: ShoppingCartItem.updatedAt;
-            updatedBy: ShoppingCartItem.updatedBy;
-            deletedAt: ShoppingCartItem.deletedAt;
-            deletedBy: ShoppingCartItem.deletedBy;
-            shoppingCartId: ShoppingCartItem.shoppingCartId;
-            productId: ShoppingCartItem.productId;
-            quantity: ShoppingCartItem.quantity;
-            price: ShoppingCartItem.price;
-            totalPrice: ShoppingCartItem.totalPrice;
-        };
-    }
-    export namespace ShoppingCartItem {
-        interface __typename {
-            kind: 'OutputField';
-            name: '__typename';
-            arguments: {};
-            inlineType: [1];
-            namedType: {
-                kind: '__typename';
-                value: 'ShoppingCartItem';
-            };
-        }
-        interface id {
-            kind: 'OutputField';
-            name: 'id';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'OutputField';
-            name: 'adminNotes';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'OutputField';
-            name: 'events';
-            arguments: {};
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEvent;
-        }
-        interface metadata {
-            kind: 'OutputField';
-            name: 'metadata';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadata;
-        }
-        interface createdAt {
-            kind: 'OutputField';
-            name: 'createdAt';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'OutputField';
-            name: 'createdBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'OutputField';
-            name: 'updatedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'OutputField';
-            name: 'updatedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'OutputField';
-            name: 'deletedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'OutputField';
-            name: 'deletedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface shoppingCartId {
-            kind: 'OutputField';
-            name: 'shoppingCartId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface productId {
-            kind: 'OutputField';
-            name: 'productId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface quantity {
-            kind: 'OutputField';
-            name: 'quantity';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface price {
-            kind: 'OutputField';
-            name: 'price';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface totalPrice {
-            kind: 'OutputField';
-            name: 'totalPrice';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-    }
-    export interface ShoppingCart {
-        kind: 'Object';
-        name: 'ShoppingCart';
-        fields: {
-            __typename: ShoppingCart.__typename;
-            id: ShoppingCart.id;
-            adminNotes: ShoppingCart.adminNotes;
-            events: ShoppingCart.events;
-            metadata: ShoppingCart.metadata;
-            createdAt: ShoppingCart.createdAt;
-            createdBy: ShoppingCart.createdBy;
-            updatedAt: ShoppingCart.updatedAt;
-            updatedBy: ShoppingCart.updatedBy;
-            deletedAt: ShoppingCart.deletedAt;
-            deletedBy: ShoppingCart.deletedBy;
-            sumItemPrice: ShoppingCart.sumItemPrice;
-            totalPrice: ShoppingCart.totalPrice;
-            vat: ShoppingCart.vat;
-            items: ShoppingCart.items;
-        };
-    }
-    export namespace ShoppingCart {
-        interface __typename {
-            kind: 'OutputField';
-            name: '__typename';
-            arguments: {};
-            inlineType: [1];
-            namedType: {
-                kind: '__typename';
-                value: 'ShoppingCart';
-            };
-        }
-        interface id {
-            kind: 'OutputField';
-            name: 'id';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'OutputField';
-            name: 'adminNotes';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'OutputField';
-            name: 'events';
-            arguments: {};
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEvent;
-        }
-        interface metadata {
-            kind: 'OutputField';
-            name: 'metadata';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadata;
-        }
-        interface createdAt {
-            kind: 'OutputField';
-            name: 'createdAt';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'OutputField';
-            name: 'createdBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'OutputField';
-            name: 'updatedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'OutputField';
-            name: 'updatedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'OutputField';
-            name: 'deletedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'OutputField';
-            name: 'deletedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface sumItemPrice {
-            kind: 'OutputField';
-            name: 'sumItemPrice';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface totalPrice {
-            kind: 'OutputField';
-            name: 'totalPrice';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface vat {
-            kind: 'OutputField';
-            name: 'vat';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface items {
-            kind: 'OutputField';
-            name: 'items';
-            arguments: {};
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$ShoppingCartItem;
-        }
-    }
-    export interface WalletItem {
-        kind: 'Object';
-        name: 'WalletItem';
-        fields: {
-            __typename: WalletItem.__typename;
-            id: WalletItem.id;
-            adminNotes: WalletItem.adminNotes;
-            events: WalletItem.events;
-            metadata: WalletItem.metadata;
-            createdAt: WalletItem.createdAt;
-            createdBy: WalletItem.createdBy;
-            updatedAt: WalletItem.updatedAt;
-            updatedBy: WalletItem.updatedBy;
-            deletedAt: WalletItem.deletedAt;
-            deletedBy: WalletItem.deletedBy;
-            walletId: WalletItem.walletId;
-            productId: WalletItem.productId;
-            purchaseOrderItemId: WalletItem.purchaseOrderItemId;
-            brandId: WalletItem.brandId;
-            name: WalletItem.name;
-            price: WalletItem.price;
-            initialBalance: WalletItem.initialBalance;
-            balance: WalletItem.balance;
-            code: WalletItem.code;
-            hasBarcode: WalletItem.hasBarcode;
-            barcodeFormat: WalletItem.barcodeFormat;
-            pin: WalletItem.pin;
-            source: WalletItem.source;
-            imageSourceFront: WalletItem.imageSourceFront;
-            imageSourceBack: WalletItem.imageSourceBack;
-            referenceUrl: WalletItem.referenceUrl;
-            termsEn: WalletItem.termsEn;
-            termsUrl: WalletItem.termsUrl;
-            instructionsEn: WalletItem.instructionsEn;
-            instructionsUrl: WalletItem.instructionsUrl;
-            sortIndex: WalletItem.sortIndex;
-            issuedAt: WalletItem.issuedAt;
-            expiresAt: WalletItem.expiresAt;
-            balanceUpdatedAt: WalletItem.balanceUpdatedAt;
-            archivedAt: WalletItem.archivedAt;
-        };
-    }
-    export namespace WalletItem {
-        interface __typename {
-            kind: 'OutputField';
-            name: '__typename';
-            arguments: {};
-            inlineType: [1];
-            namedType: {
-                kind: '__typename';
-                value: 'WalletItem';
-            };
-        }
-        interface id {
-            kind: 'OutputField';
-            name: 'id';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'OutputField';
-            name: 'adminNotes';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'OutputField';
-            name: 'events';
-            arguments: {};
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEvent;
-        }
-        interface metadata {
-            kind: 'OutputField';
-            name: 'metadata';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadata;
-        }
-        interface createdAt {
-            kind: 'OutputField';
-            name: 'createdAt';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'OutputField';
-            name: 'createdBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'OutputField';
-            name: 'updatedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'OutputField';
-            name: 'updatedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'OutputField';
-            name: 'deletedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'OutputField';
-            name: 'deletedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface walletId {
-            kind: 'OutputField';
-            name: 'walletId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface productId {
-            kind: 'OutputField';
-            name: 'productId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface purchaseOrderItemId {
-            kind: 'OutputField';
-            name: 'purchaseOrderItemId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface brandId {
-            kind: 'OutputField';
-            name: 'brandId';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface name {
-            kind: 'OutputField';
-            name: 'name';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface price {
-            kind: 'OutputField';
-            name: 'price';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface initialBalance {
-            kind: 'OutputField';
-            name: 'initialBalance';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface balance {
-            kind: 'OutputField';
-            name: 'balance';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface code {
-            kind: 'OutputField';
-            name: 'code';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface hasBarcode {
-            kind: 'OutputField';
-            name: 'hasBarcode';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface barcodeFormat {
-            kind: 'OutputField';
-            name: 'barcodeFormat';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BarcodeType;
-        }
-        interface pin {
-            kind: 'OutputField';
-            name: 'pin';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface source {
-            kind: 'OutputField';
-            name: 'source';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$WalletItemSource;
-        }
-        interface imageSourceFront {
-            kind: 'OutputField';
-            name: 'imageSourceFront';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface imageSourceBack {
-            kind: 'OutputField';
-            name: 'imageSourceBack';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface referenceUrl {
-            kind: 'OutputField';
-            name: 'referenceUrl';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface termsEn {
-            kind: 'OutputField';
-            name: 'termsEn';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface termsUrl {
-            kind: 'OutputField';
-            name: 'termsUrl';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface instructionsEn {
-            kind: 'OutputField';
-            name: 'instructionsEn';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface instructionsUrl {
-            kind: 'OutputField';
-            name: 'instructionsUrl';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface sortIndex {
-            kind: 'OutputField';
-            name: 'sortIndex';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface issuedAt {
-            kind: 'OutputField';
-            name: 'issuedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface expiresAt {
-            kind: 'OutputField';
-            name: 'expiresAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface balanceUpdatedAt {
-            kind: 'OutputField';
-            name: 'balanceUpdatedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface archivedAt {
-            kind: 'OutputField';
-            name: 'archivedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-    }
-    export interface Wallet {
-        kind: 'Object';
-        name: 'Wallet';
-        fields: {
-            __typename: Wallet.__typename;
-            id: Wallet.id;
-            adminNotes: Wallet.adminNotes;
-            events: Wallet.events;
-            metadata: Wallet.metadata;
-            createdAt: Wallet.createdAt;
-            createdBy: Wallet.createdBy;
-            updatedAt: Wallet.updatedAt;
-            updatedBy: Wallet.updatedBy;
-            deletedAt: Wallet.deletedAt;
-            deletedBy: Wallet.deletedBy;
-            items: Wallet.items;
-        };
-    }
-    export namespace Wallet {
-        interface __typename {
-            kind: 'OutputField';
-            name: '__typename';
-            arguments: {};
-            inlineType: [1];
-            namedType: {
-                kind: '__typename';
-                value: 'Wallet';
-            };
-        }
-        interface id {
-            kind: 'OutputField';
-            name: 'id';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'OutputField';
-            name: 'adminNotes';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'OutputField';
-            name: 'events';
-            arguments: {};
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEvent;
-        }
-        interface metadata {
-            kind: 'OutputField';
-            name: 'metadata';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadata;
-        }
-        interface createdAt {
-            kind: 'OutputField';
-            name: 'createdAt';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'OutputField';
-            name: 'createdBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'OutputField';
-            name: 'updatedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'OutputField';
-            name: 'updatedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'OutputField';
-            name: 'deletedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'OutputField';
-            name: 'deletedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface items {
-            kind: 'OutputField';
-            name: 'items';
-            arguments: {};
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$WalletItem;
-        }
-    }
-    export interface WalletServiceRecord {
-        kind: 'Object';
-        name: 'WalletServiceRecord';
-        fields: {
-            __typename: WalletServiceRecord.__typename;
-            id: WalletServiceRecord.id;
-            adminNotes: WalletServiceRecord.adminNotes;
-            events: WalletServiceRecord.events;
-            metadata: WalletServiceRecord.metadata;
-            createdAt: WalletServiceRecord.createdAt;
-            createdBy: WalletServiceRecord.createdBy;
-            updatedAt: WalletServiceRecord.updatedAt;
-            updatedBy: WalletServiceRecord.updatedBy;
-            deletedAt: WalletServiceRecord.deletedAt;
-            deletedBy: WalletServiceRecord.deletedBy;
-            serviceName: WalletServiceRecord.serviceName;
-        };
-    }
-    export namespace WalletServiceRecord {
-        interface __typename {
-            kind: 'OutputField';
-            name: '__typename';
-            arguments: {};
-            inlineType: [1];
-            namedType: {
-                kind: '__typename';
-                value: 'WalletServiceRecord';
-            };
-        }
-        interface id {
-            kind: 'OutputField';
-            name: 'id';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'OutputField';
-            name: 'adminNotes';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'OutputField';
-            name: 'events';
-            arguments: {};
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEvent;
-        }
-        interface metadata {
-            kind: 'OutputField';
-            name: 'metadata';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadata;
-        }
-        interface createdAt {
-            kind: 'OutputField';
-            name: 'createdAt';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'OutputField';
-            name: 'createdBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'OutputField';
-            name: 'updatedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'OutputField';
-            name: 'updatedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'OutputField';
-            name: 'deletedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'OutputField';
-            name: 'deletedBy';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface serviceName {
-            kind: 'OutputField';
-            name: 'serviceName';
-            arguments: {};
-            inlineType: [1];
-            namedType: $$NamedTypes.$$ServiceName;
         }
     }
     /**
@@ -29690,1005 +29682,6 @@ export declare namespace Schema {
             namedType: $$NamedTypes.$$DateTimeISO;
         }
     }
-    export interface GiftCardProductInput {
-        kind: 'InputObject';
-        name: 'GiftCardProductInput';
-        isAllFieldsNullable: true;
-        fields: {
-            id: GiftCardProductInput.id;
-            adminNotes: GiftCardProductInput.adminNotes;
-            events: GiftCardProductInput.events;
-            metadata: GiftCardProductInput.metadata;
-            createdAt: GiftCardProductInput.createdAt;
-            createdBy: GiftCardProductInput.createdBy;
-            updatedAt: GiftCardProductInput.updatedAt;
-            updatedBy: GiftCardProductInput.updatedBy;
-            deletedAt: GiftCardProductInput.deletedAt;
-            deletedBy: GiftCardProductInput.deletedBy;
-            importId: GiftCardProductInput.importId;
-            brandId: GiftCardProductInput.brandId;
-            brandImportId: GiftCardProductInput.brandImportId;
-            name: GiftCardProductInput.name;
-            description: GiftCardProductInput.description;
-            categories: GiftCardProductInput.categories;
-            slug: GiftCardProductInput.slug;
-            url: GiftCardProductInput.url;
-            imageSourceFront: GiftCardProductInput.imageSourceFront;
-            imageSourceBack: GiftCardProductInput.imageSourceBack;
-            hasBarcode: GiftCardProductInput.hasBarcode;
-            barcodeFormat: GiftCardProductInput.barcodeFormat;
-            genericGiftCardId: GiftCardProductInput.genericGiftCardId;
-            isGeneric: GiftCardProductInput.isGeneric;
-            hasPin: GiftCardProductInput.hasPin;
-            termsEn: GiftCardProductInput.termsEn;
-            termsUrl: GiftCardProductInput.termsUrl;
-            instructionsEn: GiftCardProductInput.instructionsEn;
-            instructionsUrl: GiftCardProductInput.instructionsUrl;
-            denominations: GiftCardProductInput.denominations;
-        };
-    }
-    export namespace GiftCardProductInput {
-        interface id {
-            kind: 'InputField';
-            name: 'id';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'InputField';
-            name: 'adminNotes';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'InputField';
-            name: 'events';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEventInput;
-        }
-        interface metadata {
-            kind: 'InputField';
-            name: 'metadata';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadataInput;
-        }
-        interface createdAt {
-            kind: 'InputField';
-            name: 'createdAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'InputField';
-            name: 'createdBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'InputField';
-            name: 'updatedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'InputField';
-            name: 'updatedBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'InputField';
-            name: 'deletedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'InputField';
-            name: 'deletedBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface importId {
-            kind: 'InputField';
-            name: 'importId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface brandId {
-            kind: 'InputField';
-            name: 'brandId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface brandImportId {
-            kind: 'InputField';
-            name: 'brandImportId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface name {
-            kind: 'InputField';
-            name: 'name';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface description {
-            kind: 'InputField';
-            name: 'description';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface categories {
-            kind: 'InputField';
-            name: 'categories';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface slug {
-            kind: 'InputField';
-            name: 'slug';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface url {
-            kind: 'InputField';
-            name: 'url';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface imageSourceFront {
-            kind: 'InputField';
-            name: 'imageSourceFront';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface imageSourceBack {
-            kind: 'InputField';
-            name: 'imageSourceBack';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface hasBarcode {
-            kind: 'InputField';
-            name: 'hasBarcode';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface barcodeFormat {
-            kind: 'InputField';
-            name: 'barcodeFormat';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface genericGiftCardId {
-            kind: 'InputField';
-            name: 'genericGiftCardId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface isGeneric {
-            kind: 'InputField';
-            name: 'isGeneric';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface hasPin {
-            kind: 'InputField';
-            name: 'hasPin';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface termsEn {
-            kind: 'InputField';
-            name: 'termsEn';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface termsUrl {
-            kind: 'InputField';
-            name: 'termsUrl';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface instructionsEn {
-            kind: 'InputField';
-            name: 'instructionsEn';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface instructionsUrl {
-            kind: 'InputField';
-            name: 'instructionsUrl';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface denominations {
-            kind: 'InputField';
-            name: 'denominations';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$GiftCardDenominationInput;
-        }
-    }
-    export interface GiftCardDenominationInput {
-        kind: 'InputObject';
-        name: 'GiftCardDenominationInput';
-        isAllFieldsNullable: false;
-        fields: {
-            amount: GiftCardDenominationInput.amount;
-            enabled: GiftCardDenominationInput.enabled;
-        };
-    }
-    export namespace GiftCardDenominationInput {
-        interface amount {
-            kind: 'InputField';
-            name: 'amount';
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface enabled {
-            kind: 'InputField';
-            name: 'enabled';
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-    }
-    export interface GiftCardProductListFilter {
-        kind: 'InputObject';
-        name: 'GiftCardProductListFilter';
-        isAllFieldsNullable: true;
-        fields: {
-            ids: GiftCardProductListFilter.ids;
-            excludeIds: GiftCardProductListFilter.excludeIds;
-            searchText: GiftCardProductListFilter.searchText;
-            caseSensitive: GiftCardProductListFilter.caseSensitive;
-            textSearchFields: GiftCardProductListFilter.textSearchFields;
-            createdAtFrom: GiftCardProductListFilter.createdAtFrom;
-            createdAtUntil: GiftCardProductListFilter.createdAtUntil;
-            updatedAtFrom: GiftCardProductListFilter.updatedAtFrom;
-            updatedAtUntil: GiftCardProductListFilter.updatedAtUntil;
-        };
-    }
-    export namespace GiftCardProductListFilter {
-        interface ids {
-            kind: 'InputField';
-            name: 'ids';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface excludeIds {
-            kind: 'InputField';
-            name: 'excludeIds';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface searchText {
-            kind: 'InputField';
-            name: 'searchText';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface caseSensitive {
-            kind: 'InputField';
-            name: 'caseSensitive';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface textSearchFields {
-            kind: 'InputField';
-            name: 'textSearchFields';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface createdAtFrom {
-            kind: 'InputField';
-            name: 'createdAtFrom';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdAtUntil {
-            kind: 'InputField';
-            name: 'createdAtUntil';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedAtFrom {
-            kind: 'InputField';
-            name: 'updatedAtFrom';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedAtUntil {
-            kind: 'InputField';
-            name: 'updatedAtUntil';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-    }
-    export interface ProductCategoryInput {
-        kind: 'InputObject';
-        name: 'ProductCategoryInput';
-        isAllFieldsNullable: true;
-        fields: {
-            id: ProductCategoryInput.id;
-            adminNotes: ProductCategoryInput.adminNotes;
-            events: ProductCategoryInput.events;
-            metadata: ProductCategoryInput.metadata;
-            createdAt: ProductCategoryInput.createdAt;
-            createdBy: ProductCategoryInput.createdBy;
-            updatedAt: ProductCategoryInput.updatedAt;
-            updatedBy: ProductCategoryInput.updatedBy;
-            deletedAt: ProductCategoryInput.deletedAt;
-            deletedBy: ProductCategoryInput.deletedBy;
-            name: ProductCategoryInput.name;
-            labelEn: ProductCategoryInput.labelEn;
-            sortIndex: ProductCategoryInput.sortIndex;
-        };
-    }
-    export namespace ProductCategoryInput {
-        interface id {
-            kind: 'InputField';
-            name: 'id';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'InputField';
-            name: 'adminNotes';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'InputField';
-            name: 'events';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEventInput;
-        }
-        interface metadata {
-            kind: 'InputField';
-            name: 'metadata';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadataInput;
-        }
-        interface createdAt {
-            kind: 'InputField';
-            name: 'createdAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'InputField';
-            name: 'createdBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'InputField';
-            name: 'updatedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'InputField';
-            name: 'updatedBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'InputField';
-            name: 'deletedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'InputField';
-            name: 'deletedBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface name {
-            kind: 'InputField';
-            name: 'name';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface labelEn {
-            kind: 'InputField';
-            name: 'labelEn';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface sortIndex {
-            kind: 'InputField';
-            name: 'sortIndex';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Int;
-        }
-    }
-    export interface ProductCategoryListFilter {
-        kind: 'InputObject';
-        name: 'ProductCategoryListFilter';
-        isAllFieldsNullable: true;
-        fields: {
-            ids: ProductCategoryListFilter.ids;
-            excludeIds: ProductCategoryListFilter.excludeIds;
-            searchText: ProductCategoryListFilter.searchText;
-            caseSensitive: ProductCategoryListFilter.caseSensitive;
-            textSearchFields: ProductCategoryListFilter.textSearchFields;
-            createdAtFrom: ProductCategoryListFilter.createdAtFrom;
-            createdAtUntil: ProductCategoryListFilter.createdAtUntil;
-            updatedAtFrom: ProductCategoryListFilter.updatedAtFrom;
-            updatedAtUntil: ProductCategoryListFilter.updatedAtUntil;
-        };
-    }
-    export namespace ProductCategoryListFilter {
-        interface ids {
-            kind: 'InputField';
-            name: 'ids';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface excludeIds {
-            kind: 'InputField';
-            name: 'excludeIds';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface searchText {
-            kind: 'InputField';
-            name: 'searchText';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface caseSensitive {
-            kind: 'InputField';
-            name: 'caseSensitive';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface textSearchFields {
-            kind: 'InputField';
-            name: 'textSearchFields';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface createdAtFrom {
-            kind: 'InputField';
-            name: 'createdAtFrom';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdAtUntil {
-            kind: 'InputField';
-            name: 'createdAtUntil';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedAtFrom {
-            kind: 'InputField';
-            name: 'updatedAtFrom';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedAtUntil {
-            kind: 'InputField';
-            name: 'updatedAtUntil';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-    }
-    export interface UserSearchInput {
-        kind: 'InputObject';
-        name: 'UserSearchInput';
-        isAllFieldsNullable: true;
-        fields: {
-            id: UserSearchInput.id;
-            adminNotes: UserSearchInput.adminNotes;
-            events: UserSearchInput.events;
-            metadata: UserSearchInput.metadata;
-            createdAt: UserSearchInput.createdAt;
-            createdBy: UserSearchInput.createdBy;
-            updatedAt: UserSearchInput.updatedAt;
-            updatedBy: UserSearchInput.updatedBy;
-            deletedAt: UserSearchInput.deletedAt;
-            deletedBy: UserSearchInput.deletedBy;
-            userId: UserSearchInput.userId;
-            matchingEngineId: UserSearchInput.matchingEngineId;
-            userSearchType: UserSearchInput.userSearchType;
-            name: UserSearchInput.name;
-            filter: UserSearchInput.filter;
-            excludeUserIds: UserSearchInput.excludeUserIds;
-            maxResultCount: UserSearchInput.maxResultCount;
-            subscription: UserSearchInput.subscription;
-            expiresAt: UserSearchInput.expiresAt;
-            resultExpiresAt: UserSearchInput.resultExpiresAt;
-            startSearch: UserSearchInput.startSearch;
-        };
-    }
-    export namespace UserSearchInput {
-        interface id {
-            kind: 'InputField';
-            name: 'id';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'InputField';
-            name: 'adminNotes';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'InputField';
-            name: 'events';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEventInput;
-        }
-        interface metadata {
-            kind: 'InputField';
-            name: 'metadata';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadataInput;
-        }
-        interface createdAt {
-            kind: 'InputField';
-            name: 'createdAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'InputField';
-            name: 'createdBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'InputField';
-            name: 'updatedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'InputField';
-            name: 'updatedBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'InputField';
-            name: 'deletedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'InputField';
-            name: 'deletedBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        /**
-         * The ID of the user that is searching and owns this object
-         */
-        interface userId {
-            kind: 'InputField';
-            name: 'userId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface matchingEngineId {
-            kind: 'InputField';
-            name: 'matchingEngineId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface userSearchType {
-            kind: 'InputField';
-            name: 'userSearchType';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$UserSearchType;
-        }
-        interface name {
-            kind: 'InputField';
-            name: 'name';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface filter {
-            kind: 'InputField';
-            name: 'filter';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$UserSearchFilterInput;
-        }
-        /**
-         * A list of user IDs of users that should not be included into the search results, i.e. blocked users.
-         */
-        interface excludeUserIds {
-            kind: 'InputField';
-            name: 'excludeUserIds';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface maxResultCount {
-            kind: 'InputField';
-            name: 'maxResultCount';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Int;
-        }
-        interface subscription {
-            kind: 'InputField';
-            name: 'subscription';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$UserSearchSubscriptionType;
-        }
-        interface expiresAt {
-            kind: 'InputField';
-            name: 'expiresAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface resultExpiresAt {
-            kind: 'InputField';
-            name: 'resultExpiresAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface startSearch {
-            kind: 'InputField';
-            name: 'startSearch';
-            inlineType: [1];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-    }
-    export interface UserSearchFilterInput {
-        kind: 'InputObject';
-        name: 'UserSearchFilterInput';
-        isAllFieldsNullable: true;
-        fields: {
-            searchText: UserSearchFilterInput.searchText;
-            seeksHelp: UserSearchFilterInput.seeksHelp;
-            offersHelp: UserSearchFilterInput.offersHelp;
-            languagesTextIds: UserSearchFilterInput.languagesTextIds;
-            expertisesTextIds: UserSearchFilterInput.expertisesTextIds;
-            industriesTextIds: UserSearchFilterInput.industriesTextIds;
-            countryTextIds: UserSearchFilterInput.countryTextIds;
-            companyStagesTextIds: UserSearchFilterInput.companyStagesTextIds;
-            latestActivityAfter: UserSearchFilterInput.latestActivityAfter;
-        };
-    }
-    export namespace UserSearchFilterInput {
-        interface searchText {
-            kind: 'InputField';
-            name: 'searchText';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface seeksHelp {
-            kind: 'InputField';
-            name: 'seeksHelp';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$UserSearchFieldOption;
-        }
-        interface offersHelp {
-            kind: 'InputField';
-            name: 'offersHelp';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$UserSearchFieldOption;
-        }
-        interface languagesTextIds {
-            kind: 'InputField';
-            name: 'languagesTextIds';
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface expertisesTextIds {
-            kind: 'InputField';
-            name: 'expertisesTextIds';
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface industriesTextIds {
-            kind: 'InputField';
-            name: 'industriesTextIds';
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface countryTextIds {
-            kind: 'InputField';
-            name: 'countryTextIds';
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface companyStagesTextIds {
-            kind: 'InputField';
-            name: 'companyStagesTextIds';
-            inlineType: [1, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface latestActivityAfter {
-            kind: 'InputField';
-            name: 'latestActivityAfter';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-    }
-    export interface UserSearchListFilter {
-        kind: 'InputObject';
-        name: 'UserSearchListFilter';
-        isAllFieldsNullable: true;
-        fields: {
-            ids: UserSearchListFilter.ids;
-            excludeIds: UserSearchListFilter.excludeIds;
-            searchText: UserSearchListFilter.searchText;
-            caseSensitive: UserSearchListFilter.caseSensitive;
-            textSearchFields: UserSearchListFilter.textSearchFields;
-            createdAtFrom: UserSearchListFilter.createdAtFrom;
-            createdAtUntil: UserSearchListFilter.createdAtUntil;
-            updatedAtFrom: UserSearchListFilter.updatedAtFrom;
-            updatedAtUntil: UserSearchListFilter.updatedAtUntil;
-        };
-    }
-    export namespace UserSearchListFilter {
-        interface ids {
-            kind: 'InputField';
-            name: 'ids';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface excludeIds {
-            kind: 'InputField';
-            name: 'excludeIds';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface searchText {
-            kind: 'InputField';
-            name: 'searchText';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface caseSensitive {
-            kind: 'InputField';
-            name: 'caseSensitive';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface textSearchFields {
-            kind: 'InputField';
-            name: 'textSearchFields';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface createdAtFrom {
-            kind: 'InputField';
-            name: 'createdAtFrom';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdAtUntil {
-            kind: 'InputField';
-            name: 'createdAtUntil';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedAtFrom {
-            kind: 'InputField';
-            name: 'updatedAtFrom';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedAtUntil {
-            kind: 'InputField';
-            name: 'updatedAtUntil';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-    }
-    export interface ContactInput {
-        kind: 'InputObject';
-        name: 'ContactInput';
-        isAllFieldsNullable: true;
-        fields: {
-            id: ContactInput.id;
-            adminNotes: ContactInput.adminNotes;
-            events: ContactInput.events;
-            metadata: ContactInput.metadata;
-            createdAt: ContactInput.createdAt;
-            createdBy: ContactInput.createdBy;
-            updatedAt: ContactInput.updatedAt;
-            updatedBy: ContactInput.updatedBy;
-            deletedAt: ContactInput.deletedAt;
-            deletedBy: ContactInput.deletedBy;
-            userId: ContactInput.userId;
-            channelId: ContactInput.channelId;
-            nickname: ContactInput.nickname;
-            typeTextIds: ContactInput.typeTextIds;
-            favorite: ContactInput.favorite;
-            notes: ContactInput.notes;
-            archivedAt: ContactInput.archivedAt;
-        };
-    }
-    export namespace ContactInput {
-        interface id {
-            kind: 'InputField';
-            name: 'id';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface adminNotes {
-            kind: 'InputField';
-            name: 'adminNotes';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface events {
-            kind: 'InputField';
-            name: 'events';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ModelEventInput;
-        }
-        interface metadata {
-            kind: 'InputField';
-            name: 'metadata';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$BaseModelMetadataInput;
-        }
-        interface createdAt {
-            kind: 'InputField';
-            name: 'createdAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdBy {
-            kind: 'InputField';
-            name: 'createdBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface updatedAt {
-            kind: 'InputField';
-            name: 'updatedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedBy {
-            kind: 'InputField';
-            name: 'updatedBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface deletedAt {
-            kind: 'InputField';
-            name: 'deletedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface deletedBy {
-            kind: 'InputField';
-            name: 'deletedBy';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface userId {
-            kind: 'InputField';
-            name: 'userId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface channelId {
-            kind: 'InputField';
-            name: 'channelId';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface nickname {
-            kind: 'InputField';
-            name: 'nickname';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface typeTextIds {
-            kind: 'InputField';
-            name: 'typeTextIds';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface favorite {
-            kind: 'InputField';
-            name: 'favorite';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface notes {
-            kind: 'InputField';
-            name: 'notes';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface archivedAt {
-            kind: 'InputField';
-            name: 'archivedAt';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-    }
-    export interface SidContactListFilter {
-        kind: 'InputObject';
-        name: 'SidContactListFilter';
-        isAllFieldsNullable: true;
-        fields: {
-            ids: SidContactListFilter.ids;
-            excludeIds: SidContactListFilter.excludeIds;
-            searchText: SidContactListFilter.searchText;
-            caseSensitive: SidContactListFilter.caseSensitive;
-            textSearchFields: SidContactListFilter.textSearchFields;
-            createdAtFrom: SidContactListFilter.createdAtFrom;
-            createdAtUntil: SidContactListFilter.createdAtUntil;
-            updatedAtFrom: SidContactListFilter.updatedAtFrom;
-            updatedAtUntil: SidContactListFilter.updatedAtUntil;
-            userIdIn: SidContactListFilter.userIdIn;
-        };
-    }
-    export namespace SidContactListFilter {
-        interface ids {
-            kind: 'InputField';
-            name: 'ids';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface excludeIds {
-            kind: 'InputField';
-            name: 'excludeIds';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ID;
-        }
-        interface searchText {
-            kind: 'InputField';
-            name: 'searchText';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface caseSensitive {
-            kind: 'InputField';
-            name: 'caseSensitive';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface textSearchFields {
-            kind: 'InputField';
-            name: 'textSearchFields';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface createdAtFrom {
-            kind: 'InputField';
-            name: 'createdAtFrom';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface createdAtUntil {
-            kind: 'InputField';
-            name: 'createdAtUntil';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedAtFrom {
-            kind: 'InputField';
-            name: 'updatedAtFrom';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface updatedAtUntil {
-            kind: 'InputField';
-            name: 'updatedAtUntil';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface userIdIn {
-            kind: 'InputField';
-            name: 'userIdIn';
-            inlineType: [0, [1]];
-            namedType: $$NamedTypes.$$ID;
-        }
-    }
     export interface PurchaseOrderItemInput {
         kind: 'InputObject';
         name: 'PurchaseOrderItemInput';
@@ -31929,6 +30922,1005 @@ export declare namespace Schema {
             name: 'updatedAtUntil';
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface GiftCardProductInput {
+        kind: 'InputObject';
+        name: 'GiftCardProductInput';
+        isAllFieldsNullable: true;
+        fields: {
+            id: GiftCardProductInput.id;
+            adminNotes: GiftCardProductInput.adminNotes;
+            events: GiftCardProductInput.events;
+            metadata: GiftCardProductInput.metadata;
+            createdAt: GiftCardProductInput.createdAt;
+            createdBy: GiftCardProductInput.createdBy;
+            updatedAt: GiftCardProductInput.updatedAt;
+            updatedBy: GiftCardProductInput.updatedBy;
+            deletedAt: GiftCardProductInput.deletedAt;
+            deletedBy: GiftCardProductInput.deletedBy;
+            importId: GiftCardProductInput.importId;
+            brandId: GiftCardProductInput.brandId;
+            brandImportId: GiftCardProductInput.brandImportId;
+            name: GiftCardProductInput.name;
+            description: GiftCardProductInput.description;
+            categories: GiftCardProductInput.categories;
+            slug: GiftCardProductInput.slug;
+            url: GiftCardProductInput.url;
+            imageSourceFront: GiftCardProductInput.imageSourceFront;
+            imageSourceBack: GiftCardProductInput.imageSourceBack;
+            hasBarcode: GiftCardProductInput.hasBarcode;
+            barcodeFormat: GiftCardProductInput.barcodeFormat;
+            genericGiftCardId: GiftCardProductInput.genericGiftCardId;
+            isGeneric: GiftCardProductInput.isGeneric;
+            hasPin: GiftCardProductInput.hasPin;
+            termsEn: GiftCardProductInput.termsEn;
+            termsUrl: GiftCardProductInput.termsUrl;
+            instructionsEn: GiftCardProductInput.instructionsEn;
+            instructionsUrl: GiftCardProductInput.instructionsUrl;
+            denominations: GiftCardProductInput.denominations;
+        };
+    }
+    export namespace GiftCardProductInput {
+        interface id {
+            kind: 'InputField';
+            name: 'id';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'InputField';
+            name: 'adminNotes';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'InputField';
+            name: 'events';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEventInput;
+        }
+        interface metadata {
+            kind: 'InputField';
+            name: 'metadata';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadataInput;
+        }
+        interface createdAt {
+            kind: 'InputField';
+            name: 'createdAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'InputField';
+            name: 'createdBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'InputField';
+            name: 'updatedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'InputField';
+            name: 'updatedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'InputField';
+            name: 'deletedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'InputField';
+            name: 'deletedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface importId {
+            kind: 'InputField';
+            name: 'importId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface brandId {
+            kind: 'InputField';
+            name: 'brandId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface brandImportId {
+            kind: 'InputField';
+            name: 'brandImportId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface name {
+            kind: 'InputField';
+            name: 'name';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface description {
+            kind: 'InputField';
+            name: 'description';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface categories {
+            kind: 'InputField';
+            name: 'categories';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface slug {
+            kind: 'InputField';
+            name: 'slug';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface url {
+            kind: 'InputField';
+            name: 'url';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface imageSourceFront {
+            kind: 'InputField';
+            name: 'imageSourceFront';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface imageSourceBack {
+            kind: 'InputField';
+            name: 'imageSourceBack';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface hasBarcode {
+            kind: 'InputField';
+            name: 'hasBarcode';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface barcodeFormat {
+            kind: 'InputField';
+            name: 'barcodeFormat';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BarcodeType;
+        }
+        interface genericGiftCardId {
+            kind: 'InputField';
+            name: 'genericGiftCardId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface isGeneric {
+            kind: 'InputField';
+            name: 'isGeneric';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface hasPin {
+            kind: 'InputField';
+            name: 'hasPin';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface termsEn {
+            kind: 'InputField';
+            name: 'termsEn';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface termsUrl {
+            kind: 'InputField';
+            name: 'termsUrl';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface instructionsEn {
+            kind: 'InputField';
+            name: 'instructionsEn';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface instructionsUrl {
+            kind: 'InputField';
+            name: 'instructionsUrl';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface denominations {
+            kind: 'InputField';
+            name: 'denominations';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$GiftCardDenominationInput;
+        }
+    }
+    export interface GiftCardDenominationInput {
+        kind: 'InputObject';
+        name: 'GiftCardDenominationInput';
+        isAllFieldsNullable: false;
+        fields: {
+            amount: GiftCardDenominationInput.amount;
+            enabled: GiftCardDenominationInput.enabled;
+        };
+    }
+    export namespace GiftCardDenominationInput {
+        interface amount {
+            kind: 'InputField';
+            name: 'amount';
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface enabled {
+            kind: 'InputField';
+            name: 'enabled';
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+    }
+    export interface GiftCardProductListFilter {
+        kind: 'InputObject';
+        name: 'GiftCardProductListFilter';
+        isAllFieldsNullable: true;
+        fields: {
+            ids: GiftCardProductListFilter.ids;
+            excludeIds: GiftCardProductListFilter.excludeIds;
+            searchText: GiftCardProductListFilter.searchText;
+            caseSensitive: GiftCardProductListFilter.caseSensitive;
+            textSearchFields: GiftCardProductListFilter.textSearchFields;
+            createdAtFrom: GiftCardProductListFilter.createdAtFrom;
+            createdAtUntil: GiftCardProductListFilter.createdAtUntil;
+            updatedAtFrom: GiftCardProductListFilter.updatedAtFrom;
+            updatedAtUntil: GiftCardProductListFilter.updatedAtUntil;
+        };
+    }
+    export namespace GiftCardProductListFilter {
+        interface ids {
+            kind: 'InputField';
+            name: 'ids';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface excludeIds {
+            kind: 'InputField';
+            name: 'excludeIds';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface searchText {
+            kind: 'InputField';
+            name: 'searchText';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface caseSensitive {
+            kind: 'InputField';
+            name: 'caseSensitive';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface textSearchFields {
+            kind: 'InputField';
+            name: 'textSearchFields';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface createdAtFrom {
+            kind: 'InputField';
+            name: 'createdAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdAtUntil {
+            kind: 'InputField';
+            name: 'createdAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtFrom {
+            kind: 'InputField';
+            name: 'updatedAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtUntil {
+            kind: 'InputField';
+            name: 'updatedAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface ProductCategoryInput {
+        kind: 'InputObject';
+        name: 'ProductCategoryInput';
+        isAllFieldsNullable: true;
+        fields: {
+            id: ProductCategoryInput.id;
+            adminNotes: ProductCategoryInput.adminNotes;
+            events: ProductCategoryInput.events;
+            metadata: ProductCategoryInput.metadata;
+            createdAt: ProductCategoryInput.createdAt;
+            createdBy: ProductCategoryInput.createdBy;
+            updatedAt: ProductCategoryInput.updatedAt;
+            updatedBy: ProductCategoryInput.updatedBy;
+            deletedAt: ProductCategoryInput.deletedAt;
+            deletedBy: ProductCategoryInput.deletedBy;
+            name: ProductCategoryInput.name;
+            labelEn: ProductCategoryInput.labelEn;
+            sortIndex: ProductCategoryInput.sortIndex;
+        };
+    }
+    export namespace ProductCategoryInput {
+        interface id {
+            kind: 'InputField';
+            name: 'id';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'InputField';
+            name: 'adminNotes';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'InputField';
+            name: 'events';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEventInput;
+        }
+        interface metadata {
+            kind: 'InputField';
+            name: 'metadata';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadataInput;
+        }
+        interface createdAt {
+            kind: 'InputField';
+            name: 'createdAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'InputField';
+            name: 'createdBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'InputField';
+            name: 'updatedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'InputField';
+            name: 'updatedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'InputField';
+            name: 'deletedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'InputField';
+            name: 'deletedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface name {
+            kind: 'InputField';
+            name: 'name';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface labelEn {
+            kind: 'InputField';
+            name: 'labelEn';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface sortIndex {
+            kind: 'InputField';
+            name: 'sortIndex';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Int;
+        }
+    }
+    export interface ProductCategoryListFilter {
+        kind: 'InputObject';
+        name: 'ProductCategoryListFilter';
+        isAllFieldsNullable: true;
+        fields: {
+            ids: ProductCategoryListFilter.ids;
+            excludeIds: ProductCategoryListFilter.excludeIds;
+            searchText: ProductCategoryListFilter.searchText;
+            caseSensitive: ProductCategoryListFilter.caseSensitive;
+            textSearchFields: ProductCategoryListFilter.textSearchFields;
+            createdAtFrom: ProductCategoryListFilter.createdAtFrom;
+            createdAtUntil: ProductCategoryListFilter.createdAtUntil;
+            updatedAtFrom: ProductCategoryListFilter.updatedAtFrom;
+            updatedAtUntil: ProductCategoryListFilter.updatedAtUntil;
+        };
+    }
+    export namespace ProductCategoryListFilter {
+        interface ids {
+            kind: 'InputField';
+            name: 'ids';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface excludeIds {
+            kind: 'InputField';
+            name: 'excludeIds';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface searchText {
+            kind: 'InputField';
+            name: 'searchText';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface caseSensitive {
+            kind: 'InputField';
+            name: 'caseSensitive';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface textSearchFields {
+            kind: 'InputField';
+            name: 'textSearchFields';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface createdAtFrom {
+            kind: 'InputField';
+            name: 'createdAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdAtUntil {
+            kind: 'InputField';
+            name: 'createdAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtFrom {
+            kind: 'InputField';
+            name: 'updatedAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtUntil {
+            kind: 'InputField';
+            name: 'updatedAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface UserSearchInput {
+        kind: 'InputObject';
+        name: 'UserSearchInput';
+        isAllFieldsNullable: true;
+        fields: {
+            id: UserSearchInput.id;
+            adminNotes: UserSearchInput.adminNotes;
+            events: UserSearchInput.events;
+            metadata: UserSearchInput.metadata;
+            createdAt: UserSearchInput.createdAt;
+            createdBy: UserSearchInput.createdBy;
+            updatedAt: UserSearchInput.updatedAt;
+            updatedBy: UserSearchInput.updatedBy;
+            deletedAt: UserSearchInput.deletedAt;
+            deletedBy: UserSearchInput.deletedBy;
+            userId: UserSearchInput.userId;
+            matchingEngineId: UserSearchInput.matchingEngineId;
+            userSearchType: UserSearchInput.userSearchType;
+            name: UserSearchInput.name;
+            filter: UserSearchInput.filter;
+            excludeUserIds: UserSearchInput.excludeUserIds;
+            maxResultCount: UserSearchInput.maxResultCount;
+            subscription: UserSearchInput.subscription;
+            expiresAt: UserSearchInput.expiresAt;
+            resultExpiresAt: UserSearchInput.resultExpiresAt;
+            startSearch: UserSearchInput.startSearch;
+        };
+    }
+    export namespace UserSearchInput {
+        interface id {
+            kind: 'InputField';
+            name: 'id';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'InputField';
+            name: 'adminNotes';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'InputField';
+            name: 'events';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEventInput;
+        }
+        interface metadata {
+            kind: 'InputField';
+            name: 'metadata';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadataInput;
+        }
+        interface createdAt {
+            kind: 'InputField';
+            name: 'createdAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'InputField';
+            name: 'createdBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'InputField';
+            name: 'updatedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'InputField';
+            name: 'updatedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'InputField';
+            name: 'deletedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'InputField';
+            name: 'deletedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        /**
+         * The ID of the user that is searching and owns this object
+         */
+        interface userId {
+            kind: 'InputField';
+            name: 'userId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface matchingEngineId {
+            kind: 'InputField';
+            name: 'matchingEngineId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface userSearchType {
+            kind: 'InputField';
+            name: 'userSearchType';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$UserSearchType;
+        }
+        interface name {
+            kind: 'InputField';
+            name: 'name';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface filter {
+            kind: 'InputField';
+            name: 'filter';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$UserSearchFilterInput;
+        }
+        /**
+         * A list of user IDs of users that should not be included into the search results, i.e. blocked users.
+         */
+        interface excludeUserIds {
+            kind: 'InputField';
+            name: 'excludeUserIds';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface maxResultCount {
+            kind: 'InputField';
+            name: 'maxResultCount';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Int;
+        }
+        interface subscription {
+            kind: 'InputField';
+            name: 'subscription';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$UserSearchSubscriptionType;
+        }
+        interface expiresAt {
+            kind: 'InputField';
+            name: 'expiresAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface resultExpiresAt {
+            kind: 'InputField';
+            name: 'resultExpiresAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface startSearch {
+            kind: 'InputField';
+            name: 'startSearch';
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+    }
+    export interface UserSearchFilterInput {
+        kind: 'InputObject';
+        name: 'UserSearchFilterInput';
+        isAllFieldsNullable: true;
+        fields: {
+            searchText: UserSearchFilterInput.searchText;
+            seeksHelp: UserSearchFilterInput.seeksHelp;
+            offersHelp: UserSearchFilterInput.offersHelp;
+            languagesTextIds: UserSearchFilterInput.languagesTextIds;
+            expertisesTextIds: UserSearchFilterInput.expertisesTextIds;
+            industriesTextIds: UserSearchFilterInput.industriesTextIds;
+            countryTextIds: UserSearchFilterInput.countryTextIds;
+            companyStagesTextIds: UserSearchFilterInput.companyStagesTextIds;
+            latestActivityAfter: UserSearchFilterInput.latestActivityAfter;
+        };
+    }
+    export namespace UserSearchFilterInput {
+        interface searchText {
+            kind: 'InputField';
+            name: 'searchText';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface seeksHelp {
+            kind: 'InputField';
+            name: 'seeksHelp';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$UserSearchFieldOption;
+        }
+        interface offersHelp {
+            kind: 'InputField';
+            name: 'offersHelp';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$UserSearchFieldOption;
+        }
+        interface languagesTextIds {
+            kind: 'InputField';
+            name: 'languagesTextIds';
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface expertisesTextIds {
+            kind: 'InputField';
+            name: 'expertisesTextIds';
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface industriesTextIds {
+            kind: 'InputField';
+            name: 'industriesTextIds';
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface countryTextIds {
+            kind: 'InputField';
+            name: 'countryTextIds';
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface companyStagesTextIds {
+            kind: 'InputField';
+            name: 'companyStagesTextIds';
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface latestActivityAfter {
+            kind: 'InputField';
+            name: 'latestActivityAfter';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface UserSearchListFilter {
+        kind: 'InputObject';
+        name: 'UserSearchListFilter';
+        isAllFieldsNullable: true;
+        fields: {
+            ids: UserSearchListFilter.ids;
+            excludeIds: UserSearchListFilter.excludeIds;
+            searchText: UserSearchListFilter.searchText;
+            caseSensitive: UserSearchListFilter.caseSensitive;
+            textSearchFields: UserSearchListFilter.textSearchFields;
+            createdAtFrom: UserSearchListFilter.createdAtFrom;
+            createdAtUntil: UserSearchListFilter.createdAtUntil;
+            updatedAtFrom: UserSearchListFilter.updatedAtFrom;
+            updatedAtUntil: UserSearchListFilter.updatedAtUntil;
+        };
+    }
+    export namespace UserSearchListFilter {
+        interface ids {
+            kind: 'InputField';
+            name: 'ids';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface excludeIds {
+            kind: 'InputField';
+            name: 'excludeIds';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface searchText {
+            kind: 'InputField';
+            name: 'searchText';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface caseSensitive {
+            kind: 'InputField';
+            name: 'caseSensitive';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface textSearchFields {
+            kind: 'InputField';
+            name: 'textSearchFields';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface createdAtFrom {
+            kind: 'InputField';
+            name: 'createdAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdAtUntil {
+            kind: 'InputField';
+            name: 'createdAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtFrom {
+            kind: 'InputField';
+            name: 'updatedAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtUntil {
+            kind: 'InputField';
+            name: 'updatedAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface ContactInput {
+        kind: 'InputObject';
+        name: 'ContactInput';
+        isAllFieldsNullable: true;
+        fields: {
+            id: ContactInput.id;
+            adminNotes: ContactInput.adminNotes;
+            events: ContactInput.events;
+            metadata: ContactInput.metadata;
+            createdAt: ContactInput.createdAt;
+            createdBy: ContactInput.createdBy;
+            updatedAt: ContactInput.updatedAt;
+            updatedBy: ContactInput.updatedBy;
+            deletedAt: ContactInput.deletedAt;
+            deletedBy: ContactInput.deletedBy;
+            userId: ContactInput.userId;
+            channelId: ContactInput.channelId;
+            nickname: ContactInput.nickname;
+            typeTextIds: ContactInput.typeTextIds;
+            favorite: ContactInput.favorite;
+            notes: ContactInput.notes;
+            archivedAt: ContactInput.archivedAt;
+        };
+    }
+    export namespace ContactInput {
+        interface id {
+            kind: 'InputField';
+            name: 'id';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'InputField';
+            name: 'adminNotes';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'InputField';
+            name: 'events';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEventInput;
+        }
+        interface metadata {
+            kind: 'InputField';
+            name: 'metadata';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadataInput;
+        }
+        interface createdAt {
+            kind: 'InputField';
+            name: 'createdAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'InputField';
+            name: 'createdBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'InputField';
+            name: 'updatedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'InputField';
+            name: 'updatedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'InputField';
+            name: 'deletedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'InputField';
+            name: 'deletedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface userId {
+            kind: 'InputField';
+            name: 'userId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface channelId {
+            kind: 'InputField';
+            name: 'channelId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface nickname {
+            kind: 'InputField';
+            name: 'nickname';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface typeTextIds {
+            kind: 'InputField';
+            name: 'typeTextIds';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface favorite {
+            kind: 'InputField';
+            name: 'favorite';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface notes {
+            kind: 'InputField';
+            name: 'notes';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface archivedAt {
+            kind: 'InputField';
+            name: 'archivedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface SidContactListFilter {
+        kind: 'InputObject';
+        name: 'SidContactListFilter';
+        isAllFieldsNullable: true;
+        fields: {
+            ids: SidContactListFilter.ids;
+            excludeIds: SidContactListFilter.excludeIds;
+            searchText: SidContactListFilter.searchText;
+            caseSensitive: SidContactListFilter.caseSensitive;
+            textSearchFields: SidContactListFilter.textSearchFields;
+            createdAtFrom: SidContactListFilter.createdAtFrom;
+            createdAtUntil: SidContactListFilter.createdAtUntil;
+            updatedAtFrom: SidContactListFilter.updatedAtFrom;
+            updatedAtUntil: SidContactListFilter.updatedAtUntil;
+            userIdIn: SidContactListFilter.userIdIn;
+        };
+    }
+    export namespace SidContactListFilter {
+        interface ids {
+            kind: 'InputField';
+            name: 'ids';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface excludeIds {
+            kind: 'InputField';
+            name: 'excludeIds';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface searchText {
+            kind: 'InputField';
+            name: 'searchText';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface caseSensitive {
+            kind: 'InputField';
+            name: 'caseSensitive';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface textSearchFields {
+            kind: 'InputField';
+            name: 'textSearchFields';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface createdAtFrom {
+            kind: 'InputField';
+            name: 'createdAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdAtUntil {
+            kind: 'InputField';
+            name: 'createdAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtFrom {
+            kind: 'InputField';
+            name: 'updatedAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtUntil {
+            kind: 'InputField';
+            name: 'updatedAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface userIdIn {
+            kind: 'InputField';
+            name: 'userIdIn';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ID;
         }
     }
     /**
@@ -34324,6 +34316,36 @@ export declare namespace Schema {
             namedType: $$NamedTypes.$$Boolean;
         }
     }
+    export interface UpdateObjectOptions {
+        kind: 'InputObject';
+        name: 'UpdateObjectOptions';
+        isAllFieldsNullable: true;
+        fields: {
+            replace: UpdateObjectOptions.replace;
+            upsert: UpdateObjectOptions.upsert;
+            returnReloadedObject: UpdateObjectOptions.returnReloadedObject;
+        };
+    }
+    export namespace UpdateObjectOptions {
+        interface replace {
+            kind: 'InputField';
+            name: 'replace';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface upsert {
+            kind: 'InputField';
+            name: 'upsert';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface returnReloadedObject {
+            kind: 'InputField';
+            name: 'returnReloadedObject';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+    }
     export interface NotificationInput {
         kind: 'InputObject';
         name: 'NotificationInput';
@@ -36258,36 +36280,6 @@ export declare namespace Schema {
             namedType: $$NamedTypes.$$DateTimeISO;
         }
     }
-    export interface UpdateObjectOptions {
-        kind: 'InputObject';
-        name: 'UpdateObjectOptions';
-        isAllFieldsNullable: true;
-        fields: {
-            replace: UpdateObjectOptions.replace;
-            upsert: UpdateObjectOptions.upsert;
-            returnReloadedObject: UpdateObjectOptions.returnReloadedObject;
-        };
-    }
-    export namespace UpdateObjectOptions {
-        interface replace {
-            kind: 'InputField';
-            name: 'replace';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface upsert {
-            kind: 'InputField';
-            name: 'upsert';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-        interface returnReloadedObject {
-            kind: 'InputField';
-            name: 'returnReloadedObject';
-            inlineType: [0];
-            namedType: $$NamedTypes.$$Boolean;
-        }
-    }
     export interface BaseModelMetadata {
         kind: 'Interface';
         fields: {
@@ -36730,6 +36722,31 @@ export declare namespace Schema {
         members: ['sent', 'received'];
         membersUnion: 'sent' | 'received';
     }
+    export interface BarcodeType {
+        kind: 'Enum';
+        name: 'BarcodeType';
+        members: [
+            'TYPE_39',
+            'TYPE_128',
+            'CODE_25',
+            'ITF',
+            'I125',
+            'UPC_A',
+            'UPC_E',
+            'EAN_13',
+            'EAN_8',
+            'QR_CODE',
+            'PDF417',
+            'DATA_MATRIX'
+        ];
+        membersUnion: 'TYPE_39' | 'TYPE_128' | 'CODE_25' | 'ITF' | 'I125' | 'UPC_A' | 'UPC_E' | 'EAN_13' | 'EAN_8' | 'QR_CODE' | 'PDF417' | 'DATA_MATRIX';
+    }
+    export interface WalletItemSource {
+        kind: 'Enum';
+        name: 'WalletItemSource';
+        members: ['user', 'purchased', 'gifted'];
+        membersUnion: 'user' | 'purchased' | 'gifted';
+    }
     export interface ServiceName {
         kind: 'Enum';
         name: 'ServiceName';
@@ -36980,12 +36997,13 @@ export declare namespace Schema {
             'graphQlQueryFindTrainingSessionById',
             'graphQlQueryFindTrainingSessionsByTrainingId',
             'graphQlQueryFindTrainingSessionsForMe',
+            'graphQlMutationClearMyShoppingCart',
+            'graphQlMutationClearShoppingCart',
             'graphQlMutationCreatePurchaseOrderField',
             'graphQlMutationCreateShoppingCartItem',
             'graphQlMutationCreateWalletItem',
             'graphQlMutationDeleteShoppingCartItem',
             'graphQlMutationDeleteWalletItem',
-            'graphQlMutationEmptyShoppingCart',
             'graphQlMutationUpdateShoppingCartItem',
             'graphQlMutationUpdateWalletItem',
             'graphQlQueryFindMyShoppingCart',
@@ -36999,7 +37017,7 @@ export declare namespace Schema {
             'graphQlQueryFindWallets',
             'graphQlQueryFindWalletServiceRecord'
         ];
-        membersUnion: 'graphQlMutationCreateAcademicExperience' | 'graphQlMutationDeleteAcademicExperience' | 'graphQlMutationUpdateAcademicExperience' | 'graphQlMutationCreateBusinessExperience' | 'graphQlMutationDeleteBusinessExperience' | 'graphQlMutationUpdateBusinessExperience' | 'graphQlMutationCreateCompany' | 'graphQlMutationDeleteCompany' | 'graphQlMutationUpdateCompany' | 'graphQlQueryFindAndUpdateAllMm2Users' | 'graphQlQueryUserInboxUser' | 'graphQlMutationCreateAdminTask' | 'graphQlMutationFindAdminTaskById' | 'graphQlMutationDeleteAdminTask' | 'graphQlMutationUpdateAdminTask' | 'graphQlQueryFindAdminTask' | 'graphQlQueryAdminTaskDefinitions' | 'graphQlMutationClearAllAnalyticsSyncInfo' | 'graphQlMutationCreateAnalyticsSynchronization' | 'graphQlMutationDeleteAnalyticsSynchronization' | 'graphQlMutationPauseAnalyticsSynchronization' | 'graphQlMutationRunAnalyticsSynchronization' | 'graphQlQueryFindAnalyticsServiceRecord' | 'graphQlQueryFindAnalyticsSynchronizationById' | 'graphQlMutationCreateUploadedAsset' | 'graphQlMutationDeleteUploadedAsset' | 'graphQlMutationFindUploadedAssetById' | 'graphQlMutationFindUploadedAssetForUser' | 'graphQlMutationInitAssetUpload' | 'graphQlMutationUpdateUploadedAsset' | 'graphQlQueryFindUploadedAssetById' | 'graphQlQueryFindUploadedAssets' | 'graphQlQueryFindUploadedAssetsForUser' | 'graphQlMutationAddChannelMessageEvent' | 'graphQlMutationArchiveChannelForUserByMe' | 'graphQlMutationCreateChannel' | 'graphQlMutationCreateChannelInvitation' | 'graphQlMutationCreateChannelMessage' | 'graphQlMutationCreateChannelParticipant' | 'graphQlMutationDeleteChannel' | 'graphQlMutationDeleteChannelInvitation' | 'graphQlMutationDeleteChannelMessage' | 'graphQlMutationDeleteChannelParticipant' | 'graphQlMutationDeleteGroup' | 'graphQlMutationDeleteGroupMembership' | 'graphQlMutationMarkChannelMessagesAsSeenByMe' | 'graphQlMutationUpdateChannel' | 'graphQlMutationUpdateChannelInvitation' | 'graphQlMutationUpdateChannelMessage' | 'graphQlMutationUpdateChannelParticipant' | 'graphQlQueryChannelInvitations' | 'graphQlQueryChannelMessageChannel' | 'graphQlQueryChannelParticipants' | 'graphQlQueryFindChannelById' | 'graphQlQueryFindChannelInvitationById' | 'graphQlQueryFindChannelInvitationsBetweenUsers' | 'graphQlQueryFindChannelInvitationsForUser' | 'graphQlQueryFindChannelMessageById' | 'graphQlQueryFindChannelMessages' | 'graphQlQueryFindChannelParticipantById' | 'graphQlQueryFindChannelParticipants' | 'graphQlQueryFindChannels' | 'graphQlQueryFindChannelsForUser' | 'graphQlQueryFindMyChannels' | 'graphQlQueryFindPendingChannelInvitationsForUser' | 'graphQlQueryMyContacts' | 'graphQlQueryMyInbox' | 'graphQlQueryUserChannels' | 'graphQlQueryUserCompanies' | 'graphQlQueryUserGroupMembers' | 'graphQlQueryUserGroups' | 'graphQlQueryFindCountries' | 'graphQlQueryFindExpertises' | 'graphQlQueryFindIndustries' | 'graphQlQueryFindOptions' | 'unset' | 'graphQlQueryContentTag' | 'graphQlMutationCreateContentTag' | 'graphQlMutationDeleteContentTag' | 'graphQlMutationUpdateContentTag' | 'graphQlMutationRunDataGenerator' | 'graphQlQueryNotificationTemplate' | 'graphQlQueryAvailableUserHandle' | 'graphQlQueryUser' | 'graphQlMutationAddUserToGroup' | 'graphQlMutationCreateGroup' | 'graphQlMutationCreateGroupMembership' | 'graphQlMutationCreateSupportChannelConfig' | 'graphQlMutationDeleteGroupCms' | 'graphQlMutationDeleteSupportChannelConfig' | 'graphQlMutationRemoveUserFromAllGroups' | 'graphQlMutationRemoveUserFromGroup' | 'graphQlMutationUpdateGroup' | 'graphQlMutationUpdateGroupMembership' | 'graphQlMutationUpdateSupportChannelConfig' | 'graphQlQueryFindGroupById' | 'graphQlQueryFindGroupByIdent' | 'graphQlQueryFindGroupCmsByGroupId' | 'graphQlQueryFindGroupCmsByGroupIdent' | 'graphQlQueryFindGroupCmsById' | 'graphQlQueryFindGroupMembershipByIdField' | 'graphQlQueryFindGroupMemberships' | 'graphQlQueryFindGroupsField' | 'graphQlQueryMyGroupMemberships' | 'graphQlQueryFindGiftCardProducts' | 'graphQlQueryFindMarketplaceServiceRecord' | 'graphQlQueryFindProductCategories' | 'graphQlQueryFindBrands' | 'graphQlMutationCreateUserSearch' | 'graphQlMutationDeleteUserSearch' | 'graphQlMutationUpdateUserSearch' | 'graphQlQueryFindUserSearchById' | 'graphQlQueryFindUserSearchResults' | 'graphQlQueryUserSearchFoundUsers' | 'graphQlMutationCreateNotification' | 'graphQlMutationCreateNotificationTemplate' | 'graphQlMutationDeleteNotification' | 'graphQlMutationDeleteNotificationTemplate' | 'graphQlMutationMarkInAppMessageReceived' | 'graphQlMutationSendMultiStepActionNotification' | 'graphQlMutationUpdateNotification' | 'graphQlMutationUpdateNotificationTemplate' | 'graphQlMutationCreateNatsMessage' | 'graphQlMutationClearAllSyncInfo' | 'graphQlMutationCreateMm2Synchronization' | 'graphQlMutationDeleteAllMm2DataInMm3' | 'graphQlMutationDeleteMm2Synchronization' | 'graphQlMutationRunMm2Synchronization' | 'graphQlQueryFindMm2SynchronizationById' | 'graphQlQueryGetMm2Integration' | 'graphQlMutationNlpLabelMessage' | 'graphQlMutationUpdateNlpConversation' | 'graphQlMutationUpdateNlpMessage' | 'graphQlQueryFindNlpConversation' | 'graphQlMutationAddFeatureToUser' | 'graphQlMutationBlockUser' | 'graphQlMutationCreateContact' | 'graphQlMutationCreateMultiStepAction' | 'graphQlMutationCreateUserDevice' | 'graphQlMutationDeleteMyUser' | 'graphQlMutationDeleteUser' | 'graphQlMutationEndMySession' | 'graphQlMutationRemoveFeatureFromUser' | 'graphQlMutationReportUser' | 'graphQlMutationSignInUser' | 'graphQlMutationSignMeOut' | 'graphQlMutationSignUpOauthUser' | 'graphQlMutationSignUpUser' | 'graphQlMutationStartMySession' | 'graphQlMutationUnblockUser' | 'graphQlMutationUpdateContact' | 'graphQlMutationUpdateMyUser' | 'graphQlMutationUpdateUser' | 'graphQlMutationUpdateUserDevice' | 'graphQlMutationUpsertBackgroundTask' | 'graphQlMutationVerifyMultiStepActionToken' | 'graphQlQueryBackgroundTask' | 'graphQlQueryContacts' | 'graphQlQueryContactTypes' | 'graphQlQueryFindAvailableUserHandle' | 'graphQlQueryFindContact' | 'graphQlQueryFindContactById' | 'graphQlQueryFindContacts' | 'graphQlQueryFindMyBlockedUsers' | 'graphQlQueryFindMyUser' | 'graphQlQueryFindMyUserDevices' | 'graphQlQueryFindUserById' | 'graphQlQueryFindUserByIdent' | 'graphQlQueryFindUserDeviceById' | 'graphQlQueryFindUserDevices' | 'graphQlQueryFindUsers' | 'graphQlQueryGetMultiStepActionProgress' | 'graphQlQueryLatestUserDevice' | 'graphQlQueryUnreadInAppMessages' | 'graphQlQueryVerifyMyPassword' | 'graphQlMutationCreateUserTracking' | 'graphQlMutationUpdateUserTracking' | 'graphQlQueryFindTrainingById' | 'graphQlQueryFindTrainingsForMe' | 'graphQlQueryFindTrainingsForUser' | 'graphQlQueryFindTrainingSessionById' | 'graphQlQueryFindTrainingSessionsByTrainingId' | 'graphQlQueryFindTrainingSessionsForMe' | 'graphQlMutationCreatePurchaseOrderField' | 'graphQlMutationCreateShoppingCartItem' | 'graphQlMutationCreateWalletItem' | 'graphQlMutationDeleteShoppingCartItem' | 'graphQlMutationDeleteWalletItem' | 'graphQlMutationEmptyShoppingCart' | 'graphQlMutationUpdateShoppingCartItem' | 'graphQlMutationUpdateWalletItem' | 'graphQlQueryFindMyShoppingCart' | 'graphQlQueryFindMyWallet' | 'graphQlQueryFindPurchaseOrderItems' | 'graphQlQueryFindPurchaseOrders' | 'graphQlQueryFindShoppingCartItems' | 'graphQlQueryFindShoppingCarts' | 'graphQlQueryFindWalletItemById' | 'graphQlQueryFindWalletItems' | 'graphQlQueryFindWallets' | 'graphQlQueryFindWalletServiceRecord';
+        membersUnion: 'graphQlMutationCreateAcademicExperience' | 'graphQlMutationDeleteAcademicExperience' | 'graphQlMutationUpdateAcademicExperience' | 'graphQlMutationCreateBusinessExperience' | 'graphQlMutationDeleteBusinessExperience' | 'graphQlMutationUpdateBusinessExperience' | 'graphQlMutationCreateCompany' | 'graphQlMutationDeleteCompany' | 'graphQlMutationUpdateCompany' | 'graphQlQueryFindAndUpdateAllMm2Users' | 'graphQlQueryUserInboxUser' | 'graphQlMutationCreateAdminTask' | 'graphQlMutationFindAdminTaskById' | 'graphQlMutationDeleteAdminTask' | 'graphQlMutationUpdateAdminTask' | 'graphQlQueryFindAdminTask' | 'graphQlQueryAdminTaskDefinitions' | 'graphQlMutationClearAllAnalyticsSyncInfo' | 'graphQlMutationCreateAnalyticsSynchronization' | 'graphQlMutationDeleteAnalyticsSynchronization' | 'graphQlMutationPauseAnalyticsSynchronization' | 'graphQlMutationRunAnalyticsSynchronization' | 'graphQlQueryFindAnalyticsServiceRecord' | 'graphQlQueryFindAnalyticsSynchronizationById' | 'graphQlMutationCreateUploadedAsset' | 'graphQlMutationDeleteUploadedAsset' | 'graphQlMutationFindUploadedAssetById' | 'graphQlMutationFindUploadedAssetForUser' | 'graphQlMutationInitAssetUpload' | 'graphQlMutationUpdateUploadedAsset' | 'graphQlQueryFindUploadedAssetById' | 'graphQlQueryFindUploadedAssets' | 'graphQlQueryFindUploadedAssetsForUser' | 'graphQlMutationAddChannelMessageEvent' | 'graphQlMutationArchiveChannelForUserByMe' | 'graphQlMutationCreateChannel' | 'graphQlMutationCreateChannelInvitation' | 'graphQlMutationCreateChannelMessage' | 'graphQlMutationCreateChannelParticipant' | 'graphQlMutationDeleteChannel' | 'graphQlMutationDeleteChannelInvitation' | 'graphQlMutationDeleteChannelMessage' | 'graphQlMutationDeleteChannelParticipant' | 'graphQlMutationDeleteGroup' | 'graphQlMutationDeleteGroupMembership' | 'graphQlMutationMarkChannelMessagesAsSeenByMe' | 'graphQlMutationUpdateChannel' | 'graphQlMutationUpdateChannelInvitation' | 'graphQlMutationUpdateChannelMessage' | 'graphQlMutationUpdateChannelParticipant' | 'graphQlQueryChannelInvitations' | 'graphQlQueryChannelMessageChannel' | 'graphQlQueryChannelParticipants' | 'graphQlQueryFindChannelById' | 'graphQlQueryFindChannelInvitationById' | 'graphQlQueryFindChannelInvitationsBetweenUsers' | 'graphQlQueryFindChannelInvitationsForUser' | 'graphQlQueryFindChannelMessageById' | 'graphQlQueryFindChannelMessages' | 'graphQlQueryFindChannelParticipantById' | 'graphQlQueryFindChannelParticipants' | 'graphQlQueryFindChannels' | 'graphQlQueryFindChannelsForUser' | 'graphQlQueryFindMyChannels' | 'graphQlQueryFindPendingChannelInvitationsForUser' | 'graphQlQueryMyContacts' | 'graphQlQueryMyInbox' | 'graphQlQueryUserChannels' | 'graphQlQueryUserCompanies' | 'graphQlQueryUserGroupMembers' | 'graphQlQueryUserGroups' | 'graphQlQueryFindCountries' | 'graphQlQueryFindExpertises' | 'graphQlQueryFindIndustries' | 'graphQlQueryFindOptions' | 'unset' | 'graphQlQueryContentTag' | 'graphQlMutationCreateContentTag' | 'graphQlMutationDeleteContentTag' | 'graphQlMutationUpdateContentTag' | 'graphQlMutationRunDataGenerator' | 'graphQlQueryNotificationTemplate' | 'graphQlQueryAvailableUserHandle' | 'graphQlQueryUser' | 'graphQlMutationAddUserToGroup' | 'graphQlMutationCreateGroup' | 'graphQlMutationCreateGroupMembership' | 'graphQlMutationCreateSupportChannelConfig' | 'graphQlMutationDeleteGroupCms' | 'graphQlMutationDeleteSupportChannelConfig' | 'graphQlMutationRemoveUserFromAllGroups' | 'graphQlMutationRemoveUserFromGroup' | 'graphQlMutationUpdateGroup' | 'graphQlMutationUpdateGroupMembership' | 'graphQlMutationUpdateSupportChannelConfig' | 'graphQlQueryFindGroupById' | 'graphQlQueryFindGroupByIdent' | 'graphQlQueryFindGroupCmsByGroupId' | 'graphQlQueryFindGroupCmsByGroupIdent' | 'graphQlQueryFindGroupCmsById' | 'graphQlQueryFindGroupMembershipByIdField' | 'graphQlQueryFindGroupMemberships' | 'graphQlQueryFindGroupsField' | 'graphQlQueryMyGroupMemberships' | 'graphQlQueryFindGiftCardProducts' | 'graphQlQueryFindMarketplaceServiceRecord' | 'graphQlQueryFindProductCategories' | 'graphQlQueryFindBrands' | 'graphQlMutationCreateUserSearch' | 'graphQlMutationDeleteUserSearch' | 'graphQlMutationUpdateUserSearch' | 'graphQlQueryFindUserSearchById' | 'graphQlQueryFindUserSearchResults' | 'graphQlQueryUserSearchFoundUsers' | 'graphQlMutationCreateNotification' | 'graphQlMutationCreateNotificationTemplate' | 'graphQlMutationDeleteNotification' | 'graphQlMutationDeleteNotificationTemplate' | 'graphQlMutationMarkInAppMessageReceived' | 'graphQlMutationSendMultiStepActionNotification' | 'graphQlMutationUpdateNotification' | 'graphQlMutationUpdateNotificationTemplate' | 'graphQlMutationCreateNatsMessage' | 'graphQlMutationClearAllSyncInfo' | 'graphQlMutationCreateMm2Synchronization' | 'graphQlMutationDeleteAllMm2DataInMm3' | 'graphQlMutationDeleteMm2Synchronization' | 'graphQlMutationRunMm2Synchronization' | 'graphQlQueryFindMm2SynchronizationById' | 'graphQlQueryGetMm2Integration' | 'graphQlMutationNlpLabelMessage' | 'graphQlMutationUpdateNlpConversation' | 'graphQlMutationUpdateNlpMessage' | 'graphQlQueryFindNlpConversation' | 'graphQlMutationAddFeatureToUser' | 'graphQlMutationBlockUser' | 'graphQlMutationCreateContact' | 'graphQlMutationCreateMultiStepAction' | 'graphQlMutationCreateUserDevice' | 'graphQlMutationDeleteMyUser' | 'graphQlMutationDeleteUser' | 'graphQlMutationEndMySession' | 'graphQlMutationRemoveFeatureFromUser' | 'graphQlMutationReportUser' | 'graphQlMutationSignInUser' | 'graphQlMutationSignMeOut' | 'graphQlMutationSignUpOauthUser' | 'graphQlMutationSignUpUser' | 'graphQlMutationStartMySession' | 'graphQlMutationUnblockUser' | 'graphQlMutationUpdateContact' | 'graphQlMutationUpdateMyUser' | 'graphQlMutationUpdateUser' | 'graphQlMutationUpdateUserDevice' | 'graphQlMutationUpsertBackgroundTask' | 'graphQlMutationVerifyMultiStepActionToken' | 'graphQlQueryBackgroundTask' | 'graphQlQueryContacts' | 'graphQlQueryContactTypes' | 'graphQlQueryFindAvailableUserHandle' | 'graphQlQueryFindContact' | 'graphQlQueryFindContactById' | 'graphQlQueryFindContacts' | 'graphQlQueryFindMyBlockedUsers' | 'graphQlQueryFindMyUser' | 'graphQlQueryFindMyUserDevices' | 'graphQlQueryFindUserById' | 'graphQlQueryFindUserByIdent' | 'graphQlQueryFindUserDeviceById' | 'graphQlQueryFindUserDevices' | 'graphQlQueryFindUsers' | 'graphQlQueryGetMultiStepActionProgress' | 'graphQlQueryLatestUserDevice' | 'graphQlQueryUnreadInAppMessages' | 'graphQlQueryVerifyMyPassword' | 'graphQlMutationCreateUserTracking' | 'graphQlMutationUpdateUserTracking' | 'graphQlQueryFindTrainingById' | 'graphQlQueryFindTrainingsForMe' | 'graphQlQueryFindTrainingsForUser' | 'graphQlQueryFindTrainingSessionById' | 'graphQlQueryFindTrainingSessionsByTrainingId' | 'graphQlQueryFindTrainingSessionsForMe' | 'graphQlMutationClearMyShoppingCart' | 'graphQlMutationClearShoppingCart' | 'graphQlMutationCreatePurchaseOrderField' | 'graphQlMutationCreateShoppingCartItem' | 'graphQlMutationCreateWalletItem' | 'graphQlMutationDeleteShoppingCartItem' | 'graphQlMutationDeleteWalletItem' | 'graphQlMutationUpdateShoppingCartItem' | 'graphQlMutationUpdateWalletItem' | 'graphQlQueryFindMyShoppingCart' | 'graphQlQueryFindMyWallet' | 'graphQlQueryFindPurchaseOrderItems' | 'graphQlQueryFindPurchaseOrders' | 'graphQlQueryFindShoppingCartItems' | 'graphQlQueryFindShoppingCarts' | 'graphQlQueryFindWalletItemById' | 'graphQlQueryFindWalletItems' | 'graphQlQueryFindWallets' | 'graphQlQueryFindWalletServiceRecord';
     }
     export interface ServiceRequestResult {
         kind: 'Enum';
@@ -37169,31 +37187,6 @@ export declare namespace Schema {
         name: 'MultiStepActionSendNotificationResult';
         members: ['ok', 'failed', 'phoneNumberInvalid'];
         membersUnion: 'ok' | 'failed' | 'phoneNumberInvalid';
-    }
-    export interface BarcodeType {
-        kind: 'Enum';
-        name: 'BarcodeType';
-        members: [
-            'TYPE_39',
-            'TYPE_128',
-            'CODE_25',
-            'ITF',
-            'I125',
-            'UPC_A',
-            'UPC_E',
-            'EAN_13',
-            'EAN_8',
-            'QR_CODE',
-            'PDF417',
-            'DATA_MATRIX'
-        ];
-        membersUnion: 'TYPE_39' | 'TYPE_128' | 'CODE_25' | 'ITF' | 'I125' | 'UPC_A' | 'UPC_E' | 'EAN_13' | 'EAN_8' | 'QR_CODE' | 'PDF417' | 'DATA_MATRIX';
-    }
-    export interface WalletItemSource {
-        kind: 'Enum';
-        name: 'WalletItemSource';
-        members: ['user', 'purchased', 'gifted'];
-        membersUnion: 'user' | 'purchased' | 'gifted';
     }
     export interface CookieChoiceTextId {
         kind: 'Enum';
@@ -37379,6 +37372,13 @@ export declare namespace Schema {
         type $$IqlaaJordanianGovernorate = IqlaaJordanianGovernorate;
         type $$MastercardBank = MastercardBank;
         type $$Brand = Brand;
+        type $$PurchaseOrderItem = PurchaseOrderItem;
+        type $$PurchaseOrder = PurchaseOrder;
+        type $$ShoppingCartItem = ShoppingCartItem;
+        type $$ShoppingCart = ShoppingCart;
+        type $$WalletItem = WalletItem;
+        type $$Wallet = Wallet;
+        type $$WalletServiceRecord = WalletServiceRecord;
         type $$GiftCardProduct = GiftCardProduct;
         type $$GiftCardDenomination = GiftCardDenomination;
         type $$MarketplaceServiceRecord = MarketplaceServiceRecord;
@@ -37398,13 +37398,6 @@ export declare namespace Schema {
         type $$TrainingContentPage = TrainingContentPage;
         type $$TrainingSession = TrainingSession;
         type $$TrainingSessionCompletionInfo = TrainingSessionCompletionInfo;
-        type $$PurchaseOrderItem = PurchaseOrderItem;
-        type $$PurchaseOrder = PurchaseOrder;
-        type $$ShoppingCartItem = ShoppingCartItem;
-        type $$ShoppingCart = ShoppingCart;
-        type $$WalletItem = WalletItem;
-        type $$Wallet = Wallet;
-        type $$WalletServiceRecord = WalletServiceRecord;
         type $$UserAuthResponse = UserAuthResponse;
         type $$ContentTag = ContentTag;
         type $$SupportChannelConfig = SupportChannelConfig;
@@ -37447,16 +37440,6 @@ export declare namespace Schema {
         type $$GroupListFilter = GroupListFilter;
         type $$BrandInput = BrandInput;
         type $$BrandListFilter = BrandListFilter;
-        type $$GiftCardProductInput = GiftCardProductInput;
-        type $$GiftCardDenominationInput = GiftCardDenominationInput;
-        type $$GiftCardProductListFilter = GiftCardProductListFilter;
-        type $$ProductCategoryInput = ProductCategoryInput;
-        type $$ProductCategoryListFilter = ProductCategoryListFilter;
-        type $$UserSearchInput = UserSearchInput;
-        type $$UserSearchFilterInput = UserSearchFilterInput;
-        type $$UserSearchListFilter = UserSearchListFilter;
-        type $$ContactInput = ContactInput;
-        type $$SidContactListFilter = SidContactListFilter;
         type $$PurchaseOrderItemInput = PurchaseOrderItemInput;
         type $$PurchaseOrderItemListFilter = PurchaseOrderItemListFilter;
         type $$PurchaseOrderInput = PurchaseOrderInput;
@@ -37469,6 +37452,16 @@ export declare namespace Schema {
         type $$WalletItemListFilter = WalletItemListFilter;
         type $$WalletInput = WalletInput;
         type $$WalletListFilter = WalletListFilter;
+        type $$GiftCardProductInput = GiftCardProductInput;
+        type $$GiftCardDenominationInput = GiftCardDenominationInput;
+        type $$GiftCardProductListFilter = GiftCardProductListFilter;
+        type $$ProductCategoryInput = ProductCategoryInput;
+        type $$ProductCategoryListFilter = ProductCategoryListFilter;
+        type $$UserSearchInput = UserSearchInput;
+        type $$UserSearchFilterInput = UserSearchFilterInput;
+        type $$UserSearchListFilter = UserSearchListFilter;
+        type $$ContactInput = ContactInput;
+        type $$SidContactListFilter = SidContactListFilter;
         type $$SignInUserInput = SignInUserInput;
         type $$SignInOauthUserInput = SignInOauthUserInput;
         type $$SignUpUserInput = SignUpUserInput;
@@ -37484,6 +37477,7 @@ export declare namespace Schema {
         type $$IqlaaGroupMembershipInput = IqlaaGroupMembershipInput;
         type $$MastercardGroupMembershipInput = MastercardGroupMembershipInput;
         type $$SupportChannelConfigInput = SupportChannelConfigInput;
+        type $$UpdateObjectOptions = UpdateObjectOptions;
         type $$NotificationInput = NotificationInput;
         type $$SendMultiStepActionNotificationInput = SendMultiStepActionNotificationInput;
         type $$NotificationTemplateInput = NotificationTemplateInput;
@@ -37493,7 +37487,6 @@ export declare namespace Schema {
         type $$VerifyMultiStepActionTokenInput = VerifyMultiStepActionTokenInput;
         type $$MyUserInput = MyUserInput;
         type $$UserTrackingInput = UserTrackingInput;
-        type $$UpdateObjectOptions = UpdateObjectOptions;
         type $$BaseModelMetadata = BaseModelMetadata;
         type $$IGroupMembership = IGroupMembership;
         type $$GroupMembershipRole = GroupMembershipRole;
@@ -37524,6 +37517,8 @@ export declare namespace Schema {
         type $$AdminTaskType = AdminTaskType;
         type $$AdminTaskResult = AdminTaskResult;
         type $$ChannelInvitationDirection = ChannelInvitationDirection;
+        type $$BarcodeType = BarcodeType;
+        type $$WalletItemSource = WalletItemSource;
         type $$ServiceName = ServiceName;
         type $$UserSearchType = UserSearchType;
         type $$UserSearchFieldOption = UserSearchFieldOption;
@@ -37538,8 +37533,6 @@ export declare namespace Schema {
         type $$NotificationMethod = NotificationMethod;
         type $$MultiStepActionResult = MultiStepActionResult;
         type $$MultiStepActionSendNotificationResult = MultiStepActionSendNotificationResult;
-        type $$BarcodeType = BarcodeType;
-        type $$WalletItemSource = WalletItemSource;
         type $$CookieChoiceTextId = CookieChoiceTextId;
         type $$ReportUserReasonTextId = ReportUserReasonTextId;
         type $$DeclineChannelInvitationReasonTextId = DeclineChannelInvitationReasonTextId;
@@ -37598,6 +37591,8 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         AdminTaskType: Schema.AdminTaskType;
         AdminTaskResult: Schema.AdminTaskResult;
         ChannelInvitationDirection: Schema.ChannelInvitationDirection;
+        BarcodeType: Schema.BarcodeType;
+        WalletItemSource: Schema.WalletItemSource;
         ServiceName: Schema.ServiceName;
         UserSearchType: Schema.UserSearchType;
         UserSearchFieldOption: Schema.UserSearchFieldOption;
@@ -37612,8 +37607,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         NotificationMethod: Schema.NotificationMethod;
         MultiStepActionResult: Schema.MultiStepActionResult;
         MultiStepActionSendNotificationResult: Schema.MultiStepActionSendNotificationResult;
-        BarcodeType: Schema.BarcodeType;
-        WalletItemSource: Schema.WalletItemSource;
         CookieChoiceTextId: Schema.CookieChoiceTextId;
         ReportUserReasonTextId: Schema.ReportUserReasonTextId;
         DeclineChannelInvitationReasonTextId: Schema.DeclineChannelInvitationReasonTextId;
@@ -37692,6 +37685,13 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate;
         MastercardBank: Schema.MastercardBank;
         Brand: Schema.Brand;
+        PurchaseOrderItem: Schema.PurchaseOrderItem;
+        PurchaseOrder: Schema.PurchaseOrder;
+        ShoppingCartItem: Schema.ShoppingCartItem;
+        ShoppingCart: Schema.ShoppingCart;
+        WalletItem: Schema.WalletItem;
+        Wallet: Schema.Wallet;
+        WalletServiceRecord: Schema.WalletServiceRecord;
         GiftCardProduct: Schema.GiftCardProduct;
         GiftCardDenomination: Schema.GiftCardDenomination;
         MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
@@ -37711,13 +37711,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         TrainingContentPage: Schema.TrainingContentPage;
         TrainingSession: Schema.TrainingSession;
         TrainingSessionCompletionInfo: Schema.TrainingSessionCompletionInfo;
-        PurchaseOrderItem: Schema.PurchaseOrderItem;
-        PurchaseOrder: Schema.PurchaseOrder;
-        ShoppingCartItem: Schema.ShoppingCartItem;
-        ShoppingCart: Schema.ShoppingCart;
-        WalletItem: Schema.WalletItem;
-        Wallet: Schema.Wallet;
-        WalletServiceRecord: Schema.WalletServiceRecord;
         UserAuthResponse: Schema.UserAuthResponse;
         ContentTag: Schema.ContentTag;
         SupportChannelConfig: Schema.SupportChannelConfig;
@@ -37801,6 +37794,13 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         IqlaaJordanianGovernorate: Schema.IqlaaJordanianGovernorate;
         MastercardBank: Schema.MastercardBank;
         Brand: Schema.Brand;
+        PurchaseOrderItem: Schema.PurchaseOrderItem;
+        PurchaseOrder: Schema.PurchaseOrder;
+        ShoppingCartItem: Schema.ShoppingCartItem;
+        ShoppingCart: Schema.ShoppingCart;
+        WalletItem: Schema.WalletItem;
+        Wallet: Schema.Wallet;
+        WalletServiceRecord: Schema.WalletServiceRecord;
         GiftCardProduct: Schema.GiftCardProduct;
         GiftCardDenomination: Schema.GiftCardDenomination;
         MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
@@ -37820,13 +37820,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         TrainingContentPage: Schema.TrainingContentPage;
         TrainingSession: Schema.TrainingSession;
         TrainingSessionCompletionInfo: Schema.TrainingSessionCompletionInfo;
-        PurchaseOrderItem: Schema.PurchaseOrderItem;
-        PurchaseOrder: Schema.PurchaseOrder;
-        ShoppingCartItem: Schema.ShoppingCartItem;
-        ShoppingCart: Schema.ShoppingCart;
-        WalletItem: Schema.WalletItem;
-        Wallet: Schema.Wallet;
-        WalletServiceRecord: Schema.WalletServiceRecord;
         UserAuthResponse: Schema.UserAuthResponse;
         ContentTag: Schema.ContentTag;
         SupportChannelConfig: Schema.SupportChannelConfig;
