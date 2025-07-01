@@ -4388,6 +4388,7 @@ export type FederatedIdentityProvider = 'none' | 'firebase';
 export type AdminTaskType = 'addAppFeature' | 'deleteUser' | 'formatPhoneNumbers' | 'mergeUsers' | 'refreshAllEmbeddedCompanies' | 'refreshAllUserInboxes' | 'removeAppFeature' | 'resetUserPassword' | 'setUserPassword' | 'suspendUser' | 'verifyUserPassword' | 'decryptString' | 'unset' | 'createAnalyticsSynchronization' | 'pauseAnalyticsSynchronization' | 'runAnalyticsSynchronization' | 'updateChannelMetadata' | 'updateChannelOtherUserId' | 'runDataGenerator' | 'loadDbCache' | 'queryDbVersion' | 'recreateDbIndexes' | 'updateGroupIdentsInAllGroupMemberships' | 'addLanguageText' | 'importMarketplaceData' | 'recreateDefaultMatchingEngine' | 'refreshAllMatchProfiles' | 'clearBusMessages' | 'removeBusMessage' | 'sendPushNotification' | 'compareMm2Object' | 'compareMm2ObjectIdsOfModel' | 'fixAllSyncedChannelInvitationInitialMessages' | 'mergeAllDuplicateMm3ChatObjects' | 'mergeAllDuplicateMm3Users' | 'pauseMm2Synchronization' | 'runMm2Synchronization' | 'syncAllUsersWhoSignedUpInMm3' | 'syncDocsWithoutMm2Ids' | 'syncUsersWithLanguageMismatch' | 'triggerRandomSynchronizations' | 'addOrRemoveAppFeature' | 'createApiAuthInfo' | 'removeAllInvalidUserBlocks' | 'doDataMaintenance' | 'sendPendingTrackingEvents' | 'setTrainingTags';
 export type AdminTaskResult = 'ok' | 'error';
 export type ChannelInvitationDirection = 'sent' | 'received';
+export type ProductType = 'giftCard' | 'other';
 export type BarcodeType = 'TYPE_39' | 'TYPE_128' | 'CODE_25' | 'ITF' | 'I125' | 'UPC_A' | 'UPC_E' | 'EAN_13' | 'EAN_8' | 'QR_CODE' | 'PDF417' | 'DATA_MATRIX';
 export type WalletItemSource = 'user' | 'purchased' | 'gifted';
 export type ServiceName = 'accounts' | 'admin' | 'adminJs' | 'analytics' | 'appEvents' | 'assets' | 'aws' | 'bgChannels' | 'bullBoard' | 'channels' | 'content' | 'contentTags' | 'dataGenerator' | 'db' | 'firebase' | 'graphqlApi' | 'groups' | 'http' | 'i18N' | 'logger' | 'marketplace' | 'matching' | 'messageBus' | 'messaging' | 'mm2' | 'models' | 'moderation' | 'nats' | 'nlp' | 'redis' | 'restApi' | 'secureId' | 'slack' | 'system' | 'tracking' | 'unset' | 'vts' | 'wallet';
@@ -5185,6 +5186,7 @@ export interface WalletItemInput<_$Scalars extends $$Utilities.Schema.Scalar.Reg
     productId?: string | undefined | null;
     purchaseOrderItemId?: string | undefined | null;
     brandId?: string | undefined | null;
+    $productType?: $NamedTypes.$ProductType | undefined | null;
     name?: string | undefined | null;
     price?: number | undefined | null;
     initialBalance?: number | undefined | null;
@@ -5257,6 +5259,7 @@ export interface GiftCardProductInput<_$Scalars extends $$Utilities.Schema.Scala
     brandImportId?: string | undefined | null;
     name?: string | undefined | null;
     description?: string | undefined | null;
+    $productType?: $NamedTypes.$ProductType | undefined | null;
     categories?: Array<string | undefined | null> | undefined | null;
     slug?: string | undefined | null;
     url?: string | undefined | null;
@@ -28239,6 +28242,10 @@ export interface WalletItem<_$Scalars extends $$Utilities.Schema.Scalar.Registry
      */
     brandId?: WalletItem.brandId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.brandId<_$Scalars>>;
     /**
+     * Select the `productType` field on the `WalletItem` object. Its type is `ProductType` (a `Enum` kind of type).
+     */
+    productType?: WalletItem.productType$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.productType<_$Scalars>>;
+    /**
      * Select the `name` field on the `WalletItem` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     name?: WalletItem.name$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.name<_$Scalars>>;
@@ -28467,6 +28474,15 @@ export declare namespace WalletItem {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type brandId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | brandId$SelectionSet<_$Scalars>>;
+    type productType<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | productType$SelectionSet<_$Scalars>;
+    interface productType$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `productType` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type productType$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | productType$SelectionSet<_$Scalars>>;
     type name<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | name$SelectionSet<_$Scalars>;
     interface name$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -29034,6 +29050,10 @@ export interface GiftCardProduct<_$Scalars extends $$Utilities.Schema.Scalar.Reg
      */
     description?: GiftCardProduct.description$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.description<_$Scalars>>;
     /**
+     * Select the `productType` field on the `GiftCardProduct` object. Its type is `ProductType` (a `Enum` kind of type).
+     */
+    productType?: GiftCardProduct.productType$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.productType<_$Scalars>>;
+    /**
      * Select the `categories` field on the `GiftCardProduct` object. Its type is `ID` (a `ScalarStandard` kind of type).
      */
     categories?: GiftCardProduct.categories$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.categories<_$Scalars>>;
@@ -29247,6 +29267,15 @@ export declare namespace GiftCardProduct {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type description$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | description$SelectionSet<_$Scalars>>;
+    type productType<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | productType$SelectionSet<_$Scalars>;
+    interface productType$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `productType` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type productType$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | productType$SelectionSet<_$Scalars>>;
     type categories<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | categories$SelectionSet<_$Scalars>;
     interface categories$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -39161,6 +39190,7 @@ export declare namespace $NamedTypes {
     type $AdminTaskType = AdminTaskType;
     type $AdminTaskResult = AdminTaskResult;
     type $ChannelInvitationDirection = ChannelInvitationDirection;
+    type $ProductType = ProductType;
     type $BarcodeType = BarcodeType;
     type $WalletItemSource = WalletItemSource;
     type $ServiceName = ServiceName;

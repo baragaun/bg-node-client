@@ -68,6 +68,10 @@ export declare const WalletItemSchema: {
             type: string;
             maxLength: number;
         };
+        productType: {
+            type: string;
+            enum: string[];
+        };
         name: {
             type: string;
         };

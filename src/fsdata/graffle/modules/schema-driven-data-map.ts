@@ -203,6 +203,11 @@ const ChannelInvitationDirection: $$Utilities.SchemaDrivenDataMap.Enum = {
   n: 'ChannelInvitationDirection',
 };
 
+const ProductType: $$Utilities.SchemaDrivenDataMap.Enum = {
+  k: 'enum',
+  n: 'ProductType',
+};
+
 const BarcodeType: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'BarcodeType',
@@ -1743,6 +1748,7 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     productId: {},
     purchaseOrderItemId: {},
     brandId: {},
+    productType: {},
     name: {},
     price: {},
     initialBalance: {},
@@ -1879,6 +1885,7 @@ const GiftCardProductInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     brandImportId: {},
     name: {},
     description: {},
+    productType: {},
     categories: {},
     slug: {},
     url: {},
@@ -6263,6 +6270,7 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     productId: {},
     purchaseOrderItemId: {},
     brandId: {},
+    productType: {},
     name: {},
     price: {},
     initialBalance: {},
@@ -6373,6 +6381,7 @@ const GiftCardProduct: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     brandImportId: {},
     name: {},
     description: {},
+    productType: {},
     categories: {},
     slug: {},
     url: {},
@@ -10796,6 +10805,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     AdminTaskType,
     AdminTaskResult,
     ChannelInvitationDirection,
+    ProductType,
     BarcodeType,
     WalletItemSource,
     ServiceName,

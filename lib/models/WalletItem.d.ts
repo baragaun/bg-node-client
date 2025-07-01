@@ -1,10 +1,11 @@
 import { BaseModel } from './BaseModel.js';
-import { BarcodeType, WalletItemSource } from '../enums.js';
+import { BarcodeType, ProductType, WalletItemSource } from '../enums.js';
 export declare class WalletItem extends BaseModel {
     walletId: string;
     productId: string;
     purchaseOrderItemId: string;
     brandId: string;
+    productType: ProductType;
     name: string;
     price: number;
     initialBalance: number;

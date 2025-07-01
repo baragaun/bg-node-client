@@ -8999,6 +8999,10 @@ export type ChannelInvitationDirection =
   | 'sent'
   | 'received';
 
+export type ProductType =
+  | 'giftCard'
+  | 'other';
+
 export type BarcodeType =
   | 'TYPE_39'
   | 'TYPE_128'
@@ -11210,6 +11214,7 @@ export interface WalletItemInput<
   productId?: string | undefined | null;
   purchaseOrderItemId?: string | undefined | null;
   brandId?: string | undefined | null;
+  $productType?: $NamedTypes.$ProductType | undefined | null;
   name?: string | undefined | null;
   price?: number | undefined | null;
   initialBalance?: number | undefined | null;
@@ -11384,6 +11389,7 @@ export interface GiftCardProductInput<
   brandImportId?: string | undefined | null;
   name?: string | undefined | null;
   description?: string | undefined | null;
+  $productType?: $NamedTypes.$ProductType | undefined | null;
   categories?: Array<string | undefined | null> | undefined | null;
   slug?: string | undefined | null;
   url?: string | undefined | null;
@@ -65143,6 +65149,12 @@ export interface WalletItem<
     | WalletItem.brandId$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.brandId<_$Scalars>>;
   /**
+   * Select the `productType` field on the `WalletItem` object. Its type is `ProductType` (a `Enum` kind of type).
+   */
+  productType?:
+    | WalletItem.productType$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.productType<_$Scalars>>;
+  /**
    * Select the `name` field on the `WalletItem` object. Its type is `String` (a `ScalarStandard` kind of type).
    */
   name?:
@@ -65650,6 +65662,32 @@ export namespace WalletItem {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | brandId$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type productType<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | productType$SelectionSet<_$Scalars>;
+
+  export interface productType$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `productType` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type productType$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | productType$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -67019,6 +67057,12 @@ export interface GiftCardProduct<
     | GiftCardProduct.description$Expanded<_$Scalars>
     | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.description<_$Scalars>>;
   /**
+   * Select the `productType` field on the `GiftCardProduct` object. Its type is `ProductType` (a `Enum` kind of type).
+   */
+  productType?:
+    | GiftCardProduct.productType$Expanded<_$Scalars>
+    | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<GiftCardProduct.productType<_$Scalars>>;
+  /**
    * Select the `categories` field on the `GiftCardProduct` object. Its type is `ID` (a `ScalarStandard` kind of type).
    */
   categories?:
@@ -67514,6 +67558,32 @@ export namespace GiftCardProduct {
   > = $$Utilities.Simplify<
     | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
     | description$SelectionSet<_$Scalars>
+  >;
+
+  // --------------------------------------------------------------------------------------------------
+
+  export type productType<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > =
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | productType$SelectionSet<_$Scalars>;
+
+  export interface productType$SelectionSet<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > extends $$Utilities.DocumentBuilder.Select.Bases.Base {}
+
+  // --- expanded ---
+
+  /**
+   * This is the "expanded" version of the `productType` type. It is identical except for the fact
+   * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+   * In some cases, this is a preferable DX, making the types easier to read for users.
+   */
+  export type productType$Expanded<
+    _$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty,
+  > = $$Utilities.Simplify<
+    | $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator
+    | productType$SelectionSet<_$Scalars>
   >;
 
   // --------------------------------------------------------------------------------------------------
@@ -91072,6 +91142,7 @@ export namespace $NamedTypes {
   export type $AdminTaskType = AdminTaskType;
   export type $AdminTaskResult = AdminTaskResult;
   export type $ChannelInvitationDirection = ChannelInvitationDirection;
+  export type $ProductType = ProductType;
   export type $BarcodeType = BarcodeType;
   export type $WalletItemSource = WalletItemSource;
   export type $ServiceName = ServiceName;

@@ -1,5 +1,5 @@
 import { BaseModel } from './BaseModel.js';
-import { BarcodeType } from '../enums.js';
+import { BarcodeType, ProductType } from '../enums.js';
 
 export class Product extends BaseModel {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
@@ -8,6 +8,7 @@ export class Product extends BaseModel {
   public brandImportId?: string | null;
   public name = '';
   public description?: string | null;
+  public productType: ProductType = ProductType.other;
   public categories?: string[] | null;
   public slug?: string | null;
   public url?: string | null;
@@ -36,6 +37,9 @@ export class Product extends BaseModel {
       }
       if (attributes.description !== undefined) {
         this.description = attributes.description;
+      }
+      if (attributes.productType !== undefined) {
+        this.productType = attributes.productType;
       }
       if (attributes.categories !== undefined) {
         this.categories = attributes.categories;

@@ -360,6 +360,10 @@ export declare enum UploadedAssetType {
     profileHeroImage = "profileHeroImage",
     unset = "unset"
 }
+export declare enum ProductType {
+    giftCard = "gift-card",
+    other = "other"
+}
 export declare enum WalletItemSource {
     user = "user",
     purchased = "purchased",

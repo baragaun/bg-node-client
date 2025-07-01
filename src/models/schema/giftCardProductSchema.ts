@@ -70,6 +70,10 @@ export const GiftCardProductSchema = {
       type: 'string',
       nullable: true,
     },
+    productType: {
+      type: 'string',
+      enum: ['giftCard', 'other'],
+    },
     categories: {
       type: 'array',
       items: {
