@@ -1,5 +1,5 @@
 import { BaseModel } from './BaseModel.js';
-import { BarcodeType, WalletItemSource } from '../enums.js';
+import { BarcodeType, ProductType, WalletItemSource } from '../enums.js';
 
 export class WalletItem extends BaseModel {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
@@ -7,6 +7,7 @@ export class WalletItem extends BaseModel {
   public productId = '';
   public purchaseOrderItemId = '';
   public brandId = '';
+  public productType: ProductType = ProductType.other;
   public name = '';
   public price = 0;
   public initialBalance = 0;
@@ -46,6 +47,9 @@ export class WalletItem extends BaseModel {
       }
       if (attributes.brandId !== undefined) {
         this.brandId = attributes.brandId;
+      }
+      if (attributes.productType !== undefined) {
+        this.productType = attributes.productType;
       }
       if (attributes.name !== undefined) {
         this.name = attributes.name;

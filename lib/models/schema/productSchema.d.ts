@@ -70,6 +70,10 @@ export declare const ProductSchema: {
             type: string;
             nullable: boolean;
         };
+        productType: {
+            type: string;
+            enum: string[];
+        };
         categories: {
             type: string;
             items: {

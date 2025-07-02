@@ -68,6 +68,10 @@ export const WalletItemSchema = {
       type: 'string',
       maxLength: 32,
     },
+    productType: {
+      type: 'string',
+      enum: ['giftCard', 'other'],
+    },
     name: {
       type: 'string',
     },

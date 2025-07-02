@@ -1728,6 +1728,7 @@ export type GiftCardProduct = {
   isGeneric?: Maybe<Scalars['Boolean']['output']>;
   metadata?: Maybe<BaseModelMetadata>;
   name: Scalars['String']['output'];
+  productType: ProductType;
   slug?: Maybe<Scalars['String']['output']>;
   termsEn?: Maybe<Scalars['String']['output']>;
   termsUrl?: Maybe<Scalars['String']['output']>;
@@ -1761,6 +1762,7 @@ export type GiftCardProductInput = {
   isGeneric?: InputMaybe<Scalars['Boolean']['input']>;
   metadata?: InputMaybe<BaseModelMetadataInput>;
   name?: InputMaybe<Scalars['String']['input']>;
+  productType?: InputMaybe<ProductType>;
   slug?: InputMaybe<Scalars['String']['input']>;
   termsEn?: InputMaybe<Scalars['String']['input']>;
   termsUrl?: InputMaybe<Scalars['String']['input']>;
@@ -4239,6 +4241,11 @@ export type ProductCategoryListFilter = {
   updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
 };
+
+export enum ProductType {
+  GiftCard = 'giftCard',
+  Other = 'other'
+}
 
 export type Pronoun = {
   __typename?: 'Pronoun';
@@ -6940,6 +6947,7 @@ export type WalletItem = {
   pin?: Maybe<Scalars['String']['output']>;
   price: Scalars['Int']['output'];
   productId: Scalars['ID']['output'];
+  productType: ProductType;
   purchaseOrderItemId: Scalars['ID']['output'];
   referenceUrl?: Maybe<Scalars['String']['output']>;
   sortIndex: Scalars['Int']['output'];
@@ -6978,6 +6986,7 @@ export type WalletItemInput = {
   pin?: InputMaybe<Scalars['String']['input']>;
   price?: InputMaybe<Scalars['Int']['input']>;
   productId?: InputMaybe<Scalars['ID']['input']>;
+  productType?: InputMaybe<ProductType>;
   purchaseOrderItemId?: InputMaybe<Scalars['ID']['input']>;
   referenceUrl?: InputMaybe<Scalars['String']['input']>;
   sortIndex?: InputMaybe<Scalars['Int']['input']>;

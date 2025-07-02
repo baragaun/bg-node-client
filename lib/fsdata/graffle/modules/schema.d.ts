@@ -18656,6 +18656,7 @@ export declare namespace Schema {
             productId: WalletItem.productId;
             purchaseOrderItemId: WalletItem.purchaseOrderItemId;
             brandId: WalletItem.brandId;
+            productType: WalletItem.productType;
             name: WalletItem.name;
             price: WalletItem.price;
             initialBalance: WalletItem.initialBalance;
@@ -18787,6 +18788,13 @@ export declare namespace Schema {
             arguments: {};
             inlineType: [1];
             namedType: $$NamedTypes.$$ID;
+        }
+        interface productType {
+            kind: 'OutputField';
+            name: 'productType';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ProductType;
         }
         interface name {
             kind: 'OutputField';
@@ -19162,6 +19170,7 @@ export declare namespace Schema {
             brandImportId: GiftCardProduct.brandImportId;
             name: GiftCardProduct.name;
             description: GiftCardProduct.description;
+            productType: GiftCardProduct.productType;
             categories: GiftCardProduct.categories;
             slug: GiftCardProduct.slug;
             url: GiftCardProduct.url;
@@ -19294,6 +19303,13 @@ export declare namespace Schema {
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
+        }
+        interface productType {
+            kind: 'OutputField';
+            name: 'productType';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ProductType;
         }
         interface categories {
             kind: 'OutputField';
@@ -30465,6 +30481,7 @@ export declare namespace Schema {
             productId: WalletItemInput.productId;
             purchaseOrderItemId: WalletItemInput.purchaseOrderItemId;
             brandId: WalletItemInput.brandId;
+            productType: WalletItemInput.productType;
             name: WalletItemInput.name;
             price: WalletItemInput.price;
             initialBalance: WalletItemInput.initialBalance;
@@ -30572,6 +30589,12 @@ export declare namespace Schema {
             name: 'brandId';
             inlineType: [0];
             namedType: $$NamedTypes.$$ID;
+        }
+        interface productType {
+            kind: 'InputField';
+            name: 'productType';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ProductType;
         }
         interface name {
             kind: 'InputField';
@@ -30943,6 +30966,7 @@ export declare namespace Schema {
             brandImportId: GiftCardProductInput.brandImportId;
             name: GiftCardProductInput.name;
             description: GiftCardProductInput.description;
+            productType: GiftCardProductInput.productType;
             categories: GiftCardProductInput.categories;
             slug: GiftCardProductInput.slug;
             url: GiftCardProductInput.url;
@@ -31050,6 +31074,12 @@ export declare namespace Schema {
             name: 'description';
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
+        }
+        interface productType {
+            kind: 'InputField';
+            name: 'productType';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ProductType;
         }
         interface categories {
             kind: 'InputField';
@@ -36721,6 +36751,12 @@ export declare namespace Schema {
         members: ['sent', 'received'];
         membersUnion: 'sent' | 'received';
     }
+    export interface ProductType {
+        kind: 'Enum';
+        name: 'ProductType';
+        members: ['giftCard', 'other'];
+        membersUnion: 'giftCard' | 'other';
+    }
     export interface BarcodeType {
         kind: 'Enum';
         name: 'BarcodeType';
@@ -37516,6 +37552,7 @@ export declare namespace Schema {
         type $$AdminTaskType = AdminTaskType;
         type $$AdminTaskResult = AdminTaskResult;
         type $$ChannelInvitationDirection = ChannelInvitationDirection;
+        type $$ProductType = ProductType;
         type $$BarcodeType = BarcodeType;
         type $$WalletItemSource = WalletItemSource;
         type $$ServiceName = ServiceName;
@@ -37590,6 +37627,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         AdminTaskType: Schema.AdminTaskType;
         AdminTaskResult: Schema.AdminTaskResult;
         ChannelInvitationDirection: Schema.ChannelInvitationDirection;
+        ProductType: Schema.ProductType;
         BarcodeType: Schema.BarcodeType;
         WalletItemSource: Schema.WalletItemSource;
         ServiceName: Schema.ServiceName;

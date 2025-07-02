@@ -425,6 +425,14 @@ export enum UploadedAssetType {
   unset = 'unset'
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// Marketplace & Wallet:
+
+export enum ProductType {
+  giftCard = 'gift-card',
+  other = 'other',
+}
+
 export enum WalletItemSource {
   user = 'user',
   purchased = 'purchased',

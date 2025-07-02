@@ -1,5 +1,6 @@
 import { GiftCardDenomination } from './GiftCardDenomination.js';
 import { Product } from './Product.js';
+import { ProductType } from '../enums.js';
 
 export class GiftCardProduct extends Product {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
@@ -43,6 +44,10 @@ export class GiftCardProduct extends Product {
         this.denominations = attributes.denominations;
       }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
+
+      if (!this.productType || this.productType === ProductType.other) {
+        this.productType = ProductType.giftCard;
+      }
     }
   }
 }
