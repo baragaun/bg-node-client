@@ -1,9 +1,10 @@
 import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
-import { CachePolicy } from '../../../enums.js';
+import { CachePolicy, ModelType } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import { MyUser } from '../../../models/MyUser.js';
+import { WalletItem } from '../../../models/WalletItem.js';
 import clientStore from '../../helpers/clientStore.js';
 import {
   createPurchaseOrderSpecHelper,
@@ -24,29 +25,13 @@ describe('operations.walletItem.updateWalletItem', () => {
     await deleteMyUserSpecHelper(client);
   });
 
-  test('should create and return the purchase order with the items', async () => {
-    const itemCount = chance.integer({ min: 3, max: 6 });
-    const { purchaseOrder, shoppingCartItems } = await createPurchaseOrderSpecHelper(
+  test('updates a wallet item', async () => {
+    await createPurchaseOrderSpecHelper(
       {},
-      itemCount,
+      chance.integer({ min: 3, max: 6 }),
       [],
       client,
     );
-    const walletItemCount = shoppingCartItems.reduce((sum, item) => sum + item.quantity, 0);
-
-    expect(purchaseOrder).toBeDefined();
-    expect(purchaseOrder.items).toBeDefined();
-    expect(purchaseOrder.items.length).toEqual(shoppingCartItems.length);
-
-    const networkResult = await client.operations.shoppingCart.findMyShoppingCart({
-      cachePolicy: CachePolicy.network,
-    });
-    const shoppingCart = networkResult.object;
-
-    expect(networkResult.error).toBeUndefined();
-    expect(networkResult.object).toBeDefined();
-    expect(shoppingCart.id).toBe(myUser.id);
-    expect(shoppingCart.items.length).toBe(0);
 
     const walletItemsResult = await client.operations.walletItem.findWalletItems(
       undefined,
@@ -59,7 +44,6 @@ describe('operations.walletItem.updateWalletItem', () => {
 
     expect(walletItemsResult.error).toBeUndefined();
     expect(walletItemsResult.objects).toBeDefined();
-    expect(items.length).toBe(walletItemCount);
 
     // Pick the first wallet item and update its 'archivedAt' property
     const itemToUpdate = items[0];
@@ -73,5 +57,17 @@ describe('operations.walletItem.updateWalletItem', () => {
     expect(updateResult.object).toBeDefined();
     expect(updateResult.object.id).toBe(itemToUpdate.id);
     expect(updateResult.object.archivedAt).toBe(newArchivedAt);
+
+    // Reloading the wallet items to verify the update:
+    const findResult = await client.operations.findById<WalletItem>(
+      itemToUpdate.id,
+      ModelType.WalletItem,
+      { cachePolicy: CachePolicy.network },
+    );
+
+    expect(findResult.error).toBeUndefined();
+    expect(findResult.object).toBeTruthy();
+    expect(findResult.object.id).toBe(itemToUpdate.id);
+    expect(findResult.object.archivedAt).toBe(newArchivedAt);
   });
 }, { timeout: 10000 });

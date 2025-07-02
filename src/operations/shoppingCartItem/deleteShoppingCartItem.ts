@@ -1,5 +1,5 @@
 // import db from '../../db/db.js';
-import { MutationType } from '../../enums.js';
+import { ModelType, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
@@ -47,7 +47,11 @@ const deleteShoppingCartItem = async (
       return { error: 'offline', operation: MutationType.delete };
     }
 
-    const result = await fsdata.shoppingCartItem.deleteShoppingCartItem(id, deletePhysically);
+    const result = await fsdata.delete(
+      id,
+      ModelType.ShoppingCartItem,
+      deletePhysically,
+    );
 
     if (!result.error || result.object) {
       // todo: remove from ShoppingCart.items

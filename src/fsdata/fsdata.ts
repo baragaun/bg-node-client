@@ -3,7 +3,6 @@ import createChannel from './operations/channel/createChannel.js';
 import findChannelById from './operations/channel/findChannelById.js';
 import findChannels from './operations/channel/findChannels.js';
 import findMyChannels from './operations/channel/findMyChannels.js';
-import updateChannel from './operations/channel/updateChannel.js';
 import acceptChannelInvitation from './operations/channelInvitation/acceptChannelInvitation.js';
 import createChannelInvitation from './operations/channelInvitation/createChannelInvitation.js';
 import declineChannelInvitation from './operations/channelInvitation/declineChannelInvitation.js';
@@ -12,7 +11,6 @@ import findChannelInvitationsForUser from './operations/channelInvitation/findCh
 import updateChannelInvitation from './operations/channelInvitation/updateChannelInvitation.js';
 import createChannelMessage from './operations/channelMessage/createChannelMessage.js';
 import findChannelMessages from './operations/channelMessage/findChannelMessages.js';
-import updateChannelMessage from './operations/channelMessage/updateChannelMessage.js';
 import findChannelParticipants from './operations/channelParticipant/findChannelParticipants.js';
 import create from './operations/create.js';
 import deleteFnc from './operations/delete.js';
@@ -46,14 +44,11 @@ import findPurchaseOrders from './operations/purchaseOrder/findPurchaseOrders.js
 import clearMyShoppingCart from './operations/shoppingCart/clearMyShoppingCart.js';
 import findMyShoppingCart from './operations/shoppingCart/findMyShoppingCart.js';
 import createShoppingCartItem from './operations/shoppingCartItem/createShoppingCartItem.js';
-import deleteShoppingCartItem from './operations/shoppingCartItem/deleteShoppingCartItem.js';
-import updateShoppingCartItem from './operations/shoppingCartItem/updateShoppingCartItem.js';
 import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
 import findUsers from './operations/user/findUsers.js';
 import findMyWallet from './operations/wallet/findMyWallet.js';
 import findWalletItems from './operations/walletItem/findWalletItems.js';
-import updateWalletItem from './operations/walletItem/updateWalletItem.js';
 
 const fsdata = {
   create,
@@ -67,7 +62,6 @@ const fsdata = {
     findChannelById,
     findChannels,
     findMyChannels,
-    updateChannel,
   },
 
   channelInvitation: {
@@ -82,7 +76,6 @@ const fsdata = {
   channelMessage: {
     createChannelMessage,
     findChannelMessages,
-    updateChannelMessage,
   },
 
   channelParticipant: {
@@ -136,8 +129,6 @@ const fsdata = {
 
   shoppingCartItem: {
     createShoppingCartItem,
-    deleteShoppingCartItem,
-    updateShoppingCartItem,
   },
 
   user: {
@@ -146,7 +137,7 @@ const fsdata = {
   },
 
   brand: {
-    findBrands: findBrands,
+    findBrands,
   },
 
   wallet: {
@@ -155,7 +146,6 @@ const fsdata = {
 
   walletItem: {
     findWalletItems,
-    updateWalletItem,
   },
 };
 
