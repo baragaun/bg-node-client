@@ -75,6 +75,7 @@ import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
 import findMyWallet from './wallet/findMyWallet.js';
 import findWalletItems from './walletItem/findWalletItems.js';
+import updateWalletItem from './walletItem/updateWalletItem.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -197,6 +198,7 @@ const operations: Operations = {
 
   walletItem: {
     findWalletItems,
+    updateWalletItem,
   },
 };
 

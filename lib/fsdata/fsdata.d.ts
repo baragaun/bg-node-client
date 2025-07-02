@@ -9,7 +9,6 @@ declare const fsdata: {
         findChannelById: (channelId: string) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
         findChannels: (filter: import("../index.js").ChannelListFilter | null | undefined, match: Partial<import("../index.js").Channel> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
         findMyChannels: (participantLimit: number | undefined, addLatestMessage: boolean | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelListItem>>;
-        updateChannel: (changes: Partial<import("../index.js").Channel>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").Channel>) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
     };
     channelInvitation: {
         acceptChannelInvitation: (channelInvitationId: string, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelInvitation>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;
@@ -22,7 +21,6 @@ declare const fsdata: {
     channelMessage: {
         createChannelMessage: (props: Partial<import("../index.js").ChannelMessage>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
         findChannelMessages: (filter: import("../index.js").ChannelMessageListFilter | undefined, match: Partial<import("../index.js").ChannelMessage> | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
-        updateChannelMessage: (changes: Partial<import("../index.js").ChannelMessage>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelMessage>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelMessage>>;
     };
     channelParticipant: {
         findChannelParticipants: (filter: import("./gql/graphql.js").ChannelParticipantListFilter | undefined, match: import("./gql/graphql.js").ChannelParticipantInput | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelParticipant>>;
@@ -68,8 +66,6 @@ declare const fsdata: {
     };
     shoppingCartItem: {
         createShoppingCartItem: (props: Partial<import("../index.js").ShoppingCartItem>) => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCartItem>>;
-        deleteShoppingCartItem: (id: string, deletePhysically: boolean) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
-        updateShoppingCartItem: (changes: Partial<import("../index.js").ShoppingCartItem>, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ShoppingCartItem>) => Promise<import("../index.js").QueryResult<import("../index.js").ShoppingCartItem>>;
     };
     user: {
         findUserById: (userId: string) => Promise<import("../index.js").QueryResult<import("../index.js").User>>;

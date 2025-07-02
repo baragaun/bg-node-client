@@ -1,4 +1,3 @@
-import type { Schema as $ } from 'graffle/utilities-for-generated';
 import type * as $$Utilities from 'graffle/utilities-for-generated';
 import * as $$Data from './data.js';
 import * as $$Scalar from './scalar.js';
@@ -37285,11 +37284,11 @@ export declare namespace Schema {
     }
     export type DateTimeISO = $$Scalar.DateTimeISO;
     export type Long = $$Scalar.Long;
-    export type Int = $.StandardTypes.Int;
-    export type ID = $.StandardTypes.ID;
-    export type String = $.StandardTypes.String;
-    export type Boolean = $.StandardTypes.Boolean;
-    export type Float = $.StandardTypes.Float;
+    export type Int = $$Utilities.Schema.StandardTypes.Int;
+    export type ID = $$Utilities.Schema.StandardTypes.ID;
+    export type String = $$Utilities.Schema.StandardTypes.String;
+    export type Boolean = $$Utilities.Schema.StandardTypes.Boolean;
+    export type Float = $$Utilities.Schema.StandardTypes.Float;
     /**
      * [1] These definitions serve to allow field selection interfaces to extend their respective object type without
      *     name clashing between the field name and the object name.

@@ -815,7 +815,8 @@ const walletItem = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
-
+  code: true,
+  pin: true,
   walletId: true,
   productId: true,
   brandId: true,
