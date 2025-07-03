@@ -1,3 +1,4 @@
+import type { Schema as $ } from 'graffle/utilities-for-generated';
 import type * as $$Utilities from 'graffle/utilities-for-generated';
 import * as $$Data from './data.js';
 import * as $$Scalar from './scalar.js';
@@ -76,6 +77,8 @@ export declare namespace Schema {
             findMyShoppingCart: Query.findMyShoppingCart;
             findWalletItemById: Query.findWalletItemById;
             findWalletItems: Query.findWalletItems;
+            findWalletItemTransferById: Query.findWalletItemTransferById;
+            findWalletItemTransfers: Query.findWalletItemTransfers;
             findWallets: Query.findWallets;
             findMyWallet: Query.findMyWallet;
             findWalletServiceRecord: Query.findWalletServiceRecord;
@@ -1427,6 +1430,52 @@ export declare namespace Schema {
             inlineType: [1, [1]];
             namedType: $$NamedTypes.$$WalletItem;
         }
+        interface findWalletItemTransferById {
+            kind: 'OutputField';
+            name: 'findWalletItemTransferById';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [0];
+            namedType: $$NamedTypes.$$WalletItemTransfer;
+        }
+        interface findWalletItemTransfers {
+            kind: 'OutputField';
+            name: 'findWalletItemTransfers';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$FindObjectsOptions;
+                };
+                match: {
+                    kind: 'InputField';
+                    name: 'match';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$WalletItemTransferInput;
+                };
+                filter: {
+                    kind: 'InputField';
+                    name: 'filter';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$WalletItemTransferListFilter;
+                };
+            };
+            inlineType: [1, [1]];
+            namedType: $$NamedTypes.$$WalletItemTransfer;
+        }
         interface findWallets {
             kind: 'OutputField';
             name: 'findWallets';
@@ -2033,6 +2082,9 @@ export declare namespace Schema {
             createWalletItem: Mutation.createWalletItem;
             deleteWalletItem: Mutation.deleteWalletItem;
             updateWalletItem: Mutation.updateWalletItem;
+            createWalletItemTransfer: Mutation.createWalletItemTransfer;
+            deleteWalletItemTransfer: Mutation.deleteWalletItemTransfer;
+            updateWalletItemTransfer: Mutation.updateWalletItemTransfer;
             createUserSearch: Mutation.createUserSearch;
             deleteUserSearch: Mutation.deleteUserSearch;
             updateUserSearch: Mutation.updateUserSearch;
@@ -3474,6 +3526,66 @@ export declare namespace Schema {
                     name: 'input';
                     inlineType: [1];
                     namedType: $$NamedTypes.$$WalletItemInput;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface createWalletItemTransfer {
+            kind: 'OutputField';
+            name: 'createWalletItemTransfer';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$UpdateObjectOptions;
+                };
+                input: {
+                    kind: 'InputField';
+                    name: 'input';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$WalletItemTransferInput;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$WalletItemTransfer;
+        }
+        interface deleteWalletItemTransfer {
+            kind: 'OutputField';
+            name: 'deleteWalletItemTransfer';
+            arguments: {
+                deletePhysically: {
+                    kind: 'InputField';
+                    name: 'deletePhysically';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface updateWalletItemTransfer {
+            kind: 'OutputField';
+            name: 'updateWalletItemTransfer';
+            arguments: {
+                options: {
+                    kind: 'InputField';
+                    name: 'options';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$UpdateObjectOptions;
+                };
+                input: {
+                    kind: 'InputField';
+                    name: 'input';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$WalletItemTransferInput;
                 };
             };
             inlineType: [1];
@@ -18677,6 +18789,7 @@ export declare namespace Schema {
             issuedAt: WalletItem.issuedAt;
             expiresAt: WalletItem.expiresAt;
             balanceUpdatedAt: WalletItem.balanceUpdatedAt;
+            transferredAt: WalletItem.transferredAt;
             archivedAt: WalletItem.archivedAt;
         };
     }
@@ -18932,6 +19045,184 @@ export declare namespace Schema {
         interface balanceUpdatedAt {
             kind: 'OutputField';
             name: 'balanceUpdatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface transferredAt {
+            kind: 'OutputField';
+            name: 'transferredAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface archivedAt {
+            kind: 'OutputField';
+            name: 'archivedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface WalletItemTransfer {
+        kind: 'Object';
+        name: 'WalletItemTransfer';
+        fields: {
+            __typename: WalletItemTransfer.__typename;
+            id: WalletItemTransfer.id;
+            adminNotes: WalletItemTransfer.adminNotes;
+            events: WalletItemTransfer.events;
+            metadata: WalletItemTransfer.metadata;
+            createdAt: WalletItemTransfer.createdAt;
+            createdBy: WalletItemTransfer.createdBy;
+            updatedAt: WalletItemTransfer.updatedAt;
+            updatedBy: WalletItemTransfer.updatedBy;
+            deletedAt: WalletItemTransfer.deletedAt;
+            deletedBy: WalletItemTransfer.deletedBy;
+            walletItemId: WalletItemTransfer.walletItemId;
+            notificationId: WalletItemTransfer.notificationId;
+            recipientEmail: WalletItemTransfer.recipientEmail;
+            recipientFullName: WalletItemTransfer.recipientFullName;
+            subjectText: WalletItemTransfer.subjectText;
+            messageText: WalletItemTransfer.messageText;
+            sentAt: WalletItemTransfer.sentAt;
+            canceledAt: WalletItemTransfer.canceledAt;
+            archivedAt: WalletItemTransfer.archivedAt;
+        };
+    }
+    export namespace WalletItemTransfer {
+        interface __typename {
+            kind: 'OutputField';
+            name: '__typename';
+            arguments: {};
+            inlineType: [1];
+            namedType: {
+                kind: '__typename';
+                value: 'WalletItemTransfer';
+            };
+        }
+        interface id {
+            kind: 'OutputField';
+            name: 'id';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'OutputField';
+            name: 'adminNotes';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'OutputField';
+            name: 'events';
+            arguments: {};
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEvent;
+        }
+        interface metadata {
+            kind: 'OutputField';
+            name: 'metadata';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadata;
+        }
+        interface createdAt {
+            kind: 'OutputField';
+            name: 'createdAt';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'OutputField';
+            name: 'createdBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'OutputField';
+            name: 'updatedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'OutputField';
+            name: 'updatedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'OutputField';
+            name: 'deletedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'OutputField';
+            name: 'deletedBy';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface walletItemId {
+            kind: 'OutputField';
+            name: 'walletItemId';
+            arguments: {};
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface notificationId {
+            kind: 'OutputField';
+            name: 'notificationId';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface recipientEmail {
+            kind: 'OutputField';
+            name: 'recipientEmail';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface recipientFullName {
+            kind: 'OutputField';
+            name: 'recipientFullName';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface subjectText {
+            kind: 'OutputField';
+            name: 'subjectText';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface messageText {
+            kind: 'OutputField';
+            name: 'messageText';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface sentAt {
+            kind: 'OutputField';
+            name: 'sentAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface canceledAt {
+            kind: 'OutputField';
+            name: 'canceledAt';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
@@ -30502,6 +30793,7 @@ export declare namespace Schema {
             issuedAt: WalletItemInput.issuedAt;
             expiresAt: WalletItemInput.expiresAt;
             balanceUpdatedAt: WalletItemInput.balanceUpdatedAt;
+            transferredAt: WalletItemInput.transferredAt;
             archivedAt: WalletItemInput.archivedAt;
         };
     }
@@ -30716,6 +31008,12 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
+        interface transferredAt {
+            kind: 'InputField';
+            name: 'transferredAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
         interface archivedAt {
             kind: 'InputField';
             name: 'archivedAt';
@@ -30740,6 +31038,220 @@ export declare namespace Schema {
         };
     }
     export namespace WalletItemListFilter {
+        interface ids {
+            kind: 'InputField';
+            name: 'ids';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface excludeIds {
+            kind: 'InputField';
+            name: 'excludeIds';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface searchText {
+            kind: 'InputField';
+            name: 'searchText';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface caseSensitive {
+            kind: 'InputField';
+            name: 'caseSensitive';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$Boolean;
+        }
+        interface textSearchFields {
+            kind: 'InputField';
+            name: 'textSearchFields';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface createdAtFrom {
+            kind: 'InputField';
+            name: 'createdAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdAtUntil {
+            kind: 'InputField';
+            name: 'createdAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtFrom {
+            kind: 'InputField';
+            name: 'updatedAtFrom';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedAtUntil {
+            kind: 'InputField';
+            name: 'updatedAtUntil';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface WalletItemTransferInput {
+        kind: 'InputObject';
+        name: 'WalletItemTransferInput';
+        isAllFieldsNullable: true;
+        fields: {
+            id: WalletItemTransferInput.id;
+            adminNotes: WalletItemTransferInput.adminNotes;
+            events: WalletItemTransferInput.events;
+            metadata: WalletItemTransferInput.metadata;
+            createdAt: WalletItemTransferInput.createdAt;
+            createdBy: WalletItemTransferInput.createdBy;
+            updatedAt: WalletItemTransferInput.updatedAt;
+            updatedBy: WalletItemTransferInput.updatedBy;
+            deletedAt: WalletItemTransferInput.deletedAt;
+            deletedBy: WalletItemTransferInput.deletedBy;
+            walletItemId: WalletItemTransferInput.walletItemId;
+            notificationId: WalletItemTransferInput.notificationId;
+            recipientEmail: WalletItemTransferInput.recipientEmail;
+            recipientFullName: WalletItemTransferInput.recipientFullName;
+            subjectText: WalletItemTransferInput.subjectText;
+            messageText: WalletItemTransferInput.messageText;
+            sentAt: WalletItemTransferInput.sentAt;
+            canceledAt: WalletItemTransferInput.canceledAt;
+            archivedAt: WalletItemTransferInput.archivedAt;
+        };
+    }
+    export namespace WalletItemTransferInput {
+        interface id {
+            kind: 'InputField';
+            name: 'id';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface adminNotes {
+            kind: 'InputField';
+            name: 'adminNotes';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface events {
+            kind: 'InputField';
+            name: 'events';
+            inlineType: [0, [1]];
+            namedType: $$NamedTypes.$$ModelEventInput;
+        }
+        interface metadata {
+            kind: 'InputField';
+            name: 'metadata';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$BaseModelMetadataInput;
+        }
+        interface createdAt {
+            kind: 'InputField';
+            name: 'createdAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface createdBy {
+            kind: 'InputField';
+            name: 'createdBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface updatedAt {
+            kind: 'InputField';
+            name: 'updatedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface updatedBy {
+            kind: 'InputField';
+            name: 'updatedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface deletedAt {
+            kind: 'InputField';
+            name: 'deletedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface deletedBy {
+            kind: 'InputField';
+            name: 'deletedBy';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface walletItemId {
+            kind: 'InputField';
+            name: 'walletItemId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface notificationId {
+            kind: 'InputField';
+            name: 'notificationId';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface recipientEmail {
+            kind: 'InputField';
+            name: 'recipientEmail';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface recipientFullName {
+            kind: 'InputField';
+            name: 'recipientFullName';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface subjectText {
+            kind: 'InputField';
+            name: 'subjectText';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface messageText {
+            kind: 'InputField';
+            name: 'messageText';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface sentAt {
+            kind: 'InputField';
+            name: 'sentAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface canceledAt {
+            kind: 'InputField';
+            name: 'canceledAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        interface archivedAt {
+            kind: 'InputField';
+            name: 'archivedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+    }
+    export interface WalletItemTransferListFilter {
+        kind: 'InputObject';
+        name: 'WalletItemTransferListFilter';
+        isAllFieldsNullable: true;
+        fields: {
+            ids: WalletItemTransferListFilter.ids;
+            excludeIds: WalletItemTransferListFilter.excludeIds;
+            searchText: WalletItemTransferListFilter.searchText;
+            caseSensitive: WalletItemTransferListFilter.caseSensitive;
+            textSearchFields: WalletItemTransferListFilter.textSearchFields;
+            createdAtFrom: WalletItemTransferListFilter.createdAtFrom;
+            createdAtUntil: WalletItemTransferListFilter.createdAtUntil;
+            updatedAtFrom: WalletItemTransferListFilter.updatedAtFrom;
+            updatedAtUntil: WalletItemTransferListFilter.updatedAtUntil;
+        };
+    }
+    export namespace WalletItemTransferListFilter {
         interface ids {
             kind: 'InputField';
             name: 'ids';
@@ -36578,10 +37090,11 @@ export declare namespace Schema {
             'ShoppingCartItem',
             'Wallet',
             'WalletItem',
+            'WalletItemTransfer',
             'WalletServiceRecord',
             'unset'
         ];
-        membersUnion: 'AcademicExperience' | 'BusinessExperience' | 'Company' | 'DataDeletion' | 'MentorBoard' | 'MentoringSession' | 'UserInbox' | 'UserMetadata' | 'UserPreferences' | 'AdminTask' | 'AnalyticsServiceRecord' | 'AnalyticsSynchronization' | 'UploadedAsset' | 'Channel' | 'ChannelInbox' | 'ChannelInvitation' | 'ChannelMessage' | 'ChannelParticipant' | 'ContentStatus' | 'Option' | 'ContentTag' | 'AppliedGroupRule' | 'Group' | 'GroupCms' | 'GroupMembership' | 'GroupRule' | 'GroupRuleConfig' | 'MastercardBank' | 'SupportChannelConfig' | 'GiftCardProduct' | 'MarketplaceServiceRecord' | 'Product' | 'ProductCategory' | 'Brand' | 'Match' | 'MatchProfile' | 'MatchingEngine' | 'UserSearch' | 'Notification' | 'NotificationTemplate' | 'Mm2Integration' | 'Mm2Synchronization' | 'Mm2SynchronizationResultItem' | 'ModerationConcern' | 'NatsMessage' | 'ApiAuthInfo' | 'Contact' | 'MultiStepAction' | 'MyUser' | 'ServiceRequest' | 'User' | 'UserDevice' | 'ServiceRecord' | 'TrackingEvent' | 'UserTracking' | 'Training' | 'TrainingContentPage' | 'TrainingSession' | 'PurchaseOrder' | 'PurchaseOrderItem' | 'ShoppingCart' | 'ShoppingCartItem' | 'Wallet' | 'WalletItem' | 'WalletServiceRecord' | 'unset';
+        membersUnion: 'AcademicExperience' | 'BusinessExperience' | 'Company' | 'DataDeletion' | 'MentorBoard' | 'MentoringSession' | 'UserInbox' | 'UserMetadata' | 'UserPreferences' | 'AdminTask' | 'AnalyticsServiceRecord' | 'AnalyticsSynchronization' | 'UploadedAsset' | 'Channel' | 'ChannelInbox' | 'ChannelInvitation' | 'ChannelMessage' | 'ChannelParticipant' | 'ContentStatus' | 'Option' | 'ContentTag' | 'AppliedGroupRule' | 'Group' | 'GroupCms' | 'GroupMembership' | 'GroupRule' | 'GroupRuleConfig' | 'MastercardBank' | 'SupportChannelConfig' | 'GiftCardProduct' | 'MarketplaceServiceRecord' | 'Product' | 'ProductCategory' | 'Brand' | 'Match' | 'MatchProfile' | 'MatchingEngine' | 'UserSearch' | 'Notification' | 'NotificationTemplate' | 'Mm2Integration' | 'Mm2Synchronization' | 'Mm2SynchronizationResultItem' | 'ModerationConcern' | 'NatsMessage' | 'ApiAuthInfo' | 'Contact' | 'MultiStepAction' | 'MyUser' | 'ServiceRequest' | 'User' | 'UserDevice' | 'ServiceRecord' | 'TrackingEvent' | 'UserTracking' | 'Training' | 'TrainingContentPage' | 'TrainingSession' | 'PurchaseOrder' | 'PurchaseOrderItem' | 'ShoppingCart' | 'ShoppingCartItem' | 'Wallet' | 'WalletItem' | 'WalletItemTransfer' | 'WalletServiceRecord' | 'unset';
     }
     export interface UploadedAssetType {
         kind: 'Enum';
@@ -37037,10 +37550,13 @@ export declare namespace Schema {
             'graphQlMutationCreatePurchaseOrderField',
             'graphQlMutationCreateShoppingCartItem',
             'graphQlMutationCreateWalletItem',
+            'graphQlMutationCreateWalletItemTransfer',
             'graphQlMutationDeleteShoppingCartItem',
             'graphQlMutationDeleteWalletItem',
+            'graphQlMutationDeleteWalletItemTransfer',
             'graphQlMutationUpdateShoppingCartItem',
             'graphQlMutationUpdateWalletItem',
+            'graphQlMutationUpdateWalletItemTransfer',
             'graphQlQueryFindMyShoppingCart',
             'graphQlQueryFindMyWallet',
             'graphQlQueryFindPurchaseOrderItems',
@@ -37049,10 +37565,12 @@ export declare namespace Schema {
             'graphQlQueryFindShoppingCarts',
             'graphQlQueryFindWalletItemById',
             'graphQlQueryFindWalletItems',
+            'graphQlQueryFindWalletItemTransferById',
+            'graphQlQueryFindWalletItemTransfers',
             'graphQlQueryFindWallets',
             'graphQlQueryFindWalletServiceRecord'
         ];
-        membersUnion: 'graphQlMutationCreateAcademicExperience' | 'graphQlMutationDeleteAcademicExperience' | 'graphQlMutationUpdateAcademicExperience' | 'graphQlMutationCreateBusinessExperience' | 'graphQlMutationDeleteBusinessExperience' | 'graphQlMutationUpdateBusinessExperience' | 'graphQlMutationCreateCompany' | 'graphQlMutationDeleteCompany' | 'graphQlMutationUpdateCompany' | 'graphQlQueryFindAndUpdateAllMm2Users' | 'graphQlQueryUserInboxUser' | 'graphQlMutationCreateAdminTask' | 'graphQlMutationFindAdminTaskById' | 'graphQlMutationDeleteAdminTask' | 'graphQlMutationUpdateAdminTask' | 'graphQlQueryFindAdminTask' | 'graphQlQueryAdminTaskDefinitions' | 'graphQlMutationClearAllAnalyticsSyncInfo' | 'graphQlMutationCreateAnalyticsSynchronization' | 'graphQlMutationDeleteAnalyticsSynchronization' | 'graphQlMutationPauseAnalyticsSynchronization' | 'graphQlMutationRunAnalyticsSynchronization' | 'graphQlQueryFindAnalyticsServiceRecord' | 'graphQlQueryFindAnalyticsSynchronizationById' | 'graphQlMutationCreateUploadedAsset' | 'graphQlMutationDeleteUploadedAsset' | 'graphQlMutationFindUploadedAssetById' | 'graphQlMutationFindUploadedAssetForUser' | 'graphQlMutationInitAssetUpload' | 'graphQlMutationUpdateUploadedAsset' | 'graphQlQueryFindUploadedAssetById' | 'graphQlQueryFindUploadedAssets' | 'graphQlQueryFindUploadedAssetsForUser' | 'graphQlMutationAddChannelMessageEvent' | 'graphQlMutationArchiveChannelForUserByMe' | 'graphQlMutationCreateChannel' | 'graphQlMutationCreateChannelInvitation' | 'graphQlMutationCreateChannelMessage' | 'graphQlMutationCreateChannelParticipant' | 'graphQlMutationDeleteChannel' | 'graphQlMutationDeleteChannelInvitation' | 'graphQlMutationDeleteChannelMessage' | 'graphQlMutationDeleteChannelParticipant' | 'graphQlMutationDeleteGroup' | 'graphQlMutationDeleteGroupMembership' | 'graphQlMutationMarkChannelMessagesAsSeenByMe' | 'graphQlMutationUpdateChannel' | 'graphQlMutationUpdateChannelInvitation' | 'graphQlMutationUpdateChannelMessage' | 'graphQlMutationUpdateChannelParticipant' | 'graphQlQueryChannelInvitations' | 'graphQlQueryChannelMessageChannel' | 'graphQlQueryChannelParticipants' | 'graphQlQueryFindChannelById' | 'graphQlQueryFindChannelInvitationById' | 'graphQlQueryFindChannelInvitationsBetweenUsers' | 'graphQlQueryFindChannelInvitationsForUser' | 'graphQlQueryFindChannelMessageById' | 'graphQlQueryFindChannelMessages' | 'graphQlQueryFindChannelParticipantById' | 'graphQlQueryFindChannelParticipants' | 'graphQlQueryFindChannels' | 'graphQlQueryFindChannelsForUser' | 'graphQlQueryFindMyChannels' | 'graphQlQueryFindPendingChannelInvitationsForUser' | 'graphQlQueryMyContacts' | 'graphQlQueryMyInbox' | 'graphQlQueryUserChannels' | 'graphQlQueryUserCompanies' | 'graphQlQueryUserGroupMembers' | 'graphQlQueryUserGroups' | 'graphQlQueryFindCountries' | 'graphQlQueryFindExpertises' | 'graphQlQueryFindIndustries' | 'graphQlQueryFindOptions' | 'unset' | 'graphQlQueryContentTag' | 'graphQlMutationCreateContentTag' | 'graphQlMutationDeleteContentTag' | 'graphQlMutationUpdateContentTag' | 'graphQlMutationRunDataGenerator' | 'graphQlQueryNotificationTemplate' | 'graphQlQueryAvailableUserHandle' | 'graphQlQueryUser' | 'graphQlMutationAddUserToGroup' | 'graphQlMutationCreateGroup' | 'graphQlMutationCreateGroupMembership' | 'graphQlMutationCreateSupportChannelConfig' | 'graphQlMutationDeleteGroupCms' | 'graphQlMutationDeleteSupportChannelConfig' | 'graphQlMutationRemoveUserFromAllGroups' | 'graphQlMutationRemoveUserFromGroup' | 'graphQlMutationUpdateGroup' | 'graphQlMutationUpdateGroupMembership' | 'graphQlMutationUpdateSupportChannelConfig' | 'graphQlQueryFindGroupById' | 'graphQlQueryFindGroupByIdent' | 'graphQlQueryFindGroupCmsByGroupId' | 'graphQlQueryFindGroupCmsByGroupIdent' | 'graphQlQueryFindGroupCmsById' | 'graphQlQueryFindGroupMembershipByIdField' | 'graphQlQueryFindGroupMemberships' | 'graphQlQueryFindGroupsField' | 'graphQlQueryMyGroupMemberships' | 'graphQlQueryFindGiftCardProducts' | 'graphQlQueryFindMarketplaceServiceRecord' | 'graphQlQueryFindProductCategories' | 'graphQlQueryFindBrands' | 'graphQlMutationCreateUserSearch' | 'graphQlMutationDeleteUserSearch' | 'graphQlMutationUpdateUserSearch' | 'graphQlQueryFindUserSearchById' | 'graphQlQueryFindUserSearchResults' | 'graphQlQueryUserSearchFoundUsers' | 'graphQlMutationCreateNotification' | 'graphQlMutationCreateNotificationTemplate' | 'graphQlMutationDeleteNotification' | 'graphQlMutationDeleteNotificationTemplate' | 'graphQlMutationMarkInAppMessageReceived' | 'graphQlMutationSendMultiStepActionNotification' | 'graphQlMutationUpdateNotification' | 'graphQlMutationUpdateNotificationTemplate' | 'graphQlMutationCreateNatsMessage' | 'graphQlMutationClearAllSyncInfo' | 'graphQlMutationCreateMm2Synchronization' | 'graphQlMutationDeleteAllMm2DataInMm3' | 'graphQlMutationDeleteMm2Synchronization' | 'graphQlMutationRunMm2Synchronization' | 'graphQlQueryFindMm2SynchronizationById' | 'graphQlQueryGetMm2Integration' | 'graphQlMutationNlpLabelMessage' | 'graphQlMutationUpdateNlpConversation' | 'graphQlMutationUpdateNlpMessage' | 'graphQlQueryFindNlpConversation' | 'graphQlMutationAddFeatureToUser' | 'graphQlMutationBlockUser' | 'graphQlMutationCreateContact' | 'graphQlMutationCreateMultiStepAction' | 'graphQlMutationCreateUserDevice' | 'graphQlMutationDeleteMyUser' | 'graphQlMutationDeleteUser' | 'graphQlMutationEndMySession' | 'graphQlMutationRemoveFeatureFromUser' | 'graphQlMutationReportUser' | 'graphQlMutationSignInUser' | 'graphQlMutationSignMeOut' | 'graphQlMutationSignUpOauthUser' | 'graphQlMutationSignUpUser' | 'graphQlMutationStartMySession' | 'graphQlMutationUnblockUser' | 'graphQlMutationUpdateContact' | 'graphQlMutationUpdateMyUser' | 'graphQlMutationUpdateUser' | 'graphQlMutationUpdateUserDevice' | 'graphQlMutationUpsertBackgroundTask' | 'graphQlMutationVerifyMultiStepActionToken' | 'graphQlQueryBackgroundTask' | 'graphQlQueryContacts' | 'graphQlQueryContactTypes' | 'graphQlQueryFindAvailableUserHandle' | 'graphQlQueryFindContact' | 'graphQlQueryFindContactById' | 'graphQlQueryFindContacts' | 'graphQlQueryFindMyBlockedUsers' | 'graphQlQueryFindMyUser' | 'graphQlQueryFindMyUserDevices' | 'graphQlQueryFindUserById' | 'graphQlQueryFindUserByIdent' | 'graphQlQueryFindUserDeviceById' | 'graphQlQueryFindUserDevices' | 'graphQlQueryFindUsers' | 'graphQlQueryGetMultiStepActionProgress' | 'graphQlQueryLatestUserDevice' | 'graphQlQueryUnreadInAppMessages' | 'graphQlQueryVerifyMyPassword' | 'graphQlMutationCreateUserTracking' | 'graphQlMutationUpdateUserTracking' | 'graphQlQueryFindTrainingById' | 'graphQlQueryFindTrainingsForMe' | 'graphQlQueryFindTrainingsForUser' | 'graphQlQueryFindTrainingSessionById' | 'graphQlQueryFindTrainingSessionsByTrainingId' | 'graphQlQueryFindTrainingSessionsForMe' | 'graphQlMutationClearMyShoppingCart' | 'graphQlMutationClearShoppingCart' | 'graphQlMutationCreatePurchaseOrderField' | 'graphQlMutationCreateShoppingCartItem' | 'graphQlMutationCreateWalletItem' | 'graphQlMutationDeleteShoppingCartItem' | 'graphQlMutationDeleteWalletItem' | 'graphQlMutationUpdateShoppingCartItem' | 'graphQlMutationUpdateWalletItem' | 'graphQlQueryFindMyShoppingCart' | 'graphQlQueryFindMyWallet' | 'graphQlQueryFindPurchaseOrderItems' | 'graphQlQueryFindPurchaseOrders' | 'graphQlQueryFindShoppingCartItems' | 'graphQlQueryFindShoppingCarts' | 'graphQlQueryFindWalletItemById' | 'graphQlQueryFindWalletItems' | 'graphQlQueryFindWallets' | 'graphQlQueryFindWalletServiceRecord';
+        membersUnion: 'graphQlMutationCreateAcademicExperience' | 'graphQlMutationDeleteAcademicExperience' | 'graphQlMutationUpdateAcademicExperience' | 'graphQlMutationCreateBusinessExperience' | 'graphQlMutationDeleteBusinessExperience' | 'graphQlMutationUpdateBusinessExperience' | 'graphQlMutationCreateCompany' | 'graphQlMutationDeleteCompany' | 'graphQlMutationUpdateCompany' | 'graphQlQueryFindAndUpdateAllMm2Users' | 'graphQlQueryUserInboxUser' | 'graphQlMutationCreateAdminTask' | 'graphQlMutationFindAdminTaskById' | 'graphQlMutationDeleteAdminTask' | 'graphQlMutationUpdateAdminTask' | 'graphQlQueryFindAdminTask' | 'graphQlQueryAdminTaskDefinitions' | 'graphQlMutationClearAllAnalyticsSyncInfo' | 'graphQlMutationCreateAnalyticsSynchronization' | 'graphQlMutationDeleteAnalyticsSynchronization' | 'graphQlMutationPauseAnalyticsSynchronization' | 'graphQlMutationRunAnalyticsSynchronization' | 'graphQlQueryFindAnalyticsServiceRecord' | 'graphQlQueryFindAnalyticsSynchronizationById' | 'graphQlMutationCreateUploadedAsset' | 'graphQlMutationDeleteUploadedAsset' | 'graphQlMutationFindUploadedAssetById' | 'graphQlMutationFindUploadedAssetForUser' | 'graphQlMutationInitAssetUpload' | 'graphQlMutationUpdateUploadedAsset' | 'graphQlQueryFindUploadedAssetById' | 'graphQlQueryFindUploadedAssets' | 'graphQlQueryFindUploadedAssetsForUser' | 'graphQlMutationAddChannelMessageEvent' | 'graphQlMutationArchiveChannelForUserByMe' | 'graphQlMutationCreateChannel' | 'graphQlMutationCreateChannelInvitation' | 'graphQlMutationCreateChannelMessage' | 'graphQlMutationCreateChannelParticipant' | 'graphQlMutationDeleteChannel' | 'graphQlMutationDeleteChannelInvitation' | 'graphQlMutationDeleteChannelMessage' | 'graphQlMutationDeleteChannelParticipant' | 'graphQlMutationDeleteGroup' | 'graphQlMutationDeleteGroupMembership' | 'graphQlMutationMarkChannelMessagesAsSeenByMe' | 'graphQlMutationUpdateChannel' | 'graphQlMutationUpdateChannelInvitation' | 'graphQlMutationUpdateChannelMessage' | 'graphQlMutationUpdateChannelParticipant' | 'graphQlQueryChannelInvitations' | 'graphQlQueryChannelMessageChannel' | 'graphQlQueryChannelParticipants' | 'graphQlQueryFindChannelById' | 'graphQlQueryFindChannelInvitationById' | 'graphQlQueryFindChannelInvitationsBetweenUsers' | 'graphQlQueryFindChannelInvitationsForUser' | 'graphQlQueryFindChannelMessageById' | 'graphQlQueryFindChannelMessages' | 'graphQlQueryFindChannelParticipantById' | 'graphQlQueryFindChannelParticipants' | 'graphQlQueryFindChannels' | 'graphQlQueryFindChannelsForUser' | 'graphQlQueryFindMyChannels' | 'graphQlQueryFindPendingChannelInvitationsForUser' | 'graphQlQueryMyContacts' | 'graphQlQueryMyInbox' | 'graphQlQueryUserChannels' | 'graphQlQueryUserCompanies' | 'graphQlQueryUserGroupMembers' | 'graphQlQueryUserGroups' | 'graphQlQueryFindCountries' | 'graphQlQueryFindExpertises' | 'graphQlQueryFindIndustries' | 'graphQlQueryFindOptions' | 'unset' | 'graphQlQueryContentTag' | 'graphQlMutationCreateContentTag' | 'graphQlMutationDeleteContentTag' | 'graphQlMutationUpdateContentTag' | 'graphQlMutationRunDataGenerator' | 'graphQlQueryNotificationTemplate' | 'graphQlQueryAvailableUserHandle' | 'graphQlQueryUser' | 'graphQlMutationAddUserToGroup' | 'graphQlMutationCreateGroup' | 'graphQlMutationCreateGroupMembership' | 'graphQlMutationCreateSupportChannelConfig' | 'graphQlMutationDeleteGroupCms' | 'graphQlMutationDeleteSupportChannelConfig' | 'graphQlMutationRemoveUserFromAllGroups' | 'graphQlMutationRemoveUserFromGroup' | 'graphQlMutationUpdateGroup' | 'graphQlMutationUpdateGroupMembership' | 'graphQlMutationUpdateSupportChannelConfig' | 'graphQlQueryFindGroupById' | 'graphQlQueryFindGroupByIdent' | 'graphQlQueryFindGroupCmsByGroupId' | 'graphQlQueryFindGroupCmsByGroupIdent' | 'graphQlQueryFindGroupCmsById' | 'graphQlQueryFindGroupMembershipByIdField' | 'graphQlQueryFindGroupMemberships' | 'graphQlQueryFindGroupsField' | 'graphQlQueryMyGroupMemberships' | 'graphQlQueryFindGiftCardProducts' | 'graphQlQueryFindMarketplaceServiceRecord' | 'graphQlQueryFindProductCategories' | 'graphQlQueryFindBrands' | 'graphQlMutationCreateUserSearch' | 'graphQlMutationDeleteUserSearch' | 'graphQlMutationUpdateUserSearch' | 'graphQlQueryFindUserSearchById' | 'graphQlQueryFindUserSearchResults' | 'graphQlQueryUserSearchFoundUsers' | 'graphQlMutationCreateNotification' | 'graphQlMutationCreateNotificationTemplate' | 'graphQlMutationDeleteNotification' | 'graphQlMutationDeleteNotificationTemplate' | 'graphQlMutationMarkInAppMessageReceived' | 'graphQlMutationSendMultiStepActionNotification' | 'graphQlMutationUpdateNotification' | 'graphQlMutationUpdateNotificationTemplate' | 'graphQlMutationCreateNatsMessage' | 'graphQlMutationClearAllSyncInfo' | 'graphQlMutationCreateMm2Synchronization' | 'graphQlMutationDeleteAllMm2DataInMm3' | 'graphQlMutationDeleteMm2Synchronization' | 'graphQlMutationRunMm2Synchronization' | 'graphQlQueryFindMm2SynchronizationById' | 'graphQlQueryGetMm2Integration' | 'graphQlMutationNlpLabelMessage' | 'graphQlMutationUpdateNlpConversation' | 'graphQlMutationUpdateNlpMessage' | 'graphQlQueryFindNlpConversation' | 'graphQlMutationAddFeatureToUser' | 'graphQlMutationBlockUser' | 'graphQlMutationCreateContact' | 'graphQlMutationCreateMultiStepAction' | 'graphQlMutationCreateUserDevice' | 'graphQlMutationDeleteMyUser' | 'graphQlMutationDeleteUser' | 'graphQlMutationEndMySession' | 'graphQlMutationRemoveFeatureFromUser' | 'graphQlMutationReportUser' | 'graphQlMutationSignInUser' | 'graphQlMutationSignMeOut' | 'graphQlMutationSignUpOauthUser' | 'graphQlMutationSignUpUser' | 'graphQlMutationStartMySession' | 'graphQlMutationUnblockUser' | 'graphQlMutationUpdateContact' | 'graphQlMutationUpdateMyUser' | 'graphQlMutationUpdateUser' | 'graphQlMutationUpdateUserDevice' | 'graphQlMutationUpsertBackgroundTask' | 'graphQlMutationVerifyMultiStepActionToken' | 'graphQlQueryBackgroundTask' | 'graphQlQueryContacts' | 'graphQlQueryContactTypes' | 'graphQlQueryFindAvailableUserHandle' | 'graphQlQueryFindContact' | 'graphQlQueryFindContactById' | 'graphQlQueryFindContacts' | 'graphQlQueryFindMyBlockedUsers' | 'graphQlQueryFindMyUser' | 'graphQlQueryFindMyUserDevices' | 'graphQlQueryFindUserById' | 'graphQlQueryFindUserByIdent' | 'graphQlQueryFindUserDeviceById' | 'graphQlQueryFindUserDevices' | 'graphQlQueryFindUsers' | 'graphQlQueryGetMultiStepActionProgress' | 'graphQlQueryLatestUserDevice' | 'graphQlQueryUnreadInAppMessages' | 'graphQlQueryVerifyMyPassword' | 'graphQlMutationCreateUserTracking' | 'graphQlMutationUpdateUserTracking' | 'graphQlQueryFindTrainingById' | 'graphQlQueryFindTrainingsForMe' | 'graphQlQueryFindTrainingsForUser' | 'graphQlQueryFindTrainingSessionById' | 'graphQlQueryFindTrainingSessionsByTrainingId' | 'graphQlQueryFindTrainingSessionsForMe' | 'graphQlMutationClearMyShoppingCart' | 'graphQlMutationClearShoppingCart' | 'graphQlMutationCreatePurchaseOrderField' | 'graphQlMutationCreateShoppingCartItem' | 'graphQlMutationCreateWalletItem' | 'graphQlMutationCreateWalletItemTransfer' | 'graphQlMutationDeleteShoppingCartItem' | 'graphQlMutationDeleteWalletItem' | 'graphQlMutationDeleteWalletItemTransfer' | 'graphQlMutationUpdateShoppingCartItem' | 'graphQlMutationUpdateWalletItem' | 'graphQlMutationUpdateWalletItemTransfer' | 'graphQlQueryFindMyShoppingCart' | 'graphQlQueryFindMyWallet' | 'graphQlQueryFindPurchaseOrderItems' | 'graphQlQueryFindPurchaseOrders' | 'graphQlQueryFindShoppingCartItems' | 'graphQlQueryFindShoppingCarts' | 'graphQlQueryFindWalletItemById' | 'graphQlQueryFindWalletItems' | 'graphQlQueryFindWalletItemTransferById' | 'graphQlQueryFindWalletItemTransfers' | 'graphQlQueryFindWallets' | 'graphQlQueryFindWalletServiceRecord';
     }
     export interface ServiceRequestResult {
         kind: 'Enum';
@@ -37320,11 +37838,11 @@ export declare namespace Schema {
     }
     export type DateTimeISO = $$Scalar.DateTimeISO;
     export type Long = $$Scalar.Long;
-    export type Int = $$Utilities.Schema.StandardTypes.Int;
-    export type ID = $$Utilities.Schema.StandardTypes.ID;
-    export type String = $$Utilities.Schema.StandardTypes.String;
-    export type Boolean = $$Utilities.Schema.StandardTypes.Boolean;
-    export type Float = $$Utilities.Schema.StandardTypes.Float;
+    export type Int = $.StandardTypes.Int;
+    export type ID = $.StandardTypes.ID;
+    export type String = $.StandardTypes.String;
+    export type Boolean = $.StandardTypes.Boolean;
+    export type Float = $.StandardTypes.Float;
     /**
      * [1] These definitions serve to allow field selection interfaces to extend their respective object type without
      *     name clashing between the field name and the object name.
@@ -37412,6 +37930,7 @@ export declare namespace Schema {
         type $$ShoppingCartItem = ShoppingCartItem;
         type $$ShoppingCart = ShoppingCart;
         type $$WalletItem = WalletItem;
+        type $$WalletItemTransfer = WalletItemTransfer;
         type $$Wallet = Wallet;
         type $$WalletServiceRecord = WalletServiceRecord;
         type $$GiftCardProduct = GiftCardProduct;
@@ -37485,6 +38004,8 @@ export declare namespace Schema {
         type $$ShoppingCartListFilter = ShoppingCartListFilter;
         type $$WalletItemInput = WalletItemInput;
         type $$WalletItemListFilter = WalletItemListFilter;
+        type $$WalletItemTransferInput = WalletItemTransferInput;
+        type $$WalletItemTransferListFilter = WalletItemTransferListFilter;
         type $$WalletInput = WalletInput;
         type $$WalletListFilter = WalletListFilter;
         type $$GiftCardProductInput = GiftCardProductInput;
@@ -37727,6 +38248,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         ShoppingCartItem: Schema.ShoppingCartItem;
         ShoppingCart: Schema.ShoppingCart;
         WalletItem: Schema.WalletItem;
+        WalletItemTransfer: Schema.WalletItemTransfer;
         Wallet: Schema.Wallet;
         WalletServiceRecord: Schema.WalletServiceRecord;
         GiftCardProduct: Schema.GiftCardProduct;
@@ -37836,6 +38358,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         ShoppingCartItem: Schema.ShoppingCartItem;
         ShoppingCart: Schema.ShoppingCart;
         WalletItem: Schema.WalletItem;
+        WalletItemTransfer: Schema.WalletItemTransfer;
         Wallet: Schema.Wallet;
         WalletServiceRecord: Schema.WalletServiceRecord;
         GiftCardProduct: Schema.GiftCardProduct;

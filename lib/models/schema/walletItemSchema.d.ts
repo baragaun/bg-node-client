@@ -151,6 +151,11 @@ export declare const WalletItemSchema: {
             format: string;
             nullable: boolean;
         };
+        transferredAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
         archivedAt: {
             type: string;
             format: string;

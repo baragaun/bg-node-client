@@ -2698,6 +2698,7 @@ export enum ModelType {
   UserTracking = 'UserTracking',
   Wallet = 'Wallet',
   WalletItem = 'WalletItem',
+  WalletItemTransfer = 'WalletItemTransfer',
   WalletServiceRecord = 'WalletServiceRecord',
   Unset = 'unset'
 }
@@ -2908,6 +2909,7 @@ export type Mutation = {
   createUserSearch: UserSearch;
   createUserTracking: Scalars['String']['output'];
   createWalletItem: WalletItem;
+  createWalletItemTransfer: WalletItemTransfer;
   declineChannelInvitation: Scalars['String']['output'];
   deleteAcademicExperience: ServiceRequest;
   deleteAdminTask: ServiceRequest;
@@ -2933,6 +2935,7 @@ export type Mutation = {
   deleteUser: Scalars['String']['output'];
   deleteUserSearch: ServiceRequest;
   deleteWalletItem: ServiceRequest;
+  deleteWalletItemTransfer: ServiceRequest;
   dismissChannelInvitationFromInbox: Scalars['String']['output'];
   /** @deprecated Use endMySessionV2 */
   endMySession: Scalars['String']['output'];
@@ -2986,6 +2989,7 @@ export type Mutation = {
   updateUserDevice: Scalars['String']['output'];
   updateUserSearch: ServiceRequest;
   updateWalletItem: ServiceRequest;
+  updateWalletItemTransfer: ServiceRequest;
   verifyMultiStepActionToken: SidMultiStepActionProgress;
   verifyOneTimeAuthToken: Scalars['Boolean']['output'];
 };
@@ -3168,6 +3172,12 @@ export type MutationCreateWalletItemArgs = {
 };
 
 
+export type MutationCreateWalletItemTransferArgs = {
+  input: WalletItemTransferInput;
+  options?: InputMaybe<UpdateObjectOptions>;
+};
+
+
 export type MutationDeclineChannelInvitationArgs = {
   channelInvitationId: Scalars['String']['input'];
   reasonTextId: DeclineChannelInvitationReasonTextId;
@@ -3323,6 +3333,12 @@ export type MutationDeleteUserSearchArgs = {
 
 
 export type MutationDeleteWalletItemArgs = {
+  deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+  id: Scalars['String']['input'];
+};
+
+
+export type MutationDeleteWalletItemTransferArgs = {
   deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
   id: Scalars['String']['input'];
 };
@@ -3570,6 +3586,12 @@ export type MutationUpdateUserSearchArgs = {
 
 export type MutationUpdateWalletItemArgs = {
   input: WalletItemInput;
+  options?: InputMaybe<UpdateObjectOptions>;
+};
+
+
+export type MutationUpdateWalletItemTransferArgs = {
+  input: WalletItemTransferInput;
   options?: InputMaybe<UpdateObjectOptions>;
 };
 
@@ -4484,6 +4506,8 @@ export type Query = {
   findUserSearches: Array<UserSearch>;
   findUsers: Array<UserListItem>;
   findWalletItemById?: Maybe<WalletItem>;
+  findWalletItemTransferById?: Maybe<WalletItemTransfer>;
+  findWalletItemTransfers: Array<WalletItemTransfer>;
   findWalletItems: Array<WalletItem>;
   findWalletServiceRecord: WalletServiceRecord;
   findWallets: Array<Wallet>;
@@ -4968,6 +4992,19 @@ export type QueryFindWalletItemByIdArgs = {
 };
 
 
+export type QueryFindWalletItemTransferByIdArgs = {
+  id: Scalars['String']['input'];
+  options?: InputMaybe<FindObjectsOptions>;
+};
+
+
+export type QueryFindWalletItemTransfersArgs = {
+  filter?: InputMaybe<WalletItemTransferListFilter>;
+  match?: InputMaybe<WalletItemTransferInput>;
+  options?: InputMaybe<FindObjectsOptions>;
+};
+
+
 export type QueryFindWalletItemsArgs = {
   filter?: InputMaybe<WalletItemListFilter>;
   match?: InputMaybe<WalletItemInput>;
@@ -5214,6 +5251,7 @@ export enum ServiceRequestType {
   GraphQlMutationCreateUserSearch = 'graphQlMutationCreateUserSearch',
   GraphQlMutationCreateUserTracking = 'graphQlMutationCreateUserTracking',
   GraphQlMutationCreateWalletItem = 'graphQlMutationCreateWalletItem',
+  GraphQlMutationCreateWalletItemTransfer = 'graphQlMutationCreateWalletItemTransfer',
   GraphQlMutationDeleteAcademicExperience = 'graphQlMutationDeleteAcademicExperience',
   GraphQlMutationDeleteAdminTask = 'graphQlMutationDeleteAdminTask',
   GraphQlMutationDeleteAllMm2DataInMm3 = 'graphQlMutationDeleteAllMm2DataInMm3',
@@ -5238,6 +5276,7 @@ export enum ServiceRequestType {
   GraphQlMutationDeleteUser = 'graphQlMutationDeleteUser',
   GraphQlMutationDeleteUserSearch = 'graphQlMutationDeleteUserSearch',
   GraphQlMutationDeleteWalletItem = 'graphQlMutationDeleteWalletItem',
+  GraphQlMutationDeleteWalletItemTransfer = 'graphQlMutationDeleteWalletItemTransfer',
   GraphQlMutationEndMySession = 'graphQlMutationEndMySession',
   GraphQlMutationFindAdminTaskById = 'graphQlMutationFindAdminTaskById',
   GraphQlMutationFindUploadedAssetById = 'graphQlMutationFindUploadedAssetById',
@@ -5286,6 +5325,7 @@ export enum ServiceRequestType {
   GraphQlMutationUpdateUserSearch = 'graphQlMutationUpdateUserSearch',
   GraphQlMutationUpdateUserTracking = 'graphQlMutationUpdateUserTracking',
   GraphQlMutationUpdateWalletItem = 'graphQlMutationUpdateWalletItem',
+  GraphQlMutationUpdateWalletItemTransfer = 'graphQlMutationUpdateWalletItemTransfer',
   GraphQlMutationUpsertBackgroundTask = 'graphQlMutationUpsertBackgroundTask',
   GraphQlMutationVerifyMultiStepActionToken = 'graphQlMutationVerifyMultiStepActionToken',
   GraphQlQueryAdminTaskDefinitions = 'graphQlQueryAdminTaskDefinitions',
@@ -5361,6 +5401,8 @@ export enum ServiceRequestType {
   GraphQlQueryFindUserSearchResults = 'graphQlQueryFindUserSearchResults',
   GraphQlQueryFindUsers = 'graphQlQueryFindUsers',
   GraphQlQueryFindWalletItemById = 'graphQlQueryFindWalletItemById',
+  GraphQlQueryFindWalletItemTransferById = 'graphQlQueryFindWalletItemTransferById',
+  GraphQlQueryFindWalletItemTransfers = 'graphQlQueryFindWalletItemTransfers',
   GraphQlQueryFindWalletItems = 'graphQlQueryFindWalletItems',
   GraphQlQueryFindWalletServiceRecord = 'graphQlQueryFindWalletServiceRecord',
   GraphQlQueryFindWallets = 'graphQlQueryFindWallets',
@@ -6954,6 +6996,7 @@ export type WalletItem = {
   source?: Maybe<WalletItemSource>;
   termsEn?: Maybe<Scalars['String']['output']>;
   termsUrl?: Maybe<Scalars['String']['output']>;
+  transferredAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
   walletId: Scalars['ID']['output'];
@@ -6993,6 +7036,7 @@ export type WalletItemInput = {
   source?: InputMaybe<WalletItemSource>;
   termsEn?: InputMaybe<Scalars['String']['input']>;
   termsUrl?: InputMaybe<Scalars['String']['input']>;
+  transferredAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedBy?: InputMaybe<Scalars['ID']['input']>;
   walletId?: InputMaybe<Scalars['ID']['input']>;
@@ -7015,6 +7059,63 @@ export enum WalletItemSource {
   Purchased = 'purchased',
   User = 'user'
 }
+
+export type WalletItemTransfer = {
+  __typename?: 'WalletItemTransfer';
+  adminNotes?: Maybe<Scalars['String']['output']>;
+  archivedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  canceledAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  createdAt: Scalars['DateTimeISO']['output'];
+  createdBy?: Maybe<Scalars['ID']['output']>;
+  deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  deletedBy?: Maybe<Scalars['ID']['output']>;
+  events?: Maybe<Array<ModelEvent>>;
+  id: Scalars['ID']['output'];
+  messageText?: Maybe<Scalars['String']['output']>;
+  metadata?: Maybe<BaseModelMetadata>;
+  notificationId?: Maybe<Scalars['ID']['output']>;
+  recipientEmail?: Maybe<Scalars['String']['output']>;
+  recipientFullName?: Maybe<Scalars['String']['output']>;
+  sentAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  subjectText?: Maybe<Scalars['String']['output']>;
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<Scalars['ID']['output']>;
+  walletItemId: Scalars['ID']['output'];
+};
+
+export type WalletItemTransferInput = {
+  adminNotes?: InputMaybe<Scalars['String']['input']>;
+  archivedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  canceledAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdBy?: InputMaybe<Scalars['ID']['input']>;
+  deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  deletedBy?: InputMaybe<Scalars['ID']['input']>;
+  events?: InputMaybe<Array<ModelEventInput>>;
+  id?: InputMaybe<Scalars['ID']['input']>;
+  messageText?: InputMaybe<Scalars['String']['input']>;
+  metadata?: InputMaybe<BaseModelMetadataInput>;
+  notificationId?: InputMaybe<Scalars['ID']['input']>;
+  recipientEmail?: InputMaybe<Scalars['String']['input']>;
+  recipientFullName?: InputMaybe<Scalars['String']['input']>;
+  sentAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  subjectText?: InputMaybe<Scalars['String']['input']>;
+  updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedBy?: InputMaybe<Scalars['ID']['input']>;
+  walletItemId?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type WalletItemTransferListFilter = {
+  caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
+  createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
+  ids?: InputMaybe<Array<Scalars['String']['input']>>;
+  searchText?: InputMaybe<Scalars['String']['input']>;
+  textSearchFields?: InputMaybe<Array<Scalars['String']['input']>>;
+  updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+};
 
 export type WalletListFilter = {
   caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;

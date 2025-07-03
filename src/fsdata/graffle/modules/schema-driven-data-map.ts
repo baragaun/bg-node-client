@@ -1721,6 +1721,7 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     'issuedAt',
     'expiresAt',
     'balanceUpdatedAt',
+    'transferredAt',
     'archivedAt',
   ],
   f: {
@@ -1775,6 +1776,9 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     balanceUpdatedAt: {
       nt: DateTimeISO,
     },
+    transferredAt: {
+      nt: DateTimeISO,
+    },
     archivedAt: {
       nt: DateTimeISO,
     },
@@ -1783,6 +1787,72 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
 
 const WalletItemListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'WalletItemListFilter',
+  fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
+  f: {
+    ids: {},
+    excludeIds: {},
+    searchText: {},
+    caseSensitive: {},
+    textSearchFields: {},
+    createdAtFrom: {
+      nt: DateTimeISO,
+    },
+    createdAtUntil: {
+      nt: DateTimeISO,
+    },
+    updatedAtFrom: {
+      nt: DateTimeISO,
+    },
+    updatedAtUntil: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'WalletItemTransferInput',
+  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'sentAt', 'canceledAt', 'archivedAt'],
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEventInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadataInput, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    walletItemId: {},
+    notificationId: {},
+    recipientEmail: {},
+    recipientFullName: {},
+    subjectText: {},
+    messageText: {},
+    sentAt: {
+      nt: DateTimeISO,
+    },
+    canceledAt: {
+      nt: DateTimeISO,
+    },
+    archivedAt: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const WalletItemTransferListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
+  n: 'WalletItemTransferListFilter',
   fcs: ['createdAtFrom', 'createdAtUntil', 'updatedAtFrom', 'updatedAtUntil'],
   f: {
     ids: {},
@@ -6297,6 +6367,49 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     balanceUpdatedAt: {
       nt: DateTimeISO,
     },
+    transferredAt: {
+      nt: DateTimeISO,
+    },
+    archivedAt: {
+      nt: DateTimeISO,
+    },
+  },
+};
+
+const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    id: {},
+    adminNotes: {},
+    events: {
+      // nt: ModelEvent, <-- Assigned later to avoid potential circular dependency.
+    },
+    metadata: {
+      // nt: BaseModelMetadata, <-- Assigned later to avoid potential circular dependency.
+    },
+    createdAt: {
+      nt: DateTimeISO,
+    },
+    createdBy: {},
+    updatedAt: {
+      nt: DateTimeISO,
+    },
+    updatedBy: {},
+    deletedAt: {
+      nt: DateTimeISO,
+    },
+    deletedBy: {},
+    walletItemId: {},
+    notificationId: {},
+    recipientEmail: {},
+    recipientFullName: {},
+    subjectText: {},
+    messageText: {},
+    sentAt: {
+      nt: DateTimeISO,
+    },
+    canceledAt: {
+      nt: DateTimeISO,
+    },
     archivedAt: {
       nt: DateTimeISO,
     },
@@ -8574,6 +8687,36 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
+    findWalletItemTransferById: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: WalletItemTransfer, <-- Assigned later to avoid potential circular dependency.
+    },
+    findWalletItemTransfers: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        match: {
+          nt: WalletItemTransferInput,
+          it: [0],
+        },
+        filter: {
+          nt: WalletItemTransferListFilter,
+          it: [0],
+        },
+      },
+      // nt: WalletItemTransfer, <-- Assigned later to avoid potential circular dependency.
+    },
     findWallets: {
       a: {
         options: {
@@ -9760,6 +9903,45 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
+    createWalletItemTransfer: {
+      a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
+        input: {
+          nt: WalletItemTransferInput,
+          it: [1],
+        },
+      },
+      // nt: WalletItemTransfer, <-- Assigned later to avoid potential circular dependency.
+    },
+    deleteWalletItemTransfer: {
+      a: {
+        deletePhysically: {
+          nt: Boolean,
+          it: [0],
+        },
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
+    updateWalletItemTransfer: {
+      a: {
+        options: {
+          nt: UpdateObjectOptions,
+          it: [0],
+        },
+        input: {
+          nt: WalletItemTransferInput,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     createUserSearch: {
       a: {
         input: {
@@ -10150,6 +10332,8 @@ ShoppingCartInput.f!['events']!.nt = ModelEventInput;
 ShoppingCartInput.f!['metadata']!.nt = BaseModelMetadataInput;
 WalletItemInput.f!['events']!.nt = ModelEventInput;
 WalletItemInput.f!['metadata']!.nt = BaseModelMetadataInput;
+WalletItemTransferInput.f!['events']!.nt = ModelEventInput;
+WalletItemTransferInput.f!['metadata']!.nt = BaseModelMetadataInput;
 WalletInput.f!['events']!.nt = ModelEventInput;
 WalletInput.f!['metadata']!.nt = BaseModelMetadataInput;
 GiftCardProductInput.f!['events']!.nt = ModelEventInput;
@@ -10475,6 +10659,8 @@ ShoppingCart.f['metadata']!.nt = BaseModelMetadata;
 ShoppingCart.f['items']!.nt = ShoppingCartItem;
 WalletItem.f['events']!.nt = ModelEvent;
 WalletItem.f['metadata']!.nt = BaseModelMetadata;
+WalletItemTransfer.f['events']!.nt = ModelEvent;
+WalletItemTransfer.f['metadata']!.nt = BaseModelMetadata;
 Wallet.f['events']!.nt = ModelEvent;
 Wallet.f['metadata']!.nt = BaseModelMetadata;
 WalletServiceRecord.f['events']!.nt = ModelEvent;
@@ -10645,6 +10831,8 @@ Query.f['findShoppingCarts']!.nt = ShoppingCart;
 Query.f['findMyShoppingCart']!.nt = ShoppingCart;
 Query.f['findWalletItemById']!.nt = WalletItem;
 Query.f['findWalletItems']!.nt = WalletItem;
+Query.f['findWalletItemTransferById']!.nt = WalletItemTransfer;
+Query.f['findWalletItemTransfers']!.nt = WalletItemTransfer;
 Query.f['findWallets']!.nt = Wallet;
 Query.f['findMyWallet']!.nt = Wallet;
 Query.f['findWalletServiceRecord']!.nt = WalletServiceRecord;
@@ -10729,6 +10917,9 @@ Mutation.f['clearShoppingCart']!.nt = ServiceRequest;
 Mutation.f['createWalletItem']!.nt = WalletItem;
 Mutation.f['deleteWalletItem']!.nt = ServiceRequest;
 Mutation.f['updateWalletItem']!.nt = ServiceRequest;
+Mutation.f['createWalletItemTransfer']!.nt = WalletItemTransfer;
+Mutation.f['deleteWalletItemTransfer']!.nt = ServiceRequest;
+Mutation.f['updateWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['createUserSearch']!.nt = UserSearch;
 Mutation.f['deleteUserSearch']!.nt = ServiceRequest;
 Mutation.f['updateUserSearch']!.nt = ServiceRequest;
@@ -10873,6 +11064,8 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ShoppingCartListFilter,
     WalletItemInput,
     WalletItemListFilter,
+    WalletItemTransferInput,
+    WalletItemTransferListFilter,
     WalletInput,
     WalletListFilter,
     GiftCardProductInput,
@@ -10986,6 +11179,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ShoppingCartItem,
     ShoppingCart,
     WalletItem,
+    WalletItemTransfer,
     Wallet,
     WalletServiceRecord,
     GiftCardProduct,

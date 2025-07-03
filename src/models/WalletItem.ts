@@ -28,6 +28,7 @@ export class WalletItem extends BaseModel {
   public issuedAt?: string | null;
   public expiresAt?: string | null;
   public balanceUpdatedAt?: string | null;
+  public transferredAt?: string | null;
   public archivedAt?: string | null;
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
@@ -138,6 +139,9 @@ export class WalletItem extends BaseModel {
       }
       if (attributes.balanceUpdatedAt !== undefined && attributes.balanceUpdatedAt !== '') {
         this.balanceUpdatedAt = attributes.balanceUpdatedAt;
+      }
+      if (attributes.transferredAt !== undefined && attributes.transferredAt !== '') {
+        this.transferredAt = attributes.transferredAt;
       }
       if (attributes.archivedAt !== undefined && attributes.archivedAt !== '') {
         this.archivedAt = attributes.archivedAt;

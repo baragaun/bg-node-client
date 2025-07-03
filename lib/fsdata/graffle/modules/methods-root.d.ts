@@ -216,6 +216,12 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     findWalletItems: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItems<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findWalletItems: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItems'>>>;
+    findWalletItemTransferById: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItemTransferById<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
+        findWalletItemTransferById: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItemTransferById'>>>;
+    findWalletItemTransfers: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItemTransfers<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
+        findWalletItemTransfers: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItemTransfers'>>>;
     findWallets: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWallets<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findWallets: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findWallets'>>>;
@@ -576,6 +582,15 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     updateWalletItem: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateWalletItem<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateWalletItem: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateWalletItem'>>>;
+    createWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        createWalletItemTransfer: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'createWalletItemTransfer'>>>;
+    deleteWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteWalletItemTransfer: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteWalletItemTransfer'>>>;
+    updateWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        updateWalletItemTransfer: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'updateWalletItemTransfer'>>>;
     createUserSearch: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createUserSearch<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         createUserSearch: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'createUserSearch'>>>;
