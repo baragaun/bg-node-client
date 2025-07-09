@@ -70,14 +70,6 @@ const libData = {
   },
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
-  // Consumer customizations:
-  // isMarketPlaceEnabled: (): boolean => _config.enableMarketplace,
-  isMarketPlaceEnabled: (): boolean => {
-    console.log('>>>>>_config.enableMarketplace=', _config?.enableMarketplace);
-    return _config?.enableMarketplace ?? true;
-  },
-
-  //////////////////////////////////////////////////////////////////////////////////////////////////
   // Network Status:
   allowNetwork: (): boolean => _isOnline && !_config.enableMockMode,
   isOffline: (): boolean => !_isOnline,

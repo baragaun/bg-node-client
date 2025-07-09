@@ -91,23 +91,25 @@ export interface BgNodeClientConfig {
    */
   nats?: NatsOptions;
 
-  /**
-   * Enable Channels?
-   */
-  enableChannels: boolean;
+  customizations?: {
+    /**
+     * Enable Channels?
+     */
+    enableChannels: boolean;
 
-  /**
-   * Can a channel have more than 2 participants?
-   */
-  enableGroupChannels: boolean;
+    /**
+     * Can a channel have more than 2 participants?
+     */
+    enableGroupChannels: boolean;
 
-  /**
-   * Enable marketplace?
-   */
-  enableMarketplace: boolean;
+    /**
+     * Enable marketplace?
+     */
+    enableMarketplace: boolean;
 
-  /**
-   * Enable NATS realtime messaging?
-   */
-  enableNats: boolean;
+    /**
+     * Enable NATS realtime messaging?
+     */
+    enableNats: boolean;
+  }
 }

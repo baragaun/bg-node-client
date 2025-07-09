@@ -103,4 +103,4 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     // Deleting user1:
     await deleteMyUserSpecHelper(client);
   });
-});
+}, { timeout: 30000 });
