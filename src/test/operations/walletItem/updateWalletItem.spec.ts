@@ -71,4 +71,4 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItem.updateWal
     expect(findResult.object.id).toBe(itemToUpdate.id);
     expect(findResult.object.archivedAt).toBe(newArchivedAt);
   });
-}, { timeout: 10000 });
+}, 10000);

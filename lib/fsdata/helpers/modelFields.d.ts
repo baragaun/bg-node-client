@@ -799,6 +799,29 @@ declare const modelFields: {
         instructionsUrl: boolean;
         sortIndex: boolean;
         archivedAt: boolean;
+        transferredAt: boolean;
+    };
+    walletItemTransfer: {
+        id: boolean;
+        adminNotes: boolean;
+        metadata: {
+            updatedAt: boolean;
+        };
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+        walletItemId: boolean;
+        notificationId: boolean;
+        recipientEmail: boolean;
+        recipientFullName: boolean;
+        subjectText: boolean;
+        messageText: boolean;
+        sentAt: boolean;
+        canceledAt: boolean;
+        archivedAt: boolean;
     };
 };
 export default modelFields;

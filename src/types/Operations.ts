@@ -50,6 +50,8 @@ import { UserListItem } from '../models/UserListItem.js';
 import { Wallet } from '../models/Wallet.js';
 import { WalletItem } from '../models/WalletItem.js';
 import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
+import { WalletItemTransfer } from '../models/WalletItemTransfer.js';
+import { WalletItemTransferListFilter } from '../models/WalletItemTransferListFilter.js';
 
 export interface Operations {
   count: <T extends Model = Model>(
@@ -463,5 +465,19 @@ export interface Operations {
       changes: Partial<WalletItem>,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItem>>;
+  }
+
+  walletItemTransfer: {
+    findWalletItemTransfers: (
+      filter: WalletItemTransferListFilter | null | undefined,
+      match: Partial<WalletItemTransfer> | null | undefined,
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
+
+    createWalletItemTransfer: (
+      props: Partial<WalletItemTransfer>,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
   }
 }
