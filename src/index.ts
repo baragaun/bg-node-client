@@ -52,6 +52,8 @@ export * from './models/Wallet.js';
 export * from './models/WalletItem.js';
 export * from './models/WalletItemListFilter.js';
 export * from './models/WalletListFilter.js';
+export * from './models/WalletItemTransfer.js';
+export * from './models/WalletItemTransferListFilter.js';
 
 // Wallet:
 export * from './models/PurchaseOrder.js';
@@ -87,3 +89,4 @@ export * from './types/SignInSignUpResponse.js';
 export * from './types/SignInUserInput.js';
 export * from './types/SignUpUserInput.js';
 export * from './types/UserAuthResponse.js';
+export * from './types/WalletItemTransferInput.js';

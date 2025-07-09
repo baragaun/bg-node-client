@@ -19,6 +19,7 @@ import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
 import { SignUpUserInput } from './SignUpUserInput.js';
+import { WalletItemTransferInput } from '../fsdata/gql/graphql.js';
 import { Brand } from '../models/Brand.js';
 import { BrandListFilter } from '../models/BrandListFilter.js';
 import { Channel } from '../models/Channel.js';
@@ -49,7 +50,8 @@ import { UserListFilter } from '../models/UserListFilter.js';
 import { UserListItem } from '../models/UserListItem.js';
 import { Wallet } from '../models/Wallet.js';
 import { WalletItem } from '../models/WalletItem.js';
-import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
+import { WalletItemTransfer } from '../models/WalletItemTransfer.js';
+import { WalletItemTransferListFilter } from '../models/WalletItemTransferListFilter.js';
 
 export interface Operations {
   count: <T extends Model = Model>(
@@ -452,7 +454,7 @@ export interface Operations {
 
   walletItem: {
     findWalletItems: (
-      filter: WalletItemListFilter | null | undefined,
+      filter: WalletItemTransferListFilter | null | undefined,
       match: Partial<WalletItem> | null | undefined,
       selector: MangoQueryTypes<WalletItem> | null | undefined,
       options: FindObjectsOptions,
@@ -463,5 +465,20 @@ export interface Operations {
       changes: Partial<WalletItem>,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItem>>;
+  }
+
+  walletItemTransfer: {
+    findWalletItemTransfers: (
+      filter: WalletItemTransferListFilter | null | undefined,
+      match: Partial<WalletItemTransfer> | null | undefined,
+      selector: MangoQueryTypes<WalletItemTransfer> | null | undefined,
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
+
+    createWalletItemTransfer: (
+      props: WalletItemTransferInput,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
   }
 }
