@@ -5,6 +5,7 @@ import chance, { uniqueEmail, uniqueUserHandle } from '../../../helpers/chance.j
 import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 
+// @failing-in-set
 describe('operations.myUser.isUserIdentAvailable', () => {
   test('should return false for an email that is already taken', async () => {
     const client = await clientStore.getTestClient();

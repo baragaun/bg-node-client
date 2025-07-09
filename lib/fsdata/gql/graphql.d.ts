@@ -196,6 +196,7 @@ export declare enum AdminTaskType {
     DecryptString = "decryptString",
     DeleteUser = "deleteUser",
     DoDataMaintenance = "doDataMaintenance",
+    FillAllMm2ProfileIds = "fillAllMm2ProfileIds",
     FixAllSyncedChannelInvitationInitialMessages = "fixAllSyncedChannelInvitationInitialMessages",
     FormatPhoneNumbers = "formatPhoneNumbers",
     ImportMarketplaceData = "importMarketplaceData",
@@ -230,6 +231,7 @@ export declare enum AdminTaskType {
     Unset = "unset",
     UpdateChannelMetadata = "updateChannelMetadata",
     UpdateChannelOtherUserId = "updateChannelOtherUserId",
+    UpdateEmbeddedGroupMembershipsOfAllUsers = "updateEmbeddedGroupMembershipsOfAllUsers",
     UpdateGroupIdentsInAllGroupMemberships = "updateGroupIdentsInAllGroupMemberships",
     VerifyUserPassword = "verifyUserPassword"
 }
@@ -534,6 +536,7 @@ export type ChannelInbox = {
 };
 export type ChannelInboxItemInvitation = {
     __typename?: 'ChannelInboxItemInvitation';
+    autoAccept?: Maybe<Scalars['Boolean']['output']>;
     channelId?: Maybe<Scalars['ID']['output']>;
     createdAt: Scalars['DateTimeISO']['output'];
     createdBy?: Maybe<Scalars['ID']['output']>;
@@ -1768,7 +1771,7 @@ export type Group = {
     name: Scalars['String']['output'];
     parentGroupId?: Maybe<Scalars['ID']['output']>;
     planType?: Maybe<Scalars['String']['output']>;
-    shortName: Scalars['String']['output'];
+    shortName?: Maybe<Scalars['String']['output']>;
     slug?: Maybe<Scalars['String']['output']>;
     /** This attribute is only used by the MM2 synchronizer. */
     syncedWithMm2At?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -1890,18 +1893,19 @@ export type GroupMembershipInput = {
     userId?: InputMaybe<Scalars['ID']['input']>;
 };
 export type GroupMembershipListFilter = {
+    /** will find memberships that have any of the specified roles */
+    anyOfRoles?: InputMaybe<Array<GroupMembershipRole>>;
     caseSensitive?: InputMaybe<Scalars['Boolean']['input']>;
     createdAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
     createdAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
     embedded?: InputMaybe<Scalars['Boolean']['input']>;
     excludeIds?: InputMaybe<Array<Scalars['ID']['input']>>;
     ids?: InputMaybe<Array<Scalars['String']['input']>>;
-    roles?: InputMaybe<Array<GroupMembershipRole>>;
     searchText?: InputMaybe<Scalars['String']['input']>;
     textSearchFields?: InputMaybe<Array<Scalars['String']['input']>>;
     updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
     updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
-    userId?: InputMaybe<Scalars['ID']['input']>;
+    userIds?: InputMaybe<Array<Scalars['ID']['input']>>;
 };
 export declare enum GroupMembershipRole {
     Admin = "admin",
@@ -3023,13 +3027,13 @@ export type MutationDeleteBusinessExperienceArgs = {
     deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type MutationDeleteChannelArgs = {
-    anonymizePersonalData: Scalars['Boolean']['input'];
+    anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
     channelId: Scalars['String']['input'];
-    deletePhysically: Scalars['Boolean']['input'];
+    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type MutationDeleteChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
-    deletePhysically: Scalars['Boolean']['input'];
+    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type MutationDeleteChannelInvitationV2Args = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3038,7 +3042,7 @@ export type MutationDeleteChannelInvitationV2Args = {
 };
 export type MutationDeleteChannelMessageArgs = {
     channelMessageId: Scalars['String']['input'];
-    deletePhysically: Scalars['Boolean']['input'];
+    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type MutationDeleteChannelMessageV2Args = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3060,7 +3064,7 @@ export type MutationDeleteChannelV2Args = {
     id: Scalars['String']['input'];
 };
 export type MutationDeleteCompanyArgs = {
-    anonymizePersonalData: Scalars['Boolean']['input'];
+    anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
     companyId: Scalars['String']['input'];
     deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -3291,6 +3295,7 @@ export type MyUser = {
     adminNotes?: Maybe<Scalars['String']['output']>;
     anonymizedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     appFeatures?: Maybe<Array<AppFeature>>;
+    authType?: Maybe<AuthType>;
     avatarAsset?: Maybe<UploadedAsset>;
     avatarUrl?: Maybe<Scalars['String']['output']>;
     birthYear?: Maybe<Scalars['Int']['output']>;
@@ -3342,6 +3347,8 @@ export type MyUser = {
     id: Scalars['ID']['output'];
     inactivatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     inactivatedBy?: Maybe<Scalars['ID']['output']>;
+    /** @deprecated Use findMyInbox */
+    inbox: UserInbox;
     inviteCode?: Maybe<Scalars['String']['output']>;
     isEmailVerified: Scalars['Boolean']['output'];
     isOnVacation?: Maybe<Scalars['Boolean']['output']>;
@@ -3371,7 +3378,6 @@ export type MyUser = {
     /** Records whether a user was originally created in MM2. */
     originatedInMm2?: Maybe<Scalars['Boolean']['output']>;
     parentGroupIds: Array<Scalars['ID']['output']>;
-    passwordHash?: Maybe<Scalars['String']['output']>;
     passwordUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     personalBio?: Maybe<Scalars['String']['output']>;
     phoneNumber?: Maybe<Scalars['String']['output']>;
@@ -3412,6 +3418,7 @@ export type MyUser = {
     updatedBy?: Maybe<Scalars['ID']['output']>;
     uploadedAssets: Array<UploadedAsset>;
     userBlocks?: Maybe<Array<UserBlock>>;
+    userDevices: Array<UserDeviceWithoutAuth>;
     userHandle?: Maybe<Scalars['String']['output']>;
     websites?: Maybe<Array<LabeledStringValue>>;
     yearsManagementExperience?: Maybe<Scalars['Int']['output']>;
@@ -4069,17 +4076,17 @@ export type Query = {
     apiVersion: Scalars['String']['output'];
     doesUserExist: Scalars['Boolean']['output'];
     find1On1Channel?: Maybe<Channel>;
-    findAdminTaskById: AdminTask;
+    findAdminTaskById?: Maybe<AdminTask>;
     findAdminTaskDefs: Array<AdminTaskDef>;
     findAvailableUserHandle: Scalars['String']['output'];
     findBrands: Array<Brand>;
-    findChannelById: Channel;
-    findChannelInvitationById: ChannelInvitation;
+    findChannelById?: Maybe<Channel>;
+    findChannelInvitationById?: Maybe<ChannelInvitation>;
     findChannelInvitationsBetweenUsers: Array<ChannelInvitation>;
     findChannelInvitationsForUser: Array<ChannelInvitation>;
-    findChannelMessageById: ChannelMessage;
+    findChannelMessageById?: Maybe<ChannelMessage>;
     findChannelMessages: Array<ChannelMessage>;
-    findChannelParticipantById: ChannelParticipant;
+    findChannelParticipantById?: Maybe<ChannelParticipant>;
     findChannelParticipants: Array<ChannelParticipant>;
     findChannelParticipantsForChannel: Array<ChannelParticipant>;
     findChannels: Array<Channel>;
@@ -4087,7 +4094,7 @@ export type Query = {
     findCompanyStages: Array<CompanyStage>;
     findCompanyTypes: Array<CompanyType>;
     findContact?: Maybe<Contact>;
-    findContactById: Contact;
+    findContactById?: Maybe<Contact>;
     findContacts: Array<ContactListItem>;
     findCountries: Array<Country>;
     findDeclineChannelInvitationReasons: Array<DeclineChannelInvitationReason>;
@@ -4101,7 +4108,7 @@ export type Query = {
     findGroupCmsByGroupId?: Maybe<GroupCms>;
     findGroupCmsByGroupIdent?: Maybe<GroupCms>;
     findGroupCmsById?: Maybe<GroupCms>;
-    findGroupMembershipById: GroupMembership;
+    findGroupMembershipById?: Maybe<GroupMembership>;
     findGroupMemberships: Array<IGroupMembership>;
     findGroups: Array<Group>;
     findIndonesianCities: Array<IndonesianCity>;
@@ -4117,7 +4124,8 @@ export type Query = {
     findMyActiveMultiStepAction: Array<SidMultiStepAction>;
     findMyActiveMultiStepActions: Array<SidMultiStepAction>;
     findMyBlockedUsers: Array<User>;
-    findMyChannels: Array<ChannelListItem>;
+    findMyChannels: Array<Channel>;
+    findMyChannelsV2: Array<ChannelListItem>;
     findMyInbox: UserInbox;
     findMyShoppingCart: ShoppingCart;
     findMyUser: MyUser;
@@ -4131,26 +4139,26 @@ export type Query = {
     findPurchaseOrderItems: Array<PurchaseOrderItem>;
     findPurchaseOrders: Array<PurchaseOrder>;
     findReportUserReasons: Array<ReportUserReason>;
-    findServiceRequestById: ServiceRequest;
+    findServiceRequestById?: Maybe<ServiceRequest>;
     findShoppingCartItemById?: Maybe<ShoppingCartItem>;
     findShoppingCartItems: Array<ShoppingCartItem>;
     findShoppingCarts: Array<ShoppingCart>;
-    findTrainingById: Training;
-    findTrainingSessionById: TrainingSession;
+    findTrainingById?: Maybe<Training>;
+    findTrainingSessionById?: Maybe<TrainingSession>;
     /** Find training sessions by training  id. By default, finds the requestor's sessions. */
     findTrainingSessionsByTrainingId: Array<TrainingSession>;
     findTrainingSessionsForMe: Array<TrainingSession>;
     findTrainingsForMe: Array<Training>;
     findTrainingsForUser: Array<Training>;
-    findUploadedAssetById: UploadedAsset;
+    findUploadedAssetById?: Maybe<UploadedAsset>;
     findUploadedAssets: Array<UploadedAsset>;
     findUploadedAssetsForUser: Array<UploadedAsset>;
-    findUserById: User;
+    findUserById?: Maybe<User>;
     findUserByIdent: User;
     findUserCmsByUserId?: Maybe<UserCms>;
-    findUserDeviceById: UserDeviceWithoutAuth;
+    findUserDeviceById?: Maybe<UserDeviceWithoutAuth>;
     findUserDevices: Array<UserDeviceWithoutAuth>;
-    findUserSearchById: UserSearch;
+    findUserSearchById?: Maybe<UserSearch>;
     findUserSearchResults: Array<UserWithScore>;
     findUserSearches: Array<UserSearch>;
     findUsers: Array<UserListItem>;
@@ -4339,6 +4347,9 @@ export type QueryFindMastercardBanksArgs = {
     fallbackUiLanguage?: InputMaybe<UiLanguage>;
 };
 export type QueryFindMyChannelsArgs = {
+    options?: InputMaybe<FindObjectsOptions>;
+};
+export type QueryFindMyChannelsV2Args = {
     addLatestMessage?: InputMaybe<Scalars['Boolean']['input']>;
     options?: InputMaybe<FindObjectsOptions>;
     participantLimit?: InputMaybe<Scalars['Int']['input']>;
@@ -4652,7 +4663,8 @@ export type ServiceRequest = {
     source?: Maybe<ServiceRequestSource>;
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     updatedBy?: Maybe<Scalars['ID']['output']>;
-    userId?: Maybe<Scalars['ID']['output']>;
+    /** @deprecated user createdBy */
+    userId?: Maybe<Scalars['String']['output']>;
     userRoles?: Maybe<Array<UserRole>>;
 };
 export declare enum ServiceRequestMessageId {
@@ -5585,6 +5597,7 @@ export type User = {
     adminNotes?: Maybe<Scalars['String']['output']>;
     anonymizedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     appFeatures?: Maybe<Array<AppFeature>>;
+    authType?: Maybe<AuthType>;
     avatarAsset?: Maybe<UploadedAsset>;
     avatarUrl?: Maybe<Scalars['String']['output']>;
     birthYear?: Maybe<Scalars['Int']['output']>;
@@ -5665,7 +5678,6 @@ export type User = {
     /** Records whether a user was originally created in MM2. */
     originatedInMm2?: Maybe<Scalars['Boolean']['output']>;
     parentGroupIds: Array<Scalars['ID']['output']>;
-    passwordHash?: Maybe<Scalars['String']['output']>;
     passwordUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     personalBio?: Maybe<Scalars['String']['output']>;
     phoneNumber?: Maybe<Scalars['String']['output']>;
@@ -5706,6 +5718,7 @@ export type User = {
     updatedBy?: Maybe<Scalars['ID']['output']>;
     uploadedAssets: Array<UploadedAsset>;
     userBlocks?: Maybe<Array<UserBlock>>;
+    userDevices: Array<UserDeviceWithoutAuth>;
     userHandle?: Maybe<Scalars['String']['output']>;
     websites?: Maybe<Array<LabeledStringValue>>;
     yearsManagementExperience?: Maybe<Scalars['Int']['output']>;

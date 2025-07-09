@@ -1,10 +1,10 @@
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
-import { ChannelListItem } from '../../../types/ChannelListItem.js';
-import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
+import { Channel } from '../../../models/Channel.js';
+import { FindObjectsOptions } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
-  FindObjectsOptions,
+  FindObjectsOptions as FindObjectsOptionsFromNetwork,
   InputMaybe,
   QueryFindMyChannelsArgs,
 } from '../../gql/graphql.js';
@@ -14,16 +14,14 @@ import modelFields from '../../helpers/modelFields.js';
 
 type ResponseDataType = {
   data: {
-    findMyChannels: ChannelListItem[];
+    findMyChannels: Channel[] | null;
   };
   errors?: { message: string }[];
 };
 
 const findMyChannels = async (
-  participantLimit: number | undefined,
-  addLatestMessage: boolean | undefined,
-  options: FindObjectsOptionsFromClient,
-): Promise<QueryResult<ChannelListItem>> => {
+  options: FindObjectsOptions,
+): Promise<QueryResult<Channel>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('fsdata.findMyChannels: unavailable');
@@ -32,26 +30,20 @@ const findMyChannels = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindMyChannelsArgs = {
-      participantLimit,
-      addLatestMessage,
-      options: (options as unknown as InputMaybe<FindObjectsOptions>) || null,
+      options: (options as unknown as InputMaybe<FindObjectsOptionsFromNetwork>) || null,
     };
 
     const response: ResponseDataType = await client.query.findMyChannels({
       $: args,
-      ...modelFields.channelListItem,
+      ...modelFields.channel,
     });
-
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findChannels: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
-    }
 
     logger.debug('fsdata.findMyChannels response:', { response });
 
     return {
-      objects: response.data.findMyChannels,
+      objects: response.data.findMyChannels
+        ? response.data.findMyChannels.map((channel) => new Channel(channel))
+        : null,
     };
   } catch (error) {
     logger.error('fsdata.findMyChannels: error', { error, headers: helpers.headers() });

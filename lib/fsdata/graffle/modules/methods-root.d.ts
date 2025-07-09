@@ -105,6 +105,9 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     findMyChannels: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyChannels<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findMyChannels: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findMyChannels'>>>;
+    findMyChannelsV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyChannelsV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
+        findMyChannelsV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'findMyChannelsV2'>>>;
     findChannelMessageById: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findChannelMessageById<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findChannelMessageById: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findChannelMessageById'>>>;

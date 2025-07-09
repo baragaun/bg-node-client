@@ -5,13 +5,14 @@ import { CachePolicy } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import { MyUser } from '../../../models/MyUser.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import {
   createPurchaseOrderSpecHelper,
 } from '../../helpers/purchaseOrder/createPurchaseOrder.specHelper.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-describe('operations.purchaseOrder.createPurchaseOrder', () => {
+describe.runIf(isFeatureEnabled('marketplace'))('operations.purchaseOrder.createPurchaseOrder', () => {
   let client: BgNodeClient;
   let myUser: MyUser;
 

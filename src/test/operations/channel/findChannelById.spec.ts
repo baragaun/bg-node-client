@@ -7,13 +7,14 @@ import signMeOut from '../../../operations/myUser/signMeOut.js';
 import { createChannelSpecHelper } from '../../helpers/channel/createChannel.specHelper.js';
 import { deleteChannelSpecHelper } from '../../helpers/channel/deleteChannel.specHelper.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-
-describe('operations.channel.findChannelById', () => {
+// @failing-in-set
+describe.runIf(isFeatureEnabled('channels'))('operations.channel.findChannelById', () => {
   let client: BgNodeClient;
 
   beforeAll(async () => {

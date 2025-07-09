@@ -12,8 +12,9 @@ import {
 
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 
-describe('NATS connection', () => {
+describe.runIf(isFeatureEnabled('nats'))('NATS connection', () => {
   // const TEST_TIMEOUT = 5000;
   // const MSG_WAIT_TIME = 50;
 

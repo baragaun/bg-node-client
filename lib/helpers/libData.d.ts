@@ -17,6 +17,7 @@ declare const libData: {
     setClientInfoStore: (clientInfoStore: ClientInfoStore) => void;
     setEnableMockMode: (enable: boolean) => void;
     setInitialized: (isInitialized: boolean) => void;
+    isMarketPlaceEnabled: () => boolean;
     allowNetwork: () => boolean;
     isOffline: () => boolean;
     isOnline: () => boolean;
