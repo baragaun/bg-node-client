@@ -49,6 +49,8 @@ export * from './models/Wallet.js';
 export * from './models/WalletItem.js';
 export * from './models/WalletItemListFilter.js';
 export * from './models/WalletListFilter.js';
+export * from './models/WalletItemTransfer.js';
+export * from './models/WalletItemTransferListFilter.js';
 export * from './models/PurchaseOrder.js';
 export * from './models/PurchaseOrderListFilter.js';
 export * from './models/PurchaseOrderItem.js';

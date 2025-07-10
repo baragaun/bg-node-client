@@ -833,6 +833,7 @@ const walletItem = {
   instructionsUrl: true,
   sortIndex: true,
   archivedAt: true,
+  transferredAt: true,
 };
 
 const wallet = {
@@ -844,6 +845,29 @@ const wallet = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
+};
+
+const walletItemTransfer = {
+  id: true,
+  adminNotes: true,
+  metadata: {
+    updatedAt: true,
+  },
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+  walletItemId: true,
+  notificationId: true,
+  recipientEmail: true,
+  recipientFullName: true,
+  subjectText: true,
+  messageText: true,
+  sentAt: true,
+  canceledAt: true,
+  archivedAt: true,
 };
 
 const modelFields = {
@@ -868,6 +892,7 @@ const modelFields = {
   brand,
   wallet,
   walletItem,
+  walletItemTransfer,
 };
 
 export default modelFields;
