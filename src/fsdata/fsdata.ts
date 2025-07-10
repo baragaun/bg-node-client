@@ -51,7 +51,7 @@ import findUsers from './operations/user/findUsers.js';
 import findMyWallet from './operations/wallet/findMyWallet.js';
 import findWalletItems from './operations/walletItem/findWalletItems.js';
 import createWalletItemTransfer from './operations/walletItemTransfer/createWalletItemTransfer.js';
-import findWalletItemTransfers from './operations/walletItemTransfer/findWalletItemTransfer.js';
+import findWalletItemTransfers from './operations/walletItemTransfer/findWalletItemTransfers.js';
 
 const fsdata = {
   create,

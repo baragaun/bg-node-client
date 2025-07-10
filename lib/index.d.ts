@@ -82,4 +82,3 @@ export * from './types/SignInSignUpResponse.js';
 export * from './types/SignInUserInput.js';
 export * from './types/SignUpUserInput.js';
 export * from './types/UserAuthResponse.js';
-export * from './types/WalletItemTransferInput.js';

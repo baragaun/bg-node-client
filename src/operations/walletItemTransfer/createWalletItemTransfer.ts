@@ -3,10 +3,9 @@ import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { WalletItemTransfer } from '../../models/WalletItemTransfer.js';
 import { QueryResult } from '../../types/QueryResult.js';
-import { WalletItemTransferInput } from '../../types/WalletItemTransferInput.js';
 
 const createWalletItemTransfer = async (
-  props: WalletItemTransferInput,
+  props: Partial<WalletItemTransfer>,
 ): Promise<QueryResult<WalletItemTransfer>> => {
   try {
     if (!libData.isInitialized()) {

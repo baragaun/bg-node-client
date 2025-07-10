@@ -209,7 +209,6 @@ const operations: Operations = {
     findWalletItemTransfers,
     createWalletItemTransfer,
   },
-
 };
 
 export default operations;

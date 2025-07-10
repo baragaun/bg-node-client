@@ -83,7 +83,7 @@ declare const fsdata: {
     };
     walletItemTransfer: {
         findWalletItemTransfers: (filter: import("./gql/graphql.js").WalletItemTransferListFilter, match: Partial<import("../index.js").WalletItemTransfer>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
-        createWalletItemTransfer: (props: import("../index.js").WalletItemTransferInput) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
+        createWalletItemTransfer: (props: Partial<import("../index.js").WalletItemTransfer>) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
     };
 };
 export default fsdata;
