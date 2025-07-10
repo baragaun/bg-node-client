@@ -90,11 +90,11 @@ const update = async <T extends Model = Model>(
 
     const updateResponse = await client.mutation[fieldDef.updateField.field](args);
 
-    logger.debug('fsdata.update response:', { response: updateResponse });
+    logger.debug('fsdata.update response:', { response: JSON.stringify(updateResponse) });
 
     if (Array.isArray(updateResponse.errors) && updateResponse.errors.length > 0) {
-      logger.error('fsdata.update: errors received',
-        { errorCode: (updateResponse.errors['0'] as any).extensions.code, errors: JSON.stringify(updateResponse.errors) });
+      logger.error('fsdata.update: errors received.',
+        { errorCode: (updateResponse.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(updateResponse.errors) });
       return { error: updateResponse.errors.map(error => error.message).join(', ') };
     }
 
@@ -129,7 +129,7 @@ const update = async <T extends Model = Model>(
 
     return pollingResponse;
   } catch (error) {
-    logger.error('update: error', { error, headers: helpers.headers() });
+    logger.error('update: error.', { error, headers: helpers.headers() });
     return null;
   }
 };

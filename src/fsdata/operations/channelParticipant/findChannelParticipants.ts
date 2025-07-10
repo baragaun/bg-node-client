@@ -44,13 +44,13 @@ const findChannelParticipants = async (
       ...modelFields.channelParticipant,
     });
 
+    logger.debug('fsdata.findChannelParticipants response:', { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findChannelParticipants: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findChannelParticipants: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.findChannelParticipants response:', { response });
 
     return {
       objects: response.data.findChannelParticipants
@@ -58,7 +58,8 @@ const findChannelParticipants = async (
         : null,
     };
   } catch (error) {
-    logger.error('fsdata.findChannelParticipants: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.findChannelParticipants: error.',
+      { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

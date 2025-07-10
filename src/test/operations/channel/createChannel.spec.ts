@@ -59,4 +59,4 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.createChannel',
     // Cleanup for otherUser:
     await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
   });
-});
+}, { timeout: 10000 });

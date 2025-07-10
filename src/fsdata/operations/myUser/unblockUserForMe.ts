@@ -45,16 +45,17 @@ const unblockUserForMe = async (
 
     const response: ResponseDataType = await client.mutation.unblockUserForMe({ $: args });
 
+    logger.debug('fsdata.unblockUserForMe: response received.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.unblockUserForMe: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.unblockUserForMe: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.unblockUserForMe: response received.', { response });
-
     if (response.errors) {
-      logger.error('fsdata.unblockUserForMe: failed with error', { error: response.errors });
+      logger.error('fsdata.unblockUserForMe: failed with error.', { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
@@ -80,7 +81,7 @@ const unblockUserForMe = async (
 
     return pollingResult;
   } catch (error) {
-    logger.error('fsdata.unblockUserForMe: failed with error',
+    logger.error('fsdata.unblockUserForMe: failed with error.',
       { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }

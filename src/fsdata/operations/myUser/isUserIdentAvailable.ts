@@ -27,10 +27,11 @@ const isUserIdentAvailable = async (
 
     const response: ResponseDataType = await client.query.isUserIdentAvailable({ $: args });
 
-    logger.debug('fsdata.isUserIdentAvailable: response received.', { response });
+    logger.debug('fsdata.isUserIdentAvailable: response received.',
+      { response: JSON.stringify(response) });
 
     if (response.errors) {
-      logger.error('fsdata.isUserIdentAvailable: failed with error', { error: response.errors });
+      logger.error('fsdata.isUserIdentAvailable: failed with error.', { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 

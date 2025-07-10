@@ -8,8 +8,8 @@ import {
 } from '../../index.js';
 
 // const consumer = 'first-spark';
-// const consumer = 'micromentor';
-const consumer = 'mimble';
+const consumer = 'micromentor';
+// const consumer = 'mimble';
 
 const _clientInfoStore = new ClientInfoStore(ClientInfoStoreType.inMemory);
 

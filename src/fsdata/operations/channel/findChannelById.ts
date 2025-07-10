@@ -31,24 +31,24 @@ const findChannelById = async (
       ...modelFields.channel,
     });
 
+    logger.debug('fsdata.findChannelById received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findChannelById: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findChannelById: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.findChannelById response:', { response });
 
     return {
       object: response.data.findChannelById
         ? new Channel(response.data.findChannelById)
         : null,
-      error: Array.isArray(response.errors) && response.errors.length > 0
-        ? response.errors.map(e => e.message).join(', ')
-        : undefined,
     };
   } catch (error) {
-    logger.error('fsdata.findChannelById: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.findChannelById: error.',
+      { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

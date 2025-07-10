@@ -5,7 +5,7 @@ import { ProductCategoryListFilter } from '../../../models/ProductCategoryListFi
 import { FindObjectsOptions } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
-  FindObjectsOptions as FindObjectsOptionsFromGql,
+  FindObjectsOptions as FindObjectsOptionsFromNetwork,
   InputMaybe,
   ProductCategoryInput,
   ProductCategoryListFilter as ProductCategoryListFilterFromGql,
@@ -37,7 +37,7 @@ const findProductCategories = async (
     const args: QueryFindProductCategoriesArgs = {
       filter: (filter || null) as unknown as ProductCategoryListFilterFromGql | null,
       match: match as unknown as InputMaybe<ProductCategoryInput>,
-      options: options as unknown as InputMaybe<FindObjectsOptionsFromGql>,
+      options: options as unknown as InputMaybe<FindObjectsOptionsFromNetwork>,
     };
 
     const response: ResponseDataType = await client.query.findProductCategories({
@@ -45,13 +45,13 @@ const findProductCategories = async (
       ...modelFields.productCategory,
     });
 
+    logger.debug('fsdata.findProductCategories response:', { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findProductCategories: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findProductCategories: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.findProductCategories response:', { response });
 
     return {
       objects: response.data.findProductCategories
@@ -59,7 +59,8 @@ const findProductCategories = async (
         : null,
     };
   } catch (error) {
-    logger.error('fsdata.findProductCategories: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.findProductCategories: error.',
+      { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

@@ -45,16 +45,17 @@ const reportUser = async (
 
     const response: ResponseDataType = await client.mutation.reportUser({ $: args });
 
+    logger.debug('fsdata.reportUser: response received.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.reportUser: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.reportUser: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.reportUser: response received.', { response });
-
     if (response.errors) {
-      logger.error('fsdata.reportUser: failed with error', { error: response.errors });
+      logger.error('fsdata.reportUser: failed with error.', { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
@@ -65,7 +66,7 @@ const reportUser = async (
 
     return {};
   } catch (error) {
-    logger.error('fsdata.reportUser: failed with error', { error, headers: helpers.headers() });
+    logger.error('fsdata.reportUser: failed with error.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

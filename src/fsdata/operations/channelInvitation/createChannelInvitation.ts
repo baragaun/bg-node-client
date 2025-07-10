@@ -33,13 +33,15 @@ const createChannelInvitation = async (
       ...modelFields.channelInvitation,
     });
 
+    logger.debug('fsdata.createChannelInvitation received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.createChannelInvitation: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.createChannelInvitation: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.createChannelInvitation response:', { response });
 
     return {
       object: response.data.createChannelInvitation
@@ -47,7 +49,8 @@ const createChannelInvitation = async (
         : null,
     };
   } catch (error) {
-    logger.error('fsdata.createChannelInvitation: failed', { error, headers: helpers.headers() });
+    logger.error('fsdata.createChannelInvitation: error.',
+      { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

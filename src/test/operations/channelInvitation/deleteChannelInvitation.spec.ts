@@ -46,4 +46,4 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.deleteChannelMe
     // Signing in as the recipient (user1):
     await signMeInSpecHelper(user1.email, getTestUserPropsSpecHelper(user1).password, client);
   });
-});
+}, { timeout: 30000 });

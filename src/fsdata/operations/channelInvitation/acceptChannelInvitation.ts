@@ -30,18 +30,22 @@ const acceptChannelInvitation = async (
 
     const client = graffleClientStore.get();
     const args: MutationAcceptChannelInvitationArgs = { channelInvitationId };
+
     const response: ResponseDataType = await client.mutation.acceptChannelInvitation({ $: args });
 
+    logger.debug('fsdata.acceptChannelInvitation received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.acceptChannelInvitation: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.acceptChannelInvitation: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.acceptChannelInvitation response:', { response });
-
     if (response.errors) {
-      logger.error('fsdata.acceptChannelInvitation: failed with error', { error: response.errors });
+      logger.error('fsdata.acceptChannelInvitation: failed with error.',
+        { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
@@ -79,7 +83,7 @@ const acceptChannelInvitation = async (
 
     return pollingResponse;
   } catch (error) {
-    logger.error('fsdata.acceptChannelInvitation: failed', { error, headers: helpers.headers() });
+    logger.error('fsdata.acceptChannelInvitation: error.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

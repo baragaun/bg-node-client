@@ -5,7 +5,7 @@ import { PurchaseOrderListFilter } from '../../../models/PurchaseOrderListFilter
 import { FindObjectsOptions } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
-  FindObjectsOptions as FindObjectsOptionsFromGql,
+  FindObjectsOptions as FindObjectsOptionsFromNetwork,
   InputMaybe,
   PurchaseOrderInput,
   QueryFindPurchaseOrdersArgs,
@@ -16,7 +16,7 @@ import modelFields from '../../helpers/modelFields.js';
 
 type ResponseDataType = {
   data: {
-    findPurchaseOrders: PurchaseOrder[] | null;
+    findPurchaseOrders: PurchaseOrder[];
   };
   errors?: { message: string }[];
 };
@@ -36,7 +36,7 @@ const findPurchaseOrders = async (
     const args: QueryFindPurchaseOrdersArgs = {
       filter: (filter || null) as unknown as PurchaseOrderListFilter | null,
       match: match as unknown as InputMaybe<PurchaseOrderInput>,
-      options: options as unknown as InputMaybe<FindObjectsOptionsFromGql>,
+      options: options as unknown as InputMaybe<FindObjectsOptionsFromNetwork>,
     };
 
     const response: ResponseDataType = await client.query.findPurchaseOrders({
@@ -44,21 +44,24 @@ const findPurchaseOrders = async (
       ...modelFields.purchaseOrder,
     });
 
+    logger.debug('fsdata.findPurchaseOrders received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findPurchaseOrders: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findPurchaseOrders: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.findPurchaseOrders response:', { response });
 
     return {
       objects: response.data.findPurchaseOrders
         ? response.data.findPurchaseOrders.map((purchaseOrder) => new PurchaseOrder(purchaseOrder))
-        : null,
+        : [],
     };
   } catch (error) {
-    logger.error('fsdata.findPurchaseOrders: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.findPurchaseOrders: error.',
+      { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };
