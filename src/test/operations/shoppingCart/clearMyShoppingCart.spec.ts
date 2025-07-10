@@ -12,7 +12,7 @@ import {
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-describe.runIf(isFeatureEnabled('marketplace'))('operations.shoppingCart.findMyShoppingCart', () => {
+describe.runIf(isFeatureEnabled('marketplace'))('operations.shoppingCart.clearMyShoppingCart', () => {
   let client: BgNodeClient;
   let myUser: MyUser;
 
