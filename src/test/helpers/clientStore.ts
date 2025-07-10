@@ -21,7 +21,12 @@ const getTestClient = async (
 
 const clientStore = {
   getTestClient,
-  getTestClientSync: (): BgNodeClient => _client,
+  getTestClientSync: (): BgNodeClient => {
+    if (!_client) {
+      throw new Error('Client is not initialized. Please call getTestClient first.');
+    }
+    return _client;
+  },
 };
 
 export default clientStore;
