@@ -48,7 +48,7 @@ const findChannelInvitationsForUser = async (
       ...modelFields.channelInvitation,
     });
 
-    logger.debug('fsdata.findChannelInvitations received response.',
+    logger.debug('fsdata.findChannelInvitationsForUser received response.',
       { response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
