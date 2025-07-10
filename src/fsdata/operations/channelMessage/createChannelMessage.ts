@@ -33,13 +33,15 @@ const createChannelMessage = async (
       ...modelFields.channelMessage,
     });
 
+    logger.debug('fsdata.createChannelMessage received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.createChannelMessage: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.createChannelMessage: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.createChannelMessage response:', { response });
 
     return {
       object: response.data.createChannelMessage
@@ -47,7 +49,7 @@ const createChannelMessage = async (
         : null,
     };
   } catch (error) {
-    logger.error('fsdata.createChannelMessage: failed', { error, headers: helpers.headers() });
+    logger.error('fsdata.createChannelMessage: error.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

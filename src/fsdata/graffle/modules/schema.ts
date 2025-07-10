@@ -62,6 +62,7 @@ export namespace Schema {
       findChannelsForUser: Query.findChannelsForUser;
       find1On1Channel: Query.find1On1Channel;
       findMyChannels: Query.findMyChannels;
+      findMyChannelsV2: Query.findMyChannelsV2;
       findChannelMessageById: Query.findChannelMessageById;
       findChannelMessages: Query.findChannelMessages;
       findChannelParticipants: Query.findChannelParticipants;
@@ -185,7 +186,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$User;
     }
 
@@ -281,7 +282,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$UserDeviceWithoutAuth;
     }
 
@@ -488,7 +489,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$AdminTask;
     }
 
@@ -517,7 +518,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$UploadedAsset;
     }
 
@@ -580,7 +581,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$ChannelInvitation;
     }
 
@@ -721,7 +722,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$Channel;
     }
 
@@ -810,6 +811,21 @@ export namespace Schema {
           inlineType: [0];
           namedType: $$NamedTypes.$$FindObjectsOptions;
         };
+      };
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$Channel;
+    }
+
+    export interface findMyChannelsV2 {
+      kind: 'OutputField';
+      name: 'findMyChannelsV2';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
         addLatestMessage: {
           kind: 'InputField';
           name: 'addLatestMessage';
@@ -838,7 +854,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$ChannelMessage;
     }
 
@@ -928,7 +944,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$ChannelParticipant;
     }
 
@@ -1104,7 +1120,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$GroupMembership;
     }
 
@@ -1693,7 +1709,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$UserSearch;
     }
 
@@ -1770,7 +1786,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$ServiceRequest;
     }
 
@@ -1785,7 +1801,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$Contact;
     }
 
@@ -2028,7 +2044,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$Training;
     }
 
@@ -2043,7 +2059,7 @@ export namespace Schema {
           namedType: $$NamedTypes.$$String;
         };
       };
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$TrainingSession;
     }
 
@@ -2624,7 +2640,7 @@ export namespace Schema {
         anonymizePersonalData: {
           kind: 'InputField';
           name: 'anonymizePersonalData';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         deletePhysically: {
@@ -2851,7 +2867,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelInvitationId: {
@@ -2959,13 +2975,13 @@ export namespace Schema {
         anonymizePersonalData: {
           kind: 'InputField';
           name: 'anonymizePersonalData';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelId: {
@@ -3088,7 +3104,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelMessageId: {
@@ -7063,8 +7079,8 @@ export namespace Schema {
       postalCode: User.postalCode;
       avatarUrl: User.avatarUrl;
       websites: User.websites;
+      authType: User.authType;
       inviteCode: User.inviteCode;
-      passwordHash: User.passwordHash;
       tfaBackupCodes: User.tfaBackupCodes;
       passwordUpdatedAt: User.passwordUpdatedAt;
       preferredLanguageTextId: User.preferredLanguageTextId;
@@ -7078,6 +7094,7 @@ export namespace Schema {
       timezone: User.timezone;
       preferences: User.preferences;
       trustLevel: User.trustLevel;
+      userDevices: User.userDevices;
       userBlocks: User.userBlocks;
       termsAndConditionsAcceptedAt: User.termsAndConditionsAcceptedAt;
       optIntoNewsletter: User.optIntoNewsletter;
@@ -7387,17 +7404,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$LabeledStringValue;
     }
 
+    export interface authType {
+      kind: 'OutputField';
+      name: 'authType';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$AuthType;
+    }
+
     export interface inviteCode {
       kind: 'OutputField';
       name: 'inviteCode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface passwordHash {
-      kind: 'OutputField';
-      name: 'passwordHash';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -7508,6 +7525,14 @@ export namespace Schema {
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface userDevices {
+      kind: 'OutputField';
+      name: 'userDevices';
+      arguments: {};
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$UserDeviceWithoutAuth;
     }
 
     export interface userBlocks {
@@ -8454,6 +8479,382 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
+    }
+  }
+
+  //                                       UserDeviceWithoutAuth
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface UserDeviceWithoutAuth {
+    kind: 'Object';
+    name: 'UserDeviceWithoutAuth';
+    fields: {
+      __typename: UserDeviceWithoutAuth.__typename;
+      id: UserDeviceWithoutAuth.id;
+      adminNotes: UserDeviceWithoutAuth.adminNotes;
+      events: UserDeviceWithoutAuth.events;
+      metadata: UserDeviceWithoutAuth.metadata;
+      createdAt: UserDeviceWithoutAuth.createdAt;
+      createdBy: UserDeviceWithoutAuth.createdBy;
+      updatedAt: UserDeviceWithoutAuth.updatedAt;
+      updatedBy: UserDeviceWithoutAuth.updatedBy;
+      deletedAt: UserDeviceWithoutAuth.deletedAt;
+      deletedBy: UserDeviceWithoutAuth.deletedBy;
+      userId: UserDeviceWithoutAuth.userId;
+      deviceUuid: UserDeviceWithoutAuth.deviceUuid;
+      deviceType: UserDeviceWithoutAuth.deviceType;
+      trusted: UserDeviceWithoutAuth.trusted;
+      phoneNumber: UserDeviceWithoutAuth.phoneNumber;
+      phoneNumberUpdatedAt: UserDeviceWithoutAuth.phoneNumberUpdatedAt;
+      isPhoneNumberVerified: UserDeviceWithoutAuth.isPhoneNumberVerified;
+      brand: UserDeviceWithoutAuth.brand;
+      model: UserDeviceWithoutAuth.model;
+      isTablet: UserDeviceWithoutAuth.isTablet;
+      screenWidth: UserDeviceWithoutAuth.screenWidth;
+      screenHeight: UserDeviceWithoutAuth.screenHeight;
+      os: UserDeviceWithoutAuth.os;
+      osVersion: UserDeviceWithoutAuth.osVersion;
+      timezone: UserDeviceWithoutAuth.timezone;
+      ipAddress: UserDeviceWithoutAuth.ipAddress;
+      consumer: UserDeviceWithoutAuth.consumer;
+      consumerVersion: UserDeviceWithoutAuth.consumerVersion;
+      acceptedLanguage: UserDeviceWithoutAuth.acceptedLanguage;
+      locale: UserDeviceWithoutAuth.locale;
+      countryCode: UserDeviceWithoutAuth.countryCode;
+      appVersion: UserDeviceWithoutAuth.appVersion;
+      signedInAt: UserDeviceWithoutAuth.signedInAt;
+      signedOutAt: UserDeviceWithoutAuth.signedOutAt;
+      sessionStartedAt: UserDeviceWithoutAuth.sessionStartedAt;
+      sessionEndedAt: UserDeviceWithoutAuth.sessionEndedAt;
+      identityProvider: UserDeviceWithoutAuth.identityProvider;
+      oauthProfileUrl: UserDeviceWithoutAuth.oauthProfileUrl;
+      trustedAt: UserDeviceWithoutAuth.trustedAt;
+    };
+  }
+
+  export namespace UserDeviceWithoutAuth {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'UserDeviceWithoutAuth';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface userId {
+      kind: 'OutputField';
+      name: 'userId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deviceUuid {
+      kind: 'OutputField';
+      name: 'deviceUuid';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deviceType {
+      kind: 'OutputField';
+      name: 'deviceType';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface trusted {
+      kind: 'OutputField';
+      name: 'trusted';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface phoneNumber {
+      kind: 'OutputField';
+      name: 'phoneNumber';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface phoneNumberUpdatedAt {
+      kind: 'OutputField';
+      name: 'phoneNumberUpdatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface isPhoneNumberVerified {
+      kind: 'OutputField';
+      name: 'isPhoneNumberVerified';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface brand {
+      kind: 'OutputField';
+      name: 'brand';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface model {
+      kind: 'OutputField';
+      name: 'model';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface isTablet {
+      kind: 'OutputField';
+      name: 'isTablet';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface screenWidth {
+      kind: 'OutputField';
+      name: 'screenWidth';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface screenHeight {
+      kind: 'OutputField';
+      name: 'screenHeight';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface os {
+      kind: 'OutputField';
+      name: 'os';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface osVersion {
+      kind: 'OutputField';
+      name: 'osVersion';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface timezone {
+      kind: 'OutputField';
+      name: 'timezone';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface ipAddress {
+      kind: 'OutputField';
+      name: 'ipAddress';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface consumer {
+      kind: 'OutputField';
+      name: 'consumer';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface consumerVersion {
+      kind: 'OutputField';
+      name: 'consumerVersion';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface acceptedLanguage {
+      kind: 'OutputField';
+      name: 'acceptedLanguage';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface locale {
+      kind: 'OutputField';
+      name: 'locale';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface countryCode {
+      kind: 'OutputField';
+      name: 'countryCode';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface appVersion {
+      kind: 'OutputField';
+      name: 'appVersion';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface signedInAt {
+      kind: 'OutputField';
+      name: 'signedInAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface signedOutAt {
+      kind: 'OutputField';
+      name: 'signedOutAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface sessionStartedAt {
+      kind: 'OutputField';
+      name: 'sessionStartedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface sessionEndedAt {
+      kind: 'OutputField';
+      name: 'sessionEndedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface identityProvider {
+      kind: 'OutputField';
+      name: 'identityProvider';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$IdentityProvider;
+    }
+
+    export interface oauthProfileUrl {
+      kind: 'OutputField';
+      name: 'oauthProfileUrl';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface trustedAt {
+      kind: 'OutputField';
+      name: 'trustedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
     }
   }
 
@@ -10678,382 +11079,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0, [1]];
       namedType: $$NamedTypes.$$Option;
-    }
-  }
-
-  //                                       UserDeviceWithoutAuth
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface UserDeviceWithoutAuth {
-    kind: 'Object';
-    name: 'UserDeviceWithoutAuth';
-    fields: {
-      __typename: UserDeviceWithoutAuth.__typename;
-      id: UserDeviceWithoutAuth.id;
-      adminNotes: UserDeviceWithoutAuth.adminNotes;
-      events: UserDeviceWithoutAuth.events;
-      metadata: UserDeviceWithoutAuth.metadata;
-      createdAt: UserDeviceWithoutAuth.createdAt;
-      createdBy: UserDeviceWithoutAuth.createdBy;
-      updatedAt: UserDeviceWithoutAuth.updatedAt;
-      updatedBy: UserDeviceWithoutAuth.updatedBy;
-      deletedAt: UserDeviceWithoutAuth.deletedAt;
-      deletedBy: UserDeviceWithoutAuth.deletedBy;
-      userId: UserDeviceWithoutAuth.userId;
-      deviceUuid: UserDeviceWithoutAuth.deviceUuid;
-      deviceType: UserDeviceWithoutAuth.deviceType;
-      trusted: UserDeviceWithoutAuth.trusted;
-      phoneNumber: UserDeviceWithoutAuth.phoneNumber;
-      phoneNumberUpdatedAt: UserDeviceWithoutAuth.phoneNumberUpdatedAt;
-      isPhoneNumberVerified: UserDeviceWithoutAuth.isPhoneNumberVerified;
-      brand: UserDeviceWithoutAuth.brand;
-      model: UserDeviceWithoutAuth.model;
-      isTablet: UserDeviceWithoutAuth.isTablet;
-      screenWidth: UserDeviceWithoutAuth.screenWidth;
-      screenHeight: UserDeviceWithoutAuth.screenHeight;
-      os: UserDeviceWithoutAuth.os;
-      osVersion: UserDeviceWithoutAuth.osVersion;
-      timezone: UserDeviceWithoutAuth.timezone;
-      ipAddress: UserDeviceWithoutAuth.ipAddress;
-      consumer: UserDeviceWithoutAuth.consumer;
-      consumerVersion: UserDeviceWithoutAuth.consumerVersion;
-      acceptedLanguage: UserDeviceWithoutAuth.acceptedLanguage;
-      locale: UserDeviceWithoutAuth.locale;
-      countryCode: UserDeviceWithoutAuth.countryCode;
-      appVersion: UserDeviceWithoutAuth.appVersion;
-      signedInAt: UserDeviceWithoutAuth.signedInAt;
-      signedOutAt: UserDeviceWithoutAuth.signedOutAt;
-      sessionStartedAt: UserDeviceWithoutAuth.sessionStartedAt;
-      sessionEndedAt: UserDeviceWithoutAuth.sessionEndedAt;
-      identityProvider: UserDeviceWithoutAuth.identityProvider;
-      oauthProfileUrl: UserDeviceWithoutAuth.oauthProfileUrl;
-      trustedAt: UserDeviceWithoutAuth.trustedAt;
-    };
-  }
-
-  export namespace UserDeviceWithoutAuth {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'UserDeviceWithoutAuth';
-      };
-    }
-
-    export interface id {
-      kind: 'OutputField';
-      name: 'id';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'OutputField';
-      name: 'adminNotes';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'OutputField';
-      name: 'events';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEvent;
-    }
-
-    export interface metadata {
-      kind: 'OutputField';
-      name: 'metadata';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BaseModelMetadata;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'OutputField';
-      name: 'createdBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'OutputField';
-      name: 'updatedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'OutputField';
-      name: 'deletedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'OutputField';
-      name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface userId {
-      kind: 'OutputField';
-      name: 'userId';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deviceUuid {
-      kind: 'OutputField';
-      name: 'deviceUuid';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface deviceType {
-      kind: 'OutputField';
-      name: 'deviceType';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface trusted {
-      kind: 'OutputField';
-      name: 'trusted';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface phoneNumber {
-      kind: 'OutputField';
-      name: 'phoneNumber';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface phoneNumberUpdatedAt {
-      kind: 'OutputField';
-      name: 'phoneNumberUpdatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface isPhoneNumberVerified {
-      kind: 'OutputField';
-      name: 'isPhoneNumberVerified';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface brand {
-      kind: 'OutputField';
-      name: 'brand';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface model {
-      kind: 'OutputField';
-      name: 'model';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface isTablet {
-      kind: 'OutputField';
-      name: 'isTablet';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface screenWidth {
-      kind: 'OutputField';
-      name: 'screenWidth';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface screenHeight {
-      kind: 'OutputField';
-      name: 'screenHeight';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Int;
-    }
-
-    export interface os {
-      kind: 'OutputField';
-      name: 'os';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface osVersion {
-      kind: 'OutputField';
-      name: 'osVersion';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface timezone {
-      kind: 'OutputField';
-      name: 'timezone';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface ipAddress {
-      kind: 'OutputField';
-      name: 'ipAddress';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface consumer {
-      kind: 'OutputField';
-      name: 'consumer';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface consumerVersion {
-      kind: 'OutputField';
-      name: 'consumerVersion';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface acceptedLanguage {
-      kind: 'OutputField';
-      name: 'acceptedLanguage';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface locale {
-      kind: 'OutputField';
-      name: 'locale';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface countryCode {
-      kind: 'OutputField';
-      name: 'countryCode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface appVersion {
-      kind: 'OutputField';
-      name: 'appVersion';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface signedInAt {
-      kind: 'OutputField';
-      name: 'signedInAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface signedOutAt {
-      kind: 'OutputField';
-      name: 'signedOutAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface sessionStartedAt {
-      kind: 'OutputField';
-      name: 'sessionStartedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface sessionEndedAt {
-      kind: 'OutputField';
-      name: 'sessionEndedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface identityProvider {
-      kind: 'OutputField';
-      name: 'identityProvider';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$IdentityProvider;
-    }
-
-    export interface oauthProfileUrl {
-      kind: 'OutputField';
-      name: 'oauthProfileUrl';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface trustedAt {
-      kind: 'OutputField';
-      name: 'trustedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
     }
   }
 
@@ -16071,7 +16096,7 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'shortName';
       arguments: {};
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$String;
     }
 
@@ -17622,6 +17647,7 @@ export namespace Schema {
       channelId: ChannelInboxItemInvitation.channelId;
       messageText: ChannelInboxItemInvitation.messageText;
       readByRecipientAt: ChannelInboxItemInvitation.readByRecipientAt;
+      autoAccept: ChannelInboxItemInvitation.autoAccept;
       status: ChannelInboxItemInvitation.status;
       createdAt: ChannelInboxItemInvitation.createdAt;
       createdBy: ChannelInboxItemInvitation.createdBy;
@@ -17671,6 +17697,14 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface autoAccept {
+      kind: 'OutputField';
+      name: 'autoAccept';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface status {
@@ -23380,7 +23414,6 @@ export namespace Schema {
       updatedBy: ServiceRequest.updatedBy;
       deletedAt: ServiceRequest.deletedAt;
       deletedBy: ServiceRequest.deletedBy;
-      userId: ServiceRequest.userId;
       serviceRequestType: ServiceRequest.serviceRequestType;
       userRoles: ServiceRequest.userRoles;
       objectIds: ServiceRequest.objectIds;
@@ -23393,6 +23426,7 @@ export namespace Schema {
       source: ServiceRequest.source;
       finishedAt: ServiceRequest.finishedAt;
       expiresAt: ServiceRequest.expiresAt;
+      userId: ServiceRequest.userId;
     };
   }
 
@@ -23483,14 +23517,6 @@ export namespace Schema {
     export interface deletedBy {
       kind: 'OutputField';
       name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface userId {
-      kind: 'OutputField';
-      name: 'userId';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
@@ -23590,6 +23616,17 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    /**
+     * @deprecated user createdBy
+     */
+    export interface userId {
+      kind: 'OutputField';
+      name: 'userId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
     }
   }
 
@@ -24674,8 +24711,8 @@ export namespace Schema {
       postalCode: MyUser.postalCode;
       avatarUrl: MyUser.avatarUrl;
       websites: MyUser.websites;
+      authType: MyUser.authType;
       inviteCode: MyUser.inviteCode;
-      passwordHash: MyUser.passwordHash;
       tfaBackupCodes: MyUser.tfaBackupCodes;
       passwordUpdatedAt: MyUser.passwordUpdatedAt;
       preferredLanguageTextId: MyUser.preferredLanguageTextId;
@@ -24689,6 +24726,7 @@ export namespace Schema {
       timezone: MyUser.timezone;
       preferences: MyUser.preferences;
       trustLevel: MyUser.trustLevel;
+      userDevices: MyUser.userDevices;
       userBlocks: MyUser.userBlocks;
       termsAndConditionsAcceptedAt: MyUser.termsAndConditionsAcceptedAt;
       optIntoNewsletter: MyUser.optIntoNewsletter;
@@ -24764,6 +24802,7 @@ export namespace Schema {
       pronouns: MyUser.pronouns;
       pronounsDisplay: MyUser.pronounsDisplay;
       uploadedAssets: MyUser.uploadedAssets;
+      inbox: MyUser.inbox;
     };
   }
 
@@ -24998,17 +25037,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$LabeledStringValue;
     }
 
+    export interface authType {
+      kind: 'OutputField';
+      name: 'authType';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$AuthType;
+    }
+
     export interface inviteCode {
       kind: 'OutputField';
       name: 'inviteCode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface passwordHash {
-      kind: 'OutputField';
-      name: 'passwordHash';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -25119,6 +25158,14 @@ export namespace Schema {
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$Int;
+    }
+
+    export interface userDevices {
+      kind: 'OutputField';
+      name: 'userDevices';
+      arguments: {};
+      inlineType: [1, [1]];
+      namedType: $$NamedTypes.$$UserDeviceWithoutAuth;
     }
 
     export interface userBlocks {
@@ -25783,6 +25830,17 @@ export namespace Schema {
       arguments: {};
       inlineType: [1, [1]];
       namedType: $$NamedTypes.$$UploadedAsset;
+    }
+
+    /**
+     * @deprecated Use findMyInbox
+     */
+    export interface inbox {
+      kind: 'OutputField';
+      name: 'inbox';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$UserInbox;
     }
   }
 
@@ -33144,9 +33202,9 @@ export namespace Schema {
       createdAtUntil: GroupMembershipListFilter.createdAtUntil;
       updatedAtFrom: GroupMembershipListFilter.updatedAtFrom;
       updatedAtUntil: GroupMembershipListFilter.updatedAtUntil;
-      userId: GroupMembershipListFilter.userId;
+      userIds: GroupMembershipListFilter.userIds;
       embedded: GroupMembershipListFilter.embedded;
-      roles: GroupMembershipListFilter.roles;
+      anyOfRoles: GroupMembershipListFilter.anyOfRoles;
     };
   }
 
@@ -33214,10 +33272,10 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
-    export interface userId {
+    export interface userIds {
       kind: 'InputField';
-      name: 'userId';
-      inlineType: [0];
+      name: 'userIds';
+      inlineType: [0, [1]];
       namedType: $$NamedTypes.$$ID;
     }
 
@@ -33228,9 +33286,12 @@ export namespace Schema {
       namedType: $$NamedTypes.$$Boolean;
     }
 
-    export interface roles {
+    /**
+     * will find memberships that have any of the specified roles
+     */
+    export interface anyOfRoles {
       kind: 'InputField';
-      name: 'roles';
+      name: 'anyOfRoles';
       inlineType: [0, [1]];
       namedType: $$NamedTypes.$$GroupMembershipRole;
     }
@@ -42255,6 +42316,22 @@ export namespace Schema {
       | 'userHandle';
   }
 
+  //                                              AuthType
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface AuthType {
+    kind: 'Enum';
+    name: 'AuthType';
+    members: ['none', 'oauth', 'token', 'hmac', 'saml'];
+    membersUnion:
+      | 'none'
+      | 'oauth'
+      | 'token'
+      | 'hmac'
+      | 'saml';
+  }
+
   //                                              UserRole
   // --------------------------------------------------------------------------------------------------
   //
@@ -42324,6 +42401,40 @@ export namespace Schema {
       | 'sendFirstInvitation'
       | 'unset'
       | 'welcome';
+  }
+
+  //                                          IdentityProvider
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface IdentityProvider {
+    kind: 'Enum';
+    name: 'IdentityProvider';
+    members: [
+      'apple',
+      'facebook',
+      'google',
+      'instagram',
+      'linkedIn',
+      'microsoft',
+      'own',
+      'sso',
+      'telegram',
+      'twitter',
+      'whatsApp',
+    ];
+    membersUnion:
+      | 'apple'
+      | 'facebook'
+      | 'google'
+      | 'instagram'
+      | 'linkedIn'
+      | 'microsoft'
+      | 'own'
+      | 'sso'
+      | 'telegram'
+      | 'twitter'
+      | 'whatsApp';
   }
 
   //                                             ModelType
@@ -42514,40 +42625,6 @@ export namespace Schema {
       | 'none';
   }
 
-  //                                          IdentityProvider
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface IdentityProvider {
-    kind: 'Enum';
-    name: 'IdentityProvider';
-    members: [
-      'apple',
-      'facebook',
-      'google',
-      'instagram',
-      'linkedIn',
-      'microsoft',
-      'own',
-      'sso',
-      'telegram',
-      'twitter',
-      'whatsApp',
-    ];
-    membersUnion:
-      | 'apple'
-      | 'facebook'
-      | 'google'
-      | 'instagram'
-      | 'linkedIn'
-      | 'microsoft'
-      | 'own'
-      | 'sso'
-      | 'telegram'
-      | 'twitter'
-      | 'whatsApp';
-  }
-
   //                                             AppAction
   // --------------------------------------------------------------------------------------------------
   //
@@ -42681,22 +42758,6 @@ export namespace Schema {
       | 'only';
   }
 
-  //                                              AuthType
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface AuthType {
-    kind: 'Enum';
-    name: 'AuthType';
-    members: ['none', 'oauth', 'token', 'hmac', 'saml'];
-    membersUnion:
-      | 'none'
-      | 'oauth'
-      | 'token'
-      | 'hmac'
-      | 'saml';
-  }
-
   //                                     FederatedIdentityProvider
   // --------------------------------------------------------------------------------------------------
   //
@@ -42740,6 +42801,7 @@ export namespace Schema {
       'loadDbCache',
       'queryDbVersion',
       'recreateDbIndexes',
+      'updateEmbeddedGroupMembershipsOfAllUsers',
       'updateGroupIdentsInAllGroupMemberships',
       'addLanguageText',
       'importMarketplaceData',
@@ -42750,6 +42812,7 @@ export namespace Schema {
       'sendPushNotification',
       'compareMm2Object',
       'compareMm2ObjectIdsOfModel',
+      'fillAllMm2ProfileIds',
       'fixAllSyncedChannelInvitationInitialMessages',
       'mergeAllDuplicateMm3ChatObjects',
       'mergeAllDuplicateMm3Users',
@@ -42789,6 +42852,7 @@ export namespace Schema {
       | 'loadDbCache'
       | 'queryDbVersion'
       | 'recreateDbIndexes'
+      | 'updateEmbeddedGroupMembershipsOfAllUsers'
       | 'updateGroupIdentsInAllGroupMemberships'
       | 'addLanguageText'
       | 'importMarketplaceData'
@@ -42799,6 +42863,7 @@ export namespace Schema {
       | 'sendPushNotification'
       | 'compareMm2Object'
       | 'compareMm2ObjectIdsOfModel'
+      | 'fillAllMm2ProfileIds'
       | 'fixAllSyncedChannelInvitationInitialMessages'
       | 'mergeAllDuplicateMm3ChatObjects'
       | 'mergeAllDuplicateMm3Users'
@@ -44132,6 +44197,7 @@ export namespace Schema {
     export type $$LabeledStringValue = LabeledStringValue;
     export type $$UserPreferences = UserPreferences;
     export type $$NotificationOptions = NotificationOptions;
+    export type $$UserDeviceWithoutAuth = UserDeviceWithoutAuth;
     export type $$UserBlock = UserBlock;
     export type $$Company = Company;
     export type $$CompanyStage = CompanyStage;
@@ -44142,7 +44208,6 @@ export namespace Schema {
     export type $$UserProfileRoleHistoryItem = UserProfileRoleHistoryItem;
     export type $$Country = Country;
     export type $$Gender = Gender;
-    export type $$UserDeviceWithoutAuth = UserDeviceWithoutAuth;
     export type $$Language = Language;
     export type $$Notification = Notification;
     export type $$NotificationContext = NotificationContext;
@@ -44312,14 +44377,15 @@ export namespace Schema {
     export type $$UiLanguage = UiLanguage;
     export type $$MastercardCardType = MastercardCardType;
     export type $$UserIdentType = UserIdentType;
+    export type $$AuthType = AuthType;
     export type $$UserRole = UserRole;
     export type $$AppFeature = AppFeature;
     export type $$NotificationType = NotificationType;
+    export type $$IdentityProvider = IdentityProvider;
     export type $$ModelType = ModelType;
     export type $$UploadedAssetType = UploadedAssetType;
     export type $$AssetHostingService = AssetHostingService;
     export type $$UserProfileRole = UserProfileRole;
-    export type $$IdentityProvider = IdentityProvider;
     export type $$AppAction = AppAction;
     export type $$ChannelType = ChannelType;
     export type $$ChannelInvitationStatus = ChannelInvitationStatus;
@@ -44329,7 +44395,6 @@ export namespace Schema {
     export type $$GroupRuleEventType = GroupRuleEventType;
     export type $$SortDirection = SortDirection;
     export type $$IncludeFilterOption = IncludeFilterOption;
-    export type $$AuthType = AuthType;
     export type $$FederatedIdentityProvider = FederatedIdentityProvider;
     export type $$AdminTaskType = AdminTaskType;
     export type $$AdminTaskResult = AdminTaskResult;
@@ -44406,14 +44471,15 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     UiLanguage: Schema.UiLanguage;
     MastercardCardType: Schema.MastercardCardType;
     UserIdentType: Schema.UserIdentType;
+    AuthType: Schema.AuthType;
     UserRole: Schema.UserRole;
     AppFeature: Schema.AppFeature;
     NotificationType: Schema.NotificationType;
+    IdentityProvider: Schema.IdentityProvider;
     ModelType: Schema.ModelType;
     UploadedAssetType: Schema.UploadedAssetType;
     AssetHostingService: Schema.AssetHostingService;
     UserProfileRole: Schema.UserProfileRole;
-    IdentityProvider: Schema.IdentityProvider;
     AppAction: Schema.AppAction;
     ChannelType: Schema.ChannelType;
     ChannelInvitationStatus: Schema.ChannelInvitationStatus;
@@ -44423,7 +44489,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     GroupRuleEventType: Schema.GroupRuleEventType;
     SortDirection: Schema.SortDirection;
     IncludeFilterOption: Schema.IncludeFilterOption;
-    AuthType: Schema.AuthType;
     FederatedIdentityProvider: Schema.FederatedIdentityProvider;
     AdminTaskType: Schema.AdminTaskType;
     AdminTaskResult: Schema.AdminTaskResult;
@@ -44469,6 +44534,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     LabeledStringValue: Schema.LabeledStringValue;
     UserPreferences: Schema.UserPreferences;
     NotificationOptions: Schema.NotificationOptions;
+    UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth;
     UserBlock: Schema.UserBlock;
     Company: Schema.Company;
     CompanyStage: Schema.CompanyStage;
@@ -44479,7 +44545,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     UserProfileRoleHistoryItem: Schema.UserProfileRoleHistoryItem;
     Country: Schema.Country;
     Gender: Schema.Gender;
-    UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth;
     Language: Schema.Language;
     Notification: Schema.Notification;
     NotificationContext: Schema.NotificationContext;
@@ -44579,6 +44644,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     LabeledStringValue: Schema.LabeledStringValue;
     UserPreferences: Schema.UserPreferences;
     NotificationOptions: Schema.NotificationOptions;
+    UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth;
     UserBlock: Schema.UserBlock;
     Company: Schema.Company;
     CompanyStage: Schema.CompanyStage;
@@ -44589,7 +44655,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     UserProfileRoleHistoryItem: Schema.UserProfileRoleHistoryItem;
     Country: Schema.Country;
     Gender: Schema.Gender;
-    UserDeviceWithoutAuth: Schema.UserDeviceWithoutAuth;
     Language: Schema.Language;
     Notification: Schema.Notification;
     NotificationContext: Schema.NotificationContext;

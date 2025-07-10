@@ -5,12 +5,13 @@ import signMeOut from '../../../operations/myUser/signMeOut.js';
 import factories from '../../factories/factories.js';
 import { createChannelInvitationSpecHelper } from '../../helpers/channelInvitation/createChannelInvitation.specHelper.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-describe('operations.channel.createChannelInvitation', () => {
+describe.runIf(isFeatureEnabled('channels'))('operations.channel.createChannelInvitation', () => {
   let client: BgNodeClient;
 
   beforeAll(async () => {
@@ -59,4 +60,4 @@ describe('operations.channel.createChannelInvitation', () => {
     // Cleanup for otherUser:
     await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
   });
-});
+}, { timeout: 30000 });

@@ -44,16 +44,19 @@ const declineChannelInvitation = async (
 
     const response: ResponseDataType = await client.mutation.declineChannelInvitation({ $: args });
 
+    logger.debug('fsdata.declineChannelInvitation received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.declineChannelInvitation: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.declineChannelInvitation: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.declineChannelInvitation response:', { response });
-
     if (response.errors) {
-      logger.error('fsdata.declineChannelInvitation: failed with error', { error: response.errors });
+      logger.error('fsdata.declineChannelInvitation: failed with error',
+        { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
@@ -91,7 +94,7 @@ const declineChannelInvitation = async (
 
     return pollingResponse;
   } catch (error) {
-    logger.error('fsdata.declineChannelInvitation: failed', { error, headers: helpers.headers() });
+    logger.error('fsdata.declineChannelInvitation: error.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

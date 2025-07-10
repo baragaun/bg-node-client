@@ -33,11 +33,12 @@ const clearMyShoppingCart = async (
 
     const response: ResponseDataType = await client.mutation.clearMyShoppingCart({ ...modelFields.serviceRequest });
 
-    logger.debug('fsdata.clearMyShoppingCart response:', { response });
+    logger.debug('fsdata.clearMyShoppingCart response:',
+      { response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.clearMyShoppingCart: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.clearMyShoppingCart: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
@@ -72,7 +73,7 @@ const clearMyShoppingCart = async (
       object: response.data.clearMyShoppingCart,
     };
   } catch (error) {
-    logger.error('fsdata.clearMyShoppingCart: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.clearMyShoppingCart: error.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

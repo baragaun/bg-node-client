@@ -7,6 +7,11 @@ import { NatsOptions } from './NatsOptions.js';
  */
 export interface BgNodeClientConfig {
     /**
+     * A name for the client.
+     * Used for some customization. Currently known: `first-spark`, `micromentor`, `mimble`
+     */
+    consumer?: string;
+    /**
      * Defaults to `production`
      */
     appEnvironment?: AppEnvironment;
@@ -66,8 +71,22 @@ export interface BgNodeClientConfig {
      *   }
      */
     nats?: NatsOptions;
-    /**
-     * Can a channel have more than 2 participants?
-     */
-    enableGroupChannels: boolean;
+    customizations?: {
+        /**
+         * Enable Channels?
+         */
+        enableChannels: boolean;
+        /**
+         * Can a channel have more than 2 participants?
+         */
+        enableGroupChannels: boolean;
+        /**
+         * Enable marketplace?
+         */
+        enableMarketplace: boolean;
+        /**
+         * Enable NATS realtime messaging?
+         */
+        enableNats: boolean;
+    };
 }

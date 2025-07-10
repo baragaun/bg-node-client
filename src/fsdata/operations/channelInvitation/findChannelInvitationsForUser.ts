@@ -45,17 +45,18 @@ const findChannelInvitationsForUser = async (
 
     const response: ResponseDataType = await client.query.findChannelInvitationsForUser({
       $: args,
-      id: true,
       ...modelFields.channelInvitation,
     });
 
+    logger.debug('fsdata.findChannelInvitationsForUser received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findChannelInvitationsForUser: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findChannelInvitationsForUser: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.findChannelInvitationsForUser response:', { response });
 
     return {
       objects: response.data.findChannelInvitationsForUser
@@ -63,7 +64,7 @@ const findChannelInvitationsForUser = async (
         : null,
     };
   } catch (error) {
-    logger.error('fsdata.findChannelInvitationsForUser: error',
+    logger.error('fsdata.findChannelInvitationsForUser: error.',
       { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }

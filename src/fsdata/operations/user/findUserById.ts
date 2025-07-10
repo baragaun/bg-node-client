@@ -31,13 +31,13 @@ const findUserById = async (
       ...modelFields.user,
     });
 
+    logger.debug('fsdata.findUserById response:', { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findUserById: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findUserById: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.findUserById response:', { response });
 
     return {
       object: response.data.findUserById
@@ -48,7 +48,7 @@ const findUserById = async (
         : undefined,
     };
   } catch (error) {
-    logger.error('fsdata.findUserById: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.findUserById: error.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

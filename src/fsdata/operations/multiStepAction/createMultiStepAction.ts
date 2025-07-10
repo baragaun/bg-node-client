@@ -7,7 +7,12 @@ import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
 
-type ResponseDataType = { data: { createMultiStepAction: SidMultiStepActionProgress }, errors?: { message: string }[] };
+type ResponseDataType = {
+  data: {
+    createMultiStepAction: SidMultiStepActionProgress;
+  };
+  errors?: { message: string }[];
+};
 
 const createMultiStepAction = async (
   input: SidMultiStepActionInput,
@@ -27,18 +32,25 @@ const createMultiStepAction = async (
       ...modelFields.sidMultiStepActionProgress,
     });
 
+    logger.debug('fsdata.createMultiStepAction received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.createMultiStepAction: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.createMultiStepAction: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.createMultiStepAction: received response:', { response });
-
-    return { object: response.data.createMultiStepAction };
+    return {
+      object: response.data.createMultiStepAction
+        ? response.data.createMultiStepAction
+      : null,
+    };
   } catch (error) {
-    logger.error('fsdata.createMultiStepAction: failed', { error, headers: helpers.headers() });
-    return { error: error.message };
+    logger.error('fsdata.createMultiStepAction: error.',
+      { error, headers: helpers.headers() });
+    return { error: (error as Error).message };
   }
 };
 

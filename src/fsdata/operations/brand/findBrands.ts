@@ -46,12 +46,12 @@ const findBrands = async (
     });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findBrands: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findBrands: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.findBrands response:', { response });
+    logger.debug('fsdata.findBrands response:', { response: JSON.stringify(response) });
 
     return {
       objects: response.data.findBrands
@@ -59,7 +59,7 @@ const findBrands = async (
         : null,
     };
   } catch (error) {
-    logger.error('fsdata.findBrands: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.findBrands: error.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

@@ -8,7 +8,8 @@ declare const fsdata: {
         createChannel: (props: Partial<import("../index.js").Channel>) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
         findChannelById: (channelId: string) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
         findChannels: (filter: import("../index.js").ChannelListFilter | null | undefined, match: Partial<import("../index.js").Channel> | null | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
-        findMyChannels: (participantLimit: number | undefined, addLatestMessage: boolean | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelListItem>>;
+        findMyChannels: (options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").Channel>>;
+        findMyChannelsV2: (participantLimit: number | undefined, addLatestMessage: boolean | undefined, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelListItem>>;
     };
     channelInvitation: {
         acceptChannelInvitation: (channelInvitationId: string, queryOptions?: import("../index.js").QueryOptions<import("../index.js").ChannelInvitation>) => Promise<import("../index.js").QueryResult<import("../index.js").ChannelInvitation>>;

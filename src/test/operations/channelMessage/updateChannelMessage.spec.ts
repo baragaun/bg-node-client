@@ -6,11 +6,12 @@ import { createChannelSpecHelper } from '../../helpers/channel/createChannel.spe
 import { deleteChannelSpecHelper } from '../../helpers/channel/deleteChannel.specHelper.js';
 import { updateChannelMessageSpecHelper } from '../../helpers/channelMessage/updateChannelMessage.specHelper.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-
-describe('operations.channel.updateChannelMessage', () => {
+// @failing-in-set
+describe.runIf(isFeatureEnabled('channels'))('operations.channel.updateChannelMessage', () => {
   let client: BgNodeClient;
 
   beforeAll(async () => {

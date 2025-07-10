@@ -23,16 +23,19 @@ const findMyActiveMultiStepActions = async (): Promise<
       modelFields.sidMultiStepAction,
     );
 
+    logger.debug('fsdata.findMyActiveMultiStepActions received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findMyActiveMultiStepActions: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findMyActiveMultiStepActions: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.findMyActiveMultiStepActions: response received.', { response });
-
     if (response.errors) {
-      logger.error('fsdata.findMyActiveMultiStepActions: failed with error', { error: response.errors });
+      logger.error('fsdata.findMyActiveMultiStepActions: failed with error.',
+        { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
@@ -43,7 +46,8 @@ const findMyActiveMultiStepActions = async (): Promise<
 
     return { objects: response.data.findMyActiveMultiStepActions };
   } catch (error) {
-    logger.error('fsdata.findMyActiveMultiStepActions: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.findMyActiveMultiStepActions: error.',
+      { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

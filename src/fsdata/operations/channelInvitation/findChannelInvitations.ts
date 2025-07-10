@@ -4,12 +4,6 @@ import { ChannelInvitation } from '../../../models/ChannelInvitation.js';
 import { ChannelInvitationListFilter } from '../../../models/ChannelInvitationListFilter.js';
 import { FindObjectsOptions as FindObjectsOptionsFromClient } from '../../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-// import {
-//   ChannelInvitationDirection,
-//   FindObjectsOptions,
-//   InputMaybe,
-//   // QueryFindChannelInvitationsArgs,
-// } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
@@ -21,7 +15,6 @@ type ResponseDataType = {
   errors?: { message: string }[];
 };
 
-// todo: implement
 const findChannelInvitations = async (
   _filter: ChannelInvitationListFilter,
   _match: Partial<ChannelInvitation>,
@@ -44,17 +37,18 @@ const findChannelInvitations = async (
 
     const response: ResponseDataType = await client.query.findChannelInvitations({
       // $: args,
-      id: true,
       ...modelFields.channelInvitation,
     });
 
+    logger.debug('fsdata.findChannelInvitations received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findChannelInvitations: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findChannelInvitations: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
-
-    logger.debug('fsdata.findChannelInvitations response:', { response });
 
     return {
       objects: response.data.findChannelInvitations
@@ -62,7 +56,7 @@ const findChannelInvitations = async (
         : null,
     };
   } catch (error) {
-    logger.error('fsdata.findChannelInvitations: error',
+    logger.error('fsdata.findChannelInvitations: error.',
       { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }

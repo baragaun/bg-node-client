@@ -38,21 +38,21 @@ const findById = async <T extends Model = Model>(
       ...(selections || fieldDef.selections),
     });
 
+    logger.debug('fsdata.findById: response received.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findById: errors received', {
+      logger.error('fsdata.findById: errors received.', {
         id,
         modelType,
-        errorCode: (response.errors['0'] as any).extensions.code,
+        errorCode: (response.errors['0'] as any)?.extensions?.code,
         errors: JSON.stringify(response.errors),
       });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.findById: response received.',
-      { response, object: JSON.stringify(response.data[fieldDef.findByIdField]) });
-
     if (response.errors) {
-      logger.error('fsdata.findById: failed with error', { error: response.errors });
+      logger.error('fsdata.findById: failed with error.', { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
@@ -63,7 +63,7 @@ const findById = async <T extends Model = Model>(
 
     return { object: modelFactory<T>(response.data[fieldDef.findByIdField], modelType) };
   } catch (error) {
-    logger.error('findById: error', { error, headers: helpers.headers() });
+    logger.error('findById: error.', { error, headers: helpers.headers() });
     return null;
   }
 };

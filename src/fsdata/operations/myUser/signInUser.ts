@@ -27,16 +27,17 @@ const SignInUser = async (
       authToken: true,
     });
 
+    logger.debug('fsdata.signInUser: response received.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.signInUser: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.signInUser: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.signInUser: response received.', { response });
-
     if (response.errors) {
-      logger.error('fsdata.signInUser: failed with error', { error: response.errors });
+      logger.error('fsdata.signInUser: failed with error.', { error: response.errors });
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 

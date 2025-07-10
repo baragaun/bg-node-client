@@ -12,8 +12,9 @@ import {
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import nats from '../../nats/index.js';
+import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 
-describe('nats as integrated into BgNodeClient', () => {
+describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient', () => {
   describe('while not being connected', () => {
     it('should throw an error when not connected', async () => {
       const testStreamName = 'test_client_stream';

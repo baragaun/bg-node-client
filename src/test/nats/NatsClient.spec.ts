@@ -8,8 +8,9 @@ import {
 import libData from '../../helpers/libData.js';
 import { NatsClient } from '../../nats/NatsClient.js';
 import { NatsOptions } from '../../types/NatsOptions.js';
+import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 
-describe('NatsClient', () => {
+describe.runIf(isFeatureEnabled('nats'))('NatsClient', () => {
   let client: NatsClient;
 
   afterAll(async () => {

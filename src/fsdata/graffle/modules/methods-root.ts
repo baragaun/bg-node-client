@@ -592,6 +592,23 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  findMyChannelsV2: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyChannelsV2<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findMyChannelsV2: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findMyChannelsV2'
+      >
+    >
+  >;
+
   findChannelMessageById: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(

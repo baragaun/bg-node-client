@@ -3,12 +3,12 @@ import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy } from '../../../enums.js';
 import { MyUser } from '../../../models/MyUser.js';
-// import factories from '../../factories/factories.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-describe('operations.wallet.findMyWallet', () => {
+describe.runIf(isFeatureEnabled('marketplace'))('operations.wallet.findMyWallet', () => {
   let client: BgNodeClient;
   let myUser: MyUser;
 

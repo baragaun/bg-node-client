@@ -7,7 +7,7 @@ import { QueryResult } from '../../../types/QueryResult.js';
 import {
   WalletItemInput,
   WalletListFilter as WalletListFilterFromRemote,
-  FindObjectsOptions as FindObjectsOptionsFromRemote,
+  FindObjectsOptions as FindObjectsOptionsFromNetwork,
   InputMaybe,
   QueryFindWalletItemsArgs,
 } from '../../gql/graphql.js';
@@ -17,7 +17,7 @@ import modelFields from '../../helpers/modelFields.js';
 
 type ResponseDataType = {
   data: {
-    findWalletItems: WalletItem[] | null;
+    findWalletItems: WalletItem[];
   };
   errors?: { message: string }[];
 };
@@ -37,30 +37,31 @@ const findWalletItems = async (
     const args: QueryFindWalletItemsArgs = {
       filter: (filter || null) as unknown as WalletListFilterFromRemote | null,
       match: match as unknown as InputMaybe<WalletItemInput>,
-      options: options as unknown as InputMaybe<FindObjectsOptionsFromRemote>,
+      options: options as unknown as InputMaybe<FindObjectsOptionsFromNetwork>,
     };
 
     const response: ResponseDataType = await client.query.findWalletItems({
       $: args,
-      id: true,
       ...modelFields.walletItem,
     });
 
+    logger.debug('fsdata.findWalletItems received response.',
+      { response: JSON.stringify(response) });
+
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findWalletItems: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.findWalletItems: errors received.',
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    logger.debug('fsdata.findWalletItems response:', { response });
-
     return {
       objects: response.data.findWalletItems
-        ? response.data.findWalletItems.map((i) => new WalletItem(i))
-        : null,
+        ? response.data.findWalletItems.map((item) => new WalletItem(item))
+        : [],
     };
   } catch (error) {
-    logger.error('fsdata.findWalletItems: error',
+    logger.error('fsdata.findWalletItems: error.',
       { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }

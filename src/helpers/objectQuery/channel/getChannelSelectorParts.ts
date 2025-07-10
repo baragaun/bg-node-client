@@ -14,7 +14,7 @@ const getChannelSelectorParts = (
 
   if (enableGroupChannels === undefined) {
     const config = libData.getConfig();
-    enableGroupChannels = config.enableGroupChannels ?? false;
+    enableGroupChannels = config.customizations?.enableGroupChannels ?? false;
   }
 
   const parts: MangoQueryTypes<Channel>[] = [];

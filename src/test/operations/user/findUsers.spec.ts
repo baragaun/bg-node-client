@@ -11,6 +11,7 @@ import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.
 import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
+// @failing-in-set
 describe('operations.user.findUsers', () => {
   let client: BgNodeClient;
   let count: number;

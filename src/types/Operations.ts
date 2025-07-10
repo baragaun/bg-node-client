@@ -133,19 +133,24 @@ export interface Operations {
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
 
-    findMyChannels: (
-      participantLimit: number | undefined,
-      addLatestMessage: boolean | undefined,
-      options: FindObjectsOptions,
-      queryOptions?: QueryOptions,
-    ) => Promise<QueryResult<ChannelListItem>>;
-
     findMyArchivedChannels: (
       filter: ChannelListFilter,
       match: Partial<Channel>,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
+
+    findMyChannels: (
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<Channel>>;
+
+    findMyChannelsV2: (
+      participantLimit: number | undefined,
+      addLatestMessage: boolean | undefined,
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<ChannelListItem>>;
 
     isChannelArchivedForMe: (channel: Channel) => boolean;
 

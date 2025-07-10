@@ -11,12 +11,14 @@ import {
   updateChannelInvitationSpecHelper,
 } from '../../helpers/channelInvitation/updateChannelInvitation.specHelper.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-describe('operations.channel.updateChannelInvitation', () => {
+// @failing-in-set
+describe.runIf(isFeatureEnabled('channels'))('operations.channel.updateChannelInvitation', () => {
   let client: BgNodeClient;
 
   beforeAll(async () => {

@@ -2,11 +2,12 @@ import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { createShoppingCartItemSpecHelper } from '../../helpers/shoppingCartItem/createShoppingCartItem.specHelper.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-describe('operations.shoppingCartItem.deleteShoppingCartItem', () => {
+describe.runIf(isFeatureEnabled('marketplace'))('operations.shoppingCartItem.deleteShoppingCartItem', () => {
   let client: BgNodeClient;
 
   beforeAll(async () => {

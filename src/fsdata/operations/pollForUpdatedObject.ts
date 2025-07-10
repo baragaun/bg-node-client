@@ -83,7 +83,7 @@ const pollForUpdatedObject = async <T extends Model = Model>(
         setTimeout(poll, interval);
       },
       (error) => {
-        logger.error('fsdata.pollForUpdatedObjects: error', { error });
+        logger.error('fsdata.pollForUpdatedObjects: error.', { error });
         reject(error);
       });
     };

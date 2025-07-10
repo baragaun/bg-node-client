@@ -7,13 +7,14 @@ import signMeOut from '../../../operations/myUser/signMeOut.js';
 import { createChannelSpecHelper } from '../../helpers/channel/createChannel.specHelper.js';
 import { deleteChannelSpecHelper } from '../../helpers/channel/deleteChannel.specHelper.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
 
-describe('operations.channel.findMyChannels', () => {
+describe.runIf(isFeatureEnabled('channels'))('operations.channel.findMyChannels', () => {
   let client: BgNodeClient;
 
   beforeAll(async () => {
@@ -41,8 +42,6 @@ describe('operations.channel.findMyChannels', () => {
 
     // Fetching channels from the network:
     const queryResultFromNetwork = await client.operations.channel.findMyChannels(
-      4,
-      true,
       undefined,
       { cachePolicy: CachePolicy.network },
     );
@@ -57,8 +56,6 @@ describe('operations.channel.findMyChannels', () => {
 
     // Fetching channels from the local cache:
     const queryResultFromLocal = await client.operations.channel.findMyChannels(
-      4,
-      true,
       undefined,
       { cachePolicy: CachePolicy.cache },
     );

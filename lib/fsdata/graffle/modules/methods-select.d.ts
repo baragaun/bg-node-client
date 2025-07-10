@@ -21,6 +21,7 @@ export interface $MethodsSelect {
     LabeledStringValue: LabeledStringValue;
     UserPreferences: UserPreferences;
     NotificationOptions: NotificationOptions;
+    UserDeviceWithoutAuth: UserDeviceWithoutAuth;
     UserBlock: UserBlock;
     Company: Company;
     CompanyStage: CompanyStage;
@@ -31,7 +32,6 @@ export interface $MethodsSelect {
     UserProfileRoleHistoryItem: UserProfileRoleHistoryItem;
     Country: Country;
     Gender: Gender;
-    UserDeviceWithoutAuth: UserDeviceWithoutAuth;
     Language: Language;
     Notification: Notification;
     NotificationContext: NotificationContext;
@@ -173,6 +173,9 @@ export interface UserPreferences {
 export interface NotificationOptions {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.NotificationOptions>): $SelectionSet;
 }
+export interface UserDeviceWithoutAuth {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserDeviceWithoutAuth>): $SelectionSet;
+}
 export interface UserBlock {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserBlock>): $SelectionSet;
 }
@@ -202,9 +205,6 @@ export interface Country {
 }
 export interface Gender {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Gender>): $SelectionSet;
-}
-export interface UserDeviceWithoutAuth {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserDeviceWithoutAuth>): $SelectionSet;
 }
 export interface Language {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Language>): $SelectionSet;
