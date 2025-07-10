@@ -19,7 +19,6 @@ import { QueryResult } from './QueryResult.js';
 import { SignInInput } from './SignInInput.js';
 import { SignInSignUpResponse } from './SignInSignUpResponse.js';
 import { SignUpUserInput } from './SignUpUserInput.js';
-import { WalletItemTransferInput } from '../fsdata/gql/graphql.js';
 import { Brand } from '../models/Brand.js';
 import { BrandListFilter } from '../models/BrandListFilter.js';
 import { Channel } from '../models/Channel.js';
@@ -477,7 +476,7 @@ export interface Operations {
     ) => Promise<QueryResult<WalletItemTransfer>>;
 
     createWalletItemTransfer: (
-      props: WalletItemTransferInput,
+      props: Partial<WalletItemTransfer>,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItemTransfer>>;
   }
