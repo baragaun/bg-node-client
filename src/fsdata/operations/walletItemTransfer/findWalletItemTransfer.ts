@@ -7,8 +7,7 @@ import {
   FindObjectsOptions as FindObjectsOptionsFromRemote,
   InputMaybe,
   QueryFindWalletItemTransfersArgs,
-  WalletItemInput,
-  WalletListFilter as WalletListFilterFromRemote,
+  WalletItemTransferInput,
   WalletItemTransferListFilter,
 } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
@@ -35,8 +34,8 @@ const findWalletItemTransfers = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindWalletItemTransfersArgs = {
-      filter: (filter || null) as unknown as WalletListFilterFromRemote | null,
-      match: match as unknown as InputMaybe<WalletItemInput>,
+      filter: (filter || null) as unknown as WalletItemTransferListFilter | null,
+      match: match as unknown as InputMaybe<WalletItemTransferInput>,
       options: options as unknown as InputMaybe<FindObjectsOptionsFromRemote>,
     };
 
@@ -48,7 +47,7 @@ const findWalletItemTransfers = async (
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
       logger.error('fsdata.findWalletItemTransfers: errors received',
-        { errorCode: (response.errors['0'] as any).extensions.code, errors: JSON.stringify(response.errors) });
+        { errorCode: (response.errors[0] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 

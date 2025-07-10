@@ -50,6 +50,7 @@ import { UserListFilter } from '../models/UserListFilter.js';
 import { UserListItem } from '../models/UserListItem.js';
 import { Wallet } from '../models/Wallet.js';
 import { WalletItem } from '../models/WalletItem.js';
+import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
 import { WalletItemTransfer } from '../models/WalletItemTransfer.js';
 import { WalletItemTransferListFilter } from '../models/WalletItemTransferListFilter.js';
 
@@ -454,7 +455,7 @@ export interface Operations {
 
   walletItem: {
     findWalletItems: (
-      filter: WalletItemTransferListFilter | null | undefined,
+      filter: WalletItemListFilter | null | undefined,
       match: Partial<WalletItem> | null | undefined,
       selector: MangoQueryTypes<WalletItem> | null | undefined,
       options: FindObjectsOptions,
@@ -471,7 +472,6 @@ export interface Operations {
     findWalletItemTransfers: (
       filter: WalletItemTransferListFilter | null | undefined,
       match: Partial<WalletItemTransfer> | null | undefined,
-      selector: MangoQueryTypes<WalletItemTransfer> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItemTransfer>>;

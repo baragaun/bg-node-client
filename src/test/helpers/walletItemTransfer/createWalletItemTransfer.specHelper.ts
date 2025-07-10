@@ -17,7 +17,7 @@ export const createWalletItemTransferSpecHelper = async (
 
   if (!props.walletItemId) {
     // Create a wallet item for the transfer
-    const walletItem = await walletItemFactory.create({}, undefined, 1) as any;
+    const walletItem = await walletItemFactory.create({}, undefined, 1);
     props.walletItemId = Array.isArray(walletItem) ? walletItem[0].id : walletItem.id;
   }
 
