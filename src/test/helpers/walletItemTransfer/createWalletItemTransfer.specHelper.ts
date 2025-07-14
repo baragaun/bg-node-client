@@ -1,9 +1,10 @@
 import { expect } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
+import { CachePolicy } from '../../../enums.js';
 import logger from '../../../helpers/logger.js';
 import { WalletItemTransfer } from '../../../models/WalletItemTransfer.js';
-import walletItemFactory from '../../factories/walletItem.js';
+import { createPurchaseOrderSpecHelper } from '../purchaseOrder/createPurchaseOrder.specHelper.js';
 
 export const createWalletItemTransferSpecHelper = async (
   props: Partial<WalletItemTransfer> | undefined,
@@ -16,20 +17,52 @@ export const createWalletItemTransferSpecHelper = async (
   }
 
   if (!props.walletItemId) {
-    // Create a wallet item for the transfer
-    const walletItem = await walletItemFactory.create({}, undefined, 1);
-    props.walletItemId = Array.isArray(walletItem) ? walletItem[0].id : walletItem.id;
+    // Try to find an existing wallet item for the user
+    const walletItemsResult = await client.operations.walletItem.findWalletItems(
+      undefined,
+      { walletId: client.clientInfoStore.myUserId },
+      undefined,
+      undefined,
+      { cachePolicy: CachePolicy.network },
+    );
+    let walletItem = walletItemsResult.objects?.[0];
+    logger.debug('createWalletItemTransferSpecHelper: found wallet items', { walletItemsResult });
+
+    // If no wallet item exists, create one via purchase order flow
+    if (!walletItem) {
+      await createPurchaseOrderSpecHelper(
+        {},
+        1,
+        [],
+        client,
+      );
+      // After purchase order, try to find wallet items again
+      const walletItemsResult2 = await client.operations.walletItem.findWalletItems(
+        undefined,
+        { walletId: client.clientInfoStore.myUserId },
+        undefined,
+        undefined,
+        { cachePolicy: CachePolicy.network },
+      );
+      walletItem = walletItemsResult2.objects?.[0];
+    }
+
+    if (!walletItem) {
+      throw new Error('Failed to find or create a wallet item for transfer');
+    }
+    props.walletItemId = walletItem.id;
   }
 
   if (!props.createdBy) {
-    props.createdBy = client.clientInfoStore.myUserId;
+    props.recipientFullName = 'Test User';
+    props.recipientEmail = 'test@example.com';
   }
 
   const response = await client.operations.walletItemTransfer.createWalletItemTransfer(props);
-  const walletItemTransfer = response.object as WalletItemTransfer;
-
   expect(response.error).toBeUndefined();
-  expect(walletItemTransfer).toBeDefined();
+  expect(response.object).toBeDefined();
+  expect(response.object.walletItemId).toBe(props.walletItemId);
+  const walletItemTransfer = response.object as WalletItemTransfer;
 
   return { walletItemTransfer };
 };

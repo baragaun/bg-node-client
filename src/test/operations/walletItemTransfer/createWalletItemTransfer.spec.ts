@@ -26,4 +26,4 @@ describe('operations.walletItemTransfer.createWalletItemTransfer', () => {
     expect(walletItemTransfer.walletItemId).toBeDefined();
     expect(walletItemTransfer.createdBy).toBe(myUser.id);
   });
-}, { timeout: 10000 });
+}, 10000);

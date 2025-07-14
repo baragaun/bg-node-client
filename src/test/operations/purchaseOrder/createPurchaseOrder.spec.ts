@@ -71,4 +71,4 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.purchaseOrder.create
     expect(walletItemsResult.objects).toBeDefined();
     expect(items.length).toBe(walletItemCount);
   });
-}, { timeout: 10000 });
+}, 10000);
