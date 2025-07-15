@@ -2,7 +2,6 @@ import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { MyUser } from '../../../models/MyUser.js';
-import { WalletItemTransferListFilter } from '../../../models/WalletItemTransferListFilter.js';
 import findWalletItemTransfers from '../../../operations/walletItemTransfer/findWalletItemTransfers.js';
 import clientStore from '../../helpers/clientStore.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
@@ -27,10 +26,8 @@ describe('operations.walletItemTransfer.findWalletItemTransfers', () => {
   });
 
   test('should find the created wallet item transfer', async () => {
-    const filter = new WalletItemTransferListFilter();
-    filter.ids = [walletItemTransferId];
     const result = await findWalletItemTransfers(
-      filter,
+      undefined,
       { createdBy: myUser.id },
       undefined,
       {},

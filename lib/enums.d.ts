@@ -207,7 +207,8 @@ export declare enum ModelType {
     User = "User",
     UserInbox = "UserInbox",
     Wallet = "Wallet",
-    WalletItem = "WalletItem"
+    WalletItem = "WalletItem",
+    WalletItemTransfer = "WalletItemTransfer"
 }
 export declare enum MutationType {
     create = "create",

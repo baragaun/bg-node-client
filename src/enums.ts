@@ -243,6 +243,7 @@ export enum ModelType {
   UserInbox = 'UserInbox',
   Wallet = 'Wallet',
   WalletItem = 'WalletItem',
+  WalletItemTransfer = 'WalletItemTransfer',
 }
 
 export enum MutationType {

@@ -206,8 +206,8 @@ const operations: Operations = {
   },
 
   walletItemTransfer: {
-    findWalletItemTransfers,
     createWalletItemTransfer,
+    findWalletItemTransfers,
   },
 };
 

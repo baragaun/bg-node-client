@@ -5,7 +5,7 @@ import { WalletItemTransfer } from '../../models/WalletItemTransfer.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createWalletItemTransfer = async (
-  props: Partial<WalletItemTransfer>,
+  props: WalletItemTransfer,
 ): Promise<QueryResult<WalletItemTransfer>> => {
   try {
     if (!libData.isInitialized()) {
@@ -18,11 +18,10 @@ const createWalletItemTransfer = async (
       return { error: 'unauthorized' };
     }
 
-    const result = await fsdata.walletItemTransfer.createWalletItemTransfer(
+    return await fsdata.walletItemTransfer.createWalletItemTransfer(
       props,
     );
 
-    return result;
   } catch (error) {
     return { error: (error as Error).message };
   }

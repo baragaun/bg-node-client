@@ -129,4 +129,11 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     updateField: { field: 'updateWalletItem', returnsServiceRequest: true },
     selections: modelFields.walletItem,
   },
+  [ModelType.WalletItemTransfer]: {
+    createField: 'createWalletItemTransfer',
+    delete: { field: 'deleteWalletItemTransfer', returnsServiceRequest: true },
+    findByIdField: 'findWalletItemTransferById',
+    updateField: { field: 'updateWalletItemTransfer', returnsServiceRequest: true },
+    selections: modelFields.walletItemTransfer,
+  },
 };

@@ -21,7 +21,7 @@ const consumerConfig = {
       enableChannels: true,
       enableGroupChannels: false,
       enableNats: false,
-      enableMarketplace: false,
+      enableMarketplace: true,
     },
   },
   micromentor: {

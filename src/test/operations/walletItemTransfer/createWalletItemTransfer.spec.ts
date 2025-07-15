@@ -3,11 +3,12 @@ import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { MyUser } from '../../../models/MyUser.js';
 import clientStore from '../../helpers/clientStore.js';
+import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 import { createWalletItemTransferSpecHelper } from '../../helpers/walletItemTransfer/createWalletItemTransfer.specHelper.js';
 
-describe('operations.walletItemTransfer.createWalletItemTransfer', () => {
+describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.createWalletItemTransfer', () => {
   let client: BgNodeClient;
   let myUser: MyUser;
 
