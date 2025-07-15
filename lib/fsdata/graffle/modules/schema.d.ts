@@ -2022,6 +2022,7 @@ export declare namespace Schema {
             verifyOneTimeAuthToken: Mutation.verifyOneTimeAuthToken;
             addAppFeatureToUser: Mutation.addAppFeatureToUser;
             deleteUser: Mutation.deleteUser;
+            deleteUserV2: Mutation.deleteUserV2;
             removeAppFeatureFromUser: Mutation.removeAppFeatureFromUser;
             reportUser: Mutation.reportUser;
             updateUser: Mutation.updateUser;
@@ -2035,6 +2036,7 @@ export declare namespace Schema {
             updateBusinessExperience: Mutation.updateBusinessExperience;
             createCompany: Mutation.createCompany;
             deleteCompany: Mutation.deleteCompany;
+            deleteCompanyV2: Mutation.deleteCompanyV2;
             updateCompany: Mutation.updateCompany;
             findAndUpdateAllMm2Users: Mutation.findAndUpdateAllMm2Users;
             createAdminTask: Mutation.createAdminTask;
@@ -2100,6 +2102,7 @@ export declare namespace Schema {
             createWalletItemTransfer: Mutation.createWalletItemTransfer;
             deleteWalletItemTransfer: Mutation.deleteWalletItemTransfer;
             updateWalletItemTransfer: Mutation.updateWalletItemTransfer;
+            createWalletTransfer: Mutation.createWalletTransfer;
             createUserSearch: Mutation.createUserSearch;
             deleteUserSearch: Mutation.deleteUserSearch;
             updateUserSearch: Mutation.updateUserSearch;
@@ -2121,6 +2124,7 @@ export declare namespace Schema {
             blockUserForMe: Mutation.blockUserForMe;
             blockUserForMeV2: Mutation.blockUserForMeV2;
             deleteMyUser: Mutation.deleteMyUser;
+            deleteMyUserV2: Mutation.deleteMyUserV2;
             endMySession: Mutation.endMySession;
             endMySessionV2: Mutation.endMySessionV2;
             startMySession: Mutation.startMySession;
@@ -2257,8 +2261,52 @@ export declare namespace Schema {
                 deletePhysically: {
                     kind: 'InputField';
                     name: 'deletePhysically';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                description: {
+                    kind: 'InputField';
+                    name: 'description';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$String;
+                };
+                cause: {
+                    kind: 'InputField';
+                    name: 'cause';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$String;
+                };
+                userId: {
+                    kind: 'InputField';
+                    name: 'userId';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface deleteUserV2 {
+            kind: 'OutputField';
+            name: 'deleteUserV2';
+            arguments: {
+                anonymizePersonalData: {
+                    kind: 'InputField';
+                    name: 'anonymizePersonalData';
                     inlineType: [0];
                     namedType: $$NamedTypes.$$Boolean;
+                };
+                deletePhysically: {
+                    kind: 'InputField';
+                    name: 'deletePhysically';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                requester: {
+                    kind: 'InputField';
+                    name: 'requester';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$String;
                 };
                 description: {
                     kind: 'InputField';
@@ -2391,7 +2439,7 @@ export declare namespace Schema {
                 deletePhysically: {
                     kind: 'InputField';
                     name: 'deletePhysically';
-                    inlineType: [0];
+                    inlineType: [1];
                     namedType: $$NamedTypes.$$Boolean;
                 };
                 academicExperienceId: {
@@ -2439,7 +2487,7 @@ export declare namespace Schema {
                 deletePhysically: {
                     kind: 'InputField';
                     name: 'deletePhysically';
-                    inlineType: [0];
+                    inlineType: [1];
                     namedType: $$NamedTypes.$$Boolean;
                 };
                 businessExperienceId: {
@@ -2483,6 +2531,32 @@ export declare namespace Schema {
         interface deleteCompany {
             kind: 'OutputField';
             name: 'deleteCompany';
+            arguments: {
+                anonymizePersonalData: {
+                    kind: 'InputField';
+                    name: 'anonymizePersonalData';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                deletePhysically: {
+                    kind: 'InputField';
+                    name: 'deletePhysically';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                companyId: {
+                    kind: 'InputField';
+                    name: 'companyId';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface deleteCompanyV2 {
+            kind: 'OutputField';
+            name: 'deleteCompanyV2';
             arguments: {
                 anonymizePersonalData: {
                     kind: 'InputField';
@@ -3327,7 +3401,7 @@ export declare namespace Schema {
                 };
             };
             inlineType: [1];
-            namedType: $$NamedTypes.$$String;
+            namedType: $$NamedTypes.$$ServiceRequest;
         }
         interface updateGroup {
             kind: 'OutputField';
@@ -3550,12 +3624,6 @@ export declare namespace Schema {
             kind: 'OutputField';
             name: 'createWalletItemTransfer';
             arguments: {
-                options: {
-                    kind: 'InputField';
-                    name: 'options';
-                    inlineType: [0];
-                    namedType: $$NamedTypes.$$UpdateObjectOptions;
-                };
                 input: {
                     kind: 'InputField';
                     name: 'input';
@@ -3564,7 +3632,7 @@ export declare namespace Schema {
                 };
             };
             inlineType: [1];
-            namedType: $$NamedTypes.$$WalletItemTransfer;
+            namedType: $$NamedTypes.$$ServiceRequest;
         }
         interface deleteWalletItemTransfer {
             kind: 'OutputField';
@@ -3605,6 +3673,26 @@ export declare namespace Schema {
             };
             inlineType: [1];
             namedType: $$NamedTypes.$$ServiceRequest;
+        }
+        interface createWalletTransfer {
+            kind: 'OutputField';
+            name: 'createWalletTransfer';
+            arguments: {
+                newOwnerUserId: {
+                    kind: 'InputField';
+                    name: 'newOwnerUserId';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+                input: {
+                    kind: 'InputField';
+                    name: 'input';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$WalletInput;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$Wallet;
         }
         interface createUserSearch {
             kind: 'OutputField';
@@ -3940,6 +4028,38 @@ export declare namespace Schema {
         interface deleteMyUser {
             kind: 'OutputField';
             name: 'deleteMyUser';
+            arguments: {
+                anonymizePersonalData: {
+                    kind: 'InputField';
+                    name: 'anonymizePersonalData';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                deletePhysically: {
+                    kind: 'InputField';
+                    name: 'deletePhysically';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$Boolean;
+                };
+                description: {
+                    kind: 'InputField';
+                    name: 'description';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$String;
+                };
+                cause: {
+                    kind: 'InputField';
+                    name: 'cause';
+                    inlineType: [0];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$String;
+        }
+        interface deleteMyUserV2 {
+            kind: 'OutputField';
+            name: 'deleteMyUserV2';
             arguments: {
                 anonymizePersonalData: {
                     kind: 'InputField';
@@ -6487,9 +6607,7 @@ export declare namespace Schema {
             postalCode: User.postalCode;
             avatarUrl: User.avatarUrl;
             websites: User.websites;
-            authType: User.authType;
             inviteCode: User.inviteCode;
-            tfaBackupCodes: User.tfaBackupCodes;
             passwordUpdatedAt: User.passwordUpdatedAt;
             preferredLanguageTextId: User.preferredLanguageTextId;
             spokenLanguagesTextIds: User.spokenLanguagesTextIds;
@@ -6516,8 +6634,6 @@ export declare namespace Schema {
             suspendedAt: User.suspendedAt;
             suspendedBy: User.suspendedBy;
             anonymizedAt: User.anonymizedAt;
-            addedToBgVaultAt: User.addedToBgVaultAt;
-            syncedToAnalyticsAt: User.syncedToAnalyticsAt;
             companyIds: User.companyIds;
             companies: User.companies;
             groupIds: User.groupIds;
@@ -6783,23 +6899,9 @@ export declare namespace Schema {
             inlineType: [0, [1]];
             namedType: $$NamedTypes.$$LabeledStringValue;
         }
-        interface authType {
-            kind: 'OutputField';
-            name: 'authType';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$AuthType;
-        }
         interface inviteCode {
             kind: 'OutputField';
             name: 'inviteCode';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface tfaBackupCodes {
-            kind: 'OutputField';
-            name: 'tfaBackupCodes';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
@@ -6985,20 +7087,6 @@ export declare namespace Schema {
         interface anonymizedAt {
             kind: 'OutputField';
             name: 'anonymizedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface addedToBgVaultAt {
-            kind: 'OutputField';
-            name: 'addedToBgVaultAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface syncedToAnalyticsAt {
-            kind: 'OutputField';
-            name: 'syncedToAnalyticsAt';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
@@ -19281,6 +19369,7 @@ export declare namespace Schema {
             updatedBy: Wallet.updatedBy;
             deletedAt: Wallet.deletedAt;
             deletedBy: Wallet.deletedBy;
+            userId: Wallet.userId;
         };
     }
     export namespace Wallet {
@@ -19362,6 +19451,13 @@ export declare namespace Schema {
             name: 'deletedBy';
             arguments: {};
             inlineType: [0];
+            namedType: $$NamedTypes.$$ID;
+        }
+        interface userId {
+            kind: 'OutputField';
+            name: 'userId';
+            arguments: {};
+            inlineType: [1];
             namedType: $$NamedTypes.$$ID;
         }
     }
@@ -21964,9 +22060,7 @@ export declare namespace Schema {
             postalCode: MyUser.postalCode;
             avatarUrl: MyUser.avatarUrl;
             websites: MyUser.websites;
-            authType: MyUser.authType;
             inviteCode: MyUser.inviteCode;
-            tfaBackupCodes: MyUser.tfaBackupCodes;
             passwordUpdatedAt: MyUser.passwordUpdatedAt;
             preferredLanguageTextId: MyUser.preferredLanguageTextId;
             spokenLanguagesTextIds: MyUser.spokenLanguagesTextIds;
@@ -21993,8 +22087,6 @@ export declare namespace Schema {
             suspendedAt: MyUser.suspendedAt;
             suspendedBy: MyUser.suspendedBy;
             anonymizedAt: MyUser.anonymizedAt;
-            addedToBgVaultAt: MyUser.addedToBgVaultAt;
-            syncedToAnalyticsAt: MyUser.syncedToAnalyticsAt;
             companyIds: MyUser.companyIds;
             companies: MyUser.companies;
             groupIds: MyUser.groupIds;
@@ -22261,23 +22353,9 @@ export declare namespace Schema {
             inlineType: [0, [1]];
             namedType: $$NamedTypes.$$LabeledStringValue;
         }
-        interface authType {
-            kind: 'OutputField';
-            name: 'authType';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$AuthType;
-        }
         interface inviteCode {
             kind: 'OutputField';
             name: 'inviteCode';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
-        interface tfaBackupCodes {
-            kind: 'OutputField';
-            name: 'tfaBackupCodes';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
@@ -22463,20 +22541,6 @@ export declare namespace Schema {
         interface anonymizedAt {
             kind: 'OutputField';
             name: 'anonymizedAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface addedToBgVaultAt {
-            kind: 'OutputField';
-            name: 'addedToBgVaultAt';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$DateTimeISO;
-        }
-        interface syncedToAnalyticsAt {
-            kind: 'OutputField';
-            name: 'syncedToAnalyticsAt';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
@@ -37044,12 +37108,6 @@ export declare namespace Schema {
         members: ['any', 'email', 'id', 'inviteCode', 'oauthProfileUrl', 'oauthUserId', 'phoneNumber', 'userHandle'];
         membersUnion: 'any' | 'email' | 'id' | 'inviteCode' | 'oauthProfileUrl' | 'oauthUserId' | 'phoneNumber' | 'userHandle';
     }
-    export interface AuthType {
-        kind: 'Enum';
-        name: 'AuthType';
-        members: ['none', 'oauth', 'token', 'hmac', 'saml'];
-        membersUnion: 'none' | 'oauth' | 'token' | 'hmac' | 'saml';
-    }
     export interface UserRole {
         kind: 'Enum';
         name: 'UserRole';
@@ -37109,7 +37167,7 @@ export declare namespace Schema {
             'AcademicExperience',
             'BusinessExperience',
             'Company',
-            'DataDeletion',
+            'DataDeletionRecord',
             'MentorBoard',
             'MentoringSession',
             'UserInbox',
@@ -37174,7 +37232,7 @@ export declare namespace Schema {
             'WalletServiceRecord',
             'unset'
         ];
-        membersUnion: 'AcademicExperience' | 'BusinessExperience' | 'Company' | 'DataDeletion' | 'MentorBoard' | 'MentoringSession' | 'UserInbox' | 'UserMetadata' | 'UserPreferences' | 'AdminTask' | 'AnalyticsServiceRecord' | 'AnalyticsSynchronization' | 'UploadedAsset' | 'Channel' | 'ChannelInbox' | 'ChannelInvitation' | 'ChannelMessage' | 'ChannelParticipant' | 'ContentStatus' | 'Option' | 'ContentTag' | 'AppliedGroupRule' | 'Group' | 'GroupCms' | 'GroupMembership' | 'GroupRule' | 'GroupRuleConfig' | 'MastercardBank' | 'SupportChannelConfig' | 'GiftCardProduct' | 'MarketplaceServiceRecord' | 'Product' | 'ProductCategory' | 'Brand' | 'Match' | 'MatchProfile' | 'MatchingEngine' | 'UserSearch' | 'Notification' | 'NotificationTemplate' | 'Mm2Integration' | 'Mm2Synchronization' | 'Mm2SynchronizationResultItem' | 'ModerationConcern' | 'NatsMessage' | 'ApiAuthInfo' | 'Contact' | 'MultiStepAction' | 'MyUser' | 'ServiceRequest' | 'User' | 'UserDevice' | 'ServiceRecord' | 'TrackingEvent' | 'UserTracking' | 'Training' | 'TrainingContentPage' | 'TrainingSession' | 'PurchaseOrder' | 'PurchaseOrderItem' | 'ShoppingCart' | 'ShoppingCartItem' | 'Wallet' | 'WalletItem' | 'WalletItemTransfer' | 'WalletServiceRecord' | 'unset';
+        membersUnion: 'AcademicExperience' | 'BusinessExperience' | 'Company' | 'DataDeletionRecord' | 'MentorBoard' | 'MentoringSession' | 'UserInbox' | 'UserMetadata' | 'UserPreferences' | 'AdminTask' | 'AnalyticsServiceRecord' | 'AnalyticsSynchronization' | 'UploadedAsset' | 'Channel' | 'ChannelInbox' | 'ChannelInvitation' | 'ChannelMessage' | 'ChannelParticipant' | 'ContentStatus' | 'Option' | 'ContentTag' | 'AppliedGroupRule' | 'Group' | 'GroupCms' | 'GroupMembership' | 'GroupRule' | 'GroupRuleConfig' | 'MastercardBank' | 'SupportChannelConfig' | 'GiftCardProduct' | 'MarketplaceServiceRecord' | 'Product' | 'ProductCategory' | 'Brand' | 'Match' | 'MatchProfile' | 'MatchingEngine' | 'UserSearch' | 'Notification' | 'NotificationTemplate' | 'Mm2Integration' | 'Mm2Synchronization' | 'Mm2SynchronizationResultItem' | 'ModerationConcern' | 'NatsMessage' | 'ApiAuthInfo' | 'Contact' | 'MultiStepAction' | 'MyUser' | 'ServiceRequest' | 'User' | 'UserDevice' | 'ServiceRecord' | 'TrackingEvent' | 'UserTracking' | 'Training' | 'TrainingContentPage' | 'TrainingSession' | 'PurchaseOrder' | 'PurchaseOrderItem' | 'ShoppingCart' | 'ShoppingCartItem' | 'Wallet' | 'WalletItem' | 'WalletItemTransfer' | 'WalletServiceRecord' | 'unset';
     }
     export interface UploadedAssetType {
         kind: 'Enum';
@@ -37247,6 +37305,12 @@ export declare namespace Schema {
         name: 'IncludeFilterOption';
         members: ['include', 'exclude', 'only'];
         membersUnion: 'include' | 'exclude' | 'only';
+    }
+    export interface AuthType {
+        kind: 'Enum';
+        name: 'AuthType';
+        members: ['none', 'oauth', 'token', 'hmac', 'saml'];
+        membersUnion: 'none' | 'oauth' | 'token' | 'hmac' | 'saml';
     }
     export interface FederatedIdentityProvider {
         kind: 'Enum';
@@ -37609,6 +37673,7 @@ export declare namespace Schema {
             'graphQlMutationCreateShoppingCartItem',
             'graphQlMutationCreateWalletItem',
             'graphQlMutationCreateWalletItemTransfer',
+            'graphQlMutationCreateWalletTransfer',
             'graphQlMutationDeleteShoppingCartItem',
             'graphQlMutationDeleteWalletItem',
             'graphQlMutationDeleteWalletItemTransfer',
@@ -37628,7 +37693,7 @@ export declare namespace Schema {
             'graphQlQueryFindWallets',
             'graphQlQueryFindWalletServiceRecord'
         ];
-        membersUnion: 'graphQlMutationCreateAcademicExperience' | 'graphQlMutationDeleteAcademicExperience' | 'graphQlMutationUpdateAcademicExperience' | 'graphQlMutationCreateBusinessExperience' | 'graphQlMutationDeleteBusinessExperience' | 'graphQlMutationUpdateBusinessExperience' | 'graphQlMutationCreateCompany' | 'graphQlMutationDeleteCompany' | 'graphQlMutationUpdateCompany' | 'graphQlQueryFindAndUpdateAllMm2Users' | 'graphQlQueryUserInboxUser' | 'graphQlMutationCreateAdminTask' | 'graphQlMutationFindAdminTaskById' | 'graphQlMutationDeleteAdminTask' | 'graphQlMutationUpdateAdminTask' | 'graphQlQueryFindAdminTask' | 'graphQlQueryAdminTaskDefinitions' | 'graphQlMutationClearAllAnalyticsSyncInfo' | 'graphQlMutationCreateAnalyticsSynchronization' | 'graphQlMutationDeleteAnalyticsSynchronization' | 'graphQlMutationPauseAnalyticsSynchronization' | 'graphQlMutationRunAnalyticsSynchronization' | 'graphQlQueryFindAnalyticsServiceRecord' | 'graphQlQueryFindAnalyticsSynchronizationById' | 'graphQlMutationCreateUploadedAsset' | 'graphQlMutationDeleteUploadedAsset' | 'graphQlMutationFindUploadedAssetById' | 'graphQlMutationFindUploadedAssetForUser' | 'graphQlMutationInitAssetUpload' | 'graphQlMutationUpdateUploadedAsset' | 'graphQlQueryFindUploadedAssetById' | 'graphQlQueryFindUploadedAssets' | 'graphQlQueryFindUploadedAssetsForUser' | 'graphQlMutationAddChannelMessageEvent' | 'graphQlMutationArchiveChannelForUserByMe' | 'graphQlMutationCreateChannel' | 'graphQlMutationCreateChannelInvitation' | 'graphQlMutationCreateChannelMessage' | 'graphQlMutationCreateChannelParticipant' | 'graphQlMutationDeleteChannel' | 'graphQlMutationDeleteChannelInvitation' | 'graphQlMutationDeleteChannelMessage' | 'graphQlMutationDeleteChannelParticipant' | 'graphQlMutationDeleteGroup' | 'graphQlMutationDeleteGroupMembership' | 'graphQlMutationMarkChannelMessagesAsSeenByMe' | 'graphQlMutationUpdateChannel' | 'graphQlMutationUpdateChannelInvitation' | 'graphQlMutationUpdateChannelMessage' | 'graphQlMutationUpdateChannelParticipant' | 'graphQlQueryChannelInvitations' | 'graphQlQueryChannelMessageChannel' | 'graphQlQueryChannelParticipants' | 'graphQlQueryFindChannelById' | 'graphQlQueryFindChannelInvitationById' | 'graphQlQueryFindChannelInvitationsBetweenUsers' | 'graphQlQueryFindChannelInvitationsForUser' | 'graphQlQueryFindChannelMessageById' | 'graphQlQueryFindChannelMessages' | 'graphQlQueryFindChannelParticipantById' | 'graphQlQueryFindChannelParticipants' | 'graphQlQueryFindChannels' | 'graphQlQueryFindChannelsForUser' | 'graphQlQueryFindMyChannels' | 'graphQlQueryFindPendingChannelInvitationsForUser' | 'graphQlQueryMyContacts' | 'graphQlQueryMyInbox' | 'graphQlQueryUserChannels' | 'graphQlQueryUserCompanies' | 'graphQlQueryUserGroupMembers' | 'graphQlQueryUserGroups' | 'graphQlQueryFindCountries' | 'graphQlQueryFindExpertises' | 'graphQlQueryFindIndustries' | 'graphQlQueryFindOptions' | 'unset' | 'graphQlQueryContentTag' | 'graphQlMutationCreateContentTag' | 'graphQlMutationDeleteContentTag' | 'graphQlMutationUpdateContentTag' | 'graphQlMutationRunDataGenerator' | 'graphQlQueryNotificationTemplate' | 'graphQlQueryAvailableUserHandle' | 'graphQlQueryUser' | 'graphQlMutationAddUserToGroup' | 'graphQlMutationCreateGroup' | 'graphQlMutationCreateGroupMembership' | 'graphQlMutationCreateSupportChannelConfig' | 'graphQlMutationDeleteGroupCms' | 'graphQlMutationDeleteSupportChannelConfig' | 'graphQlMutationRemoveUserFromAllGroups' | 'graphQlMutationRemoveUserFromGroup' | 'graphQlMutationUpdateGroup' | 'graphQlMutationUpdateGroupMembership' | 'graphQlMutationUpdateSupportChannelConfig' | 'graphQlQueryFindGroupById' | 'graphQlQueryFindGroupByIdent' | 'graphQlQueryFindGroupCmsByGroupId' | 'graphQlQueryFindGroupCmsByGroupIdent' | 'graphQlQueryFindGroupCmsById' | 'graphQlQueryFindGroupMembershipByIdField' | 'graphQlQueryFindGroupMemberships' | 'graphQlQueryFindGroupsField' | 'graphQlQueryMyGroupMemberships' | 'graphQlQueryFindGiftCardProducts' | 'graphQlQueryFindMarketplaceServiceRecord' | 'graphQlQueryFindProductCategories' | 'graphQlQueryFindBrands' | 'graphQlMutationCreateUserSearch' | 'graphQlMutationDeleteUserSearch' | 'graphQlMutationUpdateUserSearch' | 'graphQlQueryFindUserSearchById' | 'graphQlQueryFindUserSearchResults' | 'graphQlQueryUserSearchFoundUsers' | 'graphQlMutationCreateNotification' | 'graphQlMutationCreateNotificationTemplate' | 'graphQlMutationDeleteNotification' | 'graphQlMutationDeleteNotificationTemplate' | 'graphQlMutationMarkInAppMessageReceived' | 'graphQlMutationSendMultiStepActionNotification' | 'graphQlMutationUpdateNotification' | 'graphQlMutationUpdateNotificationTemplate' | 'graphQlMutationCreateNatsMessage' | 'graphQlMutationClearAllSyncInfo' | 'graphQlMutationCreateMm2Synchronization' | 'graphQlMutationDeleteAllMm2DataInMm3' | 'graphQlMutationDeleteMm2Synchronization' | 'graphQlMutationRunMm2Synchronization' | 'graphQlQueryFindMm2SynchronizationById' | 'graphQlQueryGetMm2Integration' | 'graphQlMutationNlpLabelMessage' | 'graphQlMutationUpdateNlpConversation' | 'graphQlMutationUpdateNlpMessage' | 'graphQlQueryFindNlpConversation' | 'graphQlMutationAddFeatureToUser' | 'graphQlMutationBlockUser' | 'graphQlMutationCreateContact' | 'graphQlMutationCreateMultiStepAction' | 'graphQlMutationCreateUserDevice' | 'graphQlMutationDeleteMyUser' | 'graphQlMutationDeleteUser' | 'graphQlMutationEndMySession' | 'graphQlMutationRemoveFeatureFromUser' | 'graphQlMutationReportUser' | 'graphQlMutationSignInUser' | 'graphQlMutationSignMeOut' | 'graphQlMutationSignUpOauthUser' | 'graphQlMutationSignUpUser' | 'graphQlMutationStartMySession' | 'graphQlMutationUnblockUser' | 'graphQlMutationUpdateContact' | 'graphQlMutationUpdateMyUser' | 'graphQlMutationUpdateUser' | 'graphQlMutationUpdateUserDevice' | 'graphQlMutationUpsertBackgroundTask' | 'graphQlMutationVerifyMultiStepActionToken' | 'graphQlQueryBackgroundTask' | 'graphQlQueryContacts' | 'graphQlQueryContactTypes' | 'graphQlQueryFindAvailableUserHandle' | 'graphQlQueryFindContact' | 'graphQlQueryFindContactById' | 'graphQlQueryFindContacts' | 'graphQlQueryFindMyBlockedUsers' | 'graphQlQueryFindMyUser' | 'graphQlQueryFindMyUserDevices' | 'graphQlQueryFindUserById' | 'graphQlQueryFindUserByIdent' | 'graphQlQueryFindUserDeviceById' | 'graphQlQueryFindUserDevices' | 'graphQlQueryFindUsers' | 'graphQlQueryGetMultiStepActionProgress' | 'graphQlQueryLatestUserDevice' | 'graphQlQueryUnreadInAppMessages' | 'graphQlQueryVerifyMyPassword' | 'graphQlMutationCreateUserTracking' | 'graphQlMutationUpdateUserTracking' | 'graphQlQueryFindTrainingById' | 'graphQlQueryFindTrainingsForMe' | 'graphQlQueryFindTrainingsForUser' | 'graphQlQueryFindTrainingSessionById' | 'graphQlQueryFindTrainingSessionsByTrainingId' | 'graphQlQueryFindTrainingSessionsForMe' | 'graphQlMutationClearMyShoppingCart' | 'graphQlMutationClearShoppingCart' | 'graphQlMutationCreatePurchaseOrderField' | 'graphQlMutationCreateShoppingCartItem' | 'graphQlMutationCreateWalletItem' | 'graphQlMutationCreateWalletItemTransfer' | 'graphQlMutationDeleteShoppingCartItem' | 'graphQlMutationDeleteWalletItem' | 'graphQlMutationDeleteWalletItemTransfer' | 'graphQlMutationUpdateShoppingCartItem' | 'graphQlMutationUpdateWalletItem' | 'graphQlMutationUpdateWalletItemTransfer' | 'graphQlQueryFindMyShoppingCart' | 'graphQlQueryFindMyWallet' | 'graphQlQueryFindPurchaseOrderItems' | 'graphQlQueryFindPurchaseOrders' | 'graphQlQueryFindShoppingCartItems' | 'graphQlQueryFindShoppingCarts' | 'graphQlQueryFindWalletItemById' | 'graphQlQueryFindWalletItems' | 'graphQlQueryFindWalletItemTransferById' | 'graphQlQueryFindWalletItemTransfers' | 'graphQlQueryFindWallets' | 'graphQlQueryFindWalletServiceRecord';
+        membersUnion: 'graphQlMutationCreateAcademicExperience' | 'graphQlMutationDeleteAcademicExperience' | 'graphQlMutationUpdateAcademicExperience' | 'graphQlMutationCreateBusinessExperience' | 'graphQlMutationDeleteBusinessExperience' | 'graphQlMutationUpdateBusinessExperience' | 'graphQlMutationCreateCompany' | 'graphQlMutationDeleteCompany' | 'graphQlMutationUpdateCompany' | 'graphQlQueryFindAndUpdateAllMm2Users' | 'graphQlQueryUserInboxUser' | 'graphQlMutationCreateAdminTask' | 'graphQlMutationFindAdminTaskById' | 'graphQlMutationDeleteAdminTask' | 'graphQlMutationUpdateAdminTask' | 'graphQlQueryFindAdminTask' | 'graphQlQueryAdminTaskDefinitions' | 'graphQlMutationClearAllAnalyticsSyncInfo' | 'graphQlMutationCreateAnalyticsSynchronization' | 'graphQlMutationDeleteAnalyticsSynchronization' | 'graphQlMutationPauseAnalyticsSynchronization' | 'graphQlMutationRunAnalyticsSynchronization' | 'graphQlQueryFindAnalyticsServiceRecord' | 'graphQlQueryFindAnalyticsSynchronizationById' | 'graphQlMutationCreateUploadedAsset' | 'graphQlMutationDeleteUploadedAsset' | 'graphQlMutationFindUploadedAssetById' | 'graphQlMutationFindUploadedAssetForUser' | 'graphQlMutationInitAssetUpload' | 'graphQlMutationUpdateUploadedAsset' | 'graphQlQueryFindUploadedAssetById' | 'graphQlQueryFindUploadedAssets' | 'graphQlQueryFindUploadedAssetsForUser' | 'graphQlMutationAddChannelMessageEvent' | 'graphQlMutationArchiveChannelForUserByMe' | 'graphQlMutationCreateChannel' | 'graphQlMutationCreateChannelInvitation' | 'graphQlMutationCreateChannelMessage' | 'graphQlMutationCreateChannelParticipant' | 'graphQlMutationDeleteChannel' | 'graphQlMutationDeleteChannelInvitation' | 'graphQlMutationDeleteChannelMessage' | 'graphQlMutationDeleteChannelParticipant' | 'graphQlMutationDeleteGroup' | 'graphQlMutationDeleteGroupMembership' | 'graphQlMutationMarkChannelMessagesAsSeenByMe' | 'graphQlMutationUpdateChannel' | 'graphQlMutationUpdateChannelInvitation' | 'graphQlMutationUpdateChannelMessage' | 'graphQlMutationUpdateChannelParticipant' | 'graphQlQueryChannelInvitations' | 'graphQlQueryChannelMessageChannel' | 'graphQlQueryChannelParticipants' | 'graphQlQueryFindChannelById' | 'graphQlQueryFindChannelInvitationById' | 'graphQlQueryFindChannelInvitationsBetweenUsers' | 'graphQlQueryFindChannelInvitationsForUser' | 'graphQlQueryFindChannelMessageById' | 'graphQlQueryFindChannelMessages' | 'graphQlQueryFindChannelParticipantById' | 'graphQlQueryFindChannelParticipants' | 'graphQlQueryFindChannels' | 'graphQlQueryFindChannelsForUser' | 'graphQlQueryFindMyChannels' | 'graphQlQueryFindPendingChannelInvitationsForUser' | 'graphQlQueryMyContacts' | 'graphQlQueryMyInbox' | 'graphQlQueryUserChannels' | 'graphQlQueryUserCompanies' | 'graphQlQueryUserGroupMembers' | 'graphQlQueryUserGroups' | 'graphQlQueryFindCountries' | 'graphQlQueryFindExpertises' | 'graphQlQueryFindIndustries' | 'graphQlQueryFindOptions' | 'unset' | 'graphQlQueryContentTag' | 'graphQlMutationCreateContentTag' | 'graphQlMutationDeleteContentTag' | 'graphQlMutationUpdateContentTag' | 'graphQlMutationRunDataGenerator' | 'graphQlQueryNotificationTemplate' | 'graphQlQueryAvailableUserHandle' | 'graphQlQueryUser' | 'graphQlMutationAddUserToGroup' | 'graphQlMutationCreateGroup' | 'graphQlMutationCreateGroupMembership' | 'graphQlMutationCreateSupportChannelConfig' | 'graphQlMutationDeleteGroupCms' | 'graphQlMutationDeleteSupportChannelConfig' | 'graphQlMutationRemoveUserFromAllGroups' | 'graphQlMutationRemoveUserFromGroup' | 'graphQlMutationUpdateGroup' | 'graphQlMutationUpdateGroupMembership' | 'graphQlMutationUpdateSupportChannelConfig' | 'graphQlQueryFindGroupById' | 'graphQlQueryFindGroupByIdent' | 'graphQlQueryFindGroupCmsByGroupId' | 'graphQlQueryFindGroupCmsByGroupIdent' | 'graphQlQueryFindGroupCmsById' | 'graphQlQueryFindGroupMembershipByIdField' | 'graphQlQueryFindGroupMemberships' | 'graphQlQueryFindGroupsField' | 'graphQlQueryMyGroupMemberships' | 'graphQlQueryFindGiftCardProducts' | 'graphQlQueryFindMarketplaceServiceRecord' | 'graphQlQueryFindProductCategories' | 'graphQlQueryFindBrands' | 'graphQlMutationCreateUserSearch' | 'graphQlMutationDeleteUserSearch' | 'graphQlMutationUpdateUserSearch' | 'graphQlQueryFindUserSearchById' | 'graphQlQueryFindUserSearchResults' | 'graphQlQueryUserSearchFoundUsers' | 'graphQlMutationCreateNotification' | 'graphQlMutationCreateNotificationTemplate' | 'graphQlMutationDeleteNotification' | 'graphQlMutationDeleteNotificationTemplate' | 'graphQlMutationMarkInAppMessageReceived' | 'graphQlMutationSendMultiStepActionNotification' | 'graphQlMutationUpdateNotification' | 'graphQlMutationUpdateNotificationTemplate' | 'graphQlMutationCreateNatsMessage' | 'graphQlMutationClearAllSyncInfo' | 'graphQlMutationCreateMm2Synchronization' | 'graphQlMutationDeleteAllMm2DataInMm3' | 'graphQlMutationDeleteMm2Synchronization' | 'graphQlMutationRunMm2Synchronization' | 'graphQlQueryFindMm2SynchronizationById' | 'graphQlQueryGetMm2Integration' | 'graphQlMutationNlpLabelMessage' | 'graphQlMutationUpdateNlpConversation' | 'graphQlMutationUpdateNlpMessage' | 'graphQlQueryFindNlpConversation' | 'graphQlMutationAddFeatureToUser' | 'graphQlMutationBlockUser' | 'graphQlMutationCreateContact' | 'graphQlMutationCreateMultiStepAction' | 'graphQlMutationCreateUserDevice' | 'graphQlMutationDeleteMyUser' | 'graphQlMutationDeleteUser' | 'graphQlMutationEndMySession' | 'graphQlMutationRemoveFeatureFromUser' | 'graphQlMutationReportUser' | 'graphQlMutationSignInUser' | 'graphQlMutationSignMeOut' | 'graphQlMutationSignUpOauthUser' | 'graphQlMutationSignUpUser' | 'graphQlMutationStartMySession' | 'graphQlMutationUnblockUser' | 'graphQlMutationUpdateContact' | 'graphQlMutationUpdateMyUser' | 'graphQlMutationUpdateUser' | 'graphQlMutationUpdateUserDevice' | 'graphQlMutationUpsertBackgroundTask' | 'graphQlMutationVerifyMultiStepActionToken' | 'graphQlQueryBackgroundTask' | 'graphQlQueryContacts' | 'graphQlQueryContactTypes' | 'graphQlQueryFindAvailableUserHandle' | 'graphQlQueryFindContact' | 'graphQlQueryFindContactById' | 'graphQlQueryFindContacts' | 'graphQlQueryFindMyBlockedUsers' | 'graphQlQueryFindMyUser' | 'graphQlQueryFindMyUserDevices' | 'graphQlQueryFindUserById' | 'graphQlQueryFindUserByIdent' | 'graphQlQueryFindUserDeviceById' | 'graphQlQueryFindUserDevices' | 'graphQlQueryFindUsers' | 'graphQlQueryGetMultiStepActionProgress' | 'graphQlQueryLatestUserDevice' | 'graphQlQueryUnreadInAppMessages' | 'graphQlQueryVerifyMyPassword' | 'graphQlMutationCreateUserTracking' | 'graphQlMutationUpdateUserTracking' | 'graphQlQueryFindTrainingById' | 'graphQlQueryFindTrainingsForMe' | 'graphQlQueryFindTrainingsForUser' | 'graphQlQueryFindTrainingSessionById' | 'graphQlQueryFindTrainingSessionsByTrainingId' | 'graphQlQueryFindTrainingSessionsForMe' | 'graphQlMutationClearMyShoppingCart' | 'graphQlMutationClearShoppingCart' | 'graphQlMutationCreatePurchaseOrderField' | 'graphQlMutationCreateShoppingCartItem' | 'graphQlMutationCreateWalletItem' | 'graphQlMutationCreateWalletItemTransfer' | 'graphQlMutationCreateWalletTransfer' | 'graphQlMutationDeleteShoppingCartItem' | 'graphQlMutationDeleteWalletItem' | 'graphQlMutationDeleteWalletItemTransfer' | 'graphQlMutationUpdateShoppingCartItem' | 'graphQlMutationUpdateWalletItem' | 'graphQlMutationUpdateWalletItemTransfer' | 'graphQlQueryFindMyShoppingCart' | 'graphQlQueryFindMyWallet' | 'graphQlQueryFindPurchaseOrderItems' | 'graphQlQueryFindPurchaseOrders' | 'graphQlQueryFindShoppingCartItems' | 'graphQlQueryFindShoppingCarts' | 'graphQlQueryFindWalletItemById' | 'graphQlQueryFindWalletItems' | 'graphQlQueryFindWalletItemTransferById' | 'graphQlQueryFindWalletItemTransfers' | 'graphQlQueryFindWallets' | 'graphQlQueryFindWalletServiceRecord';
     }
     export interface ServiceRequestResult {
         kind: 'Enum';
@@ -38109,7 +38174,6 @@ export declare namespace Schema {
         type $$UiLanguage = UiLanguage;
         type $$MastercardCardType = MastercardCardType;
         type $$UserIdentType = UserIdentType;
-        type $$AuthType = AuthType;
         type $$UserRole = UserRole;
         type $$AppFeature = AppFeature;
         type $$NotificationType = NotificationType;
@@ -38127,6 +38191,7 @@ export declare namespace Schema {
         type $$GroupRuleEventType = GroupRuleEventType;
         type $$SortDirection = SortDirection;
         type $$IncludeFilterOption = IncludeFilterOption;
+        type $$AuthType = AuthType;
         type $$FederatedIdentityProvider = FederatedIdentityProvider;
         type $$AdminTaskType = AdminTaskType;
         type $$AdminTaskResult = AdminTaskResult;
@@ -38184,7 +38249,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         UiLanguage: Schema.UiLanguage;
         MastercardCardType: Schema.MastercardCardType;
         UserIdentType: Schema.UserIdentType;
-        AuthType: Schema.AuthType;
         UserRole: Schema.UserRole;
         AppFeature: Schema.AppFeature;
         NotificationType: Schema.NotificationType;
@@ -38202,6 +38266,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
         GroupRuleEventType: Schema.GroupRuleEventType;
         SortDirection: Schema.SortDirection;
         IncludeFilterOption: Schema.IncludeFilterOption;
+        AuthType: Schema.AuthType;
         FederatedIdentityProvider: Schema.FederatedIdentityProvider;
         AdminTaskType: Schema.AdminTaskType;
         AdminTaskResult: Schema.AdminTaskResult;

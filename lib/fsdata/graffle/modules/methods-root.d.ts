@@ -360,6 +360,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     deleteUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteUser'>>>;
+    deleteUserV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUserV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteUserV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteUserV2'>>>;
     removeAppFeatureFromUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.removeAppFeatureFromUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         removeAppFeatureFromUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'removeAppFeatureFromUser'>>>;
@@ -399,6 +402,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     deleteCompany: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteCompany<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteCompany: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteCompany'>>>;
+    deleteCompanyV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteCompanyV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteCompanyV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteCompanyV2'>>>;
     updateCompany: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateCompany<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateCompany: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateCompany'>>>;
@@ -594,6 +600,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     updateWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateWalletItemTransfer: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateWalletItemTransfer'>>>;
+    createWalletTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createWalletTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        createWalletTransfer: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'createWalletTransfer'>>>;
     createUserSearch: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createUserSearch<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         createUserSearch: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'createUserSearch'>>>;
@@ -657,9 +666,12 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     blockUserForMeV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.blockUserForMeV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         blockUserForMeV2: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'blockUserForMeV2'>>>;
-    deleteMyUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+    deleteMyUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteMyUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteMyUser'>>>;
+    deleteMyUserV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUserV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteMyUserV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteMyUserV2'>>>;
     /**
      * @deprecated Use endMySessionV2
      */
