@@ -54,7 +54,7 @@ const createWalletItemTransfer = async (
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    const serviceRequest = response.data.createWalletItemTransfer;
+    let serviceRequest = response.data.createWalletItemTransfer;
 
     const queryOptions: QueryOptions<ServiceRequestFromGql> = defaultQueryOptionsForMutations;
     queryOptions.polling = {
@@ -91,6 +91,7 @@ const createWalletItemTransfer = async (
       return { error: ErrorCode.SystemError, serviceRequest };
     }
 
+    serviceRequest = pollingResponse.object;
     const walletItemTransferId = pollingResponse.object.objectIds[0];
 
     const findResult = await findById<WalletItemTransfer>(
