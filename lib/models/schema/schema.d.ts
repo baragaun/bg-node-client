@@ -2790,6 +2790,10 @@ declare const schema: {
                 maxLength: number;
                 nullable: boolean;
             };
+            userId: {
+                type: string;
+                maxLength: number;
+            };
         };
         required: string[];
     };

@@ -6,7 +6,13 @@ import { ServiceRequest } from '../../../models/ServiceRequest.js';
 import { WalletItemTransfer } from '../../../models/WalletItemTransfer.js';
 import { QueryOptions } from '../../../types/QueryOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
-import { ErrorCode, MutationCreateWalletItemTransferArgs, ServiceRequest as ServiceRequestFromGql, ServiceRequestResult as ServiceRequestResultFromGql, WalletItemTransferInput } from '../../gql/graphql.js';
+import {
+  ErrorCode,
+  MutationCreateWalletItemTransferArgs,
+  ServiceRequest as ServiceRequestFromGql,
+  ServiceRequestResult as ServiceRequestResultFromGql,
+  WalletItemTransferInput,
+} from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
@@ -44,6 +50,7 @@ const createWalletItemTransfer = async (
     if (Array.isArray(response.errors) && response.errors.length > 0) {
       logger.error('fsdata.createWalletItemTransfer: errors received',
         { errorCode: (response.errors[0] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
@@ -105,7 +112,7 @@ const createWalletItemTransfer = async (
 
     return { object: findResult.object, serviceRequest };
   } catch (error) {
-    logger.error('fsdata.createWalletItemTransfer: failed', { error, headers: helpers.headers() });
+    logger.error('fsdata.createWalletItemTransfer: error', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

@@ -1,3 +1,4 @@
+import { MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
@@ -18,12 +19,19 @@ const createWalletItemTransfer = async (
       return { error: 'unauthorized' };
     }
 
+    if (!props) {
+      return { error: 'missing-input', operation: MutationType.create };
+    }
+
     return await fsdata.walletItemTransfer.createWalletItemTransfer(
       props,
     );
 
   } catch (error) {
-    return { error: (error as Error).message };
+    return {
+      operation: MutationType.create,
+      error: (error as Error).message,
+    };
   }
 };
 

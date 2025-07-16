@@ -3,7 +3,7 @@ import modelFields from '../helpers/modelFields.js';
 
 export interface ModelCrudOperationDef {
   createField?: string;
-  delete?: { field: string, returnsServiceRequest?: boolean };
+  deleteField?: { field: string, returnsServiceRequest?: boolean };
   findByIdField?: string;
   updateField?: { field: string, returnsServiceRequest?: boolean };
   selections: any;
@@ -13,8 +13,8 @@ export interface ModelCrudOperationDef {
 
 export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDef>> = {
   [ModelType.Channel]: {
-    createField: 'createChannel',
-    delete: { field: 'deleteChannelV2', returnsServiceRequest: true },
+    createField: 'createChannelV2',
+    deleteField: { field: 'deleteChannelV2', returnsServiceRequest: true },
     findByIdField: 'findChannelById',
     updateField: { field: 'updateChannel' },
     selections: modelFields.channel,
@@ -22,7 +22,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
   },
   [ModelType.ChannelInvitation]: {
     createField: 'createChannelInvitation',
-    delete: { field: 'deleteChannelInvitationV2', returnsServiceRequest: true },
+    deleteField: { field: 'deleteChannelInvitationV2', returnsServiceRequest: true },
     findByIdField: 'findChannelInvitationById',
     updateField: { field: 'updateChannelInvitation' },
     selections: modelFields.channelInvitation,
@@ -30,7 +30,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
   },
   [ModelType.ChannelMessage]: {
     createField: 'createChannelMessage',
-    delete: { field: 'deleteChannelMessageV2', returnsServiceRequest: true },
+    deleteField: { field: 'deleteChannelMessageV2', returnsServiceRequest: true },
     findByIdField: 'findChannelMessageById',
     updateField: { field: 'updateChannelMessage' },
     selections: modelFields.channelMessage,
@@ -38,32 +38,40 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
   },
   [ModelType.ChannelParticipant]: {
     createField: 'createChannelParticipant',
-    delete: { field: 'deleteChannelParticipantV2', returnsServiceRequest: true },
+    deleteField: { field: 'deleteChannelParticipantV2', returnsServiceRequest: true },
     findByIdField: 'findChannelParticipantById',
     updateField: { field: 'updateChannelParticipant' },
     selections: modelFields.channelParticipant,
     keyFieldName: 'channelParticipantId',
   },
+  [ModelType.Company]: {
+    createField: 'createCompany',
+    deleteField: { field: 'deleteCompanyV2', returnsServiceRequest: true },
+    findByIdField: 'findCompanyById',
+    updateField: { field: 'updateCompany' },
+    selections: modelFields.company,
+    keyFieldName: 'companyId',
+  },
   [ModelType.MyUser]: {
     createField: 'createMyUser',
-    delete: { field: 'deleteMyUser', returnsServiceRequest: false },
+    deleteField: { field: 'deleteMyUserV2', returnsServiceRequest: true },
     findByIdField: 'findMyUser',
-    updateField: {field: 'updateMyUser'},
+    updateField: { field: 'updateMyUser'},
     selections: modelFields.myUser,
     skipVars: true,
   },
   [ModelType.PurchaseOrder]: {
     createField: 'createPurchaseOrder',
-    delete: { field: 'deletePurchaseOrder', returnsServiceRequest: true },
+    deleteField: { field: 'deletePurchaseOrder', returnsServiceRequest: true },
     findByIdField: 'findPurchaseOrderById',
-    updateField: {field: 'updatePurchaseOrder'},
+    updateField: { field: 'updatePurchaseOrder'},
     selections: modelFields.purchaseOrder,
   },
   [ModelType.PurchaseOrderItem]: {
     createField: 'createPurchaseOrderItem',
-    delete: { field: 'deletePurchaseOrderItem', returnsServiceRequest: true },
+    deleteField: { field: 'deletePurchaseOrderItem', returnsServiceRequest: true },
     findByIdField: 'findPurchaseOrderItemById',
-    updateField: {field: 'updatePurchaseOrderItem'},
+    updateField: { field: 'updatePurchaseOrderItem'},
     selections: modelFields.purchaseOrderItem,
   },
   [ModelType.ServiceRequest]: {
@@ -75,12 +83,12 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createShoppingCart',
     // delete: { field: 'deleteShoppingCart', returnsServiceRequest: true },
     findByIdField: 'findShoppingCartById',
-    updateField: {field: 'updateShoppingCart'},
+    updateField: { field: 'updateShoppingCart'},
     selections: modelFields.shoppingCart,
   },
   [ModelType.ShoppingCartItem]: {
     createField: 'createShoppingCartItem',
-    delete: { field: 'deleteShoppingCartItem', returnsServiceRequest: true },
+    deleteField: { field: 'deleteShoppingCartItem', returnsServiceRequest: true },
     findByIdField: 'findShoppingCartItemById',
     updateField: { field: 'updateShoppingCartItem', returnsServiceRequest: true },
     selections: modelFields.shoppingCartItem,
@@ -89,49 +97,49 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     createField: 'createMultiStepAction',
     // delete: { field: 'deleteMultiStepAction', returnsServiceRequest: false },
     findByIdField: 'findMultiStepActionById',
-    updateField: {field: 'updateMultiStepAction' },
+    updateField: { field: 'updateMultiStepAction' },
     selections: modelFields.sidMultiStepAction,
   },
   [ModelType.SidMultiStepActionProgress]: {
-    createField: 'createUser',
-    // deleteField: 'deleteUser',
+    createField: 'createMultiStepActionProgress',
+    deleteField: { field: 'deleteMultiStepActionProgress', returnsServiceRequest: false },
     findByIdField: 'getMultiStepActionProgress',
-    // updateField: 'updateUser',
+    updateField: { field: 'updateMultiStepActionProgress' },
     selections: modelFields.sidMultiStepActionProgress,
     keyFieldName: 'actionId',
   },
   [ModelType.User]: {
     createField: 'createUser',
-    delete: { field: 'deleteUser', returnsServiceRequest: false },
+    deleteField: { field: 'deleteUserV2', returnsServiceRequest: true },
     findByIdField: 'findUserById',
-    updateField: {field: 'updateUser'},
+    updateField: { field: 'updateUser'},
     selections: modelFields.user,
     keyFieldName: 'userId',
   },
   [ModelType.Brand]: {
     createField: 'createBrand',
-    delete: { field: 'deleteBrand', returnsServiceRequest: true },
+    deleteField: { field: 'deleteBrand', returnsServiceRequest: true },
     findByIdField: 'findBrandById',
-    updateField: {field: 'updateBrand'},
+    updateField: { field: 'updateBrand'},
     selections: modelFields.brand,
   },
   [ModelType.Wallet]: {
     createField: 'createWallet',
     // delete: { field: 'deleteWallet', returnsServiceRequest: true },
     findByIdField: 'findWalletById',
-    updateField: {field: 'updateWallet'},
+    updateField: { field: 'updateWallet'},
     selections: modelFields.wallet,
   },
   [ModelType.WalletItem]: {
     createField: 'createWalletItem',
-    delete: { field: 'deleteWalletItem', returnsServiceRequest: true },
+    deleteField: { field: 'deleteWalletItem', returnsServiceRequest: true },
     findByIdField: 'findWalletItemById',
     updateField: { field: 'updateWalletItem', returnsServiceRequest: true },
     selections: modelFields.walletItem,
   },
   [ModelType.WalletItemTransfer]: {
     createField: 'createWalletItemTransfer',
-    delete: { field: 'deleteWalletItemTransfer', returnsServiceRequest: true },
+    deleteField: { field: 'deleteWalletItemTransfer', returnsServiceRequest: true },
     findByIdField: 'findWalletItemTransferById',
     updateField: { field: 'updateWalletItemTransfer', returnsServiceRequest: true },
     selections: modelFields.walletItemTransfer,

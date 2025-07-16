@@ -59,6 +59,7 @@ const createPurchaseOrder = async (
     }
 
     const serviceRequest = response.data.createPurchaseOrder;
+
     const queryOptions: QueryOptions<ServiceRequestFromGql> = defaultQueryOptionsForMutations;
     queryOptions.polling = {
       enabled: true,

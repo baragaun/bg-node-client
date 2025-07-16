@@ -471,6 +471,7 @@ export interface Operations {
     findWalletItemTransfers: (
       filter: WalletItemTransferListFilter | null | undefined,
       match: Partial<WalletItemTransfer> | null | undefined,
+      selector: MangoQueryTypes<Channel> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItemTransfer>>;

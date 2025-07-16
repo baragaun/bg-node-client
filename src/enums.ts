@@ -228,6 +228,7 @@ export enum ModelType {
   ChannelMessage = 'ChannelMessage',
   ChannelParticipant = 'ChannelParticipant',
   ClientInfo = 'ClientInfo',
+  Company = 'Company',
   GiftCardProduct = 'GiftCardProduct',
   MyUser = 'MyUser',
   Product = 'Product',

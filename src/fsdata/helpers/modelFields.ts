@@ -167,6 +167,34 @@ const channelParticipant = {
   invitedBy: true,
 };
 
+const company = {
+  id: true,
+  name: true,
+  adminNotes: true,
+  annualRevenue: true,
+  companyStage: true,
+  companyStageTextId: true,
+  companyType: true,
+  companyTypeTextId: true,
+  description: true,
+  employeeCount: true,
+  events: true,
+  foundedAt: true,
+  industries: true,
+  isFundraising: true,
+  isOperational: true,
+  location: true,
+  metadata: true,
+  userIds: true,
+  websites: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+};
+
 const giftCardProduct = {
   id: true,
   adminNotes: true,
@@ -876,6 +904,7 @@ const modelFields = {
   channelListItem,
   channelMessage,
   channelParticipant,
+  company,
   giftCardProduct,
   myUser,
   productCategory,

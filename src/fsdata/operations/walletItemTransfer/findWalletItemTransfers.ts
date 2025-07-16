@@ -16,7 +16,7 @@ import modelFields from '../../helpers/modelFields.js';
 
 type ResponseDataType = {
   data: {
-    findWalletItemTransfers: WalletItemTransfer[] | null;
+    findWalletItemTransfers: WalletItemTransfer[];
   };
   errors?: { message: string }[];
 };
@@ -41,22 +41,23 @@ const findWalletItemTransfers = async (
 
     const response: ResponseDataType = await client.query.findWalletItemTransfers({
       $: args,
-      id: true,
       ...modelFields.walletItemTransfer,
     });
 
-    logger.debug('fsdata.findWalletItemTransfers response:', { response });
+    logger.debug('fsdata.findWalletItemTransfers response:',
+      { response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
       logger.error('fsdata.findWalletItemTransfers: errors received',
         { errorCode: (response.errors[0] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
     return {
       objects: response.data.findWalletItemTransfers
-        ? response.data.findWalletItemTransfers.map((i) => new WalletItemTransfer(i))
-        : null,
+        ? response.data.findWalletItemTransfers.map((transfer) => new WalletItemTransfer(transfer))
+        : [],
     };
   } catch (error) {
     logger.error('fsdata.findWalletItemTransfers: error',

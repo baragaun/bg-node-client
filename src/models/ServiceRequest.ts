@@ -1,5 +1,4 @@
 import { BaseModel } from './BaseModel.js';
-import { ModelEvent } from './ModelEvent.js';
 // import {
 //   ServiceRequestMessageId,
 //   ServiceRequestResult,
@@ -16,7 +15,6 @@ import {
 
 export class ServiceRequest extends BaseModel {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
-  public userId?: string | null;
   public serviceRequestType: ServiceRequestType = ServiceRequestType.Unset;
   public userRoles?: UserRole[] | null;
   public objectIds?: string[] | null;
@@ -25,7 +23,6 @@ export class ServiceRequest extends BaseModel {
   public messageIds?: ServiceRequestMessageId[] | null;
   public message?: string | null;
   public errorCode?: ErrorCode | null;
-  public events?: ModelEvent[] | null;
   public deviceUuid?: string | null;
   public source?: ServiceRequestSource | null;
   public finishedAt?: string | null;
@@ -37,9 +34,6 @@ export class ServiceRequest extends BaseModel {
 
     if (attributes) {
       // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
-      if (attributes.userId !== undefined) {
-        this.userId = attributes.userId;
-      }
       if (attributes.serviceRequestType !== undefined) {
         this.serviceRequestType = attributes.serviceRequestType;
       }
@@ -63,9 +57,6 @@ export class ServiceRequest extends BaseModel {
       }
       if (attributes.errorCode !== undefined) {
         this.errorCode = attributes.errorCode;
-      }
-      if (attributes.events !== undefined) {
-        this.events = attributes.events;
       }
       if (attributes.deviceUuid !== undefined) {
         this.deviceUuid = attributes.deviceUuid;
