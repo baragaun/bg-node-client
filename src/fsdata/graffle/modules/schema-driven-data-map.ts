@@ -6434,7 +6434,6 @@ const Wallet: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       nt: DateTimeISO,
     },
     deletedBy: {},
-    userId: {},
   },
 };
 
@@ -9395,6 +9394,15 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
+    acceptChannelInvitationV2: {
+      a: {
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     createChannelInvitation: {
       a: {
         input: {
@@ -9416,11 +9424,24 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
+    declineChannelInvitationV2: {
+      a: {
+        reasonTextId: {
+          nt: DeclineChannelInvitationReasonTextId,
+          it: [1],
+        },
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     deleteChannelInvitation: {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [0],
+          it: [1],
         },
         channelInvitationId: {
           nt: String,
@@ -9453,6 +9474,15 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
+    dismissChannelInvitationFromInboxV2: {
+      a: {
+        id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     updateChannelInvitation: {
       a: {
         input: {
@@ -9482,11 +9512,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         anonymizePersonalData: {
           nt: Boolean,
-          it: [0],
+          it: [1],
         },
         deletePhysically: {
           nt: Boolean,
-          it: [0],
+          it: [1],
         },
         channelId: {
           nt: String,
@@ -9556,7 +9586,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [0],
+          it: [1],
         },
         channelMessageId: {
           nt: String,
@@ -9988,19 +10018,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
-    createWalletTransfer: {
-      a: {
-        newOwnerUserId: {
-          nt: String,
-          it: [1],
-        },
-        input: {
-          nt: WalletInput,
-          it: [1],
-        },
-      },
-      // nt: Wallet, <-- Assigned later to avoid potential circular dependency.
-    },
     createUserSearch: {
       a: {
         input: {
@@ -10244,6 +10261,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [0],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     endMySession: {
       a: {
@@ -10966,8 +10984,11 @@ Mutation.f['updateAdminTask']!.nt = AdminTask;
 Mutation.f['createUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['deleteUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['initAssetUpload']!.nt = UploadedAsset;
+Mutation.f['acceptChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['createChannelInvitation']!.nt = ChannelInvitation;
+Mutation.f['declineChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['deleteChannelInvitationV2']!.nt = ServiceRequest;
+Mutation.f['dismissChannelInvitationFromInboxV2']!.nt = ServiceRequest;
 Mutation.f['createChannel']!.nt = Channel;
 Mutation.f['deleteChannelV2']!.nt = ServiceRequest;
 Mutation.f['createChannelMessage']!.nt = ChannelMessage;
@@ -11005,7 +11026,6 @@ Mutation.f['updateWalletItem']!.nt = ServiceRequest;
 Mutation.f['createWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['deleteWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['updateWalletItemTransfer']!.nt = ServiceRequest;
-Mutation.f['createWalletTransfer']!.nt = Wallet;
 Mutation.f['createUserSearch']!.nt = UserSearch;
 Mutation.f['deleteUserSearch']!.nt = ServiceRequest;
 Mutation.f['updateUserSearch']!.nt = ServiceRequest;
@@ -11018,6 +11038,7 @@ Mutation.f['startVerifyEmail']!.nt = SidMultiStepActionProgress;
 Mutation.f['startVerifyPhoneNumber']!.nt = SidMultiStepActionProgress;
 Mutation.f['verifyMultiStepActionToken']!.nt = SidMultiStepActionProgress;
 Mutation.f['blockUserForMeV2']!.nt = ServiceRequest;
+Mutation.f['deleteMyUserV2']!.nt = ServiceRequest;
 Mutation.f['startMySessionV2']!.nt = ContentStatus;
 Mutation.f['unblockUserForMeV2']!.nt = ServiceRequest;
 Subscription.f['channelChanged']!.nt = BgChannelChangedEvent;
