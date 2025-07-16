@@ -5,6 +5,7 @@ import { QueryResult } from '../../../types/QueryResult.js';
 import { MutationDeleteMyUserV2Args  } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
+import modelFields from '../../helpers/modelFields.js';
 
 type ResponseDataType = { data: { deleteMyUserV2: ServiceRequest }, errors?: { message: string }[] };
 
@@ -27,7 +28,10 @@ const deleteMyUserV2 = async (
     logger.debug('fsdata.deleteMyUserV2: sending');
 
     const args: MutationDeleteMyUserV2Args = { cause, description, deletePhysically };
-    const response: ResponseDataType = await client.mutation.deleteMyUserV2({ $: args });
+    const response: ResponseDataType = await client.mutation.deleteMyUserV2({
+      $: args,
+      ...modelFields.serviceRequest,
+    });
 
     logger.debug('fsdata.deleteMyUserV2: response received.',
       { response: JSON.stringify(response) });

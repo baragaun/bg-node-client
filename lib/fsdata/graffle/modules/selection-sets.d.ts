@@ -2214,6 +2214,10 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      */
     acceptChannelInvitation?: Mutation.acceptChannelInvitation<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptChannelInvitation<_$Scalars>>;
     /**
+     * Select the `acceptChannelInvitationV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+     */
+    acceptChannelInvitationV2?: Mutation.acceptChannelInvitationV2<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptChannelInvitationV2<_$Scalars>>;
+    /**
      * Select the `createChannelInvitation` field on the `Mutation` object. Its type is `ChannelInvitation` (a `OutputObject` kind of type).
      */
     createChannelInvitation?: Mutation.createChannelInvitation<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createChannelInvitation<_$Scalars>>;
@@ -2221,6 +2225,10 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      * Select the `declineChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     declineChannelInvitation?: Mutation.declineChannelInvitation<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.declineChannelInvitation<_$Scalars>>;
+    /**
+     * Select the `declineChannelInvitationV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+     */
+    declineChannelInvitationV2?: Mutation.declineChannelInvitationV2<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.declineChannelInvitationV2<_$Scalars>>;
     /**
      * Select the `deleteChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
@@ -2233,6 +2241,10 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      * Select the `dismissChannelInvitationFromInbox` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     dismissChannelInvitationFromInbox?: Mutation.dismissChannelInvitationFromInbox<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.dismissChannelInvitationFromInbox<_$Scalars>>;
+    /**
+     * Select the `dismissChannelInvitationFromInboxV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
+     */
+    dismissChannelInvitationFromInboxV2?: Mutation.dismissChannelInvitationFromInboxV2<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.dismissChannelInvitationFromInboxV2<_$Scalars>>;
     /**
      * Select the `updateChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
@@ -2430,10 +2442,6 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      */
     updateWalletItemTransfer?: Mutation.updateWalletItemTransfer<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.updateWalletItemTransfer<_$Scalars>>;
     /**
-     * Select the `createWalletTransfer` field on the `Mutation` object. Its type is `Wallet` (a `OutputObject` kind of type).
-     */
-    createWalletTransfer?: Mutation.createWalletTransfer<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createWalletTransfer<_$Scalars>>;
-    /**
      * Select the `createUserSearch` field on the `Mutation` object. Its type is `UserSearch` (a `OutputObject` kind of type).
      */
     createUserSearch?: Mutation.createUserSearch<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createUserSearch<_$Scalars>>;
@@ -2518,7 +2526,7 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      */
     deleteMyUser?: Mutation.deleteMyUser<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteMyUser<_$Scalars>>;
     /**
-     * Select the `deleteMyUserV2` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
+     * Select the `deleteMyUserV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
      */
     deleteMyUserV2?: Mutation.deleteMyUserV2$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.deleteMyUserV2<_$Scalars>>;
     /**
@@ -3117,6 +3125,22 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type acceptChannelInvitation$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<acceptChannelInvitation$SelectionSet<_$Scalars>>;
+    type acceptChannelInvitationV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = acceptChannelInvitationV2$SelectionSet<_$Scalars>;
+    interface acceptChannelInvitationV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+        /**
+         * Arguments for `acceptChannelInvitationV2` field. All arguments are required so you must include this.
+         */
+        $: acceptChannelInvitationV2$Arguments<_$Scalars>;
+    }
+    interface acceptChannelInvitationV2$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+        id: string;
+    }
+    /**
+     * This is the "expanded" version of the `acceptChannelInvitationV2` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type acceptChannelInvitationV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<acceptChannelInvitationV2$SelectionSet<_$Scalars>>;
     type createChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = createChannelInvitation$SelectionSet<_$Scalars>;
     interface createChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ChannelInvitation<_$Scalars> {
         /**
@@ -3150,15 +3174,32 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type declineChannelInvitation$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<declineChannelInvitation$SelectionSet<_$Scalars>>;
+    type declineChannelInvitationV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = declineChannelInvitationV2$SelectionSet<_$Scalars>;
+    interface declineChannelInvitationV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+        /**
+         * Arguments for `declineChannelInvitationV2` field. All arguments are required so you must include this.
+         */
+        $: declineChannelInvitationV2$Arguments<_$Scalars>;
+    }
+    interface declineChannelInvitationV2$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+        $reasonTextId: $NamedTypes.$DeclineChannelInvitationReasonTextId;
+        id: string;
+    }
+    /**
+     * This is the "expanded" version of the `declineChannelInvitationV2` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type declineChannelInvitationV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<declineChannelInvitationV2$SelectionSet<_$Scalars>>;
     type deleteChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteChannelInvitation$SelectionSet<_$Scalars>;
     interface deleteChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `deleteChannelInvitation` field. Some (1/2) arguments are required so you must include this.
+         * Arguments for `deleteChannelInvitation` field. All arguments are required so you must include this.
          */
         $: deleteChannelInvitation$Arguments<_$Scalars>;
     }
     interface deleteChannelInvitation$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        deletePhysically?: boolean | undefined | null;
+        deletePhysically: boolean;
         channelInvitationId: string;
     }
     /**
@@ -3201,6 +3242,22 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type dismissChannelInvitationFromInbox$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>>;
+    type dismissChannelInvitationFromInboxV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = dismissChannelInvitationFromInboxV2$SelectionSet<_$Scalars>;
+    interface dismissChannelInvitationFromInboxV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
+        /**
+         * Arguments for `dismissChannelInvitationFromInboxV2` field. All arguments are required so you must include this.
+         */
+        $: dismissChannelInvitationFromInboxV2$Arguments<_$Scalars>;
+    }
+    interface dismissChannelInvitationFromInboxV2$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+        id: string;
+    }
+    /**
+     * This is the "expanded" version of the `dismissChannelInvitationFromInboxV2` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type dismissChannelInvitationFromInboxV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<dismissChannelInvitationFromInboxV2$SelectionSet<_$Scalars>>;
     type updateChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = updateChannelInvitation$SelectionSet<_$Scalars>;
     interface updateChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
@@ -3252,13 +3309,13 @@ export declare namespace Mutation {
     type deleteChannel<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteChannel$SelectionSet<_$Scalars>;
     interface deleteChannel$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `deleteChannel` field. Some (1/3) arguments are required so you must include this.
+         * Arguments for `deleteChannel` field. All arguments are required so you must include this.
          */
         $: deleteChannel$Arguments<_$Scalars>;
     }
     interface deleteChannel$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        anonymizePersonalData?: boolean | undefined | null;
-        deletePhysically?: boolean | undefined | null;
+        anonymizePersonalData: boolean;
+        deletePhysically: boolean;
         channelId: string;
     }
     /**
@@ -3368,12 +3425,12 @@ export declare namespace Mutation {
     type deleteChannelMessage<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteChannelMessage$SelectionSet<_$Scalars>;
     interface deleteChannelMessage$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `deleteChannelMessage` field. Some (1/2) arguments are required so you must include this.
+         * Arguments for `deleteChannelMessage` field. All arguments are required so you must include this.
          */
         $: deleteChannelMessage$Arguments<_$Scalars>;
     }
     interface deleteChannelMessage$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        deletePhysically?: boolean | undefined | null;
+        deletePhysically: boolean;
         channelMessageId: string;
     }
     /**
@@ -4006,23 +4063,6 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type updateWalletItemTransfer$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<updateWalletItemTransfer$SelectionSet<_$Scalars>>;
-    type createWalletTransfer<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = createWalletTransfer$SelectionSet<_$Scalars>;
-    interface createWalletTransfer$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$Wallet<_$Scalars> {
-        /**
-         * Arguments for `createWalletTransfer` field. All arguments are required so you must include this.
-         */
-        $: createWalletTransfer$Arguments<_$Scalars>;
-    }
-    interface createWalletTransfer$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        newOwnerUserId: string;
-        input: $NamedTypes.$WalletInput<_$Scalars>;
-    }
-    /**
-     * This is the "expanded" version of the `createWalletTransfer` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type createWalletTransfer$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<createWalletTransfer$SelectionSet<_$Scalars>>;
     type createUserSearch<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = createUserSearch$SelectionSet<_$Scalars>;
     interface createUserSearch$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$UserSearch<_$Scalars> {
         /**
@@ -4370,8 +4410,8 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type deleteMyUser$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<deleteMyUser$SelectionSet<_$Scalars>>;
-    type deleteMyUserV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | deleteMyUserV2$SelectionSet<_$Scalars>;
-    interface deleteMyUserV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    type deleteMyUserV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteMyUserV2$SelectionSet<_$Scalars>;
+    interface deleteMyUserV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
         /**
          * Arguments for `deleteMyUserV2` field. No arguments are required so you may omit this.
          */
@@ -4388,7 +4428,7 @@ export declare namespace Mutation {
      * that IDEs will display its contents (a union type) directly, rather than the name of this type.
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
-    type deleteMyUserV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | deleteMyUserV2$SelectionSet<_$Scalars>>;
+    type deleteMyUserV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<deleteMyUserV2$SelectionSet<_$Scalars>>;
     type endMySession<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = endMySession$SelectionSet<_$Scalars>;
     interface endMySession$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
@@ -29222,10 +29262,6 @@ export interface Wallet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $
      */
     deletedBy?: Wallet.deletedBy$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Wallet.deletedBy<_$Scalars>>;
     /**
-     * Select the `userId` field on the `Wallet` object. Its type is `ID` (a `ScalarStandard` kind of type).
-     */
-    userId?: Wallet.userId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Wallet.userId<_$Scalars>>;
-    /**
      * Inline fragments for field groups.
      *
      * Generally a niche feature. This can be useful for example to apply an `@include` directive to a subset of the
@@ -29334,15 +29370,6 @@ export declare namespace Wallet {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type deletedBy$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | deletedBy$SelectionSet<_$Scalars>>;
-    type userId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | userId$SelectionSet<_$Scalars>;
-    interface userId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `userId` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type userId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | userId$SelectionSet<_$Scalars>>;
 }
 export interface WalletServiceRecord<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
     /**

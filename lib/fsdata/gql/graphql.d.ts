@@ -2777,6 +2777,7 @@ export declare enum MultiStepActionType {
 export type Mutation = {
     __typename?: 'Mutation';
     acceptChannelInvitation: Scalars['String']['output'];
+    acceptChannelInvitationV2: ServiceRequest;
     addAppFeatureToUser: Scalars['String']['output'];
     addChannelMessageEvent: Scalars['String']['output'];
     addUserToGroup: ServiceRequest;
@@ -2813,8 +2814,8 @@ export type Mutation = {
     createUserTracking: Scalars['String']['output'];
     createWalletItem: WalletItem;
     createWalletItemTransfer: ServiceRequest;
-    createWalletTransfer: Wallet;
     declineChannelInvitation: Scalars['String']['output'];
+    declineChannelInvitationV2: ServiceRequest;
     deleteAcademicExperience: ServiceRequest;
     deleteAdminTask: ServiceRequest;
     deleteBusinessExperience: ServiceRequest;
@@ -2832,7 +2833,7 @@ export type Mutation = {
     deleteGroup: ServiceRequest;
     deleteGroupMembership: Scalars['String']['output'];
     deleteMyUser: Scalars['String']['output'];
-    deleteMyUserV2: Scalars['String']['output'];
+    deleteMyUserV2: ServiceRequest;
     deleteNotification: Scalars['String']['output'];
     deleteNotificationTemplate: Scalars['String']['output'];
     deleteShoppingCartItem: ServiceRequest;
@@ -2844,6 +2845,7 @@ export type Mutation = {
     deleteWalletItem: ServiceRequest;
     deleteWalletItemTransfer: ServiceRequest;
     dismissChannelInvitationFromInbox: Scalars['String']['output'];
+    dismissChannelInvitationFromInboxV2: ServiceRequest;
     /** @deprecated Use endMySessionV2 */
     endMySession: Scalars['String']['output'];
     endMySessionV2: Scalars['String']['output'];
@@ -2902,6 +2904,9 @@ export type Mutation = {
 };
 export type MutationAcceptChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
+};
+export type MutationAcceptChannelInvitationV2Args = {
+    id: Scalars['String']['input'];
 };
 export type MutationAddAppFeatureToUserArgs = {
     appFeature: AppFeature;
@@ -3014,12 +3019,12 @@ export type MutationCreateWalletItemArgs = {
 export type MutationCreateWalletItemTransferArgs = {
     input: WalletItemTransferInput;
 };
-export type MutationCreateWalletTransferArgs = {
-    input: WalletInput;
-    newOwnerUserId: Scalars['String']['input'];
-};
 export type MutationDeclineChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
+    reasonTextId: DeclineChannelInvitationReasonTextId;
+};
+export type MutationDeclineChannelInvitationV2Args = {
+    id: Scalars['String']['input'];
     reasonTextId: DeclineChannelInvitationReasonTextId;
 };
 export type MutationDeleteAcademicExperienceArgs = {
@@ -3034,13 +3039,13 @@ export type MutationDeleteBusinessExperienceArgs = {
     deletePhysically: Scalars['Boolean']['input'];
 };
 export type MutationDeleteChannelArgs = {
-    anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
+    anonymizePersonalData: Scalars['Boolean']['input'];
     channelId: Scalars['String']['input'];
-    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+    deletePhysically: Scalars['Boolean']['input'];
 };
 export type MutationDeleteChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
-    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+    deletePhysically: Scalars['Boolean']['input'];
 };
 export type MutationDeleteChannelInvitationV2Args = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3049,7 +3054,7 @@ export type MutationDeleteChannelInvitationV2Args = {
 };
 export type MutationDeleteChannelMessageArgs = {
     channelMessageId: Scalars['String']['input'];
-    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+    deletePhysically: Scalars['Boolean']['input'];
 };
 export type MutationDeleteChannelMessageV2Args = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3153,6 +3158,9 @@ export type MutationDeleteWalletItemTransferArgs = {
 };
 export type MutationDismissChannelInvitationFromInboxArgs = {
     channelInvitationId: Scalars['String']['input'];
+};
+export type MutationDismissChannelInvitationFromInboxV2Args = {
+    id: Scalars['String']['input'];
 };
 export type MutationEndMySessionArgs = {
     deviceUuid: Scalars['String']['input'];
@@ -6372,7 +6380,6 @@ export type Wallet = {
     metadata?: Maybe<BaseModelMetadata>;
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     updatedBy?: Maybe<Scalars['ID']['output']>;
-    userId: Scalars['ID']['output'];
 };
 export type WalletInput = {
     adminNotes?: InputMaybe<Scalars['String']['input']>;
