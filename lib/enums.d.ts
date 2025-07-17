@@ -193,6 +193,7 @@ export declare enum ModelType {
     ChannelMessage = "ChannelMessage",
     ChannelParticipant = "ChannelParticipant",
     ClientInfo = "ClientInfo",
+    Company = "Company",
     GiftCardProduct = "GiftCardProduct",
     MyUser = "MyUser",
     Product = "Product",
@@ -207,7 +208,8 @@ export declare enum ModelType {
     User = "User",
     UserInbox = "UserInbox",
     Wallet = "Wallet",
-    WalletItem = "WalletItem"
+    WalletItem = "WalletItem",
+    WalletItemTransfer = "WalletItemTransfer"
 }
 export declare enum MutationType {
     create = "create",

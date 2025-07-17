@@ -48,9 +48,6 @@ const createPurchaseOrder = async (
     logger.debug('fsdata.createPurchaseOrder received response.',
       { response: JSON.stringify(response) });
 
-    logger.debug('fsdata.createPurchaseOrder response:',
-      { response: JSON.stringify(response) });
-
     if (Array.isArray(response.errors) && response.errors.length > 0) {
       logger.error('fsdata.createPurchaseOrder: errors received.',
         { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
@@ -59,6 +56,7 @@ const createPurchaseOrder = async (
     }
 
     const serviceRequest = response.data.createPurchaseOrder;
+
     const queryOptions: QueryOptions<ServiceRequestFromGql> = defaultQueryOptionsForMutations;
     queryOptions.polling = {
       enabled: true,

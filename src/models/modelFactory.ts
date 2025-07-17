@@ -19,6 +19,7 @@ import { User } from './User.js';
 import { UserInbox } from './UserInbox.js';
 import { Wallet } from './Wallet.js';
 import { WalletItem } from './WalletItem.js';
+import { WalletItemTransfer } from './WalletItemTransfer.js';
 
 const modelFactory = <T extends Model = Model>(
   props: Partial<T>,
@@ -83,6 +84,9 @@ const modelFactory = <T extends Model = Model>(
   }
   if (modelType === ModelType.WalletItem) {
     return new WalletItem(props as unknown as Partial<WalletItem>) as unknown as T;
+  }
+  if (modelType === ModelType.WalletItemTransfer) {
+    return new WalletItemTransfer(props as unknown as Partial<WalletItemTransfer>) as unknown as T;
   }
 
   throw new Error(`Model type ${modelType} is not supported.`);

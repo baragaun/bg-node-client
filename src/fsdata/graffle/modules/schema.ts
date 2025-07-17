@@ -2153,6 +2153,7 @@ export namespace Schema {
       verifyOneTimeAuthToken: Mutation.verifyOneTimeAuthToken;
       addAppFeatureToUser: Mutation.addAppFeatureToUser;
       deleteUser: Mutation.deleteUser;
+      deleteUserV2: Mutation.deleteUserV2;
       removeAppFeatureFromUser: Mutation.removeAppFeatureFromUser;
       reportUser: Mutation.reportUser;
       updateUser: Mutation.updateUser;
@@ -2166,6 +2167,7 @@ export namespace Schema {
       updateBusinessExperience: Mutation.updateBusinessExperience;
       createCompany: Mutation.createCompany;
       deleteCompany: Mutation.deleteCompany;
+      deleteCompanyV2: Mutation.deleteCompanyV2;
       updateCompany: Mutation.updateCompany;
       findAndUpdateAllMm2Users: Mutation.findAndUpdateAllMm2Users;
       createAdminTask: Mutation.createAdminTask;
@@ -2252,6 +2254,7 @@ export namespace Schema {
       blockUserForMe: Mutation.blockUserForMe;
       blockUserForMeV2: Mutation.blockUserForMeV2;
       deleteMyUser: Mutation.deleteMyUser;
+      deleteMyUserV2: Mutation.deleteMyUserV2;
       endMySession: Mutation.endMySession;
       endMySessionV2: Mutation.endMySessionV2;
       startMySession: Mutation.startMySession;
@@ -2397,8 +2400,53 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        description: {
+          kind: 'InputField';
+          name: 'description';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        cause: {
+          kind: 'InputField';
+          name: 'cause';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        userId: {
+          kind: 'InputField';
+          name: 'userId';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deleteUserV2 {
+      kind: 'OutputField';
+      name: 'deleteUserV2';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
           inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        requester: {
+          kind: 'InputField';
+          name: 'requester';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
         };
         description: {
           kind: 'InputField';
@@ -2538,7 +2586,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         academicExperienceId: {
@@ -2589,7 +2637,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         businessExperienceId: {
@@ -2636,6 +2684,33 @@ export namespace Schema {
     export interface deleteCompany {
       kind: 'OutputField';
       name: 'deleteCompany';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        companyId: {
+          kind: 'InputField';
+          name: 'companyId';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
+    export interface deleteCompanyV2 {
+      kind: 'OutputField';
+      name: 'deleteCompanyV2';
       arguments: {
         anonymizePersonalData: {
           kind: 'InputField';
@@ -3529,7 +3604,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$String;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface updateGroup {
@@ -3766,12 +3841,6 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'createWalletItemTransfer';
       arguments: {
-        options: {
-          kind: 'InputField';
-          name: 'options';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$UpdateObjectOptions;
-        };
         input: {
           kind: 'InputField';
           name: 'input';
@@ -3780,7 +3849,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$WalletItemTransfer;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface deleteWalletItemTransfer {
@@ -4189,7 +4258,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         description: {
@@ -4207,6 +4276,39 @@ export namespace Schema {
       };
       inlineType: [1];
       namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deleteMyUserV2 {
+      kind: 'OutputField';
+      name: 'deleteMyUserV2';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        description: {
+          kind: 'InputField';
+          name: 'description';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        cause: {
+          kind: 'InputField';
+          name: 'cause';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     /**
@@ -7079,9 +7181,7 @@ export namespace Schema {
       postalCode: User.postalCode;
       avatarUrl: User.avatarUrl;
       websites: User.websites;
-      authType: User.authType;
       inviteCode: User.inviteCode;
-      tfaBackupCodes: User.tfaBackupCodes;
       passwordUpdatedAt: User.passwordUpdatedAt;
       preferredLanguageTextId: User.preferredLanguageTextId;
       spokenLanguagesTextIds: User.spokenLanguagesTextIds;
@@ -7108,8 +7208,6 @@ export namespace Schema {
       suspendedAt: User.suspendedAt;
       suspendedBy: User.suspendedBy;
       anonymizedAt: User.anonymizedAt;
-      addedToBgVaultAt: User.addedToBgVaultAt;
-      syncedToAnalyticsAt: User.syncedToAnalyticsAt;
       companyIds: User.companyIds;
       companies: User.companies;
       groupIds: User.groupIds;
@@ -7404,25 +7502,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$LabeledStringValue;
     }
 
-    export interface authType {
-      kind: 'OutputField';
-      name: 'authType';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$AuthType;
-    }
-
     export interface inviteCode {
       kind: 'OutputField';
       name: 'inviteCode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface tfaBackupCodes {
-      kind: 'OutputField';
-      name: 'tfaBackupCodes';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -7634,22 +7716,6 @@ export namespace Schema {
     export interface anonymizedAt {
       kind: 'OutputField';
       name: 'anonymizedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface addedToBgVaultAt {
-      kind: 'OutputField';
-      name: 'addedToBgVaultAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface syncedToAnalyticsAt {
-      kind: 'OutputField';
-      name: 'syncedToAnalyticsAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -24711,9 +24777,7 @@ export namespace Schema {
       postalCode: MyUser.postalCode;
       avatarUrl: MyUser.avatarUrl;
       websites: MyUser.websites;
-      authType: MyUser.authType;
       inviteCode: MyUser.inviteCode;
-      tfaBackupCodes: MyUser.tfaBackupCodes;
       passwordUpdatedAt: MyUser.passwordUpdatedAt;
       preferredLanguageTextId: MyUser.preferredLanguageTextId;
       spokenLanguagesTextIds: MyUser.spokenLanguagesTextIds;
@@ -24740,8 +24804,6 @@ export namespace Schema {
       suspendedAt: MyUser.suspendedAt;
       suspendedBy: MyUser.suspendedBy;
       anonymizedAt: MyUser.anonymizedAt;
-      addedToBgVaultAt: MyUser.addedToBgVaultAt;
-      syncedToAnalyticsAt: MyUser.syncedToAnalyticsAt;
       companyIds: MyUser.companyIds;
       companies: MyUser.companies;
       groupIds: MyUser.groupIds;
@@ -25037,25 +25099,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$LabeledStringValue;
     }
 
-    export interface authType {
-      kind: 'OutputField';
-      name: 'authType';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$AuthType;
-    }
-
     export interface inviteCode {
       kind: 'OutputField';
       name: 'inviteCode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface tfaBackupCodes {
-      kind: 'OutputField';
-      name: 'tfaBackupCodes';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -25267,22 +25313,6 @@ export namespace Schema {
     export interface anonymizedAt {
       kind: 'OutputField';
       name: 'anonymizedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface addedToBgVaultAt {
-      kind: 'OutputField';
-      name: 'addedToBgVaultAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface syncedToAnalyticsAt {
-      kind: 'OutputField';
-      name: 'syncedToAnalyticsAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -42316,22 +42346,6 @@ export namespace Schema {
       | 'userHandle';
   }
 
-  //                                              AuthType
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface AuthType {
-    kind: 'Enum';
-    name: 'AuthType';
-    members: ['none', 'oauth', 'token', 'hmac', 'saml'];
-    membersUnion:
-      | 'none'
-      | 'oauth'
-      | 'token'
-      | 'hmac'
-      | 'saml';
-  }
-
   //                                              UserRole
   // --------------------------------------------------------------------------------------------------
   //
@@ -42448,7 +42462,7 @@ export namespace Schema {
       'AcademicExperience',
       'BusinessExperience',
       'Company',
-      'DataDeletion',
+      'DataDeletionRecord',
       'MentorBoard',
       'MentoringSession',
       'UserInbox',
@@ -42517,7 +42531,7 @@ export namespace Schema {
       | 'AcademicExperience'
       | 'BusinessExperience'
       | 'Company'
-      | 'DataDeletion'
+      | 'DataDeletionRecord'
       | 'MentorBoard'
       | 'MentoringSession'
       | 'UserInbox'
@@ -42756,6 +42770,22 @@ export namespace Schema {
       | 'include'
       | 'exclude'
       | 'only';
+  }
+
+  //                                              AuthType
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface AuthType {
+    kind: 'Enum';
+    name: 'AuthType';
+    members: ['none', 'oauth', 'token', 'hmac', 'saml'];
+    membersUnion:
+      | 'none'
+      | 'oauth'
+      | 'token'
+      | 'hmac'
+      | 'saml';
   }
 
   //                                     FederatedIdentityProvider
@@ -43299,6 +43329,7 @@ export namespace Schema {
       'graphQlMutationCreateShoppingCartItem',
       'graphQlMutationCreateWalletItem',
       'graphQlMutationCreateWalletItemTransfer',
+      'graphQlMutationCreateWalletTransfer',
       'graphQlMutationDeleteShoppingCartItem',
       'graphQlMutationDeleteWalletItem',
       'graphQlMutationDeleteWalletItemTransfer',
@@ -43508,6 +43539,7 @@ export namespace Schema {
       | 'graphQlMutationCreateShoppingCartItem'
       | 'graphQlMutationCreateWalletItem'
       | 'graphQlMutationCreateWalletItemTransfer'
+      | 'graphQlMutationCreateWalletTransfer'
       | 'graphQlMutationDeleteShoppingCartItem'
       | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationDeleteWalletItemTransfer'
@@ -44377,7 +44409,6 @@ export namespace Schema {
     export type $$UiLanguage = UiLanguage;
     export type $$MastercardCardType = MastercardCardType;
     export type $$UserIdentType = UserIdentType;
-    export type $$AuthType = AuthType;
     export type $$UserRole = UserRole;
     export type $$AppFeature = AppFeature;
     export type $$NotificationType = NotificationType;
@@ -44395,6 +44426,7 @@ export namespace Schema {
     export type $$GroupRuleEventType = GroupRuleEventType;
     export type $$SortDirection = SortDirection;
     export type $$IncludeFilterOption = IncludeFilterOption;
+    export type $$AuthType = AuthType;
     export type $$FederatedIdentityProvider = FederatedIdentityProvider;
     export type $$AdminTaskType = AdminTaskType;
     export type $$AdminTaskResult = AdminTaskResult;
@@ -44471,7 +44503,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     UiLanguage: Schema.UiLanguage;
     MastercardCardType: Schema.MastercardCardType;
     UserIdentType: Schema.UserIdentType;
-    AuthType: Schema.AuthType;
     UserRole: Schema.UserRole;
     AppFeature: Schema.AppFeature;
     NotificationType: Schema.NotificationType;
@@ -44489,6 +44520,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     GroupRuleEventType: Schema.GroupRuleEventType;
     SortDirection: Schema.SortDirection;
     IncludeFilterOption: Schema.IncludeFilterOption;
+    AuthType: Schema.AuthType;
     FederatedIdentityProvider: Schema.FederatedIdentityProvider;
     AdminTaskType: Schema.AdminTaskType;
     AdminTaskResult: Schema.AdminTaskResult;

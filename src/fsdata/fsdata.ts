@@ -23,7 +23,9 @@ import getMultiStepActionProgress from './operations/multiStepAction/getMultiSte
 import sendMultiStepActionNotification from './operations/multiStepAction/sendMultiStepActionNotification.js';
 import verifyMultiStepActionToken from './operations/multiStepAction/verifyMultiStepActionToken.js';
 import blockUserForMe from './operations/myUser/blockUserForMe.js';
+import blockUserForMeV2 from './operations/myUser/blockUserForMeV2.js';
 import deleteMyUser from './operations/myUser/deleteMyUser.js';
+import deleteMyUserV2 from './operations/myUser/deleteMyUserV2.js';
 import endMySession from './operations/myUser/endMySession.js';
 import findAvailableUserHandle from './operations/myUser/findAvailableUserHandle.js';
 import findMyInbox from './operations/myUser/findMyInbox.js';
@@ -36,6 +38,7 @@ import signUpUser from './operations/myUser/signUpUser.js';
 import startMySession from './operations/myUser/startMySession.js';
 import startMySessionV2 from './operations/myUser/startMySessionV2.js';
 import unblockUserForMe from './operations/myUser/unblockUserForMe.js';
+import unblockUserForMeV2 from './operations/myUser/unblockUserForMeV2.js';
 import updateMyUser from './operations/myUser/updateMyUser.js';
 import verifyMyPassword from './operations/myUser/verifyMyPassword.js';
 import pollForUpdatedObject from './operations/pollForUpdatedObject.js';
@@ -50,6 +53,20 @@ import findUserById from './operations/user/findUserById.js';
 import findUsers from './operations/user/findUsers.js';
 import findMyWallet from './operations/wallet/findMyWallet.js';
 import findWalletItems from './operations/walletItem/findWalletItems.js';
+import createWalletItemTransfer from './operations/walletItemTransfer/createWalletItemTransfer.js';
+import findWalletItemTransfers from './operations/walletItemTransfer/findWalletItemTransfers.js';
+
+// deleteChannelInvitationV2
+// deleteChannelMessageV2
+// deleteChannelParticipantV2
+// deleteChannelV2
+// deleteCompanyV2
+// deleteMyUserV2
+// deleteUserV2
+// endMySessionV2
+// startMySessionV2
+// unblockUserForMeV2
+// findMyChannelsV2
 
 const fsdata = {
   create,
@@ -90,7 +107,9 @@ const fsdata = {
 
   myUser: {
     blockUserForMe,
+    blockUserForMeV2,
     deleteMyUser,
+    deleteMyUserV2,
     endMySession,
     findAvailableUserHandle,
     findMyInbox,
@@ -103,6 +122,7 @@ const fsdata = {
     startMySession,
     startMySessionV2,
     unblockUserForMe,
+    unblockUserForMeV2,
     updateMyUser,
     verifyMyPassword,
   },
@@ -148,6 +168,11 @@ const fsdata = {
 
   walletItem: {
     findWalletItems,
+  },
+
+  walletItemTransfer: {
+    findWalletItemTransfers,
+    createWalletItemTransfer,
   },
 };
 
