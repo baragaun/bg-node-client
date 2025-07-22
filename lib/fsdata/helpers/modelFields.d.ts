@@ -801,6 +801,7 @@ declare const modelFields: {
     };
     walletItem: {
         id: boolean;
+        purchaseOrderItemId: boolean;
         adminNotes: boolean;
         createdAt: boolean;
         createdBy: boolean;

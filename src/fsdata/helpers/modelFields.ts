@@ -836,6 +836,7 @@ const brand = {
 
 const walletItem = {
   id: true,
+  purchaseOrderItemId: true,
   adminNotes: true,
   createdAt: true,
   createdBy: true,
