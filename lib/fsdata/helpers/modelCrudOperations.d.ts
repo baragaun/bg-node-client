@@ -1,7 +1,7 @@
 import { ModelType } from '../../enums.js';
 export interface ModelCrudOperationDef {
     createField?: string;
-    delete?: {
+    deleteField?: {
         field: string;
         returnsServiceRequest?: boolean;
     };

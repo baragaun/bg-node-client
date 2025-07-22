@@ -7,8 +7,8 @@ import {
   HttpHeaderName,
 } from '../../index.js';
 
-// const consumer = 'first-spark';
-const consumer = 'micromentor';
+const consumer = 'first-spark';
+// const consumer = 'micromentor';
 // const consumer = 'mimble';
 
 const _clientInfoStore = new ClientInfoStore(ClientInfoStoreType.inMemory);
@@ -21,7 +21,7 @@ const consumerConfig = {
       enableChannels: true,
       enableGroupChannels: false,
       enableNats: false,
-      enableMarketplace: false,
+      enableMarketplace: true,
     },
   },
   micromentor: {
@@ -60,15 +60,15 @@ export const getTestClientConfig = (
         [HttpHeaderName.consumer]: 'test',
       },
     },
-    nats: {
-      name: `nats-test-client-${crypto.randomUUID()}`,
-      servers: ['nats://localhost:4222'],
-      timeout: 5000,
-      reconnect: true,
-      maxReconnectAttempts: 3,
-      reconnectTimeWait: 1000,
-      pingInterval: 1000,
-    },
+    // nats: {
+    //   name: `nats-test-client-${crypto.randomUUID()}`,
+    //   servers: ['nats://localhost:4222'],
+    //   timeout: 5000,
+    //   reconnect: true,
+    //   maxReconnectAttempts: 3,
+    //   reconnectTimeWait: 1000,
+    //   pingInterval: 1000,
+    // },
     logLevel: 'debug',
     enableMockMode,
 

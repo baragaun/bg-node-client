@@ -93,11 +93,6 @@ const UserIdentType: $$Utilities.SchemaDrivenDataMap.Enum = {
   n: 'UserIdentType',
 };
 
-const AuthType: $$Utilities.SchemaDrivenDataMap.Enum = {
-  k: 'enum',
-  n: 'AuthType',
-};
-
 const UserRole: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'UserRole',
@@ -181,6 +176,11 @@ const SortDirection: $$Utilities.SchemaDrivenDataMap.Enum = {
 const IncludeFilterOption: $$Utilities.SchemaDrivenDataMap.Enum = {
   k: 'enum',
   n: 'IncludeFilterOption',
+};
+
+const AuthType: $$Utilities.SchemaDrivenDataMap.Enum = {
+  k: 'enum',
+  n: 'AuthType',
 };
 
 const FederatedIdentityProvider: $$Utilities.SchemaDrivenDataMap.Enum = {
@@ -3821,9 +3821,7 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     websites: {
       // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
-    authType: {},
     inviteCode: {},
-    tfaBackupCodes: {},
     passwordUpdatedAt: {
       nt: DateTimeISO,
     },
@@ -3870,12 +3868,6 @@ const User: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     suspendedBy: {},
     anonymizedAt: {
-      nt: DateTimeISO,
-    },
-    addedToBgVaultAt: {
-      nt: DateTimeISO,
-    },
-    syncedToAnalyticsAt: {
       nt: DateTimeISO,
     },
     companyIds: {},
@@ -7051,9 +7043,7 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     websites: {
       // nt: LabeledStringValue, <-- Assigned later to avoid potential circular dependency.
     },
-    authType: {},
     inviteCode: {},
-    tfaBackupCodes: {},
     passwordUpdatedAt: {
       nt: DateTimeISO,
     },
@@ -7100,12 +7090,6 @@ const MyUser: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     suspendedBy: {},
     anonymizedAt: {
-      nt: DateTimeISO,
-    },
-    addedToBgVaultAt: {
-      nt: DateTimeISO,
-    },
-    syncedToAnalyticsAt: {
       nt: DateTimeISO,
     },
     companyIds: {},
@@ -9115,6 +9099,34 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         deletePhysically: {
           nt: Boolean,
+          it: [1],
+        },
+        description: {
+          nt: String,
+          it: [0],
+        },
+        cause: {
+          nt: String,
+          it: [0],
+        },
+        userId: {
+          nt: String,
+          it: [1],
+        },
+      },
+    },
+    deleteUserV2: {
+      a: {
+        anonymizePersonalData: {
+          nt: Boolean,
+          it: [0],
+        },
+        deletePhysically: {
+          nt: Boolean,
+          it: [0],
+        },
+        requester: {
+          nt: String,
           it: [0],
         },
         description: {
@@ -9197,7 +9209,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [0],
+          it: [1],
         },
         academicExperienceId: {
           nt: String,
@@ -9228,7 +9240,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [0],
+          it: [1],
         },
         businessExperienceId: {
           nt: String,
@@ -9256,6 +9268,23 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       // nt: Company, <-- Assigned later to avoid potential circular dependency.
     },
     deleteCompany: {
+      a: {
+        anonymizePersonalData: {
+          nt: Boolean,
+          it: [1],
+        },
+        deletePhysically: {
+          nt: Boolean,
+          it: [1],
+        },
+        companyId: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
+    deleteCompanyV2: {
       a: {
         anonymizePersonalData: {
           nt: Boolean,
@@ -9782,6 +9811,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [1],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     updateGroup: {
       a: {
@@ -9924,16 +9954,12 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     createWalletItemTransfer: {
       a: {
-        options: {
-          nt: UpdateObjectOptions,
-          it: [0],
-        },
         input: {
           nt: WalletItemTransferInput,
           it: [1],
         },
       },
-      // nt: WalletItemTransfer, <-- Assigned later to avoid potential circular dependency.
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     deleteWalletItemTransfer: {
       a: {
@@ -10173,6 +10199,26 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
         deletePhysically: {
           nt: Boolean,
+          it: [1],
+        },
+        description: {
+          nt: String,
+          it: [0],
+        },
+        cause: {
+          nt: String,
+          it: [0],
+        },
+      },
+    },
+    deleteMyUserV2: {
+      a: {
+        anonymizePersonalData: {
+          nt: Boolean,
+          it: [0],
+        },
+        deletePhysically: {
+          nt: Boolean,
           it: [0],
         },
         description: {
@@ -10184,6 +10230,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [0],
         },
       },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     endMySession: {
       a: {
@@ -10897,6 +10944,7 @@ Mutation.f['deleteBusinessExperience']!.nt = ServiceRequest;
 Mutation.f['updateBusinessExperience']!.nt = ServiceRequest;
 Mutation.f['createCompany']!.nt = Company;
 Mutation.f['deleteCompany']!.nt = ServiceRequest;
+Mutation.f['deleteCompanyV2']!.nt = ServiceRequest;
 Mutation.f['updateCompany']!.nt = ServiceRequest;
 Mutation.f['createAdminTask']!.nt = AdminTask;
 Mutation.f['deleteAdminTask']!.nt = ServiceRequest;
@@ -10927,6 +10975,7 @@ Mutation.f['updateMentorsGroupMembership']!.nt = ServiceRequest;
 Mutation.f['addUserToGroup']!.nt = ServiceRequest;
 Mutation.f['createGroup']!.nt = Group;
 Mutation.f['deleteGroup']!.nt = ServiceRequest;
+Mutation.f['removeUserFromGroup']!.nt = ServiceRequest;
 Mutation.f['updateGroup']!.nt = ServiceRequest;
 Mutation.f['createSupportChannelConfig']!.nt = SupportChannelConfig;
 Mutation.f['deleteSupportChannelConfig']!.nt = ServiceRequest;
@@ -10940,7 +10989,7 @@ Mutation.f['clearShoppingCart']!.nt = ServiceRequest;
 Mutation.f['createWalletItem']!.nt = WalletItem;
 Mutation.f['deleteWalletItem']!.nt = ServiceRequest;
 Mutation.f['updateWalletItem']!.nt = ServiceRequest;
-Mutation.f['createWalletItemTransfer']!.nt = WalletItemTransfer;
+Mutation.f['createWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['deleteWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['updateWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['createUserSearch']!.nt = UserSearch;
@@ -10955,6 +11004,7 @@ Mutation.f['startVerifyEmail']!.nt = SidMultiStepActionProgress;
 Mutation.f['startVerifyPhoneNumber']!.nt = SidMultiStepActionProgress;
 Mutation.f['verifyMultiStepActionToken']!.nt = SidMultiStepActionProgress;
 Mutation.f['blockUserForMeV2']!.nt = ServiceRequest;
+Mutation.f['deleteMyUserV2']!.nt = ServiceRequest;
 Mutation.f['startMySessionV2']!.nt = ContentStatus;
 Mutation.f['unblockUserForMeV2']!.nt = ServiceRequest;
 Subscription.f['channelChanged']!.nt = BgChannelChangedEvent;
@@ -10997,7 +11047,6 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     UiLanguage,
     MastercardCardType,
     UserIdentType,
-    AuthType,
     UserRole,
     AppFeature,
     NotificationType,
@@ -11015,6 +11064,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     GroupRuleEventType,
     SortDirection,
     IncludeFilterOption,
+    AuthType,
     FederatedIdentityProvider,
     AdminTaskType,
     AdminTaskResult,

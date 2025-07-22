@@ -161,6 +161,33 @@ declare const modelFields: {
         deletedBy: boolean;
         invitedBy: boolean;
     };
+    company: {
+        id: boolean;
+        name: boolean;
+        adminNotes: boolean;
+        annualRevenue: boolean;
+        companyStage: boolean;
+        companyStageTextId: boolean;
+        companyType: boolean;
+        companyTypeTextId: boolean;
+        description: boolean;
+        employeeCount: boolean;
+        events: boolean;
+        foundedAt: boolean;
+        industries: boolean;
+        isFundraising: boolean;
+        isOperational: boolean;
+        location: boolean;
+        metadata: boolean;
+        userIds: boolean;
+        websites: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+    };
     giftCardProduct: {
         id: boolean;
         adminNotes: boolean;
@@ -774,6 +801,7 @@ declare const modelFields: {
     };
     walletItem: {
         id: boolean;
+        purchaseOrderItemId: boolean;
         adminNotes: boolean;
         createdAt: boolean;
         createdBy: boolean;
@@ -798,6 +826,29 @@ declare const modelFields: {
         instructionsEn: boolean;
         instructionsUrl: boolean;
         sortIndex: boolean;
+        archivedAt: boolean;
+        transferredAt: boolean;
+    };
+    walletItemTransfer: {
+        id: boolean;
+        adminNotes: boolean;
+        metadata: {
+            updatedAt: boolean;
+        };
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+        walletItemId: boolean;
+        notificationId: boolean;
+        recipientEmail: boolean;
+        recipientFullName: boolean;
+        subjectText: boolean;
+        messageText: boolean;
+        sentAt: boolean;
+        canceledAt: boolean;
         archivedAt: boolean;
     };
 };

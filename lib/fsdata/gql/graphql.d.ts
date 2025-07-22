@@ -2564,7 +2564,7 @@ export declare enum ModelType {
     Contact = "Contact",
     ContentStatus = "ContentStatus",
     ContentTag = "ContentTag",
-    DataDeletion = "DataDeletion",
+    DataDeletionRecord = "DataDeletionRecord",
     GiftCardProduct = "GiftCardProduct",
     Group = "Group",
     GroupCms = "GroupCms",
@@ -2812,7 +2812,7 @@ export type Mutation = {
     createUserSearch: UserSearch;
     createUserTracking: Scalars['String']['output'];
     createWalletItem: WalletItem;
-    createWalletItemTransfer: WalletItemTransfer;
+    createWalletItemTransfer: ServiceRequest;
     declineChannelInvitation: Scalars['String']['output'];
     deleteAcademicExperience: ServiceRequest;
     deleteAdminTask: ServiceRequest;
@@ -2826,10 +2826,12 @@ export type Mutation = {
     deleteChannelParticipantV2: ServiceRequest;
     deleteChannelV2: ServiceRequest;
     deleteCompany: ServiceRequest;
+    deleteCompanyV2: ServiceRequest;
     deleteContentTag: ServiceRequest;
     deleteGroup: ServiceRequest;
     deleteGroupMembership: Scalars['String']['output'];
     deleteMyUser: Scalars['String']['output'];
+    deleteMyUserV2: ServiceRequest;
     deleteNotification: Scalars['String']['output'];
     deleteNotificationTemplate: Scalars['String']['output'];
     deleteShoppingCartItem: ServiceRequest;
@@ -2837,6 +2839,7 @@ export type Mutation = {
     deleteUploadedAsset: UploadedAsset;
     deleteUser: Scalars['String']['output'];
     deleteUserSearch: ServiceRequest;
+    deleteUserV2: Scalars['String']['output'];
     deleteWalletItem: ServiceRequest;
     deleteWalletItemTransfer: ServiceRequest;
     dismissChannelInvitationFromInbox: Scalars['String']['output'];
@@ -2848,7 +2851,7 @@ export type Mutation = {
     markChannelMessagesAsSeenByMe: Scalars['String']['output'];
     markInAppMessageReceived: Scalars['String']['output'];
     removeAppFeatureFromUser: Scalars['String']['output'];
-    removeUserFromGroup: Scalars['String']['output'];
+    removeUserFromGroup: ServiceRequest;
     reportUser: Scalars['String']['output'];
     runAdminTask: ServiceRequest;
     sendMultiStepActionNotification: Scalars['String']['output'];
@@ -3009,7 +3012,6 @@ export type MutationCreateWalletItemArgs = {
 };
 export type MutationCreateWalletItemTransferArgs = {
     input: WalletItemTransferInput;
-    options?: InputMaybe<UpdateObjectOptions>;
 };
 export type MutationDeclineChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
@@ -3017,14 +3019,14 @@ export type MutationDeclineChannelInvitationArgs = {
 };
 export type MutationDeleteAcademicExperienceArgs = {
     academicExperienceId: Scalars['String']['input'];
-    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+    deletePhysically: Scalars['Boolean']['input'];
 };
 export type MutationDeleteAdminTaskArgs = {
     adminTaskId: Scalars['String']['input'];
 };
 export type MutationDeleteBusinessExperienceArgs = {
     businessExperienceId: Scalars['String']['input'];
-    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+    deletePhysically: Scalars['Boolean']['input'];
 };
 export type MutationDeleteChannelArgs = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3064,6 +3066,11 @@ export type MutationDeleteChannelV2Args = {
     id: Scalars['String']['input'];
 };
 export type MutationDeleteCompanyArgs = {
+    anonymizePersonalData: Scalars['Boolean']['input'];
+    companyId: Scalars['String']['input'];
+    deletePhysically: Scalars['Boolean']['input'];
+};
+export type MutationDeleteCompanyV2Args = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
     companyId: Scalars['String']['input'];
     deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3081,6 +3088,12 @@ export type MutationDeleteGroupMembershipArgs = {
     groupMembershipId: Scalars['String']['input'];
 };
 export type MutationDeleteMyUserArgs = {
+    anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
+    cause?: InputMaybe<Scalars['String']['input']>;
+    deletePhysically: Scalars['Boolean']['input'];
+    description?: InputMaybe<Scalars['String']['input']>;
+};
+export type MutationDeleteMyUserV2Args = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
     cause?: InputMaybe<Scalars['String']['input']>;
     deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3109,13 +3122,21 @@ export type MutationDeleteUploadedAssetArgs = {
 export type MutationDeleteUserArgs = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
     cause?: InputMaybe<Scalars['String']['input']>;
-    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+    deletePhysically: Scalars['Boolean']['input'];
     description?: InputMaybe<Scalars['String']['input']>;
     userId: Scalars['String']['input'];
 };
 export type MutationDeleteUserSearchArgs = {
     deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
     userSearchId: Scalars['String']['input'];
+};
+export type MutationDeleteUserV2Args = {
+    anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
+    cause?: InputMaybe<Scalars['String']['input']>;
+    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
+    description?: InputMaybe<Scalars['String']['input']>;
+    requester?: InputMaybe<Scalars['String']['input']>;
+    userId: Scalars['String']['input'];
 };
 export type MutationDeleteWalletItemArgs = {
     deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3291,11 +3312,9 @@ export type MyUser = {
     __typename?: 'MyUser';
     academicExperienceIds?: Maybe<Array<Scalars['ID']['output']>>;
     academicExperiences?: Maybe<Array<AcademicExperience>>;
-    addedToBgVaultAt?: Maybe<Scalars['DateTimeISO']['output']>;
     adminNotes?: Maybe<Scalars['String']['output']>;
     anonymizedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     appFeatures?: Maybe<Array<AppFeature>>;
-    authType?: Maybe<AuthType>;
     avatarAsset?: Maybe<UploadedAsset>;
     avatarUrl?: Maybe<Scalars['String']['output']>;
     birthYear?: Maybe<Scalars['Int']['output']>;
@@ -3406,11 +3425,9 @@ export type MyUser = {
     ssoIdp?: Maybe<Scalars['String']['output']>;
     suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     suspendedBy?: Maybe<Scalars['ID']['output']>;
-    syncedToAnalyticsAt?: Maybe<Scalars['DateTimeISO']['output']>;
     /** This attribute is only used by the MM2 synchronizer. */
     syncedWithMm2At?: Maybe<Scalars['DateTimeISO']['output']>;
     termsAndConditionsAcceptedAt?: Maybe<Scalars['DateTimeISO']['output']>;
-    tfaBackupCodes?: Maybe<Scalars['String']['output']>;
     timezone?: Maybe<Scalars['String']['output']>;
     trustLevel: Scalars['Int']['output'];
     unreadInAppMessages: Array<Notification>;
@@ -4727,6 +4744,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationCreateUserTracking = "graphQlMutationCreateUserTracking",
     GraphQlMutationCreateWalletItem = "graphQlMutationCreateWalletItem",
     GraphQlMutationCreateWalletItemTransfer = "graphQlMutationCreateWalletItemTransfer",
+    GraphQlMutationCreateWalletTransfer = "graphQlMutationCreateWalletTransfer",
     GraphQlMutationDeleteAcademicExperience = "graphQlMutationDeleteAcademicExperience",
     GraphQlMutationDeleteAdminTask = "graphQlMutationDeleteAdminTask",
     GraphQlMutationDeleteAllMm2DataInMm3 = "graphQlMutationDeleteAllMm2DataInMm3",
@@ -5593,11 +5611,9 @@ export type User = {
     __typename?: 'User';
     academicExperienceIds?: Maybe<Array<Scalars['ID']['output']>>;
     academicExperiences?: Maybe<Array<AcademicExperience>>;
-    addedToBgVaultAt?: Maybe<Scalars['DateTimeISO']['output']>;
     adminNotes?: Maybe<Scalars['String']['output']>;
     anonymizedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     appFeatures?: Maybe<Array<AppFeature>>;
-    authType?: Maybe<AuthType>;
     avatarAsset?: Maybe<UploadedAsset>;
     avatarUrl?: Maybe<Scalars['String']['output']>;
     birthYear?: Maybe<Scalars['Int']['output']>;
@@ -5706,11 +5722,9 @@ export type User = {
     ssoIdp?: Maybe<Scalars['String']['output']>;
     suspendedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     suspendedBy?: Maybe<Scalars['ID']['output']>;
-    syncedToAnalyticsAt?: Maybe<Scalars['DateTimeISO']['output']>;
     /** This attribute is only used by the MM2 synchronizer. */
     syncedWithMm2At?: Maybe<Scalars['DateTimeISO']['output']>;
     termsAndConditionsAcceptedAt?: Maybe<Scalars['DateTimeISO']['output']>;
-    tfaBackupCodes?: Maybe<Scalars['String']['output']>;
     timezone?: Maybe<Scalars['String']['output']>;
     trustLevel: Scalars['Int']['output'];
     unreadInAppMessages: Array<Notification>;
