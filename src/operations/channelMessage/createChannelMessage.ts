@@ -28,7 +28,11 @@ const createChannelMessage = async (
       const response = await db.insert<ChannelMessage>(props, ModelType.ChannelMessage);
 
       if (response.object) {
-        response.object = new ChannelMessage(response.object);
+        response.object = new ChannelMessage(response.object);// NATS publish
+        await natsService.publishMessage(
+          `channel.${response.object.channelId}.message.created`,
+          response.object,
+        );
         return response;
       }
 
@@ -45,6 +49,11 @@ const createChannelMessage = async (
 
     if (result.object) {
       result.object = new ChannelMessage(result.object);
+      // NATS publish
+      await natsService.publishMessage(
+        `channel.${result.object.channelId}.message.created`,
+        result.object,
+      );
     }
 
     if (!result.error || result.object) {
