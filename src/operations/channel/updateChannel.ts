@@ -9,7 +9,14 @@ const updateChannel = async (
   changes: Partial<Channel>,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<Channel>> => {
-  return update<Channel>(changes, ModelType.Channel, queryOptions);
+  const result = await update<Channel>(changes, ModelType.Channel, queryOptions);
+  if (result.object) {
+    await natsService.publishMessage(
+      `channel.${result.object.id}.updated`,
+      result.object,
+    );
+  }
+  return result;
 };
 
 export default updateChannel;
