@@ -7,7 +7,7 @@ import {
   HttpHeaderName,
 } from '../../index.js';
 
-const consumer = 'test';
+const consumer = 'first-spark';
 // const consumer = 'micromentor';
 // const consumer = 'mimble';
 
@@ -91,15 +91,15 @@ export const getTestClientConfig = (
     },
   };
 
-  if (consumer && consumerConfig[consumer]) {
-    config.consumer = consumerConfig[consumer].consumer;
+  if (consumer && consumerConfig[config.consumer]) {
+    config.consumer = consumerConfig[config.consumer].consumer;
 
-    if (consumerConfig[consumer].apiUrl) {
-      config.fsdata.url = consumerConfig[consumer].apiUrl;
+    if (consumerConfig[config.consumer].apiUrl) {
+      config.fsdata.url = consumerConfig[config.consumer].apiUrl;
     }
 
-    if (consumerConfig[consumer].customizations) {
-      Object.assign(config.customizations, consumerConfig[consumer].customizations);
+    if (consumerConfig[config.consumer].customizations) {
+      Object.assign(config.customizations, consumerConfig[config.consumer].customizations);
     }
   }
 
