@@ -8,6 +8,7 @@ import {
   FindObjectsOptions as FindObjectsOptionsFromNetwork,
   InputMaybe,
   PurchaseOrderInput,
+  PurchaseOrderListFilter as PurchaseOrderListFilterFromNetwork,
   QueryFindPurchaseOrdersArgs,
 } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
@@ -34,7 +35,7 @@ const findPurchaseOrders = async (
 
     const client = graffleClientStore.get();
     const args: QueryFindPurchaseOrdersArgs = {
-      filter: (filter || null) as unknown as PurchaseOrderListFilter | null,
+      filter: (filter || null) as unknown as PurchaseOrderListFilterFromNetwork | null,
       match: match as unknown as InputMaybe<PurchaseOrderInput>,
       options: options as unknown as InputMaybe<FindObjectsOptionsFromNetwork>,
     };

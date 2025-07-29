@@ -25,7 +25,7 @@ const deleteFnc = async (
     const client = graffleClientStore.get();
     const fieldDef = modelCrudOperations[modelType];
 
-    if (!fieldDef || !fieldDef.delete || !fieldDef.delete.field) {
+    if (!fieldDef || !fieldDef.deleteField || !fieldDef.deleteField.field) {
       logger.error('fsdata.delete: invalid modelType provided', { modelType });
       return { error: 'invalid-model-type' };
     }
@@ -37,13 +37,13 @@ const deleteFnc = async (
       },
     };
 
-    if (fieldDef.delete.returnsServiceRequest) {
+    if (fieldDef.deleteField.returnsServiceRequest) {
       args = { ...args, ...modelFields.serviceRequest };
     }
 
     logger.debug('fsdata.delete: sending.', { id, modelType, fieldDef, args });
 
-    const response = await client.mutation[fieldDef.delete.field](args);
+    const response = await client.mutation[fieldDef.deleteField.field](args);
 
     logger.debug('fsdata.delete: response received.',
       { response: JSON.stringify(response) });
@@ -59,12 +59,12 @@ const deleteFnc = async (
       return { error: response.errors.map(e => e.message).join(', ')};
     }
 
-    if (!response.data[fieldDef.delete.field]) {
+    if (!response.data[fieldDef.deleteField.field]) {
       logger.error('fsdata.delete: invalid response.');
       return { error: 'system-error' };
     }
 
-    return { serviceRequest: response.data[fieldDef.delete.field] };
+    return { serviceRequest: response.data[fieldDef.deleteField.field] };
   } catch (error) {
     logger.error('delete: error.', { error, headers: helpers.headers() });
     return null;

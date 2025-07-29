@@ -42,6 +42,8 @@ import { UserListItem } from '../models/UserListItem.js';
 import { Wallet } from '../models/Wallet.js';
 import { WalletItem } from '../models/WalletItem.js';
 import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
+import { WalletItemTransfer } from '../models/WalletItemTransfer.js';
+import { WalletItemTransferListFilter } from '../models/WalletItemTransferListFilter.js';
 export interface Operations {
     count: <T extends Model = Model>(query: MangoQuery<T> | null | undefined, match: Partial<T> | null | undefined, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
     delete: (id: string, modelType: ModelType, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
@@ -150,5 +152,9 @@ export interface Operations {
     walletItem: {
         findWalletItems: (filter: WalletItemListFilter | null | undefined, match: Partial<WalletItem> | null | undefined, selector: MangoQueryTypes<WalletItem> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
         updateWalletItem: (changes: Partial<WalletItem>, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
+    };
+    walletItemTransfer: {
+        findWalletItemTransfers: (filter: WalletItemTransferListFilter | null | undefined, match: Partial<WalletItemTransfer> | null | undefined, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItemTransfer>>;
+        createWalletItemTransfer: (props: Partial<WalletItemTransfer>) => Promise<QueryResult<WalletItemTransfer>>;
     };
 }

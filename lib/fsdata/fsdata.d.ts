@@ -31,7 +31,9 @@ declare const fsdata: {
     };
     myUser: {
         blockUserForMe: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
+        blockUserForMeV2: (userId: string, reasonTextId: string | undefined, notes: string | undefined, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
         deleteMyUser: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<import("../index.js").QueryResult<void>>;
+        deleteMyUserV2: (cause: string | null | undefined, description: string | null | undefined, deletePhysically: boolean) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
         endMySession: () => Promise<import("../index.js").QueryResult<void>>;
         findAvailableUserHandle: (startValue: string) => Promise<import("../index.js").QueryResult<string>>;
         findMyInbox: () => Promise<import("../index.js").QueryResult<import("../models/UserInbox.js").UserInbox>>;
@@ -44,6 +46,7 @@ declare const fsdata: {
         startMySession: (pushNotificationToken: string | null | undefined) => Promise<import("../index.js").QueryResult<void>>;
         startMySessionV2: (pushNotificationToken: string | null | undefined, returnContentStatus: boolean) => Promise<import("../index.js").QueryResult<import("../index.js").ContentStatus>>;
         unblockUserForMe: (userId: string, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
+        unblockUserForMeV2: (userId: string, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
         updateMyUser: (changes: Partial<import("../index.js").MyUserChanges>, queryOptions?: import("../index.js").QueryOptions) => Promise<import("../index.js").QueryResult<import("../index.js").MyUser>>;
         verifyMyPassword: (password: string) => Promise<import("../index.js").QueryResult<string>>;
     };
@@ -80,6 +83,10 @@ declare const fsdata: {
     };
     walletItem: {
         findWalletItems: (filter: import("../index.js").WalletItemListFilter, match: Partial<import("../index.js").WalletItem>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItem>>;
+    };
+    walletItemTransfer: {
+        findWalletItemTransfers: (filter: import("../index.js").WalletItemTransferListFilter, match: Partial<import("../index.js").WalletItemTransfer>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
+        createWalletItemTransfer: (props: Partial<import("../index.js").WalletItemTransfer>) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
     };
 };
 export default fsdata;

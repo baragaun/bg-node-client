@@ -167,6 +167,34 @@ const channelParticipant = {
   invitedBy: true,
 };
 
+const company = {
+  id: true,
+  name: true,
+  adminNotes: true,
+  annualRevenue: true,
+  companyStage: true,
+  companyStageTextId: true,
+  companyType: true,
+  companyTypeTextId: true,
+  description: true,
+  employeeCount: true,
+  events: true,
+  foundedAt: true,
+  industries: true,
+  isFundraising: true,
+  isOperational: true,
+  location: true,
+  metadata: true,
+  userIds: true,
+  websites: true,
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+};
+
 const giftCardProduct = {
   id: true,
   adminNotes: true,
@@ -808,6 +836,7 @@ const brand = {
 
 const walletItem = {
   id: true,
+  purchaseOrderItemId: true,
   adminNotes: true,
   createdAt: true,
   createdBy: true,
@@ -833,6 +862,7 @@ const walletItem = {
   instructionsUrl: true,
   sortIndex: true,
   archivedAt: true,
+  transferredAt: true,
 };
 
 const wallet = {
@@ -846,12 +876,36 @@ const wallet = {
   deletedBy: true,
 };
 
+const walletItemTransfer = {
+  id: true,
+  adminNotes: true,
+  metadata: {
+    updatedAt: true,
+  },
+  createdAt: true,
+  createdBy: true,
+  updatedAt: true,
+  updatedBy: true,
+  deletedAt: true,
+  deletedBy: true,
+  walletItemId: true,
+  notificationId: true,
+  recipientEmail: true,
+  recipientFullName: true,
+  subjectText: true,
+  messageText: true,
+  sentAt: true,
+  canceledAt: true,
+  archivedAt: true,
+};
+
 const modelFields = {
   channel,
   channelInvitation,
   channelListItem,
   channelMessage,
   channelParticipant,
+  company,
   giftCardProduct,
   myUser,
   productCategory,
@@ -868,6 +922,7 @@ const modelFields = {
   brand,
   wallet,
   walletItem,
+  walletItemTransfer,
 };
 
 export default modelFields;

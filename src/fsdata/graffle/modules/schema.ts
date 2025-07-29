@@ -2153,6 +2153,7 @@ export namespace Schema {
       verifyOneTimeAuthToken: Mutation.verifyOneTimeAuthToken;
       addAppFeatureToUser: Mutation.addAppFeatureToUser;
       deleteUser: Mutation.deleteUser;
+      deleteUserV2: Mutation.deleteUserV2;
       removeAppFeatureFromUser: Mutation.removeAppFeatureFromUser;
       reportUser: Mutation.reportUser;
       updateUser: Mutation.updateUser;
@@ -2166,6 +2167,7 @@ export namespace Schema {
       updateBusinessExperience: Mutation.updateBusinessExperience;
       createCompany: Mutation.createCompany;
       deleteCompany: Mutation.deleteCompany;
+      deleteCompanyV2: Mutation.deleteCompanyV2;
       updateCompany: Mutation.updateCompany;
       findAndUpdateAllMm2Users: Mutation.findAndUpdateAllMm2Users;
       createAdminTask: Mutation.createAdminTask;
@@ -2177,11 +2179,14 @@ export namespace Schema {
       initAssetUpload: Mutation.initAssetUpload;
       updateUploadedAsset: Mutation.updateUploadedAsset;
       acceptChannelInvitation: Mutation.acceptChannelInvitation;
+      acceptChannelInvitationV2: Mutation.acceptChannelInvitationV2;
       createChannelInvitation: Mutation.createChannelInvitation;
       declineChannelInvitation: Mutation.declineChannelInvitation;
+      declineChannelInvitationV2: Mutation.declineChannelInvitationV2;
       deleteChannelInvitation: Mutation.deleteChannelInvitation;
       deleteChannelInvitationV2: Mutation.deleteChannelInvitationV2;
       dismissChannelInvitationFromInbox: Mutation.dismissChannelInvitationFromInbox;
+      dismissChannelInvitationFromInboxV2: Mutation.dismissChannelInvitationFromInboxV2;
       updateChannelInvitation: Mutation.updateChannelInvitation;
       archiveChannelForMe: Mutation.archiveChannelForMe;
       createChannel: Mutation.createChannel;
@@ -2252,6 +2257,7 @@ export namespace Schema {
       blockUserForMe: Mutation.blockUserForMe;
       blockUserForMeV2: Mutation.blockUserForMeV2;
       deleteMyUser: Mutation.deleteMyUser;
+      deleteMyUserV2: Mutation.deleteMyUserV2;
       endMySession: Mutation.endMySession;
       endMySessionV2: Mutation.endMySessionV2;
       startMySession: Mutation.startMySession;
@@ -2397,8 +2403,53 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        description: {
+          kind: 'InputField';
+          name: 'description';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        cause: {
+          kind: 'InputField';
+          name: 'cause';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        userId: {
+          kind: 'InputField';
+          name: 'userId';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deleteUserV2 {
+      kind: 'OutputField';
+      name: 'deleteUserV2';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
           inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        requester: {
+          kind: 'InputField';
+          name: 'requester';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
         };
         description: {
           kind: 'InputField';
@@ -2538,7 +2589,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         academicExperienceId: {
@@ -2589,7 +2640,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         businessExperienceId: {
@@ -2636,6 +2687,33 @@ export namespace Schema {
     export interface deleteCompany {
       kind: 'OutputField';
       name: 'deleteCompany';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        companyId: {
+          kind: 'InputField';
+          name: 'companyId';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
+    export interface deleteCompanyV2 {
+      kind: 'OutputField';
+      name: 'deleteCompanyV2';
       arguments: {
         anonymizePersonalData: {
           kind: 'InputField';
@@ -2824,6 +2902,21 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface acceptChannelInvitationV2 {
+      kind: 'OutputField';
+      name: 'acceptChannelInvitationV2';
+      arguments: {
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
     export interface createChannelInvitation {
       kind: 'OutputField';
       name: 'createChannelInvitation';
@@ -2860,6 +2953,27 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface declineChannelInvitationV2 {
+      kind: 'OutputField';
+      name: 'declineChannelInvitationV2';
+      arguments: {
+        reasonTextId: {
+          kind: 'InputField';
+          name: 'reasonTextId';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$DeclineChannelInvitationReasonTextId;
+        };
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
     export interface deleteChannelInvitation {
       kind: 'OutputField';
       name: 'deleteChannelInvitation';
@@ -2867,7 +2981,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelInvitationId: {
@@ -2923,6 +3037,21 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface dismissChannelInvitationFromInboxV2 {
+      kind: 'OutputField';
+      name: 'dismissChannelInvitationFromInboxV2';
+      arguments: {
+        id: {
+          kind: 'InputField';
+          name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
     export interface updateChannelInvitation {
       kind: 'OutputField';
       name: 'updateChannelInvitation';
@@ -2975,13 +3104,13 @@ export namespace Schema {
         anonymizePersonalData: {
           kind: 'InputField';
           name: 'anonymizePersonalData';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelId: {
@@ -3104,7 +3233,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelMessageId: {
@@ -3529,7 +3658,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$String;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface updateGroup {
@@ -3766,12 +3895,6 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'createWalletItemTransfer';
       arguments: {
-        options: {
-          kind: 'InputField';
-          name: 'options';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$UpdateObjectOptions;
-        };
         input: {
           kind: 'InputField';
           name: 'input';
@@ -3780,7 +3903,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$WalletItemTransfer;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface deleteWalletItemTransfer {
@@ -4189,7 +4312,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [0];
+          inlineType: [1];
           namedType: $$NamedTypes.$$Boolean;
         };
         description: {
@@ -4207,6 +4330,39 @@ export namespace Schema {
       };
       inlineType: [1];
       namedType: $$NamedTypes.$$String;
+    }
+
+    export interface deleteMyUserV2 {
+      kind: 'OutputField';
+      name: 'deleteMyUserV2';
+      arguments: {
+        anonymizePersonalData: {
+          kind: 'InputField';
+          name: 'anonymizePersonalData';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        deletePhysically: {
+          kind: 'InputField';
+          name: 'deletePhysically';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        description: {
+          kind: 'InputField';
+          name: 'description';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+        cause: {
+          kind: 'InputField';
+          name: 'cause';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     /**
@@ -7079,9 +7235,7 @@ export namespace Schema {
       postalCode: User.postalCode;
       avatarUrl: User.avatarUrl;
       websites: User.websites;
-      authType: User.authType;
       inviteCode: User.inviteCode;
-      tfaBackupCodes: User.tfaBackupCodes;
       passwordUpdatedAt: User.passwordUpdatedAt;
       preferredLanguageTextId: User.preferredLanguageTextId;
       spokenLanguagesTextIds: User.spokenLanguagesTextIds;
@@ -7108,8 +7262,6 @@ export namespace Schema {
       suspendedAt: User.suspendedAt;
       suspendedBy: User.suspendedBy;
       anonymizedAt: User.anonymizedAt;
-      addedToBgVaultAt: User.addedToBgVaultAt;
-      syncedToAnalyticsAt: User.syncedToAnalyticsAt;
       companyIds: User.companyIds;
       companies: User.companies;
       groupIds: User.groupIds;
@@ -7404,25 +7556,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$LabeledStringValue;
     }
 
-    export interface authType {
-      kind: 'OutputField';
-      name: 'authType';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$AuthType;
-    }
-
     export interface inviteCode {
       kind: 'OutputField';
       name: 'inviteCode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface tfaBackupCodes {
-      kind: 'OutputField';
-      name: 'tfaBackupCodes';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -7634,22 +7770,6 @@ export namespace Schema {
     export interface anonymizedAt {
       kind: 'OutputField';
       name: 'anonymizedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface addedToBgVaultAt {
-      kind: 'OutputField';
-      name: 'addedToBgVaultAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface syncedToAnalyticsAt {
-      kind: 'OutputField';
-      name: 'syncedToAnalyticsAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -11440,9 +11560,9 @@ export namespace Schema {
       deletedBy: Notification.deletedBy;
       notificationType: Notification.notificationType;
       templateId: Notification.templateId;
+      senderId: Notification.senderId;
       recipientId: Notification.recipientId;
       multiStepActionId: Notification.multiStepActionId;
-      initiatorId: Notification.initiatorId;
       replyingToId: Notification.replyingToId;
       title: Notification.title;
       messageText: Notification.messageText;
@@ -11455,6 +11575,8 @@ export namespace Schema {
       action1: Notification.action1;
       action2: Notification.action2;
       actionTaken: Notification.actionTaken;
+      allowRecipientWithoutAccount: Notification.allowRecipientWithoutAccount;
+      allowSendingToSuspendedUser: Notification.allowSendingToSuspendedUser;
       sendEmail: Notification.sendEmail;
       sendInAppMessage: Notification.sendInAppMessage;
       sendPushNotification: Notification.sendPushNotification;
@@ -11580,25 +11702,25 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
+    export interface senderId {
+      kind: 'OutputField';
+      name: 'senderId';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
     export interface recipientId {
       kind: 'OutputField';
       name: 'recipientId';
       arguments: {};
-      inlineType: [1];
+      inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
 
     export interface multiStepActionId {
       kind: 'OutputField';
       name: 'multiStepActionId';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface initiatorId {
-      kind: 'OutputField';
-      name: 'initiatorId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
@@ -11698,6 +11820,22 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$AppAction;
+    }
+
+    export interface allowRecipientWithoutAccount {
+      kind: 'OutputField';
+      name: 'allowRecipientWithoutAccount';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface allowSendingToSuspendedUser {
+      kind: 'OutputField';
+      name: 'allowSendingToSuspendedUser';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface sendEmail {
@@ -24711,9 +24849,7 @@ export namespace Schema {
       postalCode: MyUser.postalCode;
       avatarUrl: MyUser.avatarUrl;
       websites: MyUser.websites;
-      authType: MyUser.authType;
       inviteCode: MyUser.inviteCode;
-      tfaBackupCodes: MyUser.tfaBackupCodes;
       passwordUpdatedAt: MyUser.passwordUpdatedAt;
       preferredLanguageTextId: MyUser.preferredLanguageTextId;
       spokenLanguagesTextIds: MyUser.spokenLanguagesTextIds;
@@ -24740,8 +24876,6 @@ export namespace Schema {
       suspendedAt: MyUser.suspendedAt;
       suspendedBy: MyUser.suspendedBy;
       anonymizedAt: MyUser.anonymizedAt;
-      addedToBgVaultAt: MyUser.addedToBgVaultAt;
-      syncedToAnalyticsAt: MyUser.syncedToAnalyticsAt;
       companyIds: MyUser.companyIds;
       companies: MyUser.companies;
       groupIds: MyUser.groupIds;
@@ -25037,25 +25171,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$LabeledStringValue;
     }
 
-    export interface authType {
-      kind: 'OutputField';
-      name: 'authType';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$AuthType;
-    }
-
     export interface inviteCode {
       kind: 'OutputField';
       name: 'inviteCode';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface tfaBackupCodes {
-      kind: 'OutputField';
-      name: 'tfaBackupCodes';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -25267,22 +25385,6 @@ export namespace Schema {
     export interface anonymizedAt {
       kind: 'OutputField';
       name: 'anonymizedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface addedToBgVaultAt {
-      kind: 'OutputField';
-      name: 'addedToBgVaultAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface syncedToAnalyticsAt {
-      kind: 'OutputField';
-      name: 'syncedToAnalyticsAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -28480,6 +28582,8 @@ export namespace Schema {
       action0: NotificationTemplate.action0;
       action1: NotificationTemplate.action1;
       action2: NotificationTemplate.action2;
+      allowRecipientWithoutAccount: NotificationTemplate.allowRecipientWithoutAccount;
+      allowSendingToSuspendedUser: NotificationTemplate.allowSendingToSuspendedUser;
       sendEmail: NotificationTemplate.sendEmail;
       sendInAppMessage: NotificationTemplate.sendInAppMessage;
       sendPushNotification: NotificationTemplate.sendPushNotification;
@@ -28834,6 +28938,22 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$AppAction;
+    }
+
+    export interface allowRecipientWithoutAccount {
+      kind: 'OutputField';
+      name: 'allowRecipientWithoutAccount';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface allowSendingToSuspendedUser {
+      kind: 'OutputField';
+      name: 'allowSendingToSuspendedUser';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface sendEmail {
@@ -39780,9 +39900,9 @@ export namespace Schema {
       notificationType: NotificationInput.notificationType;
       templateId: NotificationInput.templateId;
       templateName: NotificationInput.templateName;
+      senderId: NotificationInput.senderId;
       recipientId: NotificationInput.recipientId;
       multiStepActionId: NotificationInput.multiStepActionId;
-      initiatorId: NotificationInput.initiatorId;
       replyingToId: NotificationInput.replyingToId;
       title: NotificationInput.title;
       messageText: NotificationInput.messageText;
@@ -39795,11 +39915,12 @@ export namespace Schema {
       action1: NotificationInput.action1;
       action2: NotificationInput.action2;
       actionTaken: NotificationInput.actionTaken;
+      allowRecipientWithoutAccount: NotificationInput.allowRecipientWithoutAccount;
+      allowSendingToSuspendedUser: NotificationInput.allowSendingToSuspendedUser;
       sendEmail: NotificationInput.sendEmail;
       sendInAppMessage: NotificationInput.sendInAppMessage;
       sendPushNotification: NotificationInput.sendPushNotification;
       sendSms: NotificationInput.sendSms;
-      allowSendingToSuspendedUser: NotificationInput.allowSendingToSuspendedUser;
       emailSentAt: NotificationInput.emailSentAt;
       inAppMessageSentAt: NotificationInput.inAppMessageSentAt;
       inAppMessageReceivedAt: NotificationInput.inAppMessageReceivedAt;
@@ -39905,6 +40026,13 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
+    export interface senderId {
+      kind: 'InputField';
+      name: 'senderId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
     export interface recipientId {
       kind: 'InputField';
       name: 'recipientId';
@@ -39915,13 +40043,6 @@ export namespace Schema {
     export interface multiStepActionId {
       kind: 'InputField';
       name: 'multiStepActionId';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface initiatorId {
-      kind: 'InputField';
-      name: 'initiatorId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
@@ -40010,6 +40131,20 @@ export namespace Schema {
       namedType: $$NamedTypes.$$AppAction;
     }
 
+    export interface allowRecipientWithoutAccount {
+      kind: 'InputField';
+      name: 'allowRecipientWithoutAccount';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface allowSendingToSuspendedUser {
+      kind: 'InputField';
+      name: 'allowSendingToSuspendedUser';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
     export interface sendEmail {
       kind: 'InputField';
       name: 'sendEmail';
@@ -40034,13 +40169,6 @@ export namespace Schema {
     export interface sendSms {
       kind: 'InputField';
       name: 'sendSms';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface allowSendingToSuspendedUser {
-      kind: 'InputField';
-      name: 'allowSendingToSuspendedUser';
       inlineType: [0];
       namedType: $$NamedTypes.$$Boolean;
     }
@@ -40220,6 +40348,8 @@ export namespace Schema {
       action0: NotificationTemplateInput.action0;
       action1: NotificationTemplateInput.action1;
       action2: NotificationTemplateInput.action2;
+      allowRecipientWithoutAccount: NotificationTemplateInput.allowRecipientWithoutAccount;
+      allowSendingToSuspendedUser: NotificationTemplateInput.allowSendingToSuspendedUser;
       sendEmail: NotificationTemplateInput.sendEmail;
       sendInAppMessage: NotificationTemplateInput.sendInAppMessage;
       sendPushNotification: NotificationTemplateInput.sendPushNotification;
@@ -40528,6 +40658,20 @@ export namespace Schema {
       name: 'action2';
       inlineType: [0];
       namedType: $$NamedTypes.$$AppAction;
+    }
+
+    export interface allowRecipientWithoutAccount {
+      kind: 'InputField';
+      name: 'allowRecipientWithoutAccount';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface allowSendingToSuspendedUser {
+      kind: 'InputField';
+      name: 'allowSendingToSuspendedUser';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface sendEmail {
@@ -42316,22 +42460,6 @@ export namespace Schema {
       | 'userHandle';
   }
 
-  //                                              AuthType
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface AuthType {
-    kind: 'Enum';
-    name: 'AuthType';
-    members: ['none', 'oauth', 'token', 'hmac', 'saml'];
-    membersUnion:
-      | 'none'
-      | 'oauth'
-      | 'token'
-      | 'hmac'
-      | 'saml';
-  }
-
   //                                              UserRole
   // --------------------------------------------------------------------------------------------------
   //
@@ -42383,6 +42511,7 @@ export namespace Schema {
       'resetPasswordConfirmToken',
       'sendFirstInvitation',
       'unset',
+      'walletItemTransfer',
       'welcome',
     ];
     membersUnion:
@@ -42400,6 +42529,7 @@ export namespace Schema {
       | 'resetPasswordConfirmToken'
       | 'sendFirstInvitation'
       | 'unset'
+      | 'walletItemTransfer'
       | 'welcome';
   }
 
@@ -42448,7 +42578,7 @@ export namespace Schema {
       'AcademicExperience',
       'BusinessExperience',
       'Company',
-      'DataDeletion',
+      'DataDeletionRecord',
       'MentorBoard',
       'MentoringSession',
       'UserInbox',
@@ -42517,7 +42647,7 @@ export namespace Schema {
       | 'AcademicExperience'
       | 'BusinessExperience'
       | 'Company'
-      | 'DataDeletion'
+      | 'DataDeletionRecord'
       | 'MentorBoard'
       | 'MentoringSession'
       | 'UserInbox'
@@ -42756,6 +42886,22 @@ export namespace Schema {
       | 'include'
       | 'exclude'
       | 'only';
+  }
+
+  //                                              AuthType
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface AuthType {
+    kind: 'Enum';
+    name: 'AuthType';
+    members: ['none', 'oauth', 'token', 'hmac', 'saml'];
+    membersUnion:
+      | 'none'
+      | 'oauth'
+      | 'token'
+      | 'hmac'
+      | 'saml';
   }
 
   //                                     FederatedIdentityProvider
@@ -43299,6 +43445,7 @@ export namespace Schema {
       'graphQlMutationCreateShoppingCartItem',
       'graphQlMutationCreateWalletItem',
       'graphQlMutationCreateWalletItemTransfer',
+      'graphQlMutationCreateWalletTransfer',
       'graphQlMutationDeleteShoppingCartItem',
       'graphQlMutationDeleteWalletItem',
       'graphQlMutationDeleteWalletItemTransfer',
@@ -43508,6 +43655,7 @@ export namespace Schema {
       | 'graphQlMutationCreateShoppingCartItem'
       | 'graphQlMutationCreateWalletItem'
       | 'graphQlMutationCreateWalletItemTransfer'
+      | 'graphQlMutationCreateWalletTransfer'
       | 'graphQlMutationDeleteShoppingCartItem'
       | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationDeleteWalletItemTransfer'
@@ -43993,6 +44141,7 @@ export namespace Schema {
       'sendFirstInvitationForMentee',
       'sendFirstInvitationForMentor',
       'unset',
+      'walletItemTransfer',
       'welcomeForMentee',
       'welcomeForMentor',
     ];
@@ -44019,6 +44168,7 @@ export namespace Schema {
       | 'sendFirstInvitationForMentee'
       | 'sendFirstInvitationForMentor'
       | 'unset'
+      | 'walletItemTransfer'
       | 'welcomeForMentee'
       | 'welcomeForMentor';
   }
@@ -44377,7 +44527,6 @@ export namespace Schema {
     export type $$UiLanguage = UiLanguage;
     export type $$MastercardCardType = MastercardCardType;
     export type $$UserIdentType = UserIdentType;
-    export type $$AuthType = AuthType;
     export type $$UserRole = UserRole;
     export type $$AppFeature = AppFeature;
     export type $$NotificationType = NotificationType;
@@ -44395,6 +44544,7 @@ export namespace Schema {
     export type $$GroupRuleEventType = GroupRuleEventType;
     export type $$SortDirection = SortDirection;
     export type $$IncludeFilterOption = IncludeFilterOption;
+    export type $$AuthType = AuthType;
     export type $$FederatedIdentityProvider = FederatedIdentityProvider;
     export type $$AdminTaskType = AdminTaskType;
     export type $$AdminTaskResult = AdminTaskResult;
@@ -44471,7 +44621,6 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     UiLanguage: Schema.UiLanguage;
     MastercardCardType: Schema.MastercardCardType;
     UserIdentType: Schema.UserIdentType;
-    AuthType: Schema.AuthType;
     UserRole: Schema.UserRole;
     AppFeature: Schema.AppFeature;
     NotificationType: Schema.NotificationType;
@@ -44489,6 +44638,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     GroupRuleEventType: Schema.GroupRuleEventType;
     SortDirection: Schema.SortDirection;
     IncludeFilterOption: Schema.IncludeFilterOption;
+    AuthType: Schema.AuthType;
     FederatedIdentityProvider: Schema.FederatedIdentityProvider;
     AdminTaskType: Schema.AdminTaskType;
     AdminTaskResult: Schema.AdminTaskResult;

@@ -22,7 +22,7 @@ const deleteMyUser = async (
     }
 
     if (libData.isOnline()) {
-      await fsdata.myUser.deleteMyUser(cause, description, true);
+      await fsdata.myUser.deleteMyUserV2(cause, description, true);
     }
 
     await clearUser(true);

@@ -30,22 +30,6 @@ const createShoppingCartItem = async (
       props.createdBy = libData.clientInfoStore().myUserId;
     }
 
-    //------------------------------------------------------------------------------------------------
-    // Local DB
-    if (!allowNetwork) {
-      // todo: instead of using a separate collection, add it to the shopping_cart collection
-      const response = await db.insert<ShoppingCartItem>(props, ModelType.ShoppingCartItem);
-
-      if (response.object) {
-        response.object = new ShoppingCartItem(response.object);
-        return response;
-      }
-
-      return response;
-    }
-
-    //------------------------------------------------------------------------------------------------
-    // Network
     if (!allowNetwork) {
       return { error: 'offline', operation: MutationType.create };
     }

@@ -1,4 +1,3 @@
-import { CachePolicy } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
@@ -15,7 +14,7 @@ const findPurchaseOrders = async (
   match: Partial<PurchaseOrder> | null | undefined,
   _selector: MangoQueryTypes<PurchaseOrder> | null | undefined,
   options: FindObjectsOptions,
-  queryOptions: QueryOptions = defaultQueryOptions,
+  _queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<PurchaseOrder>> => {
   try {
     if (!libData.isInitialized()) {
@@ -26,37 +25,6 @@ const findPurchaseOrders = async (
     if (!libData.clientInfoStore().isSignedIn) {
       logger.error('findPurchaseOrders: unauthorized');
       return { error: 'unauthorized' };
-    }
-
-    const myUserId = libData.clientInfoStore().myUserId;
-    if (!myUserId) {
-      logger.error('findPurchaseOrders: myUserId not set');
-      return { error: 'unauthorized' };
-    }
-
-    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
-
-    //------------------------------------------------------------------------------------------------
-    // Local DB
-    // if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
-    //   if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
-    //     return db.findById<PurchaseOrder>(filter.ids[0], ModelType.PurchaseOrder);
-    //   }
-    //
-    //   const localResult = await db.findById<PurchaseOrder>(
-    //     myUserId,
-    //     ModelType.PurchaseOrder,
-    //   );
-    //
-    //   if (!localResult.error && localResult.object) {
-    //     return localResult;
-    //   }
-    // }
-
-    //------------------------------------------------------------------------------------------------
-    // Network
-    if (!allowNetwork) {
-      return { error: 'offline' };
     }
 
     const result = await fsdata.purchaseOrder.findPurchaseOrders(

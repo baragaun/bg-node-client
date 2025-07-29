@@ -360,6 +360,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     deleteUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteUser'>>>;
+    deleteUserV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUserV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteUserV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteUserV2'>>>;
     removeAppFeatureFromUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.removeAppFeatureFromUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         removeAppFeatureFromUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'removeAppFeatureFromUser'>>>;
@@ -399,6 +402,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     deleteCompany: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteCompany<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteCompany: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteCompany'>>>;
+    deleteCompanyV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteCompanyV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteCompanyV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteCompanyV2'>>>;
     updateCompany: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateCompany<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateCompany: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateCompany'>>>;
@@ -432,12 +438,18 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     acceptChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.acceptChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         acceptChannelInvitation: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'acceptChannelInvitation'>>>;
+    acceptChannelInvitationV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.acceptChannelInvitationV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        acceptChannelInvitationV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'acceptChannelInvitationV2'>>>;
     createChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         createChannelInvitation: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'createChannelInvitation'>>>;
     declineChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.declineChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         declineChannelInvitation: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'declineChannelInvitation'>>>;
+    declineChannelInvitationV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.declineChannelInvitationV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        declineChannelInvitationV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'declineChannelInvitationV2'>>>;
     deleteChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteChannelInvitation: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteChannelInvitation'>>>;
@@ -447,6 +459,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     dismissChannelInvitationFromInbox: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.dismissChannelInvitationFromInbox<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         dismissChannelInvitationFromInbox: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'dismissChannelInvitationFromInbox'>>>;
+    dismissChannelInvitationFromInboxV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.dismissChannelInvitationFromInboxV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        dismissChannelInvitationFromInboxV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'dismissChannelInvitationFromInboxV2'>>>;
     updateChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateChannelInvitation<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateChannelInvitation: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateChannelInvitation'>>>;
@@ -657,9 +672,12 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     blockUserForMeV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.blockUserForMeV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         blockUserForMeV2: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'blockUserForMeV2'>>>;
-    deleteMyUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+    deleteMyUser: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUser<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteMyUser: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteMyUser'>>>;
+    deleteMyUserV2: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteMyUserV2<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        deleteMyUserV2: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'deleteMyUserV2'>>>;
     /**
      * @deprecated Use endMySessionV2
      */
