@@ -13,6 +13,8 @@ import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import nats from '../../nats/index.js';
 import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
+import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
+import { NatsClient } from '../../nats/NatsClient.js';
 
 describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient', () => {
   describe('while not being connected', () => {
@@ -28,15 +30,9 @@ describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient',
     });
 
     it('should close connection successfully', async () => {
-      const config = libData.config();
-      const natsServer = config?.nats && Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0
-        ? config.nats?.servers?.[0] || 'nats://localhost:4222'
-        : 'nats://localhost:4222';
-      await nats.init({
-        servers: [natsServer],
-        timeout: 5000,
-        reconnectTimeWait: 1000,
-      });
+      const config = getTestClientConfig();
+      libData.setConfig(config);
+      libData.setNatsClient(new NatsClient(config.nats));
       const client = libData.natsClient();
       const testStreamName = 'test_client_stream';
       const testSubject = 'test.client.subject';
@@ -56,15 +52,11 @@ describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient',
 
   describe('while being connected', () => {
     beforeAll(async () => {
-      const config = libData.config();
-      const natsServer = config?.nats && Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0
-        ? config.nats?.servers?.[0] || 'nats://localhost:4222'
-        : 'nats://localhost:4222';
-      await nats.init({
-        servers: [natsServer],
-        timeout: 5000,
-        reconnectTimeWait: 1000,
-      });
+      const config = getTestClientConfig();
+      libData.setConfig(config);
+      libData.setNatsClient(new NatsClient(config.nats));
+      const client = libData.natsClient();
+      await client.connect();
     });
 
     afterAll(async () => {

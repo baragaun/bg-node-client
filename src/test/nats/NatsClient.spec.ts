@@ -7,8 +7,8 @@ import {
 
 import libData from '../../helpers/libData.js';
 import { NatsClient } from '../../nats/NatsClient.js';
-import { NatsOptions } from '../../types/NatsOptions.js';
 import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
+import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
 
 describe.runIf(isFeatureEnabled('nats'))('NatsClient', () => {
   let client: NatsClient;
@@ -20,16 +20,10 @@ describe.runIf(isFeatureEnabled('nats'))('NatsClient', () => {
   });
 
   it('should connect to NATS server successfully', async () => {
-    const config = libData.config();
-    const natsServer = config?.nats && Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0
-      ? config.nats?.servers?.[0] || 'nats://localhost:4222'
-      : 'nats://localhost:4222';
-    const options: Partial<NatsOptions> = {
-      servers: [natsServer],
-      timeout: 5000,
-      reconnectTimeWait: 1000,
-    };
-    client = new NatsClient(options);
+    const config = getTestClientConfig();
+    libData.setConfig(config);
+    libData.setNatsClient(new NatsClient(config.nats));
+    client = libData.natsClient();
     await client.connect();
 
     expect(client.isConnected).toBe(true);

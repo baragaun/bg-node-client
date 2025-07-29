@@ -11,13 +11,21 @@ import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelp
 import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
+import { getTestClientConfig } from '../../helpers/getTestClientConfig.js';
+import libData from '../../../helpers/libData.js';
+import { NatsClient } from '../../../nats/NatsClient.js';
 
 // @failing-in-set
 describe.runIf(isFeatureEnabled('channels'))('operations.channel.createChannel', () => {
   let client: BgNodeClient;
 
   beforeAll(async () => {
-    client = await clientStore.getTestClient();
+      client = await clientStore.getTestClient();
+      const config = getTestClientConfig();
+      libData.setConfig(config);
+      libData.setNatsClient(new NatsClient(config.nats));
+      const nsClient = libData.natsClient();
+      await nsClient.connect();
   });
 
   afterEach(async () => {
