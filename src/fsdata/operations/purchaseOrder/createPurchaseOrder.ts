@@ -55,7 +55,7 @@ const createPurchaseOrder = async (
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    const serviceRequest = response.data.createPurchaseOrder;
+    let serviceRequest = response.data.createPurchaseOrder;
 
     const queryOptions: QueryOptions<ServiceRequestFromGql> = defaultQueryOptionsForMutations;
     queryOptions.polling = {
@@ -92,6 +92,7 @@ const createPurchaseOrder = async (
       return { error: ErrorCode.SystemError, serviceRequest };
     }
 
+    serviceRequest = pollingResponse.object;
     const purchaseOrderId = pollingResponse.object.objectIds[0];
 
     const findResult = await findById<PurchaseOrder>(

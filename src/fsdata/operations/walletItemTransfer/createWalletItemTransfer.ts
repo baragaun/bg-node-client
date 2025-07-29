@@ -45,11 +45,12 @@ const createWalletItemTransfer = async (
       ...modelFields.serviceRequest,
     });
 
-    logger.debug('fsdata.createWalletItemTransfer response:', { response : JSON.stringify(response) });
+    logger.debug('fsdata.createWalletItemTransfer received response.',
+      { response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
       logger.error('fsdata.createWalletItemTransfer: errors received',
-        { errorCode: (response.errors[0] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
 
       return { error: response.errors.map(error => error.message).join(', ') };
     }
@@ -113,7 +114,7 @@ const createWalletItemTransfer = async (
 
     return { object: findResult.object, serviceRequest };
   } catch (error) {
-    logger.error('fsdata.createWalletItemTransfer: error', { error, headers: helpers.headers() });
+    logger.error('fsdata.createWalletItemTransfer: error.', { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

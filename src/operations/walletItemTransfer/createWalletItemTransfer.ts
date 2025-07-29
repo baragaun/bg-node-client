@@ -19,14 +19,17 @@ const createWalletItemTransfer = async (
       return { error: 'unauthorized' };
     }
 
+    const allowNetwork = libData.allowNetwork();
+
     if (!props) {
       return { error: 'missing-input', operation: MutationType.create };
     }
 
-    return await fsdata.walletItemTransfer.createWalletItemTransfer(
-      props,
-    );
+    if (!allowNetwork) {
+      return { error: 'offline', operation: MutationType.create };
+    }
 
+    return fsdata.walletItemTransfer.createWalletItemTransfer(props);
   } catch (error) {
     return {
       operation: MutationType.create,

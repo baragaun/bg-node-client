@@ -44,7 +44,7 @@ const findMyWallet = async (): Promise<QueryResult<Wallet>> => {
     ) {
       logger.error('fsdata.findMyWallet: errors',
         { errors: response.errors, headers: helpers.headers() });
-      return { error: response.errors[0].message };
+      return { error: response.errors['0'].message };
     }
 
     return {
