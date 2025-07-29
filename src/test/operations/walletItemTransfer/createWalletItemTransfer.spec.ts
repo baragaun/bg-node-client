@@ -1,7 +1,6 @@
 import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
-import { CachePolicy } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import { MyUser } from '../../../models/MyUser.js';
 import clientStore from '../../helpers/clientStore.js';
@@ -11,6 +10,7 @@ import {
 } from '../../helpers/purchaseOrder/createPurchaseOrder.specHelper.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
+import { findWalletItemsSpecHelper } from '../../helpers/walletItem/findWalletItems.specHelper.js';
 import { createWalletItemTransferSpecHelper } from '../../helpers/walletItemTransfer/createWalletItemTransfer.specHelper.js';
 
 describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.createWalletItemTransfer', () => {
@@ -35,20 +35,9 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.c
       client,
     );
 
-    const walletItemsResult = await client.operations.walletItem.findWalletItems(
-      undefined,
-      { walletId: myUser.id },
-      undefined,
-      undefined,
-      { cachePolicy: CachePolicy.network },
-    );
-    const items = walletItemsResult.objects;
+    const walletItems = await findWalletItemsSpecHelper(client, myUser, itemCount);
 
-    expect(walletItemsResult.error).toBeUndefined();
-    expect(walletItemsResult.objects).toBeDefined();
-    expect(items.length).toBeGreaterThanOrEqual(itemCount);
-
-    const walletItem = chance.pickone(items);
+    const walletItem = chance.pickone(walletItems);
 
     const {
       walletItemTransfer,
