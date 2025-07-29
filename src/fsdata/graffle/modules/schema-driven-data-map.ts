@@ -9992,10 +9992,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     createWalletItemTransfer: {
       a: {
-        options: {
-          nt: UpdateObjectOptions,
-          it: [0],
-        },
         input: {
           nt: WalletItemTransferInput,
           it: [1],

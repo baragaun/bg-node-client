@@ -3895,12 +3895,6 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'createWalletItemTransfer';
       arguments: {
-        options: {
-          kind: 'InputField';
-          name: 'options';
-          inlineType: [0];
-          namedType: $$NamedTypes.$$UpdateObjectOptions;
-        };
         input: {
           kind: 'InputField';
           name: 'input';
@@ -43451,6 +43445,7 @@ export namespace Schema {
       'graphQlMutationCreateShoppingCartItem',
       'graphQlMutationCreateWalletItem',
       'graphQlMutationCreateWalletItemTransfer',
+      'graphQlMutationCreateWalletTransfer',
       'graphQlMutationDeleteShoppingCartItem',
       'graphQlMutationDeleteWalletItem',
       'graphQlMutationDeleteWalletItemTransfer',
@@ -43660,6 +43655,7 @@ export namespace Schema {
       | 'graphQlMutationCreateShoppingCartItem'
       | 'graphQlMutationCreateWalletItem'
       | 'graphQlMutationCreateWalletItemTransfer'
+      | 'graphQlMutationCreateWalletTransfer'
       | 'graphQlMutationDeleteShoppingCartItem'
       | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationDeleteWalletItemTransfer'

@@ -3189,7 +3189,6 @@ export type MutationCreateWalletItemArgs = {
 
 export type MutationCreateWalletItemTransferArgs = {
   input: WalletItemTransferInput;
-  options?: InputMaybe<UpdateObjectOptions>;
 };
 
 
@@ -5318,6 +5317,7 @@ export enum ServiceRequestType {
   GraphQlMutationCreateUserTracking = 'graphQlMutationCreateUserTracking',
   GraphQlMutationCreateWalletItem = 'graphQlMutationCreateWalletItem',
   GraphQlMutationCreateWalletItemTransfer = 'graphQlMutationCreateWalletItemTransfer',
+  GraphQlMutationCreateWalletTransfer = 'graphQlMutationCreateWalletTransfer',
   GraphQlMutationDeleteAcademicExperience = 'graphQlMutationDeleteAcademicExperience',
   GraphQlMutationDeleteAdminTask = 'graphQlMutationDeleteAdminTask',
   GraphQlMutationDeleteAllMm2DataInMm3 = 'graphQlMutationDeleteAllMm2DataInMm3',
