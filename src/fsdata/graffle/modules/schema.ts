@@ -3909,7 +3909,7 @@ export namespace Schema {
         };
       };
       inlineType: [1];
-      namedType: $$NamedTypes.$$WalletItemTransfer;
+      namedType: $$NamedTypes.$$ServiceRequest;
     }
 
     export interface deleteWalletItemTransfer {

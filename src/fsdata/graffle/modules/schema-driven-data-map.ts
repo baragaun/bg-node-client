@@ -10001,7 +10001,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [1],
         },
       },
-      // nt: WalletItemTransfer, <-- Assigned later to avoid potential circular dependency.
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
     deleteWalletItemTransfer: {
       a: {
@@ -11034,7 +11034,7 @@ Mutation.f['clearShoppingCart']!.nt = ServiceRequest;
 Mutation.f['createWalletItem']!.nt = WalletItem;
 Mutation.f['deleteWalletItem']!.nt = ServiceRequest;
 Mutation.f['updateWalletItem']!.nt = ServiceRequest;
-Mutation.f['createWalletItemTransfer']!.nt = WalletItemTransfer;
+Mutation.f['createWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['deleteWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['updateWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['createUserSearch']!.nt = UserSearch;

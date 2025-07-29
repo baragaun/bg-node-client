@@ -2813,7 +2813,7 @@ export type Mutation = {
     createUserSearch: UserSearch;
     createUserTracking: Scalars['String']['output'];
     createWalletItem: WalletItem;
-    createWalletItemTransfer: WalletItemTransfer;
+    createWalletItemTransfer: ServiceRequest;
     declineChannelInvitation: Scalars['String']['output'];
     declineChannelInvitationV2: ServiceRequest;
     deleteAcademicExperience: ServiceRequest;
