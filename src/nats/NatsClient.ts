@@ -104,6 +104,10 @@ export class NatsClient {
     return !!this.connection && !this.connection.isClosed() && !this.connectionLost;
   }
 
+  public getConnection(): nats.NatsConnection | null {
+    return this.connection;
+  }
+
   // -----------------------------------------------------------------------------------------------
   // Private methods
   private async ensureConnection(): Promise<void> {

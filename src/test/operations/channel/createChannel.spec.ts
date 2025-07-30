@@ -1,4 +1,4 @@
-import { afterEach, beforeAll, describe, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import signMeOut from '../../../operations/myUser/signMeOut.js';
@@ -14,6 +14,7 @@ import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 import { getTestClientConfig } from '../../helpers/getTestClientConfig.js';
 import libData from '../../../helpers/libData.js';
 import { NatsClient } from '../../../nats/NatsClient.js';
+import { subscribeToChannelUpdates } from '../../../nats/subscriptions.js';
 
 // @failing-in-set
 describe.runIf(isFeatureEnabled('channels'))('operations.channel.createChannel', () => {
@@ -26,6 +27,14 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.createChannel',
       libData.setNatsClient(new NatsClient(config.nats));
       const nsClient = libData.natsClient();
       await nsClient.connect();
+      // Wait until the NATS client is connected
+      let retries = 10;
+      while (!nsClient.isConnected && retries > 0) {
+        await new Promise(res => setTimeout(res, 100));
+        retries--;
+      }
+      if (!nsClient.isConnected) throw new Error('NATS client failed to connect');
+      // No manual stream creation here
   });
 
   afterEach(async () => {
@@ -49,6 +58,55 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.createChannel',
     // Cleanup for otherUser:
     await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
   });
+
+
+test('should publish a NATS event when a channel is created', async () => {
+  const received: any[] = [];
+
+  // Ensure NATS client is available and connected
+  const config = getTestClientConfig();
+  libData.setConfig(config);
+  const natsClient = new NatsClient(config.nats);
+  libData.setNatsClient(natsClient);
+  await natsClient.connect();
+
+  // Wait until the NATS client is connected
+  let retries = 10;
+  while (!natsClient.isConnected && retries > 0) {
+    await new Promise(res => setTimeout(res, 100));
+    retries--;
+  }
+  if (!natsClient.isConnected) throw new Error('NATS client failed to connect');
+
+  // Create users and channel as in your other tests
+  const otherUser = await signMeUpSpecHelper(undefined, false, client);
+  const otherUserPassword = getTestUserPropsSpecHelper(otherUser).password;
+  await signMeOut();
+  await signMeUpSpecHelper(undefined, false, client);
+
+  const props = factories.channel.build({
+    userIds: [otherUser.id, client.clientInfoStore.myUserId],
+    createdBy: client.clientInfoStore.myUserId,
+  });
+
+  // Subscribe to the expected NATS subject for channel creation events using the helper
+  const sub = await subscribeToChannelUpdates(props.id, (msg) => {
+    received.push(msg);
+  });
+
+  const channel = await createChannelSpecHelper(props, 1, client);
+
+  // Wait for the NATS message
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  // todo: received should not be empty;
+  expect(received.length).toBeGreaterThan(0);
+  expect(received[0].id).toBe(channel.id);
+
+  sub.unsubscribe();
+  await deleteChannelSpecHelper(channel.id, client);
+  await deleteMyUserSpecHelper(client);
+  await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
+});
 
   test('should create a channel with the given properties (mock mode)', async () => {
     client.enableMockMode = true;

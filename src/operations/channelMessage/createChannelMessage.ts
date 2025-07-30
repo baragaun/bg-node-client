@@ -4,7 +4,6 @@ import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
-import natsService from '../../nats/index.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannelMessage = async (
@@ -29,11 +28,7 @@ const createChannelMessage = async (
       const response = await db.insert<ChannelMessage>(props, ModelType.ChannelMessage);
 
       if (response.object) {
-        response.object = new ChannelMessage(response.object);// NATS publish
-        await natsService.publishMessage(
-          `channel.${response.object.channelId}.message.created`,
-          response.object,
-        );
+        response.object = new ChannelMessage(response.object);
         return response;
       }
 
@@ -50,11 +45,6 @@ const createChannelMessage = async (
 
     if (result.object) {
       result.object = new ChannelMessage(result.object);
-      // NATS publish
-      await natsService.publishMessage(
-        `channel.${result.object.channelId}.message.created`,
-        result.object,
-      );
     }
 
     if (!result.error || result.object) {

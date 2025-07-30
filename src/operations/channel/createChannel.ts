@@ -50,11 +50,6 @@ const createChannel = async (
 
       if (response.object) {
         response.object = new Channel(response.object);
-        // NATS publish
-        await natsService.publishMessage(
-          `channel.${response.object.id}.created`,
-          response.object,
-        );
         return response;
       }
 
@@ -71,11 +66,6 @@ const createChannel = async (
 
     if (result.object) {
       result.object = new Channel(result.object);
-       // NATS publish
-      await natsService.publishMessage(
-        `channel.${result.object.id}.created`,
-        result.object,
-      );
     }
 
     if (!result.error || result.object) {
