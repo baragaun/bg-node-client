@@ -1,12 +1,14 @@
-import natsService from './index.js';
+import libData from '../helpers/libData.js';
 
 export const subscribeToChannelUpdates = async (
   channelId: string,
   onUpdate: (msg: any) => void,
 ) => {
-  const client = natsService.getClient?.();
+  const client = libData.natsClient?.();
   if (!client) throw new Error('NATS client not available');
-  const sub = client.subscribe(`channel.${channelId}.updated`, {
+  const connection = client.getConnection();
+  if (!connection) throw new Error('NATS connection not available');
+  const sub = connection.subscribe(`channel.${channelId}.updated`, {
     callback: (err, msg) => {
       if (!err) onUpdate(msg.json());
     },
@@ -18,9 +20,11 @@ export const subscribeToChannelMessageUpdates = async (
   channelId: string,
   onUpdate: (msg: any) => void,
 ) => {
-  const client = natsService.getClient?.();
+  const client = libData.natsClient?.();
   if (!client) throw new Error('NATS client not available');
-  const sub = client.subscribe(`channel.${channelId}.message.updated`, {
+  const connection = client.getConnection();
+  if (!connection) throw new Error('NATS connection not available');
+  const sub = connection.subscribe(`channel.${channelId}.message.updated`, {
     callback: (err, msg) => {
       if (!err) onUpdate(msg.json());
     },
