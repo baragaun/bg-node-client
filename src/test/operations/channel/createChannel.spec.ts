@@ -1,20 +1,20 @@
 import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
+import libData from '../../../helpers/libData.js';
+import { NatsClient } from '../../../nats/NatsClient.js';
+import { subscribeToChannelUpdates } from '../../../nats/subscriptions.js';
 import signMeOut from '../../../operations/myUser/signMeOut.js';
 import factories from '../../factories/factories.js';
 import { createChannelSpecHelper } from '../../helpers/channel/createChannel.specHelper.js';
 import { deleteChannelSpecHelper } from '../../helpers/channel/deleteChannel.specHelper.js';
 import clientStore from '../../helpers/clientStore.js';
+import { getTestClientConfig } from '../../helpers/getTestClientConfig.js';
 import { isFeatureEnabled } from '../../helpers/isFeatureEnabled.js';
 import { deleteMyUserSpecHelper } from '../../helpers/user/deleteMyUser.specHelper.js';
 import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.specHelper.js';
 import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
-import { getTestClientConfig } from '../../helpers/getTestClientConfig.js';
-import libData from '../../../helpers/libData.js';
-import { NatsClient } from '../../../nats/NatsClient.js';
-import { subscribeToChannelUpdates } from '../../../nats/subscriptions.js';
 
 // @failing-in-set
 describe.runIf(isFeatureEnabled('channels'))('operations.channel.createChannel', () => {
