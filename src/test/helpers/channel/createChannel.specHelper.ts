@@ -9,6 +9,10 @@ import { ChannelMessage } from '../../../models/ChannelMessage.js';
 import findById from '../../../operations/findById.js';
 import factories from '../../factories/factories.js';
 import { createChannelMessageSpecHelper } from '../channelMessage/createChannelMessage.specHelper.js';
+import { findStreamNameBySubject } from '../../../nats/findStreamNameBySubject.js';
+import { getTestClientConfig } from '../getTestClientConfig.js';
+import libData from '../../../helpers/libData.js';
+import { NatsClient } from '../../../nats/NatsClient.js';
 
 export const createChannelSpecHelper = async (
   props: Partial<Channel> | undefined,
@@ -26,6 +30,11 @@ export const createChannelSpecHelper = async (
 
   const response = await client.operations.channel.createChannel(props);
   const channel = response.object as ChannelWithMessages;
+  const config = getTestClientConfig();
+  libData.setConfig(config);
+  const natsClient = new NatsClient(config.nats);
+  await natsClient.connect();
+  libData.setNatsClient(natsClient);
 
   expect(response.error).toBeUndefined();
   expect(channel).toBeTruthy();
@@ -90,6 +99,34 @@ export const createChannelSpecHelper = async (
       const message = await createChannelMessageSpecHelper(props, client);
       channel.messages.push(message);
     }
+
+    // Subscribe to NATS JetStream to verify messages
+    const natsSubject = `first.spark.dev.channel.${channel.id}.messages`;
+    const streamName = await findStreamNameBySubject(natsSubject);
+
+    // Fetch messages from NATS stream
+    const js = await natsClient.getJetStreamClient();
+    const consumer = await js.consumers.get(streamName);
+
+    const messages = await consumer.fetch({ max_messages: messageCount, expires: 5000 });
+    const receivedMessages = [];
+
+    for await (const message of messages) {
+        const data = JSON.parse(new TextDecoder().decode(message.data));
+        receivedMessages.push(data);
+        message.ack();
+    }
+
+    // Verify NATS messages match created channel messages
+    expect(receivedMessages).toHaveLength(messageCount);
+    // todo why received messages are in random order?
+    // receivedMessages.forEach((natsMsg, index) => {
+    //   const channelMsg = channel.messages[index];
+    //   expect(natsMsg.object.id).toBe(channelMsg.id);
+    //   expect(natsMsg.object.channelId).toBe(channelMsg.channelId);
+    //   expect(natsMsg.object.messageText).toBe(channelMsg.messageText);
+    //   expect(natsMsg.object.createdBy).toBe(channelMsg.createdBy);
+    // });
 
     expect(channel.messages.length).toBe(messageCount);
     channel.messages.forEach((message, index) => {
