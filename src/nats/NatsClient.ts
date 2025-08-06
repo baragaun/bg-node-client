@@ -113,7 +113,7 @@ export class NatsClient {
   private async ensureConnection(): Promise<void> {
     if (!this.connection) {
       logger.error('NatsClient.ensureConnection: Not connected to NATS');
-      return;
+      throw new Error('Not connected to NATS');
     }
 
     if (this.connectionLost || this.connection.isClosed()) {
