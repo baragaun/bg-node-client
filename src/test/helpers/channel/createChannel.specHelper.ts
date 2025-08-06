@@ -2,17 +2,17 @@ import { expect } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../../enums.js';
+import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import randomDate from '../../../helpers/randomDate.js';
 import { Channel, ChannelWithMessages } from '../../../models/Channel.js';
 import { ChannelMessage } from '../../../models/ChannelMessage.js';
+import { findStreamNameBySubject } from '../../../nats/findStreamNameBySubject.js';
+import { NatsClient } from '../../../nats/NatsClient.js';
 import findById from '../../../operations/findById.js';
 import factories from '../../factories/factories.js';
 import { createChannelMessageSpecHelper } from '../channelMessage/createChannelMessage.specHelper.js';
-import { findStreamNameBySubject } from '../../../nats/findStreamNameBySubject.js';
 import { getTestClientConfig } from '../getTestClientConfig.js';
-import libData from '../../../helpers/libData.js';
-import { NatsClient } from '../../../nats/NatsClient.js';
 
 export const createChannelSpecHelper = async (
   props: Partial<Channel> | undefined,
