@@ -31,7 +31,7 @@ const init = async (options: Partial<NatsOptions>): Promise<void> => {
       channels: myChannelsResult.objects,
     });
 
-    for(const channel of myChannelsResult.objects) {
+    for (const channel of myChannelsResult.objects) {
       subscribeToChannel(channel.id);
     }
   }
