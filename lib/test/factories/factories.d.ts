@@ -5,5 +5,6 @@ declare const factories: {
     channelParticipant: import("./definitions.js").ChannelParticipantFactory;
     user: import("./definitions.js").UserFactory;
     userInbox: import("./definitions.js").UserInboxFactory;
+    walletItem: import("./definitions.js").WalletItemFactory;
 };
 export default factories;

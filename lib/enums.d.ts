@@ -363,7 +363,7 @@ export declare enum UploadedAssetType {
     unset = "unset"
 }
 export declare enum ProductType {
-    giftCard = "gift-card",
+    giftCard = "giftCard",
     other = "other"
 }
 export declare enum WalletItemSource {

@@ -75,6 +75,7 @@ import update from './update.js';
 import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
 import findMyWallet from './wallet/findMyWallet.js';
+import createWalletItem from './walletItem/createWalletItem.js';
 import findWalletItems from './walletItem/findWalletItems.js';
 import updateWalletItem from './walletItem/updateWalletItem.js';
 import createWalletItemTransfer from './walletItemTransfer/createWalletItemTransfer.js';
@@ -201,6 +202,7 @@ const operations: Operations = {
   },
 
   walletItem: {
+    createWalletItem,
     findWalletItems,
     updateWalletItem,
   },

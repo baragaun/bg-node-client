@@ -801,7 +801,6 @@ declare const modelFields: {
     };
     walletItem: {
         id: boolean;
-        purchaseOrderItemId: boolean;
         adminNotes: boolean;
         createdAt: boolean;
         createdBy: boolean;
@@ -809,25 +808,33 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        code: boolean;
-        pin: boolean;
         walletId: boolean;
         productId: boolean;
+        purchaseOrderItemId: boolean;
         brandId: boolean;
+        productType: boolean;
         name: boolean;
         price: boolean;
+        initialBalance: boolean;
         balance: boolean;
-        imageSourceFront: boolean;
-        imageSourceBack: boolean;
+        code: boolean;
         hasBarcode: boolean;
         barcodeFormat: boolean;
+        pin: boolean;
+        source: boolean;
+        imageSourceFront: boolean;
+        imageSourceBack: boolean;
+        referenceUrl: boolean;
         termsEn: boolean;
         termsUrl: boolean;
         instructionsEn: boolean;
         instructionsUrl: boolean;
         sortIndex: boolean;
-        archivedAt: boolean;
+        issuedAt: boolean;
+        expiresAt: boolean;
+        balanceUpdatedAt: boolean;
         transferredAt: boolean;
+        archivedAt: boolean;
     };
     walletItemTransfer: {
         id: boolean;
