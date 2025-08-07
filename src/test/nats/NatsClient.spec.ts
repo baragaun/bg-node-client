@@ -7,8 +7,8 @@ import {
 
 import libData from '../../helpers/libData.js';
 import { NatsClient } from '../../nats/NatsClient.js';
-import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
+import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 
 describe.runIf(isFeatureEnabled('nats'))('NatsClient', () => {
   let client: NatsClient;

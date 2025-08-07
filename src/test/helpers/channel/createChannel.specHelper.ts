@@ -1,18 +1,19 @@
+import * as jetstream from '@nats-io/jetstream';
 import { expect } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy, ModelType } from '../../../enums.js';
+import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import randomDate from '../../../helpers/randomDate.js';
 import { Channel, ChannelWithMessages } from '../../../models/Channel.js';
 import { ChannelMessage } from '../../../models/ChannelMessage.js';
+import { findStreamNameBySubject } from '../../../nats/findStreamNameBySubject.js';
+import { NatsClient } from '../../../nats/NatsClient.js';
 import findById from '../../../operations/findById.js';
 import factories from '../../factories/factories.js';
 import { createChannelMessageSpecHelper } from '../channelMessage/createChannelMessage.specHelper.js';
-import { findStreamNameBySubject } from '../../../nats/findStreamNameBySubject.js';
 import { getTestClientConfig } from '../getTestClientConfig.js';
-import libData from '../../../helpers/libData.js';
-import { NatsClient } from '../../../nats/NatsClient.js';
 
 export const createChannelSpecHelper = async (
   props: Partial<Channel> | undefined,
@@ -94,21 +95,35 @@ export const createChannelSpecHelper = async (
       createdAt: timestamps[0],
     });
 
+    // Subscribe to NATS JetStream to verify messages
+    const natsSubject = `first.spark.dev.channel.${channel.id}.messages`;
+    const streamName = await findStreamNameBySubject(natsSubject);
+    const consumerName = `first-spark-dev-channel-${channel.id}-messages`;
+
+    // Create a new consumer that only gets messages from NOW onwards
+    const consumerConfig: jetstream.ConsumerConfig = {
+      durable_name: consumerName,
+      ack_policy: jetstream.AckPolicy.Explicit,
+      filter_subject: natsSubject,
+      deliver_policy: jetstream.DeliverPolicy.New,
+      replay_policy: jetstream.ReplayPolicy.Instant,
+    };
+
+    const js = await natsClient.getJetStreamClient();
+    const jsm = await natsClient.getJetStreamManager();
+    await jsm.consumers.add(streamName, consumerConfig);
+
+    // Now create the messages AFTER setting up the consumer
     channel.messages = [];
     for (const props of propsList) {
       const message = await createChannelMessageSpecHelper(props, client);
       channel.messages.push(message);
     }
 
-    // Subscribe to NATS JetStream to verify messages
-    const natsSubject = `first.spark.dev.channel.${channel.id}.messages`;
-    const streamName = await findStreamNameBySubject(natsSubject);
-
-    // Fetch messages from NATS stream
-    const js = await natsClient.getJetStreamClient();
-    const consumer = await js.consumers.get(streamName);
-
-    const messages = await consumer.fetch({ max_messages: messageCount, expires: 5000 });
+    await new Promise(resolve => setTimeout(resolve, 100));
+    // Now fetch only the messages we just created
+    const consumer = await js.consumers.get(streamName, consumerName);
+    const messages = await consumer.fetch({ max_messages: messageCount, expires: 3000 });
     const receivedMessages = [];
 
     for await (const message of messages) {
@@ -119,21 +134,25 @@ export const createChannelSpecHelper = async (
 
     // Verify NATS messages match created channel messages
     expect(receivedMessages).toHaveLength(messageCount);
-    // todo why received messages are in random order?
-    // receivedMessages.forEach((natsMsg, index) => {
-    //   const channelMsg = channel.messages[index];
-    //   expect(natsMsg.object.id).toBe(channelMsg.id);
-    //   expect(natsMsg.object.channelId).toBe(channelMsg.channelId);
-    //   expect(natsMsg.object.messageText).toBe(channelMsg.messageText);
-    //   expect(natsMsg.object.createdBy).toBe(channelMsg.createdBy);
-    // });
 
-    expect(channel.messages.length).toBe(messageCount);
-    channel.messages.forEach((message, index) => {
-      expect(message).toBeDefined();
-      expect(message.channelId).toBe(channel.id);
-      expect(message.adminNotes).toBe(index.toString());
+    // Sort both arrays by creation time for comparison
+    const sortedNatsMessages = receivedMessages.sort((a, b) =>
+      new Date(a.object.createdAt).getTime() - new Date(b.object.createdAt).getTime(),
+    );
+    const sortedChannelMessages = channel.messages.sort((a, b) =>
+      new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+    );
+
+    sortedNatsMessages.forEach((natsMsg, index) => {
+      const channelMsg = sortedChannelMessages[index];
+      expect(natsMsg.object.id).toBe(channelMsg.id);
+      expect(natsMsg.object.channelId).toBe(channelMsg.channelId);
+      expect(natsMsg.object.messageText).toBe(channelMsg.messageText);
+      expect(natsMsg.object.createdBy).toBe(channelMsg.createdBy);
     });
+
+    // Cleanup the test consumer
+    await jsm.consumers.delete(streamName, consumerName);
   }
 
   return channel;

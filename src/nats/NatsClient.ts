@@ -61,6 +61,7 @@ export class NatsClient {
     this.js = jetstream.jetstream(this.connection);
     this.jsm = await jetstream.jetstreamManager(this.connection);
     this.connectionLost = false;
+
     return this.connection;
   }
 

@@ -12,9 +12,9 @@ import {
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import nats from '../../nats/index.js';
-import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
-import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
 import { NatsClient } from '../../nats/NatsClient.js';
+import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
+import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 
 describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient', () => {
   describe('while not being connected', () => {

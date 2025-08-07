@@ -3,9 +3,9 @@ import { describe, expect, it } from 'vitest';
 
 import libData from '../../helpers/libData.js';
 import nats from '../../nats/index.js';
-import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
-import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
 import { NatsClient } from '../../nats/NatsClient.js';
+import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
+import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 
 describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient', () => {
     it('should create stream, subscribe, publish and receive messages end-to-end', async () => {
@@ -48,7 +48,7 @@ describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient',
         const testMessages = [
             { id: 1, content: 'Hello World', timestamp: new Date().toISOString() },
             { id: 2, content: 'Test Message', timestamp: new Date().toISOString() },
-            { id: 3, content: 'Final Message', timestamp: new Date().toISOString() }
+            { id: 3, content: 'Final Message', timestamp: new Date().toISOString() },
         ];
 
 
@@ -76,4 +76,4 @@ describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient',
         await nats.deleteConsumer(testStreamName, testConsumerName);
         await nats.deleteStream(testStreamName);
     });
-})
+});
