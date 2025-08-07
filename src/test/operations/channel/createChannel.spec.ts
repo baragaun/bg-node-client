@@ -3,7 +3,6 @@ import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import libData from '../../../helpers/libData.js';
 import { NatsClient } from '../../../nats/NatsClient.js';
-import { subscribeToChannelUpdates } from '../../../nats/subscriptions.js';
 import signMeOut from '../../../operations/myUser/signMeOut.js';
 import factories from '../../factories/factories.js';
 import { createChannelSpecHelper } from '../../helpers/channel/createChannel.specHelper.js';
@@ -90,10 +89,6 @@ test('should publish a NATS event when a channel is created', async () => {
   });
 
   // Subscribe to the expected NATS subject for channel creation events using the helper
-  const sub = await subscribeToChannelUpdates(props.id, (msg) => {
-    received.push(msg);
-  });
-
   const channel = await createChannelSpecHelper(props, 1, client);
 
   // Wait for the NATS message
@@ -102,7 +97,6 @@ test('should publish a NATS event when a channel is created', async () => {
   expect(received.length).toBeGreaterThan(0);
   expect(received[0].id).toBe(channel.id);
 
-  sub.unsubscribe();
   await deleteChannelSpecHelper(channel.id, client);
   await deleteMyUserSpecHelper(client);
   await signMeInSpecHelper(otherUser.email, otherUserPassword, client);
