@@ -225,4 +225,4 @@ describe('operations.myUser.signInWithToken', () => {
       });
     });
   });
-}, 100000);
+}, 10000);
