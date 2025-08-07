@@ -8,5 +8,5 @@ export interface NatsPayloadModelChanged<T extends BaseModel = BaseModel> extend
     objectId: string;
     modelType: ModelType;
     changeType: 'created' | 'updated' | 'deleted';
-    model?: T;
+    object?: T;
 }

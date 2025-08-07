@@ -55,7 +55,7 @@ export class NatsClient {
       this.jsm = null;
     });
 
-    await this.startMonitoring();
+    this.startMonitoring();
 
     // Get JetStream client and manager
     this.js = jetstream.jetstream(this.connection);

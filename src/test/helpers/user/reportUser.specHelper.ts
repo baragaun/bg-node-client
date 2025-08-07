@@ -13,7 +13,7 @@ export const reportUserSpecHelper = async (
   logger.debug('BgServiceApiCheck.reportUser: calling API/reportUser',
     { userId, reasonTextId, notes });
 
-  const response = await client.operations.myUser.reportUser(
+  const response = await client.operations.myUser.reportUserForMe(
     userId,
     reasonTextId,
     notes,
