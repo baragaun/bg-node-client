@@ -1,6 +1,6 @@
 import { NatsClient } from './NatsClient.js';
 import { CachePolicy } from '../enums.js';
-import addChannelSubscriptions from './addChannelSubscriptions.js';
+import subscribeToChannel from './subscribeToChannel.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
 import findMyChannels from '../operations/channel/findMyChannels.js';
@@ -32,7 +32,7 @@ const init = async (options: Partial<NatsOptions>): Promise<void> => {
     });
 
     for(const channel of myChannelsResult.objects) {
-      addChannelSubscriptions(channel.id);
+      subscribeToChannel(channel.id);
     }
   }
 };

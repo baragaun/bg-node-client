@@ -43,6 +43,7 @@ export enum BarcodeType {
 
 export enum BgListenerTopic {
   channel = 'channel',
+  channelMessage = 'channelMessage',
   myUser = 'myUser',
 }
 
