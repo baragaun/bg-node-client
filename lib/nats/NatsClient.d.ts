@@ -15,6 +15,8 @@ export declare class NatsClient {
     getJetStreamManager(): Promise<jetstream.JetStreamManager>;
     close(): Promise<void>;
     get isConnected(): boolean;
+    getConnection(): nats.NatsConnection | null;
     private ensureConnection;
+    private processStatus;
     private startMonitoring;
 }

@@ -53,7 +53,7 @@ const createChannel = async (
         return response;
       }
 
-      natsService.addChannelSubscriptions(response.object.id);
+      natsService.subscribeToChannel(response.object.id);
 
       return response;
     }
@@ -74,7 +74,7 @@ const createChannel = async (
       await db.insert<Channel>(result.object, ModelType.Channel);
     }
 
-    natsService.addChannelSubscriptions(result.object.id);
+    natsService.subscribeToChannel(result.object.id);
 
     return result;
   } catch (error) {
