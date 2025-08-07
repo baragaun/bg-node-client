@@ -36,6 +36,7 @@ export declare enum BarcodeType {
 }
 export declare enum BgListenerTopic {
     channel = "channel",
+    channelMessage = "channelMessage",
     myUser = "myUser"
 }
 export declare enum BgNodeClientUiErrorCode {
