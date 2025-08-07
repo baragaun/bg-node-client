@@ -7,6 +7,7 @@ import logger from '../../helpers/logger.js';
 import buildQuery from '../../helpers/objectQuery/buildQuery.js';
 import { Channel } from '../../models/Channel.js';
 import { ChannelListFilter } from '../../models/ChannelListFilter.js';
+import natsService from '../../nats/index.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
@@ -71,6 +72,7 @@ const findMyChannels = async (
     if (Array.isArray(result.objects) && result.objects.length > 0) {
       for (const channel of result.objects) {
         await db.upsert<Channel>(channel, ModelType.Channel);
+        natsService.addChannelSubscriptions(channel.id);
       }
     }
 
