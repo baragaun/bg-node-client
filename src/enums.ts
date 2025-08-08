@@ -432,7 +432,7 @@ export enum UploadedAssetType {
 // Marketplace & Wallet:
 
 export enum ProductType {
-  giftCard = 'gift-card',
+  giftCard = 'giftCard',
   other = 'other',
 }
 
