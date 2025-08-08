@@ -120,7 +120,6 @@ export const createChannelSpecHelper = async (
       channel.messages.push(message);
     }
 
-    await new Promise(resolve => setTimeout(resolve, 100));
     // Now fetch only the messages we just created
     const consumer = await js.consumers.get(streamName, consumerName);
     const messages = await consumer.fetch({ max_messages: messageCount, expires: 3000 });

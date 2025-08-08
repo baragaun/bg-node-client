@@ -154,7 +154,7 @@ export class NatsClient {
         this.connectionLost = true;
         break;
       case 'error':
-        console.error('NatsClient.processStatus: connection error:',
+        logger.error('NatsClient.processStatus: connection error:',
           { error: status.error }, { remote: true });
         break;
     }
