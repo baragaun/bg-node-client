@@ -81,6 +81,16 @@ export interface WalletFactory extends rosie.IFactory<Wallet> {
   delete: (wallet: Wallet) => Promise<Wallet>;
 }
 
+export interface WalletItemFactory extends rosie.IFactory<WalletItem> {
+  create: (
+    props: Partial<WalletItem | WalletItem[]>,
+    options?: any,
+    count?: number,
+  ) => Promise<WalletItem | WalletItem[]>;
+  save: (walletItem: WalletItem) => Promise<WalletItem>;
+  delete: (walletItem: WalletItem) => Promise<WalletItem>;
+}
+
 export interface WalletItemTransferFactory extends rosie.IFactory<WalletItemTransfer> {
   create: (
     props: Partial<WalletItemTransfer | WalletItemTransfer[]>,
@@ -88,7 +98,7 @@ export interface WalletItemTransferFactory extends rosie.IFactory<WalletItemTran
     count?: number,
   ) => Promise<WalletItemTransfer | WalletItemTransfer[]>;
   save: (walletItemTransfer: WalletItemTransfer) => Promise<WalletItemTransfer>;
-  delete: (walletItemTransfer: WalletItemTransfer) => Promise<Wallet>;
+  delete: (walletItemTransfer: WalletItemTransfer) => Promise<WalletTransfer>;
 }
 
 export type ModelFactory =
@@ -99,4 +109,5 @@ export type ModelFactory =
   | UserFactory
   | UserInboxFactory
   | WalletFactory
+  | WalletItem
   | WalletItemTransferFactory;

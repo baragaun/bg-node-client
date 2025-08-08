@@ -4,6 +4,7 @@ import channelMessage from './channelMessage.js';
 import channelParticipant from './channelParticipant.js';
 import user from './user.js';
 import userInbox from './userInbox.js';
+import walletItem from './walletItem.js';
 
 const factories = {
   channel,
@@ -12,6 +13,7 @@ const factories = {
   channelParticipant,
   user,
   userInbox,
+  walletItem,
 };
 
 export default factories;

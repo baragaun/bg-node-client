@@ -158,4 +158,4 @@ describe('operations.myUser.resetMyPassword', () => {
       });
     });
   });
-}, 60000);
+}, 10000);

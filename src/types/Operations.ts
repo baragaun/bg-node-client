@@ -453,6 +453,10 @@ export interface Operations {
   }
 
   walletItem: {
+    createWalletItem: (
+      props: Partial<WalletItem>,
+    ) => Promise<QueryResult<WalletItem>>;
+
     findWalletItems: (
       filter: WalletItemListFilter | null | undefined,
       match: Partial<WalletItem> | null | undefined,

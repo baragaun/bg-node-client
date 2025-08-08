@@ -52,6 +52,7 @@ import update from './operations/update.js';
 import findUserById from './operations/user/findUserById.js';
 import findUsers from './operations/user/findUsers.js';
 import findMyWallet from './operations/wallet/findMyWallet.js';
+import createWalletItem from './operations/walletItem/createWalletItem.js';
 import findWalletItems from './operations/walletItem/findWalletItems.js';
 import createWalletItemTransfer from './operations/walletItemTransfer/createWalletItemTransfer.js';
 import findWalletItemTransfers from './operations/walletItemTransfer/findWalletItemTransfers.js';
@@ -167,6 +168,7 @@ const fsdata = {
   },
 
   walletItem: {
+    createWalletItem,
     findWalletItems,
   },
 
