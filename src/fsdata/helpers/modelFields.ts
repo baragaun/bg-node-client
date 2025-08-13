@@ -1,12 +1,16 @@
-const channel = {
+const baseModel = {
   id: true,
-  adminNotes: true,
   createdAt: true,
   createdBy: true,
   updatedAt: true,
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
+};
+
+const channel = {
+  ...baseModel,
+  adminNotes: true,
   name: true,
   topic: true,
   description: true,
@@ -31,14 +35,7 @@ const channel = {
 };
 
 const channelListItem = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   name: true,
   topic: true,
   description: true,
@@ -71,14 +68,7 @@ const channelListItem = {
     },
   },
   latestMessage: {
-    id: true,
-    adminNotes: true,
-    createdAt: true,
-    createdBy: true,
-    updatedAt: true,
-    updatedBy: true,
-    deletedAt: true,
-    deletedBy: true,
+    ...baseModel,
     channelId: true,
     replyToMessageId: true,
     channelMessageType: true,
@@ -95,14 +85,7 @@ const channelListItem = {
 };
 
 const channelInvitation = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   channelId: true,
   recipientId: true,
   channelName: true,
@@ -120,7 +103,8 @@ const channelInvitation = {
 };
 
 const channelMessage = {
-  id: true,
+  ...baseModel,
+  adminNotes: true,
   channelId: true,
   replyToMessageId: true,
   channelMessageType: true,
@@ -131,21 +115,12 @@ const channelMessage = {
     seenAt: true,
   },
   editedAt: true,
-  adminNotes: true,
-
-  // Timestamps:
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
   suspendedAt: true,
   suspendedBy: true,
 };
 
 const channelParticipant = {
-  id: true,
+  ...baseModel,
   userId: true,
   channelId: true,
   channelName: true,
@@ -158,19 +133,12 @@ const channelParticipant = {
   },
   suspendedAt: true,
   suspendedBy: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
   invitedBy: true,
 };
 
 const company = {
-  id: true,
+  ...baseModel,
   name: true,
-  adminNotes: true,
   annualRevenue: true,
   companyStage: true,
   companyStageTextId: true,
@@ -178,7 +146,6 @@ const company = {
   companyTypeTextId: true,
   description: true,
   employeeCount: true,
-  events: true,
   foundedAt: true,
   industries: true,
   isFundraising: true,
@@ -187,23 +154,10 @@ const company = {
   metadata: true,
   userIds: true,
   websites: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
 };
 
 const giftCardProduct = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   brandId: true,
   name: true,
   description: true,
@@ -228,8 +182,7 @@ const giftCardProduct = {
 };
 
 const myUser = {
-  id: true,
-  adminNotes: true,
+  ...baseModel,
   metadata: {
     updatedAt: true,
     totalTimeOnPlatform: true,
@@ -241,12 +194,6 @@ const myUser = {
       updatedAt: true,
     },
   },
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
   firstName: true,
   lastName: true,
   userHandle: true,
@@ -276,13 +223,7 @@ const myUser = {
   source: true,
   timezone: true,
   preferences: {
-    id: true,
-    createdAt: true,
-    createdBy: true,
-    updatedAt: true,
-    updatedBy: true,
-    deletedAt: true,
-    deletedBy: true,
+    ...baseModel,
     shareEmail: true,
     sharePhoneNumber: true,
     showWelcomeMessage: true,
@@ -303,7 +244,6 @@ const myUser = {
     userId: true,
     reasonTextId: true,
     notes: true,
-    adminNotes: true,
     createdAt: true,
   },
   inactivatedAt: true,
@@ -318,9 +258,9 @@ const myUser = {
   parentGroupIds: true,
   externalGroupIds: true,
   groupMemberships: {
+    id: true,
     groupId: true,
     groupIdent: true,
-    id: true,
     roles: true,
     userId: true,
   },
@@ -332,14 +272,7 @@ const myUser = {
   cityOfOrigin: true,
   isOnVacation: true,
   avatarAsset: {
-    id: true,
-    adminNotes: true,
-    createdAt: true,
-    createdBy: true,
-    updatedAt: true,
-    updatedBy: true,
-    deletedAt: true,
-    deletedBy: true,
+    ...baseModel,
     ownerId: true,
     ownerModelType: true,
     assetType: true,
@@ -358,14 +291,7 @@ const myUser = {
 };
 
 const productCategory = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   importId: true,
   name: true,
   labelEn: true,
@@ -373,14 +299,7 @@ const productCategory = {
 };
 
 const purchaseOrderItem = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   purchaseOrderId: true,
   productId: true,
   quantity: true,
@@ -389,15 +308,8 @@ const purchaseOrderItem = {
 };
 
 const purchaseOrder = {
-  id: true,
+  ...baseModel,
   items: { ...purchaseOrderItem },
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
   userId: true,
   sumItemPrice: true,
   totalPrice: true,
@@ -408,15 +320,8 @@ const purchaseOrder = {
 };
 
 const serviceRequest = {
-  id: true,
+  ...baseModel,
   adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
-
   deviceUuid: true,
   errorCode: true,
   events: {
@@ -436,65 +341,38 @@ const serviceRequest = {
 };
 
 const shoppingCartItem = {
-  id: true,
+  ...baseModel,
   shoppingCartId: true,
   productId: true,
   quantity: true,
   price: true,
   totalPrice: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
 };
 
 const shoppingCart = {
-  id: true,
+  ...baseModel,
   sumItemPrice: true,
   totalPrice: true,
   vat: true,
   items: { ...shoppingCartItem },
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
 };
 
 const sidMultiStepAction = {
+  ...baseModel,
+  adminNotes: true,
   actionStatus: true,
   actionType: true,
-  adminNotes: true,
   attemptCount: true,
   confirmToken: true,
-  createdAt: true,
-  createdBy: true,
-  deletedAt: true,
-  deletedBy: true,
   deviceUuid: true,
   email: true,
   emailPassed: true,
   emailUpdatedAt: true,
   emailVerifiedAt: true,
   errors: {
-    adminNotes: true,
-    createdAt: true,
-    createdBy: true,
-    deletedAt: true,
-    deletedBy: true,
-    events: true,
-    id: true,
     key: true,
     message: true,
     messageId: true,
-    metadata: true,
-    updatedAt: true,
-    updatedBy: true,
   },
   events: {
     message: true,
@@ -502,7 +380,6 @@ const sidMultiStepAction = {
     time: true,
   },
   expiresAt: true,
-  id: true,
   notificationId: true,
   notificationMethod: true,
   notificationResult: true,
@@ -519,13 +396,13 @@ const sidMultiStepAction = {
   result: true,
   signedInAt: true,
   textData: true,
-  updatedAt: true,
-  updatedBy: true,
   userHandle: true,
   userId: true,
   userIdent: true,
 };
 
+// SidMultiStepActionProgress is not a model that extends from BaseModel, so we don't add
+// the BaseModel fields here.
 const sidMultiStepActionProgress = {
   actionId: true,
   userId: true,
@@ -543,14 +420,6 @@ const sidMultiStepActionProgress = {
   emailUpdatedAt: true,
   emailVerifiedAt: true,
   errors: {
-    id: true,
-    adminNotes: true,
-    createdAt: true,
-    createdBy: true,
-    updatedAt: true,
-    updatedBy: true,
-    deletedAt: true,
-    deletedBy: true,
     key: true,
     messageId: true,
     message: true,
@@ -570,16 +439,10 @@ const sidMultiStepActionProgress = {
     modelEventType: true,
     message: true,
   },
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
 };
 
 const user = {
-  id: true,
+  ...baseModel,
   firstName: true,
   lastName: true,
   userHandle: true,
@@ -628,7 +491,6 @@ const user = {
   //   userId: true,
   //   reasonTextId: true,
   //   notes: true,
-  //   adminNotes: true,
   //   createdAt: true,
   // },
 
@@ -636,17 +498,10 @@ const user = {
   inactivatedBy: true,
   suspendedAt: true,
   suspendedBy: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
 };
 
 const userListItem = {
   id: true,
-
   firstName: true,
   lastName: true,
   userHandle: true,
@@ -672,7 +527,6 @@ const userListItem = {
     userId: true,
     reasonTextId: true,
     notes: true,
-    adminNotes: true,
     createdAt: true,
   },
 
@@ -684,14 +538,7 @@ const userListItem = {
 };
 
 const userInbox = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   userId: true,
   channels: {
     userId: true,
@@ -812,14 +659,7 @@ const userInbox = {
 };
 
 const brand = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   name: true,
   importId: true,
   imageSource: true,
@@ -835,14 +675,7 @@ const brand = {
 };
 
 const walletItem = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   walletId: true,
   productId: true,
   purchaseOrderItemId: true,
@@ -868,40 +701,27 @@ const walletItem = {
   issuedAt: true,
   expiresAt: true,
   balanceUpdatedAt: true,
-  transferredAt: true,
+  transferStartedAt: true,
+  transferAcceptedAt: true,
   archivedAt: true,
 };
 
 const wallet = {
-  id: true,
-  adminNotes: true,
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
 };
 
 const walletItemTransfer = {
-  id: true,
-  adminNotes: true,
-  metadata: {
-    updatedAt: true,
-  },
-  createdAt: true,
-  createdBy: true,
-  updatedAt: true,
-  updatedBy: true,
-  deletedAt: true,
-  deletedBy: true,
+  ...baseModel,
   walletItemId: true,
   notificationId: true,
   recipientEmail: true,
   recipientFullName: true,
   subjectText: true,
   messageText: true,
+  transferSlug: true,
   sentAt: true,
+  acceptedAt: true,
+  declinedAt: true,
   canceledAt: true,
   archivedAt: true,
 };

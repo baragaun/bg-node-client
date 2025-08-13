@@ -24,10 +24,10 @@ const findBrands = async (
       return { error: 'unavailable' };
     }
 
-    if (!libData.clientInfoStore().isSignedIn) {
-      logger.error('findBrands: unauthorized');
-      return { error: 'unauthorized' };
-    }
+    // if (!libData.clientInfoStore().isSignedIn) {
+    //   logger.error('findBrands: unauthorized');
+    //   return { error: 'unauthorized' };
+    // }
 
     // const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 

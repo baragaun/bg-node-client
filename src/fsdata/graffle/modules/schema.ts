@@ -99,8 +99,10 @@ export namespace Schema {
       findShoppingCarts: Query.findShoppingCarts;
       findMyShoppingCart: Query.findMyShoppingCart;
       findWalletItemById: Query.findWalletItemById;
+      findWalletItemByTransferSlug: Query.findWalletItemByTransferSlug;
       findWalletItems: Query.findWalletItems;
       findWalletItemTransferById: Query.findWalletItemTransferById;
+      findWalletItemTransferByTransferSlug: Query.findWalletItemTransferByTransferSlug;
       findWalletItemTransfers: Query.findWalletItemTransfers;
       findWallets: Query.findWallets;
       findMyWallet: Query.findMyWallet;
@@ -1512,6 +1514,27 @@ export namespace Schema {
       namedType: $$NamedTypes.$$WalletItem;
     }
 
+    export interface findWalletItemByTransferSlug {
+      kind: 'OutputField';
+      name: 'findWalletItemByTransferSlug';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [0];
+      namedType: $$NamedTypes.$$WalletItem;
+    }
+
     export interface findWalletItems {
       kind: 'OutputField';
       name: 'findWalletItems';
@@ -1552,6 +1575,27 @@ export namespace Schema {
         id: {
           kind: 'InputField';
           name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [0];
+      namedType: $$NamedTypes.$$WalletItemTransfer;
+    }
+
+    export interface findWalletItemTransferByTransferSlug {
+      kind: 'OutputField';
+      name: 'findWalletItemTransferByTransferSlug';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
           inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
@@ -2233,7 +2277,9 @@ export namespace Schema {
       createWalletItem: Mutation.createWalletItem;
       deleteWalletItem: Mutation.deleteWalletItem;
       updateWalletItem: Mutation.updateWalletItem;
+      acceptWalletItemTransfer: Mutation.acceptWalletItemTransfer;
       createWalletItemTransfer: Mutation.createWalletItemTransfer;
+      declineWalletItemTransfer: Mutation.declineWalletItemTransfer;
       deleteWalletItemTransfer: Mutation.deleteWalletItemTransfer;
       updateWalletItemTransfer: Mutation.updateWalletItemTransfer;
       createUserSearch: Mutation.createUserSearch;
@@ -3891,6 +3937,27 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ServiceRequest;
     }
 
+    export interface acceptWalletItemTransfer {
+      kind: 'OutputField';
+      name: 'acceptWalletItemTransfer';
+      arguments: {
+        transferSecret: {
+          kind: 'InputField';
+          name: 'transferSecret';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
     export interface createWalletItemTransfer {
       kind: 'OutputField';
       name: 'createWalletItemTransfer';
@@ -3900,6 +3967,21 @@ export namespace Schema {
           name: 'input';
           inlineType: [1];
           namedType: $$NamedTypes.$$WalletItemTransferInput;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
+    export interface declineWalletItemTransfer {
+      kind: 'OutputField';
+      name: 'declineWalletItemTransfer';
+      arguments: {
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
         };
       };
       inlineType: [1];
@@ -11560,9 +11642,9 @@ export namespace Schema {
       deletedBy: Notification.deletedBy;
       notificationType: Notification.notificationType;
       templateId: Notification.templateId;
-      senderId: Notification.senderId;
       recipientId: Notification.recipientId;
       multiStepActionId: Notification.multiStepActionId;
+      initiatorId: Notification.initiatorId;
       replyingToId: Notification.replyingToId;
       title: Notification.title;
       messageText: Notification.messageText;
@@ -11575,8 +11657,6 @@ export namespace Schema {
       action1: Notification.action1;
       action2: Notification.action2;
       actionTaken: Notification.actionTaken;
-      allowRecipientWithoutAccount: Notification.allowRecipientWithoutAccount;
-      allowSendingToSuspendedUser: Notification.allowSendingToSuspendedUser;
       sendEmail: Notification.sendEmail;
       sendInAppMessage: Notification.sendInAppMessage;
       sendPushNotification: Notification.sendPushNotification;
@@ -11702,25 +11782,25 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface senderId {
-      kind: 'OutputField';
-      name: 'senderId';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
     export interface recipientId {
       kind: 'OutputField';
       name: 'recipientId';
       arguments: {};
-      inlineType: [0];
+      inlineType: [1];
       namedType: $$NamedTypes.$$ID;
     }
 
     export interface multiStepActionId {
       kind: 'OutputField';
       name: 'multiStepActionId';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface initiatorId {
+      kind: 'OutputField';
+      name: 'initiatorId';
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$ID;
@@ -11820,22 +11900,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$AppAction;
-    }
-
-    export interface allowRecipientWithoutAccount {
-      kind: 'OutputField';
-      name: 'allowRecipientWithoutAccount';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface allowSendingToSuspendedUser {
-      kind: 'OutputField';
-      name: 'allowSendingToSuspendedUser';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface sendEmail {
@@ -21252,7 +21316,8 @@ export namespace Schema {
       issuedAt: WalletItem.issuedAt;
       expiresAt: WalletItem.expiresAt;
       balanceUpdatedAt: WalletItem.balanceUpdatedAt;
-      transferredAt: WalletItem.transferredAt;
+      transferStartedAt: WalletItem.transferStartedAt;
+      transferAcceptedAt: WalletItem.transferAcceptedAt;
       archivedAt: WalletItem.archivedAt;
     };
   }
@@ -21549,9 +21614,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
-    export interface transferredAt {
+    export interface transferStartedAt {
       kind: 'OutputField';
-      name: 'transferredAt';
+      name: 'transferStartedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface transferAcceptedAt {
+      kind: 'OutputField';
+      name: 'transferAcceptedAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -21591,7 +21664,10 @@ export namespace Schema {
       recipientFullName: WalletItemTransfer.recipientFullName;
       subjectText: WalletItemTransfer.subjectText;
       messageText: WalletItemTransfer.messageText;
+      transferSlug: WalletItemTransfer.transferSlug;
       sentAt: WalletItemTransfer.sentAt;
+      acceptedAt: WalletItemTransfer.acceptedAt;
+      declinedAt: WalletItemTransfer.declinedAt;
       canceledAt: WalletItemTransfer.canceledAt;
       archivedAt: WalletItemTransfer.archivedAt;
     };
@@ -21737,6 +21813,17 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface transferSlug {
+      kind: 'OutputField';
+      name: 'transferSlug';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * Date this transfer was sent
+     */
     export interface sentAt {
       kind: 'OutputField';
       name: 'sentAt';
@@ -21745,6 +21832,31 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
+    /**
+     * The recipient accepted this transfer
+     */
+    export interface acceptedAt {
+      kind: 'OutputField';
+      name: 'acceptedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    /**
+     * The recipient declined this transfer
+     */
+    export interface declinedAt {
+      kind: 'OutputField';
+      name: 'declinedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    /**
+     * The sender canceled this transfer
+     */
     export interface canceledAt {
       kind: 'OutputField';
       name: 'canceledAt';
@@ -21753,6 +21865,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
+    /**
+     * The sender archived this transfer
+     */
     export interface archivedAt {
       kind: 'OutputField';
       name: 'archivedAt';
@@ -28582,8 +28697,6 @@ export namespace Schema {
       action0: NotificationTemplate.action0;
       action1: NotificationTemplate.action1;
       action2: NotificationTemplate.action2;
-      allowRecipientWithoutAccount: NotificationTemplate.allowRecipientWithoutAccount;
-      allowSendingToSuspendedUser: NotificationTemplate.allowSendingToSuspendedUser;
       sendEmail: NotificationTemplate.sendEmail;
       sendInAppMessage: NotificationTemplate.sendInAppMessage;
       sendPushNotification: NotificationTemplate.sendPushNotification;
@@ -28938,22 +29051,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$AppAction;
-    }
-
-    export interface allowRecipientWithoutAccount {
-      kind: 'OutputField';
-      name: 'allowRecipientWithoutAccount';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface allowSendingToSuspendedUser {
-      kind: 'OutputField';
-      name: 'allowSendingToSuspendedUser';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface sendEmail {
@@ -35103,7 +35200,8 @@ export namespace Schema {
       issuedAt: WalletItemInput.issuedAt;
       expiresAt: WalletItemInput.expiresAt;
       balanceUpdatedAt: WalletItemInput.balanceUpdatedAt;
-      transferredAt: WalletItemInput.transferredAt;
+      transferStartedAt: WalletItemInput.transferStartedAt;
+      transferAcceptedAt: WalletItemInput.transferAcceptedAt;
       archivedAt: WalletItemInput.archivedAt;
     };
   }
@@ -35354,9 +35452,16 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
-    export interface transferredAt {
+    export interface transferStartedAt {
       kind: 'InputField';
-      name: 'transferredAt';
+      name: 'transferStartedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface transferAcceptedAt {
+      kind: 'InputField';
+      name: 'transferAcceptedAt';
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
     }
@@ -35480,7 +35585,11 @@ export namespace Schema {
       recipientFullName: WalletItemTransferInput.recipientFullName;
       subjectText: WalletItemTransferInput.subjectText;
       messageText: WalletItemTransferInput.messageText;
+      transferSlug: WalletItemTransferInput.transferSlug;
+      transferSecret: WalletItemTransferInput.transferSecret;
       sentAt: WalletItemTransferInput.sentAt;
+      acceptedAt: WalletItemTransferInput.acceptedAt;
+      declinedAt: WalletItemTransferInput.declinedAt;
       canceledAt: WalletItemTransferInput.canceledAt;
       archivedAt: WalletItemTransferInput.archivedAt;
     };
@@ -35599,6 +35708,23 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface transferSlug {
+      kind: 'InputField';
+      name: 'transferSlug';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface transferSecret {
+      kind: 'InputField';
+      name: 'transferSecret';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * Date this transfer was sent
+     */
     export interface sentAt {
       kind: 'InputField';
       name: 'sentAt';
@@ -35606,6 +35732,29 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
+    /**
+     * The recipient accepted this transfer
+     */
+    export interface acceptedAt {
+      kind: 'InputField';
+      name: 'acceptedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    /**
+     * The recipient declined this transfer
+     */
+    export interface declinedAt {
+      kind: 'InputField';
+      name: 'declinedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    /**
+     * The sender canceled this transfer
+     */
     export interface canceledAt {
       kind: 'InputField';
       name: 'canceledAt';
@@ -35613,6 +35762,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
+    /**
+     * The sender archived this transfer
+     */
     export interface archivedAt {
       kind: 'InputField';
       name: 'archivedAt';
@@ -39900,9 +40052,9 @@ export namespace Schema {
       notificationType: NotificationInput.notificationType;
       templateId: NotificationInput.templateId;
       templateName: NotificationInput.templateName;
-      senderId: NotificationInput.senderId;
       recipientId: NotificationInput.recipientId;
       multiStepActionId: NotificationInput.multiStepActionId;
+      initiatorId: NotificationInput.initiatorId;
       replyingToId: NotificationInput.replyingToId;
       title: NotificationInput.title;
       messageText: NotificationInput.messageText;
@@ -39915,12 +40067,11 @@ export namespace Schema {
       action1: NotificationInput.action1;
       action2: NotificationInput.action2;
       actionTaken: NotificationInput.actionTaken;
-      allowRecipientWithoutAccount: NotificationInput.allowRecipientWithoutAccount;
-      allowSendingToSuspendedUser: NotificationInput.allowSendingToSuspendedUser;
       sendEmail: NotificationInput.sendEmail;
       sendInAppMessage: NotificationInput.sendInAppMessage;
       sendPushNotification: NotificationInput.sendPushNotification;
       sendSms: NotificationInput.sendSms;
+      allowSendingToSuspendedUser: NotificationInput.allowSendingToSuspendedUser;
       emailSentAt: NotificationInput.emailSentAt;
       inAppMessageSentAt: NotificationInput.inAppMessageSentAt;
       inAppMessageReceivedAt: NotificationInput.inAppMessageReceivedAt;
@@ -40026,13 +40177,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ID;
     }
 
-    export interface senderId {
-      kind: 'InputField';
-      name: 'senderId';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
     export interface recipientId {
       kind: 'InputField';
       name: 'recipientId';
@@ -40043,6 +40187,13 @@ export namespace Schema {
     export interface multiStepActionId {
       kind: 'InputField';
       name: 'multiStepActionId';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface initiatorId {
+      kind: 'InputField';
+      name: 'initiatorId';
       inlineType: [0];
       namedType: $$NamedTypes.$$ID;
     }
@@ -40131,20 +40282,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$AppAction;
     }
 
-    export interface allowRecipientWithoutAccount {
-      kind: 'InputField';
-      name: 'allowRecipientWithoutAccount';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface allowSendingToSuspendedUser {
-      kind: 'InputField';
-      name: 'allowSendingToSuspendedUser';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
     export interface sendEmail {
       kind: 'InputField';
       name: 'sendEmail';
@@ -40169,6 +40306,13 @@ export namespace Schema {
     export interface sendSms {
       kind: 'InputField';
       name: 'sendSms';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
+    }
+
+    export interface allowSendingToSuspendedUser {
+      kind: 'InputField';
+      name: 'allowSendingToSuspendedUser';
       inlineType: [0];
       namedType: $$NamedTypes.$$Boolean;
     }
@@ -40348,8 +40492,6 @@ export namespace Schema {
       action0: NotificationTemplateInput.action0;
       action1: NotificationTemplateInput.action1;
       action2: NotificationTemplateInput.action2;
-      allowRecipientWithoutAccount: NotificationTemplateInput.allowRecipientWithoutAccount;
-      allowSendingToSuspendedUser: NotificationTemplateInput.allowSendingToSuspendedUser;
       sendEmail: NotificationTemplateInput.sendEmail;
       sendInAppMessage: NotificationTemplateInput.sendInAppMessage;
       sendPushNotification: NotificationTemplateInput.sendPushNotification;
@@ -40658,20 +40800,6 @@ export namespace Schema {
       name: 'action2';
       inlineType: [0];
       namedType: $$NamedTypes.$$AppAction;
-    }
-
-    export interface allowRecipientWithoutAccount {
-      kind: 'InputField';
-      name: 'allowRecipientWithoutAccount';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
-    }
-
-    export interface allowSendingToSuspendedUser {
-      kind: 'InputField';
-      name: 'allowSendingToSuspendedUser';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface sendEmail {
@@ -42511,7 +42639,6 @@ export namespace Schema {
       'resetPasswordConfirmToken',
       'sendFirstInvitation',
       'unset',
-      'walletItemTransfer',
       'welcome',
     ];
     membersUnion:
@@ -42529,7 +42656,6 @@ export namespace Schema {
       | 'resetPasswordConfirmToken'
       | 'sendFirstInvitation'
       | 'unset'
-      | 'walletItemTransfer'
       | 'welcome';
   }
 
@@ -43439,6 +43565,7 @@ export namespace Schema {
       'graphQlQueryFindTrainingSessionById',
       'graphQlQueryFindTrainingSessionsByTrainingId',
       'graphQlQueryFindTrainingSessionsForMe',
+      'graphQlMutationAcceptWalletItemTransfer',
       'graphQlMutationClearMyShoppingCart',
       'graphQlMutationClearShoppingCart',
       'graphQlMutationCreatePurchaseOrderField',
@@ -43446,6 +43573,7 @@ export namespace Schema {
       'graphQlMutationCreateWalletItem',
       'graphQlMutationCreateWalletItemTransfer',
       'graphQlMutationCreateWalletTransfer',
+      'graphQlMutationDeclineWalletItemTransfer',
       'graphQlMutationDeleteShoppingCartItem',
       'graphQlMutationDeleteWalletItem',
       'graphQlMutationDeleteWalletItemTransfer',
@@ -43459,8 +43587,10 @@ export namespace Schema {
       'graphQlQueryFindShoppingCartItems',
       'graphQlQueryFindShoppingCarts',
       'graphQlQueryFindWalletItemById',
+      'graphQlQueryFindWalletItemByTransferSlug',
       'graphQlQueryFindWalletItems',
       'graphQlQueryFindWalletItemTransferById',
+      'graphQlQueryFindWalletItemTransferByTransferSlug',
       'graphQlQueryFindWalletItemTransfers',
       'graphQlQueryFindWallets',
       'graphQlQueryFindWalletServiceRecord',
@@ -43649,6 +43779,7 @@ export namespace Schema {
       | 'graphQlQueryFindTrainingSessionById'
       | 'graphQlQueryFindTrainingSessionsByTrainingId'
       | 'graphQlQueryFindTrainingSessionsForMe'
+      | 'graphQlMutationAcceptWalletItemTransfer'
       | 'graphQlMutationClearMyShoppingCart'
       | 'graphQlMutationClearShoppingCart'
       | 'graphQlMutationCreatePurchaseOrderField'
@@ -43656,6 +43787,7 @@ export namespace Schema {
       | 'graphQlMutationCreateWalletItem'
       | 'graphQlMutationCreateWalletItemTransfer'
       | 'graphQlMutationCreateWalletTransfer'
+      | 'graphQlMutationDeclineWalletItemTransfer'
       | 'graphQlMutationDeleteShoppingCartItem'
       | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationDeleteWalletItemTransfer'
@@ -43669,8 +43801,10 @@ export namespace Schema {
       | 'graphQlQueryFindShoppingCartItems'
       | 'graphQlQueryFindShoppingCarts'
       | 'graphQlQueryFindWalletItemById'
+      | 'graphQlQueryFindWalletItemByTransferSlug'
       | 'graphQlQueryFindWalletItems'
       | 'graphQlQueryFindWalletItemTransferById'
+      | 'graphQlQueryFindWalletItemTransferByTransferSlug'
       | 'graphQlQueryFindWalletItemTransfers'
       | 'graphQlQueryFindWallets'
       | 'graphQlQueryFindWalletServiceRecord';
@@ -44141,7 +44275,6 @@ export namespace Schema {
       'sendFirstInvitationForMentee',
       'sendFirstInvitationForMentor',
       'unset',
-      'walletItemTransfer',
       'welcomeForMentee',
       'welcomeForMentor',
     ];
@@ -44168,7 +44301,6 @@ export namespace Schema {
       | 'sendFirstInvitationForMentee'
       | 'sendFirstInvitationForMentor'
       | 'unset'
-      | 'walletItemTransfer'
       | 'welcomeForMentee'
       | 'welcomeForMentor';
   }

@@ -216,12 +216,18 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     findWalletItemById: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItemById<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findWalletItemById: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItemById'>>>;
+    findWalletItemByTransferSlug: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItemByTransferSlug<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
+        findWalletItemByTransferSlug: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItemByTransferSlug'>>>;
     findWalletItems: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItems<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findWalletItems: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItems'>>>;
     findWalletItemTransferById: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItemTransferById<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findWalletItemTransferById: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItemTransferById'>>>;
+    findWalletItemTransferByTransferSlug: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItemTransferByTransferSlug<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
+        findWalletItemTransferByTransferSlug: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItemTransferByTransferSlug'>>>;
     findWalletItemTransfers: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findWalletItemTransfers<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationQuery<{
         findWalletItemTransfers: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'findWalletItemTransfers'>>>;
@@ -600,9 +606,15 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     updateWalletItem: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateWalletItem<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateWalletItem: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateWalletItem'>>>;
+    acceptWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.acceptWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        acceptWalletItemTransfer: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'acceptWalletItemTransfer'>>>;
     createWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         createWalletItemTransfer: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'createWalletItemTransfer'>>>;
+    declineWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.declineWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        declineWalletItemTransfer: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'declineWalletItemTransfer'>>>;
     deleteWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteWalletItemTransfer: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteWalletItemTransfer'>>>;
