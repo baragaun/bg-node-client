@@ -1782,6 +1782,8 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     archivedAt: {
       nt: DateTimeISO,
     },
+    transferSlug: {},
+    transferSecret: {},
   },
 };
 
@@ -1848,6 +1850,8 @@ const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     archivedAt: {
       nt: DateTimeISO,
     },
+    transferSlug: {},
+    transferSecret: {},
   },
 };
 
@@ -2826,9 +2830,9 @@ const NotificationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     notificationType: {},
     templateId: {},
     templateName: {},
-    senderId: {},
     recipientId: {},
     multiStepActionId: {},
+    initiatorId: {},
     replyingToId: {},
     title: {},
     messageText: {},
@@ -2841,12 +2845,11 @@ const NotificationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     action1: {},
     action2: {},
     actionTaken: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
     sendSms: {},
+    allowSendingToSuspendedUser: {},
     emailSentAt: {
       nt: DateTimeISO,
     },
@@ -2939,8 +2942,6 @@ const NotificationTemplateInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     action0: {},
     action1: {},
     action2: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -4590,9 +4591,9 @@ const Notification: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     deletedBy: {},
     notificationType: {},
     templateId: {},
-    senderId: {},
     recipientId: {},
     multiStepActionId: {},
+    initiatorId: {},
     replyingToId: {},
     title: {},
     messageText: {},
@@ -4605,8 +4606,6 @@ const Notification: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     action1: {},
     action2: {},
     actionTaken: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -6359,6 +6358,8 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     instructionsEn: {},
     instructionsUrl: {},
     sortIndex: {},
+    transferSlug: {},
+    transferSecret: {},
     issuedAt: {
       nt: DateTimeISO,
     },
@@ -6414,6 +6415,8 @@ const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     archivedAt: {
       nt: DateTimeISO,
     },
+    transferSlug: {},
+    transferSecret: {},
   },
 };
 
@@ -7684,8 +7687,6 @@ const NotificationTemplate: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     action0: {},
     action1: {},
     action2: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -8697,6 +8698,19 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
+    verifyWalletItemTransfer: {
+      a: {
+        transferSecret: {
+          nt: String,
+          it: [1],
+        },
+        walletItemId: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
     findWalletItemTransferById: {
       a: {
         options: {
@@ -9401,15 +9415,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    acceptChannelInvitationV2: {
-      a: {
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     createChannelInvitation: {
       a: {
         input: {
@@ -9431,24 +9436,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    declineChannelInvitationV2: {
-      a: {
-        reasonTextId: {
-          nt: DeclineChannelInvitationReasonTextId,
-          it: [1],
-        },
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     deleteChannelInvitation: {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelInvitationId: {
           nt: String,
@@ -9481,15 +9473,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    dismissChannelInvitationFromInboxV2: {
-      a: {
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     updateChannelInvitation: {
       a: {
         input: {
@@ -9519,11 +9502,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         anonymizePersonalData: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelId: {
           nt: String,
@@ -9593,7 +9576,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelMessageId: {
           nt: String,
@@ -10939,6 +10922,7 @@ Query.f['findShoppingCarts']!.nt = ShoppingCart;
 Query.f['findMyShoppingCart']!.nt = ShoppingCart;
 Query.f['findWalletItemById']!.nt = WalletItem;
 Query.f['findWalletItems']!.nt = WalletItem;
+Query.f['verifyWalletItemTransfer']!.nt = WalletItem;
 Query.f['findWalletItemTransferById']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransfers']!.nt = WalletItemTransfer;
 Query.f['findWallets']!.nt = Wallet;
@@ -10991,11 +10975,8 @@ Mutation.f['updateAdminTask']!.nt = AdminTask;
 Mutation.f['createUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['deleteUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['initAssetUpload']!.nt = UploadedAsset;
-Mutation.f['acceptChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['createChannelInvitation']!.nt = ChannelInvitation;
-Mutation.f['declineChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['deleteChannelInvitationV2']!.nt = ServiceRequest;
-Mutation.f['dismissChannelInvitationFromInboxV2']!.nt = ServiceRequest;
 Mutation.f['createChannel']!.nt = Channel;
 Mutation.f['deleteChannelV2']!.nt = ServiceRequest;
 Mutation.f['createChannelMessage']!.nt = ChannelMessage;

@@ -157,5 +157,6 @@ export interface Operations {
     walletItemTransfer: {
         findWalletItemTransfers: (filter: WalletItemTransferListFilter | null | undefined, match: Partial<WalletItemTransfer> | null | undefined, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItemTransfer>>;
         createWalletItemTransfer: (props: Partial<WalletItemTransfer>) => Promise<QueryResult<WalletItemTransfer>>;
+        verifyWalletItemTransfer: (transferSecret: string, walletItemId: string) => Promise<QueryResult<WalletItem>>;
     };
 }

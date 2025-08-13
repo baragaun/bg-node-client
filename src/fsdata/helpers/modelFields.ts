@@ -870,6 +870,8 @@ const walletItem = {
   balanceUpdatedAt: true,
   transferredAt: true,
   archivedAt: true,
+  transferSecret: true,
+  transferSlug: true,
 };
 
 const wallet = {
@@ -904,6 +906,8 @@ const walletItemTransfer = {
   sentAt: true,
   canceledAt: true,
   archivedAt: true,
+  transferSecret: true,
+  transferSlug: true,
 };
 
 const modelFields = {

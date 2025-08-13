@@ -11,6 +11,8 @@ export class WalletItemTransfer extends BaseModel {
   public sentAt?: string | null;
   public canceledAt?: string | null;
   public archivedAt?: string | null;
+  public transferSecret?: string | null;
+  public transferSlug?: string | null;
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<WalletItemTransfer>) {
@@ -44,6 +46,12 @@ export class WalletItemTransfer extends BaseModel {
       }
       if (attributes.archivedAt !== undefined && attributes.archivedAt !== '') {
         this.archivedAt = attributes.archivedAt;
+      }
+      if (attributes.transferSecret !== undefined) {
+        this.transferSecret = attributes.transferSecret;
+      }
+      if (attributes.transferSlug !== undefined) {
+        this.transferSlug = attributes.transferSlug;
       }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }

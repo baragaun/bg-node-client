@@ -28,5 +28,7 @@ export declare class WalletItem extends BaseModel {
     balanceUpdatedAt?: string | null;
     transferredAt?: string | null;
     archivedAt?: string | null;
+    transferSecret?: string | null;
+    transferSlug?: string | null;
     constructor(attributes?: Partial<WalletItem>);
 }

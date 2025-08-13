@@ -483,5 +483,10 @@ export interface Operations {
     createWalletItemTransfer: (
       props: Partial<WalletItemTransfer>,
     ) => Promise<QueryResult<WalletItemTransfer>>;
+
+    verifyWalletItemTransfer: (
+      transferSecret: string,
+      walletItemId: string,
+    ) => Promise<QueryResult<WalletItem>>;
   }
 }
