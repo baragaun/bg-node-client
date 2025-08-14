@@ -9,5 +9,7 @@ export declare class WalletItemTransfer extends BaseModel {
     sentAt?: string | null;
     canceledAt?: string | null;
     archivedAt?: string | null;
+    transferSecret?: string | null;
+    transferSlug?: string | null;
     constructor(attributes?: Partial<WalletItemTransfer>);
 }

@@ -857,6 +857,8 @@ declare const modelFields: {
         sentAt: boolean;
         canceledAt: boolean;
         archivedAt: boolean;
+        transferSecret: boolean;
+        transferSlug: boolean;
     };
 };
 export default modelFields;

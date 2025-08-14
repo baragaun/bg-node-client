@@ -84,10 +84,13 @@ declare const fsdata: {
     walletItem: {
         createWalletItem: (props: Partial<import("../index.js").WalletItem>) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItem>>;
         findWalletItems: (filter: import("../index.js").WalletItemListFilter, match: Partial<import("../index.js").WalletItem>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItem>>;
+        findWalletItemByTransferSlug: (transferSlug: string, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItem>>;
     };
     walletItemTransfer: {
-        findWalletItemTransfers: (filter: import("../index.js").WalletItemTransferListFilter, match: Partial<import("../index.js").WalletItemTransfer>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
+        acceptWalletItemTransfer: (transferSecret: string, transferSlug: string) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItem>>;
         createWalletItemTransfer: (props: Partial<import("../index.js").WalletItemTransfer>) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
+        declineWalletItemTransfer: (transferSlug: string) => Promise<import("../index.js").QueryResult<import("../index.js").ServiceRequest>>;
+        findWalletItemTransfers: (filter: import("../index.js").WalletItemTransferListFilter, match: Partial<import("../index.js").WalletItemTransfer>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
     };
 };
 export default fsdata;

@@ -904,6 +904,8 @@ const walletItemTransfer = {
   sentAt: true,
   canceledAt: true,
   archivedAt: true,
+  transferSecret: true,
+  transferSlug: true,
 };
 
 const modelFields = {

@@ -281,6 +281,10 @@ export interface Query<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
      */
     findWalletItemById?: Query.findWalletItemById<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findWalletItemById<_$Scalars>>;
     /**
+     * Select the `findWalletItemByTransferSlug` field on the `Query` object. Its type is `WalletItem` (a `OutputObject` kind of type).
+     */
+    findWalletItemByTransferSlug?: Query.findWalletItemByTransferSlug<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findWalletItemByTransferSlug<_$Scalars>>;
+    /**
      * Select the `findWalletItems` field on the `Query` object. Its type is `WalletItem` (a `OutputObject` kind of type).
      */
     findWalletItems?: Query.findWalletItems$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findWalletItems<_$Scalars>>;
@@ -288,6 +292,10 @@ export interface Query<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
      * Select the `findWalletItemTransferById` field on the `Query` object. Its type is `WalletItemTransfer` (a `OutputObject` kind of type).
      */
     findWalletItemTransferById?: Query.findWalletItemTransferById<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findWalletItemTransferById<_$Scalars>>;
+    /**
+     * Select the `findWalletItemTransferByTransferSlug` field on the `Query` object. Its type is `WalletItemTransfer` (a `OutputObject` kind of type).
+     */
+    findWalletItemTransferByTransferSlug?: Query.findWalletItemTransferByTransferSlug<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Query.findWalletItemTransferByTransferSlug<_$Scalars>>;
     /**
      * Select the `findWalletItemTransfers` field on the `Query` object. Its type is `WalletItemTransfer` (a `OutputObject` kind of type).
      */
@@ -1570,6 +1578,23 @@ export declare namespace Query {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type findWalletItemById$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<findWalletItemById$SelectionSet<_$Scalars>>;
+    type findWalletItemByTransferSlug<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = findWalletItemByTransferSlug$SelectionSet<_$Scalars>;
+    interface findWalletItemByTransferSlug$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$WalletItem<_$Scalars> {
+        /**
+         * Arguments for `findWalletItemByTransferSlug` field. Some (1/2) arguments are required so you must include this.
+         */
+        $: findWalletItemByTransferSlug$Arguments<_$Scalars>;
+    }
+    interface findWalletItemByTransferSlug$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+        options?: $NamedTypes.$FindObjectsOptions<_$Scalars> | undefined | null;
+        transferSlug: string;
+    }
+    /**
+     * This is the "expanded" version of the `findWalletItemByTransferSlug` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type findWalletItemByTransferSlug$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<findWalletItemByTransferSlug$SelectionSet<_$Scalars>>;
     type findWalletItems<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = findWalletItems$SelectionSet<_$Scalars>;
     interface findWalletItems$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$WalletItem<_$Scalars> {
         /**
@@ -1605,6 +1630,23 @@ export declare namespace Query {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type findWalletItemTransferById$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<findWalletItemTransferById$SelectionSet<_$Scalars>>;
+    type findWalletItemTransferByTransferSlug<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = findWalletItemTransferByTransferSlug$SelectionSet<_$Scalars>;
+    interface findWalletItemTransferByTransferSlug$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$WalletItemTransfer<_$Scalars> {
+        /**
+         * Arguments for `findWalletItemTransferByTransferSlug` field. Some (1/2) arguments are required so you must include this.
+         */
+        $: findWalletItemTransferByTransferSlug$Arguments<_$Scalars>;
+    }
+    interface findWalletItemTransferByTransferSlug$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+        options?: $NamedTypes.$FindObjectsOptions<_$Scalars> | undefined | null;
+        transferSlug: string;
+    }
+    /**
+     * This is the "expanded" version of the `findWalletItemTransferByTransferSlug` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type findWalletItemTransferByTransferSlug$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<findWalletItemTransferByTransferSlug$SelectionSet<_$Scalars>>;
     type findWalletItemTransfers<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = findWalletItemTransfers$SelectionSet<_$Scalars>;
     interface findWalletItemTransfers$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$WalletItemTransfer<_$Scalars> {
         /**
@@ -2214,10 +2256,6 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      */
     acceptChannelInvitation?: Mutation.acceptChannelInvitation<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptChannelInvitation<_$Scalars>>;
     /**
-     * Select the `acceptChannelInvitationV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
-     */
-    acceptChannelInvitationV2?: Mutation.acceptChannelInvitationV2<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptChannelInvitationV2<_$Scalars>>;
-    /**
      * Select the `createChannelInvitation` field on the `Mutation` object. Its type is `ChannelInvitation` (a `OutputObject` kind of type).
      */
     createChannelInvitation?: Mutation.createChannelInvitation<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createChannelInvitation<_$Scalars>>;
@@ -2225,10 +2263,6 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      * Select the `declineChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     declineChannelInvitation?: Mutation.declineChannelInvitation<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.declineChannelInvitation<_$Scalars>>;
-    /**
-     * Select the `declineChannelInvitationV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
-     */
-    declineChannelInvitationV2?: Mutation.declineChannelInvitationV2<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.declineChannelInvitationV2<_$Scalars>>;
     /**
      * Select the `deleteChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
@@ -2241,10 +2275,6 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      * Select the `dismissChannelInvitationFromInbox` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     dismissChannelInvitationFromInbox?: Mutation.dismissChannelInvitationFromInbox<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.dismissChannelInvitationFromInbox<_$Scalars>>;
-    /**
-     * Select the `dismissChannelInvitationFromInboxV2` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
-     */
-    dismissChannelInvitationFromInboxV2?: Mutation.dismissChannelInvitationFromInboxV2<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.dismissChannelInvitationFromInboxV2<_$Scalars>>;
     /**
      * Select the `updateChannelInvitation` field on the `Mutation` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
@@ -2430,9 +2460,17 @@ export interface Mutation<_$Scalars extends $$Utilities.Schema.Scalar.Registry =
      */
     updateWalletItem?: Mutation.updateWalletItem<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.updateWalletItem<_$Scalars>>;
     /**
+     * Select the `acceptWalletItemTransfer` field on the `Mutation` object. Its type is `WalletItem` (a `OutputObject` kind of type).
+     */
+    acceptWalletItemTransfer?: Mutation.acceptWalletItemTransfer<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.acceptWalletItemTransfer<_$Scalars>>;
+    /**
      * Select the `createWalletItemTransfer` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
      */
     createWalletItemTransfer?: Mutation.createWalletItemTransfer<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.createWalletItemTransfer<_$Scalars>>;
+    /**
+     * Select the `declineWalletItemTransfer` field on the `Mutation` object. Its type is `WalletItem` (a `OutputObject` kind of type).
+     */
+    declineWalletItemTransfer?: Mutation.declineWalletItemTransfer<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Mutation.declineWalletItemTransfer<_$Scalars>>;
     /**
      * Select the `deleteWalletItemTransfer` field on the `Mutation` object. Its type is `ServiceRequest` (a `OutputObject` kind of type).
      */
@@ -3125,22 +3163,6 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type acceptChannelInvitation$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<acceptChannelInvitation$SelectionSet<_$Scalars>>;
-    type acceptChannelInvitationV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = acceptChannelInvitationV2$SelectionSet<_$Scalars>;
-    interface acceptChannelInvitationV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
-        /**
-         * Arguments for `acceptChannelInvitationV2` field. All arguments are required so you must include this.
-         */
-        $: acceptChannelInvitationV2$Arguments<_$Scalars>;
-    }
-    interface acceptChannelInvitationV2$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        id: string;
-    }
-    /**
-     * This is the "expanded" version of the `acceptChannelInvitationV2` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type acceptChannelInvitationV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<acceptChannelInvitationV2$SelectionSet<_$Scalars>>;
     type createChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = createChannelInvitation$SelectionSet<_$Scalars>;
     interface createChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ChannelInvitation<_$Scalars> {
         /**
@@ -3174,32 +3196,15 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type declineChannelInvitation$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<declineChannelInvitation$SelectionSet<_$Scalars>>;
-    type declineChannelInvitationV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = declineChannelInvitationV2$SelectionSet<_$Scalars>;
-    interface declineChannelInvitationV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
-        /**
-         * Arguments for `declineChannelInvitationV2` field. All arguments are required so you must include this.
-         */
-        $: declineChannelInvitationV2$Arguments<_$Scalars>;
-    }
-    interface declineChannelInvitationV2$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        $reasonTextId: $NamedTypes.$DeclineChannelInvitationReasonTextId;
-        id: string;
-    }
-    /**
-     * This is the "expanded" version of the `declineChannelInvitationV2` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type declineChannelInvitationV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<declineChannelInvitationV2$SelectionSet<_$Scalars>>;
     type deleteChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteChannelInvitation$SelectionSet<_$Scalars>;
     interface deleteChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `deleteChannelInvitation` field. All arguments are required so you must include this.
+         * Arguments for `deleteChannelInvitation` field. Some (1/2) arguments are required so you must include this.
          */
         $: deleteChannelInvitation$Arguments<_$Scalars>;
     }
     interface deleteChannelInvitation$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        deletePhysically: boolean;
+        deletePhysically?: boolean | undefined | null;
         channelInvitationId: string;
     }
     /**
@@ -3242,22 +3247,6 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type dismissChannelInvitationFromInbox$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<dismissChannelInvitationFromInbox$SelectionSet<_$Scalars>>;
-    type dismissChannelInvitationFromInboxV2<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = dismissChannelInvitationFromInboxV2$SelectionSet<_$Scalars>;
-    interface dismissChannelInvitationFromInboxV2$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
-        /**
-         * Arguments for `dismissChannelInvitationFromInboxV2` field. All arguments are required so you must include this.
-         */
-        $: dismissChannelInvitationFromInboxV2$Arguments<_$Scalars>;
-    }
-    interface dismissChannelInvitationFromInboxV2$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        id: string;
-    }
-    /**
-     * This is the "expanded" version of the `dismissChannelInvitationFromInboxV2` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type dismissChannelInvitationFromInboxV2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<dismissChannelInvitationFromInboxV2$SelectionSet<_$Scalars>>;
     type updateChannelInvitation<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = updateChannelInvitation$SelectionSet<_$Scalars>;
     interface updateChannelInvitation$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
@@ -3309,13 +3298,13 @@ export declare namespace Mutation {
     type deleteChannel<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteChannel$SelectionSet<_$Scalars>;
     interface deleteChannel$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `deleteChannel` field. All arguments are required so you must include this.
+         * Arguments for `deleteChannel` field. Some (1/3) arguments are required so you must include this.
          */
         $: deleteChannel$Arguments<_$Scalars>;
     }
     interface deleteChannel$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        anonymizePersonalData: boolean;
-        deletePhysically: boolean;
+        anonymizePersonalData?: boolean | undefined | null;
+        deletePhysically?: boolean | undefined | null;
         channelId: string;
     }
     /**
@@ -3425,12 +3414,12 @@ export declare namespace Mutation {
     type deleteChannelMessage<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteChannelMessage$SelectionSet<_$Scalars>;
     interface deleteChannelMessage$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
         /**
-         * Arguments for `deleteChannelMessage` field. All arguments are required so you must include this.
+         * Arguments for `deleteChannelMessage` field. Some (1/2) arguments are required so you must include this.
          */
         $: deleteChannelMessage$Arguments<_$Scalars>;
     }
     interface deleteChannelMessage$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
-        deletePhysically: boolean;
+        deletePhysically?: boolean | undefined | null;
         channelMessageId: string;
     }
     /**
@@ -4013,6 +4002,23 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type updateWalletItem$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<updateWalletItem$SelectionSet<_$Scalars>>;
+    type acceptWalletItemTransfer<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = acceptWalletItemTransfer$SelectionSet<_$Scalars>;
+    interface acceptWalletItemTransfer$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$WalletItem<_$Scalars> {
+        /**
+         * Arguments for `acceptWalletItemTransfer` field. All arguments are required so you must include this.
+         */
+        $: acceptWalletItemTransfer$Arguments<_$Scalars>;
+    }
+    interface acceptWalletItemTransfer$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+        transferSecret: string;
+        transferSlug: string;
+    }
+    /**
+     * This is the "expanded" version of the `acceptWalletItemTransfer` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type acceptWalletItemTransfer$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<acceptWalletItemTransfer$SelectionSet<_$Scalars>>;
     type createWalletItemTransfer<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = createWalletItemTransfer$SelectionSet<_$Scalars>;
     interface createWalletItemTransfer$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
         /**
@@ -4029,6 +4035,22 @@ export declare namespace Mutation {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type createWalletItemTransfer$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<createWalletItemTransfer$SelectionSet<_$Scalars>>;
+    type declineWalletItemTransfer<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = declineWalletItemTransfer$SelectionSet<_$Scalars>;
+    interface declineWalletItemTransfer$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$WalletItem<_$Scalars> {
+        /**
+         * Arguments for `declineWalletItemTransfer` field. All arguments are required so you must include this.
+         */
+        $: declineWalletItemTransfer$Arguments<_$Scalars>;
+    }
+    interface declineWalletItemTransfer$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+        transferSlug: string;
+    }
+    /**
+     * This is the "expanded" version of the `declineWalletItemTransfer` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type declineWalletItemTransfer$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<declineWalletItemTransfer$SelectionSet<_$Scalars>>;
     type deleteWalletItemTransfer<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = deleteWalletItemTransfer$SelectionSet<_$Scalars>;
     interface deleteWalletItemTransfer$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base, $NamedTypes.$ServiceRequest<_$Scalars> {
         /**
@@ -4624,7 +4646,7 @@ export type MastercardCardType = 'credit' | 'debit' | 'prepaid' | 'none' | 'notP
 export type UserIdentType = 'any' | 'email' | 'id' | 'inviteCode' | 'oauthProfileUrl' | 'oauthUserId' | 'phoneNumber' | 'userHandle';
 export type UserRole = 'admin' | 'support' | 'staff' | 'qa' | 'test';
 export type AppFeature = 'testFeatures1' | 'testFeatures2';
-export type NotificationType = 'accountDeletedConfirmation' | 'channelInvitationAccepted' | 'channelInvitationDeclined' | 'channelInvitationReceived' | 'channelMessageReceived' | 'completeProfile' | 'completeSignUp' | 'matchesRecommendations' | 'newPrivacyRules' | 'newsletter' | 'resetPasswordConfirmation' | 'resetPasswordConfirmToken' | 'sendFirstInvitation' | 'unset' | 'walletItemTransfer' | 'welcome';
+export type NotificationType = 'accountDeletedConfirmation' | 'channelInvitationAccepted' | 'channelInvitationDeclined' | 'channelInvitationReceived' | 'channelMessageReceived' | 'completeProfile' | 'completeSignUp' | 'matchesRecommendations' | 'newPrivacyRules' | 'newsletter' | 'resetPasswordConfirmation' | 'resetPasswordConfirmToken' | 'sendFirstInvitation' | 'unset' | 'welcome';
 export type IdentityProvider = 'apple' | 'facebook' | 'google' | 'instagram' | 'linkedIn' | 'microsoft' | 'own' | 'sso' | 'telegram' | 'twitter' | 'whatsApp';
 export type ModelType = 'AcademicExperience' | 'BusinessExperience' | 'Company' | 'DataDeletionRecord' | 'MentorBoard' | 'MentoringSession' | 'UserInbox' | 'UserMetadata' | 'UserPreferences' | 'AdminTask' | 'AnalyticsServiceRecord' | 'AnalyticsSynchronization' | 'UploadedAsset' | 'Channel' | 'ChannelInbox' | 'ChannelInvitation' | 'ChannelMessage' | 'ChannelParticipant' | 'ContentStatus' | 'Option' | 'ContentTag' | 'AppliedGroupRule' | 'Group' | 'GroupCms' | 'GroupMembership' | 'GroupRule' | 'GroupRuleConfig' | 'MastercardBank' | 'SupportChannelConfig' | 'GiftCardProduct' | 'MarketplaceServiceRecord' | 'Product' | 'ProductCategory' | 'Brand' | 'Match' | 'MatchProfile' | 'MatchingEngine' | 'UserSearch' | 'Notification' | 'NotificationTemplate' | 'Mm2Integration' | 'Mm2Synchronization' | 'Mm2SynchronizationResultItem' | 'ModerationConcern' | 'NatsMessage' | 'ApiAuthInfo' | 'Contact' | 'MultiStepAction' | 'MyUser' | 'ServiceRequest' | 'User' | 'UserDevice' | 'ServiceRecord' | 'TrackingEvent' | 'UserTracking' | 'Training' | 'TrainingContentPage' | 'TrainingSession' | 'PurchaseOrder' | 'PurchaseOrderItem' | 'ShoppingCart' | 'ShoppingCartItem' | 'Wallet' | 'WalletItem' | 'WalletItemTransfer' | 'WalletServiceRecord' | 'unset';
 export type UploadedAssetType = 'unset' | 'avatar' | 'profileHeroImage';
@@ -4651,7 +4673,7 @@ export type ServiceName = 'accounts' | 'admin' | 'adminJs' | 'analytics' | 'appE
 export type UserSearchType = 'search' | 'mentorRecommendation' | 'menteeRecommendation';
 export type UserSearchFieldOption = 'isTrue' | 'isFalse' | 'any' | 'match';
 export type UserSearchSubscriptionType = 'none' | 'daily' | 'weekly' | 'monthly';
-export type ServiceRequestType = 'graphQlMutationCreateAcademicExperience' | 'graphQlMutationDeleteAcademicExperience' | 'graphQlMutationUpdateAcademicExperience' | 'graphQlMutationCreateBusinessExperience' | 'graphQlMutationDeleteBusinessExperience' | 'graphQlMutationUpdateBusinessExperience' | 'graphQlMutationCreateCompany' | 'graphQlMutationDeleteCompany' | 'graphQlMutationUpdateCompany' | 'graphQlQueryFindAndUpdateAllMm2Users' | 'graphQlQueryUserInboxUser' | 'graphQlMutationCreateAdminTask' | 'graphQlMutationFindAdminTaskById' | 'graphQlMutationDeleteAdminTask' | 'graphQlMutationUpdateAdminTask' | 'graphQlQueryFindAdminTask' | 'graphQlQueryAdminTaskDefinitions' | 'graphQlMutationClearAllAnalyticsSyncInfo' | 'graphQlMutationCreateAnalyticsSynchronization' | 'graphQlMutationDeleteAnalyticsSynchronization' | 'graphQlMutationPauseAnalyticsSynchronization' | 'graphQlMutationRunAnalyticsSynchronization' | 'graphQlQueryFindAnalyticsServiceRecord' | 'graphQlQueryFindAnalyticsSynchronizationById' | 'graphQlMutationCreateUploadedAsset' | 'graphQlMutationDeleteUploadedAsset' | 'graphQlMutationFindUploadedAssetById' | 'graphQlMutationFindUploadedAssetForUser' | 'graphQlMutationInitAssetUpload' | 'graphQlMutationUpdateUploadedAsset' | 'graphQlQueryFindUploadedAssetById' | 'graphQlQueryFindUploadedAssets' | 'graphQlQueryFindUploadedAssetsForUser' | 'graphQlMutationAddChannelMessageEvent' | 'graphQlMutationArchiveChannelForUserByMe' | 'graphQlMutationCreateChannel' | 'graphQlMutationCreateChannelInvitation' | 'graphQlMutationCreateChannelMessage' | 'graphQlMutationCreateChannelParticipant' | 'graphQlMutationDeleteChannel' | 'graphQlMutationDeleteChannelInvitation' | 'graphQlMutationDeleteChannelMessage' | 'graphQlMutationDeleteChannelParticipant' | 'graphQlMutationDeleteGroup' | 'graphQlMutationDeleteGroupMembership' | 'graphQlMutationMarkChannelMessagesAsSeenByMe' | 'graphQlMutationUpdateChannel' | 'graphQlMutationUpdateChannelInvitation' | 'graphQlMutationUpdateChannelMessage' | 'graphQlMutationUpdateChannelParticipant' | 'graphQlQueryChannelInvitations' | 'graphQlQueryChannelMessageChannel' | 'graphQlQueryChannelParticipants' | 'graphQlQueryFindChannelById' | 'graphQlQueryFindChannelInvitationById' | 'graphQlQueryFindChannelInvitationsBetweenUsers' | 'graphQlQueryFindChannelInvitationsForUser' | 'graphQlQueryFindChannelMessageById' | 'graphQlQueryFindChannelMessages' | 'graphQlQueryFindChannelParticipantById' | 'graphQlQueryFindChannelParticipants' | 'graphQlQueryFindChannels' | 'graphQlQueryFindChannelsForUser' | 'graphQlQueryFindMyChannels' | 'graphQlQueryFindPendingChannelInvitationsForUser' | 'graphQlQueryMyContacts' | 'graphQlQueryMyInbox' | 'graphQlQueryUserChannels' | 'graphQlQueryUserCompanies' | 'graphQlQueryUserGroupMembers' | 'graphQlQueryUserGroups' | 'graphQlQueryFindCountries' | 'graphQlQueryFindExpertises' | 'graphQlQueryFindIndustries' | 'graphQlQueryFindOptions' | 'unset' | 'graphQlQueryContentTag' | 'graphQlMutationCreateContentTag' | 'graphQlMutationDeleteContentTag' | 'graphQlMutationUpdateContentTag' | 'graphQlMutationRunDataGenerator' | 'graphQlQueryNotificationTemplate' | 'graphQlQueryAvailableUserHandle' | 'graphQlQueryUser' | 'graphQlMutationAddUserToGroup' | 'graphQlMutationCreateGroup' | 'graphQlMutationCreateGroupMembership' | 'graphQlMutationCreateSupportChannelConfig' | 'graphQlMutationDeleteGroupCms' | 'graphQlMutationDeleteSupportChannelConfig' | 'graphQlMutationRemoveUserFromAllGroups' | 'graphQlMutationRemoveUserFromGroup' | 'graphQlMutationUpdateGroup' | 'graphQlMutationUpdateGroupMembership' | 'graphQlMutationUpdateSupportChannelConfig' | 'graphQlQueryFindGroupById' | 'graphQlQueryFindGroupByIdent' | 'graphQlQueryFindGroupCmsByGroupId' | 'graphQlQueryFindGroupCmsByGroupIdent' | 'graphQlQueryFindGroupCmsById' | 'graphQlQueryFindGroupMembershipByIdField' | 'graphQlQueryFindGroupMemberships' | 'graphQlQueryFindGroupsField' | 'graphQlQueryMyGroupMemberships' | 'graphQlQueryFindGiftCardProducts' | 'graphQlQueryFindMarketplaceServiceRecord' | 'graphQlQueryFindProductCategories' | 'graphQlQueryFindBrands' | 'graphQlMutationCreateUserSearch' | 'graphQlMutationDeleteUserSearch' | 'graphQlMutationUpdateUserSearch' | 'graphQlQueryFindUserSearchById' | 'graphQlQueryFindUserSearchResults' | 'graphQlQueryUserSearchFoundUsers' | 'graphQlMutationCreateNotification' | 'graphQlMutationCreateNotificationTemplate' | 'graphQlMutationDeleteNotification' | 'graphQlMutationDeleteNotificationTemplate' | 'graphQlMutationMarkInAppMessageReceived' | 'graphQlMutationSendMultiStepActionNotification' | 'graphQlMutationUpdateNotification' | 'graphQlMutationUpdateNotificationTemplate' | 'graphQlMutationCreateNatsMessage' | 'graphQlMutationClearAllSyncInfo' | 'graphQlMutationCreateMm2Synchronization' | 'graphQlMutationDeleteAllMm2DataInMm3' | 'graphQlMutationDeleteMm2Synchronization' | 'graphQlMutationRunMm2Synchronization' | 'graphQlQueryFindMm2SynchronizationById' | 'graphQlQueryGetMm2Integration' | 'graphQlMutationNlpLabelMessage' | 'graphQlMutationUpdateNlpConversation' | 'graphQlMutationUpdateNlpMessage' | 'graphQlQueryFindNlpConversation' | 'graphQlMutationAddFeatureToUser' | 'graphQlMutationBlockUser' | 'graphQlMutationCreateContact' | 'graphQlMutationCreateMultiStepAction' | 'graphQlMutationCreateUserDevice' | 'graphQlMutationDeleteMyUser' | 'graphQlMutationDeleteUser' | 'graphQlMutationEndMySession' | 'graphQlMutationRemoveFeatureFromUser' | 'graphQlMutationReportUser' | 'graphQlMutationSignInUser' | 'graphQlMutationSignMeOut' | 'graphQlMutationSignUpOauthUser' | 'graphQlMutationSignUpUser' | 'graphQlMutationStartMySession' | 'graphQlMutationUnblockUser' | 'graphQlMutationUpdateContact' | 'graphQlMutationUpdateMyUser' | 'graphQlMutationUpdateUser' | 'graphQlMutationUpdateUserDevice' | 'graphQlMutationUpsertBackgroundTask' | 'graphQlMutationVerifyMultiStepActionToken' | 'graphQlQueryBackgroundTask' | 'graphQlQueryContacts' | 'graphQlQueryContactTypes' | 'graphQlQueryFindAvailableUserHandle' | 'graphQlQueryFindContact' | 'graphQlQueryFindContactById' | 'graphQlQueryFindContacts' | 'graphQlQueryFindMyBlockedUsers' | 'graphQlQueryFindMyUser' | 'graphQlQueryFindMyUserDevices' | 'graphQlQueryFindUserById' | 'graphQlQueryFindUserByIdent' | 'graphQlQueryFindUserDeviceById' | 'graphQlQueryFindUserDevices' | 'graphQlQueryFindUsers' | 'graphQlQueryGetMultiStepActionProgress' | 'graphQlQueryLatestUserDevice' | 'graphQlQueryUnreadInAppMessages' | 'graphQlQueryVerifyMyPassword' | 'graphQlMutationCreateUserTracking' | 'graphQlMutationUpdateUserTracking' | 'graphQlQueryFindTrainingById' | 'graphQlQueryFindTrainingsForMe' | 'graphQlQueryFindTrainingsForUser' | 'graphQlQueryFindTrainingSessionById' | 'graphQlQueryFindTrainingSessionsByTrainingId' | 'graphQlQueryFindTrainingSessionsForMe' | 'graphQlMutationClearMyShoppingCart' | 'graphQlMutationClearShoppingCart' | 'graphQlMutationCreatePurchaseOrderField' | 'graphQlMutationCreateShoppingCartItem' | 'graphQlMutationCreateWalletItem' | 'graphQlMutationCreateWalletItemTransfer' | 'graphQlMutationCreateWalletTransfer' | 'graphQlMutationDeleteShoppingCartItem' | 'graphQlMutationDeleteWalletItem' | 'graphQlMutationDeleteWalletItemTransfer' | 'graphQlMutationUpdateShoppingCartItem' | 'graphQlMutationUpdateWalletItem' | 'graphQlMutationUpdateWalletItemTransfer' | 'graphQlQueryFindMyShoppingCart' | 'graphQlQueryFindMyWallet' | 'graphQlQueryFindPurchaseOrderItems' | 'graphQlQueryFindPurchaseOrders' | 'graphQlQueryFindShoppingCartItems' | 'graphQlQueryFindShoppingCarts' | 'graphQlQueryFindWalletItemById' | 'graphQlQueryFindWalletItems' | 'graphQlQueryFindWalletItemTransferById' | 'graphQlQueryFindWalletItemTransfers' | 'graphQlQueryFindWallets' | 'graphQlQueryFindWalletServiceRecord';
+export type ServiceRequestType = 'graphQlMutationCreateAcademicExperience' | 'graphQlMutationDeleteAcademicExperience' | 'graphQlMutationUpdateAcademicExperience' | 'graphQlMutationCreateBusinessExperience' | 'graphQlMutationDeleteBusinessExperience' | 'graphQlMutationUpdateBusinessExperience' | 'graphQlMutationCreateCompany' | 'graphQlMutationDeleteCompany' | 'graphQlMutationUpdateCompany' | 'graphQlQueryFindAndUpdateAllMm2Users' | 'graphQlQueryUserInboxUser' | 'graphQlMutationCreateAdminTask' | 'graphQlMutationFindAdminTaskById' | 'graphQlMutationDeleteAdminTask' | 'graphQlMutationUpdateAdminTask' | 'graphQlQueryFindAdminTask' | 'graphQlQueryAdminTaskDefinitions' | 'graphQlMutationClearAllAnalyticsSyncInfo' | 'graphQlMutationCreateAnalyticsSynchronization' | 'graphQlMutationDeleteAnalyticsSynchronization' | 'graphQlMutationPauseAnalyticsSynchronization' | 'graphQlMutationRunAnalyticsSynchronization' | 'graphQlQueryFindAnalyticsServiceRecord' | 'graphQlQueryFindAnalyticsSynchronizationById' | 'graphQlMutationCreateUploadedAsset' | 'graphQlMutationDeleteUploadedAsset' | 'graphQlMutationFindUploadedAssetById' | 'graphQlMutationFindUploadedAssetForUser' | 'graphQlMutationInitAssetUpload' | 'graphQlMutationUpdateUploadedAsset' | 'graphQlQueryFindUploadedAssetById' | 'graphQlQueryFindUploadedAssets' | 'graphQlQueryFindUploadedAssetsForUser' | 'graphQlMutationAddChannelMessageEvent' | 'graphQlMutationArchiveChannelForUserByMe' | 'graphQlMutationCreateChannel' | 'graphQlMutationCreateChannelInvitation' | 'graphQlMutationCreateChannelMessage' | 'graphQlMutationCreateChannelParticipant' | 'graphQlMutationDeleteChannel' | 'graphQlMutationDeleteChannelInvitation' | 'graphQlMutationDeleteChannelMessage' | 'graphQlMutationDeleteChannelParticipant' | 'graphQlMutationDeleteGroup' | 'graphQlMutationDeleteGroupMembership' | 'graphQlMutationMarkChannelMessagesAsSeenByMe' | 'graphQlMutationUpdateChannel' | 'graphQlMutationUpdateChannelInvitation' | 'graphQlMutationUpdateChannelMessage' | 'graphQlMutationUpdateChannelParticipant' | 'graphQlQueryChannelInvitations' | 'graphQlQueryChannelMessageChannel' | 'graphQlQueryChannelParticipants' | 'graphQlQueryFindChannelById' | 'graphQlQueryFindChannelInvitationById' | 'graphQlQueryFindChannelInvitationsBetweenUsers' | 'graphQlQueryFindChannelInvitationsForUser' | 'graphQlQueryFindChannelMessageById' | 'graphQlQueryFindChannelMessages' | 'graphQlQueryFindChannelParticipantById' | 'graphQlQueryFindChannelParticipants' | 'graphQlQueryFindChannels' | 'graphQlQueryFindChannelsForUser' | 'graphQlQueryFindMyChannels' | 'graphQlQueryFindPendingChannelInvitationsForUser' | 'graphQlQueryMyContacts' | 'graphQlQueryMyInbox' | 'graphQlQueryUserChannels' | 'graphQlQueryUserCompanies' | 'graphQlQueryUserGroupMembers' | 'graphQlQueryUserGroups' | 'graphQlQueryFindCountries' | 'graphQlQueryFindExpertises' | 'graphQlQueryFindIndustries' | 'graphQlQueryFindOptions' | 'unset' | 'graphQlQueryContentTag' | 'graphQlMutationCreateContentTag' | 'graphQlMutationDeleteContentTag' | 'graphQlMutationUpdateContentTag' | 'graphQlMutationRunDataGenerator' | 'graphQlQueryNotificationTemplate' | 'graphQlQueryAvailableUserHandle' | 'graphQlQueryUser' | 'graphQlMutationAddUserToGroup' | 'graphQlMutationCreateGroup' | 'graphQlMutationCreateGroupMembership' | 'graphQlMutationCreateSupportChannelConfig' | 'graphQlMutationDeleteGroupCms' | 'graphQlMutationDeleteSupportChannelConfig' | 'graphQlMutationRemoveUserFromAllGroups' | 'graphQlMutationRemoveUserFromGroup' | 'graphQlMutationUpdateGroup' | 'graphQlMutationUpdateGroupMembership' | 'graphQlMutationUpdateSupportChannelConfig' | 'graphQlQueryFindGroupById' | 'graphQlQueryFindGroupByIdent' | 'graphQlQueryFindGroupCmsByGroupId' | 'graphQlQueryFindGroupCmsByGroupIdent' | 'graphQlQueryFindGroupCmsById' | 'graphQlQueryFindGroupMembershipByIdField' | 'graphQlQueryFindGroupMemberships' | 'graphQlQueryFindGroupsField' | 'graphQlQueryMyGroupMemberships' | 'graphQlQueryFindGiftCardProducts' | 'graphQlQueryFindMarketplaceServiceRecord' | 'graphQlQueryFindProductCategories' | 'graphQlQueryFindBrands' | 'graphQlMutationCreateUserSearch' | 'graphQlMutationDeleteUserSearch' | 'graphQlMutationUpdateUserSearch' | 'graphQlQueryFindUserSearchById' | 'graphQlQueryFindUserSearchResults' | 'graphQlQueryUserSearchFoundUsers' | 'graphQlMutationCreateNotification' | 'graphQlMutationCreateNotificationTemplate' | 'graphQlMutationDeleteNotification' | 'graphQlMutationDeleteNotificationTemplate' | 'graphQlMutationMarkInAppMessageReceived' | 'graphQlMutationSendMultiStepActionNotification' | 'graphQlMutationUpdateNotification' | 'graphQlMutationUpdateNotificationTemplate' | 'graphQlMutationCreateNatsMessage' | 'graphQlMutationClearAllSyncInfo' | 'graphQlMutationCreateMm2Synchronization' | 'graphQlMutationDeleteAllMm2DataInMm3' | 'graphQlMutationDeleteMm2Synchronization' | 'graphQlMutationRunMm2Synchronization' | 'graphQlQueryFindMm2SynchronizationById' | 'graphQlQueryGetMm2Integration' | 'graphQlMutationNlpLabelMessage' | 'graphQlMutationUpdateNlpConversation' | 'graphQlMutationUpdateNlpMessage' | 'graphQlQueryFindNlpConversation' | 'graphQlMutationAddFeatureToUser' | 'graphQlMutationBlockUser' | 'graphQlMutationCreateContact' | 'graphQlMutationCreateMultiStepAction' | 'graphQlMutationCreateUserDevice' | 'graphQlMutationDeleteMyUser' | 'graphQlMutationDeleteUser' | 'graphQlMutationEndMySession' | 'graphQlMutationRemoveFeatureFromUser' | 'graphQlMutationReportUser' | 'graphQlMutationSignInUser' | 'graphQlMutationSignMeOut' | 'graphQlMutationSignUpOauthUser' | 'graphQlMutationSignUpUser' | 'graphQlMutationStartMySession' | 'graphQlMutationUnblockUser' | 'graphQlMutationUpdateContact' | 'graphQlMutationUpdateMyUser' | 'graphQlMutationUpdateUser' | 'graphQlMutationUpdateUserDevice' | 'graphQlMutationUpsertBackgroundTask' | 'graphQlMutationVerifyMultiStepActionToken' | 'graphQlQueryBackgroundTask' | 'graphQlQueryContacts' | 'graphQlQueryContactTypes' | 'graphQlQueryFindAvailableUserHandle' | 'graphQlQueryFindContact' | 'graphQlQueryFindContactById' | 'graphQlQueryFindContacts' | 'graphQlQueryFindMyBlockedUsers' | 'graphQlQueryFindMyUser' | 'graphQlQueryFindMyUserDevices' | 'graphQlQueryFindUserById' | 'graphQlQueryFindUserByIdent' | 'graphQlQueryFindUserDeviceById' | 'graphQlQueryFindUserDevices' | 'graphQlQueryFindUsers' | 'graphQlQueryGetMultiStepActionProgress' | 'graphQlQueryLatestUserDevice' | 'graphQlQueryUnreadInAppMessages' | 'graphQlQueryVerifyMyPassword' | 'graphQlMutationCreateUserTracking' | 'graphQlMutationUpdateUserTracking' | 'graphQlQueryFindTrainingById' | 'graphQlQueryFindTrainingsForMe' | 'graphQlQueryFindTrainingsForUser' | 'graphQlQueryFindTrainingSessionById' | 'graphQlQueryFindTrainingSessionsByTrainingId' | 'graphQlQueryFindTrainingSessionsForMe' | 'graphQlMutationAcceptWalletItemTransfer' | 'graphQlMutationClearMyShoppingCart' | 'graphQlMutationClearShoppingCart' | 'graphQlMutationCreatePurchaseOrderField' | 'graphQlMutationCreateShoppingCartItem' | 'graphQlMutationCreateWalletItem' | 'graphQlMutationCreateWalletItemTransfer' | 'graphQlMutationCreateWalletTransfer' | 'graphQlMutaionDeclineWalletItemTransfer' | 'graphQlMutationDeleteShoppingCartItem' | 'graphQlMutationDeleteWalletItem' | 'graphQlMutationDeleteWalletItemTransfer' | 'graphQlMutationUpdateShoppingCartItem' | 'graphQlMutationUpdateWalletItem' | 'graphQlMutationUpdateWalletItemTransfer' | 'graphQlQueryFindMyShoppingCart' | 'graphQlQueryFindMyWallet' | 'graphQlQueryFindPurchaseOrderItems' | 'graphQlQueryFindPurchaseOrders' | 'graphQlQueryFindShoppingCartItems' | 'graphQlQueryFindShoppingCarts' | 'graphQlQueryFindWalletItemById' | 'graphQlQueryFindWalletItemByTransferSlug' | 'graphQlQueryFindWalletItems' | 'graphQlQueryFindWalletItemTransferById' | 'graphQlQueryFindWalletItemTransferByTransferSlug' | 'graphQlQueryFindWalletItemTransfers' | 'graphQlQueryFindWallets' | 'graphQlQueryFindWalletServiceRecord';
 export type ServiceRequestResult = 'ok' | 'error' | 'unset';
 export type ServiceRequestMessageId = 'systemError' | 'invalidInput' | 'groupRuleFailed' | 'unknown';
 export type ErrorCode = 'academicExperienceNameMissing' | 'academicExperienceUserIdMissing' | 'businessExperienceNameMissing' | 'businessExperienceUserIdMissing' | 'companyNameMissing' | 'companyNameTaken' | 'assetUploadFailed' | 'contentTagAlreadyExist' | 'contentTagModelTypeMissing' | 'contentTagObjectIdMissing' | 'contentTagTypeMissing' | 'failedToConnect' | 'failedToUpdate' | 'unknown' | 'alreadyGroupMember' | 'groupLevelTooDeep' | 'groupNameMissing' | 'groupNameTaken' | 'groupNotActive' | 'groupRuleFailed' | 'groupSlugMissing' | 'groupSlugTaken' | 'notAGroupMember' | 'parentGroupNotFound' | 'matchingEngineNameMissing' | 'matchingEngineNameTaken' | 'expertiseBidirectionalMappingError' | 'expertiseTextIdDNE' | 'alreadyExists' | 'alreadyInitialized' | 'dataValidationFailed' | 'exceedsLimit' | 'invalidInput' | 'noLiveWebsocketConnectionAvailable' | 'noNotificationMethodAvailable' | 'notAllowed' | 'notFound' | 'notImplemented' | 'notInitialized' | 'notSupported' | 'serviceNotAvailable' | 'systemError' | 'timeout' | 'tooManyRequests' | 'natsInvalidTrackId' | 'authTokenNoMatch' | 'currentPasswordIncorrect' | 'currentPasswordMissing' | 'deviceUuidMissing' | 'emailInvalid' | 'emailMissing' | 'failedToCreateAccount' | 'failedToSignin' | 'invalidPushNotificationToken' | 'passwordMissing' | 'passwordNoMatch' | 'phoneNumberInvalid' | 'phoneNumberMissing' | 'phoneNumberNotSupported' | 'unauthorized' | 'userAlreadyExists' | 'userAnonymized' | 'userDeviceNotFound' | 'userNotActive' | 'userNotFound' | 'notAvailable' | 'trackingInvalidTrackId' | 'trainingCannotUpdateFields' | 'trainingContentPageCannotUpdateFields' | 'trainingContentPageMm2IdMissing' | 'trainingContentPageMm2IdTaken' | 'trainingMm2IdMissing' | 'trainingMm2IdTaken' | 'trainingSessionCannotUpdateFields' | 'trainingSessionMm2IdMissing' | 'trainingSessionMm2IdTaken' | 'trainingSessionProgressInvalid' | 'trainingSessionTrainingMissing' | 'trainingSessionUserIdMissing';
@@ -4665,7 +4687,7 @@ export type CookieChoiceTextId = 'acceptAll' | 'rejectAll' | 'acceptEssentials';
 export type ReportUserReasonTextId = 'notSet' | 'badActor' | 'fakePerson' | 'harasses' | 'impersonator' | 'inappropriate' | 'objectionableLanguage' | 'promotesHate' | 'sharesObjectionableContent' | 'spammer' | 'usesObjectionableLanguage' | 'violatesRules';
 export type DeclineChannelInvitationReasonTextId = 'notGoodFit' | 'tooBusy' | 'noReason' | 'fakeProfile' | 'inappropriate';
 export type ChannelMessageEvent = 'received' | 'seen' | 'unset';
-export type NotificationTemplateName = 'accountDeletedConfirmation' | 'channelInvitationAcceptedForMentee' | 'channelInvitationAcceptedForMentor' | 'channelInvitationDeclinedForMentee' | 'channelInvitationDeclinedForMentor' | 'channelInvitationReceivedForMentee' | 'channelInvitationReceivedForMentor' | 'channelMessageReceivedForMentee' | 'channelMessageReceivedForMentor' | 'completeProfileForMentee' | 'completeProfileForMentor' | 'completeSignUpForMentee' | 'completeSignUpForMentor' | 'matchesRecommendationsForMentee' | 'matchesRecommendationsForMentor' | 'newPrivacyRules' | 'newsletter' | 'resetPasswordConfirmation' | 'resetPasswordConfirmToken' | 'sendFirstInvitationForMentee' | 'sendFirstInvitationForMentor' | 'unset' | 'walletItemTransfer' | 'welcomeForMentee' | 'welcomeForMentor';
+export type NotificationTemplateName = 'accountDeletedConfirmation' | 'channelInvitationAcceptedForMentee' | 'channelInvitationAcceptedForMentor' | 'channelInvitationDeclinedForMentee' | 'channelInvitationDeclinedForMentor' | 'channelInvitationReceivedForMentee' | 'channelInvitationReceivedForMentor' | 'channelMessageReceivedForMentee' | 'channelMessageReceivedForMentor' | 'completeProfileForMentee' | 'completeProfileForMentor' | 'completeSignUpForMentee' | 'completeSignUpForMentor' | 'matchesRecommendationsForMentee' | 'matchesRecommendationsForMentor' | 'newPrivacyRules' | 'newsletter' | 'resetPasswordConfirmation' | 'resetPasswordConfirmToken' | 'sendFirstInvitationForMentee' | 'sendFirstInvitationForMentor' | 'unset' | 'welcomeForMentee' | 'welcomeForMentor';
 export type ChannelChangedEventType = 'channelDeleted' | 'channelUpdated' | 'invitationAccepted' | 'invitationCreated' | 'invitationDeclined' | 'invitationDeleted' | 'invitationUpdated' | 'messageCreated' | 'messageDeleted' | 'messageStatusChanged' | 'messageUpdated' | 'participantCreated' | 'participantDeleted' | 'participantUpdated';
 export type ObjectChangedEventType = 'created' | 'updated' | 'deleted' | 'anonymized';
 export interface FindObjectsOptions<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
@@ -5467,6 +5489,7 @@ export interface WalletItemInput<_$Scalars extends $$Utilities.Schema.Scalar.Reg
     expiresAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
     balanceUpdatedAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
     transferredAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
+    transferAcceptedAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
     archivedAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
 }
 export interface WalletItemListFilter<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
@@ -5497,7 +5520,9 @@ export interface WalletItemTransferInput<_$Scalars extends $$Utilities.Schema.Sc
     recipientFullName?: string | undefined | null;
     subjectText?: string | undefined | null;
     messageText?: string | undefined | null;
+    transferSlug?: string | undefined | null;
     sentAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
+    acceptedAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
     canceledAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
     archivedAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
 }
@@ -6204,9 +6229,9 @@ export interface NotificationInput<_$Scalars extends $$Utilities.Schema.Scalar.R
     $notificationType?: $NamedTypes.$NotificationType | undefined | null;
     templateId?: string | undefined | null;
     templateName?: string | undefined | null;
-    senderId?: string | undefined | null;
     recipientId?: string | undefined | null;
     multiStepActionId?: string | undefined | null;
+    initiatorId?: string | undefined | null;
     replyingToId?: string | undefined | null;
     title?: string | undefined | null;
     messageText?: string | undefined | null;
@@ -6219,12 +6244,11 @@ export interface NotificationInput<_$Scalars extends $$Utilities.Schema.Scalar.R
     $action1?: $NamedTypes.$AppAction | undefined | null;
     $action2?: $NamedTypes.$AppAction | undefined | null;
     $actionTaken?: $NamedTypes.$AppAction | undefined | null;
-    allowRecipientWithoutAccount?: boolean | undefined | null;
-    allowSendingToSuspendedUser?: boolean | undefined | null;
     sendEmail?: boolean | undefined | null;
     sendInAppMessage?: boolean | undefined | null;
     sendPushNotification?: boolean | undefined | null;
     sendSms?: boolean | undefined | null;
+    allowSendingToSuspendedUser?: boolean | undefined | null;
     emailSentAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
     inAppMessageSentAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
     inAppMessageReceivedAt?: $$Utilities.Schema.Scalar.GetDecoded<$$Utilities.Schema.Scalar.LookupCustomScalarOrFallbackToString<'DateTimeISO', _$Scalars>> | undefined | null;
@@ -6292,8 +6316,6 @@ export interface NotificationTemplateInput<_$Scalars extends $$Utilities.Schema.
     $action0?: $NamedTypes.$AppAction | undefined | null;
     $action1?: $NamedTypes.$AppAction | undefined | null;
     $action2?: $NamedTypes.$AppAction | undefined | null;
-    allowRecipientWithoutAccount?: boolean | undefined | null;
-    allowSendingToSuspendedUser?: boolean | undefined | null;
     sendEmail?: boolean | undefined | null;
     sendInAppMessage?: boolean | undefined | null;
     sendPushNotification?: boolean | undefined | null;
@@ -15720,10 +15742,6 @@ export interface Notification<_$Scalars extends $$Utilities.Schema.Scalar.Regist
      */
     templateId?: Notification.templateId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Notification.templateId<_$Scalars>>;
     /**
-     * Select the `senderId` field on the `Notification` object. Its type is `ID` (a `ScalarStandard` kind of type).
-     */
-    senderId?: Notification.senderId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Notification.senderId<_$Scalars>>;
-    /**
      * Select the `recipientId` field on the `Notification` object. Its type is `ID` (a `ScalarStandard` kind of type).
      */
     recipientId?: Notification.recipientId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Notification.recipientId<_$Scalars>>;
@@ -15731,6 +15749,10 @@ export interface Notification<_$Scalars extends $$Utilities.Schema.Scalar.Regist
      * Select the `multiStepActionId` field on the `Notification` object. Its type is `ID` (a `ScalarStandard` kind of type).
      */
     multiStepActionId?: Notification.multiStepActionId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Notification.multiStepActionId<_$Scalars>>;
+    /**
+     * Select the `initiatorId` field on the `Notification` object. Its type is `ID` (a `ScalarStandard` kind of type).
+     */
+    initiatorId?: Notification.initiatorId$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Notification.initiatorId<_$Scalars>>;
     /**
      * Select the `replyingToId` field on the `Notification` object. Its type is `ID` (a `ScalarStandard` kind of type).
      */
@@ -15779,14 +15801,6 @@ export interface Notification<_$Scalars extends $$Utilities.Schema.Scalar.Regist
      * Select the `actionTaken` field on the `Notification` object. Its type is `AppAction` (a `Enum` kind of type).
      */
     actionTaken?: Notification.actionTaken$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Notification.actionTaken<_$Scalars>>;
-    /**
-     * Select the `allowRecipientWithoutAccount` field on the `Notification` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
-     */
-    allowRecipientWithoutAccount?: Notification.allowRecipientWithoutAccount$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Notification.allowRecipientWithoutAccount<_$Scalars>>;
-    /**
-     * Select the `allowSendingToSuspendedUser` field on the `Notification` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
-     */
-    allowSendingToSuspendedUser?: Notification.allowSendingToSuspendedUser$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<Notification.allowSendingToSuspendedUser<_$Scalars>>;
     /**
      * Select the `sendEmail` field on the `Notification` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
      */
@@ -15970,15 +15984,6 @@ export declare namespace Notification {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type templateId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | templateId$SelectionSet<_$Scalars>>;
-    type senderId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | senderId$SelectionSet<_$Scalars>;
-    interface senderId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `senderId` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type senderId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | senderId$SelectionSet<_$Scalars>>;
     type recipientId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | recipientId$SelectionSet<_$Scalars>;
     interface recipientId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -15997,6 +16002,15 @@ export declare namespace Notification {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type multiStepActionId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | multiStepActionId$SelectionSet<_$Scalars>>;
+    type initiatorId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | initiatorId$SelectionSet<_$Scalars>;
+    interface initiatorId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `initiatorId` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type initiatorId$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | initiatorId$SelectionSet<_$Scalars>>;
     type replyingToId<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | replyingToId$SelectionSet<_$Scalars>;
     interface replyingToId$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -16105,24 +16119,6 @@ export declare namespace Notification {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type actionTaken$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | actionTaken$SelectionSet<_$Scalars>>;
-    type allowRecipientWithoutAccount<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | allowRecipientWithoutAccount$SelectionSet<_$Scalars>;
-    interface allowRecipientWithoutAccount$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `allowRecipientWithoutAccount` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type allowRecipientWithoutAccount$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | allowRecipientWithoutAccount$SelectionSet<_$Scalars>>;
-    type allowSendingToSuspendedUser<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | allowSendingToSuspendedUser$SelectionSet<_$Scalars>;
-    interface allowSendingToSuspendedUser$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `allowSendingToSuspendedUser` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type allowSendingToSuspendedUser$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | allowSendingToSuspendedUser$SelectionSet<_$Scalars>>;
     type sendEmail<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sendEmail$SelectionSet<_$Scalars>;
     interface sendEmail$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -28625,6 +28621,10 @@ export interface WalletItem<_$Scalars extends $$Utilities.Schema.Scalar.Registry
      */
     transferredAt?: WalletItem.transferredAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.transferredAt<_$Scalars>>;
     /**
+     * Select the `transferAcceptedAt` field on the `WalletItem` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+     */
+    transferAcceptedAt?: WalletItem.transferAcceptedAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.transferAcceptedAt<_$Scalars>>;
+    /**
      * Select the `archivedAt` field on the `WalletItem` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
      */
     archivedAt?: WalletItem.archivedAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItem.archivedAt<_$Scalars>>;
@@ -28971,6 +28971,15 @@ export declare namespace WalletItem {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type transferredAt$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | transferredAt$SelectionSet<_$Scalars>>;
+    type transferAcceptedAt<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | transferAcceptedAt$SelectionSet<_$Scalars>;
+    interface transferAcceptedAt$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `transferAcceptedAt` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type transferAcceptedAt$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | transferAcceptedAt$SelectionSet<_$Scalars>>;
     type archivedAt<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | archivedAt$SelectionSet<_$Scalars>;
     interface archivedAt$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -29047,9 +29056,21 @@ export interface WalletItemTransfer<_$Scalars extends $$Utilities.Schema.Scalar.
      */
     messageText?: WalletItemTransfer.messageText$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.messageText<_$Scalars>>;
     /**
+     * Select the `transferSlug` field on the `WalletItemTransfer` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    transferSlug?: WalletItemTransfer.transferSlug$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.transferSlug<_$Scalars>>;
+    /**
+     * Select the `transferSecret` field on the `WalletItemTransfer` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    transferSecret?: WalletItemTransfer.transferSecret$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.transferSecret<_$Scalars>>;
+    /**
      * Select the `sentAt` field on the `WalletItemTransfer` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
      */
     sentAt?: WalletItemTransfer.sentAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.sentAt<_$Scalars>>;
+    /**
+     * Select the `acceptedAt` field on the `WalletItemTransfer` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
+     */
+    acceptedAt?: WalletItemTransfer.acceptedAt$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.acceptedAt<_$Scalars>>;
     /**
      * Select the `canceledAt` field on the `WalletItemTransfer` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
      */
@@ -29221,6 +29242,24 @@ export declare namespace WalletItemTransfer {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type messageText$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | messageText$SelectionSet<_$Scalars>>;
+    type transferSlug<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | transferSlug$SelectionSet<_$Scalars>;
+    interface transferSlug$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `transferSlug` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type transferSlug$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | transferSlug$SelectionSet<_$Scalars>>;
+    type transferSecret<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | transferSecret$SelectionSet<_$Scalars>;
+    interface transferSecret$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `transferSecret` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type transferSecret$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | transferSecret$SelectionSet<_$Scalars>>;
     type sentAt<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sentAt$SelectionSet<_$Scalars>;
     interface sentAt$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -29230,6 +29269,15 @@ export declare namespace WalletItemTransfer {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type sentAt$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sentAt$SelectionSet<_$Scalars>>;
+    type acceptedAt<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | acceptedAt$SelectionSet<_$Scalars>;
+    interface acceptedAt$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `acceptedAt` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type acceptedAt$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | acceptedAt$SelectionSet<_$Scalars>>;
     type canceledAt<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | canceledAt$SelectionSet<_$Scalars>;
     interface canceledAt$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -38563,14 +38611,6 @@ export interface NotificationTemplate<_$Scalars extends $$Utilities.Schema.Scala
      */
     action2?: NotificationTemplate.action2$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<NotificationTemplate.action2<_$Scalars>>;
     /**
-     * Select the `allowRecipientWithoutAccount` field on the `NotificationTemplate` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
-     */
-    allowRecipientWithoutAccount?: NotificationTemplate.allowRecipientWithoutAccount$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<NotificationTemplate.allowRecipientWithoutAccount<_$Scalars>>;
-    /**
-     * Select the `allowSendingToSuspendedUser` field on the `NotificationTemplate` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
-     */
-    allowSendingToSuspendedUser?: NotificationTemplate.allowSendingToSuspendedUser$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<NotificationTemplate.allowSendingToSuspendedUser<_$Scalars>>;
-    /**
      * Select the `sendEmail` field on the `NotificationTemplate` object. Its type is `Boolean` (a `ScalarStandard` kind of type).
      */
     sendEmail?: NotificationTemplate.sendEmail$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<NotificationTemplate.sendEmail<_$Scalars>>;
@@ -38987,24 +39027,6 @@ export declare namespace NotificationTemplate {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type action2$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | action2$SelectionSet<_$Scalars>>;
-    type allowRecipientWithoutAccount<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | allowRecipientWithoutAccount$SelectionSet<_$Scalars>;
-    interface allowRecipientWithoutAccount$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `allowRecipientWithoutAccount` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type allowRecipientWithoutAccount$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | allowRecipientWithoutAccount$SelectionSet<_$Scalars>>;
-    type allowSendingToSuspendedUser<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | allowSendingToSuspendedUser$SelectionSet<_$Scalars>;
-    interface allowSendingToSuspendedUser$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
-    }
-    /**
-     * This is the "expanded" version of the `allowSendingToSuspendedUser` type. It is identical except for the fact
-     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
-     * In some cases, this is a preferable DX, making the types easier to read for users.
-     */
-    type allowSendingToSuspendedUser$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | allowSendingToSuspendedUser$SelectionSet<_$Scalars>>;
     type sendEmail<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sendEmail$SelectionSet<_$Scalars>;
     interface sendEmail$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }

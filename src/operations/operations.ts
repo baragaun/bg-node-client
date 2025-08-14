@@ -76,9 +76,12 @@ import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
 import findMyWallet from './wallet/findMyWallet.js';
 import createWalletItem from './walletItem/createWalletItem.js';
+import findWalletItemByTransferSlug from './walletItem/findWalletItemByTransferSlug.js';
 import findWalletItems from './walletItem/findWalletItems.js';
 import updateWalletItem from './walletItem/updateWalletItem.js';
+import acceptWalletItemTransfer from './walletItemTransfer/acceptWalletItemTransfer.js';
 import createWalletItemTransfer from './walletItemTransfer/createWalletItemTransfer.js';
+import declineWalletItemTransfer from './walletItemTransfer/declineWalletItemTransfer.js';
 import findWalletItemTransfers from './walletItemTransfer/findWalletItemTransfers.js';
 
 const operations: Operations = {
@@ -204,11 +207,14 @@ const operations: Operations = {
   walletItem: {
     createWalletItem,
     findWalletItems,
+    findWalletItemByTransferSlug,
     updateWalletItem,
   },
 
   walletItemTransfer: {
+    acceptWalletItemTransfer,
     createWalletItemTransfer,
+    declineWalletItemTransfer,
     findWalletItemTransfers,
   },
 };
