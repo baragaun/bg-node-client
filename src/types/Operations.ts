@@ -482,16 +482,20 @@ export interface Operations {
       transferSlug: string,
     ) => Promise<QueryResult<WalletItem>>;
 
+    createWalletItemTransfer: (
+      props: Partial<WalletItemTransfer>,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
+
+    declineWalletItemTransfer: (
+      transferSlug: string,
+    ) => Promise<QueryResult<ServiceRequest>>;
+
     findWalletItemTransfers: (
       filter: WalletItemTransferListFilter | null | undefined,
       match: Partial<WalletItemTransfer> | null | undefined,
       selector: MangoQueryTypes<Channel> | null | undefined,
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
-    ) => Promise<QueryResult<WalletItemTransfer>>;
-
-    createWalletItemTransfer: (
-      props: Partial<WalletItemTransfer>,
     ) => Promise<QueryResult<WalletItemTransfer>>;
   }
 }

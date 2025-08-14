@@ -101,7 +101,6 @@ export namespace Schema {
       findWalletItemById: Query.findWalletItemById;
       findWalletItemByTransferSlug: Query.findWalletItemByTransferSlug;
       findWalletItems: Query.findWalletItems;
-      acceptWalletItemTransfer: Query.acceptWalletItemTransfer;
       findWalletItemTransferById: Query.findWalletItemTransferById;
       findWalletItemTransferByTransferSlug: Query.findWalletItemTransferByTransferSlug;
       findWalletItemTransfers: Query.findWalletItemTransfers;
@@ -1563,27 +1562,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$WalletItem;
     }
 
-    export interface acceptWalletItemTransfer {
-      kind: 'OutputField';
-      name: 'acceptWalletItemTransfer';
-      arguments: {
-        transferSecret: {
-          kind: 'InputField';
-          name: 'transferSecret';
-          inlineType: [1];
-          namedType: $$NamedTypes.$$String;
-        };
-        transferSlug: {
-          kind: 'InputField';
-          name: 'transferSlug';
-          inlineType: [1];
-          namedType: $$NamedTypes.$$String;
-        };
-      };
-      inlineType: [0];
-      namedType: $$NamedTypes.$$WalletItem;
-    }
-
     export interface findWalletItemTransferById {
       kind: 'OutputField';
       name: 'findWalletItemTransferById';
@@ -2296,7 +2274,9 @@ export namespace Schema {
       createWalletItem: Mutation.createWalletItem;
       deleteWalletItem: Mutation.deleteWalletItem;
       updateWalletItem: Mutation.updateWalletItem;
+      acceptWalletItemTransfer: Mutation.acceptWalletItemTransfer;
       createWalletItemTransfer: Mutation.createWalletItemTransfer;
+      declineWalletItemTransfer: Mutation.declineWalletItemTransfer;
       deleteWalletItemTransfer: Mutation.deleteWalletItemTransfer;
       updateWalletItemTransfer: Mutation.updateWalletItemTransfer;
       createUserSearch: Mutation.createUserSearch;
@@ -3903,6 +3883,27 @@ export namespace Schema {
       namedType: $$NamedTypes.$$ServiceRequest;
     }
 
+    export interface acceptWalletItemTransfer {
+      kind: 'OutputField';
+      name: 'acceptWalletItemTransfer';
+      arguments: {
+        transferSecret: {
+          kind: 'InputField';
+          name: 'transferSecret';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
     export interface createWalletItemTransfer {
       kind: 'OutputField';
       name: 'createWalletItemTransfer';
@@ -3912,6 +3913,21 @@ export namespace Schema {
           name: 'input';
           inlineType: [1];
           namedType: $$NamedTypes.$$WalletItemTransferInput;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
+    export interface declineWalletItemTransfer {
+      kind: 'OutputField';
+      name: 'declineWalletItemTransfer';
+      arguments: {
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
         };
       };
       inlineType: [1];
@@ -43449,6 +43465,7 @@ export namespace Schema {
       'graphQlQueryFindTrainingSessionById',
       'graphQlQueryFindTrainingSessionsByTrainingId',
       'graphQlQueryFindTrainingSessionsForMe',
+      'graphQlMutationAcceptWalletItemTransfer',
       'graphQlMutationClearMyShoppingCart',
       'graphQlMutationClearShoppingCart',
       'graphQlMutationCreatePurchaseOrderField',
@@ -43456,13 +43473,13 @@ export namespace Schema {
       'graphQlMutationCreateWalletItem',
       'graphQlMutationCreateWalletItemTransfer',
       'graphQlMutationCreateWalletTransfer',
+      'graphQlMutaionDeclineWalletItemTransfer',
       'graphQlMutationDeleteShoppingCartItem',
       'graphQlMutationDeleteWalletItem',
       'graphQlMutationDeleteWalletItemTransfer',
       'graphQlMutationUpdateShoppingCartItem',
       'graphQlMutationUpdateWalletItem',
       'graphQlMutationUpdateWalletItemTransfer',
-      'graphQlQueryAcceptWalletItemTransfer',
       'graphQlQueryFindMyShoppingCart',
       'graphQlQueryFindMyWallet',
       'graphQlQueryFindPurchaseOrderItems',
@@ -43662,6 +43679,7 @@ export namespace Schema {
       | 'graphQlQueryFindTrainingSessionById'
       | 'graphQlQueryFindTrainingSessionsByTrainingId'
       | 'graphQlQueryFindTrainingSessionsForMe'
+      | 'graphQlMutationAcceptWalletItemTransfer'
       | 'graphQlMutationClearMyShoppingCart'
       | 'graphQlMutationClearShoppingCart'
       | 'graphQlMutationCreatePurchaseOrderField'
@@ -43669,13 +43687,13 @@ export namespace Schema {
       | 'graphQlMutationCreateWalletItem'
       | 'graphQlMutationCreateWalletItemTransfer'
       | 'graphQlMutationCreateWalletTransfer'
+      | 'graphQlMutaionDeclineWalletItemTransfer'
       | 'graphQlMutationDeleteShoppingCartItem'
       | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationDeleteWalletItemTransfer'
       | 'graphQlMutationUpdateShoppingCartItem'
       | 'graphQlMutationUpdateWalletItem'
       | 'graphQlMutationUpdateWalletItemTransfer'
-      | 'graphQlQueryAcceptWalletItemTransfer'
       | 'graphQlQueryFindMyShoppingCart'
       | 'graphQlQueryFindMyWallet'
       | 'graphQlQueryFindPurchaseOrderItems'

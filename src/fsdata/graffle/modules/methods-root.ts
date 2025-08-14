@@ -1291,26 +1291,6 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
-  acceptWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Query.acceptWalletItemTransfer<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { acceptWalletItemTransfer: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'acceptWalletItemTransfer'
-      >
-    >
-  >;
-
   findWalletItemTransferById: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -3539,6 +3519,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  acceptWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.acceptWalletItemTransfer<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { acceptWalletItemTransfer: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'acceptWalletItemTransfer'
+      >
+    >
+  >;
+
   createWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -3555,6 +3555,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'createWalletItemTransfer'
+      >
+    >
+  >;
+
+  declineWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.declineWalletItemTransfer<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { declineWalletItemTransfer: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'declineWalletItemTransfer'
       >
     >
   >;

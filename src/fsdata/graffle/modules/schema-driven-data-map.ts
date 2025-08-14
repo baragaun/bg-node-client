@@ -8729,19 +8729,6 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
-    acceptWalletItemTransfer: {
-      a: {
-        transferSecret: {
-          nt: String,
-          it: [1],
-        },
-        transferSlug: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
-    },
     findWalletItemTransferById: {
       a: {
         options: {
@@ -10017,10 +10004,32 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
+    acceptWalletItemTransfer: {
+      a: {
+        transferSecret: {
+          nt: String,
+          it: [1],
+        },
+        transferSlug: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     createWalletItemTransfer: {
       a: {
         input: {
           nt: WalletItemTransferInput,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
+    declineWalletItemTransfer: {
+      a: {
+        transferSlug: {
+          nt: String,
           it: [1],
         },
       },
@@ -10967,7 +10976,6 @@ Query.f['findMyShoppingCart']!.nt = ShoppingCart;
 Query.f['findWalletItemById']!.nt = WalletItem;
 Query.f['findWalletItemByTransferSlug']!.nt = WalletItem;
 Query.f['findWalletItems']!.nt = WalletItem;
-Query.f['acceptWalletItemTransfer']!.nt = WalletItem;
 Query.f['findWalletItemTransferById']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransferByTransferSlug']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransfers']!.nt = WalletItemTransfer;
@@ -11057,7 +11065,9 @@ Mutation.f['clearShoppingCart']!.nt = ServiceRequest;
 Mutation.f['createWalletItem']!.nt = WalletItem;
 Mutation.f['deleteWalletItem']!.nt = ServiceRequest;
 Mutation.f['updateWalletItem']!.nt = ServiceRequest;
+Mutation.f['acceptWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['createWalletItemTransfer']!.nt = ServiceRequest;
+Mutation.f['declineWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['deleteWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['updateWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['createUserSearch']!.nt = UserSearch;

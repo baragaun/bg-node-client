@@ -81,6 +81,7 @@ import findWalletItems from './walletItem/findWalletItems.js';
 import updateWalletItem from './walletItem/updateWalletItem.js';
 import acceptWalletItemTransfer from './walletItemTransfer/acceptWalletItemTransfer.js';
 import createWalletItemTransfer from './walletItemTransfer/createWalletItemTransfer.js';
+import declineWalletItemTransfer from './walletItemTransfer/declineWalletItemTransfer.js';
 import findWalletItemTransfers from './walletItemTransfer/findWalletItemTransfers.js';
 
 const operations: Operations = {
@@ -211,9 +212,10 @@ const operations: Operations = {
   },
 
   walletItemTransfer: {
-    createWalletItemTransfer,
-    findWalletItemTransfers,
     acceptWalletItemTransfer,
+    createWalletItemTransfer,
+    declineWalletItemTransfer,
+    findWalletItemTransfers,
   },
 };
 

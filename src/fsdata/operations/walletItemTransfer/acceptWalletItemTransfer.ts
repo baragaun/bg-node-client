@@ -8,7 +8,7 @@ import { QueryOptions } from '../../../types/QueryOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
   ErrorCode,
-  QueryAcceptWalletItemTransferArgs,
+  MutationAcceptWalletItemTransferArgs,
   ServiceRequest as ServiceRequestFromGql,
   ServiceRequestResult as ServiceRequestResultFromGql,
 } from '../../gql/graphql.js';
@@ -36,12 +36,12 @@ const acceptWalletItemTransfer = async (
     }
 
     const client = graffleClientStore.get();
-    const args: QueryAcceptWalletItemTransferArgs = {
+    const args: MutationAcceptWalletItemTransferArgs = {
       transferSecret,
       transferSlug,
     };
 
-    const response: ResponseDataType = await client.query.acceptWalletItemTransfer({
+    const response: ResponseDataType = await client.mutation.acceptWalletItemTransfer({
       $: args,
       ...modelFields.serviceRequest,
     });

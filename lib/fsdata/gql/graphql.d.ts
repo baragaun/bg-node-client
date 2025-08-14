@@ -2777,6 +2777,7 @@ export declare enum MultiStepActionType {
 export type Mutation = {
     __typename?: 'Mutation';
     acceptChannelInvitation: Scalars['String']['output'];
+    acceptWalletItemTransfer?: Maybe<WalletItem>;
     addAppFeatureToUser: Scalars['String']['output'];
     addChannelMessageEvent: Scalars['String']['output'];
     addUserToGroup: ServiceRequest;
@@ -2814,6 +2815,7 @@ export type Mutation = {
     createWalletItem: WalletItem;
     createWalletItemTransfer: ServiceRequest;
     declineChannelInvitation: Scalars['String']['output'];
+    declineWalletItemTransfer?: Maybe<WalletItem>;
     deleteAcademicExperience: ServiceRequest;
     deleteAdminTask: ServiceRequest;
     deleteBusinessExperience: ServiceRequest;
@@ -2901,6 +2903,10 @@ export type Mutation = {
 };
 export type MutationAcceptChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
+};
+export type MutationAcceptWalletItemTransferArgs = {
+    transferSecret: Scalars['String']['input'];
+    transferSlug: Scalars['String']['input'];
 };
 export type MutationAddAppFeatureToUserArgs = {
     appFeature: AppFeature;
@@ -3016,6 +3022,9 @@ export type MutationCreateWalletItemTransferArgs = {
 export type MutationDeclineChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
     reasonTextId: DeclineChannelInvitationReasonTextId;
+};
+export type MutationDeclineWalletItemTransferArgs = {
+    transferSlug: Scalars['String']['input'];
 };
 export type MutationDeleteAcademicExperienceArgs = {
     academicExperienceId: Scalars['String']['input'];
@@ -4090,7 +4099,6 @@ export type PurchaseOrderListFilter = {
 };
 export type Query = {
     __typename?: 'Query';
-    acceptWalletItemTransfer?: Maybe<WalletItem>;
     apiVersion: Scalars['String']['output'];
     doesUserExist: Scalars['Boolean']['output'];
     find1On1Channel?: Maybe<Channel>;
@@ -4201,10 +4209,6 @@ export type Query = {
     myUserSearches: Array<UserSearch>;
     userWillReceiveWelcomeMessage: Scalars['Boolean']['output'];
     verifyMyPassword: Scalars['String']['output'];
-};
-export type QueryAcceptWalletItemTransferArgs = {
-    transferSecret: Scalars['String']['input'];
-    transferSlug: Scalars['String']['input'];
 };
 export type QueryDoesUserExistArgs = {
     ident: Scalars['String']['input'];
@@ -4723,6 +4727,8 @@ export declare enum ServiceRequestSource {
     Wallet = "wallet"
 }
 export declare enum ServiceRequestType {
+    GraphQlMutaionDeclineWalletItemTransfer = "graphQlMutaionDeclineWalletItemTransfer",
+    GraphQlMutationAcceptWalletItemTransfer = "graphQlMutationAcceptWalletItemTransfer",
     GraphQlMutationAddChannelMessageEvent = "graphQlMutationAddChannelMessageEvent",
     GraphQlMutationAddFeatureToUser = "graphQlMutationAddFeatureToUser",
     GraphQlMutationAddUserToGroup = "graphQlMutationAddUserToGroup",
@@ -4836,7 +4842,6 @@ export declare enum ServiceRequestType {
     GraphQlMutationUpdateWalletItemTransfer = "graphQlMutationUpdateWalletItemTransfer",
     GraphQlMutationUpsertBackgroundTask = "graphQlMutationUpsertBackgroundTask",
     GraphQlMutationVerifyMultiStepActionToken = "graphQlMutationVerifyMultiStepActionToken",
-    GraphQlQueryAcceptWalletItemTransfer = "graphQlQueryAcceptWalletItemTransfer",
     GraphQlQueryAdminTaskDefinitions = "graphQlQueryAdminTaskDefinitions",
     GraphQlQueryAvailableUserHandle = "graphQlQueryAvailableUserHandle",
     GraphQlQueryBackgroundTask = "graphQlQueryBackgroundTask",
@@ -6514,6 +6519,7 @@ export type WalletItemTransfer = {
     recipientFullName?: Maybe<Scalars['String']['output']>;
     sentAt?: Maybe<Scalars['DateTimeISO']['output']>;
     subjectText?: Maybe<Scalars['String']['output']>;
+    transferSecret?: Maybe<Scalars['String']['output']>;
     transferSlug?: Maybe<Scalars['String']['output']>;
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     updatedBy?: Maybe<Scalars['ID']['output']>;
