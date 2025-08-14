@@ -6422,6 +6422,7 @@ const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     subjectText: {},
     messageText: {},
     transferSlug: {},
+    transferSecret: {},
     sentAt: {
       nt: DateTimeISO,
     },

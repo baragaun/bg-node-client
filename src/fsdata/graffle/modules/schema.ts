@@ -21595,6 +21595,7 @@ export namespace Schema {
       subjectText: WalletItemTransfer.subjectText;
       messageText: WalletItemTransfer.messageText;
       transferSlug: WalletItemTransfer.transferSlug;
+      transferSecret: WalletItemTransfer.transferSecret;
       sentAt: WalletItemTransfer.sentAt;
       acceptedAt: WalletItemTransfer.acceptedAt;
       canceledAt: WalletItemTransfer.canceledAt;
@@ -21745,6 +21746,14 @@ export namespace Schema {
     export interface transferSlug {
       kind: 'OutputField';
       name: 'transferSlug';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface transferSecret {
+      kind: 'OutputField';
+      name: 'transferSecret';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;

@@ -835,8 +835,6 @@ declare const modelFields: {
         balanceUpdatedAt: boolean;
         transferredAt: boolean;
         archivedAt: boolean;
-        transferSecret: boolean;
-        transferSlug: boolean;
     };
     walletItemTransfer: {
         id: boolean;

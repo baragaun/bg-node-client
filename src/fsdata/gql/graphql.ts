@@ -7140,6 +7140,7 @@ export type WalletItemTransfer = {
   recipientFullName?: Maybe<Scalars['String']['output']>;
   sentAt?: Maybe<Scalars['DateTimeISO']['output']>;
   subjectText?: Maybe<Scalars['String']['output']>;
+  transferSecret?: Maybe<Scalars['String']['output']>;
   transferSlug?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
