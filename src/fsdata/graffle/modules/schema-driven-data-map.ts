@@ -1722,6 +1722,7 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     'expiresAt',
     'balanceUpdatedAt',
     'transferredAt',
+    'transferAcceptedAt',
     'archivedAt',
   ],
   f: {
@@ -1779,11 +1780,12 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     transferredAt: {
       nt: DateTimeISO,
     },
+    transferAcceptedAt: {
+      nt: DateTimeISO,
+    },
     archivedAt: {
       nt: DateTimeISO,
     },
-    transferSlug: {},
-    transferSecret: {},
   },
 };
 
@@ -1813,7 +1815,17 @@ const WalletItemListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
 
 const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'WalletItemTransferInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'sentAt', 'canceledAt', 'archivedAt'],
+  fcs: [
+    'events',
+    'metadata',
+    'createdAt',
+    'updatedAt',
+    'deletedAt',
+    'sentAt',
+    'acceptedAt',
+    'canceledAt',
+    'archivedAt',
+  ],
   f: {
     id: {},
     adminNotes: {},
@@ -1841,7 +1853,11 @@ const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     recipientFullName: {},
     subjectText: {},
     messageText: {},
+    transferSlug: {},
     sentAt: {
+      nt: DateTimeISO,
+    },
+    acceptedAt: {
       nt: DateTimeISO,
     },
     canceledAt: {
@@ -1850,8 +1866,6 @@ const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     archivedAt: {
       nt: DateTimeISO,
     },
-    transferSlug: {},
-    transferSecret: {},
   },
 };
 
@@ -6358,8 +6372,6 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     instructionsEn: {},
     instructionsUrl: {},
     sortIndex: {},
-    transferSlug: {},
-    transferSecret: {},
     issuedAt: {
       nt: DateTimeISO,
     },
@@ -6370,6 +6382,9 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       nt: DateTimeISO,
     },
     transferredAt: {
+      nt: DateTimeISO,
+    },
+    transferAcceptedAt: {
       nt: DateTimeISO,
     },
     archivedAt: {
@@ -6406,7 +6421,11 @@ const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     recipientFullName: {},
     subjectText: {},
     messageText: {},
+    transferSlug: {},
     sentAt: {
+      nt: DateTimeISO,
+    },
+    acceptedAt: {
       nt: DateTimeISO,
     },
     canceledAt: {
@@ -6415,8 +6434,6 @@ const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     archivedAt: {
       nt: DateTimeISO,
     },
-    transferSlug: {},
-    transferSecret: {},
   },
 };
 
@@ -8681,6 +8698,19 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
+    findWalletItemByTransferSlug: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        transferSlug: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
     findWalletItems: {
       a: {
         options: {
@@ -8698,13 +8728,13 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
-    verifyWalletItemTransfer: {
+    acceptWalletItemTransfer: {
       a: {
         transferSecret: {
           nt: String,
           it: [1],
         },
-        walletItemId: {
+        transferSlug: {
           nt: String,
           it: [1],
         },
@@ -8718,6 +8748,19 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [0],
         },
         id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: WalletItemTransfer, <-- Assigned later to avoid potential circular dependency.
+    },
+    findWalletItemTransferByTransferSlug: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        transferSlug: {
           nt: String,
           it: [1],
         },
@@ -10921,9 +10964,11 @@ Query.f['findShoppingCartItems']!.nt = ShoppingCartItem;
 Query.f['findShoppingCarts']!.nt = ShoppingCart;
 Query.f['findMyShoppingCart']!.nt = ShoppingCart;
 Query.f['findWalletItemById']!.nt = WalletItem;
+Query.f['findWalletItemByTransferSlug']!.nt = WalletItem;
 Query.f['findWalletItems']!.nt = WalletItem;
-Query.f['verifyWalletItemTransfer']!.nt = WalletItem;
+Query.f['acceptWalletItemTransfer']!.nt = WalletItem;
 Query.f['findWalletItemTransferById']!.nt = WalletItemTransfer;
+Query.f['findWalletItemTransferByTransferSlug']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransfers']!.nt = WalletItemTransfer;
 Query.f['findWallets']!.nt = Wallet;
 Query.f['findMyWallet']!.nt = Wallet;

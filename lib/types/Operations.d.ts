@@ -151,12 +151,13 @@ export interface Operations {
     };
     walletItem: {
         createWalletItem: (props: Partial<WalletItem>) => Promise<QueryResult<WalletItem>>;
+        findWalletItemByTransferSlug: (transferSlug: string, options: FindObjectsOptions) => Promise<QueryResult<WalletItem>>;
         findWalletItems: (filter: WalletItemListFilter | null | undefined, match: Partial<WalletItem> | null | undefined, selector: MangoQueryTypes<WalletItem> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
         updateWalletItem: (changes: Partial<WalletItem>, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
     };
     walletItemTransfer: {
+        acceptWalletItemTransfer: (transferSecret: string, transferSlug: string) => Promise<QueryResult<WalletItem>>;
         findWalletItemTransfers: (filter: WalletItemTransferListFilter | null | undefined, match: Partial<WalletItemTransfer> | null | undefined, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItemTransfer>>;
         createWalletItemTransfer: (props: Partial<WalletItemTransfer>) => Promise<QueryResult<WalletItemTransfer>>;
-        verifyWalletItemTransfer: (transferSecret: string, walletItemId: string) => Promise<QueryResult<WalletItem>>;
     };
 }

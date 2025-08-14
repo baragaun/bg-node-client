@@ -457,6 +457,11 @@ export interface Operations {
       props: Partial<WalletItem>,
     ) => Promise<QueryResult<WalletItem>>;
 
+    findWalletItemByTransferSlug: (
+      transferSlug: string,
+      options: FindObjectsOptions,
+    ) => Promise<QueryResult<WalletItem>>;
+
     findWalletItems: (
       filter: WalletItemListFilter | null | undefined,
       match: Partial<WalletItem> | null | undefined,
@@ -472,6 +477,11 @@ export interface Operations {
   }
 
   walletItemTransfer: {
+    acceptWalletItemTransfer: (
+      transferSecret: string,
+      transferSlug: string,
+    ) => Promise<QueryResult<WalletItem>>;
+
     findWalletItemTransfers: (
       filter: WalletItemTransferListFilter | null | undefined,
       match: Partial<WalletItemTransfer> | null | undefined,
@@ -483,10 +493,5 @@ export interface Operations {
     createWalletItemTransfer: (
       props: Partial<WalletItemTransfer>,
     ) => Promise<QueryResult<WalletItemTransfer>>;
-
-    verifyWalletItemTransfer: (
-      transferSecret: string,
-      walletItemId: string,
-    ) => Promise<QueryResult<WalletItem>>;
   }
 }

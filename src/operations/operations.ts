@@ -76,11 +76,12 @@ import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
 import findMyWallet from './wallet/findMyWallet.js';
 import createWalletItem from './walletItem/createWalletItem.js';
+import findWalletItemByTransferSlug from './walletItem/findWalletItemByTransferSlug.js';
 import findWalletItems from './walletItem/findWalletItems.js';
 import updateWalletItem from './walletItem/updateWalletItem.js';
+import acceptWalletItemTransfer from './walletItemTransfer/acceptWalletItemTransfer.js';
 import createWalletItemTransfer from './walletItemTransfer/createWalletItemTransfer.js';
 import findWalletItemTransfers from './walletItemTransfer/findWalletItemTransfers.js';
-import verifyWalletItemTransfer from './walletItemTransfer/verifyWalletItemTransfer.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -205,13 +206,14 @@ const operations: Operations = {
   walletItem: {
     createWalletItem,
     findWalletItems,
+    findWalletItemByTransferSlug,
     updateWalletItem,
   },
 
   walletItemTransfer: {
     createWalletItemTransfer,
     findWalletItemTransfers,
-    verifyWalletItemTransfer,
+    acceptWalletItemTransfer,
   },
 };
 

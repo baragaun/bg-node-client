@@ -99,9 +99,11 @@ export namespace Schema {
       findShoppingCarts: Query.findShoppingCarts;
       findMyShoppingCart: Query.findMyShoppingCart;
       findWalletItemById: Query.findWalletItemById;
+      findWalletItemByTransferSlug: Query.findWalletItemByTransferSlug;
       findWalletItems: Query.findWalletItems;
-      verifyWalletItemTransfer: Query.verifyWalletItemTransfer;
+      acceptWalletItemTransfer: Query.acceptWalletItemTransfer;
       findWalletItemTransferById: Query.findWalletItemTransferById;
+      findWalletItemTransferByTransferSlug: Query.findWalletItemTransferByTransferSlug;
       findWalletItemTransfers: Query.findWalletItemTransfers;
       findWallets: Query.findWallets;
       findMyWallet: Query.findMyWallet;
@@ -1513,6 +1515,27 @@ export namespace Schema {
       namedType: $$NamedTypes.$$WalletItem;
     }
 
+    export interface findWalletItemByTransferSlug {
+      kind: 'OutputField';
+      name: 'findWalletItemByTransferSlug';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [0];
+      namedType: $$NamedTypes.$$WalletItem;
+    }
+
     export interface findWalletItems {
       kind: 'OutputField';
       name: 'findWalletItems';
@@ -1540,9 +1563,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$WalletItem;
     }
 
-    export interface verifyWalletItemTransfer {
+    export interface acceptWalletItemTransfer {
       kind: 'OutputField';
-      name: 'verifyWalletItemTransfer';
+      name: 'acceptWalletItemTransfer';
       arguments: {
         transferSecret: {
           kind: 'InputField';
@@ -1550,9 +1573,9 @@ export namespace Schema {
           inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
-        walletItemId: {
+        transferSlug: {
           kind: 'InputField';
-          name: 'walletItemId';
+          name: 'transferSlug';
           inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
@@ -1574,6 +1597,27 @@ export namespace Schema {
         id: {
           kind: 'InputField';
           name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [0];
+      namedType: $$NamedTypes.$$WalletItemTransfer;
+    }
+
+    export interface findWalletItemTransferByTransferSlug {
+      kind: 'OutputField';
+      name: 'findWalletItemTransferByTransferSlug';
+      arguments: {
+        options: {
+          kind: 'InputField';
+          name: 'options';
+          inlineType: [0];
+          namedType: $$NamedTypes.$$FindObjectsOptions;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
           inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
@@ -21199,12 +21243,11 @@ export namespace Schema {
       instructionsEn: WalletItem.instructionsEn;
       instructionsUrl: WalletItem.instructionsUrl;
       sortIndex: WalletItem.sortIndex;
-      transferSlug: WalletItem.transferSlug;
-      transferSecret: WalletItem.transferSecret;
       issuedAt: WalletItem.issuedAt;
       expiresAt: WalletItem.expiresAt;
       balanceUpdatedAt: WalletItem.balanceUpdatedAt;
       transferredAt: WalletItem.transferredAt;
+      transferAcceptedAt: WalletItem.transferAcceptedAt;
       archivedAt: WalletItem.archivedAt;
     };
   }
@@ -21477,22 +21520,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$Int;
     }
 
-    export interface transferSlug {
-      kind: 'OutputField';
-      name: 'transferSlug';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface transferSecret {
-      kind: 'OutputField';
-      name: 'transferSecret';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
     export interface issuedAt {
       kind: 'OutputField';
       name: 'issuedAt';
@@ -21520,6 +21547,14 @@ export namespace Schema {
     export interface transferredAt {
       kind: 'OutputField';
       name: 'transferredAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface transferAcceptedAt {
+      kind: 'OutputField';
+      name: 'transferAcceptedAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -21559,11 +21594,11 @@ export namespace Schema {
       recipientFullName: WalletItemTransfer.recipientFullName;
       subjectText: WalletItemTransfer.subjectText;
       messageText: WalletItemTransfer.messageText;
+      transferSlug: WalletItemTransfer.transferSlug;
       sentAt: WalletItemTransfer.sentAt;
+      acceptedAt: WalletItemTransfer.acceptedAt;
       canceledAt: WalletItemTransfer.canceledAt;
       archivedAt: WalletItemTransfer.archivedAt;
-      transferSlug: WalletItemTransfer.transferSlug;
-      transferSecret: WalletItemTransfer.transferSecret;
     };
   }
 
@@ -21707,9 +21742,25 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface transferSlug {
+      kind: 'OutputField';
+      name: 'transferSlug';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
     export interface sentAt {
       kind: 'OutputField';
       name: 'sentAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface acceptedAt {
+      kind: 'OutputField';
+      name: 'acceptedAt';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
@@ -21729,22 +21780,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface transferSlug {
-      kind: 'OutputField';
-      name: 'transferSlug';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface transferSecret {
-      kind: 'OutputField';
-      name: 'transferSecret';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
     }
   }
 
@@ -35072,9 +35107,8 @@ export namespace Schema {
       expiresAt: WalletItemInput.expiresAt;
       balanceUpdatedAt: WalletItemInput.balanceUpdatedAt;
       transferredAt: WalletItemInput.transferredAt;
+      transferAcceptedAt: WalletItemInput.transferAcceptedAt;
       archivedAt: WalletItemInput.archivedAt;
-      transferSlug: WalletItemInput.transferSlug;
-      transferSecret: WalletItemInput.transferSecret;
     };
   }
 
@@ -35331,25 +35365,18 @@ export namespace Schema {
       namedType: $$NamedTypes.$$DateTimeISO;
     }
 
+    export interface transferAcceptedAt {
+      kind: 'InputField';
+      name: 'transferAcceptedAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
     export interface archivedAt {
       kind: 'InputField';
       name: 'archivedAt';
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface transferSlug {
-      kind: 'InputField';
-      name: 'transferSlug';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface transferSecret {
-      kind: 'InputField';
-      name: 'transferSecret';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
     }
   }
 
@@ -35464,11 +35491,11 @@ export namespace Schema {
       recipientFullName: WalletItemTransferInput.recipientFullName;
       subjectText: WalletItemTransferInput.subjectText;
       messageText: WalletItemTransferInput.messageText;
+      transferSlug: WalletItemTransferInput.transferSlug;
       sentAt: WalletItemTransferInput.sentAt;
+      acceptedAt: WalletItemTransferInput.acceptedAt;
       canceledAt: WalletItemTransferInput.canceledAt;
       archivedAt: WalletItemTransferInput.archivedAt;
-      transferSlug: WalletItemTransferInput.transferSlug;
-      transferSecret: WalletItemTransferInput.transferSecret;
     };
   }
 
@@ -35585,9 +35612,23 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface transferSlug {
+      kind: 'InputField';
+      name: 'transferSlug';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
     export interface sentAt {
       kind: 'InputField';
       name: 'sentAt';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface acceptedAt {
+      kind: 'InputField';
+      name: 'acceptedAt';
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
     }
@@ -35604,20 +35645,6 @@ export namespace Schema {
       name: 'archivedAt';
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface transferSlug {
-      kind: 'InputField';
-      name: 'transferSlug';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface transferSecret {
-      kind: 'InputField';
-      name: 'transferSecret';
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
     }
   }
 
@@ -43426,6 +43453,7 @@ export namespace Schema {
       'graphQlMutationUpdateShoppingCartItem',
       'graphQlMutationUpdateWalletItem',
       'graphQlMutationUpdateWalletItemTransfer',
+      'graphQlQueryAcceptWalletItemTransfer',
       'graphQlQueryFindMyShoppingCart',
       'graphQlQueryFindMyWallet',
       'graphQlQueryFindPurchaseOrderItems',
@@ -43433,10 +43461,11 @@ export namespace Schema {
       'graphQlQueryFindShoppingCartItems',
       'graphQlQueryFindShoppingCarts',
       'graphQlQueryFindWalletItemById',
+      'graphQlQueryFindWalletItemByTransferSlug',
       'graphQlQueryFindWalletItems',
       'graphQlQueryFindWalletItemTransferById',
+      'graphQlQueryFindWalletItemTransferByTransferSlug',
       'graphQlQueryFindWalletItemTransfers',
-      'graphQlQueryVerifyWalletItemTransfer',
       'graphQlQueryFindWallets',
       'graphQlQueryFindWalletServiceRecord',
     ];
@@ -43637,6 +43666,7 @@ export namespace Schema {
       | 'graphQlMutationUpdateShoppingCartItem'
       | 'graphQlMutationUpdateWalletItem'
       | 'graphQlMutationUpdateWalletItemTransfer'
+      | 'graphQlQueryAcceptWalletItemTransfer'
       | 'graphQlQueryFindMyShoppingCart'
       | 'graphQlQueryFindMyWallet'
       | 'graphQlQueryFindPurchaseOrderItems'
@@ -43644,10 +43674,11 @@ export namespace Schema {
       | 'graphQlQueryFindShoppingCartItems'
       | 'graphQlQueryFindShoppingCarts'
       | 'graphQlQueryFindWalletItemById'
+      | 'graphQlQueryFindWalletItemByTransferSlug'
       | 'graphQlQueryFindWalletItems'
       | 'graphQlQueryFindWalletItemTransferById'
+      | 'graphQlQueryFindWalletItemTransferByTransferSlug'
       | 'graphQlQueryFindWalletItemTransfers'
-      | 'graphQlQueryVerifyWalletItemTransfer'
       | 'graphQlQueryFindWallets'
       | 'graphQlQueryFindWalletServiceRecord';
   }

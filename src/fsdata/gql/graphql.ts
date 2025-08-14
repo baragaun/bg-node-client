@@ -4447,6 +4447,7 @@ export type PurchaseOrderListFilter = {
 
 export type Query = {
   __typename?: 'Query';
+  acceptWalletItemTransfer?: Maybe<WalletItem>;
   apiVersion: Scalars['String']['output'];
   doesUserExist: Scalars['Boolean']['output'];
   find1On1Channel?: Maybe<Channel>;
@@ -4537,7 +4538,9 @@ export type Query = {
   findUserSearches: Array<UserSearch>;
   findUsers: Array<UserListItem>;
   findWalletItemById?: Maybe<WalletItem>;
+  findWalletItemByTransferSlug?: Maybe<WalletItem>;
   findWalletItemTransferById?: Maybe<WalletItemTransfer>;
+  findWalletItemTransferByTransferSlug?: Maybe<WalletItemTransfer>;
   findWalletItemTransfers: Array<WalletItemTransfer>;
   findWalletItems: Array<WalletItem>;
   findWalletServiceRecord: WalletServiceRecord;
@@ -4555,7 +4558,12 @@ export type Query = {
   myUserSearches: Array<UserSearch>;
   userWillReceiveWelcomeMessage: Scalars['Boolean']['output'];
   verifyMyPassword: Scalars['String']['output'];
-  verifyWalletItemTransfer?: Maybe<WalletItem>;
+};
+
+
+export type QueryAcceptWalletItemTransferArgs = {
+  transferSecret: Scalars['String']['input'];
+  transferSlug: Scalars['String']['input'];
 };
 
 
@@ -5029,9 +5037,21 @@ export type QueryFindWalletItemByIdArgs = {
 };
 
 
+export type QueryFindWalletItemByTransferSlugArgs = {
+  options?: InputMaybe<FindObjectsOptions>;
+  transferSlug: Scalars['String']['input'];
+};
+
+
 export type QueryFindWalletItemTransferByIdArgs = {
   id: Scalars['String']['input'];
   options?: InputMaybe<FindObjectsOptions>;
+};
+
+
+export type QueryFindWalletItemTransferByTransferSlugArgs = {
+  options?: InputMaybe<FindObjectsOptions>;
+  transferSlug: Scalars['String']['input'];
 };
 
 
@@ -5088,12 +5108,6 @@ export type QueryUserWillReceiveWelcomeMessageArgs = {
 
 export type QueryVerifyMyPasswordArgs = {
   password: Scalars['String']['input'];
-};
-
-
-export type QueryVerifyWalletItemTransferArgs = {
-  transferSecret: Scalars['String']['input'];
-  walletItemId: Scalars['String']['input'];
 };
 
 export type ReportUserInput = {
@@ -5373,6 +5387,7 @@ export enum ServiceRequestType {
   GraphQlMutationUpdateWalletItemTransfer = 'graphQlMutationUpdateWalletItemTransfer',
   GraphQlMutationUpsertBackgroundTask = 'graphQlMutationUpsertBackgroundTask',
   GraphQlMutationVerifyMultiStepActionToken = 'graphQlMutationVerifyMultiStepActionToken',
+  GraphQlQueryAcceptWalletItemTransfer = 'graphQlQueryAcceptWalletItemTransfer',
   GraphQlQueryAdminTaskDefinitions = 'graphQlQueryAdminTaskDefinitions',
   GraphQlQueryAvailableUserHandle = 'graphQlQueryAvailableUserHandle',
   GraphQlQueryBackgroundTask = 'graphQlQueryBackgroundTask',
@@ -5446,7 +5461,9 @@ export enum ServiceRequestType {
   GraphQlQueryFindUserSearchResults = 'graphQlQueryFindUserSearchResults',
   GraphQlQueryFindUsers = 'graphQlQueryFindUsers',
   GraphQlQueryFindWalletItemById = 'graphQlQueryFindWalletItemById',
+  GraphQlQueryFindWalletItemByTransferSlug = 'graphQlQueryFindWalletItemByTransferSlug',
   GraphQlQueryFindWalletItemTransferById = 'graphQlQueryFindWalletItemTransferById',
+  GraphQlQueryFindWalletItemTransferByTransferSlug = 'graphQlQueryFindWalletItemTransferByTransferSlug',
   GraphQlQueryFindWalletItemTransfers = 'graphQlQueryFindWalletItemTransfers',
   GraphQlQueryFindWalletItems = 'graphQlQueryFindWalletItems',
   GraphQlQueryFindWalletServiceRecord = 'graphQlQueryFindWalletServiceRecord',
@@ -5467,7 +5484,6 @@ export enum ServiceRequestType {
   GraphQlQueryUserInboxUser = 'graphQlQueryUserInboxUser',
   GraphQlQueryUserSearchFoundUsers = 'graphQlQueryUserSearchFoundUsers',
   GraphQlQueryVerifyMyPassword = 'graphQlQueryVerifyMyPassword',
-  GraphQlQueryVerifyWalletItemTransfer = 'graphQlQueryVerifyWalletItemTransfer',
   Unset = 'unset'
 }
 
@@ -7039,8 +7055,7 @@ export type WalletItem = {
   source?: Maybe<WalletItemSource>;
   termsEn?: Maybe<Scalars['String']['output']>;
   termsUrl?: Maybe<Scalars['String']['output']>;
-  transferSecret?: Maybe<Scalars['String']['output']>;
-  transferSlug?: Maybe<Scalars['String']['output']>;
+  transferAcceptedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   transferredAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
@@ -7081,8 +7096,7 @@ export type WalletItemInput = {
   source?: InputMaybe<WalletItemSource>;
   termsEn?: InputMaybe<Scalars['String']['input']>;
   termsUrl?: InputMaybe<Scalars['String']['input']>;
-  transferSecret?: InputMaybe<Scalars['String']['input']>;
-  transferSlug?: InputMaybe<Scalars['String']['input']>;
+  transferAcceptedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   transferredAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedBy?: InputMaybe<Scalars['ID']['input']>;
@@ -7109,6 +7123,7 @@ export enum WalletItemSource {
 
 export type WalletItemTransfer = {
   __typename?: 'WalletItemTransfer';
+  acceptedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   adminNotes?: Maybe<Scalars['String']['output']>;
   archivedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   canceledAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -7125,7 +7140,6 @@ export type WalletItemTransfer = {
   recipientFullName?: Maybe<Scalars['String']['output']>;
   sentAt?: Maybe<Scalars['DateTimeISO']['output']>;
   subjectText?: Maybe<Scalars['String']['output']>;
-  transferSecret?: Maybe<Scalars['String']['output']>;
   transferSlug?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   updatedBy?: Maybe<Scalars['ID']['output']>;
@@ -7133,6 +7147,7 @@ export type WalletItemTransfer = {
 };
 
 export type WalletItemTransferInput = {
+  acceptedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   adminNotes?: InputMaybe<Scalars['String']['input']>;
   archivedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   canceledAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -7149,7 +7164,6 @@ export type WalletItemTransferInput = {
   recipientFullName?: InputMaybe<Scalars['String']['input']>;
   sentAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   subjectText?: InputMaybe<Scalars['String']['input']>;
-  transferSecret?: InputMaybe<Scalars['String']['input']>;
   transferSlug?: InputMaybe<Scalars['String']['input']>;
   updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedBy?: InputMaybe<Scalars['ID']['input']>;
