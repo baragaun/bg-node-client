@@ -869,6 +869,7 @@ const walletItem = {
   expiresAt: true,
   balanceUpdatedAt: true,
   transferredAt: true,
+  transferAcceptedAt: true,
   archivedAt: true,
 };
 

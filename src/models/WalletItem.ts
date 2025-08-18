@@ -29,9 +29,8 @@ export class WalletItem extends BaseModel {
   public expiresAt?: string | null;
   public balanceUpdatedAt?: string | null;
   public transferredAt?: string | null;
+  public transferAcceptedAt?: string | null;
   public archivedAt?: string | null;
-  public transferSecret?: string | null;
-  public transferSlug?: string | null;
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<WalletItem>) {
@@ -145,14 +144,11 @@ export class WalletItem extends BaseModel {
       if (attributes.transferredAt !== undefined && attributes.transferredAt !== '') {
         this.transferredAt = attributes.transferredAt;
       }
+      if (attributes.transferAcceptedAt !== undefined && attributes.transferAcceptedAt !== '') {
+        this.transferAcceptedAt = attributes.transferAcceptedAt;
+      }
       if (attributes.archivedAt !== undefined && attributes.archivedAt !== '') {
         this.archivedAt = attributes.archivedAt;
-      }
-      if (attributes.transferSecret !== undefined) {
-        this.transferSecret = attributes.transferSecret;
-      }
-      if (attributes.transferSlug !== undefined) {
-        this.transferSlug = attributes.transferSlug;
       }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }

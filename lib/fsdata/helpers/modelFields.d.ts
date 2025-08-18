@@ -834,6 +834,7 @@ declare const modelFields: {
         expiresAt: boolean;
         balanceUpdatedAt: boolean;
         transferredAt: boolean;
+        transferAcceptedAt: boolean;
         archivedAt: boolean;
     };
     walletItemTransfer: {
