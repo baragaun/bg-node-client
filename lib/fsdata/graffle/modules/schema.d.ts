@@ -3680,8 +3680,8 @@ export declare namespace Schema {
                     namedType: $$NamedTypes.$$String;
                 };
             };
-            inlineType: [0];
-            namedType: $$NamedTypes.$$WalletItem;
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
         }
         interface createWalletItemTransfer {
             kind: 'OutputField';
@@ -3708,8 +3708,8 @@ export declare namespace Schema {
                     namedType: $$NamedTypes.$$String;
                 };
             };
-            inlineType: [0];
-            namedType: $$NamedTypes.$$WalletItem;
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
         }
         interface deleteWalletItemTransfer {
             kind: 'OutputField';

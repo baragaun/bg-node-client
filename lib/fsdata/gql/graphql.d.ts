@@ -2777,7 +2777,7 @@ export declare enum MultiStepActionType {
 export type Mutation = {
     __typename?: 'Mutation';
     acceptChannelInvitation: Scalars['String']['output'];
-    acceptWalletItemTransfer?: Maybe<WalletItem>;
+    acceptWalletItemTransfer: ServiceRequest;
     addAppFeatureToUser: Scalars['String']['output'];
     addChannelMessageEvent: Scalars['String']['output'];
     addUserToGroup: ServiceRequest;
@@ -2815,7 +2815,7 @@ export type Mutation = {
     createWalletItem: WalletItem;
     createWalletItemTransfer: ServiceRequest;
     declineChannelInvitation: Scalars['String']['output'];
-    declineWalletItemTransfer?: Maybe<WalletItem>;
+    declineWalletItemTransfer: ServiceRequest;
     deleteAcademicExperience: ServiceRequest;
     deleteAdminTask: ServiceRequest;
     deleteBusinessExperience: ServiceRequest;
