@@ -4727,7 +4727,6 @@ export declare enum ServiceRequestSource {
     Wallet = "wallet"
 }
 export declare enum ServiceRequestType {
-    GraphQlMutaionDeclineWalletItemTransfer = "graphQlMutaionDeclineWalletItemTransfer",
     GraphQlMutationAcceptWalletItemTransfer = "graphQlMutationAcceptWalletItemTransfer",
     GraphQlMutationAddChannelMessageEvent = "graphQlMutationAddChannelMessageEvent",
     GraphQlMutationAddFeatureToUser = "graphQlMutationAddFeatureToUser",
@@ -4766,6 +4765,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationCreateWalletItem = "graphQlMutationCreateWalletItem",
     GraphQlMutationCreateWalletItemTransfer = "graphQlMutationCreateWalletItemTransfer",
     GraphQlMutationCreateWalletTransfer = "graphQlMutationCreateWalletTransfer",
+    GraphQlMutationDeclineWalletItemTransfer = "graphQlMutationDeclineWalletItemTransfer",
     GraphQlMutationDeleteAcademicExperience = "graphQlMutationDeleteAcademicExperience",
     GraphQlMutationDeleteAdminTask = "graphQlMutationDeleteAdminTask",
     GraphQlMutationDeleteAllMm2DataInMm3 = "graphQlMutationDeleteAllMm2DataInMm3",

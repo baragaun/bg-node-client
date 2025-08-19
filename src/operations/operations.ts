@@ -83,6 +83,7 @@ import acceptWalletItemTransfer from './walletItemTransfer/acceptWalletItemTrans
 import createWalletItemTransfer from './walletItemTransfer/createWalletItemTransfer.js';
 import declineWalletItemTransfer from './walletItemTransfer/declineWalletItemTransfer.js';
 import findWalletItemTransfers from './walletItemTransfer/findWalletItemTransfers.js';
+import updateWalletItemTransfer from './walletItemTransfer/updateWalletItemTransfer.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -216,6 +217,7 @@ const operations: Operations = {
     createWalletItemTransfer,
     declineWalletItemTransfer,
     findWalletItemTransfers,
+    updateWalletItemTransfer,
   },
 };
 

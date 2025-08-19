@@ -43473,7 +43473,7 @@ export namespace Schema {
       'graphQlMutationCreateWalletItem',
       'graphQlMutationCreateWalletItemTransfer',
       'graphQlMutationCreateWalletTransfer',
-      'graphQlMutaionDeclineWalletItemTransfer',
+      'graphQlMutationDeclineWalletItemTransfer',
       'graphQlMutationDeleteShoppingCartItem',
       'graphQlMutationDeleteWalletItem',
       'graphQlMutationDeleteWalletItemTransfer',
@@ -43687,7 +43687,7 @@ export namespace Schema {
       | 'graphQlMutationCreateWalletItem'
       | 'graphQlMutationCreateWalletItemTransfer'
       | 'graphQlMutationCreateWalletTransfer'
-      | 'graphQlMutaionDeclineWalletItemTransfer'
+      | 'graphQlMutationDeclineWalletItemTransfer'
       | 'graphQlMutationDeleteShoppingCartItem'
       | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationDeleteWalletItemTransfer'

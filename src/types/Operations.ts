@@ -497,5 +497,10 @@ export interface Operations {
       options: FindObjectsOptions,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItemTransfer>>;
+
+    updateWalletItemTransfer: (
+      changes: Partial<WalletItemTransfer>,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
   }
 }
