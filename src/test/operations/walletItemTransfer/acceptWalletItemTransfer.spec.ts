@@ -52,8 +52,8 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     const transferSlug = walletItemTransfer.transferSlug;
 
     const acceptResponse = await client.operations.walletItemTransfer.acceptWalletItemTransfer(
-       transferSecret,
        transferSlug,
+       transferSecret,
     );
 
     expect(acceptResponse.error).toBeUndefined();

@@ -15,8 +15,8 @@ const acceptWalletItemTransfer = async (
     }
 
     const result = await fsdata.walletItemTransfer.acceptWalletItemTransfer(
-      transferSecret,
       transferSlug,
+      transferSecret,
     );
 
     if (result.error) {

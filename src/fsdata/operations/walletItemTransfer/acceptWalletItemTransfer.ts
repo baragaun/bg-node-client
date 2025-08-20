@@ -26,8 +26,8 @@ type ResponseDataType = {
 };
 
 const acceptWalletItemTransfer = async (
-  transferSecret: string,
   transferSlug: string,
+  transferSecret: string,
 ): Promise<QueryResult<WalletItem>> => {
   try {
     if (!libData.isInitialized()) {
@@ -37,8 +37,8 @@ const acceptWalletItemTransfer = async (
 
     const client = graffleClientStore.get();
     const args: MutationAcceptWalletItemTransferArgs = {
-      transferSecret,
       transferSlug,
+      transferSecret,
     };
 
     const response: ResponseDataType = await client.mutation.acceptWalletItemTransfer({
@@ -47,11 +47,11 @@ const acceptWalletItemTransfer = async (
     });
 
     logger.debug('fsdata.acceptWalletItemTransfer response:',
-      { response: JSON.stringify(response) });
+      { transferSlug, response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
       logger.error('fsdata.acceptWalletItemTransfer: errors received',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { transferSlug, errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
 
       return { error: response.errors.map(error => error.message).join(', ') };
     }
@@ -76,11 +76,11 @@ const acceptWalletItemTransfer = async (
       queryOptions,
     );
 
-    logger.debug('fsdata.acceptWalletItemTransfer: finished.', { pollingResponse });
+    logger.debug('fsdata.acceptWalletItemTransfer: finished.', { transferSlug, pollingResponse });
 
     if (pollingResponse.error) {
       logger.error('fsdata.acceptWalletItemTransfer: polling failed',
-        { error: pollingResponse.error });
+        { transferSlug, error: pollingResponse.error });
       return { error: pollingResponse.error, serviceRequest };
     }
 
@@ -89,13 +89,13 @@ const acceptWalletItemTransfer = async (
       !Array.isArray(pollingResponse.object.objectIds) ||
       pollingResponse.object.objectIds.length < 1
     ) {
-      logger.error('fsdata.acceptWalletItemTransfer: wallet item transfer object not found', pollingResponse);
+      logger.error('fsdata.acceptWalletItemTransfer: wallet item transfer object not found.',
+        { transferSlug, pollingResponse });
       return { error: ErrorCode.SystemError, serviceRequest };
     }
 
     serviceRequest = pollingResponse.object;
     const walletItemId = pollingResponse.object.objectIds[0];
-
 
     const findResult = await findById<WalletItem>(
       walletItemId,
@@ -103,21 +103,21 @@ const acceptWalletItemTransfer = async (
     );
 
     if (findResult.error) {
-      logger.error('fsdata.acceptWalletItemTransfer: error loading wallet item transfer',
-        { error: findResult.error, walletItemId });
+      logger.error('fsdata.acceptWalletItemTransfer: error loading wallet item transfer.',
+        { transferSlug, error: findResult.error, walletItemId });
       return { error: findResult.error, serviceRequest };
     }
 
     if (!findResult.object) {
-      logger.error('fsdata.acceptWalletItemTransfer: wallet item transfer not found',
-        { walletItemId });
+      logger.error('fsdata.acceptWalletItemTransfer: wallet item transfer not found.',
+        { transferSlug, walletItemId });
       return { error: ErrorCode.NotFound, serviceRequest };
     }
 
     return { object: findResult.object, serviceRequest };
   } catch (error) {
-    logger.error('fsdata.acceptWalletItemTransfer: error',
-      { error, headers: helpers.headers() });
+    logger.error('fsdata.acceptWalletItemTransfer: error.',
+      { transferSlug, error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

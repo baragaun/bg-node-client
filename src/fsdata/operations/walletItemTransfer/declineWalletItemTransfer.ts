@@ -3,6 +3,7 @@ import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { ServiceRequest } from '../../../models/ServiceRequest.js';
+import { WalletItem } from '../../../models/WalletItem.js';
 import { QueryOptions } from '../../../types/QueryOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import {
@@ -14,6 +15,7 @@ import {
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
+import findById from '../findById.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
 
 type ResponseDataType = {
@@ -25,7 +27,7 @@ type ResponseDataType = {
 
 const declineWalletItemTransfer = async (
   transferSlug: string,
-): Promise<QueryResult<ServiceRequest>> => {
+): Promise<QueryResult<WalletItem>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('fsdata.declineWalletItemTransfer: unavailable');
@@ -43,16 +45,16 @@ const declineWalletItemTransfer = async (
     });
 
     logger.debug('fsdata.declineWalletItemTransfer response:',
-      { response: JSON.stringify(response) });
+      { transferSlug, response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
       logger.error('fsdata.declineWalletItemTransfer: errors received',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { transferSlug, errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
 
       return { error: response.errors.map(error => error.message).join(', ') };
     }
 
-    const serviceRequest = response.data.declineWalletItemTransfer;
+    let serviceRequest = response.data.declineWalletItemTransfer;
 
     const queryOptions: QueryOptions<ServiceRequestFromGql> = defaultQueryOptionsForMutations;
     queryOptions.polling = {
@@ -72,11 +74,11 @@ const declineWalletItemTransfer = async (
       queryOptions,
     );
 
-    logger.debug('fsdata.declineWalletItemTransfer: finished.', { pollingResponse });
+    logger.debug('fsdata.declineWalletItemTransfer: finished.', { transferSlug, pollingResponse });
 
     if (pollingResponse.error) {
       logger.error('fsdata.declineWalletItemTransfer: polling failed',
-        { error: pollingResponse.error });
+        { transferSlug, error: pollingResponse.error });
       return { error: pollingResponse.error, serviceRequest };
     }
 
@@ -85,17 +87,36 @@ const declineWalletItemTransfer = async (
       !Array.isArray(pollingResponse.object.objectIds) ||
       pollingResponse.object.objectIds.length < 1
     ) {
-      logger.error('fsdata.declineWalletItemTransfer: wallet item transfer object not found', pollingResponse);
+      logger.error('fsdata.declineWalletItemTransfer: wallet item transfer object not found',
+        { transferSlug, pollingResponse });
       return { error: ErrorCode.SystemError, serviceRequest };
     }
 
-    return {
-      object: response.data.declineWalletItemTransfer,
-    };
+    serviceRequest = pollingResponse.object;
+    const walletItemId = pollingResponse.object.objectIds[0];
 
+
+    const findResult = await findById<WalletItem>(
+      walletItemId,
+      ModelType.WalletItem,
+    );
+
+    if (findResult.error) {
+      logger.error('fsdata.declineWalletItemTransfer: error loading wallet item transfer',
+        { transferSlug, error: findResult.error, walletItemId });
+      return { error: findResult.error, serviceRequest };
+    }
+
+    if (!findResult.object) {
+      logger.error('fsdata.declineWalletItemTransfer: wallet item transfer not found',
+        { transferSlug, walletItemId });
+      return { error: ErrorCode.NotFound, serviceRequest };
+    }
+
+    return { object: findResult.object, serviceRequest };
   } catch (error) {
     logger.error('fsdata.declineWalletItemTransfer: error',
-      { error, headers: helpers.headers() });
+      { transferSlug, error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

@@ -488,7 +488,7 @@ export interface Operations {
 
     declineWalletItemTransfer: (
       transferSlug: string,
-    ) => Promise<QueryResult<ServiceRequest>>;
+    ) => Promise<QueryResult<WalletItem>>;
 
     findWalletItemTransfers: (
       filter: WalletItemTransferListFilter | null | undefined,

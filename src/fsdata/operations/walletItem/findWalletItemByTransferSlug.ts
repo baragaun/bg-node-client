@@ -52,7 +52,7 @@ const findWalletItemByTransferSlug = async (
 
     return {
       object: response.data.findWalletItemByTransferSlug
-        ?  new WalletItem(response.data.findWalletItemByTransferSlug)
+        ? new WalletItem(response.data.findWalletItemByTransferSlug)
         : null,
     };
   } catch (error) {

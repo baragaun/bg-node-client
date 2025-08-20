@@ -172,8 +172,8 @@ const fsdata = {
 
   walletItem: {
     createWalletItem,
-    findWalletItems,
     findWalletItemByTransferSlug,
+    findWalletItems,
   },
 
   walletItemTransfer: {

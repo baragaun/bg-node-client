@@ -207,8 +207,8 @@ const operations: Operations = {
 
   walletItem: {
     createWalletItem,
-    findWalletItems,
     findWalletItemByTransferSlug,
+    findWalletItems,
     updateWalletItem,
   },
 
