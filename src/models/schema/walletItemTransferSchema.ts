@@ -77,18 +77,41 @@ export const WalletItemTransferSchema = {
       type: 'string',
       nullable: true,
     },
+    transferSlug: {
+      type: 'string',
+      nullable: true,
+    },
+    transferSecret: {
+      type: 'string',
+      nullable: true,
+    },
     sentAt: {
       type: 'string',
+      description: 'Date this transfer was sent',
+      format: 'date-time',
+      nullable: true,
+    },
+    acceptedAt: {
+      type: 'string',
+      description: 'The recipient accepted this transfer',
+      format: 'date-time',
+      nullable: true,
+    },
+    declinedAt: {
+      type: 'string',
+      description: 'The recipient declined this transfer',
       format: 'date-time',
       nullable: true,
     },
     canceledAt: {
       type: 'string',
+      description: 'The sender canceled this transfer',
       format: 'date-time',
       nullable: true,
     },
     archivedAt: {
       type: 'string',
+      description: 'The sender archived this transfer',
       format: 'date-time',
       nullable: true,
     },

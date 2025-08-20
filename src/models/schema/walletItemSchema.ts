@@ -165,7 +165,12 @@ export const WalletItemSchema = {
       format: 'date-time',
       nullable: true,
     },
-    transferredAt: {
+    transferStartedAt: {
+      type: 'string',
+      format: 'date-time',
+      nullable: true,
+    },
+    transferAcceptedAt: {
       type: 'string',
       format: 'date-time',
       nullable: true,
