@@ -6,6 +6,7 @@ import { ServiceRequest } from '../../../models/ServiceRequest.js';
 import { WalletItem } from '../../../models/WalletItem.js';
 import { QueryOptions } from '../../../types/QueryOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
+import { getObjectIdFromServiceRequest } from '../../../utils/getObjectIdFromServiceRequest.js';
 import {
   ErrorCode,
   MutationAcceptWalletItemTransferArgs,
@@ -17,7 +18,6 @@ import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
 import findById from '../findById.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
-import { getObjectIdFromServiceRequest } from '../../../utils/getObjectIdFromServiceRequest.js';
 
 type ResponseDataType = {
   data: {

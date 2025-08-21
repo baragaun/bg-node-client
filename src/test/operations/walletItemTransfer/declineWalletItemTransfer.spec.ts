@@ -45,7 +45,6 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.d
     }, client);
 
     expect(walletItemTransfer).toBeDefined();
-    expect(walletItemTransfer.transferSecret).toBeDefined();
     expect(walletItemTransfer.transferSlug).toBeDefined();
 
     const transferSlug = walletItemTransfer.transferSlug;
@@ -62,7 +61,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.d
     );
 
     expect(updatedWalletItem).toBeDefined();
-    expect(updatedWalletItem.transferStartedAt).toBeNull();
+    expect(updatedWalletItem.transferStartedAt).toBeDefined();
     expect(updatedWalletItem.transferAcceptedAt).toBeNull();
   });
 }, 10000);

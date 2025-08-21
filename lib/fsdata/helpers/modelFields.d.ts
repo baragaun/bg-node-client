@@ -852,7 +852,6 @@ declare const modelFields: {
         subjectText: boolean;
         messageText: boolean;
         transferSlug: boolean;
-        transferSecret: boolean;
         sentAt: boolean;
         acceptedAt: boolean;
         declinedAt: boolean;
