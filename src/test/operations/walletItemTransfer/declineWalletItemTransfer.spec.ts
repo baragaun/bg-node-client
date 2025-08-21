@@ -62,7 +62,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.d
     );
 
     expect(updatedWalletItem).toBeDefined();
-    expect(updatedWalletItem.transferredAt).toBeNull();
+    expect(updatedWalletItem.transferStartedAt).toBeNull();
     expect(updatedWalletItem.transferAcceptedAt).toBeNull();
   });
 }, 10000);

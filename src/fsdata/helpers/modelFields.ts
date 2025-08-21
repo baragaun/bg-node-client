@@ -902,7 +902,6 @@ const walletItemTransfer = {
   subjectText: true,
   messageText: true,
   transferSlug: true,
-  transferSecret: true,
   sentAt: true,
   acceptedAt: true,
   declinedAt: true,

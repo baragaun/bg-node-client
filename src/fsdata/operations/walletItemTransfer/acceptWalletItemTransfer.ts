@@ -1,4 +1,4 @@
-import { ModelType } from '../../../enums.js';
+import { ModelType, ServiceRequestResult } from '../../../enums.js';
 import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
@@ -17,6 +17,7 @@ import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
 import findById from '../findById.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
+import { getObjectIdFromServiceRequest } from '../../../utils/getObjectIdFromServiceRequest.js';
 
 type ResponseDataType = {
   data: {
@@ -75,8 +76,10 @@ const acceptWalletItemTransfer = async (
       ModelType.ServiceRequest,
       queryOptions,
     );
+    serviceRequest = pollingResponse.object;
 
-    logger.debug('fsdata.acceptWalletItemTransfer: finished.', { transferSlug, pollingResponse });
+    logger.debug('fsdata.acceptWalletItemTransfer: finished.',
+      { transferSlug, pollingResponse });
 
     if (pollingResponse.error) {
       logger.error('fsdata.acceptWalletItemTransfer: polling failed',
@@ -84,18 +87,19 @@ const acceptWalletItemTransfer = async (
       return { error: pollingResponse.error, serviceRequest };
     }
 
-    if (
-      !pollingResponse.object ||
-      !Array.isArray(pollingResponse.object.objectIds) ||
-      pollingResponse.object.objectIds.length < 1
-    ) {
-      logger.error('fsdata.acceptWalletItemTransfer: wallet item transfer object not found.',
-        { transferSlug, pollingResponse });
-      return { error: ErrorCode.SystemError, serviceRequest };
+    if (serviceRequest.result === ServiceRequestResult.error) {
+      logger.error('fsdata.acceptWalletItemTransfer: processes failed.',
+        { transferSlug, serviceRequest });
+      return { error: pollingResponse.error, serviceRequest };
     }
 
-    serviceRequest = pollingResponse.object;
-    const walletItemId = pollingResponse.object.objectIds[0];
+    const walletItemId = getObjectIdFromServiceRequest(serviceRequest, ModelType.WalletItem);
+
+    if (!walletItemId) {
+      logger.error('fsdata.acceptWalletItemTransfer: failed to extract walletItemId from serviceRequest.',
+        { serviceRequestId: serviceRequest.id, transferSlug, pollingResponse });
+      return { error: ErrorCode.SystemError, serviceRequest };
+    }
 
     const findResult = await findById<WalletItem>(
       walletItemId,

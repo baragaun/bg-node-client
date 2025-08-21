@@ -28,6 +28,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
   });
 
   test('should accept a wallet item transfer', async () => {
+    const transferSecret = chance.integer({ min: 100000, max: 999999 }).toString();
     const itemCount = chance.integer({ min: 2, max: 4 });
     await createPurchaseOrderSpecHelper(
       {},
@@ -37,18 +38,20 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     );
 
     const walletItems = await findWalletItemsSpecHelper(client, myUser, itemCount);
-
     const walletItem = chance.pickone(walletItems);
 
     const { walletItemTransfer } = await createWalletItemTransferSpecHelper({
       walletItemId: walletItem.id,
+      adminNotes: JSON.stringify({ transferSecret }),
+      recipientFullName: chance.name(),
+      recipientEmail: chance.email(),
+      messageText: chance.sentence(),
     }, client);
 
     expect(walletItemTransfer).toBeDefined();
-    expect(walletItemTransfer.transferSecret).toBeDefined();
+    expect(walletItemTransfer.transferSecret).toBeUndefined(); // The server should not expose this
     expect(walletItemTransfer.transferSlug).toBeDefined();
 
-    const transferSecret = walletItemTransfer.transferSecret;
     const transferSlug = walletItemTransfer.transferSlug;
 
     const acceptResponse = await client.operations.walletItemTransfer.acceptWalletItemTransfer(
@@ -60,11 +63,12 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     expect(acceptResponse.object).toBeDefined();
 
     const updatedWalletItem = await findWalletItemByTransferSlugSpecHelper(
-        client, transferSlug,
+      client,
+      transferSlug,
     );
 
     expect(updatedWalletItem).toBeDefined();
-    expect(updatedWalletItem.transferredAt).toBeDefined();
+    expect(updatedWalletItem.transferStartedAt).toBeDefined();
     expect(updatedWalletItem.transferAcceptedAt).toBeDefined();
   });
 }, 10000);

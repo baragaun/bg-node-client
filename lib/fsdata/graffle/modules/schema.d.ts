@@ -2090,11 +2090,14 @@ export declare namespace Schema {
             initAssetUpload: Mutation.initAssetUpload;
             updateUploadedAsset: Mutation.updateUploadedAsset;
             acceptChannelInvitation: Mutation.acceptChannelInvitation;
+            acceptChannelInvitationV2: Mutation.acceptChannelInvitationV2;
             createChannelInvitation: Mutation.createChannelInvitation;
             declineChannelInvitation: Mutation.declineChannelInvitation;
+            declineChannelInvitationV2: Mutation.declineChannelInvitationV2;
             deleteChannelInvitation: Mutation.deleteChannelInvitation;
             deleteChannelInvitationV2: Mutation.deleteChannelInvitationV2;
             dismissChannelInvitationFromInbox: Mutation.dismissChannelInvitationFromInbox;
+            dismissChannelInvitationFromInboxV2: Mutation.dismissChannelInvitationFromInboxV2;
             updateChannelInvitation: Mutation.updateChannelInvitation;
             archiveChannelForMe: Mutation.archiveChannelForMe;
             createChannel: Mutation.createChannel;
@@ -2776,6 +2779,20 @@ export declare namespace Schema {
             inlineType: [1];
             namedType: $$NamedTypes.$$String;
         }
+        interface acceptChannelInvitationV2 {
+            kind: 'OutputField';
+            name: 'acceptChannelInvitationV2';
+            arguments: {
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
         interface createChannelInvitation {
             kind: 'OutputField';
             name: 'createChannelInvitation';
@@ -2810,6 +2827,26 @@ export declare namespace Schema {
             inlineType: [1];
             namedType: $$NamedTypes.$$String;
         }
+        interface declineChannelInvitationV2 {
+            kind: 'OutputField';
+            name: 'declineChannelInvitationV2';
+            arguments: {
+                reasonTextId: {
+                    kind: 'InputField';
+                    name: 'reasonTextId';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$DeclineChannelInvitationReasonTextId;
+                };
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
         interface deleteChannelInvitation {
             kind: 'OutputField';
             name: 'deleteChannelInvitation';
@@ -2817,7 +2854,7 @@ export declare namespace Schema {
                 deletePhysically: {
                     kind: 'InputField';
                     name: 'deletePhysically';
-                    inlineType: [0];
+                    inlineType: [1];
                     namedType: $$NamedTypes.$$Boolean;
                 };
                 channelInvitationId: {
@@ -2870,6 +2907,20 @@ export declare namespace Schema {
             inlineType: [1];
             namedType: $$NamedTypes.$$String;
         }
+        interface dismissChannelInvitationFromInboxV2 {
+            kind: 'OutputField';
+            name: 'dismissChannelInvitationFromInboxV2';
+            arguments: {
+                id: {
+                    kind: 'InputField';
+                    name: 'id';
+                    inlineType: [1];
+                    namedType: $$NamedTypes.$$String;
+                };
+            };
+            inlineType: [1];
+            namedType: $$NamedTypes.$$ServiceRequest;
+        }
         interface updateChannelInvitation {
             kind: 'OutputField';
             name: 'updateChannelInvitation';
@@ -2919,13 +2970,13 @@ export declare namespace Schema {
                 anonymizePersonalData: {
                     kind: 'InputField';
                     name: 'anonymizePersonalData';
-                    inlineType: [0];
+                    inlineType: [1];
                     namedType: $$NamedTypes.$$Boolean;
                 };
                 deletePhysically: {
                     kind: 'InputField';
                     name: 'deletePhysically';
-                    inlineType: [0];
+                    inlineType: [1];
                     namedType: $$NamedTypes.$$Boolean;
                 };
                 channelId: {
@@ -3041,7 +3092,7 @@ export declare namespace Schema {
                 deletePhysically: {
                     kind: 'InputField';
                     name: 'deletePhysically';
-                    inlineType: [0];
+                    inlineType: [1];
                     namedType: $$NamedTypes.$$Boolean;
                 };
                 channelMessageId: {
@@ -18965,7 +19016,7 @@ export declare namespace Schema {
             issuedAt: WalletItem.issuedAt;
             expiresAt: WalletItem.expiresAt;
             balanceUpdatedAt: WalletItem.balanceUpdatedAt;
-            transferredAt: WalletItem.transferredAt;
+            transferStartedAt: WalletItem.transferStartedAt;
             transferAcceptedAt: WalletItem.transferAcceptedAt;
             archivedAt: WalletItem.archivedAt;
         };
@@ -19226,9 +19277,9 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
-        interface transferredAt {
+        interface transferStartedAt {
             kind: 'OutputField';
-            name: 'transferredAt';
+            name: 'transferStartedAt';
             arguments: {};
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
@@ -19270,9 +19321,9 @@ export declare namespace Schema {
             subjectText: WalletItemTransfer.subjectText;
             messageText: WalletItemTransfer.messageText;
             transferSlug: WalletItemTransfer.transferSlug;
-            transferSecret: WalletItemTransfer.transferSecret;
             sentAt: WalletItemTransfer.sentAt;
             acceptedAt: WalletItemTransfer.acceptedAt;
+            declinedAt: WalletItemTransfer.declinedAt;
             canceledAt: WalletItemTransfer.canceledAt;
             archivedAt: WalletItemTransfer.archivedAt;
         };
@@ -19407,13 +19458,9 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
-        interface transferSecret {
-            kind: 'OutputField';
-            name: 'transferSecret';
-            arguments: {};
-            inlineType: [0];
-            namedType: $$NamedTypes.$$String;
-        }
+        /**
+         * Date this transfer was sent
+         */
         interface sentAt {
             kind: 'OutputField';
             name: 'sentAt';
@@ -19421,6 +19468,9 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
+        /**
+         * The recipient accepted this transfer
+         */
         interface acceptedAt {
             kind: 'OutputField';
             name: 'acceptedAt';
@@ -19428,6 +19478,19 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
+        /**
+         * The recipient declined this transfer
+         */
+        interface declinedAt {
+            kind: 'OutputField';
+            name: 'declinedAt';
+            arguments: {};
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        /**
+         * The sender canceled this transfer
+         */
         interface canceledAt {
             kind: 'OutputField';
             name: 'canceledAt';
@@ -19435,6 +19498,9 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
+        /**
+         * The sender archived this transfer
+         */
         interface archivedAt {
             kind: 'OutputField';
             name: 'archivedAt';
@@ -30994,7 +31060,7 @@ export declare namespace Schema {
             issuedAt: WalletItemInput.issuedAt;
             expiresAt: WalletItemInput.expiresAt;
             balanceUpdatedAt: WalletItemInput.balanceUpdatedAt;
-            transferredAt: WalletItemInput.transferredAt;
+            transferStartedAt: WalletItemInput.transferStartedAt;
             transferAcceptedAt: WalletItemInput.transferAcceptedAt;
             archivedAt: WalletItemInput.archivedAt;
         };
@@ -31210,9 +31276,9 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
-        interface transferredAt {
+        interface transferStartedAt {
             kind: 'InputField';
-            name: 'transferredAt';
+            name: 'transferStartedAt';
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
@@ -31325,6 +31391,7 @@ export declare namespace Schema {
             transferSlug: WalletItemTransferInput.transferSlug;
             sentAt: WalletItemTransferInput.sentAt;
             acceptedAt: WalletItemTransferInput.acceptedAt;
+            declinedAt: WalletItemTransferInput.declinedAt;
             canceledAt: WalletItemTransferInput.canceledAt;
             archivedAt: WalletItemTransferInput.archivedAt;
         };
@@ -31432,24 +31499,45 @@ export declare namespace Schema {
             inlineType: [0];
             namedType: $$NamedTypes.$$String;
         }
+        /**
+         * Date this transfer was sent
+         */
         interface sentAt {
             kind: 'InputField';
             name: 'sentAt';
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
+        /**
+         * The recipient accepted this transfer
+         */
         interface acceptedAt {
             kind: 'InputField';
             name: 'acceptedAt';
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
+        /**
+         * The recipient declined this transfer
+         */
+        interface declinedAt {
+            kind: 'InputField';
+            name: 'declinedAt';
+            inlineType: [0];
+            namedType: $$NamedTypes.$$DateTimeISO;
+        }
+        /**
+         * The sender canceled this transfer
+         */
         interface canceledAt {
             kind: 'InputField';
             name: 'canceledAt';
             inlineType: [0];
             namedType: $$NamedTypes.$$DateTimeISO;
         }
+        /**
+         * The sender archived this transfer
+         */
         interface archivedAt {
             kind: 'InputField';
             name: 'archivedAt';
