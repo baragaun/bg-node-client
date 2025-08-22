@@ -8,7 +8,11 @@ export class WalletItemTransfer extends BaseModel {
   public recipientFullName?: string | null;
   public subjectText?: string | null;
   public messageText?: string | null;
+  public transferSlug?: string | null;
+  public transferSecret?: string | null;
   public sentAt?: string | null;
+  public acceptedAt?: string | null;
+  public declinedAt?: string | null;
   public canceledAt?: string | null;
   public archivedAt?: string | null;
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
@@ -36,8 +40,20 @@ export class WalletItemTransfer extends BaseModel {
       if (attributes.messageText !== undefined) {
         this.messageText = attributes.messageText;
       }
+      if (attributes.transferSlug !== undefined) {
+        this.transferSlug = attributes.transferSlug;
+      }
+      if (attributes.transferSecret !== undefined) {
+        this.transferSecret = attributes.transferSecret;
+      }
       if (attributes.sentAt !== undefined && attributes.sentAt !== '') {
         this.sentAt = attributes.sentAt;
+      }
+      if (attributes.acceptedAt !== undefined && attributes.acceptedAt !== '') {
+        this.acceptedAt = attributes.acceptedAt;
+      }
+      if (attributes.declinedAt !== undefined && attributes.declinedAt !== '') {
+        this.declinedAt = attributes.declinedAt;
       }
       if (attributes.canceledAt !== undefined && attributes.canceledAt !== '') {
         this.canceledAt = attributes.canceledAt;

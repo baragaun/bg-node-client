@@ -46,11 +46,11 @@ const createWalletItemTransfer = async (
     });
 
     logger.debug('fsdata.createWalletItemTransfer received response.',
-      { response: JSON.stringify(response) });
+      { props, response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.createWalletItemTransfer: errors received',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+      logger.error('fsdata.createWalletItemTransfer: errors received.',
+        { props, errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
 
       return { error: response.errors.map(error => error.message).join(', ') };
     }
@@ -75,11 +75,12 @@ const createWalletItemTransfer = async (
       queryOptions,
     );
 
-    logger.debug('fsdata.createWalletItemTransfer: finished.', { pollingResponse });
+    logger.debug('fsdata.createWalletItemTransfer: finished.',
+      { props, pollingResponse });
 
     if (pollingResponse.error) {
       logger.error('fsdata.createWalletItemTransfer: polling failed',
-        { error: pollingResponse.error });
+        { props, error: pollingResponse.error });
       return { error: pollingResponse.error, serviceRequest };
     }
 
@@ -88,7 +89,8 @@ const createWalletItemTransfer = async (
       !Array.isArray(pollingResponse.object.objectIds) ||
       pollingResponse.object.objectIds.length < 1
     ) {
-      logger.error('fsdata.createWalletItemTransfer: wallet item transfer object not found', pollingResponse);
+      logger.error('fsdata.createWalletItemTransfer: wallet item transfer object not found.',
+        { props, pollingResponse });
       return { error: ErrorCode.SystemError, serviceRequest };
     }
 
@@ -101,20 +103,21 @@ const createWalletItemTransfer = async (
     );
 
     if (findResult.error) {
-      logger.error('fsdata.createWalletItemTransfer: error loading wallet item transfer',
-        { error: findResult.error, walletItemTransferId });
+      logger.error('fsdata.createWalletItemTransfer: error loading wallet item transfer.',
+        { props, error: findResult.error, walletItemTransferId });
       return { error: findResult.error, serviceRequest };
     }
 
     if (!findResult.object) {
-      logger.error('fsdata.createWalletItemTransfer: wallet item transfer not found',
-        { walletItemTransferId });
+      logger.error('fsdata.createWalletItemTransfer: wallet item transfer not found.',
+        { props, walletItemTransferId });
       return { error: ErrorCode.NotFound, serviceRequest };
     }
 
     return { object: findResult.object, serviceRequest };
   } catch (error) {
-    logger.error('fsdata.createWalletItemTransfer: error.', { error, headers: helpers.headers() });
+    logger.error('fsdata.createWalletItemTransfer: error.',
+      { props, error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }
 };

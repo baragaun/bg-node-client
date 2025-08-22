@@ -2946,7 +2946,12 @@ declare const schema: {
                 format: string;
                 nullable: boolean;
             };
-            transferredAt: {
+            transferStartedAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            transferAcceptedAt: {
                 type: string;
                 format: string;
                 nullable: boolean;

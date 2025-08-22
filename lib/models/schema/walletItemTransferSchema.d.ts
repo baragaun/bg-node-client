@@ -77,18 +77,41 @@ export declare const WalletItemTransferSchema: {
             type: string;
             nullable: boolean;
         };
+        transferSlug: {
+            type: string;
+            nullable: boolean;
+        };
+        transferSecret: {
+            type: string;
+            nullable: boolean;
+        };
         sentAt: {
             type: string;
+            description: string;
+            format: string;
+            nullable: boolean;
+        };
+        acceptedAt: {
+            type: string;
+            description: string;
+            format: string;
+            nullable: boolean;
+        };
+        declinedAt: {
+            type: string;
+            description: string;
             format: string;
             nullable: boolean;
         };
         canceledAt: {
             type: string;
+            description: string;
             format: string;
             nullable: boolean;
         };
         archivedAt: {
             type: string;
+            description: string;
             format: string;
             nullable: boolean;
         };
