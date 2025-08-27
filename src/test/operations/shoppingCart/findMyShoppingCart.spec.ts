@@ -40,4 +40,4 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.shoppingCart.findMyS
     expect(shoppingCart.id).toBe(myUser.id);
     expect(shoppingCart.items.length).toBe(itemCount);
   });
-}, { timeout: 60_000 });
+}, { timeout: 60000 });

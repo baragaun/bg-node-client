@@ -1,7 +1,6 @@
 import { expect } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
-// import { ServiceRequestResult } from '../../../enums.js';
 import chance from '../../../helpers/chance.js';
 import logger from '../../../helpers/logger.js';
 import { ServiceRequest } from '../../../models/ServiceRequest.js';
@@ -20,11 +19,21 @@ export const createWalletItemTransferSpecHelper = async (
   if (!props.recipientFullName) {
     props.recipientFullName = chance.name();
   }
+
   if (!props.recipientEmail) {
     props.recipientEmail = chance.email();
   }
+
   if (!props.messageText) {
     props.messageText = chance.sentence();
+  }
+
+  if (!props.transferSlug) {
+    props.transferSlug = chance.guid();
+  }
+
+  if (!props.transferSecret) {
+    props.transferSecret = chance.integer({ min: 100000, max: 999999 }).toString();
   }
 
   const response =

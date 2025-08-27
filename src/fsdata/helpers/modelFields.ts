@@ -820,6 +820,7 @@ const brand = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
+
   name: true,
   importId: true,
   imageSource: true,
@@ -843,6 +844,7 @@ const walletItem = {
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
+
   walletId: true,
   productId: true,
   purchaseOrderItemId: true,
@@ -868,7 +870,8 @@ const walletItem = {
   issuedAt: true,
   expiresAt: true,
   balanceUpdatedAt: true,
-  transferredAt: true,
+  transferStartedAt: true,
+  transferAcceptedAt: true,
   archivedAt: true,
 };
 
@@ -885,23 +888,23 @@ const wallet = {
 
 const walletItemTransfer = {
   id: true,
-  adminNotes: true,
-  metadata: {
-    updatedAt: true,
-  },
   createdAt: true,
   createdBy: true,
   updatedAt: true,
   updatedBy: true,
   deletedAt: true,
   deletedBy: true,
+
   walletItemId: true,
   notificationId: true,
   recipientEmail: true,
   recipientFullName: true,
   subjectText: true,
   messageText: true,
+  transferSlug: true,
   sentAt: true,
+  acceptedAt: true,
+  declinedAt: true,
   canceledAt: true,
   archivedAt: true,
 };

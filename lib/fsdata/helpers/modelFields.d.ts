@@ -833,15 +833,12 @@ declare const modelFields: {
         issuedAt: boolean;
         expiresAt: boolean;
         balanceUpdatedAt: boolean;
-        transferredAt: boolean;
+        transferStartedAt: boolean;
+        transferAcceptedAt: boolean;
         archivedAt: boolean;
     };
     walletItemTransfer: {
         id: boolean;
-        adminNotes: boolean;
-        metadata: {
-            updatedAt: boolean;
-        };
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
@@ -854,7 +851,10 @@ declare const modelFields: {
         recipientFullName: boolean;
         subjectText: boolean;
         messageText: boolean;
+        transferSlug: boolean;
         sentAt: boolean;
+        acceptedAt: boolean;
+        declinedAt: boolean;
         canceledAt: boolean;
         archivedAt: boolean;
     };
