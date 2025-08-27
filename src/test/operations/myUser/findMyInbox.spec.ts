@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy } from '../../../enums.js';
@@ -16,7 +16,7 @@ describe('operations.myUser.findMyInbox', () => {
     myUser = await signMeUpSpecHelper(undefined, false, client);
   });
 
-  afterAll(async () => {
+  afterEach(async () => {
     await deleteMyUserSpecHelper(client);
   });
 

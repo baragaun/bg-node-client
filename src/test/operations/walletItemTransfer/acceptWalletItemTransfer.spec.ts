@@ -28,8 +28,10 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
   });
 
   test('should accept a wallet item transfer', async () => {
+    const transferSlug = chance.guid();
     const transferSecret = chance.integer({ min: 100000, max: 999999 }).toString();
     const itemCount = chance.integer({ min: 2, max: 4 });
+
     await createPurchaseOrderSpecHelper(
       {},
       itemCount,
@@ -42,7 +44,8 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
 
     const { walletItemTransfer } = await createWalletItemTransferSpecHelper({
       walletItemId: walletItem.id,
-      adminNotes: JSON.stringify({ transferSecret }),
+      transferSlug,
+      transferSecret,
       recipientFullName: chance.name(),
       recipientEmail: chance.email(),
       messageText: chance.sentence(),
@@ -51,8 +54,6 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     expect(walletItemTransfer).toBeDefined();
     expect(walletItemTransfer.transferSecret).toBeUndefined(); // The server should not expose this
     expect(walletItemTransfer.transferSlug).toBeDefined();
-
-    const transferSlug = walletItemTransfer.transferSlug;
 
     const acceptResponse = await client.operations.walletItemTransfer.acceptWalletItemTransfer(
        transferSlug,

@@ -478,8 +478,8 @@ export interface Operations {
 
   walletItemTransfer: {
     acceptWalletItemTransfer: (
-      transferSecret: string,
       transferSlug: string,
+      transferSecret: string,
     ) => Promise<QueryResult<WalletItem>>;
 
     createWalletItemTransfer: (

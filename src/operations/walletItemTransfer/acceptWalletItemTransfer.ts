@@ -5,8 +5,8 @@ import { WalletItem} from '../../models/WalletItem.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const acceptWalletItemTransfer = async (
-  transferSecret: string,
   transferSlug: string,
+  transferSecret: string,
 ): Promise<QueryResult<WalletItem>> => {
   try {
     if (!libData.isInitialized()) {
