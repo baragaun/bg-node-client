@@ -4,6 +4,7 @@ import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
+// import natsService from '../../nats/index.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannelMessage = async (
@@ -50,6 +51,8 @@ const createChannelMessage = async (
     if (!result.error || result.object) {
       await db.insert<ChannelMessage>(result.object, ModelType.ChannelMessage);
     }
+
+    // natsService.publishMessage(`first.spark.dev.channel.${props.channelId}.messages`, result.object);
 
     return result;
   } catch (error) {

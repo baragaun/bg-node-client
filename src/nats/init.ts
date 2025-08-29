@@ -3,7 +3,7 @@ import { CachePolicy } from '../enums.js';
 import subscribeToChannel from './subscribeToChannel.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
-import findMyChannels from '../operations/channel/findMyChannels.js';
+import findMyChannelsV2 from '../operations/channel/findMyChannelsV2.js';
 import { NatsOptions } from '../types/NatsOptions.js';
 
 const init = async (options: Partial<NatsOptions>): Promise<void> => {
@@ -16,10 +16,14 @@ const init = async (options: Partial<NatsOptions>): Promise<void> => {
   await client.connect();
   libData.setNatsClient(client);
 
-  const myChannelsResult = await findMyChannels(
+  console.log('NATS init: connected.', client, options, libData);
+
+  const myChannelsResult = await findMyChannelsV2(
+    undefined,
+    true,
     undefined,
     // We only want to fetch the channels from the local DB:
-    { cachePolicy: CachePolicy.cacheFirst },
+    { cachePolicy: CachePolicy.network },
   );
 
   if (

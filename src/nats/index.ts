@@ -17,7 +17,7 @@ import { publishMessage } from './publishMessage.js';
 import subscribeToChannel from './subscribeToChannel.js';
 
 const natsService = {
-  addSubscription: (subject: string, options: SubscriptionOptions) => {
+  addSubscription: (subject: string, options: SubscriptionOptions) : void => {
     natsStore.addSubscription(subject, options);
   },
 
