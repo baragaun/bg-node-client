@@ -1,6 +1,7 @@
 import * as jetstream from '@nats-io/jetstream';
 import * as nats from '@nats-io/nats-core';
-import { connect, NatsConnection } from '@nats-io/transport-node';
+import { NatsConnection } from '@nats-io/transport-node';
+
 
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
@@ -41,7 +42,17 @@ export class NatsClient {
       this.options.name = config?.clientInfoStore?.myUserDeviceUuid || crypto.randomUUID();
     }
 
-    this.connection = await connect(this.options);
+
+    // Pick transport depending on environment
+    if (typeof window !== 'undefined') {
+      // Browser: use WebSocket transport
+      const { connect } = await import('nats.ws');
+      this.connection = await connect(this.options) as unknown as nats.NatsConnection;
+    } else {
+      // Node.js: use TCP transport
+      const { connect } = await import('@nats-io/transport-node');
+      this.connection = await connect(this.options);
+    }
 
     logger.debug('NatsJetStreamClient.connect: connected.',
       { options: this.options, server: this.connection.getServer() });
