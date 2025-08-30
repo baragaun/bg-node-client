@@ -1,5 +1,5 @@
 import * as nats from '@nats-io/nats-core';
-import { connect, deferred } from '@nats-io/transport-node';
+import { deferred } from '@nats-io/transport-node';
 import {
   afterAll,
   afterEach,
@@ -12,6 +12,8 @@ import {
 
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
+import { NatsClient } from '../../nats/NatsClient.js';
+import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
 import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 
 describe.runIf(isFeatureEnabled('nats'))('NATS connection', () => {
@@ -23,25 +25,11 @@ describe.runIf(isFeatureEnabled('nats'))('NATS connection', () => {
   let activeSubscriptions: nats.Subscription[] = [];
 
   beforeAll(async () => {
-    const config = libData.config();
-    const natsServer = config?.nats && Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0
-      ? config.nats?.servers?.[0] || 'nats://localhost:4222'
-      : 'nats://localhost:4222';
-
-    try {
-      nc = await connect({
-        servers: [natsServer],
-        name: config?.nats?.name || `nats-test-client-${crypto.randomUUID()}`,
-        timeout: 5000,
-        reconnect: true,
-        maxReconnectAttempts: 3,
-      });
-
-      logger.debug(`Connected to NATS server at ${nc.getServer()}`);
-    } catch (error) {
-      logger.error('Failed to connect to NATS server:', error);
-      throw error;
-    }
+      const config = getTestClientConfig();
+      libData.setConfig(config);
+      libData.setNatsClient(new NatsClient(config.nats));
+      const client = libData.natsClient();
+      nc = await client.connect();
   });
 
   beforeEach(() => {

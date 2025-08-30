@@ -56,5 +56,6 @@ export const publishMessage = async (
   }
 
   const pubAck = await js.publish(subject, payload, publishOptions);
+  //todo publish never completes
   return pubAck.seq.toString();
 };
