@@ -54,7 +54,7 @@ describe('operations.walletItemTransfer.findWalletItemTransfers', () => {
       {},
     );
     expect(result.error).toBeUndefined();
-    expect(result.objects).toBeDefined();
+    expect(result.objects).toBeTruthy();
     expect(result.objects.length).toBeGreaterThan(0);
     expect(result.objects[0].id).toBe(walletItemTransferId);
   });

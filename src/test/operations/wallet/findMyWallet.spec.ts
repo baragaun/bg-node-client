@@ -38,7 +38,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.wallet.findMyWallet'
     const cachedWallet = localResult.object;
 
     expect(localResult.error).toBeUndefined();
-    expect(localResult.object).toBeDefined();
+    expect(localResult.object).toBeTruthy();
     expect(cachedWallet.id).toBe(myUser.id);
   });
 
@@ -49,7 +49,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.wallet.findMyWallet'
     const wallet = networkResult.object;
 
     expect(networkResult.error).toBeUndefined();
-    expect(networkResult.object).toBeDefined();
+    expect(networkResult.object).toBeTruthy();
     expect(wallet.id).toBe(myUser.id);
   });
 });

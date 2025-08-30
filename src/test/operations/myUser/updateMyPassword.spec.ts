@@ -43,7 +43,7 @@ describe('operations.myUser.updateMyPassword', () => {
       { cachePolicy: CachePolicy.network },
     );
 
-    expect(updateResult).toBeDefined();
+    expect(updateResult).toBeTruthy();
     expect(updateResult.error).toBeUndefined();
     expect(updateResult.object.id).toBe(client.myUserId);
     expect(updateResult.object.lastName).toBe(lastName);
@@ -62,10 +62,10 @@ describe('operations.myUser.updateMyPassword', () => {
     });
 
     expect(signInUserResponse.error).toBeUndefined();
-    expect(signInUserResponse.object.userAuthResponse).toBeDefined();
+    expect(signInUserResponse.object.userAuthResponse).toBeTruthy();
     expect(signInUserResponse.object.userAuthResponse.userId).toBe(client.myUserId);
     expect(signInUserResponse.object.userAuthResponse.authToken.length).toBeGreaterThan(10);
-    expect(signInUserResponse.object.myUser).toBeDefined();
-    expect(signInUserResponse.object.myUser.id).toBeDefined();
+    expect(signInUserResponse.object.myUser).toBeTruthy();
+    expect(signInUserResponse.object.myUser.id).toBeTruthy();
   });
 });

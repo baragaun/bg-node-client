@@ -22,7 +22,7 @@ export const reportUserForMeSpecHelper = async (
   logger.debug('BgServiceApiCheck.reportUserForMe: received response from reportUserForMe',
     { updateUserResponse: response });
 
-  expect(response).toBeDefined();
+  expect(response).toBeTruthy();
   expect(response.error).toBeUndefined();
 
   // todo: verify

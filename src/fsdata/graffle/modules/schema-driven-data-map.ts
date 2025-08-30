@@ -6398,6 +6398,20 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
+const WalletItemTransferAcceptInfo: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+  f: {
+    brand: {
+      // nt: Brand, <-- Assigned later to avoid potential circular dependency.
+    },
+    walletItem: {
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
+    walletItemTransfer: {
+      // nt: WalletItemTransfer, <-- Assigned later to avoid potential circular dependency.
+    },
+  },
+};
+
 const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     id: {},
@@ -8736,6 +8750,15 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
+    findWalletItemTransferAcceptInfoByTransferSlug: {
+      a: {
+        transferSlug: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: WalletItemTransferAcceptInfo, <-- Assigned later to avoid potential circular dependency.
+    },
     findWalletItemTransferById: {
       a: {
         options: {
@@ -10838,6 +10861,9 @@ ShoppingCart.f['metadata']!.nt = BaseModelMetadata;
 ShoppingCart.f['items']!.nt = ShoppingCartItem;
 WalletItem.f['events']!.nt = ModelEvent;
 WalletItem.f['metadata']!.nt = BaseModelMetadata;
+WalletItemTransferAcceptInfo.f['brand']!.nt = Brand;
+WalletItemTransferAcceptInfo.f['walletItem']!.nt = WalletItem;
+WalletItemTransferAcceptInfo.f['walletItemTransfer']!.nt = WalletItemTransfer;
 WalletItemTransfer.f['events']!.nt = ModelEvent;
 WalletItemTransfer.f['metadata']!.nt = BaseModelMetadata;
 Wallet.f['events']!.nt = ModelEvent;
@@ -11014,6 +11040,7 @@ Query.f['findMyShoppingCart']!.nt = ShoppingCart;
 Query.f['findWalletItemById']!.nt = WalletItem;
 Query.f['findWalletItemByTransferSlug']!.nt = WalletItem;
 Query.f['findWalletItems']!.nt = WalletItem;
+Query.f['findWalletItemTransferAcceptInfoByTransferSlug']!.nt = WalletItemTransferAcceptInfo;
 Query.f['findWalletItemTransferById']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransferByTransferSlug']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransfers']!.nt = WalletItemTransfer;
@@ -11371,6 +11398,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ShoppingCartItem,
     ShoppingCart,
     WalletItem,
+    WalletItemTransferAcceptInfo,
     WalletItemTransfer,
     Wallet,
     WalletServiceRecord,

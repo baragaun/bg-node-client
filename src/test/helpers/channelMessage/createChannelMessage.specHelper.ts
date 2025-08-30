@@ -23,7 +23,7 @@ export const createChannelMessageSpecHelper = async (
     const messageFromNetwork = response.object;
 
     expect(response.error).toBeUndefined();
-    expect(messageFromNetwork).toBeDefined();
+    expect(messageFromNetwork).toBeTruthy();
     expect(messageFromNetwork.channelId).toBe(props.channelId);
     expect(messageFromNetwork.createdBy).toBe(props.createdBy);
     expect(messageFromNetwork.channelMessageType).toBe(props.channelMessageType);

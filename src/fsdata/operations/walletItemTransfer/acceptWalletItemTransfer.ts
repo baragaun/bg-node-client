@@ -78,7 +78,8 @@ const acceptWalletItemTransfer = async (
     );
     serviceRequest = pollingResponse.object;
 
-    logger.debug('fsdata.acceptWalletItemTransfer: finished.', { transferSlug, pollingResponse });
+    logger.debug('fsdata.acceptWalletItemTransfer: finished.',
+      { transferSlug, pollingResponse });
 
     if (pollingResponse.error) {
       logger.error('fsdata.acceptWalletItemTransfer: polling failed',

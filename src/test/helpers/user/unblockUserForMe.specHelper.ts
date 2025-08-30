@@ -17,7 +17,7 @@ export const unblockUserForMeSpecHelper = async (
   });
 
   expect(findMyUserResult.error).toBeUndefined();
-  expect(findMyUserResult.object).toBeDefined();
+  expect(findMyUserResult.object).toBeTruthy();
 
   const myUser = findMyUserResult.object;
   const oldUserBlockCount = myUser.userBlocks ? myUser.userBlocks.length : 0;
@@ -30,10 +30,10 @@ export const unblockUserForMeSpecHelper = async (
   logger.debug('BgServiceApiCheck.blockUserForMe: received response from blockUserForMe',
     { updateUserResponse: response });
 
-  expect(response).toBeDefined();
+  expect(response).toBeTruthy();
   expect(response.error).toBeUndefined();
   expect(response.object.id).toBe(client.myUserId);
-  expect(response.object.userBlocks).toBeDefined();
+  expect(response.object.userBlocks).toBeTruthy();
   expect(response.object.userBlocks.length).toBe(oldUserBlockCount - 1);
 
   if (Array.isArray(response.object.userBlocks) && response.object.userBlocks.length > 0) {
@@ -47,7 +47,7 @@ export const unblockUserForMeSpecHelper = async (
   const myUserFromCache1 = findMyUserFromCache1Result.object;
 
   expect(findMyUserFromCache1Result.error).toBeUndefined();
-  expect(findMyUserFromCache1Result.object).toBeDefined();
+  expect(findMyUserFromCache1Result.object).toBeTruthy();
   expect(myUserFromCache1.id).toBe(client.myUserId);
   expect(myUserFromCache1.userBlocks.length).toBe(oldUserBlockCount - 1);
 
@@ -63,7 +63,7 @@ export const unblockUserForMeSpecHelper = async (
     const myUserFromNetwork = findMyUserFromNetworkResult.object;
 
     expect(findMyUserFromNetworkResult.error).toBeUndefined();
-    expect(findMyUserFromNetworkResult.object).toBeDefined();
+    expect(findMyUserFromNetworkResult.object).toBeTruthy();
     expect(myUserFromNetwork.id).toBe(client.myUserId);
     expect(myUserFromNetwork.userBlocks.length).toBe(oldUserBlockCount - 1);
 
@@ -77,7 +77,7 @@ export const unblockUserForMeSpecHelper = async (
     const myUserFromCache2 = findMyUserFromCacheResult.object;
 
     expect(findMyUserFromCacheResult.error).toBeUndefined();
-    expect(findMyUserFromCacheResult.object).toBeDefined();
+    expect(findMyUserFromCacheResult.object).toBeTruthy();
     expect(myUserFromCache2.id).toBe(client.myUserId);
     expect(myUserFromCache2.userBlocks.length).toBe(oldUserBlockCount - 1);
 

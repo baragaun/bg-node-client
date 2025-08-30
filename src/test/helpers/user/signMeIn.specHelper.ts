@@ -20,20 +20,20 @@ export const signMeInSpecHelper = async (
 
   logger.debug('BgServiceApiCheck.signMeIn: received response', { signInUserResponse });
 
-  expect(signInUserResponse).toBeDefined();
+  expect(signInUserResponse).toBeTruthy();
   expect(signInUserResponse.error).toBeUndefined();
-  expect(signInUserResponse.object).toBeDefined();
-  expect(signInUserResponse.object.userAuthResponse).toBeDefined();
-  expect(signInUserResponse.object.userAuthResponse.userId).toBeDefined();
-  expect(signInUserResponse.object.userAuthResponse.authToken).toBeDefined();
+  expect(signInUserResponse.object).toBeTruthy();
+  expect(signInUserResponse.object.userAuthResponse).toBeTruthy();
+  expect(signInUserResponse.object.userAuthResponse.userId).toBeTruthy();
+  expect(signInUserResponse.object.userAuthResponse.authToken).toBeTruthy();
   expect(signInUserResponse.object.myUser.id).toBe(signInUserResponse.object?.userAuthResponse?.userId);
   expect(client.isSignedIn).toBeTruthy();
   expect(client.myUserId).toBe(signInUserResponse.object?.userAuthResponse?.userId);
 
   const clientInfo = await client?.clientInfoStore.load();
-  expect(clientInfo.myUserId).toBeDefined();
-  expect(clientInfo.authToken).toBeDefined();
-  expect(clientInfo.myUserDeviceUuid).toBeDefined();
+  expect(clientInfo.myUserId).toBeTruthy();
+  expect(clientInfo.authToken).toBeTruthy();
+  expect(clientInfo.myUserDeviceUuid).toBeTruthy();
 
   // Verifying the local user object:
   const findMyUserFromCacheResult = await client.operations.myUser.findMyUser({
@@ -41,9 +41,9 @@ export const signMeInSpecHelper = async (
   });
   const myUserFromCache = findMyUserFromCacheResult.object;
 
-  expect(findMyUserFromCacheResult).toBeDefined();
+  expect(findMyUserFromCacheResult).toBeTruthy();
   expect(findMyUserFromCacheResult.error).toBeUndefined();
-  expect(findMyUserFromCacheResult.object).toBeDefined();
+  expect(findMyUserFromCacheResult.object).toBeTruthy();
 
   verifyUserPropsSpecHelper(
     myUserFromCache,

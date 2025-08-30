@@ -27,7 +27,7 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.deleteChannelMe
   test('should delete channelMessage properties', async () => {
     const props = await factories.channel.build({});
 
-    expect(client).toBeDefined();
+    expect(client).toBeTruthy();
 
     await signMeUpSpecHelper(undefined, false, client);
     const channel = await createChannelSpecHelper(props, 2, client);

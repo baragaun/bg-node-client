@@ -41,10 +41,10 @@ describe('operations.myUser.resetMyPassword', () => {
     );
 
     expect(response1.error).toBeUndefined();
-    expect(response1.object).toBeDefined();
-    expect(response1.object.actionProgress).toBeDefined();
-    expect(response1.object.run).toBeDefined();
-    expect(response1.object.run.actionId).toBeDefined();
+    expect(response1.object).toBeTruthy();
+    expect(response1.object.actionProgress).toBeTruthy();
+    expect(response1.object.run).toBeTruthy();
+    expect(response1.object.run.actionId).toBeTruthy();
     expect(response1.object.actionProgress.userId).toBe(myUserId);
     expect(response1.object.actionProgress.actionType).toBe(MultiStepActionType.resetPassword);
     expect(response1.object.error).toBeUndefined();
@@ -61,14 +61,14 @@ describe('operations.myUser.resetMyPassword', () => {
           eventType: MultiStepActionEventType,
           action: SidMultiStepActionProgress,
         ) => {
-          expect(action.notificationResult).toBeDefined();
+          expect(action.notificationResult).toBeTruthy();
 
           // Verify token
           if (
             eventType === MultiStepActionEventType.notificationSent ||
             eventType === MultiStepActionEventType.notificationFailed
           ) {
-            expect(action.notificationResult).toBeDefined();
+            expect(action.notificationResult).toBeTruthy();
 
             // Verify token with an invalid token:
             const verifyResponse =
@@ -79,7 +79,7 @@ describe('operations.myUser.resetMyPassword', () => {
               );
 
             expect(verifyResponse.error).toBeUndefined();
-            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object).toBeTruthy();
             expect(verifyResponse.object.actionId).toBe(actionId);
 
             return;
@@ -95,7 +95,7 @@ describe('operations.myUser.resetMyPassword', () => {
               );
 
             expect(verifyResponse.error).toBeUndefined();
-            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object).toBeTruthy();
             expect(verifyResponse.object.actionId).toBe(actionId);
 
             return;
@@ -103,7 +103,7 @@ describe('operations.myUser.resetMyPassword', () => {
 
           if (eventType === MultiStepActionEventType.success) {
             // The token was accepted
-            expect(action).toBeDefined();
+            expect(action).toBeTruthy();
             expect(action.actionId).toBe(actionId);
             expect(action.result).toBe(MultiStepActionResult.ok);
             expect(action.userId).toBe(myUserId);
@@ -117,7 +117,7 @@ describe('operations.myUser.resetMyPassword', () => {
             const reloadedMyUser = findMyUserResult1.object;
 
             expect(findMyUserResult1.error).toBeUndefined();
-            expect(findMyUserResult1.object).toBeDefined();
+            expect(findMyUserResult1.object).toBeTruthy();
             expect(reloadedMyUser.id).toBe(myUserId);
             expect(reloadedMyUser.id).toBe(client.myUserId);
             expect(reloadedMyUser.userHandle).toBe(myUser.userHandle);
@@ -133,7 +133,7 @@ describe('operations.myUser.resetMyPassword', () => {
             const myUserFromCache = findMyUserFromCacheResult.object;
 
             expect(findMyUserFromCacheResult.error).toBeUndefined();
-            expect(findMyUserFromCacheResult.object).toBeDefined();
+            expect(findMyUserFromCacheResult.object).toBeTruthy();
             expect(myUserFromCache.id).toBe(myUserId);
             expect(myUserFromCache.id).toBe(client.myUserId);
             expect(myUserFromCache.userHandle).toBe(myUser.userHandle);

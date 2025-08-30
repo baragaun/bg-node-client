@@ -1,13 +1,6 @@
 declare const modelFields: {
     channel: {
-        id: boolean;
         adminNotes: boolean;
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
         name: boolean;
         topic: boolean;
         description: boolean;
@@ -29,16 +22,15 @@ declare const modelFields: {
         archivedAt: boolean;
         archivedBy: boolean;
         isArchivedForMe: boolean;
-    };
-    channelInvitation: {
         id: boolean;
-        adminNotes: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+    };
+    channelInvitation: {
         channelId: boolean;
         recipientId: boolean;
         channelName: boolean;
@@ -53,16 +45,15 @@ declare const modelFields: {
         suspendedBy: boolean;
         userSearchId: boolean;
         searchRank: boolean;
-    };
-    channelListItem: {
         id: boolean;
-        adminNotes: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+    };
+    channelListItem: {
         name: boolean;
         topic: boolean;
         description: boolean;
@@ -95,14 +86,6 @@ declare const modelFields: {
             };
         };
         latestMessage: {
-            id: boolean;
-            adminNotes: boolean;
-            createdAt: boolean;
-            createdBy: boolean;
-            updatedAt: boolean;
-            updatedBy: boolean;
-            deletedAt: boolean;
-            deletedBy: boolean;
             channelId: boolean;
             replyToMessageId: boolean;
             channelMessageType: boolean;
@@ -115,10 +98,24 @@ declare const modelFields: {
             editedAt: boolean;
             suspendedAt: boolean;
             suspendedBy: boolean;
+            id: boolean;
+            createdAt: boolean;
+            createdBy: boolean;
+            updatedAt: boolean;
+            updatedBy: boolean;
+            deletedAt: boolean;
+            deletedBy: boolean;
         };
+        id: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
     };
     channelMessage: {
-        id: boolean;
+        adminNotes: boolean;
         channelId: boolean;
         replyToMessageId: boolean;
         channelMessageType: boolean;
@@ -129,18 +126,17 @@ declare const modelFields: {
             seenAt: boolean;
         };
         editedAt: boolean;
-        adminNotes: boolean;
+        suspendedAt: boolean;
+        suspendedBy: boolean;
+        id: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        suspendedAt: boolean;
-        suspendedBy: boolean;
     };
     channelParticipant: {
-        id: boolean;
         userId: boolean;
         channelId: boolean;
         channelName: boolean;
@@ -153,18 +149,17 @@ declare const modelFields: {
         };
         suspendedAt: boolean;
         suspendedBy: boolean;
+        invitedBy: boolean;
+        id: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
-        invitedBy: boolean;
     };
     company: {
-        id: boolean;
         name: boolean;
-        adminNotes: boolean;
         annualRevenue: boolean;
         companyStage: boolean;
         companyStageTextId: boolean;
@@ -172,7 +167,6 @@ declare const modelFields: {
         companyTypeTextId: boolean;
         description: boolean;
         employeeCount: boolean;
-        events: boolean;
         foundedAt: boolean;
         industries: boolean;
         isFundraising: boolean;
@@ -181,6 +175,7 @@ declare const modelFields: {
         metadata: boolean;
         userIds: boolean;
         websites: boolean;
+        id: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
@@ -189,14 +184,6 @@ declare const modelFields: {
         deletedBy: boolean;
     };
     giftCardProduct: {
-        id: boolean;
-        adminNotes: boolean;
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
         brandId: boolean;
         name: boolean;
         description: boolean;
@@ -218,10 +205,15 @@ declare const modelFields: {
             amount: boolean;
             enabled: boolean;
         };
+        id: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
     };
     myUser: {
-        id: boolean;
-        adminNotes: boolean;
         metadata: {
             updatedAt: boolean;
             totalTimeOnPlatform: boolean;
@@ -233,12 +225,6 @@ declare const modelFields: {
                 updatedAt: boolean;
             };
         };
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
         firstName: boolean;
         lastName: boolean;
         userHandle: boolean;
@@ -268,13 +254,6 @@ declare const modelFields: {
         source: boolean;
         timezone: boolean;
         preferences: {
-            id: boolean;
-            createdAt: boolean;
-            createdBy: boolean;
-            updatedAt: boolean;
-            updatedBy: boolean;
-            deletedAt: boolean;
-            deletedBy: boolean;
             shareEmail: boolean;
             sharePhoneNumber: boolean;
             showWelcomeMessage: boolean;
@@ -286,6 +265,13 @@ declare const modelFields: {
                 enableSms: boolean;
                 frequency: boolean;
             };
+            id: boolean;
+            createdAt: boolean;
+            createdBy: boolean;
+            updatedAt: boolean;
+            updatedBy: boolean;
+            deletedAt: boolean;
+            deletedBy: boolean;
         };
         trustLevel: boolean;
         signedInAt: boolean;
@@ -295,7 +281,6 @@ declare const modelFields: {
             userId: boolean;
             reasonTextId: boolean;
             notes: boolean;
-            adminNotes: boolean;
             createdAt: boolean;
         };
         inactivatedAt: boolean;
@@ -310,9 +295,9 @@ declare const modelFields: {
         parentGroupIds: boolean;
         externalGroupIds: boolean;
         groupMemberships: {
+            id: boolean;
             groupId: boolean;
             groupIdent: boolean;
-            id: boolean;
             roles: boolean;
             userId: boolean;
         };
@@ -324,14 +309,6 @@ declare const modelFields: {
         cityOfOrigin: boolean;
         isOnVacation: boolean;
         avatarAsset: {
-            id: boolean;
-            adminNotes: boolean;
-            createdAt: boolean;
-            createdBy: boolean;
-            updatedAt: boolean;
-            updatedBy: boolean;
-            deletedAt: boolean;
-            deletedBy: boolean;
             ownerId: boolean;
             ownerModelType: boolean;
             assetType: boolean;
@@ -345,47 +322,51 @@ declare const modelFields: {
             uploadUrlExpiresAt: boolean;
             uploadedAt: boolean;
             expiresAt: boolean;
-        };
-        fallbackUiLanguageTextId: boolean;
-    };
-    productCategory: {
-        id: boolean;
-        adminNotes: boolean;
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
-        importId: boolean;
-        name: boolean;
-        labelEn: boolean;
-        sortIndex: boolean;
-    };
-    purchaseOrder: {
-        id: boolean;
-        items: {
             id: boolean;
-            adminNotes: boolean;
             createdAt: boolean;
             createdBy: boolean;
             updatedAt: boolean;
             updatedBy: boolean;
             deletedAt: boolean;
             deletedBy: boolean;
-            purchaseOrderId: boolean;
-            productId: boolean;
-            quantity: boolean;
-            price: boolean;
-            totalPrice: boolean;
         };
-        adminNotes: boolean;
+        fallbackUiLanguageTextId: boolean;
+        id: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+    };
+    productCategory: {
+        importId: boolean;
+        name: boolean;
+        labelEn: boolean;
+        sortIndex: boolean;
+        id: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
+    };
+    purchaseOrder: {
+        items: {
+            purchaseOrderId: boolean;
+            productId: boolean;
+            quantity: boolean;
+            price: boolean;
+            totalPrice: boolean;
+            id: boolean;
+            createdAt: boolean;
+            createdBy: boolean;
+            updatedAt: boolean;
+            updatedBy: boolean;
+            deletedAt: boolean;
+            deletedBy: boolean;
+        };
         userId: boolean;
         sumItemPrice: boolean;
         totalPrice: boolean;
@@ -393,35 +374,39 @@ declare const modelFields: {
         paidAt: boolean;
         canceledAt: boolean;
         refundedAt: boolean;
-    };
-    purchaseOrderItem: {
         id: boolean;
-        adminNotes: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+    };
+    purchaseOrderItem: {
         purchaseOrderId: boolean;
         productId: boolean;
         quantity: boolean;
         price: boolean;
         totalPrice: boolean;
+        id: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
     };
     shoppingCart: {
-        id: boolean;
         sumItemPrice: boolean;
         totalPrice: boolean;
         vat: boolean;
         items: {
-            id: boolean;
             shoppingCartId: boolean;
             productId: boolean;
             quantity: boolean;
             price: boolean;
             totalPrice: boolean;
-            adminNotes: boolean;
+            id: boolean;
             createdAt: boolean;
             createdBy: boolean;
             updatedAt: boolean;
@@ -429,7 +414,7 @@ declare const modelFields: {
             deletedAt: boolean;
             deletedBy: boolean;
         };
-        adminNotes: boolean;
+        id: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
@@ -438,13 +423,12 @@ declare const modelFields: {
         deletedBy: boolean;
     };
     shoppingCartItem: {
-        id: boolean;
         shoppingCartId: boolean;
         productId: boolean;
         quantity: boolean;
         price: boolean;
         totalPrice: boolean;
-        adminNotes: boolean;
+        id: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
@@ -453,14 +437,7 @@ declare const modelFields: {
         deletedBy: boolean;
     };
     serviceRequest: {
-        id: boolean;
         adminNotes: boolean;
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
         deviceUuid: boolean;
         errorCode: boolean;
         events: {
@@ -477,36 +454,29 @@ declare const modelFields: {
         result: boolean;
         serviceRequestType: boolean;
         source: boolean;
-    };
-    sidMultiStepAction: {
-        actionStatus: boolean;
-        actionType: boolean;
-        adminNotes: boolean;
-        attemptCount: boolean;
-        confirmToken: boolean;
+        id: boolean;
         createdAt: boolean;
         createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+    };
+    sidMultiStepAction: {
+        adminNotes: boolean;
+        actionStatus: boolean;
+        actionType: boolean;
+        attemptCount: boolean;
+        confirmToken: boolean;
         deviceUuid: boolean;
         email: boolean;
         emailPassed: boolean;
         emailUpdatedAt: boolean;
         emailVerifiedAt: boolean;
         errors: {
-            adminNotes: boolean;
-            createdAt: boolean;
-            createdBy: boolean;
-            deletedAt: boolean;
-            deletedBy: boolean;
-            events: boolean;
-            id: boolean;
             key: boolean;
             message: boolean;
             messageId: boolean;
-            metadata: boolean;
-            updatedAt: boolean;
-            updatedBy: boolean;
         };
         events: {
             message: boolean;
@@ -514,7 +484,6 @@ declare const modelFields: {
             time: boolean;
         };
         expiresAt: boolean;
-        id: boolean;
         notificationId: boolean;
         notificationMethod: boolean;
         notificationResult: boolean;
@@ -531,11 +500,16 @@ declare const modelFields: {
         result: boolean;
         signedInAt: boolean;
         textData: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
         userHandle: boolean;
         userId: boolean;
         userIdent: boolean;
+        id: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
     };
     sidMultiStepActionProgress: {
         actionId: boolean;
@@ -554,14 +528,6 @@ declare const modelFields: {
         emailUpdatedAt: boolean;
         emailVerifiedAt: boolean;
         errors: {
-            id: boolean;
-            adminNotes: boolean;
-            createdAt: boolean;
-            createdBy: boolean;
-            updatedAt: boolean;
-            updatedBy: boolean;
-            deletedAt: boolean;
-            deletedBy: boolean;
             key: boolean;
             messageId: boolean;
             message: boolean;
@@ -581,15 +547,8 @@ declare const modelFields: {
             modelEventType: boolean;
             message: boolean;
         };
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
     };
     user: {
-        id: boolean;
         firstName: boolean;
         lastName: boolean;
         userHandle: boolean;
@@ -600,6 +559,7 @@ declare const modelFields: {
         inactivatedBy: boolean;
         suspendedAt: boolean;
         suspendedBy: boolean;
+        id: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
@@ -608,14 +568,6 @@ declare const modelFields: {
         deletedBy: boolean;
     };
     userInbox: {
-        id: boolean;
-        adminNotes: boolean;
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
         userId: boolean;
         channels: {
             userId: boolean;
@@ -733,6 +685,13 @@ declare const modelFields: {
             updatedAt: boolean;
             updatedBy: boolean;
         };
+        id: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
     };
     userListItem: {
         id: boolean;
@@ -758,7 +717,6 @@ declare const modelFields: {
             userId: boolean;
             reasonTextId: boolean;
             notes: boolean;
-            adminNotes: boolean;
             createdAt: boolean;
         };
         roles: boolean;
@@ -768,14 +726,6 @@ declare const modelFields: {
         updatedAt: boolean;
     };
     brand: {
-        id: boolean;
-        adminNotes: boolean;
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
         name: boolean;
         importId: boolean;
         imageSource: boolean;
@@ -788,10 +738,16 @@ declare const modelFields: {
         alias1: boolean;
         alias2: boolean;
         alias3: boolean;
+        id: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
     };
     wallet: {
         id: boolean;
-        adminNotes: boolean;
         createdAt: boolean;
         createdBy: boolean;
         updatedAt: boolean;
@@ -800,14 +756,6 @@ declare const modelFields: {
         deletedBy: boolean;
     };
     walletItem: {
-        id: boolean;
-        adminNotes: boolean;
-        createdAt: boolean;
-        createdBy: boolean;
-        updatedAt: boolean;
-        updatedBy: boolean;
-        deletedAt: boolean;
-        deletedBy: boolean;
         walletId: boolean;
         productId: boolean;
         purchaseOrderItemId: boolean;
@@ -836,8 +784,6 @@ declare const modelFields: {
         transferStartedAt: boolean;
         transferAcceptedAt: boolean;
         archivedAt: boolean;
-    };
-    walletItemTransfer: {
         id: boolean;
         createdAt: boolean;
         createdBy: boolean;
@@ -845,6 +791,8 @@ declare const modelFields: {
         updatedBy: boolean;
         deletedAt: boolean;
         deletedBy: boolean;
+    };
+    walletItemTransfer: {
         walletItemId: boolean;
         notificationId: boolean;
         recipientEmail: boolean;
@@ -857,6 +805,13 @@ declare const modelFields: {
         declinedAt: boolean;
         canceledAt: boolean;
         archivedAt: boolean;
+        id: boolean;
+        createdAt: boolean;
+        createdBy: boolean;
+        updatedAt: boolean;
+        updatedBy: boolean;
+        deletedAt: boolean;
+        deletedBy: boolean;
     };
 };
 export default modelFields;

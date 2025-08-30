@@ -27,7 +27,7 @@ describe('operations.findUserById', () => {
     const reloadedUser = response.object;
 
     expect(response.error).toBeUndefined();
-    expect(response.object).toBeDefined();
+    expect(response.object).toBeTruthy();
     expect(reloadedUser.id).toBe(otherUser.id);
     expect(reloadedUser.userHandle).toBe(otherUser.userHandle);
     expect(reloadedUser.firstName).toBe(otherUser.firstName);

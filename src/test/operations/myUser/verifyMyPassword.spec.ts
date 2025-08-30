@@ -24,7 +24,7 @@ describe('operations.myUser.verifyMyPassword', () => {
       getTestUserPropsSpecHelper(myUser).password,
     );
 
-    expect(response).toBeDefined();
+    expect(response).toBeTruthy();
     expect(response.error).toBeUndefined();
     expect(response.object).toBe('true');
   });
@@ -37,7 +37,7 @@ describe('operations.myUser.verifyMyPassword', () => {
       'invalid',
     );
 
-    expect(response).toBeDefined();
+    expect(response).toBeTruthy();
     expect(response.error).toBeUndefined();
     expect(response.object).toBe('false');
   });

@@ -45,21 +45,21 @@ export const signMeUpSpecHelper = async (
   }
 
   expect(signUpUserAuthResponse.error).toBeUndefined();
-  expect(signUpUserAuthResponse.object).toBeDefined();
+  expect(signUpUserAuthResponse.object).toBeTruthy();
 
   const authResponse = signUpUserAuthResponse.object.userAuthResponse;
   const myUserId = authResponse.userId;
 
-  expect(authResponse).toBeDefined();
-  expect(myUserId).toBeDefined();
-  expect(authResponse.authToken).toBeDefined();
+  expect(authResponse).toBeTruthy();
+  expect(myUserId).toBeTruthy();
+  expect(authResponse.authToken).toBeTruthy();
 
   const clientInfo1 = await client?.clientInfoStore.load();
-  expect(clientInfo1.myUserId).toBeDefined();
+  expect(clientInfo1.myUserId).toBeTruthy();
   expect(clientInfo1.myUserId).toBe(signUpUserAuthResponse.object.userAuthResponse.userId);
-  expect(clientInfo1.authToken).toBeDefined();
+  expect(clientInfo1.authToken).toBeTruthy();
   expect(clientInfo1.authToken).toBe(signUpUserAuthResponse.object.userAuthResponse.authToken);
-  expect(clientInfo1.myUserDeviceUuid).toBeDefined();
+  expect(clientInfo1.myUserDeviceUuid).toBeTruthy();
   expect(client.isSignedIn).toBeTruthy();
 
   // Verifying the local user object:
@@ -69,8 +69,8 @@ export const signMeUpSpecHelper = async (
   const myUser = findMyUserResult.object;
 
   expect(findMyUserResult.error).toBeUndefined();
-  expect(findMyUserResult.object).toBeDefined();
-  expect(myUser).toBeDefined();
+  expect(findMyUserResult.object).toBeTruthy();
+  expect(myUser).toBeTruthy();
 
   verifyUserPropsSpecHelper(
     myUser as Partial<MyUser>,

@@ -51,6 +51,7 @@ import { Wallet } from '../models/Wallet.js';
 import { WalletItem } from '../models/WalletItem.js';
 import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
 import { WalletItemTransfer } from '../models/WalletItemTransfer.js';
+import { WalletItemTransferAcceptInfo } from '../models/WalletItemTransferAcceptInfo.js';
 import { WalletItemTransferListFilter } from '../models/WalletItemTransferListFilter.js';
 
 export interface Operations {
@@ -457,6 +458,8 @@ export interface Operations {
       props: Partial<WalletItem>,
     ) => Promise<QueryResult<WalletItem>>;
 
+    ) => Promise<QueryResult<WalletItem>>;
+
     findWalletItemByTransferSlug: (
       transferSlug: string,
       options: FindObjectsOptions,
@@ -489,6 +492,15 @@ export interface Operations {
     declineWalletItemTransfer: (
       transferSlug: string,
     ) => Promise<QueryResult<WalletItem>>;
+
+    findWalletItemTransferById: (
+      id: string,
+      options: FindObjectsOptions,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
+
+    findWalletItemTransferAcceptInfoByTransferSlug: (
+      transferSlug: string,
+    ) => Promise<QueryResult<WalletItemTransferAcceptInfo>>;
 
     findWalletItemTransfers: (
       filter: WalletItemTransferListFilter | null | undefined,

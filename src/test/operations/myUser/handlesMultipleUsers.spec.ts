@@ -34,10 +34,10 @@ describe('operations.myUser.signInUser', () => {
       const myUserId = signInUserResponse.object.userAuthResponse.userId;
 
       expect(signInUserResponse.error).toBeUndefined();
-      expect(signInUserResponse.object.userAuthResponse).toBeDefined();
+      expect(signInUserResponse.object.userAuthResponse).toBeTruthy();
       expect(signInUserResponse.object.userAuthResponse.authToken.length).toBeGreaterThan(10);
-      expect(signInUserResponse.object.myUser).toBeDefined();
-      expect(signInUserResponse.object.myUser.id).toBeDefined();
+      expect(signInUserResponse.object.myUser).toBeTruthy();
+      expect(signInUserResponse.object.myUser.id).toBeTruthy();
 
       const clientInfo3 = await client.clientInfoStore.load();
       expect(clientInfo3.myUserId).toBe(
@@ -60,7 +60,7 @@ describe('operations.myUser.signInUser', () => {
       );
 
       expect(findMyUserResult.error).toBeUndefined();
-      expect(findMyUserResult.object).toBeDefined();
+      expect(findMyUserResult.object).toBeTruthy();
       expect(findMyUserResult.object.id).toBe(myUserId);
       expect(findMyUserResult.object.userHandle).toBe(user.userHandle);
       expect(findMyUserResult.object.firstName).toBe(user.firstName);

@@ -48,7 +48,7 @@ describe('operations.myUser.signInUser', () => {
     );
 
     expect(findMyUserResult.error).toBeUndefined();
-    expect(findMyUserResult.object).toBeDefined();
+    expect(findMyUserResult.object).toBeTruthy();
 
     verifyUserPropsSpecHelper(
       findMyUserResult.object,
@@ -97,7 +97,7 @@ describe('operations.myUser.signInUser', () => {
     );
 
     expect(findMyUserResult.error).toBeUndefined();
-    expect(findMyUserResult.object).toBeDefined();
+    expect(findMyUserResult.object).toBeTruthy();
 
     verifyUserPropsSpecHelper(
       findMyUserResult.object,

@@ -27,7 +27,7 @@ describe('operations.myUser.findMyUser', () => {
     const myUserFromCache = findMyUserFromCacheResult.object;
 
     expect(findMyUserFromCacheResult.error).toBeUndefined();
-    expect(findMyUserFromCacheResult.object).toBeDefined();
+    expect(findMyUserFromCacheResult.object).toBeTruthy();
     expect(myUserFromCache.id).toBe(myUser.id);
     expect(myUserFromCache.userHandle).toBe(myUser.userHandle);
     expect(myUserFromCache.email).toBe(myUser.email);
@@ -40,7 +40,7 @@ describe('operations.myUser.findMyUser', () => {
     const myUserFromNetwork = findMyUserFromNetworkResult.object;
 
     expect(findMyUserFromNetworkResult.error).toBeUndefined();
-    expect(findMyUserFromNetworkResult.object).toBeDefined();
+    expect(findMyUserFromNetworkResult.object).toBeTruthy();
     expect(myUserFromNetwork.id).toBe(myUser.id);
     expect(myUserFromNetwork.userHandle).toBe(myUser.userHandle);
     expect(myUserFromNetwork.email).toBe(myUser.email);

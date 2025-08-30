@@ -31,10 +31,10 @@ describe('signUpUser', () => {
     const clientInfo1 = client1.clientInfoStore.clientInfo;
 
     expect(signUpResponse.error).toBeUndefined();
-    expect(signUpResponse.object).toBeDefined();
-    expect(signUpResponse.object.userAuthResponse).toBeDefined();
-    expect(myUserId).toBeDefined();
-    expect(signUpResponse.object.myUser).toBeDefined();
+    expect(signUpResponse.object).toBeTruthy();
+    expect(signUpResponse.object.userAuthResponse).toBeTruthy();
+    expect(myUserId).toBeTruthy();
+    expect(signUpResponse.object.myUser).toBeTruthy();
     expect(signUpResponse.object.myUser.userHandle).toBe(userHandle);
     expect(signUpResponse.object.myUser.firstName).toBe(firstName);
     expect(signUpResponse.object.myUser.lastName).toBe(lastName);
@@ -87,9 +87,9 @@ describe('signUpUser', () => {
       { cachePolicy: CachePolicy.network },
     );
 
-    expect(findMyUserResponse).toBeDefined();
+    expect(findMyUserResponse).toBeTruthy();
     expect(findMyUserResponse.error).toBeUndefined();
-    expect(findMyUserResponse.object).toBeDefined();
+    expect(findMyUserResponse.object).toBeTruthy();
     expect(findMyUserResponse.object.userHandle).toBe(userHandle);
     expect(findMyUserResponse.object.firstName).toBe(firstName);
     expect(findMyUserResponse.object.lastName).toBe(lastName);

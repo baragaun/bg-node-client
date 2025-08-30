@@ -23,9 +23,9 @@ export const updateMyUserSpecHelper = async (
   logger.debug('BgServiceApiCheck.updateMyUser: received response from updateMyUser',
     { updateUserResponse });
 
-  expect(updateUserResponse).toBeDefined();
+  expect(updateUserResponse).toBeTruthy();
   expect(updateUserResponse.error).toBeUndefined();
-  expect(updateUserResponse.object).toBeDefined();
+  expect(updateUserResponse.object).toBeTruthy();
 
   verifyUserPropsSpecHelper(
     updateUserResponse.object as Partial<MyUser>,
@@ -58,7 +58,7 @@ export const updateMyUserSpecHelper = async (
       cachePolicy: CachePolicy.network,
     });
 
-    expect(findMyUserFromNetworkResult).toBeDefined();
+    expect(findMyUserFromNetworkResult).toBeTruthy();
     expect(findMyUserFromNetworkResult.error).toBeUndefined();
     expect(findMyUserFromNetworkResult.object?.id).toBe(changes.id);
 
