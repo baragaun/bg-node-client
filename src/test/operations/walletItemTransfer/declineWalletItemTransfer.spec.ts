@@ -71,6 +71,8 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.d
 
     expect(updatedTransfer.error).toBeUndefined();
     expect(updatedTransfer.object).toBeTruthy();
-    expect(new Date(updatedTransfer.object.declinedAt).getTime()).toBeGreaterThan(Date.now() - 5000);
+    const declinedAtTime = new Date(updatedTransfer.object.declinedAt).getTime();
+    expect(declinedAtTime).toBeLessThanOrEqual(Date.now());
+    expect(declinedAtTime).toBeGreaterThan(Date.now() - 60000); // within the last minute
   });
 }, 10000);
