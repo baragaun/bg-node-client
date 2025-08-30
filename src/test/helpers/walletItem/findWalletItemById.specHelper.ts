@@ -12,8 +12,7 @@ export const findWalletItemById = async (
         { id });
 
     const walletItemResult = await client.operations.walletItem.findWalletItemById(
-        id,
-        undefined,
+        id
     );
     const item = walletItemResult.object;
     expect(walletItemResult.error).toBeUndefined();
