@@ -458,10 +458,7 @@ export interface Operations {
       props: Partial<WalletItem>,
     ) => Promise<QueryResult<WalletItem>>;
 
-    findWalletItemById: (
-      id: string,
-      options: FindObjectsOptions,
-    ) => Promise<QueryResult<WalletItem>>
+    ) => Promise<QueryResult<WalletItem>>;
 
     findWalletItemByTransferSlug: (
       transferSlug: string,
