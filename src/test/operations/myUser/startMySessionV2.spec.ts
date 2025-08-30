@@ -25,7 +25,7 @@ describe('operations.myUser.startMySessionV2', () => {
 
     const clientInfo2 = await client.clientInfoStore.load();
 
-    expect(clientInfo2.remoteContentStatus).toBeDefined();
+    expect(clientInfo2.remoteContentStatus).toBeTruthy();
     expect(clientInfo2.remoteContentStatus.myUserUpdatedAt).toBeGreaterThan(Date.now() - 1000);
     expect(clientInfo2.sessionStartedAt).toBeGreaterThan(Date.now() - 1000);
     expect(clientInfo2.sessionEndedAt).toBeUndefined();

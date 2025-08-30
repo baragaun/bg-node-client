@@ -43,8 +43,8 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.d
       walletItemId: walletItem.id,
     }, client);
 
-    expect(walletItemTransfer).toBeDefined();
-    expect(walletItemTransfer.transferSlug).toBeDefined();
+    expect(walletItemTransfer).toBeTruthy();
+    expect(walletItemTransfer.transferSlug).toBeTruthy();
 
     const transferSlug = walletItemTransfer.transferSlug;
 
@@ -53,15 +53,24 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.d
     );
 
     expect(acceptResponse.error).toBeUndefined();
-    expect(acceptResponse.object).toBeDefined();
+    expect(acceptResponse.object).toBeTruthy();
 
     const updatedWalletItem = await findWalletItemByTransferSlugSpecHelper(
       client,
       transferSlug,
     );
 
-    expect(updatedWalletItem).toBeDefined();
-    expect(updatedWalletItem.transferStartedAt).toBeDefined();
+    expect(updatedWalletItem).toBeTruthy();
+    expect(updatedWalletItem.transferStartedAt).toBeNull();
     expect(updatedWalletItem.transferAcceptedAt).toBeNull();
+
+    const updatedTransfer = await client.operations.walletItemTransfer.findWalletItemTransferById(
+      walletItemTransfer.id,
+      {},
+    );
+
+    expect(updatedTransfer.error).toBeUndefined();
+    expect(updatedTransfer.object).toBeTruthy();
+    expect(new Date(updatedTransfer.object.declinedAt).getTime()).toBeGreaterThan(Date.now() - 5000);
   });
 }, 10000);

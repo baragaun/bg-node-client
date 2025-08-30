@@ -17,7 +17,7 @@ export const findWalletItemByTransferSlugSpecHelper = async (
     );
     const item = walletItemResult.object;
     expect(walletItemResult.error).toBeUndefined();
-    expect(walletItemResult.object).toBeDefined();
+    expect(walletItemResult.object).toBeTruthy();
 
     return item;
 };

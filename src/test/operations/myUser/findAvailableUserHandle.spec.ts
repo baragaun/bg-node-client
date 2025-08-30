@@ -23,7 +23,7 @@ describe('operations.myUser.findAvailableUserHandle', () => {
 
     const response = await client.operations.myUser.findAvailableUserHandle(email);
 
-    expect(response).toBeDefined();
+    expect(response).toBeTruthy();
     expect(response.error).toBeUndefined();
     expect(response.object.length).toBeGreaterThan(3);
   });

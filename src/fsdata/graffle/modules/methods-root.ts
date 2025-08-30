@@ -1291,6 +1291,26 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  findWalletItemTransferAcceptInfoByTransferSlug: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findWalletItemTransferAcceptInfoByTransferSlug<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findWalletItemTransferAcceptInfoByTransferSlug: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findWalletItemTransferAcceptInfoByTransferSlug'
+      >
+    >
+  >;
+
   findWalletItemTransferById: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(

@@ -35,8 +35,8 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.purchaseOrder.create
     );
     const walletItemCount = shoppingCartItems.reduce((sum, item) => sum + item.quantity, 0);
 
-    expect(purchaseOrder).toBeDefined();
-    expect(purchaseOrder.items).toBeDefined();
+    expect(purchaseOrder).toBeTruthy();
+    expect(purchaseOrder.items).toBeTruthy();
     expect(purchaseOrder.items.length).toEqual(shoppingCartItems.length);
 
     const networkResult = await client.operations.shoppingCart.findMyShoppingCart({
@@ -45,7 +45,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.purchaseOrder.create
     const shoppingCart = networkResult.object;
 
     expect(networkResult.error).toBeUndefined();
-    expect(networkResult.object).toBeDefined();
+    expect(networkResult.object).toBeTruthy();
     expect(shoppingCart.id).toBe(myUser.id);
     expect(shoppingCart.items.length).toBe(0);
 
@@ -55,7 +55,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.purchaseOrder.create
     const networkWallet = walletResult.object;
 
     expect(walletResult.error).toBeUndefined();
-    expect(walletResult.object).toBeDefined();
+    expect(walletResult.object).toBeTruthy();
     expect(networkWallet.id).toBe(myUser.id);
 
     const walletItemsResult = await client.operations.walletItem.findWalletItems(
@@ -68,7 +68,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.purchaseOrder.create
     const items = walletItemsResult.objects;
 
     expect(walletItemsResult.error).toBeUndefined();
-    expect(walletItemsResult.objects).toBeDefined();
+    expect(walletItemsResult.objects).toBeTruthy();
     expect(items.length).toBe(walletItemCount);
   });
 }, 10000);

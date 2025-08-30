@@ -25,7 +25,7 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.updateChannelMe
   test('should update channelMessage properties', async () => {
     const props = await factories.channel.build({});
 
-    expect(client).toBeDefined();
+    expect(client).toBeTruthy();
 
     await signMeUpSpecHelper(undefined, false, client);
     const channel = await createChannelSpecHelper(props, 2, client);

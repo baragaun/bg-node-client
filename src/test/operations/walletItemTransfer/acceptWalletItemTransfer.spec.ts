@@ -51,9 +51,21 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
       messageText: chance.sentence(),
     }, client);
 
-    expect(walletItemTransfer).toBeDefined();
+    expect(walletItemTransfer).toBeTruthy();
     expect(walletItemTransfer.transferSecret).toBeUndefined(); // The server should not expose this
-    expect(walletItemTransfer.transferSlug).toBeDefined();
+    expect(walletItemTransfer.transferSlug).toBeTruthy();
+
+    const walletItemTransferAcceptInfoResult = await client.operations.walletItemTransfer.findWalletItemTransferAcceptInfoByTransferSlug(
+      transferSlug,
+    );
+    const walletItemTransferAcceptInfo = walletItemTransferAcceptInfoResult.object;
+
+    expect(walletItemTransferAcceptInfo.brand).toBeTruthy();
+    expect(walletItemTransferAcceptInfo.brand.id).toEqual(walletItem.brandId);
+    expect(walletItemTransferAcceptInfo.walletItem).toBeTruthy();
+    expect(walletItemTransferAcceptInfo.walletItem.id).toEqual(walletItem.id);
+    expect(walletItemTransferAcceptInfo.walletItemTransfer).toBeTruthy();
+    expect(walletItemTransferAcceptInfo.walletItemTransfer.id).toEqual(walletItemTransfer.id);
 
     const acceptResponse = await client.operations.walletItemTransfer.acceptWalletItemTransfer(
        transferSlug,
@@ -61,15 +73,15 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     );
 
     expect(acceptResponse.error).toBeUndefined();
-    expect(acceptResponse.object).toBeDefined();
+    expect(acceptResponse.object).toBeTruthy();
 
     const updatedWalletItem = await findWalletItemByTransferSlugSpecHelper(
       client,
       transferSlug,
     );
 
-    expect(updatedWalletItem).toBeDefined();
-    expect(updatedWalletItem.transferStartedAt).toBeDefined();
-    expect(updatedWalletItem.transferAcceptedAt).toBeDefined();
+    expect(updatedWalletItem).toBeTruthy();
+    expect(updatedWalletItem.transferStartedAt).toBeTruthy();
+    expect(updatedWalletItem.transferAcceptedAt).toBeTruthy();
   });
 }, 10000);

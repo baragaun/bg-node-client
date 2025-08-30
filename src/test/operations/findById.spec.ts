@@ -41,7 +41,7 @@ describe('operations.findById', () => {
       const myUser = response.object;
 
       expect(response.error).toBeUndefined();
-      expect(response.object).toBeDefined();
+      expect(response.object).toBeTruthy();
       expect(myUser.id).toBe(client.myUserId);
       expect(myUser.userHandle).toBe(users[0].userHandle);
       expect(myUser.email).toBe(users[0].email);
@@ -56,7 +56,7 @@ describe('operations.findById', () => {
       const myUser = response.object;
 
       expect(response.error).toBeUndefined();
-      expect(response.object).toBeDefined();
+      expect(response.object).toBeTruthy();
       expect(myUser.id).toBe(client.myUserId);
       expect(myUser.userHandle).toBe(users[0].userHandle);
       expect(myUser.email).toBe(users[0].email);
@@ -79,7 +79,7 @@ describe('operations.findById', () => {
       const reloadedChannel = response.object;
 
       expect(response.error).toBeUndefined();
-      expect(response.object).toBeDefined();
+      expect(response.object).toBeTruthy();
       expect(reloadedChannel.id).toBe(channel.id);
       expect(reloadedChannel.name).toBe(channel.name);
       expect(reloadedChannel.createdAt).toBe(channel.createdAt);
@@ -94,7 +94,7 @@ describe('operations.findById', () => {
       const reloadedChannel = response.object;
 
       expect(response.error).toBeUndefined();
-      expect(response.object).toBeDefined();
+      expect(response.object).toBeTruthy();
       expect(reloadedChannel.id).toBe(channel.id);
       expect(reloadedChannel.name).toBe(channel.name);
       expect(reloadedChannel.createdAt).toBe(channel.createdAt);
@@ -127,7 +127,7 @@ describe('operations.findById', () => {
       const reloadedChannelInvitation = response.object;
 
       expect(response.error).toBeUndefined();
-      expect(response.object).toBeDefined();
+      expect(response.object).toBeTruthy();
       expect(reloadedChannelInvitation.id).toBe(channelInvitation.id);
       expect(reloadedChannelInvitation.recipientId).toBe(channelInvitation.recipientId);
       expect(reloadedChannelInvitation.messageText).toBe(channelInvitation.messageText);
@@ -144,7 +144,7 @@ describe('operations.findById', () => {
       const reloadedChannelInvitation = response.object;
 
       expect(response.error).toBeUndefined();
-      expect(response.object).toBeDefined();
+      expect(response.object).toBeTruthy();
       expect(reloadedChannelInvitation.id).toBe(channelInvitation.id);
       expect(reloadedChannelInvitation.recipientId).toBe(channelInvitation.recipientId);
       expect(reloadedChannelInvitation.messageText).toBe(channelInvitation.messageText);

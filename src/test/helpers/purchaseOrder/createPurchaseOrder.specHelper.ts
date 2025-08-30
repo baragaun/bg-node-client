@@ -40,8 +40,8 @@ export const createPurchaseOrderSpecHelper = async (
   const purchaseOrder = response.object as PurchaseOrder;
 
   expect(response.error).toBeUndefined();
-  expect(purchaseOrder).toBeDefined();
-  expect(response.object.items).toBeDefined();
+  expect(purchaseOrder).toBeTruthy();
+  expect(response.object.items).toBeTruthy();
   expect(response.object.items.length).toEqual(shoppingCartItems.length);
 
   return { purchaseOrder, shoppingCartItems };

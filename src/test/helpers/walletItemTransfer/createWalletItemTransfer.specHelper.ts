@@ -42,7 +42,7 @@ export const createWalletItemTransferSpecHelper = async (
   const walletItemTransfer = response.object;
 
   expect(response.error).toBeUndefined();
-  expect(walletItemTransfer).toBeDefined();
+  expect(walletItemTransfer).toBeTruthy();
   expect(response.object.walletItemId).toBe(props.walletItemId);
   expect(response.object.recipientFullName).toBe(props.recipientFullName);
   expect(response.object.recipientEmail).toBe(props.recipientEmail);

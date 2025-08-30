@@ -26,10 +26,10 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     });
 
     expect(signUpResponse1.error).toBeUndefined();
-    expect(signUpResponse1.object).toBeDefined();
-    expect(signUpResponse1.object.userAuthResponse).toBeDefined();
-    expect(signUpResponse1.object.userAuthResponse.userId).toBeDefined();
-    expect(signUpResponse1.object.myUser).toBeDefined();
+    expect(signUpResponse1.object).toBeTruthy();
+    expect(signUpResponse1.object.userAuthResponse).toBeTruthy();
+    expect(signUpResponse1.object.userAuthResponse.userId).toBeTruthy();
+    expect(signUpResponse1.object.myUser).toBeTruthy();
 
     const user1 = signUpResponse1.object.myUser;
 
@@ -45,10 +45,10 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     });
 
     expect(signUpResponse2.error).toBeUndefined();
-    expect(signUpResponse2.object).toBeDefined();
-    expect(signUpResponse2.object.userAuthResponse).toBeDefined();
-    expect(signUpResponse2.object.userAuthResponse.userId).toBeDefined();
-    expect(signUpResponse2.object.myUser).toBeDefined();
+    expect(signUpResponse2.object).toBeTruthy();
+    expect(signUpResponse2.object.userAuthResponse).toBeTruthy();
+    expect(signUpResponse2.object.userAuthResponse.userId).toBeTruthy();
+    expect(signUpResponse2.object.myUser).toBeTruthy();
 
     // Testing any random email and userHandle - they should be available:
     const resultAvailableEmail =
@@ -87,11 +87,11 @@ describe('operations.myUser.isUserIdentAvailable', () => {
     });
 
     expect(signInUser1Response.error).toBeUndefined();
-    expect(signInUser1Response.object.userAuthResponse).toBeDefined();
+    expect(signInUser1Response.object.userAuthResponse).toBeTruthy();
     expect(signInUser1Response.object.userAuthResponse.userId).toBe(user1.id as string);
     expect(signInUser1Response.object.userAuthResponse.authToken.length).toBeGreaterThan(10);
-    expect(signInUser1Response.object.myUser).toBeDefined();
-    expect(signInUser1Response.object.myUser.id).toBeDefined();
+    expect(signInUser1Response.object.myUser).toBeTruthy();
+    expect(signInUser1Response.object.myUser.id).toBeTruthy();
 
     expect(client.isSignedIn).toBeTruthy();
     const clientInfo2 = await client.clientInfoStore.load();

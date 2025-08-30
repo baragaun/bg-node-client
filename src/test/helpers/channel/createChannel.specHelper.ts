@@ -28,7 +28,7 @@ export const createChannelSpecHelper = async (
   const channel = response.object as ChannelWithMessages;
 
   expect(response.error).toBeUndefined();
-  expect(channel).toBeDefined();
+  expect(channel).toBeTruthy();
   expect(channel.name).toBe(props.name);
   expect(channel.topic).toBe(props.topic);
   expect(channel.description).toBe(props.description);
@@ -93,7 +93,7 @@ export const createChannelSpecHelper = async (
 
     expect(channel.messages.length).toBe(messageCount);
     channel.messages.forEach((message, index) => {
-      expect(message).toBeDefined();
+      expect(message).toBeTruthy();
       expect(message.channelId).toBe(channel.id);
       expect(message.adminNotes).toBe(index.toString());
     });

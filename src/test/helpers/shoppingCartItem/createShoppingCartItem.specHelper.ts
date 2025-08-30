@@ -51,7 +51,7 @@ export const createShoppingCartItemSpecHelper = async (
   const shoppingCartItem = response.object as ShoppingCartItem;
 
   expect(response.error).toBeUndefined();
-  expect(shoppingCartItem).toBeDefined();
+  expect(shoppingCartItem).toBeTruthy();
   expect(shoppingCartItem.shoppingCartId).toBe(props.shoppingCartId);
   expect(shoppingCartItem.productId).toBe(props.productId);
   expect(shoppingCartItem.quantity).toBe(props.quantity);

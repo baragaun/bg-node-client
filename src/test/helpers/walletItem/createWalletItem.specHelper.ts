@@ -25,11 +25,11 @@ export const createWalletItemSpecHelper = async (
     { response });
 
   expect(response.error).toBeUndefined();
-  expect(response.object).toBeDefined();
+  expect(response.object).toBeTruthy();
 
   const walletItem = response.object;
 
-  expect(walletItem).toBeDefined();
+  expect(walletItem).toBeTruthy();
   expect(walletItem.walletId).toBe(props.createdBy);
   expect(walletItem.createdBy).toBe(props.createdBy);
 

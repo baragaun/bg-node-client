@@ -43,6 +43,7 @@ import { Wallet } from '../models/Wallet.js';
 import { WalletItem } from '../models/WalletItem.js';
 import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
 import { WalletItemTransfer } from '../models/WalletItemTransfer.js';
+import { WalletItemTransferAcceptInfo } from '../models/WalletItemTransferAcceptInfo.js';
 import { WalletItemTransferListFilter } from '../models/WalletItemTransferListFilter.js';
 export interface Operations {
     count: <T extends Model = Model>(query: MangoQuery<T> | null | undefined, match: Partial<T> | null | undefined, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
@@ -151,6 +152,7 @@ export interface Operations {
     };
     walletItem: {
         createWalletItem: (props: Partial<WalletItem>) => Promise<QueryResult<WalletItem>>;
+        findWalletItemById: (id: string, options: FindObjectsOptions) => Promise<QueryResult<WalletItem>>;
         findWalletItemByTransferSlug: (transferSlug: string, options: FindObjectsOptions) => Promise<QueryResult<WalletItem>>;
         findWalletItems: (filter: WalletItemListFilter | null | undefined, match: Partial<WalletItem> | null | undefined, selector: MangoQueryTypes<WalletItem> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
         updateWalletItem: (changes: Partial<WalletItem>, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItem>>;
@@ -159,6 +161,8 @@ export interface Operations {
         acceptWalletItemTransfer: (transferSlug: string, transferSecret: string) => Promise<QueryResult<WalletItem>>;
         createWalletItemTransfer: (props: Partial<WalletItemTransfer>) => Promise<QueryResult<WalletItemTransfer>>;
         declineWalletItemTransfer: (transferSlug: string) => Promise<QueryResult<WalletItem>>;
+        findWalletItemTransferById: (id: string, options: FindObjectsOptions) => Promise<QueryResult<WalletItemTransfer>>;
+        findWalletItemTransferAcceptInfoByTransferSlug: (transferSlug: string) => Promise<QueryResult<WalletItemTransferAcceptInfo>>;
         findWalletItemTransfers: (filter: WalletItemTransferListFilter | null | undefined, match: Partial<WalletItemTransfer> | null | undefined, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItemTransfer>>;
         updateWalletItemTransfer: (changes: Partial<WalletItemTransfer>, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItemTransfer>>;
     };
