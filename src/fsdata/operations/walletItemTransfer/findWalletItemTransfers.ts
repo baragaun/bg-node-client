@@ -45,11 +45,11 @@ const findWalletItemTransfers = async (
       ...modelFields.walletItemTransfer,
     });
 
-    logger.debug('fsdata.findWalletItemTransfers response:',
+    logger.debug('fsdata.findWalletItemTransfers response.',
       { response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
-      logger.error('fsdata.findWalletItemTransfers: errors received',
+      logger.error('fsdata.findWalletItemTransfers: errors received.',
         { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
 
       return { error: response.errors.map(error => error.message).join(', ') };
@@ -61,7 +61,7 @@ const findWalletItemTransfers = async (
         : [],
     };
   } catch (error) {
-    logger.error('fsdata.findWalletItemTransfers: error',
+    logger.error('fsdata.findWalletItemTransfers: error.',
       { error, headers: helpers.headers() });
     return { error: (error as Error).message };
   }

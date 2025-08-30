@@ -1721,7 +1721,8 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     'issuedAt',
     'expiresAt',
     'balanceUpdatedAt',
-    'transferredAt',
+    'transferStartedAt',
+    'transferAcceptedAt',
     'archivedAt',
   ],
   f: {
@@ -1776,7 +1777,10 @@ const WalletItemInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     balanceUpdatedAt: {
       nt: DateTimeISO,
     },
-    transferredAt: {
+    transferStartedAt: {
+      nt: DateTimeISO,
+    },
+    transferAcceptedAt: {
       nt: DateTimeISO,
     },
     archivedAt: {
@@ -1811,7 +1815,18 @@ const WalletItemListFilter: $$Utilities.SchemaDrivenDataMap.InputObject = {
 
 const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
   n: 'WalletItemTransferInput',
-  fcs: ['events', 'metadata', 'createdAt', 'updatedAt', 'deletedAt', 'sentAt', 'canceledAt', 'archivedAt'],
+  fcs: [
+    'events',
+    'metadata',
+    'createdAt',
+    'updatedAt',
+    'deletedAt',
+    'sentAt',
+    'acceptedAt',
+    'declinedAt',
+    'canceledAt',
+    'archivedAt',
+  ],
   f: {
     id: {},
     adminNotes: {},
@@ -1839,7 +1854,15 @@ const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     recipientFullName: {},
     subjectText: {},
     messageText: {},
+    transferSlug: {},
+    transferSecret: {},
     sentAt: {
+      nt: DateTimeISO,
+    },
+    acceptedAt: {
+      nt: DateTimeISO,
+    },
+    declinedAt: {
       nt: DateTimeISO,
     },
     canceledAt: {
@@ -2826,9 +2849,9 @@ const NotificationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     notificationType: {},
     templateId: {},
     templateName: {},
-    senderId: {},
     recipientId: {},
     multiStepActionId: {},
+    initiatorId: {},
     replyingToId: {},
     title: {},
     messageText: {},
@@ -2841,12 +2864,11 @@ const NotificationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     action1: {},
     action2: {},
     actionTaken: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
     sendSms: {},
+    allowSendingToSuspendedUser: {},
     emailSentAt: {
       nt: DateTimeISO,
     },
@@ -2939,8 +2961,6 @@ const NotificationTemplateInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     action0: {},
     action1: {},
     action2: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -4590,9 +4610,9 @@ const Notification: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     deletedBy: {},
     notificationType: {},
     templateId: {},
-    senderId: {},
     recipientId: {},
     multiStepActionId: {},
+    initiatorId: {},
     replyingToId: {},
     title: {},
     messageText: {},
@@ -4605,8 +4625,6 @@ const Notification: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     action1: {},
     action2: {},
     actionTaken: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -6368,7 +6386,10 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     balanceUpdatedAt: {
       nt: DateTimeISO,
     },
-    transferredAt: {
+    transferStartedAt: {
+      nt: DateTimeISO,
+    },
+    transferAcceptedAt: {
       nt: DateTimeISO,
     },
     archivedAt: {
@@ -6405,7 +6426,14 @@ const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     recipientFullName: {},
     subjectText: {},
     messageText: {},
+    transferSlug: {},
     sentAt: {
+      nt: DateTimeISO,
+    },
+    acceptedAt: {
+      nt: DateTimeISO,
+    },
+    declinedAt: {
       nt: DateTimeISO,
     },
     canceledAt: {
@@ -7684,8 +7712,6 @@ const NotificationTemplate: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     action0: {},
     action1: {},
     action2: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -8680,6 +8706,19 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
+    findWalletItemByTransferSlug: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        transferSlug: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
+    },
     findWalletItems: {
       a: {
         options: {
@@ -8704,6 +8743,19 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
           it: [0],
         },
         id: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: WalletItemTransfer, <-- Assigned later to avoid potential circular dependency.
+    },
+    findWalletItemTransferByTransferSlug: {
+      a: {
+        options: {
+          nt: FindObjectsOptions,
+          it: [0],
+        },
+        transferSlug: {
           nt: String,
           it: [1],
         },
@@ -9990,10 +10042,32 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
+    acceptWalletItemTransfer: {
+      a: {
+        transferSecret: {
+          nt: String,
+          it: [1],
+        },
+        transferSlug: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     createWalletItemTransfer: {
       a: {
         input: {
           nt: WalletItemTransferInput,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
+    declineWalletItemTransfer: {
+      a: {
+        transferSlug: {
+          nt: String,
           it: [1],
         },
       },
@@ -10938,8 +11012,10 @@ Query.f['findShoppingCartItems']!.nt = ShoppingCartItem;
 Query.f['findShoppingCarts']!.nt = ShoppingCart;
 Query.f['findMyShoppingCart']!.nt = ShoppingCart;
 Query.f['findWalletItemById']!.nt = WalletItem;
+Query.f['findWalletItemByTransferSlug']!.nt = WalletItem;
 Query.f['findWalletItems']!.nt = WalletItem;
 Query.f['findWalletItemTransferById']!.nt = WalletItemTransfer;
+Query.f['findWalletItemTransferByTransferSlug']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransfers']!.nt = WalletItemTransfer;
 Query.f['findWallets']!.nt = Wallet;
 Query.f['findMyWallet']!.nt = Wallet;
@@ -11030,7 +11106,9 @@ Mutation.f['clearShoppingCart']!.nt = ServiceRequest;
 Mutation.f['createWalletItem']!.nt = WalletItem;
 Mutation.f['deleteWalletItem']!.nt = ServiceRequest;
 Mutation.f['updateWalletItem']!.nt = ServiceRequest;
+Mutation.f['acceptWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['createWalletItemTransfer']!.nt = ServiceRequest;
+Mutation.f['declineWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['deleteWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['updateWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['createUserSearch']!.nt = UserSearch;
