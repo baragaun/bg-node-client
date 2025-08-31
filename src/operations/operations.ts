@@ -1,4 +1,5 @@
 import { Operations } from '../types/Operations.js';
+import findBrandById from './brand/findBrandById.js';
 import findBrands from './brand/findBrands.js';
 import createChannel from './channel/createChannel.js';
 import deleteChannel from './channel/deleteChannel.js';
@@ -200,8 +201,10 @@ const operations: Operations = {
     findUsers,
   },
 
+  // ------------------------------------ Marketplace (Mimble) ------------------------------------
   brand: {
-    findBrands: findBrands,
+    findBrands,
+    findBrandById,
   },
 
   wallet: {
