@@ -145,6 +145,7 @@ export interface Operations {
         findUsers: (filter: UserListFilter | null | undefined, match: Partial<User> | null | undefined, selector: MangoQueryTypes<User> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<UserListItem>>;
     };
     brand: {
+        findBrandById: (id: string, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Brand>>;
         findBrands: (filter: BrandListFilter | null | undefined, match: Partial<Brand> | null | undefined, selector: MangoQueryTypes<Brand> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Brand>>;
     };
     wallet: {

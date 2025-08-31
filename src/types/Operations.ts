@@ -440,6 +440,12 @@ export interface Operations {
   };
 
   brand: {
+    findBrandById: (
+      id: string,
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<Brand>>;
+
     findBrands: (
       filter: BrandListFilter | null | undefined,
       match: Partial<Brand> | null | undefined,
