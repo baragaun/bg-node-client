@@ -176,7 +176,7 @@ const libData = {
       return null;
     }
 
-    return list.find((item: any) => item.id === id);
+    return list.find((item: any) => item.id === id) || null;
   },
 
   getObjectFromCache: <T>(modelType: ModelType, id: string): T | null => {
