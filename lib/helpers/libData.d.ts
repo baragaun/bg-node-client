@@ -1,4 +1,5 @@
 import { ClientInfoStore } from '../ClientInfoStore.js';
+import { ModelType } from '../enums.js';
 import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
 import { NatsClient } from '../nats/NatsClient.js';
 import { BgBaseListener } from '../types/BgBaseListener.js';
@@ -37,5 +38,14 @@ declare const libData: {
     addMultiStepActionRun: (run: MultiStepActionRun) => void;
     removeMultiStepActionRun: (actionId: string) => void;
     multiStepActionRun: (actionId: string) => MultiStepActionRun | null;
+    setObjectInCache: (modelType: ModelType, id: string, object: any) => void;
+    setObjectListInCache: (modelType: ModelType, object: any) => void;
+    setObjectInCachedList: (modelType: ModelType, id: string, object: any) => void;
+    getObjectFromCachedList: <T>(modelType: ModelType, id: string) => T | null;
+    getObjectFromCache: <T>(modelType: ModelType, id: string) => T | null;
+    getObjectListFromCache: <T>(modelType: ModelType) => T[] | null;
+    deleteObjectFromCache: (modelType: ModelType, id: string) => void;
+    deleteObjectListFromCache: (modelType: ModelType) => void;
+    clearObjectCache: () => void;
 };
 export default libData;

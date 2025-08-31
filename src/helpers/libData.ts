@@ -2,6 +2,7 @@
 
 import { ClientInfoStore } from '../ClientInfoStore.js';
 import logger from './logger.js';
+import { ModelType } from '../enums.js';
 import { MultiStepActionRun } from '../models/MultiStepActionRun.js';
 import { NatsClient } from '../nats/NatsClient.js';
 import { BgBaseListener } from '../types/BgBaseListener.js';
@@ -15,6 +16,7 @@ let _clientInfoStore: ClientInfoStore;
 let _listeners: BgBaseListener[] = [];
 const _multiStepActionRuns = new Map<string, MultiStepActionRun>();
 let _natsClient: NatsClient | undefined;
+const objectCache = new Map<string, any>();
 // let _natsConnection: nats.NatsConnection;
 
 const libData = {
@@ -139,6 +141,65 @@ const libData = {
 
   multiStepActionRun: (actionId: string): MultiStepActionRun | null =>
     _multiStepActionRuns.get(actionId),
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // Object Cache helpers
+  setObjectInCache: (modelType: ModelType, id: string, object: any): void => {
+    const key = `${modelType}-${id}`;
+    objectCache.set(key, object);
+  },
+
+  setObjectListInCache: (modelType: ModelType, object: any): void => {
+    objectCache.set(modelType, object);
+  },
+
+  setObjectInCachedList: (modelType: ModelType, id: string, object: any): void => {
+    const list = objectCache.get(modelType);
+
+    if (!Array.isArray(list)) {
+      objectCache.set(modelType, [object]);
+      return;
+    }
+
+    const index = list.findIndex((item: any) => item.id === id);
+    if (index > -1) {
+      list[index] = object;
+    } else {
+      list.push(object);
+    }
+  },
+
+  getObjectFromCachedList: <T>(modelType: ModelType, id: string): T | null => {
+    const list = objectCache.get(modelType);
+
+    if (!Array.isArray(list)) {
+      return null;
+    }
+
+    return list.find((item: any) => item.id === id);
+  },
+
+  getObjectFromCache: <T>(modelType: ModelType, id: string): T | null => {
+    const key = `${modelType}-${id}`;
+    return objectCache.get(key) || null;
+  },
+
+  getObjectListFromCache: <T>(modelType: ModelType): T[] | null => {
+    return objectCache.get(modelType) || null;
+  },
+
+  deleteObjectFromCache: (modelType: ModelType, id: string): void => {
+    const key = `${modelType}-${id}`;
+    objectCache.delete(key);
+  },
+
+  deleteObjectListFromCache: (modelType: ModelType): void => {
+    objectCache.delete(modelType);
+  },
+
+  clearObjectCache: (): void => {
+    objectCache.clear();
+  },
 };
 
 export default libData;
