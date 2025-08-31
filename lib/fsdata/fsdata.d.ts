@@ -90,7 +90,7 @@ declare const fsdata: {
         acceptWalletItemTransfer: (transferSlug: string, transferSecret: string) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItem>>;
         createWalletItemTransfer: (props: Partial<import("../index.js").WalletItemTransfer>) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
         declineWalletItemTransfer: (transferSlug: string) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItem>>;
-        findWalletItemTransferAcceptInfoByTransferSlug: (transferSlug: string) => Promise<import("../index.js").QueryResult<import("../models/WalletItemTransferAcceptInfo.js").WalletItemTransferAcceptInfo>>;
+        findWalletItemTransferAcceptInfoByTransferSlug: (transferSlug: string) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransferAcceptInfo>>;
         findWalletItemTransfers: (filter: import("../index.js").WalletItemTransferListFilter, match: Partial<import("../index.js").WalletItemTransfer>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
     };
 };
