@@ -44,12 +44,12 @@ const findProductCategories = async (
         }
       }
 
-      const productCategorys = libData.getObjectListFromCache<ProductCategory>(
+      const productCategories = libData.getObjectListFromCache<ProductCategory>(
         ModelType.ProductCategory,
       );
 
-      if (Array.isArray(productCategorys) && productCategorys.length > 0) {
-        return { objects: productCategorys };
+      if (Array.isArray(productCategories) && productCategories.length > 0) {
+        return { objects: productCategories };
       }
     }
 
