@@ -32,9 +32,7 @@ const findWalletItemTransferAcceptInfoByTransferSlug = async (
 
     const response: ResponseDataType = await client.query.findWalletItemTransferAcceptInfoByTransferSlug({
       $: args,
-      brand: { ...modelFields.brand  },
-      walletItem: { ...modelFields.walletItem  },
-      walletItemTransfer: { ...modelFields.walletItemTransfer  },
+      ...modelFields.walletItemTransferAcceptInfo,
     });
 
     logger.debug('fsdata.findWalletItemTransferAcceptInfoByTransferSlug response.',

@@ -21664,9 +21664,10 @@ export namespace Schema {
     name: 'WalletItemTransferAcceptInfo';
     fields: {
       __typename: WalletItemTransferAcceptInfo.__typename;
-      brand: WalletItemTransferAcceptInfo.brand;
       walletItem: WalletItemTransferAcceptInfo.walletItem;
       walletItemTransfer: WalletItemTransferAcceptInfo.walletItemTransfer;
+      brand: WalletItemTransferAcceptInfo.brand;
+      product: WalletItemTransferAcceptInfo.product;
     };
   }
 
@@ -21680,14 +21681,6 @@ export namespace Schema {
         kind: '__typename';
         value: 'WalletItemTransferAcceptInfo';
       };
-    }
-
-    export interface brand {
-      kind: 'OutputField';
-      name: 'brand';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$Brand;
     }
 
     export interface walletItem {
@@ -21704,6 +21697,22 @@ export namespace Schema {
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$WalletItemTransfer;
+    }
+
+    export interface brand {
+      kind: 'OutputField';
+      name: 'brand';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Brand;
+    }
+
+    export interface product {
+      kind: 'OutputField';
+      name: 'product';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$GiftCardProduct;
     }
   }
 
@@ -21942,245 +21951,6 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$DateTimeISO;
-    }
-  }
-
-  //                                               Wallet
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface Wallet {
-    kind: 'Object';
-    name: 'Wallet';
-    fields: {
-      __typename: Wallet.__typename;
-      id: Wallet.id;
-      adminNotes: Wallet.adminNotes;
-      events: Wallet.events;
-      metadata: Wallet.metadata;
-      createdAt: Wallet.createdAt;
-      createdBy: Wallet.createdBy;
-      updatedAt: Wallet.updatedAt;
-      updatedBy: Wallet.updatedBy;
-      deletedAt: Wallet.deletedAt;
-      deletedBy: Wallet.deletedBy;
-    };
-  }
-
-  export namespace Wallet {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'Wallet';
-      };
-    }
-
-    export interface id {
-      kind: 'OutputField';
-      name: 'id';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'OutputField';
-      name: 'adminNotes';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'OutputField';
-      name: 'events';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEvent;
-    }
-
-    export interface metadata {
-      kind: 'OutputField';
-      name: 'metadata';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BaseModelMetadata;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'OutputField';
-      name: 'createdBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'OutputField';
-      name: 'updatedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'OutputField';
-      name: 'deletedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'OutputField';
-      name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-  }
-
-  //                                        WalletServiceRecord
-  // --------------------------------------------------------------------------------------------------
-  //
-
-  export interface WalletServiceRecord {
-    kind: 'Object';
-    name: 'WalletServiceRecord';
-    fields: {
-      __typename: WalletServiceRecord.__typename;
-      id: WalletServiceRecord.id;
-      adminNotes: WalletServiceRecord.adminNotes;
-      events: WalletServiceRecord.events;
-      metadata: WalletServiceRecord.metadata;
-      createdAt: WalletServiceRecord.createdAt;
-      createdBy: WalletServiceRecord.createdBy;
-      updatedAt: WalletServiceRecord.updatedAt;
-      updatedBy: WalletServiceRecord.updatedBy;
-      deletedAt: WalletServiceRecord.deletedAt;
-      deletedBy: WalletServiceRecord.deletedBy;
-      serviceName: WalletServiceRecord.serviceName;
-    };
-  }
-
-  export namespace WalletServiceRecord {
-    export interface __typename {
-      kind: 'OutputField';
-      name: '__typename';
-      arguments: {};
-      inlineType: [1];
-      namedType: {
-        kind: '__typename';
-        value: 'WalletServiceRecord';
-      };
-    }
-
-    export interface id {
-      kind: 'OutputField';
-      name: 'id';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface adminNotes {
-      kind: 'OutputField';
-      name: 'adminNotes';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
-
-    export interface events {
-      kind: 'OutputField';
-      name: 'events';
-      arguments: {};
-      inlineType: [0, [1]];
-      namedType: $$NamedTypes.$$ModelEvent;
-    }
-
-    export interface metadata {
-      kind: 'OutputField';
-      name: 'metadata';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$BaseModelMetadata;
-    }
-
-    export interface createdAt {
-      kind: 'OutputField';
-      name: 'createdAt';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface createdBy {
-      kind: 'OutputField';
-      name: 'createdBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface updatedAt {
-      kind: 'OutputField';
-      name: 'updatedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface updatedBy {
-      kind: 'OutputField';
-      name: 'updatedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface deletedAt {
-      kind: 'OutputField';
-      name: 'deletedAt';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$DateTimeISO;
-    }
-
-    export interface deletedBy {
-      kind: 'OutputField';
-      name: 'deletedBy';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$ID;
-    }
-
-    export interface serviceName {
-      kind: 'OutputField';
-      name: 'serviceName';
-      arguments: {};
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ServiceName;
     }
   }
 
@@ -22528,6 +22298,245 @@ export namespace Schema {
       arguments: {};
       inlineType: [1];
       namedType: $$NamedTypes.$$Boolean;
+    }
+  }
+
+  //                                               Wallet
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface Wallet {
+    kind: 'Object';
+    name: 'Wallet';
+    fields: {
+      __typename: Wallet.__typename;
+      id: Wallet.id;
+      adminNotes: Wallet.adminNotes;
+      events: Wallet.events;
+      metadata: Wallet.metadata;
+      createdAt: Wallet.createdAt;
+      createdBy: Wallet.createdBy;
+      updatedAt: Wallet.updatedAt;
+      updatedBy: Wallet.updatedBy;
+      deletedAt: Wallet.deletedAt;
+      deletedBy: Wallet.deletedBy;
+    };
+  }
+
+  export namespace Wallet {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'Wallet';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+  }
+
+  //                                        WalletServiceRecord
+  // --------------------------------------------------------------------------------------------------
+  //
+
+  export interface WalletServiceRecord {
+    kind: 'Object';
+    name: 'WalletServiceRecord';
+    fields: {
+      __typename: WalletServiceRecord.__typename;
+      id: WalletServiceRecord.id;
+      adminNotes: WalletServiceRecord.adminNotes;
+      events: WalletServiceRecord.events;
+      metadata: WalletServiceRecord.metadata;
+      createdAt: WalletServiceRecord.createdAt;
+      createdBy: WalletServiceRecord.createdBy;
+      updatedAt: WalletServiceRecord.updatedAt;
+      updatedBy: WalletServiceRecord.updatedBy;
+      deletedAt: WalletServiceRecord.deletedAt;
+      deletedBy: WalletServiceRecord.deletedBy;
+      serviceName: WalletServiceRecord.serviceName;
+    };
+  }
+
+  export namespace WalletServiceRecord {
+    export interface __typename {
+      kind: 'OutputField';
+      name: '__typename';
+      arguments: {};
+      inlineType: [1];
+      namedType: {
+        kind: '__typename';
+        value: 'WalletServiceRecord';
+      };
+    }
+
+    export interface id {
+      kind: 'OutputField';
+      name: 'id';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface adminNotes {
+      kind: 'OutputField';
+      name: 'adminNotes';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface events {
+      kind: 'OutputField';
+      name: 'events';
+      arguments: {};
+      inlineType: [0, [1]];
+      namedType: $$NamedTypes.$$ModelEvent;
+    }
+
+    export interface metadata {
+      kind: 'OutputField';
+      name: 'metadata';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$BaseModelMetadata;
+    }
+
+    export interface createdAt {
+      kind: 'OutputField';
+      name: 'createdAt';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface createdBy {
+      kind: 'OutputField';
+      name: 'createdBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface updatedAt {
+      kind: 'OutputField';
+      name: 'updatedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface updatedBy {
+      kind: 'OutputField';
+      name: 'updatedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface deletedAt {
+      kind: 'OutputField';
+      name: 'deletedAt';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$DateTimeISO;
+    }
+
+    export interface deletedBy {
+      kind: 'OutputField';
+      name: 'deletedBy';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$ID;
+    }
+
+    export interface serviceName {
+      kind: 'OutputField';
+      name: 'serviceName';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceName;
     }
   }
 
@@ -44610,10 +44619,10 @@ export namespace Schema {
     export type $$WalletItem = WalletItem;
     export type $$WalletItemTransferAcceptInfo = WalletItemTransferAcceptInfo;
     export type $$WalletItemTransfer = WalletItemTransfer;
-    export type $$Wallet = Wallet;
-    export type $$WalletServiceRecord = WalletServiceRecord;
     export type $$GiftCardProduct = GiftCardProduct;
     export type $$GiftCardDenomination = GiftCardDenomination;
+    export type $$Wallet = Wallet;
+    export type $$WalletServiceRecord = WalletServiceRecord;
     export type $$MarketplaceServiceRecord = MarketplaceServiceRecord;
     export type $$ProductCategory = ProductCategory;
     export type $$UserSearch = UserSearch;
@@ -44948,10 +44957,10 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     WalletItem: Schema.WalletItem;
     WalletItemTransferAcceptInfo: Schema.WalletItemTransferAcceptInfo;
     WalletItemTransfer: Schema.WalletItemTransfer;
-    Wallet: Schema.Wallet;
-    WalletServiceRecord: Schema.WalletServiceRecord;
     GiftCardProduct: Schema.GiftCardProduct;
     GiftCardDenomination: Schema.GiftCardDenomination;
+    Wallet: Schema.Wallet;
+    WalletServiceRecord: Schema.WalletServiceRecord;
     MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
     ProductCategory: Schema.ProductCategory;
     UserSearch: Schema.UserSearch;
@@ -45059,10 +45068,10 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     WalletItem: Schema.WalletItem;
     WalletItemTransferAcceptInfo: Schema.WalletItemTransferAcceptInfo;
     WalletItemTransfer: Schema.WalletItemTransfer;
-    Wallet: Schema.Wallet;
-    WalletServiceRecord: Schema.WalletServiceRecord;
     GiftCardProduct: Schema.GiftCardProduct;
     GiftCardDenomination: Schema.GiftCardDenomination;
+    Wallet: Schema.Wallet;
+    WalletServiceRecord: Schema.WalletServiceRecord;
     MarketplaceServiceRecord: Schema.MarketplaceServiceRecord;
     ProductCategory: Schema.ProductCategory;
     UserSearch: Schema.UserSearch;

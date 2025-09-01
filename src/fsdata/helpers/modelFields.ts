@@ -726,6 +726,13 @@ const walletItemTransfer = {
   archivedAt: true,
 };
 
+const walletItemTransferAcceptInfo = {
+  walletItem: { ...walletItem },
+  walletItemTransfer: { ...walletItemTransfer },
+  product: { ...giftCardProduct },
+  brand: { ...brand },
+};
+
 const modelFields = {
   channel,
   channelInvitation,
@@ -750,6 +757,7 @@ const modelFields = {
   wallet,
   walletItem,
   walletItemTransfer,
+  walletItemTransferAcceptInfo,
 };
 
 export default modelFields;

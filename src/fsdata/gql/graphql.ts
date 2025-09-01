@@ -7187,7 +7187,8 @@ export type WalletItemTransfer = {
 
 export type WalletItemTransferAcceptInfo = {
   __typename?: 'WalletItemTransferAcceptInfo';
-  brand: Brand;
+  brand?: Maybe<Brand>;
+  product?: Maybe<GiftCardProduct>;
   walletItem: WalletItem;
   walletItemTransfer: WalletItemTransfer;
 };

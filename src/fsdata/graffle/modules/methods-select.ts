@@ -100,10 +100,10 @@ export interface $MethodsSelect {
   WalletItem: WalletItem;
   WalletItemTransferAcceptInfo: WalletItemTransferAcceptInfo;
   WalletItemTransfer: WalletItemTransfer;
-  Wallet: Wallet;
-  WalletServiceRecord: WalletServiceRecord;
   GiftCardProduct: GiftCardProduct;
   GiftCardDenomination: GiftCardDenomination;
+  Wallet: Wallet;
+  WalletServiceRecord: WalletServiceRecord;
   MarketplaceServiceRecord: MarketplaceServiceRecord;
   ProductCategory: ProductCategory;
   UserSearch: UserSearch;
@@ -515,20 +515,20 @@ export interface WalletItemTransfer {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletItemTransfer>): $SelectionSet;
 }
 
-export interface Wallet {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Wallet>): $SelectionSet;
-}
-
-export interface WalletServiceRecord {
-  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletServiceRecord>): $SelectionSet;
-}
-
 export interface GiftCardProduct {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GiftCardProduct>): $SelectionSet;
 }
 
 export interface GiftCardDenomination {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GiftCardDenomination>): $SelectionSet;
+}
+
+export interface Wallet {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Wallet>): $SelectionSet;
+}
+
+export interface WalletServiceRecord {
+  <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletServiceRecord>): $SelectionSet;
 }
 
 export interface MarketplaceServiceRecord {
