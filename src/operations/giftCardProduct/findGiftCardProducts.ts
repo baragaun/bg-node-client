@@ -1,9 +1,8 @@
-// import db from '../../db/db.js';
+import { CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-// import buildQuery from '../../helpers/objectQuery/buildQuery.js';
 import { GiftCardProduct } from '../../models/GiftCardProduct.js';
 import { GiftCardProductListFilter } from '../../models/GiftCardProductListFilter.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
@@ -16,7 +15,7 @@ const findGiftCardProducts = async (
   match: Partial<GiftCardProduct> | null | undefined,
   _selector: MangoQueryTypes<GiftCardProduct> | null | undefined,
   options: FindObjectsOptions,
-  _queryOptions: QueryOptions = defaultQueryOptions,
+  queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<GiftCardProduct>> => {
   try {
     if (!libData.isInitialized()) {
@@ -29,35 +28,36 @@ const findGiftCardProducts = async (
       return { error: 'unauthorized' };
     }
 
-    // const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
+    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local DB
-    // if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
-    //   if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
-    //     return db.findById<GiftCard>(filter.ids[0], ModelType.GiftCard);
-    //   }
-    //
-    //   const localQuery = buildQuery<GiftCard, GiftCardListFilter>(
-    //     ModelType.GiftCard,
-    //     filter,
-    //     match,
-    //     selector,
-    //     options,
-    //   );
-    //
-    //   const localResult = await db.find<GiftCard>(localQuery, ModelType.GiftCard);
-    //
-    //   if ((!localResult.error && localResult.objects) || !allowNetwork) {
-    //     return localResult;
-    //   }
-    // }
+    // Local Cache
+    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
+      if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
+        const product = libData.getObjectFromCachedList<GiftCardProduct>(
+          ModelType.GiftCardProduct,
+          filter.ids[0],
+        );
+
+        if (product) {
+          return { objects: [product] };
+        }
+      }
+
+      const products = libData.getObjectListFromCache<GiftCardProduct>(
+        ModelType.GiftCardProduct,
+      );
+
+      if (Array.isArray(products) && products.length > 0) {
+        return { objects: products };
+      }
+    }
 
     //------------------------------------------------------------------------------------------------
     // Network
-    // if (!allowNetwork) {
-    //   return { error: 'offline' };
-    // }
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
 
     const result = await fsdata.giftCardProduct.findGiftCardProducts(
       filter,
@@ -65,11 +65,9 @@ const findGiftCardProducts = async (
       options,
     );
 
-    // if (Array.isArray(result.objects) && result.objects.length > 0) {
-    //   for (const giftCard of result.objects) {
-    //     await db.upsert<GiftCard>(giftCard, ModelType.GiftCard);
-    //   }
-    // }
+    if (Array.isArray(result.objects) && result.objects.length > 0) {
+      libData.setObjectListInCache(ModelType.GiftCardProduct, result.objects);
+    }
 
     return result;
   } catch (error) {

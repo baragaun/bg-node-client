@@ -232,6 +232,7 @@ export enum ModelType {
   GiftCardProduct = 'GiftCardProduct',
   MyUser = 'MyUser',
   Product = 'Product',
+  ProductCategory = 'ProductCategory',
   PurchaseOrder = 'PurchaseOrder',
   PurchaseOrderItem = 'PurchaseOrderItem',
   ServiceRequest = 'ServiceRequest',

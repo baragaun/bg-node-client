@@ -1,4 +1,5 @@
-export declare class ProductCategory {
+import { BaseModel } from './BaseModel.js';
+export declare class ProductCategory extends BaseModel {
     importId: string;
     name: string;
     labelEn: string;
