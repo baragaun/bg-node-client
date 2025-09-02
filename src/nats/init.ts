@@ -16,8 +16,6 @@ const init = async (options: Partial<NatsOptions>): Promise<void> => {
   await client.connect();
   libData.setNatsClient(client);
 
-  console.log('NATS init: connected.', client, options, libData);
-
   const myChannelsResult = await findMyChannelsV2(
     undefined,
     true,
