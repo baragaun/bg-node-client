@@ -1,7 +1,8 @@
 import { Msg } from '@nats-io/nats-core';
 
 import natsStore from './natsStore.js';
-import { BgListenerTopic } from '../enums.js';
+import db from '../db/db.js';
+import { BgListenerTopic, ModelType } from '../enums.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
 import { Channel } from '../models/Channel.js';
@@ -92,8 +93,10 @@ const subscribeToChannel = (channelId: string): void => {
                 typeof (listener as BgChannelDataListener).onChannelMessageCreated === 'function'
               ) {
                 (listener as BgChannelDataListener).onChannelMessageCreated({
-                  object: payload.object, // adjust as needed
+                  object: payload.object,
                 });
+                // Update local DB
+                db.insert(payload.object, ModelType.ChannelMessage);
               }
 
               if (
@@ -103,6 +106,8 @@ const subscribeToChannel = (channelId: string): void => {
                 (listener as BgChannelDataListener).onChannelMessageDeleted({
                   object: payload.object,
                 });
+                // Remove from local DB
+                db.delete(payload.object.id, ModelType.ChannelMessage);
               }
 
               if (
@@ -112,6 +117,8 @@ const subscribeToChannel = (channelId: string): void => {
                 (listener as BgChannelDataListener).onChannelMessageUpdated({
                   object: payload.object,
                 });
+                // Update local DB
+                db.upsert(payload.object, ModelType.ChannelMessage);
               }
             }
           }
