@@ -5,12 +5,12 @@ import { BgListenerTopic } from '../enums.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
 import { Channel } from '../models/Channel.js';
+import { ChannelMessage } from '../models/ChannelMessage.js';
 import { BgChannelDataListener } from '../types/BgChannelListener.js';
-import { ChannelMessagesNatsPayload } from '../types/ChannelMessagesNatsPayload.js';
 import { NatsPayloadModelChanged } from '../types/payloadTypes.js';
 
 const subscribeToChannel = (channelId: string): void => {
-  const subject1 = `channel.${channelId}.updated`;
+  const subject1 = `first.spark.dev.channel.${channelId}`;
   const existingSubscription1 = natsStore.getSubscription(subject1);
 
   if (existingSubscription1) {
@@ -65,7 +65,7 @@ const subscribeToChannel = (channelId: string): void => {
     );
   }
 
-  const subject2 = `channel.${channelId}.message.updated`;
+  const subject2 = `first.spark.dev.channel.${channelId}.messages`;
   const existingSubscription2 = natsStore.getSubscription(subject2);
 
   if (existingSubscription2) {
@@ -76,7 +76,7 @@ const subscribeToChannel = (channelId: string): void => {
       subject2,
       {
         callback: (error: Error, message: Msg): void => {
-          const payload = message.json<ChannelMessagesNatsPayload>();
+          const payload = message.json<NatsPayloadModelChanged<ChannelMessage>>();
 
           logger.debug('NATS channel messages updated event received.', {
             channelId: channelId,
@@ -92,7 +92,7 @@ const subscribeToChannel = (channelId: string): void => {
                 typeof (listener as BgChannelDataListener).onChannelMessageCreated === 'function'
               ) {
                 (listener as BgChannelDataListener).onChannelMessageCreated({
-                  object: payload.channelMessage,
+                  object: payload.object, // adjust as needed
                 });
               }
 
@@ -101,7 +101,7 @@ const subscribeToChannel = (channelId: string): void => {
                 typeof (listener as BgChannelDataListener).onChannelMessageDeleted === 'function'
               ) {
                 (listener as BgChannelDataListener).onChannelMessageDeleted({
-                  object: payload.channelMessage,
+                  object: payload.object,
                 });
               }
 
@@ -110,7 +110,7 @@ const subscribeToChannel = (channelId: string): void => {
                 typeof (listener as BgChannelDataListener).onChannelMessageUpdated === 'function'
               ) {
                 (listener as BgChannelDataListener).onChannelMessageUpdated({
-                  object: payload.channelMessage,
+                  object: payload.object,
                 });
               }
             }
