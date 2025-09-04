@@ -42,7 +42,7 @@ export const modelCrudOperations: Partial<Record<ModelType, ModelCrudOperationDe
     findByIdField: 'findChannelParticipantById',
     updateField: { field: 'updateChannelParticipant' },
     selections: modelFields.channelParticipant,
-    keyFieldName: 'channelParticipantId',
+    keyFieldName: 'id',
   },
   [ModelType.Company]: {
     createField: 'createCompany',

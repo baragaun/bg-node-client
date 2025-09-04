@@ -9479,15 +9479,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    acceptChannelInvitationV2: {
-      a: {
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     createChannelInvitation: {
       a: {
         input: {
@@ -9509,24 +9500,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    declineChannelInvitationV2: {
-      a: {
-        reasonTextId: {
-          nt: DeclineChannelInvitationReasonTextId,
-          it: [1],
-        },
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     deleteChannelInvitation: {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelInvitationId: {
           nt: String,
@@ -9559,15 +9537,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    dismissChannelInvitationFromInboxV2: {
-      a: {
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     updateChannelInvitation: {
       a: {
         input: {
@@ -9597,11 +9566,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         anonymizePersonalData: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelId: {
           nt: String,
@@ -9671,7 +9640,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelMessageId: {
           nt: String,
@@ -11098,11 +11067,8 @@ Mutation.f['updateAdminTask']!.nt = AdminTask;
 Mutation.f['createUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['deleteUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['initAssetUpload']!.nt = UploadedAsset;
-Mutation.f['acceptChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['createChannelInvitation']!.nt = ChannelInvitation;
-Mutation.f['declineChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['deleteChannelInvitationV2']!.nt = ServiceRequest;
-Mutation.f['dismissChannelInvitationFromInboxV2']!.nt = ServiceRequest;
 Mutation.f['createChannel']!.nt = Channel;
 Mutation.f['deleteChannelV2']!.nt = ServiceRequest;
 Mutation.f['createChannelMessage']!.nt = ChannelMessage;

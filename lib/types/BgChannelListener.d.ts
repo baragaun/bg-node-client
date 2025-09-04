@@ -1,6 +1,6 @@
 import { BgBaseListener } from './BgBaseListener.js';
+import { ChannelListItem } from './ChannelListItem.js';
 import { QueryResult } from './QueryResult.js';
-import { Channel } from '../models/Channel.js';
 import { ChannelInvitation } from '../models/ChannelInvitation.js';
 import { ChannelMessage } from '../models/ChannelMessage.js';
 /**
@@ -9,9 +9,9 @@ import { ChannelMessage } from '../models/ChannelMessage.js';
 export interface BgChannelDataListener extends BgBaseListener {
     channelId?: string;
     channelMessageId?: string;
-    onChannelCreated?: (result: QueryResult<Channel>) => void;
-    onChannelUpdated?: (result: QueryResult<Channel>) => void;
-    onChannelDeleted?: (result: QueryResult<Channel>) => void;
+    onChannelCreated?: (result: QueryResult<ChannelListItem>) => void;
+    onChannelUpdated?: (result: QueryResult<ChannelListItem>) => void;
+    onChannelDeleted?: (result: QueryResult<ChannelListItem>) => void;
     onChannelInvitationCreated?: (result: QueryResult<ChannelInvitation>) => void;
     onChannelInvitationUpdated?: (result: QueryResult<ChannelInvitation>) => void;
     onChannelInvitationDeleted?: (result: QueryResult<ChannelInvitation>) => void;
