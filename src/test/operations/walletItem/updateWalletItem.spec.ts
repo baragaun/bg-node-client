@@ -44,7 +44,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItem.updateWal
     const items = walletItemsResult.objects;
 
     expect(walletItemsResult.error).toBeUndefined();
-    expect(walletItemsResult.objects).toBeDefined();
+    expect(walletItemsResult.objects).toBeTruthy();
 
     // Pick the first wallet item and update its 'archivedAt' property
     const itemToUpdate = items[0];
@@ -55,7 +55,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItem.updateWal
     });
 
     expect(updateResult.error).toBeUndefined();
-    expect(updateResult.object).toBeDefined();
+    expect(updateResult.object).toBeTruthy();
     expect(updateResult.object.id).toBe(itemToUpdate.id);
     expect(updateResult.object.archivedAt).toBe(newArchivedAt);
 

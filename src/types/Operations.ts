@@ -51,6 +51,7 @@ import { Wallet } from '../models/Wallet.js';
 import { WalletItem } from '../models/WalletItem.js';
 import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
 import { WalletItemTransfer } from '../models/WalletItemTransfer.js';
+import { WalletItemTransferAcceptInfo } from '../models/WalletItemTransferAcceptInfo.js';
 import { WalletItemTransferListFilter } from '../models/WalletItemTransferListFilter.js';
 
 export interface Operations {
@@ -439,6 +440,12 @@ export interface Operations {
   };
 
   brand: {
+    findBrandById: (
+      id: string,
+      options: FindObjectsOptions,
+      queryOptions?: QueryOptions,
+    ) => Promise<QueryResult<Brand>>;
+
     findBrands: (
       filter: BrandListFilter | null | undefined,
       match: Partial<Brand> | null | undefined,
@@ -457,6 +464,16 @@ export interface Operations {
       props: Partial<WalletItem>,
     ) => Promise<QueryResult<WalletItem>>;
 
+    findWalletItemById: (
+      id: string,
+      options: FindObjectsOptions,
+    ) => Promise<QueryResult<WalletItem>>
+
+    findWalletItemByTransferSlug: (
+      transferSlug: string,
+      options: FindObjectsOptions,
+    ) => Promise<QueryResult<WalletItem>>;
+
     findWalletItems: (
       filter: WalletItemListFilter | null | undefined,
       match: Partial<WalletItem> | null | undefined,
@@ -472,6 +489,28 @@ export interface Operations {
   }
 
   walletItemTransfer: {
+    acceptWalletItemTransfer: (
+      transferSlug: string,
+      transferSecret: string,
+    ) => Promise<QueryResult<WalletItem>>;
+
+    createWalletItemTransfer: (
+      props: Partial<WalletItemTransfer>,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
+
+    declineWalletItemTransfer: (
+      transferSlug: string,
+    ) => Promise<QueryResult<WalletItem>>;
+
+    findWalletItemTransferAcceptInfoByTransferSlug: (
+      transferSlug: string,
+    ) => Promise<QueryResult<WalletItemTransferAcceptInfo>>;
+
+    findWalletItemTransferById: (
+      id: string,
+      options: FindObjectsOptions,
+    ) => Promise<QueryResult<WalletItemTransfer>>;
+
     findWalletItemTransfers: (
       filter: WalletItemTransferListFilter | null | undefined,
       match: Partial<WalletItemTransfer> | null | undefined,
@@ -480,8 +519,9 @@ export interface Operations {
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItemTransfer>>;
 
-    createWalletItemTransfer: (
-      props: Partial<WalletItemTransfer>,
+    updateWalletItemTransfer: (
+      changes: Partial<WalletItemTransfer>,
+      queryOptions?: QueryOptions,
     ) => Promise<QueryResult<WalletItemTransfer>>;
   }
 }

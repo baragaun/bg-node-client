@@ -22,7 +22,7 @@ export const findWalletItemsSpecHelper = async (
     );
     const items = walletItemsResult.objects;
     expect(walletItemsResult.error).toBeUndefined();
-    expect(walletItemsResult.objects).toBeDefined();
+    expect(walletItemsResult.objects).toBeTruthy();
     expect(items.length).toBeGreaterThanOrEqual(itemCount);
 
     return items;

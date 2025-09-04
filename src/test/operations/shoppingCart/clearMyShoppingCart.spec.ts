@@ -34,7 +34,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.shoppingCart.clearMy
     });
 
     expect(networkResult1.error).toBeUndefined();
-    expect(networkResult1.object).toBeDefined();
+    expect(networkResult1.object).toBeTruthy();
 
     const networkResult2 = await client.operations.shoppingCart.findMyShoppingCart({
       cachePolicy: CachePolicy.network,
@@ -42,7 +42,7 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.shoppingCart.clearMy
     const shoppingCart = networkResult2.object;
 
     expect(networkResult2.error).toBeUndefined();
-    expect(networkResult2.object).toBeDefined();
+    expect(networkResult2.object).toBeTruthy();
     expect(shoppingCart.id).toBe(myUser.id);
     expect(shoppingCart.items.length).toBe(0);
   });

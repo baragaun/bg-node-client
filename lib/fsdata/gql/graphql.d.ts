@@ -2777,6 +2777,8 @@ export declare enum MultiStepActionType {
 export type Mutation = {
     __typename?: 'Mutation';
     acceptChannelInvitation: Scalars['String']['output'];
+    acceptChannelInvitationV2: ServiceRequest;
+    acceptWalletItemTransfer: ServiceRequest;
     addAppFeatureToUser: Scalars['String']['output'];
     addChannelMessageEvent: Scalars['String']['output'];
     addUserToGroup: ServiceRequest;
@@ -2814,6 +2816,8 @@ export type Mutation = {
     createWalletItem: WalletItem;
     createWalletItemTransfer: ServiceRequest;
     declineChannelInvitation: Scalars['String']['output'];
+    declineChannelInvitationV2: ServiceRequest;
+    declineWalletItemTransfer: ServiceRequest;
     deleteAcademicExperience: ServiceRequest;
     deleteAdminTask: ServiceRequest;
     deleteBusinessExperience: ServiceRequest;
@@ -2901,6 +2905,13 @@ export type Mutation = {
 };
 export type MutationAcceptChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
+};
+export type MutationAcceptChannelInvitationV2Args = {
+    id: Scalars['String']['input'];
+};
+export type MutationAcceptWalletItemTransferArgs = {
+    transferSecret: Scalars['String']['input'];
+    transferSlug: Scalars['String']['input'];
 };
 export type MutationAddAppFeatureToUserArgs = {
     appFeature: AppFeature;
@@ -3016,6 +3027,13 @@ export type MutationCreateWalletItemTransferArgs = {
 export type MutationDeclineChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
     reasonTextId: DeclineChannelInvitationReasonTextId;
+};
+export type MutationDeclineChannelInvitationV2Args = {
+    id: Scalars['String']['input'];
+    reasonTextId: DeclineChannelInvitationReasonTextId;
+};
+export type MutationDeclineWalletItemTransferArgs = {
+    transferSlug: Scalars['String']['input'];
 };
 export type MutationDeleteAcademicExperienceArgs = {
     academicExperienceId: Scalars['String']['input'];
@@ -4180,7 +4198,10 @@ export type Query = {
     findUserSearches: Array<UserSearch>;
     findUsers: Array<UserListItem>;
     findWalletItemById?: Maybe<WalletItem>;
+    findWalletItemByTransferSlug?: Maybe<WalletItem>;
+    findWalletItemTransferAcceptInfoByTransferSlug?: Maybe<WalletItemTransferAcceptInfo>;
     findWalletItemTransferById?: Maybe<WalletItemTransfer>;
+    findWalletItemTransferByTransferSlug?: Maybe<WalletItemTransfer>;
     findWalletItemTransfers: Array<WalletItemTransfer>;
     findWalletItems: Array<WalletItem>;
     findWalletServiceRecord: WalletServiceRecord;
@@ -4511,9 +4532,20 @@ export type QueryFindWalletItemByIdArgs = {
     id: Scalars['String']['input'];
     options?: InputMaybe<FindObjectsOptions>;
 };
+export type QueryFindWalletItemByTransferSlugArgs = {
+    options?: InputMaybe<FindObjectsOptions>;
+    transferSlug: Scalars['String']['input'];
+};
+export type QueryFindWalletItemTransferAcceptInfoByTransferSlugArgs = {
+    transferSlug: Scalars['String']['input'];
+};
 export type QueryFindWalletItemTransferByIdArgs = {
     id: Scalars['String']['input'];
     options?: InputMaybe<FindObjectsOptions>;
+};
+export type QueryFindWalletItemTransferByTransferSlugArgs = {
+    options?: InputMaybe<FindObjectsOptions>;
+    transferSlug: Scalars['String']['input'];
 };
 export type QueryFindWalletItemTransfersArgs = {
     filter?: InputMaybe<WalletItemTransferListFilter>;
@@ -4708,6 +4740,7 @@ export declare enum ServiceRequestSource {
     Wallet = "wallet"
 }
 export declare enum ServiceRequestType {
+    GraphQlMutationAcceptWalletItemTransfer = "graphQlMutationAcceptWalletItemTransfer",
     GraphQlMutationAddChannelMessageEvent = "graphQlMutationAddChannelMessageEvent",
     GraphQlMutationAddFeatureToUser = "graphQlMutationAddFeatureToUser",
     GraphQlMutationAddUserToGroup = "graphQlMutationAddUserToGroup",
@@ -4745,6 +4778,7 @@ export declare enum ServiceRequestType {
     GraphQlMutationCreateWalletItem = "graphQlMutationCreateWalletItem",
     GraphQlMutationCreateWalletItemTransfer = "graphQlMutationCreateWalletItemTransfer",
     GraphQlMutationCreateWalletTransfer = "graphQlMutationCreateWalletTransfer",
+    GraphQlMutationDeclineWalletItemTransfer = "graphQlMutationDeclineWalletItemTransfer",
     GraphQlMutationDeleteAcademicExperience = "graphQlMutationDeleteAcademicExperience",
     GraphQlMutationDeleteAdminTask = "graphQlMutationDeleteAdminTask",
     GraphQlMutationDeleteAllMm2DataInMm3 = "graphQlMutationDeleteAllMm2DataInMm3",
@@ -4894,7 +4928,10 @@ export declare enum ServiceRequestType {
     GraphQlQueryFindUserSearchResults = "graphQlQueryFindUserSearchResults",
     GraphQlQueryFindUsers = "graphQlQueryFindUsers",
     GraphQlQueryFindWalletItemById = "graphQlQueryFindWalletItemById",
+    GraphQlQueryFindWalletItemByTransferSlug = "graphQlQueryFindWalletItemByTransferSlug",
+    GraphQlQueryFindWalletItemTransferAcceptInfoByTransferSlug = "graphQlQueryFindWalletItemTransferAcceptInfoByTransferSlug",
     GraphQlQueryFindWalletItemTransferById = "graphQlQueryFindWalletItemTransferById",
+    GraphQlQueryFindWalletItemTransferByTransferSlug = "graphQlQueryFindWalletItemTransferByTransferSlug",
     GraphQlQueryFindWalletItemTransfers = "graphQlQueryFindWalletItemTransfers",
     GraphQlQueryFindWalletItems = "graphQlQueryFindWalletItems",
     GraphQlQueryFindWalletServiceRecord = "graphQlQueryFindWalletServiceRecord",
@@ -6415,7 +6452,8 @@ export type WalletItem = {
     source?: Maybe<WalletItemSource>;
     termsEn?: Maybe<Scalars['String']['output']>;
     termsUrl?: Maybe<Scalars['String']['output']>;
-    transferredAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    transferAcceptedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    transferStartedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     updatedBy?: Maybe<Scalars['ID']['output']>;
     walletId: Scalars['ID']['output'];
@@ -6454,7 +6492,8 @@ export type WalletItemInput = {
     source?: InputMaybe<WalletItemSource>;
     termsEn?: InputMaybe<Scalars['String']['input']>;
     termsUrl?: InputMaybe<Scalars['String']['input']>;
-    transferredAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    transferAcceptedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    transferStartedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     updatedBy?: InputMaybe<Scalars['ID']['input']>;
     walletId?: InputMaybe<Scalars['ID']['input']>;
@@ -6477,11 +6516,17 @@ export declare enum WalletItemSource {
 }
 export type WalletItemTransfer = {
     __typename?: 'WalletItemTransfer';
+    /** The recipient accepted this transfer */
+    acceptedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     adminNotes?: Maybe<Scalars['String']['output']>;
+    /** The sender archived this transfer */
     archivedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    /** The sender canceled this transfer */
     canceledAt?: Maybe<Scalars['DateTimeISO']['output']>;
     createdAt: Scalars['DateTimeISO']['output'];
     createdBy?: Maybe<Scalars['ID']['output']>;
+    /** The recipient declined this transfer */
+    declinedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     deletedBy?: Maybe<Scalars['ID']['output']>;
     events?: Maybe<Array<ModelEvent>>;
@@ -6491,18 +6536,33 @@ export type WalletItemTransfer = {
     notificationId?: Maybe<Scalars['ID']['output']>;
     recipientEmail?: Maybe<Scalars['String']['output']>;
     recipientFullName?: Maybe<Scalars['String']['output']>;
+    /** Date this transfer was sent */
     sentAt?: Maybe<Scalars['DateTimeISO']['output']>;
     subjectText?: Maybe<Scalars['String']['output']>;
+    transferSlug?: Maybe<Scalars['String']['output']>;
     updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     updatedBy?: Maybe<Scalars['ID']['output']>;
     walletItemId: Scalars['ID']['output'];
 };
+export type WalletItemTransferAcceptInfo = {
+    __typename?: 'WalletItemTransferAcceptInfo';
+    brand?: Maybe<Brand>;
+    product?: Maybe<GiftCardProduct>;
+    walletItem: WalletItem;
+    walletItemTransfer: WalletItemTransfer;
+};
 export type WalletItemTransferInput = {
+    /** The recipient accepted this transfer */
+    acceptedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     adminNotes?: InputMaybe<Scalars['String']['input']>;
+    /** The sender archived this transfer */
     archivedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    /** The sender canceled this transfer */
     canceledAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     createdBy?: InputMaybe<Scalars['ID']['input']>;
+    /** The recipient declined this transfer */
+    declinedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     deletedBy?: InputMaybe<Scalars['ID']['input']>;
     events?: InputMaybe<Array<ModelEventInput>>;
@@ -6512,8 +6572,11 @@ export type WalletItemTransferInput = {
     notificationId?: InputMaybe<Scalars['ID']['input']>;
     recipientEmail?: InputMaybe<Scalars['String']['input']>;
     recipientFullName?: InputMaybe<Scalars['String']['input']>;
+    /** Date this transfer was sent */
     sentAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     subjectText?: InputMaybe<Scalars['String']['input']>;
+    transferSecret?: InputMaybe<Scalars['String']['input']>;
+    transferSlug?: InputMaybe<Scalars['String']['input']>;
     updatedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     updatedBy?: InputMaybe<Scalars['ID']['input']>;
     walletItemId?: InputMaybe<Scalars['ID']['input']>;

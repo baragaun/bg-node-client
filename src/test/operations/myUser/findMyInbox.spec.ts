@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeAll, describe, expect, test } from 'vitest';
+import { afterEach, beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import { CachePolicy } from '../../../enums.js';
@@ -20,10 +20,6 @@ describe('operations.myUser.findMyInbox', () => {
     await deleteMyUserSpecHelper(client);
   });
 
-  afterAll(async () => {
-    await deleteMyUserSpecHelper(client);
-  });
-
   test('should return the remote user inbox', async () => {
     const response = await client.operations.myUser.findMyInbox({
       cachePolicy: CachePolicy.network,
@@ -31,7 +27,7 @@ describe('operations.myUser.findMyInbox', () => {
     const userInbox = response.object;
 
     expect(response.error).toBeUndefined();
-    expect(response.object).toBeDefined();
+    expect(response.object).toBeTruthy();
     // expect(userInbox.userId).toBe(myUser.id); // <-- todo: fix; why is userInbox.userId an empty string?
     expect(userInbox.channels.userId).toBe(myUser.id);
   });

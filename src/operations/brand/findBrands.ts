@@ -1,9 +1,8 @@
-// import db from '../../db/db.js';
+import { CachePolicy, ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-// import buildQuery from '../../helpers/objectQuery/buildQuery.js';
 import { Brand } from '../../models/Brand.js';
 import { BrandListFilter } from '../../models/BrandListFilter.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
@@ -16,7 +15,7 @@ const findBrands = async (
   match: Partial<Brand> | null | undefined,
   _selector: MangoQueryTypes<Brand> | null | undefined,
   options: FindObjectsOptions,
-  _queryOptions: QueryOptions = defaultQueryOptions,
+  queryOptions: QueryOptions = defaultQueryOptions,
 ): Promise<QueryResult<Brand>> => {
   try {
     if (!libData.isInitialized()) {
@@ -29,35 +28,29 @@ const findBrands = async (
       return { error: 'unauthorized' };
     }
 
-    // const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
+    const allowNetwork = libData.allowNetwork() && queryOptions.cachePolicy !== CachePolicy.cache;
 
     //------------------------------------------------------------------------------------------------
-    // Local DB
-    // if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
-    //   if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
-    //     return db.findById<Brand>(filter.ids[0], ModelType.Brand);
-    //   }
-    //
-    //   const localQuery = buildQuery<Brand, BrandListFilter>(
-    //     ModelType.Brand,
-    //     filter,
-    //     match,
-    //     selector,
-    //     options,
-    //   );
-    //
-    //   const localResult = await db.find<Brand>(localQuery, ModelType.Brand);
-    //
-    //   if ((!localResult.error && localResult.objects) || !allowNetwork) {
-    //     return localResult;
-    //   }
-    // }
+    // Local Cache
+    if (queryOptions.cachePolicy === CachePolicy.cacheFirst || !allowNetwork) {
+      if (filter && Array.isArray(filter.ids) && filter.ids.length === 1) {
+        const brand = libData.getObjectFromCachedList<Brand>(ModelType.Brand, filter.ids[0]);
+        if (brand) {
+          return { objects: [brand] };
+        }
+      }
+
+      const brands = libData.getObjectListFromCache<Brand>(ModelType.Brand);
+      if (Array.isArray(brands) && brands.length > 0) {
+        return { objects: brands };
+      }
+    }
 
     //------------------------------------------------------------------------------------------------
     // Network
-    // if (!allowNetwork) {
-    //   return { error: 'offline' };
-    // }
+    if (!allowNetwork) {
+      return { error: 'offline' };
+    }
 
     const result = await fsdata.brand.findBrands(
       filter,
@@ -65,11 +58,9 @@ const findBrands = async (
       options,
     );
 
-    // if (Array.isArray(result.objects) && result.objects.length > 0) {
-    //   for (const brand of result.objects) {
-    //     await db.upsert<Brand>(brand, ModelType.Brand);
-    //   }
-    // }
+    if (Array.isArray(result.objects) && result.objects.length > 0) {
+      libData.setObjectListInCache(ModelType.Brand, result.objects);
+    }
 
     return result;
   } catch (error) {

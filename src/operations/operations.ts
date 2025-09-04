@@ -1,4 +1,5 @@
 import { Operations } from '../types/Operations.js';
+import findBrandById from './brand/findBrandById.js';
 import findBrands from './brand/findBrands.js';
 import createChannel from './channel/createChannel.js';
 import deleteChannel from './channel/deleteChannel.js';
@@ -76,10 +77,17 @@ import findUserById from './user/findUserById.js';
 import findUsers from './user/findUsers.js';
 import findMyWallet from './wallet/findMyWallet.js';
 import createWalletItem from './walletItem/createWalletItem.js';
+import findWalletItemById from './walletItem/findWalletItemById.js';
+import findWalletItemByTransferSlug from './walletItem/findWalletItemByTransferSlug.js';
 import findWalletItems from './walletItem/findWalletItems.js';
 import updateWalletItem from './walletItem/updateWalletItem.js';
+import acceptWalletItemTransfer from './walletItemTransfer/acceptWalletItemTransfer.js';
 import createWalletItemTransfer from './walletItemTransfer/createWalletItemTransfer.js';
+import declineWalletItemTransfer from './walletItemTransfer/declineWalletItemTransfer.js';
+import findWalletItemTransferAcceptInfoByTransferSlug from './walletItemTransfer/findWalletItemTransferAcceptInfoByTransferSlug.js';
+import findWalletItemTransferById from './walletItemTransfer/findWalletItemTransferById.js';
 import findWalletItemTransfers from './walletItemTransfer/findWalletItemTransfers.js';
+import updateWalletItemTransfer from './walletItemTransfer/updateWalletItemTransfer.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -193,8 +201,10 @@ const operations: Operations = {
     findUsers,
   },
 
+  // ------------------------------------ Marketplace (Mimble) ------------------------------------
   brand: {
-    findBrands: findBrands,
+    findBrands,
+    findBrandById,
   },
 
   wallet: {
@@ -203,13 +213,20 @@ const operations: Operations = {
 
   walletItem: {
     createWalletItem,
+    findWalletItemById,
+    findWalletItemByTransferSlug,
     findWalletItems,
     updateWalletItem,
   },
 
   walletItemTransfer: {
+    acceptWalletItemTransfer,
     createWalletItemTransfer,
+    declineWalletItemTransfer,
     findWalletItemTransfers,
+    findWalletItemTransferById,
+    findWalletItemTransferAcceptInfoByTransferSlug,
+    updateWalletItemTransfer,
   },
 };
 

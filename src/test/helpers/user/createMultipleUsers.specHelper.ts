@@ -21,7 +21,7 @@ export const createMultipleUsersSpecHelper = async (
       true,
       client,
     );
-    expect(user).toBeDefined();
+    expect(user).toBeTruthy();
     users.push(user);
   }
 

@@ -33,12 +33,12 @@ const createWalletItem = async (
       ...modelFields.walletItem,
     });
 
-    logger.debug('fsdata.createWalletItem received response.',
-      { response: JSON.stringify(response) });
+    logger.debug('fsdata.createWalletItem response received.',
+      { props, response: JSON.stringify(response) });
 
     if (Array.isArray(response.errors) && response.errors.length > 0) {
       logger.error('fsdata.createWalletItem: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { props, errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
 
       return { error: response.errors.map(error => error.message).join(', ') };
     }

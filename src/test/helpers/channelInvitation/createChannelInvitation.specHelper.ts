@@ -23,11 +23,11 @@ export const createChannelInvitationSpecHelper = async (
     { response });
 
   expect(response.error).toBeUndefined();
-  expect(response.object).toBeDefined();
+  expect(response.object).toBeTruthy();
 
   const channelInvitation = response.object;
 
-  expect(channelInvitation).toBeDefined();
+  expect(channelInvitation).toBeTruthy();
   expect(channelInvitation.createdBy).toBe(props.createdBy);
   expect(channelInvitation.recipientId).toBe(props.recipientId);
   expect(channelInvitation.messageText).toBe(props.messageText);

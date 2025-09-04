@@ -35,11 +35,11 @@ describe('operations.myUser.signInWithToken', () => {
       },
     );
 
-    expect(signInResponse).toBeDefined();
+    expect(signInResponse).toBeTruthy();
     expect(signInResponse.error).toBeUndefined();
-    expect(signInResponse.object).toBeDefined();
-    expect(signInResponse.object.actionProgress).toBeDefined();
-    expect(signInResponse.object.run).toBeDefined();
+    expect(signInResponse.object).toBeTruthy();
+    expect(signInResponse.object.actionProgress).toBeTruthy();
+    expect(signInResponse.object.run).toBeTruthy();
     expect(signInResponse.object.error).toBeUndefined();
 
     const actionId = signInResponse.object.actionProgress.actionId;
@@ -59,7 +59,7 @@ describe('operations.myUser.signInWithToken', () => {
             eventType === MultiStepActionEventType.notificationSent ||
             eventType === MultiStepActionEventType.notificationFailed
           ) {
-            expect(action.notificationResult).toBeDefined();
+            expect(action.notificationResult).toBeTruthy();
 
             // Let's send out another notification:
             const sendNotificationResponse =
@@ -82,7 +82,7 @@ describe('operations.myUser.signInWithToken', () => {
               );
 
             expect(verifyResponse.error).toBeUndefined();
-            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object).toBeTruthy();
             expect(verifyResponse.object.actionId).toBe(actionId);
 
             return;
@@ -100,7 +100,7 @@ describe('operations.myUser.signInWithToken', () => {
               );
 
             expect(verifyResponse.error).toBeUndefined();
-            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object).toBeTruthy();
             expect(verifyResponse.object.actionId).toBe(actionId);
 
             return;
@@ -138,11 +138,11 @@ describe('operations.myUser.signInWithToken', () => {
       },
     );
 
-    expect(signInResponse).toBeDefined();
+    expect(signInResponse).toBeTruthy();
     expect(signInResponse.error).toBeUndefined();
-    expect(signInResponse.object).toBeDefined();
-    expect(signInResponse.object.actionProgress).toBeDefined();
-    expect(signInResponse.object.run).toBeDefined();
+    expect(signInResponse.object).toBeTruthy();
+    expect(signInResponse.object.actionProgress).toBeTruthy();
+    expect(signInResponse.object.run).toBeTruthy();
     expect(signInResponse.object.error).toBeUndefined();
 
     const actionId = signInResponse.object.actionProgress.actionId;
@@ -162,7 +162,7 @@ describe('operations.myUser.signInWithToken', () => {
             eventType === MultiStepActionEventType.notificationSent ||
             eventType === MultiStepActionEventType.notificationFailed
           ) {
-            expect(action.notificationResult).toBeDefined();
+            expect(action.notificationResult).toBeTruthy();
 
             // Sending an invalid token:
             const msaToken = getTestUserPropsSpecHelper(myUser).msaToken;
@@ -176,7 +176,7 @@ describe('operations.myUser.signInWithToken', () => {
               );
 
             expect(verifyResponse.error).toBeUndefined();
-            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object).toBeTruthy();
             expect(verifyResponse.object.actionId).toBe(actionId);
 
             return;
@@ -197,7 +197,7 @@ describe('operations.myUser.signInWithToken', () => {
               );
 
             expect(verifyResponse.error).toBeUndefined();
-            expect(verifyResponse.object).toBeDefined();
+            expect(verifyResponse.object).toBeTruthy();
             expect(verifyResponse.object.actionId).toBe(actionId);
 
             return;

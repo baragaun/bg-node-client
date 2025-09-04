@@ -19,10 +19,10 @@ export const blockUserForMeSpecHelper = async (
   logger.debug('BgServiceApiCheck.blockUserForMe: received response from blockUserForMe',
     { updateUserResponse: response });
 
-  expect(response).toBeDefined();
+  expect(response).toBeTruthy();
   expect(response.error).toBeUndefined();
   expect(response.object.id).toBe(client.myUserId);
-  expect(response.object.userBlocks).toBeDefined();
+  expect(response.object.userBlocks).toBeTruthy();
   expect(response.object.userBlocks.length).toBe(1);
   expect(response.object.userBlocks[0].userId).toBe(userId);
   expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
@@ -35,9 +35,9 @@ export const blockUserForMeSpecHelper = async (
   const myUserFromCache1 = findMyUserFromCache1Result.object;
 
   expect(findMyUserFromCache1Result.error).toBeUndefined();
-  expect(findMyUserFromCache1Result.object).toBeDefined();
+  expect(findMyUserFromCache1Result.object).toBeTruthy();
   expect(myUserFromCache1.id).toBe(client.myUserId);
-  expect(response.object.userBlocks).toBeDefined();
+  expect(response.object.userBlocks).toBeTruthy();
   expect(response.object.userBlocks.length).toBe(1);
   expect(response.object.userBlocks[0].userId).toBe(userId);
   expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
@@ -51,9 +51,9 @@ export const blockUserForMeSpecHelper = async (
     const myUserFromNetwork = findMyUserFromNetworkResult.object;
 
     expect(findMyUserFromNetworkResult.error).toBeUndefined();
-    expect(findMyUserFromNetworkResult.object).toBeDefined();
+    expect(findMyUserFromNetworkResult.object).toBeTruthy();
     expect(myUserFromNetwork.id).toBe(client.myUserId);
-    expect(response.object.userBlocks).toBeDefined();
+    expect(response.object.userBlocks).toBeTruthy();
     expect(response.object.userBlocks.length).toBe(1);
     expect(response.object.userBlocks[0].userId).toBe(userId);
     expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);
@@ -65,9 +65,9 @@ export const blockUserForMeSpecHelper = async (
     const myUserFromCache2 = findMyUserFromCache2Result.object;
 
     expect(findMyUserFromCache2Result.error).toBeUndefined();
-    expect(findMyUserFromCache2Result.object).toBeDefined();
+    expect(findMyUserFromCache2Result.object).toBeTruthy();
     expect(myUserFromCache2.id).toBe(client.myUserId);
-    expect(response.object.userBlocks).toBeDefined();
+    expect(response.object.userBlocks).toBeTruthy();
     expect(response.object.userBlocks.length).toBe(1);
     expect(response.object.userBlocks[0].userId).toBe(userId);
     expect(response.object.userBlocks[0].reasonTextId).toBe(reasonTextId);

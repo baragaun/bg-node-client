@@ -1,4 +1,6 @@
-export class ProductCategory {
+import { BaseModel } from './BaseModel.js';
+
+export class ProductCategory extends BaseModel {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public importId = '';
   public name = '';
@@ -7,6 +9,8 @@ export class ProductCategory {
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<ProductCategory>) {
+    super(attributes);
+
     if (attributes) {
       // @bg-codegen:class.const.attr >>Note: Code is generated between these markers<<
       if (attributes.importId !== undefined) {

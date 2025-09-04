@@ -46,8 +46,8 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.c
       walletItemId: walletItem.id,
     }, client);
 
-    expect(walletItemTransfer).toBeDefined();
-    expect(walletItemTransfer.walletItemId).toBeDefined();
+    expect(walletItemTransfer).toBeTruthy();
+    expect(walletItemTransfer.walletItemId).toBeTruthy();
     expect(walletItemTransfer.createdBy).toBe(myUser.id);
 
     // The server currently fails to create/send the notification, so the service request result

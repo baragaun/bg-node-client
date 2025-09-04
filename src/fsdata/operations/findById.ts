@@ -3,6 +3,7 @@ import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { Model } from '../../models/Model.js';
 import modelFactory from '../../models/modelFactory.js';
+import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import graffleClientStore from '../helpers/graffleClientStore.js';
 import helpers from '../helpers/helpers.js';
@@ -12,6 +13,7 @@ const findById = async <T extends Model = Model>(
   id: string,
   modelType: ModelType,
   selections?: any,
+  options?: FindObjectsOptions,
 ): Promise<QueryResult<T>> => {
   try {
     if (!libData.isInitialized()) {
@@ -27,9 +29,18 @@ const findById = async <T extends Model = Model>(
       return { error: 'invalid-model-type' };
     }
 
-    const args = fieldDef.skipVars
+    if (!Array.isArray(Object.keys(fieldDef.selections))) {
+      logger.error('fsdata.findById: fieldDef has no selections', { modelType });
+      return { error: 'system-error' };
+    }
+
+    const args: any = fieldDef.skipVars
       ? {}
       : { $: { [fieldDef.keyFieldName || 'id']: id } };
+
+    if (options) {
+      args['$'].options = options;
+    }
 
     logger.debug('fsdata.findById: sending.', { args });
 

@@ -24,7 +24,7 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.deleteChannel',
   test('should create a channel with the given properties', async () => {
     const props = factories.channel.build({});
 
-    expect(client).toBeDefined();
+    expect(client).toBeTruthy();
 
     await signMeUpSpecHelper(undefined, false, client);
     const channel = await createChannelSpecHelper(props, 0, client);
@@ -35,7 +35,7 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.deleteChannel',
     client.enableMockMode = true;
     const props = factories.channel.build({});
 
-    expect(client).toBeDefined();
+    expect(client).toBeTruthy();
 
     await signMeUpSpecHelper(undefined, false, client);
     const channel = await createChannelSpecHelper(props, 0, client);
