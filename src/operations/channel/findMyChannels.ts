@@ -72,7 +72,7 @@ const findMyChannels = async (
     if (Array.isArray(result.objects) && result.objects.length > 0) {
       for (const channel of result.objects) {
         await db.upsert<Channel>(channel, ModelType.Channel);
-        natsService.subscribeToChannel(channel.id);
+        natsService.subscribeToChannelMessages(channel.id);
       }
     }
 

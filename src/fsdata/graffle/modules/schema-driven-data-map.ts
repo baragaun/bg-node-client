@@ -2826,9 +2826,9 @@ const NotificationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     notificationType: {},
     templateId: {},
     templateName: {},
-    senderId: {},
     recipientId: {},
     multiStepActionId: {},
+    initiatorId: {},
     replyingToId: {},
     title: {},
     messageText: {},
@@ -2841,12 +2841,11 @@ const NotificationInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     action1: {},
     action2: {},
     actionTaken: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
     sendSms: {},
+    allowSendingToSuspendedUser: {},
     emailSentAt: {
       nt: DateTimeISO,
     },
@@ -2939,8 +2938,6 @@ const NotificationTemplateInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     action0: {},
     action1: {},
     action2: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -4590,9 +4587,9 @@ const Notification: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     deletedBy: {},
     notificationType: {},
     templateId: {},
-    senderId: {},
     recipientId: {},
     multiStepActionId: {},
+    initiatorId: {},
     replyingToId: {},
     title: {},
     messageText: {},
@@ -4605,8 +4602,6 @@ const Notification: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     action1: {},
     action2: {},
     actionTaken: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -7684,8 +7679,6 @@ const NotificationTemplate: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     action0: {},
     action1: {},
     action2: {},
-    allowRecipientWithoutAccount: {},
-    allowSendingToSuspendedUser: {},
     sendEmail: {},
     sendInAppMessage: {},
     sendPushNotification: {},
@@ -9401,15 +9394,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    acceptChannelInvitationV2: {
-      a: {
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     createChannelInvitation: {
       a: {
         input: {
@@ -9431,24 +9415,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    declineChannelInvitationV2: {
-      a: {
-        reasonTextId: {
-          nt: DeclineChannelInvitationReasonTextId,
-          it: [1],
-        },
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     deleteChannelInvitation: {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelInvitationId: {
           nt: String,
@@ -9481,15 +9452,6 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
         },
       },
     },
-    dismissChannelInvitationFromInboxV2: {
-      a: {
-        id: {
-          nt: String,
-          it: [1],
-        },
-      },
-      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
-    },
     updateChannelInvitation: {
       a: {
         input: {
@@ -9519,11 +9481,11 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         anonymizePersonalData: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelId: {
           nt: String,
@@ -9593,7 +9555,7 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         deletePhysically: {
           nt: Boolean,
-          it: [1],
+          it: [0],
         },
         channelMessageId: {
           nt: String,
@@ -10991,11 +10953,8 @@ Mutation.f['updateAdminTask']!.nt = AdminTask;
 Mutation.f['createUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['deleteUploadedAsset']!.nt = UploadedAsset;
 Mutation.f['initAssetUpload']!.nt = UploadedAsset;
-Mutation.f['acceptChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['createChannelInvitation']!.nt = ChannelInvitation;
-Mutation.f['declineChannelInvitationV2']!.nt = ServiceRequest;
 Mutation.f['deleteChannelInvitationV2']!.nt = ServiceRequest;
-Mutation.f['dismissChannelInvitationFromInboxV2']!.nt = ServiceRequest;
 Mutation.f['createChannel']!.nt = Channel;
 Mutation.f['deleteChannelV2']!.nt = ServiceRequest;
 Mutation.f['createChannelMessage']!.nt = ChannelMessage;

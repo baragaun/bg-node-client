@@ -2777,7 +2777,6 @@ export declare enum MultiStepActionType {
 export type Mutation = {
     __typename?: 'Mutation';
     acceptChannelInvitation: Scalars['String']['output'];
-    acceptChannelInvitationV2: ServiceRequest;
     addAppFeatureToUser: Scalars['String']['output'];
     addChannelMessageEvent: Scalars['String']['output'];
     addUserToGroup: ServiceRequest;
@@ -2815,7 +2814,6 @@ export type Mutation = {
     createWalletItem: WalletItem;
     createWalletItemTransfer: ServiceRequest;
     declineChannelInvitation: Scalars['String']['output'];
-    declineChannelInvitationV2: ServiceRequest;
     deleteAcademicExperience: ServiceRequest;
     deleteAdminTask: ServiceRequest;
     deleteBusinessExperience: ServiceRequest;
@@ -2845,7 +2843,6 @@ export type Mutation = {
     deleteWalletItem: ServiceRequest;
     deleteWalletItemTransfer: ServiceRequest;
     dismissChannelInvitationFromInbox: Scalars['String']['output'];
-    dismissChannelInvitationFromInboxV2: ServiceRequest;
     /** @deprecated Use endMySessionV2 */
     endMySession: Scalars['String']['output'];
     endMySessionV2: Scalars['String']['output'];
@@ -2904,9 +2901,6 @@ export type Mutation = {
 };
 export type MutationAcceptChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
-};
-export type MutationAcceptChannelInvitationV2Args = {
-    id: Scalars['String']['input'];
 };
 export type MutationAddAppFeatureToUserArgs = {
     appFeature: AppFeature;
@@ -3023,10 +3017,6 @@ export type MutationDeclineChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
     reasonTextId: DeclineChannelInvitationReasonTextId;
 };
-export type MutationDeclineChannelInvitationV2Args = {
-    id: Scalars['String']['input'];
-    reasonTextId: DeclineChannelInvitationReasonTextId;
-};
 export type MutationDeleteAcademicExperienceArgs = {
     academicExperienceId: Scalars['String']['input'];
     deletePhysically: Scalars['Boolean']['input'];
@@ -3039,13 +3029,13 @@ export type MutationDeleteBusinessExperienceArgs = {
     deletePhysically: Scalars['Boolean']['input'];
 };
 export type MutationDeleteChannelArgs = {
-    anonymizePersonalData: Scalars['Boolean']['input'];
+    anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
     channelId: Scalars['String']['input'];
-    deletePhysically: Scalars['Boolean']['input'];
+    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type MutationDeleteChannelInvitationArgs = {
     channelInvitationId: Scalars['String']['input'];
-    deletePhysically: Scalars['Boolean']['input'];
+    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type MutationDeleteChannelInvitationV2Args = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3054,7 +3044,7 @@ export type MutationDeleteChannelInvitationV2Args = {
 };
 export type MutationDeleteChannelMessageArgs = {
     channelMessageId: Scalars['String']['input'];
-    deletePhysically: Scalars['Boolean']['input'];
+    deletePhysically?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type MutationDeleteChannelMessageV2Args = {
     anonymizePersonalData?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3158,9 +3148,6 @@ export type MutationDeleteWalletItemTransferArgs = {
 };
 export type MutationDismissChannelInvitationFromInboxArgs = {
     channelInvitationId: Scalars['String']['input'];
-};
-export type MutationDismissChannelInvitationFromInboxV2Args = {
-    id: Scalars['String']['input'];
 };
 export type MutationEndMySessionArgs = {
     deviceUuid: Scalars['String']['input'];
@@ -3557,8 +3544,6 @@ export type Notification = {
     action2?: Maybe<AppAction>;
     actionTaken?: Maybe<AppAction>;
     adminNotes?: Maybe<Scalars['String']['output']>;
-    allowRecipientWithoutAccount?: Maybe<Scalars['Boolean']['output']>;
-    allowSendingToSuspendedUser?: Maybe<Scalars['Boolean']['output']>;
     appLink: Scalars['String']['output'];
     context?: Maybe<NotificationContext>;
     createdAt: Scalars['DateTimeISO']['output'];
@@ -3572,6 +3557,7 @@ export type Notification = {
     id: Scalars['ID']['output'];
     inAppMessageReceivedAt?: Maybe<Scalars['DateTimeISO']['output']>;
     inAppMessageSentAt?: Maybe<Scalars['DateTimeISO']['output']>;
+    initiatorId: Scalars['ID']['output'];
     isTranslated?: Maybe<Scalars['Boolean']['output']>;
     language?: Maybe<UiLanguage>;
     messageText: Scalars['String']['output'];
@@ -3580,13 +3566,12 @@ export type Notification = {
     notificationType: NotificationType;
     pushNotificationSendReport: Scalars['String']['output'];
     pushNotificationSentAt?: Maybe<Scalars['DateTimeISO']['output']>;
-    recipientId?: Maybe<Scalars['ID']['output']>;
+    recipientId: Scalars['ID']['output'];
     replyingToId: Scalars['ID']['output'];
     sendEmail: Scalars['Boolean']['output'];
     sendInAppMessage: Scalars['Boolean']['output'];
     sendPushNotification: Scalars['Boolean']['output'];
     sendSms: Scalars['Boolean']['output'];
-    senderId?: Maybe<Scalars['ID']['output']>;
     sentMessagesCount: Scalars['Int']['output'];
     shortMessageText: Scalars['String']['output'];
     smsSendReport: Scalars['String']['output'];
@@ -3632,7 +3617,6 @@ export type NotificationInput = {
     action2?: InputMaybe<AppAction>;
     actionTaken?: InputMaybe<AppAction>;
     adminNotes?: InputMaybe<Scalars['String']['input']>;
-    allowRecipientWithoutAccount?: InputMaybe<Scalars['Boolean']['input']>;
     allowSendingToSuspendedUser?: InputMaybe<Scalars['Boolean']['input']>;
     appLink?: InputMaybe<Scalars['String']['input']>;
     context?: InputMaybe<NotificationInput>;
@@ -3647,6 +3631,7 @@ export type NotificationInput = {
     id?: InputMaybe<Scalars['ID']['input']>;
     inAppMessageReceivedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     inAppMessageSentAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+    initiatorId?: InputMaybe<Scalars['ID']['input']>;
     isTranslated?: InputMaybe<Scalars['Boolean']['input']>;
     language?: InputMaybe<UiLanguage>;
     messageText?: InputMaybe<Scalars['String']['input']>;
@@ -3661,7 +3646,6 @@ export type NotificationInput = {
     sendInAppMessage?: InputMaybe<Scalars['Boolean']['input']>;
     sendPushNotification?: InputMaybe<Scalars['Boolean']['input']>;
     sendSms?: InputMaybe<Scalars['Boolean']['input']>;
-    senderId?: InputMaybe<Scalars['ID']['input']>;
     sentMessagesCount?: InputMaybe<Scalars['Int']['input']>;
     shortMessageText?: InputMaybe<Scalars['String']['input']>;
     smsSendReport?: InputMaybe<Scalars['String']['input']>;
@@ -3703,8 +3687,6 @@ export type NotificationTemplate = {
     action1?: Maybe<AppAction>;
     action2?: Maybe<AppAction>;
     adminNotes?: Maybe<Scalars['String']['output']>;
-    allowRecipientWithoutAccount?: Maybe<Scalars['Boolean']['output']>;
-    allowSendingToSuspendedUser?: Maybe<Scalars['Boolean']['output']>;
     createdAt: Scalars['DateTimeISO']['output'];
     createdBy?: Maybe<Scalars['ID']['output']>;
     deletedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -3754,8 +3736,6 @@ export type NotificationTemplateInput = {
     action1?: InputMaybe<AppAction>;
     action2?: InputMaybe<AppAction>;
     adminNotes?: InputMaybe<Scalars['String']['input']>;
-    allowRecipientWithoutAccount?: InputMaybe<Scalars['Boolean']['input']>;
-    allowSendingToSuspendedUser?: InputMaybe<Scalars['Boolean']['input']>;
     createdAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
     createdBy?: InputMaybe<Scalars['ID']['input']>;
     deletedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -3824,7 +3804,6 @@ export declare enum NotificationTemplateName {
     SendFirstInvitationForMentee = "sendFirstInvitationForMentee",
     SendFirstInvitationForMentor = "sendFirstInvitationForMentor",
     Unset = "unset",
-    WalletItemTransfer = "walletItemTransfer",
     WelcomeForMentee = "welcomeForMentee",
     WelcomeForMentor = "welcomeForMentor"
 }
@@ -3843,7 +3822,6 @@ export declare enum NotificationType {
     ResetPasswordConfirmation = "resetPasswordConfirmation",
     SendFirstInvitation = "sendFirstInvitation",
     Unset = "unset",
-    WalletItemTransfer = "walletItemTransfer",
     Welcome = "welcome"
 }
 export type ObjectChangedEvent = {

@@ -23,6 +23,7 @@ declare const natsService: {
     getStream: (streamName: string) => Promise<import("@nats-io/jetstream").Stream>;
     init: (options: Partial<import("../index.js").NatsOptions>) => Promise<void>;
     publishMessage: (subject: string, data: any, options?: import("./publishMessage.js").NatsPublishOptions) => Promise<string>;
-    subscribeToChannel: (channelId: string) => void;
+    subscribeToChannelMessages: (channelId: string) => void;
+    subscribeToMyChannels: () => void;
 };
 export default natsService;
