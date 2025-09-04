@@ -2239,14 +2239,11 @@ export namespace Schema {
       initAssetUpload: Mutation.initAssetUpload;
       updateUploadedAsset: Mutation.updateUploadedAsset;
       acceptChannelInvitation: Mutation.acceptChannelInvitation;
-      acceptChannelInvitationV2: Mutation.acceptChannelInvitationV2;
       createChannelInvitation: Mutation.createChannelInvitation;
       declineChannelInvitation: Mutation.declineChannelInvitation;
-      declineChannelInvitationV2: Mutation.declineChannelInvitationV2;
       deleteChannelInvitation: Mutation.deleteChannelInvitation;
       deleteChannelInvitationV2: Mutation.deleteChannelInvitationV2;
       dismissChannelInvitationFromInbox: Mutation.dismissChannelInvitationFromInbox;
-      dismissChannelInvitationFromInboxV2: Mutation.dismissChannelInvitationFromInboxV2;
       updateChannelInvitation: Mutation.updateChannelInvitation;
       archiveChannelForMe: Mutation.archiveChannelForMe;
       createChannel: Mutation.createChannel;
@@ -2964,21 +2961,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface acceptChannelInvitationV2 {
-      kind: 'OutputField';
-      name: 'acceptChannelInvitationV2';
-      arguments: {
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [1];
-          namedType: $$NamedTypes.$$String;
-        };
-      };
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ServiceRequest;
-    }
-
     export interface createChannelInvitation {
       kind: 'OutputField';
       name: 'createChannelInvitation';
@@ -3015,27 +2997,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface declineChannelInvitationV2 {
-      kind: 'OutputField';
-      name: 'declineChannelInvitationV2';
-      arguments: {
-        reasonTextId: {
-          kind: 'InputField';
-          name: 'reasonTextId';
-          inlineType: [1];
-          namedType: $$NamedTypes.$$DeclineChannelInvitationReasonTextId;
-        };
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [1];
-          namedType: $$NamedTypes.$$String;
-        };
-      };
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ServiceRequest;
-    }
-
     export interface deleteChannelInvitation {
       kind: 'OutputField';
       name: 'deleteChannelInvitation';
@@ -3043,7 +3004,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelInvitationId: {
@@ -3099,21 +3060,6 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
-    export interface dismissChannelInvitationFromInboxV2 {
-      kind: 'OutputField';
-      name: 'dismissChannelInvitationFromInboxV2';
-      arguments: {
-        id: {
-          kind: 'InputField';
-          name: 'id';
-          inlineType: [1];
-          namedType: $$NamedTypes.$$String;
-        };
-      };
-      inlineType: [1];
-      namedType: $$NamedTypes.$$ServiceRequest;
-    }
-
     export interface updateChannelInvitation {
       kind: 'OutputField';
       name: 'updateChannelInvitation';
@@ -3166,13 +3112,13 @@ export namespace Schema {
         anonymizePersonalData: {
           kind: 'InputField';
           name: 'anonymizePersonalData';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelId: {
@@ -3295,7 +3241,7 @@ export namespace Schema {
         deletePhysically: {
           kind: 'InputField';
           name: 'deletePhysically';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$Boolean;
         };
         channelMessageId: {

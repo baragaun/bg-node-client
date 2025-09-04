@@ -4,6 +4,7 @@ import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
+import natsService from '../../nats/index.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannel = async (
@@ -52,6 +53,8 @@ const createChannel = async (
         return response;
       }
 
+      natsService.subscribeToChannelMessages(response.object.id);
+
       return response;
     }
 
@@ -70,6 +73,8 @@ const createChannel = async (
     if (!result.error || result.object) {
       await db.insert<Channel>(result.object, ModelType.Channel);
     }
+
+    natsService.subscribeToChannelMessages(result.object.id);
 
     return result;
   } catch (error) {

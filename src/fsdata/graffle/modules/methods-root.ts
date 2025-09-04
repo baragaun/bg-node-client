@@ -2576,26 +2576,6 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
-  acceptChannelInvitationV2: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.acceptChannelInvitationV2<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { acceptChannelInvitationV2: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'acceptChannelInvitationV2'
-      >
-    >
-  >;
-
   createChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -2632,26 +2612,6 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'declineChannelInvitation'
-      >
-    >
-  >;
-
-  declineChannelInvitationV2: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.declineChannelInvitationV2<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { declineChannelInvitationV2: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'declineChannelInvitationV2'
       >
     >
   >;
@@ -2712,26 +2672,6 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'dismissChannelInvitationFromInbox'
-      >
-    >
-  >;
-
-  dismissChannelInvitationFromInboxV2: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.dismissChannelInvitationFromInboxV2<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { dismissChannelInvitationFromInboxV2: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'dismissChannelInvitationFromInboxV2'
       >
     >
   >;

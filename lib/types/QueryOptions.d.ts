@@ -2,6 +2,7 @@ import { CachePolicy } from '../enums.js';
 import { Model } from '../models/Model.js';
 export type IsInTargetStateFunc<T extends Model = Model> = (obj: T) => boolean;
 export interface QueryPollingOptions<T extends Model = Model> {
+    mode?: 'poll' | 'rte';
     enabled: boolean;
     isInTargetStateFunc?: IsInTargetStateFunc<T> | 'watch-updated-at';
     oldUpdatedAt?: string;
