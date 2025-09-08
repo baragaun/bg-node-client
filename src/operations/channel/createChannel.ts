@@ -5,6 +5,8 @@ import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
 import natsService from '../../nats/index.js';
+import streamNames from '../../nats/streamNames.js';
+import { NatsPayloadModelChanged } from '../../types/payloadTypes.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannel = async (
@@ -53,8 +55,6 @@ const createChannel = async (
         return response;
       }
 
-      natsService.subscribeToChannelMessages(response.object.id);
-
       return response;
     }
 
@@ -68,13 +68,37 @@ const createChannel = async (
 
     if (result.object) {
       result.object = new Channel(result.object);
+      natsService.publishMessage(
+        streamNames(result.object.id).channels,
+        {
+          objectId: result.object.id,
+          modelType: ModelType.Channel,
+          changeType: 'created',
+          object: result.object,
+        } as NatsPayloadModelChanged<Channel>,
+        {},
+        (error, ack) => {
+          if (error) {
+            console.error('createChannel: Failed to publish NATS message', {
+              channelMessageId: result.object.id,
+              subject: streamNames(result.object.id).channelMessages,
+              error: error.message,
+              stack: error.stack,
+            });
+          } else {
+            console.debug('createChannel: Successfully published NATS message', {
+              channelMessageId: result.object.id,
+              subject: streamNames(result.object.id).channelMessages,
+              ack,
+            });
+          }
+        },
+      );
     }
 
     if (!result.error || result.object) {
       await db.insert<Channel>(result.object, ModelType.Channel);
     }
-
-    natsService.subscribeToChannelMessages(result.object.id);
 
     return result;
   } catch (error) {

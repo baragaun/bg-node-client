@@ -14,6 +14,7 @@ import { getStream } from './getStream.js';
 import init from './init.js';
 import natsStore from './natsStore.js';
 import { publishMessage } from './publishMessage.js';
+import streamNames from './streamNames.js';
 import subscribeToChannelMessages from './subscribeToChannelMessages.js';
 import subscribeToMyChannels from './subscribeToMyChannels.js';
 
@@ -35,6 +36,7 @@ const natsService = {
   getStream,
   init,
   publishMessage,
+  streamNames,
   subscribeToChannelMessages,
   subscribeToMyChannels,
 };

@@ -3,6 +3,7 @@ import { Msg } from '@nats-io/nats-core';
 import natsStore from './natsStore.js';
 // import db from '../db/db.js';
 import { BgListenerTopic } from '../enums.js';
+import streamNames from './streamNames.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
 import { ChannelMessage } from '../models/ChannelMessage.js';
@@ -10,7 +11,7 @@ import { BgChannelDataListener } from '../types/BgChannelListener.js';
 import { NatsPayloadModelChanged } from '../types/payloadTypes.js';
 
 const subscribeToChannelMessages = (channelId: string): void => {
-  const subject = `first.spark.dev.channel.${channelId}.messages`;
+  const subject = streamNames(channelId).channelMessages;
   const existingSubscription = natsStore.getSubscription(subject);
   // const myUserId = libData.clientInfoStore().myUserId;
 

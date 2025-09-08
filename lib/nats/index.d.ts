@@ -22,7 +22,11 @@ declare const natsService: {
     getOrderedConsumer: (streamName: string, options?: Partial<import("@nats-io/jetstream").OrderedConsumerOptions>) => Promise<import("@nats-io/jetstream").Consumer>;
     getStream: (streamName: string) => Promise<import("@nats-io/jetstream").Stream>;
     init: (options: Partial<import("../index.js").NatsOptions>) => Promise<void>;
-    publishMessage: (subject: string, data: any, options?: import("./publishMessage.js").NatsPublishOptions) => Promise<string>;
+    publishMessage: <T extends import("../types/payloadTypes.js").BaseNatsPayload | string = string>(subject: string, payload: T | string, options?: Partial<import("./publishMessage.js").NatsPublishOptions>, callback?: (error?: Error | null, ack?: import("@nats-io/jetstream").PubAck) => void) => void;
+    streamNames: (channelId?: string) => {
+        channels: string;
+        channelMessages: string;
+    };
     subscribeToChannelMessages: (channelId: string) => void;
     subscribeToMyChannels: () => void;
 };

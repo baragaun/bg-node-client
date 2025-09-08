@@ -10,7 +10,14 @@ const deleteChannelMessage = async (
   deletePhysically: boolean,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<ServiceRequest>> => {
-  return deleteFnc(id, ModelType.ChannelMessage, deletePhysically, queryOptions);
+
+  const result = await deleteFnc(id, ModelType.ChannelMessage, deletePhysically, queryOptions);
+
+  if (result.object) {
+    // Notify via NATS
+  }
+
+  return result;
 };
 
 export default deleteChannelMessage;

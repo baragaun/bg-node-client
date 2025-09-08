@@ -3,14 +3,15 @@ import { Msg } from '@nats-io/nats-core';
 import natsStore from './natsStore.js';
 // import db from '../db/db.js';
 import { BgListenerTopic } from '../enums.js';
+import streamNames from './streamNames.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
+import { Channel } from '../models/Channel.js';
 import { BgChannelDataListener } from '../types/BgChannelListener.js';
-import { ChannelListItem } from '../types/ChannelListItem.js';
 import { NatsPayloadModelChanged } from '../types/payloadTypes.js';
 
 const subscribeToMyChannels = (): void => {
-  const subject = 'first.spark.dev.channels';
+  const subject = streamNames().channels;
   const existingSubscription = natsStore.getSubscription(subject);
   const myUserId = libData.clientInfoStore().myUserId;
 
@@ -22,7 +23,7 @@ const subscribeToMyChannels = (): void => {
       subject,
       {
         callback: (error: Error, message: Msg): void => {
-          const payload = message.json<NatsPayloadModelChanged<ChannelListItem>>();
+          const payload = message.json<NatsPayloadModelChanged<Channel>>();
 
           logger.debug('NATS channel updated event received.', {
             userId: myUserId,
@@ -42,7 +43,7 @@ const subscribeToMyChannels = (): void => {
                     object: payload.object,
                   });
                   // Update local DB
-                  // db.insert(payload.object, ModelType.ChannelListItem);
+                  // db.insert(payload.object, ModelType.Channel);
                 }
               }
 
@@ -55,7 +56,7 @@ const subscribeToMyChannels = (): void => {
                     object: payload.object,
                   });
                   // Remove from local DB
-                  // db.delete(payload.object.id, ModelType.ChannelListItem);
+                  // db.delete(payload.object.id, ModelType.Channel);
                 }
               }
 
@@ -68,7 +69,7 @@ const subscribeToMyChannels = (): void => {
                     object: payload.object,
                   });
                   // Update local DB
-                  // db.update(payload.object, ModelType.ChannelListItem);
+                  // db.update(payload.object, ModelType.Channel);
                 }
               }
             }
