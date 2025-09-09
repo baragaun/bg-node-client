@@ -69,7 +69,7 @@ const createChannel = async (
     if (result.object) {
       result.object = new Channel(result.object);
       natsService.publishMessage(
-        streamNames(result.object.id).channels,
+        streamNames(result.object.id).channel,
         {
           objectId: result.object.id,
           modelType: ModelType.Channel,

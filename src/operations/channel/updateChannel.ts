@@ -16,7 +16,7 @@ const updateChannel = async (
   const result = await update<Channel>(changes, ModelType.Channel, queryOptions);
   if (result.object) {
      natsService.publishMessage(
-        streamNames(result.object.id).channels,
+        streamNames(result.object.id).channel,
         {
           objectId: result.object.id,
           modelType: ModelType.Channel,

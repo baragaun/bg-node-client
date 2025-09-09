@@ -11,7 +11,7 @@ import { BgChannelDataListener } from '../types/BgChannelListener.js';
 import { NatsPayloadModelChanged } from '../types/payloadTypes.js';
 
 const subscribeToMyChannels = (): void => {
-  const subject = streamNames().channels;
+  const subject = streamNames().channel;
   const existingSubscription = natsStore.getSubscription(subject);
   const myUserId = libData.clientInfoStore().myUserId;
 

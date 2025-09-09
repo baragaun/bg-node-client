@@ -24,7 +24,7 @@ declare const natsService: {
     init: (options: Partial<import("../index.js").NatsOptions>) => Promise<void>;
     publishMessage: <T extends import("../types/payloadTypes.js").BaseNatsPayload | string = string>(subject: string, payload: T | string, options?: Partial<import("./publishMessage.js").NatsPublishOptions>, callback?: (error?: Error | null, ack?: import("@nats-io/jetstream").PubAck) => void) => void;
     streamNames: (channelId?: string) => {
-        channels: string;
+        channel: string;
         channelMessages: string;
     };
     subscribeToChannelMessages: (channelId: string) => void;

@@ -1,5 +1,5 @@
-const streamNames = (channelId: string = '*'): { channels: string; channelMessages: string } => ({
-  channels: `first.spark.dev.channels.${channelId}`,
+const streamNames = (channelId: string = '*'): { channel: string; channelMessages: string } => ({
+  channel: `first.spark.dev.channel.${channelId}`,
   channelMessages: `first.spark.dev.channel.${channelId}.messages`,
 });
 
