@@ -23,7 +23,7 @@ const updateChannel = async (
           changeType: 'updated',
           object: result.object,
         } as NatsPayloadModelChanged<Channel>,
-        {},
+        {timeout: 5000},
         (error, ack) => {
           if (error) {
             logger.error('updatedChannel: Failed to publish NATS message', {

@@ -46,17 +46,18 @@ const createChannelMessage = async (
 
     const result = await fsdata.channelMessage.createChannelMessage(props);
 
-    if (result.object) {
-      result.object = new ChannelMessage(result.object);
+    if (!result.error || result.object) {
+      await db.insert<ChannelMessage>(result.object, ModelType.ChannelMessage);
+
       natsService.publishMessage(
         streamNames(result.object.channelId).channelMessages,
         {
           objectId: result.object.id,
           modelType: ModelType.ChannelMessage,
           changeType: 'created',
-          object: result.object,
+          object: new ChannelMessage(result.object),
         } as NatsPayloadModelChanged<ChannelMessage>,
-        {},
+        {timeout: 5000},
         (error, ack) => {
           if (error) {
             logger.error('createChannelMessage: Failed to publish NATS message', {
@@ -74,10 +75,6 @@ const createChannelMessage = async (
           }
         },
       );
-    }
-
-    if (!result.error || result.object) {
-      await db.insert<ChannelMessage>(result.object, ModelType.ChannelMessage);
     }
 
     return result;

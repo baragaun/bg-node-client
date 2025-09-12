@@ -76,7 +76,7 @@ const createChannel = async (
           changeType: 'created',
           object: result.object,
         } as NatsPayloadModelChanged<Channel>,
-        {},
+        {timeout: 5000},
         (error, ack) => {
           if (error) {
             console.error('createChannel: Failed to publish NATS message', {
