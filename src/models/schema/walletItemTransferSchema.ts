@@ -85,6 +85,10 @@ export const WalletItemTransferSchema = {
       type: 'string',
       nullable: true,
     },
+    password: {
+      type: 'string',
+      nullable: true,
+    },
     sentAt: {
       type: 'string',
       description: 'Date this transfer was sent',

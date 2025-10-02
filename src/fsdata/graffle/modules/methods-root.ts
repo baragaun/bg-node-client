@@ -1291,22 +1291,22 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
-  findWalletItemTransferAcceptInfoByTransferSlug: $$Utilities.ClientTransports.PreflightCheck<
+  findWalletItemTransferReceiverInfoByTransferSlug: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Query.findWalletItemTransferAcceptInfoByTransferSlug<$Context['scalars']>
+        $$SelectionSets.Query.findWalletItemTransferReceiverInfoByTransferSlug<$Context['scalars']>
       >,
     ) => Promise<
       & (null | {})
       & $$Utilities.HandleOutputDocumentBuilderRootField<
         $Context,
         $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findWalletItemTransferAcceptInfoByTransferSlug: $SelectionSet },
+          { findWalletItemTransferReceiverInfoByTransferSlug: $SelectionSet },
           $$Schema.Schema<$Context['scalars']>
         >,
-        'findWalletItemTransferAcceptInfoByTransferSlug'
+        'findWalletItemTransferReceiverInfoByTransferSlug'
       >
     >
   >;
@@ -3695,6 +3695,46 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'updateWalletItemTransfer'
+      >
+    >
+  >;
+
+  updateWalletItemTransferPassword: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.updateWalletItemTransferPassword<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateWalletItemTransferPassword: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateWalletItemTransferPassword'
+      >
+    >
+  >;
+
+  verifyWalletItemTransferPassword: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.verifyWalletItemTransferPassword<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { verifyWalletItemTransferPassword: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'verifyWalletItemTransferPassword'
       >
     >
   >;

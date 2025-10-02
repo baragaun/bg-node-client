@@ -101,7 +101,7 @@ export namespace Schema {
       findWalletItemById: Query.findWalletItemById;
       findWalletItemByTransferSlug: Query.findWalletItemByTransferSlug;
       findWalletItems: Query.findWalletItems;
-      findWalletItemTransferAcceptInfoByTransferSlug: Query.findWalletItemTransferAcceptInfoByTransferSlug;
+      findWalletItemTransferReceiverInfoByTransferSlug: Query.findWalletItemTransferReceiverInfoByTransferSlug;
       findWalletItemTransferById: Query.findWalletItemTransferById;
       findWalletItemTransferByTransferSlug: Query.findWalletItemTransferByTransferSlug;
       findWalletItemTransfers: Query.findWalletItemTransfers;
@@ -1563,9 +1563,9 @@ export namespace Schema {
       namedType: $$NamedTypes.$$WalletItem;
     }
 
-    export interface findWalletItemTransferAcceptInfoByTransferSlug {
+    export interface findWalletItemTransferReceiverInfoByTransferSlug {
       kind: 'OutputField';
-      name: 'findWalletItemTransferAcceptInfoByTransferSlug';
+      name: 'findWalletItemTransferReceiverInfoByTransferSlug';
       arguments: {
         transferSlug: {
           kind: 'InputField';
@@ -1575,7 +1575,7 @@ export namespace Schema {
         };
       };
       inlineType: [0];
-      namedType: $$NamedTypes.$$WalletItemTransferAcceptInfo;
+      namedType: $$NamedTypes.$$WalletItemTransferReceiverInfo;
     }
 
     export interface findWalletItemTransferById {
@@ -2298,6 +2298,8 @@ export namespace Schema {
       declineWalletItemTransfer: Mutation.declineWalletItemTransfer;
       deleteWalletItemTransfer: Mutation.deleteWalletItemTransfer;
       updateWalletItemTransfer: Mutation.updateWalletItemTransfer;
+      updateWalletItemTransferPassword: Mutation.updateWalletItemTransferPassword;
+      verifyWalletItemTransferPassword: Mutation.verifyWalletItemTransferPassword;
       createUserSearch: Mutation.createUserSearch;
       deleteUserSearch: Mutation.deleteUserSearch;
       updateUserSearch: Mutation.updateUserSearch;
@@ -4044,6 +4046,54 @@ export namespace Schema {
       };
       inlineType: [1];
       namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
+    export interface updateWalletItemTransferPassword {
+      kind: 'OutputField';
+      name: 'updateWalletItemTransferPassword';
+      arguments: {
+        password: {
+          kind: 'InputField';
+          name: 'password';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+        transferSecret: {
+          kind: 'InputField';
+          name: 'transferSecret';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
+    export interface verifyWalletItemTransferPassword {
+      kind: 'OutputField';
+      name: 'verifyWalletItemTransferPassword';
+      arguments: {
+        password: {
+          kind: 'InputField';
+          name: 'password';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     export interface createUserSearch {
@@ -21655,23 +21705,23 @@ export namespace Schema {
     }
   }
 
-  //                                    WalletItemTransferAcceptInfo
+  //                                   WalletItemTransferReceiverInfo
   // --------------------------------------------------------------------------------------------------
   //
 
-  export interface WalletItemTransferAcceptInfo {
+  export interface WalletItemTransferReceiverInfo {
     kind: 'Object';
-    name: 'WalletItemTransferAcceptInfo';
+    name: 'WalletItemTransferReceiverInfo';
     fields: {
-      __typename: WalletItemTransferAcceptInfo.__typename;
-      walletItem: WalletItemTransferAcceptInfo.walletItem;
-      walletItemTransfer: WalletItemTransferAcceptInfo.walletItemTransfer;
-      brand: WalletItemTransferAcceptInfo.brand;
-      product: WalletItemTransferAcceptInfo.product;
+      __typename: WalletItemTransferReceiverInfo.__typename;
+      walletItem: WalletItemTransferReceiverInfo.walletItem;
+      walletItemTransfer: WalletItemTransferReceiverInfo.walletItemTransfer;
+      brand: WalletItemTransferReceiverInfo.brand;
+      product: WalletItemTransferReceiverInfo.product;
     };
   }
 
-  export namespace WalletItemTransferAcceptInfo {
+  export namespace WalletItemTransferReceiverInfo {
     export interface __typename {
       kind: 'OutputField';
       name: '__typename';
@@ -21679,7 +21729,7 @@ export namespace Schema {
       inlineType: [1];
       namedType: {
         kind: '__typename';
-        value: 'WalletItemTransferAcceptInfo';
+        value: 'WalletItemTransferReceiverInfo';
       };
     }
 
@@ -35664,6 +35714,7 @@ export namespace Schema {
       messageText: WalletItemTransferInput.messageText;
       transferSlug: WalletItemTransferInput.transferSlug;
       transferSecret: WalletItemTransferInput.transferSecret;
+      password: WalletItemTransferInput.password;
       sentAt: WalletItemTransferInput.sentAt;
       acceptedAt: WalletItemTransferInput.acceptedAt;
       declinedAt: WalletItemTransferInput.declinedAt;
@@ -35795,6 +35846,13 @@ export namespace Schema {
     export interface transferSecret {
       kind: 'InputField';
       name: 'transferSecret';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    export interface password {
+      kind: 'InputField';
+      name: 'password';
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
     }
@@ -43657,6 +43715,7 @@ export namespace Schema {
       'graphQlMutationUpdateShoppingCartItem',
       'graphQlMutationUpdateWalletItem',
       'graphQlMutationUpdateWalletItemTransfer',
+      'graphQlMutationUpdateWalletItemTransferPassword',
       'graphQlQueryFindMyShoppingCart',
       'graphQlQueryFindMyWallet',
       'graphQlQueryFindPurchaseOrderItems',
@@ -43668,10 +43727,11 @@ export namespace Schema {
       'graphQlQueryFindWalletItems',
       'graphQlQueryFindWalletItemTransferById',
       'graphQlQueryFindWalletItemTransferByTransferSlug',
-      'graphQlQueryFindWalletItemTransferAcceptInfoByTransferSlug',
+      'graphQlQueryFindWalletItemTransferReceiverInfoByTransferSlug',
       'graphQlQueryFindWalletItemTransfers',
       'graphQlQueryFindWallets',
       'graphQlQueryFindWalletServiceRecord',
+      'graphQlQueryVerifyWalletItemTransferPassword',
     ];
     membersUnion:
       | 'graphQlMutationCreateAcademicExperience'
@@ -43872,6 +43932,7 @@ export namespace Schema {
       | 'graphQlMutationUpdateShoppingCartItem'
       | 'graphQlMutationUpdateWalletItem'
       | 'graphQlMutationUpdateWalletItemTransfer'
+      | 'graphQlMutationUpdateWalletItemTransferPassword'
       | 'graphQlQueryFindMyShoppingCart'
       | 'graphQlQueryFindMyWallet'
       | 'graphQlQueryFindPurchaseOrderItems'
@@ -43883,10 +43944,11 @@ export namespace Schema {
       | 'graphQlQueryFindWalletItems'
       | 'graphQlQueryFindWalletItemTransferById'
       | 'graphQlQueryFindWalletItemTransferByTransferSlug'
-      | 'graphQlQueryFindWalletItemTransferAcceptInfoByTransferSlug'
+      | 'graphQlQueryFindWalletItemTransferReceiverInfoByTransferSlug'
       | 'graphQlQueryFindWalletItemTransfers'
       | 'graphQlQueryFindWallets'
-      | 'graphQlQueryFindWalletServiceRecord';
+      | 'graphQlQueryFindWalletServiceRecord'
+      | 'graphQlQueryVerifyWalletItemTransferPassword';
   }
 
   //                                        ServiceRequestResult
@@ -44617,7 +44679,7 @@ export namespace Schema {
     export type $$ShoppingCartItem = ShoppingCartItem;
     export type $$ShoppingCart = ShoppingCart;
     export type $$WalletItem = WalletItem;
-    export type $$WalletItemTransferAcceptInfo = WalletItemTransferAcceptInfo;
+    export type $$WalletItemTransferReceiverInfo = WalletItemTransferReceiverInfo;
     export type $$WalletItemTransfer = WalletItemTransfer;
     export type $$GiftCardProduct = GiftCardProduct;
     export type $$GiftCardDenomination = GiftCardDenomination;
@@ -44955,7 +45017,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     ShoppingCartItem: Schema.ShoppingCartItem;
     ShoppingCart: Schema.ShoppingCart;
     WalletItem: Schema.WalletItem;
-    WalletItemTransferAcceptInfo: Schema.WalletItemTransferAcceptInfo;
+    WalletItemTransferReceiverInfo: Schema.WalletItemTransferReceiverInfo;
     WalletItemTransfer: Schema.WalletItemTransfer;
     GiftCardProduct: Schema.GiftCardProduct;
     GiftCardDenomination: Schema.GiftCardDenomination;
@@ -45066,7 +45128,7 @@ export interface Schema<$Scalars extends $$Utilities.Schema.Scalar.Registry = $$
     ShoppingCartItem: Schema.ShoppingCartItem;
     ShoppingCart: Schema.ShoppingCart;
     WalletItem: Schema.WalletItem;
-    WalletItemTransferAcceptInfo: Schema.WalletItemTransferAcceptInfo;
+    WalletItemTransferReceiverInfo: Schema.WalletItemTransferReceiverInfo;
     WalletItemTransfer: Schema.WalletItemTransfer;
     GiftCardProduct: Schema.GiftCardProduct;
     GiftCardDenomination: Schema.GiftCardDenomination;

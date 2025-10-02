@@ -98,7 +98,7 @@ export interface $MethodsSelect {
   ShoppingCartItem: ShoppingCartItem;
   ShoppingCart: ShoppingCart;
   WalletItem: WalletItem;
-  WalletItemTransferAcceptInfo: WalletItemTransferAcceptInfo;
+  WalletItemTransferReceiverInfo: WalletItemTransferReceiverInfo;
   WalletItemTransfer: WalletItemTransfer;
   GiftCardProduct: GiftCardProduct;
   GiftCardDenomination: GiftCardDenomination;
@@ -505,9 +505,9 @@ export interface WalletItem {
   <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletItem>): $SelectionSet;
 }
 
-export interface WalletItemTransferAcceptInfo {
+export interface WalletItemTransferReceiverInfo {
   <$SelectionSet>(
-    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletItemTransferAcceptInfo>,
+    selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletItemTransferReceiverInfo>,
   ): $SelectionSet;
 }
 

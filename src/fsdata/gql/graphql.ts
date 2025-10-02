@@ -3002,8 +3002,10 @@ export type Mutation = {
   updateUserSearch: ServiceRequest;
   updateWalletItem: ServiceRequest;
   updateWalletItemTransfer: ServiceRequest;
+  updateWalletItemTransferPassword: ServiceRequest;
   verifyMultiStepActionToken: SidMultiStepActionProgress;
   verifyOneTimeAuthToken: Scalars['Boolean']['output'];
+  verifyWalletItemTransferPassword: Scalars['Boolean']['output'];
 };
 
 
@@ -3659,6 +3661,13 @@ export type MutationUpdateWalletItemTransferArgs = {
 };
 
 
+export type MutationUpdateWalletItemTransferPasswordArgs = {
+  password: Scalars['String']['input'];
+  transferSecret: Scalars['String']['input'];
+  transferSlug: Scalars['String']['input'];
+};
+
+
 export type MutationVerifyMultiStepActionTokenArgs = {
   input: VerifyMultiStepActionTokenInput;
 };
@@ -3666,6 +3675,12 @@ export type MutationVerifyMultiStepActionTokenArgs = {
 
 export type MutationVerifyOneTimeAuthTokenArgs = {
   input: VerifyOneTimeAuthTokenInput;
+};
+
+
+export type MutationVerifyWalletItemTransferPasswordArgs = {
+  password: Scalars['String']['input'];
+  transferSlug: Scalars['String']['input'];
 };
 
 export type MyUser = {
@@ -4570,9 +4585,9 @@ export type Query = {
   findUsers: Array<UserListItem>;
   findWalletItemById?: Maybe<WalletItem>;
   findWalletItemByTransferSlug?: Maybe<WalletItem>;
-  findWalletItemTransferAcceptInfoByTransferSlug?: Maybe<WalletItemTransferAcceptInfo>;
   findWalletItemTransferById?: Maybe<WalletItemTransfer>;
   findWalletItemTransferByTransferSlug?: Maybe<WalletItemTransfer>;
+  findWalletItemTransferReceiverInfoByTransferSlug?: Maybe<WalletItemTransferReceiverInfo>;
   findWalletItemTransfers: Array<WalletItemTransfer>;
   findWalletItems: Array<WalletItem>;
   findWalletServiceRecord: WalletServiceRecord;
@@ -5069,11 +5084,6 @@ export type QueryFindWalletItemByTransferSlugArgs = {
 };
 
 
-export type QueryFindWalletItemTransferAcceptInfoByTransferSlugArgs = {
-  transferSlug: Scalars['String']['input'];
-};
-
-
 export type QueryFindWalletItemTransferByIdArgs = {
   id: Scalars['String']['input'];
   options?: InputMaybe<FindObjectsOptions>;
@@ -5082,6 +5092,11 @@ export type QueryFindWalletItemTransferByIdArgs = {
 
 export type QueryFindWalletItemTransferByTransferSlugArgs = {
   options?: InputMaybe<FindObjectsOptions>;
+  transferSlug: Scalars['String']['input'];
+};
+
+
+export type QueryFindWalletItemTransferReceiverInfoByTransferSlugArgs = {
   transferSlug: Scalars['String']['input'];
 };
 
@@ -5418,6 +5433,7 @@ export enum ServiceRequestType {
   GraphQlMutationUpdateUserTracking = 'graphQlMutationUpdateUserTracking',
   GraphQlMutationUpdateWalletItem = 'graphQlMutationUpdateWalletItem',
   GraphQlMutationUpdateWalletItemTransfer = 'graphQlMutationUpdateWalletItemTransfer',
+  GraphQlMutationUpdateWalletItemTransferPassword = 'graphQlMutationUpdateWalletItemTransferPassword',
   GraphQlMutationUpsertBackgroundTask = 'graphQlMutationUpsertBackgroundTask',
   GraphQlMutationVerifyMultiStepActionToken = 'graphQlMutationVerifyMultiStepActionToken',
   GraphQlQueryAdminTaskDefinitions = 'graphQlQueryAdminTaskDefinitions',
@@ -5494,9 +5510,9 @@ export enum ServiceRequestType {
   GraphQlQueryFindUsers = 'graphQlQueryFindUsers',
   GraphQlQueryFindWalletItemById = 'graphQlQueryFindWalletItemById',
   GraphQlQueryFindWalletItemByTransferSlug = 'graphQlQueryFindWalletItemByTransferSlug',
-  GraphQlQueryFindWalletItemTransferAcceptInfoByTransferSlug = 'graphQlQueryFindWalletItemTransferAcceptInfoByTransferSlug',
   GraphQlQueryFindWalletItemTransferById = 'graphQlQueryFindWalletItemTransferById',
   GraphQlQueryFindWalletItemTransferByTransferSlug = 'graphQlQueryFindWalletItemTransferByTransferSlug',
+  GraphQlQueryFindWalletItemTransferReceiverInfoByTransferSlug = 'graphQlQueryFindWalletItemTransferReceiverInfoByTransferSlug',
   GraphQlQueryFindWalletItemTransfers = 'graphQlQueryFindWalletItemTransfers',
   GraphQlQueryFindWalletItems = 'graphQlQueryFindWalletItems',
   GraphQlQueryFindWalletServiceRecord = 'graphQlQueryFindWalletServiceRecord',
@@ -5517,6 +5533,7 @@ export enum ServiceRequestType {
   GraphQlQueryUserInboxUser = 'graphQlQueryUserInboxUser',
   GraphQlQueryUserSearchFoundUsers = 'graphQlQueryUserSearchFoundUsers',
   GraphQlQueryVerifyMyPassword = 'graphQlQueryVerifyMyPassword',
+  GraphQlQueryVerifyWalletItemTransferPassword = 'graphQlQueryVerifyWalletItemTransferPassword',
   Unset = 'unset'
 }
 
@@ -7185,14 +7202,6 @@ export type WalletItemTransfer = {
   walletItemId: Scalars['ID']['output'];
 };
 
-export type WalletItemTransferAcceptInfo = {
-  __typename?: 'WalletItemTransferAcceptInfo';
-  brand?: Maybe<Brand>;
-  product?: Maybe<GiftCardProduct>;
-  walletItem: WalletItem;
-  walletItemTransfer: WalletItemTransfer;
-};
-
 export type WalletItemTransferInput = {
   /** The recipient accepted this transfer */
   acceptedAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
@@ -7212,6 +7221,7 @@ export type WalletItemTransferInput = {
   messageText?: InputMaybe<Scalars['String']['input']>;
   metadata?: InputMaybe<BaseModelMetadataInput>;
   notificationId?: InputMaybe<Scalars['ID']['input']>;
+  password?: InputMaybe<Scalars['String']['input']>;
   recipientEmail?: InputMaybe<Scalars['String']['input']>;
   recipientFullName?: InputMaybe<Scalars['String']['input']>;
   /** Date this transfer was sent */
@@ -7234,6 +7244,14 @@ export type WalletItemTransferListFilter = {
   textSearchFields?: InputMaybe<Array<Scalars['String']['input']>>;
   updatedAtFrom?: InputMaybe<Scalars['DateTimeISO']['input']>;
   updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
+};
+
+export type WalletItemTransferReceiverInfo = {
+  __typename?: 'WalletItemTransferReceiverInfo';
+  brand?: Maybe<Brand>;
+  product?: Maybe<GiftCardProduct>;
+  walletItem: WalletItem;
+  walletItemTransfer: WalletItemTransfer;
 };
 
 export type WalletListFilter = {
