@@ -4587,7 +4587,7 @@ export type Query = {
   findWalletItemByTransferSlug?: Maybe<WalletItem>;
   findWalletItemTransferById?: Maybe<WalletItemTransfer>;
   findWalletItemTransferByTransferSlug?: Maybe<WalletItemTransfer>;
-  findWalletItemTransferReceiverInfoByTransferSlug?: Maybe<WalletItemTransferReceiverInfo>;
+  findWalletItemTransferRecipientInfoByTransferSlug?: Maybe<WalletItemTransferRecipientInfo>;
   findWalletItemTransfers: Array<WalletItemTransfer>;
   findWalletItems: Array<WalletItem>;
   findWalletServiceRecord: WalletServiceRecord;
@@ -5096,7 +5096,7 @@ export type QueryFindWalletItemTransferByTransferSlugArgs = {
 };
 
 
-export type QueryFindWalletItemTransferReceiverInfoByTransferSlugArgs = {
+export type QueryFindWalletItemTransferRecipientInfoByTransferSlugArgs = {
   transferSlug: Scalars['String']['input'];
 };
 
@@ -5512,7 +5512,7 @@ export enum ServiceRequestType {
   GraphQlQueryFindWalletItemByTransferSlug = 'graphQlQueryFindWalletItemByTransferSlug',
   GraphQlQueryFindWalletItemTransferById = 'graphQlQueryFindWalletItemTransferById',
   GraphQlQueryFindWalletItemTransferByTransferSlug = 'graphQlQueryFindWalletItemTransferByTransferSlug',
-  GraphQlQueryFindWalletItemTransferReceiverInfoByTransferSlug = 'graphQlQueryFindWalletItemTransferReceiverInfoByTransferSlug',
+  GraphQlQueryFindWalletItemTransferRecipientInfoByTransferSlug = 'graphQlQueryFindWalletItemTransferRecipientInfoByTransferSlug',
   GraphQlQueryFindWalletItemTransfers = 'graphQlQueryFindWalletItemTransfers',
   GraphQlQueryFindWalletItems = 'graphQlQueryFindWalletItems',
   GraphQlQueryFindWalletServiceRecord = 'graphQlQueryFindWalletServiceRecord',
@@ -7246,8 +7246,8 @@ export type WalletItemTransferListFilter = {
   updatedAtUntil?: InputMaybe<Scalars['DateTimeISO']['input']>;
 };
 
-export type WalletItemTransferReceiverInfo = {
-  __typename?: 'WalletItemTransferReceiverInfo';
+export type WalletItemTransferRecipientInfo = {
+  __typename?: 'WalletItemTransferRecipientInfo';
   brand?: Maybe<Brand>;
   product?: Maybe<GiftCardProduct>;
   walletItem: WalletItem;

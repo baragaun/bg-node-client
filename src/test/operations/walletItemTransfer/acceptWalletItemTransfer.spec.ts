@@ -55,17 +55,17 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     expect(walletItemTransfer.transferSecret).toBeUndefined(); // The server should not expose this
     expect(walletItemTransfer.transferSlug).toBeTruthy();
 
-    const walletItemTransferAcceptInfoResult = await client.operations.walletItemTransfer.findWalletItemTransferAcceptInfoByTransferSlug(
+    const walletItemTransferRecipientInfoResult = await client.operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTransferSlug(
       transferSlug,
     );
-    const walletItemTransferAcceptInfo = walletItemTransferAcceptInfoResult.object;
+    const walletItemTransferRecipientInfo = walletItemTransferRecipientInfoResult.object;
 
-    expect(walletItemTransferAcceptInfo.brand).toBeTruthy();
-    expect(walletItemTransferAcceptInfo.brand.id).toEqual(walletItem.brandId);
-    expect(walletItemTransferAcceptInfo.walletItem).toBeTruthy();
-    expect(walletItemTransferAcceptInfo.walletItem.id).toEqual(walletItem.id);
-    expect(walletItemTransferAcceptInfo.walletItemTransfer).toBeTruthy();
-    expect(walletItemTransferAcceptInfo.walletItemTransfer.id).toEqual(walletItemTransfer.id);
+    expect(walletItemTransferRecipientInfo.brand).toBeTruthy();
+    expect(walletItemTransferRecipientInfo.brand.id).toEqual(walletItem.brandId);
+    expect(walletItemTransferRecipientInfo.walletItem).toBeTruthy();
+    expect(walletItemTransferRecipientInfo.walletItem.id).toEqual(walletItem.id);
+    expect(walletItemTransferRecipientInfo.walletItemTransfer).toBeTruthy();
+    expect(walletItemTransferRecipientInfo.walletItemTransfer.id).toEqual(walletItemTransfer.id);
 
     const acceptResponse = await client.operations.walletItemTransfer.acceptWalletItemTransfer(
        transferSlug,

@@ -1,4 +1,4 @@
-export declare const WalletItemTransferAcceptInfoSchema: {
+export declare const WalletItemTransferRecipientInfoSchema: {
     title: string;
     version: number;
     primaryKey: string;
@@ -289,6 +289,10 @@ export declare const WalletItemTransferAcceptInfoSchema: {
                     nullable: boolean;
                 };
                 transferSecret: {
+                    type: string;
+                    nullable: boolean;
+                };
+                password: {
                     type: string;
                     nullable: boolean;
                 };

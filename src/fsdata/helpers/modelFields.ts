@@ -726,7 +726,7 @@ const walletItemTransfer = {
   archivedAt: true,
 };
 
-const walletItemTransferAcceptInfo = {
+const walletItemTransferRecipientInfo = {
   walletItem: { ...walletItem },
   walletItemTransfer: { ...walletItemTransfer },
   product: { ...giftCardProduct },
@@ -757,7 +757,7 @@ const modelFields = {
   wallet,
   walletItem,
   walletItemTransfer,
-  walletItemTransferAcceptInfo,
+  walletItemTransferRecipientInfo,
 };
 
 export default modelFields;

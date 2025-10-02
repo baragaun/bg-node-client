@@ -813,7 +813,7 @@ declare const modelFields: {
         deletedAt: boolean;
         deletedBy: boolean;
     };
-    walletItemTransferAcceptInfo: {
+    walletItemTransferRecipientInfo: {
         walletItem: {
             walletId: boolean;
             productId: boolean;

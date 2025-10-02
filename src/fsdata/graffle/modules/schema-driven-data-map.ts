@@ -6399,7 +6399,7 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
-const WalletItemTransferReceiverInfo: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+const WalletItemTransferRecipientInfo: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     walletItem: {
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
@@ -8754,14 +8754,14 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
-    findWalletItemTransferReceiverInfoByTransferSlug: {
+    findWalletItemTransferRecipientInfoByTransferSlug: {
       a: {
         transferSlug: {
           nt: String,
           it: [1],
         },
       },
-      // nt: WalletItemTransferReceiverInfo, <-- Assigned later to avoid potential circular dependency.
+      // nt: WalletItemTransferRecipientInfo, <-- Assigned later to avoid potential circular dependency.
     },
     findWalletItemTransferById: {
       a: {
@@ -10894,10 +10894,10 @@ ShoppingCart.f['metadata']!.nt = BaseModelMetadata;
 ShoppingCart.f['items']!.nt = ShoppingCartItem;
 WalletItem.f['events']!.nt = ModelEvent;
 WalletItem.f['metadata']!.nt = BaseModelMetadata;
-WalletItemTransferReceiverInfo.f['walletItem']!.nt = WalletItem;
-WalletItemTransferReceiverInfo.f['walletItemTransfer']!.nt = WalletItemTransfer;
-WalletItemTransferReceiverInfo.f['brand']!.nt = Brand;
-WalletItemTransferReceiverInfo.f['product']!.nt = GiftCardProduct;
+WalletItemTransferRecipientInfo.f['walletItem']!.nt = WalletItem;
+WalletItemTransferRecipientInfo.f['walletItemTransfer']!.nt = WalletItemTransfer;
+WalletItemTransferRecipientInfo.f['brand']!.nt = Brand;
+WalletItemTransferRecipientInfo.f['product']!.nt = GiftCardProduct;
 WalletItemTransfer.f['events']!.nt = ModelEvent;
 WalletItemTransfer.f['metadata']!.nt = BaseModelMetadata;
 GiftCardProduct.f['events']!.nt = ModelEvent;
@@ -11074,7 +11074,7 @@ Query.f['findMyShoppingCart']!.nt = ShoppingCart;
 Query.f['findWalletItemById']!.nt = WalletItem;
 Query.f['findWalletItemByTransferSlug']!.nt = WalletItem;
 Query.f['findWalletItems']!.nt = WalletItem;
-Query.f['findWalletItemTransferReceiverInfoByTransferSlug']!.nt = WalletItemTransferReceiverInfo;
+Query.f['findWalletItemTransferRecipientInfoByTransferSlug']!.nt = WalletItemTransferRecipientInfo;
 Query.f['findWalletItemTransferById']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransferByTransferSlug']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransfers']!.nt = WalletItemTransfer;
@@ -11433,7 +11433,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ShoppingCartItem,
     ShoppingCart,
     WalletItem,
-    WalletItemTransferReceiverInfo,
+    WalletItemTransferRecipientInfo,
     WalletItemTransfer,
     GiftCardProduct,
     GiftCardDenomination,

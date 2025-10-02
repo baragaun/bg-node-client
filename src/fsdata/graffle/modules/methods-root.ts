@@ -1291,22 +1291,22 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
-  findWalletItemTransferReceiverInfoByTransferSlug: $$Utilities.ClientTransports.PreflightCheck<
+  findWalletItemTransferRecipientInfoByTransferSlug: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
       selectionSet: $$Utilities.Exact<
         $SelectionSet,
-        $$SelectionSets.Query.findWalletItemTransferReceiverInfoByTransferSlug<$Context['scalars']>
+        $$SelectionSets.Query.findWalletItemTransferRecipientInfoByTransferSlug<$Context['scalars']>
       >,
     ) => Promise<
       & (null | {})
       & $$Utilities.HandleOutputDocumentBuilderRootField<
         $Context,
         $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findWalletItemTransferReceiverInfoByTransferSlug: $SelectionSet },
+          { findWalletItemTransferRecipientInfoByTransferSlug: $SelectionSet },
           $$Schema.Schema<$Context['scalars']>
         >,
-        'findWalletItemTransferReceiverInfoByTransferSlug'
+        'findWalletItemTransferRecipientInfoByTransferSlug'
       >
     >
   >;

@@ -1,5 +1,5 @@
-export const WalletItemTransferReceiverInfoSchema = {
-  title: 'WalletItemTransferReceiverInfo',
+export const WalletItemTransferRecipientInfoInfoSchema = {
+  title: 'WalletItemTransferRecipientInfoInfo',
   version: 0,
   primaryKey: 'id',
   type: 'object',
