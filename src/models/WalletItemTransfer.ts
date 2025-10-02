@@ -10,7 +10,7 @@ export class WalletItemTransfer extends BaseModel {
   public messageText?: string | null;
   public transferSlug?: string | null;
   public transferSecret?: string | null;
-  public password?: string | null;
+  public passwordHash?: string | null;
   public sentAt?: string | null;
   public acceptedAt?: string | null;
   public declinedAt?: string | null;
@@ -47,8 +47,8 @@ export class WalletItemTransfer extends BaseModel {
       if (attributes.transferSecret !== undefined) {
         this.transferSecret = attributes.transferSecret;
       }
-      if (attributes.password !== undefined) {
-        this.password = attributes.password;
+      if (attributes.passwordHash !== undefined) {
+        this.passwordHash = attributes.passwordHash;
       }
       if (attributes.sentAt !== undefined && attributes.sentAt !== '') {
         this.sentAt = attributes.sentAt;

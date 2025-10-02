@@ -85,7 +85,7 @@ export const WalletItemTransferSchema = {
       type: 'string',
       nullable: true,
     },
-    password: {
+    passwordHash: {
       type: 'string',
       nullable: true,
     },
