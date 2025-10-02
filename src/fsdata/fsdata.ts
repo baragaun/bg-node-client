@@ -58,9 +58,13 @@ import findWalletItems from './operations/walletItem/findWalletItems.js';
 import acceptWalletItemTransfer from './operations/walletItemTransfer/acceptWalletItemTransfer.js';
 import createWalletItemTransfer from './operations/walletItemTransfer/createWalletItemTransfer.js';
 import declineWalletItemTransfer from './operations/walletItemTransfer/declineWalletItemTransfer.js';
-import findWalletItemTransferAcceptInfoByTransferSlug
-  from './operations/walletItemTransfer/findWalletItemTransferAcceptInfoByTransferSlug.js';
+import findWalletItemTransferRecipientInfoByTransferSlug
+  from './operations/walletItemTransfer/findWalletItemTransferRecipientInfoByTransferSlug.js';
 import findWalletItemTransfers from './operations/walletItemTransfer/findWalletItemTransfers.js';
+import updateWalletItemTransferPassword
+  from './operations/walletItemTransfer/updateWalletItemTransferPassword.js';
+import verifyWalletItemTransferPassword
+  from './operations/walletItemTransfer/verifyWalletItemTransferPassword.js';
 
 // deleteChannelInvitationV2
 // deleteChannelMessageV2
@@ -182,8 +186,10 @@ const fsdata = {
     acceptWalletItemTransfer,
     createWalletItemTransfer,
     declineWalletItemTransfer,
-    findWalletItemTransferAcceptInfoByTransferSlug,
+    findWalletItemTransferRecipientInfoByTransferSlug,
     findWalletItemTransfers,
+    updateWalletItemTransferPassword,
+    verifyWalletItemTransferPassword,
   },
 };
 

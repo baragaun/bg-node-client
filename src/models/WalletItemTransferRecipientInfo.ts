@@ -4,7 +4,7 @@ import { GiftCardProduct } from './GiftCardProduct.js';
 import { WalletItem } from './WalletItem.js';
 import { WalletItemTransfer } from './WalletItemTransfer.js';
 
-export class WalletItemTransferAcceptInfo extends BaseModel {
+export class WalletItemTransferRecipientInfo extends BaseModel {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public walletItem: WalletItem = new WalletItem();
   public walletItemTransfer: WalletItemTransfer = new WalletItemTransfer();
@@ -12,7 +12,7 @@ export class WalletItemTransferAcceptInfo extends BaseModel {
   public product?: GiftCardProduct | null;
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
-  constructor(attributes?: Partial<WalletItemTransferAcceptInfo>) {
+  constructor(attributes?: Partial<WalletItemTransferRecipientInfo>) {
     super(attributes);
 
     if (attributes) {

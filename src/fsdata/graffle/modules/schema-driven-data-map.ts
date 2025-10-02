@@ -1856,6 +1856,7 @@ const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     messageText: {},
     transferSlug: {},
     transferSecret: {},
+    password: {},
     sentAt: {
       nt: DateTimeISO,
     },
@@ -6398,7 +6399,7 @@ const WalletItem: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   },
 };
 
-const WalletItemTransferAcceptInfo: $$Utilities.SchemaDrivenDataMap.OutputObject = {
+const WalletItemTransferRecipientInfo: $$Utilities.SchemaDrivenDataMap.OutputObject = {
   f: {
     walletItem: {
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
@@ -8753,14 +8754,14 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: WalletItem, <-- Assigned later to avoid potential circular dependency.
     },
-    findWalletItemTransferAcceptInfoByTransferSlug: {
+    findWalletItemTransferRecipientInfoByTransferSlug: {
       a: {
         transferSlug: {
           nt: String,
           it: [1],
         },
       },
-      // nt: WalletItemTransferAcceptInfo, <-- Assigned later to avoid potential circular dependency.
+      // nt: WalletItemTransferRecipientInfo, <-- Assigned later to avoid potential circular dependency.
     },
     findWalletItemTransferById: {
       a: {
@@ -10125,6 +10126,35 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
+    updateWalletItemTransferPassword: {
+      a: {
+        password: {
+          nt: String,
+          it: [1],
+        },
+        transferSecret: {
+          nt: String,
+          it: [1],
+        },
+        transferSlug: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
+    verifyWalletItemTransferPassword: {
+      a: {
+        password: {
+          nt: String,
+          it: [1],
+        },
+        transferSlug: {
+          nt: String,
+          it: [1],
+        },
+      },
+    },
     createUserSearch: {
       a: {
         input: {
@@ -10864,10 +10894,10 @@ ShoppingCart.f['metadata']!.nt = BaseModelMetadata;
 ShoppingCart.f['items']!.nt = ShoppingCartItem;
 WalletItem.f['events']!.nt = ModelEvent;
 WalletItem.f['metadata']!.nt = BaseModelMetadata;
-WalletItemTransferAcceptInfo.f['walletItem']!.nt = WalletItem;
-WalletItemTransferAcceptInfo.f['walletItemTransfer']!.nt = WalletItemTransfer;
-WalletItemTransferAcceptInfo.f['brand']!.nt = Brand;
-WalletItemTransferAcceptInfo.f['product']!.nt = GiftCardProduct;
+WalletItemTransferRecipientInfo.f['walletItem']!.nt = WalletItem;
+WalletItemTransferRecipientInfo.f['walletItemTransfer']!.nt = WalletItemTransfer;
+WalletItemTransferRecipientInfo.f['brand']!.nt = Brand;
+WalletItemTransferRecipientInfo.f['product']!.nt = GiftCardProduct;
 WalletItemTransfer.f['events']!.nt = ModelEvent;
 WalletItemTransfer.f['metadata']!.nt = BaseModelMetadata;
 GiftCardProduct.f['events']!.nt = ModelEvent;
@@ -11044,7 +11074,7 @@ Query.f['findMyShoppingCart']!.nt = ShoppingCart;
 Query.f['findWalletItemById']!.nt = WalletItem;
 Query.f['findWalletItemByTransferSlug']!.nt = WalletItem;
 Query.f['findWalletItems']!.nt = WalletItem;
-Query.f['findWalletItemTransferAcceptInfoByTransferSlug']!.nt = WalletItemTransferAcceptInfo;
+Query.f['findWalletItemTransferRecipientInfoByTransferSlug']!.nt = WalletItemTransferRecipientInfo;
 Query.f['findWalletItemTransferById']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransferByTransferSlug']!.nt = WalletItemTransfer;
 Query.f['findWalletItemTransfers']!.nt = WalletItemTransfer;
@@ -11142,6 +11172,7 @@ Mutation.f['createWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['declineWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['deleteWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['updateWalletItemTransfer']!.nt = ServiceRequest;
+Mutation.f['updateWalletItemTransferPassword']!.nt = ServiceRequest;
 Mutation.f['createUserSearch']!.nt = UserSearch;
 Mutation.f['deleteUserSearch']!.nt = ServiceRequest;
 Mutation.f['updateUserSearch']!.nt = ServiceRequest;
@@ -11402,7 +11433,7 @@ const $schemaDrivenDataMap: $$Utilities.SchemaDrivenDataMap = {
     ShoppingCartItem,
     ShoppingCart,
     WalletItem,
-    WalletItemTransferAcceptInfo,
+    WalletItemTransferRecipientInfo,
     WalletItemTransfer,
     GiftCardProduct,
     GiftCardDenomination,

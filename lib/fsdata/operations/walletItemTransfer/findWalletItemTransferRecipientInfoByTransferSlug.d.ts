@@ -1,0 +1,4 @@
+import { WalletItemTransferRecipientInfo } from '../../../models/WalletItemTransferRecipientInfo.js';
+import { QueryResult } from '../../../types/QueryResult.js';
+declare const findWalletItemTransferRecipientInfoByTransferSlug: (transferSlug: string) => Promise<QueryResult<WalletItemTransferRecipientInfo>>;
+export default findWalletItemTransferRecipientInfoByTransferSlug;

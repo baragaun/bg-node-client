@@ -1,4 +1,3 @@
-import apiUrl from './apiUrl.js';
 import { ClientInfoStore } from '../../ClientInfoStore.js';
 import {
   AppEnvironment,
@@ -55,7 +54,7 @@ export const getTestClientConfig = (
     inBrowser: false,
     clientInfoStore: _clientInfoStore,
     fsdata: {
-      url: apiUrl(),
+      url: consumerConfig[consumer].apiUrl,
       headers: {
         [HttpHeaderName.consumer]: 'test',
       },

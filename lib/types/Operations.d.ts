@@ -43,8 +43,8 @@ import { Wallet } from '../models/Wallet.js';
 import { WalletItem } from '../models/WalletItem.js';
 import { WalletItemListFilter } from '../models/WalletItemListFilter.js';
 import { WalletItemTransfer } from '../models/WalletItemTransfer.js';
-import { WalletItemTransferAcceptInfo } from '../models/WalletItemTransferAcceptInfo.js';
 import { WalletItemTransferListFilter } from '../models/WalletItemTransferListFilter.js';
+import { WalletItemTransferRecipientInfo } from '../models/WalletItemTransferRecipientInfo.js';
 export interface Operations {
     count: <T extends Model = Model>(query: MangoQuery<T> | null | undefined, match: Partial<T> | null | undefined, modelType: ModelType, queryOptions?: QueryOptions) => Promise<QueryResult<number>>;
     delete: (id: string, modelType: ModelType, deletePhysically: boolean, queryOptions?: QueryOptions) => Promise<QueryResult<ServiceRequest>>;
@@ -162,9 +162,11 @@ export interface Operations {
         acceptWalletItemTransfer: (transferSlug: string, transferSecret: string) => Promise<QueryResult<WalletItem>>;
         createWalletItemTransfer: (props: Partial<WalletItemTransfer>) => Promise<QueryResult<WalletItemTransfer>>;
         declineWalletItemTransfer: (transferSlug: string) => Promise<QueryResult<WalletItem>>;
-        findWalletItemTransferAcceptInfoByTransferSlug: (transferSlug: string) => Promise<QueryResult<WalletItemTransferAcceptInfo>>;
+        findWalletItemTransferRecipientInfoByTransferSlug: (transferSlug: string) => Promise<QueryResult<WalletItemTransferRecipientInfo>>;
         findWalletItemTransferById: (id: string, options: FindObjectsOptions) => Promise<QueryResult<WalletItemTransfer>>;
         findWalletItemTransfers: (filter: WalletItemTransferListFilter | null | undefined, match: Partial<WalletItemTransfer> | null | undefined, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItemTransfer>>;
         updateWalletItemTransfer: (changes: Partial<WalletItemTransfer>, queryOptions?: QueryOptions) => Promise<QueryResult<WalletItemTransfer>>;
+        updateWalletItemTransferPassword: (transferSlug: string, transferSecret: string, password: string) => Promise<QueryResult<void>>;
+        verifyWalletItemTransferPassword: (transferSlug: string, password: string) => Promise<QueryResult<boolean>>;
     };
 }

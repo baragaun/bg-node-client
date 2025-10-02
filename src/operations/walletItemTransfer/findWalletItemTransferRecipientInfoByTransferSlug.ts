@@ -2,19 +2,19 @@ import { ModelType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
-import { WalletItemTransferAcceptInfo } from '../../models/WalletItemTransferAcceptInfo.js';
+import { WalletItemTransferRecipientInfo } from '../../models/WalletItemTransferRecipientInfo.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
-const findWalletItemTransferAcceptInfoByTransferSlug = async (
+const findWalletItemTransferRecipientInfoByTransferSlug = async (
   transferSlug: string,
-): Promise<QueryResult<WalletItemTransferAcceptInfo>> => {
+): Promise<QueryResult<WalletItemTransferRecipientInfo>> => {
   try {
     if (!libData.isInitialized()) {
-      logger.error('findWalletItemTransferAcceptInfoByTransferSlug: unavailable');
+      logger.error('findWalletItemTransferRecipientInfoByTransferSlug: unavailable');
       return { error: 'unavailable' };
     }
 
-    const response = await fsdata.walletItemTransfer.findWalletItemTransferAcceptInfoByTransferSlug(
+    const response = await fsdata.walletItemTransfer.findWalletItemTransferRecipientInfoByTransferSlug(
       transferSlug,
     );
 
@@ -28,4 +28,4 @@ const findWalletItemTransferAcceptInfoByTransferSlug = async (
   }
 };
 
-export default findWalletItemTransferAcceptInfoByTransferSlug;
+export default findWalletItemTransferRecipientInfoByTransferSlug;

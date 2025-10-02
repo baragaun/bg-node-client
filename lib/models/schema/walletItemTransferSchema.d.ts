@@ -85,6 +85,10 @@ export declare const WalletItemTransferSchema: {
             type: string;
             nullable: boolean;
         };
+        passwordHash: {
+            type: string;
+            nullable: boolean;
+        };
         sentAt: {
             type: string;
             description: string;

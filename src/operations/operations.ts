@@ -84,10 +84,14 @@ import updateWalletItem from './walletItem/updateWalletItem.js';
 import acceptWalletItemTransfer from './walletItemTransfer/acceptWalletItemTransfer.js';
 import createWalletItemTransfer from './walletItemTransfer/createWalletItemTransfer.js';
 import declineWalletItemTransfer from './walletItemTransfer/declineWalletItemTransfer.js';
-import findWalletItemTransferAcceptInfoByTransferSlug from './walletItemTransfer/findWalletItemTransferAcceptInfoByTransferSlug.js';
 import findWalletItemTransferById from './walletItemTransfer/findWalletItemTransferById.js';
+import findWalletItemTransferRecipientInfoByTransferSlug from './walletItemTransfer/findWalletItemTransferRecipientInfoByTransferSlug.js';
 import findWalletItemTransfers from './walletItemTransfer/findWalletItemTransfers.js';
 import updateWalletItemTransfer from './walletItemTransfer/updateWalletItemTransfer.js';
+import updateWalletItemTransferPassword
+  from './walletItemTransfer/updateWalletItemTransferPassword.js';
+import verifyWalletItemTransferPassword
+  from './walletItemTransfer/verifyWalletItemTransferPassword.js';
 
 const operations: Operations = {
   delete: deleteFnc,
@@ -225,8 +229,10 @@ const operations: Operations = {
     declineWalletItemTransfer,
     findWalletItemTransfers,
     findWalletItemTransferById,
-    findWalletItemTransferAcceptInfoByTransferSlug,
+    findWalletItemTransferRecipientInfoByTransferSlug,
     updateWalletItemTransfer,
+    updateWalletItemTransferPassword,
+    verifyWalletItemTransferPassword,
   },
 };
 

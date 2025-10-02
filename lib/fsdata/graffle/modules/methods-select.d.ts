@@ -80,7 +80,7 @@ export interface $MethodsSelect {
     ShoppingCartItem: ShoppingCartItem;
     ShoppingCart: ShoppingCart;
     WalletItem: WalletItem;
-    WalletItemTransferAcceptInfo: WalletItemTransferAcceptInfo;
+    WalletItemTransferRecipientInfo: WalletItemTransferRecipientInfo;
     WalletItemTransfer: WalletItemTransfer;
     GiftCardProduct: GiftCardProduct;
     GiftCardDenomination: GiftCardDenomination;
@@ -351,8 +351,8 @@ export interface ShoppingCart {
 export interface WalletItem {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletItem>): $SelectionSet;
 }
-export interface WalletItemTransferAcceptInfo {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletItemTransferAcceptInfo>): $SelectionSet;
+export interface WalletItemTransferRecipientInfo {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletItemTransferRecipientInfo>): $SelectionSet;
 }
 export interface WalletItemTransfer {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.WalletItemTransfer>): $SelectionSet;
