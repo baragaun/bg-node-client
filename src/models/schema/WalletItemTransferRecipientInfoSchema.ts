@@ -1,5 +1,5 @@
-export const WalletItemTransferRecipientInfoInfoSchema = {
-  title: 'WalletItemTransferRecipientInfoInfo',
+export const WalletItemTransferRecipientInfoSchema = {
+  title: 'WalletItemTransferRecipientInfo',
   version: 0,
   primaryKey: 'id',
   type: 'object',
@@ -286,6 +286,10 @@ export const WalletItemTransferRecipientInfoInfoSchema = {
           type: 'string',
           nullable: true,
         },
+        recipientPhoneNumber: {
+          type: 'string',
+          nullable: true,
+        },
         recipientFullName: {
           type: 'string',
           nullable: true,
@@ -308,6 +312,16 @@ export const WalletItemTransferRecipientInfoInfoSchema = {
         },
         passwordHash: {
           type: 'string',
+          nullable: true,
+        },
+        sendMethod: {
+          type: 'string',
+          description: 'email | phoneNumber | link',
+          nullable: true,
+        },
+        sendPlatform: {
+          type: 'string',
+          description: 'i.e. WhatsApp, Signal, ...',
           nullable: true,
         },
         sentAt: {
@@ -585,6 +599,10 @@ export const WalletItemTransferRecipientInfoInfoSchema = {
           nullable: true,
         },
       },
+      nullable: true,
+    },
+    secretCheck: {
+      type: 'string',
       nullable: true,
     },
   },

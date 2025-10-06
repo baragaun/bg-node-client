@@ -18,6 +18,7 @@ type ResponseDataType = {
 
 const findWalletItemTransferRecipientInfoByTransferSlug = async (
   transferSlug: string,
+  transferSecret?: string | null,
 ): Promise<QueryResult<WalletItemTransferRecipientInfo>> => {
   try {
     if (!libData.isInitialized()) {
@@ -28,6 +29,7 @@ const findWalletItemTransferRecipientInfoByTransferSlug = async (
     const client = graffleClientStore.get();
     const args: QueryFindWalletItemTransferRecipientInfoByTransferSlugArgs = {
       transferSlug,
+      transferSecret,
     };
 
     const response: ResponseDataType = await client.query.findWalletItemTransferRecipientInfoByTransferSlug({

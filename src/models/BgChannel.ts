@@ -14,6 +14,7 @@ export class BgChannel extends BaseModel {
   public userIds?: string[] | null;
   public otherUserId?: string | null;
   declare public metadata?: ChannelMetadata | null;
+  public syncedToAnalyticsAt?: string | null;
   public pausedAt?: string | null;
   public pausedBy?: string | null;
   public suspendedAt?: string | null;
@@ -55,6 +56,9 @@ export class BgChannel extends BaseModel {
       }
       if (attributes.metadata !== undefined) {
         this.metadata = attributes.metadata;
+      }
+      if (attributes.syncedToAnalyticsAt !== undefined && attributes.syncedToAnalyticsAt !== '') {
+        this.syncedToAnalyticsAt = attributes.syncedToAnalyticsAt;
       }
       if (attributes.pausedAt !== undefined && attributes.pausedAt !== '') {
         this.pausedAt = attributes.pausedAt;

@@ -14,6 +14,7 @@ export class BgChannelInvitation extends BaseModel {
   public dismissedFromInboxByRecipientAt?: string | null;
   public readByRecipientAt?: string | null;
   public status: ChannelInvitationStatus = ChannelInvitationStatus.unset;
+  public syncedToAnalyticsAt?: string | null;
   public suspendedAt?: string | null;
   public suspendedBy?: string | null;
   public userSearchId?: string | null;
@@ -56,6 +57,9 @@ export class BgChannelInvitation extends BaseModel {
       }
       if (attributes.status !== undefined) {
         this.status = attributes.status;
+      }
+      if (attributes.syncedToAnalyticsAt !== undefined && attributes.syncedToAnalyticsAt !== '') {
+        this.syncedToAnalyticsAt = attributes.syncedToAnalyticsAt;
       }
       if (attributes.suspendedAt !== undefined && attributes.suspendedAt !== '') {
         this.suspendedAt = attributes.suspendedAt;

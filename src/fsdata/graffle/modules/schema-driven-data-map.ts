@@ -1851,12 +1851,15 @@ const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     walletItemId: {},
     notificationId: {},
     recipientEmail: {},
+    recipientPhoneNumber: {},
     recipientFullName: {},
     subjectText: {},
     messageText: {},
     transferSlug: {},
     transferSecret: {},
     password: {},
+    sendMethod: {},
+    sendPlatform: {},
     sentAt: {
       nt: DateTimeISO,
     },
@@ -6413,6 +6416,7 @@ const WalletItemTransferRecipientInfo: $$Utilities.SchemaDrivenDataMap.OutputObj
     product: {
       // nt: GiftCardProduct, <-- Assigned later to avoid potential circular dependency.
     },
+    secretCheck: {},
   },
 };
 
@@ -6441,10 +6445,13 @@ const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     walletItemId: {},
     notificationId: {},
     recipientEmail: {},
+    recipientPhoneNumber: {},
     recipientFullName: {},
     subjectText: {},
     messageText: {},
     transferSlug: {},
+    sendMethod: {},
+    sendPlatform: {},
     sentAt: {
       nt: DateTimeISO,
     },
@@ -8756,6 +8763,10 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     },
     findWalletItemTransferRecipientInfoByTransferSlug: {
       a: {
+        transferSecret: {
+          nt: String,
+          it: [1],
+        },
         transferSlug: {
           nt: String,
           it: [1],

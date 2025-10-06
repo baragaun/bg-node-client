@@ -16,7 +16,7 @@ import { createWalletItemTransferSpecHelper } from '../../helpers/walletItemTran
 describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTransferSlug', () => {
   let client: BgNodeClient;
   let myUser: MyUser;
-  let walletItemTransfers: WalletItemTransfer[] = [];
+  const walletItemTransfers: WalletItemTransfer[] = [];
   let walletItemTransfer: WalletItemTransfer;
 
   beforeAll(async () => {
