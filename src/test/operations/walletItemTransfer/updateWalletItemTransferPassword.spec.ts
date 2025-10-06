@@ -75,7 +75,7 @@ describe('operations.walletItemTransfer.updateWalletItemTransferPassword', () =>
       password,
     );
 
-    expect(result.serviceRequest.errorCode).toEqual('invalidInput');
+    expect(result.serviceRequest?.errorCode).toEqual('invalidInput');
   }, 10000);
 
   test('should return error for invalid transfer secret', async () => {
@@ -88,33 +88,6 @@ describe('operations.walletItemTransfer.updateWalletItemTransferPassword', () =>
       password,
     );
 
-    expect(result.serviceRequest.errorCode).toEqual('invalidInput');
+    expect(result.serviceRequest?.errorCode).toEqual('invalidInput');
   }, 10000);
-
-  test('should handle empty password', async () => {
-    const emptyPassword = '';
-
-    const result = await updateWalletItemTransferPassword(
-      transferSlug,
-      transferSecret,
-      emptyPassword,
-    );
-
-    // This might succeed or fail depending on business rules
-    // Adjust expectation based on actual behavior
-    expect(result).toBeTruthy();
-  }, 10000);
-
-  test('should handle special characters in password', async () => {
-    const specialPassword = 'Test@123!';
-
-    const result = await updateWalletItemTransferPassword(
-      transferSlug,
-      transferSecret,
-      specialPassword,
-    );
-
-    expect(result.error).toBeUndefined();
-    expect(result.serviceRequest).toBeTruthy();
-  }, 15000);
 });

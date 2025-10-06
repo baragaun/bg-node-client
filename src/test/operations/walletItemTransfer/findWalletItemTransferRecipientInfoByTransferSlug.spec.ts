@@ -16,7 +16,7 @@ import { createWalletItemTransferSpecHelper } from '../../helpers/walletItemTran
 describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTransferSlug', () => {
   let client: BgNodeClient;
   let myUser: MyUser;
-  let walletItemTransfers: WalletItemTransfer[];
+  let walletItemTransfers: WalletItemTransfer[] = [];
   let walletItemTransfer: WalletItemTransfer;
 
   beforeAll(async () => {
@@ -43,7 +43,7 @@ describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTra
       const response = await createWalletItemTransferSpecHelper({
         walletItemId: item.id,
       }, client);
-      walletItemTransfers = [...(walletItemTransfers || []), response.walletItemTransfer];
+      walletItemTransfers.push(response.walletItemTransfer);
     }
 
     walletItemTransfer = chance.pickone(walletItemTransfers);
