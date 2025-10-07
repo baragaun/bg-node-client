@@ -1625,6 +1625,7 @@ export declare namespace Query {
         $: findWalletItemTransferRecipientInfoByTransferSlug$Arguments<_$Scalars>;
     }
     interface findWalletItemTransferRecipientInfoByTransferSlug$Arguments<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> {
+        transferSecret: string;
         transferSlug: string;
     }
     /**
@@ -5641,12 +5642,21 @@ export interface WalletItemTransferInput<_$Scalars extends $$Utilities.Schema.Sc
     walletItemId?: string | undefined | null;
     notificationId?: string | undefined | null;
     recipientEmail?: string | undefined | null;
+    recipientPhoneNumber?: string | undefined | null;
     recipientFullName?: string | undefined | null;
     subjectText?: string | undefined | null;
     messageText?: string | undefined | null;
     transferSlug?: string | undefined | null;
     transferSecret?: string | undefined | null;
     password?: string | undefined | null;
+    /**
+     * email | phoneNumber | link
+     */
+    sendMethod?: string | undefined | null;
+    /**
+     * i.e. WhatsApp, Signal, ...
+     */
+    sendPlatform?: string | undefined | null;
     /**
      * Date this transfer was sent
      */
@@ -29150,6 +29160,10 @@ export interface WalletItemTransferRecipientInfo<_$Scalars extends $$Utilities.S
      */
     product?: WalletItemTransferRecipientInfo.product$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransferRecipientInfo.product<_$Scalars>>;
     /**
+     * Select the `secretCheck` field on the `WalletItemTransferRecipientInfo` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    secretCheck?: WalletItemTransferRecipientInfo.secretCheck$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransferRecipientInfo.secretCheck<_$Scalars>>;
+    /**
      * Inline fragments for field groups.
      *
      * Generally a niche feature. This can be useful for example to apply an `@include` directive to a subset of the
@@ -29204,6 +29218,15 @@ export declare namespace WalletItemTransferRecipientInfo {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type product$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<product$SelectionSet<_$Scalars>>;
+    type secretCheck<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | secretCheck$SelectionSet<_$Scalars>;
+    interface secretCheck$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `secretCheck` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type secretCheck$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | secretCheck$SelectionSet<_$Scalars>>;
 }
 export interface WalletItemTransfer<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.ObjectLike {
     /**
@@ -29259,6 +29282,10 @@ export interface WalletItemTransfer<_$Scalars extends $$Utilities.Schema.Scalar.
      */
     recipientEmail?: WalletItemTransfer.recipientEmail$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.recipientEmail<_$Scalars>>;
     /**
+     * Select the `recipientPhoneNumber` field on the `WalletItemTransfer` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    recipientPhoneNumber?: WalletItemTransfer.recipientPhoneNumber$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.recipientPhoneNumber<_$Scalars>>;
+    /**
      * Select the `recipientFullName` field on the `WalletItemTransfer` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     recipientFullName?: WalletItemTransfer.recipientFullName$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.recipientFullName<_$Scalars>>;
@@ -29274,6 +29301,14 @@ export interface WalletItemTransfer<_$Scalars extends $$Utilities.Schema.Scalar.
      * Select the `transferSlug` field on the `WalletItemTransfer` object. Its type is `String` (a `ScalarStandard` kind of type).
      */
     transferSlug?: WalletItemTransfer.transferSlug$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.transferSlug<_$Scalars>>;
+    /**
+     * Select the `sendMethod` field on the `WalletItemTransfer` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    sendMethod?: WalletItemTransfer.sendMethod$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.sendMethod<_$Scalars>>;
+    /**
+     * Select the `sendPlatform` field on the `WalletItemTransfer` object. Its type is `String` (a `ScalarStandard` kind of type).
+     */
+    sendPlatform?: WalletItemTransfer.sendPlatform$Expanded<_$Scalars> | $$Utilities.DocumentBuilder.Select.SelectAlias.SelectAlias<WalletItemTransfer.sendPlatform<_$Scalars>>;
     /**
      * Select the `sentAt` field on the `WalletItemTransfer` object. Its type is `DateTimeISO` (a `ScalarCustom` kind of type).
      */
@@ -29430,6 +29465,15 @@ export declare namespace WalletItemTransfer {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type recipientEmail$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | recipientEmail$SelectionSet<_$Scalars>>;
+    type recipientPhoneNumber<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | recipientPhoneNumber$SelectionSet<_$Scalars>;
+    interface recipientPhoneNumber$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `recipientPhoneNumber` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type recipientPhoneNumber$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | recipientPhoneNumber$SelectionSet<_$Scalars>>;
     type recipientFullName<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | recipientFullName$SelectionSet<_$Scalars>;
     interface recipientFullName$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }
@@ -29466,6 +29510,24 @@ export declare namespace WalletItemTransfer {
      * In some cases, this is a preferable DX, making the types easier to read for users.
      */
     type transferSlug$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | transferSlug$SelectionSet<_$Scalars>>;
+    type sendMethod<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sendMethod$SelectionSet<_$Scalars>;
+    interface sendMethod$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `sendMethod` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type sendMethod$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sendMethod$SelectionSet<_$Scalars>>;
+    type sendPlatform<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sendPlatform$SelectionSet<_$Scalars>;
+    interface sendPlatform$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
+    }
+    /**
+     * This is the "expanded" version of the `sendPlatform` type. It is identical except for the fact
+     * that IDEs will display its contents (a union type) directly, rather than the name of this type.
+     * In some cases, this is a preferable DX, making the types easier to read for users.
+     */
+    type sendPlatform$Expanded<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.Simplify<$$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sendPlatform$SelectionSet<_$Scalars>>;
     type sentAt<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> = $$Utilities.DocumentBuilder.Select.Indicator.NoArgsIndicator | sentAt$SelectionSet<_$Scalars>;
     interface sentAt$SelectionSet<_$Scalars extends $$Utilities.Schema.Scalar.Registry = $$Utilities.Schema.Scalar.Registry.Empty> extends $$Utilities.DocumentBuilder.Select.Bases.Base {
     }

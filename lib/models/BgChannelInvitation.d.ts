@@ -12,6 +12,7 @@ export declare class BgChannelInvitation extends BaseModel {
     dismissedFromInboxByRecipientAt?: string | null;
     readByRecipientAt?: string | null;
     status: ChannelInvitationStatus;
+    syncedToAnalyticsAt?: string | null;
     suspendedAt?: string | null;
     suspendedBy?: string | null;
     userSearchId?: string | null;

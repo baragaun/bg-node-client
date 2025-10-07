@@ -118,6 +118,11 @@ export declare const ChannelMessageSchema: {
             format: string;
             nullable: boolean;
         };
+        syncedToAnalyticsAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
         suspendedAt: {
             type: string;
             format: string;

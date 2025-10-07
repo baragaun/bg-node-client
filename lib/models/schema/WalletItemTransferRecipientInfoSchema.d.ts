@@ -1,4 +1,4 @@
-export declare const WalletItemTransferRecipientInfoInfoSchema: {
+export declare const WalletItemTransferRecipientInfoSchema: {
     title: string;
     version: number;
     primaryKey: string;
@@ -272,6 +272,10 @@ export declare const WalletItemTransferRecipientInfoInfoSchema: {
                     type: string;
                     nullable: boolean;
                 };
+                recipientPhoneNumber: {
+                    type: string;
+                    nullable: boolean;
+                };
                 recipientFullName: {
                     type: string;
                     nullable: boolean;
@@ -294,6 +298,16 @@ export declare const WalletItemTransferRecipientInfoInfoSchema: {
                 };
                 passwordHash: {
                     type: string;
+                    nullable: boolean;
+                };
+                sendMethod: {
+                    type: string;
+                    description: string;
+                    nullable: boolean;
+                };
+                sendPlatform: {
+                    type: string;
+                    description: string;
                     nullable: boolean;
                 };
                 sentAt: {
@@ -557,6 +571,10 @@ export declare const WalletItemTransferRecipientInfoInfoSchema: {
                     nullable: boolean;
                 };
             };
+            nullable: boolean;
+        };
+        secretCheck: {
+            type: string;
             nullable: boolean;
         };
     };

@@ -65,6 +65,10 @@ export declare const WalletItemTransferSchema: {
             type: string;
             nullable: boolean;
         };
+        recipientPhoneNumber: {
+            type: string;
+            nullable: boolean;
+        };
         recipientFullName: {
             type: string;
             nullable: boolean;
@@ -87,6 +91,16 @@ export declare const WalletItemTransferSchema: {
         };
         passwordHash: {
             type: string;
+            nullable: boolean;
+        };
+        sendMethod: {
+            type: string;
+            description: string;
+            nullable: boolean;
+        };
+        sendPlatform: {
+            type: string;
+            description: string;
             nullable: boolean;
         };
         sentAt: {

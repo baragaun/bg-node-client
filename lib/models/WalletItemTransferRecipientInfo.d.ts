@@ -8,5 +8,6 @@ export declare class WalletItemTransferRecipientInfo extends BaseModel {
     walletItemTransfer: WalletItemTransfer;
     brand?: Brand | null;
     product?: GiftCardProduct | null;
+    secretCheck?: string | null;
     constructor(attributes?: Partial<WalletItemTransferRecipientInfo>);
 }
