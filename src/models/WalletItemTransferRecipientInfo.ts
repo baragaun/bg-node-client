@@ -10,6 +10,7 @@ export class WalletItemTransferRecipientInfo extends BaseModel {
   public walletItemTransfer: WalletItemTransfer = new WalletItemTransfer();
   public brand?: Brand | null;
   public product?: GiftCardProduct | null;
+  public secretCheck?: string | null;
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<WalletItemTransferRecipientInfo>) {
@@ -28,6 +29,9 @@ export class WalletItemTransferRecipientInfo extends BaseModel {
       }
       if (attributes.product !== undefined) {
         this.product = attributes.product;
+      }
+      if (attributes.secretCheck !== undefined) {
+        this.secretCheck = attributes.secretCheck;
       }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }

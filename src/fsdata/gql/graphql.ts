@@ -5097,6 +5097,7 @@ export type QueryFindWalletItemTransferByTransferSlugArgs = {
 
 
 export type QueryFindWalletItemTransferRecipientInfoByTransferSlugArgs = {
+  transferSecret: Scalars['String']['input'];
   transferSlug: Scalars['String']['input'];
 };
 
@@ -7193,6 +7194,11 @@ export type WalletItemTransfer = {
   notificationId?: Maybe<Scalars['ID']['output']>;
   recipientEmail?: Maybe<Scalars['String']['output']>;
   recipientFullName?: Maybe<Scalars['String']['output']>;
+  recipientPhoneNumber?: Maybe<Scalars['String']['output']>;
+  /** email | phoneNumber | link */
+  sendMethod?: Maybe<Scalars['String']['output']>;
+  /** i.e. WhatsApp, Signal, ... */
+  sendPlatform?: Maybe<Scalars['String']['output']>;
   /** Date this transfer was sent */
   sentAt?: Maybe<Scalars['DateTimeISO']['output']>;
   subjectText?: Maybe<Scalars['String']['output']>;
@@ -7224,6 +7230,11 @@ export type WalletItemTransferInput = {
   password?: InputMaybe<Scalars['String']['input']>;
   recipientEmail?: InputMaybe<Scalars['String']['input']>;
   recipientFullName?: InputMaybe<Scalars['String']['input']>;
+  recipientPhoneNumber?: InputMaybe<Scalars['String']['input']>;
+  /** email | phoneNumber | link */
+  sendMethod?: InputMaybe<Scalars['String']['input']>;
+  /** i.e. WhatsApp, Signal, ... */
+  sendPlatform?: InputMaybe<Scalars['String']['input']>;
   /** Date this transfer was sent */
   sentAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
   subjectText?: InputMaybe<Scalars['String']['input']>;
@@ -7250,6 +7261,7 @@ export type WalletItemTransferRecipientInfo = {
   __typename?: 'WalletItemTransferRecipientInfo';
   brand?: Maybe<Brand>;
   product?: Maybe<GiftCardProduct>;
+  secretCheck?: Maybe<Scalars['String']['output']>;
   walletItem: WalletItem;
   walletItemTransfer: WalletItemTransfer;
 };
