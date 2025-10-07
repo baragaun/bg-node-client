@@ -63,6 +63,8 @@ import findWalletItemTransferRecipientInfoByTransferSlug
 import findWalletItemTransfers from './operations/walletItemTransfer/findWalletItemTransfers.js';
 import updateWalletItemTransferPassword
   from './operations/walletItemTransfer/updateWalletItemTransferPassword.js';
+import updateWalletItemTransferShowOnlineFlag
+  from './operations/walletItemTransfer/updateWalletItemTransferShowOnlineFlag.js';
 import verifyWalletItemTransferPassword
   from './operations/walletItemTransfer/verifyWalletItemTransferPassword.js';
 
@@ -189,6 +191,7 @@ const fsdata = {
     findWalletItemTransferRecipientInfoByTransferSlug,
     findWalletItemTransfers,
     updateWalletItemTransferPassword,
+    updateWalletItemTransferShowOnlineFlag,
     verifyWalletItemTransferPassword,
   },
 };

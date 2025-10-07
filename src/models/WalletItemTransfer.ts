@@ -14,6 +14,7 @@ export class WalletItemTransfer extends BaseModel {
   public passwordHash?: string | null;
   public sendMethod?: string | null;
   public sendPlatform?: string | null;
+  public showOnline = true;
   public sentAt?: string | null;
   public acceptedAt?: string | null;
   public declinedAt?: string | null;
@@ -61,6 +62,9 @@ export class WalletItemTransfer extends BaseModel {
       }
       if (attributes.sendPlatform !== undefined) {
         this.sendPlatform = attributes.sendPlatform;
+      }
+      if (attributes.showOnline !== undefined) {
+        this.showOnline = attributes.showOnline;
       }
       if (attributes.sentAt !== undefined && attributes.sentAt !== '') {
         this.sentAt = attributes.sentAt;

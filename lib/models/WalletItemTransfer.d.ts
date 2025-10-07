@@ -12,6 +12,7 @@ export declare class WalletItemTransfer extends BaseModel {
     passwordHash?: string | null;
     sendMethod?: string | null;
     sendPlatform?: string | null;
+    showOnline: boolean;
     sentAt?: string | null;
     acceptedAt?: string | null;
     declinedAt?: string | null;

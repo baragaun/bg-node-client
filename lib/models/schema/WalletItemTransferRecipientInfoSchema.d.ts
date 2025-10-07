@@ -310,6 +310,10 @@ export declare const WalletItemTransferRecipientInfoSchema: {
                     description: string;
                     nullable: boolean;
                 };
+                showOnline: {
+                    type: string;
+                    description: string;
+                };
                 sentAt: {
                     type: string;
                     description: string;
@@ -571,10 +575,6 @@ export declare const WalletItemTransferRecipientInfoSchema: {
                     nullable: boolean;
                 };
             };
-            nullable: boolean;
-        };
-        secretCheck: {
-            type: string;
             nullable: boolean;
         };
     };

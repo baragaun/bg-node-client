@@ -805,6 +805,7 @@ declare const modelFields: {
         declinedAt: boolean;
         canceledAt: boolean;
         archivedAt: boolean;
+        showOnline: boolean;
         id: boolean;
         createdAt: boolean;
         createdBy: boolean;
@@ -864,6 +865,7 @@ declare const modelFields: {
             declinedAt: boolean;
             canceledAt: boolean;
             archivedAt: boolean;
+            showOnline: boolean;
             id: boolean;
             createdAt: boolean;
             createdBy: boolean;

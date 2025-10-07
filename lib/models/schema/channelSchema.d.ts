@@ -114,11 +114,6 @@ export declare const ChannelSchema: {
             maxLength: number;
             nullable: boolean;
         };
-        syncedToAnalyticsAt: {
-            type: string;
-            format: string;
-            nullable: boolean;
-        };
         pausedAt: {
             type: string;
             format: string;

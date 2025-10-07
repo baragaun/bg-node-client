@@ -26,7 +26,6 @@ export abstract class SidUser extends BaseModel implements Model {
   public websites?: LabeledStringValue[] | null;
   public inviteCode?: string | null;
   public passwordHash?: string | null;
-  public passwordUpdatedAt?: string | null;
   public preferredLanguageTextId?: string | null;
   public spokenLanguagesTextIds: string[] = [];
   public selectedUiLanguageTextId?: UiLanguage | null;
@@ -112,9 +111,6 @@ export abstract class SidUser extends BaseModel implements Model {
       }
       if (attributes.passwordHash !== undefined) {
         this.passwordHash = attributes.passwordHash;
-      }
-      if (attributes.passwordUpdatedAt !== undefined && attributes.passwordUpdatedAt !== '') {
-        this.passwordUpdatedAt = attributes.passwordUpdatedAt;
       }
       if (attributes.preferredLanguageTextId !== undefined) {
         this.preferredLanguageTextId = attributes.preferredLanguageTextId;

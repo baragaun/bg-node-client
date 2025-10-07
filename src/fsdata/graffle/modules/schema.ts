@@ -1570,7 +1570,7 @@ export namespace Schema {
         transferSecret: {
           kind: 'InputField';
           name: 'transferSecret';
-          inlineType: [1];
+          inlineType: [0];
           namedType: $$NamedTypes.$$String;
         };
         transferSlug: {
@@ -2303,6 +2303,7 @@ export namespace Schema {
       createWalletItemTransfer: Mutation.createWalletItemTransfer;
       declineWalletItemTransfer: Mutation.declineWalletItemTransfer;
       deleteWalletItemTransfer: Mutation.deleteWalletItemTransfer;
+      updateWalletItemTransferShowOnlineFlag: Mutation.updateWalletItemTransferShowOnlineFlag;
       updateWalletItemTransfer: Mutation.updateWalletItemTransfer;
       updateWalletItemTransferPassword: Mutation.updateWalletItemTransferPassword;
       verifyWalletItemTransferPassword: Mutation.verifyWalletItemTransferPassword;
@@ -4025,6 +4026,33 @@ export namespace Schema {
         id: {
           kind: 'InputField';
           name: 'id';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+      };
+      inlineType: [1];
+      namedType: $$NamedTypes.$$ServiceRequest;
+    }
+
+    export interface updateWalletItemTransferShowOnlineFlag {
+      kind: 'OutputField';
+      name: 'updateWalletItemTransferShowOnlineFlag';
+      arguments: {
+        showOnline: {
+          kind: 'InputField';
+          name: 'showOnline';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$Boolean;
+        };
+        transferSecret: {
+          kind: 'InputField';
+          name: 'transferSecret';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
+        transferSlug: {
+          kind: 'InputField';
+          name: 'transferSlug';
           inlineType: [1];
           namedType: $$NamedTypes.$$String;
         };
@@ -21724,7 +21752,6 @@ export namespace Schema {
       walletItemTransfer: WalletItemTransferRecipientInfo.walletItemTransfer;
       brand: WalletItemTransferRecipientInfo.brand;
       product: WalletItemTransferRecipientInfo.product;
-      secretCheck: WalletItemTransferRecipientInfo.secretCheck;
     };
   }
 
@@ -21771,14 +21798,6 @@ export namespace Schema {
       inlineType: [0];
       namedType: $$NamedTypes.$$GiftCardProduct;
     }
-
-    export interface secretCheck {
-      kind: 'OutputField';
-      name: 'secretCheck';
-      arguments: {};
-      inlineType: [0];
-      namedType: $$NamedTypes.$$String;
-    }
   }
 
   //                                         WalletItemTransfer
@@ -21810,6 +21829,7 @@ export namespace Schema {
       transferSlug: WalletItemTransfer.transferSlug;
       sendMethod: WalletItemTransfer.sendMethod;
       sendPlatform: WalletItemTransfer.sendPlatform;
+      showOnline: WalletItemTransfer.showOnline;
       sentAt: WalletItemTransfer.sentAt;
       acceptedAt: WalletItemTransfer.acceptedAt;
       declinedAt: WalletItemTransfer.declinedAt;
@@ -21994,6 +22014,17 @@ export namespace Schema {
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * set to false, if the recipient wants to remove the product from the link
+     */
+    export interface showOnline {
+      kind: 'OutputField';
+      name: 'showOnline';
+      arguments: {};
+      inlineType: [1];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     /**
@@ -35766,6 +35797,7 @@ export namespace Schema {
       password: WalletItemTransferInput.password;
       sendMethod: WalletItemTransferInput.sendMethod;
       sendPlatform: WalletItemTransferInput.sendPlatform;
+      showOnline: WalletItemTransferInput.showOnline;
       sentAt: WalletItemTransferInput.sentAt;
       acceptedAt: WalletItemTransferInput.acceptedAt;
       declinedAt: WalletItemTransferInput.declinedAt;
@@ -35933,6 +35965,16 @@ export namespace Schema {
       name: 'sendPlatform';
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * set to false, if the recipient wants to remove the product from the link.
+     */
+    export interface showOnline {
+      kind: 'InputField';
+      name: 'showOnline';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$Boolean;
     }
 
     /**
@@ -43791,6 +43833,7 @@ export namespace Schema {
       'graphQlMutationDeleteWalletItem',
       'graphQlMutationDeleteWalletItemTransfer',
       'graphQlMutationUpdateShoppingCartItem',
+      'graphQlMutationUpdateUpdateWalletItemTransferShowOnlineFlag',
       'graphQlMutationUpdateWalletItem',
       'graphQlMutationUpdateWalletItemTransfer',
       'graphQlMutationUpdateWalletItemTransferPassword',
@@ -44008,6 +44051,7 @@ export namespace Schema {
       | 'graphQlMutationDeleteWalletItem'
       | 'graphQlMutationDeleteWalletItemTransfer'
       | 'graphQlMutationUpdateShoppingCartItem'
+      | 'graphQlMutationUpdateUpdateWalletItemTransferShowOnlineFlag'
       | 'graphQlMutationUpdateWalletItem'
       | 'graphQlMutationUpdateWalletItemTransfer'
       | 'graphQlMutationUpdateWalletItemTransferPassword'

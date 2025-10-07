@@ -724,6 +724,7 @@ const walletItemTransfer = {
   declinedAt: true,
   canceledAt: true,
   archivedAt: true,
+  showOnline: true,
 };
 
 const walletItemTransferRecipientInfo = {

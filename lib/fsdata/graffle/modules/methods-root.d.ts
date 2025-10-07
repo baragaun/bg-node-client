@@ -621,6 +621,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     deleteWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         deleteWalletItemTransfer: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'deleteWalletItemTransfer'>>>;
+    updateWalletItemTransferShowOnlineFlag: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateWalletItemTransferShowOnlineFlag<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
+        updateWalletItemTransferShowOnlineFlag: $SelectionSet;
+    }, $$Schema.Schema<$Context['scalars']>>, 'updateWalletItemTransferShowOnlineFlag'>>>;
     updateWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<$Context, <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateWalletItemTransfer<$Context['scalars']>>) => Promise<(null | {}) & $$Utilities.HandleOutputDocumentBuilderRootField<$Context, $$Utilities.DocumentBuilder.InferResult.OperationMutation<{
         updateWalletItemTransfer: $SelectionSet;
     }, $$Schema.Schema<$Context['scalars']>>, 'updateWalletItemTransfer'>>>;
