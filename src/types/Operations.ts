@@ -504,6 +504,7 @@ export interface Operations {
 
     findWalletItemTransferRecipientInfoByTransferSlug: (
       transferSlug: string,
+      transferSecret?: string | null,
     ) => Promise<QueryResult<WalletItemTransferRecipientInfo>>;
 
     findWalletItemTransferById: (

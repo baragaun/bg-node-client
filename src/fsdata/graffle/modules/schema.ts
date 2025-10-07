@@ -1567,6 +1567,12 @@ export namespace Schema {
       kind: 'OutputField';
       name: 'findWalletItemTransferRecipientInfoByTransferSlug';
       arguments: {
+        transferSecret: {
+          kind: 'InputField';
+          name: 'transferSecret';
+          inlineType: [1];
+          namedType: $$NamedTypes.$$String;
+        };
         transferSlug: {
           kind: 'InputField';
           name: 'transferSlug';
@@ -21718,6 +21724,7 @@ export namespace Schema {
       walletItemTransfer: WalletItemTransferRecipientInfo.walletItemTransfer;
       brand: WalletItemTransferRecipientInfo.brand;
       product: WalletItemTransferRecipientInfo.product;
+      secretCheck: WalletItemTransferRecipientInfo.secretCheck;
     };
   }
 
@@ -21764,6 +21771,14 @@ export namespace Schema {
       inlineType: [0];
       namedType: $$NamedTypes.$$GiftCardProduct;
     }
+
+    export interface secretCheck {
+      kind: 'OutputField';
+      name: 'secretCheck';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
   }
 
   //                                         WalletItemTransfer
@@ -21788,10 +21803,13 @@ export namespace Schema {
       walletItemId: WalletItemTransfer.walletItemId;
       notificationId: WalletItemTransfer.notificationId;
       recipientEmail: WalletItemTransfer.recipientEmail;
+      recipientPhoneNumber: WalletItemTransfer.recipientPhoneNumber;
       recipientFullName: WalletItemTransfer.recipientFullName;
       subjectText: WalletItemTransfer.subjectText;
       messageText: WalletItemTransfer.messageText;
       transferSlug: WalletItemTransfer.transferSlug;
+      sendMethod: WalletItemTransfer.sendMethod;
+      sendPlatform: WalletItemTransfer.sendPlatform;
       sentAt: WalletItemTransfer.sentAt;
       acceptedAt: WalletItemTransfer.acceptedAt;
       declinedAt: WalletItemTransfer.declinedAt;
@@ -21916,6 +21934,14 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface recipientPhoneNumber {
+      kind: 'OutputField';
+      name: 'recipientPhoneNumber';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
     export interface recipientFullName {
       kind: 'OutputField';
       name: 'recipientFullName';
@@ -21943,6 +21969,28 @@ export namespace Schema {
     export interface transferSlug {
       kind: 'OutputField';
       name: 'transferSlug';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * email | phoneNumber | link
+     */
+    export interface sendMethod {
+      kind: 'OutputField';
+      name: 'sendMethod';
+      arguments: {};
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * i.e. WhatsApp, Signal, ...
+     */
+    export interface sendPlatform {
+      kind: 'OutputField';
+      name: 'sendPlatform';
       arguments: {};
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
@@ -35709,12 +35757,15 @@ export namespace Schema {
       walletItemId: WalletItemTransferInput.walletItemId;
       notificationId: WalletItemTransferInput.notificationId;
       recipientEmail: WalletItemTransferInput.recipientEmail;
+      recipientPhoneNumber: WalletItemTransferInput.recipientPhoneNumber;
       recipientFullName: WalletItemTransferInput.recipientFullName;
       subjectText: WalletItemTransferInput.subjectText;
       messageText: WalletItemTransferInput.messageText;
       transferSlug: WalletItemTransferInput.transferSlug;
       transferSecret: WalletItemTransferInput.transferSecret;
       password: WalletItemTransferInput.password;
+      sendMethod: WalletItemTransferInput.sendMethod;
+      sendPlatform: WalletItemTransferInput.sendPlatform;
       sentAt: WalletItemTransferInput.sentAt;
       acceptedAt: WalletItemTransferInput.acceptedAt;
       declinedAt: WalletItemTransferInput.declinedAt;
@@ -35815,6 +35866,13 @@ export namespace Schema {
       namedType: $$NamedTypes.$$String;
     }
 
+    export interface recipientPhoneNumber {
+      kind: 'InputField';
+      name: 'recipientPhoneNumber';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
     export interface recipientFullName {
       kind: 'InputField';
       name: 'recipientFullName';
@@ -35853,6 +35911,26 @@ export namespace Schema {
     export interface password {
       kind: 'InputField';
       name: 'password';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * email | phoneNumber | link
+     */
+    export interface sendMethod {
+      kind: 'InputField';
+      name: 'sendMethod';
+      inlineType: [0];
+      namedType: $$NamedTypes.$$String;
+    }
+
+    /**
+     * i.e. WhatsApp, Signal, ...
+     */
+    export interface sendPlatform {
+      kind: 'InputField';
+      name: 'sendPlatform';
       inlineType: [0];
       namedType: $$NamedTypes.$$String;
     }

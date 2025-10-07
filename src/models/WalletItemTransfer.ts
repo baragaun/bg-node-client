@@ -5,12 +5,15 @@ export class WalletItemTransfer extends BaseModel {
   public walletItemId = '';
   public notificationId?: string | null;
   public recipientEmail?: string | null;
+  public recipientPhoneNumber?: string | null;
   public recipientFullName?: string | null;
   public subjectText?: string | null;
   public messageText?: string | null;
   public transferSlug?: string | null;
   public transferSecret?: string | null;
   public passwordHash?: string | null;
+  public sendMethod?: string | null;
+  public sendPlatform?: string | null;
   public sentAt?: string | null;
   public acceptedAt?: string | null;
   public declinedAt?: string | null;
@@ -32,6 +35,9 @@ export class WalletItemTransfer extends BaseModel {
       if (attributes.recipientEmail !== undefined) {
         this.recipientEmail = attributes.recipientEmail;
       }
+      if (attributes.recipientPhoneNumber !== undefined) {
+        this.recipientPhoneNumber = attributes.recipientPhoneNumber;
+      }
       if (attributes.recipientFullName !== undefined) {
         this.recipientFullName = attributes.recipientFullName;
       }
@@ -49,6 +55,12 @@ export class WalletItemTransfer extends BaseModel {
       }
       if (attributes.passwordHash !== undefined) {
         this.passwordHash = attributes.passwordHash;
+      }
+      if (attributes.sendMethod !== undefined) {
+        this.sendMethod = attributes.sendMethod;
+      }
+      if (attributes.sendPlatform !== undefined) {
+        this.sendPlatform = attributes.sendPlatform;
       }
       if (attributes.sentAt !== undefined && attributes.sentAt !== '') {
         this.sentAt = attributes.sentAt;

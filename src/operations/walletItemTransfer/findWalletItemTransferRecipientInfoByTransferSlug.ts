@@ -7,6 +7,7 @@ import { QueryResult } from '../../types/QueryResult.js';
 
 const findWalletItemTransferRecipientInfoByTransferSlug = async (
   transferSlug: string,
+  transferSecret?: string | null,
 ): Promise<QueryResult<WalletItemTransferRecipientInfo>> => {
   try {
     if (!libData.isInitialized()) {
@@ -16,6 +17,7 @@ const findWalletItemTransferRecipientInfoByTransferSlug = async (
 
     const response = await fsdata.walletItemTransfer.findWalletItemTransferRecipientInfoByTransferSlug(
       transferSlug,
+      transferSecret,
     );
 
     if (!response.error && response.object && response.object.brand) {
