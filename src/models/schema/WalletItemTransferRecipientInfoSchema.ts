@@ -324,6 +324,10 @@ export const WalletItemTransferRecipientInfoSchema = {
           description: 'i.e. WhatsApp, Signal, ...',
           nullable: true,
         },
+        showOnline: {
+          type: 'boolean',
+          description: 'set to false, if the recipient wants to remove the product from the link',
+        },
         sentAt: {
           type: 'string',
           description: 'Date this transfer was sent',
@@ -599,10 +603,6 @@ export const WalletItemTransferRecipientInfoSchema = {
           nullable: true,
         },
       },
-      nullable: true,
-    },
-    secretCheck: {
-      type: 'string',
       nullable: true,
     },
   },

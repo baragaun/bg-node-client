@@ -502,6 +502,12 @@ export interface Operations {
       transferSlug: string,
     ) => Promise<QueryResult<WalletItem>>;
 
+    updateWalletItemTransferShowOnlineFlag: (
+      transferSlug: string,
+      transferSecret: string,
+      showOnline: boolean,
+    ) => Promise<QueryResult<void>>;
+
     findWalletItemTransferRecipientInfoByTransferSlug: (
       transferSlug: string,
       transferSecret?: string | null,

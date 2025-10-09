@@ -90,6 +90,7 @@ import findWalletItemTransfers from './walletItemTransfer/findWalletItemTransfer
 import updateWalletItemTransfer from './walletItemTransfer/updateWalletItemTransfer.js';
 import updateWalletItemTransferPassword
   from './walletItemTransfer/updateWalletItemTransferPassword.js';
+import updateWalletItemTransferShowOnlineFlag from './walletItemTransfer/updateWalletItemTransferShowOnlineFlag.js';
 import verifyWalletItemTransferPassword
   from './walletItemTransfer/verifyWalletItemTransferPassword.js';
 
@@ -227,11 +228,12 @@ const operations: Operations = {
     acceptWalletItemTransfer,
     createWalletItemTransfer,
     declineWalletItemTransfer,
-    findWalletItemTransfers,
     findWalletItemTransferById,
     findWalletItemTransferRecipientInfoByTransferSlug,
+    findWalletItemTransfers,
     updateWalletItemTransfer,
     updateWalletItemTransferPassword,
+    updateWalletItemTransferShowOnlineFlag,
     verifyWalletItemTransferPassword,
   },
 };

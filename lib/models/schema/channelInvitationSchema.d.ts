@@ -101,11 +101,6 @@ export declare const ChannelInvitationSchema: {
             type: string;
             enum: string[];
         };
-        syncedToAnalyticsAt: {
-            type: string;
-            format: string;
-            nullable: boolean;
-        };
         suspendedAt: {
             type: string;
             format: string;

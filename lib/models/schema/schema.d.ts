@@ -115,11 +115,6 @@ declare const schema: {
                 maxLength: number;
                 nullable: boolean;
             };
-            syncedToAnalyticsAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
             pausedAt: {
                 type: string;
                 format: string;
@@ -266,11 +261,6 @@ declare const schema: {
                 type: string;
                 enum: string[];
             };
-            syncedToAnalyticsAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
             suspendedAt: {
                 type: string;
                 format: string;
@@ -409,11 +399,6 @@ declare const schema: {
                 nullable: boolean;
             };
             editedAt: {
-                type: string;
-                format: string;
-                nullable: boolean;
-            };
-            syncedToAnalyticsAt: {
                 type: string;
                 format: string;
                 nullable: boolean;

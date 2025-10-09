@@ -103,6 +103,10 @@ export declare const WalletItemTransferSchema: {
             description: string;
             nullable: boolean;
         };
+        showOnline: {
+            type: string;
+            description: string;
+        };
         sentAt: {
             type: string;
             description: string;

@@ -1860,6 +1860,7 @@ const WalletItemTransferInput: $$Utilities.SchemaDrivenDataMap.InputObject = {
     password: {},
     sendMethod: {},
     sendPlatform: {},
+    showOnline: {},
     sentAt: {
       nt: DateTimeISO,
     },
@@ -6416,7 +6417,6 @@ const WalletItemTransferRecipientInfo: $$Utilities.SchemaDrivenDataMap.OutputObj
     product: {
       // nt: GiftCardProduct, <-- Assigned later to avoid potential circular dependency.
     },
-    secretCheck: {},
   },
 };
 
@@ -6452,6 +6452,7 @@ const WalletItemTransfer: $$Utilities.SchemaDrivenDataMap.OutputObject = {
     transferSlug: {},
     sendMethod: {},
     sendPlatform: {},
+    showOnline: {},
     sentAt: {
       nt: DateTimeISO,
     },
@@ -8765,7 +8766,7 @@ const Query: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       a: {
         transferSecret: {
           nt: String,
-          it: [1],
+          it: [0],
         },
         transferSlug: {
           nt: String,
@@ -10124,6 +10125,23 @@ const Mutation: $$Utilities.SchemaDrivenDataMap.OutputObject = {
       },
       // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
     },
+    updateWalletItemTransferShowOnlineFlag: {
+      a: {
+        showOnline: {
+          nt: Boolean,
+          it: [1],
+        },
+        transferSecret: {
+          nt: String,
+          it: [1],
+        },
+        transferSlug: {
+          nt: String,
+          it: [1],
+        },
+      },
+      // nt: ServiceRequest, <-- Assigned later to avoid potential circular dependency.
+    },
     updateWalletItemTransfer: {
       a: {
         options: {
@@ -11182,6 +11200,7 @@ Mutation.f['acceptWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['createWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['declineWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['deleteWalletItemTransfer']!.nt = ServiceRequest;
+Mutation.f['updateWalletItemTransferShowOnlineFlag']!.nt = ServiceRequest;
 Mutation.f['updateWalletItemTransfer']!.nt = ServiceRequest;
 Mutation.f['updateWalletItemTransferPassword']!.nt = ServiceRequest;
 Mutation.f['createUserSearch']!.nt = UserSearch;

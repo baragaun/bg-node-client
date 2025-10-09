@@ -93,6 +93,7 @@ declare const fsdata: {
         findWalletItemTransferRecipientInfoByTransferSlug: (transferSlug: string, transferSecret?: string | null) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransferRecipientInfo>>;
         findWalletItemTransfers: (filter: import("../index.js").WalletItemTransferListFilter, match: Partial<import("../index.js").WalletItemTransfer>, options: import("../types/FindObjectsOptions.js").FindObjectsOptions) => Promise<import("../index.js").QueryResult<import("../index.js").WalletItemTransfer>>;
         updateWalletItemTransferPassword: (transferSlug: string, transferSecret: string, password: string) => Promise<import("../index.js").QueryResult<void>>;
+        updateWalletItemTransferShowOnlineFlag: (transferSlug: string, transferSecret: string, showOnline: boolean) => Promise<import("../index.js").QueryResult<void>>;
         verifyWalletItemTransferPassword: (transferSlug: string, password: string) => Promise<import("../index.js").QueryResult<boolean>>;
     };
 };

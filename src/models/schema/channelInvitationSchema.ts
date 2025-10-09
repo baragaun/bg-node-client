@@ -101,11 +101,6 @@ export const ChannelInvitationSchema = {
       type: 'string',
       enum: ['created', 'accepted', 'declined', 'unset'],
     },
-    syncedToAnalyticsAt: {
-      type: 'string',
-      format: 'date-time',
-      nullable: true,
-    },
     suspendedAt: {
       type: 'string',
       format: 'date-time',

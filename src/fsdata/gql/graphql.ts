@@ -3003,6 +3003,7 @@ export type Mutation = {
   updateWalletItem: ServiceRequest;
   updateWalletItemTransfer: ServiceRequest;
   updateWalletItemTransferPassword: ServiceRequest;
+  updateWalletItemTransferShowOnlineFlag: ServiceRequest;
   verifyMultiStepActionToken: SidMultiStepActionProgress;
   verifyOneTimeAuthToken: Scalars['Boolean']['output'];
   verifyWalletItemTransferPassword: Scalars['Boolean']['output'];
@@ -3663,6 +3664,13 @@ export type MutationUpdateWalletItemTransferArgs = {
 
 export type MutationUpdateWalletItemTransferPasswordArgs = {
   password: Scalars['String']['input'];
+  transferSecret: Scalars['String']['input'];
+  transferSlug: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateWalletItemTransferShowOnlineFlagArgs = {
+  showOnline: Scalars['Boolean']['input'];
   transferSecret: Scalars['String']['input'];
   transferSlug: Scalars['String']['input'];
 };
@@ -5097,7 +5105,7 @@ export type QueryFindWalletItemTransferByTransferSlugArgs = {
 
 
 export type QueryFindWalletItemTransferRecipientInfoByTransferSlugArgs = {
-  transferSecret: Scalars['String']['input'];
+  transferSecret?: InputMaybe<Scalars['String']['input']>;
   transferSlug: Scalars['String']['input'];
 };
 
@@ -5427,6 +5435,7 @@ export enum ServiceRequestType {
   GraphQlMutationUpdateNotificationTemplate = 'graphQlMutationUpdateNotificationTemplate',
   GraphQlMutationUpdateShoppingCartItem = 'graphQlMutationUpdateShoppingCartItem',
   GraphQlMutationUpdateSupportChannelConfig = 'graphQlMutationUpdateSupportChannelConfig',
+  GraphQlMutationUpdateUpdateWalletItemTransferShowOnlineFlag = 'graphQlMutationUpdateUpdateWalletItemTransferShowOnlineFlag',
   GraphQlMutationUpdateUploadedAsset = 'graphQlMutationUpdateUploadedAsset',
   GraphQlMutationUpdateUser = 'graphQlMutationUpdateUser',
   GraphQlMutationUpdateUserDevice = 'graphQlMutationUpdateUserDevice',
@@ -7201,6 +7210,8 @@ export type WalletItemTransfer = {
   sendPlatform?: Maybe<Scalars['String']['output']>;
   /** Date this transfer was sent */
   sentAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  /** set to false, if the recipient wants to remove the product from the link */
+  showOnline: Scalars['Boolean']['output'];
   subjectText?: Maybe<Scalars['String']['output']>;
   transferSlug?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
@@ -7237,6 +7248,8 @@ export type WalletItemTransferInput = {
   sendPlatform?: InputMaybe<Scalars['String']['input']>;
   /** Date this transfer was sent */
   sentAt?: InputMaybe<Scalars['DateTimeISO']['input']>;
+  /** set to false, if the recipient wants to remove the product from the link. */
+  showOnline?: InputMaybe<Scalars['Boolean']['input']>;
   subjectText?: InputMaybe<Scalars['String']['input']>;
   transferSecret?: InputMaybe<Scalars['String']['input']>;
   transferSlug?: InputMaybe<Scalars['String']['input']>;
@@ -7261,7 +7274,6 @@ export type WalletItemTransferRecipientInfo = {
   __typename?: 'WalletItemTransferRecipientInfo';
   brand?: Maybe<Brand>;
   product?: Maybe<GiftCardProduct>;
-  secretCheck?: Maybe<Scalars['String']['output']>;
   walletItem: WalletItem;
   walletItemTransfer: WalletItemTransfer;
 };

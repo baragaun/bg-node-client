@@ -24,7 +24,6 @@ export declare abstract class SidUser extends BaseModel implements Model {
     websites?: LabeledStringValue[] | null;
     inviteCode?: string | null;
     passwordHash?: string | null;
-    passwordUpdatedAt?: string | null;
     preferredLanguageTextId?: string | null;
     spokenLanguagesTextIds: string[];
     selectedUiLanguageTextId?: UiLanguage | null;

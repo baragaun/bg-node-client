@@ -3679,6 +3679,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  updateWalletItemTransferShowOnlineFlag: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.updateWalletItemTransferShowOnlineFlag<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateWalletItemTransferShowOnlineFlag: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateWalletItemTransferShowOnlineFlag'
+      >
+    >
+  >;
+
   updateWalletItemTransfer: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(

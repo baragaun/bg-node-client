@@ -44,13 +44,19 @@ export const createWalletItemTransferSpecHelper = async (
   expect(response.error).toBeUndefined();
   expect(walletItemTransfer).toBeTruthy();
   expect(response.object.walletItemId).toBe(props.walletItemId);
+  expect(response.object.transferSlug).toBe(props.transferSlug);
   expect(response.object.recipientFullName).toBe(props.recipientFullName);
   expect(response.object.recipientEmail).toBe(props.recipientEmail);
   expect(response.object.messageText).toBe(props.messageText);
+  expect(response.object.transferSecret).toBeFalsy(); // The server should not expose this
+  expect(response.object.passwordHash).toBeFalsy(); // The server should not expose this
 
   // The server currently fails to create/send the notification, so the service request result
   // is not ok.
   // expect(response.serviceRequest.result).toBe(ServiceRequestResult.ok);
+
+  // Backfilling this, since the calling scope probably needs it.
+  walletItemTransfer.transferSecret = props.transferSecret;
 
   return { walletItemTransfer, serviceRequest: response.serviceRequest };
 };
