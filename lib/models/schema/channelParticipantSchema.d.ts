@@ -96,6 +96,19 @@ export declare const ChannelParticipantSchema: {
             enum: string[];
             nullable: boolean;
         };
+        lastReceivedSeq: {
+            type: string;
+            description: string;
+        };
+        lastSeenSeq: {
+            type: string;
+            description: string;
+        };
+        channelArchivedAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
         suspendedAt: {
             type: string;
             format: string;

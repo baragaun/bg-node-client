@@ -7,6 +7,7 @@ export class User extends SidUser {
   // @bg-codegen:class.attr >>Note: Code is generated between these markers<<
   public companyIds?: string[] | null;
   public companies?: Company[] | null = [];
+  public ethnicityTextIds?: string[] | null;
   public avatarAsset?: UploadedAsset | null;
   public ssoIdp?: string | null;
   public userBlocks?: UserBlock[] | null = [];
@@ -22,6 +23,9 @@ export class User extends SidUser {
       }
       if (attributes.companies !== undefined) {
         this.companies = attributes.companies;
+      }
+      if (attributes.ethnicityTextIds !== undefined) {
+        this.ethnicityTextIds = attributes.ethnicityTextIds;
       }
       if (attributes.avatarAsset !== undefined) {
         this.avatarAsset = attributes.avatarAsset;

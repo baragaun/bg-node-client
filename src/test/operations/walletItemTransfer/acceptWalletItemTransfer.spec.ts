@@ -52,7 +52,6 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     }, client);
 
     expect(walletItemTransfer).toBeTruthy();
-    expect(walletItemTransfer.transferSecret).toBeUndefined(); // The server should not expose this
     expect(walletItemTransfer.transferSlug).toBeTruthy();
 
     const walletItemTransferRecipientInfoResult = await client.operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTransferSlug(

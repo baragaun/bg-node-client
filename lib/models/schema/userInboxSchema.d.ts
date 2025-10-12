@@ -59,6 +59,23 @@ export declare const UserInboxSchema: {
         channels: {
             type: string;
             properties: {
+                pendingInvitationCount: {
+                    type: string;
+                };
+                unseenInvitationCount: {
+                    type: string;
+                };
+                unseenMessageCount: {
+                    type: string;
+                };
+                unseenArchivedMessageCount: {
+                    type: string;
+                };
+                updatedAt: {
+                    type: string;
+                    format: string;
+                    nullable: boolean;
+                };
                 userId: {
                     type: string;
                     maxLength: number;
@@ -94,11 +111,6 @@ export declare const UserInboxSchema: {
                 itemIdHash: {
                     type: string;
                     description: string;
-                    nullable: boolean;
-                };
-                updatedAt: {
-                    type: string;
-                    format: string;
                     nullable: boolean;
                 };
                 updatedBy: {

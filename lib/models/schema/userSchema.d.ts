@@ -36,7 +36,7 @@ export declare const UserSchema: {
                         invitationsReceivedCount: {
                             type: string;
                         };
-                        rejectedInvitationCount: {
+                        declinedInvitationCount: {
                             type: string;
                         };
                         acceptedInvitationCount: {
@@ -581,6 +581,13 @@ export declare const UserSchema: {
                         nullable: boolean;
                     };
                 };
+            };
+            nullable: boolean;
+        };
+        ethnicityTextIds: {
+            type: string;
+            items: {
+                type: string;
             };
             nullable: boolean;
         };

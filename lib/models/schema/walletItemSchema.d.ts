@@ -70,7 +70,6 @@ export declare const WalletItemSchema: {
         };
         productType: {
             type: string;
-            enum: string[];
         };
         name: {
             type: string;

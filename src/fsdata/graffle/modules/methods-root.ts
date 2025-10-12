@@ -31,6 +31,384 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  findChannelInvitationById: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findChannelInvitationById<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findChannelInvitationById: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findChannelInvitationById'
+      >
+    >
+  >;
+
+  findChannelInvitationsBetweenUsers: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findChannelInvitationsBetweenUsers<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findChannelInvitationsBetweenUsers: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findChannelInvitationsBetweenUsers'
+      >
+    >
+  >;
+
+  findChannelInvitationsForUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findChannelInvitationsForUser<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findChannelInvitationsForUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findChannelInvitationsForUser'
+      >
+    >
+  >;
+  /**
+   * @deprecated use findMyChannelInvitations instead
+   */
+  myChannelInvitations: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.myChannelInvitations<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { myChannelInvitations: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'myChannelInvitations'
+      >
+    >
+  >;
+
+  findMyChannelInvitations: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findMyChannelInvitations<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findMyChannelInvitations: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findMyChannelInvitations'
+      >
+    >
+  >;
+
+  findPendingChannelInvitationsForUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Query.findPendingChannelInvitationsForUser<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findPendingChannelInvitationsForUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findPendingChannelInvitationsForUser'
+      >
+    >
+  >;
+
+  find1On1Channel: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.find1On1Channel<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { find1On1Channel: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'find1On1Channel'
+      >
+    >
+  >;
+
+  findChannelById: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findChannelById<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findChannelById: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findChannelById'
+      >
+    >
+  >;
+
+  findChannels: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findChannels<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findChannels: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findChannels'
+      >
+    >
+  >;
+  /**
+   * @deprecated use findMyChannels instead
+   */
+  findChannelsForUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findChannelsForUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findChannelsForUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findChannelsForUser'
+      >
+    >
+  >;
+
+  findMyChannels: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyChannels<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findMyChannels: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findMyChannels'
+      >
+    >
+  >;
+
+  findCompanyStages: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findCompanyStages<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findCompanyStages: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findCompanyStages'
+      >
+    >
+  >;
+
+  findCompanyTypes: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findCompanyTypes<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findCompanyTypes: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findCompanyTypes'
+      >
+    >
+  >;
+
+  findEducationLevels: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findEducationLevels<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findEducationLevels: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findEducationLevels'
+      >
+    >
+  >;
+
+  findEthnicities: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findEthnicities<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findEthnicities: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findEthnicities'
+      >
+    >
+  >;
+
+  findExpertises: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findExpertises<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findExpertises: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findExpertises'
+      >
+    >
+  >;
+
+  findGenders: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findGenders<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findGenders: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findGenders'
+      >
+    >
+  >;
+
+  findPronouns: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findPronouns<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findPronouns: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findPronouns'
+      >
+    >
+  >;
+
+  findUserCmsByUserId: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findUserCmsByUserId<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findUserCmsByUserId: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findUserCmsByUserId'
+      >
+    >
+  >;
+  /**
+   * @deprecated use findMyInbox
+   */
+  myInbox: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.myInbox<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { myInbox: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'myInbox'
+      >
+    >
+  >;
+
+  findMyInbox: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyInbox<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
+          { findMyInbox: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findMyInbox'
+      >
+    >
+  >;
+
   doesUserExist: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -167,161 +545,6 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
-  findCompanyStages: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findCompanyStages<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findCompanyStages: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findCompanyStages'
-      >
-    >
-  >;
-
-  findCompanyTypes: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findCompanyTypes<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findCompanyTypes: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findCompanyTypes'
-      >
-    >
-  >;
-
-  findEducationLevels: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findEducationLevels<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findEducationLevels: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findEducationLevels'
-      >
-    >
-  >;
-
-  findExpertises: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findExpertises<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findExpertises: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findExpertises'
-      >
-    >
-  >;
-
-  findGenders: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findGenders<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findGenders: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findGenders'
-      >
-    >
-  >;
-
-  findPronouns: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findPronouns<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findPronouns: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findPronouns'
-      >
-    >
-  >;
-
-  findUserCmsByUserId: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findUserCmsByUserId<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findUserCmsByUserId: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findUserCmsByUserId'
-      >
-    >
-  >;
-  /**
-   * @deprecated use findMyInbox
-   */
-  myInbox: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.myInbox<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { myInbox: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'myInbox'
-      >
-    >
-  >;
-
-  findMyInbox: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyInbox<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findMyInbox: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findMyInbox'
-      >
-    >
-  >;
-
   findAdminTaskById: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -406,205 +629,6 @@ export interface QueryMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'findUploadedAssetsForUser'
-      >
-    >
-  >;
-
-  findChannelInvitationById: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Query.findChannelInvitationById<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findChannelInvitationById: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findChannelInvitationById'
-      >
-    >
-  >;
-
-  findChannelInvitationsBetweenUsers: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Query.findChannelInvitationsBetweenUsers<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findChannelInvitationsBetweenUsers: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findChannelInvitationsBetweenUsers'
-      >
-    >
-  >;
-
-  findChannelInvitationsForUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Query.findChannelInvitationsForUser<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findChannelInvitationsForUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findChannelInvitationsForUser'
-      >
-    >
-  >;
-
-  myChannelInvitations: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.myChannelInvitations<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { myChannelInvitations: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'myChannelInvitations'
-      >
-    >
-  >;
-
-  findPendingChannelInvitationsForUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Query.findPendingChannelInvitationsForUser<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findPendingChannelInvitationsForUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findPendingChannelInvitationsForUser'
-      >
-    >
-  >;
-
-  findChannelById: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findChannelById<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findChannelById: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findChannelById'
-      >
-    >
-  >;
-
-  findChannels: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findChannels<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findChannels: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findChannels'
-      >
-    >
-  >;
-
-  findChannelsForUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findChannelsForUser<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findChannelsForUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findChannelsForUser'
-      >
-    >
-  >;
-
-  find1On1Channel: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.find1On1Channel<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { find1On1Channel: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'find1On1Channel'
-      >
-    >
-  >;
-
-  findMyChannels: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyChannels<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findMyChannels: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findMyChannels'
-      >
-    >
-  >;
-
-  findMyChannelsV2: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query.findMyChannelsV2<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationQuery<
-          { findMyChannelsV2: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findMyChannelsV2'
       >
     >
   >;
@@ -1965,597 +1989,6 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
-  createOneTimeAuthTokenForMe: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet?: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.createOneTimeAuthTokenForMe<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { createOneTimeAuthTokenForMe: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'createOneTimeAuthTokenForMe'
-      >
-    >
-  >;
-
-  signInUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signInUser<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { signInUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'signInUser'
-      >
-    >
-  >;
-
-  signInOauthUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signInOauthUser<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { signInOauthUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'signInOauthUser'
-      >
-    >
-  >;
-
-  signMeOut: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signMeOut<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { signMeOut: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'signMeOut'
-      >
-    >
-  >;
-
-  signUpUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signUpUser<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { signUpUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'signUpUser'
-      >
-    >
-  >;
-
-  verifyOneTimeAuthToken: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.verifyOneTimeAuthToken<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { verifyOneTimeAuthToken: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'verifyOneTimeAuthToken'
-      >
-    >
-  >;
-
-  addAppFeatureToUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.addAppFeatureToUser<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { addAppFeatureToUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'addAppFeatureToUser'
-      >
-    >
-  >;
-
-  deleteUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUser<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { deleteUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'deleteUser'
-      >
-    >
-  >;
-
-  deleteUserV2: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUserV2<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { deleteUserV2: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'deleteUserV2'
-      >
-    >
-  >;
-
-  removeAppFeatureFromUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.removeAppFeatureFromUser<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { removeAppFeatureFromUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'removeAppFeatureFromUser'
-      >
-    >
-  >;
-
-  reportUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.reportUser<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { reportUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'reportUser'
-      >
-    >
-  >;
-
-  updateUser: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateUser<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { updateUser: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'updateUser'
-      >
-    >
-  >;
-
-  createUserDevice: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createUserDevice<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { createUserDevice: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'createUserDevice'
-      >
-    >
-  >;
-
-  updateUserDevice: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateUserDevice<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { updateUserDevice: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'updateUserDevice'
-      >
-    >
-  >;
-
-  createAcademicExperience: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.createAcademicExperience<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { createAcademicExperience: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'createAcademicExperience'
-      >
-    >
-  >;
-
-  deleteAcademicExperience: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.deleteAcademicExperience<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { deleteAcademicExperience: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'deleteAcademicExperience'
-      >
-    >
-  >;
-
-  updateAcademicExperience: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.updateAcademicExperience<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { updateAcademicExperience: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'updateAcademicExperience'
-      >
-    >
-  >;
-
-  createBusinessExperience: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.createBusinessExperience<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { createBusinessExperience: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'createBusinessExperience'
-      >
-    >
-  >;
-
-  deleteBusinessExperience: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.deleteBusinessExperience<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { deleteBusinessExperience: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'deleteBusinessExperience'
-      >
-    >
-  >;
-
-  updateBusinessExperience: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.updateBusinessExperience<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { updateBusinessExperience: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'updateBusinessExperience'
-      >
-    >
-  >;
-
-  createCompany: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createCompany<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { createCompany: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'createCompany'
-      >
-    >
-  >;
-
-  deleteCompany: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteCompany<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { deleteCompany: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'deleteCompany'
-      >
-    >
-  >;
-
-  deleteCompanyV2: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteCompanyV2<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { deleteCompanyV2: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'deleteCompanyV2'
-      >
-    >
-  >;
-
-  updateCompany: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateCompany<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { updateCompany: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'updateCompany'
-      >
-    >
-  >;
-
-  findAndUpdateAllMm2Users: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet?: $$Utilities.Exact<
-        $SelectionSet,
-        $$SelectionSets.Mutation.findAndUpdateAllMm2Users<$Context['scalars']>
-      >,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { findAndUpdateAllMm2Users: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'findAndUpdateAllMm2Users'
-      >
-    >
-  >;
-
-  createAdminTask: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createAdminTask<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { createAdminTask: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'createAdminTask'
-      >
-    >
-  >;
-
-  deleteAdminTask: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteAdminTask<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { deleteAdminTask: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'deleteAdminTask'
-      >
-    >
-  >;
-
-  runAdminTask: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.runAdminTask<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { runAdminTask: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'runAdminTask'
-      >
-    >
-  >;
-
-  updateAdminTask: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateAdminTask<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { updateAdminTask: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'updateAdminTask'
-      >
-    >
-  >;
-
-  createUploadedAsset: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createUploadedAsset<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { createUploadedAsset: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'createUploadedAsset'
-      >
-    >
-  >;
-
-  deleteUploadedAsset: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUploadedAsset<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { deleteUploadedAsset: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'deleteUploadedAsset'
-      >
-    >
-  >;
-
-  initAssetUpload: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.initAssetUpload<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { initAssetUpload: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'initAssetUpload'
-      >
-    >
-  >;
-
-  updateUploadedAsset: $$Utilities.ClientTransports.PreflightCheck<
-    $Context,
-    <$SelectionSet>(
-      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateUploadedAsset<$Context['scalars']>>,
-    ) => Promise<
-      & (null | {})
-      & $$Utilities.HandleOutputDocumentBuilderRootField<
-        $Context,
-        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
-          { updateUploadedAsset: $SelectionSet },
-          $$Schema.Schema<$Context['scalars']>
-        >,
-        'updateUploadedAsset'
-      >
-    >
-  >;
-
   acceptChannelInvitation: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -2881,6 +2314,599 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  createAcademicExperience: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.createAcademicExperience<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createAcademicExperience: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createAcademicExperience'
+      >
+    >
+  >;
+
+  deleteAcademicExperience: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.deleteAcademicExperience<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteAcademicExperience: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteAcademicExperience'
+      >
+    >
+  >;
+
+  updateAcademicExperience: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.updateAcademicExperience<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateAcademicExperience: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateAcademicExperience'
+      >
+    >
+  >;
+
+  createBusinessExperience: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.createBusinessExperience<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createBusinessExperience: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createBusinessExperience'
+      >
+    >
+  >;
+
+  deleteBusinessExperience: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.deleteBusinessExperience<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteBusinessExperience: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteBusinessExperience'
+      >
+    >
+  >;
+
+  updateBusinessExperience: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.updateBusinessExperience<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateBusinessExperience: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateBusinessExperience'
+      >
+    >
+  >;
+
+  createCompany: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createCompany<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createCompany: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createCompany'
+      >
+    >
+  >;
+
+  deleteCompany: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteCompany<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteCompany: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteCompany'
+      >
+    >
+  >;
+
+  updateCompany: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateCompany<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateCompany: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateCompany'
+      >
+    >
+  >;
+
+  createOneTimeAuthTokenForMe: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet?: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.createOneTimeAuthTokenForMe<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createOneTimeAuthTokenForMe: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createOneTimeAuthTokenForMe'
+      >
+    >
+  >;
+
+  signInUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signInUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { signInUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'signInUser'
+      >
+    >
+  >;
+
+  signInOauthUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signInOauthUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { signInOauthUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'signInOauthUser'
+      >
+    >
+  >;
+
+  signMeOut: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signMeOut<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { signMeOut: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'signMeOut'
+      >
+    >
+  >;
+  /**
+   * Signs out a user by their ID. Optionally, signs out on all devices. If the userId is not provided, the request user will be signed out. Only admins can sign out other users.
+   */
+  signOutUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signOutUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { signOutUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'signOutUser'
+      >
+    >
+  >;
+
+  signUpUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.signUpUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { signUpUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'signUpUser'
+      >
+    >
+  >;
+
+  verifyOneTimeAuthToken: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.verifyOneTimeAuthToken<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { verifyOneTimeAuthToken: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'verifyOneTimeAuthToken'
+      >
+    >
+  >;
+
+  addAppFeatureToUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.addAppFeatureToUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { addAppFeatureToUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'addAppFeatureToUser'
+      >
+    >
+  >;
+
+  deleteUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteUser'
+      >
+    >
+  >;
+
+  deleteUserV2: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUserV2<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteUserV2: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteUserV2'
+      >
+    >
+  >;
+
+  removeAppFeatureFromUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.removeAppFeatureFromUser<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { removeAppFeatureFromUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'removeAppFeatureFromUser'
+      >
+    >
+  >;
+
+  reportUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.reportUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { reportUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'reportUser'
+      >
+    >
+  >;
+
+  updateUser: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateUser<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateUser: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateUser'
+      >
+    >
+  >;
+
+  createUserDevice: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createUserDevice<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createUserDevice: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createUserDevice'
+      >
+    >
+  >;
+
+  updateUserDevice: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateUserDevice<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateUserDevice: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateUserDevice'
+      >
+    >
+  >;
+
+  findAndUpdateAllMm2Users: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet?: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.findAndUpdateAllMm2Users<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { findAndUpdateAllMm2Users: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'findAndUpdateAllMm2Users'
+      >
+    >
+  >;
+
+  createAdminTask: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createAdminTask<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createAdminTask: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createAdminTask'
+      >
+    >
+  >;
+
+  deleteAdminTask: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteAdminTask<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteAdminTask: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteAdminTask'
+      >
+    >
+  >;
+
+  runAdminTask: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.runAdminTask<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { runAdminTask: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'runAdminTask'
+      >
+    >
+  >;
+
+  updateAdminTask: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateAdminTask<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateAdminTask: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateAdminTask'
+      >
+    >
+  >;
+
+  createUploadedAsset: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createUploadedAsset<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createUploadedAsset: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createUploadedAsset'
+      >
+    >
+  >;
+
+  deleteUploadedAsset: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.deleteUploadedAsset<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { deleteUploadedAsset: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'deleteUploadedAsset'
+      >
+    >
+  >;
+
+  initAssetUpload: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.initAssetUpload<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { initAssetUpload: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'initAssetUpload'
+      >
+    >
+  >;
+
+  updateUploadedAsset: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.updateUploadedAsset<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateUploadedAsset: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateUploadedAsset'
+      >
+    >
+  >;
+
   addChannelMessageEvent: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -2960,7 +2986,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
       >
     >
   >;
-
+  /**
+   * @deprecated Use updateChannelMessageV2 which returns a ServiceRequest
+   */
   updateChannelMessage: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -2977,6 +3005,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'updateChannelMessage'
+      >
+    >
+  >;
+
+  updateChannelMessageV2: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.updateChannelMessageV2<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { updateChannelMessageV2: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'updateChannelMessageV2'
       >
     >
   >;
@@ -3356,6 +3404,26 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'removeUserFromGroup'
+      >
+    >
+  >;
+
+  removeUserFromGroupV2: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Mutation.removeUserFromGroupV2<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { removeUserFromGroupV2: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'removeUserFromGroupV2'
       >
     >
   >;
@@ -4177,7 +4245,9 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
       >
     >
   >;
-
+  /**
+   * @deprecated Use endMySessionV3
+   */
   endMySessionV2: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -4191,6 +4261,23 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'endMySessionV2'
+      >
+    >
+  >;
+
+  endMySessionV3: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet?: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.endMySessionV3<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { endMySessionV3: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'endMySessionV3'
       >
     >
   >;
@@ -4284,6 +4371,25 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
     >
   >;
 
+  createTrackingEvent: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.createTrackingEvent<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { createTrackingEvent: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'createTrackingEvent'
+      >
+    >
+  >;
+  /**
+   * @deprecated use upsertUserTracking mutation instead
+   */
   createUserTracking: $$Utilities.ClientTransports.PreflightCheck<
     $Context,
     <$SelectionSet>(
@@ -4297,6 +4403,23 @@ export interface MutationMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'createUserTracking'
+      >
+    >
+  >;
+
+  upsertUserTracking: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Mutation.upsertUserTracking<$Context['scalars']>>,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationMutation<
+          { upsertUserTracking: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'upsertUserTracking'
       >
     >
   >;
@@ -4343,6 +4466,26 @@ export interface SubscriptionMethods<$Context extends $$Utilities.Context> {
           $$Schema.Schema<$Context['scalars']>
         >,
         'channelChanged'
+      >
+    >
+  >;
+
+  userInboxUpdated: $$Utilities.ClientTransports.PreflightCheck<
+    $Context,
+    <$SelectionSet>(
+      selectionSet: $$Utilities.Exact<
+        $SelectionSet,
+        $$SelectionSets.Subscription.userInboxUpdated<$Context['scalars']>
+      >,
+    ) => Promise<
+      & (null | {})
+      & $$Utilities.HandleOutputDocumentBuilderRootField<
+        $Context,
+        $$Utilities.DocumentBuilder.InferResult.OperationSubscription<
+          { userInboxUpdated: $SelectionSet },
+          $$Schema.Schema<$Context['scalars']>
+        >,
+        'userInboxUpdated'
       >
     >
   >;

@@ -3,7 +3,6 @@ import createChannel from './operations/channel/createChannel.js';
 import findChannelById from './operations/channel/findChannelById.js';
 import findChannels from './operations/channel/findChannels.js';
 import findMyChannels from './operations/channel/findMyChannels.js';
-import findMyChannelsV2 from './operations/channel/findMyChannelsV2.js';
 import acceptChannelInvitation from './operations/channelInvitation/acceptChannelInvitation.js';
 import createChannelInvitation from './operations/channelInvitation/createChannelInvitation.js';
 import declineChannelInvitation from './operations/channelInvitation/declineChannelInvitation.js';
@@ -78,7 +77,7 @@ import verifyWalletItemTransferPassword
 // endMySessionV2
 // startMySessionV2
 // unblockUserForMeV2
-// findMyChannelsV2
+// findMyChannels
 
 const fsdata = {
   create,
@@ -92,7 +91,6 @@ const fsdata = {
     findChannelById,
     findChannels,
     findMyChannels,
-    findMyChannelsV2,
   },
 
   channelInvitation: {

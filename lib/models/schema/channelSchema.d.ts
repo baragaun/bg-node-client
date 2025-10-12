@@ -114,6 +114,19 @@ export declare const ChannelSchema: {
             maxLength: number;
             nullable: boolean;
         };
+        maxSeq: {
+            type: string;
+            description: string;
+        };
+        lastLiveSeq: {
+            type: string;
+            description: string;
+        };
+        syncedToAnalyticsAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
         pausedAt: {
             type: string;
             format: string;

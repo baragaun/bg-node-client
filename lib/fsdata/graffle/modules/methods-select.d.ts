@@ -4,9 +4,6 @@ export interface $MethodsSelect {
     Query: Query;
     Mutation: Mutation;
     Subscription: Subscription;
-    UserMetadata: UserMetadata;
-    ChannelsUserMetadata: ChannelsUserMetadata;
-    GroupsUserMetadata: GroupsUserMetadata;
     GroupMembership: GroupMembership;
     ModelEvent: ModelEvent;
     Expertise: Expertise;
@@ -14,9 +11,16 @@ export interface $MethodsSelect {
     Industry: Industry;
     MenteesGroupMembership: MenteesGroupMembership;
     MentorsGroupMembership: MentorsGroupMembership;
+    UserMetadata: UserMetadata;
+    ChannelsUserMetadata: ChannelsUserMetadata;
+    GroupsUserMetadata: GroupsUserMetadata;
     MastercardGroupMembership: MastercardGroupMembership;
     IqlaaGroupMembership: IqlaaGroupMembership;
     StriveIndonesiaGroupMembership: StriveIndonesiaGroupMembership;
+    ChannelInvitation: ChannelInvitation;
+    Channel: Channel;
+    ChannelMetadata: ChannelMetadata;
+    BgChannelStatus: BgChannelStatus;
     User: User;
     LabeledStringValue: LabeledStringValue;
     UserPreferences: UserPreferences;
@@ -35,23 +39,14 @@ export interface $MethodsSelect {
     Language: Language;
     Notification: Notification;
     NotificationContext: NotificationContext;
-    Channel: Channel;
-    ChannelMetadata: ChannelMetadata;
-    BgChannelStatus: BgChannelStatus;
-    ChannelInvitation: ChannelInvitation;
-    DeclineChannelInvitationReason: DeclineChannelInvitationReason;
-    ChannelMessage: ChannelMessage;
-    ChannelMessageMetadata: ChannelMessageMetadata;
-    ChannelMessageStatus: ChannelMessageStatus;
+    ChannelParticipant: ChannelParticipant;
+    BgChannelParticipantUserInfo: BgChannelParticipantUserInfo;
     Contact: Contact;
     ContactMetadata: ContactMetadata;
     ContactType: ContactType;
-    ChannelParticipant: ChannelParticipant;
-    BgChannelParticipantUserInfo: BgChannelParticipantUserInfo;
     UserListItem: UserListItem;
     EducationLevel: EducationLevel;
     EndorsementWithTypes: EndorsementWithTypes;
-    ModerationConcern: ModerationConcern;
     ContentTagType: ContentTagType;
     Group: Group;
     AppliedGroupRule: AppliedGroupRule;
@@ -59,6 +54,12 @@ export interface $MethodsSelect {
     GroupCms: GroupCms;
     GroupCmsOnboarding: GroupCmsOnboarding;
     Pronoun: Pronoun;
+    ChannelMessage: ChannelMessage;
+    ChannelMessageMetadata: ChannelMessageMetadata;
+    ChannelMessageStatus: ChannelMessageStatus;
+    DeclineChannelInvitationReason: DeclineChannelInvitationReason;
+    ChannelListItem: ChannelListItem;
+    Ethnicity: Ethnicity;
     UserCms: UserCms;
     UserInbox: UserInbox;
     ChannelInbox: ChannelInbox;
@@ -67,7 +68,6 @@ export interface $MethodsSelect {
     AdminTask: AdminTask;
     AdminTaskDef: AdminTaskDef;
     AdminTaskArgDef: AdminTaskArgDef;
-    ChannelListItem: ChannelListItem;
     ErrorCodeOption: ErrorCodeOption;
     IndonesianCity: IndonesianCity;
     IndonesianProvince: IndonesianProvince;
@@ -109,10 +109,11 @@ export interface $MethodsSelect {
     NotificationTemplate: NotificationTemplate;
     ContentStatus: ContentStatus;
     BgChannelChangedEvent: BgChannelChangedEvent;
+    UserInboxUpdatedAppEventData: UserInboxUpdatedAppEventData;
     ObjectChangedEvent: ObjectChangedEvent;
     BaseModel: BaseModel;
-    BaseModelMetadata: BaseModelMetadata;
     IGroupMembership: IGroupMembership;
+    BaseModelMetadata: BaseModelMetadata;
 }
 export interface Query {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Query>): $SelectionSet;
@@ -122,15 +123,6 @@ export interface Mutation {
 }
 export interface Subscription {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Subscription>): $SelectionSet;
-}
-export interface UserMetadata {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserMetadata>): $SelectionSet;
-}
-export interface ChannelsUserMetadata {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelsUserMetadata>): $SelectionSet;
-}
-export interface GroupsUserMetadata {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GroupsUserMetadata>): $SelectionSet;
 }
 export interface GroupMembership {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GroupMembership>): $SelectionSet;
@@ -153,6 +145,15 @@ export interface MenteesGroupMembership {
 export interface MentorsGroupMembership {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.MentorsGroupMembership>): $SelectionSet;
 }
+export interface UserMetadata {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserMetadata>): $SelectionSet;
+}
+export interface ChannelsUserMetadata {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelsUserMetadata>): $SelectionSet;
+}
+export interface GroupsUserMetadata {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.GroupsUserMetadata>): $SelectionSet;
+}
 export interface MastercardGroupMembership {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.MastercardGroupMembership>): $SelectionSet;
 }
@@ -161,6 +162,18 @@ export interface IqlaaGroupMembership {
 }
 export interface StriveIndonesiaGroupMembership {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.StriveIndonesiaGroupMembership>): $SelectionSet;
+}
+export interface ChannelInvitation {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelInvitation>): $SelectionSet;
+}
+export interface Channel {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Channel>): $SelectionSet;
+}
+export interface ChannelMetadata {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMetadata>): $SelectionSet;
+}
+export interface BgChannelStatus {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelStatus>): $SelectionSet;
 }
 export interface User {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.User>): $SelectionSet;
@@ -216,29 +229,11 @@ export interface Notification {
 export interface NotificationContext {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.NotificationContext>): $SelectionSet;
 }
-export interface Channel {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Channel>): $SelectionSet;
+export interface ChannelParticipant {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelParticipant>): $SelectionSet;
 }
-export interface ChannelMetadata {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMetadata>): $SelectionSet;
-}
-export interface BgChannelStatus {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelStatus>): $SelectionSet;
-}
-export interface ChannelInvitation {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelInvitation>): $SelectionSet;
-}
-export interface DeclineChannelInvitationReason {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.DeclineChannelInvitationReason>): $SelectionSet;
-}
-export interface ChannelMessage {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMessage>): $SelectionSet;
-}
-export interface ChannelMessageMetadata {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMessageMetadata>): $SelectionSet;
-}
-export interface ChannelMessageStatus {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMessageStatus>): $SelectionSet;
+export interface BgChannelParticipantUserInfo {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelParticipantUserInfo>): $SelectionSet;
 }
 export interface Contact {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Contact>): $SelectionSet;
@@ -249,12 +244,6 @@ export interface ContactMetadata {
 export interface ContactType {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContactType>): $SelectionSet;
 }
-export interface ChannelParticipant {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelParticipant>): $SelectionSet;
-}
-export interface BgChannelParticipantUserInfo {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelParticipantUserInfo>): $SelectionSet;
-}
 export interface UserListItem {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserListItem>): $SelectionSet;
 }
@@ -263,9 +252,6 @@ export interface EducationLevel {
 }
 export interface EndorsementWithTypes {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.EndorsementWithTypes>): $SelectionSet;
-}
-export interface ModerationConcern {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ModerationConcern>): $SelectionSet;
 }
 export interface ContentTagType {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ContentTagType>): $SelectionSet;
@@ -287,6 +273,24 @@ export interface GroupCmsOnboarding {
 }
 export interface Pronoun {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Pronoun>): $SelectionSet;
+}
+export interface ChannelMessage {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMessage>): $SelectionSet;
+}
+export interface ChannelMessageMetadata {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMessageMetadata>): $SelectionSet;
+}
+export interface ChannelMessageStatus {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelMessageStatus>): $SelectionSet;
+}
+export interface DeclineChannelInvitationReason {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.DeclineChannelInvitationReason>): $SelectionSet;
+}
+export interface ChannelListItem {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelListItem>): $SelectionSet;
+}
+export interface Ethnicity {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.Ethnicity>): $SelectionSet;
 }
 export interface UserCms {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserCms>): $SelectionSet;
@@ -311,9 +315,6 @@ export interface AdminTaskDef {
 }
 export interface AdminTaskArgDef {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.AdminTaskArgDef>): $SelectionSet;
-}
-export interface ChannelListItem {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ChannelListItem>): $SelectionSet;
 }
 export interface ErrorCodeOption {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ErrorCodeOption>): $SelectionSet;
@@ -438,15 +439,18 @@ export interface ContentStatus {
 export interface BgChannelChangedEvent {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BgChannelChangedEvent>): $SelectionSet;
 }
+export interface UserInboxUpdatedAppEventData {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.UserInboxUpdatedAppEventData>): $SelectionSet;
+}
 export interface ObjectChangedEvent {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.ObjectChangedEvent>): $SelectionSet;
 }
 export interface BaseModel {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BaseModel>): $SelectionSet;
 }
-export interface BaseModelMetadata {
-    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BaseModelMetadata>): $SelectionSet;
-}
 export interface IGroupMembership {
     <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.IGroupMembership>): $SelectionSet;
+}
+export interface BaseModelMetadata {
+    <$SelectionSet>(selectionSet: $$Utilities.Exact<$SelectionSet, $$SelectionSets.BaseModelMetadata>): $SelectionSet;
 }

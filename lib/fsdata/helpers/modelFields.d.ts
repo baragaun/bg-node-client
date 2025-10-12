@@ -1,18 +1,14 @@
 declare const modelFields: {
     channel: {
-        adminNotes: boolean;
         name: boolean;
         topic: boolean;
         description: boolean;
         tags: boolean;
         channelType: boolean;
+        maxSeq: boolean;
+        lastLiveSeq: boolean;
         userIds: boolean;
-        metadata: {
-            channelInvitationAccepted: boolean;
-            messagesSentByCreatorCount: boolean;
-            messagesSentByFirstParticipantCount: boolean;
-            updatedAt: boolean;
-        };
+        adminNotes: boolean;
         pausedAt: boolean;
         pausedBy: boolean;
         suspendedAt: boolean;
@@ -60,12 +56,6 @@ declare const modelFields: {
         tags: boolean;
         channelType: boolean;
         userIds: boolean;
-        metadata: {
-            channelInvitationAccepted: boolean;
-            messagesSentByCreatorCount: boolean;
-            messagesSentByFirstParticipantCount: boolean;
-            updatedAt: boolean;
-        };
         pausedAt: boolean;
         pausedBy: boolean;
         suspendedAt: boolean;
@@ -120,11 +110,7 @@ declare const modelFields: {
         replyToMessageId: boolean;
         channelMessageType: boolean;
         messageText: boolean;
-        statuses: {
-            userId: boolean;
-            receivedAt: boolean;
-            seenAt: boolean;
-        };
+        seq: boolean;
         editedAt: boolean;
         suspendedAt: boolean;
         suspendedBy: boolean;
@@ -147,6 +133,8 @@ declare const modelFields: {
             lastName: boolean;
             avatarUrl: boolean;
         };
+        lastReceivedSeq: boolean;
+        lastSeenSeq: boolean;
         suspendedAt: boolean;
         suspendedBy: boolean;
         invitedBy: boolean;

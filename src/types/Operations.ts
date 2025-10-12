@@ -9,6 +9,7 @@ import {
   UserIdentType,
 } from '../enums.js';
 import { ChannelListItem } from './ChannelListItem.js';
+import { ChannelMessageScope } from './ChannelMessageScope.js';
 import { FindChannelOptions, FindChannelResult } from './findChannelTypes.js';
 import { FindObjectsOptions } from './FindObjectsOptions.js';
 import { MangoQueryTypes } from './mangoQuery.js';
@@ -143,15 +144,12 @@ export interface Operations {
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<Channel>>;
 
-    findMyChannels: (
-      options: FindObjectsOptions,
-      queryOptions?: QueryOptions,
-    ) => Promise<QueryResult<Channel>>;
 
-    findMyChannelsV2: (
-      participantLimit: number | undefined,
-      addLatestMessage: boolean | undefined,
-      options: FindObjectsOptions,
+    findMyChannels: (
+      filter?: ChannelListFilter,
+      match?: Partial<Channel>,
+      options?: FindObjectsOptions,
+      scope?: ChannelMessageScope,
       queryOptions?: QueryOptions,
     ) => Promise<QueryResult<ChannelListItem>>;
 

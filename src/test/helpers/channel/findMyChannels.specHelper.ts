@@ -13,6 +13,9 @@ export const findMyChannelsSpecHelper = async (
   // Should come with `findMyChannels`:
   const findMyChannelsResult = await client.operations.channel.findMyChannels(
     undefined,
+    undefined,
+    undefined,
+    undefined,
     { cachePolicy: CachePolicy.network },
   );
   expect(findMyChannelsResult.error).toBeUndefined();

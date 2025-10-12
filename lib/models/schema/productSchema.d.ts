@@ -72,7 +72,6 @@ export declare const ProductSchema: {
         };
         productType: {
             type: string;
-            enum: string[];
         };
         categories: {
             type: string;

@@ -7,7 +7,6 @@ import findChannelById from './channel/findChannelById.js';
 import findChannels from './channel/findChannels.js';
 import findMyArchivedChannels from './channel/findMyArchivedChannels.js';
 import findMyChannels from './channel/findMyChannels.js';
-import findMyChannelsV2 from './channel/findMyChannelsV2.js';
 import isChannelArchivedForMe from './channel/isChannelArchivedForMe.js';
 import updateChannel from './channel/updateChannel.js';
 import acceptChannelInvitation from './channelInvitation/acceptChannelInvitation.js';
@@ -112,7 +111,6 @@ const operations: Operations = {
     findChannels,
     findMyArchivedChannels,
     findMyChannels,
-    findMyChannelsV2,
     isChannelArchivedForMe,
     updateChannel,
   },

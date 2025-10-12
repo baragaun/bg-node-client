@@ -86,6 +86,10 @@ export declare const ChannelMessageSchema: {
             type: string;
             nullable: boolean;
         };
+        seq: {
+            type: string;
+            description: string;
+        };
         statuses: {
             type: string;
             items: {
@@ -114,6 +118,11 @@ export declare const ChannelMessageSchema: {
             nullable: boolean;
         };
         editedAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
+        };
+        syncedToAnalyticsAt: {
             type: string;
             format: string;
             nullable: boolean;

@@ -1,6 +1,7 @@
 import { MangoQuery } from 'rxdb';
 import { ChannelInvitationDirection, DeclineChannelInvitationReasonTextId as DeclineChannelInvitationReasonTextIdFromClient, ModelType, NotificationMethod, ReportUserReasonTextId, UserIdentType } from '../enums.js';
 import { ChannelListItem } from './ChannelListItem.js';
+import { ChannelMessageScope } from './ChannelMessageScope.js';
 import { FindChannelOptions, FindChannelResult } from './findChannelTypes.js';
 import { FindObjectsOptions } from './FindObjectsOptions.js';
 import { MangoQueryTypes } from './mangoQuery.js';
@@ -61,8 +62,7 @@ export interface Operations {
         findChannelById: (id: string, options: FindChannelOptions, queryOptions?: QueryOptions) => Promise<FindChannelResult>;
         findChannels: (filter: ChannelListFilter, match: Partial<Channel>, selector: MangoQueryTypes<Channel> | null | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
         findMyArchivedChannels: (filter: ChannelListFilter, match: Partial<Channel>, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
-        findMyChannels: (options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
-        findMyChannelsV2: (participantLimit: number | undefined, addLatestMessage: boolean | undefined, options: FindObjectsOptions, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelListItem>>;
+        findMyChannels: (filter?: ChannelListFilter, match?: Partial<Channel>, options?: FindObjectsOptions, scope?: ChannelMessageScope, queryOptions?: QueryOptions) => Promise<QueryResult<ChannelListItem>>;
         isChannelArchivedForMe: (channel: Channel) => boolean;
         updateChannel: (changes: Partial<Channel>, queryOptions?: QueryOptions) => Promise<QueryResult<Channel>>;
     };

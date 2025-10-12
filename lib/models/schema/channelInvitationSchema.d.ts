@@ -92,14 +92,24 @@ export declare const ChannelInvitationSchema: {
             format: string;
             nullable: boolean;
         };
-        readByRecipientAt: {
+        status: {
+            type: string;
+            enum: string[];
+        };
+        receivedAt: {
             type: string;
             format: string;
             nullable: boolean;
         };
-        status: {
+        seenAt: {
             type: string;
-            enum: string[];
+            format: string;
+            nullable: boolean;
+        };
+        syncedToAnalyticsAt: {
+            type: string;
+            format: string;
+            nullable: boolean;
         };
         suspendedAt: {
             type: string;
@@ -118,6 +128,11 @@ export declare const ChannelInvitationSchema: {
         };
         searchRank: {
             type: string;
+            nullable: boolean;
+        };
+        readByRecipientAt: {
+            type: string;
+            format: string;
             nullable: boolean;
         };
     };

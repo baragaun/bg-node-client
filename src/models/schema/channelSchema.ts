@@ -114,6 +114,19 @@ export const ChannelSchema = {
       maxLength: 32,
       nullable: true,
     },
+    maxSeq: {
+      type: 'integer',
+      description: 'Watermark index number of the last message in the channel.',
+    },
+    lastLiveSeq: {
+      type: 'integer',
+      description: 'Watermark for the newest non-deleted message.',
+    },
+    syncedToAnalyticsAt: {
+      type: 'string',
+      format: 'date-time',
+      nullable: true,
+    },
     pausedAt: {
       type: 'string',
       format: 'date-time',
