@@ -59,6 +59,23 @@ export const UserInboxSchema = {
     channels: {
       type: 'object',
       properties: {
+        pendingInvitationCount: {
+          type: 'integer',
+        },
+        unseenInvitationCount: {
+          type: 'integer',
+        },
+        unseenMessageCount: {
+          type: 'integer',
+        },
+        unseenArchivedMessageCount: {
+          type: 'integer',
+        },
+        updatedAt: {
+          type: 'string',
+          format: 'date-time',
+          nullable: true,
+        },
         userId: {
           type: 'string',
           maxLength: 32,
@@ -95,11 +112,6 @@ export const UserInboxSchema = {
           type: 'string',
           description:
             'MD5 hash of all item IDs to check whether there are any new or removed items.',
-          nullable: true,
-        },
-        updatedAt: {
-          type: 'string',
-          format: 'date-time',
           nullable: true,
         },
         updatedBy: {

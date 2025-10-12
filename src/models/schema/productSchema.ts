@@ -71,8 +71,7 @@ export const ProductSchema = {
       nullable: true,
     },
     productType: {
-      type: 'string',
-      enum: ['giftCard', 'other'],
+      type: 'ProductType',
     },
     categories: {
       type: 'array',

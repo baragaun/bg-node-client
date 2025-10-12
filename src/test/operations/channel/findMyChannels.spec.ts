@@ -13,7 +13,6 @@ import { getTestUserPropsSpecHelper } from '../../helpers/user/getTestUserProps.
 import { signMeInSpecHelper } from '../../helpers/user/signMeIn.specHelper.js';
 import { signMeUpSpecHelper } from '../../helpers/user/signMeUp.specHelper.js';
 
-
 describe.runIf(isFeatureEnabled('channels'))('operations.channel.findMyChannels', () => {
   let client: BgNodeClient;
 
@@ -43,6 +42,9 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.findMyChannels'
     // Fetching channels from the network:
     const queryResultFromNetwork = await client.operations.channel.findMyChannels(
       undefined,
+      undefined,
+      undefined,
+      undefined,
       { cachePolicy: CachePolicy.network },
     );
     const channelsFromNetwork = queryResultFromNetwork.objects;
@@ -56,6 +58,9 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.findMyChannels'
 
     // Fetching channels from the local cache:
     const queryResultFromLocal = await client.operations.channel.findMyChannels(
+      undefined,
+      undefined,
+      undefined,
       undefined,
       { cachePolicy: CachePolicy.cache },
     );

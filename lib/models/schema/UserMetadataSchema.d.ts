@@ -25,7 +25,7 @@ export declare const UserMetadataSchema: {
                 invitationsReceivedCount: {
                     type: string;
                 };
-                rejectedInvitationCount: {
+                declinedInvitationCount: {
                     type: string;
                 };
                 acceptedInvitationCount: {

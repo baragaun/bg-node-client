@@ -115,6 +115,19 @@ declare const schema: {
                 maxLength: number;
                 nullable: boolean;
             };
+            maxSeq: {
+                type: string;
+                description: string;
+            };
+            lastLiveSeq: {
+                type: string;
+                description: string;
+            };
+            syncedToAnalyticsAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
             pausedAt: {
                 type: string;
                 format: string;
@@ -252,14 +265,24 @@ declare const schema: {
                 format: string;
                 nullable: boolean;
             };
-            readByRecipientAt: {
+            status: {
+                type: string;
+                enum: string[];
+            };
+            receivedAt: {
                 type: string;
                 format: string;
                 nullable: boolean;
             };
-            status: {
+            seenAt: {
                 type: string;
-                enum: string[];
+                format: string;
+                nullable: boolean;
+            };
+            syncedToAnalyticsAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
             };
             suspendedAt: {
                 type: string;
@@ -278,6 +301,11 @@ declare const schema: {
             };
             searchRank: {
                 type: string;
+                nullable: boolean;
+            };
+            readByRecipientAt: {
+                type: string;
+                format: string;
                 nullable: boolean;
             };
         };
@@ -371,6 +399,10 @@ declare const schema: {
                 type: string;
                 nullable: boolean;
             };
+            seq: {
+                type: string;
+                description: string;
+            };
             statuses: {
                 type: string;
                 items: {
@@ -399,6 +431,11 @@ declare const schema: {
                 nullable: boolean;
             };
             editedAt: {
+                type: string;
+                format: string;
+                nullable: boolean;
+            };
+            syncedToAnalyticsAt: {
                 type: string;
                 format: string;
                 nullable: boolean;
@@ -512,6 +549,19 @@ declare const schema: {
             role: {
                 type: string;
                 enum: string[];
+                nullable: boolean;
+            };
+            lastReceivedSeq: {
+                type: string;
+                description: string;
+            };
+            lastSeenSeq: {
+                type: string;
+                description: string;
+            };
+            channelArchivedAt: {
+                type: string;
+                format: string;
                 nullable: boolean;
             };
             suspendedAt: {
@@ -789,7 +839,7 @@ declare const schema: {
                             invitationsReceivedCount: {
                                 type: string;
                             };
-                            rejectedInvitationCount: {
+                            declinedInvitationCount: {
                                 type: string;
                             };
                             acceptedInvitationCount: {
@@ -1334,6 +1384,13 @@ declare const schema: {
                             nullable: boolean;
                         };
                     };
+                };
+                nullable: boolean;
+            };
+            ethnicityTextIds: {
+                type: string;
+                items: {
+                    type: string;
                 };
                 nullable: boolean;
             };
@@ -1945,7 +2002,7 @@ declare const schema: {
                             invitationsReceivedCount: {
                                 type: string;
                             };
-                            rejectedInvitationCount: {
+                            declinedInvitationCount: {
                                 type: string;
                             };
                             acceptedInvitationCount: {
@@ -2493,6 +2550,13 @@ declare const schema: {
                 };
                 nullable: boolean;
             };
+            ethnicityTextIds: {
+                type: string;
+                items: {
+                    type: string;
+                };
+                nullable: boolean;
+            };
             avatarAsset: {
                 type: string;
                 properties: {
@@ -2659,6 +2723,23 @@ declare const schema: {
             channels: {
                 type: string;
                 properties: {
+                    pendingInvitationCount: {
+                        type: string;
+                    };
+                    unseenInvitationCount: {
+                        type: string;
+                    };
+                    unseenMessageCount: {
+                        type: string;
+                    };
+                    unseenArchivedMessageCount: {
+                        type: string;
+                    };
+                    updatedAt: {
+                        type: string;
+                        format: string;
+                        nullable: boolean;
+                    };
                     userId: {
                         type: string;
                         maxLength: number;
@@ -2694,11 +2775,6 @@ declare const schema: {
                     itemIdHash: {
                         type: string;
                         description: string;
-                        nullable: boolean;
-                    };
-                    updatedAt: {
-                        type: string;
-                        format: string;
                         nullable: boolean;
                     };
                     updatedBy: {
@@ -2865,7 +2941,6 @@ declare const schema: {
             };
             productType: {
                 type: string;
-                enum: string[];
             };
             name: {
                 type: string;

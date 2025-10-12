@@ -10,12 +10,15 @@ export declare class BgChannelInvitation extends BaseModel {
     declineReasonTextId?: string | null;
     dismissedFromInboxBySenderAt?: string | null;
     dismissedFromInboxByRecipientAt?: string | null;
-    readByRecipientAt?: string | null;
     status: ChannelInvitationStatus;
+    receivedAt?: string | null;
+    seenAt?: string | null;
+    syncedToAnalyticsAt?: string | null;
     suspendedAt?: string | null;
     suspendedBy?: string | null;
     userSearchId?: string | null;
     searchRank?: number | null;
+    readByRecipientAt?: string | null;
     constructor(attributes?: Partial<BgChannelInvitation>);
     static get searchFields(): string[];
 }

@@ -5,6 +5,7 @@ import { UserBlock } from './UserBlock.js';
 export declare class User extends SidUser {
     companyIds?: string[] | null;
     companies?: Company[] | null;
+    ethnicityTextIds?: string[] | null;
     avatarAsset?: UploadedAsset | null;
     ssoIdp?: string | null;
     userBlocks?: UserBlock[] | null;

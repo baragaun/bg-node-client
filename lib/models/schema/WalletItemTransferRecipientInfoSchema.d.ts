@@ -121,7 +121,6 @@ export declare const WalletItemTransferRecipientInfoSchema: {
                 };
                 productType: {
                     type: string;
-                    enum: string[];
                 };
                 name: {
                     type: string;
@@ -495,7 +494,6 @@ export declare const WalletItemTransferRecipientInfoSchema: {
                 };
                 productType: {
                     type: string;
-                    enum: string[];
                 };
                 categories: {
                     type: string;

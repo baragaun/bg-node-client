@@ -338,10 +338,12 @@ export namespace Select {
       $$Schema.Schema,
       $$Schema.Schema['allTypes']['EndorsementWithTypes']
     >;
+  // @ts-ignore
   export type ModerationConcern<$SelectionSet extends $$SelectionSets.ModerationConcern> =
     $$Utilities.DocumentBuilder.InferResult.OutputObjectLike<
       $SelectionSet,
       $$Schema.Schema,
+      // @ts-ignore
       $$Schema.Schema['allTypes']['ModerationConcern']
     >;
   export type ContentTagType<$SelectionSet extends $$SelectionSets.ContentTagType> =

@@ -13,7 +13,10 @@ export class BgChannel extends BaseModel {
   public statuses?: BgChannelStatus[] | null;
   public userIds?: string[] | null;
   public otherUserId?: string | null;
+  public maxSeq = 0;
+  public lastLiveSeq = 0;
   declare public metadata?: ChannelMetadata | null;
+  public syncedToAnalyticsAt?: string | null;
   public pausedAt?: string | null;
   public pausedBy?: string | null;
   public suspendedAt?: string | null;
@@ -53,8 +56,31 @@ export class BgChannel extends BaseModel {
       if (attributes.otherUserId !== undefined) {
         this.otherUserId = attributes.otherUserId;
       }
+      if (
+        attributes.maxSeq === null ||
+        attributes.maxSeq === 0 ||
+        (
+          attributes.maxSeq &&
+          !isNaN(attributes.maxSeq)
+        )
+      ) {
+        this.maxSeq = attributes.maxSeq;
+      }
+      if (
+        attributes.lastLiveSeq === null ||
+        attributes.lastLiveSeq === 0 ||
+        (
+          attributes.lastLiveSeq &&
+          !isNaN(attributes.lastLiveSeq)
+        )
+      ) {
+        this.lastLiveSeq = attributes.lastLiveSeq;
+      }
       if (attributes.metadata !== undefined) {
         this.metadata = attributes.metadata;
+      }
+      if (attributes.syncedToAnalyticsAt !== undefined && attributes.syncedToAnalyticsAt !== '') {
+        this.syncedToAnalyticsAt = attributes.syncedToAnalyticsAt;
       }
       if (attributes.pausedAt !== undefined && attributes.pausedAt !== '') {
         this.pausedAt = attributes.pausedAt;

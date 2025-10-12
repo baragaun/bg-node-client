@@ -23,6 +23,9 @@ const createChannel = async (
       return { error: 'unavailable' };
     }
 
+    delete props.maxSeq; // not allowed in input
+    delete props.lastLiveSeq; // not allowed in input
+
     const client = graffleClientStore.get();
     const args: MutationCreateChannelArgs = {
       input: props as unknown as ChannelInput,

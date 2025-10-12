@@ -51,6 +51,15 @@ describe('operations.walletItemTransfer.verifyWalletItemTransferPassword', () =>
       messageText: chance.sentence(),
     }, client);
 
+    // Before setting a password we have to accept the transfer
+    const acceptResponse = await client.operations.walletItemTransfer.acceptWalletItemTransfer(
+      transferSlug,
+      transferSecret,
+    );
+
+    expect(acceptResponse.error).toBeUndefined();
+    expect(acceptResponse.object).toBeTruthy();
+
     // Set a password first
     testPassword = chance.string({ length: 8, alpha: true, numeric: true });
 

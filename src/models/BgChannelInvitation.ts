@@ -12,12 +12,15 @@ export class BgChannelInvitation extends BaseModel {
   public declineReasonTextId?: string | null;
   public dismissedFromInboxBySenderAt?: string | null;
   public dismissedFromInboxByRecipientAt?: string | null;
-  public readByRecipientAt?: string | null;
   public status: ChannelInvitationStatus = ChannelInvitationStatus.unset;
+  public receivedAt?: string | null;
+  public seenAt?: string | null;
+  public syncedToAnalyticsAt?: string | null;
   public suspendedAt?: string | null;
   public suspendedBy?: string | null;
   public userSearchId?: string | null;
   public searchRank?: number | null;
+  public readByRecipientAt?: string | null;
   // @bg-codegen:/class.attr >>Note: Code is generated between these markers<<
 
   constructor(attributes?: Partial<BgChannelInvitation>) {
@@ -51,11 +54,17 @@ export class BgChannelInvitation extends BaseModel {
       if (attributes.dismissedFromInboxByRecipientAt !== undefined && attributes.dismissedFromInboxByRecipientAt !== '') {
         this.dismissedFromInboxByRecipientAt = attributes.dismissedFromInboxByRecipientAt;
       }
-      if (attributes.readByRecipientAt !== undefined && attributes.readByRecipientAt !== '') {
-        this.readByRecipientAt = attributes.readByRecipientAt;
-      }
       if (attributes.status !== undefined) {
         this.status = attributes.status;
+      }
+      if (attributes.receivedAt !== undefined && attributes.receivedAt !== '') {
+        this.receivedAt = attributes.receivedAt;
+      }
+      if (attributes.seenAt !== undefined && attributes.seenAt !== '') {
+        this.seenAt = attributes.seenAt;
+      }
+      if (attributes.syncedToAnalyticsAt !== undefined && attributes.syncedToAnalyticsAt !== '') {
+        this.syncedToAnalyticsAt = attributes.syncedToAnalyticsAt;
       }
       if (attributes.suspendedAt !== undefined && attributes.suspendedAt !== '') {
         this.suspendedAt = attributes.suspendedAt;
@@ -75,6 +84,9 @@ export class BgChannelInvitation extends BaseModel {
         )
       ) {
         this.searchRank = attributes.searchRank;
+      }
+      if (attributes.readByRecipientAt !== undefined && attributes.readByRecipientAt !== '') {
+        this.readByRecipientAt = attributes.readByRecipientAt;
       }
       // @bg-codegen:/class.const.attr >>Note: Code is generated between these markers<<
     }

@@ -36,7 +36,7 @@ export const MyUserSchema = {
             invitationsReceivedCount: {
               type: 'integer',
             },
-            rejectedInvitationCount: {
+            declinedInvitationCount: {
               type: 'integer',
             },
             acceptedInvitationCount: {
@@ -603,6 +603,13 @@ export const MyUserSchema = {
       },
       nullable: true,
     },
+    ethnicityTextIds: {
+      type: 'array',
+      items: {
+        type: 'string',
+      },
+      nullable: true,
+    },
     avatarAsset: {
       type: 'object',
       properties: {
@@ -653,7 +660,7 @@ export const MyUserSchema = {
             'AcademicExperience',
             'BusinessExperience',
             'Company',
-            'DataDeletion',
+            'DataDeletionRecord',
             'MentorBoard',
             'MentoringSession',
             'UserInbox',
@@ -667,6 +674,7 @@ export const MyUserSchema = {
             'ChannelMessage',
             'ChannelParticipant',
             'ContentStatus',
+            'Contact',
             'Option',
             'ContentTag',
             'AppliedGroupRule',
@@ -692,7 +700,6 @@ export const MyUserSchema = {
             'ServiceRequest',
             'User',
             'UserDevice',
-            'UserRelationship',
             'TrackingEvent',
             'UserTracking',
             'Training',
