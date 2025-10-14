@@ -3,7 +3,7 @@ import { defaultQueryOptionsForMutations } from '../../../helpers/defaults.js';
 import libData from '../../../helpers/libData.js';
 import logger from '../../../helpers/logger.js';
 import { ServiceRequest } from '../../../models/ServiceRequest.js';
-import { WalletItem } from '../../../models/WalletItem.js';
+import { WalletItemTransfer } from '../../../models/WalletItemTransfer.js';
 import { QueryOptions } from '../../../types/QueryOptions.js';
 import { QueryResult } from '../../../types/QueryResult.js';
 import { getObjectIdFromServiceRequest } from '../../../utils/getObjectIdFromServiceRequest.js';
@@ -104,28 +104,28 @@ const updateWalletItemTransferShowOnlineFlag = async (
       return { error: ErrorCode.SystemError, serviceRequest };
     }
 
-    const walletItemId = getObjectIdFromServiceRequest(serviceRequest, ModelType.WalletItem);
+    const walletItemTransferId = getObjectIdFromServiceRequest(serviceRequest, ModelType.WalletItem);
 
-    if (!walletItemId) {
-      logger.error('fsdata.updateWalletItemTransferShowOnlineFlag: failed to extract walletItemId from serviceRequest.',
+    if (!walletItemTransferId) {
+      logger.error('fsdata.updateWalletItemTransferShowOnlineFlag: failed to extract walletItemTransferId from serviceRequest.',
         { transferSlug, serviceRequestId: serviceRequest.id, pollingResponse });
       return { error: ErrorCode.SystemError, serviceRequest };
     }
 
-    const findResult = await findById<WalletItem>(
-      walletItemId,
-      ModelType.WalletItem,
+    const findResult = await findById<WalletItemTransfer>(
+      walletItemTransferId,
+      ModelType.WalletItemTransfer,
     );
 
     if (findResult.error) {
       logger.error('fsdata.updateWalletItemTransferShowOnlineFlag: error loading wallet item transfer',
-        { transferSlug, error: findResult.error, walletItemId });
+        { transferSlug, error: findResult.error, walletItemTransferId });
       return { error: findResult.error, serviceRequest };
     }
 
     if (!findResult.object) {
       logger.error('fsdata.updateWalletItemTransferShowOnlineFlag: wallet item transfer not found',
-        { transferSlug, walletItemId });
+        { transferSlug, walletItemTransferId });
       return { error: ErrorCode.NotFound, serviceRequest };
     }
 
