@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, test } from 'vitest';
+import { beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import chance from '../../../helpers/chance.js';
@@ -24,11 +24,7 @@ describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTra
     myUser = await signMeUpSpecHelper(undefined, false, client);
   });
 
-  afterAll(async () => {
-    await deleteMyUserSpecHelper(client);
-  });
-
-  test('should find the created wallet item transfer', async () => {
+  test('should find the created wallet item transfer after deleting the user', async () => {
     const itemCount = chance.integer({ min: 2, max: 4 });
     await createPurchaseOrderSpecHelper(
       {},
@@ -45,6 +41,8 @@ describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTra
       }, client);
       walletItemTransfers.push(response.walletItemTransfer);
     }
+
+    await deleteMyUserSpecHelper(client);
 
     walletItemTransfer = chance.pickone(walletItemTransfers);
 

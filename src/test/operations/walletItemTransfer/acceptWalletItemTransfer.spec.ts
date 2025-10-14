@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, test } from 'vitest';
+import { beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import chance from '../../../helpers/chance.js';
@@ -21,10 +21,6 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
   beforeAll(async () => {
     client = await clientStore.getTestClient();
     myUser = await signMeUpSpecHelper(undefined, false, client);
-  });
-
-  afterAll(async () => {
-    await deleteMyUserSpecHelper(client);
   });
 
   test('should accept a wallet item transfer', async () => {
@@ -54,9 +50,14 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     expect(walletItemTransfer).toBeTruthy();
     expect(walletItemTransfer.transferSlug).toBeTruthy();
 
+    await deleteMyUserSpecHelper(client);
+
     const walletItemTransferRecipientInfoResult = await client.operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTransferSlug(
       transferSlug,
     );
+
+    expect(walletItemTransferRecipientInfoResult.error).toBeUndefined();
+
     const walletItemTransferRecipientInfo = walletItemTransferRecipientInfoResult.object;
 
     expect(walletItemTransferRecipientInfo.brand).toBeTruthy();
