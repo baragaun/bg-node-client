@@ -104,7 +104,7 @@ const updateWalletItemTransferShowOnlineFlag = async (
       return { error: ErrorCode.SystemError, serviceRequest };
     }
 
-    const walletItemTransferId = getObjectIdFromServiceRequest(serviceRequest, ModelType.WalletItem);
+    const walletItemTransferId = getObjectIdFromServiceRequest(serviceRequest, ModelType.WalletItemTransfer);
 
     if (!walletItemTransferId) {
       logger.error('fsdata.updateWalletItemTransferShowOnlineFlag: failed to extract walletItemTransferId from serviceRequest.',
