@@ -24,7 +24,7 @@ describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTra
     myUser = await signMeUpSpecHelper(undefined, false, client);
   });
 
-  test('should find the created wallet item transfer after deleting the user', async () => {
+  test('should find the created wallet item transfer as anonymous user', async () => {
     const itemCount = chance.integer({ min: 2, max: 4 });
     await createPurchaseOrderSpecHelper(
       {},
@@ -42,6 +42,8 @@ describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTra
       walletItemTransfers.push(response.walletItemTransfer);
     }
 
+    // This deletes the user, but also logs out the client. All API requests after this are
+    // made as an anonymous user.
     await deleteMyUserSpecHelper(client);
 
     walletItemTransfer = chance.pickone(walletItemTransfers);

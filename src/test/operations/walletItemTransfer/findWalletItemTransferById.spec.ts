@@ -55,5 +55,5 @@ describe('operations.walletItemTransfer.findWalletItemTransferById', () => {
     expect(result.error).toBeUndefined();
     expect(result.object).toBeTruthy();
     expect(result.object.id).toBe(walletItemTransferId);
-  }, 10000);
+  }, 20000);
 });

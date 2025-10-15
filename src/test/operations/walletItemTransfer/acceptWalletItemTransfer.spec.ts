@@ -50,6 +50,8 @@ describe.runIf(isFeatureEnabled('marketplace'))('operations.walletItemTransfer.a
     expect(walletItemTransfer).toBeTruthy();
     expect(walletItemTransfer.transferSlug).toBeTruthy();
 
+    // This deletes the user, but also logs out the client. All API requests after this are
+    // made as an anonymous user.
     await deleteMyUserSpecHelper(client);
 
     const walletItemTransferRecipientInfoResult = await client.operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTransferSlug(
