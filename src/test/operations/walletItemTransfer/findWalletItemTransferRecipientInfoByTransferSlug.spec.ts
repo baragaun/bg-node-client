@@ -1,4 +1,4 @@
-import { afterAll, beforeAll, describe, expect, test } from 'vitest';
+import { beforeAll, describe, expect, test } from 'vitest';
 
 import { BgNodeClient } from '../../../BgNodeClient.js';
 import chance from '../../../helpers/chance.js';
@@ -24,11 +24,7 @@ describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTra
     myUser = await signMeUpSpecHelper(undefined, false, client);
   });
 
-  afterAll(async () => {
-    await deleteMyUserSpecHelper(client);
-  });
-
-  test('should find the created wallet item transfer', async () => {
+  test('should find the created wallet item transfer as anonymous user', async () => {
     const itemCount = chance.integer({ min: 2, max: 4 });
     await createPurchaseOrderSpecHelper(
       {},
@@ -45,6 +41,10 @@ describe('operations.walletItemTransfer.findWalletItemTransferRecipientInfoByTra
       }, client);
       walletItemTransfers.push(response.walletItemTransfer);
     }
+
+    // This deletes the user, but also logs out the client. All API requests after this are
+    // made as an anonymous user.
+    await deleteMyUserSpecHelper(client);
 
     walletItemTransfer = chance.pickone(walletItemTransfers);
 

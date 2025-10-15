@@ -28,7 +28,7 @@ describe('operations.myUser.updateMyUser', () => {
     const userHandle = uniqueUserHandle();
     const email = uniqueEmail();
 
-    await client.operations.myUser.signUpUser({
+    const signUpResult = await client.operations.myUser.signUpUser({
       userHandle,
       firstName,
       lastName,
@@ -42,7 +42,13 @@ describe('operations.myUser.updateMyUser', () => {
         id: client.myUserId,
         lastName: newLastName,
       },
-      { cachePolicy: CachePolicy.network },
+      {
+        cachePolicy: CachePolicy.network,
+        polling: {
+          enabled: true,
+          oldUpdatedAt: signUpResult.object.myUser.updatedAt || signUpResult.object.myUser.createdAt,
+        },
+      },
     );
 
     // Even though the backend updates the object asynchronously, the client will poll until the
