@@ -730,6 +730,7 @@ const walletItemTransfer = {
   canceledAt: true,
   archivedAt: true,
   showOnline: true,
+  recipientPhoneNumber: true,
 };
 
 const walletItemTransferRecipientInfo = {
