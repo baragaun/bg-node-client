@@ -9,6 +9,7 @@ export declare class BgNodeClient {
     setConfig: (config: import("./index.js").BgNodeClientConfig) => void;
     config: () => import("./index.js").BgNodeClientConfig;
     clientInfoStore: ClientInfoStore;
+    initNatsClient: () => Promise<void>;
     close: (done?: () => void) => void;
     get isInitialized(): boolean;
     get isOnline(): boolean;
