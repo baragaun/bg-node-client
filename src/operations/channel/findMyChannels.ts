@@ -151,11 +151,8 @@ const findMyChannels = async (
             });
           }
         }
-        natsService.addChannelSubscriptions(channel.id);
-        natsService.subscribeToChannel(channel.id);
         natsService.subscribeToChannelMessages(channel.id);
-        natsService.addChannelSubscriptions(channel.id);
-        natsService.subscribeToChannelMessages(channel.id);
+        natsService.subscribeToMyChannels();
       }
     }
 
