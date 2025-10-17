@@ -19,7 +19,7 @@ const consumerConfig = {
     customizations: {
       enableChannels: true,
       enableGroupChannels: false,
-      enableNats: false,
+      enableNats: true,
       enableMarketplace: true,
     },
   },
