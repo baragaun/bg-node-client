@@ -79,14 +79,14 @@ const createChannel = async (
         {timeout: 5000},
         (error, ack) => {
           if (error) {
-            console.error('createChannel: Failed to publish NATS message', {
+            logger.error('createChannel: Failed to publish NATS message', {
               channelMessageId: result.object.id,
               subject: streamNames(result.object.id).channelMessages,
               error: error.message,
               stack: error.stack,
             });
           } else {
-            console.debug('createChannel: Successfully published NATS message', {
+            logger.debug('createChannel: Successfully published NATS message', {
               channelMessageId: result.object.id,
               subject: streamNames(result.object.id).channelMessages,
               ack,
