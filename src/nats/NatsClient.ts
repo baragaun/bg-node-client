@@ -2,7 +2,6 @@ import * as jetstream from '@nats-io/jetstream';
 import * as nats from '@nats-io/nats-core';
 import { NatsConnection } from '@nats-io/transport-node';
 
-
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
 import { NatsOptions } from '../types/NatsOptions.js';

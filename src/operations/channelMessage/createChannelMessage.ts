@@ -46,6 +46,10 @@ const createChannelMessage = async (
 
     const result = await fsdata.channelMessage.createChannelMessage(props);
 
+    if (result.object) {
+      result.object = new ChannelMessage(result.object);
+    }
+
     if (!result.error || result.object) {
       await db.insert<ChannelMessage>(result.object, ModelType.ChannelMessage);
 

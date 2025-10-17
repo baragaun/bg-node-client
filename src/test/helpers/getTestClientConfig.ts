@@ -90,15 +90,15 @@ export const getTestClientConfig = (
     },
   };
 
-  if (consumer && consumerConfig[config.consumer]) {
-    config.consumer = consumerConfig[config.consumer].consumer;
+  if (consumer && consumerConfig[consumer]) {
+    config.consumer = consumerConfig[consumer].consumer;
 
-    if (consumerConfig[config.consumer].apiUrl) {
-      config.fsdata.url = consumerConfig[config.consumer].apiUrl;
+    if (consumerConfig[consumer].apiUrl) {
+      config.fsdata.url = consumerConfig[consumer].apiUrl;
     }
 
-    if (consumerConfig[config.consumer].customizations) {
-      Object.assign(config.customizations, consumerConfig[config.consumer].customizations);
+    if (consumerConfig[consumer].customizations) {
+      Object.assign(config.customizations, consumerConfig[consumer].customizations);
     }
   }
 
