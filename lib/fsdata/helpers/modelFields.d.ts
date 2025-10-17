@@ -794,6 +794,7 @@ declare const modelFields: {
         canceledAt: boolean;
         archivedAt: boolean;
         showOnline: boolean;
+        recipientPhoneNumber: boolean;
         id: boolean;
         createdAt: boolean;
         createdBy: boolean;
@@ -854,6 +855,7 @@ declare const modelFields: {
             canceledAt: boolean;
             archivedAt: boolean;
             showOnline: boolean;
+            recipientPhoneNumber: boolean;
             id: boolean;
             createdAt: boolean;
             createdBy: boolean;
