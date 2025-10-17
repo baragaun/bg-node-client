@@ -4,7 +4,7 @@ import subscribeToChannelMessages from './subscribeToChannelMessages.js';
 import subscribeToMyChannels from './subscribeToMyChannels.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
-import findMyChannelsV2 from '../operations/channel/findMyChannelsV2.js';
+import findMyChannelsV2 from '../operations/channel/findMyChannels.js';
 import { NatsOptions } from '../types/NatsOptions.js';
 
 const init = async (options: Partial<NatsOptions>): Promise<void> => {
@@ -19,7 +19,8 @@ const init = async (options: Partial<NatsOptions>): Promise<void> => {
 
   const myChannelsResult = await findMyChannelsV2(
     undefined,
-    true,
+    undefined,
+    undefined,
     undefined,
     // We only want to fetch the channels from the local DB:
     { cachePolicy: CachePolicy.network },
