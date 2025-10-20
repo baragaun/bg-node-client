@@ -65,7 +65,15 @@ export class NatsClient {
       this.jsm = null;
     });
 
-    this.startMonitoring();
+    // This starts monitoring connection status
+    try {
+      for await (const status of this.connection.status()) {
+        this.processStatus(status);
+      }
+    } catch (error) {
+      logger.error('NatsClient.startMonitoring: Error in status monitoring:',
+        { error }, { remote: true });
+    }
 
     // Get JetStream client and manager
     this.js = jetstream.jetstream(this.connection);
@@ -167,22 +175,6 @@ export class NatsClient {
         logger.error('NatsClient.processStatus: connection error:',
           { error: status.error }, { remote: true });
         break;
-    }
-  }
-
-  private async startMonitoring(): Promise<void> {
-    if (!this.connection) {
-      logger.error('NatsClient.startMonitoring: No connection available.');
-      return;
-    }
-
-    try {
-      for await (const status of this.connection.status()) {
-        this.processStatus(status);
-      }
-    } catch (error) {
-      logger.error('NatsClient.startMonitoring: Error in status monitoring:',
-        { error }, { remote: true });
     }
   }
 }

@@ -22,12 +22,8 @@ declare const natsService: {
     getOrderedConsumer: (streamName: string, options?: Partial<import("@nats-io/jetstream").OrderedConsumerOptions>) => Promise<import("@nats-io/jetstream").Consumer>;
     getStream: (streamName: string) => Promise<import("@nats-io/jetstream").Stream>;
     init: (options: Partial<import("../index.js").NatsOptions>) => Promise<void>;
-    publishMessage: <T extends import("../types/payloadTypes.js").BaseNatsPayload | string = string>(subject: string, payload: T | string, options?: Partial<import("./publishMessage.js").NatsPublishOptions>, callback?: (error?: Error | null, ack?: import("@nats-io/jetstream").PubAck) => void) => void;
-    streamNames: (channelId?: string) => {
-        channel: string;
-        channelMessages: string;
-    };
-    subscribeToChannelMessages: (channelId: string) => void;
-    subscribeToMyChannels: () => void;
+    publishMessage: <T extends import("../types/eventPayloadTypes.js").BaseNatsPayload | string = string>(subject: string, payload: T | string, options?: Partial<import("./publishMessage.js").NatsPublishOptions>, callback?: (error?: Error | null, ack?: import("@nats-io/jetstream").PubAck) => void) => void;
+    buildStreamName: (eventType: import("../enums.js").EventType, objectId: string) => string;
+    subscribeToMyChannels: () => Promise<void>;
 };
 export default natsService;

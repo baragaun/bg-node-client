@@ -1,5 +1,5 @@
 import { PubAck } from '@nats-io/jetstream';
-import { BaseNatsPayload } from '../types/payloadTypes.js';
+import { BaseNatsPayload } from '../types/eventPayloadTypes.js';
 export interface NatsPublishOptions {
     headers?: Record<string, string>;
     msgID?: string;

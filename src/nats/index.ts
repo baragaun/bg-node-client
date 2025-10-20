@@ -1,5 +1,6 @@
 import { SubscriptionOptions } from '@nats-io/nats-core';
 
+import { buildStreamName } from './buildStreamName.js';
 import close from './close.js';
 import { consumeStream } from './consumeStream.js';
 import { createConsumer } from './createConsumer.js';
@@ -14,9 +15,7 @@ import { getStream } from './getStream.js';
 import init from './init.js';
 import natsStore from './natsStore.js';
 import { publishMessage } from './publishMessage.js';
-import streamNames from './streamNames.js';
-import subscribeToChannelMessages from './subscribeToChannelMessages.js';
-import subscribeToMyChannels from './subscribeToMyChannels.js';
+import { subscribeToMyChannelEvents } from './subscribeToMyChannelEvents.js';
 
 const natsService = {
   addSubscription: (subject: string, options: SubscriptionOptions) : void => {
@@ -36,9 +35,8 @@ const natsService = {
   getStream,
   init,
   publishMessage,
-  streamNames,
-  subscribeToChannelMessages,
-  subscribeToMyChannels,
+  buildStreamName,
+  subscribeToMyChannelEvents,
 };
 
 export default natsService;

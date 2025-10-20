@@ -3,7 +3,7 @@ import * as nats from '@nats-io/nats-core';
 
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
-import { BaseNatsPayload } from '../types/payloadTypes.js';
+import { BaseNatsPayload } from '../types/eventPayloadTypes.js';
 
 export interface NatsPublishOptions {
   headers?: Record<string, string>;

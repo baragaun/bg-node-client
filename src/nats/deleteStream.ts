@@ -21,7 +21,7 @@ export const deleteStream = async (
       logger.debug('nats.deleteStream: stream not found', { streamName });
       return false;
     }
-    logger.error('Error deleting stream:', { error });
+    logger.error('Error deleting jetstream:', { error });
     return false;
   }
 };

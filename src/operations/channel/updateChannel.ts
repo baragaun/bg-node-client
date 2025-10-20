@@ -1,10 +1,10 @@
-import { ModelType } from '../../enums.js';
+import { ChannelEventReason, EventType, ModelType } from '../../enums.js';
 import { defaultQueryOptionsForMutations } from '../../helpers/defaults.js';
 import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
+import { buildStreamName } from '../../nats/buildStreamName.js';
 import natsService from '../../nats/index.js';
-import streamNames from '../../nats/streamNames.js';
-import { NatsPayloadModelChanged } from '../../types/payloadTypes.js';
+import { ChannelEventPayload } from '../../types/eventPayloadTypes.js';
 import { QueryOptions } from '../../types/QueryOptions.js';
 import { QueryResult } from '../../types/QueryResult.js';
 import update from '../update.js';
@@ -15,27 +15,30 @@ const updateChannel = async (
 ): Promise<QueryResult<Channel>> => {
   const result = await update<Channel>(changes, ModelType.Channel, queryOptions);
   if (result.object) {
+    const subject = buildStreamName(EventType.channel, result.object.id);
      natsService.publishMessage(
-        streamNames(result.object.id).channel,
+        subject,
         {
-          objectId: result.object.id,
-          modelType: ModelType.Channel,
-          changeType: 'updated',
-          object: result.object,
-        } as NatsPayloadModelChanged<Channel>,
-        {timeout: 5000},
+          channelId: result.object.id,
+          reason: ChannelEventReason.updated,
+          data: {
+            channel: result.object,
+          },
+          // serviceRequest: queryOptions.serviceRequest,
+        } as ChannelEventPayload,
+        { timeout: 5000 },
         (error, ack) => {
           if (error) {
             logger.error('updatedChannel: Failed to publish NATS message', {
               channelMessageId: result.object.id,
-              subject: streamNames(result.object.id).channelMessages,
+              subject,
               error: error.message,
               stack: error.stack,
             });
           } else {
             logger.debug('updatedChannel: Successfully published NATS message', {
               channelMessageId: result.object.id,
-              subject: streamNames(result.object.id).channelMessages,
+              subject,
               ack,
             });
           }

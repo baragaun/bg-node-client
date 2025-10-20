@@ -1,2 +1,1 @@
-declare const subscribeToChannelMessages: (channelId: string) => void;
-export default subscribeToChannelMessages;
+export declare const subscribeToChannelMessages: (channelId: string) => void;

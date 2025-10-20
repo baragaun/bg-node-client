@@ -364,6 +364,44 @@ export declare enum UploadedAssetType {
     profileHeroImage = "profileHeroImage",
     unset = "unset"
 }
+export declare enum ChannelEventReason {
+    archived = "archived",
+    deleted = "deleted",
+    suspended = "suspended",
+    unarchived = "unarchived",
+    unsuspended = "unsuspended",
+    updated = "updated",
+    invitationCreated = "invitationCreated",
+    invitationUpdated = "invitationUpdated",
+    invitationDeleted = "invitationDeleted",
+    invitationDismissedFromInboxByRecipient = "invitationDismissedFromInboxByRecipient",
+    invitationDismissedFromInboxBySender = "invitationDismissedFromInboxBySender",
+    messageCreated = "messageCreated",
+    messageUpdated = "messageUpdated",
+    messageDeleted = "messageDeleted",
+    participantCreated = "participantCreated",
+    participantUpdated = "participantUpdated",
+    participantDeleted = "participantDeleted",
+    userSuspended = "userSuspended",
+    userUnsuspended = "userUnsuspended"
+}
+export declare enum EventType {
+    channel = "channel",
+    myUser = "myUser"
+}
+export declare enum MyUserEventReason {
+    myUserCreated = "myUserCreated",
+    myUserDeleted = "myUserDeleted",
+    myUserUpdated = "myUserUpdated",
+    myUserSuspended = "myUserSuspended",
+    channelCreated = "channelCreated",
+    channelInvitationReceived = "channelInvitationReceived",
+    channelInvitationAccepted = "channelInvitationAccepted",
+    channelInvitationDeclined = "channelInvitationDeclined",
+    inboxUpdated = "inboxUpdated",
+    blockedByAnotherUser = "blockedByAnotherUser",
+    unblockedByAnotherUser = "unblockedByAnotherUser"
+}
 export declare enum ProductType {
     giftCard = "giftCard",
     other = "other"
