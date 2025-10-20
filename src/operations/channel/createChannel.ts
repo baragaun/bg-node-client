@@ -1,12 +1,21 @@
 import db from '../../db/db.js';
-import { EventType, ModelType, MutationType, MyUserEventReason } from '../../enums.js';
+import {
+  ChannelEventReason,
+  EventType,
+  ModelType,
+  MutationType,
+  UserEventReason,
+} from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
 import { buildStreamName } from '../../nats/buildStreamName.js';
 import natsService from '../../nats/index.js';
-import { MyUserEventPayload } from '../../types/eventPayloadTypes.js';
+import {
+  ChannelEventPayload,
+  UserEventPayload,
+} from '../../types/eventPayloadTypes.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannel = async (
@@ -70,34 +79,51 @@ const createChannel = async (
       const subject = buildStreamName(EventType.myUser, result.object.id);
       result.object = new Channel(result.object);
 
-      natsService.publishMessage(
-        subject,
+      natsService.publishChannelEvent(
+        result.object.id,
         {
-          reason: MyUserEventReason.channelCreated,
           channelId: result.object.id,
+          channelMessageId: result.object.id,
+          reason: ChannelEventReason.updated,
           data: {
             channel: result.object,
           },
           // serviceRequest: queryOptions.serviceRequest,
-        } as MyUserEventPayload,
-        { timeout: 5000 },
-        (error, ack) => {
-          if (error) {
-            logger.error('createChannel: Failed to publish NATS message', {
-              channelMessageId: result.object.id,
-              subject,
-              error: error.message,
-              stack: error.stack,
-            });
-          } else {
-            logger.debug('createChannel: Successfully published NATS message', {
-              channelMessageId: result.object.id,
-              subject,
-              ack,
-            });
-          }
-        },
-      );
+        } as ChannelEventPayload,
+      ).catch((error) => {
+        logger.error('updateChannel: Failed to publish NATS message', {
+          channelMessageId: result.object.id,
+          subject,
+          error: error.message,
+          stack: error.stack,
+        });
+      });
+
+      // Notifying other participants of this channel. We created the channel, now we need to
+      // let the other participants know that there is a new channel they are part of.
+      const otherUsersIds = result.object.userIds.filter(id => id !== props.createdBy);
+      for (const otherUserId of otherUsersIds) {
+        const subject = buildStreamName(EventType.user, otherUserId);
+
+        natsService.publishUserEvent(
+          otherUserId,
+          {
+            channelId: result.object.id,
+            reason: UserEventReason.channelCreated,
+            data: {
+              channel: result.object,
+            },
+            // serviceRequest: queryOptions.serviceRequest,
+          } as UserEventPayload,
+        ).catch((error) => {
+          logger.error('createChannel: Failed to publish NATS message to other participants', {
+            channelMessageId: result.object.id,
+            subject,
+            error: error.message,
+            stack: error.stack,
+          });
+        });
+      }
     }
 
     if (!result.error || result.object) {

@@ -1,9 +1,16 @@
 import db from '../../db/db.js';
-import { ChannelInvitationStatus, ModelType, MutationType } from '../../enums.js';
+import {
+  ChannelInvitationStatus,
+  ModelType,
+  MutationType,
+  UserEventReason,
+} from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { ChannelInvitation } from '../../models/ChannelInvitation.js';
+import natsService from '../../nats/index.js';
+import { UserEventPayload } from '../../types/eventPayloadTypes.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const acceptChannelInvitation = async (
@@ -49,6 +56,25 @@ const acceptChannelInvitation = async (
 
     if (!result.error || result.object) {
       await db.insert<ChannelInvitation>(result.object, ModelType.ChannelInvitation);
+
+      // Notify the recipient about the accepted invitation:
+      natsService.publishUserEvent(
+        result.object.recipientId,
+        {
+          channelInvitationId: result.object.id,
+          reason: UserEventReason.channelInvitationAccepted,
+          data: {
+            channelInvitation: result.object,
+          },
+          // serviceRequest: queryOptions.serviceRequest,
+        } as UserEventPayload,
+      ).catch((error) => {
+        logger.error('acceptChannelInvitation: Failed to publish NATS message to the sender', {
+          channelMessageId: result.object.id,
+          error: error.message,
+          stack: error.stack,
+        });
+      });
     }
 
     return result;

@@ -9,6 +9,7 @@ const updateChannelParticipant = async (
   changes: Partial<ChannelParticipant>,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<ChannelParticipant>> => {
+  // todo: handle this the same way as createChannelParticipant
   return update<ChannelParticipant>(changes, ModelType.ChannelParticipant, queryOptions);
 };
 

@@ -24,35 +24,25 @@ const updateChannelMessage = async (
     const channelMessage = new ChannelMessage(result.object);
     Object.assign(channelMessage, changes);
 
-    natsService.publishMessage(
-        subject,
-        {
-          channelId: channelMessage.channelId,
-          channelMessageId: result.object.id,
-          reason: ChannelEventReason.messageUpdated,
-          data: {
-            channelMessage,
-          },
-          // serviceRequest: queryOptions.serviceRequest,
-        } as ChannelEventPayload,
-        { timeout: 5000 },
-        (error, ack) => {
-          if (error) {
-            logger.error('updatedChannelMessage: Failed to publish NATS message', {
-              channelMessageId: result.object.id,
-              subject,
-              error: error.message,
-              stack: error.stack,
-            });
-          } else {
-            logger.debug('updatedChannelMessage: Successfully published NATS message', {
-              channelMessageId: result.object.id,
-              subject,
-              ack,
-            });
-          }
+    natsService.publishChannelEvent(
+      result.object.id,
+      {
+        channelId: channelMessage.channelId,
+        channelMessageId: result.object.id,
+        reason: ChannelEventReason.messageUpdated,
+        data: {
+          channelMessage,
         },
-      );
+        // serviceRequest: queryOptions.serviceRequest,
+      } as ChannelEventPayload,
+    ).catch((error) => {
+      logger.error('updateChannelMessage: Failed to publish NATS message', {
+        channelMessageId: result.object.id,
+        subject,
+        error: error.message,
+        stack: error.stack,
+      });
+    });
   }
 
   return result;

@@ -9,6 +9,7 @@ const updateChannelInvitation = async (
   changes: Partial<ChannelInvitation>,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<ChannelInvitation>> => {
+  // todo: handle this the same way as acceptChannelInvitation to notify the inviter
   return update<ChannelInvitation>(changes, ModelType.ChannelInvitation, queryOptions);
 };
 

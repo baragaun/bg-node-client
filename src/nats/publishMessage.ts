@@ -1,9 +1,15 @@
 import { JetStreamPublishOptions, PubAck } from '@nats-io/jetstream';
 import * as nats from '@nats-io/nats-core';
 
+import { EventType } from '../enums.js';
+import { buildStreamName } from './buildStreamName.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
-import { BaseNatsPayload } from '../types/eventPayloadTypes.js';
+import {
+  BaseNatsPayload,
+  ChannelEventPayload,
+  MyUserEventPayload, UserEventPayload,
+} from '../types/eventPayloadTypes.js';
 
 export interface NatsPublishOptions {
   headers?: Record<string, string>;
@@ -69,23 +75,57 @@ const publishImpl = async <T extends BaseNatsPayload | string = string>(
   return pubAck;
 };
 
-export const publishMessage = <T extends BaseNatsPayload | string = string>(
+export const publishMessage = async <T extends BaseNatsPayload | string = string>(
   subject: string,
   payload: T | string,
   options?: Partial<NatsPublishOptions>,
-  callback?: (error?: Error | null, ack?: PubAck) => void,
-): void => {
-  publishImpl(subject, payload, options)
-    .then((ack) => {
-      logger.debug('nats.publishMessage: message published successfully.', {
-        subject, payload, options, ack,
-      });
-      callback?.(null, ack);
-    })
-    .catch((error) => {
-      logger.error('nats.publishMessage: error publishing message.', {
-        subject, payload, options, error,
-      });
-      callback?.(error);
+): Promise<PubAck> => {
+  try {
+    const result = await publishImpl(subject, payload, options);
+
+    logger.debug('nats.publishMessage: message published successfully.', {
+      subject, payload, options, result,
     });
+
+    return result;
+  } catch (error) {
+    logger.error('nats.publishMessage: exception publishing message.', {
+      subject, payload, options, error,
+    });
+
+    throw error;
+  }
+};
+
+export const publishChannelEvent = async (
+  channelId: string,
+  payload: ChannelEventPayload,
+): Promise<PubAck> => {
+  const subject = buildStreamName(EventType.channel, channelId);
+
+  return publishMessage(subject, payload, { timeout: 5000 });
+};
+
+export const publishMyUserEvent = async (
+  payload: MyUserEventPayload,
+): Promise<PubAck> => {
+  if (!libData.isInitialized()) {
+    logger.error('nats.publishMyUserEvent: unavailable');
+    throw new Error('unavailable');
+  }
+
+  const clientInfo = libData.clientInfoStore().clientInfo;
+  const myUserId = clientInfo.myUserId;
+  const subject = buildStreamName(EventType.myUser, myUserId);
+
+  return publishMessage(subject, payload, { timeout: 5000 });
+};
+
+export const publishUserEvent = async (
+  userId: string,
+  payload: UserEventPayload,
+): Promise<PubAck> => {
+  const subject = buildStreamName(EventType.myUser, userId);
+
+  return publishMessage(subject, payload, { timeout: 5000 });
 };

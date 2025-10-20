@@ -461,6 +461,7 @@ export enum ChannelEventReason {
 export enum EventType {
   channel = 'channel',
   myUser = 'myUser',
+  user = 'user',
 }
 
 export enum MyUserEventReason {
@@ -470,6 +471,22 @@ export enum MyUserEventReason {
   myUserSuspended = 'myUserSuspended',
 
   channelCreated = 'channelCreated',
+  channelInvitationReceived = 'channelInvitationReceived',
+  channelInvitationAccepted = 'channelInvitationAccepted',
+  channelInvitationDeclined = 'channelInvitationDeclined',
+
+  inboxUpdated = 'inboxUpdated',
+
+  blockedByAnotherUser = 'blockedByAnotherUser',
+  unblockedByAnotherUser = 'unblockedByAnotherUser',
+}
+
+/** NATS event reasons for messages related to other users, not MyUser.
+ *
+ */
+export enum UserEventReason {
+  channelCreated = 'channelCreated',
+  channelDeleted = 'channelDeleted',
   channelInvitationReceived = 'channelInvitationReceived',
   channelInvitationAccepted = 'channelInvitationAccepted',
   channelInvitationDeclined = 'channelInvitationDeclined',

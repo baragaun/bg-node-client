@@ -151,7 +151,7 @@ const findMyChannels = async (
             });
           }
         }
-        await natsService.subscribeToMyChannels();
+        await natsService.subscribeToMyChannelEvents();
       }
     }
 

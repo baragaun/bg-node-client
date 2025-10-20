@@ -18,5 +18,4 @@ export declare class NatsClient {
     getConnection(): nats.NatsConnection | null;
     private ensureConnection;
     private processStatus;
-    private startMonitoring;
 }

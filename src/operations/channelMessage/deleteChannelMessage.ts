@@ -16,37 +16,33 @@ const deleteChannelMessage = async (
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<ServiceRequest>> => {
 
-  const result = await deleteFnc(id, ModelType.ChannelMessage, deletePhysically, queryOptions);
+  const result = await deleteFnc(
+    id,
+    ModelType.ChannelMessage,
+    deletePhysically,
+    queryOptions,
+  );
 
   if (result.object) {
     const subject = buildStreamName(EventType.channel, result.object.id);
     const channelMessage = new ChannelMessage({ id: result.object.id });
-    natsService.publishMessage(
-      subject,
+
+    natsService.publishChannelEvent(
+      result.object.id,
       {
         channelId: channelMessage.channelId,
         channelMessageId: result.object.id,
         reason: ChannelEventReason.messageDeleted,
         // serviceRequest: queryOptions.serviceRequest,
       } as ChannelEventPayload,
-        { timeout: 5000 },
-        (error, ack) => {
-          if (error) {
-            logger.error('updatedChannelMessage: Failed to publish NATS message', {
-              channelMessageId: result.object.id,
-              subject,
-              error: error.message,
-              stack: error.stack,
-            });
-          } else {
-            logger.debug('updatedChannelMessage: Successfully published NATS message', {
-              channelMessageId: result.object.id,
-              subject,
-              ack,
-            });
-          }
-        },
-      );
+    ).catch((error) => {
+      logger.error('deleteChannelMessage: Failed to publish NATS message', {
+        channelMessageId: result.object.id,
+        subject,
+        error: error.message,
+        stack: error.stack,
+      });
+    });
   }
 
   return result;

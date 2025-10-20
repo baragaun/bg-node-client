@@ -14,7 +14,12 @@ import { getOrderedConsumer } from './getOrderedConsumer.js';
 import { getStream } from './getStream.js';
 import init from './init.js';
 import natsStore from './natsStore.js';
-import { publishMessage } from './publishMessage.js';
+import {
+  publishChannelEvent,
+  publishMessage,
+  publishMyUserEvent,
+  publishUserEvent,
+} from './publishMessage.js';
 import { subscribeToMyChannelEvents } from './subscribeToMyChannelEvents.js';
 
 const natsService = {
@@ -22,6 +27,7 @@ const natsService = {
     natsStore.addSubscription(subject, options);
   },
 
+  buildStreamName,
   close,
   consumeStream,
   createConsumer,
@@ -34,8 +40,10 @@ const natsService = {
   getOrderedConsumer,
   getStream,
   init,
+  publishChannelEvent,
   publishMessage,
-  buildStreamName,
+  publishMyUserEvent,
+  publishUserEvent,
   subscribeToMyChannelEvents,
 };
 

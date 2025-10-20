@@ -56,8 +56,8 @@ const createChannelMessage = async (
       const subject = buildStreamName(EventType.channel, result.object.id);
       const channelMessage = new ChannelMessage(result.object);
 
-      natsService.publishMessage(
-        subject,
+      natsService.publishChannelEvent(
+        result.object.id,
         {
           channelId: channelMessage.channelId,
           channelMessageId: result.object.id,
@@ -67,24 +67,14 @@ const createChannelMessage = async (
           },
           // serviceRequest: queryOptions.serviceRequest,
         } as ChannelEventPayload,
-        { timeout: 5000 },
-        (error, ack) => {
-          if (error) {
-            logger.error('createChannelMessage: Failed to publish NATS message', {
-              channelMessageId: result.object.id,
-              subject,
-              error: error.message,
-              stack: error.stack,
-            });
-          } else {
-            logger.debug('createChannelMessage: Successfully published NATS message', {
-              channelMessageId: result.object.id,
-              subject,
-              ack,
-            });
-          }
-        },
-      );
+      ).catch((error) => {
+        logger.error('createChannelMessage: Failed to publish NATS message', {
+          channelMessageId: result.object.id,
+          subject,
+          error: error.message,
+          stack: error.stack,
+        });
+      });
     }
 
     return result;

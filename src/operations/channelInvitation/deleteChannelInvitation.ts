@@ -10,6 +10,7 @@ const deleteChannelInvitation = async (
   deletePhysically: boolean,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<ServiceRequest>> => {
+  // todo: handle this the same way as acceptChannelInvitation to notify the inviter
   return deleteFnc(id, ModelType.ChannelInvitation, deletePhysically, queryOptions);
 };
 

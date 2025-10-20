@@ -10,6 +10,7 @@ const deleteChannelParticipant = async (
   deletePhysically: boolean,
   queryOptions: QueryOptions = defaultQueryOptionsForMutations,
 ): Promise<QueryResult<ServiceRequest>> => {
+  // todo: handle this analogously to createChannelParticipant
   return deleteFnc(id, ModelType.ChannelParticipant, deletePhysically, queryOptions);
 };
 
