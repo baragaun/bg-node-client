@@ -6,7 +6,7 @@ export const buildStreamName = (
   objectId: string,
 ): string => {
   if (
-    (eventType === EventType.channel || eventType === EventType.myUser) &&
+    (eventType === EventType.channel || eventType === EventType.myUser || eventType === EventType.user) &&
     !objectId
   ) {
     logger.error('nats.streamNames: objectId is required');
@@ -17,7 +17,9 @@ export const buildStreamName = (
     case EventType.channel:
       return `first.spark.dev.channel.${objectId}`;
     case EventType.myUser:
-      return `first.spark.dev.channel.${objectId}`;
+      return `first.spark.dev.myUser.${objectId}`;
+    case EventType.user:
+      return `first.spark.dev.user.${objectId}`;
     default:
       logger.error(`nats.buildStreamName: Unsupported eventType ${eventType}`);
       throw new Error(`Unsupported eventType ${eventType}`);
