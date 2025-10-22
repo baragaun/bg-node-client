@@ -458,8 +458,16 @@ export enum ChannelEventReason {
   userUnsuspended = 'userUnsuspended',
 }
 
+export enum ChannelMessageEventReason {
+  created = 'created',
+  deleted = 'deleted',
+  seen = 'seen',
+  updated = 'updated',
+}
+
 export enum EventType {
   channel = 'channel',
+  channelMessage = 'channelMessage',
   myUser = 'myUser',
   user = 'user',
 }

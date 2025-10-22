@@ -385,8 +385,15 @@ export declare enum ChannelEventReason {
     userSuspended = "userSuspended",
     userUnsuspended = "userUnsuspended"
 }
+export declare enum ChannelMessageEventReason {
+    created = "created",
+    deleted = "deleted",
+    seen = "seen",
+    updated = "updated"
+}
 export declare enum EventType {
     channel = "channel",
+    channelMessage = "channelMessage",
     myUser = "myUser",
     user = "user"
 }
@@ -408,6 +415,7 @@ export declare enum MyUserEventReason {
  */
 export declare enum UserEventReason {
     channelCreated = "channelCreated",
+    channelDeleted = "channelDeleted",
     channelInvitationReceived = "channelInvitationReceived",
     channelInvitationAccepted = "channelInvitationAccepted",
     channelInvitationDeclined = "channelInvitationDeclined",
