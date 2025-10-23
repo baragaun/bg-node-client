@@ -1,5 +1,4 @@
 /** Copyright ©2025 Baragaun, Inc. - All rights reserved **/
-
 export enum AppFeature {
   testFeatures1 = 'testFeatures1',
   testFeatures2 = 'testFeatures2',
@@ -43,6 +42,7 @@ export enum BarcodeType {
 
 export enum BgListenerTopic {
   channel = 'channel',
+  channelMessage = 'channelMessage',
   myUser = 'myUser',
 }
 
@@ -427,6 +427,101 @@ export enum UploadedAssetType {
   profileHeroImage = 'profileHeroImage',
   unset = 'unset'
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// NATS
+
+export enum ChannelEventReason {
+  archived = 'archived',
+  deleted = 'deleted',
+  suspended = 'suspended',
+  unarchived = 'unarchived',
+  unsuspended = 'unsuspended',
+  updated = 'updated',
+
+  invitationCreated = 'invitationCreated',
+  invitationUpdated = 'invitationUpdated',
+  invitationDeleted = 'invitationDeleted',
+  invitationDismissedFromInboxByRecipient = 'invitationDismissedFromInboxByRecipient',
+  invitationDismissedFromInboxBySender = 'invitationDismissedFromInboxBySender',
+
+  messageCreated = 'messageCreated',
+  messageUpdated = 'messageUpdated',
+  messageDeleted = 'messageDeleted',
+
+  participantCreated = 'participantCreated',
+  participantUpdated = 'participantUpdated',
+  participantDeleted = 'participantDeleted',
+
+  userSuspended = 'userSuspended',
+  userUnsuspended = 'userUnsuspended',
+}
+
+export enum ChannelMessageEventReason {
+  created = 'created',
+  deleted = 'deleted',
+  seen = 'seen',
+  updated = 'updated',
+}
+
+export enum EventType {
+  channel = 'channel',
+  user = 'user',
+}
+
+export enum UserEventReason {
+  userCreated = 'userCreated',
+  userDeleted = 'userDeleted',
+  userUpdated = 'userUpdated',
+  userSuspended = 'userSuspended',
+
+  channelCreated = 'channelCreated',
+  channelDeleted = 'channelDeleted',
+  channelInvitationReceived = 'channelInvitationReceived',
+  channelInvitationAccepted = 'channelInvitationAccepted',
+  channelInvitationDeclined = 'channelInvitationDeclined',
+
+  inboxUpdated = 'inboxUpdated',
+
+  blockedByAnotherUser = 'blockedByAnotherUser',
+  unblockedByAnotherUser = 'unblockedByAnotherUser',
+}
+
+// export enum InvitationEventReason {
+//   accepted = 'accepted',
+//   archived = 'archived',
+//   created = 'created',
+//   declined = 'declined',
+//   deleted = 'deleted',
+//   received = 'received',
+//   seen = 'seen',
+//   statusChanged = 'statusChanged',
+//   suspended = 'suspended',
+//   unarchived = 'unarchived',
+//   unsuspended = 'unsuspended',
+//   updated = 'updated',
+//   dismissedFromInboxByRecipient = 'dismissedFromInboxByRecipient',
+//   dismissedFromInboxBySender = 'dismissedFromInboxBySender',
+// }
+//
+// export enum ChannelMessageEventReason {
+//   created = 'created',
+//   deleted = 'deleted',
+//   received = 'received',
+//   seen = 'seen',
+//   suspended = 'suspended',
+//   unsuspended = 'unsuspended',
+//   updated = 'updated',
+// }
+//
+// export enum ChannelParticipantEventReason {
+//   created = 'created',
+//   deleted = 'deleted',
+//   suspended = 'suspended',
+//   unsuspended = 'unsuspended',
+//   updated = 'updated',
+// }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // Marketplace & Wallet:

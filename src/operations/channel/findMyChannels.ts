@@ -10,6 +10,7 @@ import { ChannelListFilter } from '../../models/ChannelListFilter.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
 import { ChannelParticipant } from '../../models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from '../../models/ChannelParticipantListFilter.js';
+import natsService from '../../nats/index.js';
 import { ChannelListItem } from '../../types/ChannelListItem.js';
 import { ChannelMessageScope } from '../../types/ChannelMessageScope.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
@@ -150,6 +151,7 @@ const findMyChannels = async (
             });
           }
         }
+        await natsService.subscribeToMyChannelEvents();
       }
     }
 

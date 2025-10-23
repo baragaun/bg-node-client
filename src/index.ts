@@ -70,7 +70,7 @@ export * from './models/ShoppingCartItemListFilter.js';
 // Types:
 export * from './ClientInfoStore.js';
 export * from './types/BgBaseListener.js';
-export * from './types/BgChannelListener.js';
+export * from './types/ChannelEventListener.js';
 export * from './types/BgNodeClientConfig.js';
 export * from './types/ChannelEventPayload.js';
 export * from './types/ChannelListItem.js';
