@@ -17,7 +17,6 @@ import natsStore from './natsStore.js';
 import {
   publishChannelEvent,
   publishMessage,
-  publishMyUserEvent,
   publishUserEvent,
 } from './publishMessage.js';
 import { subscribeToMyChannelEvents } from './subscribeToMyChannelEvents.js';
@@ -42,7 +41,6 @@ const natsService = {
   init,
   publishChannelEvent,
   publishMessage,
-  publishMyUserEvent,
   publishUserEvent,
   subscribeToMyChannelEvents,
 };

@@ -8,7 +8,7 @@ import logger from '../helpers/logger.js';
 import {
   BaseNatsPayload,
   ChannelEventPayload,
-  MyUserEventPayload, UserEventPayload,
+  UserEventPayload,
 } from '../types/eventPayloadTypes.js';
 
 export interface NatsPublishOptions {
@@ -106,26 +106,20 @@ export const publishChannelEvent = async (
   return publishMessage(subject, payload, { timeout: 5000 });
 };
 
-export const publishMyUserEvent = async (
-  payload: MyUserEventPayload,
-): Promise<PubAck> => {
-  if (!libData.isInitialized()) {
-    logger.error('nats.publishMyUserEvent: unavailable');
-    throw new Error('unavailable');
-  }
-
-  const clientInfo = libData.clientInfoStore().clientInfo;
-  const myUserId = clientInfo.myUserId;
-  const subject = buildStreamName(EventType.myUser, myUserId);
-
-  return publishMessage(subject, payload, { timeout: 5000 });
-};
-
 export const publishUserEvent = async (
-  userId: string,
+  userId: string | null | undefined,
   payload: UserEventPayload,
 ): Promise<PubAck> => {
-  const subject = buildStreamName(EventType.myUser, userId);
+  if (!userId) {
+    if (!libData.isInitialized()) {
+      logger.error('nats.publishUserEvent: unavailable');
+      throw new Error('unavailable');
+    }
+
+    const clientInfo = libData.clientInfoStore().clientInfo;
+    userId = clientInfo.myUserId;
+  }
+  const subject = buildStreamName(EventType.user, userId);
 
   return publishMessage(subject, payload, { timeout: 5000 });
 };

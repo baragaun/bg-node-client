@@ -1,4 +1,9 @@
-import { ChannelEventReason, ChannelMessageEventReason, ModelType, MyUserEventReason, UserEventReason } from '../enums.js';
+import {
+  ChannelEventReason,
+  ChannelMessageEventReason,
+  ModelType,
+  UserEventReason,
+} from '../enums.js';
 import { BaseModel } from '../models/BaseModel.js';
 import { Channel } from '../models/Channel.js';
 import { ChannelInvitation } from '../models/ChannelInvitation.js';
@@ -42,18 +47,6 @@ export interface ChannelMessageEventPayload extends BaseNatsPayload {
   }
 }
 
-export interface MyUserEventPayload extends BaseNatsPayload {
-  reason: MyUserEventReason,
-  channelId?: string;
-  otherUserId?: string,
-  data?: {
-    channel?: Channel;
-    channelInvitation?: ChannelInvitation;
-    myUser?: MyUser;
-    userInbox?: UserInbox;
-  }
-}
-
 export interface UserEventPayload extends BaseNatsPayload {
   reason: UserEventReason,
   channelId?: string;
@@ -61,6 +54,7 @@ export interface UserEventPayload extends BaseNatsPayload {
   data?: {
     channel?: Channel;
     channelInvitation?: ChannelInvitation;
+    myUser?: MyUser;
     userInbox?: UserInbox;
   }
 }

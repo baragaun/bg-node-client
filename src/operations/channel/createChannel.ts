@@ -76,7 +76,7 @@ const createChannel = async (
     const result = await fsdata.channel.createChannel(props);
 
     if (result.object) {
-      const subject = buildStreamName(EventType.myUser, result.object.id);
+      const subject = buildStreamName(EventType.user, result.object.id);
       result.object = new Channel(result.object);
 
       natsService.publishChannelEvent(

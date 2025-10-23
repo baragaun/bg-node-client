@@ -6,7 +6,7 @@ export const buildStreamName = (
   objectId: string,
 ): string => {
   if (
-    (eventType === EventType.channel || eventType === EventType.myUser || eventType === EventType.user) &&
+    (eventType === EventType.channel || eventType === EventType.user || eventType === EventType.user) &&
     !objectId
   ) {
     logger.error('nats.streamNames: objectId is required');
@@ -16,8 +16,6 @@ export const buildStreamName = (
   switch (eventType) {
     case EventType.channel:
       return `first.spark.dev.channel.${objectId}`;
-    case EventType.myUser:
-      return `first.spark.dev.myUser.${objectId}`;
     case EventType.user:
       return `first.spark.dev.user.${objectId}`;
     default:

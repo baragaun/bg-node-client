@@ -2,9 +2,9 @@ import db from '../../../db/db.js';
 import { ModelType } from '../../../enums.js';
 import logger from '../../../helpers/logger.js';
 import { MyUser } from '../../../models/MyUser.js';
-import { MyUserEventPayload } from '../../../types/eventPayloadTypes.js';
+import { UserEventPayload } from '../../../types/eventPayloadTypes.js';
 
-export const processMyUserUpdatedEvent = async (payload: MyUserEventPayload): Promise<void> => {
+export const processUserUpdatedEvent = async (payload: UserEventPayload): Promise<void> => {
   const updatedMyUser = payload.data?.myUser;
 
   if (!updatedMyUser) {

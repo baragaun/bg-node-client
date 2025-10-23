@@ -5,12 +5,12 @@ import { BgListenerTopic, EventType } from '../enums.js';
 import { buildStreamName } from './buildStreamName.js';
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
-import { MyUserEventPayload } from '../types/eventPayloadTypes.js';
+import { UserEventPayload } from '../types/eventPayloadTypes.js';
 import { MyUserEventListener } from '../types/MyUserEventListener.js';
-import { processMyUserEvent } from './eventProcessors/myUser/processMyUserEvent.js';
+import { processUserEvent } from './eventProcessors/user/processUserEvent.js';
 
 const callback = async (error: Error, message: Msg, myUserId: string): Promise<void> => {
-  const payload = message.json<MyUserEventPayload>();
+  const payload = message.json<UserEventPayload>();
   logger.debug('NATS myUser event received.', {
     myUserId,
     error,
@@ -18,7 +18,7 @@ const callback = async (error: Error, message: Msg, myUserId: string): Promise<v
     payload,
   });
 
-  await processMyUserEvent(payload);
+  await processUserEvent(payload);
 
   // Notify the app:
   for (const listener of libData.listeners()) {
@@ -38,9 +38,9 @@ const callback = async (error: Error, message: Msg, myUserId: string): Promise<v
 /**
  * Subscribe to MyUser related events.
  */
-export const subscribeToMyUserEvents = async (): Promise<void> => {
+export const subscribeToUserEvents = async (): Promise<void> => {
   const myUserId = libData.clientInfoStore().myUserId;
-  const subject = buildStreamName(EventType.myUser, myUserId);
+  const subject = buildStreamName(EventType.user, myUserId);
 
   // Are we already subscribed?
   const existingSubscription = natsStore.getSubscription(subject);

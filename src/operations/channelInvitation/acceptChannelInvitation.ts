@@ -36,7 +36,7 @@ const acceptChannelInvitation = async (
         id,
         status: ChannelInvitationStatus.accepted,
       };
-      const response = await  db.update<ChannelInvitation>(changes, ModelType.ChannelInvitation);
+      const response = await db.update<ChannelInvitation>(changes, ModelType.ChannelInvitation);
 
       if (response.object) {
         response.object = new ChannelInvitation(response.object);

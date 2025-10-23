@@ -11,6 +11,7 @@ export declare class NatsClient {
     private connectionLost;
     constructor(options?: Partial<nats.ConnectionOptions & NatsOptions>);
     connect(): Promise<NatsConnection>;
+    private startMonitoring;
     getJetStreamClient(): Promise<jetstream.JetStreamClient>;
     getJetStreamManager(): Promise<jetstream.JetStreamManager>;
     close(): Promise<void>;

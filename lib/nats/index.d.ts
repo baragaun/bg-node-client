@@ -25,8 +25,7 @@ declare const natsService: {
     init: (options: Partial<import("../index.js").NatsOptions>) => Promise<void>;
     publishChannelEvent: (channelId: string, payload: import("../types/eventPayloadTypes.js").ChannelEventPayload) => Promise<import("@nats-io/jetstream").PubAck>;
     publishMessage: <T extends import("../types/eventPayloadTypes.js").BaseNatsPayload | string = string>(subject: string, payload: T | string, options?: Partial<import("./publishMessage.js").NatsPublishOptions>) => Promise<import("@nats-io/jetstream").PubAck>;
-    publishMyUserEvent: (payload: import("../types/eventPayloadTypes.js").MyUserEventPayload) => Promise<import("@nats-io/jetstream").PubAck>;
-    publishUserEvent: (userId: string, payload: import("../types/eventPayloadTypes.js").UserEventPayload) => Promise<import("@nats-io/jetstream").PubAck>;
+    publishUserEvent: (userId: string | null | undefined, payload: import("../types/eventPayloadTypes.js").UserEventPayload) => Promise<import("@nats-io/jetstream").PubAck>;
     subscribeToMyChannelEvents: () => Promise<void>;
 };
 export default natsService;
