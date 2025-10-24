@@ -96,8 +96,8 @@ const findMyChannels = async (
               ModelType.ChannelMessage,
             );
 
-            channelListItem.latestMessage = !localResultForMessages.error && localResultForMessages.object
-              ? localResultForMessages.object
+            channelListItem.latestMessage = !localResultForMessages.error && localResultForMessages.objects
+              ? localResultForMessages.objects[0]
               : undefined;
 
             channelListItems.push(channelListItem);
@@ -136,7 +136,7 @@ const findMyChannels = async (
 
         if (Array.isArray(channelListItem.participants)) {
           for (const participant of channelListItem.participants) {
-            await db.upsert<ChannelParticipant>(participant, ModelType.ChannelParticipant);
+            await db.upsert<ChannelParticipant>({ channelId: channel.id, ...participant }, ModelType.ChannelParticipant);
           }
         }
 

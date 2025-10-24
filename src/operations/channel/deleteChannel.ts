@@ -38,7 +38,7 @@ const deleteChannel = async (
     natsService.publishUserEvent(
       otherUserId,
       {
-        channelId: result.object.id,
+        channelId: channel.id,
         reason: UserEventReason.channelDeleted,
         data: {
           channel,
@@ -47,7 +47,7 @@ const deleteChannel = async (
       } as UserEventPayload,
     ).catch((error) => {
       logger.error('deleteChannel: Failed to publish NATS message to other participants', {
-        channelMessageId: result.object.id,
+        channelMessageId: channel.id,
         error: error.message,
         stack: error.stack,
       });

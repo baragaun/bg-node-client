@@ -1,6 +1,5 @@
 import db from '../../db/db.js';
 import {
-  ChannelEventReason,
   EventType,
   ModelType,
   MutationType,
@@ -13,7 +12,6 @@ import { Channel } from '../../models/Channel.js';
 import { buildStreamName } from '../../nats/buildStreamName.js';
 import natsService from '../../nats/index.js';
 import {
-  ChannelEventPayload,
   UserEventPayload,
 } from '../../types/eventPayloadTypes.js';
 import { QueryResult } from '../../types/QueryResult.js';
@@ -77,20 +75,19 @@ const createChannel = async (
 
     if (result.object) {
       const subject = buildStreamName(EventType.user, result.object.id);
-      result.object = new Channel(result.object);
+      const channel = new Channel(result.object);
 
-      natsService.publishChannelEvent(
-        result.object.id,
-        {
-          channelId: result.object.id,
-          channelMessageId: result.object.id,
-          reason: ChannelEventReason.updated,
-          data: {
-            channel: result.object,
-          },
-          // serviceRequest: queryOptions.serviceRequest,
-        } as ChannelEventPayload,
-      ).catch((error) => {
+      natsService.publishUserEvent(
+      channel.otherUserId,
+      {
+        channelId: channel.id,
+        reason: UserEventReason.channelCreated,
+        data: {
+          channel,
+        },
+        // serviceRequest: queryOptions.serviceRequest,
+      } as UserEventPayload,
+    ).catch((error) => {
         logger.error('updateChannel: Failed to publish NATS message', {
           channelMessageId: result.object.id,
           subject,

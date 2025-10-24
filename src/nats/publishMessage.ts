@@ -83,13 +83,13 @@ export const publishMessage = async <T extends BaseNatsPayload | string = string
   try {
     const result = await publishImpl(subject, payload, options);
 
-    logger.debug('nats.publishMessage: message published successfully.', {
+    console.log('nats.publishMessage: message published successfully.', {
       subject, payload, options, result,
     });
 
     return result;
   } catch (error) {
-    logger.error('nats.publishMessage: exception publishing message.', {
+    console.log('nats.publishMessage: exception publishing message.', {
       subject, payload, options, error,
     });
 

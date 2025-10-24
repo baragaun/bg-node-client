@@ -1,14 +1,14 @@
 import { subscribeToChannelEvents } from './subscribeToChannelEvents.js';
 import { CachePolicy } from '../enums.js';
 import logger from '../helpers/logger.js';
-import findMyChannelsV2 from '../operations/channel/findMyChannels.js';
+import findMyChannels from '../operations/channel/findMyChannels.js';
 
 /**
  * Subscribes to NATS subjects for all channels the user is a member of.
  * The channels are loaded from the local database only.
  */
 export const subscribeToMyChannelEvents = async (): Promise<void> => {
-  const myChannelsResult = await findMyChannelsV2(
+  const myChannelsResult = await findMyChannels(
     undefined,
     undefined,
     undefined,
