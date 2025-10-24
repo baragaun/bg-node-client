@@ -19,6 +19,7 @@ import {
   publishMessage,
   publishUserEvent,
 } from './publishMessage.js';
+import { subscribeToChannelEvents } from './subscribeToChannelEvents.js';
 import { subscribeToMyChannelEvents } from './subscribeToMyChannelEvents.js';
 
 const natsService = {
@@ -43,6 +44,7 @@ const natsService = {
   publishMessage,
   publishUserEvent,
   subscribeToMyChannelEvents,
+  subscribeToChannelEvents,
 };
 
 export default natsService;

@@ -151,7 +151,8 @@ const findMyChannels = async (
             });
           }
         }
-        await natsService.subscribeToMyChannelEvents();
+        // previous code generates infinite loops to call findMyChannels again
+        natsService.subscribeToChannelEvents(channel.id);
       }
     }
 

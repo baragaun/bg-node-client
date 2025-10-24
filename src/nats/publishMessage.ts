@@ -31,7 +31,7 @@ const publishImpl = async <T extends BaseNatsPayload | string = string>(
   options?: Partial<NatsPublishOptions>,
 ): Promise<PubAck> => {
   const client = libData.natsClient();
-
+//   todo not completing
   if (!client) {
     logger.error('nats.publishMessage: not connected.', { subject, payload, options });
     throw new Error('not-available');
@@ -70,8 +70,6 @@ const publishImpl = async <T extends BaseNatsPayload | string = string>(
 
   const pubAck = await jsClient.publish(subject, encodedPayload, jsOptions);
 
-  logger.debug('nats.publishMessage: message published.', { subject, payload, options, pubAck });
-
   return pubAck;
 };
 
@@ -83,13 +81,13 @@ export const publishMessage = async <T extends BaseNatsPayload | string = string
   try {
     const result = await publishImpl(subject, payload, options);
 
-    console.log('nats.publishMessage: message published successfully.', {
+    logger.debug('nats.publishMessage: message published successfully.', {
       subject, payload, options, result,
     });
 
     return result;
   } catch (error) {
-    console.log('nats.publishMessage: exception publishing message.', {
+    logger.error('nats.publishMessage: exception publishing message.', {
       subject, payload, options, error,
     });
 
