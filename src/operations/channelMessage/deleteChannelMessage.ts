@@ -24,7 +24,7 @@ const deleteChannelMessage = async (
   );
 
   if (result.object) {
-    //todo deleteFunc never returns an object for physical deletes, so this code is never hit in that case. Is that ok?
+    //todo deleteFunc never returns an object of ChannelMessage, so this code is never hit in that case. Is that ok?
     const channelMessage = new ChannelMessage({ id: result.object.id });
 
     const subject = buildStreamName(EventType.channel, channelMessage.channelId);

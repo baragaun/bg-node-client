@@ -11,6 +11,7 @@ import logger from '../../helpers/logger.js';
 import { Channel } from '../../models/Channel.js';
 import { buildStreamName } from '../../nats/buildStreamName.js';
 import natsService from '../../nats/index.js';
+import { subscribeToChannelEvents } from '../../nats/subscribeToChannelEvents.js';
 import {
   UserEventPayload,
 } from '../../types/eventPayloadTypes.js';
@@ -76,7 +77,8 @@ const createChannel = async (
     if (result.object) {
       const subject = buildStreamName(EventType.user, result.object.id);
       const channel = new Channel(result.object);
-      // todo dicusssion with Holger
+      // todo dicusssion with Holger,
+      await subscribeToChannelEvents(channel.id);
       natsService.publishUserEvent(
       channel.otherUserId,
       {
