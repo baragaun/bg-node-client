@@ -24,14 +24,16 @@ const deleteChannelMessage = async (
   );
 
   if (result.object) {
-    const subject = buildStreamName(EventType.channel, result.object.id);
+    //todo deleteFunc never returns an object for physical deletes, so this code is never hit in that case. Is that ok?
     const channelMessage = new ChannelMessage({ id: result.object.id });
 
+    const subject = buildStreamName(EventType.channel, channelMessage.channelId);
+
     natsService.publishChannelEvent(
-      result.object.id,
+      channelMessage.channelId,
       {
         channelId: channelMessage.channelId,
-        channelMessageId: result.object.id,
+        channelMessageId: channelMessage.id,
         reason: ChannelEventReason.messageDeleted,
         // serviceRequest: queryOptions.serviceRequest,
       } as ChannelEventPayload,

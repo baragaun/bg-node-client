@@ -45,7 +45,7 @@ export const subscribeToChannelEvents = async (channelId: string): Promise<void>
   // Are we already subscribed?
   const existingSubscription = natsStore.getSubscription(subject);
   if (existingSubscription) {
-    logger.debug('nats.subscribeToChannelMessages: already subscribed.',
+    logger.debug('nats.subscribeToChannelEvents: already subscribed.',
       { channelId, subject });
     return;
   }

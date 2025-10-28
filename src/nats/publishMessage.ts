@@ -31,7 +31,7 @@ const publishImpl = async <T extends BaseNatsPayload | string = string>(
   options?: Partial<NatsPublishOptions>,
 ): Promise<PubAck> => {
   const client = libData.natsClient();
-//   todo not completing
+
   if (!client) {
     logger.error('nats.publishMessage: not connected.', { subject, payload, options });
     throw new Error('not-available');
@@ -80,11 +80,6 @@ export const publishMessage = async <T extends BaseNatsPayload | string = string
 ): Promise<PubAck> => {
   try {
     const result = await publishImpl(subject, payload, options);
-
-    logger.debug('nats.publishMessage: message published successfully.', {
-      subject, payload, options, result,
-    });
-
     return result;
   } catch (error) {
     logger.error('nats.publishMessage: exception publishing message.', {
@@ -100,7 +95,6 @@ export const publishChannelEvent = async (
   payload: ChannelEventPayload,
 ): Promise<PubAck> => {
   const subject = buildStreamName(EventType.channel, channelId);
-
   return publishMessage(subject, payload, { timeout: 5000 });
 };
 

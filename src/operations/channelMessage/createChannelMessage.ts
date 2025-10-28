@@ -53,14 +53,14 @@ const createChannelMessage = async (
     if (!result.error || result.object) {
       await db.insert<ChannelMessage>(result.object, ModelType.ChannelMessage);
 
-      const subject = buildStreamName(EventType.channel, result.object.id);
       const channelMessage = new ChannelMessage(result.object);
+      const subject = buildStreamName(EventType.channel, channelMessage.channelId);
 
       natsService.publishChannelEvent(
-        result.object.id,
+        channelMessage.channelId,
         {
           channelId: channelMessage.channelId,
-          channelMessageId: result.object.id,
+          channelMessageId: channelMessage.id,
           reason: ChannelEventReason.messageCreated,
           data: {
             channelMessage,

@@ -6,7 +6,7 @@ export const buildStreamName = (
   objectId: string,
 ): string => {
   if (
-    (eventType === EventType.channel || eventType === EventType.user || eventType === EventType.user) &&
+    (eventType === EventType.channel || eventType === EventType.user ) &&
     !objectId
   ) {
     logger.error('nats.streamNames: objectId is required');

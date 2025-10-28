@@ -20,15 +20,16 @@ const updateChannelMessage = async (
   );
 
   if (result.object) {
-    const subject = buildStreamName(EventType.channel, result.object.id);
     const channelMessage = new ChannelMessage(result.object);
     Object.assign(channelMessage, changes);
 
+    const subject = buildStreamName(EventType.channel, channelMessage.id);
+
     natsService.publishChannelEvent(
-      result.object.id,
+      channelMessage.channelId,
       {
         channelId: channelMessage.channelId,
-        channelMessageId: result.object.id,
+        channelMessageId: channelMessage.id,
         reason: ChannelEventReason.messageUpdated,
         data: {
           channelMessage,

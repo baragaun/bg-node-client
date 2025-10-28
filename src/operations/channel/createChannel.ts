@@ -76,7 +76,7 @@ const createChannel = async (
     if (result.object) {
       const subject = buildStreamName(EventType.user, result.object.id);
       const channel = new Channel(result.object);
-
+      // todo dicusssion with Holger
       natsService.publishUserEvent(
       channel.otherUserId,
       {
