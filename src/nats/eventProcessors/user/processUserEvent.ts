@@ -1,3 +1,4 @@
+import { processChannelCreatedEvent } from './processChannelCreatedEvent.js';
 import { processUserUpdatedEvent } from './processUserUpdatedEvent.js';
 import { UserEventReason } from '../../../enums.js';
 import logger from '../../../helpers/logger.js';
@@ -8,7 +9,7 @@ const processors = {
   [UserEventReason.userDeleted]: undefined,
   [UserEventReason.userUpdated]: processUserUpdatedEvent,
   [UserEventReason.userSuspended]: undefined,
-  [UserEventReason.channelCreated]: undefined,
+  [UserEventReason.channelCreated]: processChannelCreatedEvent,
   [UserEventReason.channelInvitationReceived]: undefined,
   [UserEventReason.channelInvitationAccepted]: undefined,
   [UserEventReason.channelInvitationDeclined]: undefined,

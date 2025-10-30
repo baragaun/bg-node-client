@@ -65,16 +65,6 @@ export class NatsClient {
       this.jsm = null;
     });
 
-    // This starts monitoring connection status
-    // try {
-    //   for await (const status of this.connection.status()) {
-    //     this.processStatus(status);
-    //   }
-    // } catch (error) {
-    //   logger.error('NatsClient.startMonitoring: Error in status monitoring:',
-    //     { error }, { remote: true });
-    // }
-
     this.startMonitoring();
 
     // Get JetStream client and manager

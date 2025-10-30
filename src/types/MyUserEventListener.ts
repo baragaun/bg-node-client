@@ -1,6 +1,6 @@
 import { BgBaseListener } from './BgBaseListener.js';
 import { UserEventReason } from '../enums.js';
-import { Channel } from '../models/Channel.js';
+import { ChannelListItem } from './ChannelListItem.js';
 import { ChannelInvitation } from '../models/ChannelInvitation.js';
 import { MyUser } from '../models/MyUser.js';
 import { UserInbox } from '../models/UserInbox.js';
@@ -13,7 +13,7 @@ export interface MyUserEventListener extends BgBaseListener {
     reason: UserEventReason,
     data?: {
       myUser?: MyUser,
-      channel?: Channel,
+      channel?: ChannelListItem,
       channelInvitation?: ChannelInvitation;
       inbox?: UserInbox,
     },

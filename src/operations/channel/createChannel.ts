@@ -12,6 +12,7 @@ import { Channel } from '../../models/Channel.js';
 import { buildStreamName } from '../../nats/buildStreamName.js';
 import natsService from '../../nats/index.js';
 import { subscribeToChannelEvents } from '../../nats/subscribeToChannelEvents.js';
+import { ChannelListItem } from '../../types/ChannelListItem.js';
 import {
   UserEventPayload,
 } from '../../types/eventPayloadTypes.js';
@@ -19,7 +20,7 @@ import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannel = async (
   props: Partial<Channel>,
-): Promise<QueryResult<Channel>> => {
+): Promise<QueryResult<ChannelListItem>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('createChannel: unavailable');
@@ -59,7 +60,7 @@ const createChannel = async (
       const response = await db.insert<Channel>(props, ModelType.Channel);
 
       if (response.object) {
-        response.object = new Channel(response.object);
+        response.object = new ChannelListItem(response.object);
         return response;
       }
 
@@ -76,9 +77,10 @@ const createChannel = async (
 
     if (result.object) {
       const subject = buildStreamName(EventType.user, result.object.id);
-      const channel = new Channel(result.object);
+      const channel = new ChannelListItem(result.object);
       // todo dicusssion with Holger,
-      await subscribeToChannelEvents(channel.id);
+      await subscribeToChannelEvents(channel.id); // Subscribe to events for this channel
+      // Notifying the other user of this channel.
       natsService.publishUserEvent(
       channel.otherUserId,
       {
@@ -90,12 +92,20 @@ const createChannel = async (
         // serviceRequest: queryOptions.serviceRequest,
       } as UserEventPayload,
     ).catch((error) => {
+      if (error.message && error.message.includes('TIMEOUT')) {
+        logger.warn('No NATS subscriber for new channel (timeout)', {
+          channelMessageId: result.object.id,
+          subject,
+          error: error.message,
+      });
+      } else {
         logger.error('updateChannel: Failed to publish NATS message', {
           channelMessageId: result.object.id,
           subject,
           error: error.message,
           stack: error.stack,
-        });
+      });
+    }
       });
 
       // Notifying other participants of this channel. We created the channel, now we need to
@@ -103,11 +113,10 @@ const createChannel = async (
       const otherUsersIds = result.object.userIds.filter(id => id !== props.createdBy);
       for (const otherUserId of otherUsersIds) {
         const subject = buildStreamName(EventType.user, otherUserId);
-
         natsService.publishUserEvent(
           otherUserId,
           {
-            channelId: result.object.id,
+            channelId: channel.id,
             reason: UserEventReason.channelCreated,
             data: {
               channel: result.object,
@@ -115,12 +124,20 @@ const createChannel = async (
             // serviceRequest: queryOptions.serviceRequest,
           } as UserEventPayload,
         ).catch((error) => {
+          if (error.message && error.message.includes('TIMEOUT')) {
+            logger.warn('No NATS subscriber for new channel (timeout) for other participant', {
+              channelMessageId: result.object.id,
+              subject,
+              error: error.message,
+            });
+          } else {
           logger.error('createChannel: Failed to publish NATS message to other participants', {
-            channelMessageId: result.object.id,
+            channelId: channel.id,
             subject,
             error: error.message,
             stack: error.stack,
           });
+          }
         });
       }
     }
