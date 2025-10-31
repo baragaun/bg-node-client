@@ -1,5 +1,7 @@
 import db from '../../db/db.js';
 import { CachePolicy, ModelType } from '../../enums.js';
+import fsdata from '../../fsdata/fsdata.js';
+import { ChannelParticipantInput } from '../../fsdata/gql/graphql.js';
 import { defaultQueryOptions } from '../../helpers/defaults.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
@@ -59,7 +61,24 @@ const findChannelParticipants = async (
       return { error: 'offline' };
     }
 
-    return { error: 'not-implemented' };
+    const result = await fsdata.channelParticipant.findChannelParticipants(
+      filter,
+      match as unknown as ChannelParticipantInput,
+      options,
+    );
+
+     if (result.error) {
+      logger.error('findChannelParticipants: error from fsdata', { error: result.error });
+      return { error: result.error };
+    }
+
+    if (Array.isArray(result.objects) && result.objects.length > 0) {
+      for (const participant of result.objects) {
+        await db.upsert<ChannelParticipant>(participant, ModelType.ChannelParticipant);
+      }
+    }
+
+    return result;
   } catch (error) {
     return { error: (error as Error).message };
   }

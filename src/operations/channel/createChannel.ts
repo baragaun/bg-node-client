@@ -12,7 +12,6 @@ import { Channel } from '../../models/Channel.js';
 import { buildStreamName } from '../../nats/buildStreamName.js';
 import natsService from '../../nats/index.js';
 import { subscribeToChannelEvents } from '../../nats/subscribeToChannelEvents.js';
-import { ChannelListItem } from '../../types/ChannelListItem.js';
 import {
   UserEventPayload,
 } from '../../types/eventPayloadTypes.js';
@@ -20,7 +19,7 @@ import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannel = async (
   props: Partial<Channel>,
-): Promise<QueryResult<ChannelListItem>> => {
+): Promise<QueryResult<Channel>> => {
   try {
     if (!libData.isInitialized()) {
       logger.error('createChannel: unavailable');
@@ -60,7 +59,7 @@ const createChannel = async (
       const response = await db.insert<Channel>(props, ModelType.Channel);
 
       if (response.object) {
-        response.object = new ChannelListItem(response.object);
+        response.object = new Channel(response.object);
         return response;
       }
 
@@ -77,7 +76,7 @@ const createChannel = async (
 
     if (result.object) {
       const subject = buildStreamName(EventType.user, result.object.id);
-      const channel = new ChannelListItem(result.object);
+      const channel = new Channel(result.object);
       // todo dicusssion with Holger,
       await subscribeToChannelEvents(channel.id); // Subscribe to events for this channel
       // Notifying the other user of this channel.

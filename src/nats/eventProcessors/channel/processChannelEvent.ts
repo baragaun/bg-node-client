@@ -2,6 +2,8 @@ import { processChannelUpdatedEvent } from './processChannelUpdatedEvent.js';
 import { ChannelEventReason } from '../../../enums.js';
 import logger from '../../../helpers/logger.js';
 import { ChannelEventPayload } from '../../../types/eventPayloadTypes.js';
+import { processChannelMessageCreatedEvent } from '../channelMessage/processChannelMessageCreatedEvent.js';
+import { processChannelMessageDeletedEvent } from '../channelMessage/processChannelMessageDeletedEvent.js';
 
 const processors = {
   [ChannelEventReason.archived]: undefined,
@@ -15,9 +17,9 @@ const processors = {
   [ChannelEventReason.invitationDeleted]: undefined,
   [ChannelEventReason.invitationDismissedFromInboxByRecipient]: undefined,
   [ChannelEventReason.invitationDismissedFromInboxBySender]: undefined,
-  [ChannelEventReason.messageCreated]: undefined,
-  [ChannelEventReason.messageUpdated]: undefined,
-  [ChannelEventReason.messageDeleted]: undefined,
+  [ChannelEventReason.messageCreated]: processChannelMessageCreatedEvent,
+  [ChannelEventReason.messageUpdated]: processChannelMessageCreatedEvent,
+  [ChannelEventReason.messageDeleted]: processChannelMessageDeletedEvent,
   [ChannelEventReason.participantCreated]: undefined,
   [ChannelEventReason.participantUpdated]: undefined,
   [ChannelEventReason.participantDeleted]: undefined,

@@ -15,7 +15,8 @@ export const processChannelCreatedEvent = async (payload: UserEventPayload): Pro
   // Subscribe to events for this channel
   subscribeToChannelEvents(channel.id);
 
-  const result = await db.update<Channel>(channel, ModelType.Channel);
+  // Insert the new Channel into the local DB
+  const result = await db.upsert<Channel>(channel, ModelType.Channel);
 
   if (!result || result.error) {
     logger.error('nats.processChannelCreatedEvent: Failed to add a new Channel in local DB.',

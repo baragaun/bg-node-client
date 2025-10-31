@@ -1,11 +1,13 @@
+import { processChannelMessageCreatedEvent } from './processChannelMessageCreatedEvent.js';
+import { processChannelMessageDeletedEvent } from './processChannelMessageDeletedEvent.js';
 import { processChannelMessageUpdatedEvent } from './processChannelMessageUpdatedEvent.js';
 import { ChannelMessageEventReason } from '../../../enums.js';
 import logger from '../../../helpers/logger.js';
 import { ChannelMessageEventPayload } from '../../../types/eventPayloadTypes.js';
 
 const processors = {
-  [ChannelMessageEventReason.created]: undefined,
-  [ChannelMessageEventReason.deleted]: undefined,
+  [ChannelMessageEventReason.created]: processChannelMessageCreatedEvent,
+  [ChannelMessageEventReason.deleted]: processChannelMessageDeletedEvent,
   [ChannelMessageEventReason.seen]: undefined,
   [ChannelMessageEventReason.updated]: processChannelMessageUpdatedEvent,
 };
