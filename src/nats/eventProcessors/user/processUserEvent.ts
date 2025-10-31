@@ -1,0 +1,32 @@
+import { processChannelCreatedEvent } from './processChannelCreatedEvent.js';
+import { processUserUpdatedEvent } from './processUserUpdatedEvent.js';
+import { UserEventReason } from '../../../enums.js';
+import logger from '../../../helpers/logger.js';
+import { UserEventPayload } from '../../../types/eventPayloadTypes.js';
+
+const processors = {
+  [UserEventReason.userCreated]: undefined,
+  [UserEventReason.userDeleted]: undefined,
+  [UserEventReason.userUpdated]: processUserUpdatedEvent,
+  [UserEventReason.userSuspended]: undefined,
+  [UserEventReason.channelCreated]: processChannelCreatedEvent,
+  [UserEventReason.channelInvitationReceived]: undefined,
+  [UserEventReason.channelInvitationAccepted]: undefined,
+  [UserEventReason.channelInvitationDeclined]: undefined,
+  [UserEventReason.inboxUpdated]: undefined,
+  [UserEventReason.blockedByAnotherUser]: undefined,
+  [UserEventReason.unblockedByAnotherUser]: undefined,
+
+};
+
+export const processUserEvent = async (payload: UserEventPayload): Promise<void> => {
+  const processor = processors[payload.reason];
+
+  if (typeof processor !== 'function') {
+    logger.debug('processMyUserEvent: No processor for this MyUser event reason.',
+      { reason: payload.reason });
+    return;
+  }
+
+  return processor(payload);
+};

@@ -1,6 +1,6 @@
 import * as jetstream from '@nats-io/jetstream';
 import * as nats from '@nats-io/nats-core';
-import { connect, NatsConnection } from '@nats-io/transport-node';
+import { NatsConnection } from '@nats-io/transport-node';
 
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
@@ -41,13 +41,24 @@ export class NatsClient {
       this.options.name = config?.clientInfoStore?.myUserDeviceUuid || crypto.randomUUID();
     }
 
-    this.connection = await connect(this.options);
 
-    logger.debug(`Connected to NATS server: ${this.connection.getServer()}`);
+    // Pick transport depending on environment
+    if (typeof window !== 'undefined') {
+      // Browser: use WebSocket transport
+      const { connect } = await import('nats.ws');
+      this.connection = await connect(this.options) as unknown as nats.NatsConnection;
+    } else {
+      // Node.js: use TCP transport
+      const { connect } = await import('@nats-io/transport-node');
+      this.connection = await connect(this.options);
+    }
+
+    logger.debug('NatsJetStreamClient.connect: connected.',
+      { options: this.options, server: this.connection.getServer() });
 
     // Set up connection closed handler
     this.connection.closed().then(() => {
-      logger.debug('NATS connection closed');
+      logger.debug('NatsJetStreamClient.connect: connection closed');
       this.connectionLost = true;
       // this.connection = null;
       this.js = null;
@@ -60,14 +71,33 @@ export class NatsClient {
     this.js = jetstream.jetstream(this.connection);
     this.jsm = await jetstream.jetstreamManager(this.connection);
     this.connectionLost = false;
+
     return this.connection;
+  }
+
+  private async startMonitoring(): Promise<void> {
+    if (!this.connection) {
+      logger.error('NatsClient.startMonitoring: No connection available.');
+      return;
+    }
+
+    try {
+      for await (const status of this.connection.status()) {
+        this.processStatus(status);
+      }
+    } catch (error) {
+      logger.error('NatsClient.startMonitoring: Error in status monitoring:',
+        { error }, { remote: true });
+    }
   }
 
   public async getJetStreamClient(): Promise<jetstream.JetStreamClient> {
     await this.ensureConnection();
 
     if (!this.js) {
-      throw new Error('JetStream client not initialized');
+      logger.error('NatsClient.getJetStreamClient: not initialized',
+        { options: this.options }, { remote: true});
+      throw new Error('system-error');
     }
 
     return this.js;
@@ -77,7 +107,9 @@ export class NatsClient {
     await this.ensureConnection();
 
     if (!this.jsm) {
-      throw new Error('JetStream manager not initialized');
+      logger.error('NatsClient.getJetStreamManager: not initialized',
+        { options: this.options }, { remote: true});
+      throw new Error('system-error');
     }
 
     return this.jsm;
@@ -92,64 +124,65 @@ export class NatsClient {
     this.js = null;
     this.jsm = null;
 
-    logger.debug('NATS connection closed');
+    logger.debug('NatsClient.close: connection closed.');
   }
 
   public get isConnected(): boolean {
     return !!this.connection && !this.connection.isClosed() && !this.connectionLost;
   }
 
+  public getConnection(): nats.NatsConnection | null {
+    return this.connection;
+  }
+
   // -----------------------------------------------------------------------------------------------
   // Private methods
   private async ensureConnection(): Promise<void> {
     if (!this.connection) {
+      logger.error('NatsClient.ensureConnection: Not connected to NATS');
       throw new Error('Not connected to NATS');
     }
 
     if (this.connectionLost || this.connection.isClosed()) {
-      logger.debug('Connection lost, attempting to reconnect...');
+      logger.debug('NatsClient.ensureConnection: attempting to reconnect...');
       await this.connect();
     }
   }
 
-  private startMonitoring(): void {
-    if (!this.isConnected) {
+  private processStatus (status: nats.Status): void {
+    if (!this.connection) {
+      logger.error('NatsClient.processStatus: no connection.');
       return;
     }
 
-    (async (): Promise<void>  => {
-      for await (const status of this.connection.status()) {
-        const type = status.type;
+    logger.debug(`NATS connection status: ${status.type}`);
+    const type = status.type;
 
-        switch (type) {
-          case 'reconnect':
-            this.reconnectAttempts++;
-            logger.debug(`NATS reconnected successfully: ${this.connection.isClosed()}`);
-            logger.debug(`NATS reconnected successfully2: ${this.isConnected}`);
-            logger.debug(`NATS reconnect attempt: ${this.reconnectAttempts}`);
-            break;
-          case 'reconnecting':
-            logger.debug('NATS reconnecting...');
-            break;
-          case 'update':
-            // I don't really know what to expect to find in these `added` or `deleted` arrays yet.
-            if (status.added) {
-              logger.debug(`NATS connection update: added ${JSON.stringify(status.added)}`);
-            } else {
-              logger.debug(`NATS connection update: deleted ${JSON.stringify(status.deleted)}`);
-            }
-            break;
-          case 'disconnect':
-            logger.debug('NATS disconnected');
-            this.connectionLost = true;
-            break;
-          case 'error':
-            console.error('NATS connection error:', status.error);
-            break;
+    switch (type) {
+      case 'reconnect':
+        this.reconnectAttempts++;
+        logger.debug('NatsClient.processStatus: reconnected successfully',
+          { isClosed: this.connection.isClosed(), isConnected: this.isConnected, attempts: this.reconnectAttempts });
+        break;
+      case 'reconnecting':
+        logger.debug('NatsClient.processStatus: reconnecting...');
+        break;
+      case 'update':
+        // I don't really know what to expect to find in these `added` or `deleted` arrays yet.
+        if (status.added) {
+          logger.debug(`NatsClient.processStatus: connection update: added ${JSON.stringify(status.added)}`);
+        } else {
+          logger.debug(`NatsClient.processStatus: connection update: deleted ${JSON.stringify(status.deleted)}`);
         }
-      }
-    })().catch(err => {
-      console.error('Error in status monitoring:', err);
-    });
+        break;
+      case 'disconnect':
+        logger.debug('NatsClient.processStatus: disconnected');
+        this.connectionLost = true;
+        break;
+      case 'error':
+        logger.error('NatsClient.processStatus: connection error:',
+          { error: status.error }, { remote: true });
+        break;
+    }
   }
 }

@@ -1,8 +1,10 @@
 import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
+import { ChannelEventReason, ModelType, MutationType } from '../../enums.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { ChannelParticipant } from '../../models/ChannelParticipant.js';
+import natsService from '../../nats/index.js';
+import { ChannelEventPayload } from '../../types/eventPayloadTypes.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannelParticipant = async (
@@ -24,14 +26,34 @@ const createChannelParticipant = async (
     //------------------------------------------------------------------------------------------------
     // Local DB
     if (!allowNetwork) {
-      const response = await db.insert<ChannelParticipant>(props, ModelType.ChannelParticipant);
+      const result = await db.insert<ChannelParticipant>(props, ModelType.ChannelParticipant);
 
-      if (response.object) {
-        response.object = new ChannelParticipant(response.object);
-        return response;
+      if (!result.error && result.object) {
+        result.object = new ChannelParticipant(result.object);
+
+        natsService.publishChannelEvent(
+          result.object.id,
+          {
+            channelId: result.object.channelId,
+            channelParticipantId: result.object.id,
+            reason: ChannelEventReason.participantCreated,
+            data: {
+              channelParticipant: result.object,
+            },
+            // serviceRequest: queryOptions.serviceRequest,
+          } as ChannelEventPayload,
+        ).catch((error) => {
+          logger.error('createChannelParticipant: Failed to publish NATS message', {
+            channelMessageId: result.object.id,
+            error: error.message,
+            stack: error.stack,
+          });
+        });
+
+        return result;
       }
 
-      return response;
+      return result;
     }
 
     //------------------------------------------------------------------------------------------------

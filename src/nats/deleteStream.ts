@@ -1,3 +1,5 @@
+import * as jetstream from '@nats-io/jetstream';
+
 import libData from '../helpers/libData.js';
 import logger from '../helpers/logger.js';
 
@@ -15,7 +17,11 @@ export const deleteStream = async (
     const jsm = await client.getJetStreamManager();
     return await jsm.streams.delete(streamName);
   } catch (error) {
-    logger.error('Error getting JetStream manager:', { error });
+    if (error.code === jetstream.JetStreamApiCodes.StreamNotFound) {
+      logger.debug('nats.deleteStream: stream not found', { streamName });
+      return false;
+    }
+    logger.error('Error deleting jetstream:', { error });
     return false;
   }
 };

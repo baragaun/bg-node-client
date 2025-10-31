@@ -36,6 +36,7 @@ export declare enum BarcodeType {
 }
 export declare enum BgListenerTopic {
     channel = "channel",
+    channelMessage = "channelMessage",
     myUser = "myUser"
 }
 export declare enum BgNodeClientUiErrorCode {
@@ -362,6 +363,51 @@ export declare enum UploadedAssetType {
     avatar = "avatar",
     profileHeroImage = "profileHeroImage",
     unset = "unset"
+}
+export declare enum ChannelEventReason {
+    archived = "archived",
+    deleted = "deleted",
+    suspended = "suspended",
+    unarchived = "unarchived",
+    unsuspended = "unsuspended",
+    updated = "updated",
+    invitationCreated = "invitationCreated",
+    invitationUpdated = "invitationUpdated",
+    invitationDeleted = "invitationDeleted",
+    invitationDismissedFromInboxByRecipient = "invitationDismissedFromInboxByRecipient",
+    invitationDismissedFromInboxBySender = "invitationDismissedFromInboxBySender",
+    messageCreated = "messageCreated",
+    messageUpdated = "messageUpdated",
+    messageDeleted = "messageDeleted",
+    participantCreated = "participantCreated",
+    participantUpdated = "participantUpdated",
+    participantDeleted = "participantDeleted",
+    userSuspended = "userSuspended",
+    userUnsuspended = "userUnsuspended"
+}
+export declare enum ChannelMessageEventReason {
+    created = "created",
+    deleted = "deleted",
+    seen = "seen",
+    updated = "updated"
+}
+export declare enum EventType {
+    channel = "channel",
+    user = "user"
+}
+export declare enum UserEventReason {
+    userCreated = "userCreated",
+    userDeleted = "userDeleted",
+    userUpdated = "userUpdated",
+    userSuspended = "userSuspended",
+    channelCreated = "channelCreated",
+    channelDeleted = "channelDeleted",
+    channelInvitationReceived = "channelInvitationReceived",
+    channelInvitationAccepted = "channelInvitationAccepted",
+    channelInvitationDeclined = "channelInvitationDeclined",
+    inboxUpdated = "inboxUpdated",
+    blockedByAnotherUser = "blockedByAnotherUser",
+    unblockedByAnotherUser = "unblockedByAnotherUser"
 }
 export declare enum ProductType {
     giftCard = "giftCard",
