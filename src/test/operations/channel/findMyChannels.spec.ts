@@ -35,7 +35,7 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.findMyChannels'
     await signMeUpSpecHelper(undefined, false, client);
     const channels = await Promise.all(
       Array.from({ length: count }, () =>
-        createChannelSpecHelper(undefined, 0, client)),
+        createChannelSpecHelper({ otherUserId: otherUser.id }, 0, client)),
     );
     const channelIds = channels.map((c) => c.id).sort();
 
@@ -49,10 +49,11 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.findMyChannels'
     );
     const channelsFromNetwork = queryResultFromNetwork.objects;
     const channelIdsFromNetwork = channelsFromNetwork.map((c) => c.id).sort();
-
     expect(channels.length).toBe(count);
     expect(queryResultFromNetwork.error).toBeUndefined();
     expect(channelsFromNetwork.length).toBe(count);
+    expect(channelsFromNetwork[0].participants.length).toBeGreaterThan(0);
+    // expect(channelsFromNetwork[0].latestMessage).toBeDefined();
     expect(channelIdsFromNetwork).toEqual(channelIds);
     expect(channelIdsFromNetwork).not.include(channelOfOtherUser.id);
 
@@ -70,6 +71,8 @@ describe.runIf(isFeatureEnabled('channels'))('operations.channel.findMyChannels'
     expect(channels.length).toBe(count);
     expect(queryResultFromLocal.error).toBeUndefined();
     expect(channelsFromLocal.length).toBe(count);
+    // expect(channelsFromLocal[0].participants.length).toBeGreaterThan(0);
+    // expect(channelsFromLocal[0].latestMessage).toBeDefined();
     expect(channelIdsFromLocal).toEqual(channelIds);
     expect(channelIdsFromLocal).not.include(channelOfOtherUser.id);
 

@@ -1,6 +1,6 @@
 import { BgListenerTopic } from '../enums.js';
 /**
- * Interface representing a listener for channel events.
+ * Interface representing a listener for events.
  */
 export interface BgBaseListener {
     id: string;

@@ -19,7 +19,7 @@ const consumerConfig = {
     customizations: {
       enableChannels: true,
       enableGroupChannels: false,
-      enableNats: false,
+      enableNats: true,
       enableMarketplace: true,
     },
   },
@@ -39,7 +39,17 @@ const consumerConfig = {
     customizations: {
       enableChannels: false,
       enableGroupChannels: false,
-      enableNats: false,
+      enableNats: true,
+      enableMarketplace: true,
+    },
+  },
+  test: {
+    consumer: 'test',
+    apiUrl: 'http://localhost:8092/fsdata/api/graphql',
+    customizations: {
+      enableChannels: true,
+      enableGroupChannels: false,
+      enableNats: true,
       enableMarketplace: true,
     },
   },
@@ -59,15 +69,15 @@ export const getTestClientConfig = (
         [HttpHeaderName.consumer]: 'test',
       },
     },
-    // nats: {
-    //   name: `nats-test-client-${crypto.randomUUID()}`,
-    //   servers: ['nats://localhost:4222'],
-    //   timeout: 5000,
-    //   reconnect: true,
-    //   maxReconnectAttempts: 3,
-    //   reconnectTimeWait: 1000,
-    //   pingInterval: 1000,
-    // },
+    nats: {
+      name: `nats-test-client-${crypto.randomUUID()}`,
+      servers: ['nats://localhost:4222'],
+      timeout: 5000,
+      reconnect: true,
+      maxReconnectAttempts: 3,
+      reconnectTimeWait: 1000,
+      pingInterval: 1000,
+    },
     logLevel: 'debug',
     enableMockMode,
 
@@ -75,8 +85,8 @@ export const getTestClientConfig = (
     customizations: {
       enableChannels: false,
       enableGroupChannels: false,
-      enableNats: false,
-      enableMarketplace: false,
+      enableNats: true,
+      enableMarketplace: true,
     },
   };
 

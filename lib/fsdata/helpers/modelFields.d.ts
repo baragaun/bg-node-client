@@ -18,6 +18,37 @@ declare const modelFields: {
         archivedAt: boolean;
         archivedBy: boolean;
         isArchivedForMe: boolean;
+        participants: {
+            id: boolean;
+            userId: boolean;
+            userInfo: {
+                userHandle: boolean;
+                firstName: boolean;
+                lastName: boolean;
+                avatarUrl: boolean;
+            };
+        };
+        latestMessage: {
+            channelId: boolean;
+            replyToMessageId: boolean;
+            channelMessageType: boolean;
+            messageText: boolean;
+            statuses: {
+                userId: boolean;
+                receivedAt: boolean;
+                seenAt: boolean;
+            };
+            editedAt: boolean;
+            suspendedAt: boolean;
+            suspendedBy: boolean;
+            id: boolean;
+            createdAt: boolean;
+            createdBy: boolean;
+            updatedAt: boolean;
+            updatedBy: boolean;
+            deletedAt: boolean;
+            deletedBy: boolean;
+        };
         id: boolean;
         createdAt: boolean;
         createdBy: boolean;

@@ -10,6 +10,7 @@ import { ChannelListFilter } from '../../models/ChannelListFilter.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
 import { ChannelParticipant } from '../../models/ChannelParticipant.js';
 import { ChannelParticipantListFilter } from '../../models/ChannelParticipantListFilter.js';
+import natsService from '../../nats/index.js';
 import { ChannelListItem } from '../../types/ChannelListItem.js';
 import { ChannelMessageScope } from '../../types/ChannelMessageScope.js';
 import { FindObjectsOptions } from '../../types/FindObjectsOptions.js';
@@ -95,8 +96,8 @@ const findMyChannels = async (
               ModelType.ChannelMessage,
             );
 
-            channelListItem.latestMessage = !localResultForMessages.error && localResultForMessages.object
-              ? localResultForMessages.object
+            channelListItem.latestMessage = !localResultForMessages.error && localResultForMessages.objects
+              ? localResultForMessages.objects[0]
               : undefined;
 
             channelListItems.push(channelListItem);
@@ -135,7 +136,7 @@ const findMyChannels = async (
 
         if (Array.isArray(channelListItem.participants)) {
           for (const participant of channelListItem.participants) {
-            await db.upsert<ChannelParticipant>(participant, ModelType.ChannelParticipant);
+            await db.upsert<ChannelParticipant>({ channelId: channel.id, ...participant }, ModelType.ChannelParticipant);
           }
         }
 
@@ -150,6 +151,8 @@ const findMyChannels = async (
             });
           }
         }
+        // previous code generates infinite loops to call findMyChannels again
+        natsService.subscribeToChannelEvents(channel.id);
       }
     }
 

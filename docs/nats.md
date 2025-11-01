@@ -2,10 +2,10 @@
 
 ## Introduction
 
-NATS is a simple, secure and high performance open source data layer for cloud native 
+NATS is a simple, secure and high performance open source data layer for cloud native
 applications, IoT messaging, and microservices architectures.
 
-Jetstream is an extension that delivers, among other things, persistence and 
+Jetstream is an extension that delivers, among other things, persistence and
 delivery guarantees. We need it. More on this below.
 
 **General References:**
@@ -38,7 +38,7 @@ Find out where homebrew installed the server:
 brew info nats-server
 ```
 
-Edit the file `/opt/homebrew/Cellar/nats-server/2.11.1/homebrew.mxcl.nats-server.plist` (or 
+Edit the file `/opt/homebrew/Cellar/nats-server/2.11.1/homebrew.mxcl.nats-server.plist` (or
 wherever that file is on your box) and add a new arguments to the `ProgramArguments` array:
 
 ```
@@ -51,59 +51,34 @@ wherever that file is on your box) and add a new arguments to the `ProgramArgume
 
 This will enable Jetstream.
 
-Create a server config file at `~/.config/nats/nats-server.conf`:
-
+Create a server config file at `~/.config/nats/nats-server.conf` with the following steps:
+1. Create the directory (if it doesn’t exist yet)
+```shell
+mkdir ~/.config/nats
 ```
+
+2. Create and open the config file with nano
+```shell
+nano ~/.config/nats/nats-server.conf
+```
+Then paste your config content into the editor:
+```
+# Default NATS TCP listener (for CLI / backend)
+port: 4222
+
+# Enable JetStream (optional but useful)
 jetstream {
-  store_dir: "/Users/<your-name>/nats-jetstream-store"
-  max_mem_store: 1Gb
-  max_file_store: 10Gb
+  store_dir: "./jetstream"
+}
+
+# WebSocket support (for browser frontend like Svelte)
+websocket {
+  port: 8080
+  no_tls: true
 }
 ```
 
-Now start the server:
-
-```shell
-brew services start nats-server
-```
-
-If you want to use the CLI, create a context configuration:
-
-```shell
-nats context add local --server localhost:4222
-```
-
-That will create `~/.config/nats/context/local.json` that should have something like this:
-
-```json
-{
-  "description": "",
-  "url": "localhost:4222",
-  "socks_proxy": "",
-  "token": "",
-  "user": "",
-  "password": "",
-  "creds": "",
-  "nkey": "",
-  "cert": "",
-  "key": "",
-  "ca": "",
-  "nsc": "",
-  "jetstream_domain": "",
-  "jetstream_api_prefix": "",
-  "jetstream_event_prefix": "",
-  "inbox_prefix": "",
-  "user_jwt": "",
-  "color_scheme": "",
-  "tls_first": false,
-  "windows_cert_store": "",
-  "windows_cert_match_by": "",
-  "windows_cert_match": "",
-  "windows_ca_certs_match": null
-}
-```
-
-Start the server with Jetstream enabled:
+Now Start the server with Jetstream enabled:
 
 ```shell
 nats-server -c ~/.config/nats/nats-server.conf
@@ -111,7 +86,7 @@ nats-server -c ~/.config/nats/nats-server.conf
 
 ## NATS Core
 
-NATS Core is a lightweight, high-performance messaging system that implements a publish-subscribe 
+NATS Core is a lightweight, high-performance messaging system that implements a publish-subscribe
 architecture. It provides a simple, text-based protocol focused on speed and scalability.
 
 [Core NATS](https://docs.nats.io/nats-concepts/core-nats)
@@ -137,7 +112,7 @@ nc.publish('otp-updates', JSON.stringify({ status: 'email verified' }));
 
 ## JetStream
 
-JetStream extends NATS Core with persistence and enhanced delivery guarantees. It's built directly 
+JetStream extends NATS Core with persistence and enhanced delivery guarantees. It's built directly
 into the NATS server and provides stream-based storage with rich consumer models.
 
 ```typescript

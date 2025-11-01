@@ -12,6 +12,8 @@ import {
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import nats from '../../nats/index.js';
+import { NatsClient } from '../../nats/NatsClient.js';
+import { getTestClientConfig } from '../helpers/getTestClientConfig.js';
 import { isFeatureEnabled } from '../helpers/isFeatureEnabled.js';
 
 describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient', () => {
@@ -28,16 +30,12 @@ describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient',
     });
 
     it('should close connection successfully', async () => {
-      const config = libData.config();
-      const natsServer = config?.nats && Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0
-        ? config.nats?.servers?.[0] || 'nats://localhost:4222'
-        : 'nats://localhost:4222';
-      await nats.init({
-        servers: [natsServer],
-        timeout: 5000,
-        reconnectTimeWait: 1000,
-      });
-      const client = libData.natsClient();
+      const config = getTestClientConfig();
+      libData.setConfig(config);
+      const client = new NatsClient(config.nats);
+      await client.connect(); // Add this line
+      libData.setNatsClient(client);
+
       const testStreamName = 'test_client_stream';
       const testSubject = 'test.client.subject';
 
@@ -56,15 +54,25 @@ describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient',
 
   describe('while being connected', () => {
     beforeAll(async () => {
-      const config = libData.config();
-      const natsServer = config?.nats && Array.isArray(config.nats?.servers) && config.nats?.servers.length > 0
-        ? config.nats?.servers?.[0] || 'nats://localhost:4222'
-        : 'nats://localhost:4222';
-      await nats.init({
-        servers: [natsServer],
-        timeout: 5000,
-        reconnectTimeWait: 1000,
-      });
+      const config = getTestClientConfig();
+      libData.setConfig(config);
+      libData.setNatsClient(new NatsClient(config.nats));
+      const client = libData.natsClient();
+      await client.connect();
+
+      // Clean up any existing test streams
+      try {
+        const jsm = await client.getJetStreamManager();
+        const streams = await jsm.streams.list().next();
+        for (const stream of streams) {
+          if (stream.config.name.startsWith('test_client_stream')) {
+            await jsm.streams.delete(stream.config.name);
+            logger.debug('Cleaned up existing test stream', { name: stream.config.name });
+          }
+        }
+      } catch (error) {
+        logger.debug('Error during cleanup', { error });
+      }
     });
 
     afterAll(async () => {
@@ -165,7 +173,7 @@ describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient',
     });
 
     describe('and with an existing stream', () => {
-      const testStreamName = 'test_client_stream';
+      const testStreamName = `test_client_stream_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
       const testConsumerName = 'test_client_consumer';
       const testSubject = 'test.client.subject';
 
@@ -189,7 +197,8 @@ describe.runIf(isFeatureEnabled('nats'))('nats as integrated into BgNodeClient',
           try {
             await nats.deleteStream(testStreamName);
           } catch (error) {
-            logger.error('afterEach.cleanUp.error: ', { error });
+            // Ignore errors during cleanup
+            logger.debug('afterEach.cleanUp.error: ', { error });
           }
         }
       });

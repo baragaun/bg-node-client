@@ -1,9 +1,12 @@
 import db from '../../db/db.js';
-import { ModelType, MutationType } from '../../enums.js';
+import { ChannelEventReason, EventType , ModelType, MutationType } from '../../enums.js';
 import fsdata from '../../fsdata/fsdata.js';
 import libData from '../../helpers/libData.js';
 import logger from '../../helpers/logger.js';
 import { ChannelMessage } from '../../models/ChannelMessage.js';
+import { buildStreamName } from '../../nats/buildStreamName.js';
+import natsService from '../../nats/index.js';
+import { ChannelEventPayload } from '../../types/eventPayloadTypes.js';
 import { QueryResult } from '../../types/QueryResult.js';
 
 const createChannelMessage = async (
@@ -43,12 +46,31 @@ const createChannelMessage = async (
 
     const result = await fsdata.channelMessage.createChannelMessage(props);
 
-    if (result.object) {
-      result.object = new ChannelMessage(result.object);
-    }
-
     if (!result.error || result.object) {
       await db.insert<ChannelMessage>(result.object, ModelType.ChannelMessage);
+
+      const channelMessage = new ChannelMessage(result.object);
+      const subject = buildStreamName(EventType.channel, channelMessage.channelId);
+
+      natsService.publishChannelEvent(
+        channelMessage.channelId,
+        {
+          channelId: channelMessage.channelId,
+          channelMessageId: channelMessage.id,
+          reason: ChannelEventReason.messageCreated,
+          data: {
+            channelMessage,
+          },
+          // serviceRequest: queryOptions.serviceRequest,
+        } as ChannelEventPayload,
+      ).catch((error) => {
+        logger.error('createChannelMessage: Failed to publish NATS message', {
+          channelMessageId: result.object.id,
+          subject,
+          error: error.message,
+          stack: error.stack,
+        });
+      });
     }
 
     return result;
