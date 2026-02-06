@@ -19,7 +19,7 @@ type ResponseDataType = {
   data: {
     findWalletItems: WalletItem[];
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const findWalletItems = async (
@@ -48,11 +48,11 @@ const findWalletItems = async (
     logger.debug('fsdata.findWalletItems received response.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findWalletItems: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
 
-      return { error: response.errors.map(error => error.message).join(', ') };
+      return { error: response.error };
     }
 
     return {

@@ -7,7 +7,7 @@ import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
 
-type ResponseDataType = { data: { findMyUser: UserAuthResponse }, errors?: { message: string }[] };
+type ResponseDataType = { data: { findMyUser: UserAuthResponse }, error?: string };
 
 const findMyUser = async (): Promise<QueryResult<MyUser>> => {
   try {
@@ -24,15 +24,10 @@ const findMyUser = async (): Promise<QueryResult<MyUser>> => {
 
     logger.debug('fsdata.findMyUser: response received.', { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findMyUser: errors received.',
-        { errorCode: (response.errors['0'] as any).extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
-    }
-
-    if (response.errors) {
-      logger.error('fsdata.findMyUser: failed with error.', { error: response.errors });
-      return { error: response.errors.map(e => e.message).join(', ')};
+        { errorCode: (response.error as any).extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     if (!response.data.findMyUser) {

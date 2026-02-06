@@ -24,7 +24,7 @@ type ResponseDataType = {
   data: {
     createWalletItemTransfer: ServiceRequest;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const createWalletItemTransfer = async (
@@ -49,11 +49,11 @@ const createWalletItemTransfer = async (
     logger.debug('fsdata.createWalletItemTransfer response received.',
       { props, response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.createWalletItemTransfer: errors received.',
-        { props, errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { props, errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
 
-      return { error: response.errors.map(error => error.message).join(', ') };
+      return { error: response.error };
     }
 
     let serviceRequest = response.data.createWalletItemTransfer;

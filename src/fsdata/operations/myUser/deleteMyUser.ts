@@ -5,7 +5,7 @@ import { MutationDeleteMyUserV2Args  } from '../../gql/graphql.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-type ResponseDataType = { data: { deleteMyUser: string }, errors?: { message: string }[] };
+type ResponseDataType = { data: { deleteMyUser: string }, error?: string };
 
 const deleteMyUser = async (
   cause: string | null | undefined,
@@ -31,15 +31,10 @@ const deleteMyUser = async (
     logger.debug('fsdata.deleteMyUser: response received.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.deleteMyUser: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
-    }
-
-    if (response.errors) {
-      logger.error('fsdata.deleteMyUser: failed with error.', { error: response.errors });
-      return { error: response.errors.map(e => e.message).join(', ')};
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     if (response.data.deleteMyUser !== myUserId) {

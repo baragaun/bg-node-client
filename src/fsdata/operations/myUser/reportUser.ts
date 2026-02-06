@@ -11,7 +11,7 @@ import {
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-type ResponseDataType = { data: { reportUser: string }, errors?: { message: string }[] };
+type ResponseDataType = { data: { reportUser: string }, error?: string };
 
 const reportUser = async (
   userId: string,
@@ -48,15 +48,10 @@ const reportUser = async (
     logger.debug('fsdata.reportUser: response received.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.reportUser: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
-    }
-
-    if (response.errors) {
-      logger.error('fsdata.reportUser: failed with error.', { error: response.errors });
-      return { error: response.errors.map(e => e.message).join(', ')};
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     if (!response.data.reportUser) {

@@ -7,7 +7,7 @@ import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
 
-type ResponseDataType = { data: { findMyInbox: UserInboxFromApi }, errors?: { message: string }[] };
+type ResponseDataType = { data: { findMyInbox: UserInboxFromApi }, error?: string };
 
 const findMyInbox = async (): Promise<QueryResult<UserInbox>> => {
   try {
@@ -25,15 +25,10 @@ const findMyInbox = async (): Promise<QueryResult<UserInbox>> => {
     logger.debug('fsdata.findMyInbox: response received.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findMyInbox: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
-    }
-
-    if (response.errors) {
-      logger.error('fsdata.findMyInbox: failed with error.', { error: response.errors });
-      return { error: response.errors.map(e => e.message).join(', ')};
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     if (!response.data.findMyInbox) {

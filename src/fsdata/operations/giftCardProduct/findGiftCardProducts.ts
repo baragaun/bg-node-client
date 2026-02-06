@@ -19,7 +19,7 @@ type ResponseDataType = {
   data: {
     findGiftCardProducts: GiftCardProduct[] | null;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const findGiftCardProducts = async (
@@ -45,10 +45,10 @@ const findGiftCardProducts = async (
       ...modelFields.giftCardProduct,
     });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findGiftCardProducts: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     logger.debug('fsdata.findGiftCardProducts response:', { response: JSON.stringify(response) });

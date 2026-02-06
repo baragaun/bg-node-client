@@ -23,7 +23,7 @@ type ResponseDataType = {
   data: {
     updateWalletItemTransferShowOnlineFlag: ServiceRequest;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const updateWalletItemTransferShowOnlineFlag = async (
@@ -52,11 +52,11 @@ const updateWalletItemTransferShowOnlineFlag = async (
     logger.debug('fsdata.updateWalletItemTransferShowOnlineFlag response:',
       { transferSlug, response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.updateWalletItemTransferShowOnlineFlag: errors received',
-        { transferSlug, errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { transferSlug, errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
 
-      return { error: response.errors.map(error => error.message).join(', ') };
+      return { error: response.error };
     }
 
     let serviceRequest = response.data.updateWalletItemTransferShowOnlineFlag;

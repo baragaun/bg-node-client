@@ -6,7 +6,7 @@ import { QueryIsUserIdentAvailableArgs, UserIdentType } from '../../gql/graphql.
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-type ResponseDataType = { data: { isUserIdentAvailable: boolean }, errors?: { message: string }[] };
+type ResponseDataType = { data: { isUserIdentAvailable: boolean }, error?: string };
 
 const isUserIdentAvailable = async (
   userIdent: string,
@@ -29,11 +29,6 @@ const isUserIdentAvailable = async (
 
     logger.debug('fsdata.isUserIdentAvailable: response received.',
       { response: JSON.stringify(response) });
-
-    if (response.errors) {
-      logger.error('fsdata.isUserIdentAvailable: failed with error.', { error: response.errors });
-      return { error: response.errors.map(e => e.message).join(', ')};
-    }
 
     if (response.data.isUserIdentAvailable !== true && response.data.isUserIdentAvailable !== false) {
       logger.error('fsdata.isUserIdentAvailable: mutation did not return a valid response.');

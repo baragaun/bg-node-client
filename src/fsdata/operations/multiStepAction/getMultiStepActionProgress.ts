@@ -6,7 +6,7 @@ import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import modelFields from '../../helpers/modelFields.js';
 
-type ResponseDataType = { data: { getMultiStepActionProgress: SidMultiStepActionProgress | null }, errors?: { message: string }[] };
+type ResponseDataType = { data: { getMultiStepActionProgress: SidMultiStepActionProgress | null }, error?: string };
 
 const getMultiStepActionProgress = async (
   actionId: string,
@@ -27,19 +27,13 @@ const getMultiStepActionProgress = async (
       ...modelFields.sidMultiStepActionProgress,
     });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findMultiStepActionProgress: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     logger.debug('fsdata.getMultiStepActionProgress: response received.', { response: JSON.stringify(response) });
-
-    if (response.errors) {
-      logger.error('fsdata.getMultiStepActionProgress: failed with error.',
-        { error: response.errors });
-      return { error: response.errors.map(e => e.message).join(', ')};
-    }
 
     return { object: response.data.getMultiStepActionProgress };
   } catch (error) {

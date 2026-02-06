@@ -10,7 +10,7 @@ type ResponseDataType = {
   data: {
     findMyWallet: Wallet;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const findMyWallet = async (): Promise<QueryResult<Wallet>> => {
@@ -29,22 +29,18 @@ const findMyWallet = async (): Promise<QueryResult<Wallet>> => {
     logger.debug('fsdata.findMyWallet received response.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findMyWallet: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code,
-          errors: JSON.stringify(response.errors) });
+        { errorCode: (response.error as any)?.extensions?.code,
+          errors: JSON.stringify(response.error) });
 
-      return { error: response.errors.map(error => error.message).join(', ') };
+      return { error: response.error };
     }
 
-    if (
-      (response.errors && response.errors.length > 0) ||
-      !response.data ||
-      !response.data.findMyWallet
-    ) {
+    if (!response.data || !response.data.findMyWallet) {
       logger.error('fsdata.findMyWallet: errors',
-        { errors: response.errors, headers: helpers.headers() });
-      return { error: response.errors['0'].message };
+        { errors: response.error, headers: helpers.headers() });
+      return { error: response.error };
     }
 
     return {

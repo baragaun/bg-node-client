@@ -11,7 +11,7 @@ type ResponseDataType = {
   data: {
     createChannelInvitation: ChannelInvitation;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const createChannelInvitation = async (
@@ -36,11 +36,11 @@ const createChannelInvitation = async (
     logger.debug('fsdata.createChannelInvitation received response.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.createChannelInvitation: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
 
-      return { error: response.errors.map(error => error.message).join(', ') };
+      return { error: response.error };
     }
 
     return {

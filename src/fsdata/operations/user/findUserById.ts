@@ -11,7 +11,7 @@ type ResponseDataType = {
   data: {
     findUserById: User | null;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const findUserById = async (
@@ -33,19 +33,16 @@ const findUserById = async (
 
     logger.debug('fsdata.findUserById response:', { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findUserById: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     return {
       object: response.data.findUserById
         ? new User(response.data.findUserById)
         : null,
-      error: Array.isArray(response.errors) && response.errors.length > 0
-        ? response.errors.map(e => e.message).join(', ')
-        : undefined,
     };
   } catch (error) {
     logger.error('fsdata.findUserById: error.', { error, headers: helpers.headers() });

@@ -4,7 +4,7 @@ import { QueryResult } from '../../../types/QueryResult.js';
 import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 
-type ResponseDataType = { data: { signMeOut: string }, errors?: { message: string }[] };
+type ResponseDataType = { data: { signMeOut: string }, error?: string };
 
 const signMeOut = async (): Promise<QueryResult<void>> => {
   try {
@@ -22,15 +22,10 @@ const signMeOut = async (): Promise<QueryResult<void>> => {
     logger.debug('fsdata.signMeOut: response received.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.signMeOut: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
-    }
-
-    if (response.errors) {
-      logger.error('fsdata.signMeOut: failed with error.', { error: response.errors });
-      return { error: response.errors.map(e => e.message).join(', ')};
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     return {};

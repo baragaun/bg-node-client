@@ -10,7 +10,7 @@ type ResponseDataType = {
   data: {
     findMyShoppingCart: ShoppingCart;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const findMyShoppingCart = async (): Promise<QueryResult<ShoppingCart>> => {
@@ -29,11 +29,11 @@ const findMyShoppingCart = async (): Promise<QueryResult<ShoppingCart>> => {
     logger.debug('fsdata.findMyShoppingCart received response.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findMyShoppingCart: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
 
-      return { error: response.errors.map(error => error.message).join(', ') };
+      return { error: response.error };
     }
 
     return {

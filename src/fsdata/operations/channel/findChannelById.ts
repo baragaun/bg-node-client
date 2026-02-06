@@ -11,7 +11,7 @@ type ResponseDataType = {
   data: {
     findChannelById: Channel | null;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const findChannelById = async (
@@ -34,11 +34,11 @@ const findChannelById = async (
     logger.debug('fsdata.findChannelById received response.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.findChannelById: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
 
-      return { error: response.errors.map(error => error.message).join(', ') };
+      return { error: response.error };
     }
 
     return {

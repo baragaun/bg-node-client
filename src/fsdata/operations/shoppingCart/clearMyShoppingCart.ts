@@ -18,7 +18,7 @@ type ResponseDataType = {
   data: {
     clearMyShoppingCart: ServiceRequest;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const clearMyShoppingCart = async (
@@ -36,10 +36,10 @@ const clearMyShoppingCart = async (
     logger.debug('fsdata.clearMyShoppingCart response:',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.clearMyShoppingCart: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     const serviceRequest = response.data.clearMyShoppingCart;

@@ -10,7 +10,7 @@ import graffleClientStore from '../../helpers/graffleClientStore.js';
 import helpers from '../../helpers/helpers.js';
 import pollForUpdatedObject from '../pollForUpdatedObject.js';
 
-type ResponseDataType = { data: { unblockUserForMeV2: ServiceRequest }, errors?: { message: string }[] };
+type ResponseDataType = { data: { unblockUserForMeV2: ServiceRequest }, error?: string };
 
 const unblockUserForMeV2 = async (
   userId: string,
@@ -36,15 +36,10 @@ const unblockUserForMeV2 = async (
     logger.debug('fsdata.unblockUserForMeV2: response received.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.unblockUserForMeV2: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
-    }
-
-    if (response.errors) {
-      logger.error('fsdata.unblockUserForMeV2: failed with error.', { error: response.errors });
-      return { error: response.errors.map(e => e.message).join(', ')};
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
     if (!response.data.unblockUserForMeV2) {

@@ -68,9 +68,10 @@ const findWalletItems = async (
     //     await db.upsert<GiftCard>(giftCard, ModelType.GiftCard);
     //   }
     // }
-
+    console.log('result from fsdata.walletItem.findWalletItems:', result);
     return result;
   } catch (error) {
+    logger.error('findWalletItems: error', { error });
     return { error: (error as Error).message };
   }
 };

@@ -13,7 +13,7 @@ type ResponseDataType = {
   data: {
     sendMultiStepActionNotification: string;
   };
-  errors?: { message: string }[];
+  error?: string;
 };
 
 const sendMultiStepActionNotification = async (
@@ -44,10 +44,10 @@ const sendMultiStepActionNotification = async (
     logger.debug('fsdata.sendMultiStepActionNotification: received response.',
       { response: JSON.stringify(response) });
 
-    if (Array.isArray(response.errors) && response.errors.length > 0) {
+    if (response.error) {
       logger.error('fsdata.sendMultStepActionNotification: errors received.',
-        { errorCode: (response.errors['0'] as any)?.extensions?.code, errors: JSON.stringify(response.errors) });
-      return { error: response.errors.map(error => error.message).join(', ') };
+        { errorCode: (response.error as any)?.extensions?.code, errors: JSON.stringify(response.error) });
+      return { error: response.error };
     }
 
 
