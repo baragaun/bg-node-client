@@ -14,6 +14,11 @@ export interface BgNodeClientConfig {
   consumer?: string;
 
   /**
+   * Branding identifier sent as the `x-branding` header with every request.
+   */
+  branding?: string;
+
+  /**
    * Defaults to `production`
    */
   appEnvironment?: AppEnvironment;

@@ -174,7 +174,8 @@ export declare enum HttpHeaderName {
     locale = "x-locale",
     pushNotificationToken = "x-pn-token",
     timezone = "x-timezone",
-    userId = "x-user-id"
+    userId = "x-user-id",
+    branding = "x-branding"
 }
 export declare enum IncludeFilterOption {
     include = "include",
