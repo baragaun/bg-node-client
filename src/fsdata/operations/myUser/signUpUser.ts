@@ -25,6 +25,9 @@ const signUpUser = async (
 
     const client = graffleClientStore.get();
     input.checkAvailable = true;
+    if (!input.captchaService) {
+      input.captchaService = 'turnstile';
+    }
     const args: MutationSignUpUserArgs = {
       input: input as unknown as SignUpUserInput,
     };
