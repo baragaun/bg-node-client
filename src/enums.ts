@@ -207,6 +207,7 @@ export enum HttpHeaderName {
   pushNotificationToken = 'x-pn-token',
   timezone = 'x-timezone',
   userId = 'x-user-id',
+  branding = 'x-branding',
 }
 
 export enum IncludeFilterOption {

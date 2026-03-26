@@ -28,6 +28,10 @@ const helpers = {
       headers[HttpHeaderName.authorization] = 'Bearer none';
     }
 
+    if (config.branding) {
+      headers[HttpHeaderName.branding] = config.branding;
+    }
+
     // todo: Add the other headers:
     //   acceptLanguage = 'accept-language',
     //   adminUserId = 'x-admin-user-id',
